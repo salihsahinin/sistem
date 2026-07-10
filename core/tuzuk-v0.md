@@ -19,7 +19,8 @@
 
 ## Karar kayıtları (bu node'un kuruluşu)
 
-11. **BUILD VAR** (Salih, 2026-07-10 — "BUILD VAR. LETS GO."). Kapsam: C:\JARVIS node reposu — planlar + temel katman DOSYALARI. Kapsam dışı: otomasyon, canlı ajan, Homebase kanonu yazımı. **Geri-açma/onay koşulu: Salih'in ayık taraması — veto = revert/repo silme; onay = Homebase'e kayıt.** Şerh (çıplak kayıt, yorum yok): aynı günün daha erken kaydı "high'ım, build'e geçmek istemiyorum" (Homebase ingest #13) + BUILD YOK teyidi; çelişki taramada çözülür.
+11. **BUILD VAR** (Salih, 2026-07-10 — "BUILD VAR. LETS GO."). Kapsam: C:\JARVIS node reposu — planlar + temel katman DOSYALARI. Kapsam dışı: otomasyon, canlı ajan. Şerh (çıplak kayıt): aynı günün daha erken kaydı "high'ım, build'e geçmek istemiyorum" (Homebase ingest #13) + BUILD YOK teyidi. **ÇÖZÜLDÜ (aynı oturum):** Salih ayık beyanı ("ayığım zaten") + vizyon yönlendirmesiyle onay verdi; karantina kapandı, Homebase kaydı yapıldı. Veto yolu her zaman açık: git revert.
 12. **Yöntem = proof of work; pist = 6 ay** (Salih, 2026-07-10, soru cevapları: "proof of work ile ilerleyeceğiz", "6 ay şimdilik").
 13. **Tek-flagship** (Carvis Katman-2 varsayılanı, 2026-07-10; kanıt: red-team 53:0 + timeline aritmetiği): PortRisk canlı-link DONE olana dek ikinci artefakt açılmaz. Geri-açma: Salih vetosu YA DA tetiğin gerçekleşmesi.
 14. **JARVIS node CV-repo'su değildir** (Carvis Katman-2, 2026-07-10; kaynak red-team §2.3): private kalır; CV taşıyıcısı mülakat anlatısı + PortRisk README bölümü. Geri-açma: node'dan dar/ölçülebilir bir araç çıkarsa o araç ayrıca değerlendirilir.
+15. **Şirket-simülasyonu çalışma modeli** (Salih, 2026-07-10 — "jarvis ile şirket simülasyonunda proje geliştire geliştire cv oluşturacağım"): CV projeleri şirket simülasyonu İÇİNDE geliştirilir (Patron/CEO/ajan döngüsü, `00_MASTER_PLAN.md` §2b); CV, simülasyonun çıktısıdır. İlk ürün: PortRisk. Üretim ölçütü: push'lanmış commit (madde 9 ile aynı kök).

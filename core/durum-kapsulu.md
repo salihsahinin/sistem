@@ -2,26 +2,24 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. (Sözlük: durum kapsülü / bağlam-taşıyıcı.)*
 
-**Güncelleme:** 2026-07-10, kuruluş gecesi (Carvis yazdı)
+**Güncelleme:** 2026-07-10, kuruluş oturumu sonu (Carvis yazdı)
 
 ## Şu an
-JARVIS node kuruldu: repo + planlar (00-03) + temel katman v0 + 3 ajan araştırması. Yön: 6 aylık proof-of-work portföyü; tek flagship = PortRisk.
+JARVIS node kuruldu ve ONAYLANDI (Salih, aynı oturum, ayık beyan). Çalışma modeli netleşti: **şirket simülasyonu = CV projelerinin üretim aracı** (00 §2b). Şirketin aktif projesi: PortRisk. Homebase kaydı yapıldı.
 
 ## Son kararlar
-- BUILD VAR (Salih, 07-10) — kapsam bu repo; otomasyon + canlı ajan + Homebase kanonu KAPSAM DIŞI.
-- Yöntem = proof of work; pist = 6 ay (Salih).
-- Tek-flagship: PortRisk canlı-link DONE olana dek başka artefakt açılmaz (Katman-2 varsayılanı; kanıt 53:0).
-- vault-index DONDU (tetiği: PortRisk canlı link); JARVIS node CV-repo'su değil (mülakat anlatısı + README bölümü).
+- BUILD VAR + onay + vizyon düzeltmesi (Salih, 07-10; tüzük 11 ve 15) — karantina kapandı.
+- Yöntem = proof of work; pist = 6 ay (Salih). Üretim ölçütü: push'lanmış commit (53:0 duvarına karşı).
+- Tek-flagship: şirketin aktif proje yuvası tek — PortRisk, canlı demoya kadar (tüzük 13).
+- vault-index DONDU (tetiği: PortRisk canlı link); JARVIS node CV-repo'su değil, CV'yi üreten fabrika (tüzük 14-15).
 
 ## Açık borçlar
-- **Salih'in ayık taraması** — bu reponun onay kapısı (veto = revert; Homebase'e kayıt onaydan sonra).
 - S1-S8 (15 soru) + sondevir A/K (8 çift) — Homebase'de, hâlâ boş.
 - GPA/transkript gerçeği — banka programlarının ilk kapısı; kayıtlarda yok.
-- Homebase'e tek satır proje kaydı + log (onay sonrası, Katman 1).
+- Otomasyon (K-009) + ilk canlı ajan (K-010) — ön-koşulları bekliyor.
 
 ## Sonraki ilk iş
-1. Tarama (10 dk): tüzük → kapsül → pano → 00 → 03.
-2. Sonra KOD: PortRisk Sprint 1 (yfinance + getiriler + pytest + push). Bu node'a dönmeden önce en az 1 push.
+**PortRisk Sprint 1 — şirketin ilk görev döngüsü:** CEO görev emrini yazar (done: yfinance + getiriler + pytest yeşil + push), iş Salih'le pair koşulur, commit Salih'in. Bu node'a dönmeden önce en az 1 push.
 
 ## Sınırlar
 Otomasyon/canlı ajan yok (kurulum sırası 4-5. adım) · diğer vault'lara yazım yok · core/ yalnız Salih kararıyla değişir · bu repoya haftada ≤30 dk (plan-spiral koruması).

@@ -5,13 +5,13 @@
 **Güncelleme:** 2026-07-10 kuruluş gecesi
 
 ## AKTİF
-*(boş — kuruluş işleri kapandı)*
+| Kart | İş | DONE | Ekrana gel |
+|---|---|---|---|
+| K-002 | **PortRisk Sprint 1** (yfinance + getiriler) — şirketin ilk görev döngüsü | pytest yeşil + push (commit Salih'in) | push atıldığında |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Ekrana gel |
 |---|---|---|---|
-| K-001 | **Salih ayık taraması** — bu repoyu onayla/veto et | tarama yapıldı; veto→revert ya da onay→Homebase kaydı | sabah ilk mesajda |
-| K-002 | **PortRisk Sprint 1** (yfinance + getiriler) — İLK KOD İŞİ | pytest yeşil + push | push atıldığında |
 | K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | — |
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | Kasım başında hatırlat |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | tur açılışı duyulduğunda |
@@ -26,4 +26,4 @@
 | K-010 | İlk canlı ajan | K-009 + temel katman 2 hafta sorunsuz |
 
 ## SON BİTEN (2026-07-10)
-Repo + iskelet · 3 ajan araştırması (`raporlar/`) · planlar 00-03 · temel katman v0.
+Repo + iskelet · 3 ajan araştırması (`raporlar/`) · planlar 00-03 · temel katman v0 · **K-001 onay: Salih ayık beyanı + vizyon düzeltmesi (şirket simülasyonu = üretim aracı) — taramasız kapandı, Homebase kaydı yapıldı.**
