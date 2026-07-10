@@ -17,13 +17,9 @@
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | tur açılışı duyulduğunda |
 | K-006 | S1-S8 + sondevir A/K cevapları | 15 soru + 8 çift dolu | Salih isteyince |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | CV çalışması başlarken |
+| K-011 | **Claude sistemini OneDrive-dışı köke taşıma** (Homebase + bağlı vault'lar; kaynak: Salih 07-10. Not: OneDrive sync'siz — yol adı OneDrive ama bulut yedek yok, tek-kopya riski kayıtlı; PortRisk/JARVIS zaten dışarıda) | yeni kök çalışır + Cowork mount + scheduled görevler yeni yola bakar + eski yol salt-okunur arşiv | Salih taşıma gününü seçince (geri-alınması pahalı sınıf: gün tam yedekle başlar) |
 
 ## BLOKE
 | Kart | İş | Ön-koşul |
 |---|---|---|
-| K-008 | vault-index reposu (Faz 0 "Kanıt Dilimi") | **PortRisk canlı-link DONE** (00 §2) |
-| K-009 | Otomasyon (gecelik senkron Routine, uyucam/günaydın kancaları) | loop-eng Faz 2 + Faz 4 |
-| K-010 | İlk canlı ajan | K-009 + temel katman 2 hafta sorunsuz |
-
-## SON BİTEN (2026-07-10)
-Repo + iskelet · 3 ajan araştırması (`raporlar/`) · planlar 00-03 · temel katman v0 · **K-001 onay: Salih ayık beyanı + vizyon düzeltmesi (şirket simülasyonu = üretim aracı) — taramasız kapandı, Homebase kaydı yapıldı.**
+| K-008 | vault-index reposu (Faz 0 "Kanıt Dilimi") | **PortRisk canlı-link DONE** (00 �
