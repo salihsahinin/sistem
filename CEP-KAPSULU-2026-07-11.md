@@ -33,3 +33,4 @@ V1 çıktı-feedback · V2 feedback verimi · V3 model-otorite+prompt derleme ·
 1. N matematiği — dış-chat promptu sende, sonuç m.31'i revize edebilir.
 2. Gerekçeli seçim turu — yarın ilk iş, Cowork/JARVIS'te.
 3. K-011 taşıma günü seçimi (tam yedekle başlar).
+4. V25 (07-11 gece, karar yok): skill ekosistemi araştırması — altın kural: her skill'i biz kurarız, kuralları biz koyarız; hazırdan yalnız ilham.

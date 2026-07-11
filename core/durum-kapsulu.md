@@ -21,6 +21,8 @@ Tüzük v1 İMZALI (32 madde — S1-S8 turu bitti, tek oturumda). Kurulumun kala
 - N'in matematiği: Salih dış-chat promptuyla çalışıyor; sonuç gelince m.31 revize edilebilir.
 - Günaydın scheduled görevi güncellendi ama build sonrası yeniden hazırlanacak (Salih, 07-11).
 
+- **V25 skill ekosistemi (07-11 gece notu, karar YOK):** hazır Jarvis modelleri/skill'ler araştırılacak (skill-bulan skill, Obsidian skill'leri, subagents); altın kural: kurulumu ve kuralları bizde, hazırdan yalnız ilham. Gerekçeli tur/build'de gündeme al.
+
 ## Sonraki ilk iş
 **Fikir kutusu gerekçeli seçim turu** (K-012 adım 1). Format önerisi: 51 madde tek tabloda — madde / önerilen sınıf / GEREKÇE / Salih kararı sütunu.
 
