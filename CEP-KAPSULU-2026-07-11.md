@@ -34,3 +34,4 @@ V1 çıktı-feedback · V2 feedback verimi · V3 model-otorite+prompt derleme ·
 2. Gerekçeli seçim turu — yarın ilk iş, Cowork/JARVIS'te.
 3. K-011 taşıma günü seçimi (tam yedekle başlar).
 4. V25 (07-11 gece, karar yok): skill ekosistemi araştırması — altın kural: her skill'i biz kurarız, kuralları biz koyarız; hazırdan yalnız ilham.
+5. V26 (07-11 gece, karar yok): katmanlı kontrol — ekip-lideri/işçi/Jarvis ara-kontrol miktarları + opsiyonel tester ajanı; token-zaman kombinasyon kartlı; loop'lar da bu gözle tasarlanır.
