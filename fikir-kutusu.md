@@ -45,3 +45,5 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 - **JARVIS kurulumu > PortRisk (geçici):** "JARVIS araç, PortRisk çıktı — araç daha önemli." Kurulum DONE'u: tüzük v1 + fikir kutusu seçimi + JARVIS CLAUDE.md + end-of-day wiki-hasadı tanımı + açıklama notları. Geri-açma: kurulum DONE olunca K-002 (PortRisk Sprint 1) tek aktif işe döner.
 - **Plan-spiral kuralı (≤30dk/hafta) kurulum fazında askıda** (istisna kaydı; kurulum kapanınca geri yürürlükte).
 - **İki öğrenme modeli ayrımı:** PortRisk = yaparken öğrenme + amelelik (anlama-kapısı); JARVIS = sınırda-öğrenme (V19: önce çıktı, müfredat duvardan). Görev emirlerine parametre olarak girer.
+
+| V24 | Obsidian entegrasyonu — JARVIS vault olarak açılır + [[wiki-link]] bağlantı standardı + graph view (yaşayan kütüphane #26 / pointer m.20 kesişimi) | ayık (Salih sorusu, 07-11 gece) | iki katman: vault-açma bedava; link standardı build kararı — statü: HİPOTEZ, doğrulanma koşulu: link standardı seçilip ≥1 hafta kullanımda kırılmadı |
