@@ -2,24 +2,27 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. (Sözlük: durum kapsülü / bağlam-taşıyıcı.)*
 
-**Güncelleme:** 2026-07-10, kuruluş oturumu sonu (Carvis yazdı)
+**Güncelleme:** 2026-07-11, kurulum oturumu sonu (Carvis yazdı)
 
 ## Şu an
-JARVIS node kuruldu ve ONAYLANDI (Salih, aynı oturum, ayık beyan). Çalışma modeli netleşti: **şirket simülasyonu = CV projelerinin üretim aracı** (00 §2b). Şirketin aktif projesi: PortRisk. Homebase kaydı yapıldı.
+Tüzük v1 İMZALI (32 madde — S1-S8 turu bitti, tek oturumda). Kurulumun kalan işi tek kart: K-012. Öncelik kararı: **JARVIS kurulumu > PortRisk (geçici)** — "araç çıktıdan önemli" (Salih, 07-11). Cowork bundan sonra bu klasörden açılacak.
 
-## Son kararlar
-- BUILD VAR + onay + vizyon düzeltmesi (Salih, 07-10; tüzük 11 ve 15) — karantina kapandı.
-- Yöntem = proof of work; pist = 6 ay (Salih). Üretim ölçütü: push'lanmış commit (53:0 duvarına karşı).
-- Tek-flagship: şirketin aktif proje yuvası tek — PortRisk, canlı demoya kadar (tüzük 13).
-- vault-index DONDU (tetiği: PortRisk canlı link); JARVIS node CV-repo'su değil, CV'yi üreten fabrika (tüzük 14-15).
+## Son kararlar (detay: tüzük v1 dolgusu + git log)
+- Denetim modeli: Fable denetçi, rapor-only, 2 parçalı (iş düzlemi temiz / kişi düzlemi ucuz-kirlenebilir); çelişki kapısı yürürlükte (m.16+28).
+- Karar yetkisi: iki katman + ölçek eşiği + 3-kartlı deneysel devir seti, K1-varsayılan N=5 (m.31).
+- Günlük özütleri/ruh hali takibi YASAK (m.23); kendini-analiz kadansı iptal, scheduled görevler temizlendi (m.24).
+- Mod sistemi yok — CEO-Patron ilişkisi + görev-ölçek optimizasyonu (m.25); anlama-kapısı yerine kullanım kılavuzu (m.26).
+- Ajan kalıcılığı + token-zaman limitli atama mimarisi + gelişim-fedakarlığı kuralı (m.30).
+- JARVIS öğrenme modeli = sınırda-öğrenme (V19); PortRisk modeli ayrı (yaparken öğrenme).
 
 ## Açık borçlar
-- S1-S8 (15 soru) + sondevir A/K (8 çift) — Homebase'de, hâlâ boş.
-- GPA/transkript gerçeği — banka programlarının ilk kapısı; kayıtlarda yok.
-- Otomasyon (K-009) + ilk canlı ajan (K-010) — ön-koşulları bekliyor.
+- **Fikir kutusu 51-madde GEREKÇELİ seçim turu — Salih emri: toptan Katman-2 sınıflandırma REDDEDİLDİ ("geçiştirme yapmamalıyız"); her maddenin neden o sınıfta olduğu tek tek açıklanacak. SONRAKİ OTURUM BURADAN BAŞLAR.**
+- Build 5 adımı (K-012 kartında yazılı) — seçim turundan sonra.
+- N'in matematiği: Salih dış-chat promptuyla çalışıyor; sonuç gelince m.31 revize edilebilir.
+- Günaydın scheduled görevi güncellendi ama build sonrası yeniden hazırlanacak (Salih, 07-11).
 
 ## Sonraki ilk iş
-**PortRisk Sprint 1 — şirketin ilk görev döngüsü:** CEO görev emrini yazar (done: yfinance + getiriler + pytest yeşil + push), iş Salih'le pair koşulur, commit Salih'in. Bu node'a dönmeden önce en az 1 push.
+**Fikir kutusu gerekçeli seçim turu** (K-012 adım 1). Format önerisi: 51 madde tek tabloda — madde / önerilen sınıf / GEREKÇE / Salih kararı sütunu.
 
 ## Sınırlar
-Otomasyon/canlı ajan yok (kurulum sırası 4-5. adım) · diğer vault'lara yazım yok · core/ yalnız Salih kararıyla değişir · bu repoya haftada ≤30 dk (plan-spiral koruması).
+Otomasyon/canlı ajan yok (K-009/K-010) · diğer vault'lara yazım yok · core/ yalnız Salih kararıyla değişir · plan-spiral sınırı kurulum fazında askıda, kurulum DONE olunca geri (m.19).
