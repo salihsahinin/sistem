@@ -17,6 +17,7 @@
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Carvis | Kasım başı |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Carvis | tur duyurusu |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | 07-10 | — | Carvis | CV çalışması başlarken |
+| K-014 | Claude chat instructions güncellemesi — Jarvis bağlamına göre yeniden yazım (Salih 07-12) | yeni instructions Salih ayarlarına yapıştırıldı | 07-12 | tartışma kuyruğu | Salih+Carvis | tartışma kuyruğu bitince ("nihai Jarvis") |
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (git `7a11abd`) | yeni kök çalışır + mount + scheduled görevler + eski yol arşiv | 07-11 | — | Salih+Carvis | Salih gün seçince (tam yedekle başlar) |
 
 ## BLOKE
