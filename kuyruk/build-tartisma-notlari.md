@@ -29,6 +29,7 @@
 - **weekly-taste-sync gerekçesi**: davranış-kuralı değişikliği günlük değil ritimli+onaylı patch'le ("günlük döngü ruh haline over-fit eder") — m.23'ü bağımsız doğruluyor; kural-değişim ritmi fikri alınabilir.
 
 ## Ajan dönemi defteri (K-009/K-010 açılınca gündeme gelir; şimdi dokunulmaz)
+- **Salih notu (07-12):** "Looplara gelince söyleyeceğim — Karpathy'nin loop yöntemi gibi yöntemleri de öğrenip kullanmamız lazım." K-009 açılış gündemine.
 - Loop guardrails: 3 tur · 10 dk · sıfır-ilerleme-durdur (personal-os) + tur limiti/bütçe tavanı (saha standardı).
 - Heartbeat maliyet deseni: script veri toplar → LLM yalnız akıl yürütür (~7x ucuz).
 - Rol-başına model katmanlama + "ucuz model ≠ ucuz iş" ölçülmüş dersi (Haiku analitik işte daha çok tur → toplam token daha kötü) — #24b formülünün girdisi.
