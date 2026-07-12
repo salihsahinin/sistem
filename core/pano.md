@@ -8,7 +8,7 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-015 | JARVIS ilk prototip (m.36 2. REVİZYON: ÖNCELİK BU; hedef ~3 ay ≈10 Ekim). DONMUŞ KAPSAM: (1) ~~ingest/katman şeması v1~~ DONE 07-12 · (2) ~~TETİKLİ/UFUK modeli~~ DONE 07-12 · (3) loop-eng Faz 2+4 + Karpathy revizyonu — Salih öğrenimi · (4) ~~kuyruk kapanışı~~ DONE 07-12 · (5) K-009 otomasyon · (6) K-010 ilk ajan + ajan-defter şeması v1 + ajan-eşiği kararı (V33). Ekleme YALNIZ Salih imzası + süre-etkisi raporuyla | kapsam listesi (1)-(6) kapandı | 07-12 | — | Salih+Carvis | ÖNCELİK №1 (m.36 2. rev) |
+| K-015 | JARVIS ilk prototip (m.36 2. REVİZYON: ÖNCELİK BU; hedef ~3 ay ≈10 Ekim). DONMUŞ KAPSAM: (1) ~~ingest/katman şeması v1~~ DONE 07-12 · (2) ~~TETİKLİ/UFUK modeli~~ DONE 07-12 · (3) loop-eng Faz 2+4 + Karpathy revizyonu — Salih öğrenimi (eşlik kaynağı: bbycroft.net/llm — GPT içinin 3D animasyonlu haritası; revizyon oturumunda açık tutulur. Salih onayı 07-13) · (4) ~~kuyruk kapanışı~~ DONE 07-12 · (5) K-009 otomasyon · (6) K-010 ilk ajan + ajan-defter şeması v1 + ajan-eşiği kararı (V33). Ekleme YALNIZ Salih imzası + süre-etkisi raporuyla | kapsam listesi (1)-(6) kapandı | 07-12 | — | Salih+Carvis | ÖNCELİK №1 (m.36 2. rev) |
 | K-002 | PortRisk Sprint 1 (yfinance + getiriler) — PROTOTİPİN ÖLÇÜM BANKI: hasat/etiketleme/ölçüm verisi üreten görevler (m.36c; öncelik çatışmasında prototip kazanır) | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | — (ölçüm-bankı, m.36c) | Carvis | ölçüm-bankı vardiyasında |
 
 ## BEKLEYEN
