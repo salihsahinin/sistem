@@ -23,5 +23,14 @@
 - **Bayat-kapsül riski (V4):** kapsül kapanışta güncellenmezse sonraki vardiya yanlış yere çapalar — yanlış kapsül, boş kapsülden kötüdür; kapanış disiplini bu yüzden atlanmaz.
 - **Metafor haritası (V12):** sistem terimleri tek metafor ailesinden gelir (şirket: vardiya, pano, tüzük, teslim raporu); yeni terim aile içinde türetilir, tanımı sözlüğe işlenir (sözlük v1 DONDU — ekleme yalnız Salih talimatıyla, m.3).
 
+## Skill-yazım standardı (deneysel damga m.29; kaynak: resmi skill-creator + best-practices — K-013 raporu; Salih onayı 07-12)
+- SKILL.md <500 satır — tetiklenince gövde bağlama komple yüklenir, bu ~5K token tavanı demek (resmi tavsiye; kullanım verimizle kalibre edilir).
+- Açıklama alanı = "ne yapar + ne zaman kullanılır" — tetikleme isabetini bu belirler.
+- Her skill'e **Gotchas bölümü**: skill-başına biriken hata/tuzak listesi (ingest defterinin skill karşılığı).
+- Yan-etkili işler (commit, push, publish) `disable-model-invocation` ile yalnız elle tetiklenir — model kendi kendine çalıştıramaz.
+- Deterministik iş skill'e script olarak gömülür (model kodu her seferinde yeniden türetmesin).
+- **Eval kuralı (Salih onayı 07-12):** bundan sonra yazılan her JARVIS skill'i eval setiyle doğar — ≥5 pozitif + 2-3 negatif senaryo, %90+ geçiş hedefi (araç: skill-creator, kurulu). Mevcut skill'lere geriye dönük eval soğuk kuyrukta.
+- Not: progressive disclosure ilkesi = m.20 pointer sistemiyle aynı kök (bağımsız doğrulama, K-013).
+
 ## Durum görünürlüğü (m.18)
 Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü kapsül/pano/şablonlarda yaşar.

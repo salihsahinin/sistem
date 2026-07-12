@@ -1,4 +1,6 @@
 # Build Tartışma Notları — K-013 + Rakip Analizi Bulguları
+
+> **KUYRUK KAPANDI (Salih, 2026-07-12 tartışma oturumu — 3 blok tamam).** Blok 1: m.34 (katmanlı ingest, taze-oturum revizyonuyla) + kural-değişim ritmi RED. Blok 2: m.35 (tez #0 çapa) + m.36 (ilk-prototip fazı, K-015). Blok 3: skill-yazım standardı KILAVUZ'a girdi (deneysel) · eval kuralı kabul (yeni skill eval'le doğar; geriye dönük eval soğuk kuyruk; hizalama kökeni: kayıt geçerli — 07-07 Salih tanımı, Yağız'ınki dev-run-planner) · superpowers şimdi alınmaz — Salih vizyon kaydı: "prototip bitince ilk ajan kurulur, onunla proje geliştirilir, şirket büyürken paket göz önünde bulundurulur" → K-009/K-010 açılış gündemine işlendi. Carvis şerhi: K-010'un "temel katman 2 hafta sorunsuz" ön-koşulu yürürlükte; "prototip bitince hemen ilk ajan" o güne sıkışırsa çelişki kapısı koşulur. **K-014 TETİKLENDİ.** Dosya arşive hazır (düşme Salih onayıyla, m.8).
 *ÖNERİ DOSYASI (imzasız) — 2026-07-12. Hiçbir satır karar değildir; Salih emri: "bulguları not al, sormadan ekleme-çıkarma yapma." Her madde ilgili build adımında birlikte tartışılıp tek tek karara bağlanır. Kaynaklar: raporlar/2026-07-12-K013-ekosistem-arastirmasi.md + personal-os rakip analizi (bu dosyanın eki).*
 
 ## 0. Salih'in farklılaşma tezi (07-12, kendi sözleriyle — kanon adayı, tartışmada işlenecek)
@@ -32,6 +34,7 @@
 
 ## Ajan dönemi defteri (K-009/K-010 açılınca gündeme gelir; şimdi dokunulmaz)
 - **Salih notu (07-12):** "Looplara gelince söyleyeceğim — Karpathy'nin loop yöntemi gibi yöntemleri de öğrenip kullanmamız lazım." K-009 açılış gündemine.
+- **Salih vizyonu (07-12 tartışma, blok 3):** ajanlar proje proje başlar — prototip bitince ilk ajan kurulur, onunla proje geliştirilir; şirket büyütülürken superpowers desenleri (TDD · sistematik debugging · subagent-driven development) göz önünde bulundurulur.
 - Loop guardrails: 3 tur · 10 dk · sıfır-ilerleme-durdur (personal-os) + tur limiti/bütçe tavanı (saha standardı).
 - Heartbeat maliyet deseni: script veri toplar → LLM yalnız akıl yürütür (~7x ucuz).
 - Rol-başına model katmanlama + "ucuz model ≠ ucuz iş" ölçülmüş dersi (Haiku analitik işte daha çok tur → toplam token daha kötü) — #24b formülünün girdisi.
