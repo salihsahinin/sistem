@@ -36,6 +36,8 @@
 - Karar kuralı: paralellik kazancı > koordinasyon vergisi ise takım, değilse tek güçlü ajan.
 - Beads/gastown: ajan-yazılabilir pano + worktree izolasyonu + rol-adlı kalıcı kimlikler (m.30 ile uyumlu).
 
+- **Salih (07-12, adım 3 tartışması):** (a) Örnek-damıtma sorusu → kural: sayfa başına 1 kanonik damıtılmış örnek, ham senaryo raporda pointer'la (standarda deneysel damgayla girdi). (b) SOP+model-eşleme onayı: SOP'lar ileride hedef-model parametresi taşır (Fable prosedür yazar, Sonnet uygular) — #17 UFUK hattıyla aynı, ilk partide parametre YOK. (c) Çelişki kapısı maliyet uyarısı: kontrol her zaman dar kapsamlı (karar anı + dokunulan yüzey); ajan döneminde kategori-bazlı doğru ajanlara dağıtılır — "tüm projeyi tara" yasak sınıfı.
+
 ## Rakip analizi özeti — jimcen33/personal-os (tam metin: bu bölüm)
 **Ne:** MIT lisanslı, 0-star TEMPLATE repo (v0.3.0, son push 06-20); "solo founder file-first LLM wiki + Cowork OS". Çalışan kısım: 23KB CLAUDE.md anayasası + AGENTS.md şeması + 17 SKILL.md + DECISIONS.md (D-001..014, reddedilen alternatiflerle). İçerik katmanları TAMAMEN BOŞ (.gitkeep). "Her gün kullanıyorum" iddiası doğrulanamadı.
 **Örtüşmeler:** pointer ilkesi ("point to resource files, don't inline") · hot.md = durum-kapsulü ikizi · Karpathy-wiki kökü · Inbox+Queue = fikir kutusu+seçim turu · onay kapısı ("never auto-file ambiguous") · anti-sycophancy (Skeptic skill) · karar kaydı.
