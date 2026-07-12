@@ -91,11 +91,11 @@
 
 - **#24 BİRLEŞTİ (Salih):** 24b (karşı-notlu yazım) gövde; 24a'ya "bkz. 24b" işareti (Homebase havuzunda işlendi). İçerik kararı: **önce Carvis'in alternatif formülü denenir** (kapasite ∝ denetimsiz süre × adım muğlaklığı × hata-birikme maliyeti; düşünme/bekleme-süresi ayrımı + loop-tipi sınırı) — ama formül dogma değil: iterasyon optimizasyonlarında deneysel sonuç çıkarımlarıyla uzun vadede değişir (m.29 fitting yolu).
 - **V24 KARAR (Salih):** Vault ŞİMDİ açılır; [[wiki-link]] standardı kullanıma girer. İsim disiplini sözleşmesi: Salih dosya adı değiştirmez; değiştirirse bildirir → Carvis link zincirini onarır. Hipotez koşulu işlemeye devam eder (≥1 hafta kırılmasız kullanım = doğrulandı, V23 kuyruğu).
-- **Push devri (Salih):** "Push'ları bundan sonra sen at" — Carvis her oturumda tek-seferlik cihaz-kodu onayıyla (GitHub device flow) push atabilir; kalıcı token diske YAZILMAZ (güvenlik sınıfı). Sürtünme kabul edilebilir bulunmazsa geri düşüş: push Salih'in elinden (3 komut). **[GERİ-AÇILDI 2026-07-13, Salih onayı: dar kapsamlı fine-grained PAT (yalnız jarvis reposu, contents-write, 90 gün) `.secrets/`e (gitignore'lu) yazıldı; push tam otomatik. Geri-açma koşulu: sızıntı şüphesi ya da süre dolumu.]**
+- **Push devri (Salih):** "Push'ları bundan sonra sen at" — Carvis her oturumda tek-seferlik cihaz-kodu onayıyla (GitHub device flow) push atabilir; kalıcı token diske YAZILMAZ (güvenlik sınıfı). Sürtünme kabul edilebilir bulunmazsa geri düşüş: push Salih'in elinden (3 komut). **[GERİ-AÇILDI 2026-07-12, Salih onayı: dar kapsamlı fine-grained PAT (yalnız jarvis reposu, contents-write, 90 gün) `.secrets/`e (gitignore'lu) yazıldı; push tam otomatik. Geri-açma koşulu: sızıntı şüphesi ya da süre dolumu.]**
 
 ---
 
-## K-012 adım 2 — ŞİMDİ listesi × build 5 adımı eşlemesi (2026-07-13, Salih onaylı)
+## K-012 adım 2 — ŞİMDİ listesi × build 5 adımı eşlemesi (2026-07-12, Salih onaylı)
 
 | Build adımı | Maddeler | İş |
 |---|---|---|
@@ -104,5 +104,5 @@
 | 3. Mekanizmalar | #16 · #27 · V5 · V20 · V23 + #5 standart yarısı | Wiki yazım standardı + ilk parti 5 kavram (oturum başına 1-2) · hasat şablonu + wiki-delta + V20 üçüncü soru · [damıtma]/[icra] commit etiketi bu commit'ten itibaren · V23 test kuyruğu (ilk müşteriler: V28 hipotez, V24 ≥1-hafta koşulu) |
 | 4. Pano + kapsül şablonları | #22 (kısmi) | Şablonlara tarih + yaş/bekleme alanı |
 | 5. Köken-izi ilk raporu | V22 | Prototip ayracı + ilk rapor |
-| Paralel (çalışma biçimi) | #7 · V25 | #7 yöntem 1-2-3 build oturumlarının çalışma biçimi · **V25, K-013'e BİRLEŞTİ (Salih onayı 07-13)** — tek araştırma koşusu |
+| Paralel (çalışma biçimi) | #7 · V25 | #7 yöntem 1-2-3 build oturumlarının çalışma biçimi · **V25, K-013'e BİRLEŞTİ (Salih onayı 07-12)** — tek araştırma koşusu |
  
