@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-12 (3. oturum, sabah) — m.36 REVİZE: PortRisk kapısı kaldırıldı, PARALEL şerit (Carvis yazdı)
+**Güncelleme:** 2026-07-12 (4. oturum kapanışı, gece) — m.36 2. REVİZYON: PROTOTİP ÖNCELİK (~3 ay) + üçlü sohbet cc/ kanalı + V34-V38 (Carvis yazdı)
 
 ## Şu an
 **Tüzük m.34-36 imzalandı (Salih, bu oturum):** m.34 katmanlı ingest (V21+V30 çekirdeği kanonlaştı; taze-oturum promote Salih revizyonuyla) · m.35 farklılaşma tezi çapası (tez #0; tam formülasyon wiki kuyruğunda) · m.36 ilk-prototip fazı kuralı (**PortRisk K-015 kapısının arkasına alındı** — çelişki kapısı koşuldu, DONE = K-015 yaşayan listesi). Kural-değişim ritmi REDDEDİLDİ. V30 (iterasyon verimi) kutuya ingest'lendi + V21'e koşullu-geçiş şerhi. **Yeni tek aktif kart: K-015** (ingest şeması v1 · TETİKLİ/UFUK başlangıç modeli · loop-eng Faz 2+4 · kuyruk kapanışı). PAT ~10 Ekim'de ölür. KILAVUZ okuma borcu Salih'te.
