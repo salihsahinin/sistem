@@ -18,7 +18,8 @@
 - **A2 — Elle veri fazı:** ölçek-eşiği kararlarında 3-model formatı fiilen uygulanır; ilk sahne = K-015 (loop-eng Faz 2+4 kararları) + K-002 (PortRisk Sprint 1 kararları). Her karar deftere. Mevcut önceliğe İŞ EKLEMEZ — mevcut işlerin karar anlarına format giydirir.
 - **A3 — Otomatik evaluator zemini:** PortRisk done-tanımı makine-ölçülebilir (pytest + metrik; K-002 zaten üretiyor) + koşum-başına token/süre sayacı (V30 sayaçlarıyla aynı aile).
 - **A4 — Loop yeteneği:** K-015 loop-eng Faz 2 (/goal) + Faz 4 (Routine) — ilk /goal koşumu = ilk otomatik iterasyon verisi; cc/ kanalının ilk görev emri adayıyla ÇAKIŞIYOR (tek taşla iki borç).
-- **A5 — Yeniden-inşa deneyi (TETİKLİ: K-009/K-010):** 1 inşa + ~10 veri koşumu, farklı kombinasyon dizileri; koşum-başına token tavanı + tur limiti şart.
+- **A5 — Yeniden-inşa deneyi (TETİKLİ: K-009/K-010):** 1 inşa + ardışık-deney kuralıyla veri koşumları. **Koşum sayısı KARARI (Carvis, 07-13, Salih yetki devriyle):** sabit sayı YOK — pilot 5 (1 referans + 4 mutasyon) → 3'erli partiler → devam koşulu: son parti en-iyi fitness'ta >%5 iyileşme → değilse DUR; sert tavan 15/proje-sınıfı (V28 bütçe koruması). Aralık [5,15]; %5 eşiği + parti boyu deneysel damgalı (m.29). Koşum-başına token tavanı + tur limiti ayrıca şart.
 - **A6 — Desen çıkarımı + transfer testi:** biriken veriden öğrenme modeli-deseni → sonraki projede transfer hipotezi ölçülür (V23 disiplini), sonra yakınsama.
+- **A7 — Matematiksel-temel denetimi (KAPANIŞ ADIMI; Salih emri 07-13):** iş bitince çerçevenin tüm bileşenleri taranır; her eşik/parametre 'türetilmiş (veri/formül) mi, sezgisel mi' etiketlenir; sezgisel kalanlar temellendirme kuyruğuna düşer. Şimdiden bilinen adaylar: %5 iyileşme eşiği · parti boyu 3 · tavan 15 · kalite 1-10 skalası · V28 sınıf-başına maliyet tavanları.
 
 Sıralama zaten mevcut öncelik şeridiyle uyumlu: A2-A4, K-015/K-002'nin içinden geçer (paralel yük değil); yalnız A1 yeni ve açılışa kondu.
