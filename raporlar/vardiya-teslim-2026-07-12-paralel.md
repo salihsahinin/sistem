@@ -9,3 +9,7 @@
 **Devreden borçlar:** K-014 profil yapıştırma · yerel .git onarımı (HEAD.lock, klon-push geçici çözümü çalışıyor) · Homebase git kilidi · wiki borçları (tez #0 + çelişki kapısı sayfası) · PAT ~10 Ekim.
 
 **Damga:** beyansız.
+
+---
+## EK (gece, oyun arası dikte segmenti)
+Kurulan: üçlü sohbet CC köprüsü (`cc/`). Kutuya: V34-V38 + V35/V37 şerhleri + A/B/C modelleri (araştırma-bekliyor). MASADA: kanal modeli seçimi · CC defteri açılışı · kural paketi (sunum-eşiği + V36 + V38). Sonraki oturum: iş önce (V38), kararlar tek satır hatırlatma.
