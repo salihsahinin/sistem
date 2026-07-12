@@ -8,12 +8,11 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-012 | **JARVIS kurulumu — build 5 adım:** ✓tüzük v1 ✓seçim turu ✓eşleme ✓adım1 CLAUDE.md ✓adım2 KILAVUZ ✓adım3 wiki-standardı+2 sayfa+hasat+test-kuyruğu → KALAN: adım 4 (bu güncelleme) + adım 5 (köken-izi raporu) | 5 adım commit'li + kılavuz teslim | 07-11 | — | Carvis | ŞU AN AÇIK |
+| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV (ölçüm-öncelikli strateji | pytest yeşil + push (commit Salih'in) | 07-10 | — | Carvis | TEK AKTIF IS (Salih 07-11 karari) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV (ölçüm-öncelikli strateji, Salih 07-12) | pytest yeşil + push (commit Salih'in) | 07-10 | K-012 | Carvis | K-012 DONE olunca |
 | K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | 07-10 | K-002 | Carvis | — |
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Carvis | Kasım başı |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Carvis | tur duyurusu |
@@ -28,4 +27,4 @@
 | K-010 | İlk canlı ajan | K-009 + temel katman 2 hafta sorunsuz | 07-10 | Salih+Carvis |
 
 ## SON BİTEN
-**K-013+V25 (07-12):** ekosistem araştırması + rakip analizi → `raporlar/2026-07-12-K013-ekosistem-arastirmasi.md` + `kuyruk/build-tartisma-notlari.md`; 5 build-bulgusu adımlara dağıtıldı. **07-11:** TÜZÜK v1 İMZALANDI · K-006 kapandı · fikir kutusu kuruldu · scheduled temizlik · git onarımı.
+**K-012 KAPANDI (07-12): JARVIS kurulumu — tüzük v1 + seçim turu + 5 build adımı (CLAUDE.md v1 · KILAVUZ v1 · wiki standardı+2 sayfa+hasat+test-kuyruğu · pano v2 · köken-izi #1) tamamı commit ve push ile.** · **K-013+V25 (07-12):** ekosistem araştırması + rakip analizi → `raporlar/2026-07-12-K013-ekosistem-arastirmasi.md` + `kuyruk/build-tartisma-notlari.md`; 5 build-bulgusu adımlara dağıtıldı. **07-11:** TÜZÜK v1 İMZALANDI · K-006 kapandı · fikir kutusu kuruldu · scheduled temizlik · git onarımı.
