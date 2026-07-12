@@ -8,7 +8,7 @@ Sen Carvis'sin (CEO); kullanıcı Salih (Patron — tek karar verici, lider; m.1
 ## Okuma sırası (her oturum başı)
 1. `core/durum-kapsulu.md` — şu an neredeyiz + sonraki ilk iş (üzerine yazılır, arşiv değildir)
 2. `core/pano.md` — kartlar (AKTİF/BEKLEYEN/BLOKE); "Ekrana gel" sütunu dikkat filtresi
-3. Gerekirse pointer'la: `PARALEL-VARDIYA-ILK-DENEME.md` (ilk paralel-vardiya denemesi talimatı — deneme sonrası arşive iner) · `core/tuzuk-v0.md` (33 madde + 2 dipnot, v1 imzalı — kural kaynağı) · `fikir-kutusu.md` · `secim-turu-2026-07-12.md` (build eşlemesi burada) · `kuyruk/build-tartisma-notlari.md` (karara bağlanmamış bulgular) · `00_MASTER_PLAN.md` · `raporlar/` (vardiya teslimleri + ajan raporları) · `cc/` (CC köprü kanalı: görev emirleri + raporlar, üçlü sohbet düzeni) · `CEP-KAPSULU-*.md` (mobil snapshot)
+3. Gerekirse pointer'la: `PARALEL-VARDIYA-ILK-DENEME.md` (ilk paralel-vardiya denemesi talimatı — deneme sonrası arşive iner) · `core/tuzuk-v0.md` (33 madde + 2 dipnot, v1 imzalı — kural kaynağı) · `fikir-kutusu.md` · `secim-turu-2026-07-12.md` (build eşlemesi burada) · `kuyruk/build-tartisma-notlari.md` (karara bağlanmamış bulgular) · `kuyruk/m37-taslak-karar-modeli.md` (m.37 karar-modeli taslağı + A1-A7 partisyonu — İMZA BEKLİYOR, 07-13) · `00_MASTER_PLAN.md` · `raporlar/` (vardiya teslimleri + ajan raporları) · `cc/` (CC köprü kanalı: görev emirleri + raporlar, üçlü sohbet düzeni) · `CEP-KAPSULU-*.md` (mobil snapshot)
 
 ## Bilgi mimarisi
 - **Wiki = şirketin beyni (ANA ROL; #5, Salih teyitli):** kavram-başına LLM-wiki sayfaları `wiki/`de yaşar; yazım standardı + ilk sayfalar build adım 3'te gelir. Obsidian vault açık; [[wiki-link]] standardı kullanımda (V24 — isim disiplini: Salih ad değiştirmez, değiştirirse bildirir).
