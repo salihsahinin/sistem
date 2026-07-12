@@ -17,6 +17,7 @@
 - Tetikli: K-011 taşıma (Salih gün seçince) · N matematiği (dış-chat) · V28 (etiket 1/10) · V27 · K-004 (Kasım).
 
 ## Sonraki ilk iş — m.36 2. REVİZYON (Salih koşullu kararı 07-12 4. oturum): PROTOTİP ÖNCELİK, ~3 AY UFKU (≈10 Ekim)
+- **A1 — V39/m.37 zemini (07-13 eklendi, Salih; K-015'ten ÖNCE, açılış bloğu ~15-20 dk):** .git onarımı → m.37 imza/revize → senaryo-defteri açılışı → sıfır-noktası kaydı. Partisyon planı: `kuyruk/m37-taslak-karar-modeli.md` (A1-A6). Sonrası (A2+) K-015/K-002 işlerinin İÇİNDEN akar, ayrı yük değil.
 - **Öncelik şeridi (K-015, DONMUŞ kapsam):** sıradaki madde = **loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu** (Salih öğrenimi) → sonra K-009 → K-010 ilk ajan + defter şeması + V33 eşik kararı. Kapsama ekleme yalnız Salih imzası + süre-etkisi raporu.
 - **Ölçüm-bankı şeridi (K-002, m.36c):** PortRisk Sprint 1 bloke değil — prototipin hasat/etiketleme verisini üretir; öncelik çatışırsa prototip kazanır. Vardiya: "günaydın, PortRisk" (çift mount; artık "ölçüm-bankı vardiyası").
 
