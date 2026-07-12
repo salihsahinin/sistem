@@ -2,6 +2,8 @@
 
 > **Açıklama notu:** 2026-07-12 sabah kararının (m.36 revizyonu + KILAVUZ paralel vardiya protokolü) ilk saha denemesi için adım listesi. Deneme yapılıp aksaklıklar kaydedilince bu dosya arşive iner (m.8 — silinmez). Kural kaynağı: KILAVUZ "Paralel vardiya protokolü" bölümü.
 
+## GÜNCELLEME (07-12 4. oturum): m.36 2. revizyon — ÖNCELİK PROTOTİP (K-015, ~3 ay ufku); PortRisk vardiyası artık "ölçüm-bankı vardiyası" (bloke değil, hasat verisi üretir; çatışmada prototip kazanır). Aşağıdaki adımlar aynen geçerli.
+
 ## Ne deniyoruz
 İki ayrı Cowork oturumu = iki vardiya hattı: **PortRisk vardiyası** (K-002: Sprint 1) ve **JARVIS vardiyası** (K-015: loop-eng Faz 2+4). Her hat kendi işini yapar, kapanışta kendi teslim raporunu yazar, kapsülde yalnız kendi satırını günceller.
 
