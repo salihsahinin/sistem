@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS — Zihin-Yol Haritası (2026-07-12)</title>
+<style>
+  :root{--bg:#0f1115;--card:#181b22;--ink:#e8e6e0;--dim:#9a978f;--gold:#c9a227;--line:#3a3e48;--green:#5a9e6f;--red:#b5544a;}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;margin:0;padding:32px 16px;line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto}
+  h1{font-size:1.6em;color:var(--gold);margin:0 0 4px}
+  .sub{color:var(--dim);font-size:.95em;margin-bottom:36px}
+  .node{position:relative;margin:0 0 0 26px;padding:0 0 28px 30px;border-left:2px solid var(--line)}
+  .node:last-child{border-left:2px solid transparent}
+  .dot{position:absolute;left:-11px;top:2px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);color:var(--gold);font-size:.65em;display:flex;align-items:center;justify-content:center;font-family:sans-serif}
+  details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  summary{cursor:pointer;font-weight:bold;font-size:1.05em;color:var(--gold);list-style:none}
+  summary::before{content:"S: ";color:var(--dim)}
+  summary:hover{color:#e6c35a}
+  .a{margin-top:12px;color:var(--ink)}
+  .a b{color:var(--gold)}
+  .a .c{color:var(--green);font-weight:bold}
+  .a .u{color:var(--red);font-weight:bold}
+  .ref{color:var(--dim);font-size:.85em;font-style:italic}
+  .term{border-bottom:1px dotted var(--dim)}
+  .final{background:linear-gradient(180deg,#1d2027,#181b22);border:1px solid var(--gold);border-radius:10px;padding:18px 22px;margin-top:8px}
+  .final h2{color:var(--gold);margin:0 0 10px;font-size:1.15em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>JARVIS — Zihin-Yol Haritası</h1>
+<div class="sub">Kök sorudan bugüne, soru-cevap zinciri. Amaç: bu projeyi hiç bilmeyen birine sıfırdan anlatmak. Kesit: 2026-07-12 · Kaynak: tüzük v1 (36 madde) + git log + fikir kutusu.</div>
+
+<div class="node"><span class="dot">0</span>
+<details open>
+<summary>Neden ben arkada işimi yaparken benim yerime projelerimi geliştiren bir sistem tasarlamıyoruz?</summary>
+<div class="a">Kök soru bu. Salih'in günü ders, spor, yaşamla dolu; projeler (kod, finans, CV) o masaya oturana kadar bekliyor. Cevap bir karar oldu: <b>tasarlayalım</b> — Salih yaşarken arkada çalışan, sürekli evrilen bir sistem. Vizyon çapası: Iron Man filmindeki JARVIS (sesli, çok-ajanlı, proaktif, her yüzeyden erişilebilir). Ama bir <b>sıralama ilkesi</b>yle: önce sadık kayıt ve dosya tabanlı zemin → sonra iş kuyruğu → <span class="u">EN SON</span> canlı ajan/ses/otomasyon. Hayal kanona kanıtla girer, hevesle değil. <span class="ref">(V29 vizyon kaydı · kuruluş kararı "BUILD VAR", 2026-07-10)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">1</span>
+<details>
+<summary>Peki bu sistemle ilişkim ne olacak — asistan mı, araç mı?</summary>
+<div class="a">İkisi de değil: <b>şirket simülasyonu</b>. Salih = Patron (tek karar verici), Carvis = CEO (Claude'un bu sistemdeki adı), ileride işçi ajanlar (belirli işler için çalıştırılan yapay zekâ süreçleri). Projeler şirketin İÇİNDE geliştirilir; CV bu şirketin <b>çıktısı</b>dır — "proje geliştire geliştire CV". Oturumlar tek şirketin vardiyalarıdır: her oturum öncekini bir devir dosyasından (durum kapsülü) teslim alır. <span class="ref">(m.15 şirket modeli · m.25 mod yok, görev-ölçek optimizasyonu var)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">2</span>
+<details>
+<summary>Sistem neye göre karar alacak? Her şeyi bana mı soracak?</summary>
+<div class="a">Sorsa boğardı, sormasa kontrolü kaybederdik. Çözüm <b>iki katmanlı karar yetkisi</b>: kritik sınıf (kural değişikliği, silme, geri alınamaz işlem, para, dışarı çıkan iş, değer tercihi) <span class="u">yalnız Salih</span>; geri kalan her şeyi Carvis sormadan yapar ama <b>kaydeder ve commit'ler</b> — Salih log'dan tarar, beğenmezse veto = geri alma (revert). Kural: özerklik, geri-alınabilirlikle orantılı. Tek fren: <b>çelişki kapısı</b> — yeni emir eski bir kararla çatışıyorsa, karar alınmadan ÖNCE çelişki + artı/eksi raporu sunulur (bugün PortRisk ertelemesinde fiilen koşuldu). <span class="ref">(m.31 · m.16 · m.4 soru eşiği)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">3</span>
+<details>
+<summary>Ben tutarsız olursam? Gece yüksek enerjiyle 20 fikir atarsam?</summary>
+<div class="a">Bu gerçek bir vaka: bir gece 3 "devir paketi" üretildi, ertesi gün ayık bakışla "abartmışım" denip arşive kaldırıldı. Ders sisteme kodlandı: <b>hiçbir fikir doğrudan karar olmaz</b> — önce <b>fikir kutusuna</b> düşer (tarih + gönüllü damga: ayık/high/mobil), seçim turundan geçer, ancak öyle build'e girer. Ayrıca <b>ayıklık sorgusu yasak</b> (m.33): sistem "high mısın?" diye ÜSTELEYEMEZ; damga yalnız gönüllü beyan, beyansızlık kararın statüsünü düşürmez — ne dersen emirdir, tek fren yine çelişki kapısı. <span class="ref">(fikir kutusu akış hattı · m.33 · 07-06→07-07 triage vakası)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">4</span>
+<details>
+<summary>Sistemin ve ajanların hafıza sorunu çıkacak — bunun için ne ürettik?</summary>
+<div class="a">Dört katlı çözüm: <b>(1) Git log = hafıza.</b> Her karar ayrı commit; tarihçe dosyalarda değil commit'lerde yaşar — hiçbir şey "kimin ne zaman neden" bilgisi olmadan değişmez. <b>(2) Vardiya devri.</b> Durum kapsülü (şu an neredeyiz + sonraki ilk iş) + pano (iş kartları) — yeni oturum sıfırdan değil, teslimle başlar. <b>(3) Katmanlı ingest — bugün imzalandı.</b> Bilgi dıştan içe katmanlarda yaşar: K3 ham giriş (fikir kutusu, raporlar) → K2 damıtılmış (wiki, öneriler) → K1 çekirdek (tüzük, kapsül) → K0 arşiv. Geçiş <span class="c">koşullu</span>: bir madde ancak bir karara dokununca ya da 2 bağımsız kaynakta tekrar edince içe iner; en iç katman = en önemli özütler; hiçbir şey silinmez, arşive iner. <b>(4) Ajan-başına ingest (ileride).</b> Her kalıcı ajan görevine uygun kendi özütleme algoritmasını taşıyacak. <span class="ref">(m.10 commit · m.34 + imzalı şema v1 · m.30b · V9 önem formülü: önem = katman-tabanı × e<sup>−λt</sup>)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">5</span>
+<details>
+<summary>İleride token sorunu yaşayacağız — bunun için ne ürettik?</summary>
+<div class="a">(<span class="term">Token</span> = yapay zekânın okuduğu/yazdığı metin birimi; bağlam şişerse sistem hem pahalanır hem aptallaşır.) Beş savunma: <b>(1) Pointer ilkesi:</b> sıcak bağlam yalnız özet + adres taşır, detay dosyada durur — gerektiğinde adres izlenir. <b>(2) Bağlam-detay ölçekleme:</b> detay seviyesi sabit değil, işin büyüklüğüne göre; büyük iş hep küçük parçalara bölünür. <b>(3) Ufka göre yerleşim:</b> uzak-gelecek kuralları sıcak bağlamda yer tutamaz, soğuk katmanda pointer'la bekler. <b>(4) Gürültü barajı:</b> neyi DOSYALAMAYIZ listesi (haber gürültüsü, kaynaksız numaralar) + şişme kuralı G3: kutu 40 aktif maddeyi aşarsa toplu özüt turu; işler büyüyünce araya tampon katman (K2.5). <b>(5) Surprisal kuralı (aday):</b> loglama ağırlığı sürprize orantılı — rutin çıktı tek satır, sapma tam kayıt. <span class="ref">(m.20 · m.21 · m.22 · KILAVUZ gürültü listesi + şema G3 · V30)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">6</span>
+<details>
+<summary>İstediğimiz sonucu alamazsak optimizasyonu nasıl yapacağız?</summary>
+<div class="a">Optimizasyon adımları baştan tanımlı: <b>(1) Her format kararı "deneysel damgalı" doğar</b> — eşikler (40 madde, 2 kaynak, 30 gün) sabit gerçek değil hipotezdir; kullanım verisiyle kalibre edilir, değişim yolları bugünden kayıtlı. <b>(2) Sorun-güdümlü iterasyon:</b> önceden optimize edilmez, sorun tespitinde çözülür (istisna: veri kaybı gibi geç-tespiti-pahalı sınıf için sigortalar proaktif). <b>(3) 3-kart deseni:</b> token-zaman ağırlıkları için rakip formüller yan yana tutulur, gidişata göre kart değiştirilir. <b>(4) Ölçüm-öncelikli başlangıç:</b> ilk projeler bilerek token/zamandan fedakârlık edip VERİ toplar (~10 görev etiketlenir) ki fitting (veriye eğri oturtma) kurulabilsin. <b>(5) İterasyon verimi metriği:</b> V = ΔG/C — iterasyon başına kazanç / bellek maliyeti; her vardiyaya 3 sayaç kondu (giren/damıtılan/karara dokunan). <b>(6) Tahmin ajanı (ileride):</b> biriken veriyle fitting yapıp karar anında "beklenen" bilgisi sunacak. <span class="ref">(m.29/V12 · m.5 · m.31 · m.35 ek · V30 · V31)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">7</span>
+<details>
+<summary>Bunu yapan başkası yok mu? Bizi marjinal kılan ne?</summary>
+<div class="a">Araştırdık (iki paralel ajan koşusu, ekosistem + rakip analizi). Parçalar sahada var: dosya-tabanlı LLM-wiki'ler, karar kayıtları, pointer ilkesi (bizim bağımsız keşfimiz resmi standartla birebir çıktı). Ama <b>boşluk tespit edildi:</b> kimsede token-zaman parametreli resmi bir karar formülü yok — herkes kaba tur limitiyle idare ediyor. Tezimiz (m.35, kanonda): <b>kombinasyon-başına üçlü beklenti vektörü (beklenen-başarı / beklenen-süre / beklenen-token) + kalan zamana göre politika seçimi; model çıktı iterasyonundan öğrenir.</b> İkinci fark: rakipler kütüphane, biz <b>iş yürüten şirketiz</b> — yetki anayasası + vardiya + commit disipliniyle. <span class="ref">(K-013 raporu · m.35 · personal-os karşılaştırması)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">8</span>
+<details>
+<summary>Bunun gerçek iş ürettiğini nereden bileceğiz? Kendini-kurgulama tuzağına düşersek?</summary>
+<div class="a">Tuzak biliniyor ve kayıtlı: analitik kapasite dışa üretim yerine "sistem üstüne sistem"e akabilir. Panzehirler: <b>proof-of-work metriği</b> — gün ancak push'lanmış commit'le sayılır, plan/niyet/markdown kanıt değildir. <b>53:0 dersi:</b> bir denetimde 2 günde 53 plan-commit'ine karşı 0 ürün-commit'i çıktı → tek-flagship kuralı doğdu: PortRisk (portföy risk aracı, Python) canlı demoya ulaşana dek başka dış artefakt açılmaz. Bugün eklenen dengeleme: ilk-prototip fazında iç tasarım işi meşrudur (m.36) ama <b>araç-işi/çıktı-işi rasyosu prototip bitince izlenmeye başlanacak</b> — Salih'in kendi beyanıyla. <span class="ref">(m.9 · m.13 · m.36 · red-team raporu)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">9</span>
+<details>
+<summary>Şu an tam olarak neredeyiz?</summary>
+<div class="a"><span class="c">Kurulum bitti, tasarım şeması kapanmak üzere.</span> Elde ne var: <b>Tüzük v1 — 36 madde imzalı</b> (yetki, hafıza, ingest, tez, faz kuralları) · JARVIS git reposu canlı, her karar commit'li, push otomatik · durum kapsülü + pano + fikir kutusu + KILAVUZ işler durumda · wiki standardı + ilk sayfalar · günaydın görevi her sabah tetik-taraması yapıyor (bekleyen işlerin tetiği geldi mi otomatik kontrol) · ingest şeması v1 imzalı · skill-yazım standardı + eval kuralı hazır · PortRisk reposu GitHub'da canlı (ilk commit Salih'in elinden) ama bilinçli olarak kapı arkasında bekliyor. <span class="ref">(K-012 kapanışı · bugünkü m.34-36 + şema imzası)</span></div>
+</details></div>
+
+<div class="node"><span class="dot">10</span>
+<details>
+<summary>Sırada ne var — buradan Iron Man'e yol nasıl gidiyor?</summary>
+<div class="a">Zincir net ve ilk halka Salih'in elinde: <b>(1) Loop mühendisliği öğrenimi</b> (sonraki oturum: /goal denemesi + ilk Routine + Karpathy yönteminin incelenip bize göre revizesi) → <b>(2) K-015 kapanır</b> → aynı anda iki kapı açılır: <b>PortRisk Sprint 1</b> (nihai araçla hızlı bitirme) ve <b>ilk kendi skill turumuz</b> (hazır kurmayız, altın kural: yalnız ilham alır, kendimiz yazarız) → <b>(3) Otomasyon</b> (K-009: gecelik döngüler, kancalar) → <b>(4) İlk canlı ajan</b> (K-010) → <b>(5) Ajan dönemi:</b> görev-uzman kalıcı ajanlar ("X işini yap" → X için eğitilmiş ajan çağrılır), tahmin ajanı, denetçi ajan — ve Salih'in formülü: <b>"şirket aynı zamanda Jarvis için çalışır"</b>: ajanlar Jarvis'in yükünü boşaltır, şirket kendi aracını da geliştirir. Her adımda çapa aynı: dosya zemini önce, ses ve sihir en son. <span class="ref">(K-015→K-016/K-002→K-009→K-010 · V31 · V32 · V29)</span></div>
+</details></div>
+
+<div class="final">
+<h2>Tek paragrafta: ne ile uğraşıyorum?</h2>
+Kendi hayatımı yaşarken arkada projelerimi geliştirecek bir sistem kuruyorum. Bunu bir şirket gibi örgütledim: ben patronum, bir yapay zekâ CEO'm (Carvis) var, ileride uzman ajanlardan bir ekip olacak. Şirketin anayasası (36 maddelik tüzük), hafızası (git + katmanlı bilgi mimarisi), iş panosu ve ölçüm sistemi kuruldu. Farkımız: kararları token ve zaman maliyetine göre matematiksel olarak kombinasyonlayan, kendi çıktısından öğrenen bir işletim modeli — sahada henüz kimsede yok. İlk ürün bir portföy risk aracı (PortRisk); o, sistem prototipi bitene kadar bilinçli olarak kapıda bekliyor, çünkü önce fabrikayı kuruyorum, sonra fabrika benim için üretecek.
+</div>
+
+</div>
+</body>
+</html>
