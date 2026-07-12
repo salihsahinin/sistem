@@ -8,7 +8,7 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-015 | JARVIS ilk prototip — tasarım şeması (m.36). YAŞAYAN LİSTE: (1) ~~ingest/katman şeması v1~~ DONE 07-12 (İMZALI: kuyruk/oneri-ingest-sema-v1.md) · (2) ~~TETİKLİ/UFUK başlangıç modeli~~ DONE 07-12 (Q3-A: gömülü etiket + günaydın taraması) · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) — Salih öğrenimi · (4) ~~tartışma kuyruğu kapanışı~~ DONE 07-12 · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | TEK AKTİF İŞ (Salih 07-12: PortRisk bu kapının arkasında) |
+| K-015 | JARVIS ilk prototip — tasarım şeması (m.36). YAŞAYAN LİSTE: (1) ~~ingest/katman şeması v1~~ DONE 07-12 (İMZALI: kuyruk/oneri-ingest-sema-v1.md) · (2) ~~TETİKLİ/UFUK başlangıç modeli~~ DONE 07-12 (Q3-A: gömülü etiket + günaydın taraması) · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy loop yöntemi öğrenimi/revizyonu — Salih öğrenimi, SONRAKİ OTURUM (Salih 07-12) · (4) ~~tartışma kuyruğu kapanışı~~ DONE 07-12 · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | TEK AKTİF İŞ (Salih 07-12: PortRisk bu kapının arkasında) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
@@ -19,6 +19,7 @@
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Carvis | tur duyurusu |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | 07-10 | — | Carvis | CV çalışması başlarken |
 | K-014 | Claude chat instructions güncellemesi — Jarvis bağlamına göre yeniden yazım (Salih 07-12) | yeni instructions Salih ayarlarına yapıştırıldı | 07-12 | ~~tartışma kuyruğu~~ TETİK GELDİ 07-12 | Salih+Carvis | ŞİMDİ (kuyruk kapandı) |
+| K-016 | İlk JARVIS-yapımı skill turu — ihtiyaç listesi → üretim (KILAVUZ skill standardı + eval kuralı + skill-creator; ilham taraması gerektiğinde tazelenir; V25 altın kural: kurulum yok, yeniden yazım) | ≥1 kendi skill'imiz eval setiyle canlı | 07-12 | K-015 | Salih+Carvis | K-015 DONE olunca |
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (git `7a11abd`) | yeni kök çalışır + mount + scheduled görevler + eski yol arşiv | 07-11 | — | Salih+Carvis | Salih gün seçince (tam yedekle başlar) |
 
 ## BLOKE
