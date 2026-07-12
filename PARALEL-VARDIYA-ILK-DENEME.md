@@ -22,6 +22,9 @@ JARVIS projesi iki paralel Cowork chat'ine bölünür — şirketin iki yarısı
 3. Gündem: K-015 madde 3 — loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu (senin öğrenimin).
 4. Kapanış aynı: `end of day` → `raporlar/2026-MM-DD-jarvis-teslim.md` + kapsülde yalnız JARVIS satırı.
 
+## Üçlü sohbet (CC köprüsü) — her iki vardiyada geçerli
+İş CC gerektirirse: Carvis görev emrini `C:\JARVIS\cc\gorev-...md`'ye yazar → sen CC'ye "dosyayı oku ve uygula" dersin → CC raporu `cc\rapor-...md`'ye düşer → Carvis kendi yorumuyla sunar → karar senin. Detay: `cc/README.md`.
+
 ## Çakışma kuralı (iki oturum AYNI ANDA açıksa)
 - Push öncesi pull zorunlu — Carvis bunu kendi yapar, senin yapman gereken yok.
 - Kapsülde her vardiya yalnız kendi şeridinin satırına dokunur.
