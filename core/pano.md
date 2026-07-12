@@ -8,11 +8,12 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV (ölçüm-öncelikli strateji) | pytest yeşil + push (commit Salih'in) | 07-10 | — | Carvis | TEK AKTIF IS (Salih 07-11 karari) |
+| K-015 | JARVIS ilk prototip — tasarım şeması (m.36). YAŞAYAN LİSTE: (1) ingest/katmanlı-hafıza şeması v1 — m.34'ün operasyonelleşmesi: katman sayısı + geçiş koşulları + dosya yerleşimi (V21+V9+V30+havuz#9 tek şemada) · (2) TETİKLİ/UFUK fikirler için başlangıç modeli · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) — Salih öğrenimi · (4) tartışma kuyruğu kapanışı (blok 3 kaldı) · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | TEK AKTİF İŞ (Salih 07-12: PortRisk bu kapının arkasında) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
+| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV | pytest yeşil + push (commit Salih'in) | 07-10 | **K-015 (m.36)** | Carvis | K-015 DONE olunca |
 | K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | 07-10 | K-002 | Carvis | — |
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Carvis | Kasım başı |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Carvis | tur duyurusu |

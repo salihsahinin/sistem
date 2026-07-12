@@ -24,9 +24,11 @@
 ## Adım 4 (pano/kapsül şablonları) tartışma maddeleri
 - **Beads deseni**: kartlara makine-okur alan (ID, bağımlılık, durum) → ajan dönemi hazırlığı, ucuz ek. (m.18a makine-yüzü ile aynı hat.)
 
-## Tüzük adayları (Katman 1 — yalnız tartışmada)
-- **Taze-oturum promote ilkesi** (personal-os D-004): "kalıcılaştırma kararı, içeriği üreten oturumda verilemez" — dış-mahkeme desenimizin (MİDAS v6.1) genelleştirilmiş hali.
-- **weekly-taste-sync gerekçesi**: davranış-kuralı değişikliği günlük değil ritimli+onaylı patch'le ("günlük döngü ruh haline over-fit eder") — m.23'ü bağımsız doğruluyor; kural-değişim ritmi fikri alınabilir.
+## Tüzük adayları (Katman 1 — yalnız tartışmada) — **KARARA BAĞLANDI (Salih, 07-12 tartışma oturumu)**
+- **Taze-oturum promote ilkesi** → Salih revizyonuyla KABUL = **m.34 katmanlı ingest** (taze-oturum şartı düştü: Carvis aynı oturumda hazırlayabiliyorsa beklenmez; mekanizma = pointer'lı katmana oku-üstüne-ekle + şişen katman derine özütlenir).
+- **weekly-taste-sync / kural-değişim ritmi** → **REDDEDİLDİ** (Salih: "sıkıntı gördüğümde dile getirir, tüzükten düzenleriz — başka modele gerek yok"; m.5 sorun-güdümlü düzen kalır).
+- **Tez #0** → KANONLAŞTI = **m.35** (çapa tüzükte, tam formülasyon wiki kuyruğunda); "küçük projeler" okuması = tasarım-görevi düzeyi, m.13 çelişkisi YOK (m.36).
+- **PortRisk ertelemesi** → **m.36 ilk-prototip fazı kuralı** + K-015 kartı (yaşayan liste).
 
 ## Ajan dönemi defteri (K-009/K-010 açılınca gündeme gelir; şimdi dokunulmaz)
 - **Salih notu (07-12):** "Looplara gelince söyleyeceğim — Karpathy'nin loop yöntemi gibi yöntemleri de öğrenip kullanmamız lazım." K-009 açılış gündemine.
