@@ -8,7 +8,7 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV (ölçüm-öncelikli strateji | pytest yeşil + push (commit Salih'in) | 07-10 | — | Carvis | TEK AKTIF IS (Salih 07-11 karari) |
+| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV (ölçüm-öncelikli strateji) | pytest yeşil + push (commit Salih'in) | 07-10 | — | Carvis | TEK AKTIF IS (Salih 07-11 karari) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
