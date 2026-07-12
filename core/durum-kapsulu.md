@@ -21,7 +21,7 @@ Seçim turu (K-012 adım 1) BÜYÜK ORANDA KAPANDI: 57 satır sınıflandı, Sal
 - N'in matematiği (dış-chat) · V28 hipotez (~10 görev etiketleme verisi bekliyor) · günaydın görevi build sonrası tazelenecek · V27 (build'de uygun zaman).
 
 ## Sonraki ilk iş
-**Build 5 adımı × ŞİMDİ listesi eşlemesini sun → Salih onayıyla build başlat** (adım 1: CLAUDE.md tam sürüm · 2: KILAVUZ.md · 3: V5/V22/V23/#27+#16 mekanizmaları · 4: pano+kapsül şablon güncellemeleri (#22) · 5: köken-izi ilk raporu).
+**Build 5 adımı × ŞİMDİ listesi eşlemesini sun → SONRA K-013 araştırmasını koş (Salih 07-12 kapanış emri: geç-keşif riski — wiki-link geç keşfedildi; dışarıda hazır çözülmüş şeyler build sırasını değiştirebilir) → build adımları öyle başlar** (adım 1: CLAUDE.md tam sürüm · 2: KILAVUZ.md · 3: V5/V22/V23/#27+#16 mekanizmaları · 4: pano+kapsül şablon güncellemeleri (#22) · 5: köken-izi ilk raporu).
 
 ## Sınırlar
 Otomasyon/canlı ajan yok (K-009/K-010) · diğer vault'lara yazım yok · core/ yalnız Salih kararıyla değişir · plan-spiral sınırı kurulum fazında askıda (m.19) · m.33: ayıklık sorgusu hiçbir yüzeyde yok.

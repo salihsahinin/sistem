@@ -17,7 +17,7 @@
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | Kasım başında hatırlat |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | tur açılışı duyulduğunda |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | CV çalışması başlarken |
-| K-013 | **Jarvis-benzeri repo/skill/yöntem araştırması (Salih emri 07-12):** GitHub'da son ~2 ayda yapılmış Jarvis-benzeri projeleri tara; işe yarar skill/yöntem/metotları İLHAM için listele (altın kural: her şeyi biz kurarız, kurallar bizde — V25); V13 alt-sorusu dahil (ekip-lideri/loop hiyerarşisi pratikleri — cevap token-zaman, proje/bütçe bağımlı) | araştırma raporu + ilham-aday listesi + kendi-versiyon önerileri sunuldu | build sırasında ya da Salih isteyince |
+| K-013 | **Jarvis-benzeri repo/skill/yöntem araştırması (Salih emri 07-12):** GitHub'da son ~2 ayda yapılmış Jarvis-benzeri projeleri tara; işe yarar skill/yöntem/metotları İLHAM için listele (altın kural: her şeyi biz kurarız, kurallar bizde — V25); V13 alt-sorusu dahil (ekip-lideri/loop hiyerarşisi pratikleri — cevap token-zaman, proje/bütçe bağımlı) | araştırma raporu + ilham-aday listesi + kendi-versiyon önerileri sunuldu | **BUILD BAŞLAMADAN ÖNCE (Salih 07-12 kapanış emri: geç-keşif riski — V24 dersi; sıra: build eşlemesi → K-013 → build adımları)** |
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (detay: git log `7a11abd`) | yeni kök çalışır + Cowork mount + scheduled görevler yeni yola + eski yol salt-okunur arşiv | Salih taşıma gününü seçince (gün tam yedekle başlar) |
 
 ## BLOKE
