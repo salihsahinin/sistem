@@ -86,3 +86,9 @@
 - **#11 KAPANDI (Salih):** arkadaş/iş oranı üzerine düşünülmeyecek — madde çürüdü (m.25 ile çelişki böylece kökten kalktı).
 - **V13 ERTELENDİ (Salih):** ilk ajan tasarım oturumuna; ÖN-BORÇ: internet araştırması + öneri sunumu — cevap token-zaman parametresidir, projeden projeye ve bütçeden bütçeye değişir (K-013 kartına bağlandı).
 - **#24a/#24b ve V24: KARAR BEKLİYOR** (detaylı açıklama istendi, verildi — sonraki parti).
+
+## Salih kararları — 2026-07-12 (2. parti)
+
+- **#24 BİRLEŞTİ (Salih):** 24b (karşı-notlu yazım) gövde; 24a'ya "bkz. 24b" işareti (Homebase havuzunda işlendi). İçerik kararı: **önce Carvis'in alternatif formülü denenir** (kapasite ∝ denetimsiz süre × adım muğlaklığı × hata-birikme maliyeti; düşünme/bekleme-süresi ayrımı + loop-tipi sınırı) — ama formül dogma değil: iterasyon optimizasyonlarında deneysel sonuç çıkarımlarıyla uzun vadede değişir (m.29 fitting yolu).
+- **V24 KARAR (Salih):** Vault ŞİMDİ açılır; [[wiki-link]] standardı kullanıma girer. İsim disiplini sözleşmesi: Salih dosya adı değiştirmez; değiştirirse bildirir → Carvis link zincirini onarır. Hipotez koşulu işlemeye devam eder (≥1 hafta kırılmasız kullanım = doğrulandı, V23 kuyruğu).
+- **Push devri (Salih):** "Push'ları bundan sonra sen at" — Carvis her oturumda tek-seferlik cihaz-kodu onayıyla (GitHub device flow) push atabilir; kalıcı token diske YAZILMAZ (güvenlik sınıfı). Sürtünme kabul edilebilir bulunmazsa geri düşüş: push Salih'in elinden (3 komut).
