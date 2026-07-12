@@ -1,13 +1,1 @@
-# OS / editor noise
-Thumbs.db
-Desktop.ini
-*.tmp
-*.bak
-# Python (future tooling)
-__pycache__/
-*.pyc
-.venv/
-# Secrets — never in this repo
-*.key
-*.pem
-.env
+.obsidian/
