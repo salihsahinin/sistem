@@ -23,10 +23,10 @@
 - **Log ağırlığı (V30, çıktı tarafı):** rapora/deftere ne girer sorusunda aday kural `ağırlık ∝ surprisal` — beklenen/rutin çıktı loglanmaz, sapma loglanır. Örnek: "pytest yeşil" tek satır; "pytest'in mount yüzünden yanlış-yeşil verdiği vaka" tam kayıt.
 - **Ölçüm:** şemanın ilk deneği kendisi — her vardiya teslimine 3 sayaç: `giren madde / damıtılan / karara dokunan`. ~10 vardiya verisi birikince V30 formülü (V=ΔG/C) ilk kez gerçek sayıyla denenir; V28 etiketleme verisiyle aynı havuz.
 
-## 4. Açık sorular (Salih'e)
+## 4. Açık sorular → Salih cevapları (07-12)
 
-1. G1(b) eşiği 2 kaynak mı, 3 mü?
-2. G3 eşiği (40 aktif madde) makul mü — yoksa token boyutuyla mı tanımlansın?
-3. K-015 madde 2 (TETİKLİ/UFUK başlangıç modeli) bu şemanın içine mi gömülür (TETİKLİ = K3'te tetik-etiketli özel sınıf) yoksa ayrı model mi?
+1. **G1(b) = 2 kaynak** (Salih). 3'e geçiş ileride optimizasyon opsiyonu olarak kayıtlı — ihtiyaç doğunca denenir.
+2. **G3 = 40 madde, deneysel OK** (Salih). Token sorunu çıkarsa sayıyı değiştirmek optimizasyon opsiyonu. **EK (Salih revizyonu):** K3 ile K2 arasına işler büyüyünce bir ARA KATMAN (çalışma adı: K2.5 — damıtma tamponu) eklenebilir; G3 eşiği aşıldığında özüt doğrudan K2'ye değil bu ara katmana yapılır. Ara katman ŞİMDİ AÇILMAZ (m.5 sorun-güdümlü) — açılış tetiği: ilk G3 aşımı.
+3. TETİKLİ/UFUK başlangıç modeli — gömülü mü ayrı mı: **CEVAP BEKLİYOR** (detaylı izah istendi, oturumda verildi).
 
 *İmza alanı: [ ] Salih onayı — tarih: ______ (onayla birlikte şema m.34'ün operasyonel eki olur, K-015 madde 1 DONE)*
