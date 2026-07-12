@@ -5,6 +5,9 @@
 "Bizi marjinal ve iyi kılan şey: token-zaman parametrelerine göre matematiksel modelleri KOMBİNASYONLAMAMIZ (mikro işlem kararlarında). Model, çıktıların iterasyonundan öğrenerek ilerleyecek; farklı kombinasyonlar için beklenen-başarı oranı, beklenen-süre, beklenen-token tüketimine göre projeden projeye veya kalan zamana göre hareket edebileceğiz."
 → Kanondaki kökleri zaten var: m.17 (araç seti), m.29 (fitting yolu), m.31 (3-kart), V15, V28, token×zaman dipnotu. Yeni katkı: **kombinasyon-başına üçlü beklenti vektörü (başarı/süre/token) + kalan-zamana göre politika seçimi** — bu formülasyon henüz hiçbir maddede yazılı değil. Araştırma bunu destekliyor: sahada resmi formül YOK (boşluk tespiti), herkes kaba tur-limitiyle idare ediyor → gerçek farklılaşma alanı.
 
+
+**Ek (Salih, 07-12 devam):** "İlk projelerde daha fazla veri toplarsak daha sağlam temel kurarız → ilk projeler token ve zamandan FEDAKARLIK yapacak şekilde (ölçüm öncelikli) tasarlanır; görece küçük başlayıp proje büyüklüğü kademeli artırılır." → V28'in ~10-görev etiketleme ön-koşuluyla birleşiyor: deney tasarımı stratejisi. Carvis şerhi (çelişki taraması): "küçük projeler" YENİ artefakt açmak olarak okunursa m.13 tek-flagship ile çelişir; görev-düzeyinde okunursa (PortRisk sprintleri zaten küçük görevlere bölünüyor, her görev etiketlenir) çelişki yok — tartışmada netleştirilecek.
+
 ## Adım 1 (CLAUDE.md) tartışma maddeleri
 - Pointer sistemimiz (m.20) = resmi "progressive disclosure" ilkesiyle birebir; bağımsız doğrulama. Not düşülsün mü, düşülmesin mi? (Bilgi değeri var, işlev değeri tartışılır.)
 
