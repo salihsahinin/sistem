@@ -8,8 +8,8 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-015 | JARVIS ilk prototip — tasarım şeması (m.36 REVİZE: artık kapı değil, K-002 ile PARALEL şerit). YAŞAYAN LİSTE: (1) ~~ingest/katman şeması v1~~ DONE 07-12 (İMZALI: kuyruk/oneri-ingest-sema-v1.md) · (2) ~~TETİKLİ/UFUK başlangıç modeli~~ DONE 07-12 (Q3-A: gömülü etiket + günaydın taraması) · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy loop yöntemi öğrenimi/revizyonu — Salih öğrenimi · (4) ~~tartışma kuyruğu kapanışı~~ DONE 07-12 · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | K-002 ile paralel (Salih 07-12 sabah: kapı kaldırıldı) |
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — şirketin ilk görev döngüsü + İLK HASAT-ETİKETLİ GÖREV | pytest yeşil + push (commit Salih'in) | 07-10 | ~~K-015~~ düştü (m.36 revizyonu 07-12) | Carvis | ŞİMDİ — K-015 ile paralel şerit |
+| K-015 | JARVIS ilk prototip (m.36 2. REVİZYON: ÖNCELİK BU; hedef ~3 ay ≈10 Ekim). DONMUŞ KAPSAM: (1) ~~ingest/katman şeması v1~~ DONE 07-12 · (2) ~~TETİKLİ/UFUK modeli~~ DONE 07-12 · (3) loop-eng Faz 2+4 + Karpathy revizyonu — Salih öğrenimi · (4) ~~kuyruk kapanışı~~ DONE 07-12 · (5) K-009 otomasyon · (6) K-010 ilk ajan + ajan-defter şeması v1 + ajan-eşiği kararı (V33). Ekleme YALNIZ Salih imzası + süre-etkisi raporuyla | kapsam listesi (1)-(6) kapandı | 07-12 | — | Salih+Carvis | ÖNCELİK №1 (m.36 2. rev) |
+| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — PROTOTİPİN ÖLÇÜM BANKI: hasat/etiketleme/ölçüm verisi üreten görevler (m.36c; öncelik çatışmasında prototip kazanır) | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | — (ölçüm-bankı, m.36c) | Carvis | ölçüm-bankı vardiyasında |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
@@ -23,4 +23,6 @@
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (git `7a11abd`) | yeni kök çalışır + mount + scheduled görevler + eski yol arşiv | 07-11 | — | Salih+Carvis | Salih gün seçince (tam yedekle başlar) |
 
 ## BLOKE
-| Kart | İş | Ön-koşul | Aç
+| Kart | İş | Ön-koşul | Açılış | Yetki |
+|---|---|---|---|---|
+| K-00

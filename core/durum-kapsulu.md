@@ -14,8 +14,8 @@
 - Wiki kuyruğu: **tez #0 tam formülasyon sayfası (m.35 pointer borcu)** · çelişki kapısı sayfası · ilk-parti kalanı.
 - Tetikli: K-011 taşıma (Salih gün seçince) · N matematiği (dış-chat) · V28 (etiket 1/10) · V27 · K-004 (Kasım).
 
-## Sonraki ilk iş — İKİ ŞERİT (paralel vardiya protokolü, KILAVUZ; her vardiya yalnız KENDİ satırını günceller)
-- **PortRisk şeridi (K-002):** Sprint 1 — yfinance + getiriler; pytest yeşil + push, commit Salih'in. Vardiya açılışı: "günaydın, PortRisk" (JARVIS + `C:\Users\sasah\dev\portrisk` mount). Henüz başlamadı.
-- **JARVIS şeridi (K-015 madde 3):** loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu — Salih öğrenimi, Carvis plan destekler. Henüz başlamadı.
+## Sonraki ilk iş — m.36 2. REVİZYON (Salih koşullu kararı 07-12 4. oturum): PROTOTİP ÖNCELİK, ~3 AY UFKU (≈10 Ekim)
+- **Öncelik şeridi (K-015, DONMUŞ kapsam):** sıradaki madde = **loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu** (Salih öğrenimi) → sonra K-009 → K-010 ilk ajan + defter şeması + V33 eşik kararı. Kapsama ekleme yalnız Salih imzası + süre-etkisi raporu.
+- **Ölçüm-bankı şeridi (K-002, m.36c):** PortRisk Sprint 1 bloke değil — prototipin hasat/etiketleme verisini üretir; öncelik çatışırsa prototip kazanır. Vardiya: "günaydın, PortRisk" (çift mount; artık "ölçüm-bankı vardiyası").
 
-m.36 REVİZE (Salih, 07-12 sabah; çelişki kapısı → "tam paralel"): gerekçe — prototip uzarsa kendini projelerle geliştirecek sistem yakıtsız kalır (53:0 bulgusuyla tutarlı). K-016 tetiki K-015 DONE olarak kalır. Tetik-zinciri: loop-eng → K-009 → K-010 → V31/V32/superpowers gündemi. Ayrıca: K-014 profili hazır (`Homebase/Kisisellestirme_Profili_2026-07-12.
+Karar zinciri bugün: sabah "tam paralel" → 4. oturum Salih koşulu ("3 ayda mümkünse prototip öncelik") → Carvis değerlendirmesi ~8-10 hafta MÜMKÜN → koşul sağlandı, öncelik prototip. V33 (ajan-eşiği) kutud
