@@ -75,3 +75,14 @@
 ŞİMDİ: #5(kısmi) #7 #9 #16 #18 #22(kısmi) #27 · V5 V6 V20 V22 V23 V25 → **13** · TETİKLİ: **17** · UFUK: **7** · KAPANDI: **14** · SALİH (Katman 1 gerektiren): **#4, #8, #11, #24a, V13, V24** → **6**.
 
 **Sıra önerisi:** önce 6 SALİH maddesi tek tek (çelişki kapısı gereği ikisi m.25'e dokunuyor), sonra ŞİMDİ listesi build 5 adımına dağıtılır, kalan her şey tetiğiyle panoya/arşive iner.
+
+---
+
+## Salih kararları — 2026-07-12 (1. parti)
+
+- **KAPANDI sınıfı ONAYLANDI, turdan düştü:** #3, #10, #13, V1, V4, V7, V8, V11, V12, V14, V18, V19 (+#5/#22'nin kapanan yarıları). Yarı-açık kalanlar (#5 wiki-standardı, #22 pano zaman alanları) build adımlarında.
+- **#4 KAPANDI (Salih):** "High mod diye bir şey olmayacak" — Salih high olduğunda o an belirtir ve o an ne yapılacağını da kendisi söyler; hiçbir yedekleme/destek mekanizması kurulmaz. Arşivdeki 2 HI-mode spec ÇÜRÜDÜ statüsüne iner (dosya silinmez, m.8).
+- **#8 KAPANDI (Salih):** "Kanka diye bir şey yok" — arkadaş gibi tartışma istendiğinde Salih ekstra/açıkça belirtir; m.25 (mod yok) aynen korunur, kanka katmanı çürüdü.
+- **#11 KAPANDI (Salih):** arkadaş/iş oranı üzerine düşünülmeyecek — madde çürüdü (m.25 ile çelişki böylece kökten kalktı).
+- **V13 ERTELENDİ (Salih):** ilk ajan tasarım oturumuna; ÖN-BORÇ: internet araştırması + öneri sunumu — cevap token-zaman parametresidir, projeden projeye ve bütçeden bütçeye değişir (K-013 kartına bağlandı).
+- **#24a/#24b ve V24: KARAR BEKLİYOR** (detaylı açıklama istendi, verildi — sonraki parti).
