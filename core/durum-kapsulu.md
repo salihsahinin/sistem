@@ -15,7 +15,7 @@
 - Tetikli: K-011 taşıma (Salih gün seçince) · N matematiği (dış-chat) · V28 (etiket 1/10) · V27 · K-004 (Kasım).
 
 ## Sonraki ilk iş
-**K-014 (instructions) + günaydın tazeleme → K-015 madde 1 (ingest/katman şeması v1 — hammadde: 07-12 sabah katman konuşması + V21/V9/V30).** K-002 PortRisk BEKLEYEN'de (ön-koşul K-015, m.36).
+**K-015 madde 3: loop-eng Faz 2 (/goal denemesi) + Faz 4 (ilk Routine) — Salih öğrenimi, Carvis plan destekler.** K-015'in kalan TEK maddesi; bitince K-002 PortRisk açılır (m.36). Ayrıca: K-014 profili hazır (`Homebase/Kisisellestirme_Profili_2026-07-12.md`) — yapıştırma Salih'te. Bu oturumda DONE: şema v1 İMZALI (m.34 eki) + K-015 madde 1+2 + günaydın tetik-tarama + V30/V31/V32 ingest + m.34-36 + kuyruk kapanışı.
 
 ## Teknik not (operasyon)
 Git index mount'ta bozulabiliyor: çözüm `rm -f .git/index` → `export GIT_INDEX_FILE=/tmp/jarvis-index` → `git read-tree HEAD` (her oturumda yeniden kurulur). Mount çift-görünüm: dosya yazımından sonra bash tarafında doğrula, öyle commit'le.

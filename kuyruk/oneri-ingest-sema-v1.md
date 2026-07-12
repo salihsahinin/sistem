@@ -1,4 +1,4 @@
-# Öneri Dosyası — Ingest/Katmanlı-Hafıza Şeması v1 (İMZASIZ TASLAK)
+# Ingest/Katmanlı-Hafıza Şeması v1 — İMZALI (Salih, 2026-07-12)
 
 *2026-07-12, Carvis. K-015 madde 1. Kaynaklar: m.34 (katmanlı ingest) · V21 (dıştan içe + Salih'in 07-12 koşullu-geçiş detayı) · V9 (önem formülü) · V30 (iterasyon verimi) · Homebase havuz #9/#4 (pointer). Akış hattı gereği: bu dosya öneri aşamasıdır — Salih imzalarsa şema kanonlaşır, m.34'ün operasyonel eki olur. Tüm eşikler deneysel damgalı (m.29/V12).*
 
@@ -29,4 +29,4 @@
 2. **G3 = 40 madde, deneysel OK** (Salih). Token sorunu çıkarsa sayıyı değiştirmek optimizasyon opsiyonu. **EK (Salih revizyonu):** K3 ile K2 arasına işler büyüyünce bir ARA KATMAN (çalışma adı: K2.5 — damıtma tamponu) eklenebilir; G3 eşiği aşıldığında özüt doğrudan K2'ye değil bu ara katmana yapılır. Ara katman ŞİMDİ AÇILMAZ (m.5 sorun-güdümlü) — açılış tetiği: ilk G3 aşımı.
 3. **CEVAP: A — GÖMÜLÜ** (Salih, 07-12). TETİKLİ/UFUK ayrı dosya olmaz; madde yaşadığı yerde (pano/kutu satırı) `damga + tetik-koşulu` alanı taşır; tarayıcı = günaydın görevi (07-12'de kuruldu). B'ye (ayrı dosya) geçiş, tetik sayısı büyürse optimizasyon opsiyonu (K2.5 ile aynı desen).
 
-*İmza alanı: [ ] Salih onayı — tarih: ______ (onayla birlikte şema m.34'ün operasyonel eki olur, K-015 madde 1 DONE)*
+*İmza alanı: [x] **Salih onayı — 2026-07-12.** Şema m.34'ün operasyonel ekidir; K-015 madde 1 DONE. Tüm eşikler deneysel damgalı kalır (m.29) — değişiklik optimizasyon opsiyonu olarak kayıtlı (Q1/Q2 cevapları).*

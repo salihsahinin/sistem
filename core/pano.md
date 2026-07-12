@@ -8,7 +8,7 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-015 | JARVIS ilk prototip — tasarım şeması (m.36). YAŞAYAN LİSTE: (1) ingest/katmanlı-hafıza şeması v1 — m.34'ün operasyonelleşmesi: katman sayısı + geçiş koşulları + dosya yerleşimi (V21+V9+V30+havuz#9 tek şemada) · (2) ~~TETİKLİ/UFUK başlangıç modeli~~ DONE 07-12 (Q3-A: gömülü etiket + günaydın taraması) · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) — Salih öğrenimi · (4) ~~tartışma kuyruğu kapanışı~~ DONE 07-12 · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | TEK AKTİF İŞ (Salih 07-12: PortRisk bu kapının arkasında) |
+| K-015 | JARVIS ilk prototip — tasarım şeması (m.36). YAŞAYAN LİSTE: (1) ~~ingest/katman şeması v1~~ DONE 07-12 (İMZALI: kuyruk/oneri-ingest-sema-v1.md) · (2) ~~TETİKLİ/UFUK başlangıç modeli~~ DONE 07-12 (Q3-A: gömülü etiket + günaydın taraması) · (3) loop-eng Faz 2 (/goal) + Faz 4 (Routine) — Salih öğrenimi · (4) ~~tartışma kuyruğu kapanışı~~ DONE 07-12 · (+Salih ekler/çıkarır, her değişiklik commit) | listedeki tüm maddeler kapandı | 07-12 | — | Salih+Carvis | TEK AKTİF İŞ (Salih 07-12: PortRisk bu kapının arkasında) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
