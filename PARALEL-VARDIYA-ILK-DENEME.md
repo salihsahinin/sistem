@@ -5,9 +5,9 @@
 ## GÜNCELLEME (07-12 4. oturum): m.36 2. revizyon — ÖNCELİK PROTOTİP (K-015, ~3 ay ufku); PortRisk vardiyası artık "ölçüm-bankı vardiyası" (bloke değil, hasat verisi üretir; çatışmada prototip kazanır). Aşağıdaki adımlar aynen geçerli.
 
 ## Ne deniyoruz
-İki ayrı Cowork oturumu = iki vardiya hattı: **PortRisk vardiyası** (K-002: Sprint 1) ve **JARVIS vardiyası** (K-015: loop-eng Faz 2+4). Her hat kendi işini yapar, kapanışta kendi teslim raporunu yazar, kapsülde yalnız kendi satırını günceller.
+JARVIS projesi iki paralel Cowork chat'ine bölünür — şirketin iki yarısı: **Prototip vardiyası** (K-015: loop-eng Faz 2+4 → K-009 → K-010; ÖNCELİK BU) ve **Ölçüm-bankı vardiyası** (K-002 PortRisk Sprint 1: hasat verisi üretir). Her hat kendi işini yapar, kapanışta kendi teslim raporunu yazar, kapsülde yalnız kendi satırını günceller.
 
-## PortRisk vardiyasını açmak için (adım adım)
+## Ölçüm-bankı (PortRisk) vardiyasını açmak için (adım adım)
 1. **Yeni Cowork oturumu aç** ve klasör seçiminde İKİ klasörü birden ekle:
    - `C:\JARVIS` (bağlam buradan okunur — CLAUDE.md otomatik yüklenir)
    - `C:\Users\sasah\dev\portrisk` (kodun yaşadığı yer)
@@ -16,9 +16,9 @@
 3. **Çalış:** kod portrisk reposunda yazılır; commit'ler SENİN elinden (m.9 — proof-of-work). Carvis yönlendirir, kritik satırları sen yazarsın.
 4. **Kapanış:** `end of day` de — Carvis o vardiyanın teslim raporunu `raporlar/2026-MM-DD-portrisk-teslim.md` olarak yazar, kapsülde YALNIZ PortRisk satırını günceller, kendi commit'lerini push'lar.
 
-## JARVIS vardiyası (bu hat — mevcut düzen)
+## Prototip vardiyası (bu hat — mevcut düzen, ÖNCELİK)
 1. Cowork'ü her zamanki gibi `C:\JARVIS` ile aç (Homebase da ekli olabilir).
-2. **İlk mesaj:** `günaydın, JARVIS` (ya da sadece "günaydın" — Carvis hangi hat olduğunu tek soruyla netleştirir).
+2. **İlk mesaj:** `günaydın, prototip` (ya da sadece "günaydın" — varsayılan bu hat).
 3. Gündem: K-015 madde 3 — loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu (senin öğrenimin).
 4. Kapanış aynı: `end of day` → `raporlar/2026-MM-DD-jarvis-teslim.md` + kapsülde yalnız JARVIS satırı.
 
