@@ -49,3 +49,6 @@ Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Aç
 
 ## Model-değişimli oturum protokolü (Salih imzası, 2026-07-13 — kural, deneysel değil)
 Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozulmuş sayılır: ingest'i kanon-yüzeyine değil şerhli klasöre yazılır — `model değişikliği ile orijinalliği bozulmuş olan chat/ingest-YYYY-MM-DD.md`. Buradaki içerik ŞERHLİ KOPYA statüsündedir; çelişki durumunda commit'li kanon (fikir kutusu / kuyruk / kapsül) kazanır. Şerhli içeriğin karar statüsü kazanması için ayık/temiz oturumda taranıp normal kanon yoluna işlenmesi gerekir. Gerekçe: bağlam hijyeni (07-13 vakasının standartlaşması).
+
+## CC kanal modeli kararı (Salih, 2026-07-13 günaydın)
+ŞİMDİ = **Model 1** (dosya-kanalı: `cc/` görev emri + rapor; Carvis köprü, tetik Salih'te). HEDEF = **Model 3** (headless: CC'nin programatik çağrılması). Geçiş koşulu (m.38 lojik formu): (Salih Orca-ADE'yi öğrendi ∧ loop-eng öğrenimi tamamlandı ∧ K-009 otomasyon açık ∧ Model-3 diğer eksikleri kapatıldı) → Model 3'e geçilir; koşullardan HERHANGİ biri sağlanmadıkça (¬hepsi) Model 1 sürer. Model 2 (elle-yapıştır) reddedildi — V27 düşük-sürtünme hedefiyle ters.
