@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-13 (gece kapanışı) — V39 TAM (ŞERH 1-5+EK: GA çerçevesi, 4-tuple defter, aralıklı transfer kuralları) + V40 işbölümü kural adayı + m.37 TASLAK; A1 açılış bloğu K-015'ten önce, .git onarımı ACİL (3 bozulma vakası) (Carvis yazdı)
+**Güncelleme:** 2026-07-13 (NİHAİ kapanış) — V39 TAM + V40-V44 + m.37 TASLAK + karantina ingest klasörü; YARIN AÇILIŞ = A1: .git onarımı (ACİL) → imza masası (m.37 · V40 · V44 · chat-şerhi kararı · 5 özütün yeri) → senaryo-defteri (Carvis yazdı)
 
 ## Şu an
 **Tüzük m.34-36 imzalandı (Salih, bu oturum):** m.34 katmanlı ingest (V21+V30 çekirdeği kanonlaştı; taze-oturum promote Salih revizyonuyla) · m.35 farklılaşma tezi çapası (tez #0; tam formülasyon wiki kuyruğunda) · m.36 ilk-prototip fazı kuralı (**PortRisk K-015 kapısının arkasına alındı** — çelişki kapısı koşuldu, DONE = K-015 yaşayan listesi). Kural-değişim ritmi REDDEDİLDİ. V30 (iterasyon verimi) kutuya ingest'lendi + V21'e koşullu-geçiş şerhi. **Yeni tek aktif kart: K-015** (ingest şeması v1 · TETİKLİ/UFUK başlangıç modeli · loop-eng Faz 2+4 · kuyruk kapanışı). PAT ~10 Ekim'de ölür. KILAVUZ okuma borcu Salih'te.
