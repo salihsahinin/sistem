@@ -1,6 +1,8 @@
-# m.37 TASLAK — Karar-modeli kuralı (İMZA BEKLİYOR)
+# m.37 — İMZALANDI (2026-07-13, Salih; görünürlük revizyonuyla) → resmi metin `core/tuzuk-v0.md` m.37
 
-> Üretim: 2026-07-13 sabah oturumu. Salih: "imza işini sonraki oturuma bırakıyorum, dosya kalsın." İmzalanınca tüzüğe m.37 olarak girer, bu dosya arşive iner.
+*Bu dosya artık A1-A7 PARTİSYON PLANI olarak yaşar (kapsül pointer'ı korundu; arşive inmedi çünkü A2-A7 canlı yol haritası).*
+
+> Üretim: 2026-07-13 sabah oturumu; imza 07-13 günaydın vardiyası. Salih revizyonu (imza koşulu): 3-model karşılaştırmaları Salih'e GÖRÜNÜR sunulur, onay beklenmez (m.31 veto açık).
 
 **Madde metni (öneri):**
 Ölçek eşiğini geçen her kararda (Katman 1 kararları + Katman 2 proje/build ölçekli işler) Carvis 3 seçeneği **matematiksel temelli modellerle** — token×zaman×beklenen-kalite parametreleriyle sayısal — karşılaştırır ve önerileni işaretler; su-bardağı alt-kararlar muaf. Her kararın seçilen modeli + gerçekleşen sonucu `kuyruk/senaryo-defteri.md`'ye işlenir (ingest hammaddesi); tahminler bu veriyle kalibre edilir. **Yakınsama:** bir iş sınıfı "tek promptta çözülür" olgunluğuna ulaştığında (örn. eğitilmiş ajanlar + hazır loop tasarımı tek komutla çıktı veriyor) o sınıf için model-üretimi durur, defterdeki kombinasyon doğrudan uygulanır — optimizasyon hamleleri minimize edilir (Salih, 07-13).
