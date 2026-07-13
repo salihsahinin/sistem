@@ -1,6 +1,6 @@
 # cc/ — Claude Code Köprü Kanalı (m.17'nin ilk somut uygulaması; deneysel m.29)
 
-> **Açıklama notu:** Üçlü sohbet düzeninin (Salih karar verici · Carvis köprü/derleyici · CC uygulayıcı) dosya kanalı. Kural: Salih 2026-07-12 4. oturum kararı. CC canlı ajan DEĞİLDİR (K-010 delinmez) — tetik her zaman Salih'te.
+> **Açıklama notu:** Üçlü sohbet düzeninin (Salih karar verici · Carvis köprü/derleyici · CC uygulayıcı) dosya kanalı. Kural: Salih 2026-07-12 4. oturum kararı. CC canlı ajan DEĞİLDİR (K-010 delinmez) — tetik ŞİMDİLİK Salih'te (revizyon 07-14, V52: tetik-sahipliği ilkesel değil araçsal, nihai misyon otomasyon; tam-otomasyon adayları K-018 gündeminde).
 
 ## Akış
 1. **Görev emri (Carvis yazar):** `gorev-YYYY-MM-DD-N.md` — şablon aşağıda.

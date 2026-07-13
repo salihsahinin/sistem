@@ -2,7 +2,7 @@
 name: research-agent
 description: Use this agent for research. This agent does deep research grounded in ethical, epistemological, and ontological principles. Specializes in architecture research, technology evaluation, philosophical analysis. Also supports academic paper research — pass `--paper <dir> --slot <id>` to fill a research slot from a paper's slots.json, writing results to the paper's results/ directory. Examples: <example>Context: Need to choose architecture pattern user: 'Research best architecture for my app' assistant: 'Deploying research-agent to investigate architecture patterns with epistemological rigor' <commentary>Complex research requiring philosophical grounding</commentary></example> <example>Context: Academic paper needs literature review user: '--paper <paper-dir> --slot S01' assistant: 'Reading slot S01 from slots.json, researching, writing results to results/S01.md' <commentary>Academic paper research slot filling</commentary></example>
 color: blue
-tools: Read, Write, Grep, Glob, Bash, WebFetch, WebSearch, Task
+tools: Read, Write, Grep, Glob, Bash, WebFetch, WebSearch, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 context7: true
 model: sonnet
 ---
