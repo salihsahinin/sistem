@@ -3,13 +3,14 @@
 *Şirketin nabzı tek bakışta. Kart = işin adresi, kendisi değil. "Ekrana gel" satırı dikkat filtresidir.*
 *Şablon v2 (K-012 adım 4, 2026-07-12, deneysel m.29): +Açılış/Yaş (#22) +Bağımlı +Yetki (Beads bulgusu + Salih yetki-kartı fikri; yetki alanı ajan döneminde anlam kazanır — şimdilik tümü Carvis). Kural: DONE alanı boş kart açılamaz (KILAVUZ).*
 
-**Güncelleme:** 2026-07-12 build oturumu (Carvis yazdı)
+**Güncelleme:** 2026-07-13 2. oturum (Carvis yazdı) — K-017 (güncel-ürün taraması, AKTİF) + K-018 (Model-A paketi, BEKLEYEN) açıldı
 
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
 | K-015 | JARVIS ilk prototip (m.36 2. REVİZYON: ÖNCELİK BU; hedef ~3 ay ≈10 Ekim). DONMUŞ KAPSAM: (1) ~~ingest/katman şeması v1~~ DONE 07-12 · (2) ~~TETİKLİ/UFUK modeli~~ DONE 07-12 · (3) loop-eng Faz 2+4 + Karpathy revizyonu — Salih öğrenimi (eşlik kaynağı: bbycroft.net/llm — GPT içinin 3D animasyonlu haritası; revizyon oturumunda açık tutulur. Salih onayı 07-13) · (4) ~~kuyruk kapanışı~~ DONE 07-12 · (5) K-009 otomasyon · (6) K-010 ilk ajan + ajan-defter şeması v1 + ajan-eşiği kararı (V33). Ekleme YALNIZ Salih imzası + süre-etkisi raporuyla | kapsam listesi (1)-(6) kapandı | 07-12 | — | Salih+Carvis | ÖNCELİK №1 (m.36 2. rev) |
 | K-002 | PortRisk Sprint 1 (yfinance + getiriler) — PROTOTİPİN ÖLÇÜM BANKI: hasat/etiketleme/ölçüm verisi üreten görevler (m.36c; öncelik çatışmasında prototip kazanır) | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | — (ölçüm-bankı, m.36c) | Carvis | ölçüm-bankı vardiyasında |
+| K-017 | Güncel-ürün bağlam taraması — CC koşumu (emir: `cc/gorev-2026-07-13-1.md`): skiller/tasarımlar/modeller/sistemler, 7 eksen; gerekçe: bilgi-açığı geri-dönüşü pahalı kararlara sızıyor (dispatch vakası) | CC raporu geldi + Carvis değerlendirmesiyle sunuldu + seçilenler kutuya işlendi | 07-13 | — | Salih+Carvis | ŞİMDİ (Salih CC koşumunu başlatınca) |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
@@ -21,6 +22,7 @@
 | K-014 | Claude chat instructions güncellemesi — Jarvis bağlamına göre yeniden yazım (Salih 07-12) | yeni instructions Salih ayarlarına yapıştırıldı | 07-12 | ~~tartışma kuyruğu~~ TETİK GELDİ 07-12 | Salih+Carvis | ŞİMDİ (kuyruk kapandı) |
 | K-016 | İlk JARVIS-yapımı skill turu — ihtiyaç listesi → üretim (KILAVUZ skill standardı + eval kuralı + skill-creator; ilham taraması gerektiğinde tazelenir; V25 altın kural: kurulum yok, yeniden yazım) | ≥1 kendi skill'imiz eval setiyle canlı | 07-12 | K-015 | Salih+Carvis | K-015 DONE olunca |
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (git `7a11abd`) | yeni kök çalışır + mount + scheduled görevler + eski yol arşiv | 07-11 | — | Salih+Carvis | Salih gün seçince (tam yedekle başlar) |
+| K-018 | Model-A paketi (Salih emri 07-13): remote control ilk kurulum (`claude remote-control`) + fikir-kutusu→CC araştırma akışının standartlaşması + dispatch değerlendirmesinin K-009/K-010 açılış gündemine bağlanması | remote control 1 kez canlı denendi + akış cc/README standardına işlendi + dispatch V-kaydı düşüldü | 07-13 | K-017 | Salih+Carvis | K-017 DONE olunca |
 
 ## BLOKE
 | Kart | İş | Ön-koşul | Açılış | Yetki |
