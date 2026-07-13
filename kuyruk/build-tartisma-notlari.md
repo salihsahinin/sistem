@@ -52,3 +52,5 @@
 - **B "Eşik-kapılı sınıf seçimi" (ORTA/ORTA):** A-filtre + merdivenle sınıf + tur-limitli pilot. Dayanak: "küçük pilot" + "başarısızlığı sisteme kodla" (resmi). Beklenti: başarı yüksek.
 - **C "Ajan-önce" (ÇOK/UZUN):** desen-başına defterli ajan. K-013 verisi karşı: takım ~3-4x token; kural "paralellik kazancı > koordinasyon vergisi". En yüksek gelişim, ufka en riskli.
 **Carvis önerisi: A→B hattı; C yalnız kanıtlı paralellik kazancında.** Karar Salih'te, K-009 açılışında.
+(canlı repo vs boş şablon).
+**Sonuç:** Bizim eksik olmayan şeyi (yetki+iş yürütme) hiç denememiş; bizim kurmadığımız şeyi (bilgi-hijyeni yönetişimi) olgun kurgulamış. Alınacak ≤3 fikir yukarıda ilgili adımlara dağıtıldı (Quality Gate → adım 2 · promote ilkesi → tüzük adayı · Zone C → adım 3).
