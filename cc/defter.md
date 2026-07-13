@@ -4,4 +4,4 @@
 
 | Tarih | Görev (emir dosyası) | Sonuç | Token/Süre | Ders |
 |---|---|---|---|---|
-| — | henüz koşum yok (ilk aday: loop-eng Faz 2 /goal görev emri) | — | — | — |
+| 2026-07-14 | gorev-2026-07-13-1 (K-017 güncel-ürün taraması) | DONE — 70 bulgu (58 DOĞRULANDI / 12 KISMEN / 0 DOĞRULANAMADI), 9 doğrudan-kullanım-adayı; rapor 56KB | ~2,4M token · ~8,5 dk · 78 ajan (8 araştırma + 70 doğrulayıcı) | Doğrulama katmanı 12 hata yakaladı → araştırma çıktısı doğrulamasız kutuya girmez. Ama %100 bulgu-başına doğrulayıcı pahalı desen — V26 örneklem-denetimi sonraki koşumlarda aday |
