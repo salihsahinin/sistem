@@ -2,24 +2,26 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-13 günaydın vardiyası (Carvis) — A1a DONE (.git temiz klonla onarıldı; origin'deki 3 kırpık dosya [KILAVUZ · tüzük m.36 · build-notları] diskteki tam hallerle düzeltilip push'landı, cmp doğrulandı) · V45+V46 kutuda (katman-geçiş lojiği · lojik-temelli çeviri ilkesi + transfer-anahtarı şerhi) · V39'a ŞERH 6 (bağlı-çift yapısı) · HAFIZA-DENETİMİ TAM SÜPÜRME UYGULANDI · İMZA MASASI KOŞULDU: m.37 İMZALI (Salih görünürlük revizyonuyla: 3-model karşılaştırmaları görünür sunulur, onay beklenmez) · V46 → tüzük m.38 · chat-şerhi protokolü KILAVUZ'da standart · senaryo-defteri AÇIK + sıfır-noktası 2 kayıt · TAM SÜPÜRME bilinçli teyit edildi · V40a İMZALI → m.39 (rakam disiplini; V40b bilinçli tüzük-dışı: çalışma düzeni, kural değil) · V44 İPTAL (Salih revize, aynı oturum: olay model-düşüşü artefaktıydı, kural gerektirmez; kayıt m.8 gereği durur) · MASADA KARARLAR KAPANDI (07-13 günaydın): CC kanalı = Model 1 şimdi + Model 3 hedef (geçiş koşulu lojik formda KILAVUZ'da) · CC defteri AÇIK (cc/defter.md) · m.40 karar-sunum protokolü imzalı (a: eşik=m.37 · b: V36 araştırma-önce + geriye-dönük denetim eki · c: V38 KADEMELİ yürürlük — düşük geriye-dönük-maliyetli işlerde şimdi aktif, çekirdek işlerde Jarvis v1'e dek tasarım-öncelik) · 5 sabah özütü kutuya taşındı (V47-V50, #4→V43) · K-014 profil 2026-07-13 SÜRÜMÜNE TAZELENDİ (yapıştırma Salih'te) · CHAT-KAPSULU-2026-07-13 hazır (chat şeridi açık; tazeleme: "chat kapsülünü tazele") · PARALEL PLAN İMZASIZ-YÜRÜRLÜKTE (Katman 2): ilk paralel Cowork denemesi 15 TEMMUZ, 14'ü sınav (Jarvis işi yok), rapor: raporlar/paralel-yapilanma-plani-2026-07-13.md · SIRADAKİ İŞ: loop-eng Faz 2+4 + Karpathy revizyonu (K-015 son madde)
+**Güncelleme:** 2026-07-13 günaydın vardiyası KAPANIŞI (Carvis) — tüzük 36→40 madde · hafıza tam-süpürme · imza masası + masada kararlar KAPANDI · paralel plan kuruldu · YARIN (14 Tem) JARVIS İŞİ YOK (sınav) · 15 Tem İLK PARALEL DENEME
 
 ## Şu an
-**Tüzük m.34-36 imzalandı (Salih, bu oturum):** m.34 katmanlı ingest (V21+V30 çekirdeği kanonlaştı; taze-oturum promote Salih revizyonuyla) · m.35 farklılaşma tezi çapası (tez #0; tam formülasyon wiki kuyruğunda) · m.36 ilk-prototip fazı kuralı (**PortRisk K-015 kapısının arkasına alındı** — çelişki kapısı koşuldu, DONE = K-015 yaşayan listesi). Kural-değişim ritmi REDDEDİLDİ. V30 (iterasyon verimi) kutuya ingest'lendi + V21'e koşullu-geçiş şerhi. **Yeni tek aktif kart: K-015** (ingest şeması v1 · TETİKLİ/UFUK başlangıç modeli · loop-eng Faz 2+4 · kuyruk kapanışı). PAT ~10 Ekim'de ölür. KILAVUZ okuma borcu Salih'te.
+- **Tüzük 40 madde.** Yeni: m.37 karar-modeli (3 matematiksel model; Salih'e GÖRÜNÜR, onay beklenmez, veto açık; kayıt → senaryo-defteri; yakınsama kuralı) · m.38 lojik-temelli çeviri (tam bağlaç seti ∧∨¬→↔; loop tanımları X/Y/Z küme-aralık formunda; desen-transferinin taşıyıcısı) · m.39 deneysel-rakam disiplini (rol işbölümü tüzük-dışı çalışma düzeni) · m.40 karar-sunum (a eşik=m.37 · b araştırma-önce + iç-önceliklendirme geriye-dönük denetimli · c ilk-çıktı-hızlı KADEMELİ: düşük geriye-dönük-maliyetli işte aktif, çekirdek işte Jarvis v1'e dek tasarım-öncelik).
+- **Senaryo-defteri canlı:** `kuyruk/senaryo-defteri.md` (3 kayıt). m37 dosyası artık A1-A7 partisyon planı.
+- **HAFIZA TAM-SÜPÜRME (Salih, bilinçli teyitli):** biyoloji-kökenli terimler nötr dile çevrildi (karar-noktası · seçim-birimi · seçim-dizisi · koşum-çıktısı · tek-nokta değişimi · dizi-birleştirme · başarı-skoru · ardışık-deney araması); kanon-yüzeyine bu aileden terim YAZILMAZ; benzetmeler nötr yapısal forma çevrilerek kaydedilir; literatür pointer'ı yalnız m37 dosyasında tek satır.
+- **CC köprüsü:** Model 1 dosya-kanalı + `cc/defter.md` AÇIK; hedef Model 3 (geçiş koşulu KILAVUZ'da, m.38 lojik formu). İlk koşum YOK — aday: loop-eng Faz 2 /goal emri.
+- **Kutu:** V45-V51 girdi (V46→m.38 · V40a→m.39); V44 İPTAL (model-düşüm artefaktı; kayıt durur, m.8). V39 nihai formda + ŞERH 6 (bağlı-çift: maliyet çifti token↔zaman · bilgi çifti seçim↔gelişim; desen = 4-elemanlı kümeler listesi üzerindeki yol).
+- **Paralel yapılanma:** 4-şerit planı `raporlar/paralel-yapilanma-plani-2026-07-13.md` · CHAT-KAPSULU-2026-07-13 hazır (chat şeridi AÇIK; "chat kapsülünü tazele" ile yenilenir) · profil `Kisisellestirme_Profili_2026-07-13.md` (Homebase) tazelendi.
+- **Operasyon:** iki git de onarıldı (A1a DONE); V43 zorunlu: kritik yazım bash'ten + push sonrası origin'le cmp. Mount çift-görünüm tuzağı sürüyor (Edit aracı yazımı mount'a yansımayabilir).
 
 ## Açık borçlar
-- **HAFIZA-DENETİMİ DONE (07-13 günaydın; Salih sınır kararı: TAM SÜPÜRME):** hafızaya işlenen tüm içerik tarandı (fikir kutusu V39+V41 · m.37 taslağı · karantina ingest'i · Homebase defteri desen #2 · bu kapsül); biyoloji-kökenli tüm terimler nötr optimizasyon diline çevrildi (karar-noktası · seçim-birimi · seçim-dizisi · koşum-çıktısı · tek-nokta değişimi · dizi-birleştirme · başarı-skoru · ardışık-deney araması). Literatür pointer'ı TEK satır, TEK dosyada (m.37 taslağı). Eski metinler git log'da (m.8 ihlali yok). KURAL (Katman 2, fiilen yürürlükte): kanon-yüzeyine bu aileden terim yazılmaz; yeni benzetmeler kayda geçmeden nötr yapısal forma çevrilir (V46 lojik-çeviri ilkesiyle aynı damar).
-- ~~MASADA 3 KARAR~~ KAPANDI (07-13 günaydın) — CC kanalı Model 1→3 · CC defteri açık · m.40 imzalı; detay: KILAVUZ + tüzük m.40 + cc/defter.md.
-- Üçlü sohbet kanalı (`cc/`) kurulu ama ilk koşusu YOK — ilk gerçek görev emri en yakın fırsatta (aday: loop-eng Faz 2 /goal).
-- **Blok 3 kapandı:** skill-yazım standardı KILAVUZ'da (deneysel, eval kuralı dahil) · superpowers → ajan defteri notu (Salih vizyonu: prototip→ilk ajan→şirket büyürken paket göz önünde; K-010 2-hafta ön-koşul şerhi kayıtlı).
-- **K-014 TETİK GELDİ:** Claude chat instructions yeniden yazımı ("nihai Jarvis") — yapıştırma Salih'in.
-- Günaydın scheduled görevi tazele + tetik-tarama satırı ekle (Salih 07-12).
-- Wiki kuyruğu: **tez #0 tam formülasyon sayfası (m.35 pointer borcu)** · çelişki kapısı sayfası · ilk-parti kalanı.
-- Tetikli: K-011 taşıma (Salih gün seçince) · N matematiği (dış-chat) · V28 (etiket 1/10) · V27 · K-004 (Kasım).
+- **K-014:** profil 2026-07-13 yapıştırma — Salih'te.
+- cc/ ilk koşum + defter ilk satırı (15 Tem /goal emriyle).
+- Wiki borçları: tez #0 tam formülasyon · çelişki kapısı sayfası. KILAVUZ okuma borcu (Salih).
+- Tetikli: K-011 taşıma (gün Salih'te) · K-004 (Kasım) · V27/V31-V35 (K-009/K-010) · V37 (şema v2) · PAT ~10 Ekim ölür.
 
-## Sonraki ilk iş — m.36 2. REVİZYON (Salih koşullu kararı 07-12 4. oturum): PROTOTİP ÖNCELİK, ~3 AY UFKU (≈10 Ekim)
-- **A1 — V39/m.37 zemini (07-13 eklendi, Salih; K-015'ten ÖNCE, açılış bloğu ~15-20 dk):** .git onarımı → m.37 imza/revize → senaryo-defteri açılışı → sıfır-noktası kaydı. Partisyon planı: `kuyruk/m37-taslak-karar-modeli.md` (A1-A6). Sonrası (A2+) K-015/K-002 işlerinin İÇİNDEN akar, ayrı yük değil.
-- **Öncelik şeridi (K-015, DONMUŞ kapsam):** sıradaki madde = **loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu** (Salih öğrenimi) → sonra K-009 → K-010 ilk ajan + defter şeması + V33 eşik kararı. Kapsama ekleme yalnız Salih imzası + süre-etkisi raporu.
-- **Ölçüm-bankı şeridi (K-002, m.36c):** PortRisk Sprint 1 bloke değil — prototipin hasat/etiketleme verisini üretir; öncelik çatışırsa prototip kazanır. Vardiya: "günaydın, PortRisk" (çift mount; artık "ölçüm-bankı vardiyası").
-
-Karar zinciri bugün: sabah "tam paralel" → 4. oturum Salih koşulu ("3 ayda mümkünse prototip öncelik") → Carvis değerlendirmesi ~8-10 hafta MÜMKÜN → koşul sağlandı, öncelik prototip. V33 (ajan-eşiği) kutud
+## Sonraki ilk iş
+- **14 Temmuz: JARVIS İŞİ YOK** — kısmi diferansiyel sınavı; ders chat'i Jarvis-DIŞI (kapsül yüklenmez).
+- **15 Temmuz: İLK PARALEL DENEME** (talimat: `PARALEL-VARDIYA-ILK-DENEME.md`):
+  - Oturum A "günaydın" → loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu (K-015 son madde; eşlik: bbycroft.net/llm). İlk /goal görev emri cc/ kanalından yazılır → kanal + defter ilk koşumu.
+  - Oturum B "günaydın, PortRisk" → Sprint 1 (yfinance + getiriler + pytest + push; commit Salih'in; çift mount; iç-mutfak public repoya ASLA yazılmaz).
+- Chat şeridi: CHAT-KAPSULU-2026-07-13 yükleyerek istediğin an; çıktılar FİKİR-KUTUSU-ADAYI formatında döner.
