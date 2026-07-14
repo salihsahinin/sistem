@@ -4,4 +4,4 @@
 
 | Tarih | Görev (emir dosyası) | Sonuç | Token/Süre | Ders |
 |---|---|---|---|---|
-| 2026-07-14 | gorev-2026-07-13-1 (K-017 güncel-ürün taraması) | DONE — 70 bulgu (58 DOĞRULANDI / 12 KISMEN / 0 DOĞRULANAMADI), 9 doğrudan-kullanım-adayı; rapor 56KB | ~2,4M token · ~8,5 dk · 78 ajan (8 araştırma + 70 doğrulayıcı) | Doğrulama katmanı 12 hata yakaladı → araştırma çıktısı doğrulamasız kutuya girmez. Ama %100 bulgu-başına doğrulayıcı pahalı desen — V26 örneklem-denetimi sonraki koşumlarda aday |
+| 2026-07-14 | gorev-2026-07-13-1 (K-017 güncel-ürün taraması) | DONE — 70 bulgu (58 DOĞRULANDI / 12 KISMEN / 0 DOĞRULANAMADI), 9 doğrudan-kullanım-adayı; rapor 56KB | ~2,4M token · ~8,5 dk · 78 ajan (8 araştırma + 70 doğrulayıcı) · **koşum konfigürasyonu: Fable, ultraworkflow/EN YÜKSEK efor (Salih beyanı 07-14; ilk koşum olduğu için bilinçli maksimum — sonraki tahminler bu parametreyle normalize edilir, m.39/V39-ŞERH6)** | Doğrulama katmanı 12 hata yakaladı → araştırma çıktısı doğrulamasız kutuya girmez. Ama %100 bulgu-başına doğrulayıcı pahalı desen — V26 örneklem-denetimi sonraki koşumlarda aday |
