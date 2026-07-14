@@ -3,7 +3,7 @@
 > **Açıklama notu:** Kaynak: `cc/rapor-2026-07-15-1.md` (8 eksen, 41 iddia denetimli: 32 D / 9 K / 0 X). Bu dosya OMURGA + durum takibi; eksen detayı, kaynaklar ve bulgular raporda (pointer m.20 — buraya kopyalanmaz). Oturum protokolü: `ogrenme/README.md` (Yarı-1 0'dan anlatım pasif-okuma modeliyle + Yarı-2 m.37 3-model JARVIS uygulaması). Partisyon ≈ 1 oturum (1,5–3h). Her oturum kapanışında bu tablonun Durum sütunu güncellenir.
 
 ## Ön-koşul kapısı — P0 (~15h, Salih'in kendi Karpathy hattı; stream oturumu değil)
-ZtH Ders 7 ("Let's build GPT") + **Ders 8 ("GPT Tokenizer" — sık atlanır, ATLANMAZ)** + Karpathy "Deep Dive into LLMs" videosu. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor. **Durum: SORULDU — Salih'in Ders 7/8 durumu teyit bekliyor.**
+ZtH Ders 7 ("Let's build GPT") + **Ders 8 ("GPT Tokenizer" — sık atlanır, ATLANMAZ)** + Karpathy "Deep Dive into LLMs" videosu. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor. **Durum (Salih, 07-15): "emin değilim" → İLK ÖĞRENME OTURUMU 15-dk MİNİ-TEŞHİSLE AÇILIR** (pasif model: Carvis Ders 7/8'in kilit kavramlarını anlatır, Salih "biliyordum/bilmiyordum" işaretler; sonuca göre P0-tamamlama ya da P1).
 
 ## Omurga (P1–P19 ≈ ~49h; bağımlılık-sıralı)
 | P | Oturum | Tek-satır DONE | Eksen | ~Süre | Durum |
@@ -36,6 +36,4 @@ ZtH Ders 7 ("Let's build GPT") + **Ders 8 ("GPT Tokenizer" — sık atlanır, AT
 5. **Karpathy revizyonu (K-015 madde 3) bu müfredatla BİRLEŞTİ:** P0 + P1-P4 = eski "Karpathy revizyonu"nun genişletilmiş hali; ayrı iş kalmadı. Loop-eng Faz 2+4 ANA SIRADA ayrı yürür (`ogrenme/loop-eng-yol-haritasi.md`).
 
 ## Açık kararlar
-- P0 durumu (ZtH Ders 7/8) — Salih teyidi.
-- Fatebook istisnası — Salih kararı (araç-benimseme, Katman 1'e komşu).
-- İlk oturum tarihi ("günaydın, öğrenme") — müfredat DONE olduğu için paralel-deneme tetiği ARTIK ÇEKİLEBİLİR.
+- ~~P0 durumu~~ KARARA BAĞLANDI (07-15): mini-teşhis açılışı 
