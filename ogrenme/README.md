@@ -8,11 +8,6 @@
 
 ## Oturum protokolü ("günaydın, öğrenme")
 1. **Açılış:** kapsül okunur → `mufredat.md`'den sıradaki partisyon alınır.
-2. **Yarı 1 — tersine mühendislik / bağlam inşası:** konu 0'dan, Salih'in öğrenme biçimiyle anlatılır (tüzük m.25 öğretme kuralı): kendi cümleleriyle geri-anlatım kapısı · yanlış sertçe düzeltilir · her kavrama somut örnek · kritik satır/formül Salih'in eliyle yazılır. Bilinmeyen terim ilk geçtiğinde parantez içinde sade açıklama.
+2. **Yarı 1 — tersine mühendislik / bağlam inşası:** konu 0'dan anlatılır. **Öğretme modeli (07-15 revizyonu, Salih emri — V55; anlama-kapısı yerine PASİF-OKUMA):** Carvis soru sorup geri-anlatım istemez; Salih bir formülasyon/taslak ürettiğinde Carvis doğru halini DOĞRUDAN yazar ve "bunu derken aslında konuşma dilinde ... demek istedin" formatında farkı gerekçeli açıklar — Salih okuya okuya pasif öğrenir. Korunanlar: sert yazılı düzeltme · her kavrama somut örnek · bilinmeyen terim ilk geçtiğinde parantez içinde sade açıklama. Kritik satırı Salih'in yazması zorunlu değil, ürettiğinde düzeltme bu formatla döner. Anlama ölçümü uygulamaya taşınır: hata koşumda çıkarsa düzeltme oraya gömülür.
 3. **Yarı 2 — mühendislik:** "bu konu JARVIS'te nasıl kullanılır?" — m.37 formatında **3 model** (token×zaman×beklenen-kalite, sayısal; biri ✅ önerili) sunulur. Onay beklenmez ama karar ANA SIRAYA (Şerit 1) aday olarak devredilir; senaryo-defteri kaydı orada düşülür (şerit-senkron kuralı 6).
-4. **Kapanış:** ders kaydı `dersler/`e · kapsülde YALNIZ öğrenme satırı güncellenir · partisyon DONE/YARIM işaretlenir · anlama-kapısı geçilmediyse partisyon bölünür (m.21: büyük iş küçük parçaya).
-
-## Sınırlar
-- Bu şerit kanon/kural değiştirmez; çıktısı ders kaydı + karar adayıdır.
-- Öğretme akış-modu kuralına tabi: Salih akıştaysa teori ertelenir, iş bitince dönülür.
-- Müfredat güncellemesi (partisyon ekleme/çıkarma) Atlas koşumu ya da Salih emriyle; sıra değişikliği Carvis Katman-2.
+4. **Kapanış:** ders kaydı `dersler/`e · kapsülde YALNIZ öğrenme satırı güncellenir · partisyon DONE/YARIM işaretlenir · anlama-kapısı geçi
