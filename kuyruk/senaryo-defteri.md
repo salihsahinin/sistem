@@ -41,3 +41,11 @@
 - **Seçim:** A (Salih, 07-13 2. oturum — "bu iş bitince model a da yapılacaklar listesinde") — görünürlük: aynı oturum + bu kayıt
 - **Gözlem (koşum sonrası):** koşuldu 07-14 — 70 bulgu (58/12/0), ~2,4M token · ~8,5 dk · 78 ajan; **konfig: Fable ultraworkflow (en yüksek efor, Salih beyanı — ilk koşum bilinçli maksimum; token gözlemi efor-parametreli okunur)**; kalite [türetilmiş]: yüksek — 12 hata doğrulamada yakalandı, adaylar panoya dağıtıldı
 - **Ders:** bilgi-açığı sınıfı karar = araştırma-önce (m.40b); tarama tek-seferlik değil tekrar eden ihtiyaç — periyodik tarama kararı K-017 inceleme oturumuna aday
+
+### 2026-07-14 · P0-P6 · partisyon planı onayı
+- **Bağlam:** 07-14 kapanışında sunulan kronolojik partisyon planı (P1=15 Tem paralel · P2=16-20 Tem K-015+K-018 · P3=otonomi kapısı ~Ağu başı · P4=ölçüm+deney Ağu · P5=Jarvis v1+demo ≤10 Eki · P6=K-004 Kas) karar masasında.
+- **Seçenekler:** olduğu-gibi onay | onay + P5 minimum-demo sabitlemesi (kayma riskine karşılık) | revizyon | veto → ✅ onay + sabitleme
+- **Seçim:** Salih (07-14 sabah, Katman 1 — yön kararı): "kronolojik partisyon" çerçevesi teyit + önerilen sabitleme kabul. Plan dosyası: `raporlar/partisyon-plani-P0-P6-2026-07-14.md` (ilk sunumda dosyaya inmemişti — kalıcılık dersi orada kayıtlı).
+- **İlk tahminler (deneysel damga, m.39 — Brier için):** P1 DONE-tanımıyla kapanır: 0.80 · P2 20 Tem'e dek kapanır: 0.65 · P3 kapısı Ağu ilk haftasında açılır: 0.60 · P5 minimum demo ≤10 Eki: 0.60
+- **Gözlem:** her partisyon kapanışında tahmin-vs-gerçek buraya.
+- **Ders:** kritik sunum, sunulduğu vardiyada dosyaya iner (V43 ailesi — kapsül özeti tek başına kalıcılık değildir).
