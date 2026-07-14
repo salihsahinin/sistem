@@ -49,3 +49,17 @@
 - **İlk tahminler (deneysel damga, m.39 — Brier için):** P1 DONE-tanımıyla kapanır: 0.80 · P2 20 Tem'e dek kapanır: 0.65 · P3 kapısı Ağu ilk haftasında açılır: 0.60 · P5 minimum demo ≤10 Eki: 0.60
 - **Gözlem:** her partisyon kapanışında tahmin-vs-gerçek buraya.
 - **Ders:** kritik sunum, sunulduğu vardiyada dosyaya iner (V43 ailesi — kapsül özeti tek başına kalıcılık değildir).
+
+### 2026-07-15 · şerit düzeni · öğrenme şeridi + öncelik revizyonu (P1 yeniden şekillendi)
+- **Bağlam:** Salih günaydın emri: öğrenme oturumları şeridi + PortRisk 3. öncelik + Atlas'la müfredat araştırması. m.16 çelişki raporu sunuldu (P1 B-kanadı boşa düşer + P4 ölçüm girdisi gecikir, kritik yolda tampon yok).
+- **Seçenekler:** PortRisk bugün yine açılır (P1 aynen, ✅ Carvis önerisiydi) | B kanadı öğrenmeye devredilir | Carvis'e devir → Salih üçüncü yolu seçti: "birkaç gün odak sadece öğrenme + Jarvis; ölçüm bankı önemli olmaya başlayınca 3. oturum olarak tasarlanır."
+- **Seçim:** Salih (Katman 1 — yön kararı; 07-15 günaydın oturumu). P1 revize: ilk paralel deneme JARVIS+öğrenme çiftiyle, tetik = müfredat DONE. Plan: `raporlar/paralel-yapilanma-plani-2026-07-15-v2.md`. Kabul edilen risk: P4 itilmesi (kayıtlı).
+- **Gözlem:** bekliyor (ilk JARVIS+öğrenme paralel günü + P4 açılış tarihi).
+- **Ders:** öneri reddi de veridir — Salih odak-bölünmesini P4 riskinden pahalı fiyatladı; Brier notu: P1 "DONE-tanımıyla kapanır: 0.80" tahmini eski DONE-tanımıyla ölçülemez, revize DONE ile ölçülecek.
+
+### 2026-07-15 · Atlas ilk koşumu · efor seçimi (Salih devri: "effort seçmek sana kalmış, bence yüksek")
+- **Bağlam:** müfredat araştırması Opus'la koşulacak (Salih beyanı: token maliyeti); efor kademesi Carvis'te.
+- **Model A (orta):** ~400-700K token · ~4-5 dk · kalite 6/10 — müfredat iskeletde kalır, kaynak derinliği zayıf | **Model B (yüksek):** ~1-1,5M token · ~6-8 dk · kalite 8/10 — eksen genişletme (Wave) + örneklem-denetim rahat çalışır | **Model C (maks/ultraworkflow):** ~2M+ token · ~8-10 dk · kalite 8,5/10 — K-017'de marjinal getirisi doğrulama katmanındaydı, o da artık örneklemli → ✅ B (maliyet/kalite dizi; Salih sezgisiyle uyumlu)
+- **Seçim:** B — yüksek (Carvis, Katman 2) — görünürlük: 07-15 günaydın oturumu + görev emri `cc/gorev-2026-07-15-1.md`.
+- **Gözlem:** koşum sonrası defter satırıyla birlikte buraya (Opus-yüksek ilk normalizasyon noktası olacak).
+- **Ders:** —

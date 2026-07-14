@@ -3,18 +3,19 @@
 *Şirketin nabzı tek bakışta. Kart = işin adresi, kendisi değil. "Ekrana gel" satırı dikkat filtresidir.*
 *Şablon v2 (K-012 adım 4, 2026-07-12, deneysel m.29): +Açılış/Yaş (#22) +Bağımlı +Yetki (Beads bulgusu + Salih yetki-kartı fikri; yetki alanı ajan döneminde anlam kazanır — şimdilik tümü Carvis). Kural: DONE alanı boş kart açılamaz (KILAVUZ).*
 
-**Güncelleme:** 2026-07-14 (Carvis yazdı) — K-017 KAPANDI, adaylar kartlara dağıtıldı; K-019/K-020 açıldı; kesik BLOKE+SON BİTEN bölümü git tarihçesinden (8b281ec) onarıldı (V43 serisinin 4. vakası)
+**Güncelleme:** 2026-07-15 (Carvis yazdı) — Salih emri: öğrenme şeridi açıldı (K-021, ÖNCELİK №2) + ajan adı ATLAS (opus, R1 eğitim kaydı) + PortRisk (K-002) BEKLEYEN'e indi (tetik: Salih "artık önemli" beyanı); plan v2: `raporlar/paralel-yapilanma-plani-2026-07-15-v2.md`
 
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
 | K-015 | JARVIS ilk prototip (m.36 2. REVİZYON: ÖNCELİK BU; hedef ~3 ay ≈10 Ekim). DONMUŞ KAPSAM: (1) ~~ingest/katman şeması v1~~ DONE 07-12 · (2) ~~TETİKLİ/UFUK modeli~~ DONE 07-12 · (3) loop-eng Faz 2+4 + Karpathy revizyonu — Salih öğrenimi (eşlik kaynağı: bbycroft.net/llm — GPT içinin 3D animasyonlu haritası; revizyon oturumunda açık tutulur. Salih onayı 07-13) · (4) ~~kuyruk kapanışı~~ DONE 07-12 · (5) K-009 otomasyon · (6) K-010 ilk ajan + ajan-defter şeması v1 + ajan-eşiği kararı (V33). Ekleme YALNIZ Salih imzası + süre-etkisi raporuyla. **K-017 icra notu (07-14): madde-3 koşumu öncesi `claude --version` + `claude doctor` özellik-envanteri (2 dk, rapor bilinmeyen #1); /goal + headless = Model 3 resmi yolu; paralel oturumlarda subagent worktree-izolasyonu kullanılır (rapor E1)** | kapsam listesi (1)-(6) kapandı | 07-12 | — | Salih+Carvis | ÖNCELİK №1 (m.36 2. rev) |
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — PROTOTİPİN ÖLÇÜM BANKI: hasat/etiketleme/ölçüm verisi üreten görevler (m.36c; öncelik çatışmasında prototip kazanır) **+ K-017 eki (07-14): rate-limit sigortası (sleep/cache/backoff) Sprint-1 koduna BAŞTAN yazılır (m.5; yfinance 429 riski, rapor E7) · PyPortfolioOpt/Riskfolio/quantstats API desenleri ölçüm-bankı tasarımına okunur (kurulmaz)** | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | — (ölçüm-bankı, m.36c) | Carvis | ölçüm-bankı vardiyasında |
+| K-021 | Öğrenme şeridi + Atlas müfredat koşumu (Salih emri 07-15): (1) ✅ şerit iskeleti (`ogrenme/README.md` protokolü + plan v2) · (2) ✅ görev emri `cc/gorev-2026-07-15-1.md` (Opus, yüksek efor, V26 örneklemli) · (3) Salih koşar → Atlas raporu · (4) Carvis rapor→`ogrenme/mufredat.md` damıtır · (5) ilk öğrenme oturumu ("günaydın, öğrenme"). Şerit döngüsü: 0'dan anlatım + m.37 3-model uygulama sunumu, partisyon başına | Atlas raporu geldi ∧ mufredat.md damıtıldı ∧ ilk öğrenme oturumu ders kaydıyla kapandı | 07-15 | — | Salih+Carvis | ÖNCELİK №2 — koşum bugün |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | 07-10 | K-002 (AKTİF'e taşındı 07-12) | Carvis | — |
+| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — ölçüm bankı (m.36c) **BEKLEYEN'e indi (Salih 07-15: "birkaç gün odak öğrenme+Jarvis; önemli olmaya başlayınca 3. oturum olarak tasarlarız"; kabul edilen risk: P4 itilmesi — senaryo-defteri 07-15)** + K-017 eki (07-14): rate-limit sigortası BAŞTAN · PyPortfolioOpt/Riskfolio/quantstats desenleri okunur | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | tetik: Salih "artık önemli" beyanı | Carvis | Salih tetiği çekince |
+| K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | 07-10 | K-002 | Carvis | — |
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Carvis | Kasım başı |
 | K-005 | IMC Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Carvis | tur duyurusu |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | 07-10 | — | Carvis | CV çalışması başlarken |

@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-14 sabah vardiyası (Carvis) — P0-P6 ONAYLANDI (Salih; P5=minimum canlı demo sabitlendi) · K-014 KAPANDI (profil chat'te canlı doğrulandı) · 15 Tem PARALEL DENEME değişmedi
+**Güncelleme:** 2026-07-15 günaydın vardiyası (Carvis) — Salih emri: ÖĞRENME ŞERİDİ açıldı (K-021) · ajan adı ATLAS (opus, R1) · PortRisk BEKLEYEN'e (tetik: "artık önemli") · P1 revize: paralel deneme JARVIS+öğrenme çiftiyle, tetik=müfredat DONE
 
 ## Şu an
 - **K-017 KAPANDI — kanalın ilk koşumu:** Cem'in research-agent'ı (V25 istisna damgalı, `.claude/agents/`) 7 eksende 70 kaynaklı bulgu üretti (58 D / 12 K / 0 X; 78 ajan, ~2,4M token — Fable ULTRAWORKFLOW/en-yüksek efor: ilk-koşum bilinçli maksimum, maliyet kıyasları bu parametreyle okunur). Rapor: `cc/rapor-2026-07-13-1.md` · defter ilk satırı yazıldı. Adaylar kartlara dağıtıldı: K-002 (yfinance sigortası) · K-009 gündemi (otonomi merdiveni + güvenlik emsalleri) · K-015 (envanter+/goal notu) · K-016 (eval/format ilhamları) · K-019/K-020 (yeni).
@@ -16,6 +16,7 @@
 - K-019 ilk boş vardiyada · wiki borçları (tez #0 + çelişki kapısı sayfası) · KILAVUZ okuma (Salih) · tetikliler: K-011 (gün Salih'te) · K-004 (Kasım) · PAT ~10 Ekim ölür.
 
 ## Sonraki ilk iş
-- **15 Temmuz: İLK PARALEL DENEME** (talimat: `PARALEL-VARDIYA-ILK-DENEME.md`) — DEĞİŞMEDİ:
-  - Oturum A "günaydın" → `claude --version`+`doctor` envanteri (2 dk, K-015 icra notu) → loop-eng Faz 2 (/goal, ilk emir cc/ kanalından) + Faz 4 (Routine) + Karpathy revizyonu (eşlik: bbycroft.net/llm).
-  - Oturum B "günaydın, PortRisk" → Sprint 1: yfinance + getiriler + **rate-limit sigortası BAŞTAN (K-002 eki)** + pytest + push (commit Salih'in; 
+- **K-021 zinciri (bugün):** Salih Atlas'ı koşar — CC'ye tek satır: `C:\JARVIS\cc\gorev-2026-07-15-1.md dosyasını oku ve uygula.` (Opus, yüksek efor) → rapor gelince Carvis `ogrenme/mufredat.md` damıtır → "günaydın, öğrenme" ile ilk öğrenme oturumu.
+- **Ana sıra (bu şerit, öncelik №1):** loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu — `claude --version`+`doctor` envanteri (2 dk) önce. Öğrenme müfredatının LLM-iç-yapısı ekseni Karpathy hattıyla birleşebilir (Atlas raporunda örtüşme analizi istendi).
+- **PARALEL DENEME (revize):** JARVIS + öğrenme çiftiyle, tetik = müfredat DONE. PortRisk 3. oturum tasarımı Salih tetiğine bağlı.
+- Chat şeridi: CHAT-KAPSULU-2026-07-13 hâlâ geçerli; tazeleme istenirse "chat kapsülünü tazele".
