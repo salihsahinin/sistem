@@ -1,0 +1,41 @@
+# Öğrenme Müfredatı v1 — 2026-07-15 (Atlas ilk koşumundan damıtıldı; K-021 adım 4)
+
+> **Açıklama notu:** Kaynak: `cc/rapor-2026-07-15-1.md` (8 eksen, 41 iddia denetimli: 32 D / 9 K / 0 X). Bu dosya OMURGA + durum takibi; eksen detayı, kaynaklar ve bulgular raporda (pointer m.20 — buraya kopyalanmaz). Oturum protokolü: `ogrenme/README.md` (Yarı-1 0'dan anlatım pasif-okuma modeliyle + Yarı-2 m.37 3-model JARVIS uygulaması). Partisyon ≈ 1 oturum (1,5–3h). Her oturum kapanışında bu tablonun Durum sütunu güncellenir.
+
+## Ön-koşul kapısı — P0 (~15h, Salih'in kendi Karpathy hattı; stream oturumu değil)
+ZtH Ders 7 ("Let's build GPT") + **Ders 8 ("GPT Tokenizer" — sık atlanır, ATLANMAZ)** + Karpathy "Deep Dive into LLMs" videosu. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor. **Durum: SORULDU — Salih'in Ders 7/8 durumu teyit bekliyor.**
+
+## Omurga (P1–P19 ≈ ~49h; bağımlılık-sıralı)
+| P | Oturum | Tek-satır DONE | Eksen | ~Süre | Durum |
+|---|---|---|---|---|---|
+| P1 | Token ekonomisi & bağlam=maliyet | prompt-cache prefix-invalidation kuralı + m.20/V37 = maliyet-mühendisliği açıklanır | L7+L1 | 2.5h | — |
+| P2 | Inference & sampling: KV-cache, temperature | KV-cache bağlamı neden pahalılaştırır + ajanlarda düşük-temperature gerekçesi | L8 | 2.5h | — |
+| P3 | RoPE & uzun-context, lost-in-the-middle | ZtH pos-emb ↔ RoPE farkı + 200-satır eşiğinin mekanik nedeni | L8+L1/L2 | 2.5h | — |
+| P4 | Neden halüsinasyon | eğitim-kaynaklı neden → V8/V26'nın varoluş gerekçesi | L8 | 2h | — |
+| P5 | Context eng. I: JIT yükleme, `@path` tuzağı | V37 seçici-yükleme + m.20'nin DOĞRU lazy implementasyonu (@import ≠ lazy!) | L1 | 2.5h | — |
+| P6 | Context eng. II: compaction, not-tutma, izolasyon | K-015 şemasının cacheable-prefix + compaction stratejisi taslağı | L1 | 3h | — |
+| P7 | Tool-use temelleri: function-calling döngüsü | bir JARVIS aracının şema + is_error tasarımı yazılır | L5 | 2.5h | — |
+| P8 | MCP mimarisi + ne zaman sunucu (V25 testi) | MCP-ekle/ekleme kararı V25 + güven-sınırıyla gerekçelenir | L5 | 2.5h | — |
+| P9 | Skills/Tools/Subagents/MCP karar çerçevesi | K-009 nightly-sync mekanizma seçimi gerekçelenir | L5 | 2.5h | — |
+| P10 | Hafıza I: CoALA + dosya-primitifleri | K3→K0 ↔ CoALA (working/episodic/semantic/procedural) eşlemesi | L3 | 2.5h | — |
+| P11 | Hafıza II: katmanlı mimari + m.34 damıtma | m.34 promote/merge/delete karar-ağacı taslağı (Mem0 esinli) | L3 | 2.5h | — |
+| P12 | Hafıza III: RAG sınırları + geri-çağırma ölçümü | m.20 pointer-over-embedding gerekçesi + geri-çağırma ölçüm fikri | L3 | 2.5h | — |
+| P13 | Orkestrasyon I: agentic döngü + taksonomi | V13/V17 topolojisi Anthropic taksonomisine yerleştirilir | L2 | 2.5h | — |
+| P14 | Orkestrasyon II: fan-out, peer, m.30 kalıcılık | sonraki-topoloji adımı + kalıcılık modeli (uyku≠restart) taslağı | L2 | 2.5h | — |
+| P15 | **Orkestrasyon III: "ne zaman ÇOKLU-ajan DEĞİL"** | ajan-say ölçekleme hedefine KAPI-kuralı yazılır + V8/V26 spec taslağı | L2 | 3h | — |
+| P16 | Güvenlik I: injection, lethal trifecta | mimari>talimat yetki-ayrımı: hangi subagent neyi ALMAZ | L6 | 2.5h | — |
+| P17 | Güvenlik II: memory poisoning, otonomi merdiveni | K-009 "canlı ajan nerede başlar" merdiven taslağı + nightly-sync provenance sigortası | L6 | 3h | — |
+| P18 | Eval I: eval-seti, LLM-as-judge + bias | 20-50 görevlik eval-set iskeleti + judge'ı Salih-yargısına doğrulama planı | L4 | 3h | — |
+| P19 | Eval II: kalibrasyon/Brier + küçük-N/V39 | m.37 kalibrasyon döngüsü + V39 durdurma-kuralı + "kararlı çalışma" ölçüsü | L4 | 2.5h | — |
+
+## Düğüm notları (raporun öncelik-şekillendiren bulguları)
+1. **P15 = müfredatın kilit düğümü:** çoklu-ajan çoğu görevde tek-ajanı %6-41 GEÇEMİYOR + ~15x token (L2+L7 bağımsız yakınsama) — "ajan sayısını ölçekle" hedefi açık KAPI-kuralı ister; meşru sonuç "uzun süre orchestrator-worker kal" olabilir. K-009/K-010 kapsamını bu partisyonun çıktısı disipline eder.
+2. **@path tuzağı (P5):** CLAUDE.md `@import` lazy DEĞİL, launch'ta tam yüklenir — m.20 pointer implementasyonu buna göre; iki AYRI 200-satır kuralı var (CLAUDE.md yumuşak / MEMORY.md sert 200-satır∨25KB).
+3. **P16-P17 = K-009 tasarım ön-koşulu** (güvenlik-kapısı önerisi; rapor öneri 3).
+4. **P18-P19 erken-tohum:** kalibrasyon alışkanlığı ilk öznel model-seçiminde gerekir — Ağustos'u bekletmez. Fatebook V25-istisna adayı (SALİH KARARI BEKLİYOR).
+5. **Karpathy revizyonu (K-015 madde 3) bu müfredatla BİRLEŞTİ:** P0 + P1-P4 = eski "Karpathy revizyonu"nun genişletilmiş hali; ayrı iş kalmadı. Loop-eng Faz 2+4 ANA SIRADA ayrı yürür (`ogrenme/loop-eng-yol-haritasi.md`).
+
+## Açık kararlar
+- P0 durumu (ZtH Ders 7/8) — Salih teyidi.
+- Fatebook istisnası — Salih kararı (araç-benimseme, Katman 1'e komşu).
+- İlk oturum tarihi ("günaydın, öğrenme") — müfredat DONE olduğu için paralel-deneme tetiği ARTIK ÇEKİLEBİLİR.

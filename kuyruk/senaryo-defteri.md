@@ -61,5 +61,4 @@
 - **Bağlam:** müfredat araştırması Opus'la koşulacak (Salih beyanı: token maliyeti); efor kademesi Carvis'te.
 - **Model A (orta):** ~400-700K token · ~4-5 dk · kalite 6/10 — müfredat iskeletde kalır, kaynak derinliği zayıf | **Model B (yüksek):** ~1-1,5M token · ~6-8 dk · kalite 8/10 — eksen genişletme (Wave) + örneklem-denetim rahat çalışır | **Model C (maks/ultraworkflow):** ~2M+ token · ~8-10 dk · kalite 8,5/10 — K-017'de marjinal getirisi doğrulama katmanındaydı, o da artık örneklemli → ✅ B (maliyet/kalite dizi; Salih sezgisiyle uyumlu)
 - **Seçim:** B — yüksek (Carvis, Katman 2) — görünürlük: 07-15 günaydın oturumu + görev emri `cc/gorev-2026-07-15-1.md`.
-- **Gözlem:** koşum sonrası defter satırıyla birlikte buraya (Opus-yüksek ilk normalizasyon noktası olacak).
-- **Ders:** —
+- **Gözlem (07-15, koşum sonrası):** süre ~25 dk · 13 ajan (K-017'nin 78'ine karşı) · token toplamı raporlanmadı (/usage i

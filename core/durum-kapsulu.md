@@ -16,7 +16,6 @@
 - K-019 ilk boş vardiyada · wiki borçları (tez #0 + çelişki kapısı sayfası) · KILAVUZ okuma (Salih) · tetikliler: K-011 (gün Salih'te) · K-004 (Kasım) · PAT ~10 Ekim ölür.
 
 ## Sonraki ilk iş
-- **K-021 zinciri (bugün):** Salih Atlas'ı koşar — CC'ye tek satır: `C:\JARVIS\cc\gorev-2026-07-15-1.md dosyasını oku ve uygula.` (Opus, yüksek efor) → rapor gelince Carvis `ogrenme/mufredat.md` damıtır → "günaydın, öğrenme" ile ilk öğrenme oturumu.
-- **Ana sıra (bu şerit, öncelik №1):** loop-eng Faz 2 (/goal) + Faz 4 (Routine) + Karpathy revizyonu — `claude --version`+`doctor` envanteri (2 dk) önce. Öğrenme müfredatının LLM-iç-yapısı ekseni Karpathy hattıyla birleşebilir (Atlas raporunda örtüşme analizi istendi).
-- **PARALEL DENEME (revize):** JARVIS + öğrenme çiftiyle, tetik = müfredat DONE. PortRisk 3. oturum tasarımı Salih tetiğine bağlı.
-- Chat şeridi: CHAT-KAPSULU-2026-07-13 hâlâ geçerli; tazeleme istenirse "chat kapsülünü tazele".
+- **İLK ÖĞRENME OTURUMU açılabilir** ("günaydın, öğrenme"): müfredat v1 hazır (`ogrenme/mufredat.md`, P0+19 partisyon). Önce Salih'ten: P0 teyidi (ZtH Ders 7/8 bitti mi?) + Fatebook V25-istisna kararı. Karpathy revizyonu müfredatla BİRLEŞTİ (P0+P1-P4) — ayrı iş kalmadı.
+- **Ana sıra (bu şerit, öncelik №1):** loop-eng Faz 2 ilk /goal koşusu — hedef: push-doğrulama loop'u (tasarım 07-15 oturumunda; script `tools/verify-push` Carvis yazacak + /goal emri `cc/gorev-2026-07-15-2.md`) + Faz 4 (Routine). Envanter ✅ (CC 2.1.209, doctor temiz, RC hazır — K-018 girdisi).
+- **Açık borçlar (07-15 eklenenler):** Homebase 2 dosyada arşiv-pointer yazılamadı (OS kilidi: Looplara-Baslangic + Carvis-Sozlugu) + Homebase git commit'i atılamadı (index.lock) — sonraki Hom

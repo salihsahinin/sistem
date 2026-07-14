@@ -15,10 +15,7 @@ Her görev emrinin "Koşum konfigürasyonu" bölümü, Salih'in CC'ye gireceği 
 ## Görev emri şablonu
 ```
 # CC Görev Emri — YYYY-MM-DD-N
+## Koşum konfigürasyonu (CC'ye girilecek komutlar AYNEN + model/efor; CC'yi C:\JARVIS kökünden başlat — yoksa .claude/agents kayıtları görünmez, 07-15 dersi)
 ## Bağlam (CC'nin bilmesi gereken minimum)
 ## Görev (tek net iş)
-## DONE tanımı (ölçülebilir)
-## Sınırlar
-- C:\JARVIS\core\ dosyalarına YAZMA (yalnız Salih kararıyla değişir)
-- portrisk public reposuna iç-mutfak dosyası YAZMA
--
+## DONE
