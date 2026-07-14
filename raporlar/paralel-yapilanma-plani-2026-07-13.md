@@ -1,5 +1,7 @@
 # Paralel Yapılanma Planı — 2026-07-13 (Salih emri: "planını yap, raporu sun"; başlangıç tarihi yetkisi Carvis'e devredildi)
 
+> **ARŞİV NOTU (07-15):** Bu plan revize edildi → güncel sürüm `paralel-yapilanma-plani-2026-07-15-v2.md` (öğrenme şeridi eklendi, PortRisk 3. önceliğe indi, P1 yeniden şekillendi). Dosya m.8 gereği silinmez.
+
 ## Neden şimdi
 Salih 07-13: prototip süreci uzun; belirli aşamadan sonra bir yandan Jarvis'i geliştiren, bir yandan o anki projeyi inşa eden paralel yapıya geçilmeli. Altyapı zaten hazır: paralel-vardiya protokolü (KILAVUZ, 07-12) + `PARALEL-VARDIYA-ILK-DENEME.md` talimatı + m.36c (PortRisk=ölçüm-bankı, bloke değil).
 
