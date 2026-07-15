@@ -2,10 +2,10 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-15 kapanış (Carvis) — ÖĞRENME ŞERİDİ kuruldu + müfredat v1 hazır (K-021 4/5) · ATLAS ilk koşumu temiz · Homebase taşıması icra · V55 pasif-okuma canlı · PortRisk BEKLEYEN'de · varsayılan açılış klasörü = C:\JARVIS (Salih son sözü)
+**Güncelleme:** 2026-07-15 gün-içi (Carvis, ana-sıra oturumu) — mini-teşhis sonuçlandı (P0 sıfırdan, P0-a YARIM) + format v2 README'de + öğrenme paralel ayrı oturuma taşındı (Opus-extra) · önceki kapanış kaydı: öğrenme şeridi kuruldu, Atlas temiz, Homebase taşıması icra, V55 canlı, PortRisk BEKLEYEN, açılış klasörü = C:\JARVIS
 
 ## Şu an
-- **K-021 4/5 (öncelik №2):** öğrenme şeridi canlı — `ogrenme/mufredat.md` v1 (P0 + 19 partisyon, ~49h; Atlas raporundan damıtıldı `cc/rapor-2026-07-15-1.md`: 41 iddia 32D/9K/0X). İlk oturum "günaydın, öğrenme" ile açılır: **15-dk mini-teşhis** (Ders 7/8 durumu belirsiz) → P0-tamamlama ya da P1. Kilit düğüm P15: çoklu-ajan karşı-kanıtı (%6-41 geride, ~15x token) → ajan-ölçekleme KAPI-kuralı, K-009/K-010 kapsam disiplini.
+- **K-021 5/5 BAŞLADI (öncelik №2; 07-15 öğle güncellemesi, ana-sıra oturumundan):** mini-teşhis SONUÇLANDI — 12/12 bulanık → P0 sıfırdan, P0-a/P0-b bölündü; P0-a v1 anlatıldı, YARIM (Salih RoPE öncesine dek okudu, kısmi anlama). **Format v2 kalibre edildi ve README'ye işlendi** (derinlik etiketi [S]/[O]/[T] + tempo + self-Q&A + senaryo + görselleştirme; müfredata Derinlik sütunu girdi). **Öğrenme PARALEL ayrı oturumda sürer (Salih kararı: öğrenme = bağlam inşası için tersine mühendislik; Opus-extra oturumu açıldı)** — o oturumun açılışı: `ogrenme/dersler/2026-07-15-P0a-transformer-ici.md` "Sonraki öğrenme oturumunun açılışı" bölümü. Karpathy videoları Salih kendi hattında (Gemini transkript). Kilit düğüm P15 aynı: ajan-ölçekleme KAPI-kuralı.
 - **Atlas (eski research-agent) R1:** ad + opus + V26 örneklem-denetimi varsayılan; eğitim katmanı agent dosyasında, koşum dersleri defterden akar. İlk koşum: 13 ajan, ~25 dk, ekonomik desen doğrulandı.
 - **Öğretme modeli V55 (Salih emri):** pasif-okuma — Carvis doğru halini doğrudan yazar + "bunu derken aslında ..." açıklaması; geri-anlatım zorunlu değil; m.25 metin revizyonu imza masasında.
 - **Şerit düzeni v2:** 1) JARVIS ana sıra · 2) öğrenme oturumları · 3) PortRisk (BEKLEYEN — tetik: Salih "artık önemli"; P4 riski kabul edilmiş) · 4) chat · 5) dış. Paralel deneme = JARVIS + öğrenme çifti.
@@ -18,6 +18,7 @@
 - K-019 ilk boş vardiyada · wiki borçları (tez #0 + çelişki kapısı sayfası) · KILAVUZ okuma (Salih) · tetikliler: K-011 (gün Salih'te) · K-004 (Kasım) · PAT ~10 Ekim ölür.
 
 ## Sonraki ilk iş
-- **İLK ÖĞRENME OTURUMU açılabilir** ("günaydın, öğrenme"): müfredat v1 hazır (`ogrenme/mufredat.md`, P0+19 partisyon). Önce Salih'ten: P0 teyidi (ZtH Ders 7/8 bitti mi?) + Fatebook V25-istisna kararı. Karpathy revizyonu müfredatla BİRLEŞTİ (P0+P1-P4) — ayrı iş kalmadı.
+- **Öğrenme oturumu (paralel, Opus-extra):** açılış = P0-a bulanık-blok telafisi v2 formatıyla → RoPE → P0-b. Devir talimatı: `ogrenme/dersler/2026-07-15-P0a-transformer-ici.md`. P0 teyidi KAPANDI (teşhis: sıfırdan); Fatebook BEKLEMEDE (müfredat "Açık kararlar"). Karpathy revizyonu müfredatla BİRLEŞTİ — ayrı iş kalmadı.
 - **Ana sıra (bu şerit, öncelik №1):** loop-eng Faz 2 ilk /goal koşusu — hedef: push-doğrulama loop'u (tasarım 07-15 oturumunda; script `tools/verify-push` Carvis yazacak + /goal emri `cc/gorev-2026-07-15-2.md`) + Faz 4 (Routine). Envanter ✅ (CC 2.1.209, doctor temiz, RC hazır — K-018 girdisi).
-- **Açık borçlar (07-15 eklenenler):** Homebase 2 dosyada arşiv-pointer yaz
+- **Açık borçlar (07-15 eklenenler):** Homebase 2 dosyada arşiv-pointer yazılamadı (OS kilidi: Looplara-Baslangic + Carvis-Sozlugu) + Homebase git commit'i atılamadı (index.lock) — sonraki Homebase oturumu/Salih kapatır. Atlas token gözlemi kaçtı (/usage kuralı README'ye girdi). m.25 pasif-okuma revizyonu (V55) imza masasında.
+- Chat şeridi: CHAT-KAPSULU-2026-07-13 hâlâ geçerli; tazeleme istenirse "chat kapsülünü tazele".
