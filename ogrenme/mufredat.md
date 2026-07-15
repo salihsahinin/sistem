@@ -4,9 +4,10 @@
 
 ## Ön-koşul kapısı — P0 (REVİZE 07-15: pasif-okuma oturumlarıyla işlenir; Karpathy videoları Salih'in kendi hattı, Gemini transkriptle — P0 DONE'una bağlı değil)
 Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karşılığı. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor.
+**P0 (a+b) DONE — 07-15 Opus öğrenme oturumu; Salih "sezgisel olarak tamam" beyanı.** Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`. Sıradaki oturum: P1.
 **Mini-teşhis SONUÇLANDI (07-15, ana-sıra oturumunda):** 12/12 kontrol noktası bulanık → P0 sıfırdan. Katman-2 kararı: P0 ikiye bölündü (m.21):
-- **P0-a — Transformer'ın içi** [O; RoPE alt-başlığı S]: tahmin döngüsü · embedding · self-attention Q/K/V · causal mask · multi-head · FFN/residual/layernorm · pos-emb↔RoPE. Durum: **YARIM** — v1 formatında anlatıldı (ana-sıra oturumu, 07-15), Salih RoPE öncesine dek okudu, kısmi anlama; sonraki öğrenme oturumu bulanık-blok telafisiyle açılır (ders kaydı: `dersler/2026-07-15-P0a-transformer-ici.md`).
-- **P0-b — Tokenizer + eğitim hattı** [O; eğitim hattı S]: BPE · tokenizer≠model · tuzaklar · special token'lar · pretraining/SFT/RLHF + halüsinasyon kökü. Durum: —.
+- **P0-a — Transformer'ın içi** [O; RoPE alt-başlığı S]: tahmin döngüsü · embedding · self-attention Q/K/V · causal mask · multi-head · FFN/residual/layernorm · pos-emb↔RoPE. Durum: **DONE** (Opus oturumu 07-15) — bulanık bloklar (3 Q/K/V, 4-5 mask/multi-head, 6-7 FFN/pos-emb) v2 görselli telafi edildi + RoPE [S] ilk geçiş yapıldı; DONE kapısı geçti. Ders kayıtları: `dersler/2026-07-15-P0a-transformer-ici.md` (v1) + `dersler/2026-07-15-P0-opus-oturumu.md` (telafi).
+- **P0-b — Tokenizer + eğitim hattı** [O; eğitim hattı S]: BPE · tokenizer≠model · tuzaklar · special token'lar · pretraining/SFT/RLHF + halüsinasyon kökü. Durum: **DONE** (Opus oturumu 07-15) — 2 blok v2 görselli işlendi; BPE the-örneği tam açıldı. Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`.
 
 ## Omurga (P1–P19 ≈ ~49h; bağımlılık-sıralı)
 | P | Oturum | Tek-satır DONE | Eksen | ~Süre | Derinlik | Durum |
@@ -44,3 +45,5 @@ Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karş
 - ~~P0 durumu~~ KARARA BAĞLANDI (07-15): mini-teşhis açılışı (yukarıda).
 - **Fatebook — BEKLEMEDE (Salih, 07-15):** "önce sistemi anlayayım (en kötü sezgisel), sonra belki hafif revize ederek kullanırız" → sıra: kalibrasyon/Brier kavramı P19'da (ya da erken mini-anlatımla) anlaşılır → SONRA benimseme kararı; muhtemel yol dosya-temelli/revize kullanım. O zamana dek senaryo-defteri tahminleri defterde birikir, skorlanmaz.
 - İlk oturum tarihi ("günaydın, öğrenme") — tetik ÇEKİLEBİLİR; paralel deneme = JARVIS + öğrenme çifti.
+- **AÇIK BORÇ — gerçek tokenizer ölçümü (07-15, Opus oturumu):** Türkçe/İngilizce token oranı kendi tokenizer'ımızla ÖLÇÜLEMEDİ (tiktoken openaipublic 403 + HF SOCKS proxy bloklu). Şimdilik proxy rakam: GPT-4o ~1.5x (eski BPE ~2x). P1'de çevrimdışı BPE ya da Claude'un kendi tokenizer'ıyla ölç. Karar: kanon Türkçe kalsın (Salih Katman-1; okunabilirlik > ~1.5x, prototipte bağlayıcı değil) — detay ders kaydında.
+- **P0 durumu KAPANDI (07-15 Opus):** P0-a + P0-b DONE; Yarı-2 (m.37 3-model) P1/P3/P5-P6'ya foldlandı (Katman-2, devir talimatı notu).

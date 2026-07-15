@@ -14,7 +14,8 @@
    - **Derinlik etiketi:** her kavram başlığı [S]/[O]/[T] taşır — [S] sezgisel (ne işe yarar + hangi kararımızı etkiler; benzetme yeter) · [O] orta (sezgi + mekanizmanın ana hattı, matematiksiz) · [T] tam (mantığıyla, sayısal örnek/formülle; yalnız JARVIS'te elle kullanılacak konular). Varsayılan atama Carvis'ten (ölçüt: JARVIS kararlarına uzaklık); Salih "bunu [T] yap" diyerek değiştirir. Amaç: vakit kaybını kesmek — her şey tam anlaşılmaz.
    - **Tempo/doz:** tek teslimde 2-3 kavramlık blok, 7 değil.
    - **Blok iskeleti:** anlatım → kendi kendine soru-cevap ("Peki model X'i nereden biliyor? Bilmiyor, çünkü...") → somut senaryo (mümkünse şirket/JARVIS'ten) → önceki blokla bağ cümlesi.
-   - **Görselleştirme:** matematiksel/yapısal her kavrama en az bir görsel (grafik, tablo, diyagram — Carvis'in gömülü görsel aracıyla).
+   - **Görselleştirme:** matematiksel/yapısal her kavrama en az bir görsel (grafik, tablo, diyagram — Carvis'in gömülü görsel aracıyla). NOT (07-15): metinde atıf yapılan her görsel GERÇEKTEN üretilmeli — atıf var/görsel yok hatası yapıldı, tekrarlanmaz.
+   - **Örnek disiplini (Salih emri 07-15):** örnek verince tek cümlede bırakma — adım adım sonuna kadar işlet (ör. BPE "the": t·h·e → th·e → the, neyin neden birleştiğini göstererek).
 3. **Yarı 2 — mühendislik:** "bu konu JARVIS'te nasıl kullanılır?" — m.37 formatında **3 model** (token×zaman×beklenen-kalite, sayısal; biri ✅ önerili) sunulur. Onay beklenmez ama karar ANA SIRAYA (Şerit 1) aday olarak devredilir; senaryo-defteri kaydı orada düşülür (şerit-senkron kuralı 6).
 4. **Kapanış:** ders kaydı `dersler/`e · kapsülde YALNIZ öğrenme satırı güncellenir · partisyon DONE/YARIM işaretlenir · anlama-kapısı geçilmediyse partisyon bölünür (m.21: büyük iş küçük parçaya).
 
