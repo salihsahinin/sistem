@@ -18,4 +18,16 @@ Her görev emrinin "Koşum konfigürasyonu" bölümü, Salih'in CC'ye gireceği 
 ## Koşum konfigürasyonu (CC'ye girilecek komutlar AYNEN + model/efor; CC'yi C:\JARVIS kökünden başlat — yoksa .claude/agents kayıtları görünmez, 07-15 dersi)
 ## Bağlam (CC'nin bilmesi gereken minimum)
 ## Görev (tek net iş)
-## DONE
+## DONE tanımı (ölçülebilir)
+## Rapor sonunda /usage çıktısını da yapıştır (token gözlemi — m.39/senaryo-defteri; 07-15 dersi)
+## Sınırlar
+- C:\JARVIS\core\ dosyalarına YAZMA (yalnız Salih kararıyla değişir)
+- portrisk public reposuna iç-mutfak dosyası YAZMA
+- Görev dışına çıkma; çıkmak gerekiyorsa rapora "SINIR AŞIMI ÖNERİSİ" başlığıyla yaz, yapma
+- Commit atma — commit kararı Carvis/Salih'te (m.9: portrisk commit'leri Salih'in elinden)
+## Rapor adresi
+C:\JARVIS\cc\rapor-YYYY-MM-DD-N.md (ne yaptın · ne çıktı · ne takıldı · öneriler)
+```
+
+## İsimlendirme
+Aynı günde birden çok görev: N artar (gorev-2026-07-13-1, -2...). Biten görev+rapor çiftleri ayda bir `cc/arsiv/`e iner (m.8 — silinmez).

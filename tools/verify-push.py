@@ -12,6 +12,9 @@ import os
 import subprocess
 import sys
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 
 def git(args, cwd):
     return subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True)
