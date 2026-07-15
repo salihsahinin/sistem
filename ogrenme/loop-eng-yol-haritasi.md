@@ -51,7 +51,8 @@ Her fazın kendi DONE tanımı var. Bu bilinçli: konunun özü zaten "done tan�
 **İş:** `[C] Loop Engineering.md` sayfasını aç: goal/loop/routine ayrımı + evaluator ilkesi (düzeltilmiş haliyle) + devretme merdiveni + kaynak linkleri + backlog linki ve 1 satır özet (backlog dosyasındaki kural gereği). İskelet Cowork'ten, dolgu senden — sayfayı ben yazarsam öğrenme bende kalır.
 **DONE (07-02 tanımı):** Sayfa açıldı, kaynaklar linkli.
 
-### FAZ 2 — İlk `/goal` koşusu (= aktif madde 2 · CC tarafı, sende)
+### FAZ 2 — İlk `/goal` koşusu (= aktif madde 2 · CC tarafı, sende) — **DONE (2026-07-15)**
+> Kapanış kaydı: görev = push-doğrulama loop'u (PortRisk adayı yerine; V43 vaka sınıfı gerçek ihtiyaçtı). İki koşum: (1) elle-simülasyon (CC ajan-içinden /goal'u göremedi — ders: kullanıcı-komutları ajan envanterinde görünmez; 2 turda PASS, V43 6. vaka onarıldı, $2.45/~10dk); (2) GERÇEK /goal (Salih terminalden): ✔ Goal achieved · 1 tur · 1 dk · 5,3K token — hook kuruldu, evaluator durma anında koşulu doğruladı, paralel-oturum yarış-farkını no-op stash doğrulamasıyla temiz kapattı. Evaluator kriteri deterministikti (script PASS + exit 0) — "done yazılamıyorsa /goal kurulamaz" ilkesi sahada doğrulandı. Öğrenim satırı wiki sayfasında; raporlar: cc/rapor-2026-07-15-2.md + cc/defter.md.
 **İş:** Gerçek, küçük bir görevde `/goal` + tur limiti. Aday — dayatma değil, tercih (5) hâlâ senin: PortRisk Sprint 1'in ilk dilimi, *"/goal: yfinance ile 15 enstrümanın kapanış fiyatlarını çeken fonksiyon yazılsın, pytest yeşil; 10 turda dur"* (ön-koşul: `python --version` — hâlâ hiç koşulmadı). Deterministik kriter hazır: test. Alternatif istersen PortRisk-dışı küçük bir görev de olur.
 **DONE (07-02 tanımı):** Koşu tamamlandı + 3-5 cümle öğrenim wiki sayfasına işlendi.
 
