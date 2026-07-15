@@ -56,7 +56,8 @@ Her fazın kendi DONE tanımı var. Bu bilinçli: konunun özü zaten "done tan�
 **İş:** Gerçek, küçük bir görevde `/goal` + tur limiti. Aday — dayatma değil, tercih (5) hâlâ senin: PortRisk Sprint 1'in ilk dilimi, *"/goal: yfinance ile 15 enstrümanın kapanış fiyatlarını çeken fonksiyon yazılsın, pytest yeşil; 10 turda dur"* (ön-koşul: `python --version` — hâlâ hiç koşulmadı). Deterministik kriter hazır: test. Alternatif istersen PortRisk-dışı küçük bir görev de olur.
 **DONE (07-02 tanımı):** Koşu tamamlandı + 3-5 cümle öğrenim wiki sayfasına işlendi.
 
-### FAZ 3 — `/loop` tanışması (opsiyonel · 10 dk)
+### FAZ 3 — `/loop` tanışması (opsiyonel · 10 dk) — **DONE (2026-07-15)**
+> Kapanış kaydı: `/loop 2m verify-push raporla` 3+ tur koştu (Salih). Not: prompt yalnız "raporla" dediği halde CC her turda "onarayım mı?" sordu — cevapsızlıkta harekete GEÇMEDİ (3 turda tutarlı) ama sınır talimat-düzeyinde kaldı; ders: rapor-loop'una sınır açıkça yazılır ("ASLA onarma, yalnız raporla") ve asıl güvence mimariden gelir (yazma-yetkisiz ortam > talimat) — P16-P17 + K-009 otonomi-merdiveninin canlı gerekçesi. Yakalanan FAIL bilinen paralel-vardiya yarış sınıfıydı; onarım /goal satırıyla.
 **İş:** Oturumdayken kısa aralıklı bir `/loop` başlat, davranışı gör, iptal et. Amaç sadece hissetmek; kalıcı bir şey kurmak değil.
 **DONE:** Bir `/loop` başlatıldı + iptal edildi + 1 cümle not.
 
