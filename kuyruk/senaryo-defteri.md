@@ -78,3 +78,11 @@
 - **Seçim:** Salih (Katman 1, 07-17 Cowork günaydın): iki Carvis düzeltmesi (ölçekli karşıtlık + aygıt şartı) ONAY + canlılık şartı eklendi (bilimsel temelsiz / kesin çürütülmüş pozisyon karşıt-kaynak olamaz). Tüzük m.37 ek fıkrası imzalandı; görünürlük: bu oturum + bu kayıt.
 - **Gözlem:** ilk uygulama = sıradaki ölçek-eşiği üstü karar; izlenecek metrik = yakınsama-kalitesi (zıt temeller aynı eyleme çıkıyor mu → gerçek triangülasyon sayacı).
 - **Ders:** denetim katmanı EKLEMEK yerine üretim kuralı DEĞİŞTİRİLDİ — ucuz-yapısal çözüm pahalı-denetimsel çözümü yendi; dünkü panelin kendi bulgusu (§9.5) kendi revizyonunu üretti (sistem kendi çıktısından öğrendi — m.35 tezinin küçük bir örneği).
+
+### 2026-07-17 · P1 devri · okuma-sırası / kararlı-prefix kararı
+- **Bağlam:** P1 öğrenme oturumu "kapsül-önce okuma cache'i çürütüyor, sırayı ters çevir" önerisiyle devretti (Model B, ~8× iddialı). m.40b dış araştırma: resmi prompt-caching dokümanı — TTL en fazla 1 saat (cache güne taşınmaz) + oturum-içi transkript append-only (okuma sırası oturum-içi cache'i bozmaz) → iddia interaktif sınıfta geçersiz, TTL-içi tekrar-koşum sınıfında (loop/Routine/ajan filosu) geçerli.
+- **Model A (statüko):** 0 maliyet · ders uygulamasız kalır | **Model B (CLAUDE.md okuma sırası şimdi değişir):** ~30 dk + Katman-1 çekirdek değişimi · bugünkü kazanç ~0 · "kapsül İLK okunur" çapası bozulur (m.40c YÜKSEK sınıf) | **Model C (sınıf-ayrımı):** interaktifte statüko; kararlı-prefix/değişken-suffix OTOMASYON sınıfının tasarım standardı (K-009 gündemi) + ilk loop koşumunda /usage ölçümü → ✅ C
+- **Karşıt-temel (m.37 ek — İLK saha kullanımı):** öneri beklenen-maliyet/amortisman zemininde; zıt zemin 1 = ampirist ölçüm-önce okul (aygıt: kontrollü /usage ölçümü — türetilmiş 8×'e de TTL analizine de ölçümsüz güvenme) · zıt zemin 2 = minimax/worst-case (çekirdek-bozulma maliyeti ≫ cache kaybı → B aleyhine). Her iki zıt temel C'de kesişti — gerçek triangülasyon; canlılık şartı sağlandı.
+- **Seçim:** C (Salih, Katman 1 — 07-17 Cowork ana-sıra: "kalanına onay"). Görünürlük: bu oturum + bu kayıt.
+- **Gözlem:** bekliyor (ilk gerçek loop/Routine koşumunda /usage açılış-maliyeti).
+- **Ders:** yan-oturum türetilmiş rakamı ("8×") dış-doğrulamadan karara girmedi — m.41 + m.40b hattı çalıştı; ders (prefix-invalidation) yanlış değildi, uygulanma SINIFI yanlıştı.
