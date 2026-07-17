@@ -4,7 +4,7 @@
 
 ## Ön-koşul kapısı — P0 (REVİZE 07-15: pasif-okuma oturumlarıyla işlenir; Karpathy videoları Salih'in kendi hattı, Gemini transkriptle — P0 DONE'una bağlı değil)
 Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karşılığı. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor.
-**P0 (a+b) DONE — 07-15 Opus öğrenme oturumu; Salih "sezgisel olarak tamam" beyanı.** Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`. Sıradaki oturum: P1.
+**P0 (a+b) DONE — 07-15 Opus öğrenme oturumu; Salih "sezgisel olarak tamam" beyanı.** Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`. P1 DONE (07-17, ders: `dersler/2026-07-17-P1-token-ekonomisi.md`; devir: `raporlar/vardiya-teslim-2026-07-17-ogrenme-P1.md`). Sıradaki oturum: **P2 (KV-cache, temperature) [O]**.
 **Mini-teşhis SONUÇLANDI (07-15, ana-sıra oturumunda):** 12/12 kontrol noktası bulanık → P0 sıfırdan. Katman-2 kararı: P0 ikiye bölündü (m.21):
 - **P0-a — Transformer'ın içi** [O; RoPE alt-başlığı S]: tahmin döngüsü · embedding · self-attention Q/K/V · causal mask · multi-head · FFN/residual/layernorm · pos-emb↔RoPE. Durum: **DONE** (Opus oturumu 07-15) — bulanık bloklar (3 Q/K/V, 4-5 mask/multi-head, 6-7 FFN/pos-emb) v2 görselli telafi edildi + RoPE [S] ilk geçiş yapıldı; DONE kapısı geçti. Ders kayıtları: `dersler/2026-07-15-P0a-transformer-ici.md` (v1) + `dersler/2026-07-15-P0-opus-oturumu.md` (telafi).
 - **P0-b — Tokenizer + eğitim hattı** [O; eğitim hattı S]: BPE · tokenizer≠model · tuzaklar · special token'lar · pretraining/SFT/RLHF + halüsinasyon kökü. Durum: **DONE** (Opus oturumu 07-15) — 2 blok v2 görselli işlendi; BPE the-örneği tam açıldı. Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`.
@@ -12,7 +12,7 @@ Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karş
 ## Omurga (P1–P19 ≈ ~49h; bağımlılık-sıralı)
 | P | Oturum | Tek-satır DONE | Eksen | ~Süre | Derinlik | Durum |
 |---|---|---|---|---|---|---|
-| P1 | Token ekonomisi & bağlam=maliyet | prompt-cache prefix-invalidation kuralı + m.20/V37 = maliyet-mühendisliği açıklanır | L7+L1 | 2.5h | [T] | — |
+| P1 | Token ekonomisi & bağlam=maliyet | prompt-cache prefix-invalidation kuralı + m.20/V37 = maliyet-mühendisliği açıklanır | L7+L1 | 2.5h | [T] | **DONE (07-17)** |
 | P2 | Inference & sampling: KV-cache, temperature | KV-cache bağlamı neden pahalılaştırır + ajanlarda düşük-temperature gerekçesi | L8 | 2.5h | [O] | — |
 | P3 | RoPE & uzun-context, lost-in-the-middle | ZtH pos-emb ↔ RoPE farkı + 200-satır eşiğinin mekanik nedeni | L8+L1/L2 | 2.5h | [O] | — |
 | P4 | Neden halüsinasyon | eğitim-kaynaklı neden → V8/V26'nın varoluş gerekçesi | L8 | 2h | [S] | — |

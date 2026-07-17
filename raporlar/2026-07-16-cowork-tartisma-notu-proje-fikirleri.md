@@ -28,3 +28,19 @@ Salih: internetten Atlas'la, **kronolojik zorluk partisyonlarına** ayrılmış 
 
 ## Sonraki adım (Salih'te)
 Cowork'te bu notu + iki raporu aç → yukarıdaki 6 gündem maddesini tart → karar verdiklerin seçim turuyla/karar formatıyla (kaynak+gerekçe+geri-açma) kanona girer, pano kartı o zaman açılır.
+
+
+---
+
+## KARAR KAYDI (2026-07-17, Cowork ana-sıra oturumu — Salih, Katman 1)
+
+Gündemin 6 maddesi karara bağlandı (tam gerekçeler oturum kaydında; senaryo-defterine ayrıca blok düşüldü):
+
+1. **Çerçeve:** yakın vade çapası kariyer/CV, nihai hedef "her proje yapılabilir" kapasitesi — S0-S4 kurgusu teyit.
+2. **Tek-flagship (m.13): Model C** — havuz şimdilik fikir kalır, BUGÜN proje açılmaz (07-15 odak kararı korunur); "artık önemli" tetiği çekildiğinde açılacak ilk iş ŞİMDİDEN sabitlendi: **S0 kişisel-portföy faktör-analizi, PortRisk Sprint 1 ön-dilimi olarak** (K-002 kartına işlendi).
+3. **Çekirdek-örgü ONAY** (PortRisk yapılış hattı olarak): faktör-analizi → GARCH-VaR → portföy-opt → sağlam-backtest → PortRisk v2 flagship. "2-3 derinlemesine eser" adayları (kilitli değil, S0-S1 koşarken revize): PortRisk v2 · sağlam-backtest çerçevesi · Türkçe-LLM-finans-eval.
+4. **Katman-1 kapıları ONAY** — para akışı / lisanslı veri / kişisel-veri fikirlerine kutuda "Katman-1 kapılı" damgası.
+5. **Süre kalibrasyonu ONAY (şerhli):** S-tier tahminleri deneysel damgalı; katsayı ilk 2-3 gerçek koşumdan türetilir (K-020 sahası). Salih şerhi: "yöntem yeterince içime yatmadı, sonra döneceğiz" — yöntem revizyonu açık madde.
+6. **G0-G6 raporu:** uykuya YATMAZ — K-009/K-010 açılış gündemine pointer'la bağlandı (pano K-009 satırı).
+
+Branch main'e merge edildi; HAM FİKİR statüsü değişmedi — build'e giriş hâlâ seçim turundan.
