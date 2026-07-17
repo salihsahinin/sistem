@@ -14,7 +14,7 @@
 - **P0-P6 planı geçerli** (`raporlar/partisyon-plani-P0-P6-2026-07-14.md`); P1 revize: JARVIS+öğrenme çifti (senaryo-defteri 07-15 — eski Brier tahmini revize DONE ile ölçülecek).
 
 ## Açık borçlar
-- **V39 kavram-sözlüğü dar koşumu: ONAYLANDI (07-17) → görev emri `cc/gorev-2026-07-17-1.md`** (12 terim · Model B konfig: ~400-600K tavan · V26 örneklemli · V54 zorlama-eşleştirme yasağı bağlayıcı · /usage zorunlu). KOŞUM BEKLİYOR: Salih terminalden, CC C:\JARVIS kökünden.
+- **V39 kavram-sözlüğü dar koşumu KOŞULDU + İŞLENDİ (07-17):** rapor `cc/rapor-2026-07-17-1.md` — **TAM=9/KISMİ=3/X=0** (K-017 "7/10 eşleşmesiz" TERSİNE döndü); 2 özgünlük adayı (3-boyutlu beklenti vektörü · koşum-çıktısı ayrımı); taşınabilir-yöntem listesi K-020 girdisi. $7.16 · ~19,5 dk. Sözlüğe dış-eşleşme kolonu eklenmesi = Katman 1 (sözlük donmuş) — Salih kararı bekliyor. AYRICA açık borç: wiki index bayat (4 sayfa index-dışı: orca · loop-engineering · sozluk · kokenler-karpathy).
 - K-019 ilk boş vardiyada · wiki borçları (tez #0 + çelişki kapısı sayfası) · KILAVUZ okuma (Salih) · tetikliler: K-011 (gün Salih'te) · K-004 (Kasım) · PAT ~10 Ekim ölür.
 
 ## Sonraki ilk iş
