@@ -6,6 +6,7 @@
 ### [tarih] · [kart/iş] · karar adı
 - **Bağlam:** tek satır.
 - **Model A:** ~token · ~süre · beklenen kalite | **Model B:** ... | **Model C:** ... → ✅ öneri + tek satır gerekçe
+- **Karşıt-temel (m.37 ek, 07-17):** Model X ← [karşıt varsayım/okul], önerilenin [varsayımına] zıt; canlılık şartı: bilimsel temelli + bugün savunulabilir
 - **Seçim:** X (kim: Salih onayı / Carvis Katman-2) — görünürlük: hangi oturumda sunuldu
 - **Gözlem (koşum sonrası):** token gerçek · süre gerçek · kalite [türetilmiş]
 - **Ders:** tek satır (ingest hammaddesi)
@@ -70,3 +71,10 @@
 - **Seçim:** C (Salih, 07-15 ana-sıra oturumu: "model c'den devam edeceğiz"). Mimari sınırlar: connector'lar çıkarılır · yalnız jarvis reposu · rapor-only prompt (pozitif yetki listesi) · claude/ push kısıtı korunur.
 - **Gözlem (TAMAMLANDI 07-17 — trigger kaydı + Salih'in yapıştırdığı koşum çıktısı):** ateşlenme 16 Tem 09:00:18 (GMT+3), tam zamanında; tek-seferlik kendini kapattı (`run_once_fired` — Model C sınırı mimaride tuttu). süre · token: RAPORLANMADI (rapor-only prompt'ta /usage yoktu; bulut Routine'de maliyet gözlemi yapısal zayıf — K-019/K-009 notu). kalite [türetilmiş]: YÜKSEK — 25-satır limitine uydu · tüm maddeler commit-gerçeğiyle uyumlu, halüsinasyon 0 · sınır disiplini tam (dosya değişikliği/commit/push yok, origin'de iz yok) · öz-referans doğru ("bu koşum ilk çalıştırmanın kendisi"). Tek kesinlik şerhi: "kapsam (1)-(4) DONE" ifadesi madde 3'ü erken kapatıyordu — raporun kendi (2)(a) satırı bunu düzeltti.
 - **Ders:** pozitif-yetki-listesi + rapor-only prompt İLK gözetimsiz koşumda sınır ihlalsiz çalıştı; tek-seferliğin kendini kapatması "mimari > talimat"ın Routine-katmanı kanıtı. **FAZ 4 + K-015 madde 3 KAPANDI (07-17).** Açık ders: bulut-Routine sınıfında token kolonu yapısal boş kalıyor — maliyet-gözlem mekanizması K-009 tasarım girdisi.
+
+### 2026-07-17 · m.37 · karşıt-temel şartı (kanon revizyonu)
+- **Bağlam:** Tractatus oturumu §10 önerisi + Salih 07-17 netleştirmesi: "karşıt-görüş içselleştirilmiş" = önerilen modelin matematiksel felsefesine ZIT felsefeden kurulmuş en az 1 model.
+- **Seçenekler:** karar-başına adversarial denetim paneli (ilk Carvis okuması; ~600K token sınıfı, m.37'nin varlık sebebini ihlal) | model-ÜRETİM kuralı: zıt-temelli en az 1 model (ucuz yapısal kısıt; §9.5 ortak-kurgu bulgusunu mekanizmaya çevirir) | statüko → ✅ üretim kuralı + ölçekli karşıtlık + canlılık şartı
+- **Seçim:** Salih (Katman 1, 07-17 Cowork günaydın): iki Carvis düzeltmesi (ölçekli karşıtlık + aygıt şartı) ONAY + canlılık şartı eklendi (bilimsel temelsiz / kesin çürütülmüş pozisyon karşıt-kaynak olamaz). Tüzük m.37 ek fıkrası imzalandı; görünürlük: bu oturum + bu kayıt.
+- **Gözlem:** ilk uygulama = sıradaki ölçek-eşiği üstü karar; izlenecek metrik = yakınsama-kalitesi (zıt temeller aynı eyleme çıkıyor mu → gerçek triangülasyon sayacı).
+- **Ders:** denetim katmanı EKLEMEK yerine üretim kuralı DEĞİŞTİRİLDİ — ucuz-yapısal çözüm pahalı-denetimsel çözümü yendi; dünkü panelin kendi bulgusu (§9.5) kendi revizyonunu üretti (sistem kendi çıktısından öğrendi — m.35 tezinin küçük bir örneği).
