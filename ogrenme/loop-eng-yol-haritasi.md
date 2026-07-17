@@ -61,9 +61,10 @@ Her fazın kendi DONE tanımı var. Bu bilinçli: konunun özü zaten "done tan�
 **İş:** Oturumdayken kısa aralıklı bir `/loop` başlat, davranışı gör, iptal et. Amaç sadece hissetmek; kalıcı bir şey kurmak değil.
 **DONE:** Bir `/loop` başlatıldı + iptal edildi + 1 cümle not.
 
-### FAZ 4 — İlk Routine (= aktif madde 3)
-**İş:** Transkript pipeline sabah koşusu: yeni içerik kontrolü → indir → transkribe → RAG'e ekle → Homebase'e özet; `/schedule` ile buluta.
-**DONE (07-02 tanımı):** Routine oluşturuldu + ilk otomatik koşu doğrulandı.
+### FAZ 4 — İlk Routine (= aktif madde 3) — **DONE (2026-07-17)**
+> Kapanış kaydı: hedef revize edilmişti (Homebase emekli → transkript-pipeline bayat; yerine öğrenme-amaçlı Model C: rapor-only sabah brifingi, tek-seferlik). Routine 07-15 gece tarayıcıdan kuruldu (Carvis sürdü, Salih izledi); 16 Tem 09:00:18'de tam zamanında ateşlendi, `run_once_fired` ile kendini kapattı — kalıcı otomasyon güvencesi talimattan değil mekanizmadan. Çıktı kalitesi yüksek (commit-gerçeğiyle uyumlu, sınır ihlali yok, 25-satır limiti tutuldu); token/süre raporlanamadı (bulut Routine'de /usage yok — K-009 maliyet-gözlem girdisi). Tam gözlem: `kuyruk/senaryo-defteri.md` Faz-4 bloğu. Kurulum dersleri (GitHub App kapsamı · connector sızması · mikrofon tuzağı): kapsül 07-15 + vardiya raporu.
+**İş:** ~~Transkript pipeline sabah koşusu~~ (revize: rapor-only sabah brifingi, tek koşum). `/schedule`/Routine ile buluta.
+**DONE (07-02 tanımı, revize 07-15):** Routine oluşturuldu + ilk otomatik koşu doğrulandı. ✅
 
 ### FAZ 5 — Kapanış + backlog kapısı
 **İş:** 3 aktif madde kapandı → görev biter; wiki sayfasına kapanış satırı. Backlog maddeleri (auto mode, skill-as-verifier, ikinci-ajan review…) yalnız tetikleyicileri gerçekleşince ya da sen açıkça çekince açılır — kural değişmedi.
