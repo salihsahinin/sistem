@@ -14,7 +14,7 @@
 - **P0-P6 planı geçerli** (`raporlar/partisyon-plani-P0-P6-2026-07-14.md`); P1 revize: JARVIS+öğrenme çifti (senaryo-defteri 07-15 — eski Brier tahmini revize DONE ile ölçülecek).
 
 ## Açık borçlar
-- **V39 kavram-sözlüğü dar koşumu:** gorev-2 adayı (7/10 terim dış-eşleşmesiz: tek-nokta değişimi=ablation ailesi · credit-assignment · transfer/hizalama · bağlı-çift=çok-amaçlı optimizasyon) — Salih kararı bekliyor; V26 örneklem-denetimli, ~400-600K token tahmini.
+- **V39 kavram-sözlüğü dar koşumu: ONAYLANDI (07-17) → görev emri `cc/gorev-2026-07-17-1.md`** (12 terim · Model B konfig: ~400-600K tavan · V26 örneklemli · V54 zorlama-eşleştirme yasağı bağlayıcı · /usage zorunlu). KOŞUM BEKLİYOR: Salih terminalden, CC C:\JARVIS kökünden.
 - K-019 ilk boş vardiyada · wiki borçları (tez #0 + çelişki kapısı sayfası) · KILAVUZ okuma (Salih) · tetikliler: K-011 (gün Salih'te) · K-004 (Kasım) · PAT ~10 Ekim ölür.
 
 ## Sonraki ilk iş

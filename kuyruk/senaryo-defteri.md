@@ -86,3 +86,11 @@
 - **Seçim:** C (Salih, Katman 1 — 07-17 Cowork ana-sıra: "kalanına onay"). Görünürlük: bu oturum + bu kayıt.
 - **Gözlem:** bekliyor (ilk gerçek loop/Routine koşumunda /usage açılış-maliyeti).
 - **Ders:** yan-oturum türetilmiş rakamı ("8×") dış-doğrulamadan karara girmedi — m.41 + m.40b hattı çalıştı; ders (prefix-invalidation) yanlış değildi, uygulanma SINIFI yanlıştı.
+
+### 2026-07-17 · V39 dar koşumu · efor/bütçe konfigürasyonu
+- **Bağlam:** V39 kavram-sözlüğü dar koşumu Salih onayı aldı (07-17); konfig Carvis'te (Katman 2). Kapsam dar: ≈12 terim, hedef = dış-eşleşme haritası.
+- **Model A (düşük, ~200-300K · 4 ajan · kalite ~6/10):** ucuz · atıf-hatası riski yüksek (Atlas koşumlarının ana hata sınıfı) | **Model B (orta-yüksek, ~400-600K · 6 alan-ailesi ajanı + Opus sentez + V26 örneklem doğrulama · kalite ~8/10):** dar kapsama uygun ölçek | **Model C (yüksek, ~1M+ · terim-başına ajan + tam doğrulama · kalite ~8,5/10):** marjinal kazanç dar kapsamda düşük (K-017 dersi: doğrulama katmanı marjinali örneklemle korunuyor) → ✅ B
+- **Karşıt-temel (m.37 ek):** öneri maliyet/kalite-dengesi (beklenen-değer) zemininde; zıt zemin = worst-case bilgi-maliyeti (yanlış iç-terminoloji köklenirse ileride toplu yeniden-adlandırma + yanlış-yöntem ithali maliyeti → C'yi savunur). Kesişim: B + zorunlu V26 denetim + V54 etiketsizlik kuralı (zorlama-eşleştirme birincil aranan hata) — worst-case'in asıl korkusu yanlış-eşleşme, o da denetim şartıyla kapanıyor; canlılık şartı sağlandı.
+- **Seçim:** B (Carvis, Katman 2) — görünürlük: 07-17 Cowork oturumu + görev emri `cc/gorev-2026-07-17-1.md`.
+- **Gözlem:** bekliyor (koşum Salih terminalinden; /usage zorunlu — defter dersi).
+- **Ders:** —
