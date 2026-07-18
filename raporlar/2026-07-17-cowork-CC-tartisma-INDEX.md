@@ -23,5 +23,5 @@
 - Salih 07-17: tekrarlayan-küme→skill fikri kutusu.
 - Salih 07-18: bu raporlar branch'e commit'lenebilir (bulunabilirlik); merge/canon Fable'da.
 
-## Not (açık borç)
-Atlas "skill-metodolojisi" şeridi hâlâ koşuyor → rapor #4 §9 (uçtan-uca akış + ek tuzaklar) dönünce güncellenecek.
+## Not
+Rapor #4 §9 (Atlas skill-metodolojisi: EVAL-ÖNCE akış · description zanaatı · 15 tuzak · kompozisyon gerçeği + `karar-hatti` dersleri) DONE — tüm dış-tarama tamamlandı. Bu oturumun bütün araştırma şeritleri kapandı.

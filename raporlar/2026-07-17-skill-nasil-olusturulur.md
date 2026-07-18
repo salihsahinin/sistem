@@ -1,6 +1,6 @@
 # Skill Nasıl Oluşturulur — Metodoloji Raporu (TARTIŞMA; Fable ile)
 
-> **Mod:** rapor · KARAR YOK. **COMMIT: Salih 07-18 izin verdi** (branch'e, PC'den bulunabilirlik); **merge→main/canon = Fable Cowork süzgeci** (m.41). Amaç: üreteceğimiz skill KOMBİNASYONLARINA (ör. `karar-hatti`) ders. Kaynak: claude-code-guide (Claude Code otoriter mekaniği) + Atlas skill-desenleri (§8 skill-fikri-kutusu raporu) + Atlas skill-metodolojisi (koşuyor — §9'a işlenecek).
+> **Mod:** rapor · KARAR YOK. **COMMIT: Salih 07-18 izin verdi** (branch'e, PC'den bulunabilirlik); **merge→main/canon = Fable Cowork süzgeci** (m.41). Amaç: üreteceğimiz skill KOMBİNASYONLARINA (ör. `karar-hatti`) ders. Kaynak: claude-code-guide (Claude Code otoriter mekaniği) + Atlas skill-desenleri (§8 skill-fikri-kutusu raporu) + Atlas skill-metodolojisi (§9, DONE).
 
 ---
 
@@ -68,18 +68,57 @@
 - **Test:** proje-scope skill + `skillOverrides: {x: off}` ile with/without baseline; sonra skill-creator eval.
 - **Dağıtım:** proje (git commit, takım) · kişisel · plugin (marketplace/agentskills.io) · managed (org, öncelikli).
 
-## 9. Tuzaklar tablosu (Atlas skill-metodoloji şeridi dönünce derinleşir)
-| Tuzak | Kaçınma |
-|---|---|
-| Aşırı-kapsam (1 skill her şeyi yapar) | tek-sorumluluk; bileşeni zincirle (§5) |
-| Şişmiş SKILL.md (>500 satır) | progressive disclosure; veriyi referans dosyaya (§3) |
-| Yanlış-tetik | description dar/geniş → 20-sorgu eval (§6) |
-| Deterministik'i LLM'e bırakma | kayıt/commit → script (§4) |
-| Yan-etkiyi auto'ya açık bırakma | `disable-model-invocation: true` (§4) |
-| Eval'siz yayın | skill-creator benchmark (§6) |
-| Versiyon kayması | `version` alanı + kör A/B |
+## 9. Atlas metodoloji bulguları (DONE) — üretim akışı + tuzaklar + kompozisyon
+> Kaynak güven: **[D]** doğrudan resmi doküman/GitHub · **[A]** arama-özeti (site 403, teyide muhtaç).
 
-*[Atlas skill-metodoloji şeridi koşuyor → uçtan-uca üretim akışı + ek tuzaklar + kombinasyon-ilkeleri buraya işlenecek.]*
+### 9.1 ★ EVAL-ÖNCE üretim akışı (resmi, sezgiye aykırı) [D]
+*"Önce eval yaz, SONRA doküman"* — hayali gereksinim yazma. 5 adım: (1) skill'siz koştur, boşluğu bul · (2) 3 senaryo eval'i yaz · (3) baseline ölç · (4) **minimal** gövde (eval'i geçecek kadar) · (5) iterasyon. **description ilk yazılan DEĞİL; eval ilk, description ince-ayarı EN SON.** **Claude A/B deseni:** Claude A yazar → Claude B taze bağlamda kullanır → gözlemle → A'ya geri taşı. *Not [D]: Claude skill formatını doğal bilir — meta-skill şart değil; skill-creator yalnız eval/paketleme iskelesi.* **Carvis dersi:** bizim kalıplar (çelişki, 3-model) zaten gözlenmiş tekrar → adım 1-2 tamam, doğrudan "eval + baseline"la başlarız.
+
+### 9.2 Description zanaatı — kesin kurallar [D]
+- **3. ŞAHIS her zaman** ("Extract text..." ✓, "I can help..." ✗) — sistem-prompt'a enjekte edilir.
+- **NE + NE ZAMAN:** `[yetenek] + "Use when [gerçek kullanıcı ifadeleri / uzantı / jargon]"`. Kullanıcının GERÇEKTEN yazdığı ifadeler = tetik-anahtarı.
+- **≤1024 karakter** (resmi; §1'deki 1536 [A] doğrulanmadı) · **gerund isim** (`processing-pdfs`) · `helper/utils` yasak.
+- **"özet DEĞİL, NE ZAMAN tetiklenir'in tarifi"** (Anthropic) — en yaygın hata özet-yazmak (az-tetikleme).
+- **Denge:** Claude az-tetikleme eğilimli → hafif "iddialı" yaz, AMA **negatif tetik** ("X'te KULLANMA") ile aşırı-tetiklemeyi kes (React skill'i Vue'yu dışlar).
+
+### 9.3 Gövde [D]
+`<500 satır`; *"bağlam penceresi kamu malı"* + *"Claude zaten akıllı — yalnız bilmediğini ekle"*; her cümle "token'ı hak ediyor mu?". **En yüksek-sinyal bölüm = "Gotchas"** (zamanla biriken gerçek hata noktaları). Referanslar **bir seviye derin** (iç içe ✗); >100 satır referansa İçindekiler. Emir-kipli numaralı adım + **checklist deseni** (kritik adım atlanmasın). **Tek skill = tek kategori/sorumluluk** (Anthropic: çok-kategoriye yayılan ajanı şaşırtır).
+
+### 9.4 Script serbestlik-derecesi + yan-etki [D]
+Serbestlik = işin kırılganlığı: **yüksek** (metin talimat, çok geçerli yol) · **orta** (parametreli) · **düşük** (kesin script, "komutu değiştirme"). *"Solve don't defer"* · voodoo-constant yok · çalıştır-mı-oku-mu açık · doğrulama script'i ayrıntılı hata döndürür. **plan-validate-execute** (yıkıcı/toplu iş): analiz → **plan dosyası** → **script'le doğrula** → uygula → teyit. → **kayıt/commit adımımız tam bu sınıf**: düşük-serbestlik script + m.31 publish/commit kapısı doğal oturur.
+
+### 9.5 Tuzaklar (15) [D/A]
+| # | Tuzak | Kaçınma |
+|---|---|---|
+|1| Şişmiş SKILL.md / context-rot | <500 satır, referansa böl |
+|2| Eval'siz yayın | ≥3 eval + baseline ÖNCE |
+|3| Description'ı özet yazmak (az-tetik) | "Use when" + gerçek ifadeler |
+|4| Aşırı-tetikleme (dışlamasız pushy) | negatif tetik |
+|5| Deterministik'i LLM'e bırakma | düşük-serbestlik script |
+|6| Aşırı-kapsam (çok-iş) | tek sorumluluk |
+|7| Çok seçenek sunma (karar felci) | bir varsayılan + kaçış |
+|8| Derin iç içe referans | bir seviye derin |
+|9| Kural yerleşimi (üstte, kullanımdan uzak) | kuralı kullanıldığı adıma koy |
+|10| Zaman-duyarlı bilgi | "Old patterns" + `<details>` |
+|11| Windows-yol / kurulu-varsayım | ileri-slash, bağımlılık listele |
+|12| Voodoo constants | her sabiti gerekçelendir |
+|13| Skill sprawl (çoğaltma) | periyodik audit + budama |
+|14| Versiyonsuzluk | erken versiyonla, geri-dönebil |
+|15| Çok-model test etmeme | Haiku/Sonnet/Opus'ta test |
+
+### 9.6 ★ KOMPOZİSYON GERÇEĞİ + dersler (Salih hedefi) [A/D]
+- **Çağrı GERÇEĞİ:** skill'ler birbirini literal çağırmaz — runtime'da `skill.call()` YOK. İki yol: **model-güdümlü** (Claude description'ları okuyup seçer) veya **literal** (`/skill-adı`). Orkestratör zincirlemeyi **gövde-adımlarıyla** yapar ("şu dosyayı oku / şu subagent'ı spawn et / şu script'i sırayla çalıştır"). Dosyalar OTO yüklenmez — gövde açıkça söyler.
+- **3 desen:** skill-chain (bağımsız yeniden-kullanılabilir) · sub-agent (delege/paralel; ~20k token/ajan ek-yük [A doğrulanmadı]) · **orchestrator/router** (koşullu alt-skill seçer).
+- **OneWave orkestratör dersi [D]:** YAML iş-akışı · topolojik DAG · state handoff · **hata yönetimi = güvenilirliğin kalbi**: her adım çıktıyı şemaya doğrular; başarısızlıkta `error` alanı yaz, **"fail fast and loud"**, retry-backoff; orkestratör bozuk veriyle ilerlemez, hata-skill'ine yönlendirir.
+- **Gevşek bağlaşım:** çocuk-skill boru-hattını bilmez; **sabit-format handoff kontratı** (JSON/MD şema) → her skill bağımsız test edilebilir.
+- **TEK skill mi ZİNCİR mi:** her-zaman-birlikte + tek-sorumluluk → tek skill (gövde-içi numaralı adım yeterli) · bağımsız-yeniden-kullanım / paralellik / izolasyon → zincir/orkestratör. **Pratik sınır ~3-4 skill** [A doğrulanmadı] — üstü handoff yönetilemez.
+- **`karar-hatti` boru-hattına ders (sentez):** orkestratör-skill + gevşek-bağlı alt-skill'ler (tek dev skill DEĞİL) · **çelişki-kapısı = koşullu-yönlendirme** (çelişki→"rapor+Salih onayı"na dallan, deterministik) · **3-model = paralel-fan/sub-agent** (karşıt-gömülü) · **kayıt = yan-etkili terminal → script + plan-validate-execute + m.31 kapısı** · handoff = sabit format + `error` alanı + "fail loud" · description bizim gerçek ifadelerimiz ("çelişki/üç-model/karar üstüne karar") + negatif tetik ("tek-atımlık küçük görevde kullanma", m.25 uyumlu).
+
+### 9.7 Yayın-öncesi checklist [D]
+Description spesifik+anahtar-terimli+NE+NE ZAMAN · gövde<500 · detay ayrı dosya · zaman-duyarlı yok · tutarlı terim · referans bir-seviye · ≥3 eval · Haiku+Sonnet+Opus test · gerçek-senaryo test · **+bizim:** negatif tetik var mı · tek-kategori mi · yan-etki script'te+onay-kapısında mı · zincir-mi-tek-skill gerekçeli mi · handoff sabit-format mı.
+
+### 9.8 Güvenilirlik [Atlas]
+[D] resmi: name≤64 · desc≤1024 · gövde<500 satır · skill-creator akışı · OneWave orkestratör. [A] doğrulanmadı: subagent ~20k/3-4× token · ~3-4 skill sınırı · 1536 listeleme-kesme · medyan token değerleri. WebFetch 403 (Anthropic blog/Lessons tam-metni [A]).
 
 ## 10. `karar-hatti` için somut ders (özet)
 Yapı §5'teki gibi: `celiski-kapisi`/`karar-modeli`/`karar-kaydet` ayrı (kayıt `disable-model-invocation:true`), `karar-hatti` = `context:fork` orkestratör. Gövde emir-kipli + m.38 lojik. Her birine skill-creator eval. Yan-etki = elle-fren.
