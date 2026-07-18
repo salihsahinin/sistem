@@ -1,6 +1,6 @@
 # JARVIS Arayüzü — Çok-Sayfa / İzleyici-Kategorili / Mod-Sayfaları — Rapor (TARTIŞMA)
 
-> **Mod:** rapor · KARAR YOK · commit onaylı (Salih 07-18); nihai karar = Fable (m.41). Kaynak: Salih 07-18 — "karar arayüzünün bir başka kısmı koşan ajanlar/model/effort/görev/usage tablosu (senin de okuduğun kısım); arayüzde senin gördüklerin + benim özel sayfalarım; ör. 'Konuşarak İnşa Modu 1' sayfası farklı dizayn — yöntemi+yapımını araştır çift atlas, rapora ekle." Atlas 2 şerit: gözlemlenebilirlik (DONE) + rol/mod-adaptif mimari (DONE).
+> **Mod:** rapor · KARAR YOK · commit onaylı (Salih 07-18); nihai karar = Fable (m.41). Kaynak: Salih 07-18 — "karar arayüzünün bir başka kısmı koşan ajanlar/model/effort/görev/usage tablosu (senin de okuduğun kısım); arayüzde senin gördüklerin + benim özel sayfalarım; ör. 'Konuşarak İnşa Modu 1' sayfası farklı dizayn — yöntemi+yapımını araştır çift atlas, rapora ekle." Atlas 2 şerit: gözlemlenebilirlik (DONE) + rol/mod-adaptif mimari (DONE). **+ ANTİTEZ red-team** (§9; 07-18 çift-atlas=tez+antitez kuralı retroaktif eklendi).
 
 ---
 
@@ -72,7 +72,24 @@ Ayrım ekseni = **izleyici (m.28) × aciliyet (op/analitik) × mahremiyet (m.14)
 ## 8. Kanon bağı (özet)
 m.18 (tek veri çok yüz) · m.28 (izleyici iki-düzlem) · G4 (gözlemlenebilirlik) · kararlar-kısmı (rapor 1 §9) · L1 ses (rapor 1) · POP O3 (dashboard) · K-020/K-009 (ölçüm+maliyet-gözlem) · V25 (kurulum değil desen).
 
-## 9. Açık sorular (Salih/Fable — KARAR ALINMADI)
+## 9. ANTİTEZ (çift-atlas karşıt-şerit — 07-18 kuralı retroaktif) — Red-Team + Sentez
+> **Çerçeve:** m.37 karşıt-temelin girdisi; tezi ÇÜRÜTMEK değil en güçlü karşıtını STEELMAN etmek. Tez ile BİRLİKTE okunur, yerine geçmez.
+
+**Top karşı-argümanlar (kaynaklı):**
+- **Dashboard mezarlığı:** panellerin ~%60-70'i kullanılmaz/terk edilir (endüstri-iddiası). Statik-pano "perfidy" — bayatlar, gerçek sorunu değil önceden-tahmini gösterir (Charity Majors, ⚠snippet). Alert/metrik-yorgunluğu sinyali gömer (IBM).
+- **Build-vs-buy bakım-yükü:** özel aracın yıllık bakımı ~%20-30; tek-kullanıcıda da kaçmaz; bu repo private/CV-dışı (m.14) → UI'nin dış-değer üretimi sıfır.
+- **★ Gözlemlenebilirlik paneli GEREKSİZ olabilir:** "koşan-ajan/model/effort/usage tablosu" zaten Claude Code **native OTel**'de yayınlanıyor (birincil-doküman, GÜÇLÜ ayak). Üstelik **şu an canlı ajan YOK** (K-009/K-010 bloke, m.30 kapalı) → gözlemlenecek nesne mevcut değil → şimdi-inşa = boş-panele yatırım = **YAGNI/speculative-generality** (Fowler).
+- **★ Ses + oyun-oynarken-inşa hata:** dikte kodda düşük-doğruluk (ASR sözdizim/jargon/noktalama); Shneiderman (CACM 2000): problem-çözme ile konuşma AYNI beyin-bölgesi → "zor iş konuşmadan yapılır"; ses geçici/bellek-yükü (7±2); **dual-task interference** çakışan bilişsel kaynak İKİ görevi de bozar; kesinti→tam-odak ~23dk + attention-residue (Mark/Leroy). "İkinci-ekranda ciddi inşa" doğrudan çürür.
+
+**Tezin GERÇEKTEN ayakta kaldığı yer (dürüst steelman):** ① navigasyon-ihtiyacı gerçek (ama mevcut markdown/terminal/git-log yeter — bespoke web-UI değil); ② canlı-ajan tablosu **m.30 aktivasyonunda** meşru-değerli (bugün değil — zamanlama); ③ ses **düşük-sözdizim/yüksek-niyet** işinde 3-5x hızlı (fikir-yakalama, `fikir-kutusu` kuyruklama, wiki-düzyazı dikte — kod-yazımı DEĞİL); earcon/read-back doğru azaltıcı.
+
+**SENTEZ (diyalektik — eksen: zamanlama × kapsam):**
+- **Antitez kazanır (bugün, tek-kullanıcı, ajan-öncesi):** gözlemlenebilirlik-sayfasını **ERTELE** (tetik = m.30 yürürlük; o güne dek native-OTel'i hazır-backend'e [SigNoz/Grafana="buy"] bağla, bespoke inşa etme); Salih-özel/mod-sayfaları **kanıt-güdümlü** (m.5, önce tekrarlayan-ağrı sonra sayfa); "oyun-oynarken ciddi inşa" iddiasını **DÜŞÜR**.
+- **Tez kazanır (dar, doğru kapsam):** ses-modu = **niyet-yakalama/triyaj** (kod-yazımı değil); LLM-onarım + sesli read-back zorunlu (geçicilik azaltıcı); navigasyon = mevcut yüzeyi genişlet, somut yetersizlikte bespoke'a terfi.
+- **Tek cümle:** *Rapor 10'un iki fazla-uzanan iddiası — "çok-sayfalı UI'yi ŞİMDİ inşa et" + "oyun oynarken ciddi kod yaz" — YAGNI (zamanlama) ve dual-task/ses-ergonomisi (kapsam) tarafından yıkılır; ama altındaki iki gerçek ihtiyaç (gezilebilir yüzey + boş-zaman niyet-yakalama) mevcut yüzeyi genişleterek ve sesi triyaja daraltarak, bespoke-inşa ve eş-zamanlı bilişsel-çakışma olmadan karşılanır.*
+- ⚠ **Bayraklar:** arxiv 2601.15339 (sesli-kod ASR) erişilemedi/DOĞRULANMADI; "%60-70 / %20-30" endüstri-iddiası (hakemli-değil); Charity Majors snippet-düzeyi. GÜÇLÜ ayaklar: native-OTel (birincil-doküman), Shneiderman (CACM), Gloria Mark/Leroy (hakemli).
+
+## 10. Açık sorular (Salih/Fable — KARAR ALINMADI)
 - Sayfa kategorileri: kesin liste ne (paylaşılan vs Salih-özel hangi sayfalar)?
 - Gözlemlenebilirlik: OTel açılsın mı (CLAUDE_CODE_ENABLE_TELEMETRY=1) yoksa yalnız hook+headless-json JSONL mi?
 - "Konuşarak İnşa Modu 1": ikinci-ekran (telefon) mi, odaktan-bağımsız daemon mı birincil?

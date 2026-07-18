@@ -74,6 +74,22 @@ Atlas'ın çekirdek bulgusu: dört parçanın her biri ayrı olgun literatüre o
 - **m.21 token×zaman:** gece = ucuz-token penceresi (batch); derinlik token-bütçesiyle ölçeklenir. WSJF `İş-Süresi`=zaman, `Gecikme-Maliyeti`=değer.
 - **m.37 yakınsama** (saturation durma-kuralı) · **m.34** (derinlik-log ingest hammaddesi).
 
+## 4b. ANTİTEZ (çift-atlas karşıt-şerit — acc6f737 döndü) — Red-Team + Sentez
+> **Çerçeve:** m.37 karşıt-temel girdisi; steelman. **★ Çarpıcı: antitezin en yıkıcı kanıtları tezin KENDİ dürüstlük-notlarında yatıyor** (403→derin-kaynak çekilemedi; saturation prospektif-öngörülemez; maliyet-rakamları ikincil).
+
+**Top karşı-argümanlar:**
+- **★ METR half-life:** güvenilirlik-eşiği yükseldikçe otonom-ufuk **4-6× KISALIR** (Claude 3.7: %50→~59dk, %80→~15dk). Gözetimsiz-gece tanımı gereği YÜKSEK-güvenilirlik ister → tam otonom-ufkun en daraldığı rejim. "8-saatlik tek gece koşumu" = maksimum bileşik-hata penceresi. ⚠birincil-403, üç-kaynak-çapraz.
+- **★ AI-slop / reviewer-abandonment:** 33.596 agentic-PR: en sık ret = insan hiç-bakmadan-kapatma; %96 AI-koduna tam-güvenmiyor ama yalnız %48 commit-öncesi bakıyor. "Zorunlu sabah-inceleme" darboğazın TA KENDİSİ (kısıt-teorisi: bol-token'ı optimize et, kıt-Salih-dikkatini kötüleştir = anti-optimizasyon).
+- **Satisficing>maximizing (Simon/Klein/Gigerenzer):** eşik-ötesi bilgi kaliteyi İYİLEŞTİRMEZ, harekete-geçmeyi düşürür (analiz-felci); uzman AZ-bilgiyle+HIZLI karar (RPD örüntü-eşleme); less-is-more. → sonsuz-derinlik **tekrarlayan/örüntü-zengin/geri-alınabilir** kararda anti-değer.
+
+**Steelman (tez iki dar-ama-sağlam adada):** ① paralelleştirilebilir, düşük-blast, **doğrulaması UCUZ+NESNEL** iş (PortRisk backtest: pytest+metrik makine-ölçülür; gece-batch=bedava-opsiyon, downside-kapalı, METR-itirazı zararsız çünkü kısa+bağımsız+oto-doğrulanır); ② hakiki yüksek-belirsizlik+yüksek-bahis+**geri-alınamaz** karar (VOI>0 gerçekse derinlik kazanır — Simon/Klein bunlara karşı değil).
+
+**SENTEZ (★ rapor 12'nin blast×geri-alınabilirlik eksenine İKİ dik-eksen ekler):**
+- **Eksen-1 — doğrulama-maliyeti/nesnelliği:** ucuz+nesnel(CI/test)→otonomi güvenli; pahalı+öznel(strateji/tasarım/Salih-yargısı)→HITL zorunlu. **Human-on↔Human-in sınırı blast'tan çok DOĞRULAMA-maliyetiyle çizilmeli.**
+- **Eksen-2 — karar-yapısı:** novel+yüksek-bahis+geri-alınamaz→derinlik değer; tekrarlayan+örüntü-zengin+geri-alınabilir→satisficing kazanır.
+- **İki düzeltme (antitez tezi keskinleştirir, yıkmaz):** ① "uzun-gece-koşumu" YANLIŞ birim → çok sayıda **kısa+bağımsız+checkpoint'li+otomatik-doğrulanan** iş (m.21 zorunlu-önkoşula yükselir; doğrulaması-olmayan iş çalıştırılmaz); ② sonsuz-araştırma freni saturation DEĞİL (öngörülemez) → **sert-bütçe+tur-tavanı** birincil (m.37-A5: tavan-15, %5-eşiği), VOI ikincil.
+- **★ Antitez zaten kanonun içinde:** m.37 yakınsama-klozu = kurumsallaşmış satisficing; çelişki-raporu birebir "her-karar harfiyen = anti-optimizasyon" der → freni saturation'dan tavana taşı.
+
 ## 5. Açık sorular (Salih/Fable — KARAR ALINMADI)
 - Derinlik skalası [S]/[O]/[T] araştırmaya aynen mi taşınsın, yoksa `(TRL, kanıt-seviyesi)` iki-eksen ayrı mı tutulsun?
 - Gece-araştırma Routine olarak mı (K-009 kapısı) yoksa Salih-tetikli tek-atış mı başlasın?

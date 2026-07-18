@@ -73,6 +73,22 @@ Parametreler: token (kurulum) × zaman × beklenen-kalite × RİSK. Karar: point
 - m.8 (silme-yok) → supersedes bağ-tipi; m.34 context-collapse → tipleri monolitik-dondurma, delta-evir.
 - A-MEM (Zettelkasten-hafıza) = yakınsayan-formül raporunda geçen pointer; bu rapor onu somutlaştırır.
 
+## 7b. ANTİTEZ (çift-atlas karşıt-şerit — 07-18 kuralı, a578a97c döndü) — Red-Team + Sentez
+> **Çerçeve:** m.37 karşıt-temel girdisi; steelman. **★ Çekirdek: A/B/C üçü de "gezinme/erişim sistemine İHTİYAÇ var" varsayımına dayanır — antitez bunu reddeder → eksik DÖRDÜNCÜ model = Model D (NULL/düz-Karpathy).**
+
+**Top karşı-argümanlar:**
+- **★ Model D (null/düz):** JARVIS korpusu şu an bağlam-penceresine SIĞIYOR → ne tipli-graf(A) ne embedding(B) ne emergent(C) gerekir; **transformer dikkati zaten okuma-anı spreading-activation'dır** ("grafı inşa etme, dikkat zaten graftır"). CLAUDE.md substratı (markdown+[[link]]+git-log) = **Karpathy düz-metin-LLM-wiki deseni** → rapor 11, üstüne oturduğu desenin ana-tezine (altyapı-KURMA-ma) karşı altyapı öneriyor.
+- **Ontology-Overrated (Shirky):** üstten-tipleme büyük/oynak korpusta kötü strateji; anlam kullanımdan emergent. **GraphRAG maliyet/karmaşıklık** ("önce sorgu-dağılımını denetle; kazanç dar sorgu-sınıfında; hibrit-aramanın 1-haftalık işine aylarca graf kuruldu").
+- **YAGNI/premature-abstraction:** tip-şeması bugün getiri üretmiyor = bakım-borcu; m.20/22/34 zaten şişmeyi tipli-graf-OLMADAN kontrol ediyor.
+- **[YANLIŞLANDI-dürüstlük]:** "spreading-activation modern-IR'de terk edildi" TUTMAZ — vektör-modele teorik-özdeş + KG-RAG'da resurgence. **Çift-taraflı keser:** tezin "spreading-activation özel-silahımız" iddiası da zayıflar (dikkat zaten yapıyor).
+
+**Steelman (tez GERÇEKTEN sağlam nerede):** ① **`supersedes`/ADR zinciri (m.8) EN GÜÇLÜ hayatta-kalan** — düz-arama "X'i ne geçersiz kıldı?" güvenilir yanıtlayamaz; açık/tipli/git-diff'lenebilir kenar gerekli, **retrieval için değil DENETLENEBİLİRLİK için**; ② Shirky'nin "ontoloji İŞLER" koşulları JARVIS'te SAĞLANIR (küçük-alan, tek-uzman-kataloglayıcı=Carvis, otoriter-mercii=Salih/m.31, kararlı-kanon) → hafif-yapı meşru; ③ korpus>bağlam eşiği kaçınılmaz ama en-ucuz-biçim = MOC/hub-not (pano zaten MOC), tipli-graf değil; ④ çok-ajan gelecekte paylaşılan tipli-sözlük diverjansı önler.
+
+**SENTEZ (★ rapor 9 eksenini GENİŞLETİR: atomizm↔holizm↔NULL):** düz-full-text = holizmin mantıksal-ucu (kenar bile yok; anlam co-occurrence/dikkatten). Grindrod "benzerlik≠özdeşlik" antitez-lehine döner: benzerlik-yeterliyse ve embedding/dikkat zaten veriyorsa, **A'nın açık-tipli-kenar-kimliği yalnız EXACT/denetlenebilir kenarda (supersedes/provenance) değerli, retrieval için fazlalık.**
+- **Ölçek-eşiği:** ŞİMDİ (korpus≪bağlam, tek-ajan) → **Model D kazanır** (Karpathy/YAGNI/graf-çözecek-problem-yok); ARA → D+ucuz-MOC; EŞİK-ÜSTÜ (korpus>bağlam, çok-ajan, denetim) → A **sınırlandırılmış** (yalnız supersedes, veriden-indükle, minimum-başla).
+- **★ m.37 karşıt-temel güçlendirme:** rapor 11 karşıt-temeli Model C(holist) idi; bu red-team **daha güçlü Model D (null/düz) ekler** — C bile graf İNŞA eder (yüksek-token), D hiçbir şey inşa etmez → mevcut ölçekte A/B/C'yi token×zaman'da domine eder; tek-riski "ölçek-uçurumu" (öngörülebilir, MOC-yumuşatır).
+- **Tek cümle:** *Gerçek anlaşmazlık ZAMANLAMA+VARSAYILAN — tez "A'yı ŞİMDİ kur", antitez "düz kal, darboğazı ÖLÇ, minimum tipli-kenarı yalnız kanıt gelince ekle"; ölçekte + supersedes/provenance'ta tez, şimdi + tek-ajan'da antitez kazanır.*
+
 ## 8. Açık sorular (Salih/Fable — KARAR ALINMADI)
 - Bağlar TİPLİ mi olsun (A, her [[link]] tip taşır) yoksa tipsiz-düz mü (mevcut) + tip sonradan mı indüklensin?
 - Pointer-türü şeması rapor 5 4-facet'iyle mi hizalansın yoksa ayrı mı?
