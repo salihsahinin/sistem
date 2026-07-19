@@ -165,3 +165,10 @@
 - **Geri-alınabilirlik:** çok yüksek.
 - **Gözlem:** bekliyor — şerhin ilk işlevi gelecek ajan-tanımlarında "m.38 yeter" hatasını kesmesi.
 - **Ders:** kitap kararı (PI) bilinçli AÇIK bırakıldı (değer-tercihi, m.31) — imza masası 5/6 kapandı, kalem kaybolmadı.
+
+### 2026-07-19 · ikinci günaydın vardiyası · m.16 kapısı: bayat-disk masa-tekrarı
+- **Bağlam:** ikinci günaydın oturumu kapsülü DİSKTEN okudu; disk, sabah vardiyasının kapanış push'larından geride kaldığı için (pull, o push'lardan ÖNCE atılmıştı) imza masası Salih'e İKİNCİ KEZ kuruldu — stage-bayat vakasının 2. örneği (ilki K-019 kapsamında kayıtlı).
+- **Çelişki + çözüm (m.16):** yeni cevaplar sabah imzalarıyla karşılaştırıldı — kalem 2/3/4 aynı yönde (işlem yok) · kalem 1 yeni şerh üretti (m.40b antitez=¬, ayrı commit) · kalem 6 açık-kararı kapattı (PI kabul, V57) · kalem 5 tek gerçek çelişkiydi ("ertele" ↔ sabah imzası) → rapor sunuldu, **Salih: sabah imzası KALIR** (bugünkü "ertele" bayat-bilgi ürünü sayıldı).
+- **Geri-alınabilirlik:** yüksek — tüm ekler tek-commit revert.
+- **Operasyon kuralı (Katman 2, m.29 deneysel):** vardiya açılışında kapsül+pano ORIGIN KLONUNDAN okunur; disk kopyası yalnız Salih'in yerel çalışması için referanstır. Gece-senkron + sabah-pull bu farkı normalde kapatır; kural, kapatamadığı pencereye sigortadır.
+- **Ders:** çift-yüzey (disk/origin) sisteminde "tek doğru kaynak = origin HEAD"; bayat okuma çelişki-kapısını tetikleyebiliyor ama kapı çalıştı — yanlış karar-üstüne-karar alınmadı.
