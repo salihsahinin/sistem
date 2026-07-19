@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "deny": [
+      "Write(core/**)",
+      "Edit(core/**)",
+      "Write(CLAUDE.md)",
+      "Edit(CLAUDE.md)",
+      "Write(.claude/**)",
+      "Edit(.claude/**)"
+    ],
+    "ask": [
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/session-start.sh" }
+        ]
+      }
+    ]
+  }
+}

@@ -8,8 +8,8 @@
 0.3 PC senkron `/goal` (2 dk) — Salih terminali.
 
 **Dilim 1 — ilk otomasyon paketi (Karar 1+2 imzalı; hepsi iki-yönlü kapı):**
-1.1 PreToolUse kilidi: yazım + test (core/ DENY · push ASK · raporlar/cc/kuyruk ALLOW) — O4.
-1.2 SessionStart hook (CC-tarafı) + yetki-banner + CLAUDE.md CC satırı (rapor 3 kararı; aynı paket).
+1.1 ~~PreToolUse kilidi yazımı~~ **KURULDU 07-19** (.claude/settings.json permissions-deny; TEST Salihin ilk CC oturumunda — deneysel m.29).
+1.2 ~~SessionStart hook + banner + CLAUDE.md satırı~~ **KURULDU 07-19** (.claude/hooks/session-start.sh; TEST aynı oturumda).
 1.3 Kararlı-prefix kapsam KARARI (gündem madde 3) — otomasyon promptları yazılırken alınır (Carvis çerçevesi: sınıf = koşum deseni; Salih onayı).
 1.4 JSONL usage-log asgarisi (gündem madde 6; rapor 10 daraltılmış hali — dosya-temelli, panel YOK) — her otomasyon koşumu iz bırakır.
 1.5 İlk gözetimsiz dilim: gecelik senkron — mekanizma seçimi m.37 üç-model koşumuyla (gündem madde 4; adaylar Routine / lokal scheduled; karşıt-temel şartlı) → PreToolUse SONRASI canlıya.
