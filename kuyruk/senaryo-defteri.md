@@ -94,3 +94,14 @@
 - **Seçim:** B (Carvis, Katman 2) — görünürlük: 07-17 Cowork oturumu + görev emri `cc/gorev-2026-07-17-1.md`.
 - **Gözlem (07-17, koşum sonrası):** $7.16 · 19,5 dk duvar (38 dk API) · /usage TAM raporlandı (ilk kez emirle) · kalite [türetilmiş]: yüksek — 12/12 satır, TAM=9/KISMİ=3/X=0, örneklem D2/K1/X0, tavan aşılmadı. Model B tahmini (~8/10) tutarlı; sapma: fan-out /usage'da haiku etiketli (emir sonnet dedi) — maliyeti DÜŞÜRDÜ, kaliteyi düşürmedi (örneklem temiz); denetim notu raporda.
 - **Ders:** dar-kapsam + alan-ailesi-bazlı fan-out deseni doğrulandı (K-017 "eşleşmesiz" bulgusunu tersine çevirdi); ucuz-model fan-out + pahalı sentez/denetim routing'i yine kendiliğinden doğru kuruldu — m.28/V39 ikinci dış teyit.
+
+### 2026-07-19 · K-009 açılış · canlı-ajan sınırı + guardrail + ses-sırası (Katman 1, Salih)
+- Bağlam: K-009 açılış oturumu (Cowork ana-sıra/Fable, 07-17→19). Gündem madde 1 + rapor-1 (otomasyon-3model) soruları birleşik karara bağlandı; karar öncesi Salih'e merdiven + PreToolUse [S]-düzey anlatıldı (V55), hizalama sagası koşuldu.
+- Karar 1 — SINIR (m.30 ek fıkrası olarak İMZALANDI): otomasyon (K-009) = tetik devrine kadar (RC · /goal · /loop · sabit-promptlu Routine); canlı ajan (K-010) = prompt + kalıcı kimlik devri (ajan işi kendisi seçer; Dispatch/Agent-SDK sınıfı). Gerekçe: hata-sınıfı sıçraması — önceden-denetlenebilirlik kaybı + defter yoluyla hata birikimi (OpenClaw emsali); Özgürlük(a) ≤ Toparlanabilirlik(hata(a)). Empirik ayak: /goal + /loop + Routine koşumları sınır içinde temiz (07-15/16); ajan-karar basamağı hiç koşulmadı.
+- Karar 2 — GUARDRAIL: PreToolUse policy-as-code kilidi İLK gözetimsiz otomasyon dilimiyle BİRLİKTE kurulur (deterministik allowlist: core/ yazma DENY · push ASK · raporlar/ ALLOW sınıfı; rapor-1 Model-C aşısı; G4<G5).
+- Karar 3 — SES SIRASI: önce L2 mobil-köprü protokolü (KILAVUZ 1 sayfa; rapor-1 Adım 0) → sonra tek ölçümlü ses PoC; kapsam niyet-yakalama/triyaj (rapor-10 antitez daraltması — "oyunda ciddi inşa" iddiası DÜŞTÜ).
+- Model-hiyerarşi beyanı (Salih 07-19): JARVIS/ana-sıra = Fable (final karar en zeki katmanda; bütçe/hesap bağlamı) · ekip liderleri = Opus ya da bir-altı en yüksek model · m.30(c) ile uyumlu; aile-dışı model (Kimi) planda YOK — V56 ERTELENDİ.
+- Rapor-1 mimari seçimi: B (ölçüm-önce omurga) fiilen seçildi — üç somut karar, B + A-kaldıraç-sırası + C-guardrail-aşısı bileşimini uyguluyor. Karşıt-temel: rapor-1 bloğu (Wald minimax/DRO ↔ beklenen-değer/VoI) — m.37 karşıt-temel şartı sahada.
+- Geri-alınabilirlik: SINIR tanımı = iki-yönlü (tüzük revizyonuyla değişir, ucuz) · GUARDRAIL = iki-yönlü (hook dosyası silinir) · model-hiyerarşi = iki-yönlü (beyanla değişir).
+- Gözlem: bekliyor (ilk K-009 dilimi: gecelik senkron adayı + PreToolUse kurulumu + /usage ölçümü).
+- Ders: —
