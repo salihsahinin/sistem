@@ -180,4 +180,5 @@
 - **Seçim:** A (Carvis önerisi + Salih oturumda; m.37 sunumu görünür, veto açık) — kapsam: ≥10 dikte örneği, ham transkript düzeltilmeden gelir, ingest anında Salih-düzeltmesi referans alınır.
 - **Ölçüm planı:** WER = ingest-anı düzeltme farkından · triyaj-başarı = niyet sınıfı (fikir/görev/soru) doğru eve düştü mü · gecikme = Model A'da dikte akıcılığı gözlemi (öznel not). Sonuçlar bu deftere Gözlem satırıyla döner.
 - **Geri-alınabilirlik:** çok yüksek — sıfır kurulum, vazgeçmek = dikte etmemek.
-- **Ders (bekliyor):** ilk 10 örnek sonrası yazılacak.
+- **Ders (bekliyor):** ölçüm vardiyasında yazılacak. **Revizyon (Salih, aynı vardiya):** toplama PASİF — odak JARVIS kurulumunda, test için ayrı konuşma yapılmaz; ≥10 hedefi katı eşik değil, ölçüm tetiği Salih beyanı.
+- **İlişkili gözlem (Şerit 2):** P2 devir dosyası geldi ama P2 zaten koşulmuştu — paralel-vardiya ÇİFT-KOŞUM vakası (bayat-durum ailesinin 3. örneği bugün: disk-masa tekrarı · P2 tekrarı); K-019 kapsamına girdi.
