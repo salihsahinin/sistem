@@ -2,12 +2,12 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI (Carvis, Cowork ana-sıra/Fable) — **İMZA MASASI 6/6 KAPANDI:** kitap kararı (PI) KABUL (V57) · m.40b'ye antitez-tanım şerhi (antitez = lojiksel ters ¬, gevşek "başka açı" sayılmaz) · **m.16 kapısı işletildi:** bayat-disk yüzünden masa yanlışlıkla ikinci kez kuruldu; kalem-5 çelişkisinde Salih kararı = sabah imzası KALIR · stage-bayat vaka #2 deftere işli + **yeni operasyon kuralı: vardiya açılışı kapsülü ORIGIN KLONUNDAN okur** (m.29 deneysel) · önceki vardiya teslimi: `raporlar/vardiya-teslim-2026-07-19-gunaydin-imza.md`
+**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI devam (Carvis, Cowork ana-sıra/Fable) — imza masası 6/6 + m.40b antitez-şerhi (önceki blok) · **Dilim 2.2 SES-POC BAŞLADI** (kanal: telefon-diktesi/Model A; toplama PASİF — Salih emri: ayrı test oturumu yok) · **P2 KAPANDI** (devir tekrar çıktı; çift-koşum vakası defterde) · **K-016 AÇILDI (Salih öne çekti): İLK SKILL ÜRETİLDİ — `karar-modeli` v0.1 eval-önce akışla, A/B 3/3 PASS** · bayat-durum ailesi bugün 3 vaka (K-019'a)
 
 ## Şu an
 - **K-015 (ÖNCELİK №1):** (5) K-009 **AÇILDI** — kurucu kararlar imzalı, ilk otomasyon (gecelik senkron, A+C aşısı: LLM'siz ff-only script) kurulu. Kalan: gece scriptinin ilk koşumu (kilit+hook SAHADA DOĞRULANDI 07-19 ✓ · schtasks kayıtlı ✓ · pull borcu kapandı ✓) → **K-010 sicil sayacı bu gece başlar** (ön-koşul: temel katman 2 hafta sorunsuz).
 - **Kanon 07-19:** m.30 ek fıkrası — otomasyon = tetik devrine kadar (Routine dahil) / canlı ajan = prompt+kimlik devri; PreToolUse ön-koşulu; model-hiyerarşi: JARVIS=Fable · lider=Opus/bir-altı · m.42 — pozitif yetki listesi · Özgürlük(a)≤Toparlanabilirlik(hata(a)) · bileşik gevşetme · katı-başlangıç · RİSK boyutu · çeşitlilik-bütçesi · kararlı-prefix kapsamı = KOŞUM DESENİ (TTL-içi aynı-önek tekrarı; rol farketmez) · **yeni sunum kuralı:** her karar sorusu "bu ne/neden masada" özetiyle · **yeni oturum kuralı:** bağlam şişince Carvis yeni-seans çağrısı yapar (KILAVUZ'da).
-- **İcra kuyruğu:** `kuyruk/icra-sirasi-K009.md` — Dilim 0-1-2.1 KAPALI; 2.2 ses PoC (Salih-tetikli, kapsam: niyet-yakalama/triyaj) · Dilim 3 skill hattı (K-016 tetiği) · Dilim 4 tetikli.
+- **İcra kuyruğu:** `kuyruk/icra-sirasi-K009.md` — Dilim 0-1-2.1 KAPALI · 2.2 SES-POC pasif toplamada (ölçüm tetiği Salih beyanı) · Dilim 3 AÇIK: S-A DONE, sırada S-B (atlas-kosum) → S-G (karar-hatti) · Dilim 4 tetikli.
 - **Süzgeç:** `raporlar/2026-07-19-fable-suzgec-17-rapor.md` — 16 rapora verdict + soru triyajı; **imza masası TAM KAPANDI 07-19 ikinci günaydın (6/6; kitap PI kabul → V57)**. Yeni evler: `kuyruk/skill-fikir-kutusu.md` (S-A..S-H) · `kuyruk/planli-optimizasyon.md` (O1-O14) · `raporlar/usage/` (koşum-izi asgarisi).
 - **Şerit 2 (öğrenme):** P2 KAPANDI (07-19; devir geldi, içerik TEKRAR çıktı — P2 zaten koşulmuştu; çift-koşum vakası defterde, K-019 kapsamında). Sıradaki oturum: P3 (müfredat).
 - **Operasyon:** klon-push standart yol · mount'tan git YAZMA yok · disk 07-19 itibarıyla origin'le dosya-düzeyi eşit; git HEAD ilerletme = Salih'in tek `git pull`u (çakışmasız ff — `.claude/` kilit dosyaları da onunla iner; köprü .claude'a yazamıyor).
@@ -19,6 +19,7 @@
 - Tetikliler: K-011 · K-004 (Kasım) · **PAT ~10 Ekim ölür** · PortRisk tetiği (Salih "artık önemli" → S0 dilimi).
 
 ## Sonraki ilk iş
-1. Aday gündemler: Dilim 2.2 ses PoC · K-016 skill hattı (m.43 zemin hazır) · öğrenme P2 ingest (devir gelince) · gece scriptinin ilk koşum gözlemi (yarın sabah). Seçim Salih'te.
-2. K-019 ilk boş vardiyada (artık 2 vakalı).
-3. Salih: tek `git pull` (bu vardiyanın commit'leri + sabah kapanışı iner; gece-senkron da kapatabilir).
+1. S-B atlas-kosum skill'i (aynı eval-önce akış) → sonra S-G karar-hatti orkestratörü.
+2. Skill borçları: 20-sorgu description eval + çok-model test + Salih'in CC oturumunda canlı tetikleme testi (`/karar-modeli` — pull sonrası).
+3. Gece-senkron ilk koşum gözlemi (yarın sabah) → K-010 sicil günü 1.
+4. K-019 ilk boş vardiyada (3 vakalı) · Salih: `git pull`.
