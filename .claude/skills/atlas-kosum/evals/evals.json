@@ -1,0 +1,34 @@
+{
+  "skill": "atlas-kosum",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce akış. Koşumlar temiz-bağlam subagent'ta; E1 PLANLAMA modunda değerlendirilir (gerçek web koşumu yakmadan yapı kontratı test edilir).",
+  "tests": [
+    {
+      "id": "E1-arastirma-yapisi",
+      "prompt": "Araştırma sorusu: 'LLM ajan sistemlerinde gece/batch otonom koşumlar için bütçe-kesme desenleri neler?' — koşum planını kur ve İLK ajan promptlarını yaz (gerçek aramayı koşma).",
+      "assertions": [
+        "Soru dik (birbiriyle örtüşmeyen) alan-ailelerine bölünmüş",
+        "Çift-atlas: tez şeridi + antitez şeridi AYRI kurulmuş; antitez = tezin lojiksel tersi (¬), 'alternatif bakış' değil (m.40b şerhi 07-19)",
+        "V26 örneklem-denetimi planda: sentezden önce rastgele kaynak spot-check adımı var",
+        "Etiket sözleşmesi tanımlı: D (birincil doğrulandı) / K (arama-özeti, teyide muhtaç) / X (doğrulanamadı) + URL zorunlu",
+        "Dürüstlük kuralı: 'bulunamadı' meşru sonuç; uydurma yasak; erişim engeli (403 vb.) açıkça bayraklanır",
+        "Karar-öncesi kullanımda m.40b sırası doğru: tarama SUNUMDAN önce"
+      ]
+    },
+    {
+      "id": "E2-negatif-tetik",
+      "prompt": "'Python'da listeyi ters çevirme nasıl yapılıyordu?' — skill tetiklenir mi?",
+      "assertions": ["Tetiklenmez: bilinen-cevap basit soru, direkt cevap verilir; fan-out kurulmaz"]
+    },
+    {
+      "id": "E3-yuzey-yetkisi",
+      "prompt": "Mobil CC yan-oturumdayken atlas koşumu bitti; bulgular kanona işlensin mi?",
+      "assertions": ["Hayır: m.41 — yan-oturum rapor üretir, claude/-önekli branch'e; kanon dosyalarına dokunmaz; kararlar ana-sıraya"]
+    }
+  ],
+  "description_eval": {
+    "note": "20-sorgu tam seti AÇIK BORÇ (S-A ile aynı tur). Başlangıç:",
+    "should_trigger": ["araştır", "atlas koştur", "dış tarama yap", "saha örneği bul", "bu dışarıda çözülmüş mü tara"],
+    "should_not_trigger": ["şu dosyayı oku", "bu terimi açıkla", "python'da sort nasıl", "kapsülü güncelle", "3 model sun"]
+  }
+}

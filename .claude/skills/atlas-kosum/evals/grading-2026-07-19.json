@@ -1,0 +1,11 @@
+{
+  "run": "2026-07-19 ikinci günaydın vardiyası (Fable ana-sıra; E1 planlama-modu, E2/E3 davranış testi; temiz-bağlam subagent'lar)",
+  "results": [
+    {"id": "E1-arastirma-yapisi", "arm": "with-skill", "passed": true,
+     "evidence": "6/6: 4 dik aile (kaynak-sayacı/yapısal-limit/değer-sinyali/kesme-sonrası — diklik gerekçeli) · çift-atlas 8 ajan, antitez şeritleri gerçek ¬T (kaza raporları, bypass vakaları, 'cap zararlı' savunusu) · V26 planı rastgelelik+düşürme kuralıyla · D/K/X+URL sözleşmesi · dürüstlük+erişim-engeli bayrağı ortak-blokta · m.40b tarama→sunum sırası doğru"},
+    {"id": "E2-negatif-tetik", "arm": "with-skill", "passed": true, "evidence": "Tetiklenmedi, direkt cevap verildi."},
+    {"id": "E3-yuzey-yetkisi", "arm": "with-skill", "passed": true, "evidence": "Kanona dokunmadı; claude/-branch + karar ana-sıraya yönlendirme."}
+  ],
+  "note": "Baseline kolu koşulmadı — S-A benchmark'ı emsal (skill değeri = kontrat); tam A/B + 20-sorgu description eval açık borç listesinde.",
+  "open_debt": ["20-sorgu description eval", "çok-model test", "gerçek web'li tam koşum sahası (ilk canlı atlas görevi)"]
+}

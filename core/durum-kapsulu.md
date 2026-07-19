@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI devam (Carvis, Cowork ana-sıra/Fable) — imza masası 6/6 + m.40b antitez-şerhi (önceki blok) · **Dilim 2.2 SES-POC BAŞLADI** (kanal: telefon-diktesi/Model A; toplama PASİF — Salih emri: ayrı test oturumu yok) · **P2 KAPANDI** (devir tekrar çıktı; çift-koşum vakası defterde) · **K-016 AÇILDI (Salih öne çekti): İLK SKILL ÜRETİLDİ — `karar-modeli` v0.1 eval-önce akışla, A/B 3/3 PASS** · bayat-durum ailesi bugün 3 vaka (K-019'a)
+**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI devam (Carvis, Cowork ana-sıra/Fable) — imza masası 6/6 + m.40b antitez-şerhi (önceki blok) · **Dilim 2.2 SES-POC BAŞLADI** (kanal: telefon-diktesi/Model A; toplama PASİF — Salih emri: ayrı test oturumu yok) · **P2 KAPANDI** (devir tekrar çıktı; çift-koşum vakası defterde) · **K-016 AÇILDI (Salih öne çekti): İKİ SKILL ÜRETİLDİ — `karar-modeli` + `atlas-kosum` v0.1, eval-önce akış, 3/3+3/3 PASS; sırada S-G karar-hatti** · KILAVUZ'a mobil-CC açılış komutu eklendi (bu gece telefondan çalışma hazır) · bayat-durum ailesi bugün 3 vaka (K-019'a)
 
 ## Şu an
 - **K-015 (ÖNCELİK №1):** (5) K-009 **AÇILDI** — kurucu kararlar imzalı, ilk otomasyon (gecelik senkron, A+C aşısı: LLM'siz ff-only script) kurulu. Kalan: gece scriptinin ilk koşumu (kilit+hook SAHADA DOĞRULANDI 07-19 ✓ · schtasks kayıtlı ✓ · pull borcu kapandı ✓) → **K-010 sicil sayacı bu gece başlar** (ön-koşul: temel katman 2 hafta sorunsuz).
@@ -19,7 +19,7 @@
 - Tetikliler: K-011 · K-004 (Kasım) · **PAT ~10 Ekim ölür** · PortRisk tetiği (Salih "artık önemli" → S0 dilimi).
 
 ## Sonraki ilk iş
-1. S-B atlas-kosum skill'i (aynı eval-önce akış) → sonra S-G karar-hatti orkestratörü.
+1. S-G karar-hatti orkestratörü (çocuklar hazır: celiski-kapisi eksik — S-C önce ya da orkestratör 2-çocukla başlar).
 2. Skill borçları: 20-sorgu description eval + çok-model test + Salih'in CC oturumunda canlı tetikleme testi (`/karar-modeli` — pull sonrası).
 3. Gece-senkron ilk koşum gözlemi (yarın sabah) → K-010 sicil günü 1.
 4. K-019 ilk boş vardiyada (3 vakalı) · Salih: `git pull`.
