@@ -16,7 +16,7 @@
 
 **Dilim 2 — köprü + ses (Karar 3 sırası):**
 2.1 ~~L2 mobil-köprü protokolü~~ **YAZILDI 07-19** (KILAVUZ §Mobil Köprü Protokolü; deneysel m.29).
-2.2 Ses PoC: niyet-yakalama/triyaj kapsamı, ölçümlü (WER+gecikme+görev-başarı → defter) — O2.
+2.2 Ses PoC: niyet-yakalama/triyaj kapsamı, ölçümlü (WER+gecikme+görev-başarı → defter) — O2. **BAŞLADI 07-19 (ikinci günaydın): kanal = Model A (telefon diktesi + mobil köprü, defter bloğu); protokol KILAVUZ §Mobil Köprü'ye SES-POC eki ile; hedef ≥10 örnek → ölçüm vardiyası.**
 
 **Dilim 3 — skill hattı (K-016; tetik Salih'te — "skill araştırmasına geleceğiz" 07-19):**
 3.1 K-016 açılış kararı + ilk skill: S-A karar-modeli (eval-önce akış) → S-B atlas-kosum → S-G karar-hatti.

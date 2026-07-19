@@ -172,3 +172,12 @@
 - **Geri-alınabilirlik:** yüksek — tüm ekler tek-commit revert.
 - **Operasyon kuralı (Katman 2, m.29 deneysel):** vardiya açılışında kapsül+pano ORIGIN KLONUNDAN okunur; disk kopyası yalnız Salih'in yerel çalışması için referanstır. Gece-senkron + sabah-pull bu farkı normalde kapatır; kural, kapatamadığı pencereye sigortadır.
 - **Ders:** çift-yüzey (disk/origin) sisteminde "tek doğru kaynak = origin HEAD"; bayat okuma çelişki-kapısını tetikleyebiliyor ama kapı çalıştı — yanlış karar-üstüne-karar alınmadı.
+
+### 2026-07-19 · ikinci günaydın vardiyası · Dilim 2.2 ses PoC — kanal seçimi
+- **Bağlam:** ses PoC (niyet-yakalama/triyaj, O2 ön-adımı) hangi STT kanalıyla koşulacak; Salih tetiği çekti ("Dilim 2.2 ile başlayalım").
+- **Model A (telefon diktesi + mevcut mobil köprü):** ≈0 token/kurulum · bugün başlar · WER telefon-STT'sine bağlı [?] | **Model B (Whisper-sınıfı lokal):** kurulum+taşıma zinciri · m.40b dış-tarama borcu · canlı değil | **Model C (bulut STT API):** en iyi WER adayı [?] · PARA = Katman-1 kapısı + entegrasyon → ✅ A
+- **Karşıt-temel:** Model B ← kalite-önce zemin ("kötü WER ölçümü çöp veri üretir"); canlılık ✓ — KISMEN YAKINSADI: B'nin tetiği A-verisine bağlandı (WER >%25 [deneysel eşik, m.39] → B taraması açılır); "önce en iyi aracı kur" ucu ölçüm-önce ilkesine (m.35) yenildi.
+- **Seçim:** A (Carvis önerisi + Salih oturumda; m.37 sunumu görünür, veto açık) — kapsam: ≥10 dikte örneği, ham transkript düzeltilmeden gelir, ingest anında Salih-düzeltmesi referans alınır.
+- **Ölçüm planı:** WER = ingest-anı düzeltme farkından · triyaj-başarı = niyet sınıfı (fikir/görev/soru) doğru eve düştü mü · gecikme = Model A'da dikte akıcılığı gözlemi (öznel not). Sonuçlar bu deftere Gözlem satırıyla döner.
+- **Geri-alınabilirlik:** çok yüksek — sıfır kurulum, vazgeçmek = dikte etmemek.
+- **Ders (bekliyor):** ilk 10 örnek sonrası yazılacak.
