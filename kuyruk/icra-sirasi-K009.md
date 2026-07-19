@@ -9,7 +9,7 @@
 
 **Dilim 1 — ilk otomasyon paketi (Karar 1+2 imzalı; hepsi iki-yönlü kapı):**
 1.1 ~~PreToolUse kilidi yazımı~~ **KURULDU 07-19** (.claude/settings.json permissions-deny; TEST Salihin ilk CC oturumunda — deneysel m.29).
-1.2 ~~SessionStart hook + banner + CLAUDE.md satırı~~ **KURULDU 07-19** (.claude/hooks/session-start.sh; TEST aynı oturumda).
+1.2 ~~SessionStart hook + banner + CLAUDE.md satırı~~ **KURULDU 07-19** (.claude/hooks/session-start.sh; **TEST PASS 07-19**).
 1.3 ~~Kararlı-prefix kapsamı~~ **KARAR 07-19:** sınıf = koşum deseni (TTL-içi aynı-önek tekrarı; rol farketmez); interaktif kapsül-önce kalır.
 1.4 ~~JSONL usage-log asgarisi~~ **AÇILDI 07-19** (`raporlar/usage/` + şema; ilk müşteri senkron scripti).
 1.5 ~~Gecelik senkron m.37 koşumu~~ **KARAR+KURULUM 07-19:** A+C aşısı (LLM'siz ff-only script, `tools/gece-senkron.ps1`); kalan: schtasks kaydı (Salih, tek komut — script başında yazılı) + ilk gece gözlemi.
