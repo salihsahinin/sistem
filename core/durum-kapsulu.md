@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI devam (Carvis, Cowork ana-sıra/Fable) — imza masası 6/6 + m.40b antitez-şerhi (önceki blok) · **Dilim 2.2 SES-POC BAŞLADI** (kanal: telefon-diktesi/Model A; toplama PASİF — Salih emri: ayrı test oturumu yok) · **P2 KAPANDI** (devir tekrar çıktı; çift-koşum vakası defterde) · **K-016 AÇILDI (Salih öne çekti): İKİ SKILL ÜRETİLDİ — `karar-modeli` + `atlas-kosum` v0.1, eval-önce akış, 3/3+3/3 PASS; sırada S-G karar-hatti** · KILAVUZ'a mobil-CC açılış komutu eklendi (bu gece telefondan çalışma hazır) · bayat-durum ailesi bugün 3 vaka (K-019'a)
+**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI KAPANDI (Carvis, Cowork ana-sıra/Fable) — **imza masası 6/6 + m.40b antitez-şerhi (¬)** · **m.16 kapısı: bayat-disk masa-tekrarı çözüldü (sabah imzası kaldı); yeni kural: açılış kapsülü ORIGIN KLONUNDAN** · **SES-POC başladı (Model A, PASİF toplama)** · **P2 kapandı (çift-koşum vakası)** · **K-016 AÇIK: karar-modeli + atlas-kosum üretildi (eval-önce, 3/3+3/3)** · KILAVUZ: Skill Standardı + mobil-CC açılış komutu · teslim: `raporlar/vardiya-teslim-2026-07-19-ikinci-gunaydin.md`
 
 ## Şu an
 - **K-015 (ÖNCELİK №1):** (5) K-009 **AÇILDI** — kurucu kararlar imzalı, ilk otomasyon (gecelik senkron, A+C aşısı: LLM'siz ff-only script) kurulu. Kalan: gece scriptinin ilk koşumu (kilit+hook SAHADA DOĞRULANDI 07-19 ✓ · schtasks kayıtlı ✓ · pull borcu kapandı ✓) → **K-010 sicil sayacı bu gece başlar** (ön-koşul: temel katman 2 hafta sorunsuz).
