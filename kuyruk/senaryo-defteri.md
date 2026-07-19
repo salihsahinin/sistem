@@ -156,3 +156,12 @@
 - **Geri-alınabilirlik:** yüksek — dipnot tek commit revert.
 - **Gözlem:** bekliyor — ilk gerçek ajan-ingest varyantı (K-010 dönemi) held-out şartının ilk testi.
 - **Ders:** çelişki silinmedi, parametrize edildi — bilgi mimarisi şirket teziyle (m.35) aynı forma oturdu.
+
+### 2026-07-19 · imza masası · m.38 limit-şerhi + m.37a örnek-çifti
+- **Bağlam:** Tractatus çift-atlas oturumunun (rapor-9) operasyonel tortusu; iki tek-satırlık kanon eki.
+- **Model A (ikisi de):** yanılgı-freni yazılı + hazır karşıt-çift | **Model B (yalnız m.37a çifti):** "lojik form = çelişki-muafiyeti" yanılgısı yazısız kalır | **Model C (hiçbiri — kanon-minimalizmi):** tüzük sade ama iki ek zaten operasyonel cümle → ✅ A
+- **Karşıt-temel:** Model C ← kanon-minimalizmi ("felsefe wiki'de yaşasın"); canlılık ✓ — KISMEN YAKINSADI: ilke zaten uygulanıyor (felsefi gerekçe wiki borcunda, tüzüğe yalnız operasyonel cümleler girdi).
+- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt.
+- **Geri-alınabilirlik:** çok yüksek.
+- **Gözlem:** bekliyor — şerhin ilk işlevi gelecek ajan-tanımlarında "m.38 yeter" hatasını kesmesi.
+- **Ders:** kitap kararı (PI) bilinçli AÇIK bırakıldı (değer-tercihi, m.31) — imza masası 5/6 kapandı, kalem kaybolmadı.
