@@ -129,3 +129,12 @@
 - **Geri-alınabilirlik:** yüksek — ek fıkra tek commit revert; kapsam tek beyanla daralır.
 - **Gözlem (koşum sonrası):** bekliyor — ilk değerlendirme token-baskısı sinyalinde (çift-koşum token oranı usage-JSONL'den okunur).
 - **Ders:** Salih m.35 ölçüm-öncelikli ilkeyi kanon-kapsam seçimine uyguladı: eşiği ileride kendi verimizle seçmek için ×2 bedel bilinçli ödendi.
+
+### 2026-07-19 · imza masası · skill-doğum kuralı (m.43)
+- **Bağlam:** skill adaylarının kaynağı — yalnız yukarıdan-ihtiyaç mı, veriden-madenleme de mi?
+- **Model A (eşikli kural, N=3):** ≈0 token · yüksek (Fiil-DSL vakası freni kanıtladı) | **Model B (eşiksiz — her his aday):** ≈0 ama kutu şişer (K-019 derdi büyür) | **Model C (kural yok — yalnız yukarıdan):** ≈0 · prosedürel-grain boşluğu görünmez kalır → ✅ A
+- **Karşıt-temel:** Model C ← sömürü-ağırlıklı zemin ("bilinen ihtiyaca yatır, keşfe harcama"); canlılık ✓ — KISMEN YAKINSADI: "üretim kararı yukarıda" parçası A'nın içinde; ayrışan tek yer aday-kaynağı.
+- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt; eşik N=3 deneysel (m.29).
+- **Geri-alınabilirlik:** yüksek — aday satırı bedava revert; madde tek commit.
+- **Gözlem:** bekliyor — ilk madenleme pilotu (K-016 açılışı) eşiği kalibre eder.
+- **Ders:** kural kendini imzadan önce kanıtladı (Fiil-DSL erken-skill'leşmesi eşiğe takıldı) — kanonlaşma fiili pratiğin kaydı oldu.
