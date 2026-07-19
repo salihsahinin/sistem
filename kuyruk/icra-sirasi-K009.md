@@ -10,9 +10,9 @@
 **Dilim 1 — ilk otomasyon paketi (Karar 1+2 imzalı; hepsi iki-yönlü kapı):**
 1.1 ~~PreToolUse kilidi yazımı~~ **KURULDU 07-19** (.claude/settings.json permissions-deny; TEST Salihin ilk CC oturumunda — deneysel m.29).
 1.2 ~~SessionStart hook + banner + CLAUDE.md satırı~~ **KURULDU 07-19** (.claude/hooks/session-start.sh; TEST aynı oturumda).
-1.3 Kararlı-prefix kapsam KARARI (gündem madde 3) — otomasyon promptları yazılırken alınır (Carvis çerçevesi: sınıf = koşum deseni; Salih onayı).
-1.4 JSONL usage-log asgarisi (gündem madde 6; rapor 10 daraltılmış hali — dosya-temelli, panel YOK) — her otomasyon koşumu iz bırakır.
-1.5 İlk gözetimsiz dilim: gecelik senkron — mekanizma seçimi m.37 üç-model koşumuyla (gündem madde 4; adaylar Routine / lokal scheduled; karşıt-temel şartlı) → PreToolUse SONRASI canlıya.
+1.3 ~~Kararlı-prefix kapsamı~~ **KARAR 07-19:** sınıf = koşum deseni (TTL-içi aynı-önek tekrarı; rol farketmez); interaktif kapsül-önce kalır.
+1.4 ~~JSONL usage-log asgarisi~~ **AÇILDI 07-19** (`raporlar/usage/` + şema; ilk müşteri senkron scripti).
+1.5 ~~Gecelik senkron m.37 koşumu~~ **KARAR+KURULUM 07-19:** A+C aşısı (LLM'siz ff-only script, `tools/gece-senkron.ps1`); kalan: schtasks kaydı (Salih, tek komut — script başında yazılı) + ilk gece gözlemi.
 
 **Dilim 2 — köprü + ses (Karar 3 sırası):**
 2.1 L2 mobil-köprü protokolü — KILAVUZ 1 sayfa (rapor 1 Adım 0).

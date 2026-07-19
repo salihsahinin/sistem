@@ -107,3 +107,13 @@
 - Ders: —
 
 **Ek (aynı blok, 07-19):** m.42 ajan-yetki kanunu İMZALANDI (7 fıkra; içerik 07-15/07-17 kabul edilmiş formülasyonların tüzükleşmesi — yeni taahhüt yok). Karar-sunum kuralı güncellendi (Salih emri): her karar sorusunun yanında kısa 'bu ne / neden masada' özeti zorunlu.
+
+### 2026-07-19 · K-009 Dilim 1.5 + 1.3 · gecelik-senkron mekanizması + kararlı-prefix kapsamı (Salih seçimi)
+- Bağlam: ilk insansız otomasyonun mekanizma seçimi (m.37 + karşıt-temel; m.40b taraması taze — rapor 1, 07-17). Sunum yeni kuralla: karar sorularının yanında "bu ne" özeti.
+- 3 model: **A** deterministik script/LLM'siz (token 0/gece · kurulum ~30dk · kalite 8 · RİSK DÜŞÜK) ✅ | **B** CC headless gece koşumu (~5-10K token/gece, /goal emsali 5.3K · kalite 8.5 · RİSK ORTA) | **C** minimax gece-dokunma + sabah-elle (kalite 7 · worst-case EN DÜŞÜK · sabah-sürtünme kalıcı).
+- Karşıt-temel: C ← Wald minimax / robust karar teorisi; A-B'nin beklenen-fayda varsayımına zıt; aygıt = f(otonomi×geri-alınamazlık×blast); canlılık ✓ (+ iç kanıt: V43 sicili, 3 mount-bozulma vakası).
+- Seçim: **A + C aşısı** (Salih, 07-19) — ff-only (ezme sınıfı yapısal kapalı) + başarısızlıkta dokunma-yok/sabah-uyarı; B KURULMAZ, onarım elle-tetik kalır. İcra: `tools/gece-senkron.ps1` + `raporlar/usage/` (Dilim 1.4 asgarisi aynı adımda açıldı; scriptin log satırı ilk müşteri). Görev-kaydı (schtasks, tek komut) Salih'te.
+- Kararlı-prefix kapsamı (aynı oturum, Salih): sınıf = KOŞUM DESENİ — TTL-içi aynı-önek tekrarı olan HER koşum otomasyon-sınıfı (işçi/lider/Routine fark etmez); interaktif oturumlar kapsül-önce KALIR (Model C, 07-17). İlk /usage ölçümü ilk LLM'li loop koşumunda.
+- Geri-alınabilirlik (m.37 ek): İKİ-YÖNLÜ · blast: dar · geri-alma: ucuz (script+görev silinir) · LRM: yok · Kapı: Katman-2 + Salih seçimi.
+- Gözlem: bekliyor — ilk gece koşumu `raporlar/usage/senkron-log.jsonl`e düşecek.
+- Ders: —
