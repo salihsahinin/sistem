@@ -120,3 +120,12 @@
 
 **Gözlem eki (07-19, Dilim-1 saha testi — Salih'in CC oturumu):** SessionStart hook ✓ (yetki bandı + canlı kapsül + pano enjekte edildi) · yapısal kilit ✓ (core/tuzuk-v0.md yazma denemesi settings-deny ile RED: "directory denied by permission settings"; okuma serbest) · nitel gösterge: CC kendi cevabında m.41'i doğru uyguladı ("tüzük yalnız Salih imzası + ana-sıra ile değişir"). SONUÇ: kilit+hook DENEYSEL damgadan SAHADA-DOĞRULANDI'ya terfi (m.29); gece-senkron scripti ilk koşuma dek deneysel kalır. Pull-borcu da kapandı (stash→ff-only→clean; V43 doğrulaması: 11/12 özdeş + 1 gerçek fark [P2 devri] drop'tan ÖNCE origin'e kurtarıldı — verify-before-drop disiplini kendini bir kez daha ödedi).
 **Operasyon kararı (Carvis, Katman 2, 07-19):** gecelik senkron canlı olduğu andan itibaren Carvis izlenen (tracked) dosyaları KÖPRÜYLE mount'a YAZMAZ — origin push yeter, dağıtım gece scripti/sabah pull ile olur. Gerekçe: köprü-yazımı çalışma kopyasını kirletir → ff-only pull'u düşürür (bugünkü hata sınıfının kökü); otomasyon köprü-senkronun yerini alır, V43 mount-yazım riski yapısal olarak kapanır. İstisna: Salih'in açık "hemen diske yaz" talebi.
+
+### 2026-07-19 · imza masası · çift-atlas kuralı kapsamı (m.40 ek fıkrası)
+- **Bağlam:** CC standing-direktifi kanonlaşıyor; soru = kapsam (hangi araştırmalar çift koşulur).
+- **Model A (koşullu — eşik-üstü çift):** ~×1.6 token · +≈0 süre (paralel) · yüksek | **Model B (her araştırmada çift):** ×2 · +≈0 · marjinal üstü + antitez-değeri ölçüm verisi | **Model C (tek koşum + süzgeç):** ×1 · −%20 · orta (kör nokta süzgece yaslanır) → ✅ A önerildi
+- **Karşıt-temel (m.37 ek):** Model C ← Bayesçi tek-model kalibre-şüphe zemini, "bağımsız ikinci koşum" varsayımına zıt; canlılık ✓ — YAKINSAMADI: aynı koşum içi şüphe aynı kör noktayı paylaşır (öneriyi güçlendiren ayrışma).
+- **Seçim:** B (Salih, 07-19 günaydın — "bir süre her yerde çift gidelim, token sorunu yaşanırsa Model 1'e [koşullu] geçeriz"); geçiş tetiği kanona yazıldı — görünürlük: bu oturum + bu kayıt.
+- **Geri-alınabilirlik:** yüksek — ek fıkra tek commit revert; kapsam tek beyanla daralır.
+- **Gözlem (koşum sonrası):** bekliyor — ilk değerlendirme token-baskısı sinyalinde (çift-koşum token oranı usage-JSONL'den okunur).
+- **Ders:** Salih m.35 ölçüm-öncelikli ilkeyi kanon-kapsam seçimine uyguladı: eşiği ileride kendi verimizle seçmek için ×2 bedel bilinçli ödendi.
