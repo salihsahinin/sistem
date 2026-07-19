@@ -6,6 +6,7 @@
 - **"günaydın"** → vardiya açılışı: kapsül + pano okunur, kısa teslim özeti + tek net sıradaki iş sunulur.
 - İş sırasında ne söylersen görev olarak devralınır (m.25); küçük iş direkt yapılır, proje ölçekli işe kart/ajan — ölçek-tercihi Carvis'te.
 - **Kapanış** ("end of day" / "bitiriyorum" / "uyucam"): vardiya teslim + kapsül güncellenir + push atılır. Carvis kapanışı kendi de önerebilir (V11 — fiilen yerleşik davranış).
+- **Bağlam-şişme çağrısı (Salih emri 07-19):** Carvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu KENDİLİĞİNDEN belirtir; vardiya kapanışı + yeni seans önerir (kapanış = teslim raporu + kapsül tazeleme; yeni seans kapsülden devralır — m.27 hattı).
 - Push'lar Carvis'ten otomatik gider (`.secrets/github-pat`); her karar ayrı commit, [damıtma]/[icra] etiketli (V5).
 
 ## Paralel vardiya protokolü (Salih kararı 2026-07-12 sabah; m.36 revizyonunun operasyonel devamı — deneysel damga m.29)
