@@ -3,7 +3,7 @@
 *(Salih emri: raporlardaki yapılacak/incelenecek kalemleri mevcut işlem sırasına optimize entegre et. Sıralama ölçütü: bağımlılık > geri-alınabilirlik/güvenlik (G4<G5) > kaldıraç. Kaynaklar: K-009 gündemi + rapor 1/3/7/10/12 + süzgeç 07-19.)*
 
 **Dilim 0 — bugün, masada:**
-0.1 m.42 imzası (gündem madde 2; taslak `kuyruk/m42-taslak-ajan-yetki.md`) — Salih.
+0.1 ~~m.42 imzası~~ **DONE 07-19** (tüzüğe girdi).
 0.2 Ev dosyaları AÇILDI ✓ (skill-kutusu · POP · icra-sırası — bu commit).
 0.3 PC senkron `/goal` (2 dk) — Salih terminali.
 

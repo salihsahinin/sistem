@@ -105,3 +105,5 @@
 - Geri-alınabilirlik: SINIR tanımı = iki-yönlü (tüzük revizyonuyla değişir, ucuz) · GUARDRAIL = iki-yönlü (hook dosyası silinir) · model-hiyerarşi = iki-yönlü (beyanla değişir).
 - Gözlem: bekliyor (ilk K-009 dilimi: gecelik senkron adayı + PreToolUse kurulumu + /usage ölçümü).
 - Ders: —
+
+**Ek (aynı blok, 07-19):** m.42 ajan-yetki kanunu İMZALANDI (7 fıkra; içerik 07-15/07-17 kabul edilmiş formülasyonların tüzükleşmesi — yeni taahhüt yok). Karar-sunum kuralı güncellendi (Salih emri): her karar sorusunun yanında kısa 'bu ne / neden masada' özeti zorunlu.

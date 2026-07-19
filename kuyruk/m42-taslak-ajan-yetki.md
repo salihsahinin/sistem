@@ -1,4 +1,4 @@
-# m.42 Taslağı — Ajan-Yetki Kanunu (İMZA MASASI)
+# m.42 Taslağı — Ajan-Yetki Kanunu — **İMZALANDI (Salih, 2026-07-19); resmi metin tüzükte, bu dosya köken-kaydı olarak durur (m.8)**
 
 *(Kaynaklar: Salih formülasyonu 07-15 + Carvis düzeltmeleri — Salih 07-15: "katılıyorum, formülasyonun parçası" · Salih çeşitlilik-kademesi 07-17 + Carvis şerhi · lojik-form m.38/V46 gereği. İmza: Salih.)*
 
