@@ -52,3 +52,16 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 
 ## CC kanal modeli kararı (Salih, 2026-07-13 günaydın)
 ŞİMDİ = **Model 1** (dosya-kanalı: `cc/` görev emri + rapor; Carvis köprü, tetik Salih'te). HEDEF = **Model 3** (headless: CC'nin programatik çağrılması). Geçiş koşulu (m.38 lojik formu): (Salih Orca-ADE'yi öğrendi ∧ loop-eng öğrenimi tamamlandı ∧ K-009 otomasyon açık ∧ Model-3 diğer eksikleri kapatıldı) → Model 3'e geçilir; koşullardan HERHANGİ biri sağlanmadıkça (¬hepsi) Model 1 sürer. Model 2 (elle-yapıştır) reddedildi — V27 düşük-sürtünme hedefiyle ters.
+
+## Mobil Köprü Protokolü (Dilim 2.1; Salih kararı 07-19 — rapor-1 Adım 0'ın icrası; deneysel m.29)
+*Amaç: PC başında değilken (yol, yatak, oyun arası) sistemle çalışmanın standart yolu. Omurga: git-as-truth — üç zıt-temelli modelin ortak yakınsaması (rapor 1 triangülasyon #1): mobil katman git'in ÜSTÜNE oturur, yerine geçmez. 07-18 koşusu (17 rapor, branch'e) bu protokolün ilk tam canlı örneğidir.*
+
+**Kanal seçim tablosu — "mobildeyim, ne yapmak istiyorum?"**
+- **Fikir düştü** → chat/mobil Claude (snapshot yüzey): fikir-kutusu-adayı formatında yaz; "HAM FİKİR / PC'de ingest edilecek" damgası. Dönüşte ana-sıra ingest eder.
+- **Araştırma koşturmak istiyorum** → mobil CC yan-oturum: çift-atlas kuralı (tez + antitez), rapor ÜRETİR; **commit `claude/`-önekli branch'e** (bulunabilirlik — Salih izni 07-18 emsali), kanon dosyalarına DOKUNMAZ. Cevaplanmamış soru rapora gömülür, mobilde karar biriktirilmez (07-17 kuralı).
+- **Karar almak istiyorum** → yalnız ana-sıra (m.41: ana-sıra ∧ Fable ∨ Salih-imza). Mobil yüzeyde kanon imzası YOK; istisna = açık yazılı Salih beyanı, dönüşte ana-sıra kaydeder.
+- **PC'de acil iş** → Remote Control (ilk kurulum K-018'de bekliyor; kurulana dek: kısa not bırak, ana-sıra devralır).
+
+**Dönüş ritüeli (üç adım):** (1) ana-sıraya "raporları oku" — branch süzgeçten geçer, merge yalnız Fable süzgeciyle (m.41); (2) süzgeç verdicti + soru triyajı sunulur, kararlar ana-sırada alınır; (3) disk senkronu — gece scripti zaten eşitler, gündüz gerekirse dosya-düzeyi senkron Carvis'te.
+
+**Güvenceler:** mobil üretim daima HAM/öneri statüsünde (m.41) · CC yüzeyinde core/ + CLAUDE.md + .claude/ yazımı yapısal kilitli (Dilim-1 paketi) · damga yalnız gönüllü beyanla (m.33) · sabah taze-başlangıç zinciri: gece-senkron scripti → SessionStart hook (canlı kapsül+pano+yetki bandı).

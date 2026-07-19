@@ -15,7 +15,7 @@
 1.5 ~~Gecelik senkron m.37 koşumu~~ **KARAR+KURULUM 07-19:** A+C aşısı (LLM'siz ff-only script, `tools/gece-senkron.ps1`); kalan: schtasks kaydı (Salih, tek komut — script başında yazılı) + ilk gece gözlemi.
 
 **Dilim 2 — köprü + ses (Karar 3 sırası):**
-2.1 L2 mobil-köprü protokolü — KILAVUZ 1 sayfa (rapor 1 Adım 0).
+2.1 ~~L2 mobil-köprü protokolü~~ **YAZILDI 07-19** (KILAVUZ §Mobil Köprü Protokolü; deneysel m.29).
 2.2 Ses PoC: niyet-yakalama/triyaj kapsamı, ölçümlü (WER+gecikme+görev-başarı → defter) — O2.
 
 **Dilim 3 — skill hattı (K-016; tetik Salih'te — "skill araştırmasına geleceğiz" 07-19):**
