@@ -68,7 +68,8 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 
 **Mobil CC açılış komutu (kopyala-yapıştır; 07-19 eki):** telefonda Claude → Code → `salihsahinin/jarvis` → yeni oturum → ilk mesaj:
 > "Mobil yan-oturum (m.41). Önce `core/durum-kapsulu.md` + `core/pano.md` oku (hook bandı geldiyse özetle yetin). Kurallar: çift-atlas (tez + antitez=¬), rapor `claude/`-önekli branch'e, kanon dosyalarına DOKUNMA, karar biriktirme — cevaplanmamış soru rapora gömülür. Görev: <işi buraya yaz>."
-Dönüşte ana-sıraya "raporları oku" demen yeter (dönüş ritüeli). Hook bulut ortamında İLK KEZ bu gece gözlemlenecek — band gelmezse not düş, protokol yine geçerli (CLAUDE.md otomatik okunur).
+Dönüşte ana-sıraya "raporları oku" demen yeter (dönüş ritüeli).
+**Yüzey beyanı kısayolu (07-19 eki, m.41 uygulaması):** açılış komutu ZORUNLU DEĞİL — okuma sırası otomatiktir (CLAUDE.md + SessionStart hook). Komutun tek işi yüzey beyanı: mobil CC'de **Fable açık + "Fable, ana sıra" beyanı → oturum ANA-SIRA sayılır** (karar alır, m.16/m.37 işletir); beyan yoksa varsayılan = yan-oturum kuralları. Yapısal kilit her durumda geçerli: CC'de `core/` yazımı modelden bağımsız kilitli — ana-sıra-mobil karar ALIR, kanon YAZIMI dönüşte işlenir (kilidi Fable'a gevşetmek ayrı tüzük kararı, açık soru). Effort önerisi: günlük icra/ana-sıra medium · karar-yoğun (imza/süzgeç) high · atlas işçileri default. Hook bulut ortamında İLK KEZ bu gece gözlemlenecek — band gelmezse not düş, protokol yine geçerli (CLAUDE.md otomatik okunur).
 
 **Güvenceler:** mobil üretim daima HAM/öneri statüsünde (m.41) · CC yüzeyinde core/ + CLAUDE.md + .claude/ yazımı yapısal kilitli (Dilim-1 paketi) · damga yalnız gönüllü beyanla (m.33) · sabah taze-başlangıç zinciri: gece-senkron scripti → SessionStart hook (canlı kapsül+pano+yetki bandı).
 
