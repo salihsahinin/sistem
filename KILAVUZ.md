@@ -66,6 +66,10 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 
 **Dönüş ritüeli (üç adım):** (1) ana-sıraya "raporları oku" — branch süzgeçten geçer, merge yalnız Fable süzgeciyle (m.41); (2) süzgeç verdicti + soru triyajı sunulur, kararlar ana-sırada alınır; (3) disk senkronu — gece scripti zaten eşitler, gündüz gerekirse dosya-düzeyi senkron Carvis'te.
 
+**Mobil CC açılış komutu (kopyala-yapıştır; 07-19 eki):** telefonda Claude → Code → `salihsahinin/jarvis` → yeni oturum → ilk mesaj:
+> "Mobil yan-oturum (m.41). Önce `core/durum-kapsulu.md` + `core/pano.md` oku (hook bandı geldiyse özetle yetin). Kurallar: çift-atlas (tez + antitez=¬), rapor `claude/`-önekli branch'e, kanon dosyalarına DOKUNMA, karar biriktirme — cevaplanmamış soru rapora gömülür. Görev: <işi buraya yaz>."
+Dönüşte ana-sıraya "raporları oku" demen yeter (dönüş ritüeli). Hook bulut ortamında İLK KEZ bu gece gözlemlenecek — band gelmezse not düş, protokol yine geçerli (CLAUDE.md otomatik okunur).
+
 **Güvenceler:** mobil üretim daima HAM/öneri statüsünde (m.41) · CC yüzeyinde core/ + CLAUDE.md + .claude/ yazımı yapısal kilitli (Dilim-1 paketi) · damga yalnız gönüllü beyanla (m.33) · sabah taze-başlangıç zinciri: gece-senkron scripti → SessionStart hook (canlı kapsül+pano+yetki bandı).
 
 ## Skill Standardı (K-016 açılışı 07-19; el kitabı: `raporlar/2026-07-17-skill-nasil-olusturulur.md` — burası özet, çelişkide rapor + code.claude.com/docs kazanır)
