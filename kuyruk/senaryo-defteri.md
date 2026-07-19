@@ -138,3 +138,12 @@
 - **Geri-alınabilirlik:** yüksek — aday satırı bedava revert; madde tek commit.
 - **Gözlem:** bekliyor — ilk madenleme pilotu (K-016 açılışı) eşiği kalibre eder.
 - **Ders:** kural kendini imzadan önce kanıtladı (Fiil-DSL erken-skill'leşmesi eşiğe takıldı) — kanonlaşma fiili pratiğin kaydı oldu.
+
+### 2026-07-19 · imza masası · m.34 delta-fıkrası (damıtma yöntemi)
+- **Bağlam:** m.34 damıtmanın NASIL'ını tanımlamıyordu; context-collapse (bileşik sessiz kayıp) riski açıktı.
+- **Model A (delta zorunlu, monolitik yasak):** kayıp yalnız görünür madde-kararında · veto çalışır kalır | **Model B (tavsiye):** baskı anında monolitik "kolay yol" geri döner | **Model C (delta + periyodik kayıplı tam-özüt):** compaction ihtiyacı VAR ama kayıplı turla → ✅ A
+- **Karşıt-temel:** Model C ← MDL/compaction zemini ("delta birikir, yapı dağılır; topyekûn sıkıştırma optimuma yakın"); canlılık ✓ — KISMEN YAKINSADI: meşru ihtiyacı (yapı-düzenleme) A'ya KAYIPSIZ biçimde alındı; ayrışan uç yalnız kayıp toleransı (m.8 çizgisinde reddedildi).
+- **Seçim:** A (Salih, 07-19 günaydın — detaylandırma turu sonrası bilinçli onay) — görünürlük: bu oturum + bu kayıt.
+- **Geri-alınabilirlik:** yüksek — fıkra tek commit revert; ilk uygulama (K-019 kutu-damıtma) zaten madde-bazlı planlanacak.
+- **Gözlem:** bekliyor — K-019 kutu-damıtması fıkranın ilk saha testi olacak.
+- **Ders:** "özetleme değil, nerede ne kaybettiğini göstermeden özetleme yasak" formülü Salih'in sabah şikâyetinin (anlaşılmadan biriken karar) dosya-düzeyi karşılığı.
