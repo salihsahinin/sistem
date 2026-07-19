@@ -4,7 +4,7 @@
 
 | # | Aday | Tetik-kalıbı | Öncelik | Kaynak | Statü |
 |---|---|---|---|---|---|
-| S-A | karar-modeli (3 model + karşıt-temel + defter bloğu) | "3 model / karar modeli" | YÜKSEK (07-17'de 2×) | `raporlar/2026-07-17-skill-fikri-kutusu.md` §3.1/§8.3 | ADAY |
+| S-A | karar-modeli (3 model + karşıt-temel + defter bloğu) | "3 model / karar modeli" | YÜKSEK (07-17'de 2×) | `raporlar/2026-07-17-skill-fikri-kutusu.md` §3.1/§8.3 | **ÜRETİLDİ 07-19** (`.claude/skills/karar-modeli/`; eval 3/3; description-eval borcu açık) |
 | S-B | atlas-kosum (alan-ailesi fan-out + V26 + sentez) | "araştır / atlas koştur" | YÜKSEK (07-17'de 6×) | aynı rapor §3.3 | ADAY |
 | S-C | celiski-kapisi (kanon-tarama → çelişki+artı/eksi+plan) | yeni karar anı | ORTA | aynı rapor §2-C | ADAY |
 | S-D | lojik-çeviri (NL → ∧∨¬→↔; X∧Y→Z) | loop/kural tanımı | ORTA | aynı rapor §2-D | ADAY |

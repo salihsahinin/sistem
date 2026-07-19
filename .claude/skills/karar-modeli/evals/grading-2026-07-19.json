@@ -1,0 +1,12 @@
+{
+  "run": "2026-07-19 ikinci günaydın vardiyası (Fable ana-sıra; Claude-A-yazar/Claude-B-kullanır deseni, temiz-bağlam subagent'lar)",
+  "results": [
+    {"id": "E1-mekanizma-karari", "arm": "with-skill", "passed": true,
+     "evidence": "6/6 assertion: 3 farklı taban (reel-opsiyon/kuyruk-darboğaz/topyekûn) · karşıt-temel C + canlılık VERDİKTİ · eksenler [?] damgalı dolu · ✅ melez öneri + triangülasyon + KISMEN YAKINSADI · defter bloğu üretildi-yazılmadı · m.40b dış-tarama borcu bayraklı"},
+    {"id": "E1-mekanizma-karari", "arm": "baseline (skill'siz)", "passed": false,
+     "evidence": "İçerik kalitesi YÜKSEK (darboğaz sezgisini kendiliğinden buldu, devre-kesici tasarımı sağlam) ama kanon-kontrat 2/6: seçenekler tasarım-varyantı, matematiksel taban ayrımı yok · karşıt-temel/canlılık yok · token ekseni boş · defter bloğu yok · m.40b bayrağı yok. SONUÇ: skill'in katma değeri zekâ değil KONTRAT (denetlenebilirlik + kanon zinciri) — beklenen bulguyla uyumlu ('Claude zaten akıllı')."},
+    {"id": "E2-esik-alti-fren", "arm": "with-skill", "passed": true, "evidence": "2/2: eşik-altı ilan + tören yok, tek-cümle direkt öneri."},
+    {"id": "E3-emir-istisnasi", "arm": "with-skill", "passed": true, "evidence": "2/2: model sunulmadı, emir devralındı; m.16 istisnası doğru sınırla ('çelişki aramak bahanesiyle geciktirme kurala aykırı')."}
+  ],
+  "open_debt": ["20-sorgu description eval (10+10 × 3 koşum, 60/40) — yayın-öncesi zorunlu, sıradaki skill turuyla", "çok-model testi (Haiku/Sonnet'te koşum) — tuzak #15", "gerçek CC oturumunda tetikleme sahası testi (Salih)"]
+}

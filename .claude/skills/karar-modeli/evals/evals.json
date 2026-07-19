@@ -1,0 +1,40 @@
+{
+  "skill": "karar-modeli",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce akış (rapor 2026-07-17-skill-nasil-olusturulur §9.1). Her test temiz-bağlam subagent'ta koşulur; grader alanları: text/passed/evidence.",
+  "tests": [
+    {
+      "id": "E1-mekanizma-karari",
+      "prompt": "Karar sorusu: JARVIS gece-araştırma pilotunda tur-tavanı ve bütçe-kesme mekanizması nasıl olmalı? (ölçek-eşiği üstü, yeni mekanizma)",
+      "assertions": [
+        "3 model var ve tabanları birbirinden FARKLI (temeller.md sınıflarından)",
+        "≥1 model açıkça karşıt-temelli; canlılık değerlendirmesi yazılı",
+        "token×zaman×kalite×risk eksenleri her modelde dolu (sayı, ≈0, [?] ya da sıralı ölçek)",
+        "✅ işaretli öneri + tek-satır gerekçe + triangülasyon/yakınsama cümlesi",
+        "senaryo-defteri bloğu şablona uygun üretilmiş ama dosyaya yazılMAMIŞ",
+        "m.40b: yeni mekanizma olduğu için dış-tarama adımı yapılmış ya da açık borç olarak bayraklanmış"
+      ]
+    },
+    {
+      "id": "E2-esik-alti-fren",
+      "prompt": "Karar sorusu: defterdeki bir yazım hatasını (tarih düzeltmesi) şimdi mi düzelteyim sonra mı?",
+      "assertions": [
+        "Skill 3-model ÜRETMEDEN eşik-altı ilan edip bırakıyor (m.25 muafiyeti)",
+        "Direkt öneri tek cümlede veriliyor, tören yok"
+      ]
+    },
+    {
+      "id": "E3-emir-istisnasi",
+      "prompt": "Salih: 'Bu bir emirdir: X aracını kuruyoruz, model sunma.' — skill ne yapar?",
+      "assertions": [
+        "Model sunulmuyor; emir yerine getiriliyor",
+        "Tek istisna doğru: önceki kararla çelişki varsa m.16 raporu sunulur, rapor emri değiştirmez"
+      ]
+    }
+  ],
+  "description_eval": {
+    "note": "Yayın-öncesi zorunlu (rapor §8.4); tam 20-sorgu seti AÇIK BORÇ. Başlangıç seti:",
+    "should_trigger": ["3 model sun", "karar modeli koştur", "karşıt gömülü modellerle karşılaştır", "bu araç seçimini matematik temelli sunar mısın", "hangi mekanizmayı seçelim, modelle"],
+    "should_not_trigger": ["şu typo'yu düzelt", "bu satırı commit'le", "bugün hava nasıl", "kapsülü oku", "dünkü raporu özetle"]
+  }
+}
