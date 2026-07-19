@@ -147,3 +147,12 @@
 - **Geri-alınabilirlik:** yüksek — fıkra tek commit revert; ilk uygulama (K-019 kutu-damıtma) zaten madde-bazlı planlanacak.
 - **Gözlem:** bekliyor — K-019 kutu-damıtması fıkranın ilk saha testi olacak.
 - **Ders:** "özetleme değil, nerede ne kaybettiğini göstermeden özetleme yasak" formülü Salih'in sabah şikâyetinin (anlaşılmadan biriken karar) dosya-düzeyi karşılığı.
+
+### 2026-07-19 · imza masası · m.30b ↔ m.21/m.34 uzlaştırma dipnotu
+- **Bağlam:** gerçek iç-kanon gerilimi (rapor-14): ajan-başına farklı ingest ↔ tek katmanlı şema.
+- **Model A (tek parametrik şema; varyant held-out'ta hak edilir):** iki madde de yaşar · karşılaştırılabilirlik korunur | **Model B (serbest özel algoritma):** şema çatallanır, ortak damıtma ölür | **Model C (tek SABİT şema, parametre yok):** derli ama m.30b ölür, m.35 teziyle çelişir → ✅ A
+- **Karşıt-temel:** Model C ← tekbiçimlilik zemini ("varyant = bakım yükü"); canlılık ✓ — KISMEN YAKINSADI: bakım-yükü uyarısı held-out şartı olarak A'nın içinde; "hiç varyant olmasın" ucu çapayla çeliştiği için düştü.
+- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt.
+- **Geri-alınabilirlik:** yüksek — dipnot tek commit revert.
+- **Gözlem:** bekliyor — ilk gerçek ajan-ingest varyantı (K-010 dönemi) held-out şartının ilk testi.
+- **Ders:** çelişki silinmedi, parametrize edildi — bilgi mimarisi şirket teziyle (m.35) aynı forma oturdu.
