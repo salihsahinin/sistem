@@ -30,8 +30,15 @@ Her beyan bir kayıt; alanlar Fable'ın nihai hazinesine taşınabilir aday süt
 | Statü | TOPLANDI → TANIMLANDI → ATANDI |
 | Hiyerarşi konumu | atandığında: üst ajan + katman |
 
-## Toplama (append-only — henüz beyan yok)
+## Toplama (append-only)
 
-| ID | Ham beyan (tarih · damga) | Yapabilir | Kırmızı çizgiler | Ölçek | Katman | Model | Risk | Bağımlılık/tetik | Statü |
-|---|---|---|---|---|---|---|---|---|---|
-| — | *(Salih ilk "şunu yapan bi ajanım olsun" dediğinde buraya düşecek)* | | | | | | | | |
+### AB-01 · Karar-yazmanı (decision secretary) — TANIMLANDI · **PARK (uzun vade)**
+- **Ham beyan** (2026-07-20 · beyansız · *SES-POC dikte örneği*): "Şirkette alınan önemli kararları benim için karar raporu olarak tutacak bir yazman lazım. Canlı [ajan] olarak yüklenebilir, yani yapabilir — ama uzun vade için hazinede dursun."
+- **Yapabilir (m.42a):** ölçek-eşiği üstü önemli kararları tespit et → her biri için karar-raporu üret (mevcut `senaryo-defteri.md` m.37 şablonu: bağlam + 3-model + karşıt-temel + seçim + gözlem + ders; ya da sade karar + gerekçe + geri-açma) → deftere/arşive düşür → karar-başına-commit + [damıtma]/[icra] etiketi (m.10/V5) disiplinine bağla.
+- **Kırmızı çizgiler (m.42a):** karar VERMEZ, yalnız KAYDEDER · `core/` · tüzük · `CLAUDE.md` · `.claude/` YAZMAZ (m.41 kilidi) · publish / para / kişisel-veri kararını kendi başına kaydetmez → Salih'e flag'ler (m.31 Katman-1) · **katı-başlangıç (m.42d):** taslak karar-raporu üretir, Salih/Carvis onaylar; onaysız deftere yazmaz.
+- **Ölçek (token×zaman):** az × kısa (karar-anı işi).
+- **Katman tahmini (m.30c):** kalıcı işçi (tek-kullanımlık DEĞİL — kararlar birikmeli, ajan-wiki'si atama anında başlar m.30a) · konum: Carvis altında.
+- **Model tahmini (m.42g):** bir-altı, deterministik düşük-temperature (yazman = düşük yaratıcılık, doğruluk kritik; m.42f icra-ajanı deterministik).
+- **Risk (m.42e):** DÜŞÜK — hata sınıfı = eksik/yanlış kayıt + atıf-hatası (yanlış tarih/karar); geri-alma ucuz (rapor revize/revert git); sigorta = V26 örneklem-denetimi + Salih onay kapısı.
+- **Bağımlılık/tetik:** canlı atama **K-010 TETİKLİ** (prompt+kimlik devri eşiği, m.30 ek fıkrası) · **Salih kararı: PARK** — uzun vade için hazinede bekler, şimdi canlı kurulmaz · **ÖRTÜŞME:** `senaryo-defteri.md` (m.37 karar kayıtları) = bu ajanın otomatize edeceği MEVCUT altyapı → yeni format değil, o defterin + m.10 karar-commit'lerinin bakımı. K-010 açılınca ilk aday işçilerden.
+- **Statü:** TANIMLANDI (parked) · **Hiyerarşi konumu:** atanmadı (aday: Carvis → kalıcı "karar-yazmanı" işçisi).
