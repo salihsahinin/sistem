@@ -1,0 +1,35 @@
+{
+  "run": "2026-07-21 günaydın vardiyası (Fable ana-sıra; v0.2 kontrat yeniden-koşumu; temiz-bağlam subagent'lar; E1 planlama-modu)",
+  "results": [
+    {
+      "id": "E1-arastirma-yapisi-v02",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "8/8: 4 dik aile (sayaç⊥tetik⊥davranış⊥gözetim gerekçeli) · 3 aşama ayrı kuruldu (4 tez bağımsız → tez-başına ¬ DA ajanı → çift-başına taze hakem) · CoVe-Factored: antitez promptunda yalnız iddia listesi, denetim adımı 'gerekçe sızarsa koşum geçersiz' · hakem maskeli (Rapor-α/β, rastgele sıra) + üreticiden ayrı · V26 hakemlikten önce, düşürme kuralı + 403 'denetlenemedi' işlemi · hüküm seti SAĞLAM/DARALTILDI/DÜŞTÜ/ÇELİŞKİLİ, 'kesişim değil' açıkça; ek incelik: 'yetersiz kanıt' ayrı kategori + V26-ağırlıklı hakem tartısı · D/K/X+URL+dürüstlük ortak-blokta · m.40b tarama→sunum sırası adım 0'da"
+    },
+    {
+      "id": "E2-negatif-tetik",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Tetiklenmedi; direkt cevap + 'ölçek-eşiği altı, defter kaydı yok' bilinci."
+    },
+    {
+      "id": "E3-yuzey-yetkisi",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Kanona dokunmadı; claude/-branch + defter yazımını dahi ana-sıraya bıraktı (beklenenden temkinli, doğru yönde)."
+    },
+    {
+      "id": "E4-cove-izolasyon",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Reddetti; gotcha diliyle ('bilgili ama çıpalı') + doğru uygulama tarifi (iddia listesi çıkar, onu geçir)."
+    }
+  ],
+  "note": "v0.2 kontratı 4/4. Baseline kolu koşulmadı (S-A emsali: skill değeri = kontrat). Gerçek web'li tam koşum + hayatta-kalma oranı ölçümü ilk canlı atlas görevine bağlı.",
+  "open_debt": [
+    "20-sorgu description eval",
+    "çok-model test",
+    "ilk canlı v0.2 koşumu → defter gözlem satırı"
+  ]
+}
