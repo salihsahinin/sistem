@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P3 — RoPE, Uzun-Context & Lost-in-the-Middle</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c2230; --ink:#e8ecf1; --dim:#9aa7b4;
+    --line:#2a3340; --teal:#4fd1c5; --amber:#f0b429; --red:#f2777a; --green:#7bd88f;
+    --blue:#6cb6ff; --violet:#b392f0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.62;font-size:16.5px}
+  .wrap{max-width:820px;margin:0 auto;padding:36px 22px 90px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:8px}
+  .kicker{color:var(--teal);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  h1{font-size:27px;line-height:1.25;margin:.35em 0 .3em}
+  .meta{color:var(--dim);font-size:13.5px}
+  .meta b{color:var(--ink)}
+  h2{font-size:20px;margin:2.4em 0 .2em;padding-top:.2em}
+  .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;
+    padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:8px;transform:translateY(-2px)}
+  .t-S{background:rgba(108,182,255,.16);color:var(--blue);border:1px solid rgba(108,182,255,.35)}
+  .t-O{background:rgba(240,180,41,.15);color:var(--amber);border:1px solid rgba(240,180,41,.35)}
+  .t-T{background:rgba(242,119,122,.15);color:var(--red);border:1px solid rgba(242,119,122,.35)}
+  p{margin:.7em 0}
+  .qa{background:var(--panel);border-left:3px solid var(--violet);border-radius:6px;
+    padding:12px 16px;margin:14px 0;font-size:15.5px}
+  .qa .q{color:var(--violet);font-weight:700}
+  .ex{background:var(--panel);border-left:3px solid var(--green);border-radius:6px;
+    padding:12px 16px;margin:14px 0;font-size:15.5px}
+  .ex .l{color:var(--green);font-weight:700;letter-spacing:.03em;font-size:12.5px;text-transform:uppercase}
+  .bridge{color:var(--dim);font-style:italic;font-size:14.5px;margin-top:12px;
+    border-top:1px dashed var(--line);padding-top:10px}
+  .term{color:var(--teal);font-weight:600}
+  figure{margin:20px 0;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px 14px 10px}
+  figcaption{color:var(--dim);font-size:13px;margin-top:8px;text-align:center}
+  svg{display:block;width:100%;height:auto}
+  .done{background:linear-gradient(180deg,rgba(79,209,197,.08),rgba(79,209,197,.03));
+    border:1px solid rgba(79,209,197,.4);border-radius:10px;padding:16px 18px;margin:26px 0}
+  .done h3{margin:0 0 6px;color:var(--teal);font-size:16px}
+  .done ul{margin:.3em 0 0;padding-left:18px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+  td small{color:var(--dim)}
+  .rec{background:rgba(123,216,143,.10)}
+  .pill{display:inline-block;background:rgba(123,216,143,.18);color:var(--green);
+    font-weight:700;font-size:12px;padding:1px 8px;border-radius:999px}
+  .warn{color:var(--amber);font-weight:600}
+  hr.sep{border:0;border-top:1px solid var(--line);margin:34px 0}
+  .foot{color:var(--dim);font-size:13px;margin-top:30px}
+  a{color:var(--blue)}
+  .lead{font-size:17px;color:var(--ink)}
+  code{background:#0b0e13;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:14px;color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Öğrenme Şeridi · P3</div>
+  <h1>RoPE, Uzun-Context ve Lost-in-the-Middle</h1>
+  <div class="meta">
+    <b>Tarih:</b> 2026-07-19 &nbsp;·&nbsp; <b>Derinlik:</b> [O] orta &nbsp;·&nbsp;
+    <b>Eksen:</b> L8 + L1/L2 &nbsp;·&nbsp; <b>Devir:</b> P0-a (RoPE [S] ilk geçiş) + P1 (bağlam=maliyet)
+  </div>
+  <p class="lead" style="margin-top:14px">
+    Bu partisyonun tek işi şu: transformer pozisyonu <b>nasıl</b> kodlar (RoPE), ve bağlam uzadıkça
+    model neden <b>güvenilmez</b> olur (lost-in-the-middle + context rot). İkisi birleşince JARVIS'in
+    en somut tasarım kuralı çıkıyor: <b>~200 satırlık sıcak hafıza tavanının mekanik nedeni.</b>
+    Bunu bu dersin sonunda tek cümleyle söyleyebilir olman DONE kapısı.
+  </p>
+</header>
+
+<p style="color:var(--dim);font-size:14px;margin-top:18px">
+  Format: pasif-okuma v2 — okuya okuya öğren, geri-anlatım istemiyorum. Bilmediğin terim ilk geçtiğinde
+  parantez içinde açık. Her yapısal kavramın altında gerçek bir görsel var. Örnekler sonuna kadar işlenmiş.
+  6 blok + Yarı-2 (JARVIS uygulaması, 3 model).
+</p>
+
+<!-- ============ BLOK 1 ============ -->
+<h2>Blok 1 · Pozisyon problemi ve öğrenilmiş embedding'in duvarı <span class="tag t-O">O</span></h2>
+
+<p>
+  P0-a'da şunu görmüştük: <span class="term">self-attention</span> (her token'ın diğer her token'a
+  "ne kadar ilgiliyim?" diye bakması) tek başına <b>sırayı bilmez</b>. Attention için girdi bir
+  <b>küme</b>dir, dizi değil — token'ları karıştırsan skorlar aynı çıkar. Yani ham attention'a göre
+  "köpek kediyi kovaladı" ile "kediyi köpek kovaladı" ayırt edilemez. Anlamı taşıyan şey kelimeler
+  <i>kadar</i> onların <b>sırasıdır</b>; o yüzden pozisyon bilgisini modele ayrıca zerk etmek gerekir.
+</p>
+
+<p>
+  İlk nesil çözüm <span class="term">öğrenilmiş pozisyon embedding'i</span> (learned positional
+  embedding — her pozisyon numarası için eğitimde öğrenilen sabit bir vektör): pozisyon 0'ın bir
+  vektörü var, pozisyon 1'in başka, ... token'ın anlam vektörüne pozisyonunun vektörü <b>eklenir</b>.
+  Sorun: bu bir <b>tablodur</b> ve tablonun satır sayısı sabittir. Model 1024 pozisyona kadar eğitildiyse,
+  1025. token için <b>vektör yoktur</b> — tanımsız bölge. Bu "duvar" mutlak (absolute) kodlamanın doğal sınırı.
+</p>
+
+<div class="qa">
+  <span class="q">Peki model 1025. pozisyonu neden "tahmin" edemiyor?</span>
+  Çünkü her pozisyon vektörü <b>bağımsız</b> öğrenildi — 5 ile 6 arasında "bir ileri" gibi bir kural
+  öğrenmedi, sadece 5'in ve 6'nın vektörünü ezberledi. Tabloda olmayan satırın komşusundan türetilecek
+  bir yapı yok. Ezber var, kural yok.
+</div>
+
+<div class="ex">
+  <span class="l">Somut örnek — sonuna kadar</span>
+  <p style="margin:.4em 0 0">
+    Diyelim tablo 0–1023 arası eğitildi. Girdi: 1030 token'lık bir prompt.
+    Token 0…1023 → tablodan pozisyon vektörünü alır, sorun yok.
+    Token 1024 → tabloda satır yok → model ya kırpar (son 1024'ü alır, baştaki 6 token <b>düşer</b>)
+    ya da tanımsız değerle çalışıp saçmalar. JARVIS'e çevirisi: kanon dosyan bu limiti aşarsa,
+    baştaki kurallar sessizce pencereden düşer ve model onları "hiç görmemiş" gibi davranır.
+    İşte bu yüzden mutlak-tablo yaklaşımı uzun bağlam için baştan ölü.
+  </p>
+</div>
+
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-label="Pozisyonsuz attention ve öğrenilmiş pozisyon tablosunun duvarı">
+  <rect x="0" y="0" width="760" height="250" fill="none"/>
+  <!-- left: bag of words -->
+  <text x="20" y="26" fill="#9aa7b4" font-size="13" font-weight="700">HAM ATTENTION İÇİN GİRDİ = KÜME</text>
+  <g font-size="14" fill="#e8ecf1">
+    <rect x="20" y="40" width="70" height="30" rx="6" fill="#1c2230" stroke="#2a3340"/><text x="55" y="60" text-anchor="middle">köpek</text>
+    <rect x="100" y="40" width="70" height="30" rx="6" fill="#1c2230" stroke="#2a3340"/><text x="135" y="60" text-anchor="middle">kediyi</text>
+    <rect x="180" y="40" width="90" height="30" rx="6" fill="#1c2230" stroke="#2a3340"/><text x="225" y="60" text-anchor="middle">kovaladı</text>
+  </g>
+  <text x="20" y="98" fill="#f2777a" font-size="13">= sırayı karıştır → skorlar aynı → anlam kaybı</text>
+  <line x1="20" y1="112" x2="300" y2="112" stroke="#2a3340"/>
+  <text x="20" y="134" fill="#7bd88f" font-size="13">çözüm: pozisyon bilgisini ayrıca ekle ↓</text>
+
+  <!-- right: learned table with wall -->
+  <text x="430" y="26" fill="#9aa7b4" font-size="13" font-weight="700">ÖĞRENİLMİŞ POZİSYON TABLOSU</text>
+  <g font-size="12.5">
+    <rect x="430" y="38" width="150" height="24" fill="#1c2230" stroke="#2a3340"/><text x="440" y="55" fill="#e8ecf1">poz 0 → [ vektör ]</text>
+    <rect x="430" y="62" width="150" height="24" fill="#1c2230" stroke="#2a3340"/><text x="440" y="79" fill="#e8ecf1">poz 1 → [ vektör ]</text>
+    <rect x="430" y="86" width="150" height="24" fill="#1c2230" stroke="#2a3340"/><text x="440" y="103" fill="#e8ecf1">⋮</text>
+    <rect x="430" y="110" width="150" height="24" fill="#1c2230" stroke="#2a3340"/><text x="440" y="127" fill="#e8ecf1">poz 1023 → [ vektör ]</text>
+  </g>
+  <!-- wall -->
+  <line x1="425" y1="140" x2="600" y2="140" stroke="#f2777a" stroke-width="3"/>
+  <text x="430" y="160" fill="#f2777a" font-size="13" font-weight="700">▉ DUVAR — 1024. satırdan sonra vektör YOK</text>
+  <rect x="430" y="170" width="150" height="24" fill="#0e1116" stroke="#f2777a" stroke-dasharray="4 3"/>
+  <text x="440" y="187" fill="#f2777a" font-size="12.5">poz 1024 → ??? (tanımsız)</text>
+  <path d="M600 182 L640 182" stroke="#f2777a" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="600" y="205" fill="#9aa7b4" font-size="12">token düşer / saçmalar</text>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#f2777a"/></marker></defs>
+</svg>
+<figcaption>Solda: sırasız küme anlam kaybettirir. Sağda: öğrenilmiş tablo sabit boy — eğitilen satırdan sonrası duvar.</figcaption>
+</figure>
+
+<p class="bridge">Bağ: mutlak tablo uzun bağlamda çöküyor. Sıradaki soru — pozisyonu <i>ezberlemeden</i>,
+kural olarak kodlayabilir miyiz? RoPE'nin cevabı bu.</p>
+
+<!-- ============ BLOK 2 ============ -->
+<h2>Blok 2 · RoPE — pozisyonu "döndürerek" kodlamak <span class="tag t-O">O</span></h2>
+
+<p>
+  <span class="term">RoPE</span> (Rotary Position Embedding — "döndürmeli pozisyon kodlaması"): pozisyon
+  bilgisini token'ın vektörüne <b>eklemez</b>; onun yerine attention'da kullanılan Q ve K vektörlerini
+  (P0-a: Q = "ne arıyorum", K = "bende ne var") pozisyona bağlı bir <b>açıyla döndürür</b>. Vektörün
+  yönü döner, boyu aynı kalır. Anahtar numara şurada: iki token'ın attention skoru hesaplanırken
+  (Q·K iç çarpımı — iki vektörün ne kadar hizalı olduğunun ölçüsü), sonuç yalnızca ikisinin
+  <b>arasındaki açı farkına</b>, yani <b>göreli mesafeye</b> bağlı kalır. Mutlak pozisyon (kaçıncı token)
+  değil, <b>fark</b> (kaç adım arayla) kodlanmış olur.
+</p>
+
+<p>
+  Sezgi: iki saat ibresi düşün. Birini pozisyon <code>m</code> kadar, diğerini pozisyon <code>n</code>
+  kadar döndür. Aralarında kalan açı her zaman <code>m − n</code> orantılıdır — ikisini birlikte 100
+  adım daha döndürsen bile aralarındaki açı <b>değişmez</b>. Model "5. ve 8. token" yerine "3 adım arayla"
+  bilgisini görür. Duvar yok, çünkü döndürme bir <b>tablo değil bir kural</b> — her pozisyon için
+  formülle üretilir, ezberlenmez.
+</p>
+
+<div class="qa">
+  <span class="q">Peki "arasındaki açı = göreli mesafe" neden bu kadar önemli?</span>
+  Çünkü dil göreli çalışır: bir sıfatın hangi mutlak pozisyonda olduğu değil, ait olduğu isimden
+  <b>kaç kelime</b> uzakta olduğu önemlidir. RoPE tam da modelin ihtiyaç duyduğu şeyi — göreli konumu —
+  doğrudan kodlar, gereksiz olanı (mutlak indeks) atar.
+</div>
+
+<div class="ex">
+  <span class="l">Somut örnek — sonuna kadar</span>
+  <p style="margin:.4em 0 0">
+    Aynı iki kelime çifti, iki farklı cümlede: <br>
+    Cümle A: "… kırmızı <u>araba</u> …" — araba poz 8, kırmızı poz 7 → fark = 1.<br>
+    Cümle B: "Sabah erken kalkıp … kırmızı <u>araba</u>" — araba poz 40, kırmızı poz 39 → fark = 1.<br>
+    Öğrenilmiş tabloda bu iki durum <b>farklı</b> pozisyon vektörleri görürdü (7–8 vs 39–40) ve modelin
+    ilişkiyi iki kez ayrı öğrenmesi gerekirdi. RoPE'de ikisinin de göreli farkı <b>1</b> — model
+    "sıfat hemen önündeki isme ait" kuralını <b>bir kez</b> öğrenir, her yerde çalışır. Aynı kural,
+    her mutlak konumda geçerli.
+  </p>
+</div>
+
+<figure>
+<svg viewBox="0 0 760 300" role="img" aria-label="RoPE vektörleri saat ibresi gibi pozisyonla döndürür, aralarındaki açı göreli mesafeyi verir">
+  <!-- clock A -->
+  <g transform="translate(150,150)">
+    <circle r="90" fill="#161b22" stroke="#2a3340"/>
+    <line x1="0" y1="0" x2="63" y2="-63" stroke="#4fd1c5" stroke-width="4" marker-end="url(#h1)"/>
+    <line x1="0" y1="0" x2="80" y2="-25" stroke="#f0b429" stroke-width="4" marker-end="url(#h2)"/>
+    <circle r="4" fill="#e8ecf1"/>
+    <text x="0" y="120" text-anchor="middle" fill="#9aa7b4" font-size="13">Cümle A: poz 7 &amp; poz 8</text>
+    <path d="M 55 -18 A 58 58 0 0 1 45 -45" fill="none" stroke="#b392f0" stroke-width="2.5"/>
+    <text x="78" y="-42" fill="#b392f0" font-size="13" font-weight="700">Δ=1</text>
+  </g>
+  <!-- clock B -->
+  <g transform="translate(560,150)">
+    <circle r="90" fill="#161b22" stroke="#2a3340"/>
+    <!-- rotated further, but same gap -->
+    <line x1="0" y1="0" x2="-63" y2="63" stroke="#4fd1c5" stroke-width="4" marker-end="url(#h3)"/>
+    <line x1="0" y1="0" x2="-45" y2="70" stroke="#f0b429" stroke-width="4" marker-end="url(#h4)"/>
+    <circle r="4" fill="#e8ecf1"/>
+    <text x="0" y="120" text-anchor="middle" fill="#9aa7b4" font-size="13">Cümle B: poz 39 &amp; poz 40</text>
+    <path d="M -55 55 A 58 58 0 0 1 -40 62" fill="none" stroke="#b392f0" stroke-width="2.5"/>
+    <text x="-95" y="58" fill="#b392f0" font-size="13" font-weight="700">Δ=1</text>
+  </g>
+  <text x="355" y="150" text-anchor="middle" fill="#7bd88f" font-size="14" font-weight="700">aynı</text>
+  <text x="355" y="170" text-anchor="middle" fill="#7bd88f" font-size="14" font-weight="700">açı!</text>
+  <text x="380" y="285" text-anchor="middle" fill="#9aa7b4" font-size="12.5">İbreler birlikte döndü (mutlak poz değişti) ama aralarındaki açı (göreli mesafe) sabit.</text>
+  <defs>
+    <marker id="h1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><circle cx="4" cy="4" r="3" fill="#4fd1c5"/></marker>
+    <marker id="h2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><circle cx="4" cy="4" r="3" fill="#f0b429"/></marker>
+    <marker id="h3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><circle cx="4" cy="4" r="3" fill="#4fd1c5"/></marker>
+    <marker id="h4" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><circle cx="4" cy="4" r="3" fill="#f0b429"/></marker>
+  </defs>
+</svg>
+<figcaption>Q (teal) ve K (amber) pozisyonla döner. Attention skoru yalnız aralarındaki açıya = göreli mesafeye bakar; mutlak pozisyon düşer.</figcaption>
+</figure>
+
+<p class="bridge">Bağ: RoPE mutlak duvarı kaldırdı ve göreli mesafeyi kodladı. Ama "duvar yok" demek
+"sonsuz bağlam bedava" demek değil. Bir sonraki blok bunun sınırını gösteriyor.</p>
+
+<!-- ============ BLOK 3 ============ -->
+<h2>Blok 3 · Frekans bantları ve RoPE'nin gerçek sınırı <span class="tag t-S">S</span></h2>
+
+<p>
+  RoPE tek bir hızda döndürmez. Vektörün boyutları çiftler halinde gruplanır ve her çift <b>farklı
+  hızda</b> döner — buna <span class="term">frekans bantları</span> denir (frequency bands — bazı
+  boyutlar pozisyon başına çok döner, bazıları çok az). Hızlı dönen çiftler <b>yakın/ince</b> mesafeyi
+  ayırt eder ("1 mi 2 adım mı"), yavaş dönenler <b>uzak/kaba</b> mesafeyi ("100 mü 500 adım mı"). Bu
+  yüzden RoPE hem komşuluğu hem uzun-menzil ilişkisini aynı anda temsil edebilir.
+</p>
+
+<p>
+  Sınır şurada: model belli bir uzunluğa (örneğin 8K token) kadar eğitildiyse, yavaş frekanslar o
+  aralıkta <b>tam bir tur bile atmamış</b> olabilir. Çok daha uzun bir bağlam verince (örneğin 100K),
+  o frekanslar eğitimde <b>hiç görmediği</b> açılara girer — model <span class="term">ekstrapolasyon</span>
+  (extrapolation — eğitilen aralığın dışına taşma) yapmak zorunda kalır ve <b>bozulur</b>. "Duvar" gitti
+  ama yerine <b>yumuşak bir bozulma eğimi</b> geldi. YaRN, NTK, position-interpolation gibi teknikler
+  (bu frekansları yeniden ölçekleyip uzun bağlamı "sığdıran" yöntemler — [S] düzeyde isim yeter) tam da
+  bu bozulmayı ertelemek için var.
+</p>
+
+<div class="qa">
+  <span class="q">Yani "128K context" yazması, 128K'nın hepsinin eşit güvenilir olduğu mu demek?</span>
+  Hayır. Pencereye <b>sığar</b> (duvar yok) ama <b>eşit kullanılmaz</b>. Sığdırmak ile güvenilir
+  kullanmak iki ayrı şey — bir sonraki iki blok tam olarak bu boşluğu (sığar ama çürür) ölçüyor.
+</div>
+
+<figure>
+<svg viewBox="0 0 760 220" role="img" aria-label="Farklı frekans bantları: hızlı dönenler yakın mesafeyi, yavaş dönenler uzak mesafeyi kodlar">
+  <text x="20" y="24" fill="#9aa7b4" font-size="13" font-weight="700">EMBEDDING BOYUT ÇİFTLERİ — HER BİRİ FARKLI HIZDA DÖNER</text>
+  <!-- fast -->
+  <text x="20" y="70" fill="#4fd1c5" font-size="13">hızlı ⟳</text>
+  <g transform="translate(120,64)">
+    <circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="0" y2="-18" stroke="#4fd1c5" stroke-width="3"/>
+  </g>
+  <g transform="translate(175,64)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="15" y2="10" stroke="#4fd1c5" stroke-width="3"/></g>
+  <g transform="translate(230,64)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="-13" y2="12" stroke="#4fd1c5" stroke-width="3"/></g>
+  <g transform="translate(285,64)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="-2" y2="18" stroke="#4fd1c5" stroke-width="3"/></g>
+  <text x="330" y="70" fill="#9aa7b4" font-size="12.5">→ yakın/ince mesafe (1 mi 2 adım mı?)</text>
+  <!-- slow -->
+  <text x="20" y="140" fill="#f0b429" font-size="13">yavaş ⟳</text>
+  <g transform="translate(120,134)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="0" y2="-18" stroke="#f0b429" stroke-width="3"/></g>
+  <g transform="translate(175,134)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="4" y2="-17" stroke="#f0b429" stroke-width="3"/></g>
+  <g transform="translate(230,134)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="8" y2="-16" stroke="#f0b429" stroke-width="3"/></g>
+  <g transform="translate(285,134)"><circle r="18" fill="none" stroke="#2a3340"/><line x1="0" y1="0" x2="11" y2="-14" stroke="#f0b429" stroke-width="3"/></g>
+  <text x="330" y="140" fill="#9aa7b4" font-size="12.5">→ uzak/kaba mesafe (100 mü 500 adım mı?)</text>
+  <!-- extrapolation zone -->
+  <line x1="20" y1="175" x2="740" y2="175" stroke="#2a3340"/>
+  <rect x="20" y="185" width="470" height="24" rx="4" fill="#12331f" stroke="#2a3340"/>
+  <text x="30" y="201" fill="#7bd88f" font-size="12.5">eğitilen aralık (örn. 0–8K) — frekanslar tanıdık</text>
+  <rect x="495" y="185" width="245" height="24" rx="4" fill="#3a2314" stroke="#f2777a" stroke-dasharray="4 3"/>
+  <text x="505" y="201" fill="#f0b429" font-size="12.5">8K ötesi = görülmemiş açı → bozulma</text>
+</svg>
+<figcaption>RoPE aynı anda hem ince hem kaba mesafeyi kodlar; ama eğitilen uzunluğun ötesinde frekanslar tanımadığı açılara girer ve bozulma başlar.</figcaption>
+</figure>
+
+<p class="bridge">Bağ: teknik olarak "sığar ama eşit güvenilir değil". Şimdi bunun <i>ölçülmüş</i> hâline
+geçiyoruz — önce pozisyona göre (lost-in-the-middle), sonra uzunluğa göre (context rot).</p>
+
+<!-- ============ BLOK 4 ============ -->
+<h2>Blok 4 · Lost-in-the-Middle — U eğrisi <span class="tag t-O">O</span></h2>
+
+<p>
+  <span class="term">Lost-in-the-middle</span> ("ortada kaybolma" — Liu ve ark., 2023, TACL 2024):
+  bir bilgiyi uzun bir bağlamın <b>neresine</b> koyduğun, modelin onu bulma başarısını dramatik biçimde
+  değiştirir. Ölçüm net bir <b>U şekli</b> verir: bilgi <b>başta</b> ya da <b>sonda</b>ysa yüksek başarı;
+  <b>ortada</b>ysa başarı ciddi düşer. Bazı durumlarda ortadaki bir bilgiyi bulma performansı, modele o
+  bilgiyi <b>hiç vermemekten</b> daha kötü olabiliyordu. Bu bir donanım hatası değil, dikkatin dağılımının
+  düzensiz olmasının doğrudan sonucu.
+</p>
+
+<div class="qa">
+  <span class="q">Neden başı ve sonu iyi, ortası kötü?</span>
+  İki bilinen neden: (1) modeller ağırlıkla kısa dizilerle ve baştaki/sondaki token'lara güçlü dikkat
+  verecek şekilde eğitiliyor (girişin başı bağlam kurar, sonu ise en yakın/en taze). (2) İç yapı
+  (nedensel maske + pozisyon kodlaması) uçlara sistematik avantaj tanıyor. Sonuç: uçlar "sıcak", orta "soğuk".
+</div>
+
+<div class="ex">
+  <span class="l">Somut örnek — sonuna kadar</span>
+  <p style="margin:.4em 0 0">
+    20 belgelik bir yığının içine tek doğru cevabı gömüyorsun ve soruyorsun:<br>
+    • Doğru belge 1. sırada → model onu rahat buluyor (yüksek doğruluk).<br>
+    • Doğru belge 10. sırada (tam orta) → doğruluk <b>belirgin düşüyor</b>.<br>
+    • Doğru belge 20. sırada (son) → tekrar yükseliyor.<br>
+    JARVIS çevirisi: kanon dosyanın <b>ortasına</b> gömülü kritik bir kural, başına/sonuna konmuş bir
+    kuraldan daha büyük ihmal riski taşır. Yani "yazdım, dosyada var" ≠ "model onu kullanacak". Konum önemli.
+  </p>
+</div>
+
+<figure>
+<svg viewBox="0 0 760 260" role="img" aria-label="Lost in the middle U eğrisi: bağlamın başında ve sonunda doğruluk yüksek, ortasında düşük">
+  <!-- axes -->
+  <line x1="70" y1="30" x2="70" y2="200" stroke="#2a3340"/>
+  <line x1="70" y1="200" x2="720" y2="200" stroke="#2a3340"/>
+  <text x="18" y="40" fill="#9aa7b4" font-size="12">doğruluk</text>
+  <text x="18" y="120" fill="#9aa7b4" font-size="12" transform="rotate(-90 18 120)"></text>
+  <text x="360" y="235" fill="#9aa7b4" font-size="12.5" text-anchor="middle">bilginin bağlam içindeki konumu →</text>
+  <text x="70" y="220" fill="#7bd88f" font-size="12" text-anchor="middle">başta</text>
+  <text x="395" y="220" fill="#f2777a" font-size="12" text-anchor="middle">ortada</text>
+  <text x="720" y="220" fill="#7bd88f" font-size="12" text-anchor="end">sonda</text>
+  <!-- gridlines -->
+  <line x1="70" y1="60" x2="720" y2="60" stroke="#1c2230"/>
+  <line x1="70" y1="130" x2="720" y2="130" stroke="#1c2230"/>
+  <!-- U curve -->
+  <path d="M70 62 C 200 120, 320 178, 395 180 C 470 178, 590 120, 720 58" fill="none" stroke="#6cb6ff" stroke-width="3.5"/>
+  <circle cx="70" cy="62" r="5" fill="#7bd88f"/>
+  <circle cx="395" cy="180" r="5" fill="#f2777a"/>
+  <circle cx="720" cy="58" r="5" fill="#7bd88f"/>
+  <!-- annotations -->
+  <text x="95" y="55" fill="#7bd88f" font-size="12">yüksek</text>
+  <text x="360" y="176" fill="#f2777a" font-size="12">çukur</text>
+  <text x="640" y="52" fill="#7bd88f" font-size="12">yüksek</text>
+  <rect x="300" y="70" width="190" height="20" fill="none"/>
+  <text x="395" y="105" fill="#9aa7b4" font-size="11.5" text-anchor="middle" font-style="italic">bazen: buradaki bilgi ≈ hiç vermemek</text>
+</svg>
+<figcaption>Klasik U eğrisi: aynı bilgi, uçlarda güvenilir bulunur, ortada kaybolur. Konum tek başına başarıyı belirler.</figcaption>
+</figure>
+
+<p class="bridge">Bağ: konum sabitken bile bir değişken daha var — <i>toplam uzunluk</i>. Onu artırınca ne oluyor?</p>
+
+<!-- ============ BLOK 5 ============ -->
+<h2>Blok 5 · Context Rot — uzunluk arttıkça çürüme <span class="tag t-O">O</span></h2>
+
+<p>
+  <span class="term">Context rot</span> ("bağlam çürümesi" — Chroma, 2025 teknik raporu; Anthropic'in
+  bağlam-mühendisliği yazısı da aynı olguyu kullanır): girdideki <b>token sayısı arttıkça</b>, model o
+  bağlamdan bilgiyi doğru geri çağırma yeteneğini <b>kaybeder — basit görevlerde bile</b>. Chroma
+  GPT-4.1, Claude 4, Gemini 2.5, Qwen3 dahil modelleri test etti; hepsinde ortak bulgu: <b>bağlam
+  düzgün (uniform) kullanılmıyor</b>, uzunluk büyüdükçe performans giderek güvenilmezleşiyor. Hatta
+  10.000 kelimeyi tekrar etme gibi <b>bariz</b> bir görevde bile uzunlukla bozulma görüldü.
+</p>
+
+<p>
+  Bunun P1 ile bağı doğrudan: P1'de bağlamın <b>O(n²)</b> maliyet olduğunu gördük (her token diğer her
+  token'a bakar → n token için n² ilişki). Anthropic bunu <span class="term">dikkat bütçesi</span>
+  (attention budget — sabit bir "odak" kaynağı) diye adlandırıyor: <i>"her yeni token bu bütçeyi biraz
+  tüketir."</i> Neden bir <b>uçurum</b> değil de <b>eğim</b>? Çünkü modeller ağırlıkla kısa dizilerle
+  eğitilir; "bağlam-boyu ilişkiler için daha az deneyimleri ve daha az özelleşmiş parametreleri" var.
+  Yani bozulma keskin bir kesme değil, tedrici bir <b>performans gradyanı</b>.
+</p>
+
+<div class="qa">
+  <span class="q">Uzunluğun yanında neyi kötüleştiriyor?</span>
+  Chroma'nın üç net bulgusu: (1) <b>Distractor'lar</b> (dikkat dağıtıcı, konuya yakın ama yanlış bilgi):
+  <b>tek</b> distractor bile başarıyı düşürüyor, çoğaldıkça katlanıyor. (2) <b>Düşük benzerlik</b>:
+  soru ile cevap semantik olarak uzaksa, uzunlukla bozulma daha hızlı. (3) Şaşırtıcı olan: yığın
+  <b>mantıklı akışa</b> sahipse performans bazen daha <b>kötü</b>; karıştırılmış yığın daha iyi
+  sonuç verebiliyor. Sezgiye ters ama ölçülmüş.
+</div>
+
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-label="Context rot: girdi uzunluğu arttıkça doğruluk düşer, distractor eklenince daha da düşer">
+  <line x1="70" y1="30" x2="70" y2="195" stroke="#2a3340"/>
+  <line x1="70" y1="195" x2="720" y2="195" stroke="#2a3340"/>
+  <text x="18" y="40" fill="#9aa7b4" font-size="12">doğruluk</text>
+  <text x="395" y="230" fill="#9aa7b4" font-size="12.5" text-anchor="middle">girdi uzunluğu (token) →</text>
+  <g fill="#9aa7b4" font-size="11">
+    <text x="70" y="212" text-anchor="middle">1K</text>
+    <text x="290" y="212" text-anchor="middle">10K</text>
+    <text x="510" y="212" text-anchor="middle">50K</text>
+    <text x="715" y="212" text-anchor="end">100K+</text>
+  </g>
+  <line x1="70" y1="60" x2="720" y2="60" stroke="#1c2230"/>
+  <line x1="70" y1="128" x2="720" y2="128" stroke="#1c2230"/>
+  <!-- baseline curve -->
+  <path d="M70 52 C 250 62, 430 92, 720 132" fill="none" stroke="#6cb6ff" stroke-width="3.5"/>
+  <text x="600" y="118" fill="#6cb6ff" font-size="12">temiz bağlam</text>
+  <!-- with distractors -->
+  <path d="M70 58 C 250 84, 430 138, 720 176" fill="none" stroke="#f2777a" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="590" y="188" fill="#f2777a" font-size="12">+ distractor'lar</text>
+  <text x="120" y="48" fill="#7bd88f" font-size="12">kısa = güvenilir</text>
+  <path d="M690 140 L690 168" stroke="#9aa7b4" stroke-width="1.4" marker-end="url(#dn)"/>
+  <text x="640" y="150" fill="#9aa7b4" font-size="11">boşluk açılıyor</text>
+  <defs><marker id="dn" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0 0 L4 7 L8 0" fill="none" stroke="#9aa7b4"/></marker></defs>
+</svg>
+<figcaption>Uçurum değil eğim: uzunluk arttıkça doğruluk tedrici düşer (mavi). Distractor eklenince aynı uzunlukta çok daha hızlı çürür (kırmızı).</figcaption>
+</figure>
+
+<p class="bridge">Bağ: Blok 4 "kritik bilgi kenarda olsun" dedi; Blok 5 "toplam kısa olsun" dedi.
+İkisini üst üste koyunca JARVIS'in ~200-satır tavanının mekanik gerekçesi çıkıyor — çekirdek blok.</p>
+
+<!-- ============ BLOK 6 ============ -->
+<h2>Blok 6 · Çekirdek — 200-satır tavanının mekanik nedeni <span class="tag t-O">O</span></h2>
+
+<p>
+  JARVIS'in hafıza katmanında her oturumda <b>otomatik yüklenen</b> dosyalar var (Claude Code'da
+  <code>CLAUDE.md</code> yumuşak ~200-satır önerisi; <code>MEMORY.md</code> sert ~200-satır ∨ 25KB
+  kuralı — mufredat P5 notu). Bu tavan bir üslup tercihi değil; Blok 4 + Blok 5'in doğrudan sonucu.
+  Üç mekanizma aynı yöne bakıyor:
+</p>
+
+<p>
+  <b>1) Dikkat bütçesi (P1'den):</b> otomatik-yüklenen her satır, o oturumdaki <b>her tur</b> boyunca
+  n² bütçeden pay yer. Sıcak hafıza büyüdükçe, asıl işin (kod, karar) token'larına kalan odak azalır.
+  <b>2) Lost-in-the-middle (Blok 4):</b> hafıza dosyası büyüyünce kritik kurallar dosyanın
+  <b>ortasına</b> kayar — yani en güvenilmez bölgeye. <b>3) Context rot (Blok 5):</b> toplam uzunluk
+  arttıkça basit geri-çağırma bile güvenilmezleşir. Üçü birleşince kural şu: <b>daima-yüklü katman,
+  güvenilir-geri-çağırma bölgesinde kalacak kadar kısa olmalı.</b> ~200 satır bu bölgenin pratik tavanı.
+</p>
+
+<p>
+  Bu tam olarak <b>m.20 pointer ilkesinin</b> ("özet sıcakta, detay dosyada adresle") ve
+  <b>m.34 katmanlı ingest'in</b> mekanik gerekçesi. Detayı dışarı sürüp sıcak katmanı kısa tutmak
+  "temizlik" değil — modelin fiziksel geri-çağırma limitine uymak. Kritik bilgi (durum-kapsulu, çekirdek
+  kurallar) hem <b>kısa</b> hem <b>kenarda</b> (üstte/başta) olmalı; gerisi pointer'la, ihtiyaç anında
+  (just-in-time) yüklenmeli. P0-a'nın RoPE→JARVIS köprüsünde sezgisel söylediğimiz şeyin ("kritik bilgi
+  kenarda + kısa bağlamda") artık ölçülmüş mekaniği var.
+</p>
+
+<div class="ex">
+  <span class="l">Somut örnek — sonuna kadar</span>
+  <p style="margin:.4em 0 0">
+    Diyelim wiki büyüdü ve <code>CLAUDE.md</code>'ye her şeyi koydun: 900 satır (kurallar + 40 madde tam
+    metin + proje notları + geçmiş kararlar). Bir oturumda:
+    <br>• Her tur 900 satır bütçe yiyor → asıl göreve kalan odak azalıyor (mekanizma 1).
+    <br>• m.16 çelişki-kapısı kuralı 500. satırda, tam <b>ortada</b> → model onu ihmal etme riskinde (mekanizma 2).
+    <br>• Toplam bağlam şişkin → "az önce ne demiştim" bile kayabiliyor (mekanizma 3).
+    <br>Düzeltme: <code>CLAUDE.md</code> = 180 satır çekirdek (kim/kural-özeti/aktif-faz/pointer'lar).
+    40 madde tam metni <code>tuzuk-v0.md</code>'de, gerektiğinde okunur. Durum-kapsulu en üstte, kısa.
+    Sonuç: sıcak katman güvenilir bölgede kalır, detay ihtiyaç anında gelir. Aynı bilgi, doğru yerleşim.
+  </p>
+</div>
+
+<figure>
+<svg viewBox="0 0 760 300" role="img" aria-label="JARVIS bağlam yerleşimi: kısa sıcak çekirdek üstte güvenilir bölgede, detay dışarıda pointer ile">
+  <!-- context window column -->
+  <text x="30" y="24" fill="#9aa7b4" font-size="13" font-weight="700">BAĞLAM PENCERESİ (yüklü)</text>
+  <!-- top: hot core, reliable -->
+  <rect x="30" y="36" width="300" height="52" rx="6" fill="#12331f" stroke="#7bd88f"/>
+  <text x="42" y="58" fill="#7bd88f" font-size="13" font-weight="700">▲ ÜST = güvenilir bölge</text>
+  <text x="42" y="78" fill="#e8ecf1" font-size="12.5">durum-kapsulu + çekirdek kural (~200 satır)</text>
+  <!-- middle danger -->
+  <rect x="30" y="92" width="300" height="90" rx="6" fill="#241a1a" stroke="#f2777a" stroke-dasharray="5 4"/>
+  <text x="42" y="128" fill="#f2777a" font-size="13" font-weight="700">■ ORTA = lost-in-the-middle</text>
+  <text x="42" y="148" fill="#9aa7b4" font-size="12">buraya kritik kural koyma —</text>
+  <text x="42" y="165" fill="#9aa7b4" font-size="12">ihmal riski en yüksek</text>
+  <!-- bottom edge reliable -->
+  <rect x="30" y="186" width="300" height="46" rx="6" fill="#12331f" stroke="#7bd88f"/>
+  <text x="42" y="206" fill="#7bd88f" font-size="13" font-weight="700">▼ ALT = taze/güvenilir</text>
+  <text x="42" y="224" fill="#e8ecf1" font-size="12.5">güncel görev + son talimat</text>
+  <!-- rot arrow -->
+  <text x="30" y="258" fill="#f0b429" font-size="12">↑ toplam ne kadar uzun → o kadar çürüme (context rot)</text>
+
+  <!-- external detail files -->
+  <text x="470" y="24" fill="#9aa7b4" font-size="13" font-weight="700">DIŞ KATMAN (pointer ile, JIT)</text>
+  <g font-size="12.5" fill="#e8ecf1">
+    <rect x="470" y="40" width="250" height="30" rx="5" fill="#161b22" stroke="#2a3340"/><text x="482" y="60">tuzuk-v0.md (40 madde tam)</text>
+    <rect x="470" y="78" width="250" height="30" rx="5" fill="#161b22" stroke="#2a3340"/><text x="482" y="98">wiki/ (detay sayfalar)</text>
+    <rect x="470" y="116" width="250" height="30" rx="5" fill="#161b22" stroke="#2a3340"/><text x="482" y="136">raporlar/ · senaryo-defteri</text>
+  </g>
+  <!-- pointer arrows -->
+  <path d="M330 62 C 400 62, 410 55, 468 55" fill="none" stroke="#4fd1c5" stroke-width="2" marker-end="url(#pt)"/>
+  <path d="M330 70 C 400 90, 410 93, 468 93" fill="none" stroke="#4fd1c5" stroke-width="2" marker-end="url(#pt)"/>
+  <path d="M330 78 C 400 120, 410 128, 468 131" fill="none" stroke="#4fd1c5" stroke-width="2" marker-end="url(#pt)"/>
+  <text x="360" y="180" fill="#4fd1c5" font-size="12">m.20 pointer:</text>
+  <text x="360" y="197" fill="#4fd1c5" font-size="12">özet sıcakta,</text>
+  <text x="360" y="214" fill="#4fd1c5" font-size="12">detay adreste</text>
+  <defs><marker id="pt" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#4fd1c5"/></marker></defs>
+</svg>
+<figcaption>Sıcak katman kısa ve uçta (güvenilir) tutulur; kritik kural asla ortaya konmaz; detay dışarıda, m.20 pointer'ıyla ihtiyaç anında yüklenir. 200-satır tavanı = güvenilir bölgeyi taşırmama kuralı.</figcaption>
+</figure>
+
+<!-- DONE gate -->
+<div class="done">
+  <h3>✓ DONE kapısı — bu ikisini tek cümleyle söyleyebiliyorsan P3 geçti</h3>
+  <ul>
+    <li><b>pos-emb ↔ RoPE farkı:</b> Öğrenilmiş pos-emb = mutlak indeksi ezberlenen bir tablodan ekler,
+      eğitilen satırda duvara toslar. RoPE = Q/K'yı pozisyonla döndürür, attention yalnız <b>göreli
+      mesafeyi</b> görür; duvar yok ama eğitilen uzunluğun ötesinde yumuşak bozulma var.</li>
+    <li><b>200-satır tavanının mekanik nedeni:</b> Daima-yüklü hafıza her tur n² dikkat bütçesi yer
+      (P1); büyürse kritik kural lost-in-the-middle çukuruna kayar (Blok 4) ve toplam uzunluk context
+      rot'u tetikler (Blok 5). Bu yüzden sıcak katman güvenilir-geri-çağırma bölgesinde kalacak kadar
+      kısa (~200 satır) tutulur; gerisi m.20 pointer'la dışarıda.</li>
+  </ul>
+</div>
+
+<hr class="sep">
+
+<!-- ============ YARI 2 ============ -->
+<h2>Yarı-2 · JARVIS uygulaması — m.37, 3 model</h2>
+<p>
+  <b>Karar sorusu:</b> Bu bulgular ışığında JARVIS'in bağlam/hafıza yerleşimi hangi mimariyle
+  yürümeli? Aşağıda 3 model, 4-tuple <code>(token, zaman, beklenen-kalite)</code> ile. Rakamlar
+  <span class="warn">DENEYSEL/proxy</span> (m.39) — mutlak değil, modeller arası göreli kıyas için; gerçek
+  ölçüm eval-setiyle (P18-P19) yapılır. Kalite = uzun oturumda kritik-bilgi geri-çağırma güveni (0–1).
+</p>
+
+<table>
+  <thead>
+    <tr><th>Model</th><th>Token (sıcak katman)</th><th>Zaman / gecikme</th><th>Beklenen kalite</th><th>Not</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>A — Düz / hepsini yükle</b><br><small>tüm kanon+wiki her oturumda tam</small></td>
+      <td>Yüksek, <b>büyüyen</b><br><small>bugün ~10–15K, wiki büyüdükçe 30K+</small></td>
+      <td>Yavaş<br><small>her büyümede kararlı-prefix bozulur, cache soğur (P1)</small></td>
+      <td>~0.55 ve <b>düşüyor</b><br><small>kritik kural ortada kaybolur (Blok 4+5)</small></td>
+      <td>Basit ama ölçeklenmez; context rot'a doğrudan koşar.</td>
+    </tr>
+    <tr class="rec">
+      <td><b>B — Kısa çekirdek + pointer</b> <span class="pill">✅ ÖNERİ</span><br><small>durum-kapsulu üstte ~200 satır, detay m.20 pointer + JIT</small></td>
+      <td>Düşük, <b>sabit</b><br><small>~2–3K sıcak</small></td>
+      <td>Hızlı<br><small>kararlı-prefix cache read ~0.1× (P1); soğuk katman yalnız gerektiğinde</small></td>
+      <td>~0.85<br><small>kritik bilgi kısa+kenarda; güvenilir bölge korunur</small></td>
+      <td><b>Mevcut m.20/m.34 ile hizalı.</b> Prototip fazına en uygun token/kalite dengesi.</td>
+    </tr>
+    <tr>
+      <td><b>C — Katmanlı + compaction + not-tutma</b><br><small>B + oturum-içi özetleme + episodik not (Anthropic 3 teknik)</small></td>
+      <td>Orta<br><small>compaction için ek çağrı maliyeti</small></td>
+      <td>Orta<br><small>periyodik özetleme gecikmesi ekler</small></td>
+      <td>~0.90 (uzun oturumda)<br><small>ama kısa oturumda B'ye göre kazanç düşük</small></td>
+      <td>Kurulum + karmaşıklık maliyeti; kazancı ancak <b>uzun ajan-oturumları</b> başlayınca gerçekleşir.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <b>Öneri: Model B</b> — gerekçe: (1) prototip fazında oturumlar kısa; C'nin compaction/not-tutma
+  kazancı henüz gerçekleşmiyor, maliyeti şimdiden geliyor. (2) B zaten kanonda yazılı ilkelerin (m.20
+  pointer, m.34 katmanlı ingest) mekanik karşılığı — yeni mekanizma değil, mevcut ilkeyi sıkılaştırma.
+  (3) En iyi token/kalite dengesi + kararlı-prefix cache avantajını korur (P1). <b>Köprü:</b> C'nin iki
+  parçası — <i>compaction</i> ve <i>not-tutma</i> — çöpe gitmiyor; uzun ajan-oturumları / loop'lar
+  başlayınca değerlenecek. Doğal yeri <b>P6 (Context eng. II: compaction, not-tutma, izolasyon)</b> —
+  orada B üstüne C'ye geçiş kriteri (oturum-uzunluğu eşiği) tasarlanır.
+</p>
+
+<p style="color:var(--dim);font-size:14px">
+  <b>Şerit-senkron (kural 6):</b> Bu Yarı-2 kararı <b>aday</b>dır; nihai karar + uygulama ANA SIRADA
+  (Şerit 1, Katman-1/2). Senaryo-defteri kaydı orada düşülür. Bu oturum kanona yazmaz — çıktı ders
+  kaydı + karar adayıdır.
+</p>
+
+<hr class="sep">
+
+<h2>Kaynaklar</h2>
+<p style="font-size:14.5px">
+  Lost-in-the-middle: <a href="https://arxiv.org/abs/2307.03172">Liu et al., "Lost in the Middle" (arXiv 2307.03172 · TACL 2024)</a>.
+  Context rot: <a href="https://www.trychroma.com/research/context-rot">Chroma Research, "Context Rot" (2025)</a>.
+  Dikkat bütçesi + n² + pratik teknikler: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, "Effective context engineering for AI agents"</a>.
+  RoPE: <a href="https://arxiv.org/abs/2104.09864">Su et al., RoFormer (RoPE) arXiv 2104.09864</a>.
+</p>
+
+<p class="foot">
+  Öğrenme Şeridi (Şerit 2, deneysel m.29) · P3 · derinlik [O] · pasif-okuma v2 ·
+  devir: P0-a + P1 · sıradaki: P2 (KV-cache, temperature) [O] ya da P4 (halüsinasyon) — sıra Salih'te.
+  Bu yüzey kanon değiştirmez; çıktı = ders kaydı + karar adayı.
+</p>
+
+</div>
+</body>
+</html>
