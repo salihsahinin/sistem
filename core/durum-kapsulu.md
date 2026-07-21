@@ -2,24 +2,25 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-19 İKİNCİ GÜNAYDIN VARDİYASI KAPANDI (Carvis, Cowork ana-sıra/Fable) — **imza masası 6/6 + m.40b antitez-şerhi (¬)** · **m.16 kapısı: bayat-disk masa-tekrarı çözüldü (sabah imzası kaldı); yeni kural: açılış kapsülü ORIGIN KLONUNDAN** · **SES-POC başladı (Model A, PASİF toplama)** · **P2 kapandı (çift-koşum vakası)** · **K-016 AÇIK: karar-modeli + atlas-kosum üretildi (eval-önce, 3/3+3/3)** · KILAVUZ: Skill Standardı + mobil-CC açılış komutu · teslim: `raporlar/vardiya-teslim-2026-07-19-ikinci-gunaydin.md`
+**Güncelleme:** 2026-07-21 GÜNAYDIN VARDİYASI (Carvis, Cowork ana-sıra/Fable) — **3 günlük CC birikimi işlendi: Fable hükümleri verildi (K1-K4 + taksonomi kabulü; 5 defter bloğu)** · **İMZA MASASI 2 KALEM AÇIK:** m.40b v0.2 (`kuyruk/m40b-v02-taslak.md`) + m.43 rol-katmanları (`kuyruk/m43-taslak-rol-katmanlari.md`) · anlatımlı rehber Salih tarafından OKUNDU · S-I `sinav` adayı kutuya düştü · teslim: `raporlar/vardiya-teslim-2026-07-21-gunaydin.md`
 
 ## Şu an
-- **K-015 (ÖNCELİK №1):** (5) K-009 **AÇILDI** — kurucu kararlar imzalı, ilk otomasyon (gecelik senkron, A+C aşısı: LLM'siz ff-only script) kurulu. Kalan: gece scriptinin ilk koşumu (kilit+hook SAHADA DOĞRULANDI 07-19 ✓ · schtasks kayıtlı ✓ · pull borcu kapandı ✓) → **K-010 sicil sayacı bu gece başlar** (ön-koşul: temel katman 2 hafta sorunsuz).
-- **Kanon 07-19:** m.30 ek fıkrası — otomasyon = tetik devrine kadar (Routine dahil) / canlı ajan = prompt+kimlik devri; PreToolUse ön-koşulu; model-hiyerarşi: JARVIS=Fable · lider=Opus/bir-altı · m.42 — pozitif yetki listesi · Özgürlük(a)≤Toparlanabilirlik(hata(a)) · bileşik gevşetme · katı-başlangıç · RİSK boyutu · çeşitlilik-bütçesi · kararlı-prefix kapsamı = KOŞUM DESENİ (TTL-içi aynı-önek tekrarı; rol farketmez) · **yeni sunum kuralı:** her karar sorusu "bu ne/neden masada" özetiyle · **yeni oturum kuralı:** bağlam şişince Carvis yeni-seans çağrısı yapar (KILAVUZ'da).
-- **İcra kuyruğu:** `kuyruk/icra-sirasi-K009.md` — Dilim 0-1-2.1 KAPALI · 2.2 SES-POC pasif toplamada (ölçüm tetiği Salih beyanı) · Dilim 3 AÇIK: S-A DONE, sırada S-B (atlas-kosum) → S-G (karar-hatti) · Dilim 4 tetikli.
-- **Süzgeç:** `raporlar/2026-07-19-fable-suzgec-17-rapor.md` — 16 rapora verdict + soru triyajı; **imza masası TAM KAPANDI 07-19 ikinci günaydın (6/6; kitap PI kabul → V57)**. Yeni evler: `kuyruk/skill-fikir-kutusu.md` (S-A..S-H) · `kuyruk/planli-optimizasyon.md` (O1-O14) · `raporlar/usage/` (koşum-izi asgarisi).
-- **Şerit 2 (öğrenme):** P2 KAPANDI (07-19; devir geldi, içerik TEKRAR çıktı — P2 zaten koşulmuştu; çift-koşum vakası defterde, K-019 kapsamında). Sıradaki oturum: P3 (müfredat).
-- **Operasyon:** klon-push standart yol · mount'tan git YAZMA yok · disk 07-19 itibarıyla origin'le dosya-düzeyi eşit; git HEAD ilerletme = Salih'in tek `git pull`u (çakışmasız ff — `.claude/` kilit dosyaları da onunla iner; köprü .claude'a yazamıyor).
+- **İMZA MASASI (2 kalem, Salih):** (1) m.40b v0.2 — multi-hop diyalektik; Fable hükmü: K1=adversarial-hayatta-kalma (kör-şerit Katman-1 opsiyonu) · K2=ajanlı-hibrit + CoVe-Factored kuralı (iddiayı ver, gerekçeyi verme). (2) m.43 — CEO ≠ üst-orkestratör ≠ domain-lider ("orkestra şefi" metaforu emekli; Carvis liderleri yönetir, liderler işçileri). İmza → tüzük yazımı + atlas-kosum SKILL v0.2 + CLAUDE.md kimlik satırı.
+- **Diğer hükümler (Katman-2, veto açık):** K3 grill-me = V55 korunur, S-I `sinav` K-016 adayı (tetik yalnız Salih beyanı) · K4 yakalama-hattı = yarı-otomatik sınıf, inşa "ilerde", auth çatalı inşa tetiğinde · taksonomi D1-D8 + arketip eşlemesi deneysel-damgayla kabul; ilk canlı-ajan sınıfı = araştırma-filosu (D4 iki-yönlü).
+- **K-015 (ÖNCELİK №1):** durum 07-19'la aynı — K-009 temel katman kurulu; **gece-senkron ilk-koşum gözlemi HÂLÂ AÇIK** (07-21 tespiti: disk origin'den 1 commit İLERİDE [315f787 taksonomi] → push Salih'te; K-010 sicil sayacı gözlem işlenince netleşir).
+- **Şerit 2 (öğrenme):** **P3 KOŞULDU 07-19** — ama kayıtları UNTRACKED (ders `.md/.html` + teslim); commit borcu Salih'in makinesinde. Sıradaki oturum **P4** (müfredat) — P3'ü tekrar KOŞMA (çift-koşum ailesi vaka #3'ün önlenmesi; K-019).
+- **Operasyon:** klon-push standart yol · mount'tan git YAZMA yok · açılış kapsülü ORIGIN KLONUNDAN (07-19 kuralı — bu vardiya uyguladı ve işledi).
 
 ## Açık borçlar
-- ~~Salih'in üç adımı~~ ÜÇÜ DE TAMAM (07-19): pull ✓ (stash→ff→clean; P2 devri drop öncesi kurtarıldı) · schtasks ✓ · saha testi PASS ✓. **Yeni operasyon kuralı:** Carvis izlenen dosyaları artık köprüyle mount'a yazmaz — origin push + gece-senkron/sabah-pull dağıtır (defter 07-19 gözlem eki).
-- K-019 (kapsam öncekiyle aynı: kutu-damıtma + boyut-izleme + V43 kalıcı kontrol + stage-bayat vakası [vaka #2: 07-19 ikinci günaydın, defter bloğu] + prefix-ölçeklenme + wiki index) — ilk boş vardiya.
-- Wiki borçları: öncekiler + m.30-sınır/m.42 sayfa adayları · CLAUDE.md Homebase pointer bayat · modern-tokenizer ölçümü (O13).
-- Tetikliler: K-011 · K-004 (Kasım) · **PAT ~10 Ekim ölür** · PortRisk tetiği (Salih "artık önemli" → S0 dilimi).
+- **GÜVENLİK (CC tespiti 07-21):** PAT remote URL'de düz metin (`git remote -v` görünür) → credential-helper'a taşı; **PAT ~10 Ekim ölür** — yenileme + taşıma tek hamlede planlanır.
+- **Salih'in makinesinde:** (1) `git add` P3 dosyaları + commit (2) `git push` (315f787 + P3) — sonrasında Carvis rebase-push ile vardiya çıktılarını gönderir. *(Bu vardiyanın çıktıları bu commit'te; Salih push'undan sonra origin'de birleşti.)*
+- K-019 (kapsam: kutu-damıtma + boyut-izleme + V43 + stage-bayat vakaları + prefix-ölçeklenme + wiki index) — ilk boş vardiya.
+- Skill borçları: 20-sorgu description eval + çok-model test + `/karar-modeli` `/atlas-kosum` canlı tetik testi (Salih CC oturumunda) · SKILL v0.2 (imza sonrası).
+- Wiki borçları: öncekiler + adversarial-hayatta-kalma + rol-katmanlari aday sayfaları · CLAUDE.md Homebase pointer bayat · modern-tokenizer ölçümü (O13).
+- Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği (Salih "artık önemli" → S0 dilimi).
 
 ## Sonraki ilk iş
-1. S-G karar-hatti orkestratörü (çocuklar hazır: celiski-kapisi eksik — S-C önce ya da orkestratör 2-çocukla başlar).
-2. Skill borçları: 20-sorgu description eval + çok-model test + Salih'in CC oturumunda canlı tetikleme testi (`/karar-modeli` — pull sonrası).
-3. Gece-senkron ilk koşum gözlemi (yarın sabah) → K-010 sicil günü 1.
-4. K-019 ilk boş vardiyada (3 vakalı) · Salih: `git pull`.
+1. Salih: iki imza kalemi (m.40b v0.2 · m.43) → Carvis tüzük yazımı + SKILL v0.2.
+2. S-G karar-hatti orkestratörü (S-C önce ya da 2-çocukla başlar) — K-016 hattının kalanı.
+3. Gece-senkron gözlem işleme → K-010 sicil sayacı netleştirme.
+4. K-019 ilk boş vardiyada · Şerit 2: P4.
