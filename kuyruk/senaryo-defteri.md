@@ -182,3 +182,45 @@
 - **Geri-alınabilirlik:** çok yüksek — sıfır kurulum, vazgeçmek = dikte etmemek.
 - **Ders (bekliyor):** ölçüm vardiyasında yazılacak. **Revizyon (Salih, aynı vardiya):** toplama PASİF — odak JARVIS kurulumunda, test için ayrı konuşma yapılmaz; ≥10 hedefi katı eşik değil, ölçüm tetiği Salih beyanı.
 - **İlişkili gözlem (Şerit 2):** P2 devir dosyası geldi ama P2 zaten koşulmuştu — paralel-vardiya ÇİFT-KOŞUM vakası (bayat-durum ailesinin 3. örneği bugün: disk-masa tekrarı · P2 tekrarı); K-019 kapsamına girdi.
+
+### 2026-07-21 · m.40b · sağlamlık ölçütü (K1, Fable hükmü)
+- **Bağlam:** multi-hop tasarımda antitez tezi okuyor → "kör-kesişim = en sağlam" (v0.1) literal düşüyor; yerine ne? (CC karar dosyası §2-K1; Salih delegasyonu: hüküm Fable'ın.)
+- **Model A (adversarial-hayatta-kalma):** güçlü sinyal (%99.2 vs %48.3 [46]) · yeni akışın doğal ürünü · tek-ölçüt riski | **Model B (kör-triangülasyonu koru):** bağımsız ikinci sinyal · ×1.5-2 token · bağımsızlık ampirik zayıf (korelasyonlu hatalar, ensemble ~+0.00 F [51]) | **Model C (Hegelci-sentez):** zengin çıktı · sağlamlık ölçütü belirsizleşir, ölçüm zorlaşır → ✅ A
+- **Karşıt-temel:** B ← bağımsız-sinyal okulu; canlılık ✓ — KISMEN KORUNDU: Katman-1 ağırlıklı kararlarda isteğe bağlı ek kör-şerit opsiyonu.
+- **Seçim:** A (Fable hükmü, Salih delegasyonu 07-21; veto açık) — görünürlük: 07-21 günaydın vardiyası + `kuyruk/m40b-v02-taslak.md` (imza masasında).
+- **Geri-alınabilirlik:** yüksek — tek-commit revert; v0.1 metni arşivde kalır (m.8).
+- **Gözlem:** bekliyor — hayatta-kalma oranları ilk v0.2 koşumlarından.
+- **Ders:** dürüstlük şerhi kanona gömüldü: tam pipeline'ı test eden literatür yok → damga deneysel.
+
+### 2026-07-21 · m.40b · koşum aygıtı (K2, Fable hükmü)
+- **Bağlam:** üç aşama gerçek Atlas ajanlarıyla mı, saf iç muhakemeyle mi? (CC karar dosyası §2-K2.)
+- **Model A (ajanlı-hibrit):** dış-kanıt genişliği + multi-hop birlikte · daha pahalı | **Model B (saf-muhakeme):** ucuz/hızlı · atlası içe kapatır, m.35 dış-kanıt iddiası boşalır → ✅ A (üçüncü model yok — ikili tasarım sorusu, m.37 eşiği sunum biçimiyle karşılandı)
+- **Karşıt-temel:** B ← maliyet-minimalizmi; canlılık ✓ — yenildi: ayrıştırma kanıtı tek yönlü (CoT %92.8 vs %7.6 [6]; ToT %74 vs %4 [23]).
+- **Seçim:** A + CoVe-Factored kuralı (iddiayı ver, gerekçeyi verme) kanon şerhi olarak (Fable hükmü 07-21; veto açık) — görünürlük: bu kayıt + taslak dosya.
+- **Gözlem:** bekliyor.
+- **Ders:** Aşama-1'de çoklu-seed bağımsızlık korunur — bağımsızlık şartı ölmedi, aşama-içine daraldı (DARALTILDI-sinyali).
+
+### 2026-07-21 · öğrenme şeridi · grill-me kararı (K3, Fable hükmü)
+- **Bağlam:** viral grill-me skill'i öğrenme şeridinin "gerçek anlama ölçümü" boşluğuna oturuyor; V55 pasif-okuma varsayılanı bozulsun mu, Pocock skill'i kurulsun mu? (CC karar dosyası §2-K3.)
+- **Model A (Pocock skill'ini kur):** hazır · V25 altın kural ihlali (kurulum yok, yeniden yazım) | **Model B (V55 korunur + K-016 eval-önce natif `sinav` adayı; tetik YALNIZ Salih beyanı):** sürtünme eklenmez · anlama-kapısı desenimizle birebir · üretim maliyeti | **Model C (hiçbiri):** boşluk açık kalır → ✅ B
+- **Karşıt-temel:** A ← "çalışan şeyi yeniden yazma" okulu; canlılık ✓ — V25'e yenildi (desen madenlenir, kod kurulmaz).
+- **Seçim:** B (Fable hükmü 07-21; veto açık) — S-I olarak skill-fikir-kutusuna düştü.
+- **Gözlem:** bekliyor (üretim K-016 sırasında).
+- **Ders:** V55'e geçişin gerekçesi sürtünmeydi; ölçüm katmanı varsayılana gömülürse aynı hastalık geri gelir — tetik beyana bağlandı.
+
+### 2026-07-21 · yakalama-hattı · otomasyon sınıfı (K4, Fable hükmü)
+- **Bağlam:** ekran-görüntüsü+hotkey→oto-araştırma hattı hangi otomasyon sınıfında? (CC karar dosyası §2-K4; inşa "ilerde" — Salih beyanı, dokunulmadı.)
+- **Model A (yarı-otomatik: Salih notu girer+koşumu görür):** m.30 otomasyon sınıfı, bugün serbest · dar allow-list zarfı hazır | **Model B (tam-otomatik dontAsk):** sürtünmesiz · canlı-ajana yaklaşır → K-010 kapısı, temel katman 2 hafta şartı | **Model C (hiç kurma):** vizyon rafta → ✅ A (inşa anında)
+- **Karşıt-temel:** B ← sürtünme-düşmanlığı; canlılık ✓ — m.30 sınırına yenildi (OpenClaw memory-poisoning emsali ihtiyatın dış gerekçesi).
+- **Seçim:** A sınıfı (Fable hükmü 07-21; veto açık). Auth çatalı KARARA BAĞLANMADI — m.4: inşa başlamadan cevap sonucu değiştirmez; inşa tetiğinde `--bare`+API-key vs setup-token masaya gelir.
+- **Gözlem:** — (inşa yok).
+- **Ders:** karar-noktasını erteleme de bir karardır ve kaydedilir (LRM ilkesi, geri-alınabilirlik raporu).
+
+### 2026-07-21 · ajan-taksonomisi · D1-D8 + arketip eşlemesi kabulü (Katman-2, deneysel)
+- **Bağlam:** şirket-rolleri raporu D1-D8 eksen seti + 9 arketip + model-katman eşlemesi öneriyor (rapor K1-K3). Format/sınıflandırma kararı → m.29 deneysel-damgayla Katman-2 başlar.
+- **Model A (üçü de kabul: eksen seti + model-eşleme + sicil-kartı alanı):** triyaj kuralı hazır, K-010 hazırlığı somutlaşır · diklik iddiası ampirik değil | **Model B (yalnız eksen seti, eşlemesiz):** temkinli · eşlemesiz eksen ölü etiket | **Model C (ret, bekle):** K-010 hazırlıksız girer → ✅ A
+- **Karşıt-temel:** B ← "eşleme sezgisel kural, erken kilitleme" itirazı; canlılık ✓ — damga zaten deneysel, eşleme kilitlenmedi.
+- **Seçim:** A (Carvis Katman-2, m.29 damgalı; veto açık) — görünürlük: 07-21 günaydın vardiyası.
+- **Geri-alınabilirlik:** çok yüksek — etiket şeması, veri değil.
+- **Gözlem:** bekliyor — diklik varsayımı (D3/D4, D4/D7 korelasyonu) ilk gerçek etiketli korpusta test edilir; ilk canlı-ajan sınıfı = araştırma-filosu (D4 iki-yönlü, en düşük bahis).
+- **Ders:** üç bağımsız kaynak (sektör · Bezos kapı-modeli · kendi m.42'miz) aynı ilkeye vardı — özerkliği geri-alınabilirlik belirler; kendi kanunumuz dış literatürle triangüle oldu.
