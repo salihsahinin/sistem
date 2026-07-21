@@ -3,7 +3,7 @@
 *Şirketin nabzı tek bakışta. Kart = işin adresi, kendisi değil. "Ekrana gel" satırı dikkat filtresidir.*
 *Şablon v2 (K-012 adım 4, 2026-07-12, deneysel m.29): +Açılış/Yaş (#22) +Bağımlı +Yetki (Beads bulgusu + Salih yetki-kartı fikri; yetki alanı ajan döneminde anlam kazanır — şimdilik tümü Carvis). Kural: DONE alanı boş kart açılamaz (KILAVUZ).*
 
-**Güncelleme:** 2026-07-21 günaydın vardiyası (Carvis, ana-sıra/Fable) — 3 günlük CC birikimi işlendi: **Fable hükümleri K1-K4 + taksonomi kabulü** (senaryo-defteri 5 blok) · **imza masası 2 kalem AÇIK:** m.40b v0.2 (multi-hop diyalektik) + m.43 (rol-katmanları) — taslaklar `kuyruk/` · S-I `sinav` adayı kutuda · GÜVENLİK borcu: PAT düz-metin + ~10 Ekim ölümü · teslim: `raporlar/vardiya-teslim-2026-07-21-gunaydin.md`
+**Güncelleme:** 2026-07-21 günaydın vardiyası (Carvis, ana-sıra/Fable) — 3 günlük CC birikimi işlendi: **Fable hükümleri K1-K4 + taksonomi kabulü** (senaryo-defteri 5 blok) · **imza masası 2/2 KAPANDI (Salih 07-21):** m.40b v0.2 + m.44 rol-katmanları TÜZÜKTE; SKILL v0.2 canlı (eval borcu açık) · S-I `sinav` adayı kutuda · GÜVENLİK borcu: PAT düz-metin + ~10 Ekim ölümü · teslim: `raporlar/vardiya-teslim-2026-07-21-gunaydin.md`
 
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
