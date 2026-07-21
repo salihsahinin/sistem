@@ -57,3 +57,32 @@ Her beyan bir kayıt; alanlar Fable'ın nihai hazinesine taşınabilir aday süt
 - **Katı-başlangıç (m.42d):** ilk sürüm dar — yalnız Faz 1, yalnız istendiğinde görüş (proaktif müdahale yok), yalnız Carvis üzerinden Salih'e. Sicille (m.42c) gevşer.
 - **Bağımlılık/tetik:** canlı atama **K-010 TETİKLİ** · Faz 2 **TETİKLİ** (ilk PortRisk-sınıfı proje) · tasarım v0 bu oturumda (iterasyon>spec, V1 — Salih düzeltmeleriyle olgunlaşır).
 - **Statü:** NOT / TANIMLANDI (v0 taslak var ama AKTİF DEĞİL — Salih 07-20: "şu an tasarlamayacağız, bu not") · **Hiyerarşi konumu:** kurmay (Carvis+Salih'e danışman), atama K-010'da.
+
+### AB-03 · İnsan↔şef aracı ajanı — **ARAŞTIRILDI** · verdict: AYRI-AJAN-DEĞİL / tetikli-ayrışma · canlı = K-010 tetikli
+- **Ham beyan** (2026-07-20 · beyansız · SES-POC dikte): "JARVIS orkestra şefi olacağı için, benimle JARVIS arasında bir iletişim-mecrası/aracı olacak bir ajan tasarlamak mantıklı mı? Bunu araştır (Atlas'larla koş) ve hazineye ARAŞTIRILMIŞ halde ekle."
+- **Çekirdek soru:** m.17 zaten Carvis'i KÖPRÜ ilan ediyor → ayrı aracı ajan bunu ÇOĞALTIR mı, yoksa şef-katmanı büyüyünce diyalog-katmanını icra-katmanından AYIRMAK gerekli mi?
+- **Koşum:** 6 atlas (3 dik aile × tez/antitez=¬T, m.40b), 2026-07-20 · **kanıt kalitesi: SECONDARY** (org egress proxy arxiv/blog/vendor-doc'ları 403'ledi — 6 atlasın ortak raporu; m.39 damgası). **V26 denetimi:** 1 iddia primary-teyit → **D** (OpenAI Swarm triage-agent deseni, README'den; https://github.com/openai/swarm ); MAST %36.9 sayısı bende de 403 → **K**. Gerisi K-grade.
+- **TEZ (ayrı aracı faydalı):** AutoGen `UserProxyAgent` = insanı temsil eden AYRI ajan, `GroupChatManager`'dan farklı (en birebir örnek) · front-door/triage router (Swarm **D**, OpenAI Agents SDK) · agent-gateway (güvenlik/routing/gözlem) · HCI: niyet-netleştirme katmanı görev-başarısını +3.7…+8 puan artırıyor [K] · guardrail'in doğru yeri insan↔model arası katman · tutarlı persona → güven. **Ama tez'in kendi caveat'ı:** çoğu çerçeve arayüzü orkestratörle BİRLEŞTİRİR (triage=orkestratör).
+- **ANTİTEZ (¬T — ayrı aracı gereksiz/zararlı):** her hop çarpımsal güvenilirlik vergisi (0.95ⁿ) · handoff sınırı en büyük hata yüzeyi (MAST ~%37 [K]) · telefon-oyunu/anlam kayması (~%60 kayıp/adım [K]) · gecikme bütçesi (>2sn etkileşimi bozar) · otomasyon-yanlılığı/over-trust (pratikle aşılamaz) · agency erozyonu (YAPISAL, daha iyi model düzeltmez) · YAGNI/distributed-monolith · büyük çerçeveler (OpenAI Agents SDK, LangGraph supervisor, Anthropic lead-agent) orkestratörü ZATEN kullanıcı-yüzü yapar.
+- **KESİŞİM (tez ∧ antitez — en sağlam bilgi):**
+  1. **Ayrı aracı yalnız SOMUT SÜRÜCÜYLE haklı:** güvenlik/guardrail sınırı · çok ön-yüz (ses/API/chat) · bağımsız test-ölçek · farklı asıl-kitle. **"Temiz iletişim" tek başına sürücü DEĞİL** (iki taraf da bunda birleşiyor).
+  2. **Mevcut pratikte orkestratör kendi insan-arayüzünü sahiplenir** (tez örneklerinin çoğu bile birleştirir).
+  3. **Aracı LOSSY RELAY olmamalı:** değer niyet-netleştirme/guardrail/persona'da; zarar ham relay'de (context kaybı).
+- **VERDICT (mantığı olur mu?):**
+  - **Saf "Salih↔şef relay" ajanı olarak → HAYIR.** m.17 Carvis=KÖPRÜ zaten bu işi yapıyor; ayrı ajan = çoğaltma + lossy hop + YAGNI. Antitez bu okumada kazanıyor.
+  - **Sürücü-tetikli diyalog/guardrail katmanı olarak → EVET-AMA-SONRA.** Şef-ölçek eşiği aşılıp diyalog-yönetimi + guardrail ayrı yetiştirilmiş ajan gerektirdiğinde. Bugün o rolü **Carvis (m.17) + PreToolUse guardrail (m.31)** zaten dolduruyor.
+  - **Öneri:** AB-03'ü yeni ajan olarak DEĞİL, *"Carvis'in m.17 köprü rolünün olgunlaşması + tetikli ayrışma"* olarak taşı. Sürücü belirirse (şef-ölçek / çok-kanal / guardrail-yükü) o an ayrı "diyalog-guardrail ajanı" doğar — **katı-başlangıç (m.42d).**
+- **CEVAPLANMAMIŞ SORU (Salih/Fable kararı — yüzey kuralı m.41: yan-oturum karar biriktirmez):** "JARVIS orkestra-şefi" ile "Carvis-CEO" aynı entity mi, ayrı mı? Eğer JARVIS-şef Carvis'in ÜSTÜNDE ayrı bir üst-orkestratör olacaksa, o zaman Carvis'in kendisi zaten "Salih↔şef aracısı" konumuna gelir — bu netleşmeden AB-03'ün nihai yeri kilitlenemez.
+- **Statü:** ARAŞTIRILDI · **Hiyerarşi konumu:** yeni ajan ÖNERİLMEZ (bugün); tetikli ayrışma adayı — atama/tetik K-010 + şef-ölçek sürücüsü.
+
+### AB-04 · Araştırma ekip lideri (kalıcı, yetiştirilmiş) — TANIMLANDI · canlı = K-010 tetikli
+- **Ham beyan** (2026-07-20 · beyansız): "Atlas şu an kullandığım bir ARAÇ; JARVIS bağlamında özel yetiştirdiğimiz bir ajan değil. Dolayısıyla bir araştırma ajanı — ekip lideri de oluşturabiliriz. Bunu da hazineye ekle."
+- **Çekirdek ayrım (Salih):** Atlas (generic araç = `atlas-kosum` skill + `atlas` agent-type) ≠ **kalıcı yetiştirilmiş araştırma ajanı.** Bu ayrım m.30d'yi birebir örnekler: tek-kullanımlık araç gelişim hattını BESLEMEZ; kalıcı ajan (ajan-wiki + ajan-başına ingest ile gelişen) besler.
+- **Yapabilir (m.42a):** araştırma görevlerini SAHİPLEN (kalıcı) · alan-uzmanlığını wiki'de biriktir (m.30a) · alt araştırmacı işçi katmanını yönet (m.30c: token-zaman verimi gerekince altına işçi eklenir) · atlas-kosum + V26 + karşıt-temel (m.37/m.40b) protokollerini ARAÇ olarak koştur · sentez + kalite-denetim.
+- **Kırmızı çizgiler (m.42a):** araştırma SUNAR, karar VERMEZ (Salih/Carvis karar) · `core/`·tüzük·`.claude/` yazmaz (m.41) · uydurma yasak, "bulunamadı" meşru · **katı-başlangıç (m.42d):** ekip lideri de KATI doğar (dar yetki, sicille gevşer).
+- **Ölçek (token×zaman):** orta-çok × değişken (araştırma pahalı — CC defteri: atlas koşumları $2–7, milyonlarca token).
+- **Katman (m.30c):** **EKİP LİDERİ (kalıcı)** — hazinedeki İLK ekip-lideri adayı; altına araştırmacı işçi katmanı eklenebilir.
+- **Model (m.42g):** ekip lideri = Opus ya da bir-altı; **gözlenmiş desen** (CC defteri 07-15): fan-out işçiler ucuz (Sonnet/Haiku) + sentez/kalite-denetim Opus. Bu ajan o deseni kalıcılaştırır.
+- **Risk (m.42e):** araştırma-kalite riski (atıf-hatası, etiket-enflasyonu) → sigorta V26 örneklem-denetim; token maliyeti yüksek → çeşitlilik-bütçesi (m.42f) + örneklem.
+- **Bağımlılık/tetik:** canlı = **K-010 TETİKLİ** · Atlas'ı ARAÇ olarak sarmalar (atlas-kosum mevcut) · K-011 (CWD/.claude-agents kaydı) kalıcı ekip-lideri için ilgili · **hiyerarşi bağı:** AB-02 Codex (danışman) araştırmayı bu ekip liderine delege edebilir → hiyerarşi filizleniyor.
+- **Statü:** TANIMLANDI · **Hiyerarşi konumu:** ekip lideri (Carvis altında), altına işçi katmanı opsiyonlu; atama K-010'da.
