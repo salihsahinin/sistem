@@ -1,10 +1,10 @@
-# m.40b v0.2 TASLAK — multi-hop diyalektik (İMZA BEKLİYOR)
+# m.40b v0.2 — multi-hop diyalektik (İMZALANDI 2026-07-21; tüzüğe İŞLENDİ)
 
 *(İmza masası kalemi. Fable hükmü 2026-07-21 günaydın vardiyası — Salih delegasyonu: CC yan-oturum karar dosyası `raporlar/2026-07-21-cc-yan-oturum-devri.md` §2 K1/K2, "nihai hükmü Fable verir". Salih imzasıyla tüzük m.40 ek fıkrasına işlenir; imzaya dek çift-atlas v0.1 yürürlükte kalır. Kanıt tabanı: `raporlar/2026-07-21-multihop-oneshot-literatur.md` [54 kaynak, D/K/X etiketli].)*
 
 ## Amendment metni (tüzüğe girecek hali)
 
-**Ek fıkra revizyonu — multi-hop diyalektik (m.40b v0.2; Salih imzası 2026-07-__):** çift-atlas kuralının koşum biçimi üç aşamalı sıralı-bağımlı forma geçer (Salih tasarımı 07-21):
+**Ek fıkra revizyonu — multi-hop diyalektik (m.40b v0.2; Salih imzası 2026-07-21):** çift-atlas kuralının koşum biçimi üç aşamalı sıralı-bağımlı forma geçer (Salih tasarımı 07-21):
 
 1. **Tez aşaması:** paralel, çoklu-bağımsız tez koşumları (birbirini görmez — v0.1 bağımsızlık şartı BU AŞAMA İÇİNDE korunur; önceki çıktı yok, çıpalama riski yapısal olarak sıfır).
 2. **Antitez aşaması (hedefli ¬):** antitez ajanı tezleri OKUR ve tez-başına ayrı, açık Devil's-Advocate ¬-koşumu yapar. **CoVe-Factored kuralı (kanon):** antitez ajanına tezin İDDİASI verilir, GEREKÇESİ/kanıt zinciri VERİLMEZ (çıpalama freni; kanıtlı tek etkili izolasyon [28][37]).
