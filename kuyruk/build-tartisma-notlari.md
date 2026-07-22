@@ -66,4 +66,4 @@
 ## 2026-07-22 — Tester + denetçi ajan çifti (Salih yönü, P4 sonrası; karara bağlanmamış tasarım)
 - **Denetçi = GPT (aile-dışı):** V56 yeniden açıldı (rol-bazlı; defter bloğu 07-22). Gerekçe zinciri: multihop korelasyonlu-hata bulgusu + taksonomi 'doğrulayıcı yapısal ayrı' + Salih Codex-denetçi deneyimi. Açık tasarım soruları: denetçiye ham iş mi iddia-listesi mi (CoVe ailesi) · API bütçesi (Katman-1) · denetçi arketipi = kritik/judge, D8 düşük-özerklik.
 - **Tester = önerilen model (aile-içi), diğer 2 seçenek hafızada:** karar-modeli deseniyle kayıt — seçilen + alternatifler defterde yaşar, koşum verisi gelince tartı yenilenir.
-- Yürürlük tetiği: K-010. Bu not karar değil, tasarım hafızası.
+- Yürürlük tetiği: K-010 ∧ bütçe. **Salih netleştirmesi (07-22): GPT-denetçi PARAYA koşullu — bütçe varsa alınır, şimdi net karar yok; kol kilitlenmedi.** Bu not karar değil, tasarım hafızası.
