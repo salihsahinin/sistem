@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir.*
 
-**Güncelleme:** 2026-07-21/22 GÜNAYDIN VARDİYASI (uzadı) (Carvis, Cowork ana-sıra/Fable) — 3 günlük CC birikimi işlendi: **Fable hükümleri K1-K4 + taksonomi kabulü (5 defter bloğu)** · **İMZA MASASI 2/2 KAPANDI (Salih imzası 07-21):** m.40b v0.2 TÜZÜĞE İŞLENDİ + rol-katmanları **m.44** olarak İŞLENDİ (taslakta m.43 yazılmıştı, numara doluydu — düzeltme kaydı taslak dosyasında) · **atlas-kosum SKILL v0.2 yazıldı** (eval yeniden-koşum borcu açık) · CLAUDE.md kimlik satırı m.44'e hizalandı · S-I `sinav` kutuda · **K-016 SIÇRAMASI: S-C celiski-kapisi (4/4) + S-G karar-hatti orkestratörü (4/4) ÜRETİLDİ; atlas-kosum v0.2 eval yeniden-koşumu 4/4** · **GECE-SENKRON BULGUSU: script HİÇ KOŞMAMIŞ (log yok) → Salih schtasks kontrolü** · teslim: `raporlar/vardiya-teslim-2026-07-21-gunaydin.md`
+**Güncelleme:** 2026-07-21/22 GÜNAYDIN VARDİYASI KAPANDI (bağlam-şişme çağrısı, 07-19 kuralı; Carvis, Cowork ana-sıra/Fable) — 3 günlük CC birikimi işlendi: **Fable hükümleri K1-K4 + taksonomi kabulü (5 defter bloğu)** · **İMZA MASASI 2/2 KAPANDI (Salih imzası 07-21):** m.40b v0.2 TÜZÜĞE İŞLENDİ + rol-katmanları **m.44** olarak İŞLENDİ (taslakta m.43 yazılmıştı, numara doluydu — düzeltme kaydı taslak dosyasında) · **atlas-kosum SKILL v0.2 yazıldı** (eval yeniden-koşum borcu açık) · CLAUDE.md kimlik satırı m.44'e hizalandı · S-I `sinav` kutuda · **K-016 SIÇRAMASI: S-C celiski-kapisi (4/4) + S-G karar-hatti orkestratörü (4/4) ÜRETİLDİ; atlas-kosum v0.2 eval yeniden-koşumu 4/4** · **GECE-SENKRON BULGUSU: script HİÇ KOŞMAMIŞ (log yok) → Salih schtasks kontrolü** · teslim: `raporlar/vardiya-teslim-2026-07-21-gunaydin.md`
 
 ## Şu an
 - **K-016 durumu:** S-A karar-modeli · S-B atlas-kosum (v0.2) · S-C celiski-kapisi · S-G karar-hatti — DÖRDÜ CANLI, hepsi eval'li (3/3 · 4/4 · 4/4 · 4/4). Kutu yeni adaylar: S-I sinav · S-J karar-kaydet. Kalan skill borcu: 20-sorgu description eval + çok-model test + canlı tetik testleri.
@@ -20,8 +20,8 @@
 - Wiki borçları: öncekiler + adversarial-hayatta-kalma + rol-katmanlari (m.44) aday sayfaları · CLAUDE.md Homebase pointer bayat · modern-tokenizer ölçümü (O13).
 - Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği (Salih "artık önemli" → S0 dilimi).
 
-## Sonraki ilk iş
+## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN oku)
 1. Sonraki PC açılışı: senkron-log kontrolü (ilk satır düştü mü) → K-010 sicil başlar.
 2. İlk canlı koşumlar: /karar-hatti tam hat + /atlas-kosum v0.2 (hayatta-kalma oranı deftere).
 3. Gece-senkron gözlem işleme → K-010 sicil sayacı netleştirme.
-4. K-019 ilk boş vardiyada · Şerit 2: P4.
+4. **K-019 hijyen turu = sonraki boş vardiyanın ANA İŞİ** (vakalar: kutu-damıtma · boyut-izleme · V43 · stage-bayat ×2 · çift-koşum P2 · prefix-ölçeklenme · wiki index · 'gece-senkron' adının açılış-senkron'a revizyonu) · Şerit 2: P4 OKUNDU (07-22, Salih beyanı) → sıradaki P5.

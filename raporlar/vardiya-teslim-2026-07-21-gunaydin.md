@@ -30,5 +30,8 @@ Salih iki kalemi de OKUDU + KABUL etti (07-21). İşlendi: m.40b v0.2 tüzükte 
 - Kutu: S-J `karar-kaydet` adayı düştü (kayıt/commit ayrı elle-tetik).
 - **Gece-senkron ARIZA BULGUSU:** `raporlar/usage/`de log YOK → script 07-20 ve 07-21 sabahları HİÇ koşmamış (koşsaydı FAIL bile olsa JSONL satırı + uyarı dosyası yazardı). K-010 sicil sayacı başlamadı. Salih kontrolü: `schtasks /Query /TN "JARVIS-gece-senkron" /V` — çıktıyı Carvis'e getir; çözüm kararı sonra.
 
+## Kapanış eki (07-22)
+İmza sonrası uzantıda: tester/denetçi yönü kaydedildi (denetçi=GPT **bütçe-koşullu**, kilit yok; V56 rol-bazlı yeniden açıldı) · gece-senkron ONLOGON'a taşındı ve KURULDU (SUCCESS; ilk log = K-010 sicil günü 1) · P4 okundu → sıradaki P5. Vardiya bağlam-şişme çağrısıyla kapandı (07-19 kuralı); tüm çıktılar origin'de, Salih'in yerel farkı yalnız son üç commit — herhangi bir `git pull` ya da PC açılış-senkronu kapatır.
+
 ## Sonraki vardiya adayları
 Gece-senkron teşhis+çözüm → K-010 sicil · ilk canlı /karar-hatti + /atlas-kosum v0.2 koşumu · K-019 (3+ vakalı) · description-eval turu (4 skill) · PAT credential-helper planı · K-016 kapanış kararı (DONE-eşiği aşıldı, Salih'e).
