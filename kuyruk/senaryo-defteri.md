@@ -232,3 +232,20 @@
 - **Seçim:** A (Carvis Katman-2; veto açık) — görünürlük: 07-21 vardiyası + bu kayıt.
 - **Gözlem:** bekliyor (aynı vardiya).
 - **Ders:** —
+
+### 2026-07-22 · ajan-tasarımı · tester + denetçi model seçimi (Salih yönü, P4 sonrası)
+- **Bağlam:** Salih (07-22): tester ve denetçi ajan kurulacaksa denetçi GPT (aile-dışı) olsun; tester şimdilik önerilen modelde, diğer 2 seçenek hafızada. m.16 kapısı çaldı: m.30 ek fıkra "aile-dışı model planda yok (V56 ERTELENDİ)" — çelişki değil, V56'nın YENİDEN AÇILMASI (rapor sunuldu, Salih yönü kayda).
+- **Model A (denetçi=GPT, tester=önerilen-aile-içi):** korelasyonsuz kör nokta (multihop: aynı ön-eğitim→korelasyonlu hata) · üretici≠doğrulayıcı YAPISAL + AİLESEL ayrım · ikinci API=para+veri-akışı | **Model B (ikisi de aile-içi):** tek hesap, basit · denetçi kör noktaları üreticiyle örtüşür | **Model C (denetçi=aile-içi farklı model):** kısmi ayrım, para yok · aynı-aile korelasyonu kısmen sürer → ✅ A (Salih yönü)
+- **Karşıt-temel:** B ← hesap-minimalizmi + veri-tek-şirkette; canlılık ✓ — kayıtta kalır, K-010 imza masasında tartılır.
+- **Seçim:** A yön olarak kayıtlı (Salih 07-22); YÜRÜRLÜK DEĞİL — tetik K-010 (ilk canlı ajan) ∧ para kapısı Katman-1 (GPT API bütçesi Salih imzası) ∧ tasarım sorusu açık: denetçiye ham iş mi iddia-listesi mi gösterilir (CoVe-Factored ailesi).
+- **Geri-alınabilirlik:** çok yüksek — kayıt; inşa yok.
+- **Gözlem:** bekliyor (K-010).
+- **Ders:** V56 erteleme-iptali sinyali ilk kez rol-bazlı geldi (genel hiyerarşi değil, TEK ROL için aile-dışı) — "aile-dışı" kararı monolitik değil rol-başına alınabilir.
+
+### 2026-07-22 · K-009 · gece-senkron arıza çözümü
+- **Bağlam:** script hiç koşmamış; neden netleşti (Salih beyanı): PC geceleri KAPALI; schtasks DAILY 06:00 kaçan görevi telafi etmez.
+- **Model A (ONLOGON tetiği):** kaçırma yapısal imkânsız · idempotent script (ff-only) çoklu-koşuma dayanıklı · tek sefer admin | **Model B (DAILY + StartWhenAvailable):** günde-1 semantiği · ayar CLI-dışı (XML/GUI), kırılgan kurulum | **Model C (startup-klasörü kısayolu):** adminsiz · Task Scheduler envanteri dışı (K-009 kayıt disiplinine aykırı) → ✅ A
+- **Karşıt-temel:** B ← "senkron GÜNLÜK ritüel olmalı" okulu; canlılık ✓ — yenildi: işlev açılış-senkron; ritim PC kullanım desenine bağlanınca isabetli.
+- **Seçim:** A (Carvis Katman-2, m.37 görünür; veto açık) — Salih koşumu bekleniyor (admin komut verildi 07-22). "Gece-senkron" adı kalır, işlev = açılış-senkron (yeniden adlandırma K-019 hijyen turuna).
+- **Gözlem:** bekliyor — ilk log satırı `raporlar/usage/senkron-log.jsonl`.
+- **Ders (aday):** zamanlanmış otomasyonda tetik, MAKINENİN değil KULLANICININ yaşam dönemine bağlanmalı (kapalı makinede saat yok).

@@ -61,3 +61,9 @@
 **Carvis önerisi: A→B hattı; C yalnız kanıtlı paralellik kazancında.** Karar Salih'te, K-009 açılışında.
 (canlı repo vs boş şablon).
 **Sonuç:** Bizim eksik olmayan şeyi (yetki+iş yürütme) hiç denememiş; bizim kurmadığımız şeyi (bilgi-hijyeni yönetişimi) olgun kurgulamış. Alınacak ≤3 fikir yukarıda ilgili adımlara dağıtıldı (Quality Gate → adım 2 · promote ilkesi → tüzük adayı · Zone C → adım 3).
+
+
+## 2026-07-22 — Tester + denetçi ajan çifti (Salih yönü, P4 sonrası; karara bağlanmamış tasarım)
+- **Denetçi = GPT (aile-dışı):** V56 yeniden açıldı (rol-bazlı; defter bloğu 07-22). Gerekçe zinciri: multihop korelasyonlu-hata bulgusu + taksonomi 'doğrulayıcı yapısal ayrı' + Salih Codex-denetçi deneyimi. Açık tasarım soruları: denetçiye ham iş mi iddia-listesi mi (CoVe ailesi) · API bütçesi (Katman-1) · denetçi arketipi = kritik/judge, D8 düşük-özerklik.
+- **Tester = önerilen model (aile-içi), diğer 2 seçenek hafızada:** karar-modeli deseniyle kayıt — seçilen + alternatifler defterde yaşar, koşum verisi gelince tartı yenilenir.
+- Yürürlük tetiği: K-010. Bu not karar değil, tasarım hafızası.
