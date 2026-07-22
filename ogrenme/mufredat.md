@@ -4,7 +4,7 @@
 
 ## Ön-koşul kapısı — P0 (REVİZE 07-15: pasif-okuma oturumlarıyla işlenir; Karpathy videoları Salih'in kendi hattı, Gemini transkriptle — P0 DONE'una bağlı değil)
 Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karşılığı. DONE: Salih öğrenilmiş-pos-embedding ≠ RoPE farkını ve tokenizer tuzaklarını söyleyebiliyor.
-**P0 (a+b) DONE — 07-15 Opus öğrenme oturumu; Salih "sezgisel olarak tamam" beyanı.** Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`. P1 DONE (07-17, ders: `dersler/2026-07-17-P1-token-ekonomisi.md`; devir: `raporlar/vardiya-teslim-2026-07-17-ogrenme-P1.md`). Sıradaki oturum: **P2 (KV-cache, temperature) [O]**.
+**P0 (a+b) DONE — 07-15 Opus öğrenme oturumu; Salih "sezgisel olarak tamam" beyanı.** Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`. P1 DONE (07-17, ders: `dersler/2026-07-17-P1-token-ekonomisi.md`; devir: `raporlar/vardiya-teslim-2026-07-17-ogrenme-P1.md`). P1 DONE (07-17) · P2 (KV-cache) 07-19 paralel koşuldu — **devir ingest hâlâ bekliyor** · P3 DONE (07-19, `dersler/2026-07-19-P3-rope-context.md`) · P5 DONE (07-22, `dersler/2026-07-22-P5-context-eng-jit.md`). P4 OKUNDU (07-22, Salih beyanı — 07-22 çelişki-sorusuyla netleşti; ayrı ders-kaydı yok). Sıradaki: **P6 (Context eng. II — B→C geçiş kriterini kurar)** ya da Salih seçimi.
 **Mini-teşhis SONUÇLANDI (07-15, ana-sıra oturumunda):** 12/12 kontrol noktası bulanık → P0 sıfırdan. Katman-2 kararı: P0 ikiye bölündü (m.21):
 - **P0-a — Transformer'ın içi** [O; RoPE alt-başlığı S]: tahmin döngüsü · embedding · self-attention Q/K/V · causal mask · multi-head · FFN/residual/layernorm · pos-emb↔RoPE. Durum: **DONE** (Opus oturumu 07-15) — bulanık bloklar (3 Q/K/V, 4-5 mask/multi-head, 6-7 FFN/pos-emb) v2 görselli telafi edildi + RoPE [S] ilk geçiş yapıldı; DONE kapısı geçti. Ders kayıtları: `dersler/2026-07-15-P0a-transformer-ici.md` (v1) + `dersler/2026-07-15-P0-opus-oturumu.md` (telafi).
 - **P0-b — Tokenizer + eğitim hattı** [O; eğitim hattı S]: BPE · tokenizer≠model · tuzaklar · special token'lar · pretraining/SFT/RLHF + halüsinasyon kökü. Durum: **DONE** (Opus oturumu 07-15) — 2 blok v2 görselli işlendi; BPE the-örneği tam açıldı. Ders kaydı: `dersler/2026-07-15-P0-opus-oturumu.md`.
@@ -14,9 +14,9 @@ Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karş
 |---|---|---|---|---|---|---|
 | P1 | Token ekonomisi & bağlam=maliyet | prompt-cache prefix-invalidation kuralı + m.20/V37 = maliyet-mühendisliği açıklanır | L7+L1 | 2.5h | [T] | **DONE (07-17)** |
 | P2 | Inference & sampling: KV-cache, temperature | KV-cache bağlamı neden pahalılaştırır + ajanlarda düşük-temperature gerekçesi | L8 | 2.5h | [O] | — |
-| P3 | RoPE & uzun-context, lost-in-the-middle | ZtH pos-emb ↔ RoPE farkı + 200-satır eşiğinin mekanik nedeni | L8+L1/L2 | 2.5h | [O] | — |
-| P4 | Neden halüsinasyon | eğitim-kaynaklı neden → V8/V26'nın varoluş gerekçesi | L8 | 2h | [S] | — |
-| P5 | Context eng. I: JIT yükleme, `@path` tuzağı | V37 seçici-yükleme + m.20'nin DOĞRU lazy implementasyonu (@import ≠ lazy!) | L1 | 2.5h | [T] | — |
+| P3 | RoPE & uzun-context, lost-in-the-middle | ZtH pos-emb ↔ RoPE farkı + 200-satır eşiğinin mekanik nedeni | L8+L1/L2 | 2.5h | [O] | **DONE (07-19)** |
+| P4 | Neden halüsinasyon | eğitim-kaynaklı neden → V8/V26'nın varoluş gerekçesi | L8 | 2h | [S] | **OKUNDU (07-22, Salih beyanı; ayrı ders-kaydı dosyası yok — gece oturumu)** |
+| P5 | Context eng. I: JIT yükleme, `@path` tuzağı | V37 seçici-yükleme + m.20'nin DOĞRU lazy implementasyonu (@import ≠ lazy!) | L1 | 2.5h | [T] | **DONE (07-22)** |
 | P6 | Context eng. II: compaction, not-tutma, izolasyon | K-015 şemasının cacheable-prefix + compaction stratejisi taslağı | L1 | 3h | [T] | — |
 | P7 | Tool-use temelleri: function-calling döngüsü | bir JARVIS aracının şema + is_error tasarımı yazılır | L5 | 2.5h | [O] | — |
 | P8 | MCP mimarisi + ne zaman sunucu (V25 testi) | MCP-ekle/ekleme kararı V25 + güven-sınırıyla gerekçelenir | L5 | 2.5h | [O] | — |
