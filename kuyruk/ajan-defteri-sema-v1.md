@@ -19,3 +19,8 @@
 - **Durma:** DONE = rapor dosyası çift-atlas kontratında yazıldı ∧ kaynak listesi D/K/X etiketli. Fren: ≤1 koşum-turu, sert bütçe kart-atamasında yazılır (token×zaman m.21).
 - **İngest:** koşum-sonrası Carvis süzgeci (kör aktarım yasak, m.17); ajan kendi arşiv-özütünü taşımaz (işçi sınıfı — özüt lider katmanında başlar, m.30c).
 - **Sicil:** boş — ilk satır K-010 gününde. Denetçi bağı: çıktı iddia-listesi formatında denetçiye gider (CoVe-Factored ailesi; denetçi=GPT bütçe-koşullu, defter 07-22).
+
+## Ek — 07-22 akşam revizyonları
+- **Yetki alanına zorunlu bayrak (rapor-07-22-1 #5 önerisi; Katman-2 deneysel, veto açık):** kartın Yetki bölümüne `kabuk/exec: VAR/YOK` alanı eklenir; **VAR ise dış-bant izolasyon (OS sandbox/WSL2/container/settings-deny) ZORUNLU** — gerekçe: kabuk-taşıyan ajan allowlist ne olursa olsun zaptedilemez (A5-F2 sağlam çekirdeği, [D]). Windows-native'de OS sandbox YOK → mevcut fazda varsayılan: işçi ve lider ajanlara kabuk/exec VERİLMEZ.
+- **Statü terminolojisi (Salih kararı 07-22):** Atlas = CC alt-ajanı, bizim oluşturduğumuz bir ajan DEĞİL → lider sıfatı ALAMAZ; statüsü NİTELİKLİ İŞÇİ (dış-araç işçisi; defterde kartı açılmaz, koşum kaydı görev raporlarında yaşar). Kendi araştırma ajanımız ayrıca kurulacak — kanonik kart zaten bu sınıf: `arastirma-iscisi-01` (D4). Lider adayı ancak bizim tasarladığımız, defter-kartlı ajan olabilir.
+- **Lider tasarım-deseni (rapor A5 sağlam çekirdeği):** lider = bağlam-SIKIŞTIRAN süpervizör (tek sürekli sahip) + kısa-ömürlü read-only özet-döndüren işçiler + YALNIZ paralelleşebilir/geniş iş (derleme · ön-süzgeç · rapor-yorumlama · tarama); bağlı/sıralı/yazma-ağırlıklı işe lider konmaz. Ölçüm: eşit-token-bütçeli ablation (m.35), "+%90 kalite" tek başına kanıt değil.
