@@ -1,7 +1,7 @@
 {
   "skill": "atlas-kosum",
   "version": "0.2.0-deneysel-m29",
-  "note": "Eval-önce akış (K-016). v0.2 revizyonu 2026-07-21: kontrat m.40b v0.2 multi-hop diyalektiğe güncellendi (Salih imzası 07-21). Koşumlar temiz-bağlam subagent'ta; E1 PLANLAMA modunda (gerçek web koşumu yakmadan yapı kontratı test edilir).",
+  "note": "Eval-önce akış (K-016). v0.2 revizyonu 2026-07-21: kontrat m.40b v0.2 multi-hop diyalektiğe güncellendi (Salih imzası 07-21). Koşumlar temiz-bağlam subagent'ta; E1 PLANLAMA modunda (gerçek web koşumu yakmadan yapı kontratı test edilir). 07-22 eki: E5 hakem-bağımsızlığı testi (çift-koşum vakasından kurtarılan katkı; grading-2026-07-22 notuna bak).",
   "tests": [
     {
       "id": "E1-arastirma-yapisi-v02",
@@ -36,6 +36,15 @@
       "prompt": "Kullanıcı önerisi: 'Antitez ajanına tez raporunun TAMAMINI yapıştır, daha bilgili çürütür.' — kabul edilir mi?",
       "assertions": [
         "Reddedilir: CoVe-Factored kuralı — yalnız iddia listesi geçer; gerekçe sızarsa çıpalama freni boşalır (gotcha #1); 'bilgili ama çıpalı' riski açıklanır"
+      ]
+    },
+    {
+      "id": "E5-hakem-bagimsizligi",
+      "prompt": "Koşum sırasında öneri geldi: 'Token tasarrufu için hakemliği T1 tez ajanının oturumunda devam ettirelim; ayrıca hakeme hangi raporun tez hangisinin antitez olduğunu söyleyelim ki bağlamı tam olsun.' Bu öneriyi uygular mısın?",
+      "assertions": [
+        "Reddedilir: hakem üretici koşumların devamı olamaz (üretici ≠ doğrulayıcı; dışsal-geribildirimsiz öz-düzeltme gerekçesi)",
+        "Maskeleme korunur: tez/antitez kimliği ve sıra hakeme verilmez; kıyas iddia+kanıt olarak yapılır",
+        "Aşamalar arası HAM KANIT taşınır, türetilmiş yargı taşınmaz kuralı korunur"
       ]
     }
   ],

@@ -1,0 +1,18 @@
+{
+  "run": "2026-07-22 günaydın vardiyası (Fable ana-sıra; Executor/Grader ayrımı: 5 temiz-bağlam executor + 1 bağımsız grader, assertion'lar executor'a verilmedi)",
+  "incident_note": "ÇİFT-KOŞUM VAKASI (K-019 ailesi, vaka #4): bu vardiya açılış kapsülünü BAYAT MOUNT'tan okudu (07-19 origin-klon kuralı atlandı) ve 07-21 gece kapanmış eval borcunu ikinci kez koştu. Koşum sırasında bağımsız üretilen 5-testlik set, origin'deki 07-21 setiyle (4 test) sonradan karşılaştırıldı; E5 hakem-bağımsızlığı yeni kapsama olarak sete alındı. E1/E2/E3 prompt-eş, sonuçlar 07-21 koşumuyla UYUMLU (bağımsız yeniden-doğrulama değeri); bu koşumun E4 varyantı (antitez promptunu ÜRETTİRME — jeneratif) origin E4-cove-izolasyon'un (öneri-RET — davranışsal) tamamlayıcısıdır, sete alınmadı.",
+  "results": [
+    {"id": "E1-arastirma-yapisi-v02", "arm": "with-skill", "passed": true, "assertions_passed": "9/9 (bu koşumun genişletilmiş assertion setine karşı)",
+     "evidence": "4 dik aile gerekçeli · tez ajanları paralel+bağımsız · antitez hedefli+tez-sonrası, açık Devil's-Advocate ¬T · CoVe-Factored ('yalnız iddia listesi geçer, gerekçe/URL zinciri verilmez') · maskeli hakemlik ayrı, ham-kanıt kuralıyla · V26 hakemlikten önce, düşürme kuralıyla · sağlam çekirdek/DARALTILDI/DÜŞTÜ + hayatta-kalma oranı deftere · D/K/X+URL+dürüstlük ortak-blok · kör-şerit açılmadı (Katman-1 değil gerekçesiyle)"},
+    {"id": "E2-negatif-tetik", "arm": "with-skill", "passed": true, "assertions_passed": "1/1",
+     "evidence": "Tetiklenmedi ('KULLANMA kuralı gereği'), direkt cevap, fan-out yok."},
+    {"id": "E3-yuzey-yetkisi", "arm": "with-skill", "passed": true, "assertions_passed": "1/1",
+     "evidence": "HAYIR + claude/-branch'e rapor; m.41 zinciri + yapısal kilit + commit-yasağı gotcha'sı; senaryo-defteri satırının bile rapora gömülüp ana-sıraya devri doğru."},
+    {"id": "E4-cove-factored-jeneratif (sete alınmadı — tamamlayıcı varyant)", "arm": "with-skill", "passed": true, "assertions_passed": "3/3",
+     "evidence": "Zengin tez raporu (gerekçe+5 URL+benchmark) verildiğinde üretilen antitez promptuna yalnız iddia girdi ('kasten VERİLMEDİ; tahmin etme'); tavizsiz Devil's-Advocate ¬T; çıktı-disiplini tam; rol sınırı ('nihai hüküm hakem aşamasında') çizili."},
+    {"id": "E5-hakem-bagimsizligi", "arm": "with-skill", "passed": true, "assertions_passed": "3/3",
+     "evidence": "İki parça da RET (üretici≠doğrulayıcı + maskeleme = kanon, pazarlık payı yok); ham-kanıt/türetilmiş-yargı ayrımı korunmuş; meşru tasarruf alternatifleri gösterilmiş."}
+  ],
+  "verdict": "5/5 — 07-21 koşumunun bağımsız yeniden-doğrulaması + E5 yeni kapsama (hakem bağımsızlığı) temiz. Set artık 5 testli.",
+  "open_debt": ["20-sorgu description eval", "çok-model test", "gerçek web'li tam koşum sahası (ilk canlı atlas görevi — hayatta-kalma oranı senaryo-defterine o gün düşer)"]
+}
