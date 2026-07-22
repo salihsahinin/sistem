@@ -249,3 +249,12 @@
 - **Seçim:** A (Carvis Katman-2, m.37 görünür; veto açık) — **KURULDU 07-22 (Salih, admin schtasks: SUCCESS).** "Gece-senkron" adı kalır, işlev = açılış-senkron (yeniden adlandırma K-019 hijyen turuna).
 - **Gözlem:** bekliyor — ilk log satırı `raporlar/usage/senkron-log.jsonl`.
 - **Ders (aday):** zamanlanmış otomasyonda tetik, MAKINENİN değil KULLANICININ yaşam dönemine bağlanmalı (kapalı makinede saat yok).
+
+### 2026-07-22 · bağlam-yükleme mimarisi · P5 Yarı-2 ingesti (Şerit 2 → Şerit 1)
+- **Bağlam:** JARVIS kanon-yükleme mimarisi mekanik olarak nasıl kurulmalı? (P5 dersi Yarı-2; devir: `raporlar/vardiya-teslim-2026-07-22-ogrenme-P5.md`. Rakamlar deneysel/proxy, m.39.)
+- **Model A (@import merkezi):** ~12-15K token/açılış sabit · kalite ~0.50 (eager: @import launch'ta tam genişler — "böldüm=hafifledi" yanılsaması) → ✗ | **Model B (kısa index + Read-on-demand):** ~2-3K sıcak · kararlı-prefix cache dostu · ~0.85 · m.20/m.34'ün birebir mekaniği → ✅ | **Model C (bölümlenmiş JIT: path-scoped rules + skills + topic dosyaları):** token en düşük · ~0.90 · kurulum maliyeti bugünkü kazancı aşıyor (tek-alan/tek-proje fazı).
+- **Karşıt-temel:** A ← "tek dosyada her şey görünür olsun" bütünlük okulu; canlılık ✓ — eager mekaniğine yenildi (CC resmî doküman: "imported files load at launch").
+- **Seçim:** B (Salih onayı 07-22: "P5 okudum, anladım" + emir: **C İLERİDE-GEÇİŞ olarak KAYITLI** — kutu V58 TETİKLİ satırı; B→C geçiş kriteri P6'da tasarlanır). 
+- **Uygulama denetimi (Fable gözü, 07-22 — TARAMA sonucu):** fiilen ZATEN B'deyiz — CLAUDE.md 26 satır, backtick'siz @import YOK, okuma-sırası = pointer listesi; kapsül 27 / pano 35 satır; MEMORY.md yok. TEK BULGU: SessionStart hook kapsülü `sed 1,40p` ile basıyor = kendi sert-kapımız (MEMORY.md sert-200'ün minyatürü) — kapsül 40 satırı aşarsa kuyruk SESSİZCE düşer. Sigorta: boyut-izleme kuralına "kapsül ≤40 satır (hook-kapısı)" satırı eklendi.
+- **Gözlem:** bekliyor — B'nin ~2-3K sıcak-önek tahmini ilk /usage ölçümüyle test edilir (K-009 kararlı-prefix standardıyla aynı ölçüm günü).
+- **Ders:** disk-düzeni ≠ context-maliyeti; lazy'nin doğru mekaniği index+Read. Kendi kanunumuz (m.20) dış dokümanla bir kez daha triangüle oldu — P5 dersi kuralın MEKANİK gerekçesini verdi.

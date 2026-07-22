@@ -45,6 +45,9 @@
 - **Eval kuralı (Salih onayı 07-12):** bundan sonra yazılan her JARVIS skill'i eval setiyle doğar — ≥5 pozitif + 2-3 negatif senaryo, %90+ geçiş hedefi (araç: skill-creator, kurulu). Mevcut skill'lere geriye dönük eval soğuk kuyrukta.
 - Not: progressive disclosure ilkesi = m.20 pointer sistemiyle aynı kök (bağımsız doğrulama, K-013).
 
+## Boyut-izleme — sıcak-dosya bütçesi (İMZALI kural, Salih 07-22; rakamlar deneysel m.29)
+Her oturum açılışında okunan dosyalar sabit boyut-bütçeli yaşar; **aşım hata değil TETİKTİR** — aşan dosya ilk boş vardiyada Salih-imzalı planla damıtılır (silme yok: tam metin arşive, sıcakta özüt+pointer; m.8/m.34). Bütçeler: kapsül 8KB **ve ≤40 satır** (SessionStart hook `1,40p` sert-kapısı — aşan kuyruk CC'de sessizce düşer) · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 8KB · KILAVUZ 16KB. Kapanışta kapanan Carvis tabloya tek bakış atar; aşan varsa teslim raporuna "boyut-tetiği: <dosya>" düşer. **Revizyon tetiği (Salih şerhi 07-22):** context-ekonomisi (pencere/fiyat) ya da bütçe anlamlı değişirse tablo yeniden türetilir; her iki damıtma turunda bir kalibrasyon. Gerekçe + türetme: `kuyruk/k019-taslak-boyut-izleme.md`.
+
 ## Durum görünürlüğü (m.18)
 Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü kapsül/pano/şablonlarda yaşar.
 

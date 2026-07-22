@@ -1,6 +1,6 @@
 # K-019 Taslak — Fikir-kutusu damıtma planı
 
-*Statü: İMZA BEKLİYOR (Katman-1 — silme-birleştirme sınıfı, m.31; m.8: silme YOK, arşiv-pointer'lı taşıma). Hazırlayan: Carvis, 2026-07-22. Boyut-izleme taslağının ilk emsali.*
+*Statü: **İMZALANDI (Salih, 07-22)** — adım 1-2 onaylı; adım 3 (MEZUN inişi) liste-onayına tabi (aşağıda sunulacak). Salih şartı kayıtta: kutudaki ÖNEMLİ fikirler için optimize bir uygulama-sırası oluşturulduğunda o sıranın GİDİŞAT KONTROLÜ korunur — damıtılmış format bu yüzden statü/etiket alanını (TETİKLİ/UFUK/ADAY/statü) her satırda zorunlu tutar; sıra kurulduğu gün kutu üstünden izlenebilir kalır.* *Hazırlayan: Carvis, 2026-07-22. Hazırlayan: Carvis, 2026-07-22. Boyut-izleme taslağının ilk emsali.*
 
 ## Teşhis
 `fikir-kutusu.md` = 37,3 KB / 81 satır. Satırca küçük, token-yoğun: V26-V57 blokları tam-metin paragraflar taşıyor (V39 deney tarifi, V43 vaka anlatısı, V53 Council deseni...). Kutunun sözleşmesi "tarih + damga + TEK SATIR, tam metin kaynağa pointer" idi — fiilen bozulmuş; kutu ham-fikir yüzeyi olmaktan çıkıp mini-arşive dönmüş.
