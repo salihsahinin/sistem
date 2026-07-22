@@ -51,6 +51,8 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 
 ## V26-V57 — damıtılmış (tam metin: kuyruk/arsiv-fikir-kutusu-2026-07.md; damıtma 07-22)
 
+*MEZUN inişleri (Salih onayı 07-22 — imza-araştırma denetimi sonrası): **V36** (m.40b olarak tüzükte; v0.2 amendmenti 54-kaynak literatürle imzalı — araştırma şartı SAĞLANDI) · **V43** (kural KILAVUZ+operasyonda; 3-vaka iç-ampirik kanıt + A1a onarımı doğrulanmış). Satırları kutudan indi, tam metin arşivde. **V38 · V40a MEZUN-BEKLEMEDE:** tüzükte imzalı (m.40c/m.39) ama iç-süreç sınıfı — m.40b'nin kendi muafiyet fıkrası kapsamında dış-araştırmasız imzalandılar; muafiyet GERİYE-DÖNÜK A7 denetimine tabi ve A7 HENÜZ KOŞMADI → iniş A7 sonrası.*
+
 | # | Etiket | Özüt | Damga | Statü |
 |---|---|---|---|---|
 | V26 | — | Katmanlı kontrol: lider örneklemle denetler, Jarvis ara kontrol koşar, opsiyonel tester ajanı; miktarlar token-zaman kartlarıyla değişken | ayık (07-11 gece) | KARAR ALINMADI — gerekçeli tur + build gündemine aday |
@@ -61,14 +63,12 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 | V33 | TETİKLİ: K-009/K-010 açılınca | Ajan-yaratma eşiği: "tek promptta yapılamayan iş" ajan doğurur, defterli yetişme başlar; Carvis filtresi: + tekrarlanması beklenen iş | ayık (Salih, 07-12 4. oturum) | KARAR: ŞİMDİ DEĞİL — K-009/K-010 açılış gündemine |
 | V34 | TETİKLİ: K-009/K-010 açılınca | Skill-avcısı ajan: belli sıklıkta koşar, faydalı skill'leri tespit edip rapor sunar (önce Carvis, sonra Salih); V25 altın kuralına bağlı | ayık (Salih, 07-12 4. oturum) | HAM FİKİR; karar alınmadı |
 | V35 | TETİKLİ: ajan-defter şeması v1 tasarımı (K-010 paketi) | Yüzey-bağımsız ajan kimliği: ajan = dosya paketi (kimlik+defter+kurallar); üç kullanım modu; yüzey-rol eşlemesi kullanım verisiyle kalibre | ayık (Salih, 07-12 4. oturum) | HAM FİKİR; şema v1 tasarım masasına |
-| V36 | KURAL ADAYI | Araştırma-önce seçenek sunumu: "en iyi 3 model" sunumundan önce dış tarama; seçenekler sahada denenmiş örneklerle desteklenir | ayık (Salih, 07-12 4. oturum) | İMZALANDI → tüzük m.40b (Salih, 07-13 günaydın) |
 | V37 | TETİKLİ: veri yığını oluşunca (m.5 sorun-güdümlü) / ingest şeması v2 | Hafızaya konu/kategori ekseni: derinlik × kategori matrisi; sorun önce kategorilenir, düşünme yalnız o kategorinin ingest'leriyle | ayık (Salih, 07-12 4. oturum) | HAM FİKİR; v2 tetiği = ilk gerçek veri-yığını şikâyeti |
-| V38 | KURAL ADAYI | İlk-çıktı-hızlı ilkesi: veri musluğunu ilk gerçek koşum açar; tasarım tartışması ilk-çıktıyı geciktiriyorsa tartışma kuyruğa, çıktı öne | ayık (Salih, 07-12 4. oturum) | İMZALANDI → tüzük m.40c, KADEMELİ YÜRÜRLÜK (07-13) |
+| V38 | KURAL ADAYI | İlk-çıktı-hızlı ilkesi: veri musluğunu ilk gerçek koşum açar; tasarım tartışması ilk-çıktıyı geciktiriyorsa tartışma kuyruğa, çıktı öne | ayık (Salih, 07-12 4. oturum) | İMZALANDI → tüzük m.40c, KADEMELİ YÜRÜRLÜK (07-13) · MEZUN-BEKLEMEDE (A7 sonrası) |
 | V39 | — | Kombinasyon-dizisi deneyi: seçim-dizisi + token×zaman×kalite fitting; 4-tuple gözlem (bağlı-çift), X∧Y→Z koşullu-kural transfer hipotezi | ayık (Salih, 07-13 sabah; ŞERH 6: 07-13 günaydın) | HAM FİKİR; m.37 taslağına bağlı, m.37 imza masasında |
-| V40 | — | Sezgi/matematik işbölümü: (a) tüm deneysel rakamlar Carvis kontrolünden geçer; (b) Salih sezgiyi yükler, Carvis matematiği inşa eder | ayık (Salih, 07-13 gece) | (a) İMZALANDI → tüzük m.39 · (b) tüzük DIŞI, çalışma düzeni |
+| V40 | — | Sezgi/matematik işbölümü: (a) tüm deneysel rakamlar Carvis kontrolünden geçer; (b) Salih sezgiyi yükler, Carvis matematiği inşa eder | ayık (Salih, 07-13 gece) | (a) İMZALANDI → tüzük m.39 · (b) tüzük DIŞI, çalışma düzeni · MEZUN-BEKLEMEDE (A7 sonrası) |
 | V41 | DERS | Kavramsal yerleştirme deseni: sezgi reddedilmez, doğru katmana yerleştirilir — "çürütme değil yerleştirme" işbirliği deseni | ayık (Carvis özütü, 07-13 kapanış) | desen kaydı; kural adayı değil |
 | V42 | DAVRANIŞ VERİSİ | Salih düzeltme kalıbı: aynı oturumda iki anti-overfit düzeltmesi; Carvis'in tamamlayıcı görevi uç riskleri karşı-kayda geçirmek | ayık (Carvis özütü, 07-13 kapanış) | vardiya verisi; V40 rol tanımını doğrular |
-| V43 | OPERASYON ALARMI | Mount güvenilmezliği (3. vaka): kritik yazım push sonrası origin'le cmp doğrulanır; klon-push standart geçici yol | ayık (Carvis özütü, 07-13 kapanış) | kural fiilen yürürlükte (Katman 2); A1a DONE 07-13 günaydın |
 | V44 | DERS | Benzetme kaydı: anlaşılmayan benzetme kanona yazılmadan netleştirilir önerisi — olay model-düşüşü artefaktı çıktı | ayık (Carvis özütü, 07-13 kapanış) | KARAR REVİZE (07-13): İPTAL — kural statüsü YOK, m.8 kaydı durur |
 | V45 | — | Katman-geçiş lojiği: K3→K0 promote/demote kararları formel koşul önermeleri olarak yazılır, pointer taşınır, içerik kopyalanmaz | ayık (Salih, 07-13 sabah) | ADAY; şema v2 tasarım girdisi (V37 ile aynı masaya) |
 | V46 | KURAL ADAYI | Lojik-temelli çeviri: doğal-dil talimatlar tam bağlaç setiyle (∧ ∨ ¬ → ↔) formalize edilir; loop/kural yazım standardı; transfer anahtarı | ayık (Salih, 07-13 sabah) | KURAL ADAYI; m.37/V40/V44 imza masasına eşlik eder |
