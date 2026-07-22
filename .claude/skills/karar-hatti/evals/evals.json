@@ -1,0 +1,44 @@
+{
+  "skill": "karar-hatti",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce akış (K-016): set SKILL gövdesinden ÖNCE yazıldı (2026-07-21). Orkestratör: çocuklar celiski-kapisi (S-C) · atlas-kosum (S-B) · karar-modeli (S-A). Koşumlar temiz-bağlam subagent'ta, planlama modunda.",
+  "tests": [
+    {
+      "id": "E1-tam-hat",
+      "prompt": "Ölçek-eşiği üstü karar geldi: 'JARVIS gece koşumları için token bütçe-kesme mekanizması seçilecek.' Hattı planla (çocuk koşumlarını gerçekten koşma; hangi çocuğu hangi sırayla, hangi girdiyle, hangi kapıyla çağıracağını göster).",
+      "assertions": [
+        "Sıra doğru: celiski-kapisi → (araştırma-önce kontrolü: dışarıda çözülmüş olma ihtimali VAR → atlas-kosum) → karar-modeli → sunum",
+        "Kapı mantığı: celiski-kapisi çelişki bulursa hat DURUR, rapor Salih'e; temizse devam",
+        "m.40b sırası: atlas taraması karar-modeli SUNUMUNDAN önce; atlas bulguları karar-modeline kanıt olarak beslenir",
+        "Kayıt ayrılığı: defter bloğu TASLAK olarak üretilir ama yazım/commit hattın içinde YAPILMAZ (yan-etki freni)",
+        "Katman ayrımı: Katman-2 → sunum görünür, onay beklenmez, veto açık; Katman-1 → Salih imzası beklenir"
+      ]
+    },
+    {
+      "id": "E2-celiski-durdurma",
+      "prompt": "Hat koşarken celiski-kapisi çocuğu çelişki raporu döndürdü (öneri m.13 tek-flagship kuralıyla çakışıyor). Sonraki adım ne?",
+      "assertions": [
+        "Hat DURUR: atlas-kosum ve karar-modeli ÇAĞRILMAZ (israf freni — çelişki çözülmeden model karşılaştırması anlamsız)",
+        "Çelişki raporu Salih'e/ana-sıraya taşınır; hattın devamı Salih'in yönüne bağlanır"
+      ]
+    },
+    {
+      "id": "E3-negatif-tetik",
+      "prompt": "'Bu iki dosya adını birbiriyle değiştir.' — hat tetiklenir mi?",
+      "assertions": ["Tetiklenmez: su-bardağı iş (m.25/m.31 eşiği altı); direkt yapılır, hiçbir çocuk çağrılmaz"]
+    },
+    {
+      "id": "E4-ic-onceliklendirme",
+      "prompt": "Karar: 'K-019 mu önce, S-G borçları mı?' — iç-önceliklendirme kararı. Hat nasıl koşar?",
+      "assertions": [
+        "atlas-kosum ATLANIR: m.40(b) araştırma-önce kuralı iç-önceliklendirme kararlarını muaf tutar (dönemsel geriye-dönük denetim şerhiyle)",
+        "celiski-kapisi + karar-modeli yine koşar (muafiyet yalnız dış-tarama adımına)"
+      ]
+    }
+  ],
+  "description_eval": {
+    "note": "20-sorgu tam seti açık borç. Başlangıç:",
+    "should_trigger": ["tam karar hattı koştur", "bu kararı hattan geçir", "karar hattı", "büyük karar var baştan sona işle", "çelişki+araştırma+3 model hepsi"],
+    "should_not_trigger": ["dosya adı değiştir", "3 model sun (tekil)", "araştır (tekil)", "çelişki var mı (tekil)", "kapsülü güncelle"]
+  }
+}

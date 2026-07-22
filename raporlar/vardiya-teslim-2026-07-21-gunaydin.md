@@ -23,5 +23,12 @@ Salih iki kalemi de OKUDU + KABUL etti (07-21). İşlendi: m.40b v0.2 tüzükte 
 5. Öğrenme oturumu: sıradaki **P4** (P3 koşuldu — tekrar açtırma).
 6. Bir sonraki `git pull` (acele yok — gece-senkron da kapatır): tüzük m.40b-v0.2 + m.44 + SKILL v0.2 iner.
 
+## Vardiya uzantısı (07-21/22 gece, Salih P4 okurken)
+- atlas-kosum **v0.2 eval seti güncellendi + yeniden koşuldu: 4/4** (E4-cove-izolasyon yeni test).
+- **S-C celiski-kapisi ÜRETİLDİ** (eval-önce; 4/4 — E1'de kapı m.40b'nin kendi daralma tetiğini plan-1 olarak önerdi; E3'te emir bekletilmeden m.8-uyumlu icra sunuldu).
+- **S-G karar-hatti orkestratörü ÜRETİLDİ** (eval-önce; 4/4 — ince orkestratör: sıra+kapı+ham-veri; iş çocuklarda). İnşa-sırası kararı defterde (S-C önce, Model A).
+- Kutu: S-J `karar-kaydet` adayı düştü (kayıt/commit ayrı elle-tetik).
+- **Gece-senkron ARIZA BULGUSU:** `raporlar/usage/`de log YOK → script 07-20 ve 07-21 sabahları HİÇ koşmamış (koşsaydı FAIL bile olsa JSONL satırı + uyarı dosyası yazardı). K-010 sicil sayacı başlamadı. Salih kontrolü: `schtasks /Query /TN "JARVIS-gece-senkron" /V` — çıktıyı Carvis'e getir; çözüm kararı sonra.
+
 ## Sonraki vardiya adayları
-İmza işleme (tüzük + SKILL v0.2 + CLAUDE.md satırı) · S-G orkestratör · gece-senkron gözlem işleme → K-010 sicil · K-019 (artık 3+ vakalı) · PAT credential-helper taşıma planı.
+Gece-senkron teşhis+çözüm → K-010 sicil · ilk canlı /karar-hatti + /atlas-kosum v0.2 koşumu · K-019 (3+ vakalı) · description-eval turu (4 skill) · PAT credential-helper planı · K-016 kapanış kararı (DONE-eşiği aşıldı, Salih'e).

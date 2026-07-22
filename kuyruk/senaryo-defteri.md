@@ -224,3 +224,11 @@
 - **Geri-alınabilirlik:** çok yüksek — etiket şeması, veri değil.
 - **Gözlem:** bekliyor — diklik varsayımı (D3/D4, D4/D7 korelasyonu) ilk gerçek etiketli korpusta test edilir; ilk canlı-ajan sınıfı = araştırma-filosu (D4 iki-yönlü, en düşük bahis).
 - **Ders:** üç bağımsız kaynak (sektör · Bezos kapı-modeli · kendi m.42'miz) aynı ilkeye vardı — özerkliği geri-alınabilirlik belirler; kendi kanunumuz dış literatürle triangüle oldu.
+
+### 2026-07-21 · K-016 · S-C/S-G inşa sırası
+- **Bağlam:** orkestratörün çocuklarından celiski-kapisi (S-C) eksik; kapsül sorusu "S-C önce ya da orkestratör 2-çocukla başlar".
+- **Model A (S-C önce, S-G aynı vardiyada 3-çocukla):** orkestratör tam doğar · vardiya yükü artar | **Model B (S-G şimdi 2-çocukla, S-C sonra):** hızlı ilk-çıktı · orkestratör kontratı sonradan değişir (rework; m.40c YÜKSEK-sınıf riski — çekirdek akış) | **Model C (yalnız S-C, S-G sonraki vardiya):** temkinli · hat yarım kalır → ✅ A
+- **Karşıt-temel:** B ← ilk-çıktı-hızlı (V38); canlılık ✓ — yenildi: V38 kademeli-yürürlük tam da çekirdek-akış işlerinde tasarım-önceliği korur.
+- **Seçim:** A (Carvis Katman-2; veto açık) — görünürlük: 07-21 vardiyası + bu kayıt.
+- **Gözlem:** bekliyor (aynı vardiya).
+- **Ders:** —

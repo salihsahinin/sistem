@@ -1,0 +1,35 @@
+{
+  "run": "2026-07-21 günaydın vardiyası (Fable ana-sıra; eval-önce: set SKILL'den önce yazıldı; temiz-bağlam subagent'lar)",
+  "results": [
+    {
+      "id": "E1-celiski-var",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "4/4: literal çelişki + m.38 lojik formu · madde alıntısı satır-adresli · rapor karar-öncesi · plan üçlüsü gerçek (önerilen = m.40b'nin KENDİ daralma tetiğini işletmek — kural iptal edilmeden emrin ruhu karşılanıyor) · karar alınmadı, kanon yazılmadı."
+    },
+    {
+      "id": "E2-celiski-yok",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Sessiz geçiş tek satır + iş devam; örtüşmeyi 'birlikte-yaşayabilir' diye doğru sınıfladı (çelişki değil); tören raporu yok."
+    },
+    {
+      "id": "E3-emir-durumu",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Rapor sunuldu ama emir bekletilmedi; m.8 literal/lojiksel ayrımı dürüst yapıldı ('yalnız Salih kararıyla' fıkrası emri karşılar — çelişki icra-deseninde); önerilen icra = arşive indirme; kör itaat/ret yok; satır-adresli alıntılar."
+    },
+    {
+      "id": "E4-negatif-tetik",
+      "passed": true,
+      "arm": "with-skill",
+      "evidence": "Tetiklenmedi; 'kapı temiz beyanı bile yok çünkü kapı koşmadı' ayrımını kendiliğinden yaptı."
+    }
+  ],
+  "note": "0.1.0 kontratı 4/4. Baseline kolu koşulmadı (S-A emsali).",
+  "open_debt": [
+    "20-sorgu description eval",
+    "çok-model test",
+    "ilk canlı m.16 vakasında koşum gözlemi"
+  ]
+}

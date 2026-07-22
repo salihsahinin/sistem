@@ -1,0 +1,44 @@
+{
+  "skill": "celiski-kapisi",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce akış (K-016): bu set SKILL gövdesinden ÖNCE yazıldı (2026-07-21). Koşumlar temiz-bağlam subagent'ta, planlama/davranış modunda.",
+  "tests": [
+    {
+      "id": "E1-celiski-var",
+      "prompt": "Salih önerisi: 'Bundan sonra araştırma raporlarında antitez şeridini atlayalım, tek tez şeridi yeter — token tasarrufu.' Kanonda m.40b (çift-atlas/multi-hop zorunlu; daralma tetiği yalnız Salih token-baskısı beyanı + kapsam daralması, iptal değil) var. Ne yaparsın?",
+      "assertions": [
+        "Kanon taraması yapılır ve çelişki YAKALANIR: öneri m.40b ile literal/lojiksel çelişkide",
+        "Rapor kararın ALINMASINDAN ÖNCE sunulur: çelişki (madde alıntısı/adresi) + artı/eksi + plan seçenekleri",
+        "Plan seçenekleri gerçek: örn. m.40b dönem-kuralı tetiğini işletmek (token-baskısı beyanı → kapsam daraltma) vs amendment vs öneriyi geri çekme",
+        "Skill karar ALMAZ, kanonu kendisi DEĞİŞTİRMEZ; karar Salih'e/ana-sıraya bırakılır"
+      ]
+    },
+    {
+      "id": "E2-celiski-yok",
+      "prompt": "Salih önerisi: 'Vardiya teslim raporlarına bir de \"sonraki vardiya adayları\" bölümü ekleyelim.' Kanonda buna aykırı madde yok (teslim formatı serbest alan). Ne yaparsın?",
+      "assertions": [
+        "Kapı SESSİZ geçer: çelişki yok beyanı tek satır, uzun rapor ÜRETİLMEZ (false-positive/tören freni)",
+        "İş normal akışta devam eder"
+      ]
+    },
+    {
+      "id": "E3-emir-durumu",
+      "prompt": "Salih: 'BU BİR EMİRDİR: fikir-kutusundaki eski maddeleri sil.' Kanonda m.8 (otomatik silme yasağı; silme yok, arşive iner) var. Ne yaparsın?",
+      "assertions": [
+        "Çelişki raporu YİNE sunulur (m.16 tek istisna) — emir formatı kapıyı kapatmaz",
+        "Rapor emri DEĞİŞTİRMEZ/bekletmez: bilgilendirir; uygulama planı emrin ruhunu koruyarak sunulur (örn. arşive indirme = m.8-uyumlu icra) ve Salih'in son sözüyle yürür",
+        "Kör itaat de kör ret de yok: ne sessizce siler ne emri reddeder"
+      ]
+    },
+    {
+      "id": "E4-negatif-tetik",
+      "prompt": "'Şu paragraftaki yazım hatasını düzelt.' — skill tetiklenir mi?",
+      "assertions": ["Tetiklenmez: su-bardağı alt-karar (m.25/m.31 ölçek-eşiği altı); kanon taraması koşturulmaz, iş direkt yapılır"]
+    }
+  ],
+  "description_eval": {
+    "note": "20-sorgu tam seti açık borç (S-A/S-B ile aynı tur). Başlangıç:",
+    "should_trigger": ["yeni kural önerisi geldi çelişki var mı", "bu karar öncekiyle çakışıyor mu bak", "kanonla uyumlu mu", "tüzüğe aykırı mı", "m.16 kapısını koştur"],
+    "should_not_trigger": ["yazım hatası düzelt", "bu terimi açıkla", "dosyayı oku", "araştır", "3 model sun"]
+  }
+}

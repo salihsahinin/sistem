@@ -1,0 +1,36 @@
+{
+  "run": "2026-07-21/22 günaydın vardiyası devamı (Fable ana-sıra; eval-önce; temiz-bağlam subagent'lar; E1 planlama-modu)",
+  "results": [
+    {
+      "id": "E1-tam-hat",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "5/5: sıra doğru (kapı→atlas→model→sunum) · iki-yollu kapı + DARALTMA ayrımı · atlas sunumdan önce, iddia+kanıt listesi HAM beslenir · defter bloğu TASLAK, yazım/commit hat dışı · Katman ayrımı çift-yollu ve gerekçeli (token bütçesi = para vekili → Katman-1 güvenli varsayılan). Ek: K-009/otomasyon sınırını kapı sıcak-noktası olarak önden işaretledi — orkestratör hükmetmeden kapıya bıraktı (doğru işbölümü)."
+    },
+    {
+      "id": "E2-celiski-durdurma",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Hat durdu; atlas+model çağrılmadı; rapor HAM taşındı; m.13 → Katman-1 tayini doğru; gotcha-3 diliyle 'kapı ezilmez'."
+    },
+    {
+      "id": "E3-negatif-tetik",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Tetiklenmedi; tekil-ihtiyaç yolunun da açılmadığını ayrıca gördü; direkt icra."
+    },
+    {
+      "id": "E4-ic-onceliklendirme",
+      "arm": "with-skill",
+      "passed": true,
+      "evidence": "Atlas ATLANDI (m.40b muafiyeti + denetim şerhi sunumda); kapı+model yine koştu; Katman-2/1 yükselme koşulu doğru."
+    }
+  ],
+  "note": "0.1.0 kontratı 4/4. Orkestratör ince kaldı (iş çocuklarda). Baseline kolu koşulmadı (S-A emsali).",
+  "open_debt": [
+    "20-sorgu description eval",
+    "çok-model test",
+    "ilk canlı tam-hat koşumu → defter gözlemi",
+    "karar-kaydet skill'i (S-kutusu adayı; kayıt/commit ayrı elle-tetik)"
+  ]
+}
