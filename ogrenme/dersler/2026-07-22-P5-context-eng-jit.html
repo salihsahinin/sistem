@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P5 — Context Engineering I: JIT Yükleme & @import Tuzağı</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c232c; --ink:#e6edf3; --dim:#9aa7b4;
+    --line:#2a323c; --accent:#e0a458; --accent2:#5aa9e6; --good:#5cb87a; --bad:#e0605e;
+    --warn:#d6a94a; --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;font-size:17px}
+  .wrap{max-width:860px;margin:0 auto;padding:38px 22px 90px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+  .kick{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  h1{font-size:30px;line-height:1.2;margin:.35em 0 .2em}
+  .sub{color:var(--dim);font-size:15px}
+  .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:var(--mono);font-size:12px;background:var(--panel2);border:1px solid var(--line);
+    color:var(--dim);padding:3px 9px;border-radius:20px}
+  .tag b{color:var(--ink)}
+  h2{font-size:22px;margin:52px 0 4px;scroll-margin-top:20px}
+  .blocknum{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:.1em}
+  .depth{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid var(--line);
+    color:var(--accent);vertical-align:middle;margin-left:8px}
+  p{margin:14px 0}
+  .core{border-left:3px solid var(--accent)}
+  em.term{font-style:normal;color:var(--accent2);font-weight:600}
+  .paren{color:var(--dim);font-size:.94em}
+  .qa{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .qa .q{color:var(--accent2);font-weight:600;font-size:15px}
+  .qa .a{margin-top:6px}
+  .jarvis{background:linear-gradient(180deg,#15201b,#131a17);border:1px solid #244034;border-radius:10px;
+    padding:14px 18px;margin:20px 0}
+  .jarvis .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--good);text-transform:uppercase}
+  .bridge{color:var(--dim);font-size:15px;font-style:italic;border-top:1px dashed var(--line);padding-top:12px;margin-top:22px}
+  .worked{background:#12171d;border:1px solid var(--line);border-radius:10px;padding:8px 18px 14px;margin:20px 0}
+  .worked .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--warn);text-transform:uppercase;
+    display:block;margin:8px 0 2px}
+  code{font-family:var(--mono);font-size:.9em;background:var(--panel2);padding:1px 6px;border-radius:5px;color:#e8c98a}
+  .fig{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 10px}
+  .fig svg{display:block;width:100%;height:auto}
+  .cap{color:var(--dim);font-size:13.5px;text-align:center;margin-top:8px;font-style:italic}
+  table.mini{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:var(--panel2);color:var(--ink);font-weight:600}
+  table.mini td.g{color:var(--good)} table.mini td.b{color:var(--bad)}
+  .gate{background:var(--panel2);border:1px solid var(--accent);border-radius:12px;padding:18px 22px;margin:30px 0}
+  .gate h3{margin:.2em 0 .5em;color:var(--accent)}
+  .callout{background:#1d1614;border:1px solid #4a2f24;border-radius:10px;padding:12px 18px;margin:18px 0}
+  .callout .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--bad);text-transform:uppercase}
+  hr.sec{border:0;border-top:1px solid var(--line);margin:46px 0}
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:26px 0;font-size:14.5px}
+  .toc a{color:var(--accent2);text-decoration:none} .toc a:hover{text-decoration:underline}
+  .toc ol{margin:6px 0;padding-left:22px} .toc li{margin:3px 0}
+  .m37{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  .m37 th,.m37 td{border:1px solid var(--line);padding:9px 11px;vertical-align:top}
+  .m37 th{background:var(--panel2)}
+  .m37 .rec{background:#15201b}
+  .pill{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+  .pill.ok{color:var(--good);border-color:#2f5a3f} .pill.no{color:var(--bad);border-color:#5a2f2f}
+  footer{margin-top:60px;border-top:1px solid var(--line);padding-top:20px;color:var(--dim);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kick">Şerit 2 · Öğrenme Oturumu · Partisyon 5</div>
+  <h1>Context Engineering I —<br>JIT Yükleme &amp; <code>@import</code> Tuzağı</h1>
+  <div class="sub">Bağlam ne zaman yüklenir? "Dosyaya böldüm, artık lazy oldu" neden bir yanılsama olabilir? Ve JARVIS'in pointer sistemi (m.20) mekanik olarak nasıl DOĞRU kurulur.</div>
+  <div class="meta">
+    <span class="tag"><b>Derinlik:</b> [T] tam</span>
+    <span class="tag"><b>Eksen:</b> L1 (bağlam = maliyet)</span>
+    <span class="tag"><b>Ön-koşul:</b> P1 ✓ (token ekonomisi)</span>
+    <span class="tag"><b>Tarih:</b> 2026-07-22</span>
+    <span class="tag"><b>Format:</b> pasif-okuma v2</span>
+  </div>
+</header>
+
+<div class="toc">
+  <b>Bu oturumda 6 blok + Yarı-2:</b>
+  <ol>
+    <li><a href="#b1">İki strateji: önden-yükle vs JIT (just-in-time)</a></li>
+    <li><a href="#b2">Çekirdek tuzak: <code>@import</code> "lazy" değil, <b>eager</b></a></li>
+    <li><a href="#b3">İki AYRI 200-satır kuralı: yumuşak vs sert</a></li>
+    <li><a href="#b4">DOĞRU lazy: index + oku-gerektiğinde (m.20'nin gerçek hali)</a></li>
+    <li><a href="#b5">Progressive disclosure, metadata &amp; yükleme sırası</a></li>
+    <li><a href="#b6">Sentez: JARVIS'e <code>@import</code>'suz pointer mimarisi</a></li>
+  </ol>
+</div>
+
+<p class="sub">Ön not (m.40 araştırma-önce): Bu dersteki bütün mekanik iddialar iki güncel kaynakla doğrulandı — Claude Code resmî hafıza dokümanı (<code>code.claude.com/docs/en/memory</code>) ve Anthropic'in "Effective context engineering for AI agents" mühendislik yazısı. Kaynaklar sonda.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 1 ============ -->
+<h2 id="b1"><span class="blocknum">BLOK 1</span> — İki strateji: önden-yükle vs JIT<span class="depth">[T]</span></h2>
+
+<p>P1'de şunu kurduk: <em class="term">bağlam = maliyet</em>. Her token dikkat bütçesinden düşer, ve context uzadıkça kalite bozulur (P3'teki context rot + lost-in-the-middle). O halde asıl mühendislik sorusu şu: <b>gerekli bilgiyi modelin önüne ne zaman koyarsın?</b> İki uç strateji var.</p>
+
+<p><b>1) Önden-yükleme <span class="paren">(pre-load / pre-inference retrieval)</span>.</b> İşe başlamadan önce, ilgili olabilecek her şeyi context'e doldurursun. Klasik örnek: <em class="term">embedding tabanlı retrieval</em> <span class="paren">(bir soru gelince, önceden vektöre çevrilmiş belge parçalarından en yakınları bulup context'e enjekte etme — RAG'in kalbi)</span>. Avantajı: bilgi hazır. Dezavantajı: neyin gerekeceğini önceden tahmin etmen gerekir, ve fazla yüklersen bütçeyi yakarsın.</p>
+
+<p><b>2) JIT — just-in-time <span class="paren">(tam zamanında; iş anında yükleme)</span>.</b> Context'e bilginin kendisini değil, ona giden <em class="term">hafif kimlikleri</em> koyarsın: dosya yolları, kayıtlı sorgular, linkler. Model çalışırken, gerçekten ihtiyaç duyduğu anda bir araçla <span class="paren">(Read, grep, glob)</span> o referansı takip edip veriyi yükler. Anthropic'in kendi cümlesi: ajanlar "hafif kimlikler (dosya yolları, kayıtlı sorgular, web linkleri) tutar ve bu referansları çalışma anında veriyi context'e dinamik yüklemek için kullanır."</p>
+
+<p>Anthropic bunu doğrudan bir insan alışkanlığına bağlıyor: "bütün bir bilgi külliyatını ezberlemeyiz; bunun yerine dosya sistemleri, gelen kutuları ve yer imleri gibi dış düzenleme/indeksleme sistemleri kurar, bilgiyi ihtiyaç anında geri çağırırız." Yani JIT = <b>ezberleme, adresini tut</b>.</p>
+
+<div class="qa">
+  <div class="q">Peki gerçek sistemler hangisini seçer?</div>
+  <div class="a">Genelde ikisi de değil — <b>hibrit</b>. Anthropic, Claude Code'u tam da bu dengenin örneği diye anlatıyor: "CLAUDE.md dosyaları en baştan context'e düşürülür <span class="paren">(önden-yükleme)</span>, ama glob ve grep gibi ilkeller ortamda gezinip dosyaları just-in-time getirmesini sağlar." Yani küçük, her-oturum-gerekli çekirdek önden; geri kalan devasa gövde JIT. Bu ayrım P5'in bütün meselesi: <b>neyi sıcak tutarsın, neyi adresle bırakırsın.</b></div>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 300" role="img" aria-label="Önden-yükleme vs JIT mimarisi">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5aa9e6"/></marker>
+    <marker id="arg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5cb87a"/></marker>
+  </defs>
+  <!-- left: preload -->
+  <text x="180" y="26" fill="#e0605e" font-size="14" font-family="monospace" text-anchor="middle">ÖNDEN-YÜKLE (pre-load)</text>
+  <rect x="60" y="42" width="240" height="150" rx="10" fill="#161b22" stroke="#4a2f2f"/>
+  <text x="180" y="60" fill="#9aa7b4" font-size="11" text-anchor="middle">context penceresi</text>
+  <rect x="76" y="70" width="208" height="18" rx="3" fill="#3a2523"/>
+  <rect x="76" y="92" width="208" height="18" rx="3" fill="#3a2523"/>
+  <rect x="76" y="114" width="208" height="18" rx="3" fill="#3a2523"/>
+  <rect x="76" y="136" width="208" height="18" rx="3" fill="#3a2523"/>
+  <rect x="76" y="158" width="208" height="18" rx="3" fill="#3a2523"/>
+  <text x="180" y="215" fill="#e0605e" font-size="12" text-anchor="middle">her şey içeride · bütçe dolu</text>
+  <text x="180" y="233" fill="#9aa7b4" font-size="11" text-anchor="middle">↑ çoğu belki hiç kullanılmayacak</text>
+
+  <!-- right: JIT -->
+  <text x="620" y="26" fill="#5cb87a" font-size="14" font-family="monospace" text-anchor="middle">JIT (just-in-time)</text>
+  <rect x="500" y="42" width="240" height="150" rx="10" fill="#161b22" stroke="#2f5a3f"/>
+  <text x="620" y="60" fill="#9aa7b4" font-size="11" text-anchor="middle">context penceresi</text>
+  <rect x="516" y="70" width="140" height="16" rx="3" fill="#1f2a22" stroke="#2f5a3f"/>
+  <text x="522" y="82" fill="#5cb87a" font-size="10" font-family="monospace">@rapor-1.md</text>
+  <rect x="516" y="92" width="140" height="16" rx="3" fill="#1f2a22" stroke="#2f5a3f"/>
+  <text x="522" y="104" fill="#5cb87a" font-size="10" font-family="monospace">@wiki/loop.md</text>
+  <rect x="516" y="114" width="140" height="16" rx="3" fill="#1f2a22" stroke="#2f5a3f"/>
+  <text x="522" y="126" fill="#5cb87a" font-size="10" font-family="monospace">grep "VaR"</text>
+  <text x="620" y="215" fill="#5cb87a" font-size="12" text-anchor="middle">sadece adresler · bütçe boş</text>
+  <!-- disk -->
+  <rect x="330" y="215" width="160" height="70" rx="8" fill="#12171d" stroke="#2a323c"/>
+  <text x="410" y="238" fill="#9aa7b4" font-size="11" text-anchor="middle">disk (soğuk gövde)</text>
+  <rect x="345" y="246" width="130" height="10" rx="2" fill="#232d38"/>
+  <rect x="345" y="260" width="130" height="10" rx="2" fill="#232d38"/>
+  <rect x="345" y="274" width="130" height="7" rx="2" fill="#232d38"/>
+  <path d="M600 135 C560 175, 500 205, 470 235" fill="none" stroke="#5cb87a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arg)"/>
+  <text x="560" y="205" fill="#5cb87a" font-size="10" font-family="monospace">Read (gerektiğinde)</text>
+</svg>
+<div class="cap">Sol: her şey önden context'te, bütçe dolu. Sağ: context'te sadece adresler; gövde diskte, Read ile iş anında çekilir.</div>
+</div>
+
+<p class="bridge">Köprü: JIT'in kalbi "context'e bilgiyi değil adresini koy" fikri. Peki Claude Code'un kendi araç setinde bunu yaptığını sandığın bir sözdizimi var — <code>@import</code>. Blok 2'nin bütün derdi: o sözdizimi aslında JIT DEĞİL.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 2 ============ -->
+<h2 id="b2" class="core"><span class="blocknum">BLOK 2 · ÇEKİRDEK</span> — <code>@import</code> "lazy" değil, <b>eager</b><span class="depth">[T]</span></h2>
+
+<p>Claude Code'da bir CLAUDE.md dosyası, başka dosyaları <code>@path/to/file</code> sözdizimiyle içeri alabilir. Sezgi şöyle çalışır — ve yanlıştır: <i>"Kanonu tek dev dosyada tutmayayım; parçalara böleyim, CLAUDE.md sadece <code>@import</code>'larla onları göstersin. Böylece dosyalar ayrık kalır, ihtiyaç oldukça yüklenir — lazy olur."</i></p>
+
+<p>Resmî doküman bu sezgiyi tek cümlede yıkıyor: <b>"İçe alınan dosyalar genişletilir ve onları referanslayan CLAUDE.md ile birlikte <u>launch'ta context'e yüklenir</u>."</b> Ve daha da net: <b>"<code>@path</code> import'larına bölmek düzenlemeye yardım eder ama context'i azaltmaz, çünkü içe alınan dosyalar launch'ta yüklenir."</b></p>
+
+<p>Yani <code>@import</code> = <em class="term">eager</em> <span class="paren">(hevesli/hemen; referansı görür görmez, sen istemeden, açılışta tam metni context'e açar)</span>. Tam tersi olan <em class="term">lazy</em> <span class="paren">(tembel; ancak gerçekten gerektiğinde yükler)</span> DEĞİL. <code>@import</code>, iki dosyayı görsel olarak ayırır ama token açısından <b>tek dosyaya kopyala-yapıştır ile aynıdır</b>.</p>
+
+<div class="worked">
+  <span class="lbl">Örnek — sonuna kadar işlenmiş</span>
+  <p style="margin:6px 0">Diyelim JARVIS'in CLAUDE.md'sine şunu yazdın:</p>
+  <p style="margin:6px 0"><code>Kanon için bkz: @core/tuzuk-v0.md</code></p>
+  <p style="margin:8px 0"><code>tuzuk-v0.md</code> = 40.447 bayt (≈ 40 KB, ~700+ satır). Adım adım ne olur:</p>
+  <p style="margin:4px 0">1. Oturum açılır (launch).</p>
+  <p style="margin:4px 0">2. Claude Code CLAUDE.md'yi okur, içinde <code>@core/tuzuk-v0.md</code> görür.</p>
+  <p style="margin:4px 0">3. O satırı <b>tüzüğün 40 KB'lık tam metniyle değiştirir</b> — daha sen hiçbir şey sormadan.</p>
+  <p style="margin:4px 0">4. Sonuç: her oturum, her açılışta ~40 KB (≈ 10-12 bin token) sıcak context'e girer. Tüzüğü o gün hiç kullanmayacak olsan bile.</p>
+  <p style="margin:8px 0">Kıyas: aynı tüzüğü <code>@import</code> yerine kapsülde tek satır pointer olarak bıraksaydın — <code>"kanon: core/tuzuk-v0.md — gerektiğinde Read"</code> — açılış maliyeti ~15 token. Model tüzüğe gerçekten ihtiyaç duyduğunda Read ile çeker. <b>Fark: ~12.000 token vs ~15 token, her açılışta.</b></p>
+</div>
+
+<div class="qa">
+  <div class="q">"Ama dosya diskte ayrı duruyor, bölmüş oldum — bu bir kazanç değil mi?"</div>
+  <div class="a">Düzeltme: <b>disk düzeni</b> ile <b>context maliyeti</b> iki ayrı şey. <code>@import</code> sana disk düzeni verir (dosyalar ayrık), okunabilirlik verir, bakımı kolaylaştırır — bunlar gerçek faydalar. Ama <b>token faydası SIFIR</b>: launch'ta hepsi genişler. "Böldüm = hafifledi" cümlesindeki gizli hata, düzeni maliyetle karıştırmak. m.20'nin (pointer ilkesi) aradığı şey token faydasıdır; onu <code>@import</code> vermez.</div>
+</div>
+
+<p>İki teknik ayrıntı, [T] olduğu için tam veriyorum:</p>
+<p><b>Recursion (özyineleme):</b> İçe alınan dosya kendi içinde başka dosyaları <code>@import</code> edebilir — ama en fazla <b>4 hop derinlik</b>. Yani <code>@import</code> zincirleri sınırsız derinleşmez.</p>
+<p><b>Code-span kaçışı:</b> Bir yolu import ETMEDEN sadece bahsetmek istersen backtick içine al. <code>@README</code> (backtick'siz) → dosyayı import eder; <code>`@README`</code> (backtick'li) → sadece metin, import yok. Import ayrıştırıcı, Markdown code-span'lerini ve fenced code bloklarını atlar. <span class="paren">Küçük ama sinsi: kanonda örnek olarak <code>@bir-dosya</code> yazarken backtick unutursan, farkında olmadan onu her açılışta yüklersin.</span></p>
+
+<div class="jarvis">
+  <div class="lbl">JARVIS senaryosu</div>
+  Bu, JARVIS'te doğrudan bir kaza riski. "Kanona her an erişelim" iyi niyetiyle CLAUDE.md'ye <code>@core/tuzuk-v0.md</code> + <code>@core/pano.md</code> + <code>@core/durum-kapsulu.md</code> koymak = tüzük(40KB) + pano(9KB) + kapsül(3KB) ≈ 52 KB'yi <b>her oturum açılışında</b> yakmak. Bu tam olarak m.20'yi çiğnemek olur: "özet sıcakta, detay dosyada adresle" derken, detayı da sıcağa taşımış olursun. Blok 6'da doğru mimariyi kuracağız.
+</div>
+
+<p class="bridge">Köprü: <code>@import</code>'un eager olduğunu gördük. Peki "dosya çok uzarsa ne olur?" sorusu iki farklı dosya türünde iki farklı cevap veriyor — ve bu ayrımı bilmemek JARVIS kapsülünü yanlış tasarlatır. Blok 3.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 3 ============ -->
+<h2 id="b3"><span class="blocknum">BLOK 3</span> — İki AYRI 200-satır kuralı: yumuşak vs sert<span class="depth">[T]</span></h2>
+
+<p>Claude Code'da "200 satır" iki yerde geçer ve <b>aynı şey değildir</b>. Bunları karıştırmak, JARVIS'in çekirdek-index'ini yanlış boyut modeline göre tasarlamana yol açar.</p>
+
+<p><b>1) CLAUDE.md — 200 satır = YUMUŞAK hedef.</b> Doküman: "CLAUDE.md dosyaları uzunluğu ne olursa olsun <u>tam olarak yüklenir</u>." 200 satır sadece bir tavsiye: "200 satırın altını hedefle; daha uzun dosyalar daha çok context tüketir ve <em class="term">adherence</em>'ı <span class="paren">(uyum — modelin talimatlara ne kadar tutarlı uyduğu)</span> düşürür." Yani 400 satırlık CLAUDE.md yazarsan: hepsi yüklenir, hiçbir satır düşmez — ama model talimatlara daha gevşek uyar (P3'teki bağlam bozulması burada da devrede). <b>Ceza: kalite, veri kaybı değil.</b></p>
+
+<p><b>2) MEMORY.md — 200 satır ∨ 25 KB = SERT sınır.</b> Bu, Claude Code'un <em class="term">auto memory</em> <span class="paren">(otomatik hafıza — modelin senin düzeltmelerinden kendi kendine öğrenip yazdığı notlar)</span> sisteminin index dosyası. Doküman: "MEMORY.md'nin <u>ilk 200 satırı, ya da ilk 25 KB'ı — hangisi önce gelirse</u> — her konuşmanın başında yüklenir. Bu eşiğin ötesindeki içerik oturum başında yüklenmez." Yani 250 satırlık MEMORY.md'de satır 201–250 <b>sessizce düşer</b>. Dahası: dosya sınırı aşarsa Claude Code yazma sonrası bir <b>hata</b> döndürüp "index'i kısalt, detayı topic dosyalarına taşı" der. <b>Ceza: veri kaybı (yüklenmeyen içerik yok sayılır).</b></p>
+
+<div class="worked">
+  <span class="lbl">Örnek — aynı 250 satır, iki dosya türü</span>
+  <p style="margin:6px 0"><b>250 satırlık CLAUDE.md:</b> 1–250 hepsi context'e girer. Model 250 satır talimatın hepsini görür ama arasında kaybolma ihtimali artar (uyum ↓). Hiçbir satır atılmaz.</p>
+  <p style="margin:6px 0"><b>250 satırlık MEMORY.md:</b> 1–200 context'e girer, 201–250 <b>hiç yüklenmez</b>. Model o son 50 satırın <b>varlığından habersizdir</b>. Oraya yazdığın kritik not, yokmuş gibidir.</p>
+  <p style="margin:8px 0"><b>Ders:</b> Bir "her oturum sıcak" index tasarlarken, MEMORY.md modelini baz al — çünkü asıl tehlike uyum düşmesi değil, <b>sessiz kesilme</b>. Index kısa VE öz olmalı; uzarsa uyarı değil, kayıp alırsın.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 250" role="img" aria-label="CLAUDE.md yumuşak vs MEMORY.md sert 200 satır">
+  <!-- CLAUDE.md -->
+  <text x="200" y="24" fill="#e6edf3" font-size="14" font-family="monospace" text-anchor="middle">CLAUDE.md · 250 satır</text>
+  <rect x="120" y="36" width="160" height="150" rx="8" fill="#161b22" stroke="#2a323c"/>
+  <rect x="130" y="46" width="140" height="120" fill="#1c3324"/>
+  <line x1="130" y1="138" x2="270" y2="138" stroke="#d6a94a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="275" y="142" fill="#d6a94a" font-size="10" text-anchor="start">200</text>
+  <text x="200" y="112" fill="#5cb87a" font-size="12" text-anchor="middle">1–250</text>
+  <text x="200" y="128" fill="#5cb87a" font-size="11" text-anchor="middle">HEPSİ yüklendi</text>
+  <text x="200" y="205" fill="#d6a94a" font-size="12" text-anchor="middle">yumuşak: ceza = uyum ↓</text>
+  <text x="200" y="223" fill="#9aa7b4" font-size="11" text-anchor="middle">veri kaybı YOK</text>
+
+  <!-- MEMORY.md -->
+  <text x="600" y="24" fill="#e6edf3" font-size="14" font-family="monospace" text-anchor="middle">MEMORY.md · 250 satır</text>
+  <rect x="520" y="36" width="160" height="150" rx="8" fill="#161b22" stroke="#2a323c"/>
+  <rect x="530" y="46" width="140" height="92" fill="#1c3324"/>
+  <rect x="530" y="138" width="140" height="38" fill="#3a2523"/>
+  <line x1="530" y1="138" x2="670" y2="138" stroke="#e0605e" stroke-width="1.8"/>
+  <text x="600" y="98" fill="#5cb87a" font-size="12" text-anchor="middle">1–200</text>
+  <text x="600" y="114" fill="#5cb87a" font-size="11" text-anchor="middle">yüklendi</text>
+  <text x="600" y="162" fill="#e0605e" font-size="11" text-anchor="middle">201–250 DÜŞTÜ</text>
+  <text x="600" y="205" fill="#e0605e" font-size="12" text-anchor="middle">sert: ceza = veri kaybı</text>
+  <text x="600" y="223" fill="#9aa7b4" font-size="11" text-anchor="middle">+ CC "index'i kısalt" hatası</text>
+</svg>
+<div class="cap">Aynı uzunluk, iki farklı sonuç. Yumuşak sınır kaliteyi eritir; sert sınır içeriği sessizce keser.</div>
+</div>
+
+<div class="qa">
+  <div class="q">"JARVIS'in durum-kapsülü hangi modele tabi?"</div>
+  <div class="a">Şu an kapsül bir Cowork/CC oturumunda <b>Read ile açılan normal bir dosya</b> — teknik olarak ne CLAUDE.md ne MEMORY.md mekanizması. Ama tasarım disiplini olarak <b>MEMORY.md modelini benimsemeli</b>: kısa, tek-satır-giriş, detay pointer'la dışarıda. Neden? Çünkü kapsülün işi "her oturumun İLK okuduğu, her şeyin sıcak özeti" olmak; şişerse hem token yakar hem de asıl riski taşır — okunması gereken satırın kalabalıkta kaybolması. Sert-kısa disiplin = güvenli disiplin.</div>
+</div>
+
+<p class="bridge">Köprü: "Kısa index sıcak, detay dışarıda, gerektiğinde oku" cümlesi üç blokta üç kez çıktı. Bu tam olarak m.20. Şimdi Claude Code'un bunu GERÇEKTEN lazy yapan mekanizmalarını görelim — <code>@import</code>'un yapamadığını.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 4 ============ -->
+<h2 id="b4" class="core"><span class="blocknum">BLOK 4 · ÇEKİRDEK</span> — DOĞRU lazy: index + oku-gerektiğinde<span class="depth">[T]</span></h2>
+
+<p><code>@import</code> eager'dı. Peki Claude Code'da <b>gerçekten</b> lazy olan ne? Dört mekanizma var, ve dördü de aynı deseni paylaşır: <b>kısa bir şey sıcak durur, gövde soğukta bekler, ancak tetiklenince yüklenir.</b></p>
+
+<table class="mini">
+  <tr><th>Mekanizma</th><th>Ne zaman yüklenir (tetik)</th><th>Desen</th></tr>
+  <tr><td><b>Alt-klasör CLAUDE.md</b></td><td>Claude o alt-klasördeki bir dosyayı okuduğunda</td><td>coğrafya-tetikli</td></tr>
+  <tr><td><b>Path-scoped rules</b><br><span class="paren">.claude/rules/ + paths: frontmatter</span></td><td>Claude, <code>paths</code> desenine uyan bir dosyayla çalışınca</td><td>desen-tetikli</td></tr>
+  <tr><td><b>Skills</b></td><td>Sen çağırınca ya da model işine uygun bulunca</td><td>görev-tetikli</td></tr>
+  <tr><td><b>MEMORY.md topic dosyaları</b><br><span class="paren">debugging.md, api.md, ...</span></td><td>Model Read aracıyla ihtiyaç anında açınca</td><td>index-tetikli</td></tr>
+</table>
+
+<p>Dördüncüsü m.20'nin birebir karşılığı, o yüzden [T] olarak açıyorum. MEMORY.md sistemi şöyle kurulu: <b>MEMORY.md = kısa index</b> (her oturum sıcak, sert-kısa disiplininde), ve yanında <code>debugging.md</code>, <code>api-conventions.md</code> gibi <b>topic dosyaları</b> durur. Doküman: "topic dosyaları başlangıçta yüklenmez. Model bunları ihtiyaç anında standart dosya araçlarıyla okur." Index, neyin nerede olduğunu takip eder; gövdeyi taşımaz, <b>adresler</b>.</p>
+
+<p>Bu, Blok 1'deki JIT'in somut hâli: index'teki satır bir <em class="term">hafif kimlik</em> (pointer), Read onu takip eden araç. Fark <code>@import</code>'la şurada net: <code>@import</code> "index'e yazdığın adres" değil, "index'e yapıştırdığın tam metin"dir. Aynı görünür (ikisi de dosya adı yazıyorsun), zıt davranır.</p>
+
+<div class="worked">
+  <span class="lbl">Örnek — iki JARVIS "kanon erişimi", yan yana</span>
+  <p style="margin:6px 0"><b>Yol A (@import, eager):</b><br>
+  <code>CLAUDE.md:  @core/tuzuk-v0.md</code><br>
+  → açılışta tüzüğün 40 KB'ı context'te. Her oturum. Kullanılsa da kullanılmasa da.</p>
+  <p style="margin:6px 0"><b>Yol B (index + Read, lazy):</b><br>
+  <code>kapsül satırı:  "kanon detayı → core/tuzuk-v0.md"</code><br>
+  → açılışta sadece ~15 token'lık pointer. Model m.16 çelişki kapısını işletmesi gerektiği <b>o an</b> tüzüğü Read'ler; gerisinde tüzük soğukta durur.</p>
+  <p style="margin:8px 0"><b>Sonuç:</b> Yol B, tüzüğün gerçekten gerektiği ~%10 durumda onu yükler; kalan %90'da bütçeyi boş tutar. Yol A %100 yükler. Aynı "dosya adı yazma" jesti, 40 KB × (her oturum) fark.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 300" role="img" aria-label="m.20 pointer mimarisi: index sıcak, gövde soğuk">
+  <defs>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#e0a458"/></marker>
+  </defs>
+  <!-- hot index -->
+  <rect x="60" y="60" width="220" height="180" rx="10" fill="#1c2318" stroke="#e0a458"/>
+  <text x="170" y="84" fill="#e0a458" font-size="13" font-family="monospace" text-anchor="middle">SICAK · index</text>
+  <text x="170" y="102" fill="#9aa7b4" font-size="10.5" text-anchor="middle">(her oturum yüklenir, sert-kısa)</text>
+  <rect x="78" y="116" width="184" height="20" rx="3" fill="#12171d"/><text x="86" y="130" fill="#e6edf3" font-size="10.5" font-family="monospace">→ kanon: core/tuzuk-v0.md</text>
+  <rect x="78" y="142" width="184" height="20" rx="3" fill="#12171d"/><text x="86" y="156" fill="#e6edf3" font-size="10.5" font-family="monospace">→ senaryo: kuyruk/senaryo…</text>
+  <rect x="78" y="168" width="184" height="20" rx="3" fill="#12171d"/><text x="86" y="182" fill="#e6edf3" font-size="10.5" font-family="monospace">→ loop: wiki/loop-eng.md</text>
+  <rect x="78" y="194" width="184" height="20" rx="3" fill="#12171d"/><text x="86" y="208" fill="#e6edf3" font-size="10.5" font-family="monospace">→ açık borç: …</text>
+  <text x="170" y="232" fill="#9aa7b4" font-size="10.5" text-anchor="middle">~2–3K token toplam</text>
+
+  <!-- cold body -->
+  <text x="620" y="40" fill="#9aa7b4" font-size="13" font-family="monospace" text-anchor="middle">SOĞUK · gövde (diskte)</text>
+  <g>
+    <rect x="520" y="58" width="200" height="30" rx="6" fill="#161b22" stroke="#2a323c"/><text x="620" y="77" fill="#c9d3dd" font-size="11" font-family="monospace" text-anchor="middle">tuzuk-v0.md · 40KB</text>
+    <rect x="520" y="96" width="200" height="30" rx="6" fill="#161b22" stroke="#2a323c"/><text x="620" y="115" fill="#c9d3dd" font-size="11" font-family="monospace" text-anchor="middle">senaryo-defteri · 37KB</text>
+    <rect x="520" y="134" width="200" height="30" rx="6" fill="#161b22" stroke="#2a323c"/><text x="620" y="153" fill="#c9d3dd" font-size="11" font-family="monospace" text-anchor="middle">loop-engineering · 4.5KB</text>
+    <rect x="520" y="172" width="200" height="30" rx="6" fill="#161b22" stroke="#2a323c"/><text x="620" y="191" fill="#c9d3dd" font-size="11" font-family="monospace" text-anchor="middle">raporlar/… · 45KB+</text>
+  </g>
+  <path d="M262 126 C360 120, 440 90, 518 73" fill="none" stroke="#e0a458" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+  <path d="M262 152 C360 150, 440 145, 518 111" fill="none" stroke="#e0a458" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+  <path d="M262 178 C360 175, 440 160, 518 149" fill="none" stroke="#e0a458" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+  <text x="400" y="250" fill="#e0a458" font-size="11" font-family="monospace" text-anchor="middle">Read — yalnız gerektiğinde</text>
+</svg>
+<div class="cap">m.20'nin mekaniği: kısa index sıcak (pointer'lar), gövde soğuk. Ok = Read, sadece o bilgi o an gerekince tetiklenir. <code>@import</code> bu okları açılışta "kalıcı boru"ya çevirirdi.</div>
+</div>
+
+<p class="bridge">Köprü: Index'ten gövdeye gitmenin bir maliyeti daha var — model hangi pointer'ı takip edeceğini nasıl seçer? İşte burada <em class="term">progressive disclosure</em> ve metadata devreye giriyor. Blok 5.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 5 ============ -->
+<h2 id="b5"><span class="blocknum">BLOK 5</span> — Progressive disclosure, metadata &amp; yükleme sırası<span class="depth">[T]</span></h2>
+
+<p><b>Progressive disclosure <span class="paren">(kademeli açığa çıkarma)</span>.</b> Model her şeyi baştan bilmez; keşfederek katman katman toplar. Anthropic: ajanlar "keşifle ilgili bağlamı kademeli keşfeder... anlamayı katman katman kurar, çalışma belleğinde yalnız gerekeni tutar." Yani index'ten bir dosya açar, o dosya başka bir pointer'a işaret eder, gerekiyorsa onu da açar. Her adımda sadece bir sonraki katman yüklenir.</p>
+
+<p><b>Metadata sinyalleri.</b> Peki model hangi dosyayı açacağına nasıl karar verir? Dosyanın <b>etrafındaki ipuçlarına</b> bakarak — içeriğini yüklemeden. Anthropic'in listesi: "dosya boyutu karmaşıklığı ima eder; isimlendirme amacını sezdirir; timestamp güncelliğin proxy'sidir <span class="paren">(vekili)</span>." Bu tam da JARVIS'in dosya isimlendirmesinin neden işe yaradığını açıklıyor: <code>2026-07-21-sirket-rolleri-...md</code> gibi bir ad, açılmadan önce hem konuyu (roller) hem tarihi (güncel) hem de kabaca kapsamı verir. <b>İyi isimlendirme = ücretsiz metadata = daha isabetli lazy yükleme.</b></p>
+
+<div class="qa">
+  <div class="q">"Peki bir CLAUDE.md gerçekten yüklendiğinde, birden çok varsa hangi sırayla girer?"</div>
+  <div class="a">Yükleme sırası <b>geniş → dar</b>: Managed policy → User (<code>~/.claude</code>) → Project (<code>./CLAUDE.md</code>) → Local. Kök dizinden çalışma dizinine doğru birleştirilir (override değil, <b>concatenation</b>). Yani dar/spesifik olan en sonra okunur — ve model'in en son okuduğu, en akılda kalanıdır. Pratik sonuç: en spesifik, en önemli talimatı en dar kapsama koy. Ayrıca: <code>&lt;!-- yorum --&gt;</code> HTML yorumları context'e enjekte edilmeden <b>çıkarılır</b> — insan-notu bırakmak için bedava. Ve <code>/compact</code> sonrası yalnız kök CLAUDE.md yeniden enjekte edilir; alt-klasördekiler o klasöre tekrar dokununca geri gelir.</div>
+</div>
+
+<div class="jarvis">
+  <div class="lbl">JARVIS senaryosu</div>
+  Bu blok JARVIS'in mevcut alışkanlığını doğruluyor ve keskinleştiriyor: tarihli + konulu dosya adları (senin zaten yaptığın) = model için ücretsiz relevance sinyali. Keskinleştirme: pointer'ları index'e yazarken sadece yolu değil, <b>bir-satır metadata</b> ekle ("40KB, kanon, 07-21 imzalı") — böylece model dosyayı <b>açmadan</b> gerekli olup olmadığına karar verebilir. Bu, gereksiz Read'leri (dolayısıyla gereksiz token'ı) kesen ince ama gerçek bir kazanç.
+</div>
+
+<p class="bridge">Köprü: Artık bütün parçalar elimizde — JIT vs önden, eager <code>@import</code>, yumuşak/sert sınırlar, index+Read deseni, metadata. Blok 6 bunları JARVIS'in somut bağlam mimarisine bağlıyor.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 6 ============ -->
+<h2 id="b6" class="core"><span class="blocknum">BLOK 6 · SENTEZ</span> — JARVIS'e <code>@import</code>'suz pointer mimarisi<span class="depth">[T]</span></h2>
+
+<p>Şimdi bütün dersi JARVIS'in gerçek dosyalarına oturtalım. Soru: <b>hangi dosya sıcak, hangisi soğuk, ve nasıl bağlanmalı?</b></p>
+
+<table class="mini">
+  <tr><th>Dosya</th><th>Boyut</th><th>Rol</th><th>Doğru yerleşim</th></tr>
+  <tr><td><code>CLAUDE.md</code></td><td>5.8 KB</td><td>kimlik + üst-pointer</td><td class="g">SICAK — kısa, pointer'lı (yumuşak 200 sınırı zaten rahat)</td></tr>
+  <tr><td><code>durum-kapsulu.md</code></td><td>3.4 KB</td><td>her-oturum index</td><td class="g">SICAK — sert-kısa disiplini (MEMORY.md modeli)</td></tr>
+  <tr><td><code>tuzuk-v0.md</code></td><td>40 KB</td><td>kanon gövdesi</td><td class="b">SOĞUK — asla @import; pointer + Read-on-demand</td></tr>
+  <tr><td><code>senaryo-defteri.md</code></td><td>37 KB</td><td>karar/tahmin gövdesi</td><td class="b">SOĞUK — pointer + Read</td></tr>
+  <tr><td><code>raporlar/*</code></td><td>500 KB+</td><td>arşiv/derinlik</td><td class="b">SOĞUK — metadata'lı pointer, keşifle</td></tr>
+</table>
+
+<p>Kritik tuzak, tam da senin sisteminin çekim merkezinde: <b>"kanonu her an elimizde tutalım diye CLAUDE.md'ye @import'layalım."</b> Bu iyi niyet, ölçülünce m.20'yi tersine çevirir — 40+37 KB'yi her açılışta sıcağa taşır, prefix'i şişirir, ve P3'te öğrendiğimiz context rot'u davet eder. Ders net: <b>kanon sıcakta DEĞİL, adreste durur.</b></p>
+
+<div class="callout">
+  <div class="lbl">Tek cümlelik P5 kuralı</div>
+  <p style="margin:8px 0">Sıcak katmana yalnız <b>index</b> koy (kimlik + kısa kapsül + pointer'lar, sert-kısa). Kanon/rapor/defter gövdesini <code>@import</code> ile DEĞİL, <b>pointer + Read-on-demand</b> ile bağla. "Böldüm = hafifledi" sadece Read-on-demand'de doğru; <code>@import</code>'ta yalan.</p>
+</div>
+
+<div class="gate">
+  <h3>DONE Kapısı — P5</h3>
+  <p style="margin:6px 0">Bu partisyon, şu ikisini kendi cümlenle söyleyebiliyorsan geçer:</p>
+  <p style="margin:6px 0"><b>(a)</b> <code>@import</code> neden context kazandırmaz — yani "dosyaya böldüm, lazy oldu" neden yanlış? <span class="paren">(eager: launch'ta tam genişler)</span></p>
+  <p style="margin:6px 0"><b>(b)</b> CLAUDE.md 200-satır (yumuşak: hepsi yüklenir, uyum düşer) ile MEMORY.md 200∨25KB (sert: ötesi düşer) farkı, ve bunun JARVIS index'ini neden sert-kısa tasarlattığı.</p>
+  <p style="margin:10px 0 4px;color:#9aa7b4">Okuduktan sonra: "hepsini okudum, anladım" ya da "şu blok(lar) bulanık: …" diye dön. Bulanık blok kalırsa o blok v2 ile yeniden geçilir; anlama ölçümü asıl olarak uygulamada (JARVIS mimarisini kurarken) yapılır.</p>
+</div>
+
+<hr class="sec">
+
+<!-- ============ YARI 2 ============ -->
+<h2 id="y2"><span class="blocknum">YARI-2 · MÜHENDİSLİK</span> — JARVIS bağlam-yükleme mimarisi (m.37, 3 model)</h2>
+
+<p>Soru: <b>JARVIS'in kanon/bağlam yüklemesi mekanik olarak nasıl kurulmalı?</b> Üç model, 4'lü ölçüt (token, zaman, beklenen-kalite; biri ✅ önerili). <b>Rakamlar deneysel/proxy (m.39)</b> — gerçek ölçüm ilk kurulumda deftere işlenir.</p>
+
+<table class="m37">
+  <tr><th>Model</th><th>Token (açılış)</th><th>Zaman</th><th>Beklenen kalite</th><th>Not</th></tr>
+  <tr>
+    <td><b>A — @import merkezi</b><br><span class="paren">CLAUDE.md'ye kapsül+tüzük+pano @import</span></td>
+    <td class="b">çok yüksek, sabit<br>~12–15K her açılış</td>
+    <td class="b">yavaş açılış; prefix şişer</td>
+    <td class="b">~0.50<br>(bağlam şişkinliği + context rot + uyum ↓)</td>
+    <td>"her şey elimizde" hissi; ölçülünce m.20 ihlali. <span class="pill no">✗ elenir</span></td>
+  </tr>
+  <tr class="rec">
+    <td><b>B — kısa index + Read-on-demand</b> <span class="pill ok">✅ ÖNERİ</span><br><span class="paren">sert-kısa kapsül + pointer'lar; gövde Read ile</span></td>
+    <td class="g">düşük, sabit<br>~2–3K sıcak</td>
+    <td class="g">hızlı; kararlı-prefix cache dostu</td>
+    <td class="g">~0.85<br>(sıcak katman güvenilir bölgede)</td>
+    <td>m.20/m.34'ün birebir mekaniği; @import tuzağından kaçar. P3 Yarı-2 Model B'nin CC-mekanik karşılığı.</td>
+  </tr>
+  <tr>
+    <td><b>C — bölümlenmiş JIT</b><br><span class="paren">path-scoped rules + skills + topic dosyaları</span></td>
+    <td class="g">en düşük<br>(yalnız ilgili iş yüklenir)</td>
+    <td>orta<br>(mekanizma kurulum maliyeti)</td>
+    <td>~0.90<br>ama kazanç çok-alan/çok-projeli olgunlukta</td>
+    <td>Jarvis v1 sonrasına daha uygun; bugün kurulum maliyeti kazancı aşar.</td>
+  </tr>
+</table>
+
+<p><b>Öneri = B.</b> Gerekçe: prototip fazına (öncelik №1) uygun, mevcut kanonla (m.20 pointer, m.34 katmanlı ingest) birebir hizalı, ve en iyi token/kalite dengesini verir. A elenir çünkü ölçülünce tam da kaçınmak istediğimiz şeyi (bağlam şişkinliği) yapar. C'nin path-scoped rules + skills parçaları gerçek bir üst-sınır ama bugünkü tek-alan/tek-proje ölçeğinde kurulum maliyeti kazancı aşıyor.</p>
+
+<p><b>Köprü (P6'ya devir):</b> B → C geçiş kriteri — yani "hangi ölçekte bölümlenmiş JIT'e geçmeli?" — <b>P6 (Context eng. II: compaction, not-tutma, izolasyon)</b>'a bırakılıyor. Orada eşik (çok-alan/çok-proje sayısı, oturum-uzunluğu) tasarlanır. Bu, P3 Yarı-2'nin C'yi P6'ya köprülemesiyle tutarlı.</p>
+
+<p><b>Devir:</b> Nihai karar + uygulama ANA SIRADA (Şerit 1, Katman-1/2). Senaryo-defteri kaydı orada düşülür (şerit-senkron kuralı). Bu ders canon'a yazmaz.</p>
+
+<footer>
+  <p><b>P5 — Context Engineering I · 2026-07-22 · [T] · pasif-okuma v2 · 6 blok + Yarı-2 · 6 gerçek SVG.</b></p>
+  <p><b>Kaynaklar (m.40 araştırma-önce, doğrulandı):</b><br>
+  1. Claude Code — "How Claude remembers your project" (hafıza dokümanı): <code>code.claude.com/docs/en/memory</code> — @import eager davranışı, CLAUDE.md yumuşak 200 / MEMORY.md sert 200∨25KB, topic-dosyası lazy yükleme, load-order.<br>
+  2. Anthropic Engineering — "Effective context engineering for AI agents": <code>anthropic.com/engineering/effective-context-engineering-for-ai-agents</code> — JIT vs pre-load, hibrit, hafif-kimlikler, progressive disclosure, metadata proxy'leri, high-signal token / dikkat bütçesi.</p>
+  <p style="color:#6b7783">Bağlam hijyeni notu: bu ders nötr yapısal dilde yazıldı (index / sıcak-soğuk katman / pointer / yer-imi). Biyoloji-kökenli metafor kullanılmadı.</p>
+</footer>
+
+</div>
+</body>
+</html>
