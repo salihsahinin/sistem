@@ -1,11 +1,8 @@
 {
   "permissions": {
     "deny": [
-      "Write(core/**)",
       "Edit(core/**)",
-      "Write(CLAUDE.md)",
       "Edit(CLAUDE.md)",
-      "Write(.claude/**)",
       "Edit(.claude/**)"
     ],
     "ask": [
@@ -13,10 +10,24 @@
     ]
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/pretool-core-tel.sh"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "bash .claude/hooks/session-start.sh" }
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/session-start.sh"
+          }
         ]
       }
     ]
