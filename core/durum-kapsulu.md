@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN okunur; mount'ta git komutu YOK (okuma dahil).*
 
-**Güncelleme:** 2026-07-23 GÜNAYDIN VARDİYASI KAPANDI (Carvis, bulut ana-sıra/Fable) — **A2 KAPANDI 4/4 (platform=kabuksuz-ajan; WSL2→K-011)** · A1 **2/5** · bulut-rapor ingest + kararları (ana-oturum BEKLET/Fable-şartı · Dispatch BEKLET) · CLAUDE.md sıra-önce kuralı · **skill çifti KURULDU: gunaydin-vardiya v0.2 + vardiya-kapanis v0.1 (kapanış-skill ilk canlı koşum = bu kapanış)** · teslim: `raporlar/vardiya-teslim-2026-07-23-gunaydin.md`
+**Güncelleme:** 2026-07-23 BULUT-2 KISA VARDİYA KAPANDI (Carvis, bulut/Fable) — açılış-skill v0.2 İLK CANLI TEST PASS + kapanış-skill 2. koşum (doğal-dil tetikler 2/2) · **BULGU: PC diski origin'in 4 commit GERİSİNDE (senkron pull-yönü eksik adayı) → PC açılışında ÖNCE `git pull`** · Salih PC ana oturuma geçti · teslim: `raporlar/vardiya-teslim-2026-07-23-bulut-2.md` (sabah: `-gunaydin.md` — A2 KAPANDI 4/4, skill çifti kuruldu)
 
 ## Şu an
 - **K-010 tetiği (m.38):** K-009 ∧ A1∧A2∧A3∧A4; A5 lider-hattı PARALEL (kuruluş = K-010∧A5). Detay pano K-010 kartı + defter 07-22.
@@ -20,7 +20,6 @@
 - Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği · K-018 (remote control).
 
 ## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN oku)
-1. Senkron-log tek bakış (A1 sayacı: 2/5 → hedef 5/5; A3 koşumları A1 dolunca açılır).
+1. **PC açılışı: ÖNCE `git pull`** (disk bayat — bulgu teslim raporunda), sonra senkron-log tek bakış (A1: 2/5 → hedef 5/5; 07-23 bakışı yapıldı, yarın sayılır; A3 koşumları A1 dolunca açılır).
 2. core/-Bash PreToolUse telini kur + canlı test (PC oturumu; tel=tökezleme-teli, m.29).
-3. Açılış-skill v0.2 ilk canlı test (sonraki 'günaydın'; kapanış-skill 07-23'te canlı koştu, gözlem defter adayı).
-4. Canlı tetik testleri (CC, 5 dk) · P6 commit+ingest · senaryo-defteri damıtma (48KB sınır AŞILDI — bu vardiyada +1 blok, ilk boş vardiyada zorunlu).
+3. Canlı tetik testleri (CC, 5 dk; yaşam-döngüsü çifti 2/2 PASS — negatifler açık) · P6 commit+ingest · senaryo-defteri damıtma (48KB AŞIM, ilk boş vardiyada zorunlu).
