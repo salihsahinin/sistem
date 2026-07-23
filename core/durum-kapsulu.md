@@ -14,7 +14,7 @@
 
 ## Açık borçlar
 - **GÜVENLİK:** PAT düz-metin + ~10 Ekim ölümü (credential-helper + yenileme tek hamle) · core/-Bash deliği (platform kararına bağlı).
-- Salih kararları: MEZUN onayı (V36·V38·V40a·V43) · index.lock gerekçe-revizyonu · V59 tetik onayı · A5 ilk devir sınıfı · denetçi bütçe-çatalı · **bulut-rapor maddeleri: ana-oturum tanımı (§3, Katman-1) · Dispatch kurulum+zamanlanmış-özellik · skill terfi süzgeci · CLAUDE.md açılış-satırı güçlendirme**.
+- Salih kararları: MEZUN onayı (V36·V38·V40a·V43) · index.lock gerekçe-revizyonu · V59 tetik onayı · A5 ilk devir sınıfı · denetçi bütçe-çatalı · skill terfi süzgeci · günaydın-skill kurulum tıkı. **07-23 kararları: ana-oturum tanımı BEKLET (Salih şartı kuyruğa: ana oturum ↔ model=Fable; bulut-rapor beğenilmedi) · Dispatch BEKLET · CLAUDE.md sıra-önce kuralı EKLENDİ.**
 - K-019 kalanı: stage-bayat/çift-koşum vakalarının toplu defter işlemesi · **senaryo-defteri 47.8KB/48KB SINIRDA (ilk boş vardiyada damıtma)**.
 - Skill/wiki borçları: 20-sorgu description eval + çok-model test · wiki aday sayfaları (rol-katmanlari vb.) · Homebase pointer bayat · modern-tokenizer (O13).
 - Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği · K-018 (remote control).
@@ -22,5 +22,5 @@
 ## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN oku)
 1. Senkron-log tek bakış (A1 sayacı: 2/5 → hedef 5/5; A3 koşumları A1 dolunca açılır).
 2. core/-Bash PreToolUse telini kur + canlı test (PC oturumu; tel=tökezleme-teli, m.29).
-3. Bulut-rapor kararları (Salih): ana-oturum tanımı §3 · Dispatch kurulum+ilk test · günaydın-skill kurulum tıkı.
+3. Günaydın-skill kurulum tıkı (Salih) + skill terfi süzgeci (kuyruk notu).
 4. Canlı tetik testleri (CC, 5 dk) · P6 commit+ingest · senaryo-defteri damıtma (48KB sınır AŞILDI — bu vardiyada +1 blok, ilk boş vardiyada zorunlu).
