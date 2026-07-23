@@ -74,3 +74,10 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-vardiya raporu beğenilmedi
 ## 2026-07-23 · bulut-2 kısa vardiya — iki bulgu (karar değil)
 - **Mount-bayatlık bulgusu:** PC diski origin'in 4 commit gerisinde yakalandı (açılış origin-klon doğrulaması, ilk gerçek V4 vakası). Kök-neden adayı: gece-senkron scripti yalnız push-yönlü (yerel kirli → origin); bulut vardiyaları origin'e doğrudan yazınca disk geride kalıyor. **Öneri (Salih onayına aday):** script'e pull/fetch-önce adımı — çift-yüzey düzenin yapısal freni. O güne dek kural: PC açılışında elle `git pull`.
 - **Skill canlı-tetik verisi (K-016 hanesine):** gunaydin-vardiya v0.2 sade "günaydın" ile (önsöz tuzağına düşmeden), vardiya-kapanis v0.1 "seansı bitiriyorum" doğal-dil sinyaliyle tetiklendi — bulut yüzeyde 2/2 PASS. Negatif testler hâlâ açık.
+
+## 2026-07-23 (PC ana vardiya) — K-016 canlı tetik testleri TAMAM
+- Pozitif 2/2 (bulut: günaydın + kapanış doğal-dil) + **negatif 2/2 PASS** (PC, ayrı oturum: selam-içinde-konu mesajı açılışı TETİKLEMEDİ · "yeter mi diye düşünüyorum ama devam" kapanışı TETİKLEMEDİ; model: Opus-extra — Salih beyanı 07-23; çok-model kaydına ilk satır: Fable-dışı modelde de negatifler tutuyor). K-016 kalan borç: 20-sorgu description-eval (örneklem boyutu sayı-araştırma kapısına bağlandı — `cc/gorev-2026-07-23-1.md` ATLAS-EVAL).
+
+## 2026-07-23 (PC) — senkron YALANCI-OK arızası (A1 kök-neden borcu, karara bağlanmadı)
+- Bulgu: 07-23 14:02 script koşumu diske "OK" yazdı ama commit/push origin'e HİÇ ulaşmadı (origin log'da satır yok; muhtemel neden: bulut commit'leri origin'i ilerletmişti → non-fast-forward reddi, script yine OK damgaladı). A1 sayacının 2. OK'i bu → kapı=kanıt ilkesince kök-neden kapanmadan A1 İLERLETİLMEMELİ (Carvis önerisi).
+- Fren adayları (K-009 dosyası, Salih onayına): script'e pull-adımı (bulut-2 adayıyla aynı) + push-SONRASI origin doğrulaması (`git ls-remote` karşılaştırması) — "OK" damgası ancak origin'de görülünce.
