@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P6 — Context Engineering II: Compaction, Not-tutma & İzolasyon</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c232c; --ink:#e6edf3; --dim:#9aa7b4;
+    --line:#2a323c; --accent:#e0a458; --accent2:#5aa9e6; --good:#5cb87a; --bad:#e0605e;
+    --warn:#d6a94a; --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;font-size:17px}
+  .wrap{max-width:860px;margin:0 auto;padding:38px 22px 90px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+  .kick{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  h1{font-size:30px;line-height:1.2;margin:.35em 0 .2em}
+  .sub{color:var(--dim);font-size:15px}
+  .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:var(--mono);font-size:12px;background:var(--panel2);border:1px solid var(--line);
+    color:var(--dim);padding:3px 9px;border-radius:20px}
+  .tag b{color:var(--ink)}
+  h2{font-size:22px;margin:52px 0 4px;scroll-margin-top:20px}
+  .blocknum{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:.1em}
+  .depth{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid var(--line);
+    color:var(--accent);vertical-align:middle;margin-left:8px}
+  p{margin:14px 0}
+  .core{border-left:3px solid var(--accent)}
+  em.term{font-style:normal;color:var(--accent2);font-weight:600}
+  .paren{color:var(--dim);font-size:.94em}
+  .qa{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .qa .q{color:var(--accent2);font-weight:600;font-size:15px}
+  .qa .a{margin-top:6px}
+  .jarvis{background:linear-gradient(180deg,#15201b,#131a17);border:1px solid #244034;border-radius:10px;
+    padding:14px 18px;margin:20px 0}
+  .jarvis .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--good);text-transform:uppercase}
+  .bridge{color:var(--dim);font-size:15px;font-style:italic;border-top:1px dashed var(--line);padding-top:12px;margin-top:22px}
+  .worked{background:#12171d;border:1px solid var(--line);border-radius:10px;padding:8px 18px 14px;margin:20px 0}
+  .worked .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--warn);text-transform:uppercase;
+    display:block;margin:8px 0 2px}
+  code{font-family:var(--mono);font-size:.9em;background:var(--panel2);padding:1px 6px;border-radius:5px;color:#e8c98a}
+  .fig{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 10px}
+  .fig svg{display:block;width:100%;height:auto}
+  .cap{color:var(--dim);font-size:13.5px;text-align:center;margin-top:8px;font-style:italic}
+  table.mini{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:var(--panel2);color:var(--ink);font-weight:600}
+  table.mini td.g{color:var(--good)} table.mini td.b{color:var(--bad)}
+  .gate{background:var(--panel2);border:1px solid var(--accent);border-radius:12px;padding:18px 22px;margin:30px 0}
+  .gate h3{margin:.2em 0 .5em;color:var(--accent)}
+  .callout{background:#1d1614;border:1px solid #4a2f24;border-radius:10px;padding:12px 18px;margin:18px 0}
+  .callout .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--bad);text-transform:uppercase}
+  hr.sec{border:0;border-top:1px solid var(--line);margin:46px 0}
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:26px 0;font-size:14.5px}
+  .toc a{color:var(--accent2);text-decoration:none} .toc a:hover{text-decoration:underline}
+  .toc ol{margin:6px 0;padding-left:22px} .toc li{margin:3px 0}
+  .m37{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  .m37 th,.m37 td{border:1px solid var(--line);padding:9px 11px;vertical-align:top}
+  .m37 th{background:var(--panel2)}
+  .m37 .rec{background:#15201b}
+  .pill{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+  .pill.ok{color:var(--good);border-color:#2f5a3f} .pill.no{color:var(--bad);border-color:#5a2f2f}
+  footer{margin-top:60px;border-top:1px solid var(--line);padding-top:20px;color:var(--dim);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kick">Şerit 2 · Öğrenme Oturumu · Partisyon 6</div>
+  <h1>Context Engineering II —<br>Compaction, Not-tutma &amp; İzolasyon</h1>
+  <div class="sub">P5 "neyi sıcak tutarsın?" idi (statik yerleşim). P6 aynı sorunun ZAMAN boyutu: oturum uzayıp pencere dolarken bağlamı nasıl yönetirsin — ve JARVIS'in K-015 hafıza şeması cacheable-prefix + compaction açısından nasıl kurulur.</div>
+  <div class="meta">
+    <span class="tag"><b>Derinlik:</b> [T] tam</span>
+    <span class="tag"><b>Eksen:</b> L1 (bağlam = maliyet)</span>
+    <span class="tag"><b>Ön-koşul:</b> P5 ✓ · P1 ✓</span>
+    <span class="tag"><b>Hedef:</b> K-015 taslağı</span>
+    <span class="tag"><b>Tarih:</b> 2026-07-22</span>
+  </div>
+</header>
+
+<div class="toc">
+  <b>6 blok + Yarı-2:</b>
+  <ol>
+    <li><a href="#b1">Problem: sonsuz oturum, sonlu pencere — 3 uzun-ufuk stratejisi</a></li>
+    <li><a href="#b2">Compaction: özetle ve yeniden başlat — ne hayatta kalır?</a></li>
+    <li><a href="#b3">Not-tutma: context dışına yaz, geri çağır (compaction'ı yenen)</a></li>
+    <li><a href="#b4">İzolasyon: sub-agent ayrı pencere, sadece özet döner</a></li>
+    <li><a href="#b5">Cacheable prefix × compaction: cache'i kırmadan yönet</a></li>
+    <li><a href="#b6">Sentez: K-015 şeması — stabil prefix + not-tutma + izolasyon</a></li>
+  </ol>
+</div>
+
+<p class="sub">Ön not (m.40 araştırma-önce): Bütün compaction/sub-agent mekaniği iki güncel kaynakla doğrulandı — Claude Code "context window" + "sub-agents" + "costs" dokümanları ve Anthropic bağlam-mühendisliği yazısı (uzun-ufuk bölümü). Kaynaklar sonda.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 1 ============ -->
+<h2 id="b1"><span class="blocknum">BLOK 1</span> — Problem: sonsuz oturum, sonlu pencere<span class="depth">[T]</span></h2>
+
+<p>P5'te bağlamı <b>uzayda</b> yönettik: neyi sıcak tut, neyi adresle. Ama bir oturum uzadıkça — sen yazdıkça, model dosya okudukça, cevaplar biriktikçe — pencere <b>dolar</b>. P1'in dikkat bütçesi tükenmeye, P3'ün context rot'u devreye girmeye başlar. P6 bunun <b>zaman</b> boyutu: <b>pencere dolarken ne yaparsın?</b></p>
+
+<p>Üç uzun-ufuk stratejisi var, ve üçü de bağlamın farklı bir yerine müdahale eder:</p>
+
+<table class="mini">
+  <tr><th>Strateji</th><th>Ne yapar</th><th>Müdahale noktası</th></tr>
+  <tr><td><b>Compaction</b> <span class="paren">(sıkıştırma)</span></td><td>dolan konuşmayı özetle, özetle yeniden başla</td><td>context <b>dolunca</b> (reaktif)</td></tr>
+  <tr><td><b>Not-tutma</b> <span class="paren">(structured note-taking)</span></td><td>önemli bilgiyi context dışına, diske yaz; gerekince geri çek</td><td><b>süreç boyunca</b> (proaktif)</td></tr>
+  <tr><td><b>İzolasyon</b> <span class="paren">(sub-agent)</span></td><td>gürültülü işi ayrı pencereye devret; sadece özeti geri al</td><td>gürültü <b>doğmadan</b> (önleyici)</td></tr>
+</table>
+
+<div class="qa">
+  <div class="q">Bu üçü rakip mi, tamamlayıcı mı?</div>
+  <div class="a">Tamamlayıcı — ve <b>sırası önemli</b>. İzolasyon gürültüyü baştan içeri almaz; not-tutma değerli olanı kaybolmadan dışarı yazar; compaction ise son güvenlik ağıdır (yine de dolarsa). İyi mimari üçünü katmanlar: önce gürültüyü izole et, sürekli not tut, compaction'a <b>en son</b> güven. Bu dersin sonundaki K-015 taslağı tam olarak bu sıralamayı kuruyor.</div>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 250" role="img" aria-label="Dolan context ve 3 stratejinin müdahale noktası">
+  <text x="410" y="24" fill="#e6edf3" font-size="14" text-anchor="middle" font-family="monospace">context penceresi zamanla doluyor →</text>
+  <rect x="60" y="40" width="700" height="46" rx="8" fill="#161b22" stroke="#2a323c"/>
+  <rect x="60" y="40" width="560" height="46" rx="8" fill="#25313a"/>
+  <rect x="60" y="40" width="700" height="46" rx="8" fill="none" stroke="#2a323c"/>
+  <line x1="690" y1="34" x2="690" y2="92" stroke="#e0605e" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="690" y="106" fill="#e0605e" font-size="10.5" text-anchor="middle">~limit</text>
+  <text x="340" y="68" fill="#c9d3dd" font-size="12" text-anchor="middle">konuşma + dosya okumaları + cevaplar</text>
+
+  <!-- 3 interventions -->
+  <g font-size="11" font-family="monospace">
+    <rect x="60" y="140" width="210" height="70" rx="9" fill="#131a17" stroke="#244034"/>
+    <text x="165" y="162" fill="#5cb87a" text-anchor="middle">İZOLASYON</text>
+    <text x="165" y="180" fill="#9aa7b4" text-anchor="middle" font-size="10">gürültüyü içeri</text>
+    <text x="165" y="194" fill="#9aa7b4" text-anchor="middle" font-size="10">hiç almaz (önleyici)</text>
+
+    <rect x="305" y="140" width="210" height="70" rx="9" fill="#1c2318" stroke="#e0a458"/>
+    <text x="410" y="162" fill="#e0a458" text-anchor="middle">NOT-TUTMA</text>
+    <text x="410" y="180" fill="#9aa7b4" text-anchor="middle" font-size="10">değerliyi diske</text>
+    <text x="410" y="194" fill="#9aa7b4" text-anchor="middle" font-size="10">yazar (proaktif)</text>
+
+    <rect x="550" y="140" width="210" height="70" rx="9" fill="#1d1614" stroke="#4a2f24"/>
+    <text x="655" y="162" fill="#e0605e" text-anchor="middle">COMPACTION</text>
+    <text x="655" y="180" fill="#9aa7b4" text-anchor="middle" font-size="10">dolunca özetler</text>
+    <text x="655" y="194" fill="#9aa7b4" text-anchor="middle" font-size="10">(son güvenlik ağı)</text>
+  </g>
+</svg>
+<div class="cap">Üç strateji, üç farklı zamanda müdahale eder: izolasyon (gürültü doğmadan) → not-tutma (süreç boyunca) → compaction (dolunca, son çare).</div>
+</div>
+
+<p class="bridge">Köprü: En bilinen ve en yanlış anlaşılan strateji compaction. "Dolduysa özetler, sorun çözülür" der çoğu kişi — ama özette <b>neyin kaldığı, neyin eridiği</b> bilinmezse kararlarını kaybedersin. Blok 2.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 2 ============ -->
+<h2 id="b2" class="core"><span class="blocknum">BLOK 2 · ÇEKİRDEK</span> — Compaction: özetle ve yeniden başlat<span class="depth">[T]</span></h2>
+
+<p><em class="term">Compaction</em> <span class="paren">(sıkıştırma)</span>: context penceresi limite yaklaşınca, Claude Code konuşma geçmişini <b>yapısal bir özete</b> çevirir ve yeni pencereyi o özetle yeniden başlatır. İki yolu var: <b>auto-compact</b> (limite yaklaşınca otomatik — "dolu pencere oturumu bitirmez") ve <code>/compact</code> (elle). İkisi de aynı şekilde çalışır.</p>
+
+<p>Kritik soru — ve çoğu kişinin bilmediği: <b>compaction'da ne hayatta kalır, ne erir?</b> Cevap, bilginin <b>nasıl yüklendiğine</b> bağlı (P5'in yükü burada karşılığını veriyor):</p>
+
+<table class="mini">
+  <tr><th>Mekanizma</th><th>Compaction sonrası</th></tr>
+  <tr><td>Kök CLAUDE.md + kapsamsız rules</td><td class="g">diskten YENİDEN ENJEKTE (hayatta kalır)</td></tr>
+  <tr><td>Auto memory (MEMORY.md)</td><td class="g">diskten YENİDEN ENJEKTE (hayatta kalır)</td></tr>
+  <tr><td>MCP araçları</td><td class="g">otomatik yeniden yüklenir</td></tr>
+  <tr><td>Çağrılmış skill gövdeleri</td><td class="warn" style="color:#d6a94a">yeniden enjekte AMA cap'li: 5K/skill, 25K toplam; en eski önce düşer</td></tr>
+  <tr><td>Konuşma geçmişi (promptlar, dosya okumaları, cevaplar)</td><td class="b">ÖZETE gömülür (ham hâli kaybolur)</td></tr>
+  <tr><td>Path-scoped rules + nested CLAUDE.md</td><td class="b">özetlenir (tetik dosyası tekrar okununca geri gelir)</td></tr>
+</table>
+
+<p>Resmî doküman özeti: "Compaction konuşmayı yapısal bir özetle değiştirir. System prompt, CLAUDE.md, memory ve MCP araçları otomatik yeniden yüklenir. Tek istisna skill listesi — yalnız gerçekten çağırdığın skill'ler korunur." Yani ayrım nettir: <b>diskte yaşayan şey döner; sadece konuşmada yaşayan şey özetin insafına kalır.</b></p>
+
+<div class="worked">
+  <span class="lbl">Örnek — bir karar, iki akıbet</span>
+  <p style="margin:6px 0">Diyelim uzun bir oturumda Carvis'e "Model B'yi seçtik, tüzük @import edilmeyecek" dedin ve bu <b>sadece sohbette</b> konuşuldu.</p>
+  <p style="margin:4px 0"><b>Senaryo 1 — sohbette kaldı:</b> Oturum uzadı, auto-compact tetiklendi. Konuşma özetlenir. Özetleyici bu kararı "önemli" bulmazsa <b>tek satıra iner ya da düşer</b>. /compact sonrası Carvis kararın ayrıntısını (gerekçe, sayılar) hatırlamaz.</p>
+  <p style="margin:4px 0"><b>Senaryo 2 — kapsüle yazıldı:</b> Aynı kararı senaryo-defterine/kapsüle yazdın. Kapsül disk dosyası → compaction sonrası <b>diskten yeniden enjekte edilir</b> → karar tam gerekçesiyle geri gelir.</p>
+  <p style="margin:8px 0"><b>Ders:</b> Compaction "hatırlama" değil, "özetleme"dir — ve özet <b>kayıplıdır</b>. Kaybı önlemenin yolu Blok 3: değerliyi diske yaz.</p>
+</div>
+
+<p>İki pratik kaldıraç, [T] olduğu için: <b>(1)</b> <code>/compact focus on X</code> — özete neyin kalacağını sen söylersin ("auth bug'ına odaklan"), otomatik pasın tahminine bırakmazsın. <b>(2)</b> CLAUDE.md içine <code># Compact instructions</code> bölümü yazıp her compaction'da neyin korunacağını sabitleyebilirsin. <span class="paren">Not: Fable 5 / Sonnet 5 / Opus 4.6+ 1 milyon token'lık pencere destekler — ama compaction orada da aynı çalışır; büyük pencere sorunu erteler, kaldırmaz.</span></p>
+
+<div class="fig">
+<svg viewBox="0 0 820 260" role="img" aria-label="Compaction öncesi ve sonrası">
+  <defs><marker id="arc" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#e0a458"/></marker></defs>
+  <!-- before -->
+  <text x="180" y="24" fill="#e6edf3" font-size="13" text-anchor="middle" font-family="monospace">ÖNCE (dolu)</text>
+  <rect x="70" y="36" width="220" height="200" rx="9" fill="#161b22" stroke="#2a323c"/>
+  <rect x="82" y="48" width="196" height="20" rx="3" fill="#1c3324"/><text x="180" y="62" fill="#5cb87a" font-size="10" text-anchor="middle" font-family="monospace">system + CLAUDE.md</text>
+  <rect x="82" y="72" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="92" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="112" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="132" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="152" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="172" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="192" width="196" height="16" rx="3" fill="#25313a"/>
+  <rect x="82" y="212" width="196" height="16" rx="3" fill="#3a2523"/>
+  <text x="180" y="224" fill="#e0605e" font-size="9.5" text-anchor="middle">↑ konuşma gövdesi</text>
+
+  <path d="M300 136 L360 136" stroke="#e0a458" stroke-width="2" marker-end="url(#arc)"/>
+  <text x="330" y="126" fill="#e0a458" font-size="10" text-anchor="middle" font-family="monospace">/compact</text>
+
+  <!-- after -->
+  <text x="600" y="24" fill="#e6edf3" font-size="13" text-anchor="middle" font-family="monospace">SONRA (özet)</text>
+  <rect x="490" y="36" width="220" height="200" rx="9" fill="#161b22" stroke="#2a323c"/>
+  <rect x="502" y="48" width="196" height="20" rx="3" fill="#1c3324"/><text x="600" y="62" fill="#5cb87a" font-size="10" text-anchor="middle" font-family="monospace">system + CLAUDE.md (reload)</text>
+  <rect x="502" y="72" width="196" height="16" rx="3" fill="#1c3324"/><text x="600" y="84" fill="#5cb87a" font-size="9.5" text-anchor="middle" font-family="monospace">MEMORY.md (reload)</text>
+  <rect x="502" y="94" width="196" height="40" rx="3" fill="#2a2418"/><text x="600" y="112" fill="#e0a458" font-size="10" text-anchor="middle">Konuşma ÖZETİ</text><text x="600" y="126" fill="#9aa7b4" font-size="9" text-anchor="middle">(kayıplı)</text>
+  <rect x="502" y="150" width="120" height="60" rx="3" fill="#12171d" stroke="#233"/>
+  <text x="562" y="184" fill="#5b6773" font-size="9.5" text-anchor="middle">boşalan bütçe</text>
+</svg>
+<div class="cap">Compaction: diskte yaşayanlar (CLAUDE.md, MEMORY.md) yeniden enjekte edilir; konuşma gövdesi tek bir kayıplı özete iner. Bütçe boşalır, ama detay gider.</div>
+</div>
+
+<p class="bridge">Köprü: Compaction'ın kaybını gördük. Cevap onun kayıplı özetine güvenmek değil — değerliyi zaten diske yazmış olmak. İşte not-tutma bu yüzden compaction'ı <b>yener</b>. Blok 3.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 3 ============ -->
+<h2 id="b3" class="core"><span class="blocknum">BLOK 3 · ÇEKİRDEK</span> — Not-tutma: context dışına yaz, geri çağır<span class="depth">[T]</span></h2>
+
+<p><em class="term">Structured note-taking</em> <span class="paren">(yapısal not-tutma)</span>: Anthropic'in cümlesiyle, ajanlar "düzenli olarak context penceresi <b>dışında</b> kalıcı hafızaya notlar yazar. Bu notlar daha sonra tekrar context'e çekilir." Yani önemli olanı sohbetin akışında bırakmaz, <b>diske</b> yazarsın; gerektiğinde geri okursun.</p>
+
+<p>Şimdi Blok 2 ile birleştir — buradan çıkan sonuç P6'nın kalbi: <b>diske yazılan not, compaction'ı hayatta kalır.</b> Çünkü MEMORY.md / CLAUDE.md gibi disk dosyaları compaction sonrası "diskten yeniden enjekte" edilir (Blok 2 tablosu). Sohbette kalan bilgi özetlenip kaybolurken, <b>diske yazılmış bilgi tam hâliyle döner.</b> Not-tutma = compaction-dayanıklılık.</p>
+
+<div class="jarvis">
+  <div class="lbl">JARVIS senaryosu — bu, senin sisteminin zaten mimari gerekçesi</div>
+  Bu blok, JARVIS'in en temel disiplininin (<b>"önce sadık kayıt, sonra ajan"</b> — anlama-kapısı m.8/devir) <b>mekanik ispatı</b>. Neden her oturum kapanışında devir yazıyorsun, neden karar kapsüle işleniyor? Çünkü sohbette kalan bir karar, uzun oturumda auto-compact'e yakalanınca <b>erir</b>; kapsüle/devre yazılan karar, compaction sonrası diskten döner. m.9 proof-of-work ("gün ancak push'lanmış commit'le sayılır") ile P6 aynı şeyi söylüyor: <b>disk = kalıcılık, konuşma = uçucu.</b> Devir sistemi bir alışkanlık değil, context mühendisliğinin zorunlu sonucu.
+</div>
+
+<div class="worked">
+  <span class="lbl">Örnek — MEMORY.md index + topic deseni (P5'ten devam)</span>
+  <p style="margin:6px 0">P5'te gördük: MEMORY.md = kısa index (sıcak), topic dosyaları (soğuk, Read ile). Not-tutma bunu <b>yazma</b> yönünde işletir:</p>
+  <p style="margin:4px 0">1. Oturum sırasında bir kalıcı-değer çıktı (bir karar, bir bulgu).</p>
+  <p style="margin:4px 0">2. Detayı bir topic dosyasına yaz (<code>debugging.md</code> gibi) — context'i şişirmez.</p>
+  <p style="margin:4px 0">3. Index'e (MEMORY.md / kapsül) tek satır pointer düş: "X kararı → topic-Y.md".</p>
+  <p style="margin:4px 0">4. Sonraki oturum / compaction sonrası: index diskten döner; detay gerektiğinde Read'lenir.</p>
+  <p style="margin:8px 0"><b>Sonuç:</b> Bilgi hiç "sadece konuşmada" olmadı → hiç compaction riskine girmedi. m.34'ün katmanlı-damıtma'sı (dış katmana ham yaz, damıtarak içe indir) bunun birebir karşılığı.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 240" role="img" aria-label="Sohbet-notu compaction'da erir, disk-notu döner">
+  <defs><marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5cb87a"/></marker></defs>
+  <text x="410" y="22" fill="#e6edf3" font-size="13" text-anchor="middle" font-family="monospace">bir karar üretildi — iki yol</text>
+  <!-- chat path -->
+  <rect x="60" y="44" width="300" height="70" rx="9" fill="#1d1614" stroke="#4a2f24"/>
+  <text x="210" y="68" fill="#e0605e" font-size="12" text-anchor="middle">YOL 1 · sadece sohbette</text>
+  <text x="210" y="90" fill="#9aa7b4" font-size="10.5" text-anchor="middle">konuşma gövdesinde durur</text>
+  <text x="210" y="150" fill="#e0605e" font-size="12" text-anchor="middle">compaction → ÖZETE erir</text>
+  <text x="210" y="170" fill="#9aa7b4" font-size="10" text-anchor="middle">gerekçe/sayı kaybolur</text>
+  <path d="M210 116 L210 138" stroke="#e0605e" stroke-width="1.6"/>
+  <!-- disk path -->
+  <rect x="460" y="44" width="300" height="70" rx="9" fill="#131a17" stroke="#244034"/>
+  <text x="610" y="68" fill="#5cb87a" font-size="12" text-anchor="middle">YOL 2 · diske yazıldı</text>
+  <text x="610" y="90" fill="#9aa7b4" font-size="10.5" text-anchor="middle">kapsül / devir / topic dosyası</text>
+  <text x="610" y="150" fill="#5cb87a" font-size="12" text-anchor="middle">compaction → REELOAD, tam döner</text>
+  <text x="610" y="170" fill="#9aa7b4" font-size="10" text-anchor="middle">diskten yeniden enjekte</text>
+  <path d="M610 116 L610 138" stroke="#5cb87a" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <text x="410" y="215" fill="#e0a458" font-size="12" text-anchor="middle" font-family="monospace">"önce sadık kayıt, sonra ajan" = compaction-dayanıklılık</text>
+</svg>
+<div class="cap">Aynı karar: sohbette bırakılırsa compaction'ın kayıplı özetine iner; diske yazılırsa yeniden enjekte edilip tam döner. JARVIS'in devir disiplininin mekanik gerekçesi bu.</div>
+</div>
+
+<p class="bridge">Köprü: Değerliyi diske yazdık. Peki değersiz-ama-gürültülü iş (yüzlerce satır test çıktısı, uzun araştırma) ana bütçeyi hiç kirletmesin diye ne yaparız? Onu ayrı bir pencereye süreriz. Blok 4.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 4 ============ -->
+<h2 id="b4"><span class="blocknum">BLOK 4</span> — İzolasyon: sub-agent ayrı pencere<span class="depth">[T]</span></h2>
+
+<p><em class="term">Sub-agent izolasyonu</em>: Bir yan-iş ana konuşmayı arama sonuçları, loglar, bir daha bakmayacağın dosya içerikleriyle dolduracaksa — o işi bir sub-agent'a devret. Resmî doküman: "Her sub-agent <b>kendi context penceresinde</b> çalışır... gürültülü işi kendi context'inde yapar ve <b>yalnız özeti döner</b>."</p>
+
+<p>Mekanik ayrıntı, [T] olduğu için tam: Bir sub-agent <b>taze, izole bir pencereyle</b> başlar — "senin konuşma geçmişini, çağırdığın skill'leri ya da okuduğun dosyaları GÖRMEZ." Bir <em class="term">delegation mesajı</em> (görev özeti) alır, oradan çalışır, bitince <b>sadece sonucun özetini</b> ana konuşmaya döndürür. Onun onlarca dosya okuması senin bütçene hiç dokunmaz.</p>
+
+<p>İki nüans: <b>(1) Fork istisnası</b> — bir <code>fork</code>, taze başlamaz; ana konuşmayı (ve system prompt'u) miras alır. Ana bağlamla devam etmesi gereken alt-görevler için. <b>(2) Persistent memory</b> — sub-agent'a <code>memory: user/project/local</code> verirsen kendi çapraz-oturum hafızasını tutar; ama ana konuşmanın auto memory'si ona yüklenmez (izolasyon korunur).</p>
+
+<div class="jarvis">
+  <div class="lbl">JARVIS senaryosu — m.44 ile birebir</div>
+  Bu blok m.44'ün ("CEO ≠ üst-orkestratör ≠ domain-lider; liderler işçileri yönetir") <b>mekanik zemini</b>. Bir "araştırma-filosu" (D4) çalıştırdığında, her araştırmacı-işçi kendi izole penceresinde yüzlerce sayfa tarar; ana Carvis penceresine sadece <b>damıtılmış özet</b> döner. Yani "işçilerin gürültüsü lidere ulaşmaz" bir yönetim tercihi değil, context mimarisinin doğal sonucu. Paralel-vardiya protokolün ("günaydın, PortRisk" ayrı oturum) de aynı izolasyonun kaba hâli. Not: sub-agent takımları ~7× token yakar (her biri kendi penceresi) — izolasyon bedavaya gelmez; gürültü hacmi yüksekse kârlı, düşükse israf.
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 230" role="img" aria-label="Sub-agent izolasyonu: ayrı pencere, sadece özet döner">
+  <defs><marker id="ar4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5aa9e6"/></marker></defs>
+  <!-- main -->
+  <rect x="60" y="50" width="250" height="130" rx="10" fill="#161b22" stroke="#5aa9e6"/>
+  <text x="185" y="74" fill="#5aa9e6" font-size="13" text-anchor="middle" font-family="monospace">ANA PENCERE</text>
+  <text x="185" y="96" fill="#9aa7b4" font-size="10.5" text-anchor="middle">(Carvis / lider)</text>
+  <rect x="80" y="110" width="210" height="16" rx="3" fill="#25313a"/>
+  <rect x="80" y="132" width="210" height="16" rx="3" fill="#1c3324"/><text x="185" y="144" fill="#5cb87a" font-size="9.5" text-anchor="middle" font-family="monospace">← dönen ÖZET (temiz)</text>
+  <text x="185" y="168" fill="#9aa7b4" font-size="10" text-anchor="middle">bütçe korunur</text>
+  <!-- sub -->
+  <rect x="510" y="30" width="250" height="170" rx="10" fill="#12171d" stroke="#2a323c" stroke-dasharray="5 4"/>
+  <text x="635" y="54" fill="#c9d3dd" font-size="13" text-anchor="middle" font-family="monospace">SUB-AGENT</text>
+  <text x="635" y="74" fill="#9aa7b4" font-size="10.5" text-anchor="middle">taze, izole pencere</text>
+  <rect x="528" y="86" width="214" height="12" rx="2" fill="#3a2523"/>
+  <rect x="528" y="102" width="214" height="12" rx="2" fill="#3a2523"/>
+  <rect x="528" y="118" width="214" height="12" rx="2" fill="#3a2523"/>
+  <rect x="528" y="134" width="214" height="12" rx="2" fill="#3a2523"/>
+  <rect x="528" y="150" width="214" height="12" rx="2" fill="#3a2523"/>
+  <text x="635" y="182" fill="#e0605e" font-size="9.5" text-anchor="middle">↑ gürültü burada kalır</text>
+  <!-- arrows -->
+  <path d="M312 100 L508 80" stroke="#9aa7b4" stroke-width="1.4" marker-end="url(#ar4)"/>
+  <text x="410" y="82" fill="#9aa7b4" font-size="9.5" text-anchor="middle" font-family="monospace">delegation (görev özeti)</text>
+  <path d="M508 150 C420 155, 360 145, 292 140" stroke="#5cb87a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar4)"/>
+  <text x="400" y="168" fill="#5cb87a" font-size="9.5" text-anchor="middle" font-family="monospace">sadece özet döner</text>
+</svg>
+<div class="cap">Sub-agent kendi izole penceresinde çalışır; ana pencere sadece görev-özetini yollar ve dönen damıtılmış özeti alır. Gürültü asla ana bütçeye girmez — m.44'ün mekaniği.</div>
+</div>
+
+<p class="bridge">Köprü: Üç strateji tamam. Ama hepsinin altında sessiz bir maliyet var — <b>cache</b>. Bağlamı yanlış yerde oynatırsan compaction ve prompt-cache birbirini bozar, her oturum pahalıya patlar. K-015'i kurmadan önce bu son parça: Blok 5.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 5 ============ -->
+<h2 id="b5" class="core"><span class="blocknum">BLOK 5 · ÇEKİRDEK</span> — Cacheable prefix × compaction<span class="depth">[T]</span></h2>
+
+<p>P1'den hatırla: <em class="term">prompt caching</em> <span class="paren">(istem önbellekleme — tekrarlanan başlangıç içeriğini önbelleğe alıp ucuzlatma)</span> bir <b>stabil prefix'i</b> cache'ler: system prompt + CLAUDE.md + erken bağlam. Kural — <b>prefix-invalidation</b>: prefix'in erken bir yerinde bir bayt değişirse, o noktadan <b>sonraki her şey</b> cache'ten düşer (miss → yeniden işlenir → pahalı + yavaş). Yani cache, ancak başlangıç <b>byte-byte aynı kaldığı</b> sürece işler.</p>
+
+<p>Şimdi compaction ile etkileşim. Compaction konuşma gövdesini yeniden yazar — o kısmın cache'i zaten düşer (beklenen). Ama <b>stabil prefix (system + CLAUDE.md) diskten byte-aynı yeniden enjekte edilirse cache'i korunur.</b> Tehlike şurada: eğer sıcak katmanın (kapsül/CLAUDE.md) <b>her oturum ya da her compaction'da değişiyorsa</b> — mesela başına bir timestamp, bir "şu an saat" satırı koyduysan — prefix her seferinde farklılaşır, cache <b>hiç tutmaz</b>, her açılış tam fiyat.</p>
+
+<div class="worked">
+  <span class="lbl">Örnek — timestamp tuzağı</span>
+  <p style="margin:6px 0"><b>Yanlış:</b> Kapsülün İLK satırına <code>"Güncelleme: 2026-07-22 09:14:33"</code> koydun. Her oturumda bu satır değişir → prefix'in en başı değişir → <b>tüm prefix cache'i miss</b> → her açılışta system+CLAUDE.md+kapsül baştan işlenir.</p>
+  <p style="margin:6px 0"><b>Doğru:</b> Değişen metadata'yı stabil prefix'in <b>altına</b> koy; en tepede byte-sabit kimlik+kural dursun. Değişkeni prefix'in başına değil sonuna it → üstteki cache korunur, sadece küçük alt-parça yeniden işlenir.</p>
+  <p style="margin:8px 0"><b>Kural:</b> Sıcak katmanı iki parçaya ayır — <b>(a) değişmez çekirdek</b> (kimlik, kural pointer'ları; cacheable) en üstte; <b>(b) volatil</b> (bugünün kararı, tarih, sayaç) altta. "En sık değişen, en altta."</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 820 220" role="img" aria-label="Prefix invalidation: değişiklik noktası ve dalga">
+  <text x="200" y="22" fill="#5cb87a" font-size="12" text-anchor="middle" font-family="monospace">DOĞRU: değişmez üstte</text>
+  <rect x="90" y="34" width="220" height="150" rx="9" fill="#161b22" stroke="#2a323c"/>
+  <rect x="102" y="46" width="196" height="30" rx="3" fill="#1c3324"/><text x="200" y="65" fill="#5cb87a" font-size="10" text-anchor="middle" font-family="monospace">kimlik + kural (sabit)</text>
+  <rect x="102" y="82" width="196" height="30" rx="3" fill="#1c3324"/><text x="200" y="101" fill="#5cb87a" font-size="10" text-anchor="middle" font-family="monospace">kapsül çekirdek (sabit)</text>
+  <rect x="102" y="118" width="196" height="26" rx="3" fill="#2a2418"/><text x="200" y="135" fill="#e0a458" font-size="10" text-anchor="middle" font-family="monospace">bugünün kararı (volatil)</text>
+  <rect x="102" y="150" width="196" height="24" rx="3" fill="#2a2418"/><text x="200" y="166" fill="#e0a458" font-size="9.5" text-anchor="middle" font-family="monospace">timestamp (volatil)</text>
+  <text x="200" y="200" fill="#5cb87a" font-size="10" text-anchor="middle">cache üstte TUTAR ✓</text>
+
+  <text x="620" y="22" fill="#e0605e" font-size="12" text-anchor="middle" font-family="monospace">YANLIŞ: değişken tepede</text>
+  <rect x="510" y="34" width="220" height="150" rx="9" fill="#161b22" stroke="#2a323c"/>
+  <rect x="522" y="46" width="196" height="24" rx="3" fill="#3a2523"/><text x="620" y="62" fill="#e0605e" font-size="9.5" text-anchor="middle" font-family="monospace">timestamp (değişir!)</text>
+  <rect x="522" y="76" width="196" height="30" rx="3" fill="#2b2320"/><text x="620" y="95" fill="#9aa7b4" font-size="10" text-anchor="middle" font-family="monospace">kimlik + kural</text>
+  <rect x="522" y="112" width="196" height="30" rx="3" fill="#2b2320"/><text x="620" y="131" fill="#9aa7b4" font-size="10" text-anchor="middle" font-family="monospace">kapsül çekirdek</text>
+  <rect x="522" y="148" width="196" height="26" rx="3" fill="#2b2320"/><text x="620" y="165" fill="#9aa7b4" font-size="10" text-anchor="middle" font-family="monospace">…</text>
+  <path d="M735 58 C760 90, 760 130, 735 160" fill="none" stroke="#e0605e" stroke-width="1.6"/>
+  <text x="700" y="200" fill="#e0605e" font-size="10" text-anchor="middle">alttakiler hep MISS ✗</text>
+</svg>
+<div class="cap">Prefix-invalidation: en üstteki bir değişiklik altındaki her şeyi cache'ten düşürür. Değişmezi tepeye, volatili dibe koy → cache üst-bloğu korur.</div>
+</div>
+
+<p class="bridge">Köprü: Artık dört parça elimizde — compaction (kayıplı, son çare), not-tutma (compaction-dayanıklı kayıt), izolasyon (gürültüyü ayır), cacheable-prefix (değişmezi tepede tut). Blok 6 bunları K-015 şemasına oturtuyor — bu oturumun DONE hedefi.</p>
+
+<hr class="sec">
+
+<!-- ============ BLOK 6 ============ -->
+<h2 id="b6" class="core"><span class="blocknum">BLOK 6 · SENTEZ</span> — K-015 şeması: cacheable-prefix + compaction taslağı<span class="depth">[T]</span></h2>
+
+<p>K-015 = JARVIS'in bağlam/hafıza şeması (öncelik №1). P6'nın dört parçasını tek katmanlı mimariye bağlıyoruz — <b>bu, oturumun DONE çıktısı</b>:</p>
+
+<table class="mini">
+  <tr><th>Katman</th><th>İçerik</th><th>Disiplin (hangi blok)</th></tr>
+  <tr><td><b>1 · Stabil çekirdek</b> (cacheable prefix)</td><td>kimlik + kural pointer'ları + kapsül çekirdeği</td><td class="g">byte-sabit, en üstte (Blok 5) · MEMORY.md-sert kısa (P5)</td></tr>
+  <tr><td><b>2 · Volatil sıcak</b></td><td>bugünün kararı, açık borç, tarih/sayaç</td><td class="g">stabil çekirdeğin ALTINDA (Blok 5)</td></tr>
+  <tr><td><b>3 · Disk notları</b> (soğuk)</td><td>tüzük, senaryo-defteri, devirler, topic dosyaları</td><td class="g">pointer + Read (P5) · compaction-dayanıklı (Blok 3)</td></tr>
+  <tr><td><b>4 · İzole işçiler</b></td><td>araştırma/eval/yüksek-hacim iş</td><td class="g">sub-agent ayrı pencere, özet döner (Blok 4)</td></tr>
+</table>
+
+<p>Bağlanma kuralları: <b>(1)</b> Sıcak katman iki parçalı — değişmez çekirdek (cache tutar) üstte, volatil altta. <b>(2)</b> Kalıcı-değer üretilir üretilmez <b>diske yaz</b> (Katman 3) — compaction'a bırakma; disk reload'da döner, özet erir. <b>(3)</b> Compaction birincil mekanizma DEĞİL, güvenlik ağı — ona güvenmek = kararları kayıplı özete emanet etmek. <b>(4)</b> Gürültülü işi Katman 4'e izole et; ana bütçeyi temiz tut.</p>
+
+<div class="callout">
+  <div class="lbl">Tek cümlelik P6 kuralı</div>
+  <p style="margin:8px 0">Uzun oturumu compaction'la <b>kurtarma</b>, not-tutmayla <b>önle</b>: değeri anında diske yaz (reload'da döner), gürültüyü sub-agent'a izole et, sıcak çekirdeği byte-sabit tut (cache tutar) — compaction sadece son güvenlik ağı olsun. m.20 (statik yerleşim) + m.34 (damıtma) + m.9 (proof-of-work) + P6 (zaman) = tek şema.</p>
+</div>
+
+<div class="gate">
+  <h3>DONE Kapısı — P6</h3>
+  <p style="margin:6px 0">Şu ikisini kendi cümlenle söyleyebiliyorsan geçer:</p>
+  <p style="margin:6px 0"><b>(a)</b> Compaction'da ne hayatta kalır, ne erir — ve not-tutmanın (diske yazmanın) onu neden <b>yendiği</b>? <span class="paren">(disk = reload'da döner; konuşma = kayıplı özete iner)</span></p>
+  <p style="margin:6px 0"><b>(b)</b> K-015 sıcak katmanı neden iki parçalı olmalı — değişmez çekirdek üstte (cache), volatil altta? <span class="paren">(prefix-invalidation: tepedeki değişiklik altını düşürür)</span></p>
+  <p style="margin:10px 0 4px;color:#9aa7b4">Okuduktan sonra: "hepsini okudum, anladım" ya da "şu blok(lar) bulanık: …" diye dön. Bulanık blok kalırsa o blok v2 ile yeniden geçilir; anlama ölçümü K-015'i fiilen kurarken yapılır.</p>
+</div>
+
+<hr class="sec">
+
+<!-- ============ YARI 2 ============ -->
+<h2 id="y2"><span class="blocknum">YARI-2 · MÜHENDİSLİK</span> — K-015 bağlam-yönetim stratejisi (m.37, 3 model)</h2>
+
+<p>Soru: <b>JARVIS uzun oturumda bağlamı hangi stratejiyle yönetmeli?</b> Üç model, 4'lü ölçüt (token, zaman, beklenen-kalite; biri ✅). <b>Rakamlar deneysel/proxy (m.39)</b> — K-015 ilk kurulumda deftere ölçülür.</p>
+
+<table class="m37">
+  <tr><th>Model</th><th>Token</th><th>Zaman</th><th>Beklenen kalite</th><th>Not</th></tr>
+  <tr>
+    <td><b>A — compaction'a güven</b><br><span class="paren">bırak auto-compact halletsin</span></td>
+    <td class="b">pencereyi doldurur, sonra özetler</td>
+    <td class="b">özet gecikmesi + cache-miss</td>
+    <td class="b">~0.60<br>(kayıplı özet; kararlar erir)</td>
+    <td>en az emek ama en çok kayıp; "kör-özet"e emanet. <span class="pill no">✗ elenir</span></td>
+  </tr>
+  <tr class="rec">
+    <td><b>B — not-tutma öncelikli + stabil prefix</b> <span class="pill ok">✅ ÖNERİ</span><br><span class="paren">değeri anında diske yaz; iki-parçalı sıcak katman; compaction = güvenlik ağı</span></td>
+    <td class="g">düşük-sabit sıcak (~2–3K)</td>
+    <td class="g">hızlı; stabil çekirdek cache tutar</td>
+    <td class="g">~0.85<br>(sadık kayıt + compaction-dayanıklı)</td>
+    <td>m.20 + m.34 + m.9 birebir; P5 Model B'nin zaman-boyutlu tamamlayıcısı.</td>
+  </tr>
+  <tr>
+    <td><b>C — tam izolasyon mimarisi</b><br><span class="paren">B + gürültülü işi sub-agent'a devret</span></td>
+    <td class="g">en düşük ana-bütçe</td>
+    <td>orta<br>(orkestrasyon + ~7× işçi-token)</td>
+    <td>~0.90<br>ama m.44 canlı-ajan gelince</td>
+    <td>Jarvis v1 + araştırma-filosu (D4) canlı olunca; bugün tek-oturumda kurulum ağır.</td>
+  </tr>
+</table>
+
+<p><b>Öneri = B.</b> Gerekçe: prototip fazına (öncelik №1) uygun, mevcut kanonla (m.20/m.34/m.9) birebir hizalı, en iyi token/kalite dengesi. A elenir çünkü kararları kayıplı özete emanet eder — JARVIS'in "sadık kayıt" ilkesinin tersi. C gerçek üst-sınır ama bugünkü tek-oturum ölçeğinde ~7× token + orkestrasyon maliyeti kazancı aşar.</p>
+
+<p><b>P5'ten devralınan soruya cevap (B→C eşiği):</b> P5 Yarı-2, "ne zaman bölümlenmiş JIT / izolasyona geç?" sorusunu P6'ya köprülemişti. Cevap: <b>eşik = "yüksek-hacim / gürültülü iş düzenli tekrar ediyor mu?"</b> Tek seferlik gürültü izolasyonu hak etmez (~7× token israf); <b>düzenli tekrar eden</b> gürültü (sürekli araştırma, sürekli eval) eder. İlk aday sınıf = <b>araştırma-filosu (D4)</b> — kapsülde zaten "ilk canlı-ajan sınıfı" olarak işaretli. Yani C'ye geçiş tetiği = araştırma-filosunun canlıya alınması.</p>
+
+<p><b>Devir:</b> Nihai karar + K-015 uygulaması ANA SIRADA (Şerit 1, Katman-1/2). Bu, K-015'in (öncelik №1) doğrudan tasarım girdisidir — senaryo-defteri kaydı ana-sırada düşülür. Bu ders canon'a yazmaz.</p>
+
+<footer>
+  <p><b>P6 — Context Engineering II · 2026-07-22 · [T] · pasif-okuma v2 · 6 blok + Yarı-2 · 6 gerçek SVG.</b></p>
+  <p><b>Kaynaklar (m.40 araştırma-önce, doğrulandı):</b><br>
+  1. Claude Code — "Explore the context window" (<code>code.claude.com/docs/en/context-window</code>): compaction'da ne hayatta kalır tablosu (CLAUDE.md/MEMORY.md/MCP reload; konuşma özetlenir; skill 5K/25K cap), auto-compact, /compact focus.<br>
+  2. Claude Code — "Create custom subagents" (<code>code.claude.com/docs/en/sub-agents</code>): izole context penceresi, "what loads at startup" (taze, geçmişi görmez), fork istisnası, persistent memory, "isolate high-volume operations".<br>
+  3. Claude Code — "Manage costs" (<code>code.claude.com/docs/en/costs</code>): auto-compaction, prompt caching, agent-team ~7× token.<br>
+  4. Anthropic Engineering — "Effective context engineering for AI agents": compaction + structured note-taking (context dışı kalıcı hafıza, geri çağırma) + uzun-ufuk stratejileri.</p>
+  <p style="color:#6b7783">Bağlam hijyeni notu: nötr yapısal dil (katman / sıcak-soğuk / prefix / izole pencere / not-tutma). Biyoloji-kökenli metafor kullanılmadı.</p>
+</footer>
+
+</div>
+</body>
+</html>
