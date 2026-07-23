@@ -13,225 +13,34 @@
 
 ---
 
-## Sıfır-noktası — geriye dönük ilk kayıtlar (A1d, 07-13)
 
-### 2026-07-13 · A5 · veri-koşumu sayısı kararı
-- **Bağlam:** yeniden-inşa deneyinde koşum sayısı sabit mi, kurallı mı?
-- **Model A (sabit 10):** öngörülebilir bütçe · veri-israfı riski (iyileşme durmuşsa boşa koşum) | **Model B (ardışık-deney: pilot 5 [1 referans + 4 tek-nokta değişimi] → 3'erli partiler → devam: son parti >%5 başarı-skoru iyileşmesi → tavan 15):** bütçe-duyarlı, durma kurallı · hafif karmaşıklık | **Model C (iyileşme sürene dek sınırsız):** maksimum veri · V28 bütçe koruması yok → ✅ B
-- **Seçim:** B (Carvis, Katman 2 — Salih yetki devri 07-13) — görünürlük: 07-13 oturumu + bu kayıt; eşikler deneysel (m.29), A7 denetimine tabi
-- **Gözlem:** henüz koşum yok (tetik: K-009/K-010)
-- **Ders:** sabit sayı yerine durma-kuralı = Salih anti-overfit kalıbının (V42) sayısal karşılığı
-
-### 2026-07-13 · hafıza-denetimi · süpürme sınırı kararı
-- **Bağlam:** biyoloji-kökenli terimler hafızadan nasıl temizlenir?
-- **Model A (tam süpürme + tek pointer):** yoğunluk sıfır · terminoloji çevirisi maliyeti tek seferlik | **Model B (iki-sınıf: teknik kalır, dekoratif gider):** literatür dili korunur · yoğunluk kısmen sürer, tekrar riski kapanmaz | **Model C (pointer'sız tam süpürme):** en temiz · dış-arama anahtarı kaybolur → ✅ A
-- **Seçim:** A (Salih, 07-13 günaydın — ilk seçim yanlış-enter, ikinci turda bilinçli teyit)
-- **Gözlem:** uygulandı (commit 884d900); kalite gözlemi = sonraki oturumlarda model-düşümü tekrarı olup olmadığı
-- **Ders:** hipotez kaydı düştü — düşüm↔hafıza bağı doğrulanmadı; gözlem sütunu bunu ölçecek
-
-### 2026-07-13 · paralel yapılanma · başlangıç tarihi kararı
-- **Bağlam:** paralel şerit düzeni (JARVIS + PortRisk + chat) ne zaman başlar? (Salih yetki devri: "başlangıç tarihine karar vermek sana kalmış")
-- **Model A (bugün):** erken veri · yarın sınav, bant genişliği bölünür | **Model B (15 Temmuz, sınav ertesi):** tam dikkat, talimat hazır · 2 gün gecikme | **Model C (loop-eng bitince):** olgun başlangıç · PortRisk keyfî gecikir (m.36c ihlal ruhu) → ✅ B
-- **Seçim:** B (Carvis, Katman 2) — görünürlük: paralel plan raporu + bu kayıt; chat şeridi bugün, Cowork paralel denemesi 15 Temmuz
-- **Gözlem:** bekliyor (15 Temmuz koşumu)
-- **Ders:** —
-
-### 2026-07-13 · K-017/K-018 · bilgi-açığı kapama sırası
-- **Bağlam:** dispatch + remote control 07-13'te tesadüfen öğrenildi; sistematik yeni-özellik taraması yok — geri-dönüşü pahalı açık (Salih tespiti, 2. oturum).
-- **Model A (tarama önce: K-017 CC koşumu → sonra Model-A paketi):** ~1 CC koşumu + 1 inceleme oturumu · kalite 8/10 — sonraki araç kararları tam bilgiyle | **Model B (araçları hemen kur, tarama sonra):** hızlı · körü körüne benimseme riski, dispatch↔K-009 çelişkisi çözümsüz | **Model C (hepsini 15 Tem sonrasına ertele):** sıfır maliyet · açık büyür → ✅ A
-- **Seçim:** A (Salih, 07-13 2. oturum — "bu iş bitince model a da yapılacaklar listesinde") — görünürlük: aynı oturum + bu kayıt
-- **Gözlem (koşum sonrası):** koşuldu 07-14 — 70 bulgu (58/12/0), ~2,4M token · ~8,5 dk · 78 ajan; **konfig: Fable ultraworkflow (en yüksek efor, Salih beyanı — ilk koşum bilinçli maksimum; token gözlemi efor-parametreli okunur)**; kalite [türetilmiş]: yüksek — 12 hata doğrulamada yakalandı, adaylar panoya dağıtıldı
-- **Ders:** bilgi-açığı sınıfı karar = araştırma-önce (m.40b); tarama tek-seferlik değil tekrar eden ihtiyaç — periyodik tarama kararı K-017 inceleme oturumuna aday
-
-### 2026-07-14 · P0-P6 · partisyon planı onayı
-- **Bağlam:** 07-14 kapanışında sunulan kronolojik partisyon planı (P1=15 Tem paralel · P2=16-20 Tem K-015+K-018 · P3=otonomi kapısı ~Ağu başı · P4=ölçüm+deney Ağu · P5=Jarvis v1+demo ≤10 Eki · P6=K-004 Kas) karar masasında.
-- **Seçenekler:** olduğu-gibi onay | onay + P5 minimum-demo sabitlemesi (kayma riskine karşılık) | revizyon | veto → ✅ onay + sabitleme
-- **Seçim:** Salih (07-14 sabah, Katman 1 — yön kararı): "kronolojik partisyon" çerçevesi teyit + önerilen sabitleme kabul. Plan dosyası: `raporlar/partisyon-plani-P0-P6-2026-07-14.md` (ilk sunumda dosyaya inmemişti — kalıcılık dersi orada kayıtlı).
-- **İlk tahminler (deneysel damga, m.39 — Brier için):** P1 DONE-tanımıyla kapanır: 0.80 · P2 20 Tem'e dek kapanır: 0.65 · P3 kapısı Ağu ilk haftasında açılır: 0.60 · P5 minimum demo ≤10 Eki: 0.60
-- **Gözlem:** her partisyon kapanışında tahmin-vs-gerçek buraya.
-- **Ders:** kritik sunum, sunulduğu vardiyada dosyaya iner (V43 ailesi — kapsül özeti tek başına kalıcılık değildir).
-
-### 2026-07-15 · şerit düzeni · öğrenme şeridi + öncelik revizyonu (P1 yeniden şekillendi)
-- **Bağlam:** Salih günaydın emri: öğrenme oturumları şeridi + PortRisk 3. öncelik + Atlas'la müfredat araştırması. m.16 çelişki raporu sunuldu (P1 B-kanadı boşa düşer + P4 ölçüm girdisi gecikir, kritik yolda tampon yok).
-- **Seçenekler:** PortRisk bugün yine açılır (P1 aynen, ✅ Carvis önerisiydi) | B kanadı öğrenmeye devredilir | Carvis'e devir → Salih üçüncü yolu seçti: "birkaç gün odak sadece öğrenme + Jarvis; ölçüm bankı önemli olmaya başlayınca 3. oturum olarak tasarlanır."
-- **Seçim:** Salih (Katman 1 — yön kararı; 07-15 günaydın oturumu). P1 revize: ilk paralel deneme JARVIS+öğrenme çiftiyle, tetik = müfredat DONE. Plan: `raporlar/paralel-yapilanma-plani-2026-07-15-v2.md`. Kabul edilen risk: P4 itilmesi (kayıtlı).
-- **Gözlem:** bekliyor (ilk JARVIS+öğrenme paralel günü + P4 açılış tarihi).
-- **Ders:** öneri reddi de veridir — Salih odak-bölünmesini P4 riskinden pahalı fiyatladı; Brier notu: P1 "DONE-tanımıyla kapanır: 0.80" tahmini eski DONE-tanımıyla ölçülemez, revize DONE ile ölçülecek.
-
-### 2026-07-15 · Atlas ilk koşumu · efor seçimi (Salih devri: "effort seçmek sana kalmış, bence yüksek")
-- **Bağlam:** müfredat araştırması Opus'la koşulacak (Salih beyanı: token maliyeti); efor kademesi Carvis'te.
-- **Model A (orta):** ~400-700K token · ~4-5 dk · kalite 6/10 — müfredat iskeletde kalır, kaynak derinliği zayıf | **Model B (yüksek):** ~1-1,5M token · ~6-8 dk · kalite 8/10 — eksen genişletme (Wave) + örneklem-denetim rahat çalışır | **Model C (maks/ultraworkflow):** ~2M+ token · ~8-10 dk · kalite 8,5/10 — K-017'de marjinal getirisi doğrulama katmanındaydı, o da artık örneklemli → ✅ B (maliyet/kalite dizi; Salih sezgisiyle uyumlu)
-- **Seçim:** B — yüksek (Carvis, Katman 2) — görünürlük: 07-15 günaydın oturumu + görev emri `cc/gorev-2026-07-15-1.md`.
-- **Gözlem (07-15, koşum sonrası):** süre ~25 dk · 13 ajan (K-017'nin 78'ine karşı) · token toplamı raporlanmadı (/usage istenmedi — ders) · kalite [türetilmiş]: yüksek — 0 DOĞRULANAMADI, 9 KISMEN düzeltmesi yakalandı, 19-partisyon müfredat kullanılabilir çıktı; Model B tahmini (8/10) tutarlı görünüyor, token kolonu boş kaldığı için maliyet çifti doğrulanamadı.
-- **Ders:** fan-out'u ucuz modele (sonnet), sentez/denetim kararını pahalıya (Opus) veren iç-routing CC tarafında kendiliğinden doğru kuruldu — m.28/V39 routing ilkesinin dış teyidi; görev emri şablonuna /usage-raporu satırı eklenecek.
-
-### 2026-07-15 · K-015 madde 3 / loop-eng Faz 4 · ilk Routine mekanizma seçimi
-- **Bağlam:** Faz 2+3 kapandı; Faz 4 = ilk Routine. Homebase emekli → eski hedef (transkript pipeline) bayat. m.40b dış araştırma YAPILDI (code.claude.com/docs/routines): Routine bulutta koşar (PC kapalıyken de), repoyu GitHub'dan klonlar → lokale yapısal olarak DOKUNAMAZ, push varsayılan yalnız `claude/`-önekli dallara — "mimari > talimat" hazır örneği.
-- **Model A (kalıcı günlük sabah-brifingi Routine):** ~15-30K token/gün · kurulum ~15 dk · kalite orta (yalnız origin'i görür, V43 yakalayamaz) · RİSK orta (kalıcı gözetimsiz koşum K-009 sınırına komşu) | **Model B (lokal scheduled task — gerçek-ağaç V43 nöbetçisi):** ~10-20K/koşum · kalite yüksek · RİSK yüksek (gözetimsiz lokal yazma = K-009'un kendisi; bugün açılmaz, K-009 açılış adayı) | **Model C (öğrenme-amaçlı: kur → 1 otomatik koşu gözle → duraklat / tek-seferlik):** ~15-25K tek koşum · ~30 dk toplam · kalite: Faz 4 DONE tam karşılanır · RİSK en düşük (kalıcı otomasyon kurulmaz, K-009 bloke korunur) → ✅ C. **NOT: RİSK sütunu bu blokta İLK KEZ (Salih ajan-yetki formülasyonu, 07-15 — m.37 4. boyut adayı sahada denenmiş oldu).**
-- **Seçim:** C (Salih, 07-15 ana-sıra oturumu: "model c'den devam edeceğiz"). Mimari sınırlar: connector'lar çıkarılır · yalnız jarvis reposu · rapor-only prompt (pozitif yetki listesi) · claude/ push kısıtı korunur.
-- **Gözlem (TAMAMLANDI 07-17 — trigger kaydı + Salih'in yapıştırdığı koşum çıktısı):** ateşlenme 16 Tem 09:00:18 (GMT+3), tam zamanında; tek-seferlik kendini kapattı (`run_once_fired` — Model C sınırı mimaride tuttu). süre · token: RAPORLANMADI (rapor-only prompt'ta /usage yoktu; bulut Routine'de maliyet gözlemi yapısal zayıf — K-019/K-009 notu). kalite [türetilmiş]: YÜKSEK — 25-satır limitine uydu · tüm maddeler commit-gerçeğiyle uyumlu, halüsinasyon 0 · sınır disiplini tam (dosya değişikliği/commit/push yok, origin'de iz yok) · öz-referans doğru ("bu koşum ilk çalıştırmanın kendisi"). Tek kesinlik şerhi: "kapsam (1)-(4) DONE" ifadesi madde 3'ü erken kapatıyordu — raporun kendi (2)(a) satırı bunu düzeltti.
-- **Ders:** pozitif-yetki-listesi + rapor-only prompt İLK gözetimsiz koşumda sınır ihlalsiz çalıştı; tek-seferliğin kendini kapatması "mimari > talimat"ın Routine-katmanı kanıtı. **FAZ 4 + K-015 madde 3 KAPANDI (07-17).** Açık ders: bulut-Routine sınıfında token kolonu yapısal boş kalıyor — maliyet-gözlem mekanizması K-009 tasarım girdisi.
-
-### 2026-07-17 · m.37 · karşıt-temel şartı (kanon revizyonu)
-- **Bağlam:** Tractatus oturumu §10 önerisi + Salih 07-17 netleştirmesi: "karşıt-görüş içselleştirilmiş" = önerilen modelin matematiksel felsefesine ZIT felsefeden kurulmuş en az 1 model.
-- **Seçenekler:** karar-başına adversarial denetim paneli (ilk Carvis okuması; ~600K token sınıfı, m.37'nin varlık sebebini ihlal) | model-ÜRETİM kuralı: zıt-temelli en az 1 model (ucuz yapısal kısıt; §9.5 ortak-kurgu bulgusunu mekanizmaya çevirir) | statüko → ✅ üretim kuralı + ölçekli karşıtlık + canlılık şartı
-- **Seçim:** Salih (Katman 1, 07-17 Cowork günaydın): iki Carvis düzeltmesi (ölçekli karşıtlık + aygıt şartı) ONAY + canlılık şartı eklendi (bilimsel temelsiz / kesin çürütülmüş pozisyon karşıt-kaynak olamaz). Tüzük m.37 ek fıkrası imzalandı; görünürlük: bu oturum + bu kayıt.
-- **Gözlem:** ilk uygulama = sıradaki ölçek-eşiği üstü karar; izlenecek metrik = yakınsama-kalitesi (zıt temeller aynı eyleme çıkıyor mu → gerçek triangülasyon sayacı).
-- **Ders:** denetim katmanı EKLEMEK yerine üretim kuralı DEĞİŞTİRİLDİ — ucuz-yapısal çözüm pahalı-denetimsel çözümü yendi; dünkü panelin kendi bulgusu (§9.5) kendi revizyonunu üretti (sistem kendi çıktısından öğrendi — m.35 tezinin küçük bir örneği).
-
-### 2026-07-17 · P1 devri · okuma-sırası / kararlı-prefix kararı
-- **Bağlam:** P1 öğrenme oturumu "kapsül-önce okuma cache'i çürütüyor, sırayı ters çevir" önerisiyle devretti (Model B, ~8× iddialı). m.40b dış araştırma: resmi prompt-caching dokümanı — TTL en fazla 1 saat (cache güne taşınmaz) + oturum-içi transkript append-only (okuma sırası oturum-içi cache'i bozmaz) → iddia interaktif sınıfta geçersiz, TTL-içi tekrar-koşum sınıfında (loop/Routine/ajan filosu) geçerli.
-- **Model A (statüko):** 0 maliyet · ders uygulamasız kalır | **Model B (CLAUDE.md okuma sırası şimdi değişir):** ~30 dk + Katman-1 çekirdek değişimi · bugünkü kazanç ~0 · "kapsül İLK okunur" çapası bozulur (m.40c YÜKSEK sınıf) | **Model C (sınıf-ayrımı):** interaktifte statüko; kararlı-prefix/değişken-suffix OTOMASYON sınıfının tasarım standardı (K-009 gündemi) + ilk loop koşumunda /usage ölçümü → ✅ C
-- **Karşıt-temel (m.37 ek — İLK saha kullanımı):** öneri beklenen-maliyet/amortisman zemininde; zıt zemin 1 = ampirist ölçüm-önce okul (aygıt: kontrollü /usage ölçümü — türetilmiş 8×'e de TTL analizine de ölçümsüz güvenme) · zıt zemin 2 = minimax/worst-case (çekirdek-bozulma maliyeti ≫ cache kaybı → B aleyhine). Her iki zıt temel C'de kesişti — gerçek triangülasyon; canlılık şartı sağlandı.
-- **Seçim:** C (Salih, Katman 1 — 07-17 Cowork ana-sıra: "kalanına onay"). Görünürlük: bu oturum + bu kayıt.
-- **Gözlem:** bekliyor (ilk gerçek loop/Routine koşumunda /usage açılış-maliyeti).
-- **Ders:** yan-oturum türetilmiş rakamı ("8×") dış-doğrulamadan karara girmedi — m.41 + m.40b hattı çalıştı; ders (prefix-invalidation) yanlış değildi, uygulanma SINIFI yanlıştı.
-
-### 2026-07-17 · V39 dar koşumu · efor/bütçe konfigürasyonu
-- **Bağlam:** V39 kavram-sözlüğü dar koşumu Salih onayı aldı (07-17); konfig Carvis'te (Katman 2). Kapsam dar: ≈12 terim, hedef = dış-eşleşme haritası.
-- **Model A (düşük, ~200-300K · 4 ajan · kalite ~6/10):** ucuz · atıf-hatası riski yüksek (Atlas koşumlarının ana hata sınıfı) | **Model B (orta-yüksek, ~400-600K · 6 alan-ailesi ajanı + Opus sentez + V26 örneklem doğrulama · kalite ~8/10):** dar kapsama uygun ölçek | **Model C (yüksek, ~1M+ · terim-başına ajan + tam doğrulama · kalite ~8,5/10):** marjinal kazanç dar kapsamda düşük (K-017 dersi: doğrulama katmanı marjinali örneklemle korunuyor) → ✅ B
-- **Karşıt-temel (m.37 ek):** öneri maliyet/kalite-dengesi (beklenen-değer) zemininde; zıt zemin = worst-case bilgi-maliyeti (yanlış iç-terminoloji köklenirse ileride toplu yeniden-adlandırma + yanlış-yöntem ithali maliyeti → C'yi savunur). Kesişim: B + zorunlu V26 denetim + V54 etiketsizlik kuralı (zorlama-eşleştirme birincil aranan hata) — worst-case'in asıl korkusu yanlış-eşleşme, o da denetim şartıyla kapanıyor; canlılık şartı sağlandı.
-- **Seçim:** B (Carvis, Katman 2) — görünürlük: 07-17 Cowork oturumu + görev emri `cc/gorev-2026-07-17-1.md`.
-- **Gözlem (07-17, koşum sonrası):** $7.16 · 19,5 dk duvar (38 dk API) · /usage TAM raporlandı (ilk kez emirle) · kalite [türetilmiş]: yüksek — 12/12 satır, TAM=9/KISMİ=3/X=0, örneklem D2/K1/X0, tavan aşılmadı. Model B tahmini (~8/10) tutarlı; sapma: fan-out /usage'da haiku etiketli (emir sonnet dedi) — maliyeti DÜŞÜRDÜ, kaliteyi düşürmedi (örneklem temiz); denetim notu raporda.
-- **Ders:** dar-kapsam + alan-ailesi-bazlı fan-out deseni doğrulandı (K-017 "eşleşmesiz" bulgusunu tersine çevirdi); ucuz-model fan-out + pahalı sentez/denetim routing'i yine kendiliğinden doğru kuruldu — m.28/V39 ikinci dış teyit.
-
-### 2026-07-19 · K-009 açılış · canlı-ajan sınırı + guardrail + ses-sırası (Katman 1, Salih)
-- Bağlam: K-009 açılış oturumu (Cowork ana-sıra/Fable, 07-17→19). Gündem madde 1 + rapor-1 (otomasyon-3model) soruları birleşik karara bağlandı; karar öncesi Salih'e merdiven + PreToolUse [S]-düzey anlatıldı (V55), hizalama sagası koşuldu.
-- Karar 1 — SINIR (m.30 ek fıkrası olarak İMZALANDI): otomasyon (K-009) = tetik devrine kadar (RC · /goal · /loop · sabit-promptlu Routine); canlı ajan (K-010) = prompt + kalıcı kimlik devri (ajan işi kendisi seçer; Dispatch/Agent-SDK sınıfı). Gerekçe: hata-sınıfı sıçraması — önceden-denetlenebilirlik kaybı + defter yoluyla hata birikimi (OpenClaw emsali); Özgürlük(a) ≤ Toparlanabilirlik(hata(a)). Empirik ayak: /goal + /loop + Routine koşumları sınır içinde temiz (07-15/16); ajan-karar basamağı hiç koşulmadı.
-- Karar 2 — GUARDRAIL: PreToolUse policy-as-code kilidi İLK gözetimsiz otomasyon dilimiyle BİRLİKTE kurulur (deterministik allowlist: core/ yazma DENY · push ASK · raporlar/ ALLOW sınıfı; rapor-1 Model-C aşısı; G4<G5).
-- Karar 3 — SES SIRASI: önce L2 mobil-köprü protokolü (KILAVUZ 1 sayfa; rapor-1 Adım 0) → sonra tek ölçümlü ses PoC; kapsam niyet-yakalama/triyaj (rapor-10 antitez daraltması — "oyunda ciddi inşa" iddiası DÜŞTÜ).
-- Model-hiyerarşi beyanı (Salih 07-19): JARVIS/ana-sıra = Fable (final karar en zeki katmanda; bütçe/hesap bağlamı) · ekip liderleri = Opus ya da bir-altı en yüksek model · m.30(c) ile uyumlu; aile-dışı model (Kimi) planda YOK — V56 ERTELENDİ.
-- Rapor-1 mimari seçimi: B (ölçüm-önce omurga) fiilen seçildi — üç somut karar, B + A-kaldıraç-sırası + C-guardrail-aşısı bileşimini uyguluyor. Karşıt-temel: rapor-1 bloğu (Wald minimax/DRO ↔ beklenen-değer/VoI) — m.37 karşıt-temel şartı sahada.
-- Geri-alınabilirlik: SINIR tanımı = iki-yönlü (tüzük revizyonuyla değişir, ucuz) · GUARDRAIL = iki-yönlü (hook dosyası silinir) · model-hiyerarşi = iki-yönlü (beyanla değişir).
-- Gözlem: bekliyor (ilk K-009 dilimi: gecelik senkron adayı + PreToolUse kurulumu + /usage ölçümü).
-- Ders: —
-
-**Ek (aynı blok, 07-19):** m.42 ajan-yetki kanunu İMZALANDI (7 fıkra; içerik 07-15/07-17 kabul edilmiş formülasyonların tüzükleşmesi — yeni taahhüt yok). Karar-sunum kuralı güncellendi (Salih emri): her karar sorusunun yanında kısa 'bu ne / neden masada' özeti zorunlu.
-
-### 2026-07-19 · K-009 Dilim 1.5 + 1.3 · gecelik-senkron mekanizması + kararlı-prefix kapsamı (Salih seçimi)
-- Bağlam: ilk insansız otomasyonun mekanizma seçimi (m.37 + karşıt-temel; m.40b taraması taze — rapor 1, 07-17). Sunum yeni kuralla: karar sorularının yanında "bu ne" özeti.
-- 3 model: **A** deterministik script/LLM'siz (token 0/gece · kurulum ~30dk · kalite 8 · RİSK DÜŞÜK) ✅ | **B** CC headless gece koşumu (~5-10K token/gece, /goal emsali 5.3K · kalite 8.5 · RİSK ORTA) | **C** minimax gece-dokunma + sabah-elle (kalite 7 · worst-case EN DÜŞÜK · sabah-sürtünme kalıcı).
-- Karşıt-temel: C ← Wald minimax / robust karar teorisi; A-B'nin beklenen-fayda varsayımına zıt; aygıt = f(otonomi×geri-alınamazlık×blast); canlılık ✓ (+ iç kanıt: V43 sicili, 3 mount-bozulma vakası).
-- Seçim: **A + C aşısı** (Salih, 07-19) — ff-only (ezme sınıfı yapısal kapalı) + başarısızlıkta dokunma-yok/sabah-uyarı; B KURULMAZ, onarım elle-tetik kalır. İcra: `tools/gece-senkron.ps1` + `raporlar/usage/` (Dilim 1.4 asgarisi aynı adımda açıldı; scriptin log satırı ilk müşteri). Görev-kaydı (schtasks, tek komut) Salih'te.
-- Kararlı-prefix kapsamı (aynı oturum, Salih): sınıf = KOŞUM DESENİ — TTL-içi aynı-önek tekrarı olan HER koşum otomasyon-sınıfı (işçi/lider/Routine fark etmez); interaktif oturumlar kapsül-önce KALIR (Model C, 07-17). İlk /usage ölçümü ilk LLM'li loop koşumunda.
-- Geri-alınabilirlik (m.37 ek): İKİ-YÖNLÜ · blast: dar · geri-alma: ucuz (script+görev silinir) · LRM: yok · Kapı: Katman-2 + Salih seçimi.
-- Gözlem: bekliyor — ilk gece koşumu `raporlar/usage/senkron-log.jsonl`e düşecek.
-- Ders: —
-
-**Gözlem eki (07-19, Dilim-1 saha testi — Salih'in CC oturumu):** SessionStart hook ✓ (yetki bandı + canlı kapsül + pano enjekte edildi) · yapısal kilit ✓ (core/tuzuk-v0.md yazma denemesi settings-deny ile RED: "directory denied by permission settings"; okuma serbest) · nitel gösterge: CC kendi cevabında m.41'i doğru uyguladı ("tüzük yalnız Salih imzası + ana-sıra ile değişir"). SONUÇ: kilit+hook DENEYSEL damgadan SAHADA-DOĞRULANDI'ya terfi (m.29); gece-senkron scripti ilk koşuma dek deneysel kalır. Pull-borcu da kapandı (stash→ff-only→clean; V43 doğrulaması: 11/12 özdeş + 1 gerçek fark [P2 devri] drop'tan ÖNCE origin'e kurtarıldı — verify-before-drop disiplini kendini bir kez daha ödedi).
-**Operasyon kararı (Carvis, Katman 2, 07-19):** gecelik senkron canlı olduğu andan itibaren Carvis izlenen (tracked) dosyaları KÖPRÜYLE mount'a YAZMAZ — origin push yeter, dağıtım gece scripti/sabah pull ile olur. Gerekçe: köprü-yazımı çalışma kopyasını kirletir → ff-only pull'u düşürür (bugünkü hata sınıfının kökü); otomasyon köprü-senkronun yerini alır, V43 mount-yazım riski yapısal olarak kapanır. İstisna: Salih'in açık "hemen diske yaz" talebi.
-
-### 2026-07-19 · imza masası · çift-atlas kuralı kapsamı (m.40 ek fıkrası)
-- **Bağlam:** CC standing-direktifi kanonlaşıyor; soru = kapsam (hangi araştırmalar çift koşulur).
-- **Model A (koşullu — eşik-üstü çift):** ~×1.6 token · +≈0 süre (paralel) · yüksek | **Model B (her araştırmada çift):** ×2 · +≈0 · marjinal üstü + antitez-değeri ölçüm verisi | **Model C (tek koşum + süzgeç):** ×1 · −%20 · orta (kör nokta süzgece yaslanır) → ✅ A önerildi
-- **Karşıt-temel (m.37 ek):** Model C ← Bayesçi tek-model kalibre-şüphe zemini, "bağımsız ikinci koşum" varsayımına zıt; canlılık ✓ — YAKINSAMADI: aynı koşum içi şüphe aynı kör noktayı paylaşır (öneriyi güçlendiren ayrışma).
-- **Seçim:** B (Salih, 07-19 günaydın — "bir süre her yerde çift gidelim, token sorunu yaşanırsa Model 1'e [koşullu] geçeriz"); geçiş tetiği kanona yazıldı — görünürlük: bu oturum + bu kayıt.
-- **Geri-alınabilirlik:** yüksek — ek fıkra tek commit revert; kapsam tek beyanla daralır.
-- **Gözlem (koşum sonrası):** bekliyor — ilk değerlendirme token-baskısı sinyalinde (çift-koşum token oranı usage-JSONL'den okunur).
-- **Ders:** Salih m.35 ölçüm-öncelikli ilkeyi kanon-kapsam seçimine uyguladı: eşiği ileride kendi verimizle seçmek için ×2 bedel bilinçli ödendi.
-
-### 2026-07-19 · imza masası · skill-doğum kuralı (m.43)
-- **Bağlam:** skill adaylarının kaynağı — yalnız yukarıdan-ihtiyaç mı, veriden-madenleme de mi?
-- **Model A (eşikli kural, N=3):** ≈0 token · yüksek (Fiil-DSL vakası freni kanıtladı) | **Model B (eşiksiz — her his aday):** ≈0 ama kutu şişer (K-019 derdi büyür) | **Model C (kural yok — yalnız yukarıdan):** ≈0 · prosedürel-grain boşluğu görünmez kalır → ✅ A
-- **Karşıt-temel:** Model C ← sömürü-ağırlıklı zemin ("bilinen ihtiyaca yatır, keşfe harcama"); canlılık ✓ — KISMEN YAKINSADI: "üretim kararı yukarıda" parçası A'nın içinde; ayrışan tek yer aday-kaynağı.
-- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt; eşik N=3 deneysel (m.29).
-- **Geri-alınabilirlik:** yüksek — aday satırı bedava revert; madde tek commit.
-- **Gözlem:** bekliyor — ilk madenleme pilotu (K-016 açılışı) eşiği kalibre eder.
-- **Ders:** kural kendini imzadan önce kanıtladı (Fiil-DSL erken-skill'leşmesi eşiğe takıldı) — kanonlaşma fiili pratiğin kaydı oldu.
-
-### 2026-07-19 · imza masası · m.34 delta-fıkrası (damıtma yöntemi)
-- **Bağlam:** m.34 damıtmanın NASIL'ını tanımlamıyordu; context-collapse (bileşik sessiz kayıp) riski açıktı.
-- **Model A (delta zorunlu, monolitik yasak):** kayıp yalnız görünür madde-kararında · veto çalışır kalır | **Model B (tavsiye):** baskı anında monolitik "kolay yol" geri döner | **Model C (delta + periyodik kayıplı tam-özüt):** compaction ihtiyacı VAR ama kayıplı turla → ✅ A
-- **Karşıt-temel:** Model C ← MDL/compaction zemini ("delta birikir, yapı dağılır; topyekûn sıkıştırma optimuma yakın"); canlılık ✓ — KISMEN YAKINSADI: meşru ihtiyacı (yapı-düzenleme) A'ya KAYIPSIZ biçimde alındı; ayrışan uç yalnız kayıp toleransı (m.8 çizgisinde reddedildi).
-- **Seçim:** A (Salih, 07-19 günaydın — detaylandırma turu sonrası bilinçli onay) — görünürlük: bu oturum + bu kayıt.
-- **Geri-alınabilirlik:** yüksek — fıkra tek commit revert; ilk uygulama (K-019 kutu-damıtma) zaten madde-bazlı planlanacak.
-- **Gözlem:** bekliyor — K-019 kutu-damıtması fıkranın ilk saha testi olacak.
-- **Ders:** "özetleme değil, nerede ne kaybettiğini göstermeden özetleme yasak" formülü Salih'in sabah şikâyetinin (anlaşılmadan biriken karar) dosya-düzeyi karşılığı.
-
-### 2026-07-19 · imza masası · m.30b ↔ m.21/m.34 uzlaştırma dipnotu
-- **Bağlam:** gerçek iç-kanon gerilimi (rapor-14): ajan-başına farklı ingest ↔ tek katmanlı şema.
-- **Model A (tek parametrik şema; varyant held-out'ta hak edilir):** iki madde de yaşar · karşılaştırılabilirlik korunur | **Model B (serbest özel algoritma):** şema çatallanır, ortak damıtma ölür | **Model C (tek SABİT şema, parametre yok):** derli ama m.30b ölür, m.35 teziyle çelişir → ✅ A
-- **Karşıt-temel:** Model C ← tekbiçimlilik zemini ("varyant = bakım yükü"); canlılık ✓ — KISMEN YAKINSADI: bakım-yükü uyarısı held-out şartı olarak A'nın içinde; "hiç varyant olmasın" ucu çapayla çeliştiği için düştü.
-- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt.
-- **Geri-alınabilirlik:** yüksek — dipnot tek commit revert.
-- **Gözlem:** bekliyor — ilk gerçek ajan-ingest varyantı (K-010 dönemi) held-out şartının ilk testi.
-- **Ders:** çelişki silinmedi, parametrize edildi — bilgi mimarisi şirket teziyle (m.35) aynı forma oturdu.
-
-### 2026-07-19 · imza masası · m.38 limit-şerhi + m.37a örnek-çifti
-- **Bağlam:** Tractatus çift-atlas oturumunun (rapor-9) operasyonel tortusu; iki tek-satırlık kanon eki.
-- **Model A (ikisi de):** yanılgı-freni yazılı + hazır karşıt-çift | **Model B (yalnız m.37a çifti):** "lojik form = çelişki-muafiyeti" yanılgısı yazısız kalır | **Model C (hiçbiri — kanon-minimalizmi):** tüzük sade ama iki ek zaten operasyonel cümle → ✅ A
-- **Karşıt-temel:** Model C ← kanon-minimalizmi ("felsefe wiki'de yaşasın"); canlılık ✓ — KISMEN YAKINSADI: ilke zaten uygulanıyor (felsefi gerekçe wiki borcunda, tüzüğe yalnız operasyonel cümleler girdi).
-- **Seçim:** A (Salih, 07-19 günaydın) — görünürlük: bu oturum + bu kayıt.
-- **Geri-alınabilirlik:** çok yüksek.
-- **Gözlem:** bekliyor — şerhin ilk işlevi gelecek ajan-tanımlarında "m.38 yeter" hatasını kesmesi.
-- **Ders:** kitap kararı (PI) bilinçli AÇIK bırakıldı (değer-tercihi, m.31) — imza masası 5/6 kapandı, kalem kaybolmadı.
-
-### 2026-07-19 · ikinci günaydın vardiyası · m.16 kapısı: bayat-disk masa-tekrarı
-- **Bağlam:** ikinci günaydın oturumu kapsülü DİSKTEN okudu; disk, sabah vardiyasının kapanış push'larından geride kaldığı için (pull, o push'lardan ÖNCE atılmıştı) imza masası Salih'e İKİNCİ KEZ kuruldu — stage-bayat vakasının 2. örneği (ilki K-019 kapsamında kayıtlı).
-- **Çelişki + çözüm (m.16):** yeni cevaplar sabah imzalarıyla karşılaştırıldı — kalem 2/3/4 aynı yönde (işlem yok) · kalem 1 yeni şerh üretti (m.40b antitez=¬, ayrı commit) · kalem 6 açık-kararı kapattı (PI kabul, V57) · kalem 5 tek gerçek çelişkiydi ("ertele" ↔ sabah imzası) → rapor sunuldu, **Salih: sabah imzası KALIR** (bugünkü "ertele" bayat-bilgi ürünü sayıldı).
-- **Geri-alınabilirlik:** yüksek — tüm ekler tek-commit revert.
-- **Operasyon kuralı (Katman 2, m.29 deneysel):** vardiya açılışında kapsül+pano ORIGIN KLONUNDAN okunur; disk kopyası yalnız Salih'in yerel çalışması için referanstır. Gece-senkron + sabah-pull bu farkı normalde kapatır; kural, kapatamadığı pencereye sigortadır.
-- **Ders:** çift-yüzey (disk/origin) sisteminde "tek doğru kaynak = origin HEAD"; bayat okuma çelişki-kapısını tetikleyebiliyor ama kapı çalıştı — yanlış karar-üstüne-karar alınmadı.
-
-### 2026-07-19 · ikinci günaydın vardiyası · Dilim 2.2 ses PoC — kanal seçimi
-- **Bağlam:** ses PoC (niyet-yakalama/triyaj, O2 ön-adımı) hangi STT kanalıyla koşulacak; Salih tetiği çekti ("Dilim 2.2 ile başlayalım").
-- **Model A (telefon diktesi + mevcut mobil köprü):** ≈0 token/kurulum · bugün başlar · WER telefon-STT'sine bağlı [?] | **Model B (Whisper-sınıfı lokal):** kurulum+taşıma zinciri · m.40b dış-tarama borcu · canlı değil | **Model C (bulut STT API):** en iyi WER adayı [?] · PARA = Katman-1 kapısı + entegrasyon → ✅ A
-- **Karşıt-temel:** Model B ← kalite-önce zemin ("kötü WER ölçümü çöp veri üretir"); canlılık ✓ — KISMEN YAKINSADI: B'nin tetiği A-verisine bağlandı (WER >%25 [deneysel eşik, m.39] → B taraması açılır); "önce en iyi aracı kur" ucu ölçüm-önce ilkesine (m.35) yenildi.
-- **Seçim:** A (Carvis önerisi + Salih oturumda; m.37 sunumu görünür, veto açık) — kapsam: ≥10 dikte örneği, ham transkript düzeltilmeden gelir, ingest anında Salih-düzeltmesi referans alınır.
-- **Ölçüm planı:** WER = ingest-anı düzeltme farkından · triyaj-başarı = niyet sınıfı (fikir/görev/soru) doğru eve düştü mü · gecikme = Model A'da dikte akıcılığı gözlemi (öznel not). Sonuçlar bu deftere Gözlem satırıyla döner.
-- **Geri-alınabilirlik:** çok yüksek — sıfır kurulum, vazgeçmek = dikte etmemek.
-- **Ders (bekliyor):** ölçüm vardiyasında yazılacak. **Revizyon (Salih, aynı vardiya):** toplama PASİF — odak JARVIS kurulumunda, test için ayrı konuşma yapılmaz; ≥10 hedefi katı eşik değil, ölçüm tetiği Salih beyanı.
-- **İlişkili gözlem (Şerit 2):** P2 devir dosyası geldi ama P2 zaten koşulmuştu — paralel-vardiya ÇİFT-KOŞUM vakası (bayat-durum ailesinin 3. örneği bugün: disk-masa tekrarı · P2 tekrarı); K-019 kapsamına girdi.
-
-### 2026-07-21 · m.40b · sağlamlık ölçütü (K1, Fable hükmü)
-- **Bağlam:** multi-hop tasarımda antitez tezi okuyor → "kör-kesişim = en sağlam" (v0.1) literal düşüyor; yerine ne? (CC karar dosyası §2-K1; Salih delegasyonu: hüküm Fable'ın.)
-- **Model A (adversarial-hayatta-kalma):** güçlü sinyal (%99.2 vs %48.3 [46]) · yeni akışın doğal ürünü · tek-ölçüt riski | **Model B (kör-triangülasyonu koru):** bağımsız ikinci sinyal · ×1.5-2 token · bağımsızlık ampirik zayıf (korelasyonlu hatalar, ensemble ~+0.00 F [51]) | **Model C (Hegelci-sentez):** zengin çıktı · sağlamlık ölçütü belirsizleşir, ölçüm zorlaşır → ✅ A
-- **Karşıt-temel:** B ← bağımsız-sinyal okulu; canlılık ✓ — KISMEN KORUNDU: Katman-1 ağırlıklı kararlarda isteğe bağlı ek kör-şerit opsiyonu.
-- **Seçim:** A (Fable hükmü, Salih delegasyonu 07-21; veto açık) — görünürlük: 07-21 günaydın vardiyası + `kuyruk/m40b-v02-taslak.md` (imza masasında).
-- **Geri-alınabilirlik:** yüksek — tek-commit revert; v0.1 metni arşivde kalır (m.8).
-- **Gözlem:** bekliyor — hayatta-kalma oranları ilk v0.2 koşumlarından.
-- **Ders:** dürüstlük şerhi kanona gömüldü: tam pipeline'ı test eden literatür yok → damga deneysel.
-
-### 2026-07-21 · m.40b · koşum aygıtı (K2, Fable hükmü)
-- **Bağlam:** üç aşama gerçek Atlas ajanlarıyla mı, saf iç muhakemeyle mi? (CC karar dosyası §2-K2.)
-- **Model A (ajanlı-hibrit):** dış-kanıt genişliği + multi-hop birlikte · daha pahalı | **Model B (saf-muhakeme):** ucuz/hızlı · atlası içe kapatır, m.35 dış-kanıt iddiası boşalır → ✅ A (üçüncü model yok — ikili tasarım sorusu, m.37 eşiği sunum biçimiyle karşılandı)
-- **Karşıt-temel:** B ← maliyet-minimalizmi; canlılık ✓ — yenildi: ayrıştırma kanıtı tek yönlü (CoT %92.8 vs %7.6 [6]; ToT %74 vs %4 [23]).
-- **Seçim:** A + CoVe-Factored kuralı (iddiayı ver, gerekçeyi verme) kanon şerhi olarak (Fable hükmü 07-21; veto açık) — görünürlük: bu kayıt + taslak dosya.
-- **Gözlem:** bekliyor.
-- **Ders:** Aşama-1'de çoklu-seed bağımsızlık korunur — bağımsızlık şartı ölmedi, aşama-içine daraldı (DARALTILDI-sinyali).
-
-### 2026-07-21 · öğrenme şeridi · grill-me kararı (K3, Fable hükmü)
-- **Bağlam:** viral grill-me skill'i öğrenme şeridinin "gerçek anlama ölçümü" boşluğuna oturuyor; V55 pasif-okuma varsayılanı bozulsun mu, Pocock skill'i kurulsun mu? (CC karar dosyası §2-K3.)
-- **Model A (Pocock skill'ini kur):** hazır · V25 altın kural ihlali (kurulum yok, yeniden yazım) | **Model B (V55 korunur + K-016 eval-önce natif `sinav` adayı; tetik YALNIZ Salih beyanı):** sürtünme eklenmez · anlama-kapısı desenimizle birebir · üretim maliyeti | **Model C (hiçbiri):** boşluk açık kalır → ✅ B
-- **Karşıt-temel:** A ← "çalışan şeyi yeniden yazma" okulu; canlılık ✓ — V25'e yenildi (desen madenlenir, kod kurulmaz).
-- **Seçim:** B (Fable hükmü 07-21; veto açık) — S-I olarak skill-fikir-kutusuna düştü.
-- **Gözlem:** bekliyor (üretim K-016 sırasında).
-- **Ders:** V55'e geçişin gerekçesi sürtünmeydi; ölçüm katmanı varsayılana gömülürse aynı hastalık geri gelir — tetik beyana bağlandı.
-
-### 2026-07-21 · yakalama-hattı · otomasyon sınıfı (K4, Fable hükmü)
-- **Bağlam:** ekran-görüntüsü+hotkey→oto-araştırma hattı hangi otomasyon sınıfında? (CC karar dosyası §2-K4; inşa "ilerde" — Salih beyanı, dokunulmadı.)
-- **Model A (yarı-otomatik: Salih notu girer+koşumu görür):** m.30 otomasyon sınıfı, bugün serbest · dar allow-list zarfı hazır | **Model B (tam-otomatik dontAsk):** sürtünmesiz · canlı-ajana yaklaşır → K-010 kapısı, temel katman 2 hafta şartı | **Model C (hiç kurma):** vizyon rafta → ✅ A (inşa anında)
-- **Karşıt-temel:** B ← sürtünme-düşmanlığı; canlılık ✓ — m.30 sınırına yenildi (OpenClaw memory-poisoning emsali ihtiyatın dış gerekçesi).
-- **Seçim:** A sınıfı (Fable hükmü 07-21; veto açık). Auth çatalı KARARA BAĞLANMADI — m.4: inşa başlamadan cevap sonucu değiştirmez; inşa tetiğinde `--bare`+API-key vs setup-token masaya gelir.
-- **Gözlem:** — (inşa yok).
-- **Ders:** karar-noktasını erteleme de bir karardır ve kaydedilir (LRM ilkesi, geri-alınabilirlik raporu).
-
-### 2026-07-21 · ajan-taksonomisi · D1-D8 + arketip eşlemesi kabulü (Katman-2, deneysel)
-- **Bağlam:** şirket-rolleri raporu D1-D8 eksen seti + 9 arketip + model-katman eşlemesi öneriyor (rapor K1-K3). Format/sınıflandırma kararı → m.29 deneysel-damgayla Katman-2 başlar.
-- **Model A (üçü de kabul: eksen seti + model-eşleme + sicil-kartı alanı):** triyaj kuralı hazır, K-010 hazırlığı somutlaşır · diklik iddiası ampirik değil | **Model B (yalnız eksen seti, eşlemesiz):** temkinli · eşlemesiz eksen ölü etiket | **Model C (ret, bekle):** K-010 hazırlıksız girer → ✅ A
-- **Karşıt-temel:** B ← "eşleme sezgisel kural, erken kilitleme" itirazı; canlılık ✓ — damga zaten deneysel, eşleme kilitlenmedi.
-- **Seçim:** A (Carvis Katman-2, m.29 damgalı; veto açık) — görünürlük: 07-21 günaydın vardiyası.
-- **Geri-alınabilirlik:** çok yüksek — etiket şeması, veri değil.
-- **Gözlem:** bekliyor — diklik varsayımı (D3/D4, D4/D7 korelasyonu) ilk gerçek etiketli korpusta test edilir; ilk canlı-ajan sınıfı = araştırma-filosu (D4 iki-yönlü, en düşük bahis).
-- **Ders:** üç bağımsız kaynak (sektör · Bezos kapı-modeli · kendi m.42'miz) aynı ilkeye vardı — özerkliği geri-alınabilirlik belirler; kendi kanunumuz dış literatürle triangüle oldu.
-
-### 2026-07-21 · K-016 · S-C/S-G inşa sırası
-- **Bağlam:** orkestratörün çocuklarından celiski-kapisi (S-C) eksik; kapsül sorusu "S-C önce ya da orkestratör 2-çocukla başlar".
-- **Model A (S-C önce, S-G aynı vardiyada 3-çocukla):** orkestratör tam doğar · vardiya yükü artar | **Model B (S-G şimdi 2-çocukla, S-C sonra):** hızlı ilk-çıktı · orkestratör kontratı sonradan değişir (rework; m.40c YÜKSEK-sınıf riski — çekirdek akış) | **Model C (yalnız S-C, S-G sonraki vardiya):** temkinli · hat yarım kalır → ✅ A
-- **Karşıt-temel:** B ← ilk-çıktı-hızlı (V38); canlılık ✓ — yenildi: V38 kademeli-yürürlük tam da çekirdek-akış işlerinde tasarım-önceliği korur.
-- **Seçim:** A (Carvis Katman-2; veto açık) — görünürlük: 07-21 vardiyası + bu kayıt.
-- **Gözlem:** bekliyor (aynı vardiya).
-- **Ders:** —
+## Arşiv index — 07-13→07-21 kararları (tam metin: `kuyruk/arsiv/senaryo-defteri-arsiv-2026-07-23.md`)
+- 2026-07-13 · A5 · veri-koşumu sayısı kararı
+- 2026-07-13 · hafıza-denetimi · süpürme sınırı kararı
+- 2026-07-13 · paralel yapılanma · başlangıç tarihi kararı
+- 2026-07-13 · K-017/K-018 · bilgi-açığı kapama sırası
+- 2026-07-14 · P0-P6 · partisyon planı onayı
+- 2026-07-15 · şerit düzeni · öğrenme şeridi + öncelik revizyonu (P1 yeniden şekillendi)
+- 2026-07-15 · Atlas ilk koşumu · efor seçimi (Salih devri: "effort seçmek sana kalmış, bence yüksek")
+- 2026-07-15 · K-015 madde 3 / loop-eng Faz 4 · ilk Routine mekanizma seçimi
+- 2026-07-17 · m.37 · karşıt-temel şartı (kanon revizyonu)
+- 2026-07-17 · P1 devri · okuma-sırası / kararlı-prefix kararı
+- 2026-07-17 · V39 dar koşumu · efor/bütçe konfigürasyonu
+- 2026-07-19 · K-009 açılış · canlı-ajan sınırı + guardrail + ses-sırası (Katman 1, Salih)
+- 2026-07-19 · K-009 Dilim 1.5 + 1.3 · gecelik-senkron mekanizması + kararlı-prefix kapsamı (Salih seçimi)
+- 2026-07-19 · imza masası · çift-atlas kuralı kapsamı (m.40 ek fıkrası)
+- 2026-07-19 · imza masası · skill-doğum kuralı (m.43)
+- 2026-07-19 · imza masası · m.34 delta-fıkrası (damıtma yöntemi)
+- 2026-07-19 · imza masası · m.30b ↔ m.21/m.34 uzlaştırma dipnotu
+- 2026-07-19 · imza masası · m.38 limit-şerhi + m.37a örnek-çifti
+- 2026-07-19 · ikinci günaydın vardiyası · m.16 kapısı: bayat-disk masa-tekrarı
+- 2026-07-19 · ikinci günaydın vardiyası · Dilim 2.2 ses PoC — kanal seçimi
+- 2026-07-21 · m.40b · sağlamlık ölçütü (K1, Fable hükmü)
+- 2026-07-21 · m.40b · koşum aygıtı (K2, Fable hükmü)
+- 2026-07-21 · öğrenme şeridi · grill-me kararı (K3, Fable hükmü)
+- 2026-07-21 · yakalama-hattı · otomasyon sınıfı (K4, Fable hükmü)
+- 2026-07-21 · ajan-taksonomisi · D1-D8 + arketip eşlemesi kabulü (Katman-2, deneysel)
+- 2026-07-21 · K-016 · S-C/S-G inşa sırası
 
 ### 2026-07-22 · ajan-tasarımı · tester + denetçi model seçimi (Salih yönü, P4 sonrası)
 - **Bağlam:** Salih (07-22): tester ve denetçi ajan kurulacaksa denetçi GPT (aile-dışı) olsun; tester şimdilik önerilen modelde, diğer 2 seçenek hafızada. m.16 kapısı çaldı: m.30 ek fıkra "aile-dışı model planda yok (V56 ERTELENDİ)" — çelişki değil, V56'nın YENİDEN AÇILMASI (rapor sunuldu, Salih yönü kayda).
@@ -280,3 +89,15 @@
 - **Geri-alınabilirlik:** yüksek — rejim kuralı; WSL2 kapısı açık kalır.
 - **Gözlem:** bekliyor — hook telinin kurulumu+ilk canlı yakalama · K-010 ilk ajan koşumunda rejim denetimi.
 - **Sonuç: A2 KAPANDI (4/4).** K-010 kalan: A1 (2/5) ∧ A3 (A1∧A2∧A4'e bağlı) ∧ A4 (denetçi bütçe-çatalı).
+
+### 2026-07-23 · K-015 · bağlam-yönetim stratejisi — P6 Yarı-2 kararı (ana-sıra kaydı; öneri görünür sunuldu, m.37 onay-beklemez)
+- **Bağlam:** P6 dersi (07-22) K-015 şema taslağını kurdu; nihai kayıt ana-sıraya devredilmişti (ders kanona yazmaz). Ders: `ogrenme/dersler/2026-07-22-P6-context-eng-compaction.md`.
+- **Modeller (deneysel/proxy, m.39):** A compaction'a-güven (~0.60, kararlar kayıplı özete erir) ✗ | **B not-tutma-öncelikli + iki-parçalı stabil-prefix (sıcak ~2-3K · ~0.85 · m.20/m.34/m.9 birebir) ✅ seçildi** | C tam-izolasyon (~0.90 · ~7× işçi-token; tetiği araştırma-filosu D4 canlıya alınınca — B→C eşiği kayıtlı).
+- **Uygulama borcu (Şerit 1):** sıcak dosyaların iki-parçalı yerleşimi (değişmez çekirdek üstte, volatil/tarih altta — kapsül "Güncelleme" satırı şu an TEPEDE: prefix-invalidation adayı, K-015 kurulumunda düzeltilir).
+- **Gözlem:** bekliyor — ilk K-015 kurulumunda token/cache ölçümü deftere.
+
+### 2026-07-23 · sayı-araştırma turu — 4 hüküm (Salih imzası; kaynak `cc/rapor-2026-07-23-1.md`, 6-atlas, 234K alt-ajan token)
+- **Bütçe birimi:** KB kalır + 20KB+ dosyalara token-izleme; 8/12/20/8/16 ONAYLANDI (GEÇİCİ damga kalktı) · 48KB FLAG → damıtma vardiyasında token-bazlı yeniden bütçe/bölme · ×1,4 tek çarpan onaylı · YENİ eksen: konum (tepe-çapa). KILAVUZ güncellendi.
+- **Sicil:** 5/3/1 KALIR ama "c=0 go-gate, reliability kanıtı değil" etiketiyle + zaman-ayrıklık şartı + yuvarlanan hata-oranı izleme. 22-29'a çıkarma RED (blast düşük: kabuksuz-ajan + revert; hız ilkesi 07-22). Pano K-010/A1 güncellendi.
+- **Eval:** 6+3 → SMOKE yeniden-etiketi + çıplak-%100 yasağı + yeni setlerde negatif ~10 + ≥3× koşum; 20-sorgu skill-creator protokolüne tam hiza (tek dış-standarda oturan sayımız çıktı). KILAVUZ eval kuralı revize.
+- **Gözlem borçları:** ilk 3×-koşumlu eval turunda flakiness ölçümü · damıtma vardiyasında 48KB→token dönüşümü · atlas alt-ajanlarına ucuz-model denemesi (V59/K-020 hattı, /usage %19 bulgusu).
