@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN okunur; mount'ta git komutu YOK (okuma dahil).*
 
-**Güncelleme:** 2026-07-23 GÜNAYDIN VARDİYASI (Carvis, ana-sıra/Fable) — **PLATFORM KARARI ALINDI (Salih): kabuksuz-ajan rejimi → A2 KAPANDI 4/4** (senaryo-defteri 07-23; WSL2 K-011 gününe bağlandı) · A1 sicili **2/5** (07-23 senkron OK, `a27f4f8`→`e3937f9`) · bulut-vardiya raporu ingest edildi (`raporlar/2026-07-23-bulut-vardiya-dispatch-skill-raporu.md`: skill katmanları + Dispatch + ana-oturum karar-adayı) · günaydın-tetik boşluğu için hesap-skill paketi hazırlandı (kurulum tıkı Salih'te)
+**Güncelleme:** 2026-07-23 GÜNAYDIN VARDİYASI KAPANDI (Carvis, bulut ana-sıra/Fable) — **A2 KAPANDI 4/4 (platform=kabuksuz-ajan; WSL2→K-011)** · A1 **2/5** · bulut-rapor ingest + kararları (ana-oturum BEKLET/Fable-şartı · Dispatch BEKLET) · CLAUDE.md sıra-önce kuralı · **skill çifti KURULDU: gunaydin-vardiya v0.2 + vardiya-kapanis v0.1 (kapanış-skill ilk canlı koşum = bu kapanış)** · teslim: `raporlar/vardiya-teslim-2026-07-23-gunaydin.md`
 
 ## Şu an
 - **K-010 tetiği (m.38):** K-009 ∧ A1∧A2∧A3∧A4; A5 lider-hattı PARALEL (kuruluş = K-010∧A5). Detay pano K-010 kartı + defter 07-22.
@@ -22,5 +22,5 @@
 ## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN oku)
 1. Senkron-log tek bakış (A1 sayacı: 2/5 → hedef 5/5; A3 koşumları A1 dolunca açılır).
 2. core/-Bash PreToolUse telini kur + canlı test (PC oturumu; tel=tökezleme-teli, m.29).
-3. Açılış+kapanış skill çifti kurulum tıkı (Salih; gunaydin-vardiya v0.2 + vardiya-kapanis v0.1, eval'li — kuyruk skill-kurulum-notu eki) + ilk canlı test sonraki günaydın/kapanışta.
+3. Açılış-skill v0.2 ilk canlı test (sonraki 'günaydın'; kapanış-skill 07-23'te canlı koştu, gözlem defter adayı).
 4. Canlı tetik testleri (CC, 5 dk) · P6 commit+ingest · senaryo-defteri damıtma (48KB sınır AŞILDI — bu vardiyada +1 blok, ilk boş vardiyada zorunlu).

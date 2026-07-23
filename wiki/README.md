@@ -23,6 +23,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)
+- skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
 - rol-katmanlari (m.44) — CEO ≠ üst-orkestratör ≠ domain-lider; aday sayfa (07-21 borcu).
 - Çelişki kapısı (m.16) — sonraki oturum adayı (07-12 canlı örnekleri tazeyken); Salih notu: kontrol DAİMA dar kapsamlı, "tüm projeyi tara" yasak sınıfı.
 - DONE kuralı / loop temelleri — loop verisi gelince (Salih 07-12: "beraber loop kurup düşünürken revize ederiz; bu haliyle KILAVUZ'da dursun yeter").
