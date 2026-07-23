@@ -70,3 +70,7 @@
 
 ### 2026-07-23 · ana-oturum tanımı (bulut-rapor §3) — BEKLET + Salih şartı
 Salih (07-23): karar-adayı bekletildi (kaynak bulut-vardiya raporu beğenilmedi). Kayda giren şart: **ana oturum ne olursa olsun model=Fable olmalı** → tanım yeniden yazılırken '(model=Fable)' zorunlu koşul olarak eklenecek. Dispatch de BEKLET (kurulum+test yok; zamanlanmış özellik zaten K-009/K-010 blokajında).
+
+## 2026-07-23 · bulut-2 kısa vardiya — iki bulgu (karar değil)
+- **Mount-bayatlık bulgusu:** PC diski origin'in 4 commit gerisinde yakalandı (açılış origin-klon doğrulaması, ilk gerçek V4 vakası). Kök-neden adayı: gece-senkron scripti yalnız push-yönlü (yerel kirli → origin); bulut vardiyaları origin'e doğrudan yazınca disk geride kalıyor. **Öneri (Salih onayına aday):** script'e pull/fetch-önce adımı — çift-yüzey düzenin yapısal freni. O güne dek kural: PC açılışında elle `git pull`.
+- **Skill canlı-tetik verisi (K-016 hanesine):** gunaydin-vardiya v0.2 sade "günaydın" ile (önsöz tuzağına düşmeden), vardiya-kapanis v0.1 "seansı bitiriyorum" doğal-dil sinyaliyle tetiklendi — bulut yüzeyde 2/2 PASS. Negatif testler hâlâ açık.
