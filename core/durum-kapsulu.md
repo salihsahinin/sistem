@@ -22,5 +22,5 @@
 ## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN oku)
 1. Senkron-log tek bakış (A1 sayacı: 2/5 → hedef 5/5; A3 koşumları A1 dolunca açılır).
 2. core/-Bash PreToolUse telini kur + canlı test (PC oturumu; tel=tökezleme-teli, m.29).
-3. Günaydın-skill kurulum tıkı (Salih) + skill terfi süzgeci (kuyruk notu).
+3. Açılış+kapanış skill çifti kurulum tıkı (Salih; gunaydin-vardiya v0.2 + vardiya-kapanis v0.1, eval'li — kuyruk skill-kurulum-notu eki) + ilk canlı test sonraki günaydın/kapanışta.
 4. Canlı tetik testleri (CC, 5 dk) · P6 commit+ingest · senaryo-defteri damıtma (48KB sınır AŞILDI — bu vardiyada +1 blok, ilk boş vardiyada zorunlu).
