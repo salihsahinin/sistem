@@ -70,7 +70,7 @@ Resmî doküman: CLAUDE.md sistem promptunun parçası değil; sistem promptunda
 
 | Bulgu | Hüküm | JARVIS etkisi |
 |---|---|---|
-| Opus 5 CC v2.1.219 ile geldi; **bu makinede doğrulandı** (`claude --version` = 2.1.219) | [D] + yerel gözlem | `cc/README.md` envanteri (2.1.209) **bayat** |
+| Opus 5 CC v2.1.219 ile geldi; **bu makinede doğrulandı** — ve sürüm oturum ortasında **2.1.219 → 2.1.220**'ye güncellendi (iki ayrı ölçüm, saatler arayla) | [D] + yerel gözlem | `cc/README.md` envanteri (2.1.209) **bayat**; ayrıca sürüm oturum ortasında değişebiliyor — envanter kaydı tarih+saatli tutulmalı |
 | `.claude/agents/research-agent.md` içindeki `model: opus` artık **Opus 5'e** çözülüyor | [D] | Atlas ajanları bugün fiilen Opus 5 koştu |
 | Varsayılan Opus 5 **yalnız** Max / Team Premium / Enterprise-PAYG / API'de; **Pro ve Team Standard → Sonnet 5** | [D] daraltma | Görev emrindeki model satırı plana bağlı — hangi planda olduğumuz yazılı değil |
 | Efor merdiveni tam (low→max), varsayılan `high`; kodlama/ajanik iş için `xhigh` öneriliyor | [D] | 07-22 kararı (`Opus → xhigh`) resmî tavsiyeyle uyumlu |
@@ -84,7 +84,9 @@ Resmî doküman: CLAUDE.md sistem promptunun parçası değil; sistem promptunda
 Bunlar artık "arama-özeti" değil, **yerinde gözlem** — kanıt hiyerarşisinde en üst basamak:
 
 1. **Eşzamanlı 20 alt-ajan tavanı.** 12 ajan açtım, 13'üncü *"Concurrent subagent limit reached. You can run 20 subagents at once"* ile reddedildi. Tez iddiası birebir tuttu.
-2. **İç içe alt-ajan canlı.** Benim açtığım 12 ajan 20 tavanını doldurdu → aradaki farkı ajanların kendi çocukları açıklıyor. Bu, CHANGELOG ("varsayılan derinlik 3") ile dokümanların ("varsayılan 1, alt-ajan alt-ajan açamaz") **çelişkisinde CHANGELOG lehine güçlü karine**. Kesin kanıt değil; çelişki resmî tarafta açık kaldı.
+2. **Çocuk ajanlar koştu; mekanizma belirsiz.** Bu oturumda üç çocuk ajan kendi bildirimleriyle döndü — yani atlas ajanları alt-iş açtı. **Ama bunun "iç içe alt-ajan" olduğu kanıtlanmadı.**
+
+   *Düzeltme (S4-A3 itirazı üzerine, aynı oturumda):* Önce "12 ajan açtım, 20 tavanı doldu → demek ki iç içe geçme var" diye akıl yürütmüştüm. Bu çıkarım **sağlam değil**: tavanın `/subtask` fork'larını ve resume edilen ajanları da sayıyor olma ihtimali elenemiyor, ayrıca `MAX_SUBAGENT_SPAWN_DEPTH` set değil ve 2.1.220'de varsayılanın 1 (kapalı) olduğu iddia ediliyor. Karşı yönde: çocukların koştuğu gözlemle sabit. **Hüküm: çocuk iş açıldı [D, gözlem] · mekanizma [X, belirsiz].** Ölçüm yolu: alt-ajan panelindeki `(+N)` torun sayacı ve `/usage` alt-ajan kırılımı.
 
 **Operasyonel sonuç:** bugünkü koşumun gerçek ajan sayısı ve token maliyeti benim açtığım 12'nin üzerinde ve **ne kadar üzerinde olduğunu bilmiyorum**. Atlas tanımında delegasyon kotası yok; Opus 5 rehberi tam bu davranış için "deterministic cap" öneriyor.
 
@@ -118,9 +120,10 @@ Claude Code'da siber-işaretli istekler Opus 4.8'e düşürülüyor, biyoloji-i�
 
 | Ajan | Denetlenen iddia | Yöntem | Sonuç |
 |---|---|---|---|
-| T1-A1 | CC sürümü 2.1.219 | `claude --version` | **TUTTU** (yerinde gözlem) |
+| T1-A1 | CC sürümü 2.1.219 | `claude --version` | **TUTTU** ölçüldüğü an; sonra 2.1.220'ye güncellendi — sürüm iddiaları zaman damgasız kullanılamaz |
 | T1-A2 | Eşzamanlı 20 ajan tavanı | 13. ajanı açma denemesi | **TUTTU** (yerinde gözlem) |
-| T1-A2 | İç içe alt-ajan derinliği >1 | tavan aritmetiği | **Güçlü karine**, kesin değil |
+| T1-A2 | İç içe alt-ajan derinliği >1 | tavan aritmetiği | **ÇÜRÜDÜ** — çıkarım geçersiz (bkz. §2.6 düzeltme); çocuk iş açıldığı sabit, mekanizma [X] |
+| — | `CLAUDE_EFFORT=xhigh` set mi | `env` | **TUTTU** — bugünkü 20 ajanın hepsi Opus 5 + xhigh koştu; bu bir karar değil, miras |
 | T1-A2 | `tools:` listesinde çözülemeyen giriş varsa ajan başlamaz | 9 atlas ajanının fiilen başlaması | **YANLIŞLANDI** — ajanlar `Task` girişiyle başladı |
 | T1-A2 | PreToolUse `exit 2` sertleşmesi | telin kodu okundu | Telimiz JSON üretmiyor → **etkilenmiyor** |
 | T1-A3 | CLAUDE.md 200 satır eşiği | `wc -l` | 27 satır — **eşik altında**, ama ölçü vekil |
