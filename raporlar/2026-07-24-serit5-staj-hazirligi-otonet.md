@@ -1,42 +1,49 @@
 # Şerit 5 — Staj Hazırlığı (Otonet/Otoplus, başlangıç 11 Ağustos 2026)
 
 > **Mod:** yan-oturum (m.41) — hazırlık malzemesi. **Nihai planlama PC ana oturumunda** (Salih beyanı 07-24).
-> **Tarih:** 2026-07-24 · **Kalan süre: 18 gün**
-> **Şerit durumu:** 6 aile açıldı, **3'ü rapor yazdı**, 3'ü oturum limitinde öldü.
-> **Kaynak:** `scratchpad/S5-A{1,4,5}-seritA.md`
+> **Bugün:** 2026-07-24 · **Kalan: 18 gün**
+> **Belirleyici bağlam (Salih, 07-24):** işyerinde **agentic coding** yapılıyor — ekip kendisi kod yazmıyor, ajanlara yazdırıyor. Görevlerin "okumayı öğrenme" biçiminde verilmesinin sebebi bu.
+> **Şerit:** 7 aile açıldı, **6'sı rapor yazdı** (eksik: S5-A6, AWS'in inşa felsefesi).
+> **Kaynak:** `scratchpad/S5-A{1,2,3,4,5,7}-seritA.md`
 
-## 0. Önce eksikler (bu rapor yarım — hangi yarısı eksik, açıkça)
+## 0. Kanıt kısıtı (önce oku)
 
-| Aile | Konu | Durum |
+Egress politikası akademik yayıncıların ve çoğu blogun tamamını 403'ledi; oturum ortasında WebSearch bütçesi de tükendi. Açık kalan verimli kanal `raw.githubusercontent.com` oldu.
+
+Bunun somut sonucu: **S5-A5 (öğrenme yöntemi) raporunun tamamı [K]** — hiçbir birincil kaynağa inilemedi, tüm etki büyüklükleri arama özeti düzeyinde. S5-A3 (SQL) en sağlam olanı: PostgreSQL semantiği birincil dokümandan alınmış **ve** SQLite üzerinde fiilen koşulmuş. S5-A2 (AWS) fiyat rakamlarının hepsi ikincil — doğrulanmalı.
+
+**Rakamlar yön göstergesi olarak kullanılmalı, sayı olarak alıntılanmamalı.** Plan yöne dayanıyor, rakama değil.
+
+---
+
+## 1. ★ İşin gerçek tanımı: sen doğrulama katmanısın
+
+Agentic coding yapan bir ekipte kıt olan beceri kod yazmak değil. S5-A4'ün ölçtüğü altı LLM hata sınıfından **ikisini hiçbir araç yakalamıyor**:
+
+| Hata sınıfı | Büyüklük | Kim yakalar |
 |---|---|---|
-| S5-A1 | Amazon kurumsal mekanizmaları | ✅ tam rapor |
-| S5-A2 | **AWS platformunda veri mühendisliği** | ❌ öldü |
-| S5-A3 | **SQL okuma + ajanla kullanma** | ❌ öldü |
-| S5-A4 | Python kod okuma okuryazarlığı | ✅ tam rapor |
-| S5-A5 | Öğrenme yöntemi + kronolojik partisyon | ✅ tam rapor |
-| S5-A6 | AWS'in inşa felsefesi | ❌ öldü (kuyrukta bile koşamadı) |
+| Uydurma paket/API | **%19,7** paket halüsinasyonu [D] | Import denemesi, lockfile |
+| Eski/deprecated API | %25–38 [K] | Sürüm-farkındalıklı linter |
+| Güvenlik açığı | %12–40 (çelişkili) [X] | Bandit/ruff-S, SAST |
+| **Sessiz mantık hatası** | %66 "neredeyse doğru" [K] | **Yalnız insan okuması** |
+| Atlanmış hata yolu | nitel [K] | Property testing |
+| **Boş test tiyatrosu** | nitel [K] | **Yalnız insan okuması** (testi oku, kodu değil) |
 
-**Kritik boşluk:** Üç görevden **ikisinin içerik araştırması yok.** SQL hiç araştırılmadı. AWS tarafında yalnız *kurumsal kültür* okuması survived — oysa Salih'in şerhine göre (*"çalışma sürecimiz AWS'in inşası gibi olacak"*) asıl hedef platform/inşa okumasıydı, yani **hayatta kalan aile en az ilgili olanı.**
+Ve S5-A7'nin bulduğu resmi cümle bu rolü tam olarak adlandırıyor:
 
-**Ama plan iskeleti ayakta:** S5-A5 yöntem ailesi üç konunun da partisyonunu kurdu. Yani *ne zaman ne çalışılacağı* belli; *SQL tarafında neyin çalışılacağı* eksik. Limit sıfırlanınca ilk koşacak üç ajan: **S5-A3, S5-A2, S5-A6.**
+> *"Claude iş bitmiş göründüğünde durur. Çalıştırabileceği bir kontrol yoksa 'bitmiş görünüyor' elindeki tek sinyaldir ve **doğrulama döngüsü sen olursun: her hata senin fark etmeni bekler**."* [D]
 
-## 1. Kanıt kısıtı (dürüstlük — S5-A5'in kendi beyanı)
+**İşin bu.** Ve karşı-bulgu bunu daha da keskinleştiriyor: **AI yardımı okuma becerisini aşındırıyor** [S5-A4]. Yani ajanla çalışmak seni kendiliğinden iyi okuyucu yapmıyor — tersine, bilinçli pratik olmazsa kötüleştiriyor.
 
-Bu şeritte egress politikası akademik yayıncıların tamamını 403'ledi. **S5-A5 raporunun tamamı [K]'dır** — hiçbir birincil kaynağa inilemedi; tüm etki büyüklükleri arama özeti düzeyinde. S5-A4 daha şanslı (GitHub üzerinden bazı [D]'ler). S5-A1 ağırlıklı [K] + belgelenmiş [X]'ler.
+---
 
-**Sonuç:** Aşağıdaki rakamlar (g=0.74, d=0.60 vb.) yön göstergesi olarak kullanılmalı, sayı olarak alıntılanmamalı. Plan bunlara *yaslanmıyor*; plan yön üzerine kurulu.
+## 2. Planın temeli: "okuma" ne demek (S5-A5'in üç parçalı cevabı)
 
-## 2. ★ Planın temelini belirleyen karar: "okuma" ne demek?
+1. **Hedef okumaysa — EVET, risk yok.** Beceri hiyerarşisinde okuma yazmanın altındadır; öğretim teorisi "önce oku sonra yaz" der. 18 günde okuma yeterliliği hedeflemek kanıtla desteklenen bir karar.
+2. **"Pasif okuma" kastediliyorsa — HAYIR, çok riskli.** *"En büyük risk beceriksizlik değil, ölçülmemiş sahte yeterliliktir — 11 Ağustos'ta 'hazırım' hissiyle gidip ilk gerçek sorguda donmak."*
+3. **Sıfır üretim savunulamaz.** Yazma→okuma transferi kanıtlı; küçük üretim dozu okuma hedefine hizmet eder.
 
-İki görev de "okumayı öğrenme" diyor. S5-A5 bu varsayımı doğrudan sınadı ve **üç parçalı** cevap verdi:
-
-1. **Hedef okumaysa — EVET, risk yok.** Beceri hiyerarşisinde okuma yazmanın *altındadır*; öğretim teorisi "önce oku sonra yaz" der; alıcı bilgi üretici bilgiden hızlı gelişir. **18 günde okuma yeterliliği hedeflemek kanıtla desteklenen bir karar.**
-2. **Ama "pasif okuma" kastediliyorsa — HAYIR, çok riskli.** Yeniden okuma düşük faydalı; akıcılık yanılsaması tam burada devreye girer. *"En büyük risk beceriksizlik değil, ölçülmemiş sahte yeterliliktir — 11 Ağustos'ta 'hazırım' hissiyle gidip ilk gerçek sorguda donmak."*
-3. **Tamamen sıfır üretim — savunulamaz.** Yazma→okuma transferi kanıtlı; küçük üretim dozu okuma hedefine hizmet eder.
-
-### → Bunun somut sonucu: okuma birimi 5-adımlı çevrimdir
-
-Plan **"200 sorgu oku" OLAMAZ.** Her artefakt şu çevrimle okunur (pazarlıksız):
+### → Okuma birimi = 5 adımlı çevrim (pazarlıksız)
 
 1. **Tahmin yaz** — çalıştırmadan, cevaba bakmadan, ne yaptığını **yazılı** söyle
 2. **Doğrula** — çalıştır / cevabı aç
@@ -46,124 +53,187 @@ Plan **"200 sorgu oku" OLAMAZ.** Her artefakt şu çevrimle okunur (pazarlıksı
 
 *Adım 1 ve 3 olmadan bu plan "düşük fayda" kutusuna düşer.*
 
-## 3. ★ En yüksek getirili bulgu (beklenmedik)
+---
 
-S5-A5'in ilk-gün etkisi analizi, hazırlık önceliklerini **tersine çeviriyor**:
+## 3. ★ En yüksek getirili hazırlık kalemi (beklenmedik)
 
-**İşe yarayan:**
-1. **Terim/kelime dağarcığı tanıma** → rol netliğini besler; rol netliği en hızlı kazanılan ve performansa aracılık eden boyut.
-2. **Hazırlanmış soru repertuarı** → *"Yazılı 5 soru, 5 saatlik ekstra SQL çalışmasından daha yüksek beklenen getiriye sahiptir."*
-3. **Öz-yeterlik** → DONE'ları geçtikçe planın kendisi üretir.
+**İşe yarayan:** (1) terim/kelime dağarcığı — rol netliğini besler, en hızlı kazanılan boyut · (2) **hazırlanmış soru repertuarı** — *"yazılı 5 soru, 5 saatlik ekstra SQL çalışmasından daha yüksek beklenen getiriye sahiptir"* · (3) öz-yeterlik — planın DONE'ları bunu üretir.
 
-**Boşa giden:**
-1. **Görev ustalığı avı** — en yavaş kazanılan boyut, 18 günde satın alınamaz.
-2. **Kurumun özgül şemasını önceden öğrenmeye çalışmak** — bilinemez.
-3. **Yazma (üretim) becerisine yatırım** — iş görevi okumaysa format eşleşmez.
-4. **Son 2 günde cramming** — kazanımlar söner.
+**Boşa giden:** görev ustalığı avı (18 günde alınamaz) · kurumun özgül şemasını önceden öğrenmeye çalışmak (bilinemez) · yazma becerisine yatırım (format eşleşmiyor) · son 2 günde cramming.
 
-> **Hedef:** *Advanced Beginner okuma yeterliliği + rol netliği + öz-yeterlik + hazır soru repertuarı.*
-> **Hedef değil (18 günde alınamaz):** görev ustalığı.
-
-**Uyarı [X]:** "yeni işe alınanlar 1-3 ayda tam üretkenliğe ulaşır" tipi rakamlar yalnız satıcı bloglarında bulundu, hakemli kaynak yok. Plan bunlara yaslanmıyor.
-
-## 4. KRONOLOJİK PARTİSYONLAR (S5-A5 iskeleti)
-
-**Tasarım ilkeleri:** dikey dilim (her partisyon kullanılabilir yetenekle biter) · 2–4 günlük partisyonlar · gün-içi bloklu, günler-arası aralıklı · destekli → destek-azaltılmış iki rejim · Mager formatında ölçülebilir DONE · açık tampon · son iki gün iniş · günde 1,5–2,5 saat aktif.
-
-| Partisyon | Tarih | Konu | DONE (ölçülebilir) |
-|---|---|---|---|
-| **P0** | 24 Tem (bugün) ~1 sa | **Kalibrasyon** | 10 SQL + 10 Python soğuk okunur, çalıştırmadan yazılı tahmin → **baseline yüzdesi yazılı** |
-| **P1** | 25–28 Tem (4 gün) | **SQL okuma / çekirdek** *(destekli)* | 15 görülmemiş orta sorgu, referanssız, ≤3 dk/sorgu; her biri için tablolar+filtre+granülerlik+satır yönü → **≥12/15** |
-| **P2** | 29 Tem–1 Ağu (4 gün) | **Python okuma / çekirdek** *(destekli)* | 12 görülmemiş hücre; girdi tipi/şekli + çıktı + kırılma noktası → **≥10/12**; ayrıca P1 bakım testi ≥4/5 |
-| **P3** | 2–3 Ağu (2 gün) | **Kurumsal çalışma yöntemi** *(düşük yük)* | (a) 30 terim kapalı-kitap, kendi cümlenle + "bu bana ne yaptırır" → **≥24/30** · (b) **ilk hafta soracağın 5 soru yazılı ve spesifik** |
-| **P4** | 4–6 Ağu (3 gün) | **Entegrasyon** *(iskele sökülüyor)* | 1 gerçek-boyutlu artefakt (100+ satır script **veya** 40+ satır sorgu), referanssız, 10 cümlelik yazılı davranış özeti → **≤2 maddi hata (%90 eşik)** |
-| **P5** | 7–8 Ağu (2 gün) | **Tampon** *(yeni içerik YOK)* | P1–P4 DONE'larının **hiçbiri açık değil** |
-| **P6** | 9–10 Ağu (2 gün) | **Soğuk prova + iniş** *(cramming YASAK)* | 9 Ağu: 10 SQL + 8 Python + 15 terim tek oturum karma sınav → **≥%80**; 10 Ağu: ≤45 dk hafif geri-çağırma + lojistik |
-| — | **11 Ağustos** | **STAJ BAŞLANGICI** | — |
-
-### Pazarlıksız kurallar (tüm partisyonlar boyunca)
-
-1. Her artefakt **5-adımlı çevrimle** okunur
-2. Hiçbir konuya **3 günden fazla ara** yok (odak dışı konulara 10 dk/gün)
-3. **Yeniden okuma / vurgulama / pasif izleme yok**
-4. DONE testleri **soğuk, görülmemiş, referanssız, yazılı**
-5. **Eşik düşürülmez, kapsam küçültülür**
-6. **Minimum doz:** kötü gün = 15 dk / 5 artefakt. Sıfır gün yok, tam gün de zorunlu değil
-7. **Kayma kuralı önceden yazılı:** 1 gün→tampon · 2 gün→kapsam küçülür · 3+ gün→plan P1+P3'e indirgenir
-8. **Günlük tavan 2,5 saat**
-9. Her partisyon başında **eğer-o zaman planı** yazılır
-10. Son 2 gün **iniş**, yeni içerik yok
-
-**Yöntemsel şerh (ayrışan hat):** S5-A5 **harmanlamayı (interleaving) tavsiye ETMİYOR** — genel etki olumlu görünse de kelime-benzeri materyalde tersine dönüyor ve mekanizması (ayırt etme) bu üç konuya uymuyor. Tavsiye edilen **aralıklama**. Bu ayrım plana işlenmiş durumda: gün-içi bloklu, günler-arası aralıklı.
-
-## 5. Python okuma — uygulanabilir çekirdek (S5-A4)
-
-### 5.1 LLM üretimi Python'da aranacak 6 hata sınıfı
-
-| # | Sınıf | Ölçülmüş büyüklük | Kim yakalar |
-|---|---|---|---|
-| 1 | Uydurma paket/API | **%19,7 paket halüsinasyonu** [D] | Import denemesi, lockfile |
-| 2 | Eski/deprecated API | %25–38 [K] | Sürüm-farkındalıklı linter |
-| 3 | Güvenlik açığı | %12–40 (çelişkili) [X] | Bandit/ruff-S, SAST |
-| 4 | **Sessiz mantık hatası** | %66 "neredeyse doğru" [K] | **Yalnız insan okuması + karşı-test** |
-| 5 | Atlanmış hata yolu | nitel [K] | Property testing |
-| 6 | **Boş test tiyatrosu** | nitel [K] | **Yalnız insan okuması** (testi oku, kodu değil) |
-
-**Kritik:** 4 ve 6 numaralı sınıfları **hiçbir araç yakalamıyor** — okuma okuryazarlığının varlık sebebi tam olarak bu ikisi. Bu, "neden okumayı öğreniyorum" sorusunun kanıtlı cevabı.
-
-### 5.2 Onay öncesi kontrol listesi — veri işi için en kritik maddeler
-
-**Mekanik (30 sn):** her `import` lockfile'daki sürümde mi · her method çağrısını **tanıma atla, doğrula** · diff >400 satırsa bölmeden inceleme (tespit oranı %65→%28)
-
-**Veri semantiği (veri mühendisliği için ZORUNLU):**
-- Her `merge`: `validate=` var mı? Satır sayısı kontrolü var mı?
-- Her `groupby`: NA anahtar mümkün mü, `dropna=` bilinçli mi?
-- Her filtre: sınır dahil mi hariç mi (`<` vs `<=`) — **tarih aralıklarında off-by-one AI'ın en klasik sessiz hatası**
-- Kopyala/görünüm: zincirli atama var mı? null vs NaN?
-
-**Mantık — TEK GERÇEK TEST:** *"Bir gerçek girdiyi elle fonksiyondan geçir. Bu maddeyi atlarsan liste tiyatrodur."* Ayrıca: kod **ne yapmıyor**? (omission hatası — otomasyonun gündeme getirmediği eksik.)
-
-**Yan etki:** `except Exception: pass` var mı · `assert` ile girdi doğrulaması yapılmış mı (`-O` altında silinir) · idempotent mi?
-
-**★ Karşı-kanıt (dürüst kayıt):** S5-A4, "AI yardımı okuma becerisini **aşındırıyor**" yönünde bulgu da getirdi. Yani ajanla çalışmak, okuma becerisini kendiliğinden geliştirmiyor — bilinçli pratik gerekiyor. Bu, stajda ajan kullanırken de geçerli.
-
-## 6. Amazon çalışma yöntemi — küçük ekibe ne taşınır (S5-A1)
-
-**Taşınabilir (ölçek gerektirmez):** PR/FAQ (kısaltılmış — asıl faydası "kendine yalan söylemeyi engellemek") · yazılı karar notu 1–2 sayfa + sessiz okuma · girdi/çıktı metrik ayrımı + haftalık 30 dk mini-inceleme · hafif COE (1 sayfa: ne oldu, etki, zaman çizelgesi, 5 neden, sahipli+tarihli aksiyon) · **tek-yön/çift-yön kapı** (küçük ekipte *daha da* değerli) · "you build it you run it" · **mekanizma testi**: "iyi niyet mi kurdum, mekanizma mı? — denetim adımı yoksa kural yok demektir"
-
-**Kargo-kült olur (taşıma):** zorunlu 6-sayfa + 30 dk sessiz okuma ritüeli · Bar Raiser (ekip dışı havuz gerektirir) · OP1/OP2 yıllık plan · performans kotaları
-
-**Eleştiri literatürü (dürüst bakış):** Amazon'un kendi CEO'su bürokrasiyi hedef aldı (yönetici başına çalışan oranını %15 artırma, "bürokrasi ihbar hattı"). Ve klasik vaka: *Anytime Feedback Tool* — denetim bileşeni olmayan ve teşvikleri yanlış hizalayan bir "mekanizma", niyetin tersini üretti. **Ders bizim m.29/deneysel damga disiplinimizle aynı: mekanizmanın denetim ayağı yoksa mekanizma değildir.**
-
-> Bu bölüm Salih'in şerhine göre **düşük öncelikli** — asıl hedef platform/inşa okumasıydı, o aile koşamadı.
-
-## 7. JARVIS bağlamı — köprü notu (m.16 hattı, karar değil)
-
-Staj hattı panoya üçüncü bir zaman-baskılı şerit olarak giriyor ve iki mevcut kararla temas ediyor:
-
-- **K-015 "ÖNCELİK №1"** (m.36 2. revizyon, hedef ~10 Ekim) — staj 11 Ağustos–? aralığında Salih'in saatlerini alacak.
-- **K-002 PortRisk** BEKLEYEN'de, gerekçesi *"birkaç gün odak öğrenme+Jarvis"* idi; o "birkaç gün" artık farklı bir şeye tahsis oluyor.
-- **K-004** (İngilizce/CV paketi, Kasım) — staj CV malzemesi üretiyor, yani K-004'ü besliyor.
-
-**Bu bir çelişki raporu değil, bir yük bildirimi.** Karar ana oturumda; ben yalnız görünür kılıyorum.
-
-## 8. Sıradaki iş (limit sıfırlanınca — UTC 03:50 sonrası)
-
-1. **S5-A3 (SQL okuma + ajanla kullanma)** — en büyük boşluk, P1 partisyonunun içeriği buna bağlı
-2. **S5-A2 (AWS veri mühendisliği hattı)** — Salih'in şerhine göre asıl hedef
-3. **S5-A6 (AWS'in inşa felsefesi)** — "AWS'in inşası gibi" cümlesinin doğrudan karşılığı
-4. Sonra: bu üçünün antitezleri + hakemlik
-
-**Ama P0 bugün koşulabilir** — kalibrasyon için araştırma gerekmiyor, yalnız 10 SQL + 10 Python artefaktı ve yazılı tahmin. Araştırma beklenmeden başlanabilecek tek partisyon bu.
-
-## 9. Cevaplanmamış sorular (m.41)
-
-1. Staj hangi teknoloji yığınında? (AWS mi, başka bulut mu, on-prem mi) — S5-A2'nin kapsamı buna bağlı.
-2. "AWS'in inşası gibi" cümlesi kim tarafından, hangi bağlamda söylendi? Kurumsal mekanizma mı, servis mimarisi mi kastediliyor?
-3. Günlük gerçekçi çalışma penceresi ne kadar? Plan 1,5–2,5 saat varsayıyor ve bu rakamın **hakemli dayanağı yok** [X].
-4. Staj JARVIS'e nasıl bağlanacak — ayrı şerit mi, K-004'ün altında mı, yoksa yeni kart mı?
-5. Şirkete dair hiçbir bilgi bu repoya yazılmamalı mı (m.14 private ama yine de üçüncü taraf)? Sınırı Salih çizmeli.
+> **Hedef:** advanced-beginner okuma yeterliliği + rol netliği + öz-yeterlik + hazır soru repertuarı.
+> **Hedef değil:** görev ustalığı.
 
 ---
 
-*Yan-oturum çıktısı. Kanon kilitlenmedi. Nihai planlama PC ana oturumunda (Salih beyanı 07-24).*
+## 4. SQL çekirdeği (S5-A3 — bu şeridin en sağlam raporu)
+
+### 4.1 Yedi sessiz katil
+
+| # | Yapı | Neden sessiz |
+|---|---|---|
+| 1 | **LEFT JOIN + WHERE** | Sağ tablonun kolonuna `WHERE` koyunca dış birleştirme **sessizce INNER JOIN'e** döner — satırlar kaybolur, hata verilmez |
+| 2 | **`NOT IN` + NULL** | Alt sorguda tek bir NULL varsa sonuç **HER ZAMAN boş** — "SQL'in en sessiz katili" |
+| 3 | **NULL üç değerli mantık** | `NULL > 100` = *unknown*, ne doğru ne yanlış; filtre sessizce eler |
+| 4 | **Fan-out** | Birden-çoğa birleştirme satırları çoğaltır; `SUM` bir anda yanlış rakam verir |
+| 5 | **`COUNT(*)` ≠ `COUNT(kolon)`** | İkincisi NULL'ları saymaz |
+| 6 | **GROUP BY / HAVING** | Granülerlik değişir, filtre sırası sonucu değiştirir |
+| 7 | **Tarih / zaman dilimi** | Sınır dahil mi hariç mi; off-by-one — ajanın en klasik sessiz hatası |
+
+### 4.2 Yazmadan doğrulama — beş teknik
+- **`EXPLAIN`** = sorguyu çalıştırmadan bedava satır tahmini
+- **"Kaç satır olmalı?" ön-tahmini** — okumadan önce yazılır
+- **Granülerlik (grain) kontrolü** — tek en değerli test: *bu sorgunun bir satırı neyi temsil ediyor?*
+- **Tekilleştirme/karşılaştırma testleri** — fan-out tespiti
+- **Sağlama sorguları** — ajanın sorgusundan bağımsız, kendi yazdığın kontrol
+
+### 4.3 Sınav tasarımı (P1 DONE'u)
+15 sorgu · referanssız · ≤3 dk/sorgu. **Geçme ölçütü iki koşul birden:**
+1. **13/15 doğru**, VE
+2. **Sessiz-hata sınıfındaki 6 sorunun HEPSİ doğru.**
+
+İkinci koşul sert olmalı: *"15'in 13'ünü bilip bu altısından birini kaçırmak, staj ortamında hata vermeden yanlış rakam raporlamak demektir. Toplam puanla telafi edilemez."*
+
+**Dürüst sınır (ajanın kendi kaydı):** sınav tek bir 20 satırlık şemada ölçüyor; gerçek kurumsal şemadaki şema-bağlama zorluğunu (hataların %29-49'u) **temsil etmiyor**. Staj başladıktan sonra gerçek şemayla tekrarlanmalı.
+
+**Sınav sonrası kalibrasyon:** yanlışları hata *sınıfına* göre grupla; iki soruda aynı sınıf yanlışsa o başlığı yeniden çalış — toplam puana bakma.
+
+---
+
+## 5. Python çekirdeği (S5-A4)
+
+Onay öncesi kontrol listesinin veri işi için kritik maddeleri:
+
+**Mekanik (30 sn):** her `import` lockfile'daki sürümde mi · her method çağrısını **tanıma, doğrula** · diff >400 satırsa bölmeden inceleme (**tespit oranı %65→%28**)
+
+**Veri semantiği (zorunlu):** her `merge`'de `validate=` ve satır sayısı kontrolü · her `groupby`'da NA anahtar ve `dropna=` bilinçli mi · her filtrede sınır dahil/hariç · kopyala-görünüm zincirli atama · null vs NaN
+
+**Mantık — tek gerçek test:** *"Bir gerçek girdiyi elle fonksiyondan geçir. Bu maddeyi atlarsan liste tiyatrodur."* Ve: **kod ne yapmıyor?** (omission hatası — otomasyonun gündeme getirmediği eksik)
+
+**Yan etki:** `except Exception: pass` var mı · `assert` ile girdi doğrulaması (`-O` altında silinir) · idempotent mi
+
+---
+
+## 6. ★ Operatör döngüsü (S5-A7 — plana eklenen yeni katman)
+
+### 6.1 Testler artık kalite aracı değil, **ajanın durma koşulu**
+
+Durdurma sertliği dört kademeli [D]:
+1. **Prompt içinde:** "implement ettikten sonra testleri çalıştır"
+2. **Oturum boyunca:** `/goal` koşulu — ayrı değerlendirici her turdan sonra kontrol eder
+3. **Deterministik kapı:** `Stop` hook — kontrol geçene kadar turu **bloklar**
+4. **İkinci görüş:** doğrulama alt-ajanı — *"işi yapan ajan notu veren olmasın"*
+
+Ve kanıt talebi [D]: *"Claude'un başarıyı iddia etmesi yerine **kanıt göstermesini** iste: test çıktısı, çalıştırdığı komut ve dönen sonuç. Kanıtı incelemek, doğrulamayı kendin tekrar çalıştırmaktan hızlıdır."*
+
+### 6.2 Taze-bağlam incelemesi ve kalibrasyonu
+Resmi desen [D]: inceleyici alt-ajan **yalnız diff'i ve ölçütleri** görür, *"değişikliği üreten akıl yürütmeyi görmez"* — bu, m.40b'nin CoVe-Factored kuralıyla aynı ilke.
+
+Ama aynı doküman kalibrasyon uyarısı da veriyor [D]: *"Boşluk bulmaya yönlendirilen bir inceleyici, iş sağlam olsa bile genellikle bir şeyler rapor eder… Her bulgunun peşinden koşmak aşırı-mühendisliğe götürür."*
+
+### 6.3 Kabul/ret kararı
+- **Anthropic'in "iki düzeltme" kuralı** [D]: iki düzeltmeden sonra düzelmiyorsa yaklaşımı değiştir, düzeltmeye devam etme.
+- *"Yeniden promptlamak mı ucuz, elle düzeltmek mi"* için **doğrudan ölçüm bulunamadı** — bu bir boşluk, sahada kendi verini toplayacaksın.
+
+### 6.4 Ajana devredilmeyenler
+Salt-okunur rejim ilk basamak (plan modu kaynak dosyaları değiştirmez, onaya kadar düzenlemeler bloklu). Geri-alınamaz eylemler, üretim verisine yazma, kimlik/erişim değişiklikleri devredilmez.
+
+### 6.5 Ölçülen üretkenlik gerçeği — abartma
+- **Veracode [K, satıcı]:** güvenli/güvensiz yol arasında seçim sunulduğunda modeller **%45** oranında güvensizi seçmiş. *"AI kodu 2,74x daha çok açık içeriyor"* iddiası ikincil sitelerde dolaşıyor, birincil metinde **doğrulanamadı [X] — kullanma.**
+- **MSR 2026 [K]:** merge oranları ve inceleme sonuçları **küçük, yerel ve CI-doğrulanmış** agentic PR'larda daha iyi. → *Küçük dilim + CI, ajan işinin kabul edilebilirliğinin ölçülmüş bileşeni.*
+
+---
+
+## 7. AWS (S5-A2)
+
+### 7.1 Yeni başlayan için ölümcül sınıflar
+Açık S3 bucket · kök hesap kullanımı · uzun ömürlü erişim anahtarı. Disiplin: **"her şeye erişim verip sonra kısmak" değil, "hiçbir şeye verip gerekeni açmak."**
+
+### 7.2 Maliyet birinci sınıf tasarım kısıtı
+Athena taranan bayt · boşta Redshift kümesi · **NAT Gateway (en sinsi kalem)** · Glue · S3 sınıflarının minimum süre/boyut cezaları. **Uyarı: Free Tier değişti** — öğrenme ortamı kurarken kontrol et. *Tüm fiyat rakamları ikincil kaynaktan [K], doğrulanmalı.*
+
+### 7.3 Terminoloji tuzağı
+**"raw/curated/serving" AWS'in kendi dili DEĞİL.** Şirkette hangi adlandırmanın kullanıldığını sor — kendi terimini dayatma.
+
+### 7.4 Sertifika: hayır (şimdi), evet (Ekim-Kasım)
+**Şimdi sınava girme.** Ama **DEA-C01 Exam Guide'ı ücretsiz müfredat olarak oku (~2 gün)** — 4 domain + servis listesi, "AWS'te veri mühendisliği nelerden ibaret" haritasını bedavaya veriyor. Sertifika Ekim-Kasım'a: o noktada CV'de "öğrendim" değil **"kullanıyorum"** anlamına gelir. Çoğu işveren sınav ücretini karşılıyor — sormaya değer.
+
+### 7.5 ★ "AWS'in inşası gibi" — cümlenin anlamını SOR
+Teknik okuma üç şey önerir: katmanlı ve geri-alınabilir inşa · maliyet birinci sınıf kısıt · least privilege / blast radius.
+
+Ama ajanın kendi uyarısı yerinde: *"cümle mimari bir metafor da olabilir, çalışma disiplini metaforu da. **Gerçek anlamı Salih'in şirkete sorması gereken şeydir** — ve bu iyi bir ilk-hafta sorusudur."*
+
+**→ Bu, P3'teki "5 soru" listesinin birinci maddesi olmalı.**
+
+---
+
+## 8. Amazon kurumsal mekanizmaları (S5-A1 — düşük öncelik)
+
+**Küçük ekibe taşınır:** kısaltılmış PR/FAQ (asıl faydası "kendine yalan söylemeyi engellemek") · 1-2 sayfalık karar notu + sessiz okuma · haftalık 30 dk mini-inceleme · hafif COE · **tek-yön/çift-yön kapı** (küçük ekipte daha da değerli) · **mekanizma testi**: *"iyi niyet mi kurdum, mekanizma mı? — denetim adımı yoksa kural yok demektir."*
+
+**Kargo-kült olur:** zorunlu 6-sayfa ritüeli · Bar Raiser · OP1/OP2 yıllık plan · performans kotaları.
+
+**Dürüst kayıt:** Amazon'un kendi CEO'su bürokrasiyi hedef aldı; ve *Anytime Feedback Tool* vakası — denetim ayağı olmayan bir "mekanizma" niyetin tersini üretti.
+
+---
+
+## 9. KRONOLOJİK PARTİSYONLAR (operatör katmanıyla güncellenmiş)
+
+| Partisyon | Tarih | Konu | DONE |
+|---|---|---|---|
+| **P0** | 24 Tem · ~1 sa | **Kalibrasyon** | 10 SQL + 10 Python soğuk, çalıştırmadan yazılı tahmin → baseline yüzdesi kayıtlı |
+| **P1** | 25–28 Tem | **SQL okuma** *(destekli)* | 15 sorgu, referanssız, ≤3 dk → **13/15 VE sessiz-hata 6/6** |
+| **P2** | 29 Tem–1 Ağu | **Python okuma** *(destekli)* | 12 hücre; girdi/çıktı tipi-şekli + kırılma noktası → **≥10/12** · P1 bakım ≥4/5 |
+| **P3** | 2–3 Ağu | **Kurumsal yöntem + AWS haritası** *(düşük yük)* | (a) 30 terim kapalı-kitap → **≥24/30** · (b) **ilk hafta soracağın 5 soru yazılı** — birincisi "AWS'in inşası gibi" ne demek |
+| **P4** | 4–6 Ağu | **★ OPERATÖR ENTEGRASYONU** *(iskele sökülüyor)* | **Değişti** — aşağıda |
+| **P5** | 7–8 Ağu | **Tampon** *(yeni içerik yok)* | P1–P4 DONE'larının hiçbiri açık değil |
+| **P6** | 9–10 Ağu | **Soğuk prova + iniş** *(cramming yasak)* | 10 SQL + 8 Python + 15 terim tek oturum → **≥%80** |
+| — | **11 Ağustos** | **BAŞLANGIÇ** | — |
+
+### ★ P4 revizyonu (agentic coding bilgisiyle)
+
+Eski DONE "100+ satırlık script'i oku, özet yaz" diyordu. **Format eşleşmiyor** — senin işin script okumak değil, ajan çıktısını yargılamak. Yeni DONE:
+
+> **Üç tur, her biri sıfırdan:** (1) ajana yazılı bir görev tarifi ver — bağlam, kısıt, kabul ölçütü, kapsam sınırı · (2) çıktısını referanssız oku · (3) **kabul / reddet-yeniden-tarif et / elle düzelt** kararını **yazılı gerekçesiyle** ver · (4) sonra gerçek davranışla karşılaştır.
+>
+> **Geçme:** 3 turun 3'ünde karar doğru **ve** en az bir turda ajanın sessiz hatasını yakalamış olmak. Ajan hata yapmadıysa tur sayılmaz — hatayı sen enjekte et.
+
+Bu, okuma becerisini de operatör kararını da aynı anda ölçer ve gerçek işin biçimindedir.
+
+### Pazarlıksız kurallar
+1. Her artefakt **5-adımlı çevrimle** okunur
+2. Hiçbir konuya **3 günden fazla ara** yok (10 dk/gün soğuk dokunuş)
+3. **Yeniden okuma / pasif izleme yok**
+4. DONE testleri **soğuk, görülmemiş, referanssız, yazılı**
+5. **Eşik düşürülmez, kapsam küçültülür**
+6. **Minimum doz:** kötü gün = 15 dk / 5 artefakt. Sıfır gün yok
+7. **Kayma kuralı:** 1 gün→tampon · 2 gün→kapsam · 3+ gün→plan P1+P3'e iner
+8. **Günlük tavan 2,5 saat** *(bu rakamın hakemli dayanağı yok [X])*
+9. Her partisyon başında **eğer-o zaman planı** yazılır
+10. Son 2 gün **iniş**
+
+**Yöntemsel şerh:** S5-A5 **harmanlamayı tavsiye etmiyor** (mekanizması bu üç konuya uymuyor); tavsiye edilen **aralıklama**. Plan buna göre: gün-içi bloklu, günler-arası aralıklı.
+
+---
+
+## 10. JARVIS bağlamı — köprü notu (m.16 hattı, karar değil)
+
+Staj hattı panoya üçüncü zaman-baskılı şerit olarak giriyor: **K-015** "ÖNCELİK №1" (hedef ~10 Ekim) ile saat rekabeti · **K-002 PortRisk** BEKLEYEN'de kalma gerekçesi değişiyor · **K-004** (CV/İngilizce, Kasım) staj malzemesiyle besleniyor — ve S5-A2'nin sertifika zamanlaması (Ekim-Kasım) doğrudan K-004 penceresine düşüyor.
+
+Bu bir çelişki raporu değil, yük bildirimi. Karar ana oturumda.
+
+---
+
+## 11. Cevaplanmamış sorular (m.41)
+
+1. **"AWS'in inşası gibi" ne demek?** — şirkete sorulacak; P3'ün 5 sorusunun birincisi.
+2. Staj hangi yığında, hangi katman adlandırmasıyla çalışıyor?
+3. Günlük gerçekçi çalışma penceresi? Plan 1,5–2,5 saat varsayıyor, **hakemli dayanağı yok [X]**.
+4. Ajan çıktısında "yeniden promptla vs elle düzelt" eşiği — **ölçüm yok**, sahada kendi verini topla.
+5. Staj JARVIS'e nasıl bağlanacak — ayrı şerit mi, K-004 altında mı, yeni kart mı?
+6. Şirkete dair bilginin bu repoya yazılma sınırı nedir? (m.14 private ama üçüncü taraf)
+7. **S5-A6 (AWS'in inşa felsefesi) koşamadı** — "inşa gibi" cümlesinin üçüncü okuması eksik.
+
+---
+
+*Yan-oturum çıktısı. Kanon kilitlenmedi. Nihai planlama PC ana oturumunda.*
