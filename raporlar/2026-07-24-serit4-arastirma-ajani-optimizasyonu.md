@@ -2,8 +2,9 @@
 
 > **Mod:** yan-oturum (m.41) — öneri üretir, kanon KİLİTLEMEZ. `core/` · `CLAUDE.md` · `.claude/` yazılmadı.
 > **Soru (Salih, 07-24):** "İyi bir araştırma ajanı nasıl oluşturulur; şirkete en optimize araştırma ajanını nasıl kurarız?"
-> **Şerit:** 3 aile açıldı; S4-A2 ve S4-A3 rapor verdi, S4-A1 koşum sırasında kesildi. Ek olarak iki alt-ajan bağımsız rapor döndürdü (hakem güvenilirliği · kaskad hatası).
+> **Şerit:** 3 aile açıldı, **üçü de rapor yazdı**. Ek olarak iki alt-ajan bağımsız rapor döndürdü (hakem güvenilirliği · kaskad hatası).
 > **Kaynak:** `scratchpad/S4-A{2,3}-seritA.md` + iki alt-ajan dönüşü
+> **⚠ İşlenmemiş malzeme:** `scratchpad/S4-A1-seritA.md` (yerleşik araştırma-ajanı tasarımları, 35 KB) diskte duruyor ama **bu rapora işlenmedi** — özeti dönmeden oturum kesildi, sonradan diskte bulundu. Literatür tarafı bu ölçüde eksik; ana-sıra ingest etmeli.
 
 ## 0. Bu raporun özel konumu
 
@@ -153,7 +154,7 @@ Ve üç kural: **yazma tek şeritte** (Cognition revizyonu) · **hakem iddia gö
 2. V26 yüzeye koşullanacak mı, yoksa ağ politikası mı değişecek? (Katman-1)
 3. Bugünkü koşumun gerçek token maliyeti kaç? `/usage` alınmadı — ölçülmeden V59 kararı verilemez.
 4. Alt-ajanların açtığı çocuk işlerin mekanizması ne? Gözlemle sabit, mekanizma [X].
-5. S4-A1 (yerleşik araştırma-ajanı tasarımları) koşumu kesildi — bu rapor onsuz yazıldı; literatür tarafı eksik.
+5. S4-A1 (yerleşik araştırma-ajanı tasarımları) raporu **diskte ama işlenmedi** — `scratchpad/S4-A1-seritA.md`. Bu raporun literatür tarafı o ölçüde eksik; ingest edilince §2 ve §7 gözden geçirilmeli.
 
 ---
 
