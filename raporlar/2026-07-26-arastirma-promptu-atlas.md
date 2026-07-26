@@ -8,7 +8,24 @@
 **Notasyon:** `2026-07-26-LOJIK-onerme-formu.md` §Notasyon ile aynı. `⊨D` birincil · `⊨K` ikincil · `⊨X` çelişkili · `⊨¬2` antitez koşulmadı · `[?]` kestirim.
 **Okuma kuralı:** öncülü sağlanmayan önermenin sonucu geçerli DEĞİLDİR.
 
-> **DURUM:** A29 kapandı (§2). **A28 ∧ A30 koşuyor** — §3 ve §4 bilerek boş; indiklerinde bu dosyaya eklenecek, ayrı dosya açılmayacak. Borç §6'da kayıtlı.
+> **DURUM:** A28, A29 ∧ A30 **kapandı**.
+
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> Antitez **araçsız** koştu (`tool_uses = 0`) ⇒ **mantıksal** saldırılar tam güçtedir; **olgusal karşı-örnekler `[K-hatırlama]`**dır ∧ borç açar. Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §6.
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K19** ⭐ | §2.5 ⑧ · §2.4 | *"Özetleme kaybını ölçen HİÇBİR çalışma yok"* ⇒ **`[ARANAMADI]`** — koca bir alt-alan var ∧ taranmadı |
+> | **K20** ⭐ | §3.6 · §3.7 ⑥ | *"Negatif talimat için HİÇBİR kanıt yok"* ⇒ **`[ARANAMADI]`** — doğrudan ölçen çalışma var |
+> | **K21** ⭐ | §3.7 ③ | *"Sistematik olarak daha kötü"* → **"ölçülen bazı kurulumlarda belirgin daha kötü"** |
+> | K22 | §4.6 ④ · Q30 | *"Korelasyon raporlanmamalı"* → **güven aralığıyla birlikte raporlanır**; çifte standart kaydı |
+> | K23 | §4.6 ⑦ | *"Sıfır kanıt"* → **nedensel kanıt yok, korelasyonel kanıt var** |
+> | K24 | §2.5 ③ (Q13) | Kanıt-türü şerhi **iddia listesine taşındı**; ③'ün ④'ten **çıkmadığı** kaydı |
+> | K25 | §4.6 ② | Tekrar örnekleme **rassal varyansı** azaltır, **sistematik yanlılığı azaltmaz** |
+> | K26 | §4.6 ⑧ | *"n=1 ASLA meşru değil"* → **ikili/felaket türü farkta meşrudur** |
+>
+> ⚠️ **K19 + K20 aynı hata sınıfıdır ∧ tam olarak V73'ün uyardığı hatadır:** arama bütçesi tükendiği için **aranamamış** olan şeyi **"bulunamadı"** diye yazdık. Bu, `⊨A` etiketinin gerekçesini **dördüncü kez** üretiyor.
+> ⚠️ **Üç iç tutarsızlık kabul edildi** (§4.6 giriş notu): çifte standart, aynı eşiğin iki yerde farklı uygulanması, ve kanıt türü karışması.
 
 ---
 
@@ -139,11 +156,25 @@ Resmî uyarı: *"Running many subagents that each return detailed results can co
 - `[?]` self-consistency/ensemble N'inin getiri-düzleşme noktası — **hiçbir birincil kaynaktan doğrulanamadı**
 - `[?]` paralel araştırma hatlarının optimal sayısı — yalnız MECE tasarım sezgisi, **ablasyon değil**
 - `[?]` sıralı zincirde hata birikim oranı — **hiçbir ölçüm yok**, yalnız mekanizma/tavsiye
-- `[?]` özetleme/sıkıştırmanın bilgi-kaybı büyüklüğü — mekanizma doğrulandı, **miktar ölçülmedi**
+- `[?]` özetleme/sıkıştırmanın bilgi-kaybı büyüklüğü — mekanizma doğrulandı, **miktar bizim tarafımızdan ölçülmedi**
+  > **[K19]** ⚠️ *"Ölçülmedi"* burada **"literatürde yok"* demek DEĞİLDİR. Sadakat metriği literatürü (QAGS, SummaC, FactCC) ∧ sıkıştırma kaybı literatürü (LLMLingua) **mevcuttur ∧ bu koşumda taranmamıştır**.
 
-### 2.5 A29 — İDDİA LİSTESİ (antitez için, gerekçesiz) ⊨¬2
+### 2.5 A29 — İDDİA LİSTESİ · **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① Bağlam kirliliği 2025 frontier modellerinde 32K'da %30-70 doğruluk kaybına yol açabiliyor. ② İddia edilen ile ölçülmüş etkin uzunluk arasında bazı modellerde **16 kata varan** uçurum var. ③ Alt-ajanlar arası varsayılan/önerilen mimari bağlam paylaşımı değil **izolasyon + özet-döngüsü**dür. ④ Takım büyüklüğü token maliyetiyle kabaca doğru orantılı; plan-modunda ≈7×. ⑤ MAST taksonomi sunuyor ama **hiçbir sayısal kategori/oran doğrulanamadı**. ⑥ Self-consistency getiri-düzleşmesine dair bu oturumda **hiçbir kanıt yok**. ⑦ Sıralı zincir vs paralel fan-out hata birikimini ölçen **hiçbir çalışma bulunamadı**. ⑧ Özetlemenin bilgi kaybını doğrudan ölçen **hiçbir çalışma bulunamadı**. ⑨ Çok-ajan sistemlerin tek ajanı ne zaman geçtiğine dair **baş-başa ölçüme erişilemedi**.
+① Bağlam kirliliği 2025 frontier modellerinde 32K'da %30-70 doğruluk kaybına yol açabiliyor. — **DARALDI:** antitez haklı olarak *"%30-70 aralığı o kadar geniş ki neredeyse her gözlemi doğrular"* dedi ⇒ **sahte kesinlik**. Rakamlar korunur (ölçüm gerçek), ama **aralık bir öngörü olarak kullanılamaz**; tek tek model satırları (Q7) kullanılmalıdır.
+② İddia edilen ile ölçülmüş etkin uzunluk arasında bazı modellerde **16 kata varan** uçurum var. — **çürütülemedi**
+③ Alt-ajanlar arası varsayılan/önerilen mimari bağlam paylaşımı değil **izolasyon + özet-döngüsü**dür.
+   > **[K24 · antitez tam isabet — üç ayrı nokta, üçü de kabul]** ① Bu bir **mimari tasarım tavsiyesidir**, olgusal konsensüs **değildir**; blackboard ve paylaşılan bellek mimarileri de mevcuttur. ② Daha keskini: **bu tercih ④'teki maliyet kaygısından türüyor, MAST'ın başarısızlık kanıtından DEĞİL** — yani **maliyet güdümlü** bir gerekçe, **güvenilirlik güdümlüymüş** gibi sunuluyordu. ③ Dolayısıyla **③, ④'ten mantıksal olarak ÇIKMIYOR**.
+   > ⚠️ Bu şerh raporda **zaten vardı** (Q13: *"ürün-tasarım kararıdır, RCT DEĞİLDİR"*) — ama **iddia listesine taşınmamıştı**. Bu, *"iddia listesi raporun kendisinden zayıf çıkıyor"* deseninin bu ailedeki vakasıdır.
+④ Takım büyüklüğü token maliyetiyle kabaca doğru orantılı; plan-modunda ≈7×. — **çürütülemedi** *(token boyutunda; **doğruluk/kalite boyutunda ölçüm yok**)*
+⑤ MAST taksonomi sunuyor ama sayısal kategoriler **delta turunda kapatıldı** (Q9b) ⇒ iddia **artık geçersiz**, taksonomi rakamlarıyla elimizde.
+⑥ Self-consistency getiri-düzleşmesine dair bu oturumda **hiçbir kanıt bulunamadı**. — **çürütülemedi** *(erişim kaydı)*
+⑦ Sıralı zincir ile paralel fan-out arasındaki hata birikimini ölçen **hiçbir çalışma bulunamadı**. — **çürütülemedi**
+⑧ Özetlemenin bilgi kaybını doğrudan ölçen çalışma **bu koşumda ARANAMADI** — *"hiçbir çalışma yok"* **DEĞİL**.
+   > **[K19 · ⭐ antitez ÇÜRÜTMESİ — yokluk iddiası düştü]** Antitez tek bir karşı-örnekle değil, **koca bir alt-alanla** karşılık verdi: **QAGS, SummaC, FactCC** (özet sadakati metrikleri) ∧ **LLMLingua** (sıkıştırmanın downstream kaybı). Alan adları spesifik ∧ tutarlı ⇒ **kabul edildi**.
+   > ⇒ Doğrusu: **`bizim aradığımız kanalda bulunamadı; sadakat-metriği literatürü MEVCUT ∧ TARANMADI`**.
+   > ⇒ **Bu tam olarak V73'ün uyardığı hatadır:** arama bütçesi tükenmişken **`[ARANAMADI]`** olan şeyi **`bulunamadı`** diye yazdık.
+⑨ Çok-ajan sistemlerin tek ajanı ne zaman geçtiğine dair **baş başa ölçüme erişilemedi**. — **çürütülemedi** *(erişim kaydı)*
 
 ---
 
@@ -267,12 +298,25 @@ Bulunan tek yakın çalışma: üretici arama motorlarının atıflarını insan
 | "Bilmiyorum de" talimatı kalibrasyonu iyileştirir | Tasarım var, **sonuç rakamı yok**; kanıtlı olan **eğitim-tabanlı** müdahale (Q20, Q21) |
 | Atıf zorunluluğu → halüsinasyon ↓ | **Nedensel test yok** (Q22) |
 | **Az-kısıtlı vs çok-kısıtlı brief** (aşırı kısıtlamanın tersine tepmesi) | **HİÇBİR doğrudan kanıt bulunamadı** |
-| **Negatif ("yapma") vs pozitif talimat** | **HİÇBİR kaynak bulunamadı** ∧ ayrıca `[ARANAMADI]` — bütçe tükenmişti ∧ tahmin edilebilir repo adı yoktu |
+| **Negatif ("yapma") vs pozitif talimat** | **`[ARANAMADI]`** — bütçe tükenmişti ∧ tahmin edilebilir repo adı yoktu.<br>**[K20 · antitez ÇÜRÜTMESİ]** *"Hiçbir kaynak bulunamadı"* ifadesi **yanlıştı**: modellerin olumsuzlamaya duyarsızlığını **doğrudan ölçen** çalışma vardır (Kassner & Schütze, ACL 2020). ⇒ K19 ile **aynı hata sınıfı**, aynı düzeltme: `aranamadı ≠ yok`. |
 | **Few-shot'un açık-uçlu araştırma görevlerindeki etkisi** | Ayrı bir literatür kümesi **bulunamadı** |
 
-### 3.7 A28 — İDDİA LİSTESİ (antitez için, gerekçesiz) ⊨¬2
+### 3.7 A28 — İDDİA LİSTESİ · **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① Persona/rol ataması araştırma çıktısı kalitesini artırmaz, yalnız üslup ∧ derinlik-berraklık dengesini değiştirir. ② Format/şema zorunluluğu, model akıl yürütme adımlarını gizli tuttuğunda doğruluğu düşürür. ③ Çok-ajanlı persona rol-oynama, tek-ajan zincir-düşünceden **sistematik olarak daha kötü** sonuç verir. ④ Atıf/kaynak etiketleme zorunluluğu, halüsinasyonu azalttığını gösteren doğrudan kontrollü kanıt **olmadan** varsayılan "iyi pratik" hâline gelmiştir. ⑤ "Bilmiyorum de" talimatının etkisinin prompt seviyesinde mi eğitim seviyesinde mi güçlü olduğu **net değildir**. ⑥ Negatif talimatların pozitiflerden daha az güvenilir tutulduğuna dair **hiçbir ölçülmüş kanıt bulunamamıştır**. ⑦ Few-shot'un açık-uçlu görevlerdeki etkisi **ayrı bir literatür oluşturmamaktadır** — ya da oluşturuyorsa erişilememiştir. ⑧ Uzun ∧ ayrıntılı brief'ler, alakasız içerik arttıkça isabeti düşürme riski taşır. ⑨ Katı biçim zorunluluğunun zararı, **model zayıfladıkça orantısız büyür**.
+① Persona/rol ataması araştırma çıktısı kalitesini artırmaz, yalnız üslup ∧ derinlik-berraklık dengesini değiştirir. — **çürütülemedi** *(hafif, hedge'li bir iddiadır — bu yüzden sağlam)*
+② Format/şema zorunluluğu, model akıl yürütme adımlarını gizli tuttuğunda doğruluğu düşürür. — **çürütülemedi**
+③ Çok-ajanlı persona rol-oynama, tek-ajan zincir-düşünceden **ölçülen bazı kurulumlarda belirgin biçimde daha kötü** sonuç verir.
+   > **[K21 · ⭐ antitez ÇÜRÜTMESİ]** Eski hâli *"**sistematik olarak** daha kötü"* diyordu ⇒ **çürütüldü**. Karşı-örnek: **multiagent debate** GSM8K ∧ MMLU'da tek-ajan CoT tabanını **artırıyor** (Du, Li, Torralba, Tenenbaum, Mordatch). *"Sistematik iddiası tek karşı-örnekle çöker."*
+   > ⚠️ Antitezin **ikinci gözlemi daha keskindir ∧ kabul edildi:** ① hafif bir *"etkisiz"* iddiasıyken, ③ aynı aileden **çok daha güçlü** bir *"sistematik zarar"* iddiasına sıçrıyordu — **bağımsız gerekçe olmadan**.
+   > ⇒ Q16'nın ölçümü (Llama3.1-8b'de GSM8K 47,60 ↔ CoT 80,13) **geçerli kalır** — ama o **bir kurulumdur**, bir yasa değil.
+④ Atıf/kaynak etiketleme zorunluluğu, halüsinasyonu azalttığını gösteren doğrudan kontrollü kanıt **olmadan** varsayılan "iyi pratik" hâline gelmiştir. — **⊨S**; ve antitez bunu **güçlendirdi**: salt prompt seviyesinde *"kaynak göster"* talimatı, retrieval olmadan, **yeni bir halüsinasyon alt-türü** (**uydurma atıf**) üretebiliyor. ⚠️ *(aynı-aile şerhi)*
+⑤ "Bilmiyorum de" talimatının etkisinin prompt seviyesinde mi eğitim seviyesinde mi güçlü olduğu **net değildir**. — **çürütülemedi**
+⑥ Negatif talimatların pozitiflerden daha az güvenilir tutulduğu ekseni **bu koşumda ARANAMADI**.
+   > **[K20 · ⭐ antitez ÇÜRÜTMESİ]** Eski hâli *"hiçbir ölçülmüş kanıt bulunamamıştır"* diyordu ⇒ **yanlış**. Modellerin olumsuzlamaya duyarsızlığını **doğrudan ölçen** çalışma vardır (Kassner & Schütze, ACL 2020).
+   > ⇒ Doğrusu: **`bütçe tükendiği için aranamadı`** — yokluk hükmü **değil**. K19 ile aynı sınıf.
+⑦ Few-shot'un açık-uçlu görevlerdeki etkisi ayrı bir literatür oluşturmamaktadır — ya da oluşturuyorsa **erişilememiştir**. — **çürütülemedi** *(zaten kendi içinde `aranamadı` payını taşıyor)*
+⑧ Uzun ∧ ayrıntılı brief'ler, alakasız içerik arttıkça isabeti düşürme riski taşır. — **⊨S**; hedge'li olduğu için sağlam ⚠️ *(aynı-aile şerhi)*
+⑨ Katı biçim zorunluluğunun zararı, **model zayıfladıkça orantısız büyür**. — **çürütülemedi** *(ama D8 borcu duruyor: frontier modelde ölçülmedi)*
 
 ---
 
@@ -332,11 +376,12 @@ Ama Q24–Q27'den çıkan mekanik açıklama:
 ### 4.4 ⭐ NE ÖLÇÜLEMEZ (bu ölçekte) — bu bölüm listenin en değerlisidir
 
 **Q30** — MEŞRU OLMAYAN HÜKÜMLER
-- **Stabil korelasyon katsayısı.** `n = 5..20` ⇒ hesaplanan herhangi bir `r` **GÜRÜLTÜDÜR ∧ raporlanmamalıdır.** *(AlpacaEval yazarları 9 modelle bile "güvenilmez" diyor.)*
+- **Stabil korelasyon katsayısı.** `n = 5..20` ⇒ hesaplanan herhangi bir `r` **gürültü ağırlıklıdır** ∧ **tek başına, güven aralığı olmadan raporlanmamalıdır.** *(AlpacaEval yazarları 9 modelle bile "güvenilmez" diyor.)*
+  > **[K22 · antitez daraltması]** Eski hâli *"raporlanmamalıdır"* diyordu ⇒ **aşırı**. Küçük örneklemli korelasyon **bastırılmaz, güven aralığıyla birlikte raporlanır** — bu, pilot çalışma pratiğidir. Bastırmak, veriyi yok etmektir; **belirsizliğiyle birlikte yayımlamak** doğrusudur.
 - **Genellenebilirlik.** *"Bu prompt öteki görev setinde de daha iyi olur"* ⇒ **TAŞINAMAZ**; geçerlilik yalnız kullanılan spesifik görev listesi + spesifik yargıç için iddia edilebilir.
 - **Tek atımlık kesin verdikt.** `%69,2 insan_uyumu` bile **10 karardan ~3'ünde çoğunluk insan görüşünden SAPMA** demektir ⇒ bir kez `A > B` çıkması **hiçbir şey kanıtlamaz.**
 - **Uzunluk/üslup etkisinden arındırılmış "gerçek kalite" farkı**, uzunluk kontrolü yapılmadan (Q25) ⇒ küçük n'de ayrıştırmak **mümkün değil**.
-- **Süreç-metrik → sonuç-kalite korelasyonu** ⇒ **ne doğrulandı ne çürütüldü**, bilinmiyor olarak işaretlenmeli.
+- **Süreç-metrik → sonuç-kalite korelasyonu** ⇒ **nedensel kanıt yoktur**; ⚠️ **korelasyonel kanıt VARDIR** (K23) — test zamanı hesaplama ölçekleme çalışmaları (pass@k, araç adım sayısı ↔ başarı) en azından korelasyonel kanıt sunuyor. *"Sıfır kanıt"* ifadesi **abartıydı**. Normatif sonuç (*"karar vermede kullanma"*) **ayakta kalır**, çünkü gerekçesi `korelasyon ≠ nedensellik`tir.
 - **Self-enhancement bias'ın payı** ⇒ varlığı biliniyor, **miktarı ölçülmedi**.
 - **`r≈0.31` iddiasının doğruluğu** ⇒ ne doğrulanabildi ne çürütülebildi (Q29).
 
@@ -350,9 +395,25 @@ Ama Q24–Q27'den çıkan mekanik açıklama:
 
 **Q32** ⊨K — mevcut benchmark'lar **yalnız nihai çıktıya bakıyor**, araştırma sürecini (araç çağrısı, kaynak sayısı) **göz ardı ediyor**. Bu süreç metriklerinin sonuçla korelasyonuna dair **rakam bulunamadı** ⇒ Adım 7'nin gerekçesi.
 
-### 4.6 A30 — İDDİA LİSTESİ (antitez için, gerekçesiz) ⊨¬2
+### 4.6 A30 — İDDİA LİSTESİ · **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① Pairwise karşılaştırma, `n=5..20`'de mutlak puanlamadan **her zaman** daha güvenilirdir. ② Yargıcı 3 kez tekrar örneklemek, tek atımlıktan daha meşru hüküm verdirir. ③ **Uzunluk kontrolü yapılmadan** hiçbir win-rate farkı "kalite farkı" olarak yorumlanamaz. ④ `n=5..20`'de hesaplanan herhangi bir korelasyon katsayısı **raporlanmamalıdır**. ⑤ Bilinen-cevap kanaryası, **örneklem büyüklüğünden bağımsız** olarak tek başına geçerli bir test biçimidir. ⑥ Aynı model ailesi hem üretici hem yargıçsa, ölçülen her iyileşme **kendi-kayırma yanlılığıyla kirlenmiş sayılmalıdır**. ⑦ Süreç metrikleri **sıfır doğrulanmış kanıtla** desteklendiği için karar vermede **kullanılmamalıdır**. ⑧ `n=1`'den çıkan "bu prompt öncekinden iyi" hükmü **asla meşru değildir** — en iyi ihtimalle "yönsel izlenim". ⑨ Küçük ölçekte **Salih'in kendi yapılandırılmış kör okuması**, LLM-yargıcının insan-uyum oranından (`%69..85` bandı) **daha az güvenilir SAYILAMAZ** ⇒ LLM-yargıç Salih'in **yerine değil, YANINA** konmalıdır.
+> ⚠️ **Üç iç tutarsızlık kabul edildi.** ① **Çifte standart:** ④ *"n=5-20'de herhangi bir korelasyon anlamsızdır"* derken, aynı rapor `%30-70`, `16×`, `~7×` gibi kesin rakamları **aynı şüphecilikle sorgulamıyordu**. ② **Aynı eşik iki yerde farklı:** ② tekrar örneklemeyi (**bir süreç müdahalesi**) meşruiyet artırıcı sayarken, ⑦ süreç metriklerini **toptan kanıtsız** ilan ediyordu. ③ **Mutlak niceleme:** ①, ③, ⑤, ⑥, ⑧'in hepsi *"her zaman"*, *"hiçbir"*, *"asla"*, *"bağımsız olarak"* içeriyordu ∧ hepsi **koşullu hâle geldi**.
+
+① Pairwise karşılaştırma, `n=5..20`'de mutlak puanlamadan **genellikle** daha güvenilirdir. — **DARALDI:** *"her zaman"* düşer. **Objektif zeminli görevlerde** (birim testi, tam eşleşme) rubrik üstün olabilir; ayrıca pairwise, **ikisi de kötüyken sahte tercih dayatır**.
+② Yargıcı 3 kez tekrar örneklemek, tek atımlıktan daha meşru hüküm verdirir — çünkü **rassal varyansı** azaltır.
+   > **[K25 · antitez daraltması — önemli]** Tekrar örnekleme **rassal varyansı azaltır**; **sistematik yanlılığı AZALTMAZ**. Üç oy aynı yanlılığı paylaşıyorsa ortaya çıkan şey **sahte çoğulluktur** — üç kez ölçmek, üç kez aynı yöne sapmayı düzeltmez. ⇒ Bu yüzden ⑥ (farklı aile) ve Adım 5 (kanarya) **ikame değil, tamamlayıcıdır**.
+③ **Uzunluk kontrolü yapılmadan** hiçbir win-rate farkı "kalite farkı" olarak yorumlanamaz. — **DARALDI** (mutlak niceleme); yönü korunur.
+④ `n=5..20`'de hesaplanan korelasyon katsayısı **tek başına, güven aralığı olmadan raporlanmamalıdır**.
+   > **[K22 · antitez daraltması]** Eski hâli *"raporlanmamalıdır"* diyordu ⇒ aşırı. Küçük N korelasyonu **bastırılmaz, güven aralığıyla raporlanır** (pilot çalışma pratiği).
+   > ⚠️ Ve **çifte standart kabul edildi:** aynı şüphecilik raporun kendi kesin rakamlarına uygulanmıyordu.
+⑤ Bilinen-cevap kanaryası tek başına geçerli bir test biçimidir. — **DARALDI** (*"örneklem büyüklüğünden bağımsız olarak"* mutlaklığı düşer); ama özü ayakta: **doğruluk temelli** olduğu için istatistik gerektirmez.
+⑥ Aynı model ailesi hem üretici hem yargıçsa, ölçülen iyileşme **kendi kayırma yanlılığıyla kirlenmiş sayılmalıdır**. — **DARALDI** (mutlak niceleme); yönü korunur ∧ K25 ile **birlikte okunur**.
+⑦ Süreç metrikleri karar vermede **kullanılmamalıdır** — çünkü **nedensel kanıt yoktur**.
+   > **[K23 · antitez kısmi çürütmesi]** Eski hâli *"sıfır kanıt"* diyordu ⇒ **abartı**. Test zamanı hesaplama ölçekleme çalışmaları (pass@k, araç adım sayısı ↔ başarı) **en azından korelasyonel** kanıt sunuyor.
+   > ⇒ **Normatif sonuç ayakta kalır**, çünkü gerekçesi `korelasyon ≠ nedensellik`tir — ama *"kanıt yok"* demek **yanlıştı**.
+⑧ `n=1`'den çıkan *"bu prompt öncekinden iyi"* hükmü **derece farkı için** meşru değildir — en iyi ihtimalle yönsel izlenimdir.
+   > **[K26 · antitez daraltması]** *"Asla meşru değildir"* **fazla güçlü**. **İkili ya da felaket türü farkta n=1 yeterlidir**: *"her seferinde çöküyor, bu düzeltme çözüyor"* mühendislik standardıdır. ⇒ Ayrım **derece farkı ↔ ikili fark**tır; kanarya maddesi (Adım 5) tam olarak bu istisnadan yararlanır.
+⑨ Küçük ölçekte **Salih'in kendi yapılandırılmış kör okuması**, LLM yargıcının insan uyum oranından (`%69..85` bandı) **daha az güvenilir sayılamaz** ⇒ LLM yargıç Salih'in **yerine değil, yanına** konmalıdır. — **çürütülemedi**
 
 ---
 
@@ -399,7 +460,9 @@ Ama Q24–Q27'den çıkan mekanik açıklama:
 
 | # | Borç | Durum |
 |---|---|---|
-| D1 | **Antitez (Aşama 2) koşulmadı** — A5'ten beri | §2.5 · §3.7 · §4.6 iddia listeleri hazır |
+| D1 | ~~Antitez koşulmadı~~ → **KAPANDI 2026-07-26** | **Araçsız** koştu ⇒ 4 çürütme (K19, K20, K21, K23) · 4 daraltma (K22, K25, K26 + mutlak niceleme sınıfı) · 3 **iç tutarsızlık kabulü** (K24 + çifte standart + aynı eşiğin iki yerde farklı uygulanması) · 3 `⊨S`. Hükümler §2.5 · §3.7 · §4.6'ya işlendi |
+| **D9** | ⭐ **Özetleme sadakati literatürü TARANMADI** (K19) | QAGS · SummaC · FactCC · LLMLingua. Bunu *"yok"* diye yazmıştık; **var ∧ taranmadı**. Erişim açık bir oturumda taranacak |
+| **D10** | **Olumsuzlama duyarsızlığı literatürü TARANMADI** (K20) | Kassner & Schütze (ACL 2020) doğrudan ölçüyor. Aynı hata sınıfı |
 | D2 | `lost-in-the-middle` U-eğrisi sayıları ∧ LLM-Monkeys ölçek eğrisi ∧ self-consistency düzleşmesi (Q11c) | Erişim açık bir oturumda |
 | D3 | Anthropic çok-ajan mühendislik yazısı (403) | Muhtemelen shared-vs-isolated bağlam karşılaştırmasını içeriyordu — **bu ailenin en hedefli kayıp kaynağı** |
 | D4 | `"Let Me Speak Freely?"` ∧ persona `~30 puan` rakamları (Q17, Q19) | Birincil metne erişilemedi |
@@ -413,7 +476,9 @@ Ama Q24–Q27'den çıkan mekanik açıklama:
 ## 7. FİKİR KUTUSU ADAYLARI
 
 - **V72 — Brifing = hipotez.** Ajana verilen erişim haritası doğrulanmamış öncüldür; ajan onu ölçüp düzeltmekle **yükümlü** kılınmalı. Q1'in maliyeti, Q2'nin getirisi. *(Bu koşumda üç kez karşılığını verdi: A30 proxy'yi ölçtü · A29 dal adını buldu · A31 on bir yeni kapalı alan haritaladı.)*
-- **V73 — ⭐ "Aranamadı" etiketi.** `[D/K/X]` ailesine dördüncü etiket: **`⊨A` = aranamadı** (bütçe/erişim nedeniyle sorgulanamadı). Şu an bu durum `bulunamadı` içinde eriyor ∧ **negatif bulgu enflasyonu** yaratıyor. *Bu koşumda üç ajan bu ayrımı elle yaptı ∧ üçü de değer üretti* ⇒ notasyona **eklenmeye güçlü aday**.
+- **V73 — ⭐⭐ "Aranamadı" etiketi — GEREKÇESİ ANTİTEZLE GÜÇLENDİ.** `[D/K/X]` ailesine dördüncü etiket: **`⊨A` = aranamadı** (bütçe/erişim nedeniyle sorgulanamadı). Şu an bu durum `bulunamadı` içinde eriyor ∧ **negatif bulgu enflasyonu** yaratıyor.
+  **Artık dört bağımsız gerekçesi var:** ① bu koşumda üç ajan ayrımı **elle** yaptı ∧ üçü de değer üretti · ② **K19** — özetleme kaybı literatürünü *"yok"* yazmıştık, **var** · ③ **K20** — olumsuzlama literatürünü *"yok"* yazmıştık, **var** · ④ A31'in kendi dürüstlük kaydı: *"erişim engeli ile gerçek yokluk ayırt edilemiyor, ve bu ayrımsızlığın kendisi rapor edilmesi gereken bir bulgudur."*
+  ⇒ **Bu, oturumun en çok bağımsız gerekçe biriktiren tek önerisidir. Salih kararı (S2).**
 - **V74 — Etkin uzunluk tablosu kanona.** Q6/Q7 tabloları KILAVUZ'a girip bağlam bütçelemesinin sayısal dayanağı olmaya aday.
 - **V75 — MAST kontrol listesi.** Q9b'nin 14 başarısızlık modu, ajan brifingi yazarken **doğrudan kontrol listesi** olarak kullanılabilir — özellikle `sonlanma_koşullarından_habersizlik (%6,54)` ∧ `adım_tekrarı (%11,5)` ∧ `bilgi_saklama (%6,02)`, hepsi brifingle önlenebilir sınıflar.
 
@@ -421,12 +486,15 @@ Ama Q24–Q27'den çıkan mekanik açıklama:
 
 ## 8. KAPANIŞ DAMGASI
 
-**Aile:** A28 ⊨¬2 · A29 ⊨¬2 (+delta) · A30 ⊨¬2 — **üçü de kapandı**
+**Aile:** A28 · A29 (+delta) · A30 — **antitez KOŞTU** (2026-07-26, **araçsız**, `tool_uses = 0`)
+**Antitez sonucu:** 4 çürütme (K19 özetleme · K20 olumsuzlama · K21 sistematik · K23 sıfır kanıt) · 4 daraltma (K22, K25, K26 + mutlak niceleme sınıfı) · **3 iç tutarsızlık kabulü** (K24 + çifte standart + aynı eşiğin iki yerde farklı uygulanması) · 3 `⊨S`
+**⚠️ İki şerh:** ① Araçsız tur ⇒ **mantıksal** saldırılar tam güçte, **olgusal karşı-örnekler `[K-hatırlama]`** ∧ borç açar. ② `⊨S` = **"aynı-aile hakemi karşısında sağ kaldı"**.
 **Kanıt tabanı:** `[D]` ağırlıklı — RULER ∧ NoLiMa ∧ MAST taksonomi figürü ∧ AlpacaEval ∧ Arena-Hard replikasyon depoları ∧ ürün dokümanlarının ham markdown'ı
-**Register:** tam önerme formu (P144); insan-yüzü **talep gereği üretilmedi**
+**Register:** tam önerme formu (P144); insan-yüzü iki register sonraki emirle **üretildi** ∧ karar kaynağı **değildir**
+**⭐ En ağır ders:** bu ailenin **en güçlü tek bulgusu** *"ajanın ne bilmediğini söyleyebilmesini yapısal olarak mümkün kıl"*tı (Q17) — ve antitez, **bu raporun kendisinin iki yerde bunu yapamadığını** gösterdi (K19, K20). Kural doğruydu; **uygulayan biz değildik**.
 
 **▲ Bu raporun kendi zayıflıkları — beyan edilir:**
-1. `antitez = ∅` ⇒ hiçbir hüküm adversaryal sınamadan geçmedi.
+1. ~~`antitez = ∅`~~ ⇒ **koştu.** Yeni beyan: **iki yokluk iddiamız yanlış çıktı** (K19, K20) ∧ ikisi de *"aranamadı"*yı *"yok"* diye yazmaktan kaynaklandı — yani **raporun kendi B7 kuralının ihlali**.
 2. `D8` ⇒ raporun kendi tavsiye ettiği şema, **kendi ölçüm protokolüyle henüz test edilmedi.** Yani bu rapor, uygulanmasını önerdiği ölçümü **kendine uygulamamıştır.**
 3. `Q29` ⇒ oturumun başında verdiğim bir düzeltme, **bu ailede yeniden açıldı.** Kapanmış sayılmıyor.
 4. `Q23` ⇒ uzunluk ekseninin tek güçlü kanıtı **dolaylıdır** (haystack ≠ brifing uzunluğu). Analoji olarak işaretlendi.
