@@ -1,7 +1,21 @@
 # Araç ve Model Entegrasyonu — "sadece Claude" nasıl değişir
 
 > **Mod:** yan-oturum (m.41) · Aileler: **A19** (model çeşitliliği: denetçi/işçi, yerel) · **A20** (hızlı çıkarım: Cerebras/Groq) · **A21** (araç ekosistemi: OpenCode, Orca ADE, MCP/ACP) + ek araç anketi
-> ⚠️ **Üç ailede de Aşama 2 (antitez) KOŞULMADI.**
+> ⚠️ **Antitez KOŞTU (2026-07-26).** Sonuç: 1 çürütme (K45), 1 daraltma (K46), **4 birincil kaynakla DOĞRULAMA** (§9c.4).
+
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §9c.
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K45** | §3.4 | *"Tek markdown katmanı paylaşılabilir"* **mutlak hâliyle çürütüldü** — kendi komşu önermeleri tarafından iç-tutarsız kılınıyor |
+> | **K46** | §3.5 | Protokolde **çağıran/çağrılan ayrımı DARALDI** — `claude mcp serve` ile Claude Code **hem istemci hem sunucu** olabiliyor ⇒ rol **sabit değil** |
+>
+> **Ve dört iddia birincil kaynakla DOĞRULANDI** (`⊨S ⊨D`, **doküman doğrulamalı ⇒ aynı-aile şerhinden muaf**):
+> - §1.5 — OpenAI-uyumlu katman üretime uygun değil ∧ önbellek yok ⇒ `platform.claude.com` birebir: *"not considered a long-term or production-ready solution"* + *"Prompt caching is not supported"*
+> - §2.4-1 — genel OpenAI-uyumlu sağlayıcı **sürücü olarak kabul edilmiyor** ⇒ `llm-gateway-protocol.md`
+> - §2.4-2 — **sağlayıcı değişimi önbelleği sıfırlıyor** ⇒ `prompt-caching.md`
+> - §3.6 — ⭐ **kalıcı izin onayları worktree'ler arasında PAYLAŞILIYOR** ⇒ `settings.md` — *antitez bunu **güvenlik açısından önemli** diye ayrıca işaretledi*
 > **Geçerlilik: 26 Temmuz 2026.** Bu ailede sürüm ve yıldız rakamları **haftalar içinde bayatlar**; yapısal bulgular (kim hangi dosyayı okuyor, izin varsayılanları, protokol yerleşimi) uzun ömürlü.
 > **Tetikleyen:** Salih 07-26 — *"tool olarak sadece Claude'un kendisi ve Claude aracılığıyla oluşturulmuş ürünler yer alıyor, bunu değiştirmemiz lazım... gerekirse denetçi ChatGPT, işçi opensource model"*
 
@@ -255,6 +269,11 @@ Başka bir çalışma *"LLM çıkarımı toplam koşum süresinin %71–98'i"* d
 
 ⇒ **Paylaşılabilir yüzey %100, yürütülebilir yüzey %0.** Ve taşınmayan şey **izin kilidinin ta kendisi**.
 
+> **[K45 · antitez ÇÜRÜTMESİ — mutlak hâl düşer]** *"Tek markdown katmanı paylaşılabilir"* iddiası **mutlak biçimde** yazılmıştı ⇒ **çürütüldü**, ve çürüten şey **kendi komşu önermeleriydi**: hemen yukarıdaki tablo zaten *"yürütülebilir yüzey %0"* diyor.
+> ⇒ Kapsam sabitlenir: **`paylaşılabilir(OKUNAN_KATMAN) = %100`** ∧ `paylaşılabilir(YÜRÜTÜLEBİLİR_KATMAN) = %0`.
+> ⇒ ⚠️ **Bu, düzeltmenin en rahatsız edici tarafı:** rapor doğru hükmü **zaten vermişti** (§3.4'ün kendi tablosu), ama **iddia listesine mutlak hâliyle** yazılmıştı. Yani hata analizde değil, **özetleme adımındaydı** — iddia listesi raporun kendisinden zayıf çıktı.
+> ⇒ Pratik sonuç değişmiyor: `CLAUDE.md` paylaşılır, **izin kilidi paylaşılmaz**.
+
 ### 3.5 Üçüncü protokol: ACP — asıl fay hattı
 
 **[D] MCP fiili standart, ajan→araç yönünde.** OpenCode `@modelcontextprotocol/sdk` yamalıyor, Goose 70+ eklentiyi MCP ile bağlıyor, Cline `cline mcp` sunuyor, Codex hem istemci hem **sunucu**. **7 araçtan 6'sında var** ⇒ ayırt edici gücünü yitirdi.
@@ -264,6 +283,10 @@ Başka bir çalışma *"LLM çıkarımı toplam koşum süresinin %71–98'i"* d
 - **Cline ve Gemini CLI kendilerini ACP ajanı olarak SUNUYOR** — yani çağrılan taraf.
 
 ⇒ **Doğru soru "MCP destekliyor mu" değil, "ACP'de hangi yönde duruyor: çağıran mı, çağrılan mı".**
+
+> **[K46 · antitez daraltması — rol sabit değil]** Bu çerçeve, her aracın **sabit bir yön** taşıdığını varsayıyordu ⇒ **daraldı**. `claude mcp serve` ile **Claude Code hem istemci hem sunucu** olabiliyor; Codex için de aynısı zaten kayıtlı (§3.5'te *"hem istemci hem sunucu"* yazılı).
+> ⇒ Doğrusu: **yön bir araç özelliği değil, bir KURULUM tercihidir.** Aynı araç, farklı kurulumda farklı yönde durur.
+> ⇒ **Soru yeniden yazılır:** *"bu araç hangi yönde duruyor"* değil, **"bu kurulumda hangi yönde durmasını istiyorum"**. Ayrımın pratik değeri **artıyor** — çünkü artık bir kısıt değil, bir **tasarım kaldıracı**.
 
 **[K] A2A bu ekosistemde YOK.** Taranan hiçbir kodlama aracının dokümanında geçmiyor.
 
@@ -278,7 +301,8 @@ Başka bir çalışma *"LLM çıkarımı toplam koşum süresinin %71–98'i"* d
 **[D] Ve net-negatif eşiği için somut kanıt var:** Orca'nın varlık nedeni paralel worktree, ama **Claude Code bunu artık yerleşik yapıyor** — `claude --worktree`, alt-ajanlar için `isolation: worktree`, `.worktreeinclude`, `worktree.baseRef`, agent-view.
 ⇒ **Eklenecek aracın çekirdek yeteneği mevcut aracın yerleşik yeteneğiyle örtüşüyorsa, ekleme net negatiftir.**
 
-⚠️ **[D] Worktree'ler paylaşılan durum taşıyor:** *"A worktree gets its own files and branch, but it shares the repository's `.git` directory, project-scope plugins, and **saved permission approvals** with the main checkout."* ⇒ Bir worktree'de verilen "bir daha sorma" onayı **tüm paralel ajanları bağlar**.
+⚠️ **[D ∧ ⊨S] Worktree'ler paylaşılan durum taşıyor — ANTİTEZ DOĞRULADI:** *"A worktree gets its own files and branch, but it shares the repository's `.git` directory, project-scope plugins, and **saved permission approvals** with the main checkout."* ⇒ Bir worktree'de verilen *"bir daha sorma"* onayı **tüm paralel ajanları bağlar**.
+> **⭐ Antitez bu maddeyi ayrıca GÜVENLİK AÇISINDAN ÖNEMLİ diye işaretledi.** Doğrudan sonuç: paralel worktree'lerde koşan ajanlar **izin yüzeyini paylaşır** ⇒ birinde verilen kalıcı onay, ötekiler için de **sessizce** geçerlidir. Dilim-1 kilidi `settings.json` deny ile yapısal olduğu için ayakta; ama **kalıcı onayla genişletilen her izin, tüm paralel yüzeye yayılır**.
 
 ⚠️ **[D] Symlink tuzağı — §3.4'teki tavsiyeyle çarpışıyor:** *"Claude Code refuses to create a worktree when `.claude`, `.claude/worktrees`, or the worktree directory itself is a symlink."* AGENTS.md↔CLAUDE.md symlink'i **güvenli** (dosya seviyesi); ama `.claude/` **dizinini** symlink'lemek worktree'leri kırar.
 
@@ -386,11 +410,13 @@ A21'in ölçümleri bunu çürütmüyor, **destekliyor**: eklenebilecek 7 araçt
 
 ## 5. AÇIK BORÇLAR
 
-1. **A19, A20, A21 için Aşama 2 (antitez) koşulmadı.**
+1. ~~A19, A20, A21 için Aşama 2 (antitez) koşulmadı~~ → **KAPANDI 2026-07-26.** Sonuç: **1 çürütme** (K45, mutlak paylaşılabilirlik), **1 daraltma** (K46, protokol yönü sabit değil), **4 birincil kaynakla doğrulama** (OpenAI-uyumlu katmanın üretime uygunsuzluğu · sürücü model kısıtı · sağlayıcı değişiminin önbelleği sıfırlaması · **worktree'lerin izin onaylarını paylaşması**).
+   ⚠️ Doğrulanan dördü **doküman doğrulamalıdır** ⇒ aynı-aile şerhinden **muaftır**.
 2. **A19'un en önemli açık sayısı:** aynı-aile ile çapraz-aile doğrulama arasındaki farkın **puan cinsinden büyüklüğü**. Sıralama doğrulandı, büyüklük PDF'te kaldı.
 3. **Çapraz-sağlayıcıya geçince prompt performansının ne kadar düştüğü ÖLÇÜLMEMİŞ.** Anthropic "prompt'unu yeniden yazmayı düşün" diyor ama rakam vermiyor. **Planın gizli maliyeti burada.**
 4. **Cerebras'ın resmî fiyatı ve hız limitleri doğrulanamadı** — kullanılan rakamlar ~8 ay eski üçüncü-taraf veritabanından. **Karar öncesi teyit edilmeli.**
 5. **"token/s artışı ajan görev süresini X% kısaltır" biçiminde kontrollü deney YOK.** §2.2'deki hesap Carvis/atlas türetmesi, ölçüm değil.
 6. **Nicemleme kalite kaybının tarafsız referans tablosu bulunamadı.**
 7. **Araç eklemenin net getirisi üzerine dış ampirik çalışma YOK** — §3.6'daki hüküm yetenek-örtüşmesi argümanına dayanıyor.
-8. **A22–A24 koşuyor:** tech stack seçiminin kanıt tabanı · DS/ML minimum yığın · yığın kararı vermeyi öğrenme müfredatı.
+8. ~~A22–A24 koşuyor~~ → **KAPANDI**; `raporlar/2026-07-26-tech-stack-atlas.md` olarak teslim edildi.
+9. **Yeni (K46'dan):** `claude mcp serve` ile Claude Code'un **sunucu tarafında** durduğu bir kurulum **denenmedi**. §3.5'in ACP çerçevesi artık bir kısıt değil **tasarım kaldıracı** olduğuna göre, bu denenmeye değer bir yön.
