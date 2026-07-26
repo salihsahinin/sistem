@@ -81,3 +81,9 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-vardiya raporu beğenilmedi
 ## 2026-07-23 (PC) — senkron YALANCI-OK arızası (A1 kök-neden borcu, karara bağlanmadı)
 - Bulgu: 07-23 14:02 script koşumu diske "OK" yazdı ama commit/push origin'e HİÇ ulaşmadı (origin log'da satır yok; muhtemel neden: bulut commit'leri origin'i ilerletmişti → non-fast-forward reddi, script yine OK damgaladı). A1 sayacının 2. OK'i bu → kapı=kanıt ilkesince kök-neden kapanmadan A1 İLERLETİLMEMELİ (Carvis önerisi).
 - Fren adayları (K-009 dosyası, Salih onayına): script'e pull-adımı (bulut-2 adayıyla aynı) + push-SONRASI origin doğrulaması (`git ls-remote` karşılaştırması) — "OK" damgası ancak origin'de görülünce.
+
+## 2026-07-26 (CC) — araştırma-promptu verimi: Salih notu + register değişikliği
+- **Salih talebi (07-26):** "ana oturuma geçince araştırma promptlarımın verimini arttırmaya yönelik çalışmalıyız" — ANA SIRA işi olarak not edildi; CC bu oturumda yalnız araştırma+rapor üretir, kanon kilitlemez (m.41).
+- **Register hükmü (Salih 07-26):** ai-to-ai raporlar bundan böyle **tam önerme/lojik formunda** yazılır — gerekçe: "jarvisle beraber okuyacağım". İnsan-yüzü muadil **ayrı oturuma** ertelenir, üretilmemesi eksiklik sayılmaz. Bu, `2026-07-26-compiler-formulu.md` F8'in genişletilmiş hali: uzman-alan + makine-eşlikli okuma → compiler KAPALI.
+- **Bağlam:** bu oturumun kendi koşum verisi (115 alt-ajan) prompt veriminin ölçülebilir olduğunu gösterdi — WebSearch bütçesi sessiz tükeniyor, brifingte URL verilirse WebFetch'e düşüyor ve bütçeden yemiyor. Zarf kuralı `raporlar/2026-07-26-ajan-durma-atlas.md` §9.
+- Atlas: A28-A30 koşuldu → `raporlar/2026-07-26-arastirma-promptu-atlas.md`.
