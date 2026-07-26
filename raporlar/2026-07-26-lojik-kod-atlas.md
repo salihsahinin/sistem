@@ -4,6 +4,20 @@
 
 **REGISTER:** Tam önerme formu (P144). Compiler KAPALI; insan-yüzü ayrı oturuma ertelendi.
 **Aileler:** A31 (insan tarafı — biçimsel spec → kod) · A32 (LLM tarafı — model aracılı çeviri)
+
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> Antitez **araç kullanarak** koştu (`tool_uses = 21`): Rust RFC, CBMC, SPARK, pyrsistent, icontract, Hypothesis, LogicBench, RuleTaker, FOLIO, miniF2F, IFEval ∧ zod depoları okundu. Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §7.
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K27** ⭐ | §1.3 `t/t+1` · §1.5 ⑦ | *"İmkânsız hâle gelir"* **çürütüldü** — `pyrsistent` ∧ event sourcing ile korunur |
+> | **K30** ⭐ | §1.3 `∀` · §1.5 ④ · §2.6 · §2.7 ④ | Model-checking **kodu da** doğrular (CBMC) ∧ **`bounded`** sınırı eklenir |
+> | **K31** ⭐ | §2.7 ⑥ · L15 · L21 | Yokluk iddiası **dar okumaya sabitlenir**: LLM davranışı, tip teorisi değil |
+> | K28 | §1.2 L3 · §1.5 ⑤ | DbC kapsamı Python/JS ekosistemine daraltılır (SPARK/Eiffel **dil düzeyinde DbC gerçekten var**) |
+> | K29 | §1.5 ① | *"Geri alınamaz"* düşer → kayıp **bir tasarım tercihinin sonucu**; V76'nın gerekçesi **güçlenir** |
+> | K32 | §2.6 L17 | `⊨X` çelişki → `[?]` **ters-U / tekdüze olmayan ilişki** |
+>
+> ⭐ **Bu turun en sağlıklı sonucu bir çürütme değil, iki ÖNGÖRÜ HATASIDIR.** Brifingte iki iç çelişki adayı işaret edilmişti; antitez ikisini de test etti ∧ **tutmadığını raporladı** (§7.2). Bir antitez ajanının *"aradığın çelişki yok"* diyebilmesi, protokolün **evet-adamı üretmediğinin** kanıtıdır — ve `⊨S` damgalarına güvenmek için gereken tek yapısal şeydir.
 **Notasyon:** `2026-07-26-LOJIK-onerme-formu.md` §Notasyon. `⊨D` birincil · `⊨K` ikincil · `⊨X` çelişkili · `⊨¬2` antitez koşulmadı · `[?]` kestirim · `[ARANAMADI]` bütçe/erişim engeli — **yokluk kanıtı DEĞİL**.
 
 ---
@@ -42,6 +56,9 @@ Ajanın kendi beyanı: hatırladığı iddialar (TLA+'ın test ile aylar sürece
 `icontract → {precondition, postcondition, invariant}` ∧ sözleşme kalıtımı (precondition zayıflatma / postcondition-invariant güçlendirme, Liskov).
 Kütüphanenin **kendi konumlandırması**: *"Python'a DbC entegre edilene kadar bir geçici çözüm (work-around)"*
 ⇒ **`garanti = runtime_kontrol` ∧ `≠ dil_düzeyinde_garanti`** — kütüphane bunu **kendisi itiraf ediyor.**
+> **[K28 · antitez daraltması] Başlık yanlıştı: DbC dil düzeyinde GERÇEKTEN VAR.** Antitez **SPARK**'ı gösterdi — kendini *"bir programlama dili, bir doğrulama araç seti ∧ bir tasarım yöntemi"* olarak tanımlıyor. Eiffel de aynı sınıfta.
+> ⇒ Doğru kapsam: `DbC = kütüphane_düzeyi` yalnız **Python / Java / JS decorator ekosistemi** için doğrudur. `Ada/SPARK ∨ Eiffel ⇒ DbC ∈ dil`.
+> ⇒ **Pratik etki:** icontract hakkındaki hüküm **değişmiyor** (bizim ekosistemimiz Python'dır); değişen, hükmün **evrensel sanılmasıydı**.
 
 **L4** ⊨D — ⭐ PROPERTY-BASED TESTING ∀'YI İSPATLAMAZ
 `QuickCheck → "bu özelliklerin ÇOK SAYIDA rastgele üretilmiş durumda geçerli olduğunu TEST EDER"`
@@ -64,14 +81,14 @@ Somut: `sorted(set(ls))` yanlışlıkla tekrarları sildiğinde en minimal karş
 | Önerme kalıbı | Naif kod karşılığı | Neden yanlış | Doğrusu |
 |---|---|---|---|
 | **`P → Q`** (maddi koşul) | `if P: assert Q` | Maddi koşulda `¬P` iken önerme **otomatik DOĞRU** sayılır (vacuous truth). Kod bunu es geçer ⇒ **`¬P` dalı sessizce doğrulanmamış kalır** | `¬P` dalını da AÇIKÇA test et (PBT'de hem `P` hem `¬P` girdi uzayını üret); `P→Q` ile `P⇔Q` farkını yorumda belirt |
-| **`∀x. P(x)`** | `for x in liste: assert P(x)` | Kod yalnız **eldeki örneklem** üzerinde ∀'yı test eder. Sonlu örneklem ∀'nın **İSPATI DEĞİL** (L4) | PBT + shrinking ⇒ güven artışı, **tam ispat değil**. Model-checker (TLA+/Alloy) sonlu durum uzayını **tüketici** tarar ⇒ epistemik olarak **daha güçlü** |
+| **`∀x. P(x)`** | `for x in liste: assert P(x)` | Kod yalnız **eldeki örneklem** üzerinde ∀'yı test eder. Sonlu örneklem ∀'nın **İSPATI DEĞİL** (L4) | PBT + shrinking ⇒ güven artışı, **tam ispat değil**. Model-checker sonlu durum uzayını **tüketici** tarar ⇒ epistemik olarak daha güçlü — **ama koşulsuz değil, bkz. K30** |
 | **`∃x. P(x)`** | `if any(P(x) for x in xs)` | Kapsam belirsizse — *"bir X vardır ki her Y için"* mi, *"her Y için bir X vardır"* mi (`∃∀` vs `∀∃`) — kod **SESSİZCE yanlış sırayı seçer**, hata fırlatmaz | Niceleyici sırasını önerme yazarken **açıkça numaralandır**; `∃x∀y` ile `∀y∃x` **farklı matematiksel nesnelerdir**; kod yorumunda sıra birebir korunur |
 | **`¬(A ∧ B)`** | genelde elle `not a and not b` yazılır | De Morgan atlanır: `¬(A∧B) = ¬A ∨ ¬B`, **`¬A ∧ ¬B` DEĞİL** — klasik ∧ yaygın hata | Dönüşümü **programatik uygula**, elle yeniden türetme |
-| **⭐ `[?]`** (kestirim) | `None` / `null` | `None` **üç-değerli mantığı gizlice ikiye indirger.** Ve *"bilinmiyor"* ile *"boş"* ile *"hata"* **aynı değerle** temsil edilir ⇒ **hangisi olduğu KAYBOLUR**. Ayrıca diller arası tutarsız: SQL'de `NULL = NULL → UNKNOWN`, Python'da `None == None → True` | `Option`/`Maybe` tipi **veya** açık üç-durumlu enum: `Known(x) \| Unknown \| Contradictory` |
+| **⭐ `[?]`** (kestirim) | `None` / `null` | `None` **üç-değerli mantığı gizlice ikiye indirger.** Ve *"bilinmiyor"* ile *"boş"* ile *"hata"* **aynı değerle** temsil edilir ⇒ **hangisi olduğu KAYBOLUR**. Ayrıca diller arası tutarsız: SQL'de `NULL = NULL → UNKNOWN`, Python'da `None == None → True`. **⚠️ K29: bu kayıp KAÇINILMAZ DEĞİL — bir tasarım tercihinin sonucudur** (Rust RFC 0243: `Option<T>` ∧ `Result<T,E>` yapısal olarak eşdeğer ama **farklı semantik amaçla** kullanılıyor) | `Option`/`Maybe` tipi **veya** açık üç-durumlu enum: `Known(x) \| Unknown \| Contradictory`. Kayıp kaçınılmaz olmadığı için **kaçınmak bir KARARDIR** ⇒ V76 tam olarak o kararı şimdiden vermektir |
 | **⭐ `⊨X`** (çelişkili) | *(genelde kod karşılığı YOKTUR — atlanır)* | Çelişkili durumun kendi tip/dal karşılığı yoksa, çelişkili girdi **sessizce ilk eşleşen dala düşer** (genelde `else`) ⇒ **çelişki bilgisi kaybolur** | Ayrı `Contradiction` durumu/exception tipi. **`⊨X` asla `[?]` ile aynı koda düşmemeli** |
 | **Kapalı-dünya `¬`** ("X yoksa Y'dir") | `if not found_in_db(x): return Y` | Mantıkta `¬P` = **P'nin yanlışlığının KANITLANMIŞ olması**; kodda `not found` = *"arandı, bulunamadı"* ⇒ **kanıtlanmamış yokluk** ile **kanıtlanmış yokluk** karışır. Prolog'un `\+` de klasik değil: *"şu an ispatlanamıyor"*, *"yanlıştır"* değil | OWA gerekiyorsa arama uzayının **TAM (complete)** olduğunu ayrıca garanti et; değilse *"bulunamadı"* ile *"yoktur"*u **kod-seviyesinde AYRI durumlar** yap |
 | **`→` vs `⇔`** | ikisi de `if...then`, ters yön test edilmez | `A→B` doğrulanınca `B→A` da doğru **VARSAYILIR** (converse hatası) | Her `⇔` **HEM ileri HEM geri** yön testi ister; `→` **tek yön**, tersini test ETME |
-| **⭐ `t` / `t+1`** (zamansal indeks) | `state = new_state` (mutasyon) | `t` ∧ `t+1` matematiksel olarak **iki ayrı, değişmez durum**. Mutasyonla üzerine yazılınca `t` **KAYBOLUR** ⇒ *"t ile t+1 arasında X değişmemeli"* tipi invariant artık **kontrol EDİLEMEZ** | TLA+ tam bunun için var (primed variables `X'` — eski ∧ yeni durumu **aynı ifadede** tutar). Kodda: **immutable snapshot + explicit diff/invariant-check** fonksiyonu |
+| **⭐ `t` / `t+1`** (zamansal indeks) | `state = new_state` (mutasyon) | `t` ∧ `t+1` matematiksel olarak **iki ayrı, değişmez durum**. **Naif mutasyon-temelli stilde** üzerine yazılınca `t` **kaybolur** ⇒ *"t ile t+1 arasında X değişmemeli"* tipi invariant **kontrol edilemez hâle gelir**. **⚠️ K27: "imkânsız" DEĞİL** — kalıcı/immutable veri yapıları (`pyrsistent`: *"normalde onu değiştirecek tüm metotlar bunun yerine yeni bir kopya döndürür… orijinal yapıya dokunulmaz"*) ∨ event sourcing ile **invariant korunur** | TLA+ tam bunun için var (primed variables `X'` — eski ∧ yeni durumu **aynı ifadede** tutar). Kodda: **immutable snapshot + explicit diff/invariant-check** fonksiyonu. **Bu düzeltme "doğrusu" sütununu GÜÇLENDİRİR** — çözüm zaten buradaydı, fazla mutlak olan **iddia metniydi** |
 | **Kesin önerme, yumuşatıcı yok** | `assert` / `raise` | Spec **bütün-uzay** için doğru; kod **yalnız test-edilen-uzay** için doğrulanmış olabilir (**refinement gap**) | Kod yorumunda üst-not: *"bu invariant spec'te model-checked, implementasyonda YALNIZCA test-edilmiş"* |
 
 > **⭐ Salih'in önerme formu için en kritik üç satır:** `[?]` · `⊨X` · `t/t+1`.
@@ -100,9 +117,11 @@ Somut: `sorted(set(ls))` yanlışlıkla tekrarları sildiğinde en minimal karş
 | Gherkin/BDD'nin endüstride terk edilme oranı | **Hiçbir ölçüm bulunamadı** |
 | Alloy · Z · B-metodu endüstriyel vaka **ölçümü** | **Bulunamadı** (yalnız Alloy'un teknik README'si okundu, *"ne yakalar"* içeriği yoktu) |
 
-### 1.5 A31 — İDDİA LİSTESİ (antitez için, gerekçesiz) ⊨¬2
+### 1.5 A31 — İDDİA LİSTESİ · **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① `[?]` ile `⊨X` tek bir `None`'a indirgenirse epistemik olarak farklı iki durum **geri alınamaz** biçimde birleşir. ② `P→Q` yalnız `P` doğruyken test edilirse, `¬P` durumu **hiç doğrulanmamış** gizli bir kör nokta yaratır. ③ PBT, ∀'nın **ispatını değil güven artışını** sağlar; bu epistemik zayıflama belirtilmezse *"test edildi"* ile *"ispatlandı"* karışır. ④ Model-checking PBT'den **epistemik olarak daha güçlüdür** ama yalnız **spec** üzerinde çalışır — kodun spec'e uyduğu **ayrı ∧ genelde doğrulanmamış** bir iddiadır. ⑤ DbC kütüphaneleri dil-seviyesinde değil kütüphane-seviyesinde konumlanır; bu, *"spec'i kodda garantiledik"* **yanılsamasına** yol açabilir. ⑥ Negation-as-failure klasik olumsuzlamadan **ontolojik olarak farklıdır**; önerme formunda `¬` kullanılan her yerin açık-dünya mı kapalı-dünya mı olduğu **belirsiz kalabilir**. ⑦ Zamansal indeksli önermeler mutasyonla ifade edilirse invariant kontrolü **imkânsız hâle gelir**. ⑧ Bu araştırmada **en sık atıf yapılan endüstriyel kanıta erişilemedi**; bu eksene dayanan her iddia en fazla `[K-hatırlama]`dır. ⑨ Doğal dil→mantık tuzaklarının **ölçülmüş hata oranlarına hiç erişilemedi**; ampirik destek **sıfırdır**.
+*Bu başlık `⊨¬2` idi. **Artık değil** — antitez 2026-07-26'da araçlı koştu.*
+
+① `[?]` ile `⊨X` tek bir `None`'a indirgenirse epistemik olarak farklı iki durum birleşir — **DARALDI (K29):** *"geri alınamaz"* **düşer**. Rust RFC 0243 gösteriyor ki `[?] → Option::None` ∧ `⊨X → Result::Err(Contradiction)` ile ayrım **hiç kaybolmadan** taşınabilir. Kayıp bir doğa yasası değil, **bir tasarım tercihinin sonucudur** ⇒ **iddianın pratik değeri ARTAR**: kaçınmak bir karardır. ② `P→Q` yalnız `P` doğruyken test edilirse `¬P` dalı doğrulanmamış kalır — **çürütülemedi**. ③ PBT ∀'nın ispatını değil **güven artışını** sağlar — **⊨S ⊨D**, Hypothesis'in kendi tanımıyla doğrulandı ⇒ **bu turun en sağlam duran iddiası**. ④ Model-checking PBT'den epistemik olarak daha güçlüdür ama yalnız **spec** üzerinde çalışır — **⛔ KISMEN ÇÜRÜTÜLDÜ (K30):** **CBMC** *"C ve C++ **programları** için bir Bounded Model Checker'dır"* ⇒ soyut spec değil **doğrudan kodu** doğrular. Ve ikinci nokta daha derin: CBMC **"Bounded"**dır (döngüleri sınırlı açar) ⇒ *"epistemik olarak daha güçlü"* **koşulsuz değildir**; PBT ile **aynı sınıf açık uçluluğu** paylaşır, fark **nicelik** (tüketici ↔ rastgele), **nitelik değil**. ⑤ DbC kütüphane seviyesindedir — **DARALDI (K28):** yalnız **Python/Java/JS decorator ekosistemi** için doğru; **SPARK ∧ Eiffel dil düzeyinde DbC sunar**. ⑥ Negation-as-failure klasik olumsuzlamadan ontolojik olarak farklıdır — **çürütülemedi**. ⑦ Zamansal indeksli önermeler mutasyonla ifade edilirse invariant kontrolü **imkânsız hâle gelir** — **⛔ ÇÜRÜTÜLDÜ (K27):** doğrusu **`naif mutasyon-temelli stilde kaybolur; kalıcı/immutable veri yapıları ∨ event sourcing ile korunur`**. ⑧ En sık atıf yapılan endüstriyel kanıta erişilemedi — **çürütülemedi** (erişim kaydı). ⑨ Doğal dil→mantık tuzaklarının ölçülmüş hata oranlarına hiç erişilemedi; ampirik destek sıfırdır — **çürütülemedi**; ⚠️ ama bu bir **`[ARANAMADI]`**'dır, yokluk hükmü değildir.
 
 ---
 
@@ -166,7 +185,7 @@ Kendi ifadesi: *"bigger drop means the generated code tends to be fragile"*
 
 | Eksen | Durum |
 |---|---|
-| **`[?]` ∧ `⊨X` etiketlerinin koda taşınma davranışı** | **HİÇBİR çalışma bulunamadı.** *Arandı, alan boş.* ⇒ **L21** |
+| **LLM'in `[?]` ∧ `⊨X` etiketlerini koda taşıma DAVRANIŞI** | **HİÇBİR çalışma bulunamadı.** *Arandı, alan boş.* ⇒ **L21**<br>⚠️ **K31 · kapsam sabitlendi:** bu boşluk **dar okumadır** — *"bir LLM, spec'teki belirsizlik etiketini koda nasıl taşıyor"*. **Geniş okuma yanlıştır:** belirsizlik/hata ayrımının **koda taşınması** 40+ yıllık literatürdür (Option/Maybe monadları, Rust `Option`↔`Result`, SQL üç-değerli mantık). Antitezin kendi ironisi yerinde: *"iddia, kendi eleştirdiği muğlaklığı kendi işliyor."* |
 | Autoformalization'da *"sessizce yanlış ama derlenen"* çeviri **oranı** | Hiçbir kaynakta rakam yok — yalnız riskin var olduğu **VARSAYIMI** (benchmark tasarımlarının kendisi bunu ima ediyor) |
 | Materyal koşullu ↔ gündelik "eğer" karışıklığının **kod bağlamında** ölçümü | **Hiç bulunamadı** |
 | De Morgan hatası özelinde ayrı ölçüm | **Hiç bulunamadı** |
@@ -195,7 +214,7 @@ Kendi ifadesi: *"bigger drop means the generated code tends to be fragile"*
 
 | # | Güvence | Ölçülmüş mü | Maliyet |
 |---|---|---|---|
-| **1** | **Tip sistemi / biçimsel kısıt (SMT, model checker, Dafny-tarzı)** | ⭐ **EN GÜÇLÜ ölçülmüş kanıt** — Clover `%87 kabul + SIFIR yanlış-pozitif` ⊨D (L7); tip-kısıtlı decoding ⊨K (L8) | **Yüksek** (biçimsel dil/araç kurulumu) |
+| **1** | **Tip sistemi / biçimsel kısıt (SMT, model checker, Dafny-tarzı)** | ⭐ **EN GÜÇLÜ ölçülmüş kanıt** — Clover `%87 kabul + SIFIR yanlış-pozitif` ⊨D (L7); tip-kısıtlı decoding ⊨K (L8).<br>⚠️ **K30 şerhi:** model-checking **kodu da** doğrulayabilir (CBMC) ⇒ *"yalnız spec üzerinde çalışır"* yanlıştı. Ama CBMC **bounded**'dır (döngüleri sınırlı açar) ⇒ üstünlük **koşulsuz değildir**; PBT ile aynı açık-uçluluk sınıfını paylaşır, fark **nicelikseldir** | **Yüksek** (biçimsel dil/araç kurulumu) |
 | **2** | **Genişletilmiş / property-based test seti** | ⊨D `[kısmi]` — zayıf testte yüksek skor, zengin testte düşüş (L11) | Orta — **üreten ayrı olmalı** |
 | **3** | **İkinci modelle denetim / ayrı aktör test üretimi** | **Dolaylı**: aynı-aktör sızıntısı (%32,67) **tam tersini** destekliyor ⇒ ayrıştırma **negatif kanıtla** gösteriliyor. Doğrudan *"ayrı model test yazınca X azaldı"* ölçümü **bulunamadı** | Orta-yüksek |
 | **4** | **Statik analiz geri-besleme döngüsü** | ⊨K, birincil doğrulanamadı (L9) | **Düşük-orta** — mevcut linter'lar yeterli |
@@ -206,14 +225,19 @@ Kendi ifadesi: *"bigger drop means the generated code tends to be fragile"*
 > **▲ 7. satır doğrudan bize bakıyor.** Salih'in önerme formu **salt-metin disiplinidir.** Bu literatürün tamamı, salt-metin disiplininin **tek başına yetmediğini varsayarak** üzerine araç katmanı ekliyor.
 > ⇒ **Önerme formu gerekli ama yeterli değildir.** Değeri, kodun *yerine geçmesi* değil, **1. ∨ 2. sıradaki bir doğrulayıcıya BAĞLANABİLİR olmasıdır.**
 
-**L17** ⊨X — ÇÖZÜLMEMİŞ GERİLİM
+**L17** `[?]` — ÇELİŞKİ DEĞİL, **TERS-U İLİŞKİSİ** *(etiket K32 ile `⊨X`'ten düşürüldü)*
 `"spec ne kadar biçimselleşirse başarı o kadar artar"` **↔** `"biçimsel DSL'ler LLM için DAHA ZOR çünkü eğitim verisi az"`
-⇒ **İkisi de bu oturumda birincil doğrulanamadı** ⇒ `[X]`, çözülmedi.
-⚠️ Bu gerilim, önerme formunun ne kadar biçimselleşmesi gerektiği sorusunun **tam merkezindedir** ∧ **cevapsızdır.**
+⇒ **İkisi de bu oturumda birincil doğrulanamadı.**
+> **[K32 · antitez daha iyi bir çerçeve önerdi ∧ kabul edildi]** Bu ikisi **çelişki değildir**; muhtemelen **ters-U şeklinde, tekdüze olmayan** bir ilişkidir: `az_biçimsellik → belirsizlik kaybı` ∧ `çok_biçimsellik → dağılım-dışı sözdizimi kaybı` ∧ `ortada bir optimum vardır`.
+> ⇒ Etiket `⊨X` (çelişki, hüküm yok) yerine **`[?]` (ölçülmemiş, tekdüze olmayan ilişki)** olur.
+> ⇒ **Bu, soruyu cevaplamıyor ama SORUYU DEĞİŞTİRİYOR:** *"hangisi doğru"* değil, **"optimum nerede"**. İkincisi ölçülebilir bir sorudur; birincisi değildi.
+⚠️ Bu gerilim, önerme formunun ne kadar biçimselleşmesi gerektiği sorusunun **tam merkezindedir** ∧ **hâlâ cevapsızdır.**
 
-### 2.7 A32 — İDDİA LİSTESİ (antitez için, gerekçesiz) ⊨¬2
+### 2.7 A32 — İDDİA LİSTESİ · **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① Sözdizimsel geçerlilik ile spec-uyumu arasındaki boşluk **ölçülmüş ∧ büyüktür** — ama tam sayı elde edilemedi. ② Autoformalization'da *"sessizce yanlış ama derlenen"* oranına dair **tek bir birincil rakam bulunamadı**. ③ Negation/quantifier/De Morgan hata oranlarına dair **kategori-bazlı sayısal tablo hiçbir erişilen kaynakta yoktu**. ④ Biçimsel doğrulayıcı katmak **ölçülmüş en güçlü güvencedir**. ⑤ Aynı aktörün test+kod yazması ölçülmüş sızıntı riski taşır ⇒ *"LLM'e testleri de yazdır"* güvencesini **kısmen çürütür**. ⑥ `[?]` ∧ `⊨X` etiketlerinin koda taşınma davranışına dair **HİÇBİR ölçüm yoktur** — literatür boşluğu, satıcı iddiası değil. ⑦ Madde-atlama metodolojisi **vardır** ama sayısal çıktı alınamadı — **metodoloji varlığı ile rakam erişimi ayrı şeylerdir**. ⑧ Tip/şema kısıtının hata oranını düşürdüğü iddiası **ikincil kaynaktan** gelir. ⑨ *"Spec biçimselleştikçe başarı artar"* ile *"biçimsel DSL'ler LLM için daha zor"* **çelişkilidir ∧ çözülmemiştir**.
+① Sözdizimsel geçerlilik ile spec-uyumu arasındaki boşluk ölçülmüş ∧ büyüktür — **çürütülemedi**. Antitez ayrıca bir öngörümü düşürdü: bu iddia ile ③'ün *"kategori tablosu yok"* iddiası **çelişmiyor** — farklı granülaritede çalışıyorlar (① **agregat** boşluk, ③ **dar alt-tip**). ② Autoformalization'da *"sessizce yanlış ama derlenen"* oranına dair tek bir birincil rakam bulunamadı — **çürütülemedi**. ③ Negation/quantifier/De Morgan için kategori-bazlı sayısal tablo hiçbir erişilen kaynakta yoktu — **⊨S**, üç benchmark deposu tarandı ∧ karşı-örnek çıkmadı ⇒ **bu turun en dirençli yokluk iddiası**. ④ Biçimsel doğrulayıcı katmak ölçülmüş en güçlü güvencedir — **DARALDI (K30):** model-checking **kodu da** doğrular (CBMC) ∧ **bounded** olduğu için üstünlüğü **koşulsuz değildir**. ⑤ Aynı aktörün test+kod yazması ölçülmüş sızıntı riski taşır — **çürütülemedi**. ⑥ `[?]` ∧ `⊨X` etiketlerinin koda taşınma davranışına dair hiçbir ölçüm yoktur — **⛔ KISMEN ÇÜRÜTÜLDÜ (K31):** iddia **hangi soruyu sorduğu konusunda kayıyordu**. **Dar okuma ayakta**: *"LLM bunu nasıl taşıyor"* ölçülmemiştir. **Geniş okuma yanlış**: belirsizlik/hata ayrımının koda taşınması 40+ yıllık literatürdür. ⇒ İddia **dar okumaya sabitlenir**. ⑦ Madde-atlama metodolojisi vardır ama sayısal çıktı alınamadı — **⊨S**, IFEval bunu **birebir doğruladı**: metodoloji var, README'de rakam yok. ⑧ Tip/şema kısıtının hata oranını düşürdüğü iddiası ikincil kaynaktan gelir — **çürütülemedi**. ⑨ *"Spec biçimselleştikçe başarı artar"* ile *"biçimsel DSL'ler LLM için daha zor"* çelişkilidir — **ÇERÇEVE DEĞİŞTİ (K32):** çelişki değil, **ters-U / tekdüze olmayan ilişki** ⇒ etiket `⊨X` yerine `[?]`.
+
+> ⭐ **Antitez iki öngörümü de çürüttü ∧ bunu dürüstçe söyledi (§7.2).** Brifingte *"① ile ③ çelişiyor"* ∧ *"⑨ çözülmemişken ④ hüküm kuruyor, meşru mu"* diye iki iç çelişki adayı işaret edilmişti. Antitez ikisini de test etti ∧ **tutmadığını raporladı**: birinciler farklı granülaritede, ikincisi ise farklı eksende (⑨ *"ne kadar biçimsellik performansı nasıl etkiler"* — ampirik/derece; ④ *"biçimsel formun işlevi nedir"* — kavramsal/amaç) ⇒ **④, ⑨'un çözümsüzlüğüne rağmen ayakta kalır.**
 
 ---
 
@@ -267,7 +291,8 @@ Kendi ifadesi: *"bigger drop means the generated code tends to be fragile"*
 
 | # | Borç | Not |
 |---|---|---|
-| M1 | **Antitez (Aşama 2) koşulmadı** — A5'ten beri | §1.5 ∧ §2.7 iddia listeleri hazır |
+| M1 | ~~Antitez (Aşama 2) koşulmadı~~ → **KAPANDI 2026-07-26** | Araçlı koştu (`tool_uses = 21`): 3 çürütme (K27, K30, K31) · 3 daraltma (K28, K29, K32) · 4 `⊨S`. Ayrıca **iki öngörü hatam düştü** (§2.7 notu) — protokolün evet-adamı üretmediğinin kanıtı |
+| M9 | **`⊨S` damgaları aynı-aile şerhli** | Antitez ajanları tez ajanlarıyla **aynı model ailesindendi** ⇒ `⊨S` = *"aynı-aile hakemi karşısında sağ kaldı"*. **İstisna:** bu ailenin doküman/depo-doğrulamalı `⊨S`'leri (Hypothesis, IFEval, üç benchmark deposu) **şerhten muaf** — kanıt modelden değil kaynaktan geldi |
 | M2 | **AWS TLA+ raporuna erişilemedi** (L2) | Bu ailenin en çok atıf beklenen endüstriyel kanıtı |
 | M3 | **Doğal dil→mantık hata oranları literatürü** `[ARANAMADI]` | Ampirik destek **şu an sıfır**; yalnız kavramsal argüman |
 | M4 | `[?]`/`⊨X` koda taşınma ölçümü (L15/L21) | **Arandı, alan boş** — literatür boşluğu, erişim engeli değil |
@@ -289,14 +314,16 @@ Kendi ifadesi: *"bigger drop means the generated code tends to be fragile"*
 
 ## 7. KAPANIŞ DAMGASI
 
-**Aile:** A31 ⊨¬2 · A32 ⊨¬2
+**Aile:** A31 · A32 — **antitez KOŞTU** (2026-07-26, araçlı, `tool_uses = 21`)
+**Antitez sonucu:** 3 çürütme (K27 immutable · K30 CBMC/bounded · K31 dar okuma) · 3 daraltma (K28 SPARK · K29 tasarım tercihi · K32 ters-U) · 4 `⊨S` · **2 öngörü hatası düştü**
 **Kanıt tabanı:** `[D]` — TLA+ Examples · icontract · Hypothesis · QuickCheck · fast-check · npm registry · Clover · HumanEval · EvalPlus · MiniF2F · LogicBench · FOLIO · DeepSeek-Prover · SWE-bench depoları
 **En güçlü tek bulgu:** Clover — biçimsel doğrulayıcı, `%87 kabul + sıfır yanlış-pozitif` (L7)
 **En değerli boşluk:** `[?]`/`⊨X` koda taşınma ölçümü **yok** (L15) — Salih'in doldurabileceği alan
 **Ana hüküm:** `önerme_formu = gerekli ∧ ¬yeterli`; değeri **doğrulayıcıya BAĞLANABİLİR olmasıdır** (§2.6)
 
 **▲ Bu raporun kendi zayıflıkları — beyan edilir:**
-1. `antitez = ∅`
+1. ~~`antitez = ∅`~~ ⇒ **koştu ∧ üç iddiayı çürüttü.** Yeni beyan: bu raporun **üç mutlak ifadesi** (*"imkânsız"*, *"geri alınamaz"*, *"yalnız spec üzerinde"*) fazla güçlüydü ∧ üçü de daraltıldı. Ortak kalıp: **mutlak niceleyici, tek bir karşı-örnekle düşer** — ve üçünde de karşı-örnek vardı.
+1b. **`⊨S` damgaları aynı-aile şerhlidir** (M9); doküman/depo-doğrulamalı olanlar muaftır.
 2. §1.3'ün **ampirik desteği sıfırdır** (M3) — tablo **kavramsal argümandır**, ölçüm değil. Değerli ama **kanıt sınıfı farklıdır.**
 3. `L2` ⇒ en çok atıf beklenen endüstriyel kanıt **doğrulanamadı**; A31'in sanayi ayağı `[K-hatırlama]` düzeyindedir.
 4. `L17` ⇒ **"ne kadar biçimsel"** sorusu, bu raporun cevaplaması beklenen sorulardan biriydi ∧ **cevaplanamadı.**
