@@ -272,11 +272,292 @@ Yayımlanmış hali (He, Yang, Burckhardt, Kapravelos, Vasilescu, Kästner — I
 
 ## 6 — A23 · DS/ML asgari yığını
 
-**KOŞUM SÜRÜYOR.** A23 ve alt-hatları (veri katmanı: polars/duckdb/parquet/dvc · kalite katmanı: ruff/mypy/pytest · deney takibi n=1 · yeniden üretilebilirlik ve notebook'lar · nbdev/jupytext/papermill · Parquet vs CSV ölçümü · MLflow ağrı noktaları · W&B ücretsiz katman ve gizlilik · ortam sabitleme kayması · manuel takip eşiği) hâlâ dönmedi.
+> **REGISTER NOTU:** Bu bölüm, Salih'in 07-26 hükmünden (ai-to-ai = tam önerme formu, P144) SONRA yazıldı ve **önerme formundadır**. Dosyanın §1–§5'i hükümden önce yazıldığı için eski register'dadır. Karışıklık kasıtlı değil, **kronolojiktir** ve kayda geçer.
 
-**Bu bölüm bilerek boş bırakıldı.** İndiğinde bu dosyaya **§6 olarak eklenecek**, ayrı dosya açılmayacak — aile bütünlüğü korunur. Borç §8'de kayıtlı.
+**Kanıt notu — bu ailenin ayırt edici özelliği:** A23'ün bulgularının neredeyse tamamı **bu makinede yapılmış kendi ölçümüdür** `[D-ölçüm]`, literatür aktarımı değil. Ajan dört alt-hat açtı; **alt-hatların metnini elinde doğrulayamadığı için aktarmadı ve uydurmadı** — konu alanlarını kendi ölçümüyle kapattı, literatür boşluklarını açıkça işaretledi. *Bu davranış, B7/B8 kuralının (bkz. araştırma-promptu atlası) canlı doğrulamasıdır.*
 
-*Şu ana dek inen alt-hatlar (nbdev/jupytext/papermill · ortam sabitleme kayması · manuel takip eşiği) A23'ün kendi sentezinde toplanacağı için burada tekrarlanmadı — çift-kayıt riski.*
+### 6.1 Paket katmanı
+
+**R1** `[D]` — SATICI İDDİASI RAKAMSIZ
+`uv/BENCHMARKS.md → sayı = ∅` ∧ `içerik = yalnız bar_grafik_GÖRSELİ`
+`ölçüm_tabanı = tek_dosya (Trio docs-requirements.in) ∧ yalnız_macOS`
+Satıcının kendi uyarısı: *"Benchmark performance may vary dramatically across different operating systems and filesystems."*
+⇒ **"10-100x" iddiası kendi deposunda doğrulanabilir sayıya dayanmıyor.**
+
+**R2** `[D-ölçüm]` — KENDİ ÖLÇÜMÜMÜZ (bu makine, Linux, Py 3.11.15, uv 0.8.17 vs pip 24.0; 7 doğrudan → 25 paket)
+
+| İşlem | pip | uv | oran |
+|---|---|---|---|
+| venv oluşturma | 4,08 s | 0,034 s | **120×** |
+| sıcak kurulum | 36,66 s | 0,39 s | **93×** |
+| **soğuk kurulum (ağ-bağımlı)** | 30,27 s | 7,86 s | **3,9×** |
+| ortam diski | 677 MB | 514 MB | pip 1,32× büyük |
+
+⇒ `93× = gerçek` ∧ **`mutlak_tasarruf ≈ 36 saniye`**
+⇒ `senaryo = soğuk (CI ∨ ilk_kurulum)` ⇒ `kazanç = 3,9×` — çünkü **darboğaz ağdır**
+⇒ Satıcı bandı `sıcak → doğrulanıyor` ∧ `soğuk → doğrulanmıyor`
+**⊨X** `pip_sıcak (36,7 s) > pip_soğuk (30,3 s)` ⇒ pip'in darboğazı indirme değil, **açma/kurma**.
+
+**R3** `[D-ölçüm]` — ⭐ ASIL GEREKÇE HIZ DEĞİL
+`poetry → 49 Python_paketi ∧ 56 MB` **ortamınıza girer**
+`pip-tools → 8 paket ∧ 13 MB`
+`uv → tek_statik_ikili ∧ 0 Python_bağımlılığı`
+⇒ `uv ∩ proje_bağımlılık_grafiği = ∅` ⇒ **asla çakışmaz**
+⇒ Bu, hızdan **daha sağlam** bir gerekçedir.
+
+**R4** `[D]` — `src/` TARTIŞMASI KARARA BAĞLANMAMIŞ
+`PyPA_metni → iki_düzeni_yan_yana_koyar ∧ tavsiye = ∅ ∧ ampirik_iddia = ∅` (tümü argümantatif)
+`tek_somut_faydası = kurulu_kopya_yerine_geliştirme_kopyasının_yanlışlıkla_import_edilmesini_önlemek`
+⇒ Bu fayda **yalnız paketleyip DAĞITIYORSANIZ** anlamlıdır.
+**R5** `[D-ölçüm]` — ve tartışma pratikte **bedelsiz** çözülmüş: `uv init --lib` zaten `src/` üretiyor (0,089 s, 14 satır `pyproject.toml`, 6 dosya) ⇒ `src/ = maliyet_değil, VARSAYILAN`.
+
+**R6** `[D-ölçüm]` — ASGARİ YIĞININ TOPLAM MALİYETİ
+`pandas ⊕ numpy ⊕ scipy ⊕ matplotlib ⊕ pyarrow ⊕ ruff ⊕ pytest` ⇒ **3,33 saniye** · 26 satır `pyproject.toml` · 24 kilitli paket · 472 MB venv · **insanın bakacağı 5 dosya** (4'ü otomatik üretiliyor).
+
+### 6.2 Kalite katmanı — ⭐ ailenin en önemli negatif bulgusu
+
+**R7** `[D-ölçüm]` — ruff FİNANSAL HATALARIN HİÇBİRİNİ GÖRMÜYOR
+Gerçekçi bir risk modülüne kasıtlı hatalar konuldu.
+`ruff(varsayılan) → 7 hata` — **hepsi hijyen** (kullanılmayan import/değişken, mutable default)
+`ruff(--select ALL) → 32 hata` — fazladan 25'i docstring, tip-notu, telif notu, tırnak stili
+`gerçek_hata_artışı(ALL) = 0`
+**`look_ahead_hatası (df['ret'].shift(-1)) → İKİ MODDA DA tespit edilmedi`**
+
+**R8** `[D-ölçüm]` — mypy'ın İLK İZLENİMİ %100 GÜRÜLTÜ
+`bağlam = veri_bilimi_dosyası` ∧ `pandas-stubs ⊕ numpy ⊕ scipy kurulu` (adil koşul)
+`mypy(varsayılan) → 1 hata` (scipy stub'ı yok)
+`mypy(--strict) → 6 hata` (5'i "annotation eksik")
+`gerçek_hata = 0`
+
+**R9** `[D-ölçüm]` — ⭐ İKİ TARAFLI: mypy TİP-NOTLU SINIRLARDA KÂR EDİYOR
+Aynı test, anotasyonlu kodda 4 gerçek hatayla:
+- `annualise(df, 252)` → `DataFrame` beklenen `float` **✔**
+- `annualise(1.5, "252")` → `str` beklenen `int` **✔** *(config dosyası klasiği)*
+- return ifadesi eksik **✔**
+- `df["clsoe"].mean()` — sütun adı yazım hatası — **✘ YAKALANAMADI**
+
+⇒ **`mypy → statik_imzalarda kâr` ∧ `mypy → DataFrame_içeriğinde KÖR`**
+⇒ Ve `veri_biliminde hataların_çoğu ∈ DataFrame_içi` ⇒ **kapsama yapısal olarak dar.**
+
+**R10** `[D]` — BAKIM AĞIRLIĞI (PyPI metadata): `ruff → 0 doğrudan bağımlılık` · `mypy → 12` · `pytest → 14`. `ruff ∧ uv = aynı ekip ∧ ikisi de 0 bağımlılık` ⇒ kurulum riski yok.
+
+**R11** `[ARANAMADI]` — tip ipuçlarının hata oranına etkisi üzerine ampirik literatür. `WebSearch_bütçesi = tükendi` ∧ `akademik_yayıncılar = 403`.
+⇒ **"Bulunamadı" DEĞİL.** R7–R9 kendi kontrollü ölçümümüzdür ∧ **literatür yerine GEÇMEZ.**
+
+### 6.3 Veri katmanı
+
+**R12** `[D]` — polars'ın deposunda da RAKAM YOK. README yalnız *"very fast"*, *"one of the best performing"* ∧ kendi benchmark sayfasına link. `depoda_üretilebilir_sayı = ∅`.
+
+**R13** `[D-ölçüm]` — ⭐ KENDİ ÖLÇÜMÜMÜZ (1,26M satır × 7 sütun; 500 hisse × 2520 gün; ~40 MB parquet; gerçekçi portföy paneli)
+
+| işlem | pandas | polars | duckdb | polars kazancı |
+|---|---|---|---|---|
+| parquet okuma | 0,247 s | 0,171 s | 0,515 s | 1,4× |
+| **groupby → 4 agregat** | **0,071 s** | **0,085 s** | 0,092 s | **0,8× (polars YAVAŞ)** |
+| sort + 20g hareketli ort. | 0,403 s | 0,252 s | – | 1,6× |
+| universe join + filtre | 0,784 s | 0,108 s | – | **7,2×** |
+| hisse başına pct_change | 0,279 s | 0,244 s | – | 1,1× |
+
+⇒ `polars_kazancı ∈ [0,8× , 7,2×]` ∧ `ortanca ≈ 1,4×`
+⇒ **Pazarlamanın çağrıştırdığı 10-50× YOK.** Tüm işlemler `< 1 saniye`.
+
+**R14** `[D-ölçüm]` — ⭐ ASIL DARBOĞAZ IMPORT
+`import: pandas 0,73 s · polars 0,22 s · duckdb 0,12 s · numpy 0,20 s`
+`5_işlemin_pandas_toplamı = 1,78 s` ⇒ **`pandas_import / toplam_iş_yükü = %29`**
+⇒ **Küçük veride kütüphane seçimi değil, SÜREÇ BAŞLATMA baskındır.**
+
+**R15** `[D-ölçüm]` — PARQUET vs CSV (aynı panel)
+
+| format | yazma | okuma | boyut |
+|---|---|---|---|
+| CSV | 9,25 s | 1,68 s | 76,2 MB |
+| CSV.gz | 26,93 s | 1,79 s | 28,6 MB |
+| **Parquet** | **0,78 s** | **0,53 s** | **39,7 MB** |
+
+`sütun_alt_kümesi (7 → 2)` ⇒ `parquet 0,07 s vs CSV 0,88 s = 12,6×`
+
+**R16** `[D-ölçüm]` — ⭐ PARQUET'İN ASIL GEREKÇESİ HIZ DEĞİL, **DOĞRULUK**
+`CSV_round_trip → datetime64[us] SESSİZCE str'e döner` ⇒ `orig.equals(csv) = False`
+`Parquet_round_trip` ⇒ `True` (bit-aynı)
+⇒ `zaman_serisi_projesi ∧ tarih_sütunu = str` ⇒ **leksik sıralama** ⇒ **sessiz doğruluk hatası.**
+
+**R17** `[D]` — DVC'nin DEĞERİ TAKIM İÇİNDİR
+README'nin kendi ifadeleri: *"Store them in your cloud storage"*, *"Share data and model files"*, *"collaborate with others"*
+`kullanıcı = tek_kişi` ∧ `uzak_depolama = ∅` ⇒ **`değer ≈ 0`**
+**R18** `[D-ölçüm]` `DVC_maliyeti = 98 paket ∧ 107 MB` (PyPI'da 82 doğrudan bağımlılık).
+
+**R19** `[ERİŞİLEMEDİ]` — bağımsız db-benchmark SAYILARI. `duckdblabs.github.io = HTTP 000` (`*.github.io` kapalı) ∧ `pola.rs/benchmarks.html = HTTP 000`.
+⇒ Hem bağımsız hem satıcı rakamları **aranamadı** ⇒ R13'ün kendi ölçümü bu boşluğu doldurur.
+
+### 6.4 Deney takibi
+
+**R20** `[D-ölçüm]` — ⭐ GERÇEK KURULUM AĞIRLIĞI (boş venv'e kurulup sayıldı)
+
+| araç | paket | disk |
+|---|---|---|
+| **mlflow** | **90** | **611 MB** |
+| mlflow-skinny | 41 | 64 MB |
+| wandb | 17 | 98 MB |
+| dvc | 98 | 107 MB |
+
+`mlflow (611 MB) > tüm_bilimsel_yığın (472 MB)`
+⇒ **Deney takibi eklemek ortamı İKİYE KATLIYOR.**
+⇒ `mlflow-skinny = 10× hafif` ∧ çoğu solo kullanım için yeterli — **bu ayrım az biliniyor.**
+
+**R21** `[D-ölçüm]` — ⭐ KRİTİK VE GÜNCEL: MLflow 3.x DOSYA DEPOSUNU KALDIRDI
+`MLflow 3.14.0 ∧ ./mlruns` ⇒ **istisna fırlatır**:
+> *"The filesystem tracking backend (e.g., './mlruns') is in maintenance mode and will not receive further updates. Please migrate to a database backend (e.g., 'sqlite:///mlflow.db')"*
+
+⇒ **İnternetteki "pip install mlflow, mlruns'a yaz, bitti" tavsiyesinin TAMAMI MLflow 2.x içindir ∧ artık GEÇERSİZDİR.**
+Ölçüldü: `sqlite_arka_ucu → çalışıyor` ∧ `ilk_koşum_şema_göçü = 7,42 s ∧ 791 KB db`; `dosya_deposu → yalnız MLFLOW_ALLOW_FILE_STORE=true ile` ∧ `tek_koşum → 10 dosya`.
+
+**R22** `[D-ölçüm]` — BASİT ALTERNATİFİN ÖLÇÜLMÜŞ MALİYETİ
+`8 satır Python ∧ 0 bağımlılık ∧ 0,006 s/koşum ∧ satır_başına_bir_JSONL_kaydı (git SHA dahil)`
+⇒ `90 paket / 611 MB` **karşısında** `8 satır / 0 paket`.
+
+**R23** `[D]` — BAKIM CANLILIĞI (PyPI son sürüm, bugün çekildi)
+`CANLI: mlflow 3.14.0 (2026-06-17) · wandb 0.28.1 (2026-07-16) · dvc 3.67.1 (2026-03-31)`
+`TERK EDİLMİŞ: backtrader (2023-04-19) · pyfolio (2019-04-15) · empyrical (2020-10-13)`
+
+**R24** `[ARANAMADI]` — "kaç deneyden sonra manuel takip kırılır" eşiği. **Kestirim verilmedi.**
+
+### 6.5 Yeniden üretilebilirlik
+
+**R25** `[D-ölçüm]` — TOHUMLAMA KATMANLARI BİRBİRİNİN YERİNE GEÇMİYOR
+`np.random.seed(0) → [0.548814, 0.715189, 0.602763]`
+`np.random.default_rng(0) → [0.636962, 0.269787, 0.040974]`
+⇒ Farklı akışlar ⇒ **eski kodu yeni API'ye taşımak sonuçları SESSİZCE değiştirir.**
+
+**R26** `[D-ölçüm]` `RandomForestRegressor(n_estimators=30)` ∧ `¬random_state` ⇒ iki fit farklı tahmin. `random_state=0` ⇒ aynı.
+
+**R27** `[D-ölçüm]` — ⭐ EN SİNSİ: `PYTHONHASHSEED`
+`¬PYTHONHASHSEED` ⇒ `set_sıralaması her_koşumda DEĞİŞİR`
+İki ardışık koşum: `['MSFT','AAPL','GOOG','TSLA']` vs `['MSFT','TSLA','AAPL','GOOG']`
+`hash("AAPL")` de süreçler arası değişiyor (−6300815829564892180 vs 8214638119298906547)
+⇒ **`hisse_evreni ⟵ set` ⇒ tüm tohumlar doğru olsa BİLE sütun sırası her koşumda değişir.**
+
+**R28** `[D-ölçüm]` — NOTEBOOK SIRA-DIŞI ÇALIŞTIRMA GİT DIFF'TE GÖRÜNMEZ
+`execution_count = [1, 5, 3, 4]` ⇒ okuyucuya *"filtre önce uygulandı"* izlenimi ∧ gerçekte `Sharpe` filtreden **ÖNCE** hesaplanmış.
+`tespit = 3 satır` (kod hücrelerinin `execution_count` listesi `1..N` ile aynı mı?)
+
+**R29** `[D]` — AĞIRLIK UYARISI: `papermill → 103` · `jupytext → 72` · `nbdev → 23` doğrudan bağımlılık.
+⇒ **Notebook'u "düzeltmek" için kurulan araç, düzeltmeye çalıştığı yığından ağır olabiliyor.**
+
+**R30** `[ARANAMADI]` — brifingteki notebook `%4` rakamının birincil doğrulaması. **Teyit edilmedi, üzerine inşa edildi** — *bu ayrım önemlidir ve kayda geçer.*
+
+### 6.6 Finansal zaman serisi — ⭐ en yüksek değerli blok
+
+**R31** `[D-hesap]` — MinBTL FORMÜLÜ BAĞIMSIZ OLARAK DOĞRULANDI
+`gerçek_beceri = 0` ∧ `N varyant denendi` ⇒ beklenen en yüksek in-sample yıllık Sharpe:
+
+| N | 2 yıl | 5 yıl | 10 yıl | 20 yıl |
+|---|---|---|---|---|
+| 5 | 0,84 | 0,53 | 0,38 | 0,27 |
+| 10 | 1,11 | 0,70 | 0,50 | 0,35 |
+| **45** | 1,58 | **1,00** | 0,71 | 0,50 |
+| 128 | 1,85 | 1,17 | 0,83 | 0,59 |
+| 1000 | 2,30 | 1,46 | 1,03 | 0,73 |
+
+⇒ *"5 yıl veriniz varsa 45'ten fazla bağımsız konfigürasyon denemeyin"* iddiası **birebir doğrulandı** (`N=45 ∧ 5_yıl → 1,000`).
+
+**R32** `[D-simülasyon]` — İKİNCİ BAĞIMSIZ YÖNTEM AYNI SONUCU VERDİ
+Monte Carlo: saf gürültü, `gerçek_edge = 0`, 5y in-sample / 5y out-of-sample, 200 tekrar
+
+| N | en iyi in-sample SR | onun out-of-sample SR'ı |
+|---|---|---|
+| 1 | −0,06 | 0,03 |
+| 10 | 0,68 | −0,04 |
+| **45** | **0,99** | **−0,01** |
+| 100 | 1,13 | 0,01 |
+| 1000 | 1,46 | −0,04 |
+
+`simülasyon ≈ analitik_formül` (2 ondalık basamağa kadar: 45→0,99 vs 1,00 · 100→1,13 vs 1,13 · 1000→1,46 vs 1,46)
+`out_of_sample ≈ 0` **her zaman**
+⇒ **`in_sample_Sharpe = f(seçim_sayısı)` ∧ `≠ f(beceri)`**
+
+**R33** `[K]` — YAYINLANMIŞ FİNANS LİTERATÜRÜ AYNI YÖNDE
+`452 anomali → %65'i t>1,96 eşiğini geçemiyor` ∧ `çoklu_test_eşiği t>2,78 → başarısızlık %82,1`
+`316 faktör kataloglandı → yeni faktör eşiği t>3,0 olmalı` (t>2,0 değil)
+`97 öngörücü → getiri örneklem_dışında %26 ↓ ∧ yayın_sonrası %58 ↓`
+
+**R34** `[X]` — ▲ KARŞI GÖRÜŞ MEVCUT, TEK TARAFLI SUNULMUYOR
+*"Most claimed statistical findings in cross-sectional return predictability are likely true"* başlıklı çalışma, "çoğu bulgu yanlış" sonucunu **doğrudan reddediyor**. `erişilemedi (arXiv 403)` ∧ **varlığı kayda değer**.
+⇒ **Bu literatür TARTIŞMALIDIR.**
+
+**R35** `[D]` — VERİ SIZINTISININ ÖLÇÜLMÜŞ ETKİSİ
+`Binance BTC/USDT günlük, 20-bar ileri getiri` ∧ `ekonomik_gerekçesi_olmayan_öznitelik`:
+`naif_karıştırılmış_k_fold → R² ≈ +0,85` ∧ `PurgedKFold → R² ≈ −1,2`
+`tamamen_öngörülemez_hedef → naif R² 0,83..0,91` **(saf gürültüde!)** ∧ purged sonrası ortalama-tahmini altında
+`UCI_hava_kalitesi: 3_normal_lag → naif R²=0,07` ∧ `+ tek_masum_kümülatif_saat_sayacı → naif R²=0,99` ∧ `purged (−1,52) KIPIRDAMIYOR`
+
+**R36** `[X]` — ▲ DÜRÜSTLÜK NOTU: SIZINTI HER ZAMAN FELAKET DEĞİL
+Aynı kaynak: `4.284_haneli Low Carbon London` ⇒ `naif_k_fold ↔ walk_forward zamansal_boşluk = %1,60 (GA %1,27–1,94)`; asıl ısıran sızıntı **hane-bazlı (%6,03)**.
+⇒ **Ders: hangi bölmeye ihtiyacın olduğu neyin üzerinde çalıştığına bağlıdır — kategorik korku değil, ÖLÇÜM.**
+
+**R37** `[D-ölçüm]` — ⭐ NAİF LOOK-AHEAD TESTİ İŞE YARAMIYOR
+Klasik *"veriyi kes, sinyal değişiyor mu bak"* testi yazıldı ⇒ **bilinen hatalı fonksiyonu YAKALAYAMADI.**
+Sebep ölçüldü: `shift(-1) ∧ kesme_noktası` ⇒ yalnız **1 satır** farklılaşabiliyor ∧ eşiklenmiş (boolean) sinyalde bu fark `~%50` olasılıkla tesadüfen aynı değere çöküyor. Örnekte `200 satırlık örtüşme → farklılaşan_satır = 0`.
+
+**ÇALIŞAN SÜRÜM** (ölçüldü, `10/10` kesme noktasında yakalıyor):
+`kesme_noktasını_SÜPÜR ∧ boolean_değil_HAM_FLOAT_karşılaştır ∧ NaN_DUYARLI_eşitlik`
+⇒ **~20 satırlık bu pytest, ruff ∧ mypy'ın tamamen kör olduğu hata sınıfını yakalar.**
+
+**R38** `[D-simülasyon]` — SURVIVORSHIP BIAS
+`1000 firma ∧ 10 yıl ∧ gerçek_drift %6/yıl ∧ delist(zirveden −%80)` ⇒ `firmaların %6,5'i siliniyor`
+`eşit_ağırlıklı_yıllık_getiri: tam_evren %5,53` vs `yalnız_hayatta_kalanlar %6,67`
+⇒ **`abartma = %1,14/yıl`** — gerçek fon verisindeki `~%0,9/yıl` ölçümü ∧ genel `%1–4` bandı `[K]` ile **uyumlu**.
+
+**R39** `[K]` — LOOK-AHEAD BIAS'IN ÖLÇÜLMÜŞ ETKİSİ (Compustat PIT vs gecikmeli veri)
+`48 araştırma_sonucundan 37'si → PIT-temelli aylık ortalama spread ∧ Q1 getirilerini ABARTMIŞ`
+`kümülatif_getiri_farkı → %39'a kadar` · `9 baz puanlık sapma ⇒ %3,8 gerçeklikten sapma`
+
+**R40** `[K]` — SIZINTI DİSİPLİNLER ARASI SİSTEMİK: en az `294 makale ∧ 17 disiplin`; erken sürümde `329 makale / 30 alan`. 8 tipli sızıntı taksonomisi.
+
+**R41** `[D]` — ⭐ EKOSİSTEM UYARISI: PROJENİN ALANINDAKİ ARAÇLARIN ÇOĞU ÖLÜ
+`ÖLÜ: backtrader (2023-04-19) · pyfolio (2019-04-15) · empyrical (2020-10-13)`
+`CANLI: backtesting 0.6.6 (2026-07-22) · vectorbt 1.1.0 (2026-07-05) · quantstats (2026-01-13) · yfinance 1.5.2 (2026-07-23)`
+`pypbo (PBO/DSR/MinBTL) → README'de kendi kaydı: "TODO: Add test cases"` ⇒ **test edilmemiş.**
+
+### 6.7 ASGARİ UYGULANABİLİR YIĞIN (öncelik sırasıyla)
+
+| # | Katman | Gerekçe | Maliyet |
+|---|---|---|---|
+| **1** | **Nedensellik testleri (pytest)** — kesme-noktası süpüren look-ahead testi | Projenin doğruluğunu belirleyen **tek** katman. `ruff 0/1` · `mypy 0/1` · **bu test 10/10** (R37). Sızıntı BTC'de R²'yi `+0,85 ↔ −1,2` oynatıyor (R35) | ~20 satır |
+| **2** | **Deneme sayacı + out-of-sample kilidi** | Kaç varyant denendiği yazılmazsa Sharpe **anlamsızdır**. 5 yıl ∧ 45 varyant = Sharpe 1,0 **saf şanstan** (R31, R32 — iki bağımsız yöntem) | 1 metin dosyası, 0 bağımlılık |
+| **3** | **uv** | 4 aracın işini tek statik ikili ∧ **0 Python bağımlılığı** (R3). `uv init --lib` → `src/` bedava (R5) | 3,33 s (R6) |
+| **4** | **pandas + numpy + scipy** | Bu ölçekte polars ortanca 1,4× ∧ groupby'da **0,8× yavaş** (R13) | zaten yığında |
+| **5** | **Parquet (pyarrow)** | **Hız değil DOĞRULUK** (R16). Yan fayda: 12× yazma, 1,9× boyut | tek satır |
+| **6** | **ruff** | 0 bağımlılık, 0 config — hijyen borcunu sıfırda tutar, **ama hata bulmasını BEKLEME** (R7) | ~2 s |
+| **7** | **pytest** | 1–2'yi çalıştıran koşum aracı | 14 bağımlılık |
+| **8** | **Tohum disiplini** — `default_rng(seed)` · her sklearn'de `random_state` · `PYTHONHASHSEED=0` · `set` yerine `sorted()` | `set` sıralaması koşumlar arası değişiyor, **tüm tohumlar doğruyken bile** (R27) | 4 satır |
+| **9** | **JSONL deney kaydı (git SHA'lı)** | 8 satır / 0 bağımlılık / 0,006 s (R22) **vs** 90 paket / 611 MB (R20) | 8 satır |
+| **10** | **notebook = yalnız keşif; modül = gerçek** + `execution_count` kontrolü | Sıra-dışı çalıştırma git diff'te görünmez (R28) | 3 satır |
+
+> **Toplam: ~3,3 saniye kurulum · 26 satır yapılandırma · tek ek dosya.**
+
+### 6.8 NE ALINMAZ — gerekçeli
+
+| Araç | Hüküm | Gerekçe |
+|---|---|---|
+| **MLflow / W&B** | **ALINMAZ** | 90 paket / **611 MB** > tüm yığın (472 MB) (R20) ∧ MLflow 3.x dosya deposunu **kaldırdı**, "sadece pip install" tavsiyeleri **geçersiz** (R21). Yerine 8 satır JSONL (R22). *Gerekirse `mlflow-skinny`: 41/64 MB* |
+| **DVC** | **ALINMAZ** | 98 paket / 107 MB (R18) ∧ değeri **takım + bulut** senaryosunda (R17) ⇒ tek kişide `değer ≈ 0`. Yerine: SHA256 + tarihli klasör |
+| **poetry** | **ALINMAZ** | 49 paket / 56 MB ortama girer (R3); uv aynı işi **0 Python bağımlılığıyla** yapıyor |
+| **mypy `--strict`** | **BAŞLANGIÇTA ALINMAZ** | İlk çıktı %100 gürültü, 0 gerçek hata (R8) ∧ sütun adı hatasını yakalayamıyor (R9). **Sonra**, kararlı `src/` modüllerinin imzalarına değer — orada 3/4 yakalıyor |
+| **ruff `--select ALL`** | **ALINMAZ** | 7 → 32 hata ∧ **gerçek hata artışı 0** (R7) |
+| **polars** | **ŞİMDİ ALINMAZ** | Ortanca 1,4× ∧ groupby'da yavaş ∧ tüm işlemler `<1 s` (R13). Veri `>5-10 GB` ∨ `join`-ağırlıklı iş yükü olursa **yeniden değerlendir** (orada 7,2×) |
+| **papermill / jupytext / nbdev** | **ALINMAZ** | 103 / 72 / 23 doğrudan bağımlılık (R29). Çözüm araç eklemek değil, **mantığı `src/`'ye taşımak** |
+| **Docker** | **ALINMAZ** | `uv.lock` tek kişilik projede yeterli; maliyeti bu ölçekte getirisini aşar |
+| **backtrader / pyfolio / empyrical** | **ALINMAZ — TERK EDİLMİŞ** | Son sürümler 2023 · 2019 · 2020 (R41) |
+
+### 6.9 A23 iddia listesi (antitez için, gerekçesiz) ⊨¬2
+
+① uv'nin 93× sıcak-kurulum avantajı haftada ~36 saniye tasarruf eder; asıl gerekçesi hız değil, **sıfır-bağımlılıklı tek ikili** olmasıdır. ② Bu ölçekte polars ortanca 1,4×'tir ∧ groupby'da yavaştır; şimdi almak **erken optimizasyondur**. ③ Statik analiz araçları finansal zaman serisi projesindeki **doğruluk-kritik hata sınıfını yapısal olarak yakalayamaz**. ④ Deney takibi araçları tek kişilik ölçekte **net negatiftir**. ⑤ Bir backtest'in in-sample Sharpe'ı, **denenen varyant sayısı raporlanmadan yorumlanamaz**. ⑥ Parquet'i tercih etmenin baskın gerekçesi hız veya boyut değil, **dtype bütünlüğüdür**. ⑦ `PYTHONHASHSEED` sabitlenmeden hiçbir koşum **tam olarak yeniden üretilebilir değildir**, tüm RNG tohumları doğru olsa bile. ⑧ Naif look-ahead testi eşiklenmiş sinyallerde işe yaramaz ∧ **yanlış güven verir**. ⑨ DVC'nin tek kişilik projedeki getirisi sıfırdır ∧ 98 paketlik maliyeti nettir.
+
+### 6.10 A23 — kapatılamayanlar
+
+`ARANAMADI (bütçe/gate engeli — yokluk kanıtı DEĞİL):` tip ipuçlarının hata oranına etkisi literatürü (R11) · bağımsız pandas-vs-polars sayıları (R19) · notebook %4 rakamının birincil doğrulaması (R30) · manuel takip kırılma eşiği (R24) · ruff'ın bağımsız hız ölçümü · R34'teki karşı-görüşün rakamları
+`ARANDI, RAKAM YOK (bu bir YOKLUK BULGUSUDUR):` uv deposunda sayısal benchmark (R1) · polars deposunda sayısal iddia (R12)
+`KAPATILAMAYAN ŞERİTLER:` Kalite ∧ Veri alt-şeritlerinin **literatür** taraması dönmedi. **Ajan içeriklerini elinde doğrulayamadığı için aktarmadı ∧ uydurmadı**; her iki alanın **ölçüm** tarafını kendi deneyleriyle kapattı.
 
 ---
 
