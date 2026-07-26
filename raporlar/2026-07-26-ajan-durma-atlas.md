@@ -7,18 +7,40 @@
 
 ---
 
+## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu (bu bölüm sonradan eklendi)
+
+**Bu rapor teslim edildikten SONRA antitez koştu ∧ gerçek hatalar buldu.** Antitez `tool_uses = 48` ile çalıştı: `code.claude.com/docs/en/*.md` ham `curl` ile çekildi ∧ kurulu `cli.js` grep'lendi ⇒ **kanıt sınıfı [D]**, model belleği değil. Hakemlik kaydı: `raporlar/2026-07-26-antitez-hakemlik.md` §5.
+
+| Düzeltme | Nerede | Ne oldu |
+|---|---|---|
+| **K14 ⭐⭐** | §10 · §11 U1 · §13 A27③ · §15 V71 | **Explore/Plan sürdürülemezliğinin dokümanda dayanağı BULUNAMADI ⇒ ASKIYA ALINDI** |
+| **K11 ⭐** | §1 · §3 · §13 A25④ | `is_error = false` **çürütüldü ⇒ [X]**; pratik tavsiye korunur, gerekçesi düşer |
+| **K12 ⭐** | §8 · §13 A26③ | *"Alt-ajanlar cache'ten yararlanamaz"* **yanlış**; isabet sıfırı yalnız ilk çağrıda |
+| **K13 ⭐** | §8 · §9 · §13 A26① | *"Bağlayıcı sınır 10"* **üç ayrı mekanizmayı birleştirmiş**; sayı korunur, gerekçe düzelir |
+| K15 | §0 · §13 A25① | `Stopped` çerçevesi makine kapanmasında çatlıyor |
+| K16 | §0 · §13 A25② | `claude agents` **belirli koşulda** alt-ajanları listeler |
+| K17 | §3 · §13 A25⑤ | `result` alanının yokluğu **dile bağlı** |
+| K18 | §4 · §13 A25⑥ | *"tek keskin ayırt edici"* süperlatifi düşer |
+| H16 | §4 · §13 A25⑧ | *"yalnız son metin bloğu"* formülasyonu abartılı-dar |
+
+⚠️ **En pahalı hata sınıfı burada görüldü (M5):** K14, tek bir alt-ajanın aktardığı doğrulanmamış bir iddiaydı ∧ **"ÇOK YÜKSEK değer, maliyet sıfır"** etiketiyle tavsiye listesinin **başına** konmuştu. Türetilen kural adayı: `tavsiye_sırası = 1 ⇒ dayanağı BAĞIMSIZ doğrulanmış olmalı`.
+
+---
+
 ## 0 — Önce düzeltme: sorunun öncülü yanlıştı
 
 Salih "**stopped** olan ajanlarım neden duruyor" diye sordu. Ölçüm bunu düzeltiyor:
 
-> **[D] `Stopped` durumuna YALNIZ üç yolla girilir:** `Ctrl+X` · `claude stop`/`claude kill` · sürecin dışarıdan öldürülmesi (`kill`).
+> **[D] `Stopped` durumuna üç yolla girilir:** `Ctrl+X` · `claude stop`/`claude kill` · sürecin dışarıdan öldürülmesi (`kill`).
 > **Oturum limiti, hız limiti, max_turns, stall zaman aşımı — hepsi `Failed` üretir, `Stopped` DEĞİL.**
+>
+> **[K15 · antitez daraltması] "YALNIZ" kelimesi düştü.** `agent-view.md`: **makine kapanması** da dışarıdan süreç sonlandırmadır ∧ `Failed` üretir, `Stopped` değil ⇒ *"ancak ve ancak bu üç yol"* çerçevesi bu kenar-durumda çatlıyor. İkinci daraltma: **agent-view oturum durumu ≠ alt-ajan task durumu**; bu iddia ikisini birleştiriyor olabilir. Ana hüküm (*limit → Failed, Stopped değil*) **ayakta**.
 
 Ampirik teyit, bu oturumun kendi verisinden: **35 bildirim → 22 `completed`, 13 `failed`, 0 `stopped`.** Yani bu oturumda **hiçbir ajan "stopped" olmadı**; hepsi ya bitti ya `failed` oldu.
 
 **Ve asıl bulgu şu:** `Stopped` aslında sistemin **en net tanımlı** durumudur (yalnız insan/dış müdahale). Belirsiz olan **`Failed`**'dır — limit, API hatası, stall ve araç hatası hepsi oraya yığılır. Kafa karışıklığının kaynağı Stopped değil, **Failed'ın aşırı yüklenmiş olması**.
 
-**Bir kategori hatası daha [D]:** `claude agents` komutu **alt-ajanları hiç göstermez**. İki ayrı dünya var:
+**Bir kategori hatası daha [D]:** `claude agents` komutu alt-ajanları **ayrı satır olarak listelemez**. İki ayrı dünya var:
 | | Arka plan oturumu | Alt-ajan (subagent) |
 |---|---|---|
 | Nerede görünür | `claude agents` | `/tasks`, @-mention |
@@ -26,6 +48,8 @@ Ampirik teyit, bu oturumun kendi verisinden: **35 bildirim → 22 `completed`, 1
 | Bu makinede | **`~/.claude/jobs/` HİÇ YOK** | **115 transkript var** |
 
 Bizim koştuğumuz her şey **alt-ajan**. `claude agents`'a bakarak onları aramak sonuçsuz kalır.
+
+> **[K16 · antitez daraltması] "Hiç göstermez" düştü.** `sub-agents.md` bir geri-düşüş yolu tanımlıyor: *"`claude agents` bir sayı ∧ ardından yapılandırılmış alt-ajanlarını basıp çıkıyorsa, agent view kullanılamıyor demektir."* ⇒ **agent view kapalıysa komut yapılandırılmış alt-ajanları listeler.** Ana tablo iddiası (*alt-ajanlar ayrı satır olarak listelenmez*) **doğru kalır**; mutlak "hiç" **yanlıştır**.
 
 ---
 
@@ -43,7 +67,7 @@ Bizim koştuğumuz her şey **alt-ajan**. `claude agents`'a bakarak onları aram
 **Yanlış alarm listesi (ölüm değil):**
 - `∙` ikonu → süreç çıktı, durum değil
 - `Needs input` → izin/soru/sandbox/MCP kimlik doğrulaması bekliyor; çalışmıyor **ama ölmedi**
-- SDK'da `is_error: false` görmek → limit-ölmediği anlamına **gelmez** (§3'e bak)
+- SDK'da `is_error` alanına bakarak limit-ölümü elemeye çalışmak → **bu alan güvenilmez, `subtype`'a bak** (§3'e bak, K11)
 
 ---
 
@@ -82,9 +106,17 @@ Kendi taramam (115 transkript, hata damgasından **sonra** >1500 karakter rapor 
 - **Başarı:** `{subtype:"success", ..., result: string, ...}`
 - **Hata:** `{subtype: "error_during_execution" | "error_max_turns" | "error_max_budget_usd" | "error_max_structured_output_retries", ..., errors: string[], ...}`
 
-**▲ Yapısal fark:** hata şemasında **`result` alanı HİÇ YOK**. Ajan limite çarptığında metin çıktısı için ayrılmış alan tamamen kayboluyor.
+**▲ Yapısal fark:** hata şemasında **`result` alanı yok** (TypeScript). Ajan limite çarptığında metin çıktısı için ayrılmış alan kayboluyor.
 
-**▲ TUZAK [D-kod]:** `error_max_turns` ve `error_max_budget_usd` için **`is_error = false`**. `cli.js`'te birebir: `subtype:"error_max_turns", ..., is_error:!1`. → **`is_error` ile limit-ölümlerini filtreleyen her kod bunları kaçırır.** Daima `subtype`'a bak.
+> **[K17 · antitez daraltması] Bu dile bağlıdır, iddia dil belirtmiyordu.** TypeScript için doğru: `result` alanı şemada **yoktur**. **Python dataclass'ı ise tüm varyantları tek şekle düzleştirir** ⇒ `result` alanı **vardır ∧ değeri `None`'dır**. Kod yazarken alanın **yokluğuna** değil, **`subtype`'a** bakılır — bu iki dilde de doğrudur.
+
+**▲ TUZAK — ve bu tuzağın kendisi çürütüldü:**
+
+> **[K11 · antitez ÇÜRÜTMESİ — ⭐ yüksek ⇒ `⊨X`, çözülmedi]**
+> **Bizim iddiamız:** `error_max_turns` ∧ `error_max_budget_usd` için `is_error = false`. Dayanak: kurulu `cli.js` v2.1.42'de birebir `subtype:"error_max_turns", ..., is_error:!1`.
+> **Antitez, `agent-sdk/python.md`'den birebir:** *"`is_error`: `True` when the conversation ended in an error state. **Always `True` on the `error_*` subtypes.**"*
+> **Hüküm: DOĞRUDAN ÇELİŞKİ, çözülmedi.** Olası uzlaştırmalar — **hiçbiri doğrulanmadı**: ① minifiye kod okuması yanlış olabilir · ② CLI'nin iç üretim yolu ile SDK'nın belgelenmiş sözleşmesi **farklı katmanlar** olabilir · ③ sürüm kayması (kurulu `v2.1.42` ↔ doküman `~v2.1.217`).
+> **PRATİK SONUÇ — tavsiye ayakta, gerekçesi düştü:** *"limit-ölümlerini `is_error` ile filtreleyemezsin"* gerekçesi **artık güvenilmez**. Ama filtre yazacaksan **`subtype`'a bak** — bu **her iki senaryoda da** doğru kalır. Yani yapılacak iş değişmiyor, **neden yapıldığı** değişiyor.
 
 ### Katmanlar arası kayıp — Claude'un tekil zaafı
 
@@ -111,7 +143,7 @@ Kendi taramam (115 transkript, hata damgasından **sonra** >1500 karakter rapor 
 - `stopped` → **insan veya dış süreç öldürdü.** Sistem değil. Kasıtlıydı.
 - `failed` → **DUR, terminal sanma.** Adım 2.
 
-**Adım 2 — Transkriptin SON KAYDINA bak** (tek en keskin ayırt edici):
+**Adım 2 — Transkriptin SON KAYDINA bak** (en keskin ayırt edici — *"tek"* değil, bkz. K18):
 
 | Gördüğün | Anlamı | Yapılacak |
 |---|---|---|
@@ -132,9 +164,13 @@ Kendi taramam (115 transkript, hata damgasından **sonra** >1500 karakter rapor 
 | Boş son metin | 4 | Belirsiz kesinti |
 | Son kayıt `type: "user"` | 3 | Araç sonrası öldü |
 
+> **[K18 · antitez daraltması]** Eşleşmenin kendisi **kaynak kodda doğrulandı ⇒ `⊨D`**: `kjq()` sabit-kodlu `stop_reason:"stop_sequence"` üretiyor ∧ `CY()` `isApiErrorMessage:!0` basıyor. **Ama "tek" süperlatifi doğrulanamadı** — `isApiErrorMessage` alanı başka bağlamlarda da kullanılıyor. İmza **geçerli**, tekelliği **düştü**.
+
 **Adım 3 — Kısmi işi kurtar. Bildirimin `<result>`'ına GÜVENME.**
 
-**[X] Dokümanın "partial work isn't lost" ifadesi, dosya seviyesinde doğru — bağlam seviyesinde yanıltıcı.** "Last output" kelimenin tam anlamıyla **son assistant metin bloğudur**; bir araştırma ajanında bu, araç çağrısından önceki tek cümlelik ara-nottur. Ölçülen `<result>` uzunlukları: **0, 71, 137, 147, 160 karakter.** İçerikleri:
+**[X] Dokümanın "partial work isn't lost" ifadesi, dosya seviyesinde doğru — bağlam seviyesinde yanıltıcı.** "Last output" pratikte **son assistant metin bloğuna indirgenir**; bir araştırma ajanında bu, araç çağrısından önceki tek cümlelik ara-nottur.
+
+> **[H16 · antitez daraltması]** *"Ebeveyne **yalnız** son assistant metin bloğu geçer"* formülasyonu **abartılı-dar**. Aktarılan şey **biriken kısmi çıktı + hata notudur**, tek bir blok değil. Bulgunun özü (**ebeveyne giden şey gerçek raporun kendisi değildir**) ayakta; *"tek blok"* mekanizma tarifi düzeltiliyor. Ölçülen uzunluklar bu düzeltmeden **etkilenmiyor** — 0-160 karakter zaten ölçümdür. Ölçülen `<result>` uzunlukları: **0, 71, 137, 147, 160 karakter.** İçerikleri:
 - *"Line 3 is in. Waiting on the other three."*
 - *"Proxy blocks direct curl to .gov/eur-lex. Let me dispatch parallel research lines..."*
 
@@ -216,13 +252,26 @@ Bu, bu ailenin **en yüksek getirili tek bulgusu** ve oturumda gözlenen "buluna
 
 **Ama bu iyimser bir alt sınırdır.** İki mekanizma daha var:
 
-1. **[D] Alt-ajanlar prompt cache'ten yararlanamaz.** *"A subagent starts its own conversation with its own system prompt and tool set... It builds its own cache, starting with no cache hits on its first call. **Subagents use the five-minute TTL even on a subscription**, since the automatic one-hour TTL applies to the main conversation."*
+1. **[D] Alt-ajan cache'i SIFIRDAN başlar — ama sıfırda kalmaz.** *"A subagent starts its own conversation with its own system prompt and tool set... It builds its own cache, **starting with no cache hits on its first call and warming up across its own turns**. **Subagents use the five-minute TTL even on a subscription**, since the automatic one-hour TTL applies to the main conversation."*
 2. **[D] Cache okumaları ITPM'e sayılmaz, ama cache OLUŞTURMA sayılır.** N alt-ajan = N ayrı cache oluşturma.
 
-→ **10 paralel ajan, tek ajanın 10 katından DAHA FAZLA ITPM baskısı yapar.**
+→ **10 paralel KISA ÖMÜRLÜ ajan, tek ajanın 10 katından DAHA FAZLA ITPM baskısı yapar.**
 → **Pratik sonuç: uzun ömürlü az sayıda ajan > kısa ömürlü çok sayıda ajan.** Aynı iş 30 ajan yerine 10 ajana bölünürse **20 cache-oluşturma turu tasarruf edilir.**
 
-**[X] Çözülmemiş gerilim:** `CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY` = **10** ("read-only tools **and subagents** that can execute in parallel") vs `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS` = **20**. Dokümanlar ikisini birbirine bağlamıyor. En tutarlı okuma: 10 = yürütme kapısı, 20 = muhasebe kapısı. **Pratik bağlayıcı sınır 10.**
+> **[K12 · antitez ÇÜRÜTMESİ — ⭐ yüksek]** Bu maddenin eski hâli *"Alt-ajanlar prompt cache'ten yararlanamaz"* diyordu ⇒ **fazla güçlü ∧ yanlış**. Doğrusu: `ilk_çağrı → isabet = 0` ∧ `sonraki turlar → KENDİ cache'ini ısıtır` ∧ `TTL = 5 dk` (ana konuşmanın 1 saati yerine).
+> ⇒ *"10 ajan = 10× alt sınır"* çıkarımı **yalnız kısa ömürlü ajanlar için** ayakta kalır.
+> ⇒ **Ve bu düzeltme §8'in tavsiyesini zayıflatmıyor, GÜÇLENDİRİYOR:** uzun ömürlü ajan kendi önbelleğini ısıttığı için *"az sayıda uzun ömürlü > çok sayıda kısa ömürlü"* tercihinin **mekanizması artık nettir** — eskiden yalnız *"cache yok"* deniyordu, şimdi *"cache var ama ısınması zaman ister"* deniyor.
+
+**Eşzamanlılık — ÜÇ AYRI MEKANİZMA, birleştirilmez:**
+
+| Mekanizma | Değer | Ne yapar |
+|---|---|---|
+| `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS` | **20** | Belgelenmiş **alt-ajan eşzamanlılık sınırı** |
+| `MAX_TOOL_USE_CONCURRENCY` | **10** | Paralel **araç + alt-ajan yürütme kapısı** — ayrı mekanizma |
+| *"10 oturum ≈ 10× kota"* (`agent-view.md`) | — | **Kota tüketim kuralı, sert sınır DEĞİL** |
+
+> **[K13 · antitez ÇÜRÜTMESİ — ⭐ yüksek]** Eski hâli bu **üç sayıyı tek bir "bağlayıcı sınır 10" hükmüne** birleştirmişti. Antitez `sub-agents.md` ∧ `env-vars.md` ∧ `agent-view.md`'yi ayrı ayrı okudu ⇒ **üçü farklı şeydir**.
+> ⇒ **§9'un dalga zarfı (10 ajan) hâlâ savunulabilir** — ama gerekçesi *"sert sınır 10'dur"* **değil**, `yürütme kapısı ⊕ kota tüketimi`. **Sayı korunur, gerekçe düzelir.**
 
 ---
 
@@ -230,7 +279,7 @@ Bu, bu ailenin **en yüksek getirili tek bulgusu** ve oturumda gözlenen "buluna
 
 Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tükendi) dokümante mekanizmalara oturtunca:
 
-1. **Dalga genişliği ≤ 10, sabit.** Bağlayıcı sınır 20 değil **10**. Üstü paralellik satın almaz — yalnız kuyrukta bekler, ama oturum-toplamı sayacını (200) ve WebSearch bütçesini (200) tüketir. **112 ajanlık koşum, 200'lük tavanın yarısını tek koşumda harcadı.**
+1. **Dalga genişliği ≤ 10, sabit.** *(Gerekçe K13 ile düzeltildi:)* belgelenmiş alt-ajan eşzamanlılık sınırı **20**'dir; **10** ise paralel **yürütme kapısıdır**; *"10 oturum ≈ 10× kota"* ise ayrı bir **tüketim** kuralıdır. Zarfın 10'da tutulmasının sebebi **sert bir sınır değil**, yürütme kapısı + kota tüketiminin bileşimidir. Üstü paralellik satın almaz — yalnız kuyrukta bekler, ama oturum-toplamı sayacını (200) ve WebSearch bütçesini (200) tüketir. **112 ajanlık koşum, 200'lük tavanın yarısını tek koşumda harcadı.**
 2. **WebSearch'ü ajan başına tayınla.** `N_ajan × arama_başına ≤ 200`. Daha iyisi: **emirde URL ver → WebFetch kullanılır → bütçeden yemez.** Dalga sonunda sayacı kontrol et (sessiz tükeniyor).
 3. **Model: işçi Sonnet, sentez Opus, tarama Haiku.** **Opus 5'in ayrı ITPM kovası var** → işçiler Sonnet'e alınırsa işçi trafiği Opus kovasından **hiç yemez**. Aynı kotayla iki paralel havuz. *(V59 tam olarak bunu söylüyordu — artık mekanizması da elimizde.)*
 4. **Effort'u ajan-başına düşür.** Varsayılan **`high`**; düşünme token'ları **çıktı olarak** faturalanır. Getirme/tarama ajanlarına `effort: low|medium`, sentez ajanı `high`. **112 ajanlık koşumda tek başına en büyük token kalemi budur.**
@@ -255,9 +304,14 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 
 **[D] Sürdürme aracı `SendMessage`:** *"Sürdürülen alt-ajanlar, önceki tüm tool çağrıları, sonuçları ve akıl yürütmesi dahil tam konuşma geçmişini korur."* Tamamlanmış bir alt-ajan `SendMessage` alınca **yeni `Agent` çağrısı olmadan** arka planda otomatik sürdürülür. **Ve [D]: sürdürme, eşzamanlılık limitini kontrol etmeden taze slot alır** — kurtarma yolu kapasite kapısından muaf.
 
-**▲ İki kritik istisna [D]:**
-1. **Yerleşik `Explore` ve `Plan` ajanları tek-atışlıktır, agent ID döndürmezler → SÜRDÜRÜLEMEZLER.** Uzun/pahalı işlerde `general-purpose` veya özel ajan kullanılmalı.
-2. **Kullanıcının kendi durdurduğu ajan otomatik sürdürülmez**; `SendMessage` "ajan iptal edildi" reddiyle döner. Çözüm: alt-ajan panelindeki transkripte yazmak bu bayrağı temizler.
+**▲ İki istisna — biri ASKIDA, biri [D]:**
+1. **`[?]` ASKIDA — kural olarak KULLANILMAZ:** *"Yerleşik `Explore` ve `Plan` ajanları tek-atışlıktır, agent ID döndürmezler → sürdürülemezler."*
+2. **[D] Kullanıcının kendi durdurduğu ajan otomatik sürdürülmez**; `SendMessage` "ajan iptal edildi" reddiyle döner. Çözüm: alt-ajan panelindeki transkripte yazmak bu bayrağı temizler.
+
+> **[K14 · antitez — ⭐⭐ KRİTİK, dayanak BULUNAMADI]** Antitez `sub-agents.md`'yi okudu: **Explore/Plan için sürdürülemezlik istisnasına dair hiçbir kayıt yok.** Bu ajanlar için tutulan tek istisna, CLAUDE.md ∧ git-status'u **yüklememeleridir**.
+> ⇒ Bu iddia bir alt-ajanın (A27) aktarımıydı ∧ **doğrulanmadan** U1 olarak öne çıkarıldı.
+> ⇒ **Doğrulanana kadar *"Explore/Plan kullanma"* diye bir kural ÇIKARILMAZ.** İddia yanlış olduğu için değil, **dayanağı gösterilemediği için** askıdadır — doğru da çıkabilir, ama şu an kanıt yok.
+> ⇒ Doğrulama yolu ucuz ∧ elde: bir `Explore` ajanı açıp dönen nesnede `agent_ID` var mı diye bakmak yeter. **Bu, sonraki turun ilk işlerinden biri olmalı.**
 
 **[D] `/rewind` checkpointing iş dayanıklılığı için DEĞİL, kod içindir.** Sınırları sert: **bash ile değiştirilen dosyalar izlenmez**, **alt-ajanların yaptığı düzenlemeler geri alınmaz** ("bunları geri almak için git kullanın"). Dokümanın kendi ifadesi: *"checkpoint'leri 'yerel geri al', Git'i 'kalıcı tarihçe' olarak düşünün."*
 → **JARVIS'in "her karar bir commit" kuralı (m.10) bu boşluğu zaten kapatıyor.** Kayda değer: kanonumuz bu noktada dokümandan önce doğruydu.
@@ -273,7 +327,7 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 
 | # | Desen | Değer |
 |---|---|---|
-| **U1** | **`Explore`/`Plan` yerine `general-purpose` kullan** uzun işlerde — ilk ikisi **sürdürülemez** | **ÇOK YÜKSEK** — maliyet sıfır, kazanç yapısal |
+| **U1** | ⛔ **ASKIDA `[?]` — tavsiye olarak KULLANILMAZ.** *"`Explore`/`Plan` yerine `general-purpose` kullan, ilk ikisi sürdürülemez."* Öncülün dokümanda dayanağı **bulunamadı** (K14). Doğrulanmadan kural çıkarılmayacak; doğrulama yolu §10'da | **ASKIDA** — eski değer etiketi (*"ÇOK YÜKSEK, maliyet sıfır"*) **geri çekildi**. Bu etiket, doğrulanmamış bir maddeyi listenin başına taşıyan şeydi (M5) |
 | **U2** | **Ajan promptuna "önce iskelet, sonra doldur"**: ilk bulguyu bulur bulmaz **kısa ara metin** üret (araç çağrısı değil, metin). Sebep §5: metin varsa kısmi çıktı döner, **sadece araç çağrısı varsa her şey kaybolur** | **ÇOK YÜKSEK** — en yüksek kazanç/maliyet oranı. Yeni araç yok, yeni dosya yok |
 | **U3** | **Uzun araştırma ajanlarını arka plana al** — arka planda son çıktı ebeveyne dahil edilir, ön planda tool-şekilliyse hepsi kaybolur | **YÜKSEK** |
 | **U4** | Tekrar eden ajanlara **`memory: project`** — `.claude/agent-memory/` git'le versiyonlanır; **artımlı yazmanın kanona uygun biçimi** (rapor-dosyası yasağını ihlal etmez) | **YÜKSEK** — ama yalnız tekrar eden ajanlar için |
@@ -325,13 +379,17 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 
 ---
 
-## 13 — İddia listeleri (antitez için hazır, **⊨¬2**)
+## 13 — İddia listeleri — **ANTİTEZ KOŞTU, hükümler işlendi**
 
-**A25:** ① Stopped yalnız insan/dış müdahaleyle girilir; limit ve stall **Failed** üretir. ② `claude agents` alt-ajanları hiç göstermez. ③ Agent view iki ortogonal ekseni tek satırda gösterir; `∙` sonlanma durumu değildir. ④ `is_error` limit-ölümlerini filtrelemez; yalnız `subtype` ayırt eder. ⑤ Hata subtype'lı mesajda `result` alanı şemadan tamamen yoktur. ⑥ Tek keskin ayırt edici `isApiErrorMessage: true` + sentetik `stop_reason: "stop_sequence"`'tır. ⑦ `failed` terminal değildir; aynı task-id sonradan `completed` bildirebilir. ⑧ "Partial work isn't lost" dosya seviyesinde doğru, bağlam seviyesinde yanıltıcıdır. ⑨ *(A26 tarafından çürütüldü — §6)*
+*Bu bölümün başlığı `⊨¬2` (antitez koşulmadı) idi. **Artık değil:** antitez 2026-07-26'da araçlı olarak koştu (`tool_uses = 48`, ham doküman + kurulu `cli.js`). Her iddianın yanına çıkan hüküm yazıldı.*
 
-**A26:** ① Bağlayıcı paralellik sınırı 20 değil **10**'dur. ② WebSearch bütçesi hız limiti değil oturum sayacıdır ve **sessiz** tükenir. ③ Alt-ajanlar cache'ten yararlanamaz; "10 ajan = 10x" **alt sınırdır**. ④ "resets at X" sıfırlanma değil **tam dolum** anıdır. ⑤ Abonelik penceresi ile API penceresi farklı mekanizmalardır. ⑥ İşçileri Sonnet'e almak **ayrı bir ITPM kovası açma** hamlesidir. ⑦ Watchdog başarı garantisi değil, **başarısızlığı duvar-saatine çeviren takastır**. ⑧ Batch'e taşınan iş senkron kotayı **hiç yemez** + %50 ucuz. ⑨ `/usage` otoriter değildir — makine-yerel tahmindir.
+**A25:** ① Stopped insan/dış müdahaleyle girilir; limit ve stall **Failed** üretir — **DARALDI (K15):** makine kapanması istisnası + oturum/task durumu ayrımı. ② `claude agents` alt-ajanları ayrı satır göstermez — **DARALDI (K16):** *"hiç"* yanlış, agent view kapalıysa listeler. ③ Agent view iki ortogonal ekseni tek satırda gösterir; `∙` sonlanma değildir — **⊨S ⊨D**, antitezin ifadesiyle *"tam isabet"*, doküman ikisini ayrı tablolarda listeliyor. ④ `is_error` limit-ölümlerini filtrelemez — **⛔ ÇÜRÜTÜLDÜ (K11) ⇒ ⊨X**; pratik tavsiye (`subtype`'a bak) korunur. ⑤ Hata subtype'lı mesajda `result` alanı yoktur — **DARALDI (K17):** TS'de yok, Python'da var ∧ `None`. ⑥ `isApiErrorMessage: true` + sentetik `stop_reason` **tek** keskin ayırt edicidir — **DARALDI (K18):** eşleşme ⊨D, *"tek"* düşer. ⑦ `failed` terminal değildir — **çürütülemedi**. ⑧ "Partial work isn't lost" bağlam seviyesinde yanıltıcıdır — **DARALDI (H16):** *"yalnız son blok"* abartılı-dar. ⑨ *(A26 tarafından çürütüldü — §6)*
 
-**A27:** ① Kesilen alt-ajanın işi kaybolmaz; `SendMessage` ile tam bağlamıyla sürdürülebilir. ② **Erken ve sık metin üretmek**, dayanıklılık kazandıran en ucuz tek müdahaledir. ③ Explore/Plan sürdürülemez, uzun işlerde kullanılmamalı. ④ Tek kişilik sistemde Temporal kurmak aşırı-mühendisliktir. ⑤ Exactly-once ulaşılamazdır; hedef her adımı at-least-once'a güvenli kılmaktır. ⑥ Yasak olan `random()` değil, **kayıt-dışı non-determinizm**. ⑦ Checkpointing iş dayanıklılığı için tasarlanmamıştır; **git tek gerçek kontrol noktasıdır**. ⑧ Anthropic'in kendi dokümanı **artımlı dosyayı transkript kurtarmaya tercih eder**.
+**A26:** ① Bağlayıcı paralellik sınırı 10'dur — **⛔ ÇÜRÜTÜLDÜ (K13):** üç ayrı mekanizma birleştirilmiş; zarf korunur, gerekçe düzelir. ② WebSearch bütçesi oturum sayacıdır ∧ **sessiz** tükenir — **⊨S ⊨D ⭐**, `tools-reference.md` birebir doğruladı. ③ Alt-ajanlar cache'ten yararlanamaz — **⛔ ÇÜRÜTÜLDÜ (K12):** ilk çağrıda isabet 0, sonra kendi cache'ini ısıtır. ④ "resets at X" **tam dolum** anıdır — **⊨S ⊨D**. ⑤ Abonelik penceresi ile API penceresi farklı mekanizmalardır — **⊨S ⊨D**. ⑥ İşçileri Sonnet'e almak ayrı ITPM kovası açar — **çürütülemedi**. ⑦ Watchdog bir **takastır** — **⊨S ⊨D**, `env-vars.md` birebir. ⑧ Batch senkron kotayı yemez + %50 ucuz — **çürütülemedi**. ⑨ `/usage` otoriter değildir — **çürütülemedi**.
+
+**A27:** ① Kesilen alt-ajanın işi `SendMessage` ile sürdürülebilir — **⊨S ⊨D**, *"exactly where it stopped"*. ② Erken ∧ sık metin üretmek en ucuz dayanıklılık müdahalesidir — **çürütülemedi** *(mekanizma teyitli, ağırlığı ölçülmüş: 6/115 = %5)*. ③ **Explore/Plan sürdürülemez — ⛔ ASKIDA (K14): dokümanda dayanak BULUNAMADI.** ④ Tek kişilik sistemde Temporal aşırı-mühendisliktir — **çürütülemedi**. ⑤ Exactly-once ulaşılamazdır — **çürütülemedi**. ⑥ Yasak olan kayıt-dışı non-determinizmdir — **çürütülemedi**. ⑦ Checkpointing dayanıklılık için değildir; git tek gerçek kontrol noktasıdır — **⊨S ⊨D ⭐**, *"dokümanın kendi çerçevesi bu"*. ⑧ Anthropic artımlı dosyayı transkript kurtarmaya tercih eder — **çürütülemedi**.
+
+**Test edilemeyenler:** API token-bucket iç mekaniği · ITPM kovalarının sayısal tahsisatı · Batch ayrıntıları ⇒ `platform.claude.com` **erişim listesinde değildi**, ne doğrulandı ne çürütüldü. Temporal/durable-execution teorisi ⇒ kapsam dışı, birincil kaynaklar kapalı. **Bunlar `bulunamadı` değil, `aranamadı`dır.**
 
 ---
 
@@ -339,7 +397,7 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 
 | # | Borç | Not |
 |---|---|---|
-| C1 | **Antitez (Aşama 2) bu aile için de koşulmadı** | A5'ten beri süregelen borç; iddia listeleri §13'te hazır |
+| C1 | ~~Antitez (Aşama 2) bu aile için de koşulmadı~~ → **KAPANDI 2026-07-26** | Antitez araçlı koştu (`tool_uses = 48`); **4 gerçek hata buldu** (K11-K14) ∧ 5 daraltma üretti. Hükümler §13'e işlendi. Yeni borç: **K14'ün öncülünü doğrula** (bir `Explore` ajanı açıp `agent_ID` dönüyor mu bak) |
 | C2 | **Sürüm çatalı: kurulu ikili v2.1.42, dokümanlar ~v2.1.217** | `CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` kurulu ikilide **grep'te yok**. Dokümandaki stall davranışı **bu makinede geçerli olmayabilir** — ana atlastaki stall-watchdog analizini bu ışıkta yeniden okumak gerek |
 | C3 | **429 ölümünün canlı imzası gözlenmedi** | 115 transkriptte terminal API hatalarının **17/17'si oturum limitiydi**. 429'un `stop_reason` imzasının aynı olup olmadığı **ampirik doğrulanmadı** — aynı kod yolundan geçtikleri için aynı olması beklenir `[?]` |
 | C4 | Pro/Max için **sayısal tahsisat hiçbir açık dokümanda yok** | Dokümanlar bilinçli olarak yalnız **pencere yapısını** yayımlıyor, **büyüklüğü** değil |
@@ -355,14 +413,17 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 - **V68 — `.md` doğrudan çekim kuralı.** §6'daki [X] çelişkisinin dersi: `code.claude.com` / `platform.claude.com` için **daima `.md` son ekiyle ham çekim**; WebFetch özeti alanları **sessizce düşürüyor**. İki bağımsız vakada doğrulandı (`api_retries_exhausted`, env-vars varsayılanları). Atlas brifinglerine standart madde.
 - **V69 — "İskelet-önce" ajan protokolü.** U2: ajan ilk bulguyu bulur bulmaz kısa **metin** üretsin. Kayıp modunu "her şey gitti"den "kısmi döndü"ye çevirir, maliyeti sıfır. **Ajan görev şablonuna zorunlu madde adayı.**
 - **V70 — Dalga zarfı sabiti.** §9'un reçetesi (10 ajan · Sonnet · effort medium · ≤2 WebSearch · 2-3 sn aralı) KILAVUZ'a sayısal kural olarak girmeye aday. **V59'un mekanizması artık elimizde** — "ucuz model" tavsiyesi, aslında "ayrı ITPM kovası açma" hamlesiymiş.
-- **V71 — Sürdürülemez ajan yasağı.** `Explore`/`Plan` uzun/pahalı işlerde kullanılmasın (U1). Küçük kural, dayanağı [D], maliyeti sıfır.
+- **V71 — ⛔ GERİ ÇEKİLDİ (K14).** *"Sürdürülemez ajan yasağı: `Explore`/`Plan` uzun/pahalı işlerde kullanılmasın."* Dayanağın `[D]` olduğu iddiası **doğrulanamadı**; antitez dokümanda karşılığını bulamadı. **Aday olarak kutuya girmez** — önce öncül doğrulanır, sonra yeniden değerlendirilir.
+- **V82 adayı — "Liste başı kanıt kapısı" (M5'ten türedi).** `tavsiye_sırası = 1 ⇒ dayanağı BAĞIMSIZ doğrulanmış olmalı`. U1/K14 vakası bu kuralın doğuş sebebidir: doğrulanmamış tek bir alt-ajan aktarımı, *"ÇOK YÜKSEK değer, maliyet sıfır"* etiketiyle listenin başına yerleşti ∧ oradan kanona sızmaya bir adım kalmıştı.
 
 ---
 
 ## 16 — Kapanış damgası
 
-**Aile:** A25 · A26 · A27 — üçü de **⊨¬2** (antitez koşulmadı)
-**Kanıt tabanı:** **[D] ağırlıklı** — kurulu `cli.js` zod şemaları · 115 alt-ajan transkripti (kendi ölçümümüz) · ham doküman markdown'ı. Bu, oturumun en güçlü kanıt tabanıdır.
+**Aile:** A25 · A26 · A27 — **antitez KOŞTU (2026-07-26, araçlı, `tool_uses = 48`)**
+**Antitez sonucu:** ⛔ **4 gerçek hata** (K11 `is_error` ⇒ ⊨X · K12 cache · K13 eşzamanlılık · **K14 Explore/Plan ⇒ ASKIDA**) ∧ 5 daraltma (K15-K18, H16) ∧ 5 doküman-doğrulamalı `⊨S`.
+**⚠️ `⊨S` okuma kuralı:** genel olarak `⊨S` = *"aynı-aile hakemi karşısında sağ kaldı"*, çünkü antitez ajanları tez ajanlarıyla aynı model ailesindendi. **Bu aile bu şerhten MUAFTIR** — kanıt modelin belleğinden değil, ham dokümandan ∧ kurulu koddan geldi.
+**Kanıt tabanı:** **[D] ağırlıklı** — kurulu `cli.js` zod şemaları · 115 alt-ajan transkripti (kendi ölçümümüz) · ham doküman markdown'ı. Bu, oturumun en güçlü kanıt tabanıdır. **Ve buna rağmen 4 hata çıktı** — güçlü kanıt tabanı, hata yokluğu demek değildir.
 **Çözülen çelişki:** `api_retries_exhausted` — A26 lehine (§6), gerekçe kayıtlı
 **Düzeltilen kendi hükmüm:** A25'in "3'ten 2'si teslim edilmedi" sayısı — tam-oturum verisiyle **[X]**; mekanizma korunur, sayı düşer (§2)
 **Salih'in sorusuna doğrudan cevap:** ajanların **"stopped" olmadı** — `failed` oldular, ve `failed` **terminal değildi**. Kök neden ajanlarda değil, **koşum zarfının aşılmasındaydı** (§9).
