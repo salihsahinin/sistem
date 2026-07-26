@@ -3,6 +3,24 @@
 *Kayıt: 2026-07-26 · Carvis (CC, yan-oturum m.41) · Talep: "öğrenme hattına tech stackleri ve sistemlerde projelerde tech stack oluşturmayı öğrenmem gerekiyor / araştır atlasları koş rapor yaz (sadece ai to ai)"*
 
 **REGISTER BEYANI:** Salih açıkça **"(sadece ai to ai)"** dedi. Bu raporun insan-yüzü (`INSAN-*`) muadili **üretilmeyecek**; compiler formülü (`2026-07-26-compiler-formulu.md`) F8 gereği bu dosyaya uygulanmaz. Teknik kayıt tek kayıttır.
+> **⚠️ BU BEYAN AŞILDI (2026-07-26, `cc/gorev-2026-07-26-1.md` §2).** Salih sonradan **iki insan-yüzü register** emri verdi: `INSAN-tech-stack.md` (kavrayış) + `SOZEL-tech-stack.md` (düz lojik). Yukarıdaki beyan **kronolojik olarak öncedir** ∧ yeni emirle geçersizleşmiştir. Silinmiyor (m.8), **üstü çiziliyor**. Teknik kayıt **hâlâ tek karar kaynağıdır**; insan-yüzü dosyalar karar kaynağı değildir.
+
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> Antitez **araçsız** koştu (`tool_uses = 0`) ⇒ tüm saldırı **modelin kendi eğitim bilgisinden** yapıldı. Bu ayrım hakemlikte uygulandı: **mantıksal saldırı → hüküm değiştirir · olgusal karşı-örnek → borç açar, hüküm değiştirmez.** Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §2.
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K1** | §5.3 · §5.4 ④ | `tek vaka → transfer üretmez` → **transfer DÜŞÜK (~%30), sıfır DEĞİL** — kendi raporumuz zaten öyle diyordu |
+> | **K5** ⭐ | §5.4 ⑥ | **Olumsuzlama kapsamı** düzeltildi ∧ parantezle sabitlendi — antitez cümleyi **ters okudu** |
+> | **K6** | §5.4 ⑦ · §7 Model C | `tek pratik mekanizma` → **`bulunabilen tek`**; mimariye transferi `[?]` |
+> | K2 | §6.9 ⑦ | `hiçbir koşum` → **hash-sırasına duyarlı kod yolu içeren** koşum |
+> | K3 | §6.8 · §6.9 ⑨ | `DVC getirisi = 0` → **azalmış**; hüküm (ALINMAZ) değişmez, gerekçe düzelir |
+> | K4 | §3.4 ④ | `güçlü öngörür` → **toplu düzeyde; paket-başına garanti değil** |
+> | K7 | §6.8 polars | Hüküm korunur; **şema-katılığı ∧ null-semantiği ekseni ÖLÇÜLMEDİ** borcu eklenir |
+> | K8 | §3.4 ⑧ | Dayanak (**kohort çalışması**) iddia metnine taşınır |
+>
+> ⭐ **Bu turun en değerli bulgusu bir çürütme değil, bir YANLIŞ ANLAMADIR (K5).** Yetkin bir okuyucu, önerme formunda yazılmış bir cümlemizi **tam tersine** anladı — çünkü olumsuzlamanın kapsamı Türkçe yüzeyde ayrışmıyordu. Bu, lojik→kod raporunun uyardığı tuzağın **canlı vakasıdır**: *"olumsuzlamanın kapsamı doğal dilde belirsiz olduğunda kod sessizce yanlış dalı seçer."* Burada kod değil **bir model** seçti — ve yanlış seçti.
+> ⇒ **Türetilen kural (K10):** önerme formunda `¬` kullanılan her cümlede **kapsam parantezle sabitlenir**.
 
 **Aile kapsamı:** A22 (teknoloji seçiminin ölçülmüş kanıt tabanı) · A24 (karar-vermeyi öğrenme müfredatı) · A23 (DS/ML asgari yığını) — **A23 koşum sırasında, ek olarak inecek (§6 boş bırakıldı, borç kaydı §8'de).**
 
@@ -178,11 +196,13 @@ Yayımlanmış hali (He, Yang, Burckhardt, Kapravelos, Vasilescu, Kästner — I
 1. "Choose boring technology" ve innovation token, ölçülmemiş pratisyen tezleridir; "boring" tanımı post-hoc ayarlanabildiği için tez yanlışlanabilir değildir.
 2. Teknoloji seçim çerçevelerinin (ADR, Technology Radar, ATAM, ISO 25010) hiçbirinin kendi faydası ölçülmemiştir; ölçülen tek şey benimseme oranlarıdır.
 3. GitHub yıldızı seçim kriteri olarak kullanılamaz: endüstriyel ölçekte sahte üretilir, kod kalitesiyle korelasyonu yoktur.
-4. İndirme/bağımlı sayısı, yıldızın aksine, bakım aktifliğini güçlü ve monotonik biçimde öngörür.
+4. İndirme/bağımlı sayısı, yıldızın aksine, bakım aktifliğini **toplu düzeyde** güçlü ve monotonik biçimde öngörür — **paket başına garanti DEĞİLDİR**.
+   > **[K4 · antitez daraltması]** Ölçümümüz (M2) bir **katman agregasıdır**: top-500'de terk %8,6, rastgelede %54,2. Bu bir **dağılım** iddiasıdır. Antitezin karşı-örnekleri (`moment.js` bakım moduna geçtiği hâlde indirmeleri devasa kaldı; `request` deprecated ilan edildikten sonra yıllarca yüksek kaldı) **en üst katmandaki aykırı değerlerdir** ∧ agregayı **çürütmez** — ama *"güçlü öngörür"* ifadesi paket-başına okunmaya açıktı. Karşı-örnekler `[K-hatırlama]`dır (doğrulanmadı); mekanizma (**ekosistem ataleti**) kendi M7 bulgumuzla uyumlu olduğu için **kabul edildi**.
 5. Rastgele bir açık kaynak paketi terk edilmiştir; terk edilmemişlik istisnadır, kural değildir.
 6. Yaygın kullanılan paketlerin büyük kısmında yayın yetkisi tek hesapta yoğunlaşmıştır; bu, ölçek büyüdükçe azalmaz, yalnız en tepede azalır.
 7. Teknoloji seçiminin sonuca etkisine dair en çok atıf alan ampirik kanıt, bağımsız yeniden analizde büyük ölçüde geçersizleşmiştir.
-8. Ölçek-bağımlı folklorun (mikroservis/monolit) ölçülmüş hali, folklorun tersi yönde sonuç vermektedir.
+8. Ölçek-bağımlı folklorun (mikroservis/monolit) ölçülmüş hali, folklorun tersi yönde sonuç vermektedir — **dayanak: ICSME 2023 registered report KOHORT ÇALIŞMASI**, tek bir vaka değil.
+   > **[K8 · antitez kısmen haklı]** Antitez *"Prime Video tek vakadır, 'ölçülmüş' statüsüne yükseltilemez"* dedi. **Kısmen kabul:** bizim dayanağımız o vaka **değildi**, kohort çalışmasıydı — ama **iddia metni bunu belirtmiyordu** ⇒ dayanak artık iddianın **içinde** yazılı. Prime Video, §3.3 ▲3'teki **ters yön** listesinde ayrı bir kayıttır, bu iddianın dayanağı değil.
 9. Teknoloji seçimi tartışmasında dolaşan yüzde rakamlarının kayda değer bir kısmı birincil kaynakta doğrulanamayan, içerik-çiftliği kökenli uydurmalardır.
 
 ---
@@ -232,7 +252,7 @@ Yayımlanmış hali (He, Yang, Burckhardt, Kapravelos, Vasilescu, Kästner — I
 
 | Mekanizma | Bulgu | Etiket |
 |---|---|---|
-| **Vaka sayısı** | Gick & Holyoak: kaynak analog yokken çözüm ~%10; **tek** analogla ~%30; ipucuyla ~%80. Şema tümevarımı **iki vakanın karşılaştırılmasıyla** oluşuyor. **Tek vaka okumak neredeyse transfer üretmiyor.** | [K] |
+| **Vaka sayısı** | Gick & Holyoak: kaynak analog yokken çözüm ~%10; **tek** analogla ~%30; ipucuyla ~%80. Şema tümevarımı **iki vakanın karşılaştırılmasıyla** oluşuyor. **Tek vaka okumak transferi DÜŞÜK bırakır — sıfır değil (~%30, yani analogsuz hâlin ~3 katı).** *(K1 ile düzeltildi; eski hâli "neredeyse transfer üretmiyor" diyordu ∧ satırın kendi rakamıyla çelişiyordu.)* | [K] |
 | **Tekrar ziyaret** | Spiro, Bilişsel Esneklik: kötü-yapılandırılmış alanlarda aynı materyalin **farklı zamanlarda, yeniden düzenlenmiş bağlamlarda, farklı amaçlarla** tekrar ziyareti şart. Tek-geçişli müfredat tanım gereği yetersiz. | [K] |
 | **Başarısızlık > başarı** | Madsen & Desai (2010, *AMJ*), yörünge fırlatma: kuruluşlar başarısızlıktan başarıdan **daha fazla** öğreniyor ve **başarısızlık bilgisi daha yavaş değer kaybediyor** ("başarıdan gelen bilgi uçucu, başarısızlıktan gelen yıllarca kalıyor"). | [K] |
 | **Ama postmortem sahada çalışmıyor** | Postmortem "önerilen yöntem" olmasına rağmen **tutarlı uygulanmıyor**; ankette az kişi memnun; **birden fazla postmortem'in çıktısını birlikte analiz eden neredeyse yok**. | [K] |
@@ -256,17 +276,26 @@ Yayımlanmış hali (He, Yang, Burckhardt, Kapravelos, Vasilescu, Kästner — I
 
 **▲ Hukuk vaka yöntemi varsayımı düşüyor.** "Hukukta vaka/Sokratik yöntem kanıtlı bir modeldir" varsayımı **desteklenmiyor**: etkililik araştırması ağırlıkla işletme alanında; uygulayıcı avukatlar yöntemin pratiğe hazırlamada etkili olmadığı görüşünde; yöntem son on yılda **gözden düşmüş**. Fikir kutusundaki "hukuksal layer" fikri (talep (g)) bu bulguyla birlikte okunmalı — hukuk *muhakeme biçimi* olarak alınabilir, *öğretim modeli* olarak alınamaz.
 
-### 5.4 A24 iddia listesi (antitez için hazır, **⊨¬2**)
+### 5.4 A24 iddia listesi — **ANTİTEZ KOŞTU, hükümler işlendi**
 
-1. Yazılım mimarisi kararları Kahneman-Klein anlamında **geçersiz** bir öğrenme ortamıdır; bu alanda deneyimden doğal sezgi gelişmez.
-2. Mimaride yıl sayısı uzmanlık üretmez; geri bildirim mimarisi düzeltilmeden geçen yıllar performansı **düşürebilir**.
-3. Deliberate practice mesleki alanlarda varyansın %1'inden azını açıklar; yazılım mimarisi için ölçülmüş bir DP tahmini yoktur.
-4. Vaka okumanın öğretici olması için **en az iki zıt vakanın** karşılaştırılması gerekir; tek vaka okuma transfer üretmez.
-5. Başarısızlık vakaları başarı vakalarından daha öğretici ve daha kalıcıdır.
-6. Sonucu bilinen bir kararı okumak, sonuç yanlılığı nedeniyle süreç değerlendirmesini sistematik bozar; **sonuç kapatılmadan okuma öğretici değildir**.
-7. Kalibrasyon skorlaması, **insan kolaylaştırıcı olmadan** yapılandırılmış yansıtmanın gerektirdiği nesnel performans verisini üretebilen tek pratik mekanizmadır.
-8. Sezgi-temelli yansıtma öğrenme üretmez; öğrenme için **açıkça yazılmış bir karar kuralı** gereklidir.
-9. Teknoloji seçiminde en büyük sistematik hata kaynağı bilgi eksikliği değil, **teşvik yapısıdır** (özgeçmiş güdümlü seçim + büyük-ölçek çözümünün transplantı).
+*Bu başlık `⊨¬2` idi. **Artık değil.***
+
+1. Yazılım mimarisi kararları Kahneman-Klein anlamında **geçersiz** bir öğrenme ortamıdır; bu alanda deneyimden doğal sezgi gelişmez. — **çürütülemedi** *(ama §5.1'in kendi şerhi geçerli: bu bir **bileşimdir**, literatür bulgusu değil)*
+2. Mimaride yıl sayısı uzmanlık üretmez; geri bildirim mimarisi düzeltilmeden geçen yıllar performansı **düşürebilir**. — **çürütülemedi**
+3. Deliberate practice mesleki alanlarda varyansın %1'inden azını açıklar; yazılım mimarisi için ölçülmüş bir DP tahmini yoktur. — **⊨S**, antitezin ifadesiyle *"en sağlam, en spesifik, en doğrulanabilir iddia"* ⚠️ *(aynı-aile şerhi geçerli)*
+4. Vaka okumanın öğretici olması için **en az iki zıt vakanın** karşılaştırılması gerekir; tek vaka okuma transferi **DÜŞÜK bırakır (~%30), SIFIRLAMAZ**. — **⛔ ÇÜRÜTÜLDÜ (K1)**
+   > **[K1]** Eski hâli *"tek vaka okuma transfer üretmez"* diyordu. Antitez kaynağın kendi verisini gösterdi: `tek_analog → ~%10-30 transfer`, **sıfır değil**. Ve bu, **bizim İÇ TUTARSIZLIĞIMIZDI** — §5.3 zaten *"tek analogla ~%30"* yazıyordu. ⇒ Gerçek iddia: `tek_vaka → transfer DÜŞÜK ∧ ≠ sıfır` ∧ `şema_tümevarımı ⇔ karşılaştırma`. **İki vaka kuralı ayakta**; gerekçesi *"tek vaka işe yaramaz"* değil, *"şema ancak karşılaştırmayla doğar"*.
+5. Başarısızlık vakaları başarı vakalarından daha öğretici ve daha kalıcıdır. — **çürütülemedi**
+6. **(Sonuç GÖRÜNÜR durumdayken) okumak öğretici değildir**; **(sonuç kapatılarak) okumak — tahmin → aç → skorla — öğreticidir.** Sonucu bilinen bir kararı okumak, sonuç yanlılığı nedeniyle süreç değerlendirmesini sistematik bozar.
+   > **[K5 · ⭐ olumsuzlama kapsamı — YENİDEN YAZILDI]** Eski hâli *"sonuç kapatılmadan okuma öğretici değildir"* idi. Kastedilen ayrıştırma `[sonuç kapatılmadan] [okuma]` = **sonuç GÖRÜNÜRKEN okumak**. Antitez bunu **tam tersine** okudu (*"sonuç açıklanmadan okuma öğretici değildir"*) ∧ haklı olarak HBS vaka yöntemini karşı-örnek gösterdi — o yöntem sonucu **bilerek saklar**.
+   > **İddia AYAKTA — ama bu bir zafer değil, bir ARIZA kaydıdır.** Yetkin bir okuyucu önerme formunda yazılmış bir cümleyi ters anladı; sebep **olumsuzlamanın kapsamının belirsizliğiydi** (`¬(kapatılmış) ∧ okuma` mı, `kapatılmış ∧ ¬okuma` mı — Türkçe yüzeyde ayrışmıyor).
+   > ⇒ **Kural (K10):** önerme formunda `¬` kullanılan her cümlede **kapsam parantezle sabitlenir**.
+7. Kalibrasyon skorlaması, **insan kolaylaştırıcı olmadan** nesnel performans verisi üretebilen **BULUNABİLEN TEK** pratik mekanizmadır — *"tek"* burada **bulunabilen tek** demektir, **kanıtlanmış tek DEĞİL**. `[?]` **Bu eğitimin mimari karar öğrenimine transferi ÖLÇÜLMEMİŞTİR.**
+   > **[K6 · antitez tam isabet — çifte standart kabul edildi]** İddia 2, çerçevelerin (ADR/Radar/ATAM) etkinliğinin ölçülmediğini söyleyerek **şüpheci bir standart** uyguluyordu; iddia 7 ise kalibrasyonun *"tek pratik mekanizma"* olduğunu **aynı titizlikte kanıt sunmadan** ∧ **daha güçlü** bir kesinlikle iddia ediyordu.
+   > Ve bunu **bizim kendi raporumuz da söylüyordu** (A24 boşluk #4: *"Mimari kararlarda Brier-skorlu tahmin eğitimi denenmemiş"*) — ama **iddia listesine taşınmamıştı**. `M1`'in vakası: iddia listesi, raporun kendisinden zayıf çıktı.
+   > ⇒ Bu, §7'deki **Model C önerisinin** dayanağını zayıflatır. Model C hâlâ önerilir — ama gerekçesi *"en iyi kanıtlı"* değil, **"tek uygulanabilir"**.
+8. Sezgi-temelli yansıtma öğrenme üretmez; öğrenme için **açıkça yazılmış bir karar kuralı** gereklidir. — **çürütülemedi**
+9. Teknoloji seçiminde en büyük sistematik hata kaynağı bilgi eksikliği değil, **teşvik yapısıdır** (özgeçmiş güdümlü seçim + büyük-ölçek çözümünün transplantı). — **çürütülemedi**
 
 ---
 
@@ -540,18 +569,27 @@ Sebep ölçüldü: `shift(-1) ∧ kesme_noktası` ⇒ yalnız **1 satır** farkl
 | Araç | Hüküm | Gerekçe |
 |---|---|---|
 | **MLflow / W&B** | **ALINMAZ** | 90 paket / **611 MB** > tüm yığın (472 MB) (R20) ∧ MLflow 3.x dosya deposunu **kaldırdı**, "sadece pip install" tavsiyeleri **geçersiz** (R21). Yerine 8 satır JSONL (R22). *Gerekirse `mlflow-skinny`: 41/64 MB* |
-| **DVC** | **ALINMAZ** | 98 paket / 107 MB (R18) ∧ değeri **takım + bulut** senaryosunda (R17) ⇒ tek kişide `değer ≈ 0`. Yerine: SHA256 + tarihli klasör |
+| **DVC** | **ALINMAZ** *(hüküm değişmedi)* | 98 paket / 107 MB (R18) ∧ değeri **ağırlıklı olarak takım + bulut** senaryosunda (R17). **[K3 düzeltmesi:** tek kişide `değer ≈ 0` **DEĞİL, AZALMIŞ**. Antitez haklı: uzak depolama olmasa da `dvc repro` **yerel önbellekleme** (değişmeyen aşamaları atlama) ∧ **pipeline DAG'ı** sağlar. Bizim gerekçemiz deponun kendi *"takım + bulut"* vurgusuna dayanıyordu — bu **değeri azaltır, sıfırlamaz**.**]** ⇒ Yeni gerekçe: `azalmış değer < 98 paketlik maliyet`. Yerine: SHA256 + tarihli klasör |
 | **poetry** | **ALINMAZ** | 49 paket / 56 MB ortama girer (R3); uv aynı işi **0 Python bağımlılığıyla** yapıyor |
 | **mypy `--strict`** | **BAŞLANGIÇTA ALINMAZ** | İlk çıktı %100 gürültü, 0 gerçek hata (R8) ∧ sütun adı hatasını yakalayamıyor (R9). **Sonra**, kararlı `src/` modüllerinin imzalarına değer — orada 3/4 yakalıyor |
 | **ruff `--select ALL`** | **ALINMAZ** | 7 → 32 hata ∧ **gerçek hata artışı 0** (R7) |
-| **polars** | **ŞİMDİ ALINMAZ** | Ortanca 1,4× ∧ groupby'da yavaş ∧ tüm işlemler `<1 s` (R13). Veri `>5-10 GB` ∨ `join`-ağırlıklı iş yükü olursa **yeniden değerlendir** (orada 7,2×) |
+| **polars** | **ŞİMDİ ALINMAZ** *(hüküm korunur, gerekçe EKSİK olarak işaretlendi)* | Ortanca 1,4× ∧ groupby'da yavaş ∧ tüm işlemler `<1 s` (R13). Veri `>5-10 GB` ∨ `join`-ağırlıklı iş yükü olursa **yeniden değerlendir** (orada 7,2×).<br>**[K7 · antitez ince yakalama — ⚠️ EKSİK GEREKÇE]** İddia 15'in kendi mantığı (*"parquet'in gerekçesi hız değil dtype bütünlüğü"*) **polars'a geri uygulanırsa**: polars'ın asıl argümanı da hız değil **şema katılığı, lazy-evaluation'da erken tip hatası, Arrow bellek modeli, null-semantiği tutarlılığı**dır. ⇒ Bu hüküm **yalnız hız eksenine** dayanıyor ∧ **şema-katılığı ∧ null-semantiği ekseni ÖLÇÜLMEDİ** ⇒ **yeni borç (B8)**. Hüküm ayakta, ama *"ölçüldü ve elendi"* demek **yanlış olur** — bir eksende ölçüldü, diğerinde ölçülmedi.<br>⚠️ Antitezin *"db-benchmark'ta polars groupby kat kat hızlı"* karşı-iddiası: **kendi ölçümümüz (R13, bu makinede, 1,26M satır) bunu göstermiyor** ∧ antitez kendi belirsizliğini dürüstçe işaretledi (*"emin değilim"*) ⇒ `[D]` ölçüm `[K-hatırlama]`yı yener, **rakam korunur** — ama **ölçek bağımlılığı** kaydı güçlenir: bizim ölçümümüz **1,26M satırdır**, db-benchmark ölçekleri farklıdır |
 | **papermill / jupytext / nbdev** | **ALINMAZ** | 103 / 72 / 23 doğrudan bağımlılık (R29). Çözüm araç eklemek değil, **mantığı `src/`'ye taşımak** |
 | **Docker** | **ALINMAZ** | `uv.lock` tek kişilik projede yeterli; maliyeti bu ölçekte getirisini aşar |
 | **backtrader / pyfolio / empyrical** | **ALINMAZ — TERK EDİLMİŞ** | Son sürümler 2023 · 2019 · 2020 (R41) |
 
-### 6.9 A23 iddia listesi (antitez için, gerekçesiz) ⊨¬2
+### 6.9 A23 iddia listesi — **ANTİTEZ KOŞTU, hükümler işlendi**
 
-① uv'nin 93× sıcak-kurulum avantajı haftada ~36 saniye tasarruf eder; asıl gerekçesi hız değil, **sıfır-bağımlılıklı tek ikili** olmasıdır. ② Bu ölçekte polars ortanca 1,4×'tir ∧ groupby'da yavaştır; şimdi almak **erken optimizasyondur**. ③ Statik analiz araçları finansal zaman serisi projesindeki **doğruluk-kritik hata sınıfını yapısal olarak yakalayamaz**. ④ Deney takibi araçları tek kişilik ölçekte **net negatiftir**. ⑤ Bir backtest'in in-sample Sharpe'ı, **denenen varyant sayısı raporlanmadan yorumlanamaz**. ⑥ Parquet'i tercih etmenin baskın gerekçesi hız veya boyut değil, **dtype bütünlüğüdür**. ⑦ `PYTHONHASHSEED` sabitlenmeden hiçbir koşum **tam olarak yeniden üretilebilir değildir**, tüm RNG tohumları doğru olsa bile. ⑧ Naif look-ahead testi eşiklenmiş sinyallerde işe yaramaz ∧ **yanlış güven verir**. ⑨ DVC'nin tek kişilik projedeki getirisi sıfırdır ∧ 98 paketlik maliyeti nettir.
+① uv'nin 93× sıcak-kurulum avantajı haftada ~36 saniye tasarruf eder; asıl gerekçesi hız değil, **sıfır-bağımlılıklı tek ikili** olmasıdır. — **çürütülemedi**
+② Bu ölçekte polars ortanca 1,4×'tir ∧ groupby'da yavaştır; şimdi almak **erken optimizasyondur**. — **hüküm korunur, gerekçe EKSİK (K7):** yalnız **hız** ekseninde ölçüldü; **şema-katılığı ∧ null-semantiği ekseni ölçülmedi** ⇒ B8 borcu.
+③ Statik analiz araçları finansal zaman serisi projesindeki **doğruluk-kritik hata sınıfını yapısal olarak yakalayamaz**. — **çürütülemedi**
+④ Deney takibi araçları tek kişilik ölçekte **net negatiftir**. — **çürütülemedi**
+⑤ Bir backtest'in in-sample Sharpe'ı, **denenen varyant sayısı raporlanmadan yorumlanamaz**. — **⊨S**, literatürle güçlü örtüşme ⚠️ *(aynı-aile şerhi)*
+⑥ Parquet'i tercih etmenin baskın gerekçesi hız veya boyut değil, **dtype bütünlüğüdür**. — **⊨S**; ayrıca antitez bunu **②'ye karşı silah olarak** kullandı (bkz. K7)
+⑦ **Hash sırasına duyarlı kod yolu içeren** hiçbir koşum, `PYTHONHASHSEED` sabitlenmeden tam olarak yeniden üretilebilir değildir — tüm RNG tohumları doğru olsa bile.
+   > **[K2 · antitez daraltması]** Eski hâli *"hiçbir koşum"* diyordu ⇒ **fazla geniş**. `hash_sırası → yalnız hash-duyarlı kod yollarını etkiler`; saf numpy/pandas sayısal hattı (sabit sütun sırası, array-tabanlı) **bağımsız olabilir**. Ve **bizim kendi ölçümümüz (R27) zaten mekanizmayı `set` sıralaması üzerinden gösteriyordu** ⇒ koşul **`set` kullanımıdır**, evrensel değil. Pratik tavsiye (`PYTHONHASHSEED=0` + `set` yerine `sorted()`) **değişmez**.
+⑧ Naif look-ahead testi eşiklenmiş sinyallerde işe yaramaz ∧ **yanlış güven verir**. — **⊨S**, çürütülemedi
+⑨ DVC'nin tek kişilik projedeki getirisi **azalmıştır** ∧ **98 paketlik maliyeti karşılamaz**. — **⛔ ÇÜRÜTÜLDÜ (K3):** eski hâli *"getirisi sıfırdır"* diyordu. `dvc repro` uzak depolama olmadan da **yerel önbellekleme ∧ pipeline DAG'ı** sağlar ⇒ **değer azalır, sıfırlanmaz**. **Hüküm (ALINMAZ) değişmez, gerekçe düzelir.**
 
 ### 6.10 A23 — kapatılamayanlar
 
@@ -595,6 +633,10 @@ Gerekçe:
 1. **m.35 (ölçüm önceliği) Model A'yı eliyor.** Ölçülmemiş çerçeve benimsemek, bu oturumun kendi bulgusuyla çelişir.
 2. **Model B tek başına yetersiz ama vazgeçilmez.** §1'in asimetrisi: ölçülmüş yarıyı almamak için sebep yok, ama ölçülmemiş yarıyı boş bırakmak da kabul edilemez.
 3. **Model C'nin zayıflığı dürüstçe kaydedilmeli:** kalibrasyon eğitiminin etkisi tartışmalı. **Ama alternatifi yok** — insan kolaylaştırıcı olmayan bir sistemde nesnel performans verisi üretebilen başka mekanizma bulunamadı (A24 boşluk #4-5). Yani bu, "en iyi kanıtlı seçenek" değil, **"tek uygulanabilir seçenek"** — fark önemli, kaydediliyor.
+   > **[K6 · ŞERH GÜÇLENDİRİLDİ]** Antitez bu noktada bir **çifte standart** yakaladı ∧ kabul edildi (§5.4 ⑦). İki ek kayıt:
+   > ① *"Tek mekanizma"* ifadesi **"bulunabilen tek"** demektir, **"kanıtlanmış tek"** değil. Bulunamamış olması, olmadığı anlamına gelmez.
+   > ② `[?]` **Kalibrasyon eğitiminin MİMARİ KARAR öğrenimine transferi ÖLÇÜLMEMİŞTİR.** GJP'nin %6-7 kazancı **tahmin görevlerinde** ölçüldü; mimari karara taşındığı **gösterilmedi**. Model C'nin çekirdek mekanizması bu transferin **varsayımı** üzerine kuruludur.
+   > ⇒ Model C **yine de önerilir** — ama Salih bunu imzalarken *"kanıtlanmış yöntem"* değil, **"ölçülmemiş ama tek uygulanabilir yöntem, ve kendi ölçümünü üretecek şekilde kurulmuş"** olarak imzalamalıdır. L7/L15'in Brier deltası tam olarak bu transferi ölçer ⇒ **model kendi varsayımını sınayacak biçimde tasarlanmıştır.**
 4. **Sürtünme eşiği zorunlu (M18 dersi).** ADR'lerin %50'si 5 kayıttan sonra terk edildiyse, tam-protokol her karara uygulanamaz. **Eşik önerisi:** yalnız *geri alması pahalı* kararlar (m.31 ölçek eşiğiyle aynı kesim — publish / para / kişisel veri / pahalı geri-alma / yön değişimi) tam Model C protokolüne girer; altı Model B'nin üç sayısıyla geçilir.
 
 **Bu Katman 1 kararıdır (m.31: değer tercihi + yöntem kanonu). Salih imzası bekler.**
@@ -642,7 +684,9 @@ Gerekçe:
 | # | Borç | Durum |
 |---|---|---|
 | B1 | **A23 (DS/ML asgari yığını) inmedi** — §6 boş | Koşum sürüyor; indiğinde bu dosyaya §6 olarak eklenecek |
-| B2 | **Aşama 2 (antitez) A5–A27 için koşulmadı** | Uzun süreli protokol borcu; §3.4 ve §5.4 iddia listeleri hazır bekliyor |
+| B2 | ~~Aşama 2 (antitez) koşulmadı~~ → **KAPANDI 2026-07-26** | A22 ∧ A24 ∧ A23 için koştu (**araçsız**, `tool_uses = 0`) ⇒ mantıksal saldırılar tam güçte, olgusal karşı-örnekler `[K-hatırlama]`. Sonuç: **K1-K8**. §3.4 ∧ §5.4 ∧ §6.9 hükümlerle güncellendi |
+| **B8** | **polars'ın şema-katılığı ∧ null-semantiği ekseni ÖLÇÜLMEDİ** (K7) | R13 yalnız **hız** eksenindedir. *"Şimdi alınmaz"* hükmü ayakta ama **eksik gerekçelidir**. Ölçüm yolu: lazy-evaluation'da erken tip hatası yakalama + null semantiği tutarlılığı testi |
+| **B9** | **Kalibrasyonun mimari karara transferi ölçülmedi** (K6) | Model C'nin çekirdek varsayımı. L7→L15 Brier deltası bunu ölçmek üzere tasarlandı ⇒ **borç, modelin kendi içinde kapanacak** |
 | B3 | Akademik rakamların **hiçbiri birincil metinden değil** | Erişim açık bir oturumda teyit; öncelik: Macnamara 2014 yüzdeleri · Cook 2011 d değerleri · GJP %6-7 |
 | B4 | `arxiv.org/html/...` **denenmedi** | Açık listede olmadığı için atlandı. Kısıt gevşerse **en yüksek getirili tek kanal** — debiasing deneyi, mikroservis issue çalışması, RDD hepsinin HTML sürümü var görünüyor |
 | B5 | Mimari uzmanlıkta **protokol analizi güncel değil** | Adelson & Soloway (n=5), Guindon, Tang — 1984-2010, tek haneli/onlu denek. **Bulut/mikroservis/yönetilen hizmet çağında uzman-acemi protokol çalışması yok** |
@@ -662,7 +706,12 @@ Gerekçe:
 
 ## 10 — Kapanış damgası
 
-**Aile:** A22 ⊨S-değil (**⊨¬2**) · A24 ⊨S-değil (**⊨¬2**) · A23 **açık**
-**Kanıt tabanı:** 4 × [D] kendi ölçümümüz (PyPI n=478 · PyPI 4×500 · npm 220.469 · StarScout ham CSV) · geri kalan tümü **[K]**, abstract katmanından
-**Karar önerisi:** Model C (B içerilerek, sürtünme eşikli) — **Katman 1, Salih imzası bekler**
-**Register:** teknik tek kayıt; insan-yüzü muadili **talep gereği üretilmedi**
+**Aile:** A22 · A24 · A23 — **antitez KOŞTU** (2026-07-26, **araçsız**, `tool_uses = 0`)
+**Antitez sonucu:** 3 çürütme (K1 vaka sayısı · K3 DVC · K9 iç tutarsızlık) · 5 daraltma (K2, K4, K6, K7, K8) · 1 **yeniden yazım** (K5, olumsuzlama kapsamı) · 3 `⊨S`
+**⚠️ İki şerh, birlikte okunur:**
+① **Araçsız tur** ⇒ **mantıksal** saldırılar (iç çelişki, aşırı-genelleme, ölçüm-kapsam uyuşmazlığı) **tam güçtedir**; **olgusal karşı-örnekler** (`moment.js`, `request`, HBS vaka yöntemi, db-benchmark) **`[K-hatırlama]`**'dır ∧ borç açar, hüküm değiştirmez.
+② `⊨S` = **"aynı-aile hakemi karşısında sağ kaldı"** — antitez ajanları tez ajanlarıyla aynı model ailesindendi ∧ öz-tercih sapması aile düzeyine yayılır.
+**Kanıt tabanı:** 4 × [D] kendi ölçümümüz (PyPI n=478 · PyPI 4×500 · npm 220.469 · StarScout ham CSV) · A23'ün tamamı bu makinede **kendi ölçümü** · geri kalan tümü **[K]**, abstract katmanından
+**Karar önerisi:** Model C (B içerilerek, sürtünme eşikli) — **Katman 1, Salih imzası bekler.** ⚠️ K6 sonrası gerekçe *"en iyi kanıtlı"* değil, **"tek uygulanabilir ∧ kendi varsayımını ölçecek biçimde kurulmuş"**
+**Register:** teknik kayıt **tek karar kaynağıdır**; insan-yüzü iki register (`INSAN-tech-stack.md` + `SOZEL-tech-stack.md`) sonraki emirle **üretildi** ∧ karar kaynağı **değildir**
+**En değerli meta-bulgu:** antitezin **yanlış anlaması** (K5), metnimizin kendi belirsizliğinin **ölçümü** oldu — *"antitez ajanının yanlış anladığı her cümle, o cümlenin yeniden yazılması gereken yerdir"*
