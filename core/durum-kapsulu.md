@@ -2,23 +2,24 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır; mount'ta git komutu YOK (pull gerekirse Salih terminali).*
 
-**Güncelleme:** 2026-07-23 PC ANA VARDİYA KAPANDI (Carvis, ana-sıra/Fable) — bulut-devir denetimi: 2 arıza (içerik-ezme ONARILDI · **senkron YALANCI-OK** — kök-neden borcu) · **core/-Bash teli KURULDU, canary PASS** (+ölü Write-deny temizliği) · K-016 canlı tetik 4/4 · P6 ingest (DONE kapısı AÇIK) · **sayı-araştırma kapısı kural + 4 hüküm uygulandı** (`cc/rapor-2026-07-23-1.md`) · **defter DAMITILDI 51,7→16,3KB** · teslim: `raporlar/vardiya-teslim-2026-07-23-pc.md`
+**Güncelleme:** 2026-07-25 PC ANA VARDİYA KAPANDI (Carvis, ana-sıra/Fable) — 5 mobil-CC raporu (07-24 çift-atlas, `claude/opus5-jarvis-updates` dalı) tam okundu, **dal main'e MERGE EDİLMEDİ (borç)** · **K-022 staj hattı KURULDU** (kart + `staj/README.md` + P0 kalibrasyon seti, cevaplar koşum-doğrulamalı) · kutu: V63 CS50 + V64 CC/Orca-geçiş gündemi (KARAR YOK) · teslim: `raporlar/vardiya-teslim-2026-07-25-pc.md`
 
 ## Şu an
-- **K-010 tetiği (m.38):** K-009 ∧ A1∧A2∧A3∧A4; A5 paralel. **A1: sayaç TARTIŞMALI** — 2. OK yalancı çıktı (07-23 "OK" logu origin'e ulaşmamış; non-fast-forward adayı); Salih hükmü bekliyor: 2/5 mi 1/5 mi + sigorta onayı (script'e pull-adımı + push-sonrası origin doğrulaması). Etiket (Salih 07-23): 5-ardışık = c=0 go-gate, reliability kanıtı DEĞİL; koşumlar zaman-ayrık. **A2: KAPALI 4/4** + tel canlı (`.claude/hooks/pretool-core-tel.sh`). **A3:** bekliyor (A1 dolunca). **A4:** kalan denetçi bütçe-çatalı (Salih). **A5:** ilk devir iş-sınıfı kararı açık.
-- **K-016:** canlı tetik seti 4/4 KAPANDI (negatif 2/2, Opus-extra). Kalan TEK borç: 20-sorgu description-eval — artık protokol-hizalı koşulacak (8-10/8-10 · 3× · 60/40 · ≤5 iter; KILAVUZ revize eval kuralı).
-- **Sayı-rejimi (07-23):** KILAVUZ'da sayı-araştırma kapısı + araştırma-onaylı bütçeler (KB+token-izleme; 48KB FLAG çözüldü — defter damıtıldı; konum ekseni: her-tur-okunan dosya TEPEDE).
-- **Şerit 2 (öğrenme):** P6 ingest edildi (`ogrenme/dersler/2026-07-22-P6-context-eng-compaction.md`) — **DONE kapısı Salih beyanı bekliyor** (a: compaction'da ne yaşar/erir; b: sıcak katman neden iki parçalı). Model B (not-tutma+stabil-prefix) m.37 kaydı deftere düşüldü; uygulama borcu: kapsül iki-parçalı yerleşim (volatil alta) K-015 kurulumunda. Sıradaki ders: P7 ya da Salih seçimi. P2 devir ingest hâlâ bekliyor.
-- **Kutu:** V59 (atlas alt-ajanlarına ucuz model — /usage %19 bulgusuyla güçlendi) · V61 Record-a-Skill · V62 Cowork mobil.
+- **K-022 staj (YENİ, zaman-baskılı):** 11 Ağu iniş. P0 kalibrasyon GECİKMİŞ (plan 24 Tem) — Salih koşacak (~1 sa, `staj/P0-kalibrasyon/`); P1 SQL-okuma penceresi 25-28 Tem. Staj oturumu hat beyanı: **"günaydın, staj"**. Sınav setlerini Carvis üretir, pratik soruları sınavda tekrar kullanılmaz.
+- **Rapor-5 devri:** Şerit1-5 bulguları teslim raporunda özetli; Salih kararları açık: plan bilgisi · V26/ağ politikası (Katman-1) · hakem model ailesi · atlas revizyonu+efor kotası. Öneri: V64 masasıyla birleştir. S4-A1 (35KB, dalda `scratchpad/`) işlenmemiş ingest borcu.
+- **K-010 tetiği:** değişmedi — A1 sayaç hükmü (2/5 mi 1/5 mi) + senkron-sigorta onayı Salih'te; A2 kapalı 4/4; A3 A1'i bekliyor; A4 denetçi bütçe-çatalı; A5 açık. Senkron log 07-25 OK (from=to `4429c7f`, dirty 0) ama sigortasız sayaca güven düşük.
+- **K-016:** kalan tek borç description-eval turu (protokol-hizalı). **Şerit 2 (öğrenme):** P6 DONE beyanı bekliyor; sıradaki P7/Salih seçimi; P2 devir ingest bekliyor.
+- **Kutu yeni:** V63 CS50 şerit adayı (K-022 P1-P2 örtüşme uyarılı) · **V64 CC+Orca yüzey-geçişi — TARTIŞMA GÜNDEMİ, sonraki oturum; CC araştırma raporu ön-koşul; m.41 çelişki raporu Carvis'te hazır sunulacak.**
 
 ## Açık borçlar
-- **GÜVENLİK:** PAT düz-metin + ~10 Ekim ölümü (credential-helper + yenileme tek hamle).
-- **Salih kararları:** A1 sayaç hükmü + senkron-sigorta onayı · P6 DONE beyanı · denetçi bütçe-çatalı · A5 ilk devir sınıfı · MEZUN onayı (V36·V38·V40a·V43) · V59 tetiği · skill terfi süzgeci · index.lock gerekçe-revizyonu.
-- Skill/wiki: description-eval turu (protokol-hizalı) · wiki adayları (skill-katmanlari · kucuk-n-eval · rol-katmanlari) · Homebase pointer bayat · modern-tokenizer (O13).
-- K-019 kalanı: stage-bayat/çift-koşum vakalarının toplu defter işlemesi · token-izleme ilk ölçümü (20KB+ dosyalar).
-- Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği · K-018 (remote control).
+- **MERGE:** `claude/opus5-jarvis-updates` → main (mekanizma tercihi Salih'te: Carvis klondan push + Salih pull, ya da Salih terminali). Staj dosyalarının şerit5-rapor pointer'ı merge'e dek kırık.
+- **GÜVENLİK:** PAT düz-metin + ~10 Ekim ölümü.
+- **Salih kararları:** merge yolu · A1 hükmü+sigorta · P6 DONE · denetçi bütçe-çatalı · A5 ilk devir sınıfı · rapor-5 kararları · MEZUN onayı (V36·V38·V40a·V43) · V59 tetiği · skill terfi süzgeci · index.lock gerekçe-revizyonu.
+- Skill/wiki: description-eval · wiki adayları (skill-katmanlari · kucuk-n-eval · rol-katmanlari) · Homebase pointer bayat · modern-tokenizer (O13).
+- K-019 kalanı: stage-bayat/çift-koşum toplu defter işlemesi · token-izleme ilk ölçümü.
+- Tetikliler: K-011 · K-004 (Kasım; staj sertifika penceresi Ekim-Kasım buraya besler) · PortRisk tetiği · K-018.
 
-## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN doğrula)
-1. Senkron-log bakış + **A1 sayaç hükmünü Salih'ten al** (yalancı-OK: 2/5 mi 1/5 mi) → onay gelirse senkron sigortası kur (pull-adımı + push-sonrası `git ls-remote` doğrulaması).
-2. P6 DONE beyanı → Şerit 2 sıradaki (P7/Salih seçimi).
-3. description-eval protokol-hizalı tur (CC, K-016 kapanış adayı) · A1 dolunca A3 koşumları.
+## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN doğrula; PC mount push sonrası BAYAT — önce Salih terminalinden `git pull`)
+1. Salih: P0 koşumu ("günaydın, staj" oturumunda) → baseline → P1 ağırlığı.
+2. Merge kararı + uygulaması; ardından A1 hükmü + senkron sigortası kurulumu.
+3. V64 masası (CC raporu gelince) + rapor-5 kararları birlikte.
