@@ -6,6 +6,28 @@
 
 ---
 
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> A5–A21 aileleri için antitez koştu. Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §9c.
+> ⚠️ **Kaveat:** turlar dürtme sonrası araçsız döndü; **araç kanıtları kesinti ÖNCESİ turda toplandı**. Kaynak-kod ∧ doküman alıntıları o turdandır ∧ spesifiktir ⇒ kabul edilir. Araçsız kalan kısımlar için: **mantıksal saldırı hüküm değiştirir, olgusal karşı-örnek borç açar.**
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K35** ⭐⭐ | §11.4 | *"Eksen başına optimum ≈ 4"* **KAYNAKSIZ ⇒ `[?]`, ASKIDA** — kategori önerisinin **tek somut sayısıydı** |
+> | **K39** ⭐⭐ | §A15 | *"Ajan yayımlama eşiğini kendi geçemez"* **ÇÜRÜTÜLDÜ** — bu bir **GÜVENLİK VARSAYIMIYDI** |
+> | **K47** ⭐⭐ | §14 · §A15 | **Hiçbir hukuk hükmünde yargı çevresi yok** — damgasız hüküm kullanılmaz |
+> | **K33** | §10.6 | `sessizce kırpılır` → **kırpılır ∧ ajana SAYISAL UYARI verilir** |
+> | **K34** | §8.1 | *"Heartbeat göndermeyen iş durdurulamaz"* → **bu sistemde geçerli DEĞİL** (`TaskStop` `task_id` ile durdurur) |
+> | **H34** | §8.2 · §8.4 | ⛔ **Asılma nöbetçisi bu sürümde YOK** — kör nokta *"dar kapsam"* değil, **kapsamın tamamı** |
+> | **K36·K37·K38** | §A12 | Oturum sürekliliği sınırlarının **üçü de tersine döndü** — sistem sanılandan **dayanıklı** |
+> | **K40** | §A15 | *"Tek kural"* → **çok-faktörlü testler normdur** |
+> | **K41** | §14.2 | *"Her koşulda / tam güçle mevcut"* → mutlak niceleme düşer |
+> | **K42** | §A12 | *"Bilişsel mümkünlük hiçbir kanıtla desteklenmemiş"* → **`[ARANAMADI]`**; görev-değiştirme maliyeti literatürü **var** |
+> | **K43** | §A14 | `arama_uzayı ⊆ DAG` → **çok-turlu mimariler döngü içerir** |
+>
+> ⚠️ **K35, K39 ∧ K47 aynı hata sınıfındandır:** doğrulanmadan öne çıkarılan tavsiye, ya da hiç sorulmamış soru. Hiçbiri kural olarak kullanılmaz.
+
+---
+
 ## 0. KANIT KISITI — bu raporun en önemli satırı (dürüstlük beyanı)
 
 **Bu oturumda hiçbir akademik kaynağa inilemedi.** Kurumsal egress politikası, denenen akademik hostların tamamını CONNECT düzeyinde reddetti (403 / bağlantı kurulamadı). Carvis 10 hostla ayrıca ölçtü: **10/10 ret**.
@@ -294,13 +316,17 @@ Kubernetes dokümanı sorunun adını koyuyor [D]: liveness probe *"could catch 
 
 **Doğru primitif: progress deadline.** Kubernetes `progressDeadlineSeconds` (varsayılan **600**) aşıldığında `reason: ProgressDeadlineExceeded` yazar — ve kritik nokta: **öldürmez, görünürlük üretir.**
 
-Temporal'ın tez cümlesi [D]: *"Heartbeating is best thought about **not in terms of time, but in terms of 'How do you know you are making progress?'**"* Ve heartbeat aynı zamanda **iptal kanalıdır**: *"Activities that don't Heartbeat can't receive a Cancellation."* — heartbeat'siz iş yalnız saptanamaz değil, **durdurulamaz** da.
+Temporal'ın tez cümlesi [D]: *"Heartbeating is best thought about **not in terms of time, but in terms of 'How do you know you are making progress?'**"* Ve heartbeat aynı zamanda **iptal kanalıdır**: *"Activities that don't Heartbeat can't receive a Cancellation."*
+
+> **[K34 · antitez ÇÜRÜTMESİ — kapsam ayrılıyor]** *"Heartbeat göndermeyen iş durdurulamaz"* genellemesi **bu sistem için YANLIŞTIR**. Antitez kurulu `cli.js`'i okudu: **`TaskStop` bir `task_id` ile durdurur**; heartbeat ya da işbirliği şartı **yoktur**.
+> ⇒ Kapsam ayrılır: `dağıtık_sistem_teorisi(Temporal) → heartbeat = iptal kanalı` ∧ `Claude_Code → TaskStop ¬gerektirir heartbeat`.
+> ⇒ Pratik sonuç **iyi yönde**: bizim ajanlarımız **durdurulabilir**; saptanamamaları ayrı bir sorundur ∧ o sorun duruyor.
 
 ### 8.2 Bizim ortamımızda ne var (hepsi [D])
 
 | Mekanizma | Değer | Not |
 |---|---|---|
-| `CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` | **600.000 ms (10 dk)** | *"The timer **resets on each streaming progress event**"* → doğru primitif. Aşınca alt-ajan **iptal edilir, görev başarısız işaretlenir, kısmi sonuç ebeveyne verilir.** **SINIR: senkron alt-ajanlara UYGULANMAZ.** |
+| `CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` | **600.000 ms (10 dk)** — ⛔ **ama bu sürümde YOK** | *"The timer **resets on each streaming progress event**"* → doğru primitif. **SINIR (eski hâl): senkron alt-ajanlara uygulanmaz.**<br>**[H34 · ÖLÇÜLDÜ — sınır sanılandan geniş]** İki bağımsız ölçüm yakınsadı: ① antitez kurulu `cli.js`'te `watchdog`, `idleAgent`, `stuckDetection`, `hungTask`, `healthCheck` terimlerinin **hiçbirini** bulamadı; ② canlı vakada üç ajan **45 dakika** sessiz kaldı ∧ belgelenmiş 10 dakikalık eşiğe rağmen **abort edilmediler**. ⇒ **`asılma_nöbetçisi(v2.1.42) = ∅`** — kör nokta *"senkron alt-ajanlar"* değil, **hepsi**. Bu bir borcun **olumsuz yönde kapanmasıdır**: beklenen koruma **yok**. |
 | `CLAUDE_ENABLE_STREAM_WATCHDOG` | varsayılan **açık** | *"aborts the request when **headers have arrived but the response body stops streaming**"* — 200 sonrası sessizleşen akış vakası. |
 | `API_FORCE_IDLE_TIMEOUT` | **5 dk** gövde-idle | Doğrudan Anthropic/AWS'de pasif (orada bayt-düzeyi nöbetçi var). |
 | `BASH_DEFAULT_TIMEOUT_MS` / `BASH_MAX_TIMEOUT_MS` | **120.000 / 600.000** | **Ölçtüğümüz 600 s duraklamanın kaynağı:** ajan Bash zaman aşımını izin verilen **tavana** ayarlamış. |
@@ -323,7 +349,10 @@ Bölüm 2'nin ölçümü + A5'in dokümantasyonu birleştiğinde, **bizim ajanla
 
 1. **Ajan-yazımı bekleme döngüsü (ölçüldü, 2 vaka).** Ajan alt-ajanlarını `Bash` ile yokluyor; Bash tavanı 600 s olduğu için async stall watchdog'un 600 s'lik penceresine **tam olarak sığıyor ve tetiklenmiyor.** Bu, watchdog'un kör noktasıdır.
 2. **Kota tükenişi (bu oturumda canlı yaşandı).** Retry watchdog 429/529'u süresiz denediği için ajan ölmüyor, bekliyor. Beş atlasın "failed" dönmesi bunun sert halidir; yumuşak hali sessiz bekleme.
-3. **Senkron alt-ajan boşluğu.** Stall watchdog **yalnız async** alt-ajanlara uygulanıyor. Senkron çağrılan bir alt-ajan asılırsa onu kesen ilerleme-tabanlı bir mekanizma yok.
+3. ~~**Senkron alt-ajan boşluğu.**~~ ⛔ **DÜZELTİLDİ (H34): boşluk senkronla sınırlı değil — nöbetçi bu sürümde HİÇ YOK.**
+   Eski hâli *"stall watchdog yalnız async alt-ajanlara uygulanıyor"* diyordu ⇒ nöbetçinin **var olduğunu ama dar kapsamlı olduğunu** varsayıyordu. İki bağımsız ölçüm bunu aştı (bkz. §8.2).
+   ⇒ **Hiçbir otomatik ilerleme-tabanlı koruma yoktur**; asılma tespiti **tamamen ebeveynin işidir**.
+   ⇒ Bu, 1. maddedeki kör noktayı da **büyütür**: Bash tavanının nöbetçi penceresine sığması artık *"talihsiz bir çakışma"* değil, **zaten koruma olmadığı için anlamsız** bir gözlemdir.
 
 ---
 
@@ -469,7 +498,10 @@ Anthropic açıkça yazıyor: CLAUDE.md içeriği sistem promptunun parçası ol
 - MINJA (NeurIPS 2025): saldırgan hafıza deposuna **doğrudan erişmeden, yalnız sorgu göndererek** zehirliyor — **%98,2 enjeksiyon başarısı, %76,8 saldırı başarısı**.
 - AgentPoison (NeurIPS 2024): **%0,1'den az** zehirleme oranıyla ortalama **>%80** saldırı başarısı; iyi-niyetli performansta **%1'den az** düşüş — **yani fark edilmiyor.**
 
-**Hafıza dosyası şişerse SESSİZCE KIRPILIR [D]:** yalnız ilk **200 satır / 25KB** yüklenir; ötesi yüklenmez. Bu, kalıcı ajanın en sinsi hata kaynağıdır — ajan "hatırlıyorum" sanır, hatırlamaz.
+**Hafıza dosyası şişerse KIRPILIR — ama SESSİZCE DEĞİL [D]:** yalnız ilk **200 satır / 25KB** yüklenir; ötesi yüklenmez.
+> **[K33 · antitez ÇÜRÜTMESİ]** *"Sessizce"* **yanlıştır**. Antitez kurulu `cli.js`'ten okudu: sınır (`FZ=200`) aşıldığında ajanın sistem promptuna **otomatik ∧ sayısal bir uyarı** eklenir — *"WARNING: MEMORY.md is N lines (limit: 200)…"*.
+> ⇒ **Risk düşer**: ajan kırpıldığını **bilir**; *"hatırlıyorum sanır, hatırlamaz"* çerçevesi **düşer**. Kırpma gerçektir, **sessizliği yanlıştır**.
+> ⇒ Boyut disiplini yine de gereklidir — ama gerekçesi *"fark edilmez"* değil, **"uyarı ajana gider, Salih'e gitmez"**.
 *(JARVIS bağlantısı: K-019'un boyut-izleme kuralı ve m.34 damıtma tam olarak bu sorunu hedefliyor. Ajan hafızası kurulursa aynı disiplin oraya da uygulanmalı.)*
 
 **Kendi işini denetleyen ajan iyimserlik yönünde sapıyor [K]:** *"Modeller kendi işlerini notlandırırken güvenilir biçimde pozitife sapar... Bunun meets-the-bar sinyali ayrı bir kaynaktan gelmezse, **%30 tamamlanmışken tam güvenle teslim eden ajan** elde edersiniz."*
@@ -546,7 +578,13 @@ STIX'in davranışı bunun **formal kanıtıdır**: "bilinmiyor" düşük bir g�
 
 **Pratik sonuç:** Salih'in bildirdiği "aynı kategoriden iki çelişen bulgu" vakalarının bir kısmı aslında **X-çelişkili vs X-doğrulanamadı** ayrımıdır ve bu ayrım yapılır yapılmaz kendiliğinden çözülür.
 
-### 11.4 Optimum sayı: eksen başına ≈ 4
+### 11.4 Optimum sayı — ⛔ `[?]` ASKIDA, kural olarak kullanılmaz
+
+> **[K35 · antitez — ⭐⭐ KRİTİK, kaynak bulunamadı]** *"Eksen başına optimum ≈ 4"* sayısının **kaynağı yoktur**. Antitezin tespiti: *"kaynaksız; muhtemelen **çalışma belleği kapasitesi** (Cowan) alanından yanlış nakil."*
+> ⇒ Ve bu sayı, **kategori şeması önerisinin tek somut rakamıydı** — yani §11.5'i uygulanabilir kılan şeydi.
+> ⇒ **Dayanağı bulunana kadar kural olarak yazılmaz.** Aşağıdaki tablo **kaldırılmıyor** (m.8) ama **hüküm taşımıyor**: alt/üst sınırı çeken argümanlar geçerli, **sayının kendisi askıda**.
+> ⇒ **Eksen ayrımının kendisi (kaynak × teyit) AYAKTA** — o §11.2/§11.3'ün yerleşik-sistem kanıtına dayanıyor. Askıya alınan yalnız *"eksen başına kaç kademe"* sorusunun cevabıdır.
+> ⇒ **Hata sınıfı K39 ∧ K14 ile aynıdır:** doğrulanmadan öne çıkarılan sayı.
 
 | Alt sınırı çeken | Üst sınırı çeken |
 |---|---|
@@ -560,8 +598,10 @@ Preston & Colman (2000) 7-10 diyor, Krosnick & Fabrigar 5-7 — **[X] literatür
 
 ### 11.5 Önerilen yapı (Carvis tasarımı, Salih onayına tabi)
 
-**Eksen S (kaynak), 4 kademe:** birincil · kurumsal-ikincil · bağımsız-ikincil · bilinmeyen-veya-taraflı
-**Eksen C (teyit), 4 kademe:** bağımsız kaynaklarca teyitli · teyitsiz-ama-tutarlı · teyitsiz-ve-yalnız · **başka kanıtla çelişkili**
+⚠️ **K35 sonrası:** aşağıdaki **kademe SAYISI (4) askıdadır**; eksen ayrımı ∧ kademe İÇERİKLERİ ayaktadır. Sayı, dayanağı bulunana kadar bir **tasarım tercihi** olarak okunur, ölçülmüş bir optimum olarak değil.
+
+**Eksen S (kaynak), 4 kademe `[?]`:** birincil · kurumsal-ikincil · bağımsız-ikincil · bilinmeyen-veya-taraflı
+**Eksen C (teyit), 4 kademe `[?]`:** bağımsız kaynaklarca teyitli · teyitsiz-ama-tutarlı · teyitsiz-ve-yalnız · **başka kanıtla çelişkili**
 **Eksen-dışı durum:** `YARGILANAMAZ` (erişilemedi / kaynak yok / ölçülmemiş)
 
 Mevcut D/K/X ile eşleme: D ≈ S-birincil · K ≈ S-ikincil · X **ikiye ayrılır** → C-çelişkili ve YARGILANAMAZ.
@@ -721,7 +761,15 @@ Anlaşma şiddetini prompt ile modüle etmek **Multi-Persona'da ~%15**, SoM'da ~
 
 ## 14. AİLE A11 — Persona'nın etik ve hukuki sınırları
 
-> ⚠️ Aşama 2 (antitez) koşulmadı. **Ayrıca bu ailede [D] üretilemedi** — hiçbir birincil mevzuat/karar metnine inilemedi; tamamı [K].
+> ⚠️ **Ayrıca bu ailede [D] üretilemedi** — hiçbir birincil mevzuat/karar metnine inilemedi; tamamı [K].
+>
+> ## ⚠️ [K47 · antitez — ⭐⭐ BÖLÜMÜN TAMAMINA UYGULANIR]
+> **Bu bölümdeki hiçbir hüküm hangi ülkenin hukukundan söz ettiğini söylemiyor.** Antitezin tespiti: A11'in ilgili iddialarının **hiçbiri ülke belirtmiyor**.
+> Oysa fark **maddidir**: `Türkiye (TMK m.24-25)` ↔ `ABD (eyalet-bazlı right of publicity, CFAA)` ↔ `AB (Persönlichkeitsrecht, DSM metin-madenciliği istisnaları)`.
+> Ve aşağıdaki atıfların **tamamı ABD ∧ AB ∧ BK kaynaklıdır** — GDPR, AI Act, CDPA, ELVIS Act, California AB1836, Restatement. **Türk hukuku bu koşumda HİÇ yoklanmamıştır.**
+> ⇒ **KURAL: yargı çevresi damgası olmayan bir hukuk hükmü KULLANILMAZ.** Aşağıdaki her hüküm *"yargı çevresi: belirtilmemiş"* şerhiyle okunur ∧ **hiçbiri Türkiye için hüküm değildir**.
+> ⇒ Antitezin ifadesi: *"Salih'in Türkiye bağlamı düşünülürse bu boşluk özellikle kritik ∧ teze karşı en kolay itiraz noktalarından biri."*
+> ⇒ **Salih kararı (S6):** hangi yargı çevresi kanon sayılacak?
 
 ### 14.1 Einstein ile Karpathy aynı hukuki sınıfta DEĞİL
 
@@ -754,7 +802,8 @@ Anlaşma şiddetini prompt ile modüle etmek **Multi-Persona'da ~%15**, SoM'da ~
 
 **Eşikten BAĞIMSIZ iki risk:**
 - **Yanlış atıf** (BK CDPA md. 84) — ticari kullanım gerektirmez.
-- **Epistemik bozulma** — **özel kullanımda TAM GÜÇLE mevcut** ve Salih'in kendi kararlarını doğrudan bozar. Hukuki eşik burada koruma sağlamaz.
+- **Epistemik bozulma** — **özel kullanımda DA mevcut** ∧ Salih'in kendi kararlarını doğrudan bozar. Hukuki eşik burada koruma sağlamaz.
+  > **[K41 · antitez çürütmesi]** *"Her koşulda / TAM GÜÇLE mevcuttur"* biçimindeki **mutlak niceleme düşer**. Karşı-örnek: **birebir-alıntı sistemi** — model kendi cümlesini üretmeyip kaynağı aynen aktarıyorsa bu kanal kapanır. ⇒ Riskin **varlığı korunur**, **evrenselliği düşer**.
 
 ### 14.3 Dava manzarası oturmamış [X]
 
@@ -930,7 +979,10 @@ K-010 kapıları (A1∧A2∧A3∧A4) kapanmadan **canlı ajan atanmaz**. Öğren
 
 ### 20.1 Protokol borçları (m.40b)
 
-1. **A5-A11 için Aşama 2 (antitez) KOŞULMADI** — oturum limiti. Yedi ailenin bulguları adversaryal sınamadan geçmemiştir. A5/A7/A11'in [D] bulguları olgusal olarak sağlam ama **yorum katmanı sınanmamıştır**. En kırılgan üç nokta antitez öncelikli: A6-17 (dağılım ailesi), A6-34 (Elkan eşiği), A6-6 (sansür yanlılığı yönü).
+1. ~~A5-A11 için Aşama 2 (antitez) KOŞULMADI~~ → **KAPANDI 2026-07-26.** A5–A21 için koştu.
+   **Sonuç:** kaynak kodla **4 çürütme** (K33 hafıza uyarısı · K34 TaskStop · **K35 kategori sayısı ASKIDA** · H34 nöbetçi yok) · dokümanla **4 çürütme** (K36, K37, K38 oturum sürekliliği · **K39 yayımlama eşiği**) · **4 mantıksal çürütme** (K40, K41, K42, K43) · **1 bölüm-geneli şerh (K47 yargı çevresi)**.
+   ⚠️ **A6 hâlâ açık nötr:** çoğunlukla çürütülemedi **ama doğrulanamadı da** — istatistik iddiaları standart teoriyle uyumlu, **bağımsız kanıt yok** ⇒ `⊨S` **değil**, **açık nötr**. En kırılgan üç nokta hâlâ öncelikli: A6-17 (dağılım ailesi), A6-34 (Elkan eşiği), A6-6 (sansür yanlılığı yönü).
+   ⚠️ **A18 bloğu TAMAMEN test edilemedi** (akademik kanallar 403) — *"kapasite itirafıdır, iddiaların doğruluğu hakkında hüküm değildir."*
 2. **V26 örneklem-denetimi klasik haliyle koşulamadı** (§15). Etiket enflasyonu riski yüksek.
 3. **Koşum-sonrası hayatta-kalma oranı senaryo-defterine işlenmeli** (m.40b v0.2 deneysel damgası): A1-A4'te 36 iddiadan 3 ÇÜRÜTÜLEMEDİ · 7 ÇÜRÜTÜLDÜ · 26 DARALTILDI.
 
@@ -954,7 +1006,10 @@ K-010 kapıları (A1∧A2∧A3∧A4) kapanmadan **canlı ajan atanmaz**. Öğren
 ### 20.4 Salih kararı bekleyenler
 
 1. **Model A / B / C seçimi** (§16) — Carvis önerisi **B**.
-2. **Kategori şeması:** iki eksen × 4 kademe + eksen-dışı YARGILANAMAZ (§11.5). Bu bir **kanon değişikliğidir** (m.40b'nin etiket sistemi) → Katman 1, yalnız Salih.
+2. **Kategori şeması:** iki eksen + eksen-dışı YARGILANAMAZ (§11.5). Bu bir **kanon değişikliğidir** (m.40b'nin etiket sistemi) → Katman 1, yalnız Salih.
+   ⚠️ **K35 sonrası:** **kademe sayısı (4) ASKIDADIR** — kaynağı bulunamadı. Eksen ayrımı ∧ *"X ikiye ayrılır"* düzeltmesi **ayakta ∧ en yüksek getirili tek değişiklik olmayı sürdürüyor**; askıya alınan yalnız **sayıdır**. Salih sayıyı bir **tasarım tercihi** olarak imzalayabilir, ama *"ölçülmüş optimum"* olarak **imzalayamaz**.
+7. **⭐ YENİ — yargı çevresi (S6, K47):** hukuk ailelerinin (A11, A15) **hiçbir hükmü ülke belirtmiyor** ∧ atıflar ABD/AB/BK kaynaklı ∧ **Türk hukuku hiç yoklanmadı**. Hangi yargı çevresi kanon sayılacak? **Damgasız hukuk hükmü kullanılmayacak.**
+8. **⭐ YENİ — güvenlik varsayımı düştü (K39):** *"ajan yayımlama eşiğini kendi geçemez"* **yanlış**. Bu varsayıma dayanan tasarım kararları yeniden okunmalı mı?
 3. **Öğrenme ajanı** — tasarım paketi onayı (§18.a) ayrı, devreye alma (§18.b) ayrı karar.
 4. **V59'un gerekçe değişimi:** maliyet tedbiri → **kalite tedbiri** (§13.4). Tetiği öne çekilsin mi?
 5. **Fikir konseyi** — atlas ciddi itiraz getirdi (§19); fikir kutuda kalsın mı, dar haliyle mi denensin, düşsün mü?
@@ -984,9 +1039,14 @@ K-010 kapıları (A1∧A2∧A3∧A4) kapanmadan **canlı ajan atanmaz**. Öğren
 ### Sert sınırlar (tasarımı belirleyenler)
 - **Devir asimetrik [D]:** *"session handoff is one-way"* — buluttan terminale `--teleport` ile çekilir, terminalden web'e **CLI'dan itilemez** (yalnız Desktop "Continue in" menüsü). Ve **teleport sonrası telefon bağlantısı KOPAR**; sürdürmek için yeniden `/remote-control` gerekir.
 - **`/voice` MOBİLDE YOK [D]:** *"voice dictation does not work in remote environments such as Claude Code on the web or SSH sessions"* — yerel mikrofon şart. Sesle inşa masaüstünde mümkün, telefonda değil. Kayıt sınırları: 15 s sessizlik / 2 dk toplam; Türkçe destekli.
-- **Yerel süreç ayakta kalmalı [D]:** terminal kapanırsa oturum biter; makine açık ama ağ **~10 dakika** koparsa oturum zaman aşımına uğrar ve süreç çıkar.
+- ~~**Yerel süreç ayakta kalmalı [D]:** terminal kapanırsa oturum biter; ağ ~10 dakika koparsa oturum zaman aşımına uğrar.~~
+  > ⛔ **[K37 · antitez ÇÜRÜTMESİ — büyük ölçüde]** `agent-view.md`: **arka plan oturumu terminal kapansa ∧ ağ kısa kesilse HAYATTA KALIYOR**; yalnız **tam kapanma** bitiriyor. ⇒ Sınır sanılandan **çok daha yumuşaktır**.
 - **Kişisel yapılandırma buluta GİTMEZ [D]:** `~/.claude/CLAUDE.md`, `~/.claude/skills|agents|commands`, `claude mcp add` ile eklenenler, statik token'lar — hiçbiri. Giden: **depoya commit'lenmiş** olanlar (`.claude/settings.json`, `.mcp.json`, `.claude/skills|agents`). *"No dedicated secrets store exists yet."*
-- **Oturum geçmişi cihaza çivili [D]:** transkriptler `~/.claude/projects/`, varsayılan 30 gün; *"The desktop app, Claude Code on the web, and the VS Code extension each maintain their own session history."* Remote Control canlı oturumu **aynalar, geçmişi taşımaz**. Topluluk talebi (cihazlar-arası oturum sürekliliği) **"not planned" olarak kapatılmış**.
+- ~~**Oturum geçmişi cihaza çivili [D]** … cihazlar-arası oturum sürekliliği "not planned" olarak kapatılmış.~~
+  > ⛔ **[K36 · antitez ÇÜRÜTMESİ — iddia TERSİNE DÖNDÜ]** `mobile.md` birebir: **"Sessions persist across devices."** ⇒ *"Cihazlar arası süreklilik kapatılmış bir özelliktir"* iddiası **yanlıştır**; özellik **vardır**.
+  > *(Transkript dosyalarının cihaz-yerel olması ayrı bir olgudur ∧ doğru kalabilir; çürütülen şey **oturum sürekliliğinin yokluğu** iddiasıdır.)*
+- ~~**Devir tek yönlü**~~ → ⛔ **[K38 · KISMEN ÇÜRÜTÜLDÜ]** Desktop uygulamasının **"Continue in"** özelliği **yerelden web'e itebiliyor** ⇒ *"terminalden web'e itilemez"* mutlak hâliyle yanlıştır. CLI'dan itilemez kısmı doğru kalır.
+> ⚠️ **Üç düzeltme (K36, K37, K38) AYNI YÖNDEDİR: sistem sandığımızdan DAYANIKLI.** Bu, mimari kararları etkiler — *"oturum kırılgandır"* varsayımıyla kurulmuş her tedbir **yeniden değerlendirilebilir**.
 - **Mobil izin kapısı kısıtlı [D]:** uygulamadan **Bypass permissions seçilemez**; Remote Control oturumu için **Auto seçilemez**.
 
 ### K-009/K-010 için doğrudan bulgu [D]
@@ -999,6 +1059,10 @@ Rakip ürün sert tavan koyuyor: *"maximum execution time of **59 minutes**. Thi
 ### ⚠️ Bu ailenin ASIL EKSENİ ÖLÇÜLEMEDİ
 **"Bir yandan başka iş yaparken proje geliştirmek bilişsel olarak mümkün mü?"** — bölünmüş dikkat, görev-geçiş maliyeti, kesinti sonrası bağlam-geri-yükleme, giyilebilir donanım sınırları, sesle programlama verimliliği: **beş şeridin hiçbiri dönmedi, sıfır doğrulanmış rakam.** Ajan bunu uydurmak yerine açıkça boş bıraktı.
 **Sonuç: giyilebilir ufku hakkında bu raporda kanıta dayalı hiçbir iddia YOKTUR.**
+
+> **[K42 · antitez ÇÜRÜTMESİ — çerçeveleme yanlıştı]** Bu boşluk bir yerde *"bilişsel mümkünlük **hiçbir kanıtla desteklenmemiş**"* diye yazılmıştı ⇒ **yanlış çerçeveleme**. **Görev-değiştirme maliyeti literatürü MEVCUTTUR** ∧ bu koşumda **taranmamıştır**.
+> ⇒ Doğrusu: **`[ARANAMADI]`** — *"kanıt yok"* değil, **"biz aramadık"**. Beş şerit dönmedi; bu bir **kapasite kaydıdır**, bir yokluk hükmü değil.
+> ⇒ Bu, K19 ∧ K20 ile **aynı hata sınıfının dördüncü vakasıdır** ∧ `⊨A` (aranamadı) etiketinin gerekçesini bir kez daha üretir.
 
 ---
 
@@ -1033,7 +1097,8 @@ Bu ailenin kanıtı koşumun **en sağlamıdır**: ajan makalelerin ham anotasyo
 ## A14 — Ajanlar arası iletişimin graf tasarımı
 
 ### Çerçeve doğrulandı [D]
-"Düğüm = ajan, kenar = kanal" sezgisi literatürün **standart formalizasyonu**: `G = (N, E, F, o)`; *"An edge between two agent graphs characterizes a communication channel."* Önemli kısıt: arama uzayı **DAG'larla sınırlanıyor** — döngü bir özellik değil, **dışlanan** bir şey.
+"Düğüm = ajan, kenar = kanal" sezgisi literatürün **standart formalizasyonu**: `G = (N, E, F, o)`; *"An edge between two agent graphs characterizes a communication channel."* Önemli kısıt: **otomatik topoloji aramasının** uzayı **DAG'larla sınırlanıyor** — döngü, **bu yöntemin** dışladığı bir şeydir.
+> **[K43 · antitez kısmi çürütmesi]** Eski hâli bu kısıtı **alanın tamamına** genelliyordu ⇒ **çok-turlu mimariler döngü içerir**. ⇒ Kısıt **yöntemindir, alanın değil**: `otomatik_topoloji_araması ⊆ DAG` ∧ `∃ mimari: döngü ∈ tasarım`.
 
 ### S1: "Daha çok kenar daha mı iyi?" → **HAYIR, ilişki ters-U**
 
@@ -1077,8 +1142,13 @@ LLM'ler "hata oranı" talimatını **korkunç uyguluyor**: %20 istendiğinde ger
 
 **Tam kontrol listesi (K1–K33) atlas raporundadır; burada çekirdek.** ⚠️ Bu ailede **[D] üretilemedi** — hiçbir birincil mevzuat/karar metnine inilemedi (yalnız GitHub aynaları: SPDX lisans metni, W3C TDMRep deposundaki AB mevzuat alıntıları). **Bu bir hukuki tavsiye değildir.**
 
-### Tek kural, iki davanın farkını üretiyor
+> ## ⚠️ [K47 · BÖLÜMÜN TAMAMINA UYGULANIR — yargı çevresi boşluğu]
+> **Bu ailenin hiçbir hükmü ülke belirtmiyor.** Atıflar ABD ∧ BK ∧ AB kaynaklıdır; **Türk hukuku hiç yoklanmamıştır.**
+> ⇒ **Yargı çevresi damgası olmayan hukuk hükmü KULLANILMAZ.** Aşağıdaki her madde *"yargı çevresi: belirtilmemiş"* şerhiyle okunur. **Salih kararı (S6).**
+
+### Kimlik doğrulamama kuralı — iki davanın farkını açıklayan etkenlerden biri
 **K3 — ajan ASLA kimlik doğrulamaz:** giriş yok, hesap yok, ödeme duvarı aşma yok, CAPTCHA çözme yok, sahte hesap yok.
+> **[K40 · antitez çürütmesi]** Bu kuralın *"iki davanın sonucunu belirleyen **TEK** kural"* olduğu iddiası **çürütüldü**. Gerekçe: *"asla"* + *"tek kural"* biçimindeki **tekil-nedensellik** iddiası hukuki muhakemeye uymuyor; **çok-faktörlü testler normdur**. ⇒ Etken **gerçektir**, **tekelliği düşer**.
 - Bir davada davacı **sahte hesap + kullanım koşulu ihlali** yüzünden kaybetti (500.000 USD muvafakatli hüküm + kalıcı tedbir).
 - Başka bir davada davalı, kazımayı **oturum açmadan** yaptığı için ToS kapsamı dışında kaldı ve kazandı.
 **Asıl risk telif değil, SÖZLEŞME.**
@@ -1086,7 +1156,11 @@ LLM'ler "hata oranı" talimatını **korkunç uyguluyor**: %20 istendiğinde ger
 ### En yüksek getirili üç kontrol
 1. **K14 — URL doğrulaması ≠ atıf doğrulaması.** Deep research ajanlarında link geçerliliği **>%94**, ama **olgusal doğruluk yalnız %39–77**. Dahası: **deep research ajanları basit arama-destekli modellerden DAHA ÇOK URL uyduruyor** (atıf URL'lerinin %3–13'ü uydurma, %5–18'i çözümlenemiyor). → İddia-kaynak örtüşmesi NLI ile denetlenmeli.
 2. **K8 — yapı-aynalama testi.** Bir emsalde ihlali doğuran şey olgular değil, kaynağı *"cümle cümle, sırasıyla"* izlemekti. Ölçülebilir: tek-kaynak hâkimiyeti + iddia sırası korelasyonu.
-3. **K31 — yayım ayrı ve açık bir geçiştir, varsayılan değildir.** Dört ayrı hukuk dalı (iftira · publicity · GDPR · AI Act) **aynı eşikte** kapı değiştiriyor. Ajan bu geçişi kendi başına yapamaz.
+3. **K31 — yayım ayrı ve açık bir geçiştir, varsayılan değildir.** Dört ayrı hukuk dalı (iftira · publicity · GDPR · AI Act) **aynı eşikte** kapı değiştiriyor.
+   > ⛔ **[K39 · antitez ÇÜRÜTMESİ — ⭐⭐ GÜVENLİK VARSAYIMI DÜŞTÜ]** Bu maddenin *"**ajan bu geçişi kendi başına yapamaz**"* kısmı **çürütüldü**. Antitez `routines.md`'yi okudu: **onaysız `push`/PR MÜMKÜNDÜR.**
+   > ⇒ Yani *"yayım ayrı ve açık bir geçiştir"* ifadesi **olması gerekeni** tarif ediyor, **olanı değil**. **Teknik bir kapı sanılıyordu; normatif bir tercihmiş.**
+   > ⇒ **Bu bir GÜVENLİK gerekçesiydi** ⇒ ona dayanan **her tasarım kararı yeniden okunmalıdır**. JARVIS'te doğrudan ilgili yer: `git push` onaya tabi (m.41 Dilim-1) — bu **settings-deny ile yapısal** olduğu için ayaktadır; ama *"ajan zaten geçemez"* varsayımıyla **korumasız bırakılmış** herhangi bir yüzey varsa **açıktır**.
+   > ⇒ §A12'nin *"Routines'te insan kapısı koşum sonrasıdır"* bulgusu bu ışıkta yeniden okunur: **o kapı otomatik değildir, AÇIKÇA YAPILANDIRILMALIDIR.**
 
 ### Diğer belirleyiciler
 - **Yapışkan lisans riski alıntıdan değil, UYARLAMADAN doğar** [D-ayna]: lisans metninin kendisi diyor ki istisna kapsamındaki kullanımda *"bu Kamu Lisansı uygulanmaz"*. Ayrım kodlanabilir.
