@@ -356,11 +356,110 @@ Sen uyardın, ölçtüm, işi sürdürdüm.
 
 ---
 
-## Sırada ne var
+---
 
-Dört araştırma daha koşuyor: telefondan senkron proje inşası, bu raporun kendisi gibi metinleri sadeleştiren "compiler" katmanı, ajanlar arası iletişimin graf tasarımı, ve araştırma ajanına hukuksal katman. Onlar inince bu belgeye eklenecek.
+# İkinci dalga — son dört araştırma
 
-**Senden beklenen kararlar** teknik raporun yirminci bölümünde madde madde duruyor. En acil ikisi:
+*Bu bölüm, aynı oturumda yazılan compiler formülünün kendisiyle yazıldı. Yani niteleyiciler cümlelerin içine gömülü değil, ayrı satırlarda duruyor. Nasıl hissettirdiğini söylersen formülü ona göre ayarlarız.*
+
+---
+
+## 11. Telefondan proje inşası
+
+**Ne bulduk.** Senin kısa vade hedefin — telefon-PC senkron konuşabilme — **zaten mevcut ve çalışıyor.** → teknik §A12
+
+**Neye dayanıyor.** PC'de bir oturum açıp telefondan sürebiliyorsun; konuşma, alt-ajanlar ve iş akışları senkron kalıyor. Telefondan görev atıp PC'de koşturabiliyorsun. Laptop kapalıyken bulutta koşan oturum açabiliyorsun. Telegram'dan açık oturuna mesaj itebiliyorsun. Hepsi belgelenmiş, hepsi bugün açık.
+
+**Ne kadar güveniyoruz.** Yüksek — hepsi Anthropic'in kendi dokümanından, birebir okundu.
+
+**Ne yapmamız gerekiyor.** Dört sınırı bilerek tasarlamak:
+- Terminali kapatırsan oturum biter. Makine açık ama ağ 10 dakika koparsa da biter.
+- Buluttaki oturumu terminale çekebilirsin, ama terminaldeki oturumu web'e **itemezsin**. Ve çektiğin an telefon bağlantısı kopar.
+- Sesle dikte **telefonda çalışmıyor** — yerel mikrofon şartı var. Sesle inşa masaüstünde mümkün, mobilde değil.
+- Bulut oturumuna senin kişisel ayarların gitmiyor. Sadece **depoya commit'lenmiş** olanlar gidiyor. "Her yerden aynı şirket" istiyorsan bedeli bu.
+
+---
+
+## 12. Ve otomasyon kartı için beklenmedik bir bulgu
+
+**Ne bulduk.** "Canlı ajan nerede başlar" sorusunun cevabı, aradığın kapı modeliyle birlikte hazır duruyor. → teknik §A12
+
+**Neye dayanıyor.** Routines denen mekanizma, laptop kapalıyken bulutta tam özerk koşuyor: koşum sırasında **izin sorusu sorulmuyor**. Ama insan kapısı kaldırılmamış, **yerine taşınmış** — denetim koşumdan sonra, pull request incelemesiyle. Ve yazma yüzeyi kısıtlı: varsayılan olarak yalnız `claude/` önekli dallara push edebiliyor.
+
+**Ne kadar güveniyoruz.** Yüksek — birincil doküman.
+
+**Ne yapmamız gerekiyor.** Bu, senin ajan-yetki tasarımına hazır bir şablon: **özerklik koşum içinde, denetim koşum sonrasında, yazma dal-kısıtlı.** K-009 açılış gündemine bu maddeyi eklemeni öneriyorum.
+
+---
+
+## 13. Bu raporun kendisi gibi metinleri sadeleştirmek
+
+**Ne bulduk.** Compiler fikri doğru, ama naif kurulursa **tam olarak en değerli sinyali yok eder.** → teknik §A13, formül `2026-07-26-compiler-formulu.md`
+
+**Neye dayanıyor.** Ajan, makalelerin ham verilerini indirip kendisi saydı. Üç sayı:
+- Sadeleştirmede kaybolan şeyin **dörtte üçü** düz silme değil, kavramın **muğlaklaşması**. Yani cümle duruyor, kesinliği gidiyor.
+- Teknik metni günlük dile çevirmek, iddianın gücünü vakaların **%38,7'sinde** değiştiriyor. Korelasyon belirten bulguların yine %38,7'si nedensel ifadeye dönüşüyor.
+- **En kritiği:** olumsuz ve düşük-güven ifadeleri, olumlu olanlardan **yaklaşık 7 kat daha oynak** okunuyor. Okurların %9'u en az bir olumsuz terimi tersine çeviriyor. Yani "çelişkili" ve "zayıf kanıt" etiketleri, çeviride en çok bozulan etiketler.
+
+**Ne kadar güveniyoruz.** Yüksek — ham veriden hesaplandı. İki uyarıyla: bu ailenin karşı-tez turu koşulmadı, ve son maddenin örneklemi 46 kişilik, hakemsiz bir ankettir — gösterge, kesin oran değil.
+
+**Ne yapmamız gerekiyor.** Üç şey, ve ilki sezgiye aykırı:
+1. **Compiler'a "orijinale sadık kal" DEME.** Ölçülmüş: bu talimat aşırı-genellemeyi azaltmıyor, bazı modellerde **iki katına çıkarıyor**. Sadakat talimatla değil, yapısal kısıtla sağlanır.
+2. **Niteleyiciyi ayrı alanda taşı** — tam olarak bu bölümde yaptığım gibi. Akışa gömülen niteleyici eriyor.
+3. **Olumsuz ifadeye sayısal çapa ekle**, aynı cümlede, parantezle. "Şüpheli" değil, "şüpheli (üç kaynaktan ikisi çelişiyor)".
+
+**Ve bir ayıltıcı emsal:** tıpta yıllardır zorunlu, denetlenen bir "iki sürüm" rejimi var. 1.738 laik özet denetlenmiş — **hiçbiri tam uyumlu değil**, ve kanıtın ne kadar kesin olduğunu belirtme maddesinde uyum **binde yedi**. Yani olgun bir sistemde bile güven bilgisi laik sürüme pratikte hiç geçmiyor. Bunu bilerek kuruyoruz.
+
+---
+
+## 14. Ajanların birbiriyle konuşması: graf tasarımı
+
+**Ne bulduk.** Graf çerçeven doğru — literatürün standart yaklaşımı bu. Ama "daha çok bağlantı daha iyi" sezgisi **yanlış**. → teknik §A14
+
+**Neye dayanıyor.** Bir deneyde bağlantı sayısı sabit tutulmuş, sadece **hangi** bağlantıların seçildiği değiştirilmiş. Öğrenilmiş yapı 0,575, aynı sayıda rastgele bağlantı 0,510. Yani kaç bağlantı değil, hangileri.
+
+İki uç da kırılıyor:
+- **Çok yoğun:** herkesin herkesle konuştuğu yapı, aralarında bozuk bir ajan varken çöküyor.
+- **Çok seyrek:** zincir yapısı tek bozuk ajanda %23,7 kaybediyor. Toplayıcı bir düğümü olan hiyerarşi ise sadece %5,5.
+
+Ve bağlantı sayısı ajan sayısının **karesiyle** artıyor: 2 ajan 4 bağlantı, 14 ajan 196 bağlantı.
+
+**Ne kadar güveniyoruz.** Yüksek — makalelerin tam metinlerine inildi.
+
+**Ne yapmamız gerekiyor.** Üç kural:
+1. **Ajan sayısını küçük tut.** Anthropic'in kendi tavsiyesi: *"3-5 ile başlayın; üç odaklı ajan genelde beş dağınık ajandan iyidir."* Ve ekip modu normal oturumun **7 katı** token yakıyor.
+2. **Kırılganlığı bağlantı ekleyerek değil, ROL ekleyerek onar.** Ölçülmüş: itirazcı ve denetçi rolleri eklemek kaybın **%96,4'üne kadarını** geri kazandırıyor.
+3. **Bir bozuk ajan her şeyi siler.** Çoklu-ajan mimarisinin tek ajana sağladığı avantaj, tek bozuk ajanın verdiği zarardan **küçük**. Ve bir deneyde zehirli içerik bir milyon ajanlı ağa 27-31 turda yayılmış — ağı büyütmek korumuyor.
+
+**Hoş bir yan bulgu:** 1940'larda insanlarla yapılmış iletişim-ağı deneyleri de aynı şeyi bulmuş — merkezî yapı basit işte, merkezsiz yapı karmaşık işte kazanıyor. Seksen yıl arayla iki ayrı literatür aynı yere çıkıyor: **evrensel kazanan topoloji yok, göreve göre eşleşme var.**
+
+---
+
+## 15. Araştırma ajanına hukuksal katman
+
+**Ne bulduk.** 33 somut kontrol çıktı. Asıl risk sandığın yerde değil: **telif değil, sözleşme.** → teknik §A15
+
+**Neye dayanıyor.** İki dava, tek kuralın farkını gösteriyor. Biri **sahte hesap açıp kullanım koşulunu ihlal ettiği için** kaybetti. Diğeri kazımayı **hiç giriş yapmadan** yaptığı için kullanım koşulunun kapsamı dışında kaldı ve kazandı.
+
+**Ne kadar güveniyoruz.** Orta-düşük — bu ailede **hiçbir mahkeme kararının veya mevzuatın tam metnine inilemedi**. Hepsi ikincil kaynak. Ve devam eden davaların durumu aylık değişiyor.
+**Bu bir hukuki tavsiye değildir.**
+
+**Ne yapmamız gerekiyor.** Üç kural, öncelik sırasıyla:
+1. **Ajan asla kimlik doğrulamaz.** Giriş yok, hesap yok, ödeme duvarı aşma yok. Tek kural, iki davanın farkı.
+2. **URL'nin var olması, kaynağın o şeyi söylediği anlamına gelmiyor.** Ölçülmüş: derin araştırma ajanlarında link geçerliliği %94'ün üstünde ama olgusal doğruluk **%39-77**. Üstelik derin araştırma ajanları, basit arama yapanlardan **daha çok** URL uyduruyor. Doğrulanması gereken şey link değil, **iddia-kaynak örtüşmesi**.
+3. **Yayım ayrı bir karar olmalı, varsayılan değil.** Dört ayrı hukuk dalı aynı eşikte kapı değiştiriyor: çıktı özel sistemde kaldığı sürece kapılar kapalı, dışarı çıktığı an açılıyor.
+
+**Rahatlatıcı bir bulgu:** "kaç kelime alıntı yapmak güvenli" diye bir kural **hiçbir yerde yok**. Dolaşan "250 kelime", "%10" gibi rakamlar yayıncı iç yönergesi ya da şehir efsanesi. Bir yüksek mahkeme kararında 300-400 kelime alıntı fair use sayılmamış. Yani sayıya güvenme, **ne alıntıladığına** bak.
+
+---
+
+## Kapanış: senden beklenen kararlar
+
+Teknik raporun 20. bölümünde madde madde duruyor. En acil dördü:
 
 1. **Öğrenme modeli** — önerim "önce dene, sonra oku".
-2. **Kategori şeması** — X'i ikiye bölmek. Bu kanonu değiştirir, yani yalnız senin imzanla olur.
+2. **Kategori şeması** — X'i ikiye bölmek (çelişkili / doğrulanamadı). Kanonu değiştirir, yalnız senin imzanla olur.
+3. **Ajan donma tedbirleri** — üçü de ucuz, bugün uygulanabilir.
+4. **Compiler formülü** — bu bölüm onunla yazıldı; işe yarayıp yaramadığını ancak sen söyleyebilirsin.
+
+Ve bir soru: bu bölümün formatı (İddia / Neye dayanıyor / Ne kadar güveniyoruz / Ne yapmamız gerekiyor) sana önceki bölümlerin akıcı anlatımından daha mı iyi geldi, yoksa daha mı yorucu? Cevabın formülün F1 maddesini doğrudan belirleyecek.

@@ -960,6 +960,147 @@ K-010 kapıları (A1∧A2∧A3∧A4) kapanmadan **canlı ajan atanmaz**. Öğren
 5. **Fikir konseyi** — atlas ciddi itiraz getirdi (§19); fikir kutuda kalsın mı, dar haliyle mi denensin, düşsün mü?
 6. **Ajan donma tedbirleri** (§8.4): (a) atlas ajanlarına "Bash ile bekleme/yoklama döngüsü YAZMA" kuralı — ölçülen iki patolojinin ikisi de bu; (b) `CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` düşürülsün mü (varsayılan 600.000 = Bash tavanıyla aynı, bu yüzden kör nokta üretiyor); (c) senkron alt-ajanlarda stall watchdog **yok** — senkron kullanımdan kaçınılsın mı?
 
+---
+
+# EK — A12–A15 AİLELERİ (ikinci dalga, 07-26)
+
+> ⚠️ Dördünde de **Aşama 2 (antitez) KOŞULMADI** — protokol eksiği. Dördünde de WebSearch bütçesi tükendi ve bazı şeritler hiç açılamadı; her ailenin kendi "Bulunamayanlar" kaydı esastır.
+> **Erişim keşfi (kalıcı değer):** kapalı doküman sitelerinin upstream git depoları açık. Bu dalgada üç yeni kapı bulundu: (a) `raw.githubusercontent.com/github/docs` → GitHub dokümanları; (b) **`raw.githubusercontent.com/mlresearch/vNNN/main/assets/<id>/<id>.pdf` → PMLR/ICML makalelerinin TAM METNİ** (v235=ICML 2024, v267=ICML 2025); (c) `spdx/license-list-data` ve `w3c/tdm-reservation-protocol` → lisans ve AB mevzuat metinleri. Sınır: (b) için makale kimliği önceden bilinmeli.
+
+## A12 — Her an proje inşası: telefon↔PC senkron ve giyilebilir ufku
+
+**Salih'in kısa vade hedefi TEKNİK OLARAK ZATEN KARŞILANMIŞ** [D, tamamı birincil Anthropic dokümanından].
+
+### Bugün yapılabilir
+| Yol | Ne yapar | Nerede koşar |
+|---|---|---|
+| **Remote Control** | PC'deki oturumu telefondan sür; konuşma + alt-ajanlar + iş akışları senkron | senin makinen |
+| **Dispatch** | Telefondan görev at, PC'de Desktop oturumu doğsun, bitince push bildirimi | senin makinen |
+| **`claude --cloud`** | Laptop kapalıyken bulutta koş | Anthropic VM (~4 vCPU / 16 GB / 30 GB) |
+| **Channels** | Telegram/Discord'dan açık yerel oturuna mesaj it | senin makinen |
+| **Routines** | Zamanlı/API/GitHub tetikli, tam özerk bulut koşumu | bulut |
+| **agent view** | `claude --bg` + `claude agents`, otomatik git worktree izolasyonu | yerel |
+
+### Sert sınırlar (tasarımı belirleyenler)
+- **Devir asimetrik [D]:** *"session handoff is one-way"* — buluttan terminale `--teleport` ile çekilir, terminalden web'e **CLI'dan itilemez** (yalnız Desktop "Continue in" menüsü). Ve **teleport sonrası telefon bağlantısı KOPAR**; sürdürmek için yeniden `/remote-control` gerekir.
+- **`/voice` MOBİLDE YOK [D]:** *"voice dictation does not work in remote environments such as Claude Code on the web or SSH sessions"* — yerel mikrofon şart. Sesle inşa masaüstünde mümkün, telefonda değil. Kayıt sınırları: 15 s sessizlik / 2 dk toplam; Türkçe destekli.
+- **Yerel süreç ayakta kalmalı [D]:** terminal kapanırsa oturum biter; makine açık ama ağ **~10 dakika** koparsa oturum zaman aşımına uğrar ve süreç çıkar.
+- **Kişisel yapılandırma buluta GİTMEZ [D]:** `~/.claude/CLAUDE.md`, `~/.claude/skills|agents|commands`, `claude mcp add` ile eklenenler, statik token'lar — hiçbiri. Giden: **depoya commit'lenmiş** olanlar (`.claude/settings.json`, `.mcp.json`, `.claude/skills|agents`). *"No dedicated secrets store exists yet."*
+- **Oturum geçmişi cihaza çivili [D]:** transkriptler `~/.claude/projects/`, varsayılan 30 gün; *"The desktop app, Claude Code on the web, and the VS Code extension each maintain their own session history."* Remote Control canlı oturumu **aynalar, geçmişi taşımaz**. Topluluk talebi (cihazlar-arası oturum sürekliliği) **"not planned" olarak kapatılmış**.
+- **Mobil izin kapısı kısıtlı [D]:** uygulamadan **Bypass permissions seçilemez**; Remote Control oturumu için **Auto seçilemez**.
+
+### K-009/K-010 için doğrudan bulgu [D]
+**Routines**, "canlı ajan nerede başlar" merdiveninde net bir basamak: *"Routines run autonomously as full Claude Code cloud sessions: **there is no permission-mode picker and no approval prompts during a run**."* İnsan kapısı koşum **sonrasında** (PR incelemesi). Varsayılan olarak yalnız **`claude/` önekli dallara** push edebiliyor. Minimum tetik aralığı **1 saat**. Hesap başına günlük koşum tavanı var.
+*(Bu, m.42 ajan-yetki tasarımına hazır bir kapı modeli sunuyor: özerklik koşum içinde, denetim koşum sonrasında, yazma yüzeyi dal-kısıtlı.)*
+
+### Asenkron iş-birimi büyüklüğü [D]
+Rakip ürün sert tavan koyuyor: *"maximum execution time of **59 minutes**. This is a hard limit"*, görev başına tam olarak bir PR, ve kendi tavsiyesi: *"consider breaking the work into smaller, more focused tasks."*
+
+### ⚠️ Bu ailenin ASIL EKSENİ ÖLÇÜLEMEDİ
+**"Bir yandan başka iş yaparken proje geliştirmek bilişsel olarak mümkün mü?"** — bölünmüş dikkat, görev-geçiş maliyeti, kesinti sonrası bağlam-geri-yükleme, giyilebilir donanım sınırları, sesle programlama verimliliği: **beş şeridin hiçbiri dönmedi, sıfır doğrulanmış rakam.** Ajan bunu uydurmak yerine açıkça boş bıraktı.
+**Sonuç: giyilebilir ufku hakkında bu raporda kanıta dayalı hiçbir iddia YOKTUR.**
+
+---
+
+## A13 — "AI→insan" compiler katmanı
+
+**Tam tasarım ayrı belgede: `raporlar/2026-07-26-compiler-formulu.md` (F1–F9 formülü).** Burada yalnız bulgu özeti.
+
+Bu ailenin kanıtı koşumun **en sağlamıdır**: ajan makalelerin ham anotasyon verilerini indirip **kendisi saydı**.
+
+| Bulgu | Sayı |
+|---|---|
+| Kayıp uydurma değil **muğlaklaşma** [D-hesap] | Özet başına **9,62 kayıp**; **%74,1 kavram-muğlaklaşması**, %25,9 düz silme |
+| Silme insan referanslarında bile baskın [D-hesap] | İnsan yazımı sadeleştirmelerde silme hatası **%84,1**; silme, ekleme/değiştirmenin **3-18 katı** |
+| Epistemik güç değişiyor [D-hesap] | 563 çift: korunmuş %61,3 · **şişirilmiş %21,7** · zayıflatılmış %17,1 → **%38,7 değişiyor**. Korelasyon→nedensellik **%38,7** |
+| **Yanlılık ortalamada küçük, VARYANSTA büyük** [D-hesap] | ortalama kayma **+0,085** → ortalamaya bakan denetim bunu göremez |
+| **"Sadık kal" talimatı TERS TEPİYOR** [K] | 4.900 özet: aşırı-genelleme OR **4,85**; doğruluk-promptu genellemeyi bazı modellerde **~2× artırdı**; **yeni modeller daha kötü** |
+| **Negatif kutup ~7× oynak** [D-hesap] | CV: negatif **0,97** ↔ pozitif **0,14**; uçlarda ~30×. Okurların **%9'u** negatif terimi >%50 okuyor (kutup tersine dönüyor) |
+| Standart terimler bile kaçıyor [D-hesap] | 414 okumanın **%27,1'i** standardın kendi bandı dışında; "Probable" ile "Likely" ayırt edilemiyor |
+| Soyutlama ↔ sadakat **doz-yanıt** [D-hesap] | kaynakta-olmayan içerik %16,6 → **%52,9** (3,2×); temiz özet oranı %58,6 → **%7,8** |
+| Olgun rejimde bile güven bilgisi geçmiyor [K] | 1.738 laik özet: **hiçbiri tam uyumlu değil**; kanıt-kesinliği maddesinde uyum **%0,7** |
+| Tutarlılık doğrulaması çözülmemiş [D] | ikili "tutarlı mı" tavanı **~%74**; en iyi metrik insan yargısıyla Spearman **~0,59** |
+| Sadeleştirme kavramayı artırmıyor [K] | 9 sınıf düzeyi sadeleştirme: tercih %62↔%38 ama **kavrama %58↔%56 (fark yok)** |
+| Uzmanlık tersine dönmesi [K] | düşük↔yüksek ön-bilgi farkı **d = 0,971** [0,631–1,312] |
+| Okunabilirlik skoru oynanabilir [D] | FKGL *"kolayca manipüle edilebilir"*; 8 metrik insan yargısıyla zayıf korele, en iyi yargıç **r = 0,56** |
+| Geri-bağlama **soyutlamada çöküyor** [D] | atıf metrikleri *"atfedilebilir soyutlayıcı yanıtları atfedilemez olanlardan güvenilir ayırt edemiyor"* |
+| **[X] Akıcılık tuzağı — iki yönlü** | akıcı ifade daha "doğru" değerlendiriliyor; **AMA** kolay sindirilir açıklamalar aşırı-güveni **azaltıyor** (N=731) |
+
+**▲ Carvis'in kendi vakası (kayıt):** Bu oturumda insan-yüzü rapor yazılırken, teknik sürümdeki *"bu maliyet argümanıdır, normatif zorunluluk değil"* şerhi insan sürümüne **geçmedi** — silinmedi, akışa gömülü olduğu için eridi. Hata fark edilip önce sezgiyle bildirildi, sonra A13 tarafından ölçüyle doğrulandı. **Formülün F1 maddesi bu vakadan doğdu.**
+
+---
+
+## A14 — Ajanlar arası iletişimin graf tasarımı
+
+### Çerçeve doğrulandı [D]
+"Düğüm = ajan, kenar = kanal" sezgisi literatürün **standart formalizasyonu**: `G = (N, E, F, o)`; *"An edge between two agent graphs characterizes a communication channel."* Önemli kısıt: arama uzayı **DAG'larla sınırlanıyor** — döngü bir özellik değil, **dışlanan** bir şey.
+
+### S1: "Daha çok kenar daha mı iyi?" → **HAYIR, ilişki ters-U**
+
+- **Yoğunluk yanlış değişken [D]:** kenar sayısı eşitlendiğinde (öğrenilmiş 32,76 ± 1,93 ↔ rastgele 32,80 ± 0,11) sonuç **0,575 ↔ 0,510**. Yazarların kendi ifadesi: *"allowing us to attribute the improvements to factors beyond the mere edge density."* **Belirleyici: hangi kenarlar.**
+- **Kenar sayısı O(n²) [D]:** 2 ajan → 4 kenar (9 dk); 6 → 36 (23 dk); 10 → 100 (58 dk); 14 → 196 (95 dk).
+- **Yoğun uç kırılıyor [D]:** hepsi-hepsiyle tartışma düşman altında **0,5751**'e çöküyor; optimize seyrek graf **0,8301** — **~17× maliyet farkıyla yalnız 0,65 puan** ayıran bir başka kıyas da aynı tabloda.
+- **Seyrek uç da kırılıyor [D]:** tek bozuk ajanda hiyerarşik **−%5,5**, düz **−%10,5**, doğrusal/zincir **−%23,7**.
+- **Budama kazandırıyor [K]:** mevcut grafların **%28–73'ü** budanabiliyor, performans düşmeden (bazen **+%0,84**); bir çalışmada **%95,33'e kadar** token azaltımı.
+
+### S2: "Sabit mi öğrenilmeli mi?" → **Öğrenilmeden yana, ama amortisman eşiği var**
+Kazançlar [D/K]: 0,465→0,575 · 0,76→0,88 · MATH +%13,0 · HumanEval +%13,3 · MMLU'da **%25,0'a kadar**.
+**Ama optimizasyon maliyeti bir kez ve büyük** [D]: bir yöntemde $105,93 + 25,4 saat, karşılığında rakibine göre 0,65 puan. Uzlaşma: **tek-atışlık budama** veya görev-koşullu üretim — "her koşumda öğren" değil, **"bir kez öğren, sürekli kullan"**.
+
+**Karar kuralı:** az sayıda tekrarlayan görev tipi varsa → **sabit ama görev-tipine eşlenmiş** topoloji. Görev dağılımı geniş ve koşum hacmi optimizasyonu amorti ediyorsa → **öğrenilmiş/budanmış**.
+
+### Hata yayılması — en sert bulgular
+- **1 ajan → 1M ajan, 27-31 turda [D]:** saldırgan tek bir ajanın bellek bankasına zehirli girdi koyuyor, *"without any further intervention"* bulaşma oranı üstel olarak ~%100'e çıkıyor.
+- **Ölçek büyütmek KORUMUYOR [D]:** 22. turda bulaşma N=2¹⁴'te %95,03, N=2²⁰'de **%96,23**. Formal yasa: **O(1/N) tohum, O(log N) tur**.
+- **Kendini-kopyalayan ≠ kopyalamayan [D]:** sıradan prompt injection *"cannot jailbreak any single agent"*; ardışık jailbreak 32 turda yalnız **1/8'e** ulaşıyor (doğrusal).
+- **Tek bozuk ajan avantajın TAMAMINI siliyor [D]:** çoklu-ajan primi +4,76 / +5,29 iken, tek bozuk ajan altında performans *"may decline to similar or worse levels"*.
+- **Gizlilik hacimden zararlı [D]:** ajanın kendi hatasını ürettiği gizli mod **−18,22**, doğrudan enjeksiyon **−11,28**. **Anlamsal hatalar sözdizimsel hatalardan daha yıkıcı.**
+- **Ama hata bazen FAYDALI [D]:** hata oranını 0,4→0,6 yükseltmek bazı sistemlerde performansı **artırdı** (+%12,1'e kadar) — hata bariz hale gelince akranlar düzeltme talep ediyor.
+- **Çare kenar değil ROL [D]:** akran-itirazcı (Challenger) + denetçi (Inspector) kaybın **%96,4'üne kadarını** geri kazandırıyor, en çok en zayıf yapılarda.
+
+### 80 yıllık yakınsama
+1940'ların insan iletişim-ağı deneyleri (yıldız/zincir/Y/çember): merkezîleşme performansı artırıyor — **ama problem karmaşıklaştıkça merkezîleşme engelliyor**; karmaşık kararın kalitesi merkezsiz ağda daha yüksek. Modern LLM ölçümleri aynı yere çıkıyor. **Evrensel kazanan topoloji yok; görev-topoloji eşleşmesi var.**
+
+### JARVIS'e doğrudan geçen ürün bulguları [D]
+- **Agent teams ~7× token** (her ekip üyesi ayrı Claude örneği, kendi bağlam penceresi).
+- Anthropic'in kendi kapı kuralı: *"For sequential tasks, same-file edits, or work with many dependencies, a single session or subagents are more effective."* Ve: **"Start with 3-5 teammates... Three focused teammates often outperform five scattered ones."**
+- **Güvenlik sınırı çizilmiş:** *"A teammate cannot approve a permission prompt or supply consent on your behalf."* Bulgu 24-26 ışığında bu, **kenar başına zorunlu sigorta**.
+- **A2A ≠ MCP:** *"A2A is about agents partnering on tasks, while MCP is more about agents using capabilities."* A2A **teli** standartlaştırıyor, **topolojiyi uygulamaya bırakıyor**.
+- **Paylaşılan durum ↔ mesaj geçişi kaba kuralı:** paylaşılan durum tek-runtime içi; mesaj geçişi süreç/güven sınırı aşarken. Varsayılan yük "her şey"dir ve bu bir tuzaktır (`input_filter` tam da bunun için var).
+
+### ▲ Metodolojik uyarı — taşınmaya değer [D]
+LLM'ler "hata oranı" talimatını **korkunç uyguluyor**: %20 istendiğinde gerçekleşen **%1,56 (SD 3,65)**; %40 istendiğinde **%9,49 (SD 26,70, maks 90,10)**. **Prompt ile hata oranı ayarlayan her çalışma, muhtemelen iddia ettiği şeyi ölçmüyor.** Bu, kendi eval tasarımlarımıza da uygulanır.
+
+---
+
+## A15 — Araştırma ajanına hukuksal katman
+
+**Tam kontrol listesi (K1–K33) atlas raporundadır; burada çekirdek.** ⚠️ Bu ailede **[D] üretilemedi** — hiçbir birincil mevzuat/karar metnine inilemedi (yalnız GitHub aynaları: SPDX lisans metni, W3C TDMRep deposundaki AB mevzuat alıntıları). **Bu bir hukuki tavsiye değildir.**
+
+### Tek kural, iki davanın farkını üretiyor
+**K3 — ajan ASLA kimlik doğrulamaz:** giriş yok, hesap yok, ödeme duvarı aşma yok, CAPTCHA çözme yok, sahte hesap yok.
+- Bir davada davacı **sahte hesap + kullanım koşulu ihlali** yüzünden kaybetti (500.000 USD muvafakatli hüküm + kalıcı tedbir).
+- Başka bir davada davalı, kazımayı **oturum açmadan** yaptığı için ToS kapsamı dışında kaldı ve kazandı.
+**Asıl risk telif değil, SÖZLEŞME.**
+
+### En yüksek getirili üç kontrol
+1. **K14 — URL doğrulaması ≠ atıf doğrulaması.** Deep research ajanlarında link geçerliliği **>%94**, ama **olgusal doğruluk yalnız %39–77**. Dahası: **deep research ajanları basit arama-destekli modellerden DAHA ÇOK URL uyduruyor** (atıf URL'lerinin %3–13'ü uydurma, %5–18'i çözümlenemiyor). → İddia-kaynak örtüşmesi NLI ile denetlenmeli.
+2. **K8 — yapı-aynalama testi.** Bir emsalde ihlali doğuran şey olgular değil, kaynağı *"cümle cümle, sırasıyla"* izlemekti. Ölçülebilir: tek-kaynak hâkimiyeti + iddia sırası korelasyonu.
+3. **K31 — yayım ayrı ve açık bir geçiştir, varsayılan değildir.** Dört ayrı hukuk dalı (iftira · publicity · GDPR · AI Act) **aynı eşikte** kapı değiştiriyor. Ajan bu geçişi kendi başına yapamaz.
+
+### Diğer belirleyiciler
+- **Yapışkan lisans riski alıntıdan değil, UYARLAMADAN doğar** [D-ayna]: lisans metninin kendisi diyor ki istisna kapsamındaki kullanımda *"bu Kamu Lisansı uygulanmaz"*. Ayrım kodlanabilir.
+- **Güvenli alıntı uzunluğu HİÇBİR yargı çevresinde YOK** — dolaşan "250 kelime", "%10" rakamları yayıncı yönergesi veya şehir efsanesi. (Bir SCOTUS kararında 300-400 kelime fair use sayılmadı.)
+- **Veri seti lisansları çoğunlukla YANLIŞ:** barındırma platformlarında lisans eksikliği **%72+**, mevcut olanların **%50+'sı hatalı**, incelenen lisansların **%66'sı** özgün yazarın beyanından **daha izin verici**. → Ajan beyana güvenemez.
+- **Kişisel veri:** özel kullanım ↔ yayım eşiği burada da geçerli; GDPR md. 85 ve 89 **kendiliğinden işlemez** (üye-devlet takdiri) — "akademik istisna" gerekçesi ilgili ulusal kanun tespit edilmeden politikaya yazılamaz.
+- **Ajan kendi atıflarının son denetçisi olamaz:** bir mahkeme yaptırımı vakasında avukat, uydurma davaları **doğrulamak için yine aynı modele sordu ve model onayladı**. Doğrulayıcı ayrı, deterministik ve kendi hata payı beyan edilmiş olmalı (otomatik atıf doğrulayıcıların kendisi %68–80 bandında).
+- **RAG/derleme çıktısı için doğrudan emsal YOK** — mevcut YZ telif kararlarının tamamı **eğitim** aşamasına dair ve hiçbiri kesinleşmiş üst-mahkeme emsali değil. En yakın canlı davaların ortak teorisi **pazar ikamesi**.
+
+### ▲ Ajan, görev emrimdeki bir hatayı düzeltti
+Verdiğim bir dava künyesi doğrulanamadı; ajan bunun büyük olasılıkla **başka bir davayla karıştığını** tespit etti ve *"kesin olarak doğrulanana dek kullanılmamalı"* kaydı düştü. Doğru davranış.
+
+---
+
 ### 20.5 Bu raporun kendi sınırı
 
 Rapor **karar-öncesi tarama**dır, **kanıt değildir** (bölüm 0). Teknik [D] bulguları (Anthropic/Kubernetes/Temporal/FSRS/MISP/STIX/Google-AIS dokümanları ve kaynak kodları) bu kısıtın dışındadır ve doğrudan kullanılabilir. Akademik [K] bulguları borç-1 kapatılana dek **hüküm taşımaz**.
