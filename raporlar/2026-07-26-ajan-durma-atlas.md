@@ -22,6 +22,7 @@
 | K17 | §3 · §13 A25⑤ | `result` alanının yokluğu **dile bağlı** |
 | K18 | §4 · §13 A25⑥ | *"tek keskin ayırt edici"* süperlatifi düşer |
 | H16 | §4 · §13 A25⑧ | *"yalnız son metin bloğu"* formülasyonu abartılı-dar |
+| **§3.1 (yeni)** | §3 · §4 · §14 C2 | ⭐ **Taksonomide olmayan dördüncü durum ölçüldü: SESSİZ ÖLÜM** (bildirim üretmeyen sonlanma) ∧ **asılma nöbetçisi bu sürümde YOK** |
 
 ⚠️ **En pahalı hata sınıfı burada görüldü (M5):** K14, tek bir alt-ajanın aktardığı doğrulanmamış bir iddiaydı ∧ **"ÇOK YÜKSEK değer, maliyet sıfır"** etiketiyle tavsiye listesinin **başına** konmuştu. Türetilen kural adayı: `tavsiye_sırası = 1 ⇒ dayanağı BAĞIMSIZ doğrulanmış olmalı`.
 
@@ -132,11 +133,48 @@ Kendi taramam (115 transkript, hata damgasından **sonra** >1500 karakter rapor 
 
 → **Zaaf taksonomide değil, katmanlar arası kayıpta:** SDK'da 5 ayırt edilebilir terminal durum var, ekranda 3 kalıyor, **(b)+(d) ayrımı tamamen siliniyor.**
 
+### ⛔ 3.1 — TAKSONOMİ EKSİK: dördüncü ve kayıtsız durum (canlı ölçüm, 15:56)
+
+*Bu bölüm rapor teslim edildikten sonra, A5–A21 antitez turları koşarken **ölçülerek** eklendi.*
+
+**Gözlem:** üç antitez ajanı da `15:10–15:11` arasında son kaydını yazdı ∧ **45 dakika boyunca hiçbir yeni kayıt düşmedi.** 45 saniye arayla alınan iki örnekte `boyut`, `satır sayısı` ∧ `mtime` **üçü de birebir aynı** ⇒ `büyüme = 0`.
+
+**Son kayıt imzası (üçünde de aynı):** `type = assistant` ∧ `content = ['text']` ∧ `isApiErrorMessage = None` ∧ `stop_reason = None`
+⇒ **§4'teki hiçbir imzaya uymuyor:** API ölümü değil (17-vakalık sınıf değil), araç ortası ölüm değil (`tool_use` yok). **Metin ürettiler, sonra sustular.**
+
+**Ve kritik olan:** `SendMessage` üçüne de **`"had no active task"`** döndürdü ⇒ ajan ölü ∧ çalışmıyor.
+⇒ **AMA HİÇBİR `task_notification` GELMEDİ.** Ne `completed`, ne `failed`, ne `stopped`.
+
+> ### ⭐ HÜKÜM — §3 tablosuna EK
+> **`sonlanma_modu = SESSİZ ÖLÜM`:** ajan durur ∧ aktif görevi kalmaz ∧ **hiçbir bildirim üretmez.**
+> ⇒ Yukarıdaki tablo *"SDK 5 durum → UI 3 değer"* diyordu. Bu vaka **dördüncü ve kayıtsız** bir durumdur: **bildirim üretmeyen sonlanma**.
+> ⇒ **§4 teşhis kılavuzu bu vakayı YAKALAYAMAZ** — kılavuz `<status>` alanından başlıyor, burada `<status>` **hiç doğmuyor**.
+> ⇒ **Kılavuza eklenmesi gereken adım:** `bildirim_yok ∧ süre > beklenen` ⇒ **transkriptin `mtime`'ını ∧ satır sayısını ÖRNEKLE**, bildirimi bekleme.
+
+**⭐ Ve teşhis dürtme sonrası DEĞİŞTİ:** `SendMessage` gönderildi ⇒ üçü de **29-34 saniyede tam raporla** döndü ∧ **`tool_uses = 0`**.
+Üçüncüsünün ilk cümlesi: *"Donmuş değilim — önceki turda tam sonucu ürettim ve döndürdüm."*
+⇒ **`hesaplama = BİTMİŞTİ (15:11)`** ∧ **`teslim = OLMADI`**
+⇒ **Bu bir HESAPLAMA asılması DEĞİL, bir TESLİM arızasıdır.** İş 45 dakika boyunca **diskte hazır bekledi**, ebeveyn beklemeye devam etti.
+
+| Kayıp modu | İş durumu | Sürdürmenin işlevi | Maliyet |
+|---|---|---|---|
+| Hesaplama asılması | **yapılmamış** | onu **yaptırır** | tam koşum |
+| **Teslim arızası** | **yapılmış** | onu yalnız **taşır** | **~30 saniye** |
+
+⇒ **Pratik kural: `süre > beklenen` ⇒ önce DÜRT, sonra endişelen.** Maliyet 30 saniye; alternatif 45 dakika boş bekleme.
+
+**Bu vakanın kendi dersi:** `bildirim_yokluğu ≢ çalışıyor`. Bekleme uzadıkça *"hâlâ çalışıyor"* varsayımı güçleniyordu ∧ **yanlıştı**. Bu, P73'ün (*"kaynak tükendi ≡ iş bitti"*) **kardeşidir**.
+
+**Kurtarma kaydı:** `ara_metin` üçünde de **mevcuttu** ⇒ kesilme anında iş diskteydi, `kayıp = 0` ⇒ **V69 ("iskelet-önce") üçüncü kez karşılığını verdi.**
+
 ---
 
 ## 4 — Teşhis kılavuzu (uygulanabilir, bugün)
 
 **Adım 0 — Hangi dünyadasın?** `claude agents` satırı → arka plan oturumu. `Agent`/`Task` ile açtığın → **alt-ajan**, `claude agents`'ta asla görünmez.
+
+**⛔ Adım 0.5 — BİLDİRİM HİÇ GELMEDİ Mİ?** *(§3.1'den eklendi — kılavuzun eski hâli bu vakayı kaçırıyordu.)*
+`bildirim_yok ∧ süre > beklenen` ⇒ **bildirimi bekleme.** Transkriptin `mtime`'ını ∧ satır sayısını **iki kez örnekle** (45 sn arayla). `büyüme = 0` ise ajan **sessizce ölmüş** olabilir ⇒ doğrudan `SendMessage` gönder. Maliyet ~30 saniye; alternatif saatlerce boş bekleme. **Bildirim yokluğu, çalıştığı anlamına gelmez.**
 
 **Adım 1 — Ebeveyn transkriptinde bildirimin `<status>`'una bak.**
 - `completed` → iş bitti, `<result>` gerçek rapordur. Dur.
@@ -398,7 +436,7 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 | # | Borç | Not |
 |---|---|---|
 | C1 | ~~Antitez (Aşama 2) bu aile için de koşulmadı~~ → **KAPANDI 2026-07-26** | Antitez araçlı koştu (`tool_uses = 48`); **4 gerçek hata buldu** (K11-K14) ∧ 5 daraltma üretti. Hükümler §13'e işlendi. Yeni borç: **K14'ün öncülünü doğrula** (bir `Explore` ajanı açıp `agent_ID` dönüyor mu bak) |
-| C2 | **Sürüm çatalı: kurulu ikili v2.1.42, dokümanlar ~v2.1.217** | `CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` kurulu ikilide **grep'te yok**. Dokümandaki stall davranışı **bu makinede geçerli olmayabilir** — ana atlastaki stall-watchdog analizini bu ışıkta yeniden okumak gerek |
+| C2 | ~~Sürüm çatalı: dokümandaki stall davranışı geçerli olmayabilir~~ → **KAPANDI 2026-07-26, OLUMSUZ YÖNDE** | **Asılma nöbetçisi bu sürümde YOK.** İki bağımsız ölçüm yakınsadı: ① antitez kurulu `cli.js`'te `watchdog`, `idleAgent`, `stuckDetection`, `hungTask`, `healthCheck` terimlerinin **hiçbirini** bulamadı; ② §3.1 canlı vakası — üç ajan **45 dk** sessiz kaldı ∧ belgelenmiş **10 dk**'lık eşiğe rağmen abort edilmediler. ⇒ *"geçerli olmayabilir"* değil, **geçerli değil**. **Hiçbir otomatik koruma yok**; asılma tespiti tamamen ebeveynin işi |
 | C3 | **429 ölümünün canlı imzası gözlenmedi** | 115 transkriptte terminal API hatalarının **17/17'si oturum limitiydi**. 429'un `stop_reason` imzasının aynı olup olmadığı **ampirik doğrulanmadı** — aynı kod yolundan geçtikleri için aynı olması beklenir `[?]` |
 | C4 | Pro/Max için **sayısal tahsisat hiçbir açık dokümanda yok** | Dokümanlar bilinçli olarak yalnız **pencere yapısını** yayımlıyor, **büyüklüğü** değil |
 | C5 | `blocking_limit` ve `rapid_refill_breaker` **tanımsız** | SDK enum'unda yalnız **değer olarak** geçiyor; kota-koruma mekanizmaları oldukları **kestirimdir** `[?]` |
@@ -414,7 +452,8 @@ Gözlenen tabloyu (112 alt-ajan · 17 API ölümü · WebSearch defalarca tüken
 - **V69 — "İskelet-önce" ajan protokolü.** U2: ajan ilk bulguyu bulur bulmaz kısa **metin** üretsin. Kayıp modunu "her şey gitti"den "kısmi döndü"ye çevirir, maliyeti sıfır. **Ajan görev şablonuna zorunlu madde adayı.**
 - **V70 — Dalga zarfı sabiti.** §9'un reçetesi (10 ajan · Sonnet · effort medium · ≤2 WebSearch · 2-3 sn aralı) KILAVUZ'a sayısal kural olarak girmeye aday. **V59'un mekanizması artık elimizde** — "ucuz model" tavsiyesi, aslında "ayrı ITPM kovası açma" hamlesiymiş.
 - **V71 — ⛔ GERİ ÇEKİLDİ (K14).** *"Sürdürülemez ajan yasağı: `Explore`/`Plan` uzun/pahalı işlerde kullanılmasın."* Dayanağın `[D]` olduğu iddiası **doğrulanamadı**; antitez dokümanda karşılığını bulamadı. **Aday olarak kutuya girmez** — önce öncül doğrulanır, sonra yeniden değerlendirilir.
-- **V82 adayı — "Liste başı kanıt kapısı" (M5'ten türedi).** `tavsiye_sırası = 1 ⇒ dayanağı BAĞIMSIZ doğrulanmış olmalı`. U1/K14 vakası bu kuralın doğuş sebebidir: doğrulanmamış tek bir alt-ajan aktarımı, *"ÇOK YÜKSEK değer, maliyet sıfır"* etiketiyle listenin başına yerleşti ∧ oradan kanona sızmaya bir adım kalmıştı.
+- **V82 — Bildirim beklenmez, transkript büyümesi örneklenir.** (§3.1'den; numarayı hakemlik kaydı §9b veriyor.) Uzun koşumlarda `task_notification` beklemek **yanlış sinyaldir** — bildirim hiç gelmeyebilir. Bunun yerine transkriptin `mtime`'ı ∧ satır sayısı periyodik örneklenir. Ölçüm **iki `stat` çağrısıdır**, maliyeti sıfırdır.
+- **Kural adayı (numarasız — Salih atar) — "Liste başı kanıt kapısı".** M5'ten türedi: `tavsiye_sırası = 1 ⇒ dayanağı BAĞIMSIZ doğrulanmış olmalı`. **Üç bağımsız vakası var:** K14 (Explore/Plan), K35 (eksen başına 4 kategori), K39 (yayımlama eşiği). Üçü de doğrulanmadan öne çıkarıldı, üçü de antitezde düştü. *(V numarası bilerek verilmedi — m.41: bu yüzey öneri üretir, kanon kilitlemez.)*
 
 ---
 
