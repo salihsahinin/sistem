@@ -95,7 +95,27 @@ Ajanların **"stopped" olmadı** — `failed` oldular, `failed` **terminal bir d
 
 > **Bu maddenin dersi maddenin kendisinden değerli:** listenin başı, **en az doğrulanmış** maddenin yeri değildir. Bir tavsiye ne kadar yukarıdaysa, dayanağı o kadar sağlam olmalı.
 
-### ⑩ Antitez turunun kendisi hakkında
+### ⑩ ⭐ Taksonomide olmayan bir ölüm biçimi ölçüldü
+
+- **İddia:** Bir ajan işini bitirip durabiliyor ve **hiçbir bildirim göndermeden** ölü kalabiliyor — ne `completed`, ne `failed`, ne `stopped`.
+- **Neye dayanıyor:** Canlı ölçüm. Üç ajan 15:10–15:11 arasında son satırını yazdı; **45 dakika** boyunca dosya boyutu, satır sayısı ve değişiklik zamanı **birebir sabit** kaldı. Dürtülünce üçü de **29-34 saniyede tam raporla** döndü.
+- **Ne kadar güveniyoruz:** Yüksek — üç bağımsız vaka, ölçülmüş dosya verisiyle.
+- **Ne yapmamız gerekiyor:** Uzun koşumlarda **bildirim bekleme**. Transkriptin değişiklik zamanına iki kez bak; büyüme yoksa dürt.
+- → `ajan-durma §3.1`
+
+> **Ve teşhis dürtme sonrası değişti — asıl haber bu.** Ajanlar asılmamıştı; **işlerini bitirmişlerdi ama teslim edememişlerdi.** Biri aynen şöyle dedi: *"Donmuş değilim — önceki turda tam sonucu ürettim ve döndürdüm."*
+>
+> Fark pratik: asılmış bir ajanı sürdürmek işi **yaptırır** (tam maliyet). Teslim edememiş bir ajanı sürdürmek işi yalnız **taşır** (30 saniye). **Kural: beklenenden uzun sürdüyse önce dürt, sonra endişelen.**
+
+### ⑪ Beklediğimiz otomatik koruma yok
+
+- **İddia:** Asılma nöbetçisi (`stall watchdog`) kurulu sürümde **yok**.
+- **Neye dayanıyor:** İki bağımsız ölçüm. Birincisi: kurulu `cli.js` içinde `watchdog`, `idleAgent`, `stuckDetection`, `hungTask`, `healthCheck` terimlerinin **hiçbiri** bulunamadı. İkincisi: yukarıdaki üç ajan **45 dakika** sessiz kaldı ve belgelenmiş **10 dakikalık** eşiğe rağmen durdurulmadılar.
+- **Ne kadar güveniyoruz:** Yüksek. Rapor önce *"bu makinede geçerli olmayabilir"* demişti; **artık ölçüldü — geçerli değil.**
+- **Ne yapmamız gerekiyor:** Asılma tespitini **kendimiz** yapacağız. Bu bir borcun kapanmasıdır, ama **olumsuz yönde**: beklenen koruma yok.
+- → `ajan-durma §14 C2`
+
+### ⑫ Antitez turunun kendisi hakkında
 
 Bu ailenin iddiaları bağımsız bir sınamadan geçti ve sınama **araç kullandı** — ham dokümanları çekti, kurulu kodu okudu. Sonuç: **4 gerçek hata** (⑨ ve yukarıdaki ③-④'ün gerekçeleri dahil) ve 5 daraltma.
 
@@ -132,6 +152,10 @@ Bu ailenin iddiaları bağımsız bir sınamadan geçti ve sınama **araç kulla
 
 429 hatasının canlı imzası bu oturumda **hiç görülmedi** — 115 transkriptteki 17 terminal API hatasının **17'si de oturum limitiydi**. 429'un aynı imzayı taşıyıp taşımadığı ampirik olarak doğrulanmadı; aynı kod yolundan geçtikleri için aynı olması **beklenir**, ama bu bir beklenti, ölçüm değil.
 
+### Ve bir borç kapandı — olumsuz yönde
+
+Asılma nöbetçisinin bu sürümde olup olmadığı **açık bir soruydu**; artık kapalı: **yok**. Bu, listeden bir madde silmek değil, **bir güvencenin kaybıdır** (⑪).
+
 ---
 
 ## 4. Ne değişiyor
@@ -142,9 +166,13 @@ Salih'in fiilen yapacağı ya da karar vereceği şeyler:
 2. **Dalga 10 ajanla sınırlı.** 112'lik koşum tekrarlanmayacak. → `§9`
 3. **Effort'u ajan başına seç.** Getirme ajanı düşük, sentez ajanı yüksek. Varsayılan `high` en pahalı seçenektir. → `§9`
 4. **`failed` gören ajanı yeniden başlatma, sürdür.** `SendMessage`, tam bağlamı korur. → `§2` · `§10`
+4b. **Bildirim gelmiyorsa bekleme — dürt.** Transkriptin değişiklik zamanına 45 saniye arayla iki kez bak; büyüme yoksa `SendMessage` gönder. 30 saniyelik maliyet, saatlerce boş beklemeyi önler. → `§3.1` · `§4 Adım 0.5`
 5. **Ajan şablonuna "önce kısa ara metin" maddesi.** Maliyeti sıfır. → `§11 U2`
 6. **KARAR GEREKİYOR — V71 geri çekildi.** *"Explore/Plan yasağı"* fikri kutudan çıkarıldı. Yerine önerilen: bir doğrulama koşumu (5 dakika) ve sonucuna göre yeniden değerlendirme. → `§10` · `§15`
-7. **KARAR GEREKİYOR — yeni kural adayı (V82).** *"Bir tavsiye listenin başındaysa, dayanağı bağımsız doğrulanmış olmalı."* Bu, ⑨'daki hatanın tekrarını yapısal olarak engeller. → `§15`
+7. **KARAR GEREKİYOR — iki kural adayı.**
+   - **V82** (numarayı hakemlik kaydı verdi): *"Uzun koşumlarda bildirim beklenmez; transkript büyümesi periyodik örneklenir."* Maliyeti iki `stat` çağrısı. → `§15`
+   - **Numarasız aday** (Salih atar): *"Bir tavsiye listenin başındaysa, dayanağı bağımsız doğrulanmış olmalı."* Bunun artık **üç** vakası var: ⑨ (Explore/Plan), *"eksen başına 4 kategori"*, ve *"ajan yayımlama eşiğini kendi geçemez"*. Üçü de doğrulanmadan öne çıkarıldı, üçü de düştü. → `§15`
+7b. **⚠️ AYRI UYARI — bir güvenlik varsayımı düştü.** *"Ajan yayımlama eşiğini kendi başına geçemez"* iddiası `routines.md` ile çürütüldü: **onaysız push ve PR mümkün.** JARVIS'te `git push` zaten settings-deny ile **yapısal olarak** kilitli, yani oradaki koruma ayakta. Ama bu varsayıma dayanıp **korumasız bırakılmış** bir yüzey varsa açıktır. → `antitez §9c.2 K39`
 8. **Öğrenme sırası hazır (L16-L22):** teslim garantileri → idempotency → write-ahead log → retry/heartbeat → durable execution → Continue-As-New/Saga. Hepsi ücretsiz birincil kaynaktan, toplam yaklaşık 3 saat. → `§12`
 
 **Ve yapılmayacaklar** (bu da bir karardır): Temporal kurmak, kendi write-ahead log'unu yazmak, Saga altyapısı kurmak, `/loop` ile limit-sonrası otomatik yeniden deneme. Dördü de tek kişilik bir sistemde aşırı mühendisliktir; kavramları alınır, çalışan sistemleri alınmaz. → `§11 U12-U15`
@@ -160,3 +188,5 @@ Salih'in fiilen yapacağı ya da karar vereceği şeyler:
 2. **Bir araştırma ajanı "bu konuda kaynak bulunamadı" dedi. Bu cümleye inanmadan önce hangi tek şeyi kontrol etmen gerekir — ve neden hata mesajına bakmak işe yaramaz?**
 
 3. **Bu raporda bir tavsiye geri çekildi. Geri çekilme sebebi "iddia yanlış çıktı" değildi — neydi, ve bu ayrım neden önemli?**
+
+4. *(Ek — ⑩'dan)* **Bir ajan beklediğinden uzun sürdü ve hiç bildirim gelmedi. "Hâlâ çalışıyor" demeden önce hangi iki ölçümü alırsın, ve dürtmenin maliyeti neden endişelenmenin maliyetinden düşük?**
