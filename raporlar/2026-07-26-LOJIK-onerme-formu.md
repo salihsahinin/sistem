@@ -26,6 +26,26 @@
 
 ---
 
+## Düzeltme kaydı — 2026-07-26 antitez turu
+
+`raporlar/2026-07-26-antitez-hakemlik.md` §8'deki K listesi bu dosyaya uygulandı. Düzeltilen önermeler ve gerekçeleri, **eski hâli silinmeden**, önermenin altında `[K…]` etiketli satırla taşınır (m.8 otomatik-silme yasağı).
+
+| Düzeltme | Önerme | Ne değişti |
+|---|---|---|
+| K9 + H1 | P109 | Sonuç satırı kendi öncülüyle çelişiyordu; `transfer ≈ 0` → `düşük ∧ ≠ 0` |
+| K15 | P114 | `Stopped yalnız 3 yol` → makine kapanması istisnası + oturum/task ayrımı |
+| K16 | P115 | `claude agents HİÇ göstermez` → belirli koşulda gösterir (fallback) |
+| K11 + K17 | P117 | `is_error = FALSE` → **⊨X, çözülmedi**; `result ∉ şema` → dile bağlı |
+| K18 | P121 | `tek keskin ayırt edici` → coupling ⊨D, "tek" süperlatifi düşer |
+| K12 | P126 | `önbellek isabeti = 0` → yalnız ilk çağrıda; sonra kendi cache'ini ısıtır |
+| K13 | P127 | `bağlayıcı sınır = 10` → üç ayrı mekanizma ayrıştırıldı |
+| K14 | P134 | **Explore/Plan sürdürülemezliği ASKIDA** — `[?]`, dayanağı bulunamadı |
+| H4 | P96 · P98 | `indirme → bakım öngörür` → toplu düzeyde, paket-başına garanti değil |
+
+⚠️ **K14 en ağır olanıdır:** teslim edilmiş bir raporda **listenin başına konmuş bir tavsiyenin** dayanağı bulunamadı. Doğrulanana kadar kural olarak kullanılmaz.
+
+---
+
 ## I. ÖĞRENEN MODELİ
 
 **P1** ⊨S ⊨K
@@ -677,7 +697,7 @@ Düzeltme: `ölç ∧ ¬tahmin_et`
 `ölçülmüş(teknoloji_seçimi) ≈ ekosistem_sağlığı` — *seçtiğin şey yaşayacak mı*
 `ölçülmemiş(teknoloji_seçimi) ≈ karar_yöntemi` — *nasıl seçmelisin*
 `herkesin_baktığı_sinyal(yıldız) → ölçülmüş_şekilde BOZUK`
-`kimsenin_bakmadığı_sinyal(indirme) → ölçülmüş_şekilde GÜÇLÜ`
+`kimsenin_bakmadığı_sinyal(indirme) → ölçülmüş_şekilde GÜÇLÜ` *(toplu düzeyde; paket-başına garanti değil — K4, bkz. P98)*
 
 **P97** ⊨D — TERK TABANI (kendi ölçümümüz, n=478, ±4,5pp)
 `paket ~ Uniform(PyPI)` ⇒ `P(son_sürüm > 2_yıl) = %54,2` ∧ `medyan_durgunluk = 856 gün`
@@ -688,6 +708,7 @@ Düzeltme: `ölç ∧ ¬tahmin_et`
 `indirme_sırası = rastgele` ⇒ `terk(>2yıl) = %54,2`
 `gradyan = monotonik` ∧ `oran = 6,3×`
 ⇒ **`top_500'de_kalmak → terk_riski ÷ 6,3`** — ölçülmüş bir eşik, retorik değil.
+> **[H4/K4 · antitez daraltması]** Bu ölçüm bir **katman agregasıdır**, paket-başına garanti **değildir**. `indirme → bakım_aktifliği` ilişkisi **toplu düzeyde** güçlüdür ∧ tek pakete uygulanamaz. Karşı-örnek sınıfı: `moment.js` bakım moduna geçti ∧ indirmeleri devasa kaldı; `request` deprecated ilan edildikten sonra yıllarca yüksek kaldı ⇒ **ekosistem ataleti**. Bu örnekler `[K-hatırlama]`dır (doğrulanmadı) ama mekanizma kendi M7 bulgumuzla uyumlu (*"çoğu alt-proje terk edilmiş bağımlılığı hiç değiştirmiyor"*) ⇒ kayıt kabul edildi. Agregayı **çürütmez**, `paket_başına_öngörü` okumasını **yasaklar**.
 
 **P99** ⊨D — YAYIN YETKİSİ YOĞUNLAŞMASI (220.469 paket)
 `en_çok_bağımlısı_olan_1000` ⇒ `tek_bakımcı = %41,3` ∧ `tek_bakımcı ∧ >2yıl_durgun = %17,8`
@@ -754,7 +775,8 @@ Yazılım paraleli: `sanayi_deneyimi → kalite ∧ üretkenlik etkisi ≈ 0`
 `kaynak_analog = 1` ⇒ `çözüm ≈ %30`
 `kaynak_analog = 1 ∧ ipucu` ⇒ `çözüm ≈ %80`
 `şema_tümevarımı ⇔ İKİ_vakanın_karşılaştırılması`
-⇒ **`tek_vaka_okuma → transfer ≈ 0`**
+⇒ **`tek_vaka_okuma → transfer DÜŞÜK ∧ transfer ≠ 0`**
+> **[K9 + H1 · antitez düzeltmesi]** Eski sonuç satırı `tek_vaka_okuma → transfer ≈ 0` idi ∧ **kendi öncülüyle çelişiyordu** (öncül zaten `%30` diyor). Doğrusu: `∅ analog → ~%10` ∧ `1 analog → ~%30` ∧ `1 analog + ipucu → ~%80`. Şema tümevarımı için **iki** vaka gerekir; ama tek vaka **sıfır getiri değildir**.
 
 **P110** ⊨K — BAŞARISIZLIK > BAŞARI
 `öğrenme(başarısızlık) > öğrenme(başarı)` ∧ `değer_kaybı(başarısızlık_bilgisi) < değer_kaybı(başarı_bilgisi)`
@@ -788,21 +810,25 @@ Yazılım paraleli: `sanayi_deneyimi → kalite ∧ üretkenlik etkisi ≈ 0`
 `oturum_limiti ∨ hız_limiti ∨ max_turns ∨ stall` ⇒ **`Failed`** ∧ `¬Stopped`
 Ampirik (bu oturum): `35 bildirim = 22 completed ⊕ 13 failed ⊕ 0 stopped`
 ⇒ **`Stopped` en NET tanımlı durumdur**; belirsiz olan **`Failed`**'dır.
+> **[K15 · antitez daraltması]** `Stopped ⇔ (üç yol)` çerçevesi bir kenar-durumda çatlıyor: `makine_kapanması` da dışarıdan süreç sonlandırmadır ∧ `agent-view.md`'ye göre **`Failed`** üretir, `Stopped` değil. Ayrıca `oturum_durumu(agent-view) ≠ alt_ajan_task_durumu`; bu önerme ikisini birleştiriyor olabilir. `⇔` (ancak ve ancak) **`→`'ye zayıflar**.
 
 **P115** ⊨D — KATEGORİ HATASI
 `claude agents → arka_plan_oturumları` ∧ `claude agents ∩ alt_ajanlar = ∅`
 `~/.claude/jobs/ → bu_makinede YOK` ∧ `alt_ajan_transkripti = 115`
 ⇒ İki ayrı dünya; alt-ajanı `claude agents`'ta aramak **sonuçsuz**.
+> **[K16 · antitez daraltması]** `∩ = ∅` (hiç göstermez) fazla güçlü. `sub-agents.md` bir geri-düşüş yolu tanımlıyor: *"`claude agents` bir sayı ∧ ardından yapılandırılmış alt-ajanların listesini basıp çıkıyorsa, agent view kullanılamıyor demektir."* ⇒ `agent_view_kapalı → claude agents, yapılandırılmış alt-ajanları LİSTELER`. Ana tablo iddiası (*alt-ajanlar ayrı satır olarak listelenmez*) **doğru kalır**; "hiç" **düşer**.
 
 **P116** ⊨D — İKİ ORTOGONAL EKSEN
 `eksen_1(görev) ∈ {Working, Needs_input, Idle, Completed, Failed, Stopped}`
 `eksen_2(süreç) ∈ {✻ canlı, ∙ çıkmış, ✢ loop_uykusu}`
 `∙ ⇏ sonlanma` ∧ `boşta ≈ 1_saat → süpervizör_süreci_kapatır` ∧ `transkript ∧ durum → diskte kalır`
 
-**P117** ⊨D — TUZAK
-`subtype ∈ {error_max_turns, error_max_budget_usd}` ⇒ **`is_error = FALSE`**
-⇒ `is_error ile filtreleme → limit_ölümlerini KAÇIRIR`; ayırt etme **yalnız `subtype` ile**.
-`subtype = hata` ⇒ `result_alanı ∉ şema` ∧ `errors: string[] ∈ şema`
+**P117** ⊨X — TUZAK *(etiket ⊨D'den ⊨X'e düşürüldü, K11)*
+`subtype ∈ {error_max_turns, error_max_budget_usd}` ⇒ `is_error = ?` — **ÇÖZÜLMEDİ**
+⇒ Pratik hüküm KORUNUR: ayırt etme **`subtype` ile yapılır**; `is_error`'a dayanan filtre yazılmaz.
+`subtype = hata` ⇒ `errors: string[] ∈ şema` ∧ `result_alanı → dile bağlı`
+> **[K11 · antitez ÇÜRÜTMESİ — ⭐ yüksek]** Bu önermenin eski hâli `is_error = FALSE` diyordu ∧ dayanağı kurulu `cli.js` v2.1.42'de `is_error:!1` idi. Antitez `agent-sdk/python.md`'yi birebir okudu: *"`is_error`: `True` when the conversation ended in an error state. **Always `True` on the `error_*` subtypes.**"* ⇒ **doğrudan çelişki, çözülmedi ⇒ `⊨X`**. Uzlaştırma adayları (hiçbiri doğrulanmadı): ① minifiye kod okuması yanlış · ② CLI'nin iç üretim yolu ≠ SDK'nın belgelenmiş sözleşmesi · ③ sürüm kayması (`v2.1.42 ↔ ~v2.1.217`). **Tavsiye ayakta, gerekçesi düştü:** `subtype`'a bakmak her iki senaryoda da doğrudur.
+> **[K17 · antitez daraltması]** `result_alanı ∉ şema` **dil belirtmiyor** ∧ yarısı yanlış: `TypeScript → result alanı YOK` ∧ `Python_dataclass → tüm varyantları tek şekle düzleştirir ⇒ result alanı VAR ∧ değeri None`. Kod yazarken **alanın yokluğuna değil, `subtype`'a** bakılır.
 
 **P118** ⊨D — ⭐ `failed` TERMİNAL DEĞİLDİR
 `ajan → failed(t₀)` ∧ `limit_sıfırlandı(t₁ > t₀)` ⇒ `ajan devam edebilir ∧ raporunu bitirebilir`
@@ -826,6 +852,7 @@ Carvis tam-oturum taraması: `5/5 → completed bildirimi gönderildi` ⇒ **bu 
 `son_kayıt.type = "user"` ⇒ araç sonrası öldü (n=3)
 `normal_metin ∧ bildirim = failed` ⇒ **P118 vakası — transkripti oku**
 `isMeta ∧ "was stopped by the user"` ⇒ kullanıcı iptali; ayırt edici: bu mesajda *"TaskOutput ile kontrol et"* cümlesi **HİÇ geçmez**
+> **[K18 · antitez daraltması]** `isApiErrorMessage` için kullanılan **"tek keskin ayırt edici"** süperlatifi doğrulanamadı. Doğrulanan kısım: eşleşmenin kendisi kaynak kodda **⊨D** — `kjq()` sabit-kodlu `stop_reason:"stop_sequence"` ∧ `CY()` `isApiErrorMessage:!0`. Alan **başka bağlamlarda da** kullanılıyor ⇒ `tek` **düşer**, `imza geçerli` **kalır**.
 
 **P122** ⊨D — KATMANLAR ARASI KAYIP
 `SDK → 5 ayırt_edilebilir_terminal_durum`
@@ -860,17 +887,18 @@ Kıyas: `Temporal → CANCELED ≠ TERMINATED` ∧ `LangGraph → GraphRecursion
 
 **P126** ⊨D — ⭐ PARALELİN GİZLİ MALİYETİ
 `alt_ajan → kendi_konuşması ∧ kendi_sistem_promptu` ⇒ `ilk_çağrıda önbellek_isabeti = 0`
+`alt_ajan ∧ tur > 1` ⇒ **`KENDİ önbelleğini ısıtır`** (isabet > 0)
 `alt_ajan → 5_dakikalık_TTL` **abonelikte bile** (1 saatlik otomatik TTL yalnız ana konuşmaya)
 `önbellek_OKUMA ∉ ITPM` ∧ `önbellek_OLUŞTURMA ∈ ITPM`
-⇒ **`10_paralel_ajan → ITPM_baskısı > 10 × tek_ajan`**
+⇒ **`10_paralel_KISA_ÖMÜRLÜ_ajan → ITPM_baskısı > 10 × tek_ajan`**
 ⇒ **`az_sayıda_uzun_ömürlü > çok_sayıda_kısa_ömürlü`**; 30 yerine 10 ajan ⇒ 20 cache-oluşturma turu tasarrufu.
+> **[K12 · antitez ÇÜRÜTMESİ — ⭐ yüksek]** Eski hâli *"alt-ajanlar prompt cache'ten yararlanamaz"* diyordu ⇒ **fazla güçlü, yanlış**. `prompt-caching.md` birebir: *"It builds its own cache, **starting with no cache hits on its first call and warming up across its own turns.**"* ⇒ isabet sıfırı **yalnız ilk çağrıdadır**. `10 ajan = 10× ITPM` çıkarımı **yalnız kısa ömürlü ajanlar için** ayakta. Düzeltme **tavsiyeyi zayıflatmıyor, GÜÇLENDİRİYOR**: uzun ömürlü ajan kendi önbelleğini ısıttığı için *"az sayıda uzun ömürlü"* tercihinin mekanizması artık nettir.
 
-**P127** ⊨D ⊨X — EŞZAMANLILIK GERİLİMİ
-`MAX_TOOL_USE_CONCURRENCY = 10` ("read-only tools **and subagents** in parallel")
-`MAX_CONCURRENT_SUBAGENTS = 20`
-`dokümanlar → ikisini birbirine bağlamıyor`
-En tutarlı okuma: `10 = yürütme_kapısı` ∧ `20 = muhasebe_kapısı`
-⇒ **`bağlayıcı_sınır = 10`**
+**P127** ⊨D — EŞZAMANLILIK: ÜÇ AYRI MEKANİZMA
+`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS = 20` ⇒ **belgelenmiş alt-ajan eşzamanlılık sınırı**
+`MAX_TOOL_USE_CONCURRENCY = 10` ⇒ **paralel araç + alt-ajan YÜRÜTME kapısı** (ayrı mekanizma)
+`10_oturum ≈ 10× kota` ⇒ **tüketim kuralı, sınır DEĞİL** (üçüncü ve tamamen farklı şey)
+⇒ `pratik_dalga_zarfı = 10` **korunur**; gerekçesi `sert_sınır` **değil**, `yürütme_kapısı ⊕ kota_tüketimi`
 
 **P128** ⊨D — DİĞER TAVANLAR
 `MAX_SUBAGENTS_PER_SESSION = 200` (nested ⊕ fork ⊕ background ⊕ /subtask; **bitenler de sayılır**) ∧ `/clear → sıfırlar`
@@ -910,10 +938,11 @@ Kural: `gözetimsiz_koşum → aç` ∧ `interaktif_dalga → kapat` (orada hız
 `SendMessage` ⇒ `tam_konuşma_geçmişi korunur` (tüm araç çağrıları ⊕ sonuçlar ⊕ akıl yürütme)
 `sürdürme → eşzamanlılık_limitini KONTROL ETMEZ` ⇒ kurtarma yolu kapasite kapısından **muaf**.
 
-**P134** ⊨D — İKİ KRİTİK İSTİSNA
-① `ajan ∈ {Explore, Plan}` ⇒ `agent_ID = ∅` ⇒ **SÜRDÜRÜLEMEZ**
-⇒ `uzun_iş ∨ pahalı_iş` ⇒ `ajan := general-purpose ∨ özel_ajan`
-② `kullanıcı_durdurdu` ⇒ `SendMessage → "ajan iptal edildi" reddi`; çözüm: panel transkriptine yazmak bayrağı temizler.
+**P134** — İKİ İSTİSNA: BİRİ ASKIDA, BİRİ ⊨D
+① `[?]` **ASKIDA — kural olarak KULLANILMAZ:** `ajan ∈ {Explore, Plan} ⇒ agent_ID = ∅ ⇒ SÜRDÜRÜLEMEZ`
+② ⊨D `kullanıcı_durdurdu` ⇒ `SendMessage → "ajan iptal edildi" reddi`; çözüm: panel transkriptine yazmak bayrağı temizler.
+> **[K14 · antitez — ⭐⭐ KRİTİK, dayanak bulunamadı]** ①'in dayanağı **dokümanda bulunamadı**. Antitez `sub-agents.md`'yi okudu: Explore/Plan için sürdürülemezlik istisnasına dair **hiçbir kayıt yok**; bu ajanlar için tutulan tek istisna CLAUDE.md/git-status **yüklememeleridir**. Bu iddia bir alt-ajanın aktarımıydı ∧ **doğrulanmadan** tavsiye listesinin başına konmuştu (U1). ⇒ **`ajan_ID` boşluğu doğrulanana dek *"Explore/Plan kullanma"* diye bir kural ÇIKARILMAZ.** ②'nin durumu değişmedi.
+> **[M5 · türetilen kural adayı]** `tavsiye_sırası = 1 → dayanağı BAĞIMSIZ doğrulanmış olmalı`. Listenin başı, en az doğrulanmış maddenin yeri değildir.
 
 **P135** ⊨D — ⭐ KAYIP MEKANİZMASI VE PANZEHİRİ
 `ajan → metin_üretti ∧ kesildi` ⇒ `kısmi_çıktı + "kesildi" notu DÖNER`
@@ -989,5 +1018,7 @@ Bir önermeyi kullanmadan önce:
 1. **Öncülleri kontrol et.** Öncül sağlanmıyorsa sonuç geçmiyor. P49 bunun en net örneği — mimari hükmü var ama JARVIS'te üç öncül birden farklı.
 2. **Etikete bak.** `⊨K` olan hiçbir önerme tüzük anlamında hüküm taşımaz (P70).
 3. **`⊨¬2` olanı sınanmış sayma.** A5–A27 arası **tüm** aileler bu durumda (P71 + XV–XXI blokları).
-4. **`⊨X` olanı kullanma.** Çelişki çözülmedi demektir, ortalama alınmaz. **İstisna:** P142 — çelişki gerekçeli olarak ÇÖZÜLDÜ, hüküm A26 lehine.
+4. **`⊨X` olanı kullanma.** Çelişki çözülmedi demektir, ortalama alınmaz. **İstisna:** P142 — çelişki gerekçeli olarak ÇÖZÜLDÜ, hüküm A26 lehine. **Yeni ⊨X:** P117 (`is_error`) — 07-26 antitezinde düştü.
+6. **`[?]` olanı tavsiyeye çevirme.** P134① bunun canlı vakasıdır: doğrulanmamış bir öncül, tavsiye listesinin **başına** konmuştu. `tavsiye_sırası = 1 → dayanak BAĞIMSIZ doğrulanmış olmalı`.
+7. **`⊨S` = "sağ kaldı" DEĞİL.** Doğru okunuşu: **"aynı-aile hakemi karşısında sağ kaldı."** Antitez ajanları tez ajanlarıyla aynı model ailesindendi ∧ öz-tercih sapması aile düzeyine yayılır (P86). **İstisna:** A25–A27 ∧ A31–A32'nin doküman-doğrulamalı `⊨S`'leri bu şerhten muaftır — kanıt modelden değil kaynaktan geldi.
 5. **Ölçüm ile çıkarımı ayır.** P106 ve P119 bu ayrımın iki örneğidir: biri bileşim olduğunu beyan eder, diğeri bir alt-ajanın sayısını tam-oturum verisiyle düzeltir. **Beyan edilmiş sınır, sınırı olmayan önermeden güçlüdür.**
