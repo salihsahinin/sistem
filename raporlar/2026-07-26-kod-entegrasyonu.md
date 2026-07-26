@@ -1,7 +1,16 @@
 # Kod Entegrasyonu — "sadece md dosyalarından büyük proje inşa edilemez"
 
-> **Mod:** yan-oturum (m.41) · Aileler: A16 (markdown'ın sınırı) · A17 (sisteme kod) · A18 (projelere kod) · **A19–A21 koşuyor** (model çeşitliliği · hızlı çıkarım · araç ekosistemi)
-> ⚠️ **Üç ailede de Aşama 2 (antitez) KOŞULMADI** — protokol eksiği. A17 ve A18 ayrıca oturum limiti nedeniyle **yarım kaldı**; hangi şeritlerin dönmediği bölüm 6'da.
+> **Mod:** yan-oturum (m.41) · Aileler: A16 (markdown'ın sınırı) · A17 (sisteme kod) · A18 (projelere kod)
+> ⚠️ A17 ve A18 oturum limiti nedeniyle **yarım kaldı**; hangi şeritlerin dönmediği bölüm 5'te.
+
+> ## ⛔ DÜZELTME KAYDI — 2026-07-26 antitez turu *(teslim SONRASI eklendi)*
+> Antitez koştu. Hakemlik: `raporlar/2026-07-26-antitez-hakemlik.md` §9c.
+>
+> | Düzeltme | Nerede | Ne oldu |
+> |---|---|---|
+> | **K44** | §1.1 · §2.4 | *"Araçların erişebildiği azami katman YALNIZ referans bütünlüğüdür"* **ÇÜRÜTÜLDÜ** — `doctest` ∧ `nbval` **davranışsal doğruluk** denetliyor |
+>
+> ⚠️ **A18 bloğu (§3) TAMAMEN test edilemedi** — akademik kanallar 403. Antitezin kendi ifadesi: *"Bu bir **kapasite itirafıdır**, iddiaların doğruluğu hakkında hüküm DEĞİLDİR."* ⇒ §3'ün hiçbir iddiası ne doğrulandı ne çürütüldü.
 > **Tetikleyen:** Salih 07-26 — *"realist bakışla sadece md dosyalarından büyük bir proje inşa edemeyiz"* + *"tool olarak sadece Claude'un kendisi ve Claude aracılığıyla oluşturulmuş ürünler var, bunu değiştirmemiz lazım"*
 
 ---
@@ -43,7 +52,13 @@ Ve "Why is a spec needed?" bölümü sonucu söylüyor: *"Because there is no un
 
 Ölçek notu [D]: Gruber'ın orijinal tarifinin cevaplamadığı 14 belirsizliği kapatmak **9.811 satır spec + 655 uygunluk testi** gerektirdi. Ve GFM hâlâ **CommonMark 0.29'a sabitlenmiş**, CommonMark 0.31.2'de — "Markdown" tek bir dil bile değil.
 
-**Denetlenebilirlik tavanı [D]:** en olgun linter (markdownlint) **53 kural** taşır ve hepsi tipografik/sözdizimseldir. Anlama en çok yaklaşan ikisi **MD051** (belge-içi bağlantı parçası geçerli mi) ve **MD052** (referans etiketi tanımlı mı). ⇒ **Markdown'da makine-denetlenebilir azami anlam katmanı: referans bütünlüğü.** Bir iddianın doğru, güncel veya başka dosyayla tutarlı olup olmadığını denetleyen tek kural yoktur.
+**Denetlenebilirlik tavanı [D]:** en olgun linter (markdownlint) **53 kural** taşır ve hepsi tipografik/sözdizimseldir. Anlama en çok yaklaşan ikisi **MD051** (belge-içi bağlantı parçası geçerli mi) ve **MD052** (referans etiketi tanımlı mı). ⇒ **Markdown'ı METİN olarak denetleyen araçların tavanı referans bütünlüğüdür.** Bir iddianın doğru, güncel veya başka dosyayla tutarlı olup olmadığını denetleyen tek **linter kuralı** yoktur.
+
+> **[K44 · antitez ÇÜRÜTMESİ — tavan sanılandan yüksek]** Bu iddianın eski hâli *"araçların erişebildiği **azami** katman **yalnız** referans bütünlüğüdür"* diyordu ⇒ **çürütüldü**.
+> Karşı-örnek: **`doctest` ∧ `nbval`** — bunlar dokümanın içindeki kod bloklarını **çalıştırıp beklenen çıktıyla karşılaştırır** ⇒ **davranışsal doğruluk** denetlerler, referans bütünlüğü değil.
+> ⇒ Doğru kapsam: `linter(markdown) → tavan = referans_bütünlüğü` ∧ `yürütücü(gömülü_kod) → davranışsal_doğruluk MÜMKÜN`.
+> ⇒ **Ve bu, raporun ana tezini ZAYIFLATMIYOR, KEskinleştiriyor:** metnin doğrulanabilir kısmı, **içine gömülmüş yürütülebilir parçalar** kadardır. Düzyazı iddiası hâlâ denetlenemez; ama *"bu komut şu çıktıyı verir"* biçiminde yazılmış bir cümle **denetlenebilir hâle gelir**.
+> ⇒ **Pratik sonuç:** kanon metnine *"şu komut şunu döndürür"* tipi cümleler yazılırsa, `doctest` sınıfı bir araç onları **bayatlamaya karşı koruyabilir**. Bu, §2.5'in araç listesine giren yeni bir sınıftır.
 
 ### 1.2 Doküman–kod sapması: ölçülmüş
 
@@ -164,6 +179,7 @@ Ortak özellik: **doğruluk koşulu dosyanın kendisinden hesaplanabilir.**
 | Yapısal | başlık hiyerarşisi, satır uzunluğu | markdownlint (53 kural) |
 | Varlık/yokluk | "her karar dosyasında `## Karar` var" · "gizli anahtar sızmamış" · "`core/`'a dokunulmamış" | kendi script'in, gitleaks |
 | Referans bütünlüğü | her pointer'ın hedefi var mı | lychee (yerel dosya + `--include-fragments` çapa) |
+| **Davranışsal** *(K44 ile eklendi)* | *"şu komut şu çıktıyı verir"* biçiminde yazılmış cümle **hâlâ doğru mu** | `doctest` · `nbval` — dokümandaki kod bloğunu **çalıştırıp** beklenen çıktıyla karşılaştırır |
 
 **Zorlanamayanlar — tüzükten somut örneklerle:**
 - *m.6 "kibarca tavsiye + gerekçe"* → "kibar" doğal dil yargısı. Vekil: "'çünkü/gerekçe' geçiyor mu" — kuralı değil, **gölgesini** ölçer.
@@ -321,6 +337,7 @@ Ve bunun üç katmanlı hâli:
 4. **Front matter şeması** — yalnız `id/type/status/date/pointers`. Gövde metinde kalır.
 5. **`cog --check`** — `pano.md` türetilir, elle yazılmaz; bayatlık CI kapısı olur.
 6. **Vale** — tüzüğün sözcük-düzeyi normları (emekli terimler, zorunlu alanlar).
+7. **`doctest`/`nbval` sınıfı davranışsal denetim** *(K44 ile eklendi)* — kanon metnindeki *"şu komut şunu döndürür"* cümlelerini **çalıştırıp** doğrular. Denetlenebilirlik tavanının sanılandan yüksek olduğu buradan geliyor; maliyeti düşük, kapsamı dar ama **gerçek**.
 
 **Projeler tarafı (PortRisk sınıfı):** granülerlik ve düzgünlük zorunlu (§3.2), **kabul testi ajandan bağımsız yazılır veya saklanır** (§3.3), notebook→modül geçişi hipotez düzeyinde ama mekanizması sağlam (§3.4), ve portfolyo tavsiyelerinin çoğu **kanıtsız** — README'nin "neden" ve "durum" alanları ölçülmüş bir boşluk olduğu için oraya yatırım yapmak savunulabilir (§3.5).
 
@@ -328,11 +345,15 @@ Ve bunun üç katmanlı hâli:
 
 ## 5. AÇIK BORÇLAR
 
-1. **A16, A17, A18 için Aşama 2 (antitez) koşulmadı.**
+1. ~~A16, A17, A18 için Aşama 2 (antitez) koşulmadı~~ → **KISMEN KAPANDI 2026-07-26.**
+   **A16 sınandı:** bir çürütme (**K44** — denetlenebilirlik tavanı), bir `⊨S ⊨D` (*"Markdown'da sözdizimi hatası kavramı yoktur"* — CommonMark spec'i birebir doğruladı: *"Any sequence of characters is a valid CommonMark document"* ∧ *"nothing in Markdown counts as a 'syntax error'"*).
+   **A18 test EDİLEMEDİ** — akademik kanallar 403; bu bir **kapasite itirafıdır**, iddiaların doğruluğu hakkında hüküm değildir. §3'ün hiçbir iddiası ne doğrulandı ne çürütüldü ⇒ **`⊨A` sınıfı**.
+   ⚠️ `⊨S` damgaları **aynı-aile şerhlidir**; CommonMark gibi **doküman doğrulamalı** olanlar muaftır.
 2. **A17 ve A18 yarım:** oturum limiti nedeniyle dönmeyen şeritler — tip ipuçlarının hata oranına etkisi · Python tek-kişilik araç ROI'si · DVC/MLflow/W&B maliyeti · Google ML tech-debt + ML Test Score · aşırı-mühendislik maliyeti · notebook yeniden-üretilebilirlik ikinci tur · shell/CLI doc-testing araçları.
 3. **Bulunamayan ve tezin özgün katkı alanı olan boşluk:** *wiki / kişisel bilgi sistemi bayatlaması üzerine hakemli ölçüm yok.* Tek veri noktası (n=13) yazarlarınca "keşifsel" ilan edilmiş.
 4. **Doğrulanmamış load-bearing atıflar:** TDD meta-analizinin efekt büyüklükleri · ödül-hackleme çalışmasının birincil metni · Google'ın mutation-testing-at-scale sonuçları (hiç ulaşılamadı).
-5. **A19–A21 koşuyor:** model çeşitliliği (denetçi/işçi ayrımı, yerel açık-kaynak) · hızlı çıkarım altyapısı (Cerebras sınıfı) · araç ekosistemi (OpenCode, Orca ADE, MCP entegrasyon katmanı).
+5. ~~A19–A21 koşuyor~~ → **KAPANDI**; `raporlar/2026-07-26-arac-entegrasyonu.md` olarak ayrı dosyada teslim edildi.
+6. **Yeni (K44'ten):** `doctest`/`nbval` sınıfı bir davranışsal denetim katmanı **denenmedi**. §4'ün öncelik listesine girmeye aday — maliyeti düşük, ve *"şu komut şunu döndürür"* tipi kanon cümlelerini bayatlamaya karşı korur.
 
 ## 6. ERİŞİM KEŞFİ — kalıcı değer
 
