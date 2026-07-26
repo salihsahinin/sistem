@@ -373,10 +373,147 @@ H11 (Explore/Plan) tek bir alt-ajan iddiasına dayanıyordu ∧ ben onu **"ÇOK 
 
 ---
 
+## 9b. ⭐ CANLI ÖLÇÜM — TAKSONOMİDE OLMAYAN BİR SONLANMA MODU
+
+*2026-07-26 15:56 UTC, A5–A21 antitez turları koşarken ölçüldü. Bu, A25 taksonomisine EKLENMESİ gereken yeni bir vakadır.*
+
+**Gözlem:** üç antitez ajanı da `15:10–15:11` arasında son kaydını yazdı ∧ **45 dakika boyunca hiçbir yeni kayıt düşmedi.**
+İki örnek, 45 saniye arayla: `boyut`, `satır sayısı`, `mtime` — **üçü de birebir aynı** ⇒ `büyüme = 0`.
+
+**Son kayıt imzası (üçünde de aynı):**
+`type = assistant` ∧ `content = ['text']` ∧ `isApiErrorMessage = None` ∧ `stop_reason = None`
+⇒ `¬API_ölümü` (P121'in 17-vakalık sınıfı değil) ∧ `¬araç_ortası_ölüm` (`tool_use` değil)
+⇒ **Metin ürettiler, sonra sustular.**
+
+**Ve kritik olan:** `SendMessage` üçüne de **`"had no active task"`** döndürdü.
+⇒ `ajan = ölü` ∧ `ajan ≠ çalışıyor`
+⇒ **AMA HİÇBİR `task_notification` GELMEDİ.** Ne `completed`, ne `failed`, ne `stopped`.
+
+### Hüküm — P114/P122'ye EK
+
+`sonlanma_modu = SESSİZ ÖLÜM`: ajan durur ∧ aktif görevi kalmaz ∧ **hiçbir bildirim üretmez.**
+
+⇒ **A25 taksonomisi eksik.** §3'teki tablo `SDK → 5 durum` ∧ `UI → 3 değer` diyordu; bu vaka **dördüncü ve kayıtsız** bir durumdur: *bildirim üretmeyen sonlanma*.
+⇒ **Teşhis kılavuzu (§4) bu vakayı YAKALAYAMAZ** — kılavuz `<status>` alanından başlıyor, ama burada `<status>` hiç doğmuyor.
+⇒ **Eklenmesi gereken adım:** `bildirim_yok ∧ süre > beklenen` ⇒ **transkript mtime'ını ve satır sayısını ÖRNEKLE**, bildirimi bekleme.
+
+### Neden nöbetçi devreye girmedi
+
+`CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS` belgelenmiş varsayılanı **600.000 ms (10 dk)**; ajanlar **45 dk** sessizdi ∧ abort edilmediler.
+⇒ **C2 borcunun faturası:** kurulu ikili **v2.1.42**, dokümanlar **~v2.1.217**; A25 bu değişkenin kurulu ikilide **grep'te çıkmadığını** ölçmüştü.
+⇒ **Koruma mekanizması bu sürümde YOK.** Raporda "geçerli olmayabilir" diye yazılmıştı; **artık ölçüldü: geçerli değil.**
+
+### Kurtarma
+
+`SendMessage` ⇒ üçü de sürdürüldü, **tam bağlamıyla** (P133 doğrulandı, üçüncü kez).
+`ara_metin` ⇒ **üçünde de mevcuttu** ⇒ **V69 ("iskelet-önce") üçüncü kez karşılığını verdi.** Kesilme anında iş diskteydi, kayıp sıfır.
+
+### ⭐ DÜZELTME — dürtme sonrası teşhis değişti
+
+`SendMessage` gönderildi ⇒ **üçü de ~30 saniyede döndü** (`34s · 32s · 29s`) ∧ **üçü de tam raporla**.
+Üçüncüsünün ilk cümlesi: *"Donmuş değilim — önceki turda tam sonucu ürettim ve döndürdüm."*
+İkincisi: *"Bu teslim önceki turda tamamlanmış çalışmanın tekrarıdır."*
+
+⇒ **`hesaplama = BİTMİŞTİ (15:11)`** ∧ **`teslim = OLMADI`**
+⇒ **Teşhis düzeltilir: bu bir HESAPLAMA asılması DEĞİL, bir TESLİM arızasıdır.**
+
+`ajan → nihai_metnini_üretti` ∧ `ajan → durdu` ∧ `task_notification = ∅`
+⇒ İş **45 dakika boyunca diskte hazır bekledi** ∧ ebeveyn (ben) **beklemeye devam etti**.
+
+**Bu, kayıp modunu değiştirir:**
+- `hesaplama_asılması` ⇒ iş **yapılmamıştır**, sürdürme onu **yaptırır**
+- `teslim_arızası` ⇒ iş **yapılmıştır**, sürdürme onu yalnız **taşır** — ve maliyeti ~30 saniyedir
+
+⇒ **Pratik sonuç:** bir ajan beklenenden uzun sürdüğünde **önce dürt, sonra endişelen.** Maliyet 30 saniye; alternatif 45 dakika boş bekleme.
+⇒ Ve `tool_uses = 0` üçünde de: dürtme sonrası **hiç araç çağırmadılar**, yalnız hafızalarındakini yazdılar — teslim arızası teşhisinin ikinci kanıtı.
+
+### Bu vakanın kendi dersi
+
+> **`bildirim_yokluğu ≢ çalışıyor`.**
+> Bütün oturum boyunca bildirim bekledim; bu üç ajan için bildirim **hiç gelmeyecekti**. Bekleme süresi uzadıkça "hâlâ çalışıyor" varsayımı güçleniyordu — ve bu varsayım **yanlıştı**.
+> ⇒ Bu, P73'ün (*"kaynak tükendi ≡ iş bitti"* hatası) **kardeşidir**: *"bildirim yok ≡ iş sürüyor"*.
+> ⇒ **Kural adayı (V82):** uzun koşumlarda bildirim beklenmez, **transkript büyümesi periyodik örneklenir**. Ölçüm iki `stat` çağrısı; maliyeti sıfır.
+
+---
+
+## 9c. A5–A21 HAKEMLİK — tur kapandı
+
+⚠️ **Kaveat:** üç tur da dürtme sonrası `tool_uses = 0` ile döndü; araç kanıtları **kesinti ÖNCESİ** turda toplanmıştı. Kaynak-kod ∧ doküman alıntıları o turdan geliyor ∧ spesifiktir ⇒ kabul edilir. Araçsız kalan kısımlar §1.1 kaveatına tabidir.
+
+### 9c.1 ⛔ KAYNAK KODLA ÇÜRÜTÜLENLER — en sert sonuçlar
+
+**H31 — A7/25 ("hafıza dosyası SESSİZCE kırpılır") ÇÜRÜTÜLDÜ.**
+Antitez, `cli.js`'ten: `FZ=200` aşıldığında ajanın sistem promptuna **otomatik, sayısal uyarı** ekleniyor — *"WARNING: MEMORY.md is N lines (limit: 200)…"*
+**Hakem: ANTİTEZ HAKLI. "Sessizce" YANLIŞ.** ⇒ **DÜZELTİLECEK (K33):** `sessizce kırpılır` → `kırpılır ∧ ajana sayısal uyarı verilir`. Risk **düşer**: ajan kırpılmayı bilir.
+
+**H32 — A5/3 ("heartbeat göndermeyen iş durdurulamaz") ÇÜRÜTÜLDÜ.**
+`cli.js`: `TaskStop` **`task_id` ile durdurur**, heartbeat/işbirliği şartı yok.
+**Hakem: HAKLI, bu sistem için.** ⇒ **K34:** iddia genel dağıtık-sistem teorisinde geçerli, **Claude Code'da geçerli DEĞİL**. Kapsam ayrılacak.
+
+**H33 — ⚠️ A8/31 ("eksen başına optimum ≈ 4") CİDDİ ŞÜPHE ALTINDA.**
+Antitez: *"kaynaksız; muhtemelen çalışma belleği kapasitesi (Cowan) alanından yanlış nakil."*
+**Hakem: ŞÜPHE HAKLI ∧ bu bir TAVSİYEYDİ.** Kategori şeması önerisinin tek somut sayısı buydu.
+⇒ **K35 ⭐:** `optimum ≈ 4` **`[?]` damgalanacak** ∧ dayanağı bulunana kadar **kural olarak yazılmayacak.** *(H11/Explore-Plan ile aynı hata sınıfı: doğrulanmadan öne çıkarılan sayı.)*
+
+**H34 — A5/4 (asılma nöbetçisi senkron alt-ajanlara uygulanmıyor) — DAYANAK BULUNAMADI.**
+Antitez `cli.js`'te `watchdog`, `idleAgent`, `stuckDetection`, `hungTask`, `healthCheck` terimlerinin **hiçbirini** bulamadı.
+**Hakem: §9b ile YAKINSIYOR.** İki bağımsız ölçüm aynı sonuca varıyor: **bu sürümde asılma nöbetçisi YOK.** ⇒ C2 borcu **kapandı, olumsuz yönde**.
+
+### 9c.2 ⛔ DOKÜMANLA ÇÜRÜTÜLENLER — A12 ailesi ağır hasar aldı
+
+| # | İddia | Antitez bulgusu | Hüküm |
+|---|---|---|---|
+| **H35** | Cihazlar arası oturum sürekliliği **kapatılmış bir özelliktir** | `mobile.md`: **"Sessions persist across devices"** | ⛔ **ÇÜRÜTÜLDÜ. K36** — iddia tersine döndü |
+| **H36** | Yerel süreç kapanır ∨ ağ kısa kopar ⇒ oturum **sona erer** | `agent-view.md`: arka-plan oturumu terminal kapansa ∧ ağ kısa kesilse **hayatta kalıyor**; yalnız tam kapanma bitiriyor | ⛔ **ÇÜRÜTÜLDÜ (büyük ölçüde). K37** |
+| **H37** | Oturum devri **tek yönlüdür** (web→terminal, tersi yok) | Desktop app **"Continue in"** yerel→web itebiliyor | ⛔ **KISMEN ÇÜRÜTÜLDÜ. K38** |
+| **H38** | A15/47: yayımlama eşiğini **ajan kendi başına geçemez** | `routines.md`: **onaysız push/PR mümkün** | ⛔ **ÇÜRÜTÜLDÜ. K39 ⭐** — bu bir GÜVENLİK varsayımıydı |
+| H39 | A12/22 (config buluta taşınmıyor) ∧ A12/24 (koşum sırasında onay yok) | Dokümanla **teyit edildi** | ⊨S ⊨D |
+
+> **⚠️ K39 ayrıca işaretleniyor:** *"ajan yayımlama eşiğini kendi geçemez"* bir **güvenlik gerekçesiydi**. Doküman aksini söylüyorsa, bu varsayıma dayanan her tasarım kararı **yeniden okunmalı**.
+
+### 9c.3 Mantıksal çürütmeler
+
+**H40 — A15/43 ("kimlik doğrulamaması, iki davanın sonucunu belirleyen TEK kural") ÇÜRÜTÜLDÜ.** *"asla" + "tek kural" nedenselliği; çok-faktörlü testler normdur."* ⇒ **K40.**
+**H41 — A11/12 ("her koşulda mevcuttur") ÇÜRÜTÜLDÜ** — mutlak niceleme; birebir-alıntı sistemi karşı-örnek. ⇒ **K41.**
+**H42 — A12/25 ("bilişsel mümkünlük HİÇBİR kanıtla desteklenmemiş") ÇÜRÜTÜLDÜ** — görev-değiştirme-maliyeti literatürü **var**; *"kanıtsızlık" yanlış çerçeveleme.* ⇒ **K42.** *(H17/H18 ile aynı sınıf: `[ARANAMADI]` → `bulunamadı` hatası, dördüncü vaka.)*
+**H43 — A14/35 (arama uzayı döngüsüz çizgelerle sınırlı) KISMEN ÇÜRÜTÜLDÜ** — çok-turlu mimariler **döngü içerir**. ⇒ **K43.**
+**H44 — A16/3 ("araçların erişebildiği azami katman YALNIZ referans bütünlüğü") ÇÜRÜTÜLDÜ** — `doctest` ∧ `nbval` **davranışsal doğruluk** denetliyor. ⇒ **K44.**
+**H45 — A21/44 ("tek markdown katmanı paylaşılabilir") mutlak hâliyle ÇÜRÜTÜLDÜ** — kendi komşuları (45–47) tarafından iç-tutarsız kılınıyor. ⇒ **K45.** *(Bu, kod-entegrasyonu raporunun kendi §3.4 hükmüyle — "paylaşılabilir yüzey %100, yürütülebilir yüzey %0" — zaten uyumlu; iddia listesi fazla mutlak yazılmış. M1'in dördüncü vakası.)*
+**H46 — A21/48 (protokolde çağıran/çağrılan ayrımı) DARALDI** — `claude mcp serve` ile Claude Code **hem istemci hem sunucu** olabiliyor ⇒ rol sabit değil. ⇒ **K46.**
+
+### 9c.4 ⊨S ⊨D — birincil kaynakla doğrulananlar
+
+| İddia | Kaynak |
+|---|---|
+| **A16/1** — Markdown'da "sözdizimi hatası" kavramı yoktur | **CommonMark spec birebir**: *"Any sequence of characters is a valid CommonMark document"* ∧ *"nothing in Markdown counts as a 'syntax error'"* ⭐ |
+| **A19/32** — OpenAI-uyumlu katman üretime uygun değil ∧ önbellek yok | `platform.claude.com` birebir: *"not considered a long-term or production-ready solution"* + *"Prompt caching is not supported"* |
+| **A20/40** — genel OpenAI-uyumlu sağlayıcı sürücü olarak kabul edilmiyor | `llm-gateway-protocol.md` |
+| **A20/41** — sağlayıcı değişimi önbelleği sıfırlıyor | `prompt-caching.md` |
+| **A21/51** — kalıcı izin onayları worktree'ler arasında paylaşılıyor | `settings.md` ⭐ *(güvenlik açısından önemli)* |
+| A7/18, A7/19 | `sub-agents.md` ile teyit |
+
+### 9c.5 ⚠️ YARGI-ÇEVRESİ BOŞLUĞU — Salih için kritik
+
+Antitez: **A11 (10, 11, 12, 14, 15) ∧ A15 (43, 44, 46, 47, 48, 49) hiçbiri ülke belirtmiyor.**
+`Türkiye (TMK m.24-25)` ↔ `ABD (eyalet-bazlı right of publicity, CFAA)` ↔ `AB (Persönlichkeitsrecht, DSM metin-madenciliği istisnaları)` arasında **maddi farklılık var**.
+⇒ *"Salih'in Türkiye bağlamı düşünülürse bu boşluk özellikle kritik ve teze karşı en kolay itiraz noktalarından biri."*
+⇒ **K47 ⭐:** hukuk ailelerinin **tüm hükümlerine yargı-çevresi damgası** eklenecek; damgasız hüküm **kullanılmayacak.**
+
+### 9c.6 Test edilemeyenler — dürüstlük kaydı
+`A18 bloğu (18–26) TAMAMEN test edilemedi` — akademik kanallar 403. Antitezin kendi ifadesi: *"Bu bir kapasite itirafıdır, iddiaların doğruluğu hakkında hüküm değildir."*
+`A6 (10–17)` çoğunlukla çürütülemedi ama **doğrulanamadı** da — istatistik iddiaları standart teoriyle uyumlu, bağımsız kanıt yok.
+⇒ **`⊨S` değil, `açık nötr`.**
+
+---
+
 ## 10. AÇIK
 
-- **A5–A9 · A10–A15 · A16–A21 antitez turları KOŞUYOR** (iddia listeleri çıkarıldı, §1.3 sapma kaydıyla)
-- **K1–K32 düzeltmeleri UYGULANMADI** — tüm turlar bitince toplu uygulanacak (çift-düzeltme riskine karşı)
-- **K14 (Explore/Plan) en acil** — bir tavsiye askıda, doğrulanması gerek
+- ✅ **Tüm antitez turları KAPANDI** — A5–A32, on iki aile grubu
+- **K1–K47 düzeltmeleri UYGULANMADI** — PC oturumu Adım Sıfır'da uygulayacak (`cc/gorev-2026-07-26-1.md`)
+- **En acil dört madde — hepsi aynı hata sınıfı: DOĞRULANMADAN ÖNE ÇIKARILAN TAVSİYE**
+  - **K14** — Explore/Plan sürdürülemezliği: dayanak yok, tavsiye **askıda**
+  - **K35** — "eksen başına 4 kategori": kaynaksız, muhtemel yanlış-alan nakli, **askıda**
+  - **K39** — "ajan yayımlama eşiğini kendi geçemez": doküman aksini söylüyor, bu bir **güvenlik varsayımıydı**
+  - **K47** — hukuk hükümlerinde yargı-çevresi damgası yok; Türkiye bağlamı için **kritik**
 - `⊨S` damgaları **aynı-aile şerhiyle** verilecek (§1.2); A25–A27 ∧ A31–A32'nin doküman-doğrulamalı `⊨S`'leri bu şerhten **muaf** (kanıt modelden değil kaynaktan geldi)
 - `⊨S` damgaları **aynı-aile şerhiyle** verilecek (§1.2)
