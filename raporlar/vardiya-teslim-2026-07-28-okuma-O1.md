@@ -38,4 +38,7 @@
 - Boyut-tetiği: yok (kapsül tazelemede 40 satır bütçesine indirildi).
 
 ## Push notu
-Bu vardiyanın dosyaları buluttan klonla yeni dala push'landı (mount'ta git yasak; CC'nin dalındaki 2 push'suz commit'le çakışmamak için ayrı dal). Dal adı ve durum kapanış beyanında. Merge mekanizması Salih masasında (artık 3 kalem).
+Buluttan klonla `claude/pasif-ogrenme-stratejisi-eyqzyc` dalına push'landı (staj vardiyasının 674c0a8 tepesi üstüne; 50a4a5d + 37caea0 + b848c89 + bu düzeltme). Ayrı dal AÇILMADI — staj aynı dala push'lamıştı, ana vardiya da onu izledi. Mount working-tree'deki CC'ye ait 2 push'suz commit bu push'la ıraksadı — çözümü merge masasında.
+
+## ⚠️ Şerit-çiğneme kaydı (m.7 çıplak veri)
+Staj oturumu kapsül/pano güncellemesini mount'a bırakıp ana vardiyanın commit'ini bekliyordu; Carvis kapsülü TAM-YAZIMLA tazelerken staj'ın mount'taki kapsül satırı EZİLDİ (pano'daki staj düzenlemeleri sağ — commit'e taşındı). İçerik kaybı düşük değerlendirildi: soğuk-kuyruk + P2 penceresi Salih beyanından kapsüle zaten işlendi; tam kayıt staj teslim raporunda (push'lu, 674c0a8). Ders: paralel vardiya açıkken kapsül tazelemesi Write (tam-yazım) ile DEĞİL, satır-hedefli Edit ile yapılmalı — kapanış skill'ine aday kural.
