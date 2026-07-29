@@ -101,3 +101,9 @@
 - **Sicil:** 5/3/1 KALIR ama "c=0 go-gate, reliability kanıtı değil" etiketiyle + zaman-ayrıklık şartı + yuvarlanan hata-oranı izleme. 22-29'a çıkarma RED (blast düşük: kabuksuz-ajan + revert; hız ilkesi 07-22). Pano K-010/A1 güncellendi.
 - **Eval:** 6+3 → SMOKE yeniden-etiketi + çıplak-%100 yasağı + yeni setlerde negatif ~10 + ≥3× koşum; 20-sorgu skill-creator protokolüne tam hiza (tek dış-standarda oturan sayımız çıktı). KILAVUZ eval kuralı revize.
 - **Gözlem borçları:** ilk 3×-koşumlu eval turunda flakiness ölçümü · damıtma vardiyasında 48KB→token dönüşümü · atlas alt-ajanlarına ucuz-model denemesi (V59/K-020 hattı, /usage %19 bulgusu).
+
+## 2026-07-29 — CC-mekanik doğrulama koşumu (compaction/bağlam; P6 Faz A+B)
+- Kaynak: `cc/rapor-2026-07-29-3.md` (11-satır Faz A tablosu + Faz B denetim; koşum CC/opus-high, damga ana-sıra/Fable 07-29). Pointer m.20 — tablo buraya kopyalanmadı.
+- Öne çıkan: **A.3 ÇÜRÜTÜLDÜ** (CLAUDE.md = sistem promptu SONRASI kullanıcı mesajı; byte-stabilite sorusunun cevabı) · **A.11 KISMEN ÇÜRÜTÜLDÜ** (Cowork aynı mimari ama `~/.claude` okumaz; Cowork'te CLAUDE.md/compaction [ARANAMADI] ⇒ CC-kuralı Cowork'e otomatik taşınmaz) · **C.1 teyit + keskinleşti** (kapsül satır-konumu cache VE kesilme ekseninde konusuz; kural yalnız MEMORY.md+SKILL.md'ye) · A.10b resmî ~7x · Faz B: kapsül HOOK-enjekte, hook compact'ta da koşuyor (D2 kapsül ayağı kazara kurulu — SAHA-TESTSİZ) · tüzük-thrash CC'de desteklenmedi (0 Read/12 transkript) · compaction izi 0 (negatif kanıt, şerhli) · YENİ sızıntı yolu: compaction sonrası skill LİSTESİ yeniden enjekte edilmiyor.
+- Karar: D1-D7 tasnifi `raporlar/vardiya-teslim-2026-07-29-anasira.md`; Katman-1 kalemleri orada. Üçüncü-taraf "%98 eşik" rakamı KANON DIŞI.
+- SONUÇ (m.37, gözlenecek): [açık] — saha testi: tek kasıtlı /compact + kapsül-dönüş kontrolü.
