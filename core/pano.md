@@ -3,7 +3,7 @@
 *Şirketin nabzı tek bakışta. Kart = işin adresi, kendisi değil. "Ekrana gel" satırı dikkat filtresidir.*
 *Şablon v2 (K-012 adım 4, 2026-07-12, deneysel m.29): +Açılış/Yaş (#22) +Bağımlı +Yetki (Beads bulgusu + Salih yetki-kartı fikri; yetki alanı ajan döneminde anlam kazanır — şimdilik tümü Carvis). Kural: DONE alanı boş kart açılamaz (KILAVUZ).*
 
-**Güncelleme:** 2026-07-29 AKŞAM (Carvis, ana-sıra/Fable) — O2+O3 CC'de koşuldu (raporlar diskte, ingest sonraki vardiya) · P6 kayıp-dosya vakası kapandı (ders-md çatalı → Katman-1) · Şerit-2 ingest tamam (P1-P6 DONE) · compaction doğrulama teslim + D1-D7 tasnif (D3/D4 yapıldı · D5-D7 düştü/tetikli · D1 Katman-1) · Katman-1 gündemine +3 madde · detay: `core/durum-kapsulu.md` + `raporlar/vardiya-teslim-2026-07-29-anasira.md`. Önceki (07-28, çift-yapıştırma damıtıldı — m.8: tarihçe raporlarda): `raporlar/vardiya-teslim-2026-07-28-okuma-O1.md` + `raporlar/vardiya-teslim-2026-07-28-anasira-acilis.md` + `cc/rapor-2026-07-26-1.md`
+**Güncelleme:** 2026-07-29 GECE (Carvis, ana-sıra/Fable) — O2+O3 İNGEST tamam (defter + KG süzgeci 6 küme) · Z6 m.16 kapısı KAPANDI (Salih hükmü: m.41=gereklilik; metin düzeltmesi Katman-1'de) · O4 koşumda + gorev-5 (m.37 Pareto) / gorev-6 (Cowork→CC envanter) derlendi · INSAN-borcu tek dosyaya daraldı · detay: `core/durum-kapsulu.md` + `raporlar/vardiya-teslim-2026-07-29-anasira-gece.md`. Önceki: `raporlar/vardiya-teslim-2026-07-29-anasira.md` (m.8: tarihçe raporlarda)
 
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
