@@ -2,27 +2,23 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır; mount'ta git komutu YOK (pull gerekirse Salih terminali).*
 
-**Güncelleme:** 2026-07-28 AKŞAM, PC ana vardiya (Carvis/Fable) — okuma O1 DONE · CC 07-28-1 teslimi (karar envanteri + K14) işlendi · CC görev emri 07-28-2 hazır · staj günü kapandı (Salih beyanı). Teslim: `raporlar/vardiya-teslim-2026-07-28-okuma-O1.md`
+**Güncelleme:** 2026-07-29 AKŞAM, PC ana vardiya (Carvis/Fable; oturum-başı Opus5 şerhi teslimde) — O2+O3 CC'de koşuldu (raporlar diskte, OKUNMADI) · P6 kayıp-dosya vakası kapandı · Şerit-2 ingest tamam · compaction doğrulama (CC #3) teslim + D-tasnif. Teslim: `raporlar/vardiya-teslim-2026-07-29-anasira.md`
 
 ## Şu an
-- **K-022 staj:** P0+P1 koşuldu 07-28 (SQL set 7/10, yanlış ailesi NULL-WHERE · PY paket-1 3,5/5) · **soğuk baseline ALINMADI — yarın "günaydın, staj" açılışının ilk 15 dk'sı soğuk kuyruk: S1·S8·S10·orijinal PY seti·NaN-filtre.** P2 penceresi 29 Tem-1 Ağu, kayma yok.
-- **Okuma programı:** O1 DONE — hasat + 8 KARAR-GİRDİSİ: `kuyruk/okuma-defteri-2026-07-28.md`. **BULGU: INSAN-pasif-ogrenme K-düzeltmelerini TAŞIMIYOR** (H34/K35/K36-38 öncesi hal) — Salih INSAN dosyalarını okumadan önce bilmeli; düzeltme işi açık. Sıradaki: O2 (taze vardiyada; O4'e Ç1 uzlaştırma bağlı).
-- **K14:** iki yüzey testi koştu — Cowork-SENKRON: kimlik YOK · CC-ASYNC: kimlik+SendMessage yolu VAR ⇒ fark muhtemelen KİP, yüzey değil. Karar hücresi: CC-senkron (`cc/gorev-2026-07-28-2.md` G1). E35 damgası [?]. K35/K39 askıda sürüyor.
-- **Karar envanteri:** `raporlar/2026-07-28-karar-envanteri.md` (59 madde; Katman-1 41) — **CC dalında PUSH'SUZ; Katman-1 masası merge/push'tan önce açılamaz.**
-- **CC envanter bulguları (Katman-1'e eklendi):** tech-stack §7 "Model C" kararı kapsülden düşmüştü → GERİ (pasif-öğrenme "Model A/B/C" ile AD ÇAKIŞMASI, ayrı kararlar) · V-numara yetkisi (CC V64-82 atadı, V64 dolu; geçici kural: CC numarasız aday üretir, m.41 genişletmesi Salih'te) · §20.4-6 (b)/(c) H34 sonrası muhtemelen konusuz (Salih teyidiyle düşer).
-- **Katman-1 bekleyenler (GÜNDEM = envanter dosyası):** merge yolu · Model A/B/C (pasif-öğr.) · Model C (tech-stack) · kategori şeması · öğrenme ajanı · V59 · S6 yargı çevresi · K39 taraması · V-numara · A1 hükmü+sigorta · P6 DONE · denetçi bütçe-çatalı · A5 ilk devir sınıfı · MEZUN onayı · skill süzgeci · index.lock revizyonu.
-- **Senkron ARIZA sürüyor** (FAIL-ff ×3, dirty tree). Bu vardiya kendi dosyalarını buluttan YENİ DALA push'ladı (dal adı teslim beyanında); mount'ta CC'nin 2 push'suz commit'i + diğer şeritlerin kirli dosyaları duruyor — E02 kök nedeni merge masasında çözülür.
-- **Codex/denetçi hattı:** değişmedi (tetik: A4 masası; m.40 araştırma önce). **K-016/Şerit 2:** değişmedi.
+- **Okuma programı:** O1 DONE · **O2+O3 KOŞULDU** (CC opus-high; `cc/rapor-2026-07-29-1/2.md` diskte, OKUNMADI — sonraki ana vardiyanın İLK işi) · O4 bekliyor (Ç1 uzlaştırma; O2 ingest sonrası).
+- **Compaction (P6 Faz A+B, `cc/rapor-2026-07-29-3.md`):** A.3 ÇÜRÜDÜ (CLAUDE.md = sistem-promptu SONRASI kullanıcı mesajı) · A.11: Cowork mekanikleri [ARANAMADI] ⇒ CC-kuralı Cowork'e otomatik taşınmaz · C.1 teyit+keskin (kapsül satır-konumu konusuz) · kapsül HOOK-enjekte, hook compact'ta da koşuyor (SAHA-TESTSİZ) · CC'de compaction izi 0 · skill-listesi compaction sonrası yeniden enjekte EDİLMİYOR (izlemede). Tasnif: D3/D4 yapıldı · D5/D6/D7 düştü/tetik-koşullu · D1 → Katman-1. Kayıt: senaryo-defteri 07-29 + KILAVUZ m.29 notları; Faz C/D AÇILMADI (ana-sıra + Salih).
+- **Şerit 2 (öğrenme):** P1-P6 DONE (P6 Salih beyanı `raporlar/vardiya-teslim-2026-07-22-ogrenme-P6.md`; P2 devir ingest açık; **ders-md ÇATALI:** 07-23 rekonstrüksiyon + html ≠ ORIJINAL yan dosya — birleştirme Katman-1). B→C = yol-haritası+kriter onayı, C tetiği K-009/K-010. Sıradaki: P7 ∨ K-015 compaction-inşası (Faz C/D Salih'le).
+- **K-022 staj:** P0 ders-sonrası kapandı 07-29 (SQL 7/10 · PY p1 3,5/5) · soğuk baseline BORÇ · P2 penceresi 29 Tem–1 Ağu · bugün staj yok (Salih beyanı; m.16 notu verildi). Detay: `raporlar/vardiya-teslim-2026-07-29-staj.md`.
+- **Askıda:** K14 (senkron hücresi CC 07-28-2'de) · K35 · K39. **Karar envanteri** (59 madde) CC dalında push'suz. **Senkron ARIZA sürüyor** (07-29 FAIL-ff, dirty 9; kök-neden merge masasında).
+- **Codex/denetçi hattı + K-016:** değişmedi.
 
 ## Açık borçlar
-- **MERGE ×3:** `claude/opus5-jarvis-updates` + `claude/pasif-ogrenme-stratejisi-eyqzyc` (+üstünde CC'nin 2 push'suz commit'i) + bu vardiyanın yeni dalı. Mekanizma Salih'te.
-- **CC borçları (görev 07-28-2'de):** K14 senkron hücresi + fiilî SendMessage · cc/defter 4 satır · kuyruk 7 madde listesi · token gözlemi.
-- **GÜVENLİK:** PAT düz-metin + ~10 Ekim ölümü · K39 taraması.
-- **Ç1-Ç6:** Ç1'in pasif-öğrenme ucu O1 hasatta (SOZEL şerhi: hüküm kapanmadı, başka ailede yeniden açıldı); uzlaştırma O4 sonunda. · **S4-A1 ingest** (35KB, dalda) · **akademik yeniden-doğrulama** (atlas §20.2 listesi) · **INSAN-dosyaları K-düzeltme turu** · senkron kök-neden.
-- **Salih kararları:** envanter dosyasında (41 madde).
+- **MERGE ×4:** `claude/opus5-jarvis-updates` + `claude/pasif-ogrenme-stratejisi-eyqzyc` (+CC 2 push'suz commit) + 07-28 dalı + **bu vardiyanın dalı (adı teslim beyanında)**. Mekanizma Salih'te.
+- **Katman-1 masası (GÜNDEM: envanter dosyası + 07-29 teslim):** envanter 41 + YENİ: D1 metni · P6 ders 3-dosya düzeltme/birleştirme · iki-yüzey ilkesinin kanonlaşması.
+- **Diğer:** PAT düz-metin ~10 Ekim · K39 taraması · INSAN-dosyaları K-düzeltme turu · P2 devir ingest · senkron kök-neden · /compact saha testi (5 dk) · S4-A1 ingest · akademik yeniden-doğrulama · wiki adayları (`sessiz-hata-desenleri` + `baglam-mekanigi-cc`).
 
 ## Sonraki ilk iş
-1. Salih: **"günaydın, staj"** → soğuk baseline (ilk 15 dk, tekrar kuyruğu).
-2. CC tetiği: `cc/gorev-2026-07-28-2.md`.
-3. **Merge/push kararı → Katman-1 masası TEK oturum** (gündem: karar-envanteri; önce zaman-baskılı 5, sonra geri-alınamaz 16).
-4. Taze ana vardiya: **O2** → O3 → O4 (Ç1 uzlaştırma O4'te; O2 okuması O1-hasat md.13'ü — A13/compiler — referans alır).
+1. Sonraki ana vardiya: **O2/O3 ingest** — `cc/rapor-2026-07-29-1/2.md` → okuma-defteri hasatları + KARAR-GİRDİSİ süzgeci.
+2. Salih: **merge/push kararı → Katman-1 masası TEK oturum.**
+3. "günaydın, staj": soğuk baseline (S1·S8·S10 + PY1-10 + NaN-filtre) — pencere 1 Ağu'a dek.
+4. /compact saha testi (herhangi bir CC oturumunun sonunda).
