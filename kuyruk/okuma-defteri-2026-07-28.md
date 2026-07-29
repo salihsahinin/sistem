@@ -9,8 +9,8 @@
 | # | Aile(ler) | Dosyalar | Hacim | Durum |
 |---|---|---|---|---|
 | O1 | pasif-ogrenme | `pasif-ogrenme-atlas` + `SOZEL-pasif-ogrenme` + `INSAN-pasif-ogrenme` | ~276 KB | **DONE 07-28** (hasat aşağıda) |
-| O2 | onerme-formu + lojik-kod | `LOJIK-onerme-formu` + `SOZEL-onerme-formu` + `lojik-kod-atlas` + `SOZEL-lojik-kod` + `INSAN-lojik-kod` | ~243 KB | BEKLİYOR |
-| O3 | tech-stack + arac-entegrasyonu | `tech-stack-atlas` + `SOZEL-tech-stack` + `INSAN-tech-stack` + `arac-entegrasyonu` + `SOZEL-arac-entegrasyonu` + `INSAN-arac-entegrasyonu` | ~268 KB | BEKLİYOR |
+| O2 | onerme-formu + lojik-kod | `LOJIK-onerme-formu` + `SOZEL-onerme-formu` + `lojik-kod-atlas` + `SOZEL-lojik-kod` + `INSAN-lojik-kod` | ~243 KB | **DONE 07-29** (CC koşumu `cc/rapor-2026-07-29-1.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
+| O3 | tech-stack + arac-entegrasyonu | `tech-stack-atlas` + `SOZEL-tech-stack` + `INSAN-tech-stack` + `arac-entegrasyonu` + `SOZEL-arac-entegrasyonu` + `INSAN-arac-entegrasyonu` | ~268 KB | **DONE 07-29** (CC koşumu `cc/rapor-2026-07-29-2.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
 | O4 | ajan-durma + arastirma-promptu + kod-entegrasyonu | `ajan-durma-atlas` + `SOZEL-ajan-durma` + `INSAN-ajan-durma` + `arastirma-promptu-atlas` + `SOZEL-arastirma-promptu` + `INSAN-arastirma-promptu` + `kod-entegrasyonu` + `SOZEL-kod-entegrasyonu` + `INSAN-kod-entegrasyonu` | ~300 KB | BEKLİYOR |
 
 **Çapraz görevler (okuma sırasında toplanır):**
@@ -88,3 +88,82 @@
 2. Ç1'in bu ucu hasatta; O4'te `arastirma-promptu §4.2` okunurken hangi ailede "yeniden açıldığı" tespit edilmeli (SOZEL şerhi aile adı vermiyor — muhtemelen arastirma-promptu'nun kendisi).
 3. O2'ye özel bağ: A13 compiler bulguları (F1-F9) LOJIK/SOZEL-onerme-formu ailesinin zemininde — O2 okuması bu hasadın 13. maddesini referans alsın.
 4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli.
+
+---
+
+### O2 HASAT — 2026-07-29, CC PC yan-oturum (opus/high) · ingest: ana-sıra (Carvis/Fable) 07-29 gece
+
+**TAM RAPOR: `cc/rapor-2026-07-29-1.md`** — bu blok özettir (m.20); hüküm detayı, tam tablolar ve kanıt adresleri orada.
+
+**Kanıt kısıtı:** önerme-formu ailesi: P70 akademik host 0/10 ⇒ A1/A2/A3/A11 tavan ⊨K; rapor ∈ karar-öncesi-tarama, ∉ kanıt · ⊨S = "aynı-aile hakemi karşısında sağ kaldı" (doküman-kanıtlılar muaf) · lojik-kod antitezi ARAÇLA koştu (tool_uses=21; depo-doğrulamalı ⊨S'ler şerhten muaf) — külliyatın en güçlü antitez turu · AMA §1.3 çeviri-tuzakları tablosu ampirik destek SIFIR (M3, kavramsal argüman).
+
+**Ana hükümler (özet):**
+1. Register hükmü (P144, Salih 07-26): ai-to-ai ⇒ tam önerme formu; F1 dosya düzeyinde uygulanmış (kanıt sütunu cümle DIŞINDA), F2 uyumlu (sadakat yapısal kısıtla). **F3 AÇIĞI:** negatif kutup sayıyla çapalanmıyor — A13'ün kendi sıralamasında en yüksek getirili madde uygulanmamış (→ KG-O2-5). A13 zeminiyle çelişki yok.
+2. **L-çekirdek:** önerme→kod dönüşümünde kaybolan şey önermenin KİPİDİR (∀→sonlu örnekleme · ¬→"bulunamadı" · [?]∧⊨X→tek None); her çöküş SESSİZ. A13 düzyazı-kaybının kod analoğu.
+3. **L7 Clover [⊨D] + §2.6 merdiveni:** en güçlü ölçülmüş doğrulayıcı BİÇİMSELDİR (yanlış-pozitif=0), ikinci LLM değil; salt-metin disiplini (bizim önerme formu) merdivenin EN ZAYIF basamağı ⇒ önerme_formu = gerekli ∧ ¬yeterli; değeri doğrulayıcıya BAĞLANABİLİRLİK. **L32 zinciri:** önerme→DbC→PBT→kod, 7. basamaktan 2.'ye taşır.
+4. **L12/L13:** literatür bizim soruyu ölçmüyor (autoformalization doğruluğu ölçülmemiş; kategori tablosu aranıp bulunamadı). **L15/L21 (K31 daraltmalı):** [?]/⊨X'in koda taşınma DAVRANIŞI boş alan — JARVIS'te ölçülebilir (→ KG-O2-11).
+5. **L17/K32:** biçimsellik↔başarı muhtemelen ters-U; soru "hangisi doğru"dan "optimum nerede"ye değişti — külliyatın cevaplanmamış merkezî sorusu.
+6. **P34/P76/P78 [⊨D]:** lojik-forma çevrilmiş kural HÂLÂ metindir; metin ∧ ¬dış_denetim → etki=0 (101 hastane, p=0,13); istemci hook `--no-verify` ile atlanır ⇒ zorlayıcılık DIŞSAL katmandan (settings-deny/pre-receive sınıfı).
+7. **P83 [⊨K→ölçüm]:** kabul_testi ⊥ optimize_eden_taraf (%32,67 sızıntı; filtre sonrası gerçek çözüm %0,55) — öğrenme-ajanı KG-5'e ÜÇÜNCÜ bağımsız aleyhte kanıt (→ KG-O2-8).
+8. **P86-P88/P89/P130/P131:** çapraz_AİLE > aynı_aile > öz; sapma MİMARİ; %60 aynı yanlış cevap ⇒ denetçi süzgeç≠kalkan; 2 heterojen > 16 homojen; fiyat merdiveni aile İÇİNDE ⇒ çapraz-sağlayıcı gerekçesi hata-bağımsızlığı, tasarruf değil.
+9. **m.38 denetimi:** G1-G5 güçlendiren / Z1-Z9 zayıflatan (tam tablolar raporda). En keskin: **Z5** ilan edilen bağlaç seti fiilî kanon kullanımından DAR (m.34 açık ∀; m.42/m.44 yüklem + örtük ∀) · **Z6** m.41 `↔` converse riski — m.16 ADAYI (aşağıda damga ③) · **Z2** m.38 gerekçesi ölçülmemiş (M3 [ARANAMADI]; kanıt sınıfı düşer, kural düşmez) · **Z3** "ne kadar…o kadar" = ölçülmemiş monotonluk iddiası (L17 ters-U ile sınırlı).
+
+**K-düzeltme etkisi:** K11 (`is_error` ⊨X ÇÖZÜLMEDİ ⇒ limit ölümleri `subtype` ile; is_error filtresi YAZILMAZ) · K12 (alt-ajan kendi önbelleğini ısıtır ⇒ az sayıda uzun-ömürlü) · K13 (üç mekanizma: 20 belge / 10 yürütme / 10×kota; dalga zarfı 10 kalır) · K27/K29/K30/K31/K32 (lojik-kod: "imkânsız/geri alınamaz/yalnız" ÜÇ MUTLAK İFADE DÜŞTÜ; kayıp kaçınılmaz değil TASARIM TERCİHİ) · K45 (paylaşılabilirlik okunan katmana daraldı) · H1/K9 (tek-vaka transfer ~%30, sıfır değil). **Meta:** mutlak niceleyici tek karşı-örnekle düşer — O1 K41/K43 ile aynı hata sınıfı, 4.-6. bağımsız vakalar. Antitez iki iç-çelişki adayını test edip "tutmuyor" diyebildi ⇒ evet-adamı üretmiyor (m.40b lehine).
+
+**INSAN-dosyası şerhi:** `INSAN-lojik-kod` TEMİZ (K27/29/30/31/32 taşınıyor; K28 eksiltme ≠ çelişki). Git kaydı kök neden: **`INSAN-pasif-ogrenme` antitez turundan ~10 saat ÖNCE yazılmış, hiç senkronlanmamış TEK dosya**; diğer 6 INSAN "önce düzelt→sonra yaz" deseniyle üretilmiş. Commit sırası gerek-koşul, yeter değil (K28 atlaması kanıt) ⇒ içerik denetimi dosya-başına.
+
+**KARAR-GİRDİSİ (başlıklar; gerekçeler raporda):** KG-O2-1 m.38 set genişletme (∀/∃+sıra, epistemik damgalar) · **KG-O2-2 m.41 `↔`→`→` — m.16 TETİĞİ, rapor Salih'e sunuldu 07-29** · KG-O2-3 notasyona kod-karşılığı sütunu · KG-O2-4 "aranamadı" etiketi (3 bağımsız işaret) · KG-O2-5 F3 sayısal çapa (P45 kalibrasyon şartlı, karar-ağırlıksız) · KG-O2-6 m.38'e kapsam (d) ai-to-ai raporlar (P144 kanon-kayıt boşluğu) · KG-O2-7 LLM-denetçi ≠ BİÇİMSEL denetçi; bütçe-çatalı yalnız birincide · KG-O2-8 KG-5'e 3. aleyhte · KG-O2-9 is_error kuralı (Katman-2, kayıtlı) · KG-O2-10 önerme→DbC→PBT skill adayı (m.43) · KG-O2-11 kendi boşluğumuzu ölç · KG-O2-12 Salih okuma yolu asimetrik — onerme-formu ailesinin insan yüzü YOK, okuma MAKİNE-EŞLİKLİ olmalı (register hükmünün geçerlilik şartı).
+
+**Ç1/S6/K39:** **Ç1:** P19 [⊨D] görev-tipi tablosu = uzlaştırma aleti (kusur-tespiti %94+ ✅ ↔ "genel kalite" r=0,13-0,48 ❌ — farklı satırlar, ikisi aynı anda doğru); O2'de yeniden-açma kaydı YOK ⇒ tek aday `arastirma-promptu §4.2` (O4). **S6:** hukuk yalnız Bölüm XI (P52-P55, K47 blanket şerhli); lojik-kod'da hukuk YOK ⇒ taban büyümedi, S6 girdisi KAPALI. **K39:** P78/P84 ek kanıt — "ajan geçemez" varsayımına dayanan her yüzey YEREL değil DIŞSAL katmanla kapatılır; tarama ölçütü bu.
+
+**Salih şerhi:** yok — aile insan-yüzsüz (P144); okuma makine-eşlikli yapılacak (KG-O2-12).
+
+**Ana-sıra damgaları (Katman-2, veto açık):**
+① O2'nin kapsam-aşan adımı (kanon lojik formlarının §1.3 denetimi) **KAPSAM-İÇİ** — m.38 denetiminin amacına hizmet ediyor; Z5/Z6 geçerli bulgu.
+② O1 devir md.1 **KAPSAM DARALTMASI KABUL** (O3 kanıtıyla birlikte): "INSAN toplu tur" borcu → "dosya-başına denetim; kesin borç: `INSAN-pasif-ogrenme`".
+③ Z6 = m.16 çelişki ADAYI; çelişki+artı/eksi+plan raporu Salih'e 07-29 gece sunuldu. **HÜKÜM VERİLDİ (Salih, 07-29 gece, ana oturum):** m.41'in kastı GEREKLİLİKTİR — ana-sıra ∧ Fable yeterlilik DEĞİL; kararlar Salih'in emir/onayıyla uygulanır. Maddenin amacı: en üst sürümün karar sürecinde yer alması (sürüm-genel — "yarın Fable 2 çıkarsa o olur"). ⇒ Z6 çelişkisi KAPANDI (yorum düzeyinde); metin düzeltmesi (`↔`→`→` + amaç dipnotu, core/ dokunuşu) Katman-1 masasında tek kalem olarak işlenecek.
+④ Numarasız-aday kuralı doğru uygulandı; kaynak dosyalardaki V73/V76-V79 numaraları alıntı statüsünde — V-numara yetkisi Katman-1 masasında.
+
+**Devir:** L17 optimum sorusu AÇIK · M2 (AWS TLA+) · M3 (doğal dil→lojik hata oranı) · P117 (is_error ⊨X) açık · token gözlemi: salt-okuma vardiyalarında medium-ilk-geçiş / high-sentez A/B önerisi (ölçümsüz, iki vardiyalık A/B ister).
+
+---
+
+### O3 HASAT — 2026-07-29, CC PC yan-oturum (Opus 5 1M/high) · ingest: ana-sıra (Carvis/Fable) 07-29 gece
+
+**TAM RAPOR: `cc/rapor-2026-07-29-2.md`** — bu blok özettir (m.20); detay orada.
+
+**⚠️ AD ÇAKIŞMASI sabitlendi:** `tech-stack §7` Model A/B/C ≠ pasif-öğrenme §16 Model A/B/C — yalnız harfte değil YAPIDA da benzer; **iki AYRI Katman-1 imzası**, aynı masada bile aynı oy değil (karşılaştırma tablosu raporun başında).
+
+**Kanıt kısıtı:** tech-stack literatürü tavan [K] (akademik 403) AMA **A22 4 bağımsız [D] ölçüm üretti** (PyPI n=478 · PyPI 4×500 · npm 220.469 · StarScout ham CSV) + A23'ün tamamı bu makinede kendi ölçümü; antitez ARAÇSIZ ⇒ ⊨S'ler aynı-aile şerhli. arac ailesi: 4 iddia birincil dokümanla ⊨D (şerhten muaf); **geçerlilik tarihi 26 Tem** — sürüm/yıldız/fiyat bayatlar, yapısal bulgular kalıcı.
+
+**Ana hükümler (özet):**
+1. **Asimetri hükmü:** ölçülmüş olan = ekosistem sağlığı (yaşayacak mı); ölçülmemiş olan = karar yöntemi (nasıl seçmeli). Yıldız ölçülmüş şekilde BOZUK (%81,4 sahte-yoğun depo; Continue 35,1k★ öldü) — indirme ölçülmüş şekilde güçlü (top-500 %8,6 ↔ rastgele %54,2 terk; toplu düzey, paket-başına garanti değil/K4). **Y1: iki bağımsız aile aynı hükme vardı.**
+2. **A23 [D-ölçüm]:** ruff/mypy hangi modda olursa olsun GERÇEK hatayı (look-ahead) yakalamadı; mypy DataFrame içini göremiyor ⇒ kapsama yapısal dar. **Çalışan çözüm ölçüldü:** kesme-noktası süpür + ham float + NaN-duyarlı eşitlik = 10/10, ~20 satır pytest.
+3. **MinBTL [D-hesap+simülasyon]:** 5 yıl veri ∧ 45 varyant ⇒ beklenen in-sample Sharpe 1,00 SAF ŞANSTAN (MC iki ondalık aynı; OOS ≈0). ⇒ deneme sayacı + OOS kilidi = PortRisk'in en ucuz sigortası ([X]: karşı-literatür var, tartışmalı). Veri sızıntısı: naif k-fold R²+0,85 ↔ purged −1,2; ama sızıntı ölçülür, kategorik korku değil.
+4. **Yığın kararları [D-ölçüm]:** Parquet gerekçesi hız değil DOĞRULUK (CSV datetime sessizce str→leksik sıralama) · PYTHONHASHSEED+sorted (koşul: set kullanımı/K2) · MLflow 3.x `./mlruns` KALDIRDI ⇒ internetteki tavsiye 2.x'e ait/geçersiz; yerine 8 satır JSONL · asgari yığın 10 madde, İLK İKİSİ (nedensellik testi + deneme sayacı) kalan sekizin toplamından değerli · ALINMAZ listesi gerekçe kaydıdır (6 ay sonra cevap hazır).
+5. **tech-stack §7 Model C önerisi:** "C, B'yi girdi alarak, sürtünme eşikli" — gerekçe K6 sonrası "en iyi kanıtlı"dan "TEK UYGULANABİLİR ∧ kendi ölçümünü üretecek biçimde kurulmuş"a düştü; tüm gerekçe §5.1 ÇIKARIMINA dayanıyor (ölçüm değil); sürtünme eşiği = m.31 ölçek eşiğiyle birebir aynı kesim ⇒ yeni kural gerektirmiyor.
+6. **arac: denetçi zinciri** — çapraz-AİLE gerekir ("başka model" yetmez); bağımsızlık satın alınamıyor (%60 aynı yanlış); 2 het > 16 hom; fiyat merdiveni aile içinde (Opus→Haiku 5×) ⇒ çapraz-sağlayıcı gerekçesi hata-bağımsızlığı. **Gizli maliyet [⊨D]:** OpenAI-uyumlu katman üretim-dışı; caching YOK ⇒ uzun-kanon sistemde girdi 10×; alanlar SESSİZCE düşüyor ⇒ her sağlayıcıya kendi API'siyle.
+7. **Hız sorusu [D, 357k tur]:** insan-döngülü oturumda duvar-saati %92,3 İNSAN-düşünme / %3,3 LLM ⇒ hızlı çıkarım dilimi 1/30; çelişkinin çözümü payda farkı — otonom koşumda model süresi gerçekten baskın. Operasyonel kural: binlerce çıktı-token→hızlı; kimse beklemiyorsa→batch; ajanın bekleme döngüsü = ORKESTRASYON düzeltmesi, satın alınmaz.
+8. **⭐⭐ İzin topolojisi [D]:** OpenCode varsayılanı `allow` ⇒ **Dilim-1 kilidi YALNIZ Claude Code'da**; glob anlambilimi sessizce farklı (`core/**`→`core/*` delik); **worktree'ler kalıcı izin onaylarını PAYLAŞIYOR** ⇒ tek onay tüm paralel yüzeye yayılır. Talimat katmanı: okunan %100 / yürütülebilir %0 taşınır; `settings.json` izin bloğu TAŞINMAZ.
+9. **Ekosistem yapısal:** MCP → Linux Foundation/AAIF (AGENTS.md + goose ile aynı vakfın kurucu projeleri) ⇒ tek-talimat-katmanı uzun ömürlü · A2A yanlış katman, yok say · Orca NET-NEGATİF (çekirdek değeri `claude --worktree` ile yerleşikleşti; `wiki/orca.md` bayat — güncelleme borcu) · Continue ölü/OpenHands pivot/Aider durmuş · doğru olgunluk ölçütü: son commit × sürüm kadansı × açık-konu birikimi.
+10. **Y2/Y3:** tech-stack'in TÜM ⊨S'leri arac'ın ölçtüğü aynı-aile sapmasının altında (iki dosya birbirinden habersiz aynı öz-kısıt) · çapraz-aile atıf tutarlılığı DOĞRULANDI (%35 duraklama rakamı doğru referanslı).
+
+**K-düzeltme etkisi:** tech-stack K1-K8+K10 (⚠️ bu K-serisi KENDİ İÇİNDE, pasif-öğrenmenin K33-K47'siyle karışmaz): K1 tek-vaka ~%30 · K5 ⭐ ANTİTEZ CÜMLEYİ TERS ANLADI ⇒ **K10 kuralı doğdu: önerme formunda `¬` kapsamı PARANTEZLE sabitlenir** · K6 Model C "bulunabilen tek" (transfer ölçülmemiş [?]) · K7 polars tek eksende ölçüldü (B8 borcu) · arac K45 (çürüten kendi komşu tablosuydu) / K46 (ACP yönü kurulum tercihi — `claude mcp serve` denenmedi). **Meta (K5 ∧ K45): hata analizde değil ÖZETLEME adımında — O1 md.13 A13/compiler bulgusunun İKİ bağımsız canlı vakası; O4 üçüncüyü bulursa gözlem KURALA döner.**
+
+**INSAN-dosyası şerhi:** O3'ün iki INSAN dosyası da K-düzeltmelerini TAŞIYOR (madde madde doğrulandı; tek eksik K8 = atlama, düşük etki). Çapraz-aile K'ların konusu olan pasaj yok ⇒ çelişme fırsatı doğmamış. ⇒ O1 md.1 hükmü İNSAN-pasif-ogrenme'ye ÖZGÜ.
+
+**KARAR-GİRDİSİ (başlıklar):** KG-9 tech-stack §7 Model C imzası (AD ÇAKIŞMALI; 3 aleyhte + 1 belirleyici lehte) · KG-10 yıldız yasağı (KILAVUZ adayı; en ucuz-en dayanaklı) · KG-11 ADR'ye "gözlenmiş sonuç" alanı (O1 md.4 ile bağımsız örtüşme — özgün katkı alanı) · KG-12 tek çapraz-AİLE denetçi (A4 bütçe-çatalı girdisi; büyüklük ölçülmedi) · KG-13 alt-ajan model/effort merdiveni (.claude/ kilitli ⇒ ANA-SIRA işi; öncesi/sonrası token ölçümü şartlı) · KG-14 AGENTS.md köprüsü (Katman-1; KG-15 ile birlikte okunmalı) · **KG-15 ⭐⭐ Dilim-1 kilidi YÜZEY-BAĞIMLI — K39 taramasına 2 somut madde** · KG-16 yerel gömme (vault indeksleme adayı; ajanik kodlama yerelde YAPILMAZ) · KG-17 "şu an alınmaz" listesinin imzası (gerekçe kaydı) · KG-18 DS/ML asgari yığını (K-022 ∧ PortRisk temaslı) · KG-19 deneme sayacı + OOS kilidi (PortRisk sigortası) · KG-20 "kaynak kapalıysa veriyi üret" taktiği (m.40b brifing maddesi adayı) · KG-21 V-numara çakışması somut vaka (tech-stack §9 V64-V67 ↔ V64 dolu).
+
+**Ç1/S6/K39:** **Ç1:** üçüncü ayak hazır — yargıç gücü GÖREV-TİPİNE bağlı (arac §1.1-1.3; A10 "9 hakem ≈ 2 oy" ile bağımsız yakınsama); uzlaştırma O4'te derlenir. **S6:** NEGATİF bulgu — hukuk hükmü YOK (tarama terimleri + elenen 4 aday gerekçeli; "aranmadı" değil "bulunmadı"); S6 malzemesi A11/A15'te, O1'de adresli. **K39:** kapsam "yayım eşiği"nden **"yüzey ∧ worktree izin topolojisi"ne** genişliyor (3 madde, üçü [D]∨⊨D; Salih'in paralel-CC pratiğiyle DOĞRUDAN temaslı).
+
+**A1-A5 kapı girdileri:** yalnız GİRDİ, koşul değişikliği yok — tam tablo raporda (A2: guardrail PASS yüzey-bağımlı + onay/tatbikat asimetrisi · A4: bütçe-çatalı "kaç denetçi"den "hangi aileden"e · A5: rol→model eşlemesi + uzun-ufuk düşüşü %13-40 = lider-işçi bölünmesinin ölçülmüş gerekçesi).
+
+**Salih şerhi:** henüz yok — INSAN-tech-stack + INSAN-arac-entegrasyonu Salih'in temposunda; ikisi de temiz, ön-uyarı GEREKMİYOR.
+
+**Ana-sıra damgaları (Katman-2, veto açık):**
+① O1 devir md.1 kapsam daraltması KABUL (O2 damgası ② ile ortak).
+② KG-21 V-çakışması: tech-stack §9'daki V64-V67 numarasız aday statüsüne düşürüldü; V-numara yetkisi Katman-1 masasında.
+③ O3 devir md.3 sorusuna ana-sıra cevabı: **`¬`-kapsam kuralı (K10) önerme-formu ailesinde YOK** — O2'nin aktardığı L31 dört kuralı (∀/∃ sıra · →/⇔ ayrımı · t/t+1 invariant · ¬P dalı) komşu ama ¬-parantez maddesi içermiyor ⇒ K10 YENİ ekleme; **L31+K10 birleşik "lojik yazım disiplini" tek aday paket** (Katman-1 notasyon masasına KG-O2-1/3/4 ile birlikte).
+④ `wiki/orca.md` güncelleme borcu kaydedildi (07-09 tarihli, yıldız 2,3× bayat; içerik hükmü "darboğaz araç değil" AYAKTA — O3 destekliyor).
+
+**Devir:** açık borçlar B3-B9 (en büyükleri: B6 tek-kişilik ölçek ölçümü YOK — Salih'in tam yeri; arac §5.3 çapraz-sağlayıcı prompt-kaybı ölçülmemiş) · `claude mcp serve` denenmedi · bayatlama saati işliyor (26 Tem rakamları) · Read 25k tavanı: >30 KB dosyada parça planı ÖNCEDEN yapılır (O4'e doğrudan uygulanır).
