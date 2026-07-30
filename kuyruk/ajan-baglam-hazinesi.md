@@ -104,3 +104,9 @@ Her beyan bir kayıt; alanlar Fable'ın nihai hazinesine taşınabilir aday süt
 - **JARVIS-özgü bağ:** m.30c katmanlama (token-zaman verimi yetmezse alt katman) ŞEF katmanına uygulanmış hali; m.30d orkestra-şefi ufku (havuz #13). Ölçü = m.30 token-zaman + span.
 - **AB-03 ↔ AB-05 BİRLEŞİK BULGU:** ikisi de **aynı tetiği paylaşır — Carvis'in span/bandwidth aşımı.** Bugün Carvis = CEO = şef = köprü (m.17) = insan-arayüzü, hepsi tek entity (fused-lead standardı). Hem aracı-ajan (AB-03) hem şef-ayrımı (AB-05) yalnız Carvis aşırı-yüklenince tetiklenir; yanıt merdiveni ortak (fonksiyonel önce, yapısal sonra).
 - **Statü:** ARAŞTIRILDI · **Hiyerarşi konumu:** yeni ajan ÖNERİLMEZ (bugün); tetikli-kademeli (fonksiyonel→yapısal). Rol kararı Katman-1 (Salih/Fable).
+
+### AB-06 · **AJAN DEĞİL — arayüz katmanı** · Skill-dili + ontolojik topoloji (Salih vizyonu 07-30 gece)
+- **Ham beyan (birebir):** *"Nihai hedef olarak Claude'la konuşurken sadece skill'ler kullanarak konuşmam, hatta sadece hazırlamış olduğum skill'lerden semantik olarak anlamlı cümleler çıkaracak şekilde seninle iletişim kurmamı hedefleyen bir sistem istiyoruz. Ontolojik topoloji de yazcak Markov chain'lerle. Bunu bağlam hazinesine ekle sistemi ona göre güncellememiz için."* Damga: ayık.
+- **Carvis sınıflandırma şerhi (m.6):** Bu bir AJAN beyanı değil, bir **arayüz/dil mimarisi** beyanıdır — hazinenin şeması (yapabilir / kırmızı çizgi / model tahmini) buna oturmuyor. Salih'in "hazineye ekle" emri yerine getirildi ama kayıt **pointer** olarak tutuluyor; tam kayıt `fikir-kutusu.md` numarasız satırında, araştırma emri `cc/gorev-2026-07-30-11.md`. Gerekçe: yanlış şemaya sıkıştırmak beyanı bozar (m.8 ruhu: kaybetme, ama zorlama da).
+- **Hazineye asıl bağı:** skill-dili kurulursa ajan-atama da o dille yapılır (AB-01..AB-05'in tetiklenme biçimi) ⇒ K-010 açıldığında bu kayıt yeniden okunur.
+- **Statü:** TOPLANDI (tanımlama araştırma raporundan sonra).
