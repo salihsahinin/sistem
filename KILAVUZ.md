@@ -87,3 +87,8 @@ Dönüşte ana-sıraya "raporları oku" demen yeter (dönüş ritüeli).
 - **Kompozisyon:** skill'ler birbirini literal çağırmaz; bileşik iş = `context: fork` orkestratör + küçük çocuk skill'ler + sabit-format handoff + fail-loud.
 - **Yayın-öncesi:** 20-sorgu description eval (10 tetiklemeli + 10 tetiklemesiz) · çok-modelde test · versiyon damgası (`0.x-deneysel-m29`).
 - **Ev:** `.claude/skills/<ad>/SKILL.md` (repo, git'e commit — dağıtım gece-senkron/pull ile).
+
+## Deneysel notlar — 2026-07-29 (m.29 damgalı; kaynak: cc/rapor-2026-07-29-3.md + P6 dersi)
+- **D3 not-tutma refleksi:** değer üretilir üretilmez diske; teslim TASLAĞI vardiya ORTASINDA açılır, kapanış tamamlar. Gerekçe: 07-22 P6 dosya-kaybı vakası + kapsül/hook çıktısı compaction 2. aşamada özete erir.
+- **D4 ana-sıra yüzeyi:** kanon edit'leri vardiya sonunda toplu; oturum-ortası CLAUDE.md yazımı yok (CC'de settings-deny ile yapısal; ana-sırada davranış kuralı).
+- **İki-yüzey şerhi (A.11):** CC dokümanından türetilen bağlam-mekaniği kuralları Cowork'e OTOMATİK taşınmaz; Cowork tarafı [ARANAMADI]. Yeni mekanik kural yalnız CC-yüzeyi için yazılır, Cowork'e genelleme Salih masasına.

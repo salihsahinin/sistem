@@ -188,7 +188,9 @@ Ama dürüst olmam gerekirse: 300 saniye kuralı sadece **iki** gerçek vakaya d
 
 ### Zaten bir koruma varmış — ama kör noktası var
 
-Sistemde alt-ajanlar için bir "donma bekçisi" mevcut ve doğru şekilde tasarlanmış: **her ilerleme sinyalinde sayacı sıfırlıyor.** Yani "toplam 10 dakika oldu, öldür" değil, "10 dakikadır hiçbir ilerleme yok, öldür" diyor. Doğru mantık bu.
+> **[K] DÜZELTME — 2026-07-30, ana-sıra (kaynak: `cc/rapor-2026-07-29-4.md` §3.1/H34-C2):** Bu bölümün "bekçi var ama kör noktalı" hükmü **DÜŞTÜ**. İki bağımsız ölçüm (kurulu `cli.js` grep'i + 45 dk canlı vaka): asılma nöbetçisi kurulu sürümde **HİÇ YOK**. `INSAN-ajan-durma` ⑪ doğru hükmü taşıyor; bu iki dosya arasındaki çelişkinin çözüm yönü budur. Aşağıdaki metin m.8 gereği silinmedi; tarihî kayıttır.
+
+~~Sistemde alt-ajanlar için bir "donma bekçisi" mevcut ve doğru şekilde tasarlanmış: **her ilerleme sinyalinde sayacı sıfırlıyor.** Yani "toplam 10 dakika oldu, öldür" değil, "10 dakikadır hiçbir ilerleme yok, öldür" diyor. Doğru mantık bu.~~
 
 Üç sorun var:
 1. Varsayılan eşiği 10 dakika, ve Bash komutlarının izin verilen üst sınırı da tam 10 dakika. Yani bir ajan Bash beklemesini sonuna kadar açtığında **bekçinin penceresine tam sığıyor ve yakalanmıyor.** Ölçtüğüm 600 saniyelik duraklama tam olarak buydu.

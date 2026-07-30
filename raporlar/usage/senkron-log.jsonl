@@ -1,2 +1,11 @@
 {"ts":"2026-07-22T13:24:39.4616267+03:00","event":"gece-senkron","status":"OK","from":"90eabce","to":"9cbaa68","dirty_files":1,"dur_s":7,"agent":"script","model":"none","tokens":0}
 {"ts":"2026-07-23T14:02:45.1753556+03:00","event":"gece-senkron","status":"OK","from":"a27f4f8","to":"e3937f9","dirty_files":1,"dur_s":5,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-25T13:43:13.3405907+03:00","event":"gece-senkron","status":"OK","from":"4429c7f","to":"4429c7f","dirty_files":0,"dur_s":4,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-26T02:45:03.4937000+03:00","event":"gece-senkron","status":"OK","from":"4429c7f","to":"4429c7f","dirty_files":3,"dur_s":6,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-26T13:13:29.0263242+03:00","event":"gece-senkron","status":"OK","from":"b30e31a","to":"b30e31a","dirty_files":6,"dur_s":14,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-26T17:13:48.9426304+03:00","event":"gece-senkron","status":"FAIL-ff","from":"b30e31a","to":"b30e31a","dirty_files":6,"dur_s":2,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-26T17:14:51.6863877+03:00","event":"gece-senkron","status":"FAIL-ff","from":"b30e31a","to":"b30e31a","dirty_files":7,"dur_s":1,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-28T14:03:19.3841596+03:00","event":"gece-senkron","status":"FAIL-ff","from":"c61eb05","to":"c61eb05","dirty_files":7,"dur_s":8,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-29T13:07:08.6296801+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":9,"dur_s":1,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-30T00:35:57.3612211+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":27,"dur_s":7,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-30T13:28:06.5939663+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":34,"dur_s":2,"agent":"script","model":"none","tokens":0}

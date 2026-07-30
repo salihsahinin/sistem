@@ -101,3 +101,27 @@
 - **Sicil:** 5/3/1 KALIR ama "c=0 go-gate, reliability kanıtı değil" etiketiyle + zaman-ayrıklık şartı + yuvarlanan hata-oranı izleme. 22-29'a çıkarma RED (blast düşük: kabuksuz-ajan + revert; hız ilkesi 07-22). Pano K-010/A1 güncellendi.
 - **Eval:** 6+3 → SMOKE yeniden-etiketi + çıplak-%100 yasağı + yeni setlerde negatif ~10 + ≥3× koşum; 20-sorgu skill-creator protokolüne tam hiza (tek dış-standarda oturan sayımız çıktı). KILAVUZ eval kuralı revize.
 - **Gözlem borçları:** ilk 3×-koşumlu eval turunda flakiness ölçümü · damıtma vardiyasında 48KB→token dönüşümü · atlas alt-ajanlarına ucuz-model denemesi (V59/K-020 hattı, /usage %19 bulgusu).
+
+## 2026-07-29 — CC-mekanik doğrulama koşumu (compaction/bağlam; P6 Faz A+B)
+- Kaynak: `cc/rapor-2026-07-29-3.md` (11-satır Faz A tablosu + Faz B denetim; koşum CC/opus-high, damga ana-sıra/Fable 07-29). Pointer m.20 — tablo buraya kopyalanmadı.
+- Öne çıkan: **A.3 ÇÜRÜTÜLDÜ** (CLAUDE.md = sistem promptu SONRASI kullanıcı mesajı; byte-stabilite sorusunun cevabı) · **A.11 KISMEN ÇÜRÜTÜLDÜ** (Cowork aynı mimari ama `~/.claude` okumaz; Cowork'te CLAUDE.md/compaction [ARANAMADI] ⇒ CC-kuralı Cowork'e otomatik taşınmaz) · **C.1 teyit + keskinleşti** (kapsül satır-konumu cache VE kesilme ekseninde konusuz; kural yalnız MEMORY.md+SKILL.md'ye) · A.10b resmî ~7x · Faz B: kapsül HOOK-enjekte, hook compact'ta da koşuyor (D2 kapsül ayağı kazara kurulu — SAHA-TESTSİZ) · tüzük-thrash CC'de desteklenmedi (0 Read/12 transkript) · compaction izi 0 (negatif kanıt, şerhli) · YENİ sızıntı yolu: compaction sonrası skill LİSTESİ yeniden enjekte edilmiyor.
+- Karar: D1-D7 tasnifi `raporlar/vardiya-teslim-2026-07-29-anasira.md`; Katman-1 kalemleri orada. Üçüncü-taraf "%98 eşik" rakamı KANON DIŞI.
+- SONUÇ (m.37, gözlenecek): [açık] — saha testi: tek kasıtlı /compact + kapsül-dönüş kontrolü.
+
+## 2026-07-29 GECE — O2/O3 ingest kararları + Z6 kapanışı + m.37 revizyon talebi
+- **Z6 (m.41↔m.31 çelişki adayı) m.16 kapısından geçti ve KAPANDI:** rapor sunuldu (çelişki+artı/eksi+plan), Salih hükmü: m.41'in kastı GEREKLİLİK — ana-sıra∧Fable yeterlilik değil, uygulama Salih emir/onayıyla; amaç "en üst sürümün karar sürecinde olması" (sürüm-genel). Metin düzeltmesi `↔`→`→` Katman-1 masasında. Kayıt: defter O2-hasat damga ③.
+- **Katman-2 damgalar (Carvis, veto açık):** O2'nin kapsam-aşan §1.3 denetimi KAPSAM-İÇİ (Z5/Z6 geçerli) · O1 devir md.1 KAPSAM DARALTMASI kabul (INSAN-borcu → dosya-başına; kesin borç tek dosya) · K10 önerme-formu kurallarında YOK tespiti (L31+K10 birleşik aday paket).
+- **m.37 revizyon TALEBİ (Salih, karar DEĞİL):** 3-model sunumları decoy/compromise desenine kayıyor — gerçek-fedakârlık (Pareto baskın-olmama) şartı istendi; m.40(a) gereği araştırma-önce: `cc/gorev-2026-07-29-5.md`. SONUÇ (gözlenecek): [açık] — rapor ingest'inde revizyon taslağı masaya.
+- **Görev emirleri (Katman-2 derleme):** O4 (`gorev-2026-07-29-4.md`, Ç1 uzlaştırma ana teslim) · gorev-5 (Pareto) · gorev-6 (Cowork→CC engel envanteri; yön kararı DEĞİL). Üçü de commit-yasağı + numarasız-aday kuralıyla.
+
+## 2026-07-30 — ana vardiya: O4+5/6 ingest damgaları (Katman-2, veto açık)
+- **Ç1 KULLANIM düzeyinde KAPANDI (ana-sıra damgası):** §4.6 uzlaştırması kabul — karşıt-okuma yapıldı ("geniş bant" itirazı geçerli; hüküm kapsamaya dayanmıyor). Künyesiz 0,31 ∧ doğrulanmamış ~%85 kullanılmaz; alet = P19 görev-tipi tablosu; "genel kalite" yargıca sorulmaz; yargıç≠üretici aile. KÜNYE düzeyi AÇIK (D5; erişimli oturumda tek seferde). §7.2 metin düzeltmesi Katman-1'de. Kaynak: `cc/rapor-2026-07-29-4.md` §4.
+- **Okuma programı O1-O4 KAPANDI:** 23/23 rapor; kapanış envanteri (B-1..15 + D-1..21) `cc/rapor-2026-07-29-4.md` §13.
+- **Dosya düzeltmeleri (m.8 üstü-çizili+[K]):** INSAN-pasif-ogrenme bekçi bölümü + ajan-durma-atlas §4 watchdog satırı — işlendi, veto=revert.
+- **m.37/m.41 karar-girdileri masaya İNDİ:** KG-M37-1..10 + KG-CC-1..8 (özet `kuyruk/build-tartisma-notlari.md` 07-30 bloğu). İkisi de İMZASIZ — Katman-1.
+- SONUÇ (gözlenecek): [açık] — Katman-1 masası tek oturumu; m.37 fıkrası imzalanırsa ilk 5 tam-form koşumda kalibrasyon denetimi.
+
+## 2026-07-30 — MERGE çözüm planı (analiz Carvis/klon-ölçümlü; icra Salih terminali)
+- Ölçüm: 7 birleşmemiş dal (5 değil); ana-sıra zinciri pasif⊂anasira-29⊂gece tek merge; 16 dosya YALNIZ dallarda (opus5:6 [serit1-5+telefon, 07-24] · orca:9 [07-19/20 araştırmaları] · agent-hierarchy:1 [ajan-baglam-hazinesi]); mount tüm ortak dosyaların EN YENİ hali (fikir-kutusu V63/V64 dahil; P0-tahminler main'de boş şablon, mount'ta dolu); main'de mount'a üstün/eksik içerik YOK; disk HEAD = pasif dalı + push'lanmamış yerel commit (a611f11, origin'de yok).
+- Plan: yedek → dirty commit → 16 dosyayı `git checkout <dal> -- <yol>` ile kurtar+commit → 5 merge `-s ours` (içerik zaten diskte, soy kaydı için) → main'i buraya taşı → push → senkron elle koşum doğrulaması. Komut dizisi Salih'e verildi.
+- SONUÇ (gözlenecek): [açık] — push sonrası ilk gece-senkron OK dönerse kök-neden kapanır; FAIL sürerse script pull-adımı/ls-remote doğrulaması masaya (07-23 fren adayları).

@@ -186,7 +186,7 @@ Kendi taramam (115 transkript, hata damgasından **sonra** >1500 karakter rapor 
 | Gördüğün | Anlamı | Yapılacak |
 |---|---|---|
 | `isApiErrorMessage: true` + `stop_reason: "stop_sequence"` | **API ölümü.** Metin `You've hit your session limit` → kota; `Request rejected (429)` → hız limiti; `Server is temporarily limiting` → geçici kısıtlama | Adım 3, sonra limit kalkınca **resume et, sıfırdan başlatma**. Opus limitiyse `/model` ile geç |
-| `stop_reason: "tool_use"` + metin bloğu yok | **Araç çağrısının ORTASINDA öldü** — abort/stall/süreç ölümü | Stall watchdog aşılmış olabilir; uzun `Bash`/`WebFetch` varsa eşiği yükselt |
+| `stop_reason: "tool_use"` + metin bloğu yok | **Araç çağrısının ORTASINDA öldü** — abort/stall/süreç ölümü | ~~Stall watchdog aşılmış olabilir; uzun `Bash`/`WebFetch` varsa eşiği yükselt~~ **[K] 2026-07-30 ana-sıra:** bayat satır — §14 C2 hükmüyle çelişiyordu (nöbetçi bu sürümde YOK, eşik diye bir şey yok); kaynak `cc/rapor-2026-07-29-4.md` §6.2 Ç-c |
 | Son kayıt `type: "user"` (tool_result) | Araç döndükten hemen sonra öldü — süreç/bağlantı kaybı | Resume dene |
 | Normal metin, hata yok, ama bildirim `failed` | **Ajan bildirimden SONRA devam edip bitirmiş** (§2) | **Transkripti oku — rapor orada.** Bildirime güvenme |
 | `Task "<desc>" (<id>) was stopped by the user.` (isMeta) | **Kullanıcı iptali.** Dahili `killed` → gösterimde `stopped` | Kasıtlıydı. **Ayırt edici işaret:** bu mesajda "TaskOutput ile kontrol et" cümlesi HİÇ geçmez |

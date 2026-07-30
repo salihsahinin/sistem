@@ -2,23 +2,24 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır; mount'ta git komutu YOK (pull gerekirse Salih terminali).*
 
-**Güncelleme:** 2026-07-23 PC ANA VARDİYA KAPANDI (Carvis, ana-sıra/Fable) — bulut-devir denetimi: 2 arıza (içerik-ezme ONARILDI · **senkron YALANCI-OK** — kök-neden borcu) · **core/-Bash teli KURULDU, canary PASS** (+ölü Write-deny temizliği) · K-016 canlı tetik 4/4 · P6 ingest (DONE kapısı AÇIK) · **sayı-araştırma kapısı kural + 4 hüküm uygulandı** (`cc/rapor-2026-07-23-1.md`) · **defter DAMITILDI 51,7→16,3KB** · teslim: `raporlar/vardiya-teslim-2026-07-23-pc.md`
+**Güncelleme:** 2026-07-30, PC ana vardiya (Carvis/Fable) — **O4+5/6 İNGEST TAMAM ⇒ OKUMA PROGRAMI KAPANDI** (23/23; hasat defterde, 5/6 özeti build-tartışma 07-30) · Ç1 kullanım düzeyinde KAPANDI (künye D5 borç) · 2 dosya düzeltmesi işlendi (m.8) · Katman-1 masası gündemi BÜYÜDÜ (D-1..21 + KG-M37 + KG-CC). Önceki teslim: `raporlar/vardiya-teslim-2026-07-29-anasira-gece.md`
 
 ## Şu an
-- **K-010 tetiği (m.38):** K-009 ∧ A1∧A2∧A3∧A4; A5 paralel. **A1: sayaç TARTIŞMALI** — 2. OK yalancı çıktı (07-23 "OK" logu origin'e ulaşmamış; non-fast-forward adayı); Salih hükmü bekliyor: 2/5 mi 1/5 mi + sigorta onayı (script'e pull-adımı + push-sonrası origin doğrulaması). Etiket (Salih 07-23): 5-ardışık = c=0 go-gate, reliability kanıtı DEĞİL; koşumlar zaman-ayrık. **A2: KAPALI 4/4** + tel canlı (`.claude/hooks/pretool-core-tel.sh`). **A3:** bekliyor (A1 dolunca). **A4:** kalan denetçi bütçe-çatalı (Salih). **A5:** ilk devir iş-sınıfı kararı açık.
-- **K-016:** canlı tetik seti 4/4 KAPANDI (negatif 2/2, Opus-extra). Kalan TEK borç: 20-sorgu description-eval — artık protokol-hizalı koşulacak (8-10/8-10 · 3× · 60/40 · ≤5 iter; KILAVUZ revize eval kuralı).
-- **Sayı-rejimi (07-23):** KILAVUZ'da sayı-araştırma kapısı + araştırma-onaylı bütçeler (KB+token-izleme; 48KB FLAG çözüldü — defter damıtıldı; konum ekseni: her-tur-okunan dosya TEPEDE).
-- **Şerit 2 (öğrenme):** P6 ingest edildi (`ogrenme/dersler/2026-07-22-P6-context-eng-compaction.md`) — **DONE kapısı Salih beyanı bekliyor** (a: compaction'da ne yaşar/erir; b: sıcak katman neden iki parçalı). Model B (not-tutma+stabil-prefix) m.37 kaydı deftere düşüldü; uygulama borcu: kapsül iki-parçalı yerleşim (volatil alta) K-015 kurulumunda. Sıradaki ders: P7 ya da Salih seçimi. P2 devir ingest hâlâ bekliyor.
-- **Kutu:** V59 (atlas alt-ajanlarına ucuz model — /usage %19 bulgusuyla güçlendi) · V61 Record-a-Skill · V62 Cowork mobil.
+- **Okuma programı KAPANDI (07-30):** O1-O4 DONE+İNGEST. Kapanış envanteri: kanıt borçları B-1..15 + Katman-1 kalemleri D-1..21 → `cc/rapor-2026-07-29-4.md` §13 (tek liste). Ç1: kullanım KAPALI / künye AÇIK (D5).
+- **Gece araştırmaları İNDİ:** gorev-5 = m.37 eksen-örtüsü mekanizması, 13 maddelik taslak fıkra İMZASIZ (KG-M37-1..10) · gorev-6 = Cowork→CC envanter: Fable CC'de KOŞUYOR (engel değil); kritik yol E11 yetki-modeli; safeguard-fallback açığı (`switchModelsOnFlag`); tek kayıp 2 hesap-skill (KG-CC-1..8). Özet: `kuyruk/build-tartisma-notlari.md` 07-30.
+- **Z6 KAPANDI:** m.41 `↔` = GEREKLİLİK (Salih hükmü 07-29 gece). Metin düzeltmesi Katman-1'de; gorev-6 bulgusu (Fable karşılanabilir + istek-başı kırılganlık E2) aynı kalemde işlenmeli (KG-CC-6).
+- **K-022 staj:** soğuk baseline BORÇ — pencere 1 Ağu'a dek ("günaydın, staj" — 07-30 paralel oturum açılıyor).
+- **Askıda:** K14 (5 dk doğrulama borcu) · K35 · K39 (kapsam ÜÇ eksen: yüzey ∧ worktree ∧ istemci-taraf; +E8 `--setting-sources` test borcu). Karar envanteri 59 madde CC dalında push'suz. **Senkron ARIZA sürüyor** (FAIL-ff; dirty 9→27→34 BÜYÜYOR — merge geciktikçe maliyet artıyor; E10: schtasks yalancı-OK doğrulandı).
+- **Codex/denetçi hattı:** kanıt tabanı büyüdü (çapraz-AİLE şartı; KG-CC-5 iki-yüzey→denetçi ekseni önerisiyle aynı masa) — tetik A4 masası.
 
 ## Açık borçlar
-- **GÜVENLİK:** PAT düz-metin + ~10 Ekim ölümü (credential-helper + yenileme tek hamle).
-- **Salih kararları:** A1 sayaç hükmü + senkron-sigorta onayı · P6 DONE beyanı · denetçi bütçe-çatalı · A5 ilk devir sınıfı · MEZUN onayı (V36·V38·V40a·V43) · V59 tetiği · skill terfi süzgeci · index.lock gerekçe-revizyonu.
-- Skill/wiki: description-eval turu (protokol-hizalı) · wiki adayları (skill-katmanlari · kucuk-n-eval · rol-katmanlari) · Homebase pointer bayat · modern-tokenizer (O13).
-- K-019 kalanı: stage-bayat/çift-koşum vakalarının toplu defter işlemesi · token-izleme ilk ölçümü (20KB+ dosyalar).
-- Tetikliler: K-011 · K-004 (Kasım) · PortRisk tetiği · K-018 (remote control).
+- **MERGE ×5 (+bu vardiyanın dalı = ×6 olacak):** opus5 + pasif-ogrenme + 07-28 dalı + anasira-07-29 + `claude/anasira-2026-07-29-gece` + (kapanışta `claude/anasira-2026-07-30`). Mekanizma Salih'te; dirty 34'e çıktı — geciktikçe pahalanıyor.
+- **Katman-1 masası (TEK oturum; ana kaynak artık `cc/rapor-2026-07-29-4.md` §13.2 D-1..21):** D-listesi önceki gündemi kapsıyor (Ç1 metni · Model A/B/C ×2 ad-çakışması · notasyon paketi · effort/model merdiveni tek kalem · K39 üç-eksen · niteleyici-taşıma · V-numara yetkisi · metin∧icra ayrımı · MAST/B1-B15 · INSAN-pasif düzeltme [işlendi, onay] · …) + **KG-M37-1/2/3/5/7** (fıkra imzası + "3 seçeneği" metni + m.42(e) gerilimi + öneri-satırı + usul) + **KG-CC-1..8** (E11 yetki-modeli · switchModelsOnFlag · hesap-skill akıbeti · E8 testi · iki-yüzey→denetçi · m.41 tek-kalem · zamanlama mimarisi · Salih beyanları).
+- **Diğer:** PAT ~10 Ekim · P2 devir ingest · senkron kök-neden · /compact saha testi (5 dk) · S4-A1 ingest · akademik yeniden-doğrulama (B-1) · D5 künye borcu · K14 5-dk doğrulama · wiki adayları (`sessiz-hata-desenleri` + `baglam-mekanigi-cc` + `karar-cephesi` [KG-M37-8] + `orca.md` güncelleme).
+- **boyut-tetiği:** KILAVUZ 16,8KB · fikir-kutusu 19,9KB (sınırın dibinde; damıtma = K-019 ilk boş vardiya) · okuma-defteri 40KB'a ulaştı (program kapandı — arşiv adayı, K-019 masasına).
 
-## Sonraki ilk iş (yeni seans: kapsülü ORIGIN KLONUNDAN doğrula)
-1. Senkron-log bakış + **A1 sayaç hükmünü Salih'ten al** (yalancı-OK: 2/5 mi 1/5 mi) → onay gelirse senkron sigortası kur (pull-adımı + push-sonrası `git ls-remote` doğrulaması).
-2. P6 DONE beyanı → Şerit 2 sıradaki (P7/Salih seçimi).
-3. description-eval protokol-hizalı tur (CC, K-016 kapanış adayı) · A1 dolunca A3 koşumları.
+## Sonraki ilk iş
+1. Salih: **merge (×5/6) → Katman-1 masası TEK oturum** (gündem yukarıda; m.37 fıkrası + CC-geçiş kapıları dahil).
+2. "günaydın, staj": soğuk baseline (S1·S8·S10 + PY1-10 + NaN-filtre) — pencere 1 Ağu'a dek (07-30 paralel oturum).
+3. CC koşumları DERLENDİ (07-30, Salih başlatır — 2 paralel): `cc/gorev-2026-07-30-1.md` = kanıt-borcu paketi (B-1 + D5 + D9/D10 + K14) · `cc/gorev-2026-07-30-2.md` = m.37 taslağına antitez şeridi (KG-M37-7 usul şartı). Raporlar `cc/rapor-2026-07-30-1/-2.md` olarak düşecek — sonraki ana vardiya ingest eder.
+4. /compact saha testi (herhangi bir CC kapanışında) · K14 doğrulaması (ajan-serbest oturumda 5 dk).
