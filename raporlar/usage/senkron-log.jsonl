@@ -9,3 +9,4 @@
 {"ts":"2026-07-29T13:07:08.6296801+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":9,"dur_s":1,"agent":"script","model":"none","tokens":0}
 {"ts":"2026-07-30T00:35:57.3612211+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":27,"dur_s":7,"agent":"script","model":"none","tokens":0}
 {"ts":"2026-07-30T13:28:06.5939663+03:00","event":"gece-senkron","status":"FAIL-ff","from":"a611f11","to":"a611f11","dirty_files":34,"dur_s":2,"agent":"script","model":"none","tokens":0}
+{"ts":"2026-07-30T14:19:58.5338237+03:00","event":"gece-senkron","status":"OK","from":"348ed67","to":"348ed67","dirty_files":1,"dur_s":2,"agent":"script","model":"none","tokens":0}

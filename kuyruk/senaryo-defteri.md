@@ -125,3 +125,15 @@
 - Ölçüm: 7 birleşmemiş dal (5 değil); ana-sıra zinciri pasif⊂anasira-29⊂gece tek merge; 16 dosya YALNIZ dallarda (opus5:6 [serit1-5+telefon, 07-24] · orca:9 [07-19/20 araştırmaları] · agent-hierarchy:1 [ajan-baglam-hazinesi]); mount tüm ortak dosyaların EN YENİ hali (fikir-kutusu V63/V64 dahil; P0-tahminler main'de boş şablon, mount'ta dolu); main'de mount'a üstün/eksik içerik YOK; disk HEAD = pasif dalı + push'lanmamış yerel commit (a611f11, origin'de yok).
 - Plan: yedek → dirty commit → 16 dosyayı `git checkout <dal> -- <yol>` ile kurtar+commit → 5 merge `-s ours` (içerik zaten diskte, soy kaydı için) → main'i buraya taşı → push → senkron elle koşum doğrulaması. Komut dizisi Salih'e verildi.
 - SONUÇ (gözlenecek): [açık] — push sonrası ilk gece-senkron OK dönerse kök-neden kapanır; FAIL sürerse script pull-adımı/ls-remote doğrulaması masaya (07-23 fren adayları).
+
+## 2026-07-30 — MERGE İCRA EDİLDİ + senkron OK (SONUÇ kaydı)
+- Salih terminali: yedek → union commit (44 dosya) → 16 dosya kurtarma → 5 × `-s ours` merge → `main` push (`b97aac8..348ed67`, 89 commit) → working tree clean. Elle tetiklenen senkron: **OK, 348ed67→348ed67, dirty 1, 2 s** — FAIL-ff serisi (3 koşum) KAPANDI.
+- 07-30 planının SONUÇ alanı: [gerçekleşti — beklentiyle birebir; çakışma çıkmadı]. Yalancı-OK kök-nedeni (dallanmış origin) ortadan kalktı; 07-23 fren adayları (pull-adımı + ls-remote doğrulaması) hâlâ İYİLEŞTİRME adayı olarak masada (arıza tekrar ederse tetiklenir).
+- A1 sicil notu: sayaç etiketi Salih/masa işi — bu OK, arıza-sonrası ilk temiz koşumdur (zaman-ayrık şartına göre değerlendirilir).
+
+## 2026-07-30 (2) — 30-1/30-2 ingest damgaları (Katman-2, veto açık)
+- **Ç1 TAM KAPANDI:** kullanım-düzeyi (07-30 sabah) + künye-düzeyi (D5: "üç turda bulunamadı" kaydıyla kapatıldı; Thakur mekanizması [D] soruyu cevapladı). Yeniden açma koşulu: künye kendiliğinden bulunursa kayıt güncellenir, karar değişmez.
+- **K14 KAPANDI [D-ölçüm]:** Explore sürdürülebilir; askı kalktı. Kalan: Plan 30-sn testi (ilk uygun CC koşumunda).
+- **m.37 taslağı İMZAYA HAZIR DEĞİL (ana-sıra hakemlik ön-damgası):** antitez hükümleri sayısal ve yeniden-üretilebilir (kod + tam sayım); madde 2/6/7 revizyonsuz imzalanamaz; S1 teşhisi + madde 5/8/10/12 taşınır. v2 sentez borcu açıldı. m.16 kalemi (karşıt-temel çelişkisi) Katman-1 masasına eklendi.
+- **[X] düzeltme borçları (m.8 dosya işlemleri, sıradaki uygun vardiya):** pasif-ogrenme-atlas §6.2 AAR daraltması (üstü-çizili + [K]: self-led bileşimler en etkili) · O1 hasat AAR/Staab/Park satırlarına düzeltme notu (eski hasat yeniden yazılmaz, not düşülür) · Staab %95,8→%95,2.
+- SONUÇ (gözlenecek): [açık] — v2 sentez + Katman-1 masası; KG-B1-1/2 (Model B sınır koşulu + öz-değerlendirme kapısı) masada karara bağlanacak.

@@ -3,7 +3,7 @@
 *Şirketin nabzı tek bakışta. Kart = işin adresi, kendisi değil. "Ekrana gel" satırı dikkat filtresidir.*
 *Şablon v2 (K-012 adım 4, 2026-07-12, deneysel m.29): +Açılış/Yaş (#22) +Bağımlı +Yetki (Beads bulgusu + Salih yetki-kartı fikri; yetki alanı ajan döneminde anlam kazanır — şimdilik tümü Carvis). Kural: DONE alanı boş kart açılamaz (KILAVUZ).*
 
-**Güncelleme:** 2026-07-30 (Carvis, ana-sıra/Fable) — **O4+5/6 İNGEST ⇒ OKUMA PROGRAMI KAPANDI** (23/23) · Ç1 kullanım-düzeyi kapandı · m.37 eksen-örtüsü taslağı + Cowork→CC envanteri masaya İNDİ (İMZASIZ) · 2 dosya düzeltmesi işlendi (m.8) · Katman-1 gündemi tek listede: `cc/rapor-2026-07-29-4.md` §13.2 + KG-M37 + KG-CC · detay: `core/durum-kapsulu.md`. Önceki: `raporlar/vardiya-teslim-2026-07-29-anasira-gece.md` (m.8: tarihçe raporlarda)
+**Güncelleme:** 2026-07-30 ÖS (Carvis, ana-sıra/Fable) — **MERGE KAPANDI + SENKRON OK** (main `348ed67`) · okuma programı KAPANDI (23/23) · 30-1/30-2 ingest: **Ç1 + K14 kapandı** · m.37 taslağı antitezden geçemedi (madde 2/6/7 kırıldı) ⇒ v2 sentez borcu · Katman-1 gündemi: `cc/rapor-2026-07-29-4.md` §13.2 + KG-M37 + KG-CC + KG-B1 + yeni m.16 kalemi · detay: `core/durum-kapsulu.md`. Önceki: `raporlar/vardiya-teslim-2026-07-29-anasira-gece.md` (m.8: tarihçe raporlarda)
 
 ## AKTİF
 | Kart | İş | DONE | Açılış | Bağımlı | Yetki | Ekrana gel |
