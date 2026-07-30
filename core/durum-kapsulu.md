@@ -21,7 +21,8 @@
 - **boyut-tetiği:** KILAVUZ 16,8KB · fikir-kutusu 19,9KB (sınırın dibinde; damıtma = K-019 ilk boş vardiya) · okuma-defteri 40KB'a ulaştı (program kapandı — arşiv adayı, K-019 masasına).
 
 ## Sonraki ilk iş
-1. ~~CC koşumları 30-3/30-4~~ **DÜŞTÜ ve İNGEST EDİLDİ (07-30 akşam).** **Katman-1 masası TEK oturum (Salih):** giriş dosyası = `kuyruk/masa-gundemi-2026-07-30.md` (v2-güncel; küme 1+2 kritik yol, öneri: iki oturum). **ÜRETİM FRENİ SÜRÜYOR:** masa oturana dek YENİ araştırma CC'si açılmaz.
+1. ~~CC koşumları 30-3/30-4~~ **DÜŞTÜ ve İNGEST EDİLDİ (07-30 akşam).** **Katman-1 masası TEK oturum (Salih, gün Salih seçer — 07-30 bilinçli ertelendi):** giriş noktası KARARLAŞTI = **küme 1 madde 7 (usul)**; giriş dosyası `kuyruk/masa-gundemi-2026-07-30.md` (v2-güncel). Madde-7 eğilimi: (c) çapraz-aile — karar değil, senaryo-defteri 07-30 (4).
+1b. **ÜRETİM FRENİ AYRIŞTIRILDI (Salih 07-30 akşam):** masa-hizmetli CC serbest ("yeni kalem açma" şartıyla), yeni-konu araştırması masaya dek kapalı. KOŞUMDA/SIRADA: `cc/gorev-2026-07-30-5.md` (Codex kurulum envanteri — madde 7+28 girdisi) · `cc/gorev-2026-07-30-6.md` (mini test paketi: Plan sürdürme + /compact + E8). Salih başlatır; raporlar sonraki vardiya ingest.
 2. "günaydın, staj": soğuk baseline — pencere 1 Ağu'a dek (07-30 paralel oturumda Salih yürütüyor).
 3. Kalan mini borçlar: Plan sürdürme 30-sn testi · atlas §6.2 AAR düzeltmesi (m.8) · /compact saha testi · Staab %95,8→%95,2 notu · P2 devir + S4-A1 ingest.
 4. ~~Kapanışta mount'tan commit/push ilk deneme~~ **DENENDİ (07-30 akşam ingest commit'i)** — sonucu senaryo-defteri 07-30 (3) bloğunda; teslim-raporu↔kapsül gerilimi ("kural geçerli" ↔ "deneme izni") Katman-1 masasının mount-git kaleminde çözülür.
