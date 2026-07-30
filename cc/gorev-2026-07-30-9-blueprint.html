@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sevk Emri 30-9 — Orkestrasyon Planı</title>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#eef0ee; --bg2:#e3e7e4; --panel:#f9faf8; --panel2:#eff2ef;
+  --ink:#141a19; --ink2:#3c4644; --ink3:#6b7571;
+  --line:#ccd3cf; --line2:#dde2df;
+  --teal:#1c6b67; --teal-bg:#dfeceb;
+  --ochre:#8a6510; --ochre-bg:#f0e8d3;
+  --oxide:#973629; --oxide-bg:#f3e0dc;
+  --pass:#2c6740; --pass-bg:#dfeadf;
+  --shadow:0 1px 0 rgba(20,26,25,.05), 0 1px 3px rgba(20,26,25,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0e1413; --bg2:#0a100f; --panel:#141c1a; --panel2:#101816;
+    --ink:#e5ebe8; --ink2:#a9b4b0; --ink3:#7a8682;
+    --line:#243331; --line2:#1c2725;
+    --teal:#5ec2b7; --teal-bg:#122624;
+    --ochre:#d5a441; --ochre-bg:#2a2213;
+    --oxide:#e07960; --oxide-bg:#2b1815;
+    --pass:#6dc08b; --pass-bg:#132318;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1413; --bg2:#0a100f; --panel:#141c1a; --panel2:#101816;
+  --ink:#e5ebe8; --ink2:#a9b4b0; --ink3:#7a8682;
+  --line:#243331; --line2:#1c2725;
+  --teal:#5ec2b7; --teal-bg:#122624;
+  --ochre:#d5a441; --ochre-bg:#2a2213;
+  --oxide:#e07960; --oxide-bg:#2b1815;
+  --pass:#6dc08b; --pass-bg:#132318;
+  --shadow:none;
+}
+:root[data-theme="light"]{
+  --bg:#eef0ee; --bg2:#e3e7e4; --panel:#f9faf8; --panel2:#eff2ef;
+  --ink:#141a19; --ink2:#3c4644; --ink3:#6b7571;
+  --line:#ccd3cf; --line2:#dde2df;
+  --teal:#1c6b67; --teal-bg:#dfeceb;
+  --ochre:#8a6510; --ochre-bg:#f0e8d3;
+  --oxide:#973629; --oxide-bg:#f3e0dc;
+  --pass:#2c6740; --pass-bg:#dfeadf;
+  --shadow:0 1px 0 rgba(20,26,25,.05), 0 1px 3px rgba(20,26,25,.06);
+}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.62;
+  font-feature-settings:"kern" 1;
+}
+.serif{font-family:Constantia,"Iowan Old Style",Cambria,"Palatino Linotype",Georgia,serif}
+.mono,code,kbd{font-family:Consolas,"Cascadia Mono","SF Mono",ui-monospace,"Roboto Mono",monospace}
+
+h1,h2,h3,h4{
+  font-family:Constantia,"Iowan Old Style",Cambria,"Palatino Linotype",Georgia,serif;
+  font-weight:600; text-wrap:balance; margin:0; line-height:1.22;
+}
+p{margin:0}
+a{color:var(--teal)}
+code{
+  font-size:.86em; background:var(--panel2); border:1px solid var(--line2);
+  border-radius:3px; padding:.08em .34em; color:var(--ink2);
+}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:1140px; margin:0 auto; padding:0 20px 96px}
+.spine{
+  display:grid; grid-template-columns:64px minmax(0,1fr); gap:0 24px;
+  border-top:1px solid var(--line);
+}
+.spine > .rail{
+  padding-top:34px; position:relative;
+  border-right:1px solid var(--line);
+}
+.spine > .body{padding:34px 0 40px; min-width:0}
+.rail-id{
+  font-family:Consolas,ui-monospace,monospace; font-size:12px; font-weight:700;
+  letter-spacing:.06em; color:var(--ink); writing-mode:horizontal-tb;
+}
+.rail-chip{
+  margin-top:8px; width:10px; height:10px; border-radius:50%;
+}
+.rail-line{
+  position:absolute; left:-1px; top:0; bottom:0; width:2px;
+}
+section{scroll-margin-top:60px}
+.stack{display:flex; flex-direction:column; gap:18px}
+.stack-s{display:flex; flex-direction:column; gap:10px}
+.prose{max-width:70ch}
+.prose p{color:var(--ink2)}
+
+/* ============ MASTHEAD ============ */
+header.mast{
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,var(--panel) 0%,var(--bg) 100%);
+}
+.mast-inner{max-width:1140px; margin:0 auto; padding:34px 20px 26px}
+.eyebrow{
+  font-family:Consolas,ui-monospace,monospace; font-size:11.5px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink3);
+  display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+}
+h1.title{font-size:clamp(30px,4.6vw,46px); margin:12px 0 6px; letter-spacing:-.01em}
+.subtitle{font-size:clamp(16px,2vw,19px); color:var(--ink2); max-width:62ch; font-style:italic}
+.mast-meta{
+  margin-top:22px; display:grid; gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:5px; overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+}
+.mast-meta div{background:var(--panel); padding:10px 13px}
+.mast-meta dt{
+  font-family:Consolas,ui-monospace,monospace; font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink3); margin:0 0 3px;
+}
+.mast-meta dd{margin:0; font-size:13.5px; font-weight:600; color:var(--ink)}
+
+/* authority band */
+.authority{
+  margin-top:18px; border:1px solid var(--ochre); border-left-width:4px;
+  background:var(--ochre-bg); border-radius:4px; padding:12px 15px;
+  font-size:13.5px; color:var(--ink2); display:flex; gap:12px; align-items:flex-start;
+}
+.authority strong{color:var(--ochre)}
+
+/* ============ NAV ============ */
+nav.toc{
+  position:sticky; top:0; z-index:20; background:var(--bg2);
+  border-bottom:1px solid var(--line);
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+}
+nav.toc ol{
+  list-style:none; margin:0 auto; padding:0 20px; max-width:1140px;
+  display:flex; gap:2px; white-space:nowrap;
+}
+nav.toc a{
+  display:block; padding:9px 11px; font-size:12.5px; color:var(--ink3);
+  text-decoration:none; font-family:Consolas,ui-monospace,monospace;
+  border-bottom:2px solid transparent;
+}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink); border-bottom-color:var(--teal); outline:none}
+
+/* ============ HEADINGS ============ */
+.h-kicker{
+  font-family:Consolas,ui-monospace,monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink3); margin-bottom:7px;
+}
+h2{font-size:clamp(21px,2.7vw,27px); letter-spacing:-.005em}
+h3{font-size:17.5px; margin-top:4px}
+h4{font-size:14.5px; font-family:"Segoe UI",sans-serif; font-weight:700; letter-spacing:.01em}
+.lede{font-size:16.5px; color:var(--ink2); max-width:68ch}
+
+/* ============ TILES ============ */
+.tiles{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.tile{
+  background:var(--panel); border:1px solid var(--line); border-radius:5px;
+  padding:14px 15px 13px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.tile::before{content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--teal)}
+.tile.gate::before{background:var(--ochre)}
+.tile.risk::before{background:var(--oxide)}
+.tile.ok::before{background:var(--pass)}
+.tile-k{
+  font-family:Consolas,ui-monospace,monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink3);
+}
+.tile-v{
+  font-family:Constantia,Cambria,Georgia,serif; font-size:31px; font-weight:600;
+  line-height:1.06; margin:6px 0 2px; font-variant-numeric:tabular-nums;
+}
+.tile-n{font-size:12.5px; color:var(--ink3); line-height:1.42}
+
+/* ============ PANELS ============ */
+.panel{
+  background:var(--panel); border:1px solid var(--line); border-radius:6px;
+  padding:20px 22px; box-shadow:var(--shadow);
+}
+.panel.flush{padding:0; overflow:hidden}
+.callout{
+  border:1px solid var(--line); border-left:4px solid var(--teal);
+  background:var(--panel2); border-radius:4px; padding:13px 16px; font-size:14.5px; color:var(--ink2);
+}
+.callout.warn{border-left-color:var(--oxide); background:var(--oxide-bg)}
+.callout.gate{border-left-color:var(--ochre); background:var(--ochre-bg)}
+.callout b{color:var(--ink)}
+blockquote{
+  margin:0; padding:4px 0 4px 18px; border-left:2px solid var(--ochre);
+  font-family:Constantia,Cambria,Georgia,serif; font-size:17px; font-style:italic; color:var(--ink);
+}
+blockquote cite{
+  display:block; margin-top:7px; font-family:Consolas,ui-monospace,monospace;
+  font-size:11.5px; font-style:normal; letter-spacing:.06em; color:var(--ink3);
+}
+
+/* ============ BADGES ============ */
+.badge{
+  display:inline-flex; align-items:center; gap:5px; border-radius:3px;
+  font-family:Consolas,ui-monospace,monospace; font-size:10.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; padding:2px 7px; white-space:nowrap;
+  border:1px solid currentColor;
+}
+.b-machine{color:var(--teal); background:var(--teal-bg)}
+.b-human{color:var(--ochre); background:var(--ochre-bg)}
+.b-risk{color:var(--oxide); background:var(--oxide-bg)}
+.b-pass{color:var(--pass); background:var(--pass-bg)}
+.b-mute{color:var(--ink3); background:var(--panel2)}
+
+/* ============ TABLES ============ */
+.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:var(--panel)}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:640px}
+thead th{
+  text-align:left; font-family:Consolas,ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); font-weight:700;
+  padding:10px 13px; background:var(--panel2); border-bottom:1px solid var(--line);
+  vertical-align:bottom;
+}
+tbody td{padding:11px 13px; border-bottom:1px solid var(--line2); vertical-align:top; color:var(--ink2)}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{color:var(--ink); font-weight:600}
+td .mono,th .mono{font-size:12.5px}
+.num{font-variant-numeric:tabular-nums; text-align:right}
+
+/* ============ CE LOOP ============ */
+.loop{
+  display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+.loop-step{
+  border:1px solid var(--line); border-radius:5px; background:var(--panel);
+  padding:12px 13px; position:relative;
+}
+.loop-step.here{border-color:var(--teal); border-width:2px; background:var(--teal-bg)}
+.loop-n{
+  font-family:Consolas,ui-monospace,monospace; font-size:10.5px; color:var(--ink3);
+  letter-spacing:.1em;
+}
+.loop-t{font-family:Constantia,Cambria,Georgia,serif; font-size:17px; font-weight:600; margin:3px 0 5px}
+.loop-m{font-size:12.5px; color:var(--ink3); line-height:1.45}
+.loop-j{
+  margin-top:8px; padding-top:8px; border-top:1px dashed var(--line);
+  font-size:12.5px; color:var(--ink2);
+}
+.loop-j b{font-weight:600; color:var(--ink)}
+
+/* ============ PIPELINE ============ */
+.pipe{overflow-x:auto; padding-bottom:6px}
+.pipe-track{display:flex; gap:0; min-width:900px; align-items:stretch}
+.pipe-node{
+  flex:1 1 0; min-width:96px; border:1px solid var(--line); background:var(--panel);
+  padding:10px 11px 11px; position:relative; border-radius:4px; margin-right:16px;
+}
+.pipe-node:last-child{margin-right:0}
+.pipe-node::after{
+  content:""; position:absolute; right:-16px; top:50%; width:16px; height:1px;
+  background:var(--line);
+}
+.pipe-node:last-child::after{display:none}
+.pipe-node.gate{border-color:var(--ochre); background:var(--ochre-bg)}
+.pipe-node.gate::before{
+  content:"KAPI"; position:absolute; top:-9px; left:9px; font-family:Consolas,monospace;
+  font-size:9.5px; letter-spacing:.12em; color:var(--ochre); background:var(--bg); padding:0 5px;
+}
+.pipe-id{font-family:Consolas,monospace; font-size:11px; font-weight:700; color:var(--teal); letter-spacing:.06em}
+.pipe-node.gate .pipe-id{color:var(--ochre)}
+.pipe-t{font-size:13px; font-weight:600; margin:4px 0 3px; color:var(--ink); line-height:1.3}
+.pipe-m{font-size:11.5px; color:var(--ink3); line-height:1.4}
+
+/* ============ PARTITION CARDS ============ */
+.part{
+  border:1px solid var(--line); border-radius:6px; background:var(--panel);
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.part-head{
+  display:flex; flex-wrap:wrap; gap:9px 14px; align-items:center;
+  padding:12px 16px; background:var(--panel2); border-bottom:1px solid var(--line);
+  border-left:4px solid var(--teal);
+}
+.part.is-gate .part-head{border-left-color:var(--ochre)}
+.part-id{
+  font-family:Consolas,ui-monospace,monospace; font-size:13px; font-weight:700;
+  letter-spacing:.08em; color:var(--teal);
+}
+.part.is-gate .part-id{color:var(--ochre)}
+.part-t{font-family:Constantia,Cambria,Georgia,serif; font-size:18px; font-weight:600; flex:1 1 200px; min-width:0}
+.part-grid{
+  display:grid; gap:1px; background:var(--line2);
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+.part-cell{background:var(--panel); padding:12px 16px}
+.part-cell dt{
+  font-family:Consolas,ui-monospace,monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink3); margin-bottom:4px;
+}
+.part-cell dd{margin:0; font-size:13.5px; color:var(--ink2); line-height:1.5}
+.spell{
+  border-top:1px solid var(--line); background:var(--panel2); padding:11px 16px;
+  display:flex; gap:11px; align-items:flex-start;
+}
+.spell-k{
+  font-family:Consolas,monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ochre); padding-top:3px; white-space:nowrap;
+}
+.spell-v{
+  font-family:Consolas,ui-monospace,monospace; font-size:12.5px; color:var(--ink);
+  line-height:1.55;
+}
+
+/* ============ ARCHITECTURE DIAGRAM ============ */
+.arch{overflow-x:auto}
+.arch-inner{min-width:760px; display:grid; gap:0; grid-template-columns:1fr 76px 1fr}
+.arch-col{display:flex; flex-direction:column; gap:10px; padding:4px 0}
+.arch-head{
+  font-family:Consolas,monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink3); padding-bottom:8px; border-bottom:1px solid var(--line); margin-bottom:12px;
+}
+.node{
+  border:1px solid var(--line); border-radius:4px; background:var(--panel);
+  padding:9px 12px; font-size:13px; line-height:1.4;
+}
+.node b{display:block; font-size:13.5px; color:var(--ink)}
+.node span{font-size:11.5px; color:var(--ink3); font-family:Consolas,monospace}
+.node.write{border-color:var(--teal); background:var(--teal-bg)}
+.node.locked{border-color:var(--oxide); background:var(--oxide-bg); border-style:dashed}
+.node.human{border-color:var(--ochre); background:var(--ochre-bg)}
+.wall{
+  position:relative; display:flex; align-items:center; justify-content:center;
+}
+.wall::before{
+  content:""; position:absolute; top:0; bottom:0; left:50%; width:0;
+  border-left:3px dashed var(--oxide);
+}
+.wall-label{
+  position:relative; background:var(--bg); border:1px solid var(--oxide); border-radius:3px;
+  color:var(--oxide); font-family:Consolas,monospace; font-size:10px; font-weight:700;
+  letter-spacing:.1em; padding:8px 5px; writing-mode:vertical-rl; text-orientation:mixed;
+}
+.arch-legend{
+  display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; padding-top:14px;
+  border-top:1px solid var(--line2); font-size:12.5px; color:var(--ink3);
+}
+.arch-legend span{display:inline-flex; align-items:center; gap:7px}
+.sw{width:14px; height:10px; border-radius:2px; border:1px solid var(--line); display:inline-block}
+
+/* ============ MATRIX ============ */
+.verdict{font-family:Consolas,monospace; font-size:11px; font-weight:700; letter-spacing:.05em}
+.v-drop{color:var(--oxide)}
+.v-keep{color:var(--pass)}
+.v-merge{color:var(--teal)}
+
+/* ============ CODE BLOCK ============ */
+.codeblock{
+  background:var(--panel2); border:1px solid var(--line); border-radius:6px;
+  overflow:hidden;
+}
+.codeblock-h{
+  display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; justify-content:space-between;
+  padding:9px 14px; border-bottom:1px solid var(--line); background:var(--panel);
+  font-family:Consolas,monospace; font-size:11px; letter-spacing:.08em; color:var(--ink3);
+}
+.codeblock pre{
+  margin:0; padding:16px; overflow-x:auto; font-size:12.5px; line-height:1.65;
+  font-family:Consolas,"Cascadia Mono",ui-monospace,monospace; color:var(--ink2);
+  tab-size:2;
+}
+.codeblock pre b{color:var(--ink); font-weight:600}
+.codeblock pre i{color:var(--ink3); font-style:normal}
+
+/* ============ LISTS ============ */
+ul.clean{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px}
+ul.clean li{
+  padding-left:20px; position:relative; font-size:14.5px; color:var(--ink2); line-height:1.55;
+}
+ul.clean li::before{
+  content:""; position:absolute; left:2px; top:.62em; width:7px; height:1px; background:var(--teal);
+}
+ul.clean.warn li::before{background:var(--oxide)}
+ol.steps{margin:0; padding:0; list-style:none; counter-reset:s; display:flex; flex-direction:column; gap:10px}
+ol.steps li{counter-increment:s; padding-left:32px; position:relative; font-size:14.5px; color:var(--ink2)}
+ol.steps li::before{
+  content:counter(s); position:absolute; left:0; top:1px; width:21px; height:21px;
+  border:1px solid var(--line); border-radius:50%; background:var(--panel);
+  font-family:Consolas,monospace; font-size:11px; font-weight:700; color:var(--ink3);
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line); background:var(--panel2); margin-top:8px}
+.foot-inner{
+  max-width:1140px; margin:0 auto; padding:26px 20px 40px;
+  font-size:12.5px; color:var(--ink3); display:flex; flex-wrap:wrap; gap:10px 28px;
+}
+
+/* ============ A11Y / MOTION ============ */
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal); outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+
+@media (max-width:760px){
+  .spine{grid-template-columns:44px minmax(0,1fr); gap:0 14px}
+  .arch-inner{grid-template-columns:1fr}
+  .wall{padding:10px 0}
+  .wall::before{top:50%; bottom:auto; left:0; right:0; width:auto; border-left:0; border-top:3px dashed var(--oxide)}
+  .wall-label{writing-mode:horizontal-tb}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-inner">
+    <div class="eyebrow">
+      <span>JARVIS · CC KÖPRÜ KANALI</span><span>·</span>
+      <span>SEVK EMRİ 2026-07-30-9</span><span>·</span>
+      <span>COMPOUND ENGINEERING GÖRÜNÜMÜ</span>
+    </div>
+    <h1 class="title">yagizkaterli skill ailesi:<br>örtüşme, uyarlama, feedback</h1>
+    <p class="subtitle">Bir sevk emrinin orkestrasyon planına ve mimari dokümanına çevrilmiş hâli — kronolojik partisyonlar, ajan şeritleri, kapılar ve yazma sınırı.</p>
+
+    <div class="mast-meta">
+      <div><dt>Kaynak emir</dt><dd class="mono">cc/gorev-2026-07-30-9.md</dd></div>
+      <div><dt>Derleyen</dt><dd>Carvis · ana-sıra / Fable</dd></div>
+      <div><dt>Yüzey</dt><dd>CC PC yan-oturum (m.41)</dd></div>
+      <div><dt>Model · efor</dt><dd class="mono">Opus · High</dd></div>
+      <div><dt>Register</dt><dd>ai-to-ai · önerme (P144)</dd></div>
+      <div><dt>Durum</dt><dd>KOŞTU · rapor düştü</dd></div>
+    </div>
+
+    <div class="authority">
+      <span class="badge b-human">YETKİ BANDI</span>
+      <span><strong>Bu doküman kanon kilitlemez.</strong> CC yan-oturumdur: öneri üretir. <code>core/</code> · <code>CLAUDE.md</code> · <code>.claude/</code> yazımı settings-deny ile kapalı, <code>git push</code> onaya tabidir. Buradaki her “önerilir” satırı imzasızdır; imza Salih'e, sentez ana-sıraya (Fable) aittir.</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Bölümler">
+  <ol>
+    <li><a href="#panel">Kontrol paneli</a></li>
+    <li><a href="#ce">CE döngüsü eşlemesi</a></li>
+    <li><a href="#boru">Partisyon boru hattı</a></li>
+    <li><a href="#partisyon">P0–P8 kartları</a></li>
+    <li><a href="#ajan">Ajan orkestrasyonu</a></li>
+    <li><a href="#mimari">Mimari · yazma sınırı</a></li>
+    <li><a href="#matris">Eleme matrisi</a></li>
+    <li><a href="#claudemd">CLAUDE.md bloğu</a></li>
+    <li><a href="#sonuc">Çıktı · karar kuyruğu</a></li>
+    <li><a href="#risk">Risk · itiraz</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- ============================================ -->
+<section id="panel" class="spine">
+  <div class="rail"><div class="rail-id">§A</div><div class="rail-chip" style="background:var(--teal)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Bir bakışta</div>
+      <h2>Emrin ölçüsü ve koşumun sonucu</h2>
+    </div>
+    <p class="lede">Emir beş dış skill'in incelenmesini, elenmesini, uyarlanmasını ve dürüstçe eleştirilmesini istedi. Ağırlık şartı emirde açıktı: <b>§3 uyarlama + §4 feedback raporun %70'i.</b> Bu, Compound Engineering'in “çabanın %80'i planlama ve incelemede” tahsisiyle aynı yöne bakar.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="tile-k">İncelenen</div><div class="tile-v">5</div><div class="tile-n">dış skill · tek yazar</div></div>
+      <div class="tile ok"><div class="tile-k">Uyarlanan</div><div class="tile-v">2</div><div class="tile-n">devir-bloğu · kırık-sayacı</div></div>
+      <div class="tile risk"><div class="tile-k">Elenen</div><div class="tile-v">3</div><div class="tile-n">gerekçesi ölçülebilir</div></div>
+      <div class="tile"><div class="tile-k">Hüküm</div><div class="tile-v">12</div><div class="tile-n">H1–H12 · künyeli</div></div>
+      <div class="tile gate"><div class="tile-k">Salih'te</div><div class="tile-v">6</div><div class="tile-n">karar · 2'si Katman-1</div></div>
+      <div class="tile gate"><div class="tile-k">Kapatılamayan</div><div class="tile-v">4</div><div class="tile-n">açıkça beyan edildi</div></div>
+    </div>
+
+    <div class="panel stack-s">
+      <h3 class="serif">Emrin özü — Salih'in cümlesi</h3>
+      <blockquote>Bu repodaki skill'leri kendimize göre uyarlayıp kullanalım ve bunun hakkında feedback vermesi için CC'ye görev raporu oluştur.
+        <cite>Salih · 2026-07-30 gece</cite></blockquote>
+      <p class="prose" style="font-size:14.5px">Emir bu cümleyi <b>iki ayrılabilir işe</b> böldü: (a) uyarlama tasarımı — kanonumuza göre yeniden yazılmış hâl, (b) feedback — skill'lerin kendisi hakkında yumuşatılmamış değerlendirme. Bu bölme, aşağıdaki tüm partisyonlamanın kökündedir.</p>
+    </div>
+
+    <div class="callout warn">
+      <b>V25 — pazarlıksız kural.</b> Hazır skill KURULMAZ. Desen alınır, kurulum alınmaz; kendimiz yazarız. Çıktı bir kurulum planı değil, <b>uyarlama tasarımıdır</b>. Dış metnin kopyalanması yasak; alınacak şey mekanizma ve gerekçedir.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="ce" class="spine">
+  <div class="rail"><div class="rail-id">§B</div><div class="rail-chip" style="background:var(--teal)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Disiplin eşlemesi</div>
+      <h2>Compound Engineering altı adımı — bizdeki karşılığı</h2>
+      <p class="lede" style="margin-top:10px">CE'nin tek ilkesi: <i>“her iş birimi sonrakini kolaylaştırmalı, zorlaştırmamalı.”</i> Aşağıda altı adımın her biri, JARVIS'te fiilen hangi artefakta karşılık geliyor. Vurgulu kutu, <b>bu dokümanın durduğu adımdır</b>.</p>
+    </div>
+
+    <div class="loop">
+      <div class="loop-step">
+        <div class="loop-n">01</div><div class="loop-t">Brainstorm</div>
+        <div class="loop-m">Soru-cevapla gereksinimi keşfet</div>
+        <div class="loop-j"><b>Bizde:</b> fikir-kutusu + Salih'in gece emri; keşif oturum dışında oldu</div>
+      </div>
+      <div class="loop-step here">
+        <div class="loop-n">02 ← BURADAYIZ</div><div class="loop-t">Plan</div>
+        <div class="loop-m">Fikri uygulanabilir plana zenginleştir</div>
+        <div class="loop-j"><b>Bizde:</b> <span class="mono">cc/gorev-*.md</span> sevk emri — bu dokümanın kaynağı</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-n">03</div><div class="loop-t">Work</div>
+        <div class="loop-m">Planı yerli ya da çapraz-model icracıyla koş</div>
+        <div class="loop-j"><b>Bizde:</b> CC yan-oturum koşumu (Opus/High) → <span class="mono">cc/rapor-*.md</span></div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-n">04</div><div class="loop-t">Simplify</div>
+        <div class="loop-m">İncelemeden önce sadeleştir</div>
+        <div class="loop-j"><b>Bizde:</b> §2 eleme kapısı — 5 aday → 2 uyarlama; sadeleştirme <i>öncedir</i></div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-n">05</div><div class="loop-t">Review</div>
+        <div class="loop-m">Çok-ajanlı inceleme</div>
+        <div class="loop-j"><b>Bizde:</b> §4 feedback + m.16 çelişki kapısı; çapraz-aile denetçi şartı</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-n">06</div><div class="loop-t">Compound</div>
+        <div class="loop-m">Dersi gelecek için yakala</div>
+        <div class="loop-j"><b>Bizde:</b> senaryo-defteri + wiki + karar-başına commit (m.10)</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Eşlemenin verdiği tek gerçek bulgu:</b> CE'de <i>Simplify</i> yazılmış koddan sonra gelir; bu emirde eleme (§2) tasarımdan (§3) <b>önce</b> konumlandırılmıştır. Sıra tersine çevrilmiştir ve bu bilinçlidir — uyarlama emeği yalnız kapıyı geçen adaya harcanır. CE ödünç alınırken kopyalanmadı, konumu değiştirildi.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="boru" class="spine">
+  <div class="rail"><div class="rail-id">§C</div><div class="rail-chip" style="background:var(--ochre)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Kronolojik partisyonlama</div>
+      <h2>Dokuz partisyon, üç kapı</h2>
+      <p class="lede" style="margin-top:10px">Emir düz metin olarak yazılmıştı; icra sırası ise şudur. Numaralandırma dekor değil: her partisyon bir öncekinin çıktısını girdi alır, kapılar geçilmeden sonraki partisyon başlayamaz.</p>
+    </div>
+
+    <div class="pipe">
+      <div class="pipe-track">
+        <div class="pipe-node gate"><div class="pipe-id">P0</div><div class="pipe-t">Devir</div><div class="pipe-m">Salih 4 komut girer</div></div>
+        <div class="pipe-node"><div class="pipe-id">P1</div><div class="pipe-t">Zemin yükle</div><div class="pipe-m">kanon + KILAVUZ + mevcut skill'ler</div></div>
+        <div class="pipe-node"><div class="pipe-id">P2</div><div class="pipe-t">Dış çekim</div><div class="pipe-m">5 skill · README+SKILL.md</div></div>
+        <div class="pipe-node"><div class="pipe-id">P3</div><div class="pipe-t">Zemin haritası</div><div class="pipe-m">§1 · kısa tut</div></div>
+        <div class="pipe-node gate"><div class="pipe-id">P4</div><div class="pipe-t">Eleme</div><div class="pipe-m">§2 · üç soru</div></div>
+        <div class="pipe-node"><div class="pipe-id">P5</div><div class="pipe-t">Uyarlama</div><div class="pipe-m">§3 · omurga</div></div>
+        <div class="pipe-node"><div class="pipe-id">P6</div><div class="pipe-t">Feedback</div><div class="pipe-m">§4 · yumuşatma yok</div></div>
+        <div class="pipe-node"><div class="pipe-id">P7</div><div class="pipe-t">Kesişim</div><div class="pipe-m">§5 · 30-7, birleştirme yok</div></div>
+        <div class="pipe-node gate"><div class="pipe-id">P8</div><div class="pipe-t">Teslim</div><div class="pipe-m">rapor + karar-girdisi</div></div>
+      </div>
+    </div>
+
+    <div class="arch-legend">
+      <span><i class="sw" style="background:var(--panel); border-color:var(--line)"></i> makine partisyonu — ajan koşar</span>
+      <span><i class="sw" style="background:var(--ochre-bg); border-color:var(--ochre)"></i> kapı — insan ya da eleme; geçilmeden ileri yok</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="partisyon" class="spine">
+  <div class="rail"><div class="rail-id">§D</div><div class="rail-chip" style="background:var(--teal)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Partisyon kartları</div>
+      <h2>Her partisyonun sözleşmesi</h2>
+      <p class="lede" style="margin-top:10px">Girdi · icracı · kapı · çıktı · DONE. Alttaki <b>anahtar-söz</b> satırı, o partisyonun ajanında doğru davranışı ateşleyen ifadedir — emrin kendi metninden alınmıştır, süsleme değildir.</p>
+    </div>
+
+    <!-- P0 -->
+    <article class="part is-gate">
+      <div class="part-head">
+        <span class="part-id">P0</span>
+        <span class="part-t">Devir — insan kapılı başlatma</span>
+        <span class="badge b-human">İNSAN</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Girdi</dt><dd>Emir dosyasının yolu</dd></div>
+        <div class="part-cell"><dt>İcracı</dt><dd>Salih — dört numaralı komut</dd></div>
+        <div class="part-cell"><dt>Çıktı</dt><dd>Koşan oturum · Opus/High</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Sonda <code>/usage</code> yapıştırılmış</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“Salih'in CC'ye gireceği komutlar AYNEN” — yapıştır-ve-çalış, proza değil numaralı adım</span></div>
+    </article>
+
+    <!-- P1 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P1</span>
+        <span class="part-t">Zemin yükleme — uyarlama dış metne göre değil buna göre yapılır</span>
+        <span class="badge b-machine">MAKİNE</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Girdi</dt><dd><code>core/tuzuk-v0.md</code> · <code>KILAVUZ.md</code> · <code>.claude/skills/</code> dördü · 07-18 idea-boost notu · <code>gorev-30-7</code> · pano K-016</dd></div>
+        <div class="part-cell"><dt>İcracı</dt><dd>Okuma şeridi · geniş tarama</dd></div>
+        <div class="part-cell"><dt>Kapı</dt><dd>Yok — ama eksik okuma sonraki her partisyonu geçersizler</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Çakışma taraması için işaretli maddeler elde: m.4 · m.6 · m.7 · m.9 · m.16 · m.20 · m.25 · m.29 · m.31 · m.37/m.40 · m.39 · m.43</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“uyarlama bunlara göre yapılır — dış metne göre değil”</span></div>
+    </article>
+
+    <!-- P2 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P2</span>
+        <span class="part-t">Dış kaynak çekimi — beş skill, tam metin</span>
+        <span class="badge b-machine">MAKİNE</span><span class="badge b-mute">WEB SERBEST</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Girdi</dt><dd><code>github.com/yagizkaterli</code> — foundation · frictionless · human-steps · perfect-form · idea-boost</dd></div>
+        <div class="part-cell"><dt>İcracı</dt><dd>Araştırma şeridi — skill başına bağımsız çekim</dd></div>
+        <div class="part-cell"><dt>Kapı</dt><dd>Künye disiplini: her hüküm <code>[D]</code>/<code>[K]</code>/<code>[X]</code>; bilinmeyene <code>[ARANAMADI]</code></dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Beş skill için tetik · yapı · vaat · örtük varsayım dörtlüsü çıkarılmış</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“uydurma yok (m.39)” — kaynağı olmayan cümle rapora giremez, boşluk boş bırakılır</span></div>
+    </article>
+
+    <!-- P3 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P3</span>
+        <span class="part-t">Zemin haritası — §1, tanıtım değil zemin</span>
+        <span class="badge b-machine">MAKİNE</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Girdi</dt><dd>P2 çıktısı</dd></div>
+        <div class="part-cell"><dt>Kısıt</dt><dd>Kısa. <code>idea-boost</code> için yalnız 07-18'den <i>bu yana değişen</i> yazılır</dd></div>
+        <div class="part-cell"><dt>Çıktı</dt><dd>Tek tablo — beş satır</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Rapor hacminin küçük payı; ağırlık P5–P6'da</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“§1 tanıtım değil zemindir, kısa kalsın” — tekrar yasağı: 07-18'i yeniden yazma</span></div>
+    </article>
+
+    <!-- P4 -->
+    <article class="part is-gate">
+      <div class="part-head">
+        <span class="part-id">P4</span>
+        <span class="part-t">Eleme kapısı — üç soru, uyarlamadan ÖNCE</span>
+        <span class="badge b-human">KAPI</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Soru 1</dt><dd><b>Bizde zaten var mı?</b> Altı yasa ↔ 40 madde, <i>madde madde</i> eşle. Eşleşmeyen yasa gerçek katkıdır.</dd></div>
+        <div class="part-cell"><dt>Soru 2</dt><dd><b>Kanonla çelişiyor mu?</b> Çelişki m.16 formatında: çelişki + artı/eksi + plan.</dd></div>
+        <div class="part-cell"><dt>Soru 3</dt><dd><b>Ölçeğimize uyuyor mu?</b> Bu skill'ler çok-ajanlı ekipler için yazıldı; bizde canlı ajan YOK (K-009/K-010 bloke).</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Her skill için GEÇTİ / DÜŞTÜ / BİRLEŞTİ hükmü — gerekçesi ölçülebilir</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“Elemek bu koşumun işidir” — ‘beşi de faydalı’ sonucu şüphelidir; elenmeyen skill'in gerekçesi ölçülebilir olmalı</span></div>
+    </article>
+
+    <!-- P5 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P5</span>
+        <span class="part-t">Uyarlama tasarımı — raporun omurgası</span>
+        <span class="badge b-machine">MAKİNE</span><span class="badge b-pass">AĞIRLIK %70 (P5+P6)</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Kapsam</dt><dd>Yalnız P4'ü geçenler, her biri ayrı</dd></div>
+        <div class="part-cell"><dt>Altı zorunlu alan</dt><dd>uyarlanmış ad + tek cümle · tetik (ne zaman ateşlenMEZ dahil) · adım yapısı (korunur/değişir/düşer, gerekçeli) · yaslandığı kanon maddesi · DONE + eval taslağı · ölçülebilir fayda</dd></div>
+        <div class="part-cell"><dt>Eval kuralı</dt><dd>SMOKE etiketi · çıplak-%100 yasağı · ~10 negatif örnek · ≥3× koşum. <b>Eval yazılmaz, taslağı verilir.</b></dd></div>
+        <div class="part-cell"><dt>Kırılganlık uyarısı</dt><dd>07-18'in en güçlü itirazı: düşük eşikli otomatik tetik sıradan sohbette yanlış ateşleniyor. <b>Bu hata tekrarlanmayacak.</b></dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“Kırığı doldurmak için adım üretme; düşen adım için ‘bizde YOK, gerekçe: ___’ yaz”</span></div>
+    </article>
+
+    <!-- P6 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P6</span>
+        <span class="part-t">Feedback — ayrı bölüm, yumuşatma yok</span>
+        <span class="badge b-risk">DENETÇİ</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>1 · En güçlü itiraz</dt><dd>Her skill için STRONGEST-OBJECTION. İtiraz bulamıyorsan onu da yaz — <i>ama önce gerçekten ara</i>.</dd></div>
+        <div class="part-cell"><dt>2 · Ortak desen/zaaf</dt><dd>Beşi aynı yazarın: tekrar eden tasarım imzası? tekrar eden körlük?</dd></div>
+        <div class="part-cell"><dt>3 · Prompt-mühendisliği</dt><dd>Talimat kipi (yasak-ağırlıklı ↔ pozitif ikameli) · uzunluk · tetik tarifi kalitesi. Okuma külliyatına bağla: yasak-kipli kural kırılganlığı · “sadık kal” ters tepmesi · biçim kısıtının muhakemeyi bozması.</dd></div>
+        <div class="part-cell"><dt>4–5 · Seçim ve ret</dt><dd>En değerli <b>TEK</b> mekanizma — sıralamayla kaçma. Ve hangisi bize <i>hiç</i> uymuyor — <b>bu maddenin boş kalması şüphelidir</b>.</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“Tek seçim yap, sıralamayla kaçma” — kaçış yolu kapatılmış talimat kipi</span></div>
+    </article>
+
+    <!-- P7 -->
+    <article class="part">
+      <div class="part-head">
+        <span class="part-id">P7</span>
+        <span class="part-t">Kesişim işaretleme — 30-7 ile, ayrı; birleştirme yok</span>
+        <span class="badge b-machine">MAKİNE</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Gerekçe</dt><dd><code>frictionless</code> + <code>human-steps</code> ↔ karar-yönlendirme filtresi aynı soru ailesinden: “insanın adım sayısı maliyet fonksiyonudur” ↔ “hangi karar insana gider”</dd></div>
+        <div class="part-cell"><dt>Çıktı</dt><dd>Tek tablo: hangi fikir filtre koşumuna <b>girdi</b>, hangisi ayrı yaşar, aralarında çelişki var mı</dd></div>
+        <div class="part-cell"><dt>Yasak</dt><dd><b>Filtre kararlarını bu koşumda VERME.</b> Girdi üret; karar 30-7 + masa.</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Kesişim görünür, iki koşum birbirinin yerini almamış</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“Bu koşum o koşumun yerini ALMAZ” — kapsam sızıntısına karşı sınır ilanı</span></div>
+    </article>
+
+    <!-- P8 -->
+    <article class="part is-gate">
+      <div class="part-head">
+        <span class="part-id">P8</span>
+        <span class="part-t">Teslim — rapor ve karar-girdisi</span>
+        <span class="badge b-human">KAPI</span>
+      </div>
+      <div class="part-grid">
+        <div class="part-cell"><dt>Dosya</dt><dd class="mono">cc/rapor-2026-07-30-9.md</dd></div>
+        <div class="part-cell"><dt>Zorunlu bölümler</dt><dd>beş skill özeti · örtüşme tablosu · uyarlama tasarımları · feedback · 30-7 kesişimi · karar-girdisi · kapatamadıklarım · [ARANAMADI] · token gözlemi</dd></div>
+        <div class="part-cell"><dt>Karar-girdisi ne DEĞİL</dt><dd>Hüküm değil. Salih'e kalan: hangileri üretilsin, hangi sırayla.</dd></div>
+        <div class="part-cell"><dt>DONE</dt><dd>Rapor düştü · <code>/usage</code> eklendi · commit/push/kanon yazımı YOK</dd></div>
+      </div>
+      <div class="spell"><span class="spell-k">anahtar-söz</span><span class="spell-v">“önerme formu (P144)” — hüküm kipinden öneri kipine geçiş, ai-to-ai register</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="ajan" class="spine">
+  <div class="rail"><div class="rail-id">§E</div><div class="rail-chip" style="background:var(--teal)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Orkestrasyon</div>
+      <h2>Partisyon → ajan şeridi → anahtar-söz</h2>
+      <p class="lede" style="margin-top:10px">Aşağıdaki eşleme <b>tasarımdır, sicil değildir.</b> 30-9 fiilen tek oturumda koştu (CC Opus/High). Sağdaki sütun bu farkı saklamaz — çok-ajanlı dağıtımın hangi partisyonda gerçek kazanç ürettiği ayrıca işaretlenmiştir.</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:52px">P</th>
+            <th style="width:132px">Önerilen şerit</th>
+            <th style="width:210px">Zihin modeli — ajana verilen çerçeve</th>
+            <th>Anahtar-söz (latent alan tetiği)</th>
+            <th style="width:132px">30-9'da fiilen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>P1</td>
+            <td><span class="badge b-machine">Explore</span></td>
+            <td>Bul, yargılama. Kanon maddelerini ve mevcut skill gövdelerini yerini göstererek getir.</td>
+            <td class="mono">“çok-yönlü tarama; dosyayı özetleme, satır numarasıyla getir”</td>
+            <td>Tek oturum <span class="badge b-mute">kazanç: orta</span></td>
+          </tr>
+          <tr>
+            <td>P2</td>
+            <td><span class="badge b-machine">atlas ×5</span></td>
+            <td>Skill başına bir araştırmacı, paralel. Birbirinden habersiz — çekimler bağımsız olsun ki tutarlılık <code>[D]</code> damgasını hak etsin.</td>
+            <td class="mono">“iki bağımsız çekim tutarlıysa [D]; tek çekim [K]; doğrulanamayan [X]”</td>
+            <td>Tek oturum <span class="badge b-pass">kazanç: yüksek</span></td>
+          </tr>
+          <tr>
+            <td>P4</td>
+            <td><span class="badge b-risk">çürütücü ×3</span></td>
+            <td>Görevi onaylamak değil <i>çürütmek</i>. “Bu skill bizde zaten var” iddiasını yıkmaya çalış; yıkamazsan eleme geçerlidir.</td>
+            <td class="mono">“şüphede kal: eşleşme iddiasını madde numarasıyla çürütemiyorsan iddia ayakta”</td>
+            <td>Tek oturum <span class="badge b-pass">kazanç: yüksek</span></td>
+          </tr>
+          <tr>
+            <td>P5</td>
+            <td><span class="badge b-machine">Plan</span></td>
+            <td>Mimar. Altı zorunlu alanı doldur; dolduramadığın alanı boş bırak ve nedenini yaz.</td>
+            <td class="mono">“kırığı doldurmak için adım üretme”</td>
+            <td>Tek oturum <span class="badge b-mute">kazanç: düşük</span></td>
+          </tr>
+          <tr>
+            <td>P6</td>
+            <td><span class="badge b-risk">denetçi</span></td>
+            <td>P5'i <b>yazmamış</b> olmalı. Çapraz-aile şartı: kendi tasarımını denetleyen ajan denetçi değildir.</td>
+            <td class="mono">“en güçlü itirazı bulamadıysan önce gerçekten ara, sonra bunu beyan et”</td>
+            <td>Tek oturum <span class="badge b-risk">kazanç: yüksek · açık</span></td>
+          </tr>
+          <tr>
+            <td>P8</td>
+            <td><span class="badge b-human">orkestratör</span></td>
+            <td>Sentez ve karar-girdisi. Hüküm vermez; seçenek + eğilim + gerekçe üretir.</td>
+            <td class="mono">“hüküm değil seçenek; eğilim bağlayıcı değildir (m.41)”</td>
+            <td>Carvis-CC <span class="badge b-pass">yerinde</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <b>Tasarımın kendi kısıtı.</b> Bu tablo bugün tam koşamaz: canlı ajan hattı K-009/K-010 ile bloke, m.30 ajan-kanonu yürürlükte değil. Bugün koşabilen tek satır P2'dir (araştırma paraleli, salt-okuma). P4 ve P6 çok-ajanlı denetim, ajan kanonunun açıldığı gün devreye alınacak <b>rafta bekleyen tasarımdır</b> — bu ayrım kaydedilmezse tablo yanıltıcı olur.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="mimari" class="spine">
+  <div class="rail"><div class="rail-id">§F</div><div class="rail-chip" style="background:var(--oxide)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Mimari</div>
+      <h2>Artefakt akışı ve yazma sınırı</h2>
+      <p class="lede" style="margin-top:10px">Sistemin taşıyıcı yapısı, akış değil <b>sınırdır</b>: neyin yazılabildiği, neyin yazılamadığı. Ortadaki kesikli çizgi settings-deny duvarıdır; sol tarafta CC serbestçe yazar, sağ tarafa yalnız Salih imzası ve ana-sıra geçirir.</p>
+    </div>
+
+    <div class="panel arch">
+      <div class="arch-inner">
+        <div class="arch-col">
+          <div class="arch-head">Yan oturum — CC · yazabilir</div>
+          <div class="node"><b>Dış kaynak</b><span>github.com/yagizkaterli · WebFetch</span></div>
+          <div class="node"><b>Sevk emri</b><span>cc/gorev-2026-07-30-9.md</span></div>
+          <div class="node write"><b>Koşum · CC Opus/High</b><span>P0 → P8</span></div>
+          <div class="node write"><b>Rapor</b><span>cc/rapor-2026-07-30-9.md</span></div>
+          <div class="node write"><b>Ek üretim alanları</b><span>kuyruk/ · raporlar/ — append-only</span></div>
+          <div class="node human"><b>Karar-girdisi</b><span>6 seçenek + bağlayıcı olmayan eğilim</span></div>
+        </div>
+
+        <div class="wall"><div class="wall-label">SETTINGS-DENY · İMZA KAPISI</div></div>
+
+        <div class="arch-col">
+          <div class="arch-head">Kanon — yalnız Salih ∧ ana-sıra</div>
+          <div class="node locked"><b>core/durum-kapsulu.md</b><span>yazım kapalı · okuma hook ile</span></div>
+          <div class="node locked"><b>core/tuzuk-v0.md</b><span>40 madde · Katman-1</span></div>
+          <div class="node locked"><b>CLAUDE.md · .claude/</b><span>yazım yapısal kilitli</span></div>
+          <div class="node human"><b>Katman-1 masası</b><span>Salih · tek oturum</span></div>
+          <div class="node human"><b>git push</b><span>onaya tabi</span></div>
+          <div class="node"><b>Compound katmanı</b><span>senaryo-defteri · wiki · commit (m.10)</span></div>
+        </div>
+      </div>
+
+      <div class="arch-legend">
+        <span><i class="sw" style="background:var(--teal-bg); border-color:var(--teal)"></i> CC yazar</span>
+        <span><i class="sw" style="background:var(--ochre-bg); border-color:var(--ochre)"></i> insan kapısı</span>
+        <span><i class="sw" style="background:var(--oxide-bg); border-color:var(--oxide); border-style:dashed"></i> yazım kilitli</span>
+        <span><i class="sw" style="background:var(--panel); border-color:var(--line)"></i> okuma / referans</span>
+      </div>
+    </div>
+
+    <div class="panel stack-s">
+      <h3 class="serif">Makine kancası — bağlamın oturuma nasıl girdiği</h3>
+      <p class="prose" style="font-size:14.5px">Duvarın <b>okuma yönü açıktır</b>: CC kanon dosyalarına yazamaz, ama her açılışta onları okumak zorundadır. Bunu iradeye bırakmayan mekanizma SessionStart kancasıdır — canlı kapsül, pano ve yetki bandını oturum başlar başlamaz bağlama enjekte eder.</p>
+      <div class="codeblock">
+        <div class="codeblock-h"><span>MEVCUT · SessionStart</span><span>deneysel damga (m.29)</span></div>
+        <pre>oturum açılır
+  └─ <b>SessionStart hook</b>  ──► bağlama enjekte edilir:
+       ├─ yetki bandı (m.41)      <i>“bu yüzey yan oturum; kanon kilitlemez”</i>
+       ├─ core/durum-kapsulu.md   <i>ilk 40 satır — nerede olduğumuz</i>
+       └─ core/pano.md            <i>güncelleme satırı — neyin ekrana geldiği</i>
+
+<b>tasarım ilkesi:</b> disiplin ajanın hatırlamasına değil,
+                 <b>oturumun yaşam döngüsüne</b> bağlanır.</pre>
+      </div>
+      <p class="prose" style="font-size:14.5px">Bu ilke, incelenen ailenin tek gerçek katkısıyla (L5 — disiplin iradeye değil yaşam-döngüsüne bağlanır) aynı yere bakar; ancak bizde bu zaten kancayla <i>koşuyor</i>, dış metinden alınacak bir kurulum yok. Alınacak olan, ilkenin m.24 ile açık gerilimidir — ve o bir skill işi değil, Katman-1 kalemidir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="matris" class="spine">
+  <div class="rail"><div class="rail-id">§G</div><div class="rail-chip" style="background:var(--ochre)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">P4 çıktısı</div>
+      <h2>Eleme matrisi — beş aday, iki uyarlama</h2>
+      <p class="lede" style="margin-top:10px">Emrin dürüstlük şartı bunu talep etti: <i>“beşi de faydalı, hepsini uyarlayalım” sonucu şüphelidir.</i> Sonuç 5 → 2.</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:126px">Aday</th>
+            <th style="width:104px">Hüküm</th>
+            <th>Ölçülebilir gerekçe</th>
+            <th style="width:150px">Nereye gitti</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">foundation</td>
+            <td><span class="verdict v-drop">UYARLANMAZ</span></td>
+            <td>Altı yasadan <b>beşi kanonda ve daha sıkı</b>. Kalan L5 zaten m.24 ile çelişiyor. Ayrıca kategori hatası: içerik anayasa sınıfı (her zaman açık olmalı), ambalaj tetiklenen skill (yalnız çağrılınca yüklenir) — kendi L5'ini ihlal eder.</td>
+            <td>L5 ∧ L6 <b>girdi</b> olarak Katman-1 masasına</td>
+          </tr>
+          <tr>
+            <td class="mono">human-steps</td>
+            <td><span class="verdict v-keep">UYARLANDI</span></td>
+            <td>Canlı arıza kanıtı: bugün sistemde <b>en az 6 açık insan-kapılı eylem üç ayrı dosyaya dağılmış, yaş takibi yok</b>; en eskisi 7 gün.</td>
+            <td>→ <b>3.A devir-bloğu</b></td>
+          </tr>
+          <tr>
+            <td class="mono">frictionless</td>
+            <td><span class="verdict v-merge">BİRLEŞTİ</span></td>
+            <td>Tek operatörlü sistemde iki ayrı tetiği ayırmanın maliyeti faydasını aşıyor; aynı anda ateşlenecek iki skill kompozisyon kuralına gereksiz yük. 7 yasadan 4'ü girdi oldu, 3'ü düştü.</td>
+            <td>→ <b>3.A devir-bloğu</b></td>
+          </tr>
+          <tr>
+            <td class="mono">perfect-form</td>
+            <td><span class="verdict v-keep">KISMEN</span></td>
+            <td>Altı-nokta kontrolün beşi + rack protokolünün tamamı bizde VAR; yalnız 3 parça yeni. Ayrıca tetiği öz-çelişkili: “bozulduğunu ilan ettiği melekeyle” ateşleniyor ⇒ uyarlamada tetik <b>mekanik olaya</b> bağlanmalı.</td>
+            <td>→ <b>3.B kırık-sayacı</b> · skill değil, kural eki</td>
+          </tr>
+          <tr>
+            <td class="mono">idea-boost</td>
+            <td><span class="verdict v-drop">UYARLANMAZ</span></td>
+            <td>Metin 07-18'den beri değişmedi; yedi adımın yedisinin karşılığı bizde var. 07-18'in en güçlü itirazı (düşük eşikli otomatik tetik) aynen ayakta.</td>
+            <td>Yeni hüküm yok</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <b>Ailenin ortak körlüğü.</b> Beş skill kendi kanıt yasasını kendilerine uygulamıyor: kaynak repoda eval, test ve CI dizini yok. “Bu disiplin işe yarıyor” iddiası, skill'lerin kendi tanımıyla <b>makbuzsuz bir borçtur</b> — bizde proof-of-work push'lanmış commit'tir, plan kanıt değildir (m.9).
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="claudemd" class="spine">
+  <div class="rail"><div class="rail-id">§H</div><div class="rail-chip" style="background:var(--ochre)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Cue'nun istediği · ÖNERİ</div>
+      <h2>Orkestratör bloğu — CLAUDE.md'ye eklenmek üzere</h2>
+      <p class="lede" style="margin-top:10px">Aşağıdaki blok, bu dokümanın çıkardığı partisyon-ajan-kapı disiplinini kalıcılaştırır. <b>Kurulmadı.</b> <code>CLAUDE.md</code> yazımı bu yüzeyde yapısal olarak kilitlidir; blok teklif hâlinde, imzasızdır (m.31 Katman-1: kural değişikliği).</p>
+    </div>
+
+    <div class="codeblock">
+      <div class="codeblock-h"><span>ÖNERİ · CLAUDE.md · orkestrasyon bölümü</span><span>İMZASIZ · m.29 deneysel damga adayı</span></div>
+      <pre><b>## Orkestrasyon protokolü (sevk emri koşumları)</b>
+
+<b>Rol:</b> Uzun-ufuklu bir hedefi kronolojik partisyonlara böler,
+her partisyona bir ajan şeridi ve bir anahtar-söz atar, kapıları
+işaretler; plan ve mimari dokümanına çevirir. Karar vermez.
+
+<b>Emir yapısı — her sevk emri şunları taşır:</b>
+  1. <b>Devir bloğu</b>  — insanın gireceği komutlar AYNEN, numaralı
+  2. <b>Yasaklar</b>     — commit/push/kanon-yazımı/numara-üretimi
+  3. <b>Zorunlu iç okuma</b> — uyarlama dış metne göre değil buna göre
+  4. <b>Partisyonlar</b> — girdi · icracı · kapı · çıktı · DONE
+  5. <b>Ağırlık şartı</b> — hangi bölüm raporun yüzde kaçı
+  6. <b>Dürüstlük şartı</b> — hangi sonuç şüpheli sayılır
+
+<b>Kapı kuralı:</b> Eleme, tasarımdan ÖNCE gelir. Uyarlama emeği
+yalnız kapıyı geçen adaya harcanır.
+
+<b>Künye kuralı (m.39):</b> [D] iki bağımsız çekim tutarlı ·
+[K] tek çekim · [X] doğrulanamadı · [ARANAMADI] boşluk beyanı.
+Kaynağı olmayan cümle rapora giremez; boşluk boş bırakılır.
+
+<b>Denetçi kuralı:</b> Bir tasarımı denetleyen ajan onu yazmamış olmalı
+(çapraz-aile). Kendi işini denetleyen ajan denetçi değildir.
+
+<b>Register:</b> ai-to-ai çıktılarda önerme formu (P144) — hüküm değil
+seçenek; eğilim yazılabilir, bağlayıcı değildir (m.41).
+
+<i># Not: canlı ajan hattı K-009/K-010 ile bloke. Bugün koşabilen
+# tek çok-ajanlı satır salt-okuma araştırma paralelidir.</i></pre>
+    </div>
+
+    <div class="panel stack-s">
+      <h3 class="serif">Tek-atış giriş noktası — <code>/one-shot-bootstraping</code></h3>
+      <p class="prose" style="font-size:14.5px"><b>Bu bir kurulu skill değildir</b> — bu blueprint'te P0→P8 hattının adıdır. Kurulacaksa KILAVUZ'un eval kuralına tabidir: SMOKE etiketi · çıplak-%100 yasağı · ~10 negatif örnek · ≥3× koşum. Tetiği ise mekanik olmalı, öz-değerlendirmeye bağlı olmamalı — <code>perfect-form</code>'un düştüğü hata tam buydu.</p>
+      <ol class="steps">
+        <li>Emir dosyası yolu girdi olarak alınır; <b>başka hiçbir şey sorulmaz</b> (m.4 soru eşiği).</li>
+        <li>P1 zemin yüklenir; eksik okuma varsa koşum <b>başlamaz</b>, eksik beyan edilir.</li>
+        <li>P2 araştırma şeridi paralel açılır — künye damgası zorunlu.</li>
+        <li>P4 kapısı: geçemeyen aday için P5 <b>hiç çalıştırılmaz</b> (emek tasarrufu ölçülebilir).</li>
+        <li>P6 denetçi, P5'i yazmayan şeritten gelir.</li>
+        <li>P8: rapor + karar-girdisi düşer; commit/push YOK, kapı Salih'tedir.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="sonuc" class="spine">
+  <div class="rail"><div class="rail-id">§I</div><div class="rail-chip" style="background:var(--pass)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Compound adımı</div>
+      <h2>Koşum ne bıraktı — karar kuyruğu</h2>
+      <p class="lede" style="margin-top:10px">Emir hüküm vermeyi yasakladı; aşağısı seçenek listesidir. CC eğilimi yazılıdır ve <b>bağlayıcı değildir</b>.</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:34px">#</th>
+            <th style="width:200px">Karar</th>
+            <th style="width:104px">Katman</th>
+            <th>CC eğilimi (bağlayıcı değil)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td><code>devir-blogu</code> üretilsin mi</td><td><span class="badge b-machine">KATMAN 2</span></td><td>Önce <b>bir vardiya kural olarak</b> dene (skill'siz), sonra üret — desen zaten koşuyor, bağlayıcılık verisi ucuz</td></tr>
+          <tr><td class="num">2</td><td>Açık insan-eylem defteri kurulsun mu</td><td><span class="badge b-machine">KATMAN 2</span></td><td>Yeni dosya açma; <b>mevcut borç bloğuna yaş alanı ekle</b> — arızanın %80'ini kapatır, boyut-tetiği riski yok</td></tr>
+          <tr><td class="num">3</td><td>Kırık-sayacı kural eki</td><td><span class="badge b-human">KATMAN 1</span></td><td>Deneysel damgayla 5 vardiya dene, <b>eşik GEÇİCİ</b> — eşik-3 araştırmasız imzalanamaz</td></tr>
+          <tr><td class="num">4</td><td>L5 ↔ m.24 gerilimi</td><td><span class="badge b-human">KATMAN 1</span></td><td>Masa gündemine kalem — 30-6'nın “koşullu kilit” bulgusuyla <b>aynı ailede, aynı masada</b> görülmeli</td></tr>
+          <tr><td class="num">5</td><td>Sıra</td><td><span class="badge b-mute">—</span></td><td>1 → 3 → 2 → 4; ilk üçü ucuz-revert sınıfı, masayı beklemek zorunda değil</td></tr>
+          <tr><td class="num">6</td><td>§5 taban sorusu 30-7'ye girdi olsun mu</td><td><span class="badge b-machine">KATMAN 2</span></td><td>Evet — karar 30-7'de</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b>En değerli tek mekanizma</b> (P6 madde 4'ün zorunlu tek seçimi): <b>operatör-çarpanı</b> — Salih'in yakaladığı kırık ikiye sayılır ∧ o vardiyanın diğer öz-değerlendirmelerini şüpheli kılar. Öz-değerlendirmenin kendisi bozulabildiği için, dış gözlemcinin bulduğu hata yalnız bir hata değil, <b>o vardiyanın tüm iç raporuna dair bir kalibrasyon sinyalidir</b>.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="risk" class="spine">
+  <div class="rail"><div class="rail-id">§J</div><div class="rail-chip" style="background:var(--oxide)"></div></div>
+  <div class="body stack">
+    <div>
+      <div class="h-kicker">Dürüstlük bandı</div>
+      <h2>Kapatılamayanlar ve bu dokümanın kendi sınırı</h2>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Koşumun beyan ettiği borçlar</h4>
+      <ul class="clean warn">
+        <li><b>Repo commit tarihçesi çekilmedi</b> ⇒ “idea-boost değişmedi” hükmü repo listeleme tarihine dayanıyor, diff'e değil <span class="badge b-mute">[K]</span></li>
+        <li><b>Dış metinlerin ham baytı okunmadı</b> — çekim bir özet modelinden geçti; yapı iddiaları <span class="badge b-mute">[D]</span> taşıyor, birebir satır sayısı ve frontmatter alan listesi taşımıyor</li>
+        <li><b>Yazarın kendi ölçümü yok</b> ⇒ hiçbir skill için “işe yarıyor mu” sorusuna dış kanıt yok; feedback hükümleri <b>metin analizi</b> düzeyindedir, saha kanıtı değildir</li>
+        <li><b><code>hizalama</code> ritüel skill'inin gövdesi okunamadı</b> (hesap-skill, repoda kopya tutulmuyor) — örtüşme taramasında tarifiyle eşlendi, gövdesiyle değil</li>
+      </ul>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Bu görselleştirmenin kendi sınırı</h4>
+      <ul class="clean">
+        <li>Bu doküman <b>kanon değildir</b>: emri ve raporunu yeniden düzenler, yeni hüküm üretmez. Bir çelişki varsa kaynak metin galiptir.</li>
+        <li>§E'deki ajan şeritleri <b>tasarımdır</b>; 30-9 tek oturumda koştu. Tabloyu sicil sanmak, koşmamış bir çok-ajanlı hattı koşmuş göstermek olur.</li>
+        <li>§H'deki blok <b>imzasızdır ve kurulmamıştır</b>; <code>CLAUDE.md</code> ve <code>.claude/</code> bu yüzeyde yazıma kapalıdır.</li>
+        <li><code>/one-shot-bootstraping</code> <b>kurulu bir skill değildir</b> — burada P0→P8 hattının adıdır.</li>
+        <li>Compound Engineering tarafı için okunan kaynak reponun README'sidir; tek tek skill gövdeleri çekilmedi <span class="badge b-mute">[K]</span>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span><b>Kaynak emir:</b> <code>cc/gorev-2026-07-30-9.md</code></span>
+    <span><b>Kaynak rapor:</b> <code>cc/rapor-2026-07-30-9.md</code></span>
+    <span><b>Disiplin çerçevesi:</b> everyinc/compound-engineering-plugin</span>
+    <span><b>Yüzey:</b> CC yan-oturum · kanon kilitlemez (m.41)</span>
+  </div>
+</footer>
+
+</body>
+</html>
