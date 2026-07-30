@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır; mount'ta git komutu YOK (pull gerekirse Salih terminali).*
 
-**Güncelleme:** 2026-07-30 KAPANIŞ, PC ana vardiya (Carvis/Fable) — MERGE KAPANDI (main `348ed67`) + senkron OK · okuma programı KAPANDI (23/23) · Ç1 + K14 + D5 kapandı · m.37 taslağı antitezden geçemedi ⇒ **CC 30-3 (v2 sentez) + 30-4 (masa gündem paketi) KOŞUYOR** — raporları sonraki vardiya ingest eder. Teslim: `raporlar/vardiya-teslim-2026-07-30-anasira.md`
+**Güncelleme:** 2026-07-30 AKŞAM, PC ana vardiya (Carvis/Fable) — **30-3 + 30-4 DÜŞTÜ ve İNGEST EDİLDİ:** m.37 v2 sentez masada (İMZASIZ; kapı↔etiket rol ayrımı; KG-V2-1..10) · masa gündemi `kuyruk/masa-gundemi-2026-07-30.md` HAZIR ve v2 ile yamandı (49→50 karar satırı; küme 1'e 7a eklendi) · damgalar senaryo-defteri 07-30 (3) · defter 2 satır işlendi. **SIRADAKİ: Katman-1 masası (Salih, TEK oturum — giriş dosyası masa gündemi).** Önceki teslim: `raporlar/vardiya-teslim-2026-07-30-anasira.md`
 **Salih INSAN okuma sırası (kendi temposunda):** ① INSAN-pasif-ogrenme (düzeltildi) → ② INSAN-arastirma-promptu → ③ INSAN-ajan-durma → ④ INSAN-kod-entegrasyonu → ⑤ INSAN-tech-stack → ⑥ INSAN-arac-entegrasyonu → ⑦ INSAN-lojik-kod. `kuyruk/masa-gundemi-2026-07-30.md` düştüyse ÖNCE o.
 
 ## Şu an
@@ -15,13 +15,13 @@
 
 ## Açık borçlar
 - ~~MERGE ×5~~ **KAPANDI 07-30** (main `348ed67`; disk artık main'de, mount git'i sağlıklı — "mount'ta git yok" kuralının gerekçesi zayıfladı, K-011/Katman-1 masasına not). Senkron OK; A1 sicili yeniden işliyor (arıza-sonrası ilk temiz koşum).
-- **m.37 v2 SENTEZ borcu:** tez `cc/rapor-2026-07-29-5.md` + antitez `cc/rapor-2026-07-30-2.md` → revize taslak (ayıklama adımı · beyan düzeltmesi [yalnız |cephe|=1'de "çöktü"] · merdiven istisnası/T6 · madde-7 yerine CoT+karşıt-temel · kanon-ölçeği rakamları · L=5 ölçek sorusu). Derleme Katman-2, imza Salih.
+- ~~m.37 v2 SENTEZ borcu~~ **KAPANDI (07-30 akşam):** v2 taslak `cc/rapor-2026-07-30-3.md` (4 kural/13 fıkra, kapı↔etiket rol ayrımı; KIRILDI 3/3 kapatıldı) — **İMZASIZ, imza Salih (KG-V2-1..10, masa gündemine işlendi).** KG-M37→KG-V2 eşleme: senaryo-defteri 07-30 (3).
 - **Katman-1 masası (TEK oturum; ana kaynak artık `cc/rapor-2026-07-29-4.md` §13.2 D-1..21):** D-listesi önceki gündemi kapsıyor (Ç1 metni · Model A/B/C ×2 ad-çakışması · notasyon paketi · effort/model merdiveni tek kalem · K39 üç-eksen · niteleyici-taşıma · V-numara yetkisi · metin∧icra ayrımı · MAST/B1-B15 · INSAN-pasif düzeltme [işlendi, onay] · …) + **KG-M37-1/2/3/5/7** (fıkra imzası + "3 seçeneği" metni + m.42(e) gerilimi + öneri-satırı + usul) + **KG-CC-1..8** (E11 yetki-modeli · switchModelsOnFlag · hesap-skill akıbeti · E8 testi · iki-yüzey→denetçi · m.41 tek-kalem · zamanlama mimarisi · Salih beyanları).
 - **Diğer:** PAT ~10 Ekim · P2 devir ingest · senkron kök-neden · /compact saha testi (5 dk) · S4-A1 ingest · akademik yeniden-doğrulama (B-1) · D5 künye borcu · K14 5-dk doğrulama · wiki adayları (`sessiz-hata-desenleri` + `baglam-mekanigi-cc` + `karar-cephesi` [KG-M37-8] + `orca.md` güncelleme).
 - **boyut-tetiği:** KILAVUZ 16,8KB · fikir-kutusu 19,9KB (sınırın dibinde; damıtma = K-019 ilk boş vardiya) · okuma-defteri 40KB'a ulaştı (program kapandı — arşiv adayı, K-019 masasına).
 
 ## Sonraki ilk iş
-1. CC koşumları (07-30 ÖS, Salih başlatır): `cc/gorev-2026-07-30-3.md` = m.37 v2 sentez · `cc/gorev-2026-07-30-4.md` = **Katman-1 masa gündem paketi** (İNSAN register, `kuyruk/masa-gundemi-2026-07-30.md`). **ÜRETİM FRENİ (Salih endişesi 07-30 + Carvis önerisi): bu ikisinden sonra masa oturana dek YENİ araştırma CC'si açılmaz — karar borcu merge borcu gibi bileşik büyüyor.** Sonra: **Katman-1 masası TEK oturum** (giriş dosyası = masa-gündemi).
-2. "günaydın, staj": soğuk baseline — pencere 1 Ağu'a dek (07-30 paralel oturum açık).
-3. ~~CC koşumları~~ 30-1 + 30-2 DÜŞTÜ ve İNGEST EDİLDİ (07-30). Kalan mini borçlar: Plan sürdürme 30-sn testi · atlas §6.2 AAR düzeltmesi (m.8) · /compact saha testi.
-4. Bu vardiyanın kapanışında commit/push artık DOĞRUDAN mount'tan atılabilir (main sağlıklı) — kapanışta ilk deneme.
+1. ~~CC koşumları 30-3/30-4~~ **DÜŞTÜ ve İNGEST EDİLDİ (07-30 akşam).** **Katman-1 masası TEK oturum (Salih):** giriş dosyası = `kuyruk/masa-gundemi-2026-07-30.md` (v2-güncel; küme 1+2 kritik yol, öneri: iki oturum). **ÜRETİM FRENİ SÜRÜYOR:** masa oturana dek YENİ araştırma CC'si açılmaz.
+2. "günaydın, staj": soğuk baseline — pencere 1 Ağu'a dek (07-30 paralel oturumda Salih yürütüyor).
+3. Kalan mini borçlar: Plan sürdürme 30-sn testi · atlas §6.2 AAR düzeltmesi (m.8) · /compact saha testi · Staab %95,8→%95,2 notu · P2 devir + S4-A1 ingest.
+4. ~~Kapanışta mount'tan commit/push ilk deneme~~ **DENENDİ (07-30 akşam ingest commit'i)** — sonucu senaryo-defteri 07-30 (3) bloğunda; teslim-raporu↔kapsül gerilimi ("kural geçerli" ↔ "deneme izni") Katman-1 masasının mount-git kaleminde çözülür.
