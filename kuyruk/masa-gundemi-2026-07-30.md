@@ -89,7 +89,12 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 - **Soru:** İmzadan önce ayrı bir model ailesinden (Codex gibi) bağımsız denetçi turu şart mı, yoksa bu sefer muafiyet verip doğrudan imzalayabilir misin?
 - **Neden şimdi:** Hem öneriyi kuran hem saldıran koşum aynı model ailesinden; ikisi de bunu kendi sınırı olarak açıkça beyan etti.
 - **Carvis önerisi:** Bu fıkrada muafiyet ver; bağımsız denetimi ilk 5 gerçek kullanımdan sonraki kalibrasyon turuna sakla.
-- **v2 ile AĞIRLAŞTI:** Artık ÜÇ koşum (öneri, saldırı, sentez) aynı model ailesinden; ve v2'nin yeni fıkraları (kapı, denge şerhi, karşıt-temel yuvası) hiç saldırı görmedi. v2'nin kendi beyanı: kanon-aday olabilmesi için ya v2'ye ayrı bir saldırı turu, ya kimliği maskelenmiş hakemlik, ya ayrı aileden denetçi, ya senin açık muafiyetin gerekir. Muafiyet verilecekse artık daha büyük ve daha az denenmiş bir metne veriliyor — yukarıdaki öneri bu yeni ağırlıkla tartılmalı.
+- **v2 ile AĞIRLAŞTI:** Artık ÜÇ koşum (öneri, saldırı, sentez) aynı model ailesinden; ve v2'nin yeni fıkraları (kapı, denge şerhi, karşıt-temel yuvası) hiç saldırı görmedi. v2'nin kendi beyanı: kanon-aday olabilmesi için ya v2'ye ayrı bir saldırı turu, ya kimliği maskelenmiş hakemlik, ya ayrı aileden denetçi, ya senin açık muafiyetin gerekir.
+- **30-5 araştırması ÜÇÜNCÜ BİR YOL açtı ve fedayı küçülttü:**
+  - Muafiyetin bedeli ölçüldü ve **beklenenden küçük** — çapraz-aile denetçinin kazancı hata-benzerliği farkı kadar (~0,05), "bağımsız ikinci göz" kadar değil (madde 28, bulgu 2).
+  - **Üçüncü yol:** muafiyet ↔ tam denetim ikilisi yerine önce **ucuz kalibrasyon koşumu** — aday denetçiye v1 verilir (v2 değil), bilinen 3 kırığı yakalıyor mu ve 4 sağlam hükmü yanlışlıkla kırıyor mu ölçülür. Tek koşum, sıfır yeni malzeme. Bu madde 7'yi kapatmaz ama **ucuzlatır**: usul kararını veriyle verirsin.
+  - **Soru aslında tek soru değil:** v2'nin sayı ayağı (hesabı yeniden koş), kural ayağı (bu kural teşhis edilen arızayı çözüyor mu) ve kanon-çelişki ayağı ayrı denetim türleri — üçüne aynı cevabı vermek zorunda değilsin.
+- **Dürüstlük şerhi (30-5 kendi beyanı):** o rapor da opus'tur, yani "çapraz-aile denetçi nasıl kurulur" sorusunu denetlenecek metinlerle aynı aileden cevaplıyor — kendi tavsiyesinin canlı karşı-örneği.
 - **Feda:** Aynı aileden gelen ortak körlük riski bilerek kabullenilir.
 - **Kaynak:** `cc/rapor-2026-07-29-5.md` KG-M37-7 · `cc/rapor-2026-07-30-2.md` bölüm 0 · `cc/rapor-2026-07-30-3.md` bölüm 5.3 (KG-V2-7).
 
@@ -257,7 +262,8 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 - **Neden şimdi:** Ölçülmüş üç zaaf üst üste bindi: (a) bu depoda ikinci bir terminal aracı açılırsa kilit yoktur, (b) paralel çalışma kopyaları verilen izinleri paylaşıyor, (c) istemci tarafında koşan her denetim atlanabilir — gerçek zorlama yalnız sunucu tarafındadır. Bizim `git push` kilidimiz istemci tarafında.
 - **Carvis önerisi:** Üçü birlikte koşulsun. GitHub tarafında dosya yolu kısıtlı bir koruma kurulsun ve **önce "izle, engelleme" modunda** başlatılsın; "yönetici de atlayamaz" kutusu işaretlensin (aksi halde tek kişilik depoda koruma sana uygulanmaz). Ayrıca 5 dakikalık bir test: belirli bir başlatma bayrağının proje ayarlarını (kilit ve kancalar dahil) düşürüp düşürmediği ölçülsün — belgeye göre düşürüyor, denenmedi.
 - **Feda:** Sunucu tarafı koruma, kendi acil müdahaleni de yavaşlatır. "İzle" modu bunu bir süre erteler ama koruma da o sürede gerçek değildir.
-- **Kaynak:** `cc/rapor-2026-07-29-4.md` D-9 ve KG-O4-3 · `cc/rapor-2026-07-29-6.md` madde E8, KG-CC-4.
+- **⚠️ 5 dakikalık test KOŞULDU (30-6 raporu) — sonuç: KİLİT KOŞULLU, YAPISAL DEĞİL.** İki bağımsız yoldan yazım geçti: (a) başlatma bayrağı proje ayar-kaynağını dışarıda bırakınca hem yazım kilidi hem Bash kancası birlikte düştü — ikisi aynı dosyaya bağlı, ayrı sigorta değil; (b) proje kökü dışından açılışta proje ayarları hiç yüklenmedi, yazım yine geçti. Test dosyası her iki durumda anında silindi, `core/` temiz. **Bunun anlamı:** m.41'in "yapısal kilitli" ifadesi yanlış — yapısal olan `settings.json`'un varlığı değil, YÜKLENMESİ; yükleme açılış koşullarına bağlı bir çalışma-zamanı kararı. Soru artık "test yapılsın mı" değil, **"kilit gerçekten kilit değilse ne yapıyoruz"**. Bu, madde 12'yi (m.41 metni) ve K-010'un A2 kanıt kapısını doğrudan etkiliyor.
+- **Kaynak:** `cc/rapor-2026-07-29-4.md` D-9 ve KG-O4-3 · `cc/rapor-2026-07-29-6.md` madde E8, KG-CC-4 · **`cc/rapor-2026-07-30-6.md` (koşulmuş ölçüm)**.
 
 ### 27. Metin mi tutar, icra mı — tüzük maddelerinin etiketlenmesi
 - **Soru:** Tüzük maddeleri "zorlanabilir / zorlanamaz" diye etiketlensin ve zorlanabilir olanlar koda taşınsın mı?
@@ -271,7 +277,14 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 - **Neden şimdi:** Kanıt tabanı tamamlandı: farklı aileden denetçi, aynı aileden denetçiden iyi; aynı aileden denetçi, kendi kendini denetlemekten iyi. Ama bağımsızlık satın alınamıyor — iki model yüzde 60 oranında **aynı yanlış cevabı** veriyor. Ayrıca ölçülmüş en güçlü doğrulayıcı bir başka dil modeli değil, biçimsel bir araç.
 - **Carvis önerisi:** Denetçiden "kalkan" değil "ikinci süzgeç" beklensin; bütçe çatalı yalnız dil modeli denetçisi için anlamlıdır, biçimsel denetçi ayrı kalemdir. "İki yüzey" ilkesi denetçi eksenine taşınsın — çünkü bugün ikinci yüzey (Cowork) ölçülemiyor, yani elimizde çapraz doğrulama değil, doğrulanmamış ikinci yüzey var.
 - **Feda:** Yüzey çeşitliliğinin kendi başına sağladığı (ölçülmemiş) koruma bilerek bırakılır.
-- **Kaynak:** `cc/rapor-2026-07-29-1.md` KG-O2-7 · `cc/rapor-2026-07-29-2.md` KG-12 · `cc/rapor-2026-07-29-6.md` KG-CC-5.
+- **30-5 araştırması bu maddeyi büyük ölçüde yeniden kurdu (dört bulgu):**
+  1. **Bağlam tek şey değil, üç ayrı şey** ve üçü ters yönlerde etki ediyor: ölçüt+ham veri+kod vermek denetçiyi kuvvetle İYİLEŞTİRİR (vermezsen aşırı cömert oluyor — hüküm ters çevirme %85'e varıyor, çevirmelerin %91-100'ü "yanlışı doğru saymıştım") · bizim akıl-yürütme zincirimiz İKİ YÖNLÜ (zayıf denetçide felaket, güçlüde kısmi kazanç ama aşırı-red ikiye katlanıyor) · bizim hükmümüz ve kimliğimiz YALNIZ BOZAR (dalkavukluk %58, gerileyici kısmı %15, değişen hükmün %78'i kalıcı). ⇒ Ödünleşim sanılan yerde değil: ölçütü ver, hükmü verme.
+  2. **Çapraz-aile beklenenden az satın alıyor:** 9 denetçilik bir panelde etkin bağımsız oy 2,18; aynı-aile hata benzerliği 0,437 ↔ çapraz-aile 0,389 — en benzer üç çift zaten çapraz aileden. Sıralama çürümedi, büyüklüğü küçüldü. Niteleyici: ölçüm etiketleme görevinde, uzun-metin denetiminde değil (o ölçüm literatürde YOK).
+  3. **Kalibrasyon paketi zaten elimizde:** antitezin v1'de kırdığı 3 + sağ bıraktığı 4 hüküm = etiketli sınama seti. Aday denetçiye v1 verilir, yakalama ve yanlış-alarm tek koşumda ölçülür. **Bütçe kararı ölçümden önce verilmek zorunda değil.**
+  4. **Paket boyutu motor seçiminden belirleyici:** kör paket ≈28 bin karakter ↔ bağlamlı paket ≈192 bin (7 kat; yalnız sayı denetimine karşı 19 kat) ve bu fark HER koşumda tekrar eder — önbellek günler arası hiç tutmuyor. Kör paket elle yapıştırılabilir boyutta ⇒ **hattı kurmak CLI kurulumuna bağımlı değil.**
+- **Ek bulgu — salt-okurluk motordan bağımsız çözülüyor:** kör paket ayrı dizine kopyalanır, denetçi orada koşar. Repo içinde koşan denetçiye "sana bunu vermedim" demenin bağlayıcılığı yok. Körlük ve kilit tek hamlede.
+- **İşletim kuralı adayı:** denetim TEK ATIŞLIK ve İTİRAZSIZ olmalı — denetçiyle ikna turuna girmek denetimi ölçülü biçimde imha ediyor (dalkavukluk rakamları).
+- **Kaynak:** `cc/rapor-2026-07-29-1.md` KG-O2-7 · `cc/rapor-2026-07-29-2.md` KG-12 · `cc/rapor-2026-07-29-6.md` KG-CC-5 · **`cc/rapor-2026-07-30-5.md` §1, §2, §5**.
 
 ### 29. S6 — hukuki çevre
 - **Soru:** S6 (yargı/hukuk çevresi) masası şimdi açılsın mı?
