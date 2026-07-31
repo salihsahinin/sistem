@@ -14,6 +14,7 @@
 | S-H | seans-basla/bitir (CHECKLIST formunda; fiil-DSL dondu) | oturum aç/kapa | DÜŞÜK — destek-eşiği bekler | `raporlar/2026-07-18-seans-yasam-dongusu-senkron-skill.md` §4b | DONDURULDU-BEKLİYOR |
 | S-I | sinav/grill (anlama-kapısı ölçüm geçişi; tez→sorgu→sert düzeltme) | YALNIZ Salih beyanı: "sınav / grill" — varsayılana gömülmez (V55 korunur, K3 hükmü 07-21) | ORTA | `raporlar/2026-07-21-grill-me-skill-arastirma.md` + senaryo-defteri 07-21/K3 | ADAY (K-016; Pocock kurulmaz, desen madenlenir — V25) |
 | S-J | karar-kaydet (defter-bloğu yazım + commit; elle-tetik, `disable-model-invocation`) | yalnız Salih/vardiya-akışı tetiği | ORTA (S-G tamamlayıcısı) | S-G tasarım notu + skill-nasil-olusturulur §5 | ADAY |
+| S-K | gorev-emri-derleme (Salih "araştır" beyanı → künyeli CC emir dosyası + koşum promptu; şablon: konfigürasyon·m.39·karşı-tez·teslim·dürüstlük-şartı) | "araştırma emri yaz / prompt ver" | YÜKSEK — m.43 eşiği FAZLASIYLA dolu (07-30 tek gecede 21 + 08-01 2 emir; Salih deseni kendisi işaret etti 08-01) | 30-15 §6 (emir derleme MELEZ: içerik E1 + mekanik kapı skill yolu ≈0/5 hata) + `cc/gorev-2026-08-01-{1,2}.md` son örnekler | ADAY |
 
 Üretim standardı (K-016 açılınca): eval-önce akış · description = NE+NE ZAMAN+negatif-tetik · yan-etki = ayrı elle-tetik skill · <500 satır · çok-modelde test — `raporlar/2026-07-17-skill-nasil-olusturulur.md`.
 
