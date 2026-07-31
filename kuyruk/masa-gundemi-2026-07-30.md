@@ -490,3 +490,17 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 *8 raporun yol-seçimleri TEK PAKET olarak masaya (hepsi aynı bütçe/dikkat havuzundan): 30-7 §7 (T1/T2/T3 + `Sonradan-itiraz`; öneri T1+2 hafta veri) · 30-15 §9 (akış kuralı "≥3 damgasız → yeni emir yok"; öneri EVET) · 30-16 §8 (hasat 08-11 tarihli borç · K-016 önceliği YÜKSELDİ) · 30-26 §K (30-16 ile birleşsin mi; öneri EVET) · 30-8 §7 (Adım 0 managed-settings testi — Salih terminali 5-15 dk, ön-koşul; sonra A/B/C) · 30-10 §6 (KG-A..K; kritik: Y1 dedektör + dil hükmü Python) · 30-21 §7 (Yol 1/2/3; öneri Yol 1 = yalnız betik · atlas-kosum'a ucuz model pini) · 30-22 §8 (kayıt disiplini · damga ölçeğine "red" kenarı — değer tercihi).*
 
 **CC-entegrasyon hızlandırma sırası (Salih'in 07-31 önceliği; Carvis önerisi, karar masada):** ① 30-21 betiği (`raporlar/usage/kosum-maliyeti.py`) vardiya-kapanış rutinine + 30-22 JSONL şeması (Katman-2, ≈0 maliyet) → ② ingest frenini imzala (30-15 §9.1) → ③ atlas-kosum model pini ($341,74 ölçülmüş kaldıraç; `.claude/` yazımı = imza) → ④ Adım 0 testi (Salih terminali) → sbx pilotu ancak ondan sonra.
+
+## EK-3 — İngest turu ③ Katman-1 girdileri (08-01; kalan 12 rapor — tam damıtma `raporlar/2026-08-01-ingest-3-damitma.md`, m.20)
+
+*Damga: 10 KABUL-şerhli + 2 KISMEN (30-12 · 30-14). Bu turla 07-30 külliyatı 26/26 — ingest borcu KAPANDI; 30-15 freninin "≥3 damgasız" gerekçe-tabanı değişti, imza kalemi (EK-2 ②) bu bilgiyle okunmalı.*
+
+**Birleşik kalemler (tek karar, çoklu kaynak):**
+- **B1 — Tek çağrı-sözleşmesi alanı:** 30-11 K0 (tip imzası) ∧ 30-14 §7 Yol-A (≤1 sa pilot) ∧ 30-20 KG-E — TEK kalem olarak imzalanmalı; ayrı imzalanırsa çelişir.
+- **B2 — "Kural var, koşmuyor" çözüm sınıfı:** 30-13 Tasarım B (`skill-aday(k) ↔ tekrar≥3 ∧ mekanik ∧ ¬yargı`) + 30-20 KG-A (md.44 yürürlük) + KG-D (üçlü kilit bilinçli mi) + 30-17 dedektör yaması (P8, 30-16 ile ortak) + 30-19 rapor-anı snapshot kuralı.
+- **B3 — Oturum debisi/bölme:** 30-18 §7 (Yol 2 eşiği N · RECAP'in vardiya-kapanis'e girmesi) ∧ 30-17 KARAR-GİRDİSİ (oturum bölme) — CC-geçiş (madde 9) ve `gorev-2026-08-01-2` ile aynı masada.
+- **B4 — Üslup/etkileşim paketi:** 30-12 Ç1(zayıfladı)/Ç3/Ç4/Ç7/Ç8/Ç9/Ç11 + 30-18 "prompt sayısı Katman-2'de benimsenemez" (m.6/m.16 tespiti) — Ç8 ↔ 30-11 üslup kalemi tek imza.
+- **B5 — Ölçüm/maliyet düzeltmeleri:** 30-24 §7 (metrik Yol A/B/C · kosum-maliyeti.py 3 kusur — düzeltilene dek $ rakamı rapora girmez · $1.571,20→$710,80 · 30-22 hükmü "doğrulanmamış aday"a · damga doluluğu %18 tek darboğaz) — EK-2 ①/③ kalemleriyle aynı pakette.
+- **B6 — Onarım/kirlilik usulü:** 30-25 KG-25-2/3/6/9/10 (EK zaten listeli) + 30-17 KILAVUZ kapsam yaması (P60) + switchModelsOnFlag kapatma (P55).
+
+**Tekil kalemler:** 30-9: foundation L5 ↔ m.24 gerilimi · kırık-sayacı kural eki (m.29) — 30-11: "ontolojik topoloji" terim statüsü · m.38↔skill-dili tek karar (KG-O2-1) — 30-13: R1/R2 rol-yetki · üretim dursun mu · görünürlük bütçesi/yetki defteri · m.36 rasyo aygıtı yok (19 gün) · 30-10/11/13 sıra çelişkisi — 30-14: vizyon okuması (2/3 mü 3/3 mü) · m.13 lafız-boşluğu · AB-07/SB-nn şema — 30-19: Yol B (m.29 front matter; zorlayıcı denetleyici K-009 ön-koşullu) · Yol C silme = m.8 kapsamı — 30-23: TÜMÜ madde 49 altına (49-a..h; yeni kalem açılmadı, 1b freni) · **PAT `.git/config` düz metin (§7.2) — güvenlik, öne alınmalı** — 30-12/30-18 tarihli: T3 pilotu + taban çizgisi 7 Ağu bandı.
