@@ -484,3 +484,9 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 | KG-25-7 | Üç boyut aşımı: senaryo-defteri +%87 · fikir-kutusu +%10 · KILAVUZ +%2 → K-019 damıtma ertelenemez | Katman-1 |
 | KG-25-10 | m.40b (antitez şeridi) maliyeti iki bağımsız ölçümle birinci kalem; ucuzlatma kolu model kademesi DEĞİL — seçenekler: atlas tetik eşiğini daralt / prompt kısalt / dokunma (körü körüne kısaltma m.39 hattını zayıflatır) | Madde 7 (usul) girdisi |
 | — | Madde 28 notu: 30-5'ten yamanan 11 rakamın 8'i kaynakta birebir; `%15` · `19 kat` · `28K/192K` **türetilmiş biçim** (uydurma değil; kaynakta `≈7-19×`, `≈28K`) — okurken `[K]` say | Madde 28 şerhi |
+
+## EK-2 — İngest turu ①+② Katman-1 girdileri (07-31/08-01; kaynak raporların kendi bölümleri, pointer m.20)
+
+*8 raporun yol-seçimleri TEK PAKET olarak masaya (hepsi aynı bütçe/dikkat havuzundan): 30-7 §7 (T1/T2/T3 + `Sonradan-itiraz`; öneri T1+2 hafta veri) · 30-15 §9 (akış kuralı "≥3 damgasız → yeni emir yok"; öneri EVET) · 30-16 §8 (hasat 08-11 tarihli borç · K-016 önceliği YÜKSELDİ) · 30-26 §K (30-16 ile birleşsin mi; öneri EVET) · 30-8 §7 (Adım 0 managed-settings testi — Salih terminali 5-15 dk, ön-koşul; sonra A/B/C) · 30-10 §6 (KG-A..K; kritik: Y1 dedektör + dil hükmü Python) · 30-21 §7 (Yol 1/2/3; öneri Yol 1 = yalnız betik · atlas-kosum'a ucuz model pini) · 30-22 §8 (kayıt disiplini · damga ölçeğine "red" kenarı — değer tercihi).*
+
+**CC-entegrasyon hızlandırma sırası (Salih'in 07-31 önceliği; Carvis önerisi, karar masada):** ① 30-21 betiği (`raporlar/usage/kosum-maliyeti.py`) vardiya-kapanış rutinine + 30-22 JSONL şeması (Katman-2, ≈0 maliyet) → ② ingest frenini imzala (30-15 §9.1) → ③ atlas-kosum model pini ($341,74 ölçülmüş kaldıraç; `.claude/` yazımı = imza) → ④ Adım 0 testi (Salih terminali) → sbx pilotu ancak ondan sonra.
