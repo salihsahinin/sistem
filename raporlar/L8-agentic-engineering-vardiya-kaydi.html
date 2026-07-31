@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vardiya Kaydı — 100 dakikada full-stack, ajanlarla</title>
+<style>
+/* ================= TOKENS ================= */
+:root{
+  --bg:#e9ecf1; --bg2:#dfe3ea; --panel:#f7f8fb; --panel2:#eef1f6; --sunk:#e2e6ed;
+  --ink:#0f1723; --ink2:#3a4657; --ink3:#6a778a;
+  --line:#c6cddb; --line2:#dae0ea;
+  --capt:#8f6209; --capt-bg:#f3e9d3;      /* kaptan · insan */
+  --mate:#1f5480; --mate-bg:#dde8f2;      /* first mate · orkestratör */
+  --crew:#166357; --crew-bg:#d9ebe6;      /* crewmate · icracı */
+  --ext:#5b3f86;  --ext-bg:#e6dff2;       /* dış servis */
+  --alert:#9b3325; --alert-bg:#f4dfda;    /* uyarı */
+  --shadow:0 1px 2px rgba(15,23,35,.06), 0 1px 1px rgba(15,23,35,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0a1120; --bg2:#070d18; --panel:#0f1828; --panel2:#0c1523; --sunk:#080f1c;
+    --ink:#e3e9f2; --ink2:#a4b0c2; --ink3:#71809a;
+    --line:#1d2a3f; --line2:#16202f;
+    --capt:#e0a63e; --capt-bg:#241c0c;
+    --mate:#69aede; --mate-bg:#0d1c2b;
+    --crew:#4dbda2; --crew-bg:#0b201d;
+    --ext:#a98ede; --ext-bg:#181229;
+    --alert:#ef8672; --alert-bg:#251110;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a1120; --bg2:#070d18; --panel:#0f1828; --panel2:#0c1523; --sunk:#080f1c;
+  --ink:#e3e9f2; --ink2:#a4b0c2; --ink3:#71809a;
+  --line:#1d2a3f; --line2:#16202f;
+  --capt:#e0a63e; --capt-bg:#241c0c;
+  --mate:#69aede; --mate-bg:#0d1c2b;
+  --crew:#4dbda2; --crew-bg:#0b201d;
+  --ext:#a98ede; --ext-bg:#181229;
+  --alert:#ef8672; --alert-bg:#251110;
+  --shadow:none;
+}
+:root[data-theme="light"]{
+  --bg:#e9ecf1; --bg2:#dfe3ea; --panel:#f7f8fb; --panel2:#eef1f6; --sunk:#e2e6ed;
+  --ink:#0f1723; --ink2:#3a4657; --ink3:#6a778a;
+  --line:#c6cddb; --line2:#dae0ea;
+  --capt:#8f6209; --capt-bg:#f3e9d3;
+  --mate:#1f5480; --mate-bg:#dde8f2;
+  --crew:#166357; --crew-bg:#d9ebe6;
+  --ext:#5b3f86; --ext-bg:#e6dff2;
+  --alert:#9b3325; --alert-bg:#f4dfda;
+  --shadow:0 1px 2px rgba(15,23,35,.06), 0 1px 1px rgba(15,23,35,.04);
+}
+
+/* ================= BASE ================= */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.6;
+}
+.mono,code,.tc{font-family:Consolas,"Cascadia Mono","SF Mono",ui-monospace,"Roboto Mono",monospace}
+h1,h2,h3{
+  font-family:Consolas,"Cascadia Mono","SF Mono",ui-monospace,monospace;
+  font-weight:700; letter-spacing:-.02em; margin:0; line-height:1.2; text-wrap:balance;
+}
+h4{font-family:"Segoe UI",sans-serif; font-weight:700; font-size:14.5px; margin:0}
+p{margin:0}
+a{color:var(--mate)}
+code{
+  font-size:.87em; background:var(--sunk); border:1px solid var(--line2);
+  border-radius:3px; padding:.05em .34em; color:var(--ink2);
+}
+.tc{font-variant-numeric:tabular-nums; font-size:12px; color:var(--ink3); letter-spacing:.01em}
+
+/* ================= LAYOUT ================= */
+.wrap{max-width:1160px; margin:0 auto; padding:0 20px 90px}
+.row{
+  display:grid; grid-template-columns:76px minmax(0,1fr); gap:0 22px;
+  border-top:1px solid var(--line);
+}
+.row > .rail{padding-top:32px; border-right:1px solid var(--line); position:relative}
+.row > .col{padding:32px 0 40px; min-width:0}
+.rail-code{font-family:Consolas,monospace; font-size:11.5px; font-weight:700; letter-spacing:.05em; color:var(--ink)}
+.rail-time{font-family:Consolas,monospace; font-size:11px; color:var(--ink3); margin-top:4px; font-variant-numeric:tabular-nums}
+.rail-bar{width:3px; height:26px; margin-top:10px; border-radius:2px}
+section{scroll-margin-top:56px}
+.stack{display:flex; flex-direction:column; gap:18px}
+.stack-s{display:flex; flex-direction:column; gap:11px}
+.lede{font-size:16.5px; color:var(--ink2); max-width:70ch}
+.prose{max-width:72ch; color:var(--ink2)}
+
+/* ================= MASTHEAD ================= */
+header.mast{border-bottom:1px solid var(--line); background:var(--panel2)}
+.mast-in{max-width:1160px; margin:0 auto; padding:32px 20px 26px}
+.eyebrow{
+  font-family:Consolas,monospace; font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink3); display:flex; flex-wrap:wrap; gap:5px 14px;
+}
+h1.title{font-size:clamp(26px,4.4vw,44px); margin:14px 0 8px}
+h1.title em{font-style:normal; color:var(--capt)}
+.sub{font-family:Georgia,Cambria,"Times New Roman",serif; font-size:clamp(16px,2vw,19px); color:var(--ink2); max-width:60ch; font-style:italic}
+.meta{
+  margin-top:22px; display:grid; gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:5px; overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+}
+.meta div{background:var(--panel); padding:10px 13px}
+.meta dt{font-family:Consolas,monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3); margin-bottom:3px}
+.meta dd{margin:0; font-size:13.5px; font-weight:600}
+
+/* ================= NAV ================= */
+nav.toc{position:sticky; top:0; z-index:30; background:var(--bg2); border-bottom:1px solid var(--line); overflow-x:auto}
+nav.toc ol{list-style:none; margin:0 auto; padding:0 20px; max-width:1160px; display:flex; gap:1px; white-space:nowrap}
+nav.toc a{
+  display:block; padding:9px 11px; font-family:Consolas,monospace; font-size:12px;
+  color:var(--ink3); text-decoration:none; border-bottom:2px solid transparent;
+}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink); border-bottom-color:var(--capt); outline:none}
+
+/* ================= HEADINGS ================= */
+.kick{font-family:Consolas,monospace; font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--ink3); margin-bottom:8px}
+h2{font-size:clamp(19px,2.5vw,25px)}
+h3{font-size:16px}
+
+/* ================= TILES ================= */
+.tiles{display:grid; gap:11px; grid-template-columns:repeat(auto-fit,minmax(146px,1fr))}
+.tile{background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:13px 14px; box-shadow:var(--shadow); border-top:3px solid var(--mate)}
+.tile.c-capt{border-top-color:var(--capt)}
+.tile.c-crew{border-top-color:var(--crew)}
+.tile.c-alert{border-top-color:var(--alert)}
+.tile-k{font-family:Consolas,monospace; font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--ink3)}
+.tile-v{font-family:Consolas,monospace; font-size:29px; font-weight:700; line-height:1.05; margin:6px 0 3px; font-variant-numeric:tabular-nums; letter-spacing:-.03em}
+.tile-n{font-size:12px; color:var(--ink3); line-height:1.4}
+
+/* ================= PANELS ================= */
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:19px 21px; box-shadow:var(--shadow)}
+.note{border:1px solid var(--line); border-left:4px solid var(--mate); background:var(--panel2); border-radius:4px; padding:13px 16px; font-size:14.5px; color:var(--ink2)}
+.note.warn{border-left-color:var(--alert); background:var(--alert-bg)}
+.note.capt{border-left-color:var(--capt); background:var(--capt-bg)}
+.note b{color:var(--ink)}
+blockquote{
+  margin:0; padding:3px 0 3px 17px; border-left:2px solid var(--capt);
+  font-family:Georgia,Cambria,serif; font-size:16.5px; font-style:italic; color:var(--ink);
+}
+blockquote cite{display:block; margin-top:6px; font-family:Consolas,monospace; font-size:11px; font-style:normal; letter-spacing:.05em; color:var(--ink3)}
+
+/* ================= BADGES ================= */
+.badge{
+  display:inline-flex; align-items:center; gap:4px; border-radius:3px; border:1px solid currentColor;
+  font-family:Consolas,monospace; font-size:10px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; padding:2px 6px; white-space:nowrap;
+}
+.b-capt{color:var(--capt); background:var(--capt-bg)}
+.b-mate{color:var(--mate); background:var(--mate-bg)}
+.b-crew{color:var(--crew); background:var(--crew-bg)}
+.b-ext{color:var(--ext); background:var(--ext-bg)}
+.b-alert{color:var(--alert); background:var(--alert-bg)}
+.b-mute{color:var(--ink3); background:var(--sunk)}
+
+/* ================= TABLES ================= */
+.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:var(--panel)}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:660px}
+thead th{
+  text-align:left; font-family:Consolas,monospace; font-size:10px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink3); font-weight:700; padding:10px 12px;
+  background:var(--panel2); border-bottom:1px solid var(--line); vertical-align:bottom;
+}
+tbody td{padding:10px 12px; border-bottom:1px solid var(--line2); vertical-align:top; color:var(--ink2)}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{color:var(--ink); font-weight:600}
+.num{font-variant-numeric:tabular-nums; text-align:right; font-family:Consolas,monospace}
+
+/* ================= COMMAND DIAGRAM ================= */
+.cmd{overflow-x:auto}
+.cmd-in{min-width:660px; display:grid; grid-template-columns:170px 40px 200px 40px minmax(0,1fr); align-items:center; gap:0}
+.cmd-box{border:1px solid var(--line); border-radius:5px; background:var(--panel); padding:12px 14px}
+.cmd-box.capt{border-color:var(--capt); background:var(--capt-bg); border-width:2px}
+.cmd-box.mate{border-color:var(--mate); background:var(--mate-bg); border-width:2px}
+.cmd-t{font-family:Consolas,monospace; font-size:13.5px; font-weight:700; color:var(--ink)}
+.cmd-m{font-size:12px; color:var(--ink3); margin-top:4px; line-height:1.4}
+.arrow{position:relative; height:1px; background:var(--line)}
+.arrow::after{content:""; position:absolute; right:0; top:-4px; border:4px solid transparent; border-left-color:var(--line)}
+.arrow.back{background:none; border-top:1px dashed var(--line)}
+.arrow.back::after{right:auto; left:0; border:4px solid transparent; border-right-color:var(--line)}
+.arrow-lbl{position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-family:Consolas,monospace; font-size:9.5px; color:var(--ink3); white-space:nowrap; background:var(--bg); padding:0 3px}
+.crewstack{display:flex; flex-direction:column; gap:7px}
+.crewbox{border:1px solid var(--crew); background:var(--crew-bg); border-radius:4px; padding:8px 11px; font-size:12.5px; color:var(--ink2)}
+.crewbox b{font-family:Consolas,monospace; color:var(--crew); font-size:12px}
+
+/* ================= GANTT ================= */
+.gantt{overflow-x:auto; background:var(--panel); border:1px solid var(--line); border-radius:6px}
+.gantt-in{min-width:940px; padding:16px 18px 12px}
+.g-axis{position:relative; height:20px; border-bottom:1px solid var(--line); margin-bottom:4px}
+.g-tick{position:absolute; top:0; font-family:Consolas,monospace; font-size:10px; color:var(--ink3); transform:translateX(-50%); font-variant-numeric:tabular-nums}
+.g-tick::after{content:""; position:absolute; left:50%; top:15px; width:1px; height:5px; background:var(--line)}
+.g-marks{position:relative; height:26px; margin-bottom:6px}
+.g-mark{
+  position:absolute; top:2px; transform:translateX(-50%); width:15px; height:15px; border-radius:50%;
+  background:var(--capt-bg); border:2px solid var(--capt); color:var(--capt);
+  font-family:Consolas,monospace; font-size:9px; font-weight:700; line-height:11px; text-align:center;
+  cursor:default;
+}
+.g-rows{display:flex; flex-direction:column; gap:3px}
+.g-row{display:grid; grid-template-columns:196px minmax(0,1fr); gap:10px; align-items:center}
+.g-lbl{font-size:11.5px; color:var(--ink2); text-align:right; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.g-track{position:relative; height:17px; background:var(--sunk); border-radius:3px}
+.g-bar{position:absolute; top:2px; height:13px; border-radius:2px; border:1px solid}
+.gb-mate{background:var(--mate-bg); border-color:var(--mate)}
+.gb-crew{background:var(--crew-bg); border-color:var(--crew)}
+.gb-ext{background:var(--ext-bg); border-color:var(--ext)}
+.g-phase{position:relative; height:22px; margin-top:10px; border-top:1px solid var(--line)}
+.g-ph{position:absolute; top:4px; font-family:Consolas,monospace; font-size:9.5px; color:var(--ink3); border-left:1px solid var(--line); padding-left:5px; white-space:nowrap; overflow:hidden}
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:14px; padding-top:12px; border-top:1px solid var(--line2); font-size:12px; color:var(--ink3)}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.sw{width:14px; height:10px; border-radius:2px; border:1px solid; display:inline-block}
+
+/* ================= PHASE CARDS ================= */
+.phases{display:grid; gap:11px; grid-template-columns:repeat(auto-fit,minmax(252px,1fr))}
+.ph{border:1px solid var(--line); border-radius:5px; background:var(--panel); overflow:hidden; box-shadow:var(--shadow)}
+.ph-h{padding:10px 13px; border-bottom:1px solid var(--line2); background:var(--panel2); display:flex; gap:9px; align-items:baseline}
+.ph-n{font-family:Consolas,monospace; font-size:11px; font-weight:700; color:var(--mate)}
+.ph-t{font-family:Consolas,monospace; font-size:13.5px; font-weight:700; color:var(--ink); flex:1}
+.ph-b{padding:11px 13px; font-size:13px; color:var(--ink2); line-height:1.5}
+.ph-b b{color:var(--ink)}
+.ph-f{padding:9px 13px; border-top:1px dashed var(--line); font-size:11.5px; color:var(--ink3); background:var(--panel2)}
+
+/* ================= SPELL LIST ================= */
+.spells{display:flex; flex-direction:column; gap:10px}
+.spell{border:1px solid var(--line); border-left:3px solid var(--capt); border-radius:4px; background:var(--panel); padding:12px 15px}
+.spell-q{font-family:Consolas,monospace; font-size:13px; color:var(--ink); line-height:1.5}
+.spell-w{font-size:12.5px; color:var(--ink3); margin-top:6px; line-height:1.45}
+.spell-w b{color:var(--ink2)}
+
+/* ================= CODEBLOCK ================= */
+.code{background:var(--sunk); border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.code-h{display:flex; flex-wrap:wrap; gap:8px 12px; justify-content:space-between; align-items:center; padding:9px 14px; background:var(--panel); border-bottom:1px solid var(--line); font-family:Consolas,monospace; font-size:11px; letter-spacing:.07em; color:var(--ink3)}
+.code pre{margin:0; padding:15px; overflow-x:auto; font-size:12.5px; line-height:1.62; font-family:Consolas,"Cascadia Mono",ui-monospace,monospace; color:var(--ink2); tab-size:2}
+.code pre b{color:var(--ink); font-weight:600}
+.code pre i{color:var(--ink3); font-style:normal}
+
+/* ================= LISTS ================= */
+ul.clean{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px}
+ul.clean li{padding-left:19px; position:relative; font-size:14.5px; color:var(--ink2); line-height:1.55}
+ul.clean li::before{content:""; position:absolute; left:1px; top:.62em; width:8px; height:1px; background:var(--mate)}
+ul.clean.warn li::before{background:var(--alert)}
+ul.clean.capt li::before{background:var(--capt)}
+
+/* ================= FOOTER ================= */
+footer{border-top:1px solid var(--line); background:var(--panel2)}
+.foot{max-width:1160px; margin:0 auto; padding:24px 20px 38px; font-size:12.5px; color:var(--ink3); display:flex; flex-wrap:wrap; gap:9px 26px}
+
+a:focus-visible{outline:2px solid var(--capt); outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+@media (max-width:760px){
+  .row{grid-template-columns:52px minmax(0,1fr); gap:0 13px}
+  .cmd-in{grid-template-columns:1fr; gap:8px}
+  .arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="eyebrow">
+      <span>VARDİYA KAYDI</span><span>·</span><span>KUN CHEN · L8 PRINCIPAL</span><span>·</span>
+      <span>YAYIN 2026-07-27</span><span>·</span><span>ÇÖZÜMLEME 2026-07-31</span>
+    </div>
+    <h1 class="title">100 dakikada full-stack —<br><em>tek insan, on dört ajan</em></h1>
+    <p class="sub">Bir kaptanın tek bir ajanla konuşarak sıfırdan canlıya çıkardığı iOS + backend uygulaması: komuta modeli, paralellik şeması ve insanın gerçekten fark yarattığı sekiz an.</p>
+
+    <div class="meta">
+      <div><dt>Kaynak</dt><dd class="mono">youtube · kPN564Kol14</dd></div>
+      <div><dt>Süre</dt><dd>1sa 39dk · kesintisiz</dd></div>
+      <div><dt>Model</dt><dd class="mono">GPT-5.6 Luna · xhigh</dd></div>
+      <div><dt>Harness</dt><dd>Pi agent · Firstmate</dd></div>
+      <div><dt>Ürün</dt><dd>Eddie's Wallet · iOS</dd></div>
+      <div><dt>Sonuç</dt><dd>E2E ÇALIŞTI</dd></div>
+    </div>
+
+    <div class="note capt" style="margin-top:18px">
+      <b>Bu doküman ne değildir.</b> Bir araç tanıtımı değil, bir <b>iş modeli çözümlemesidir</b>. Kaynağın üç aracı (Firstmate · Lavish · No Mistakes) konuşmacının kendi projeleridir; dördüncüsü (Herder) ajan-farkındalıklı bir terminal yöneticisidir. Yani buradaki akış <b>taşınabilir bir kurulum değil, taşınabilir bir desendir</b> — alınacak olan mekanizmadır, kurulum değil.
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Bölümler">
+  <ol>
+    <li><a href="#panel">Kontrol paneli</a></li>
+    <li><a href="#yigin">Yığın</a></li>
+    <li><a href="#komuta">Komuta modeli</a></li>
+    <li><a href="#zaman">Paralellik şeması</a></li>
+    <li><a href="#faz">Dokuz faz</a></li>
+    <li><a href="#insan">İnsan müdahale kaydı</a></li>
+    <li><a href="#soz">Anahtar-sözler</a></li>
+    <li><a href="#baglam">Bağlam ve model ekonomisi</a></li>
+    <li><a href="#ce">CE eşlemesi</a></li>
+    <li><a href="#jarvis">Bize düşen · karar kuyruğu</a></li>
+    <li><a href="#durust">Dürüstlük bandı</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- ========== A ========== -->
+<section id="panel" class="row">
+  <div class="rail"><div class="rail-code">§A</div><div class="rail-time">00:00</div><div class="rail-bar" style="background:var(--mate)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Bir bakışta</div><h2>Vardiyanın sayıları</h2></div>
+    <p class="lede">Kaptan tek bir ajanla konuştu. O ajan onun için toplam on dört civarı alt-ajan açtı, işini bitireni kapattı, raporları topladı. Kaptan bu süre boyunca <b>tek satır kaynak kodu okumadı</b>.</p>
+
+    <div class="tiles">
+      <div class="tile c-capt"><div class="tile-k">İnsan arayüzü</div><div class="tile-v">1</div><div class="tile-n">yalnız First Mate ile konuşuldu</div></div>
+      <div class="tile c-crew"><div class="tile-k">Açılan crewmate</div><div class="tile-v">~14</div><div class="tile-n">tepe eşzamanlılık 4</div></div>
+      <div class="tile"><div class="tile-k">Oto-kompaksiyon</div><div class="tile-v">4</div><div class="tile-n">272K pencere · fark edilmedi</div></div>
+      <div class="tile c-alert"><div class="tile-k">Model kaynaklı hata</div><div class="tile-v">1</div><div class="tile-n">VPS maliyeti — 100 dakikada tek</div></div>
+      <div class="tile c-capt"><div class="tile-k">İnsan müdahalesi</div><div class="tile-v">8</div><div class="tile-n">hiçbiri kod değil</div></div>
+      <div class="tile"><div class="tile-k">Aylık maliyet</div><div class="tile-v">$5.5</div><div class="tile-n">öneri $25 idi · itiraz sonrası</div></div>
+    </div>
+
+    <div class="note">
+      <b>Oturumun tezi, konuşmacının kendi cümlesiyle:</b> en iyi modele her iş için ihtiyaç yok. Kasıtlı olarak GPT-5.6 Luna seçildi, tasarım tarafında Opus doluyken Sonnet'e düşüldü — ve 100 dakikada modelin yetmediği <b>tek</b> nokta bir maliyet tahminiydi. Tez kanıtlanmış sayılmaz (N=1, ölçüm yok), ama ucuz bir hipotez olarak masada durmayı hak ediyor.
+    </div>
+  </div>
+</section>
+
+<!-- ========== B ========== -->
+<section id="yigin" class="row">
+  <div class="rail"><div class="rail-code">§B</div><div class="rail-time">00:26</div><div class="rail-bar" style="background:var(--ext)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Zemin</div><h2>Yığın — her araç hangi acıyı kesiyor</h2>
+      <p class="lede" style="margin-top:9px">Araç listesi ilginç değil; <b>her aracın yerine geçtiği manuel iş</b> ilginç. Sağdaki sütun bu dokümanın asıl faydası.</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead><tr><th style="width:118px">Araç</th><th style="width:78px">Kimin</th><th style="width:210px">Ne yapar</th><th>Yerine geçtiği manuel iş</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Herder</td><td><span class="badge b-mute">DIŞ</span></td><td>Ajan oturumu yöneticisi — tmux yerine</td><td>Sekme açma/kapama, hangi ajan nerede koşuyor takibi. “Terminal çoklayıcılar terminali anlar, <b>ajanı anlamaz</b>.”</td></tr>
+          <tr><td class="mono">Firstmate</td><td><span class="badge b-alert">KENDİ</span></td><td>Kaptan ↔ tek ajan; o ajan crewmate'leri yönetir</td><td>Bağlam anahtarlama yükü. İnsanın N ajanı aynı anda zihninde tutması.</td></tr>
+          <tr><td class="mono">Pi agent</td><td><span class="badge b-mute">DIŞ</span></td><td>Claude dışı modelleri koşturan harness</td><td>Model başına ayrı arayüz öğrenmek.</td></tr>
+          <tr><td class="mono">/calm</td><td><span class="badge b-alert">KENDİ</span></td><td>Tool-call gürültüsünü gizler; yalnız prompt + cevap</td><td>Her araç çağrısını izleme alışkanlığı — “bugünün modellerinde giderek daha az gerekli.”</td></tr>
+          <tr><td class="mono">Lavish</td><td><span class="badge b-alert">KENDİ</span></td><td>Planı etkileşimli HTML artefaktına çevirir; diyagram + öğe-başına geri bildirim</td><td><b>351 satırlık markdown duvarını okumak.</b> Ve “planın şu kısmını değiştir” demenin zorluğu.</td></tr>
+          <tr><td class="mono">Claude Design</td><td><span class="badge b-mute">DIŞ</span></td><td>Tasarım <i>sistemi</i> üretir — tek ekran değil</td><td>Her yeni ekranda tutarlılığı yeniden icat etmek.</td></tr>
+          <tr><td class="mono">Atomic Vault</td><td><span class="badge b-mute">DIŞ</span></td><td>Sır yönetimi + her erişimde onay diyaloğu</td><td><code>.env</code> dosyaları. “Ajan o sırrı çoktan sızdırmışsa bunu bilemezsin.”</td></tr>
+          <tr><td class="mono">No Mistakes</td><td><span class="badge b-alert">KENDİ</span></td><td>Her kod değişikliği için yerel doğrulama hattı</td><td>İnsan kod incelemesi. <b>Bu oturumda kasten KAPALI</b> — sebebi §J'de.</td></tr>
+          <tr><td class="mono">OpenTofu</td><td><span class="badge b-mute">DIŞ</span></td><td>Sunucu ve kaynakları dosyada bildirir</td><td>Tıklanarak kurulmuş, kimsenin belgelemediği sunucu.</td></tr>
+          <tr><td class="mono">Chrome uzak hata ayıklama</td><td><span class="badge b-mute">DIŞ</span></td><td>Ajan mevcut tarayıcı oturumunu sürer</td><td>Apple Developer portalında elle form doldurmak.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <b>Yığının kendi kırılganlığı.</b> Dört kritik halkanın üçü tek kişinin kendi projesi. Desen taşınabilir; <b>kurulum taşınabilir değil</b>. Bu akışı kopyalamaya çalışan biri, aslında konuşmacının araç setine bağımlılık satın alır.
+    </div>
+  </div>
+</section>
+
+<!-- ========== C ========== -->
+<section id="komuta" class="row">
+  <div class="rail"><div class="rail-code">§C</div><div class="rail-time">11:28</div><div class="rail-bar" style="background:var(--mate)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Merkez model</div><h2>Komuta modeli — kaptan tek muhatapla konuşur</h2>
+      <p class="lede" style="margin-top:9px">Bu dokümanın taşıdığı en aktarılabilir fikir budur. Orkestratör <b>iş yapmaz</b>; iş yaparsa tıkanır ve kaptan beklemeye başlar.</p>
+    </div>
+
+    <div class="panel cmd">
+      <div class="cmd-in">
+        <div class="cmd-box capt">
+          <div class="cmd-t">KAPTAN</div>
+          <div class="cmd-m">İnsan. Tek arayüz. Zihinsel yükü sabit kalır — kaç ajan koştuğunu bilmek zorunda değildir.</div>
+        </div>
+        <div class="arrow"><span class="arrow-lbl">ham talep · “rambling”</span></div>
+        <div class="cmd-box mate">
+          <div class="cmd-t">FIRST MATE</div>
+          <div class="cmd-m">Orkestratör. <b>Kendisi iş yapmaz.</b> Dağıtır, toplar, biten oturumu kapatır. Meşgulken gelen rapor <i>follow-up</i> kuyruğunda bekler.</div>
+        </div>
+        <div class="arrow"><span class="arrow-lbl">görev dağıtımı</span></div>
+        <div class="crewstack">
+          <div class="crewbox"><b>crewmate</b> — pazar araştırması</div>
+          <div class="crewbox"><b>crewmate</b> — teknik araştırma</div>
+          <div class="crewbox"><b>crewmate</b> — UX prototipi</div>
+          <div class="crewbox"><b>crewmate</b> — backend / DB / VPS …</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><i class="sw" style="background:var(--capt-bg); border-color:var(--capt)"></i> insan</span>
+        <span><i class="sw" style="background:var(--mate-bg); border-color:var(--mate)"></i> orkestratör</span>
+        <span><i class="sw" style="background:var(--crew-bg); border-color:var(--crew)"></i> icracı</span>
+      </div>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Bu modelin sıradan alt-ajanlardan üç farkı</h4>
+      <ul class="clean">
+        <li><b>Görünürlük.</b> Her crewmate normal bir terminal sekmesinde normal bir ajandır. Çoğu harness'te alt-ajanın ne yaptığını görmek zordur; burada sekmeye girip bakılır.</li>
+        <li><b>Yönlendirilebilirlik.</b> Yanlış yola giden crewmate'e <b>doğrudan</b> konuşulabilir — orkestratörden geçmek zorunlu değildir. Ama pratikte kaptan bunu neredeyse hiç yapmadı.</li>
+        <li><b>Yaşam döngüsü.</b> Raporu düşen crewmate'in oturumu kapatılır. Bu daha önce insanın elle yaptığı iştir; kapatma unutulursa sekme çöplüğü oluşur.</li>
+      </ul>
+      <div class="note" style="margin-top:4px">
+        <b>Kritik ayrım.</b> Orkestratörün kendisi bir işe girişince <b>tıkanır</b> — kayıtta bu bir kez oldu: First Mate çalışırken UX crewmate'inin raporu geldi ve kuyrukta bekledi. Kaptan beklemek istemeyip sekmeye kendisi girdi. Yani model sağlam ama <b>orkestratörün meşgul olmaması bir tasarım şartıdır</b>, bir tercih değil.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== D ========== -->
+<section id="zaman" class="row">
+  <div class="rail"><div class="rail-code">§D</div><div class="rail-time">00:00<br>1:39</div><div class="rail-bar" style="background:var(--crew)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Ölçekli zaman ekseni</div><h2>Paralellik şeması — 100 dakika, gerçek ölçek</h2>
+      <p class="lede" style="margin-top:9px">Her çubuk bir ajan oturumu; genişlik gerçek süre. Üstteki pirinç halkalar <b>kaptanın müdahale ettiği anlar</b>. Şemanın söylediği tek şey: <b>insan bekleme süresini iş akışına çevirdi.</b></p>
+    </div>
+
+    <div class="gantt">
+      <div class="gantt-in">
+        <div class="g-axis">
+          <span class="g-tick" style="left:0%">0:00</span>
+          <span class="g-tick" style="left:20%">0:20</span>
+          <span class="g-tick" style="left:40%">0:40</span>
+          <span class="g-tick" style="left:60%">1:00</span>
+          <span class="g-tick" style="left:80%">1:20</span>
+          <span class="g-tick" style="left:99%">1:39</span>
+        </div>
+
+        <div class="g-marks">
+          <span class="g-mark" style="left:19.5%" title="VPS maliyet itirazı">1</span>
+          <span class="g-mark" style="left:34%" title="Denetim/dışa aktarım gereksinimi silindi">2</span>
+          <span class="g-mark" style="left:46.5%" title="Para birimi: token değil yerel para">3</span>
+          <span class="g-mark" style="left:53.5%" title="İsim yazımı düzeltmesi">4</span>
+          <span class="g-mark" style="left:68.8%" title="Çocuk uygulaması gibi hissettirmiyor">5</span>
+          <span class="g-mark" style="left:71.5%" title="Domuzcuk ikon seçimi">6</span>
+          <span class="g-mark" style="left:82.9%" title="Ayrı dev/prod ortamı reddi">7</span>
+          <span class="g-mark" style="left:91.2%" title="Marka adı ≠ kullanıcı adı">8</span>
+        </div>
+
+        <div class="g-rows">
+          <div class="g-row"><div class="g-lbl">First Mate — orkestratör</div><div class="g-track"><div class="g-bar gb-mate" style="left:0.5%; width:99%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Pazar araştırması</div><div class="g-track"><div class="g-bar gb-crew" style="left:9.5%; width:7.2%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Teknik araştırma</div><div class="g-track"><div class="g-bar gb-crew" style="left:9.5%; width:9.6%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Backend planı (Lavish)</div><div class="g-track"><div class="g-bar gb-crew" style="left:20.5%; width:21.1%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">UX prototipi (Lavish)</div><div class="g-track"><div class="g-bar gb-crew" style="left:24.5%; width:18%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Rakip-ilham çözümlemesi</div><div class="g-track"><div class="g-bar gb-crew" style="left:25.5%; width:3%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">PRD + repo yayını</div><div class="g-track"><div class="g-bar gb-crew" style="left:47.5%; width:7.8%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Claude Design — tasarım sistemi</div><div class="g-track"><div class="g-bar gb-ext" style="left:56.4%; width:17.6%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Backend API</div><div class="g-track"><div class="g-bar gb-crew" style="left:64%; width:34%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">DB şeması + sınırlar</div><div class="g-track"><div class="g-bar gb-crew" style="left:64%; width:31%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">VPS + OpenTofu</div><div class="g-track"><div class="g-bar gb-crew" style="left:64%; width:6.6%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Apple Dev — tarayıcı otomasyonu</div><div class="g-track"><div class="g-bar gb-crew" style="left:73.2%; width:6.8%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">iOS ön yüz inşası</div><div class="g-track"><div class="g-bar gb-crew" style="left:76.3%; width:19.7%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Cloudflare DNS + dağıtım</div><div class="g-track"><div class="g-bar gb-crew" style="left:84.4%; width:3.3%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">E2E testi — ajanın kendisi</div><div class="g-track"><div class="g-bar gb-crew" style="left:89.5%; width:8.7%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Nötr dil düzeltmesi</div><div class="g-track"><div class="g-bar gb-crew" style="left:91.7%; width:0.9%"></div></div></div>
+          <div class="g-row"><div class="g-lbl">Backend mimari incelemesi</div><div class="g-track"><div class="g-bar gb-crew" style="left:94.1%; width:1.4%"></div></div></div>
+        </div>
+
+        <div class="g-phase">
+          <span class="g-ph" style="left:0%; width:9%">ortam</span>
+          <span class="g-ph" style="left:9%; width:10%">keşif</span>
+          <span class="g-ph" style="left:19%; width:11%">teknik</span>
+          <span class="g-ph" style="left:30%; width:18%">etkileşimli planlama</span>
+          <span class="g-ph" style="left:48%; width:8%">PRD</span>
+          <span class="g-ph" style="left:56%; width:8%">tasarım</span>
+          <span class="g-ph" style="left:64%; width:12%">altyapı</span>
+          <span class="g-ph" style="left:76%; width:12%">inşa</span>
+          <span class="g-ph" style="left:88%; width:12%">E2E · çalıştı</span>
+        </div>
+
+        <div class="legend">
+          <span><i class="sw" style="background:var(--mate-bg); border-color:var(--mate)"></i> orkestratör</span>
+          <span><i class="sw" style="background:var(--crew-bg); border-color:var(--crew)"></i> crewmate</span>
+          <span><i class="sw" style="background:var(--ext-bg); border-color:var(--ext)"></i> dış servis</span>
+          <span><i class="sw" style="background:var(--capt-bg); border-color:var(--capt); border-radius:50%; width:11px; height:11px"></i> kaptan müdahalesi (1–8, §F)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Şemadan çıkan üç okuma.</b> ① Kaptanın boş beklediği tek uzun aralık yok — her bekleme yeni bir iş akışı açmakla dolduruldu. ② Tepe eşzamanlılık dört; yani “ne kadar çok ajan o kadar iyi” değil, <b>insanın tek muhataba indirgenmiş dikkatinin taşıyabildiği kadar</b>. ③ Müdahaleler zamanda düzgün dağılmamış: <b>ilk yarıda kapsam, ikinci yarıda zevk ve isimlendirme.</b>
+    </div>
+  </div>
+</section>
+
+<!-- ========== E ========== -->
+<section id="faz" class="row">
+  <div class="rail"><div class="rail-code">§E</div><div class="rail-time">fazlar</div><div class="rail-bar" style="background:var(--mate)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Kronolojik partisyonlar</div><h2>Dokuz faz — girdi, mekanizma, çıktı</h2></div>
+
+    <div class="phases">
+      <div class="ph"><div class="ph-h"><span class="ph-n">F0</span><span class="ph-t">Ortam</span><span class="tc">00:26</span></div>
+        <div class="ph-b">Boş terminal. Herder açılır, Firstmate klonlanır, model kuralı <b>ilk cümlede</b> konur: “bugün her görev, her crewmate Luna/xhigh'e gidecek.”</div>
+        <div class="ph-f">Ders: kural, iş başlamadan konur.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F1</span><span class="ph-t">Ürün keşfi</span><span class="tc">05:41</span></div>
+        <div class="ph-b"><b>3.000 karakterlik tek serbest anlatım.</b> Gereksinim, kısıt, çekince, ürün felsefesi hepsi bir arada. Sonunda iki iş paralel istenir: pazar + teknik.</div>
+        <div class="ph-f">Yapı sonradan gelir; önce ham niyet.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F2</span><span class="ph-t">Pazar araştırması</span><span class="tc">16:53</span></div>
+        <div class="ph-b">Soru şuydu: <b>bu uygulama zaten varsa yazmayalım, kuralım.</b> Cevap: tam eşleşen yok. Sonra ikinci koşum — rakiplerden <i>hangi kavramlar alınmalı</i>.</div>
+        <div class="ph-f">İnşa kararı araştırmadan sonra verildi.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F3</span><span class="ph-t">Teknik araştırma</span><span class="tc">19:06</span></div>
+        <div class="ph-b">İlk öneri: Supabase + RLS + değişmez sunucu-tarafı defter. Kaptanın refleksi: <b>“üç kullanıcı için SaaS'a para vermeye atlamayalım.”</b> VPS masaya konur.</div>
+        <div class="ph-f">İlk öneri hiçbir zaman son öneri değil.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F4</span><span class="ph-t">Etkileşimli planlama</span><span class="tc">29:56</span></div>
+        <div class="ph-b">351 satırlık markdown okunmaz. Plan <b>etkileşimli artefakta</b> çevrilir: diyagram büyütülür, öğeler silinir, her karara ayrı geri bildirim kuyruğa alınır.</div>
+        <div class="ph-f">Gizli gereksinim ancak <i>çizilince</i> görüldü.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F5</span><span class="ph-t">UX prototipi</span><span class="tc">42:29</span></div>
+        <div class="ph-b">Crewmate önce prototip <i>tarifi</i> yazar. Kaptan reddeder: <b>“oynayabileceğim gerçek prototip istiyorum”</b> — HTML tel çerçeve, iOS kodu yazmadan.</div>
+        <div class="ph-f">Cila değil, akış test edildi.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F6</span><span class="ph-t">Tasarım sistemi</span><span class="tc">55:36</span></div>
+        <div class="ph-b">Tek ekran değil <b>sistem</b> istenir: sonraki ekranlar tutarlılığı yeniden icat etmesin. Opus doluyken Sonnet'e düşülür ve iş yürür.</div>
+        <div class="ph-f">Zevk geri bildirimi: “yeterince çocuk işi değil.”</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F7</span><span class="ph-t">Sırlar + altyapı</span><span class="tc">59:41</span></div>
+        <div class="ph-b">Üretim sırrına her erişim <b>ayrı onay diyaloğu</b>. Ajan token'ı hiç görmez — ortam değişkeni olarak geçer. Altyapı OpenTofu ile bildirime çevrilir.</div>
+        <div class="ph-f">Yetki geniş, üretim kapısı dar.</div></div>
+
+      <div class="ph"><div class="ph-h"><span class="ph-n">F8</span><span class="ph-t">E2E — kanıt kapısı</span><span class="tc">1:20:33</span></div>
+        <div class="ph-b">“Her şey hazır” raporuna karşı tek cümle: <b>“kanıt istiyorum.”</b> Sorulunca ortaya çıkar: ön yüz hâlâ sahte veriyle çalışıyor. DONE yeniden tanımlanır.</div>
+        <div class="ph-f">Bu vardiyanın en pahalı yakalayışı.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== F ========== -->
+<section id="insan" class="row">
+  <div class="rail"><div class="rail-code">§F</div><div class="rail-time">×8</div><div class="rail-bar" style="background:var(--capt)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">En değerli model</div><h2>İnsan müdahale kaydı — marjinal değer nerede birikti</h2>
+      <p class="lede" style="margin-top:9px">Sekiz müdahalenin <b>hiçbiri kod değil.</b> Dördü kapsam kesme, ikisi zevk, biri yalnız insanın bildiği bir olgu, biri isim. Ajan bunların hangisini kendi başına yakalayabilirdi?</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead><tr><th style="width:30px">#</th><th style="width:62px">Zaman</th><th style="width:76px">Tür</th><th style="width:250px">Müdahale</th><th>Ajan kendi başına yakalar mıydı?</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="tc">19:31</td><td><span class="badge b-alert">OLGU</span></td><td>“VPS $30–60 değil; Hetzner'de ~$5.5.” Öneri buna göre değişti.</td><td><b>Hayır.</b> Model yanlış veriye dayanmıştı; itiraz gelince arama yapıp düzeltti. Tetikleyici insandı.</td></tr>
+          <tr><td class="num">2</td><td class="tc">34:03</td><td><span class="badge b-capt">KAPSAM</span></td><td>Denetim kaydı + şifreli dışa aktarım gereksinimleri silindi.</td><td><b>Muhtemelen hayır.</b> Aşırı mühendislik sessiz plana gömülmüştü; ancak <i>diyagram çizilince</i> görünür oldu.</td></tr>
+          <tr><td class="num">3</td><td class="tc">46:00</td><td><span class="badge b-capt">ZEVK</span></td><td>Para birimi “token/puan” değil kullanıcının yerel parası olsun.</td><td><b>Hayır.</b> Ürün felsefesi kararı — çocuk gerçek harçlığını zaten dolarla düşünüyor.</td></tr>
+          <tr><td class="num">4</td><td class="tc">53:04</td><td><span class="badge b-mute">İSİM</span></td><td>Oğlunun adının yazımı yanlıştı; yerelde ve GitHub'da düzeltildi.</td><td><b>Hayır.</b> Doğrusunu yalnız insan bilir. Düzeltmenin <i>uygulanması</i> tamamen ajana bırakıldı.</td></tr>
+          <tr><td class="num">5</td><td class="tc">1:08:50</td><td><span class="badge b-capt">ZEVK</span></td><td>“Genel his yeterince çocuk uygulaması değil.”</td><td><b>Hayır.</b> Ölçülemeyen nitelik. Ajan brief'i karşıladı, hedefi ıskaladı.</td></tr>
+          <tr><td class="num">6</td><td class="tc">1:11:28</td><td><span class="badge b-capt">ZEVK</span></td><td>Üç ikon seçeneğinden domuzcuk kumbara seçildi, büyütüldü.</td><td>Kısmen. Seçenek üretimi ajanın, <b>seçim insanın</b>.</td></tr>
+          <tr><td class="num">7</td><td class="tc">1:22:41</td><td><span class="badge b-capt">KAPSAM</span></td><td>Ayrı geliştirme/üretim ortamı reddedildi — tek üretim ortamı.</td><td><b>Hayır.</b> Konuşmacının teşhisi: bu model sınıfı <b>aşırı mühendisliğe eğilimli</b>. Bir yönetişim eğilimi, bir bilgi eksiği değil.</td></tr>
+          <tr><td class="num">8</td><td class="tc">1:30:52</td><td><span class="badge b-alert">MANTIK</span></td><td>“Marka adı Eddie ama <b>kullanıcının adı Eddie değil</b>” — arayüz dili nötrleştirildi.</td><td><b>Hayır.</b> Ajan ürün adını kullanıcı kimliğiyle karıştırdı; genelleme hatası, testten geçerdi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note capt">
+      <b>Modelin özeti.</b> Ajan <i>yapabildiğini</i> yaptı, insan <i>yalnızca kendisinin yapabildiğini</i>. İnsanın katkısı üç kutuya sığıyor: <b>zevk</b> (ölçülemeyen nitelik) · <b>kapsam kesme</b> (ajanın doğal eğilimi eklemektir, çıkarmak değil) · <b>ayrıcalıklı olgu</b> (fiyat deneyimi, bir adın yazılışı, elde olan hesaplar). Kod yazmak bu listede yok — ama <b>kapsam kesme dört kez geçiyor</b>, ve her biri parayı ya da karmaşıklığı doğrudan azalttı.
+    </div>
+  </div>
+</section>
+
+<!-- ========== G ========== -->
+<section id="soz" class="row">
+  <div class="rail"><div class="rail-code">§G</div><div class="rail-time">sözler</div><div class="rail-bar" style="background:var(--capt)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Prompt deseni</div><h2>Anahtar-sözler — tekrar eden altı kalıp</h2>
+      <p class="lede" style="margin-top:9px">Kaptanın ajanı istediği davranışa sokan ifadeleri. Kaynak metinden alınmıştır; altındaki satır <b>neyi ateşlediğini</b> söyler.</p>
+    </div>
+
+    <div class="spells">
+      <div class="spell">
+        <div class="spell-q">“Bana sorma — <b>yalnızca benim yapabileceğim</b> bir şey yoksa.”</div>
+        <div class="spell-w">Konuşmacının kendi ifadesiyle ajanlarına <b>en sık söylediği şey</b>. Soru eşiğini insana değil ajana devreder: “yetkin değilsen sor” yerine “yetkiliysen sorma”. <b>Etkisi:</b> gereksiz onay turlarını keser, ama yanlış kalibre edilirse sessiz hatayı da örter.</div>
+      </div>
+      <div class="spell">
+        <div class="spell-q">“Bana bağlı olmayan her şeyde <b>devam et</b>; işi olabildiğince paralelleştir.”</div>
+        <div class="spell-w">Bekleme durumunu yasaklar. §D şemasındaki yoğunluk büyük ölçüde bu tek cümlenin ürünü.</div>
+      </div>
+      <div class="spell">
+        <div class="spell-q">“<b>Kanıt istiyorum.</b> Uçtan uca nasıl test ederiz? iOS uygulaması backend'e gerçekten bağlı mı? — <i>şüpheliyim.</i>”</div>
+        <div class="spell-w">Vardiyanın en pahalı yakalayışı. “Bitti” raporuna karşı <b>şüphe kapısı</b>. Sorulmasaydı sahte veriyle çalışan bir ön yüz “tamam” sayılacaktı. <b>Bu kalıp bir DONE tanımı üretir:</b> gerçek hesapla giriş + gerçek sunucudan veri.</div>
+      </div>
+      <div class="spell">
+        <div class="spell-q">“Yazılmış kullanıcı deneyimine <b>itiraz etmekte özgürsün</b>; en iyisi ne ise onu kullan.”</div>
+        <div class="spell-w">Tasarım ajanına verilirken kullanıldı. Uyum baskısını kırar: brief'i emir değil <i>başlangıç noktası</i> yapar.</div>
+      </div>
+      <div class="spell">
+        <div class="spell-q">“Bunun için <b>tam adımları ve gideceğim URL'leri</b> yaz, gerisini ben yaparım.”</div>
+        <div class="spell-w">İnsan-kapılı işi prozadan çıkarıp numaralı listeye çevirir. <b>İlginç sonu:</b> liste geldikten sonra kaptan fikir değiştirip “sen yap, tarayıcımı kullan” dedi. Yani net adımlar çıkarıldığı anda işin insanda kalması gereksizleşti.</div>
+      </div>
+      <div class="spell">
+        <div class="spell-q">3.000 karakterlik <b>serbest anlatım</b> — gereksinim, kısıt, çekince, felsefe hepsi tek blokta.</div>
+        <div class="spell-w">Yapılandırılmış brief yazmaya çalışmak yerine ham düşünceyi dökmek; yapılandırma işi ajana bırakılır. <b>Şartı:</b> ajanın bunu iki paralel işe bölecek kadar iyi olması — burada bölebildi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== H ========== -->
+<section id="baglam" class="row">
+  <div class="rail"><div class="rail-code">§H</div><div class="rail-time">48:08</div><div class="rail-bar" style="background:var(--ext)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Ekonomi</div><h2>Bağlam ve model — iki bilinçli tercih</h2></div>
+
+    <div class="panel stack-s">
+      <h4>Bağlam: pencere değil, dayanıklılık</h4>
+      <ul class="clean">
+        <li>Pencere <b>272K'ya kasten sabitlendi</b> — bu sınırın üstündeki isteklerin daha pahalı faturalandığı bir eşik bildirildiği için.</li>
+        <li>Oturumda <b>dört oto-kompaksiyon</b> oldu; kaptan hiçbirinde bağlam kaybı hissetmediğini söylüyor.</li>
+        <li>Asıl sebep pencere büyüklüğü değil: <b>crewmate görevleri diske dosya olarak yazılıyordu.</b> Kompaksiyonda düşen bilgi gerektiğinde geri okunuyor.</li>
+        <li>Konuşmacının hükmü: “kompaksiyon artık çoğu insanın düşünmemesi gereken bir uygulama detayı.” <b>Şartı belirtilmemiş ama şudur:</b> bu ancak durum diskteyse doğrudur.</li>
+      </ul>
+      <div class="note" style="margin-top:2px"><b>Aktarılabilir kural:</b> bağlam penceresini büyütmek dayanıklılık değildir; <b>durumu artefakta yazmak dayanıklılıktır.</b> Milyonluk pencere de olsa değişmez.</div>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Model: en iyisini değil, yetenini seç</h4>
+      <ul class="clean capt">
+        <li>Ana model <b>kasten</b> en güçlü seçenek değildi — “verimli modellerden çok şey alınabileceğini göstermek istiyorum.”</li>
+        <li>Tasarım tarafında Opus doluydu; <b>Sonnet'le devam edildi</b> ve iş yürüdü. Gerekçe: “problem çok karmaşık değil.”</li>
+        <li>Hız modu açıldı: <b>gecikmeyi düşürmek için para ödeme</b> — normalde kapalı tutuluyor, demo olduğu için açıldı.</li>
+        <li>Kota birden çok sağlayıcı üzerinden takip ediliyor; biri tükendiğinde iş başka hatta kayabiliyor.</li>
+      </ul>
+      <div class="note warn" style="margin-top:2px">
+        <b>Ama kanıt zayıf.</b> “100 dakikada tek model hatası” rakamı <b>operatörün kendi gözlemidir</b> — eval yok, karşılaştırma koşumu yok, aynı işin güçlü modelle koşulmuş bir ikizi yok. Yakalanmamış hataların sayısı tanım gereği bilinmiyor, ve kaptan kodu okumadığını kendisi söylüyor. Tez makul; <b>kanıtlanmış değil.</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== I ========== -->
+<section id="ce" class="row">
+  <div class="rail"><div class="rail-code">§I</div><div class="rail-time">eşleme</div><div class="rail-bar" style="background:var(--mate)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Disiplin çerçevesi</div><h2>Compound Engineering altı adımı — bu vardiyada</h2>
+      <p class="lede" style="margin-top:9px">CE'nin ilkesi: <i>her iş birimi sonrakini kolaylaştırmalı.</i> Tahsis: <b>%80 planlama ve inceleme, %20 icra.</b> Bu vardiya o tahsisi kabaca tutturuyor — ilk 76 dakika plan ve tasarım, son 24 dakika entegrasyon.</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead><tr><th style="width:112px">CE adımı</th><th style="width:172px">Bu vardiyadaki karşılığı</th><th>Bileşik etkiyi üreten artefakt</th><th style="width:92px">Değerlendirme</th></tr></thead>
+        <tbody>
+          <tr><td>Brainstorm</td><td>3.000 karakterlik serbest anlatım + pazar araştırması</td><td>Pazar raporu — <i>inşa etme</i> kararının gerekçesi</td><td><span class="badge b-crew">GÜÇLÜ</span></td></tr>
+          <tr><td>Plan</td><td>Etkileşimli artefakt üzerinde karar-başına geri bildirim</td><td>Revize edilmiş backend önerisi + PRD (README'ye yazıldı)</td><td><span class="badge b-crew">GÜÇLÜ</span></td></tr>
+          <tr><td>Work</td><td>Paralel crewmate'ler; orkestratör iş yapmaz</td><td>İki repo — ön yüz açık, backend özel</td><td><span class="badge b-crew">GÜÇLÜ</span></td></tr>
+          <tr><td>Simplify</td><td>Kapsam kesme: denetim/dışa aktarım, ortam katmanları silindi</td><td>Sadeleşmiş şema — 7 tablo, aşırı mühendislik yok</td><td><span class="badge b-crew">GÜÇLÜ</span></td></tr>
+          <tr><td>Review</td><td>Backend mimari incelemesi <b>diyagram üzerinden</b>; kod okunmadı</td><td>Uç nokta + yetkilendirme + şema görünümü</td><td><span class="badge b-alert">ZAYIF</span></td></tr>
+          <tr><td>Compound</td><td>Tasarım <i>sistemi</i> · OpenTofu bildirimi · PRD · disk üstü görev kayıtları</td><td>Sonraki ekranın, sonraki sunucunun maliyeti düştü</td><td><span class="badge b-crew">GÜÇLÜ</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <b>Tek zayıf halka: Review.</b> Konuşmacının kendi güvence aracı (No Mistakes — her değişiklik için yerel doğrulama hattı) bu oturumda <b>kasten kapalıydı</b>; gerekçesi “henüz prototip aşamasındayız.” Ama oturum prototipte bitmedi: <b>canlı bir sunucuya, gerçek Apple kimliğiyle giriş yapan çalışan bir uygulamaya</b> vardı. Yani aracın açılma kriteri (“insan incelemesi isteyeceğin bir değişiklikse aç”) vardiya içinde karşılandı, ama araç açılmadı. Bu, kaydın en net iç tutarsızlığıdır.
+    </div>
+  </div>
+</section>
+
+<!-- ========== J ========== -->
+<section id="jarvis" class="row">
+  <div class="rail"><div class="rail-code">§J</div><div class="rail-time">bize</div><div class="rail-bar" style="background:var(--capt)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Karar malzemesi</div><h2>Bize ne düşüyor — ve neyin kapıya dayandığı</h2>
+      <p class="lede" style="margin-top:9px">Bu vardiyanın tamamı, bizim <b>henüz açmadığımız bir kapının öteki tarafında</b> geçiyor: canlı ajan hattı K-009/K-010 ile bloke, ajan kanonu yürürlükte değil. O yüzden aşağısı “kuralım” listesi değil, <b>kapı açıldığında ne hazır olmalı</b> listesidir.</p>
+    </div>
+
+    <div class="code">
+      <div class="code-h"><span>ÖNERİ · CLAUDE.md · orkestrasyon bölümü — bu kayıttan damıtıldı</span><span>İMZASIZ · KURULMADI</span></div>
+      <pre><b>## Orkestratör protokolü</b>
+
+<b>Tek muhatap kuralı.</b> İnsan yalnız orkestratörle konuşur.
+Orkestratör <b>iş yapmaz</b> — dağıtır, toplar, biteni kapatır.
+Orkestratör bir işe girişirse tıkanır ve insan beklemeye başlar.
+
+<b>Görünürlük şartı.</b> Her alt-ajan, girilip konuşulabilir bir
+oturumda koşar. Görülemeyen alt-ajan yönlendirilemez.
+
+<b>Bekleme yasağı.</b> "Bana bağlı olmayan her şeyde devam et."
+Bekleme varsa yeni bir iş akışı açılır, boş beklenmez.
+
+<b>Soru eşiği (m.4 ile hizalı).</b> "Bana sorma — yalnızca benim
+yapabileceğim bir şey yoksa." Kapıyı ajan uygular, insan değil.
+
+<b>Kanıt kapısı (m.9).</b> "Bitti" raporu kanıt değildir. DONE
+gerçek uçtan uca bir koşumla tanımlanır ve <i>önceden</i> yazılır.
+  <i>örnek: "gerçek hesapla giriş + gerçek sunucudan veri" = DONE</i>
+
+<b>Kapsam kesme kuralı.</b> Ajanın doğal eğilimi <b>eklemektir</b>.
+Her plan bir kez "bunun neyi silinebilir" sorusundan geçer.
+  <i>bu kayıtta 4/8 insan müdahalesi tam olarak buydu</i>
+
+<b>Dayanıklılık.</b> Bağlam penceresi dayanıklılık değildir.
+Durum artefakta yazılır; kompaksiyon sonrası diskten okunur.
+
+<b>Üretim kapısı.</b> Yetki geniş, üretim dar: sırra her erişim
+ayrı onay. Ajan sırrı görmez, ortam değişkeni olarak kullanır.</pre>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Karar kuyruğu — Salih'e kalan</h4>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th style="width:26px">#</th><th style="width:190px">Karar</th><th style="width:88px">Katman</th><th>Eğilim (bağlayıcı değil)</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Yukarıdaki protokol bloğu kanona girsin mi</td><td><span class="badge b-capt">KATMAN 1</span></td><td><b>Şimdi değil.</b> Blok canlı ajan varsayıyor; bizde yok. <b>Ama üç maddesi ajansız da geçerli</b> — kanıt kapısı, kapsam kesme, dayanıklılık. Bu üçü ayrılıp masaya girebilir.</td></tr>
+            <tr><td class="num">2</td><td>“Kapsam kesme” kapanış ritüeline eklensin mi</td><td><span class="badge b-mate">KATMAN 2</span></td><td><b>Evet, deneysel damgayla.</b> Tek satır: “bu planın neyi silinebilir?” Ucuz, geri alınabilir, 5 vardiyada veri üretir.</td></tr>
+            <tr><td class="num">3</td><td>Etkileşimli plan artefaktı deseni (Lavish muadili)</td><td><span class="badge b-mate">KATMAN 2</span></td><td><b>Zaten yapıyoruz.</b> Bu doküman o desenin kendisi. Soru kurulum değil <b>bağlayıcılık</b>: uzun rapor yerine artefakt <i>kural</i> mı olsun?</td></tr>
+            <tr><td class="num">4</td><td>Kapı açıldığında ilk hangi rol denensin</td><td><span class="badge b-capt">KATMAN 1</span></td><td><b>Orkestratör değil, paralel araştırmacı.</b> Salt-okuma, geri alması ucuz, K-009/K-010'un asıl gerekçesine (yazma yetkisi) dokunmuyor.</td></tr>
+            <tr><td class="num">5</td><td>“Bana sorma” kalıbı benimsensin mi</td><td><span class="badge b-capt">KATMAN 1</span></td><td><b>Hayır — olduğu gibi değil.</b> m.31'in Katman-1 zorunlu-sorma listesiyle doğrudan çelişir; bazı sorular soru sayısını azaltmak için atlanamaz. Çelişki m.16 formatında masaya taşınmalı.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== K ========== -->
+<section id="durust" class="row">
+  <div class="rail"><div class="rail-code">§K</div><div class="rail-time">sınır</div><div class="rail-bar" style="background:var(--alert)"></div></div>
+  <div class="col stack">
+    <div><div class="kick">Dürüstlük bandı</div><h2>Kaydın ve bu çözümlemenin sınırları</h2></div>
+
+    <div class="panel stack-s">
+      <h4>Kaynağa yöneltilebilecek en güçlü itirazlar</h4>
+      <ul class="clean warn">
+        <li><b>N=1 ve seyirci var.</b> Bu bir demo. Hız modu “demo olduğu için” açıldı; seçilen problem (üç kullanıcılı bir harçlık takipçisi) kasten küçük. Kurumsal ölçekte, mevcut kod tabanında, çok kişili bir ekipte aynı akışın tutacağına dair kanıt yok.</li>
+        <li><b>Güvence aracı kapalı koştu.</b> Kendi ölçütüne göre açılması gereken noktada No Mistakes açılmadı; kod da insan tarafından okunmadı. “Kalite makul” hükmünün arkasında ne eval ne inceleme var.</li>
+        <li><b>Araç bağımlılığı.</b> Dört kritik halkanın üçü konuşmacının kendi projesi. Desen serbest, kurulum değil.</li>
+        <li><b>Tarayıcı otomasyonu canlı hesapta koştu.</b> Gerçek Apple Developer oturumunda, gerçek kimlikle. Kaptan riski “felaket sonuç doğurmaz” diye tartıyor — bu bir muhakeme, bir güvenlik sınırı değil.</li>
+        <li><b>“Sadece bir hata” rakamı öz-beyandır.</b> Yakalanmayan hatalar tanım gereği bu sayıya girmez.</li>
+      </ul>
+    </div>
+
+    <div class="panel stack-s">
+      <h4>Bu dokümanın kendi sınırı</h4>
+      <ul class="clean">
+        <li>Kaynak <b>otomatik transkripsiyondur</b>; konuşma dilinde, yer yer hatalı yazımlarla. Araç adları ve rakamlar transkripte göre okunmuştur, ekran görüntüsüne göre değil.</li>
+        <li>§D şemasındaki başlangıç/bitiş anları <b>transkript zaman damgalarından türetilmiştir</b>; ±1 dakika oynayabilir. Şema oranları gösterir, kesin ölçüm değildir.</li>
+        <li>Crewmate sayısı (~14) sayılabilen dağıtımlardan çıkarıldı; kaydın dışında açılıp kapanmış oturumlar olabilir.</li>
+        <li>Compound Engineering çerçevesi için okunan kaynak reponun README'sidir; tek tek skill gövdeleri çekilmedi.</li>
+        <li>§J'deki blok <b>imzasızdır ve kurulmamıştır</b>; bu yüzey kanon kilitlemez (m.41). <code>CLAUDE.md</code> ve <code>.claude/</code> yazıma kapalıdır.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="foot">
+    <span><b>Kaynak:</b> <code>L8 Principal Building a Full Stack App with Agentic Engineering.md</code></span>
+    <span><b>Konuşmacı:</b> Kun Chen</span>
+    <span><b>Disiplin çerçevesi:</b> everyinc/compound-engineering-plugin</span>
+    <span><b>Yüzey:</b> CC yan-oturum · kanon kilitlemez (m.41)</span>
+  </div>
+</footer>
+
+</body>
+</html>
