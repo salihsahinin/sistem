@@ -42,3 +42,55 @@
 - SQL baseline: __/10 · Python baseline: __/10
 - 2+ yanlış verdiğim hata sınıfları:
 - Tekrar kuyruğu (27-28 Tem):
+
+---
+
+# SOĞUK BASELINE — 2026-07-30 (staj şeridi, chat-ana-yüzey, kâtip: Carvis)
+
+*İlk gerçek soğuk koşum. Referanssız, çalıştırmadan, ders ÖNCESİ. Salih "A" seçti (hatırlatma talebi reddedilmedi, ölçüm sonrasına ertelendi — m.16 kapısı işletildi).*
+
+## Blok 1 — SQL tekrar kuyruğu (S1·S8·S10 = bilerek en zayıf aile) → 0,5/3
+| # | Tahmin | Gerçek | Sonuç |
+|---|---|---|---|
+| S1 | 2 satır: Zeynep 3, Ayse 4 | Ayse 1, Zeynep 1 | **yarım** — LEFT JOIN+WHERE tuzağı YAKALANDI (satır sayısı+isimler doğru); `COUNT(s.id)` sayı değil id sanıldı |
+| S8 | hiçbir şey dönmez | Can | **yanlış** — anti-join deseni (`WHERE a.id IS NULL`) S1 dersinin TERS uygulanması |
+| S10 | Ayse, Mehmet, Zeynep | Ayse, Zeynep | **yanlış** — `NOT (sehir='Ankara')` NULL'da "bilinmiyor" üretir, satır düşer (üç değerli mantık) |
+
+Geri-anlatım kapısı: "LEFT JOIN + WHERE olduğu için" → **REDDEDİLDİ** (S1'i açıklamıyor). Doğru ayırt edici: OPERATÖR. `IS NULL` ölçer · `=` `<>` `>` `IN` NULL'da satır düşürür. Taşınabilir kural: **NULL'ı IS ile sorarsan cevap alırsın, = ile sorarsan satırı kaybedersin.**
+
+## Blok 2 — Python PY1-PY10 (soğuk, orijinal set) → 6,5/10
+| # | Tahmin | Gerçek | Sonuç |
+|---|---|---|---|
+| PY1 | 4 | 4 | ✓ |
+| PY2 | len(arac)'a eşit değil; "4 satır, her eşleşme için 1" | Ankara 3·Istanbul 1·Izmir 1 = 5 ≠ 6 | **yarım** — eşitsizlik doğru, gerekçe PY1'den kopyalandı; `groupby(dropna=True)` None anahtarı gruba SOKMAZ |
+| PY3 | değişmez, kopyaya yazdık | 380000 | ✓ gerekçe dahil |
+| PY4 | [1] sonra [1,2] | [1] / [1,2] | ✓ (mutable default tek nesne) |
+| PY5 | unuttum | [] | **0** — KeyError'ı `except: pass` yuttu; sessiz boş sonuç |
+| PY6 | False / 2.67 | False / 2.67 | ✓ |
+| PY7 | 4 (mekanizma soruldu) | 4 | ✓ — NaN karşılaştırmada False, maskeden düşer |
+| PY8 | 3 | 3 | ✓ (b=a aynı nesne) |
+| PY9 | "farklı araba sayısı kadar müşteri" | {'Toyota':6,'Honda':5,'Ford':4,'Renault':7,'Fiat':4} | **0** — `len(m)` marka STRING'inin harf sayısı; sayım değil |
+| PY10 | 0 | 1 | **0** — `fillna` yeni Seri döndürür, yerinde değiştirmez (PY3'ün AYNI ailesi, orada doğru bilindi) |
+
+## Baseline
+- **Tekrar kuyruğu (SQL, en zayıf aile): 0,5/3 = %17 → tamir BAŞARISIZ**
+- **Yeni-görülmemiş (Python): 6,5/10 = %65**
+- **Toplam: 7/13 = %54 → <%60 ⇒ 07-29 kuralı gereği P0 YENİDEN AÇILIR (statü kararı Salih'te; Carvis önerisi: dar yeniden-açma = yalnız NULL/NaN ailesi)**
+
+## Hata ailesi sınıflaması (2+ yanlış)
+1. **NULL/NaN sessiz satır düşürme — HÂKİM AİLE (S1 yarım·S8·S10·PY2):** SQL `=`/`NOT` · pandas `groupby(dropna)`. PY7 (NaN maske) doğru bilindi → kısmi oturma; köprü kuruldu ama tek yönlü.
+2. **"Yeni nesne mi, yerinde mi" (PY3 ✓ / PY10 ✗):** aynı mekanizma, tutarsız cevap ⇒ kural değil örnek ezberlenmiş. `fillna`/`dropna`/`sort_values` inplace-değil listesi tekrar kuyruğuna.
+3. **Sessiz yakalanan hata (PY5):** `except: pass` → boş sonuç. Staj rolünün çekirdek örneği, ders içinde de geçmişti, soğukta hatırlanmadı.
+4. **Gerekçe kopyalama (PY2, S8, geri-anlatım kapısı):** doğru sonuç + yanlış mekanizma deseni. Ölçüm notu: sonuç doğru olduğunda mekanizma SORULMALI, yoksa skor yanıltır.
+5. **Kod-okuma yerine anlam-tahmini (PY9):** `len(m)` okunmadan "sayım olmalı" varsayıldı. Ajan çıktısı doğrulamada en tehlikeli refleks.
+
+## Tekrar kuyruğu (2 Ağu'da soğuk, varyant setle)
+S1/S8/S10 varyantları · PY2 · PY9 · PY10 · inplace-değil listesi · `except: pass`
+
+*Damga: beyansız. Skor uydurulmadı; ölçülmeyen kalem yok — 13/13 kalem koşuldu.*
+
+## P0 STATÜ KARARI — Salih, 2026-07-30
+**Yeniden açma YOK.** Kaldığımız yerden ilerlenir; tekrar, ilerleyen konuların içine gömülü sorularla yapılır. Gerekçe (Salih): AWS/P3 hattı da girecek, ayrı geri-sarma için vakit yok.
+- 07-29 kuralı (<%60 → P0 yeniden açılır) Salih kararıyla **geçersiz kılındı**; kural metni arşiv değeri için duruyor (m.8).
+- Carvis şerhi: eşik düşürülmedi, ÖLÇÜM ertelendi — NULL/NaN ailesi %17'de kaldı ve sahipsiz kalırsa hiç kapanmaz. Karşı-önlem: **bakım vergisi P2+ sınav setlerinin İÇİNE gömülür** (her sette ≥2 kalem NULL/NaN + ≥1 kalem inplace-değil, varyant değerlerle). Ayrı oturum, ayrı zaman yok — sahiplik Carvis'te, README "3 günden fazla ara yok" kuralı bu yolla karşılanır.
+- Yeniden ölçüm: P6 soğuk provası (9-10 Ağu) tek gerçek kapı olur.

@@ -37,3 +37,18 @@ DEA-C01 Exam Guide ücretsiz müfredat olarak P3'te okunur (~2 gün değil, hari
 
 ## Açık sorular (rapor §11'den; şirkete/Salih'e)
 "AWS'in inşası gibi" gerçek anlamı · hangi yığın/adlandırma · günlük gerçekçi pencere · şirket bilgisinin bu repoya yazılma sınırı (m.14 üçüncü-taraf).
+
+---
+
+## FORMAT REVİZYONU — Salih kararı, 2026-07-30 ("A")
+
+**Tetik:** Salih itirazı — "çıktının ne çıkacağını bilmem önemli mi?" + AI-çağı 4-sütun listesi (DSA · System Design/OOP · Debugging/kod-okuma · Security/TDD). Carvis değerlendirmesi: listenin 3. maddesi zaten koşulan iştir (tahmin = kod okumanın ölçülebilir biçimi; kanıt PY9/PY5); DSA ve System Design 12 günde ölçülebilir DONE üretmez → staj sonrası / K-004 penceresi. Haklı olduğu nokta: **ölçek** — oyuncak hücre ≠ ajan çıktısı.
+
+**Karar (A — ölçek yükselt, format aynı):**
+- **Mikro hücre tahmini → bakım vergisi**, ~5 dk/gün, sınav setine gömülü. Seçim kriteri SERTLEŞTİ: yalnız *yanlış cevabın üretime yanlış sayı gönderdiği* kalemler; saf dil-trivia (ör. `round(2.675,2)`) setten çıkarıldı.
+- **Ana gövde → gerçek malzeme:** ajan-yazımı 40-80 satır kod + stack trace + PR diff'i; çevrim = yazılı görev tarifi → soğuk oku → **kabul / ret / düzelt + gerekçe** → karşılaştır. Yani **P4 öne çekildi ve P2'nin içine gömüldü**; P2 artık "Python okuma" değil "ajan çıktısı doğrulama".
+- **Test tiyatrosu (4. sütun) doğal giriyor:** her artefaktta testler de incelenir — "yeşil geçen ama hiçbir şey doğrulamayan test" ayrı bir bulgu sınıfıdır.
+- **Değişmeyen:** eşikler, 5 adımlı çevrim, soğuk-referanssız sınav kuralı, P6 iniş provası, 11 Ağu tarihi.
+- **Takvim etkisi:** P2 (29 Tem-1 Ağu) = doğrulama turları başlar · P4 penceresi (4-6 Ağu) ileri turlar + stack-trace kök-neden · P3 (2-3 Ağu) değişmedi.
+
+*Geri-açma: Salih beyanı. Ölçüm kapısı yine P6 (9-10 Ağu, ≥%80).*
