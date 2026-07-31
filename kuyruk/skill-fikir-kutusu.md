@@ -16,3 +16,9 @@
 | S-J | karar-kaydet (defter-bloğu yazım + commit; elle-tetik, `disable-model-invocation`) | yalnız Salih/vardiya-akışı tetiği | ORTA (S-G tamamlayıcısı) | S-G tasarım notu + skill-nasil-olusturulur §5 | ADAY |
 
 Üretim standardı (K-016 açılınca): eval-önce akış · description = NE+NE ZAMAN+negatif-tetik · yan-etki = ayrı elle-tetik skill · <500 satır · çok-modelde test — `raporlar/2026-07-17-skill-nasil-olusturulur.md`.
+
+## m.43 sayaçları (eşik altı — ≥3'te aday satırına döner)
+- **ölçüm-aracı-yanıldı** — n=2: ① PowerShell 5.1 ANSI karakter sayımı (30-5, defter md.16) · ② Türkçe `İ` grep tuzağı (`grep -i` `İ`↔`i` eşlemiyor → yanlış-pozitif "terim kanonda yok" bulgusu; `cc/rapor-2026-07-30-25.md` P26/P29). Üçüncü vakada m.43 tetiklenir. Kayıt: 2026-07-31 onarım turu (Carvis).
+- **kaçırılan-tetik** — sayım Katman-1'de (KG-25-3: 30-16 · 30-17 · 30-25 = 3 mü? Salih masasında; eşik dolduysa aday satırı oradan döner).
+
+> **[K] ŞERH — 2026-07-31 (Carvis, öz-bildirim):** Bu dosya onarım turunda yanlışlıkla `cat >` ile ÜZERİNE yazıldı (ls çıktısı 20 satırda kesildiği için dosya yok sanıldı — "ölçüm-aracı-yanıldı" sınıfının ta kendisi, ama araç değil operatör hatası). Orijinal içerik commit'li kanondan (`git show HEAD:`) anında geri yüklendi, kayıp yok; bu bölüm sonradan eklendi. m.8 ihlal girişimi olarak kayda geçirildi.

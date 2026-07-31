@@ -469,3 +469,18 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 1. **Sıra önemli.** Küme 1 ve 2 diğerlerini bekletiyor. Küme 2'nin 8. maddesi (yetki) kapanmadan geçişin hiçbir adımı uygulanamaz.
 2. **Bu gündem bir eksikle kapandı.** m.37 v2 sentez raporu (`cc/gorev-2026-07-30-3.md` çıktısı) bu dosya yazılırken henüz düşmemişti. Düştüğünde küme 1'in 1. maddesinin altına girer — kümenin yapısını değiştirmez, önerinin somut metnini getirir.
 3. **Hiçbir satırda karar verilmedi.** Carvis önerileri, tercih değil **başlangıç noktası** olarak yazıldı; her birinin bedeli "Feda" satırında açık.
+
+---
+
+## EK — 07-31 kayıt-onarımı turu girdileri (KG-25; kaynak `cc/rapor-2026-07-30-25.md`, Carvis ana-sıra işledi)
+
+*Karar değil girdi. Onarım koşuldu (yol C+T2, m.37 karşılaştırması raporda §6); sayım hataları düzeltildi, şerhler uygulandı. Masaya kalan Katman-1 kalemleri:*
+
+| # | Kalem | Nereye |
+|---|---|---|
+| KG-25-2 | KILAVUZ md.58 (model-değişimi kuralı) **tetik** kazanmalı mı — kural var, iki vakadan birinde işledi | Küme: skill/tetik ailesi (madde 11 komşusu) |
+| KG-25-3 | *Kaçırılan-tetik* kümesi m.43 eşiğini doldurdu mu (30-16 · 30-17 · 30-25 = 3?) | Katman-1 |
+| KG-25-5 | Onarım kapsamı çatalı — **C+T2 icra edildi** (veto=revert açık, m.31) | Bilgi + veto penceresi |
+| KG-25-7 | Üç boyut aşımı: senaryo-defteri +%87 · fikir-kutusu +%10 · KILAVUZ +%2 → K-019 damıtma ertelenemez | Katman-1 |
+| KG-25-10 | m.40b (antitez şeridi) maliyeti iki bağımsız ölçümle birinci kalem; ucuzlatma kolu model kademesi DEĞİL — seçenekler: atlas tetik eşiğini daralt / prompt kısalt / dokunma (körü körüne kısaltma m.39 hattını zayıflatır) | Madde 7 (usul) girdisi |
+| — | Madde 28 notu: 30-5'ten yamanan 11 rakamın 8'i kaynakta birebir; `%15` · `19 kat` · `28K/192K` **türetilmiş biçim** (uydurma değil; kaynakta `≈7-19×`, `≈28K`) — okurken `[K]` say | Madde 28 şerhi |
