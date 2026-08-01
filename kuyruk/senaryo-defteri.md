@@ -404,3 +404,59 @@ Karantina-desenli ingest KOŞTU (2. başarılı koşum; ham içerik ana-sıraya 
 
 ### Ek 2 — kapanış icraları (08-01 akşam)
 PAT temizliği uygulandı: origin URL token'sız + `.secrets/git-credentials` + göreli `credential.helper store` (şerh: git komutları repo kökünden). md.15 testi FAIL-YAPISAL (sandbox .git-unlink yasağı; yasak sandbox için kalır, host serbest) — teslim DÜZELTME EKİ. Graf/routing hattı (CC yan-oturum, 12 emir g8-19, H1-H47) devralındı; birleşik ingest turu sonraki vardiyaya. Masa 2. oturum YARIN (Salih beyanı).
+
+### Ek 3 — 08-01 GECE vardiyası (ana-sıra, m.37 kayıtları)
+- **İngest-pipeline varyant seçimi (Katman-2, veto açık):** karşılaştırma emirde görünür sunuldu (a/c/d+F0 — `cc/gorev-2026-08-01-21.md` karar notu; gerekçe rapor-20 §7+F.4 çift-koşum yakınsaması). Seçilen: **✅(d)+F0**; (c) kontrol dilimi KOŞULMADI (K1-g Salih'e). Gerçekleşen: 19 ajan · ~1,56M token · H1-51 tam · ~106 K1 kalemi · F2 TUTMADI 3/34 (1 icat-rakam yakalandı — sınır-denetçisi ilk canlı kanıt). SONUÇ (gözlenecek): F0-yeterlilik görev-tipine koşullu çıktı (3/5 lens F0'la yetindi; şema-dışı 2 lens = en pahalı + tek hata-üreten).
+- **Mükerrer-sevk vakası:** rapor-20 dosyası sevk anında DOLUYDU (CC teslim kaydı bayat); üzerine yazılmadı → EK-F replikasyon deseni; K1-k fren adayı doğdu.
+- **Salih emirleri:** ① usage-usulü — üretici YORUMLAMAZ, en alta AYNEN; yorum üst-modelde (gündem EK-4 güçlendirildi) · ② CC-hedef beyanı revize — "komple taşıma"→"optimize oran"; m.16 raporu sunuldu; g24 bulgusu: asıl muhatap md.9 glide-path.
+- Gece icraları: EK-5..8 gündeme · gorev-6/7 + g22-24 ingest · V64 devirle kapandı · wiki/olcum-banki + U-1 · md.45(a) · K-019 icra DURDU (3 soru masada). Teslim: `raporlar/vardiya-teslim-2026-08-01-anasira-gece.md`.
+
+## 2026-08-01 · MASA 2. OTURUM (ana-sıra Fable, akşam ~21:00)
+
+### K1-24-a · CC-geçiş hedef-metni: S2 HİBRİT-MATRİS İMZALANDI (Katman-1, Salih)
+- **Bağlam:** g24 koşumu 4 seçenek üretti (S1 tam-CC · S2 hibrit-matris · S3 işlevsel-ayrım · S4 asimetrik-varsayılan); rapor bilinçli İŞARETLEMEDİ (değer tercihi). S2 işareti Carvis çıkarımı — dayanak: g24 matrisi (10 iş-sınıfı: 4 CC-kesin [G5+G6 alternatifsiz] · 1 yetki-bloke [G1 kanon] · 3 gerçek çatal [G2/G7/G10, ÜÇÜ DE ÖLÇÜLMEMİŞ=E5]) + Salih revize beyanı ("optimize oranda CC"). Şerh Salih'e açıkça sunuldu; kabul: "araştırılmış hali S2 öneriyorsa öyle olsun".
+- **Seçim:** S2 (Salih imzası, masa 2. oturum açılış kalemi). **Gerekçe-disiplini (K1-24-b):** kanon gerekçesi = "iç matris 3 çatal gösterdi" — dış görüş atfı YOK (m.37 prestij-ödünç yasağı).
+- **Bağlı hüküm — md.9 glide-path revizesi (m.16 kaydı):** aşama yapısı KORUNUR (aşama 1-2 izinli · aşama 3 ayrı imza · aşama 4 öncesi deneme vardiyası + 2 ölçüm); değişen UÇ NOKTA: nihai hedef "tam geçiş" değil, matris-optimumu — CC-kesin sınıflar CC'ye, G1 kanon yetkisi md.8 profili kurulana dek Cowork'te, 3 çatal E5 ergonomi ölçümü sonucuna göre tek tek karara bağlanır. E5 = çatalların karar kapısı; ölçümsüz çatal taşınmaz.
+- **Gözlem (beklenen):** E5 ölçüm tasarımı sonraki adım; ilk ölçülecek çatal adayı G2 (ritüel — iki skill zaten repoda, A/B hazır).
+
+### K-019 üç karar sorusu KAPANDI (Katman-1, Salih; masa-2)
+- **(1) Senaryo-defteri boyutu:** eşik rekalibrasyonu DEĞİL → **token-bazlı katman ayırma** (07-23 alternatifi): blok başına karar/hüküm satırları sıcak dosyada, gövde-detay arşive pointer'la (m.20/m.34, m.8 korunur). İcra = damıtma vardiyası borcu (ilk boş vardiya; bu masada koşulmadı).
+- **(2) MEZUN turu 2 İCRA EDİLDİ:** liste Salih'e tek-tek gösterildi → **8 MEZUN** (V41/42/44/48/49/50/51/54), **V57 bilinçli tutuldu** (canlı okuma borcu). fikir-kutusu güncellendi, tam metinler arşivde.
+- **(3) KILAVUZ bayat-satır:** icra DURDU, "izlemede" — kriter somutlaşmadan temizlik yok (%8 aşım tolere; m.8 riski gerekçe).
+
+### KÜME 3 KAPANDI (Katman-1, Salih; masa-2)
+- **md.16 — Öğrenme modeli: B + İKİ SINIR imzalandı.** (a) "önce dene, sonra öğren" yalnız başarısızlığın açıkça görüldüğü işlerde; (b) ders-çıkarma adımına ayrı doğrulayıcı şart (öz-değerlendirme tek başına ölçü DEĞİL — korumalı kolda fayda-hissi≠fayda bulgusu, KG-B1-1/2). Feda kabul: her turda ek doğrulama. Ad-çakışması şerhi: md.32'deki aynı-adlı imzadan AYRI.
+- **md.17 — Öğrenme ajanı: tasarım paketi ONAYLANDI; devreye alma AYRI imza (K-010 kapıları).** Kayıt şerhi: "geri alması ucuz" yalnız dosyalar için doğru, zihinsel iz için değil. Aleyhte-gerekçe sayısı düzeltmesi işlendi (3 bağımsız + md.16 bulgusu 4. bağımsız).
+- **md.18 — Konsey: yalnız DAR DENEME (farklı model · üçüncü-şahıs biçim · erken-uzlaşma freni); rol-verme gerekçesi "maliyet"→"kalite".** Ölçüm zemini: persona 0,71 ↔ görüşme-temelli 0,83. V53 statüsü: dar-deneme onaylı adaya yükseldi, deneme zamanı K-009/K-010 gündemiyle.
+
+### KÜME 4 KAPANDI — 7/7 imza (Katman-1, Salih; masa-2)
+- **md.19 — m.38 notasyon paketi (a-e) TEK İMZA.** Şart: (d) olumsuz-uç sayısal çapa karar ağırlığı TAŞIMAZ, kalibrasyona dek alt katmanda.
+- **md.20 — Niteleyici taşıma kuralı YAZILDI:** özet gövdedeki kayıtları taşımak zorunda, taşımıyorsa madde eksik; özet GÖVDEDEN TÜRETİLİR, elle yazılmaz. Yan kalem: MT-Bench %85 kanona geçerse şartı yanına (%66 beraberlik-dahil).
+- **md.21 — Kanıt-kategorisi şeması + derece-sorma yasağı İMZALANDI:** derece yerine 2 olgusal soru + kuralla türetme; kademe sayısı "tasarım tercihi" işaretli; geriye dönük dönüştürme YOK.
+- **md.22 — Pozitif-karşılık kuralı:** yeni yasak maddelerde zorunlu, eski yasaklar borç listesine.
+- **md.23/24/25 üçlü:** V numarası yalnız masada atanır (raporlar numarasız aday) · K1-K47 TEK dizi · çıplak-yüzde yasak (şans düzeltmesi/taban zorunlu).
+- **İcra borcu (Katman-2, sıraya):** m.38 paket metni + md.20/21/22/23/24/25 hükümlerinin tüzük/KILAVUZ'a işlenmesi — tek [damıtma] commit'lik yazım turu; eski-yasak pozitif-karşılık borç listesi ayrıca açılır.
+
+### KÜME 5 KAPANDI — md.27/28/29 (md.26 masa-1'de imzalıydı) (Katman-1, Salih; masa-2)
+- **md.27 — Zorlanabilirlik etiketi + koda taşıma İMZALANDI:** tüzük maddeleri "zorlanabilir/zorlanamaz" etiketlenir; zorlanabilirler koda (ilk aday m.9 push-kanıtı). Dış kanıt kayıtta: 19-madde listesi %1,5→%0,8 ↔ 101 hastanede sıfır fark — fark denetim düzeninde. Feda kabul: "kâğıt üzerinde" işareti rahatsız edici olacak.
+- **md.28 — Denetçi hattı PAKETİ İMZALANDI; bütçe ÖLÇÜM-SONRASI.** İşletim: denetçi=ikinci süzgeç · TEK ATIŞLIK+İTİRAZSIZ (dalkavukluk %58/kalıcılık %78,5 gerekçesi) · denetçiye ölçüt+ham veri+kod VERİLİR, hüküm/kimlik VERİLMEZ (ters-çevirme %85 bulgusu) · kalibrasyon = 3+4 etiketli set, tek koşum, yakalama+yanlış-alarm ölçülür → bütçe o veriyle · kör paket ayrı dizinde (körlük+kilit tek hamlede; CLI'sız çalışır, ~28K karakter) · "iki yüzey" ilkesi yüzey→DENETÇİ eksenine taşındı. Niteleyici korundu: ölçümler etiketleme görevinde, uzun-metin denetiminde literatür YOK.
+- **md.29 — S6 hukuki-çevre masası AÇILIR, KÜÇÜK tutulur** (kaynak tek ailede, tarama bitti; aciliyet düşük).
+- **İcra borcu:** zorlanabilirlik etiket turu (tüzük) · denetçi kalibrasyon koşumu (görev emri Carvis derler — mevcut borç listesindeki "kalibrasyon koşumu md.7" ile AYNI hat değil, ayrı kalem) · S6 mini-masa sıraya.
+
+### KÜME 6 KAPANDI — 10/10 (Katman-1, Salih; masa-2)
+- **md.30/33/34 üçlü İMZALANDI:** PortRisk deneme-sayacı + dışarıda-tutulan-veri kilidi BAŞTAN (45-varyant/şans-1,00 tuzağı) · GitHub-yıldız ölçüt yasağı (KILAVUZ notu; yerine indirme/son-sürüm/bakımcı) · "şu an alınmaz" gerekçe listesi imzalı + `wiki/orca.md` güncelleme borcu (rakam 2,3× bayat).
+- **md.31 — Asgari veri-bilimi yığını İMZALANDI, ilk iki madde önce** (nedensellik testi + deneme sayacı = doğruluk katmanı). m.13 çakışması yok (artefakt üretmiyor).
+- **md.32 — Yığın modeli C İMZALANDI** (sürtünme-eşikli; eşik = m.31 ölçek eşiğiyle birebir, yeni kural yok). İmza metni şerhli: "ölçülmemiş ama tek uygulanabilir; kendi ölçümünü üretecek biçimde kurulmuş". Terk-riski feda olarak kayıtta (benzer sistemlerin yarısı 5 kayıtta terk). md.16 öğrenme-modeli imzasından AYRI (ad-çakışma şerhi).
+- **md.35 — AGENTS.md BEKLETİLDİ** (gerekçe: 30-6 koşullu-kilit bulgusu — kilitsiz araçlara kapı açılmaz; sunucu-taraflı koruma oturunca döner).
+- **md.36 — Yerel gömme: EVET, YALNIZ indeksleme** (yerelde kod yazdırma yasağı ayrı kayıt: %40↔%88 ölçümü).
+- **md.37 — Araştırma-erişim skill'i ÜRETİM ONAYI** (K-016 hattına; eval setiyle, V25 altın kural) · **md.38 zincir-skill'i kutuda bekler** (sırası md.37 sonrası).
+- **md.39 — "Bilgi-sistemi bayatlaması" katkı hedefi KAYDA GEÇTİ:** CV+PortRisk temas noktası işaretli; yeni kart AÇILMAZ.
+- **İcra borçları:** sayaç+kilit dosyası K-002 tetiğinde kurulur (kart notuna) · yıldız-yasağı KILAVUZ'a · orca wiki güncelle · yerel-gömme kurulumu ilk indeksleme ihtiyacında · md.37 skill'i K-016 sırasına.
+
+### KÜME 7 KAPANDI — 9 karar + md.45(b) açık (Katman-1, Salih; masa-2) ⇒ **GÜNDEM md.1-49 TAMAM**
+- **md.40 — lychee + obsidiantools + gitleaks ÜÇÜ DE kurulsun** (kurulum icra borcu; gitleaks ilk koşumu PAT hattına).
+- **md.41 — Üretim freni SALİH-TETİKLİ istisnayla:** Salih hükmü aynen: "ben istersem olur ama onun dışında gündeme gelmez bir süre" — varsayılan: yeni araştırma koşumu AÇILMAZ; açılış yalnız Salih emriyle; sürenin sonu Salih beyanına bağlı (masa-kapanışına bağlanMADI).
+- **md.42 — A1 sayacı: 30 Tem temiz koşum SERİNİN BAŞI sayılır**, önceki arızalılar dahil edilmez; zaman-ayrıklık şartı log'dan doğrulanır (07-31 + 08-01 OK koşumlarıyla seri fiilen 3 olabilir — doğrulama icra borcu).
+- **md.43/44/46/47/48/49 altılı İMZALANDI:** 5 dosya-düzeltme borcu (m.8 usulü, tek vardiya) · 4 wiki adayı sıraya (karar-cephesi v2-imza-kapılı) · kutu-damıtma vardiyası ilk boş vardiyaya (okuma defteri 40KB arşiv adayı) · erratum refleksi standart · 2 mini test sıraya (Plan-ajan + kapsül-geri-gelme) · staj sınır beyanı staj kartına ("staj verisi JARVIS'e taşınmaz, yazılı izin yoksa" — 11 Ağu öncesi).
+- **md.45:** (a) gece cevaplandı (envanter EK'te; kritik: Drive/Gmail/Calendar/Chrome/computer-use/scheduled-tasks CC'de yok) · **(b) KAPANDI (Salih beyanı 08-01 akşam-2):** Fable-1M MEVCUT ve CC koşumunda fiilen kullanıldı ("eski koşturduğum CC'yi 1M'de çalıştırmıştım"); bu Cowork oturumu Fable HIGH. ⇒ 1M kapasitesi CC tarafında doğrulanmış — geçiş-kaybı analizinde Fable-1M "kayıp" kalemi DEĞİL.
+- **KALAN MASA MALZEMESİ (ayrı tur):** EK-6 külliyatı (~106 K1 kalemi/9 küme) + g22 B1-B5 + g23 K1-a..l + K1-24 kalanları + K1-g (c-dilimi) — md.1-49'dan AYRI, kendi oturumunu bekler.
