@@ -49,6 +49,22 @@ Akış bölünmeden atılan ham fikirler; tek satır yeter. Sınanmamıştır, k
 
 ---
 
+## Ölçekleme sözlüğü (Salih imzası 2026-08-01, 08-01-5 ingest K1 kararı; kaynak: `cc/rapor-2026-08-01-5.md` — sözlük koşumda test edildi, kaynak-alan terimi sızmadan tam rapor üretildi; iki satır rapor-tespitli revizyonla girdi)
+
+- **ölçek** — bir sistemin büyüklüğünü tek sayıya indirgeyen ölçüt (karşılaştırma ekseni)
+- **uç-birim** — bir katmanda yan yana duran, tekrar eden en küçük işlem birimlerinden biri
+- **uç-birim sayısı** — bir katmandaki uç-birim adedi
+- **uç-birim genişliği** *(MLA şerhli — revizyon 1)* — bir uç-birimin iç kapasitesini veren ölçü; çoğu sistemde tek sayıyla ifade edilir, ancak bileşik-kapasiteli bir alt-sınıfta tek sayıya indirgenemez ve bu sınıf ayrı işaretlenip genel ölçümün dışında tutulur
+- **katman sayısı** — sistemi oluşturan ardışık işlem katmanı adedi
+- **debi** *(iki-rejim şerhli — revizyon 2)* — sistemin ölçeğine karşı iş-görme payının üstel ilişkisi; öz-pay bileşeni (γ_öz, ölçülen) ve taşınan-kaynak-payı bileşeni (γ_taşınan, henüz ölçülmemiş) olmak üzere iki ayrı bileşenden oluşur — tek sembolle anılması yalnız birinci bileşeni temsil eder
+- **kullanım ufku** — sistemin tek seferde işleyebildiği taşınan-kaynak uzunluğunun üst sınırı
+- **çevrim frekansı** — birim ölçek başına düşen işlem hızı ölçütü
+- **taşınan-kaynak** — bir işlemde sistemin üzerinde çalıştığı girdi miktarı
+- **sistem-ailesi** — ortak tasarım kökenini paylaşan sistemler kümesi
+- **aile-içi tasarım sabiti** — bir ailenin, ölçek değişse de sabit tuttuğu tasarım değeri
+
+---
+
 ## Akış hattı
 
 ```text
