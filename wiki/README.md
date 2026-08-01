@@ -20,9 +20,11 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[loop-engineering]] — loop kurma el kitabı (Homebase'ten taşındı 07-15)
 - [[orca]] — Orca/ADE notları (Homebase'ten taşındı 07-15)
 - [[kokenler-karpathy-llm-wiki]] — LLM-wiki fikrinin kökeni, Karpathy gist (taşındı 07-15)
+- [[olcum-banki]] — kalıcı sayısal ölçüm defterinin kural sayfası: m.39 giriş kuralı · m.8 çürüme kuralı · uyarı-satırı sınıfı (eklendi 08-01 gece, ana-sıra)
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)
+- loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
 - skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
 - kucuk-n-eval — smoke vs sertifika ayrımı + Clopper-Pearson cebi + 3×-koşum ilacı (07-23 sayı-araştırma hasadı; kaynak cc/rapor-2026-07-23-1.md).
 - rol-katmanlari (m.44) — CEO ≠ üst-orkestratör ≠ domain-lider; aday sayfa (07-21 borcu).
