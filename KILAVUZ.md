@@ -51,6 +51,9 @@ Her oturum açılışında okunan dosyalar sabit boyut-bütçeli yaşar; **aşı
 ## Sayı-araştırma kapısı (Salih emri 07-23 — kural)
 Sistem parametresi olacak her deneysel sayı (eşik, bütçe, sayaç, örneklem) CC araştırması koşulmuş-ve-okunmuş bağlamda seçilir (m.40'ın sayılara genişletilmesi). Araştırmasız mevcut sayılar GEÇİCİ damgayla yürürlükte; rapor gelince yeniden türetilir/onaylanır, fark deftere. Envanter: `raporlar/2026-07-23-deneysel-sayi-denetimi.md` · ilk tur: `cc/rapor-2026-07-23-1.md` (4 hüküm uygulandı). Kalite-proxy'ler (m.39) kapının konusu değil — onların yolu ölçüm.
 
+## Öz-usage usul kuralı (Salih beyanı 08-01 sözlü → metinleşme Salih imzası 08-01 masa)
+Salih'in kendi /usage, /context ve bağlam-doluluk yorumları YORUM statüsündedir, karar/ölçüm değil ("bağlam şişti" beyanı tek başına eşik tetiklemez — 08-01-2: doz-cevap yok). İterasyon yönünü üst model verir; Salih veto her zaman açık (m.31). Ölçüm hattı: Yol-1 bağlam-sayacı kurulunca beyanlar veriyle kalibre edilir.
+
 ## Durum görünürlüğü (m.18)
 Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü kapsül/pano/şablonlarda yaşar.
 
