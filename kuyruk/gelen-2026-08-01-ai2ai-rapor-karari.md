@@ -25,3 +25,13 @@
 ## Bağlar
 
 V46 lojik-çeviri (aynı damar: insan→LLM çevirisi Carvis'te; LLM→insan çevirisi ayrı katmanda — simetri tamamlandı) · gorev-2026-08-01-6 (INSAN compiler) · gorev-2026-08-01-12/17 (rapor = ön-işlenmiş ürün; okuyucu-maliyeti artık AJAN-okuyucuya göre optimize edilir) · satır-hedefi-esnek kararı (08-01, seçenek b) bu emirle uyumlu: yoğunluk > uzunluk.
+
+## GENELLEME (Salih, aynı gün — çalışma ilkesi adayı)
+
+**İlke (lojik formda):** spesifiklik(istem) ↑ → başarı(ajan) ↑ ⇒ görev, KRONOLOJİK PARTİSYONLARA bölünür ∧ partisyon-başına DAR-görevli tek ajan koşar ∧ partisyon bitişi → sıradaki ajan devreye girer (okuyucu → sentezci/ingest → [ihtiyaçta] İNSAN-compiler). Carvis'in kendi okuma/ingest işi de bu zincire dahil — orkestrasyon Carvis'te (m.17 köprü), okuma ajanlarda; ana bağlam temiz kalır. **Bu, loop-kurmanın bir YÖNTEMİDİR:** loop = dar-ajanlı partisyon zinciri.
+
+- Kabul edilen bedel (Salih beyanı): toplam süre uzar — spesifik ajanın işi bitmesi beklenir, sonra okuyucu girer.
+- Carvis şerhi 1 — **devir-vergisi:** her el-değişimi bilgi-kaybı riskidir; pipeline ancak partisyon-sınırı teslimleri compile-edilebilir (AI2AI) olduğunda güvenli akar → bu genelleme ile yukarıdaki format-emri birbirini ŞART koşar.
+- Carvis şerhi 2 — **m.25 istisnası:** ölçek-eşiği altı işe pipeline kurulmaz (su-bardağı frenli).
+- Kanon tohumları: m.17 (ajan-başına ingest) · m.21 (bağlam-detay ölçekleme) · m.44 (lider/işçi katmanları) · gorev-11 (kronolojik partisyon) · gorev-18 (pipeline sentezi: rank→derle→tırman→takas).
+- Katman-1 adayı: "genel çalışma ilkeleri"ne giriş (tüzük/KILAVUZ) masa kararıdır; ilk uygulama-gözlemi birleşik ingest turunda alınır.
