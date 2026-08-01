@@ -362,4 +362,45 @@
 - **08-01-3 damga: KABUL.** Envanter 11 dizin; JARVIS-ilişkili 409 dosya/231 MB → 5/5 zip (`arsiv/claude-izler/`, gitignore'lu) + damıtılmış hasat 74 oturum (`raporlar/usage/iz-hasadi-2026-08.jsonl`, betik `iz-hasadi.py`); doğrulama 3/3 birebir. Kapsam Katman-1 sorusu DOĞRU soruldu; Salih kararı: yalnız JARVIS (kişisel veri şirket deposuna girmez). **Kişisel projelerin riski aynı gece Salih'in kendi tam-zip'iyle kapandı** (656,95 MB / 2.256 dosya, JARVIS-dışı konum, robocopy+zip — kilitli-dosya dersi kayıtlı). Açık uçlar: meta.json/tool-results yedeklenmedi · ~08-10 ikinci yedek önerisi · restore-testi yok.
 - **/usage sapma kaydı:** emir §4 "panel yapıştır" diyordu; Salih sormasıyla ana-sıra kararı: GEREKMEZ — veri transkriptte (30-21) + transkriptler artık yedekli + hasatlı; panelin pencere-belirsizliği bugün 9. vakada kanıtlı. Betik düzeltilene dek $ rakamları şerhli (değişmedi).
 - **Tarihli borç durumu:** ≤08-11 baskısı JARVIS için KALKTI (yedek + hasat); kalan: cleanupPeriodDays kararı (Salih, ikili — öneri: BÜYÜT; silme sınıfını kökten kapatır) · CC'nin 4-dosyalık commit'i push bekliyor (m.41 onay: Salih terminali `git pull --rebase && git push`).
-- SONUÇ (gözlenecek): [açık] — cleanupPeriodDays kararı; çağrı-freni tasarımı masada; ikinci yedek ~08-10.
+- SONUÇ (gözlenecek): [açık] — çağrı-freni tasarımı masada.
+- **EK KARAR (Salih imzası, 08-01 gece): `cleanupPeriodDays` = 365.** Gerekçe: disk maliyeti önemsiz (~30 günde 657 MB ⇒ üst bant ~8 GB/yıl); tek gerçek bedel gizlilik penceresinin 12 aya çıkması — şifreli disk + JARVIS-dışı kişisel yedekle kabul edildi. Geri-alma ucuz: ayar küçültülür, silme o günden geriye yeni pencereyle işler. Uygulama Salih terminali (`~/.claude/settings.json`). **Sonuç: 30-günlük silme sınıfı KÖKTEN KAPANDI** — ~08-10 ikinci-yedek önerisi ve iz-hasadı tarih baskısı DÜŞTÜ (hasat artık takvimsiz, kalite borcu olarak sürer: meta.json/tool-results ucu).
+
+## 2026-08-01 — KATMAN-1 MASASI, 1. oturum (ana-sıra Cowork, Carvis/Fable; gündem `kuyruk/masa-gundemi-2026-07-30.md` + EK-2/3/4)
+
+**Koşum notu:** Staj hattı bugün kapalı (Salih beyanı). Koşulan: Küme 2 (tamamı) + öne çekilmiş kalemler + Küme 1 (tamamı). KALAN: Küme 3-4-5(md.27-29)-6-7 → 2. oturum. Sunum usulü: AskUserQuestion seçenekli, feda satırları görünür (m.37/m.40 ruhu).
+
+### Küme 2 + öne çekilmiş kararlar (tümü Salih imzası)
+- **md.8:** CC yetki modeli = (a) imzalı "ana-sıra CC oturumu" profili — yetki OTURUMA bağlanır, yüzeye değil. Kurulum aşama-3'te AYRI imzayla.
+- **md.9:** CC-geçiş aşama 1-2 BAŞLAR; aşama 3 ayrı imza; aşama 4 öncesi CC'de tek deneme vardiyası + 2 ölçüm (oturum-değişim sayısı, kapanış bağlam-doluluğu). Gerekçe güncel: KG-3 — Cowork makine-okunur kayıt vermiyor, geçiş = ölçüm aracının kendisi.
+- **md.10:** ana-sıra oturumlarında `switchModelsOnFlag: false`. Salih koşulu doğrulandı: kapatınca model düşümü OLMAZ — oturum durur, iki seçenek sunar ([D-belge] 29-6 §1.3).
+- **md.12:** m.41 üçlü düzeltme UYGULANDI: ↔ → → (gereklilik, yeterlilik değil; Z6 hükmü) + istek-başı kırılabilirlik şerhi + "yapısal kilitli"→KOŞULLU şerhi (30-6). CLAUDE.md yüzey-yetkisi satırı da düzeltildi.
+- **EK-2 ①:** `kosum-maliyeti.py` vardiya-kapanış rutinine + 30-22 JSONL şeması (Katman-2). Şerh: 3 kusur (30-24) düzeltilene dek $ rakamları "doğrulanmamış aday" damgalı, rapora çıplak girmez.
+- **EK-2 ②:** ingest freni İMZALI — "≥3 damgasız rapor → yeni araştırma emri yok". **Salih şerhi: fren yalnız Carvis-açılışlı emirleri bağlar; Salih'in açık istediği araştırma her durumda açılır.**
+- **EK-2 ③ (EK-4 düzeltmeli):** (a) emir-düzeyi Sonnet alt-ajan (S-K şablonuna satır) + **Yol-C (V26-yakalama etkisi) ölçümü borç yazıldı**; pin kararı ancak o ölçümle masaya döner. İmzalı opus pinine (R1) dokunulmadı.
+- **Çağrı-sayısı freni (yeni kalem):** deterministik kapı TASARIMI görevi açıldı — B2 sınıfıyla birleşik (fren prompt'tan koşum katmanına: sayaç-hook, tavanda fiziki kesme/durdurma); uygulama imzası tasarım gelince ayrı. Gerekçe: prompt-freni 2 kez delindi ($30,94 = 1,89× aşım) — "[K] fren değil etiket".
+- **md.14:** alt-ajan model+düşünme-seviyesi merdiveni kurulur; uygulamada öncesi-sonrası ölçüm ŞART (%40-70 kestirim, ölçüm değil).
+- **PAT (öne çekilmiş):** token `.git/config` URL'inden çıkar → credential-helper `.secrets/github-pat`tan okur; kapanış commit-testiyle birlikte uygulanır.
+- **md.26:** K39 taraması üç ölçütle koşulur + GitHub dosya-yolu kısıtlı koruma İZLE-modunda + "yönetici de atlayamaz" işaretli. (30-6 bulgusu: kilit koşullu — tek istemci-tarafı sigorta yetmez.)
+- **md.13:** gece işleri MASAÜSTÜ zamanlanmış görevi (bulut rutini reddedildi: izinsiz koşum + otomatik push kabulü, K39 teyidi).
+- **Usul beyanı:** KILAVUZ'a İŞLENDİ ("Öz-usage usul kuralı" bölümü).
+- **K-019 damıtma planı İMZALI**, ilk uygun vardiyada koşulur: (1) senaryo-defteri kapanmış bloklar arşive, sıcakta son 2 hafta + açık kalemler (2) fikir-kutusu işlenmiş V'ler arşiv-pointer (3) KILAVUZ bayat-satır temizliği (4) masa gündemi masa kapanınca komple arşiv. Silme yok (m.8).
+- **md.11:** `gunaydin-vardiya` + `vardiya-kapanis` repoya kopyalandı (`.claude/skills/`); REPO ASIL KAYNAK olur, hesap-skill kopya. 23 Tem "tek ev" kararı bu hükümle revize (gerekçe: geçişte kaybedilecek tek somut kalem).
+- **md.15:** bu vardiyanın kapanışında mount'tan TEK commit denenir; temizse "mount git yasağı" → "serbest (izlemeli)".
+
+### Küme 1 — m.37 gerçek fedakârlık (Salih imzaları)
+- **md.7 (usul):** KALİBRASYON KOŞUMU ÖNCE — aday denetçiye v1 verilir; bilinen 3 kırığı yakalama + 4 sağlam hükmü yanlış-kırmama ölçülür. Geçerse v2'ye saldırı turu; fıkra imzası ondan sonra yürürlük kazanır.
+- **md.1+2:** v2 metni ESAS (`cc/rapor-2026-07-30-3.md` böl.1; kapı=ayıklama/B4, "birincilik"=bilgi etiketi). Yürürlük md.7 kapısından sonra. 13-fıkra hacim endişesi ÇÖZÜLMEDEN taşındı (bilinçli, v2 öz-beyanı).
+- **md.3:** seçenek SAYISI yazılmaz — ayıklamadan artakalan kadar sunulur; cephe >4 → temsilci + tek-satır sayım ("4" deneysel damga KG-V2-9). Aşama-görünürlüğü sabit TABLO ile.
+- **md.4:** risk ölçütü KOŞULLU — yalnız geri-alınamaz ∨ Katman-1 kararlarda ayrı ölçüt; küçük kararlarda gerekçede örtük.
+- **md.5:** karşıt-temel YUVA çözümü (C11) — seçenek kümesinden çıkar, sunum altına "şu zeminden şu çıkardı; şundan yenildi" kaydı. İki imzalı kural korunur. (KG-V2-4 ayrı-imza şartı bu imzayla karşılandı.)
+- **md.6:** öneri satırı feda'lardan SONRA + "beni çürütecek bulgu" satırı (C10). İzleme şerhi: satır içi boşalırsa kaldırma masaya gelir.
+- **md.7a:** tam form 5 kademe / hafif form 3; ayırt edilemeyen hücre = "yaklaşık eşit" (m.39 freni).
+
+### Açılan borçlar/görevler
+Kalibrasyon koşumu (md.7) → görev emri Carvis derler · Yol-C V26-yakalama ölçümü · deterministik çağrı-kapısı tasarımı · Yol-1 bağlam-sayacı hook kurulumu (ana-sıra işi) · K39 tarama görevi + GitHub koruma kurulumu · gece-script schtasks kalemi md.13 hükmüyle sürer · Adım 0 managed-settings testi (Salih terminali, 5-15 dk) · md.45 iki bilgi (Customize listesi + Fable 1M satırı) Salih'ten · K-019 damıtma vardiyası · CC-geçiş aşama 1-2 icra adımları.
+
+### Ek — 08-01-5 ingest'i (aynı vardiya, masa 1. oturum sonrası)
+Karantina-desenli ingest KOŞTU (2. başarılı koşum; ham içerik ana-sıraya girmedi). Damga KABUL. Maliyet $12,00/$16 (%75, aşım yok). Salih kararları: K1 sözlük kanona (2 revizyonla, `wiki/sozluk.md`) · K2 kapandı (girdi yok) · K3 ölçüm-bankı AÇILDI (`kuyruk/olcum-banki.md`: γ_öz=0,757±0,059 · genişlik üssü +0,096±0,018) · K4 θ-ölçümü Seçenek B sıraya. Ana-sıra hükmü (Katman-2): araç-içi model katmanı emir-şartı kapsamı DIŞI ama raporlanır; "yazılmış-uygulanmayan şart" 3. vaka → deterministik kapı şartnamesine "ölçüm yüzeyi = panel/transkript, prompt değil" kısıtı. Kayıt: `raporlar/2026-08-01-ingest-0801-5.md`.
+
+### Ek 2 — kapanış icraları (08-01 akşam)
+PAT temizliği uygulandı: origin URL token'sız + `.secrets/git-credentials` + göreli `credential.helper store` (şerh: git komutları repo kökünden). md.15 testi FAIL-YAPISAL (sandbox .git-unlink yasağı; yasak sandbox için kalır, host serbest) — teslim DÜZELTME EKİ. Graf/routing hattı (CC yan-oturum, 12 emir g8-19, H1-H47) devralındı; birleşik ingest turu sonraki vardiyaya. Masa 2. oturum YARIN (Salih beyanı).
