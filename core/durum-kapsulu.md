@@ -1,25 +1,23 @@
 # Durum Kapsülü
 
-*Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır; mount'ta git komutu YOK (pull gerekirse Salih terminali).*
+*Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 testi FAIL-YAPISAL (08-01: sandbox .git-unlink yasağı) — yasak SANDBOX yüzeyinde kalıcı; Salih terminali + CC (host) serbest.*
 
-**Güncelleme:** 2026-08-01 KAPANIŞ, PC ana vardiya (Carvis/Fable) — **kayıt onarımı KAPANDI** (yol C+T2; 7/7 hata sayım/atıf sınıfı; şerhler uygulandı) · **ingest ①+② KAPANDI: 12/26** (damgalar senaryo-defteri son blok; Katman-1 girdileri masa EK-2) · 2 yeni emir derlendi (08-01-1 semantik-compiler · 08-01-2 bağlam-tetiği; koşum Salih'te) · S-K skill adayı kutuda. Teslim: `raporlar/vardiya-teslim-2026-08-01-anasira.md`
-**Salih INSAN okuma sırası (kendi temposunda):** ① INSAN-pasif-ogrenme → ② INSAN-arastirma-promptu → ③ INSAN-ajan-durma → ④ INSAN-kod-entegrasyonu → ⑤ INSAN-tech-stack → ⑥ INSAN-arac-entegrasyonu → ⑦ INSAN-lojik-kod.
+**Güncelleme:** 2026-08-01 AKŞAM KAPANIŞ, PC ana vardiya (Carvis/Fable) — **KATMAN-1 MASASI 1. oturum: 23 kalem imzalandı** (Küme 1+2 + öne çekilmişler; kayıt senaryo-defteri 08-01 bloğu) · **08-01-5 ingest + devir K1-K3 KAPANDI** (sözlük kanona · `kuyruk/olcum-banki.md` AÇILDI: γ_öz=0,757±0,059, genişlik üssü +0,096±0,018) · gorev-6/7 derlendi ve **raporları AYNI GÜN düştü** (INSAN okuma dosyası hazır) · **graf/routing hattı devralındı** (CC: 12 emir g8-19, H1-H47, 8 commit doğrulandı; rapor 10/12 düştü, 18-19 bekleniyor) · PAT temizliği uygulandı · md.15 FAIL-yapısal (sandbox) · PUSH SALIH TERMİNALİNDEN BEKLİYOR — gün push'la sayılır. Teslim: `raporlar/vardiya-teslim-2026-08-01-anasira-3.md`
+**Salih INSAN okuma sırası (kendi temposunda):** `raporlar/2026-08-01-INSAN-son-10-rapor.md` (YENİ, öncelikli) → ① INSAN-pasif-ogrenme → ② INSAN-arastirma-promptu → ③ INSAN-ajan-durma → ④ INSAN-kod-entegrasyonu → ⑤ INSAN-tech-stack → ⑥ INSAN-arac-entegrasyonu → ⑦ INSAN-lojik-kod.
 
 ## Şu an
-- **SALİH ÖNCELİĞİ (08-01 beyanı): ana oturumu CC'ye geçirmek** — Cowork'te bağlam şişmesi seansları kısaltıyor. Masa madde 8 (yetki) + 9 (geçiş) öne çekildi; `gorev-2026-08-01-2` raporu (bağlam-tetiği) geçişe doğrudan girdi. m.41 Dilim-1 kuralı: CC ana-sıra sayılır ↔ Fable koşar ∧ Salih "ana sıra" beyanı.
-- **Katman-1 masası (TEK oturum, gün Salih seçer):** D-1..21 (`cc/rapor-2026-07-29-4.md` §13) + KG-M37-1..10 + KG-CC-1..8 + KG-25 (masa EK) + **ingest-①② paketi (masa EK-2: 8 raporun yol-seçimleri TEK PAKET + CC-hızlandırma sırası: betik→ingest-freni→atlas model-pini→Adım 0)**. m.37 v2 hâlâ İMZASIZ (KG-V2-1..10).
-- **İngest:** 12/26 tamam; kalan **③ ufuk vizyonları (14 rapor)** düşük aciliyet — 30-15 fren önerisi (≥3 damgasız → yeni emir yok) İMZASIZ ama masada; 08-01'de Salih emriyle 2 emir üstünden geçti (gerilim kayıtlı).
-- **Yüzey gerçeği (08-01 ölçüldü):** repo `.claude/skills` Cowork ana-sırada YÜKLÜ DEĞİL (yalnız CC yüzeyi) — 30-16 §1.5 kapandı.
-- Kilit KOŞULLU ⇒ K-010/A2 kapanamaz (değişmedi) · K-022 staj: soğuk baseline penceresi 1 Ağu'ydu — Salih şeridi, bu kapsül dokunmadı · Askıda: K35 · K39 (worktree ekseni borç).
+- **MASA 2. OTURUM = YARIN (Salih beyanı 08-01 kapanış).** Kalan kümeler: 3 (öğrenme 16-18) · 4 (notasyon 19-25) · 5 kalanı (27-29) · 6 (PortRisk/araçlar 30-39) · 7 (küçük onaylar 40-49). Gündem: `kuyruk/masa-gundemi-2026-07-30.md`. gorev-7 raporunun Katman-1 kalemleri masaya eklenir.
+- **Graf/routing hattı paralel koşuyor:** emirler `cc/gorev-2026-08-01-8..19.md`; raporlar `cc/rapor-2026-08-01-8..19.md`e düşüyor (kapanışta 8-17 inmiş). Satır hedefi ESNEK (Salih, seçenek b); emir-başı tavan $14. İç-müşteri bağları: deterministik çağrı-kapısı ← g15 · K-019/K-016 ← g17 · A5 lider paketi ← g19 · m.37 çeşitlilik ölçütü ← g19 · koşucu-sınıfı #24 ← g19.
+- **m.37 v2 statüsü:** içerik kararları verildi (v2 esas · sayı yazılmaz · risk koşullu · karşıt-temel yuva · 5/3 kademe); YÜRÜRLÜK kalibrasyon kapısında (denetçiye v1 → 3 kırık + 4 sağlam ölçümü → geçerse v2-saldırı turu → imza).
+- **CC-geçiş:** aşama 1-2 İZİNLİ; aşama 3 (imzalı ana-sıra CC profili) kurulumu ayrı imza; `switchModelsOnFlag: false` ayar borcu. Kilit kanonda KOŞULLU kayıtlı (m.41 şerh 2); K-010/A2 değişmedi · K-022 staj: 11 Ağu'ya 10 gün, P2 penceresi 08-01'de koşulmadan geçti — pencere kararı Salih'te · Askıda: K35.
 
 ## Açık borçlar
-- **⚠️ TARİHLİ: CC iz-hasadı ≤2026-08-11** (30 günlük silme penceresi; ilk kayıp ≈08-11 — 30-16).
-- **⚠️ BOYUT — K-019 ertelenemez:** senaryo-defteri 94,3KB/48 (≈2×) · fikir-kutusu 22,9/20 · KILAVUZ 16,8/16,4 · masa gündemi 52,6KB. Damıtma ilk boş vardiyada Salih-imzalı planla.
-- **Onarım kalanları:** Türkçe `İ` tarama tuzağı — betikler gözden geçirilecek (KG-25-9) · `cc/defter.md` 18 koşum satırı eksik (A10) · temiz-vardiya negatif örnekleri ~7 (yordam eval ön-koşulu) · ~~$2,45 teyidi~~ KAPANDI (30-21: çapa çürüdü — gerçek bant $0,56–$302, medyan $14).
-- **Diğer:** PAT ~10 Ekim · /compact saha testi · Adım 0 managed-settings testi (Salih terminali, 5-15 dk) · P2 devir + S4-A1 ingest · akademik yeniden-doğrulama (B-1) · D5 künye · wiki adayları (`sessiz-hata-desenleri` [+İ-tuzağı, +`ls|head` tuzağı] · `baglam-mekanigi-cc` · `karar-cephesi` · `orca.md`).
+- **Masa icra borçları:** switchModelsOnFlag ayarı · kosum-maliyeti.py rutine (3 kusur şerhiyle) · S-K şablonuna "alt-ajan sonnet" satırı · GitHub izle-modu koruması · md.14 merdiven + ölçüm · Yol-1 sayaç-hook · deterministik çağrı-kapısı TASARIMI (şartname eki: ölçüm yüzeyi = panel/transkript, prompt değil) · kalibrasyon koşumu emri · θ-B emri · Yol-C V26-yakalama ölçümü · K39 tarama koşumu · Adım 0 testi (Salih terminali) · md.45 iki bilgi (Salih: Customize listesi + Fable 1M).
+- **⚠️ BOYUT — K-019 PLAN İMZALI**, ilk uygun vardiyada: senaryo-defteri ~104KB/48 · fikir-kutusu 22,4+/20 · KILAVUZ 16,6/16 · masa gündemi (masa bitince arşiv).
+- **Diğer:** gorev-6/7 raporlarının ingest'i (6: §lider-temel → A5 · 7: Katman-1 kalemleri → masa) · fikir-kutusu CC-şerit değişikliği okunmadı (ingest turunda) · Türkçe `İ` tuzağı · temiz-vardiya negatif örnekleri ~7 · restore-testi · PAT ~10 Ekim · akademik B-1 · D5 künye · wiki adayları (sessiz-hata[+naif-hesap satırı] · baglam-mekanigi-cc · karar-cephesi[v2 kapısını bekler] · orca · YENİ: olcum-banki kural sayfası).
 
 ## Sonraki ilk iş
-1. **İki 08-01 emrinin koşumu (Salih promptla, CC):** `cc/gorev-2026-08-01-1.md` (semantik-compiler) · `cc/gorev-2026-08-01-2.md` (bağlam-tetiği — CC-geçişin girdisi; ÖNCE bunu koşmak mantıklı).
-2. **CC-geçiş hazırlığı:** masa madde 8+9 + EK-2 hızlandırma sırası ①betik→②fren→③pin→④Adım 0. Katman-1 masası oturmadan geçişin yetki ayağı atılamaz.
-3. ③ ingest (14 rapor, alt-ajan damıtmalı) — fren gereği yeni araştırma emri AÇILMASIN (öneri).
-4. Mini: 30-24 ingest'ine P22-P23 şerhi · defter A10 · K14 5-dk doğrulama.
+1. **MASA 2. OTURUM** (kalan 5 küme; gorev-7 Katman-1 kalemleri dahil).
+2. Rapor 18-19 düşünce: **BİRLEŞİK ingest turu** — 12 rapor tek turda: H1-H47 tek hipotez tablosu + Katman-1 aday listesi + gorev-6/7 ingest'i + iç-müşteri dağıtımı.
+3. Kalibrasyon (m.37 usul) + θ-B görev emirlerinin derlenmesi.
+4. Salih okuma: INSAN-son-10-rapor + md.45 iki bilgi.
