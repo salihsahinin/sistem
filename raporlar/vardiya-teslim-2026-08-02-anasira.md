@@ -1,4 +1,4 @@
-# Vardiya Teslim — 2026-08-02 PC ana vardiya (Carvis/Fable) — TASLAK (D3; kapanış tamamlar)
+# Vardiya Teslim — 2026-08-02 PC ana vardiya (Carvis/Fable) — FİNAL
 
 *Açılış bağlamı: 08-02 emir-dal arızası devri (bulut CC emri yan-dala derledi → koşucu Opus emirsiz doğaçladı → Salih iki çıktıyı HÜKÜMSÜZ saydı, ana-sıraya sıfırdan devir).*
 
@@ -18,7 +18,19 @@
 ## Boyut-tetiği
 - **KILAVUZ 18,7KB > 16KB** (yazım turu aşırttı) — ilk boş vardiyada Salih-imzalı damıtma planı. Senaryo-defteri katman-ayırma borcu aynı vardiyaya aday.
 
+## CC raporu DÜŞTÜ (22:06; `cc/rapor-2026-08-02-1.md`, 81KB) — İLK-BAKIŞ DEĞERLENDİRMESİ (tam ingest TAZE vardiyaya)
+**Hüküm çekirdeği (S1-S8, Carvis süzgeciyle; koşullu okunmalı — hakem 7 anlaşmazlıkta hiçbir tarafa SAĞLAM vermedi, tezin 14 iddiasından 8'i çürüdü):**
+- **S1 (en değerli bulgu):** 08-02 arızası hiçbir ÇEVİRİ kenarında değil, adı konmamış **E0 TAŞIMA kenarında** (link/load katmanı) oldu — model 4 değil 4+1 kenar; D-0802-1 dersimizin teorik karşılığı.
+- **S2:** "compiler hangi sınıf" sorusu yanlış eksende — {skill·loop·kod·ajan} ayrık küme değil; doğru form **kenar-başına ⟨tetik·icra·denetçi⟩ üçlüsü**.
+- **S3/S4:** determinizm yalnız DENETÇİ tarafında aranabilir; compiler-formülü §4 hibridi "kıyasta kazanmış ∧ KOŞULMAMIŞ hipotez" statüsüne indi; genelleme hedef-dil formalliğine KOŞULLU.
+- **S6:** format vergisinin yordayıcısı erken-serileştirme → çare AŞAMALANDIRMA (muhakeme serbest, serileştirme ayrı aşama); done-denetimi/çapa-sayımı sınıfında yapılandırma KÂR yazar.
+- **S7:** bugün bağlayıcı kısıt formalizasyon değil **TETİK ∧ TAŞIMA**; compiler'ı skill yapmak ölçülmüş durum-tetiği arızasını miras alır. **S8:** bugünkü fiilî durum "iki register + boşluk" — L3 kenarı yok.
+- **Katman-1 adayları (Salih masasına):** "üç dil"→"üç register" AD kararı (Salih'in kelimesi, K2-f) · sınıf-seçimi N=0 kenarlarda BEKLESİN ↔ sıfır-token muhafızlar beklemesin (ayrı kararlar) · B1-B9 borç dağıtımı.
+**Koşum meta:** maliyet **$16,06** — eski $14 tavanı AŞILIRDI, fren revizyonu (Salih emri) yerinde çıktı; kestirim %24-78 düşük saptı → B8 kalibrasyon borcu. Öz-arızalar (raporun kendi beyanı): hakem maskelemesi kırıldı · #24 pin ihlali (dış tarama ana döngüde) · **B5: tüzük okuması commit'siz ara-hâlden olabilir — yazım turumuz koşumla eşzamanlıydı (eşzamanlılık dersi: koşum sırasında kanon dosyası değiştirme → yeniden-doğrulama borcu doğurur).**
+
 ## Açık / sonraki ilk iş
-1. **CC raporu düşünce:** ingest + değerlendirme + İNSAN-compiler kararı (bu vardiyada ya da taze oturumda — bağlam durumuna göre).
-2. Gitleaks host koşumu sonucu okunacak (Salih arası).
+1. **Taze vardiyada İLK İŞ: rapor tam ingest'i** (hasat + kutu + defter + Katman-1 aday listesi Salih'e; B1-B9 dağıtımı).
+2. Gitleaks host koşumu sonucu okunacak (Salih arası; kurulum yapıldı).
 3. A1 hükmü (Salih, 08-03 OK sonrası) · KILAVUZ+defter damıtma vardiyası · masa EK-turu (taze oturum) · PC diski geride — açılışta `git pull`.
+
+**Kapanış beyanı:** gün m.9 gereği push'larla SAYILDI (bu vardiya 9 push; koşum tetiği ve 207327f Salih tarafı).
