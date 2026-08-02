@@ -2,22 +2,22 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) serbest.*
 
-**Güncelleme:** 2026-08-02 GEÇ KAPANIŞ, PC ana sıra (Carvis/Fable) — **rapor 08-02-1 TAM İNGEST EDİLDİ ve PUSH'LANDI (bb8ef74; gün SAYILDI).** K2 masası gündemi hazır (`kuyruk/masa-gundemi-K2-2026-08-02.md`, 14 kalem İMZASIZ) + **Salih emriyle masa-hazırlık usulü doğdu: `cc/gorev-2026-08-02-2.md` derlendi** (İNSAN-register karar rehberi; CC tetiği Salih'te). Gitleaks TEMİZ (md.40 kapandı) · B5 kapandı · disk/origin çatalı onarıldı. Teslim: `raporlar/vardiya-teslim-2026-08-02-anasira-gec.md`.
+**Güncelleme:** 2026-08-03 ERKEN (gece ~00:30, PC ana sıra Carvis/Fable; 08-02 geç vardiyanın devamı oturumu) — **K2 MASASI KAPANDI: 15/15 kalem karara bağlandı** (11 imza/kabul · 2 beklet · 2 sonraki-masaya; tam kayıt: senaryo-defteri "K2 MASASI" bloğu). **Masa-hazırlık usulü ilk koşumda STANDART oldu** (Salih imzası; format ref: `raporlar/2026-08-02-masa-hazirlik-K2.md`). B1+B3 koşuldu (3cc20c4) · usage $1,34 bankada · md.1-49 masa-özeti dosyası üretildi (`raporlar/2026-08-02-masa-ozeti-md1-49.md`).
 
 ## Şu an
-- **K2 masası Salih'te bekliyor:** 14 Katman-1 kalemi (öne çekilen: K2-a bant-dışı kural · K2-k maskeleme açığı · K2-n damga kuralı · K2-f "üç dil"↔"üç register" AD kararı — Salih'in kelimesi). Hakem uyarısı geçerli: kalemler BAĞIMSIZ, paket-kabul/paket-red ikisi de hata.
-- **Rapor hükümleri KOŞULLU taşındı:** E0 taşıma-kenarı (en değerli bulgu) · sınıf = ⟨tetik·icra·denetçi⟩ · hibrit hedef-dil formalliğine koşullu · format-vergisi çaresi AŞAMALANDIRMA · fiilî durum "iki register + boşluk". HAT-A (sıfır-token muhafızlar) ⊥ HAT-B (mimari; N=0'da bekler).
-- A1 çatalı: 08-03 senkron OK ile kendiliğinden kapanır (5 ardışık OK kayıtlı; E10 kök-neden şartı ayakta) · K-022 staj 11 Ağu (~9 gün) · md.41 üretim freni SÜRÜYOR.
-- **Boyut-tetiği:** KILAVUZ 18,7/16KB · pano 13+ · senaryo-defteri katman-ayırma bekliyor (damıtma vardiyası borcu değişmedi).
+- **K2 kararları:** İMZA — HAT-ayrımı · K2-a (bant-dışı kural KANON) · K2-b/c (şablon alanları) · **K2-f AD: "üç REGISTER + kenar-başına biçim"** · K2-g (hibrit=koşulmamış hipotez) · K2-h kabul (Ç-YENİ hükmü 30-16 lehine) · K2-k çare-(iii) · K2-n (+geriye-dönük denetim AYRI borç) · K2-i onay · K2-j (manuel-tempo etiketi). BEKLET — K2-d (g23 turuna) · K2-e. SONRAKİ MASAYA — K2-l (g20 K1-h ile birleşik) · K2-m.
+- **K2 icra yazım turu AÇIK** (tek [damıtma] commit hedefli; liste defter bloğunda).
+- A1 çatalı: 08-03 senkron OK ile kendiliğinden kapanır (5 ardışık OK kayıtlı; E10 kök-neden şartı ayakta) · K-022 staj 11 Ağu (~8 gün) · md.41 üretim freni SÜRÜYOR.
+- Boyut-tetiği: KILAVUZ 18,7/16KB · pano 13+ · senaryo-defteri katman-ayırma bekliyor (damıtma borcu değişmedi; K2 bloğu eklendi, tetik güçlendi).
 
 ## Açık borçlar
-- K2 masa oturumu (Salih temposunda; masa EK-turu [EK-6 ~106 + g22/g23/K1-24] ile ayrı ya da birlikte — Salih seçer).
-- ~~B1 + B3~~ **KOŞULDU (08-02 geç-2, Salih onayıyla):** B1 hüküm 30-16 lehine (30-13'ün "4/4 adla" hükmü yanlışlandı; durum-tetiği-0 ayakta) · B3 sonuç N≈1-2<3 ⇒ tek-IR gerekçesi bugünkü depoda düşer. Kayıt: build-tartisma-notlari 08-02 GEÇ-2 bloğu; kabul/red K2 masasında. B2/B7 koşumları md.41 gereği Salih-tetikli. B4 masa sonrası. B8/B9 kayıtta.
-- Tüzük etiketleme turu (m.45) · denetçi kalibrasyon koşumu · KILAVUZ+defter damıtma (Salih-imzalı plan) · orca wiki · 5 dosya-düzeltme + 2 mini test · md.37 araştırma-erişim skill'i (K-016) · S6 mini-masa.
-- Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` (gitignore-adayı) + boş dal `three-lang-build-architecture-1ynfus`. Not: gitleaks `--report-path` dosyası oluşmadı (no-leaks'te rapor yazmıyor) — borç değil.
+- **K2 icra yazım turu:** K2-a kural metni kanona · K2-b+c alanları `core/sablonlar/gorev-emri.md`'ye · K2-f ad değişikliği kanon metinleri + wiki "üç register" sayfası (kilit kalktı) · K2-g damga düzeltmesi · K2-j etiket tanımı · K2-k(iii) m.40b şerhi · K2-n damga kuralı + geriye-dönük denetim ayrı satır.
+- K2-i/B4 sınaması (onaylı, masa sonrası) · B2/B7 Salih-tetikli · K2-l+K2-m → EK-6/g20 turu gündemine · K2-d → g23 turu gündemine.
+- Damıtma vardiyası (KILAVUZ + defter katman-ayırma + kapanan masa-gündemleri arşivi; Salih-imzalı plan) · tüzük etiketleme (m.45) · denetçi kalibrasyon koşumu · orca wiki · 5 dosya-düzeltme + 2 mini test · md.37 araştırma-erişim skill'i (K-016) · S6 mini-masa · **usage-otomasyon araştırma teklifi** (Salih emri 08-02 geç-2; aday yollar defterde).
+- Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` (gitignore-adayı) + boş dal `three-lang-build-architecture-1ynfus`.
 - Salih okuma: İNSAN zinciri kalanı.
 
 ## Sonraki ilk iş
-1. **Salih: CC'yi tetikle** — koşum promptuna `cc/gorev-2026-08-02-2.md` + kapanış push'unun SHA'sı (D-0802-1). Çıktı: `raporlar/2026-08-02-masa-hazirlik-K2.md` → Salih okur → K2 masası açılır.
-2. A1 hükmü (08-03 senkron OK sonrası, Salih).
-3. Damıtma vardiyası (KILAVUZ tetiği + defter katman-ayırma) sırada (B1+B3 kapandı — GEÇ-2 bloğu).
+1. **Kapanış commit'i (Salih terminali):** K2 masa kayıtları + masa-hazırlık dosyası push'lanır (komut bloğu verildi).
+2. **K2 icra yazım turu** (Carvis; core dokunuşları imzalı K2 kararlarına dayanır) — ilk vardiyada.
+3. A1 hükmü (08-03 senkron OK sonrası, Salih) · K2-i/B4 sınaması · damıtma vardiyası sırada.
