@@ -18,6 +18,7 @@
 - Salih okuma: İNSAN zinciri kalanı.
 
 ## Sonraki ilk iş
-1. **Kapanış commit'i (Salih terminali):** K2 masa kayıtları + masa-hazırlık dosyası push'lanır (komut bloğu verildi).
+1. **Salih: iki CC tetiği** — `cc/gorev-2026-08-03-1.md` (JARVIS SÖZLÜĞÜ araştırması; Salih emri 08-03: terim+notasyon+olay sözlüğü · adresleme · verimli-okuma algoritması · E5/masa entegrasyonu; Opus/high, tavan $10, web açık) + `cc/gorev-2026-08-03-2.md` (md.1-49 kararlarının İNSAN-register derin açıklaması; Sonnet/high, tavan $6). Promptlara push SHA'sı yazılır (K2-a).
 2. **K2 icra yazım turu** (Carvis; core dokunuşları imzalı K2 kararlarına dayanır) — ilk vardiyada.
-3. A1 hükmü (08-03 senkron OK sonrası, Salih) · K2-i/B4 sınaması · damıtma vardiyası sırada.
+3. A1 hükmü (08-03 senkron OK sonrası, Salih) · K2-i/B4 sınaması · damıtma vardiyası · sözlük raporu inince Carvis değerlendirmesi + masa.
+(K2 kapanış push'u ATILDI: origin 7d3bc35 doğrulandı.)
