@@ -12,7 +12,7 @@
 
 ## Açık borçlar
 - K2 masa oturumu (Salih temposunda; masa EK-turu [EK-6 ~106 + g22/g23/K1-24] ile ayrı ya da birlikte — Salih seçer).
-- B1 (Ç-YENİ hakemliği) + B3 (N/M sayımı): Carvis, ilk boş vardiya (yerel iş). B2/B7 koşumları md.41 gereği Salih-tetikli. B4 masa sonrası. B8/B9 kayıtta.
+- ~~B1 + B3~~ **KOŞULDU (08-02 geç-2, Salih onayıyla):** B1 hüküm 30-16 lehine (30-13'ün "4/4 adla" hükmü yanlışlandı; durum-tetiği-0 ayakta) · B3 sonuç N≈1-2<3 ⇒ tek-IR gerekçesi bugünkü depoda düşer. Kayıt: build-tartisma-notlari 08-02 GEÇ-2 bloğu; kabul/red K2 masasında. B2/B7 koşumları md.41 gereği Salih-tetikli. B4 masa sonrası. B8/B9 kayıtta.
 - Tüzük etiketleme turu (m.45) · denetçi kalibrasyon koşumu · KILAVUZ+defter damıtma (Salih-imzalı plan) · orca wiki · 5 dosya-düzeltme + 2 mini test · md.37 araştırma-erişim skill'i (K-016) · S6 mini-masa.
 - Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` (gitignore-adayı) + boş dal `three-lang-build-architecture-1ynfus`. Not: gitleaks `--report-path` dosyası oluşmadı (no-leaks'te rapor yazmıyor) — borç değil.
 - Salih okuma: İNSAN zinciri kalanı.
@@ -20,4 +20,4 @@
 ## Sonraki ilk iş
 1. **Salih: CC'yi tetikle** — koşum promptuna `cc/gorev-2026-08-02-2.md` + kapanış push'unun SHA'sı (D-0802-1). Çıktı: `raporlar/2026-08-02-masa-hazirlik-K2.md` → Salih okur → K2 masası açılır.
 2. A1 hükmü (08-03 senkron OK sonrası, Salih).
-3. B1+B3 (Carvis, ilk boş vardiya) · damıtma vardiyası (KILAVUZ tetiği + defter katman-ayırma) sırada.
+3. Damıtma vardiyası (KILAVUZ tetiği + defter katman-ayırma) sırada (B1+B3 kapandı — GEÇ-2 bloğu).
