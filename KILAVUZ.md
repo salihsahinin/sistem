@@ -35,6 +35,7 @@
 - **Sürtünmesizlik (#18):** sık kullanılan her akışın çağrısı kolay olur ve çapası kurulur; yeni mekanizma tasarlarken ilk soru "bunu çağırmak kaç saniye sürer?"
 - **Bayat-kapsül riski (V4):** kapsül kapanışta güncellenmezse sonraki vardiya yanlış yere çapalar — yanlış kapsül, boş kapsülden kötüdür; kapanış disiplini bu yüzden atlanmaz.
 - **Metafor haritası (V12):** sistem terimleri tek metafor ailesinden gelir (şirket: vardiya, pano, tüzük, teslim raporu); yeni terim aile içinde türetilir, tanımı sözlüğe işlenir (sözlük v1 DONDU — ekleme yalnız Salih talimatıyla, m.3).
+- **Araç-seçim ölçütü — yıldız yasağı (Salih imzası 08-01 masa-2 md.33):** GitHub yıldız sayısı araç seçiminde ölçüt OLAMAZ; pozitif karşılığı: adaylar indirme-sırası + son-sürüm-tarihi + bakımcı-sayısı üçlüsüyle tablolanır. Reddedilen araç gerekçesiyle "şu an alınmaz" listesine işlenir (md.34) — altı ay sonra aynı soru gelince cevap hazır.
 
 ## Skill-yazım standardı (deneysel damga m.29; kaynak: resmi skill-creator + best-practices — K-013 raporu; Salih onayı 07-12)
 - SKILL.md <500 satır — tetiklenince gövde bağlama komple yüklenir, bu ~5K token tavanı demek (resmi tavsiye; kullanım verimizle kalibre edilir).
@@ -62,6 +63,9 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 
 ## CC kanal modeli kararı (Salih, 2026-07-13 günaydın)
 ŞİMDİ = **Model 1** (dosya-kanalı: `cc/` görev emri + rapor; Carvis köprü, tetik Salih'te). HEDEF = **Model 3** (headless: CC'nin programatik çağrılması). Geçiş koşulu (m.38 lojik formu): (Salih Orca-ADE'yi öğrendi ∧ loop-eng öğrenimi tamamlandı ∧ K-009 otomasyon açık ∧ Model-3 diğer eksikleri kapatıldı) → Model 3'e geçilir; koşullardan HERHANGİ biri sağlanmadıkça (¬hepsi) Model 1 sürer. Model 2 (elle-yapıştır) reddedildi — V27 düşük-sürtünme hedefiyle ters.
+
+## CC-geçiş düzeni — S2 hibrit-matris (Salih imzası 08-01 masa-2, K1-24-a; md.9 glide-path revizesi; bağlayıcı kayıt senaryo-defteri)
+Hedef "tam geçiş" DEĞİL, matris-optimumu: 10 iş-sınıfından CC'nin alternatifsiz olduğu 4'ü (ölçüm + otomasyon dahil) CC'de koşar · kanon yazımı (G1) md.8 imzalı ana-sıra-CC profili kurulana dek Cowork'te kalır · iki yüzeyde de yapılabilen 3 çatal (G2 ritüel · G7 Salih-okuma · G10 mobil) E5 ergonomi ölçümü yapılmadan TAŞINMAZ — E5 = çatalların karar kapısı, ölçümsüz çatal taşınmaz. Aşama yapısı korunur: aşama 1-2 izinli · aşama 3 ayrı imza · aşama 4 öncesi CC'de tek deneme vardiyası + 2 ölçüm (oturum-değiştirme sayısı, bağlam doluluğu). "Hangi yüzeyde yapalım?" sorusunun cevabı tercihe değil TABLOYA bakar. Gerekçe-disiplini (K1-24-b): kanon gerekçesi = "iç matris 3 çatal gösterdi", dış görüş atfı YOK. İlk ölçüm adayı: G2 ritüel (iki skill repoda, A/B hazır).
 
 ## Mobil Köprü Protokolü (Dilim 2.1; Salih kararı 07-19 — rapor-1 Adım 0'ın icrası; deneysel m.29)
 *Amaç: PC başında değilken (yol, yatak, oyun arası) sistemle çalışmanın standart yolu. Omurga: git-as-truth — üç zıt-temelli modelin ortak yakınsaması (rapor 1 triangülasyon #1): mobil katman git'in ÜSTÜNE oturur, yerine geçmez. 07-18 koşusu (17 rapor, branch'e) bu protokolün ilk tam canlı örneğidir.*
