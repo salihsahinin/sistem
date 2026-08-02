@@ -11,7 +11,7 @@
 - Boyut-tetiği: KILAVUZ 18,7/16KB · senaryo-defteri katman-ayırma tetiği güçlendi (K2 bloğu eklendi).
 
 ## Açık borçlar
-- **K2 icra yazım turu:** K2-a kural metni kanona · K2-b+c alanları `core/sablonlar/gorev-emri.md`'ye · K2-f ad değişikliği kanon metinleri + wiki "üç register" sayfası (kilit kalktı) · K2-g damga düzeltmesi · K2-j etiket tanımı · K2-k(iii) m.40b şerhi · K2-n damga kuralı + geriye-dönük denetim ayrı satır.
+- ~~K2 icra yazım turu~~ **DONE 08-03 gündüz:** m.46 (K2-a+n+j) tüzükte · m.40 K2-k şerhi · şablon K2-b/c alanları · compiler-formulu §4 K2-g damgası · wiki `uc-register.md` + index. Kalan ayrı borç: **K2-n geriye-dönük damga denetimi** (ilk adım kapsam sayımı).
 - ~~Model-düşümü ölçümü~~ **DONE 08-03 gündüz** (arıza kaydı defterde). Kalan bağlı borç: usage-otomasyon yol seçimi (audit.jsonl model+usage taşıyor — tek-betik doğrulandı; m.40 kısa dış araştırma sonrası seçim).
 - K2-i/B4 sınaması (onaylı) · B2/B7 Salih-tetikli · K2-l+K2-m → EK-6/g20 turuna · K2-d → g23 turuna.
 - Damıtma vardiyası (KILAVUZ + defter + kapanan masa-gündemleri arşivi) · tüzük etiketleme (m.45) · denetçi kalibrasyon · orca wiki · 5 dosya-düzeltme + 2 mini test · md.37 skill'i (K-016) · S6 mini-masa.
@@ -20,5 +20,4 @@
 ## Sonraki ilk iş
 1. **Salih: iki CC tetiği** — SHA `e289172`; `cc/gorev-2026-08-03-1.md` (SÖZLÜK araştırması, Opus/high, tavan $10, web açık) + `cc/gorev-2026-08-03-2.md` (md.1-49 derin açıklama, Sonnet/high, tavan $6). Promptlar teslim raporunda.
 2. **Salih: şerhli 5 kalem + D-0803-1 kararı** (rapor §5-6 — Katman-1).
-3. **K2 icra yazım turu** (Carvis) — tek [damıtma] commit hedefli.
-4. A1 hükmü (Salih) · K2-i sınaması · damıtma vardiyası.
+3. A1 hükmü (Salih) · K2-i/B4 sınaması · damıtma vardiyası (KILAVUZ 18,7/16KB + defter 129KB!).

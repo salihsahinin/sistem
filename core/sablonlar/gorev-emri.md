@@ -3,11 +3,12 @@
 *(Sözlük: bir ajana iş verilirken yazılan sözleşme. Hazırlayan: Carvis; Salih panodan tarar, veto edebilir.)*
 
 - **Görev / hedef:**
+- **Emir konumu + erişim doğrulaması (K2-b, imza 08-03):** kanonik adres (dal · yol) + commit SHA. ŞERH (hakem kaydı): bu alan bant-İÇİdir — m.46(a) bant-dışı doğrulamanın YERİNE GEÇMEZ, koruma sanılmamalı.
 - **İzinli aksiyonlar:**
 - **Yasaklar:**
 - **Okunacak dosyalar (wiki seti):**  <!-- #17: sınıfa optimize okuma listesi buraya -->
 - **Yazılabilir yüzeyler:**  <!-- varsayılan: yalnız raporlar/ -->
-- **Durma koşulu (done tanımı):**  <!-- yazılamıyorsa görev tanımlanmamıştır -->
+- **Durma koşulu (done-yüklemi; K2-c, imza 08-03):**  <!-- ikili ya da sayılabilir tamam-koşulu ("rapor yazıldı ∧ ≥6 kaynak" formunda); yazılamıyorsa görev tanımlanmamıştır. ŞERH: bu alanın varlığı K2-d (tetik) / K2-e (kısıt-profili) alanlarının otomatik imzası DEĞİLDİR -->
 - **Teslim formatı:**
 - *(taslak alan, sözlük-dışı — V2)* **Zaman bütçesi / son tarih (#22):**
 - *(taslak alan — V2)* **Hiyerarşi telafisi (#23):** emir ayrıntısı ∝ yetenek farkı × muğlaklık — muhakeme boşluklarını üst model doldurdu mu?

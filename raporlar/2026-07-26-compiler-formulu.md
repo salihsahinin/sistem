@@ -166,6 +166,8 @@ Okunabilirlik metriğini optimize etmek **metrik oyunlamadır**. Ölçülecek ş
 
 ## 4. Mimari — kim üretir, kim doğrular
 
+> **Damga düzeltmesi (K2-g, Salih imzası 2026-08-03; kaynak: rapor 08-02-1 S4 + hakem Ç3):** bu bölümün hibrit deseni (üretici LLM ≠ deterministik doğrulayıcı) **"tasarım kıyasında kazanmış AMA bu depoda koşulmamış hipotez"** statüsündedir. Genellemesi koşullu: deterministik denetçi ancak hedef dil formal/karar-verilebilir sözdizim taşıdığında bedava gelir — bugünkü depoda formal-hedefli kenar BOŞ. Önceki metnin "kanıtlanmış desen" tınısı iç-çelişkiydi, bu şerhle düzeltildi.
+
 **Üretici ≠ doğrulayıcı** (A4 §7.2, A7 §10.6: modeller kendi işlerini notlandırırken sistematik iyimser sapıyor).
 
 ```
