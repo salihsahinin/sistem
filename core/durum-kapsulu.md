@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) serbest.*
 
-**Güncelleme:** 2026-08-02 GEÇ VARDİYA, PC ana sıra (Carvis/Fable) — **rapor 08-02-1 TAM İNGEST EDİLDİ.** Açılışta disk/origin çatalı kapatıldı (stash→pull ff→drop, klon-diff doğrulamalı; V43-yarış 4. temiz kapanış). Gitleaks host koşumu TEMİZ (430 commit, 0 bulgu) — md.40 sır-tarama hattı KAPANDI. B5 kapandı (m.30/m.43 alıntıları imzalı metinle birebir). Dağıtım: Katman-1 adayları → `kuyruk/masa-gundemi-K2-2026-08-02.md` (14 kalem, İMZASIZ) · B1-B9 → build-tartisma-notlari 08-02 GEÇ · kutu +2 numarasız · ölçüm-bankı U-2 + B8 bekleyen · defter satırı. Önceki kapanış: `raporlar/vardiya-teslim-2026-08-02-anasira.md`.
+**Güncelleme:** 2026-08-02 GEÇ KAPANIŞ, PC ana sıra (Carvis/Fable) — **rapor 08-02-1 TAM İNGEST EDİLDİ ve PUSH'LANDI (bb8ef74; gün SAYILDI).** K2 masası gündemi hazır (`kuyruk/masa-gundemi-K2-2026-08-02.md`, 14 kalem İMZASIZ) + **Salih emriyle masa-hazırlık usulü doğdu: `cc/gorev-2026-08-02-2.md` derlendi** (İNSAN-register karar rehberi; CC tetiği Salih'te). Gitleaks TEMİZ (md.40 kapandı) · B5 kapandı · disk/origin çatalı onarıldı. Teslim: `raporlar/vardiya-teslim-2026-08-02-anasira-gec.md`.
 
 ## Şu an
 - **K2 masası Salih'te bekliyor:** 14 Katman-1 kalemi (öne çekilen: K2-a bant-dışı kural · K2-k maskeleme açığı · K2-n damga kuralı · K2-f "üç dil"↔"üç register" AD kararı — Salih'in kelimesi). Hakem uyarısı geçerli: kalemler BAĞIMSIZ, paket-kabul/paket-red ikisi de hata.
@@ -18,6 +18,6 @@
 - Salih okuma: İNSAN zinciri kalanı.
 
 ## Sonraki ilk iş
-1. **İngest commit'i + push (komut bloğu Salih terminaline verildi — bu vardiyanın m.9 kanıtı).**
-2. K2 masası (Salih açınca; gündem dosyası hazır).
-3. A1 hükmü (08-03 senkron OK sonrası, Salih) · damıtma vardiyası ilk boş vardiyada.
+1. **Salih: CC'yi tetikle** — koşum promptuna `cc/gorev-2026-08-02-2.md` + kapanış push'unun SHA'sı (D-0802-1). Çıktı: `raporlar/2026-08-02-masa-hazirlik-K2.md` → Salih okur → K2 masası açılır.
+2. A1 hükmü (08-03 senkron OK sonrası, Salih).
+3. B1+B3 (Carvis, ilk boş vardiya) · damıtma vardiyası (KILAVUZ tetiği + defter katman-ayırma) sırada.
