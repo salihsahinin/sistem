@@ -18,6 +18,6 @@
 - Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` · boş dal `three-lang-build-architecture-1ynfus`.
 
 ## Sonraki ilk iş
-1. **Salih: iki CC tetiği** — SHA `e289172`; `cc/gorev-2026-08-03-1.md` (SÖZLÜK araştırması, Opus/high, tavan $10, web açık) + `cc/gorev-2026-08-03-2.md` (md.1-49 derin açıklama, Sonnet/high, tavan $6). Promptlar teslim raporunda.
+1. ~~İki CC tetiği~~ **KOŞTU 08-03** (K2-a sicili 4/4 PASS): sözlük raporu `cc/rapor-2026-08-03-1.md` (372 satır — İNGEST BEKLİYOR, sözlük↔wiki Katman-1 masaya) · md.1-49 açıklaması `raporlar/2026-08-03-masa-aciklama-md1-49.md` (Salih okuması). YENİ TETİK: `cc/gorev-2026-08-03-3.md` (KISAYOL-KÜMESİ araştırması, Opus/high, tavan $10, web açık — Salih emri 08-03).
 2. **Salih: şerhli 5 kalem + D-0803-1 kararı** (rapor §5-6 — Katman-1).
 3. A1 hükmü (Salih) · K2-i/B4 sınaması · damıtma vardiyası (KILAVUZ 18,7/16KB + defter 129KB!).
