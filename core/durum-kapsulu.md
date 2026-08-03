@@ -18,7 +18,7 @@
 - Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` · boş dal `three-lang-build-architecture-1ynfus`.
 
 ## Sonraki ilk iş
-1. **YÜKSEK ÖNCELİK — Salih tetiği: `cc/gorev-2026-08-03-4.md`** (L8/Kun-Chen workflow analizi+entegrasyonu; Opus/high, tavan $12, web açık). Salih emri 08-03: workflow = fikirsel öncül, nihai hedef yalnız-firstmate; m.16 raporu sunuldu, hükümler rapor sonrası MASAYA (defter 08-03 bloğu). Kaynak repoda: `raporlar/kaynak-L8-agentic-workflow-transkript.md`.
-2. gorev-3 (kısayol-kümesi) BEKLET önerisi — gorev-4'ün (1)/(4) ayağıyla örtüşüyor; tetik kararı Salih'in. Sözlük raporu ingest'i + md.1-49 açıklaması (Salih okuması) sırada; K2-a sicili 4/4 PASS.
+1. **YÜKSEK ÖNCELİK: L8-workflow hattı.** ~~gorev-4~~ **KOŞTU** (rapor `cc/rapor-2026-08-03-4.md`, 332 satır; m.46a sicili 5/5; bulgu özü: 12 K1-kalemi · 12 çelişkiden yalnız 3 gerçek, silme adayı 0 · firstmate Windows-engelli + K-010 kapı-kanıtını gnhf üretir · öneri alt-üstten P1→P5). ŞİMDİ: **Salih tetiği `cc/gorev-2026-08-03-5.md`** (masa-hazırlık dosyası, Sonnet/high, tavan $6) → dosya inince **L8 KARAR MASASI** (12 K1 + 3 çelişki + P-sıralama; ek-talimat (c): karar alanları BOŞ/MASAYA; masa TAZE oturumda önerilir).
+2. gorev-3 (kısayol-kümesi) BEKLET — gorev-4 kapsadı; tetik kararı Salih'in. Sözlük raporu ingest'i + md.1-49 açıklaması (Salih okuması) sırada.
 2. **Salih: şerhli 5 kalem + D-0803-1 kararı** (rapor §5-6 — Katman-1).
 3. A1 hükmü (Salih) · K2-i/B4 sınaması · damıtma vardiyası (KILAVUZ 18,7/16KB + defter 129KB!).
