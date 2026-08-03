@@ -2,7 +2,7 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) + Carvis bulut-klonu serbest.*
 
-**Güncelleme:** 2026-08-03 GÜNDÜZ (Carvis/Fable, temiz oturum) — **MODEL-DÜŞÜMÜ ÖLÇÜLDÜ, ŞERH KAPANDI:** düşüm 00:40:15 TR (kota/five_hour + fallback kaydı; hızlandırıcı tools_changed cache-kırılması), **K2 15/15 · B1/B3 · emirler ŞERHSİZ KESİN — teyit turu gerekmez**; opus kapanış artefaktları denetlendi, bozulma yok. Rapor: `raporlar/2026-08-03-model-dusumu-olcum.md` · arıza kaydı defterde. Önceki: 08-03 ANA SIRA KAPANIŞI — K2 MASASI 15/15 · masa-hazırlık usulü STANDART · B1+B3 (3cc20c4) · iki görev emri (e289172), **tetik Salih'te**. Teslim: `raporlar/vardiya-teslim-2026-08-03-anasira.md`.
+**Güncelleme:** 2026-08-03 GÜNDÜZ KAPANIŞI (Carvis/Fable, tam-Fable oturum) — şerh kapandı (düşüm=kota, K2 ŞERHSİZ KESİN) · K2 icra yazım turu DONE (m.46 + wiki uc-register) · **L8-WORKFLOW HATTI AÇILDI (yüksek öncelik):** rapor-4 indi (12 K1 · 3 gerçek çelişki · silme 0 · firstmate Windows-engelli · öneri P1→P5 alt-üstten), m.16 raporu deftere, **Tetik 5 Salih'te (gorev-5, SHA cdcdd80) → L8 MASASI TAZE OTURUMDA**. 5 push, gün SAYILDI. Teslim: `raporlar/vardiya-teslim-2026-08-03-gunduz.md`.
 
 ## Şu an
 - **K2 kararları yürürlükte:** K2-a bant-dışı kural KANON · **K2-f AD: "üç REGISTER + kenar-başına biçim"** · K2-b/c şablon alanları · K2-g · K2-h kabul · K2-k(iii) · K2-n(+borç) · K2-i onay · K2-j etiket · HAT-A⊥HAT-B. BEKLET: K2-d (g23 turuna) · K2-e. SONRAKİ MASAYA: K2-l (g20 K1-h birleşik) · K2-m.
