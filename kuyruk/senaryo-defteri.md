@@ -532,3 +532,8 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Borç:** lavish ilk gerçek CC koşumunda test edilmedi — ilk uygun koşumda 1 deneme; sonuç deftere.
 - **Kalan sıra:** P2 (no-mistakes) → P6 → P5. [m.29 deneysel]
 
+## 2026-08-04 · SALİH EMRİ (Katman-1, "bu bir emirdir" damgalı): JARVIS = genel asistan, şirket projeleri DAHİL — md.49 REVİZE
+- **Emir metni (öz):** JARVIS genel asistan olur; kendi projeleri + şirket (staj) projeleri dahil kullanılır. Hukuki boyut Salih tarafından önemsiz sayıldı — m.16 çelişki raporu (md.49 sınır beyanı + işveren-IP riski + üçüncü-taraf-sunucu riski, artı/eksi ile) SUNULDU, emir değişmedi. Kabul edilen risk kaydı: işveren fikri-mülkiyet/veri riski bilinçli üstlenildi.
+- **md.49 REVİZE (Salih imzası bu emirle):** "staj verisi JARVIS'e taşınmaz" beyanı kalktı; tüzük/pano metinlerinin güncellenmesi YAZIM BORCU (K-022 satırı + md.49; eski metin arşiv karakterinde korunur, m.8).
+- **HTML/artefakt kuralı (aynı emirde):** artefaktlar PUBLIC ÜRETİLMEZ — yalnız Salih'e özel/yerel. İcra: (i) lavish yerel döngü serbest (localhost) · (ii) `lavish-axi share` AJAN tarafından asla koşulmaz (deny kuralı) — Salih gerekirse kendi terminalinden, kendi kararıyla `--password` ile koşar · (iii) SKILL.md yerel kopyasına yasak şerhi.
+
