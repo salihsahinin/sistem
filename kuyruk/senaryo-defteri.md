@@ -525,3 +525,10 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Temizlik borcu (küçük):** 4 lease açık duruyor — deneme bitince `treehouse return <yol>` ile havuza iade; deneme deposu zaten kanon-dışı.
 - **Sıradaki partisyon: P3** (plan yüzeyi — lavish VE yerleşik Artifact denemesi). [m.29 deneysel]
 
+## 2026-08-04 · P3 DONE (iki ayak) + lavish güvenlik incelemesi (~05:50-06:00)
+- **Yerleşik ayak CANLI:** L8 geçiş panosu etkileşimli artefakt olarak sunuldu (durum kartları + sendPrompt düğmeleri); Salih düğme üzerinden akışı sürdürdü — desen çalışıyor `[D-ölçüm, bu oturum]`.
+- **Lavish ayağı KURULDU:** `npx skills add kunchenguid/lavish-axi` Windows'ta ÇALIŞTI (rapor-4 `[?]` şerhi kapandı). Kurulum yolu: universal `~\.agents\skills\lavish` (otomatik) + `~\.claude\skills\lavish` (elle kopya — CC'nin universal dizini okuduğu doğrulanamadı). Yan ürün: `find-skills` yardımcı skill'i de indi (Snyk: Med Risk — kullanılmıyor, gerekirse silinir; silme kararı Salih'te m.8).
+- **SKILL.md incelemesi (kör-kurulum-yok):** kötücül içerik yok; öz = HTML artefakt + yerel sunucu + tarayıcıda işaretleme/geri-bildirim döngüsü (`lavish-axi poll`) — yerleşik ayakta OLMAYAN değer bu. **KIRMIZI ÇİZGİ: `lavish-axi share` = ht-ml.app'e PUBLIC yayın — JARVIS/kanon içeriğiyle YASAK (m.14).**
+- **Borç:** lavish ilk gerçek CC koşumunda test edilmedi — ilk uygun koşumda 1 deneme; sonuç deftere.
+- **Kalan sıra:** P2 (no-mistakes) → P6 → P5. [m.29 deneysel]
+
