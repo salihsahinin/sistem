@@ -537,3 +537,8 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **md.49 REVİZE (Salih imzası bu emirle):** "staj verisi JARVIS'e taşınmaz" beyanı kalktı; tüzük/pano metinlerinin güncellenmesi YAZIM BORCU (K-022 satırı + md.49; eski metin arşiv karakterinde korunur, m.8).
 - **HTML/artefakt kuralı (aynı emirde):** artefaktlar PUBLIC ÜRETİLMEZ — yalnız Salih'e özel/yerel. İcra: (i) lavish yerel döngü serbest (localhost) · (ii) `lavish-axi share` AJAN tarafından asla koşulmaz (deny kuralı) — Salih gerekirse kendi terminalinden, kendi kararıyla `--password` ile koşar · (iii) SKILL.md yerel kopyasına yasak şerhi.
 
+## 2026-08-04 · Share-freni KURULDU + entegrasyon/temizlik ERTELEME emri (~06:10)
+- **Katman-2 (sert kilit) DOĞRULANDI:** `~\.claude\settings.json` → `permissions.deny` 3 kalıp (`lavish-axi share*` varyantları); yedek `settings.json.bak-20260804` alındı. Mevcut ayarlar korunarak programatik eklendi.
+- **Katman-1 (SKILL.md şerhi) AÇIK UÇ:** Add-Content bloğunun koştuğu görülmedi — sonraki oturuma doğrulama notu.
+- **Ayar dosyası gözlemleri (dokunulmadı):** 10 hook olayında Orca kalıntısı (`.orca/agent-hooks/claude-hook.cmd`) · `skipDangerousModePermissionPrompt: true`.
+- **SALİH EMRİ (erteleme):** mevcut kuralların/sistemin yeni workflow'a entegrasyonu VE veri temizliği (Orca hook'ları dahil) workflow geçişi BİTTİKTEN SONRA yapılacak — geçiş sürerken bu başlıklara dokunulmaz. [m.29 deneysel]
