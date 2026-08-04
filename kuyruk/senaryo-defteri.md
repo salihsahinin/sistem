@@ -509,3 +509,12 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Emir (Katman-1, Salih beyanı):** Kun Chen'in agentic-workflow'u (kaynak: `raporlar/kaynak-L8-agentic-workflow-transkript.md`) kurulacak otomasyon sisteminin fikirsel öncülüdür; nihai hedef "yalnız firstmate'le konuşulan sistem"; vizyon/misyon/yöntem çelişkilerinde (tüzük dahil) workflow kazanır; geçiş yüksek-öncelikli partisyonlara bölünür. Mevcut workflow beğenilmiyor — gerekçe: sürekli bağlam şişirme, ilerleyememe.
 - **m.16 çelişki raporu SUNULDU (08-03, bu oturum; emir değişmedi):** (1) "tüzük dahil workflow kazanır" = tüzük üstüne kural kaynağı — Katman-1 hiyerarşi kararı; işletim önerisi kalem-kalem imza (K2 masa usulü). (2) "hafızadan silinmeli" ↔ m.8 silme yasağı — arşiv-indirme alternatifi sunuldu; silme hükmü m.31 Salih'te. (3) firstmate = canlı-ajan sınıfı ↔ K-010 kanıt kapıları — kapı hükmü Salih'te. Uyum notu: firstmate≈Carvis(m.17/m.44) · no-mistakes≈m.40b · gnhf≈K-009 — çelişkiden çok araçsuz-türetim örtüşmesi.
 - **İcra:** analiz+entegrasyon emri `cc/gorev-2026-08-03-4.md` derlendi (Opus/high, tavan $12, web açık; 5 istem: anlatım · eşleme · çelişki-envanteri · geçiş-partisyonu · sözlük-vakası). Çelişki hükümleri rapor sonrası MASAYA. "Codex-inşa" bağlamı kanonda bulunamadı — emirde [ARANAMADI] protokolü, kaynak Salih'ten istendi.
+
+## 2026-08-03 · L8 KARAR MASASI (taze oturum, Fable) — İCRA-ÖNCE hükmü, masa KISA KAPANDI
+- **Salih beyanı (Katman-1, K1-1 sorusuna cevaben):** "çelişkileri bile bu workflow'a sahip olmaya başladıktan sonra tartışabiliriz; workflow bir çarpan gibi ve benimkisi ilkel olduğu için çok yavaşım."
+- **Hüküm:** K1-10 = **Model A varyantı (İCRA-ÖNCE)** — tek sapma: P4 paralel değil **BEKLET** (workflow kurulup çalıştıktan sonra yeniden masaya). Sıra: **P1 → P3 → P2 → P6 → P5**.
+- **Kalem statüleri:** K1-1 usul sorusu DÜŞTÜ (P4 ertelenince konusuz) · K1-2…K1-9 + K1-11 **BEKLET** · K1-12 zaten KAPALI. Silme kararı alınmadı (m.8 dokunulmadı).
+- **Fren korunur:** JARVIS kanon reposunda hiçbir araç koşturulmaz; kurulum ayrı deneme deposunda. Gri-alan bedeli (Ç2/Ç3 imzasız koşum) Model A bedeliyle aynen kabul.
+- **Çürütme koşulu (rapor-4'ten devralındı):** P1 gnhf koşumu Windows'ta ilk denemede çalışmazsa sıra Model C'ye düşer.
+- **İcra:** P1 başlatıldı — treehouse Windows komutu birincil README'den teyit edildi 08-03 (v2.1.0, 20 Tem 2026) `[D-belge]` · gnhf `npm i -g` + `GNHF_TELEMETRY=0` şartı P1 DONE-yükleminde. Adımlar Salih terminaline verildi.
+
