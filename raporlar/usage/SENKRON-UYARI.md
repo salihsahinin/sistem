@@ -4,3 +4,5 @@ FAIL 2026-07-28T14:03:19.4064798+03:00 - ff-only ilerleyemedi (yerel degisiklik/
 FAIL 2026-07-29T13:07:08.7268206+03:00 - ff-only ilerleyemedi (yerel degisiklik/dal sapmasi). C-asisi geregi DOKUNULMADI; elle bak: git status + git pull --ff-only
 FAIL 2026-07-30T00:35:57.5916363+03:00 - ff-only ilerleyemedi (yerel degisiklik/dal sapmasi). C-asisi geregi DOKUNULMADI; elle bak: git status + git pull --ff-only
 FAIL 2026-07-30T13:28:06.6468687+03:00 - ff-only ilerleyemedi (yerel degisiklik/dal sapmasi). C-asisi geregi DOKUNULMADI; elle bak: git status + git pull --ff-only
+FAIL 2026-08-04T00:02:04.0854196+03:00 - ff-only ilerleyemedi (yerel degisiklik/dal sapmasi). C-asisi geregi DOKUNULMADI; elle bak: git status + git pull --ff-only
+FAIL 2026-08-04T05:25:02.2789564+03:00 - ff-only ilerleyemedi (yerel degisiklik/dal sapmasi). C-asisi geregi DOKUNULMADI; elle bak: git status + git pull --ff-only
