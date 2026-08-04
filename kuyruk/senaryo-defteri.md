@@ -518,3 +518,10 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Çürütme koşulu (rapor-4'ten devralındı):** P1 gnhf koşumu Windows'ta ilk denemede çalışmazsa sıra Model C'ye düşer.
 - **İcra:** P1 başlatıldı — treehouse Windows komutu birincil README'den teyit edildi 08-03 (v2.1.0, 20 Tem 2026) `[D-belge]` · gnhf `npm i -g` + `GNHF_TELEMETRY=0` şartı P1 DONE-yükleminde. Adımlar Salih terminaline verildi.
 
+## 2026-08-04 · P1 DONE (L8 icra-önce hattı, ilk partisyon kapandı — saha koşumu Salih terminali, ~05:30-05:45)
+- **DONE-yüklemi 4/4:** (i) treehouse v2.1.1 kuruldu (`C:\Users\sasah\AppData\Local\treehouse\treehouse.exe`), havuz `C:\dev\wf-deneme` deneme deposunda 4 lease (`~\.treehouse\wf-deneme-eddecb\1-4`) — ≥2 şartı aşıldı · (ii) gnhf v[?] kuruldu (npm, 4 paket), İKİ durma modu da sahada doğrulandı: koşum-1 tavan-freni (max-tokens 150K, fiilî 158.587'de kendiliğinden durdu, 2dk, 0 commit) + koşum-2 hedef-koşulu (`stop condition met`, 1dk13sn, 587K in/3K out, 1 commit) · (iii) log klasörü `.gnhf\runs\a-txt-dosyasinin-ice-09cba0\` doğrulandı — ŞERH: içindeki dosya adı (`gnhf.log` [D-belge]) henüz sahada görülmedi · (iv) `GNHF_TELEMETRY=0` SUCCESS.
+- **Ölçüm notu (bank adayı):** gnhf token sayacı cache-okumaları dahil sayıyor (158K "in" 2 dakikada — CC açılış bağlamı); tavan kalibrasyonu bunu hesaba katmalı. İlk koşum 150K tavanla hedefe ULAŞAMADI, 2M tavanla 1 iterasyonda bitti.
+- **K-010 bağlantısı (kanıt, hüküm değil):** bu koşumlar A3-sınıfı kanıt karakterinde (durma-koşullu koşum + log); ama A3 metni CC /goal-/loop-Routine ile tanımlı — dış-koşucu kanıtının sayılması K1-7 kalemi, BEKLET'te. Kanıt biriktiriliyor, kapı hükmü masada.
+- **Temizlik borcu (küçük):** 4 lease açık duruyor — deneme bitince `treehouse return <yol>` ile havuza iade; deneme deposu zaten kanon-dışı.
+- **Sıradaki partisyon: P3** (plan yüzeyi — lavish VE yerleşik Artifact denemesi). [m.29 deneysel]
+
