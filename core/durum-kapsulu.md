@@ -2,23 +2,22 @@
 
 *Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) + Carvis bulut-klonu serbest.*
 
-**Güncelleme:** 2026-08-03 GÜNDÜZ KAPANIŞI (Carvis/Fable, tam-Fable oturum) — şerh kapandı (düşüm=kota, K2 ŞERHSİZ KESİN) · K2 icra yazım turu DONE (m.46 + wiki uc-register) · **L8-WORKFLOW HATTI AÇILDI (yüksek öncelik):** rapor-4 indi (12 K1 · 3 gerçek çelişki · silme 0 · firstmate Windows-engelli · öneri P1→P5 alt-üstten), m.16 raporu deftere, **Tetik 5 Salih'te (gorev-5, SHA cdcdd80) → L8 MASASI TAZE OTURUMDA**. 5 push, gün SAYILDI. Teslim: `raporlar/vardiya-teslim-2026-08-03-gunduz.md`.
+**Güncelleme:** 2026-08-04 SABAH KAPANIŞI (Carvis/Fable, taze oturum) — **L8 MASASI KISA KAPANDI: İCRA-ÖNCE (Model A varyantı, P4 BEKLET)** · **P1 DONE** (treehouse+gnhf Windows'ta, 2 fren modu sahada) · **P3 DONE** (yerleşik pano canlı + lavish kuruldu, `[?]` şerhi düştü) · share-freni 2 katman kuruldu · **md.49 REVİZE (Salih emri: JARVIS genel asistan, şirket projeleri DAHİL)** · entegrasyon+veri temizliği geçiş sonrasına ERTELENDİ. Teslim: `raporlar/vardiya-teslim-2026-08-04-l8.md`.
 
 ## Şu an
-- **K2 kararları yürürlükte:** K2-a bant-dışı kural KANON · **K2-f AD: "üç REGISTER + kenar-başına biçim"** · K2-b/c şablon alanları · K2-g · K2-h kabul · K2-k(iii) · K2-n(+borç) · K2-i onay · K2-j etiket · HAT-A⊥HAT-B. BEKLET: K2-d (g23 turuna) · K2-e. SONRAKİ MASAYA: K2-l (g20 K1-h birleşik) · K2-m.
-- **Şerh KAPALI (ölçüldü 08-03 gündüz):** düşüm 00:40:15 = tüm kanon yazımlarından SONRA; K2 koşulsuz yürürlükte. Şerhli 5 kalemin kanona geçişi + D-0803-1 ders adayı (geç-evre araç-yükleme cache-kırar) **Salih kararında** — rapor §5-6.
-- A1 çatalı: 08-03 senkron OK ile kapanır (5 ardışık OK; E10 kök-neden şartı ayakta) · K-022 staj 11 Ağu (~8 gün) · md.41 üretim freni SÜRÜYOR.
-- Boyut-tetiği: KILAVUZ 18,7/16KB · senaryo-defteri katman-ayırma tetiği güçlendi (K2 bloğu eklendi).
+- **L8 geçiş sırası: P1 ✅ → P3 ✅ → P2 (SIRADAKİ) → P6 → P5** (firstmate Windows bekliyor, en son). P4 kanon masası BEKLET — Salih "workflow oturdu" deyince yeniden açılır.
+- K1 kalemleri: K1-10 hükümlü (icra-önce) · K1-1 düştü · K1-2..K1-9 + K1-11 BEKLET · K1-12 kapalı. Silme kararı alınmadı, m.8 dokunulmadı.
+- **md.49 revize İMZALI** ("bu bir emirdir"): staj/şirket verisi JARVIS'te kullanılabilir; artefaktlar PUBLIC üretilmez, ajan `share` koşamaz (deny kilidi + SKILL.md şerhi canlı).
+- K-022 staj 11 Ağu (~7 gün) · A1 hükmü Salih'te · md.41 üretim freni sürüyor · K2 kararları yürürlükte (detay 08-03 kayıtları).
 
 ## Açık borçlar
-- ~~K2 icra yazım turu~~ **DONE 08-03 gündüz:** m.46 (K2-a+n+j) tüzükte · m.40 K2-k şerhi · şablon K2-b/c alanları · compiler-formulu §4 K2-g damgası · wiki `uc-register.md` + index. Kalan ayrı borç: **K2-n geriye-dönük damga denetimi** (ilk adım kapsam sayımı).
-- ~~Model-düşümü ölçümü~~ **DONE 08-03 gündüz** (arıza kaydı defterde). Kalan bağlı borç: usage-otomasyon yol seçimi (audit.jsonl model+usage taşıyor — tek-betik doğrulandı; m.40 kısa dış araştırma sonrası seçim).
-- K2-i/B4 sınaması (onaylı) · B2/B7 Salih-tetikli · K2-l+K2-m → EK-6/g20 turuna · K2-d → g23 turuna.
-- Damıtma vardiyası (KILAVUZ + defter + kapanan masa-gündemleri arşivi) · tüzük etiketleme (m.45) · denetçi kalibrasyon · orca wiki · 5 dosya-düzeltme + 2 mini test · md.37 skill'i (K-016) · S6 mini-masa.
-- Artıklar Salih kararıyla duruyor: untracked `.claude/settings.local.json` · boş dal `three-lang-build-architecture-1ynfus`.
+- **P2 no-mistakes = taze vardiyanın İLK İŞİ** (deneme deposunda, kanon reposunda DEĞİL; rapor-4 §II P2).
+- lavish ilk gerçek CC koşumunda test · gnhf tavan-kalibrasyon notu ölçüm-bankına · wiki kuyruğu: gnhf/treehouse/lavish.
+- md.49 yazım turu (tüzük + pano K-022 metni) · şerhli 5 kalem + D-0803-1 + A1 hükmü (Salih) · sözlük raporu ingest'i · K2-n geriye-dönük denetim · usage-otomasyon yol seçimi.
+- **Damıtma ACİL: senaryo-defteri ~135KB/48KB FLAG** · KILAVUZ 18,7/16KB.
+- Erteleme kapsamı (Salih emri — geçiş bitince): Orca hook temizliği · find-skills (Med Risk) kararı · SKILL.md mükerrer şerh · 4 lease iadesi · kural-entegrasyonu.
 
 ## Sonraki ilk iş
-1. **YÜKSEK ÖNCELİK: L8-workflow hattı.** ~~gorev-4~~ **KOŞTU** (rapor `cc/rapor-2026-08-03-4.md`, 332 satır; m.46a sicili 5/5; bulgu özü: 12 K1-kalemi · 12 çelişkiden yalnız 3 gerçek, silme adayı 0 · firstmate Windows-engelli + K-010 kapı-kanıtını gnhf üretir · öneri alt-üstten P1→P5). ŞİMDİ: **Salih tetiği `cc/gorev-2026-08-03-5.md`** (masa-hazırlık dosyası, Sonnet/high, tavan $6) → dosya inince **L8 KARAR MASASI** (12 K1 + 3 çelişki + P-sıralama; ek-talimat (c): karar alanları BOŞ/MASAYA; masa TAZE oturumda önerilir).
-2. gorev-3 (kısayol-kümesi) BEKLET — gorev-4 kapsadı; tetik kararı Salih'in. Sözlük raporu ingest'i + md.1-49 açıklaması (Salih okuması) sırada.
-2. **Salih: şerhli 5 kalem + D-0803-1 kararı** (rapor §5-6 — Katman-1).
-3. A1 hükmü (Salih) · K2-i/B4 sınaması · damıtma vardiyası (KILAVUZ 18,7/16KB + defter 129KB!).
+1. **P2 — no-mistakes:** kurulum + deneme deposunda 1 değişiklik uçtan uca ([30-60 dk bandı]).
+2. Salih kararları: şerhli 5 kalem + D-0803-1 · A1 hükmü.
+3. Damıtma vardiyası (defter FLAG).

@@ -25,6 +25,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)
+- gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 vardiya hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
 - loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
 - skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
 - kucuk-n-eval — smoke vs sertifika ayrımı + Clopper-Pearson cebi + 3×-koşum ilacı (07-23 sayı-araştırma hasadı; kaynak cc/rapor-2026-07-23-1.md).
