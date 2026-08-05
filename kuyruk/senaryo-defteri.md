@@ -582,3 +582,16 @@ no-mistakes şema keşfi (state.sqlite, read-only):
 - `step_results` (table, 45 satır): id, run_id, step_name, step_order, status, exit_code, duration_ms, log_path, findings_json, error, started_at, completed_at, last_activity_at, last_activity, agent_pid, auto_fix_limit
 - `step_rounds` (table, 24 satır): id, step_result_id, round, trigger_type, findings_json, user_findings_json, selected_finding_ids, selection_source, fix_summary, duration_ms, created_at
 Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'ına düşülür (teslim §5), eksik alan [?] (m.39).
+
+### Ölçüm dörtlüsü — 2026-08-05 (betik: tools/olcum-dortlu.py, P6)
+
+| koşum#pid | araç | iterasyon | duvar-saati | token | sonuç |
+|---|---|---|---|---|---|
+
+| koşum | araç/dal | iterasyon | duvar-saati | token | sonuç |
+|---|---|---|---|---|---|
+| `nm#01KZ5DC12WP9P4GGY96SRVD1R7` | no-mistakes/p2-deneme | 9 adım / 2 tur / 0 çağrı | 3 sn (ajan [?] sn) | [?] (invocation yok) | completed |
+| `nm#01KZ5DJA8H77QC68GS76E4ENXM` | no-mistakes/p2-deneme | 9 adım / 2 tur / 0 çağrı | 3 sn (ajan [?] sn) | [?] (invocation yok) | completed |
+| `nm#01KZ5DPFR5CFPX3KB1YVKFRV55` | no-mistakes/p2-deneme | 9 adım / 2 tur / 0 çağrı | 4 sn (ajan [?] sn) | [?] (invocation yok) | completed |
+| `nm#01KZ5DV1FK84KQAD6MH0DSJB3H` | no-mistakes/p2-deneme | 9 adım / 9 tur / 4 çağrı | 1025 sn (ajan 148 sn) | in 106 (cache-read 1.735.022, taze 0) / out 329 | completed · PR merged: https://github.com/salihsahinin/wf-deneme/pull/1 |
+| `nm#01KZ5EZJRKY13SZPE6CJFMGS0E` | no-mistakes/p2-eskalasyon | 9 adım / 9 tur / 4 çağrı | 453 sn (ajan 147 sn) | in 98 (cache-read 1.818.742, taze 0) / out 213 | completed · PR merged: https://github.com/salihsahinin/wf-deneme/pull/2 |

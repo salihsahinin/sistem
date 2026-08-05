@@ -8,7 +8,7 @@
 #   python C:\JARVIS\tools\olcum-dortlu.py --append        # deftere yaz
 #   python C:\JARVIS\tools\olcum-dortlu.py --repo C:\dev\baska-repo
 
-import argparse, json, sqlite3, sys
+import argparse, json, re, sqlite3, sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -99,29 +99,63 @@ def gnhf_block(repo):
            "|---|---|---|---|---|---|\n")
     return hdr + "\n".join(lines) + "\n", keys
 
+def any_ts(v):
+    """ISO string | epoch s | epoch ms → datetime; olmazsa None."""
+    if v is None:
+        return None
+    if isinstance(v, (int, float)):
+        try:
+            return datetime.fromtimestamp(v / 1000 if v > 1e12 else v, tz=timezone.utc)
+        except (OSError, OverflowError, ValueError):
+            return None
+    try:
+        return ts(str(v))
+    except ValueError:
+        return None
+
 def nm_block():
+    """no-mistakes state.sqlite → koşum-başına dörtlü.
+    Kaynak (şema keşfi 2026-08-05): runs + agent_invocations (token, duration_ms)
+    + step_results (adım) + step_rounds (tur). Eksik alan [?] (m.39)."""
     if not NM_DB.is_file():
-        return f"- no-mistakes: `{NM_DB}` yok.\n"
-    out = []
+        return f"- no-mistakes: `{NM_DB}` yok.\n", []
+    lines, keys = [], []
     try:
         db = sqlite3.connect(f"file:{NM_DB.as_posix()}?mode=ro", uri=True)
-        rows = db.execute("select name, type from sqlite_master"
-                          " where type in ('table','view') order by name").fetchall()
-        out.append("no-mistakes şema keşfi (state.sqlite, read-only):")
-        for name, typ in rows:
-            try:
-                n = db.execute(f'select count(*) from "{name}"').fetchone()[0]
-            except sqlite3.Error:
-                n = "[?]"
-            cols = [r[1] for r in db.execute(f'pragma table_info("{name}")').fetchall()]
-            out.append(f"- `{name}` ({typ}, {n} satır): {', '.join(cols) or '[?]'}")
+        runs = db.execute(
+            "select id, branch, status, pr_url, pr_state, created_at, updated_at"
+            " from runs order by created_at").fetchall()
+        for rid, branch, status, pr_url, pr_state, c_at, u_at in runs:
+            keys.append(f"nm#{rid}")
+            inv = db.execute(
+                "select count(*), sum(input_tokens), sum(output_tokens),"
+                " sum(cache_read_tokens), sum(fresh_input_tokens), sum(duration_ms)"
+                " from agent_invocations where run_id=?", (rid,)).fetchone()
+            n_inv, t_in, t_out, t_cr, t_fresh, inv_ms = inv
+            n_step = db.execute("select count(*), sum(duration_ms) from step_results"
+                                " where run_id=?", (rid,)).fetchone()
+            n_round = db.execute(
+                "select count(*) from step_rounds where step_result_id in"
+                " (select id from step_results where run_id=?)", (rid,)).fetchone()[0]
+            t0, t1 = any_ts(c_at), any_ts(u_at)
+            wall = f"{(t1 - t0).total_seconds():.0f} sn" if t0 and t1 else "[?]"
+            ajan = f"{inv_ms/1000:.0f}" if isinstance(inv_ms, (int, float)) else "[?]"
+            tok = (f"in {fmt_int(t_in)} (cache-read {fmt_int(t_cr)},"
+                   f" taze {fmt_int(t_fresh)}) / out {fmt_int(t_out)}") if n_inv else "[?] (invocation yok)"
+            sonuc = f"{status or '[?]'}" + (f" · PR {pr_state or '[?]'}: {pr_url}" if pr_url else "")
+            lines.append(
+                f"| `nm#{rid}` | no-mistakes/{branch or '[?]'}"
+                f" | {n_step[0]} adım / {n_round} tur / {n_inv} çağrı"
+                f" | {wall} (ajan {ajan} sn) | {tok} | {sonuc} |")
         db.close()
-        out.append("Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'ına"
-                   " düşülür (teslim §5), eksik alan [?] (m.39).")
     except sqlite3.Error as err:
-        out.append(f"- no-mistakes: sqlite açılamadı ({err}) — daemon'u durdurup"
-                   " tekrar dene ya da dosyayı kopyalayıp oku.")
-    return "\n".join(out) + "\n"
+        return (f"- no-mistakes: sqlite okunamadı ({err}) — şema değişmiş olabilir;"
+                " betik güncellenmeli, eksik alan [?] (m.39).\n", [])
+    if not lines:
+        return "- no-mistakes: runs tablosu boş.\n", []
+    hdr = ("| koşum | araç/dal | iterasyon | duvar-saati | token | sonuç |\n"
+           "|---|---|---|---|---|---|\n")
+    return hdr + "\n".join(lines) + "\n", keys
 
 def main():
     ap = argparse.ArgumentParser()
@@ -135,9 +169,11 @@ def main():
         pass
 
     today = datetime.now().strftime("%Y-%m-%d")
-    g_block, keys = gnhf_block(Path(a.repo))
+    g_block, g_keys = gnhf_block(Path(a.repo))
+    n_block, n_keys = nm_block()
+    keys = g_keys + n_keys
     block = (f"\n### Ölçüm dörtlüsü — {today} (betik: tools/olcum-dortlu.py, P6)\n\n"
-             f"{g_block}\n{nm_block()}")
+             f"{g_block}\n{n_block}")
     print(block)
 
     if a.append:
@@ -147,9 +183,16 @@ def main():
         if not new_keys:
             print(">> Deftere yazılmadı: tüm koşumlar zaten kayıtlı (mükerrer koruması).")
             return
+        # satır-bazlı filtre: defterde kayıtlı koşum satırları tekrar yazılmaz
+        kept = []
+        for ln in block.splitlines():
+            m = re.match(r"^\| `([^`]+)`", ln)
+            if m and m.group(1) in text:
+                continue
+            kept.append(ln)
         with defter.open("a", encoding="utf-8") as fh:
-            fh.write(block)
-        print(f">> Deftere yazıldı: {defter} ({len(new_keys)} yeni koşum).")
+            fh.write("\n".join(kept) + "\n")
+        print(f">> Deftere yazıldı: {defter} ({len(new_keys)} yeni koşum; mükerrerler atlandı).")
 
 if __name__ == "__main__":
     main()
