@@ -542,3 +542,26 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Katman-1 (SKILL.md şerhi) AÇIK UÇ:** Add-Content bloğunun koştuğu görülmedi — sonraki oturuma doğrulama notu.
 - **Ayar dosyası gözlemleri (dokunulmadı):** 10 hook olayında Orca kalıntısı (`.orca/agent-hooks/claude-hook.cmd`) · `skipDangerousModePermissionPrompt: true`.
 - **SALİH EMRİ (erteleme):** mevcut kuralların/sistemin yeni workflow'a entegrasyonu VE veri temizliği (Orca hook'ları dahil) workflow geçişi BİTTİKTEN SONRA yapılacak — geçiş sürerken bu başlıklara dokunulmaz. [m.29 deneysel]
+
+## 2026-08-04 · GECE-SENKRON ARIZASI + ONARIM (taze vardiya açılışı, ~sabah)
+- **Arıza:** gece-senkron 2 ardışık FAIL-ff (04 Ağu 00:02 dirty=7 · 05:25 dirty=8). Kök-neden: L8 kapanış commit'leri origin'e girerken disk ref'i `cdcdd80`de kaldı (origin `d7e9fe7`) + dirty dosyalar ff-pull'u blokladı. İçerik çatalı YOK — kapsül origin-klonla birebir doğrulandı (bulut klon, açılış ritüeli).
+- **Onarım (Salih terminali):** stash → ff-pull → pop → usage-log commit+push (`f5f4073`). Stash'teki 4 untracked + 4 tracked kalem origin içeriğiyle özdeş çıktı; drop güvenli. 08-02 emsalinin tekrarı — **V43-yarış 2. vaka (stash→ff-pull deseni 5. temiz kapanış).**
+- **A1 etkisi:** sayaç sıfırlanMADI; kök-neden kapandı sayılması bir sonraki gece-senkron OK koşumuna bağlı.
+- **KALICI-ÇÖZÜM ADAYI (karar Salih'te):** senkron script'ine stash-önce/otomatik-hizalama adımı — tekrar eden desen (2 vaka). "Usage-otomasyon yol seçimi" borcuyla AYNI masaya. [m.29 deneysel]
+
+## 2026-08-04 · P2 ÖN-ARAŞTIRMA: no-mistakes birincil-belge okuması (m.40 dış-araştırma)
+- **rapor-4 `[?]` şerhi KAPANDI:** Windows kurulum rehberi okundu (kunchenguid.github.io/no-mistakes/start-here/installation). PowerShell tek satır: `irm .../docs/install.ps1 | iex`; son sürüm v1.31.2 (27 Haz 2026). `no-mistakes doctor` sağlık komutu var.
+- **Telemetri:** resmi binary'de VARSAYILAN AÇIK (self-hosted Umami) — `NO_MISTAKES_TELEMETRY=0` ile kapatılır. İcra kararı (Katman-2, P1 telemetri-kapalı emsaliyle): kurulumdan önce user-level env set edilir.
+- **Daemon gözlemi:** kurulum arka plan daemon'u kuruyor (Windows: Task Scheduler görevi, `no-mistakes.exe daemon restart`). Sürekli-çalışan-servis sınıfı; pipeline koşumu yine Salih-push tetikli → md.41 ile çelişki görünmüyor, ama K-009 ajan-dönemi defterine emsal.
+- **PR önkoşulu:** hattın PR ayağı `gh` CLI + GitHub remote ister. `wf-deneme`nin remote'u yoksa **private** repo açılır (md.49: public artefakt yasak). Karar noktası Salih koşumunda.
+- **P2 DONE-yüklemi (rapor-4 §II, değişmedi):** 1 PR hattan geçmiş ∧ PR gövdesinde risk değerlendirmesi + kanıt artefaktı ∧ ≥1 eskalasyon Salih kararıyla kapanmış. [m.29 deneysel]
+
+## 2026-08-04 · P2 DONE (3/3) — no-mistakes uçtan uca, 2 koşum (~06:30-07:15)
+- **Kurulum:** v1.41.2 Windows'ta kuruldu (repo sayfası v1.31.2 gösteriyordu — sayfa bayat, minör fark). Telemetri kurulumdan ÖNCE user-env ile kapatıldı. daemon Task Scheduler'da; `doctor` tam yeşil (git 2.54 · gh · claude runner).
+- **Koşum 1 (PR #1, merge edildi):** `sum.py` toplam() test/doc'suz itildi → hat EKSİĞİ KENDİSİ TAMAMLADI (test_sum.py 4 test + BOM temizliği = safe-fix sınıfı), PR gövdesinde risk değerlendirmesi + kanıt artefaktı (unittest 4/4 + CLI doğrulama çıktısı). Eskalasyon düşmedi.
+- **Koşum 2 (PR #2, merge edildi):** davranış değişikliği (boş liste → None) testler güncellenMEDEN itildi → Review + Test 🚨 error: "niyet ile test-sözleşmesi çelişiyor, bu karar meselesi — sessizce yamalanmaz". TUI ask-user'a düştü, **Salih karara bağlayıp hattı ilerletti → eskalasyon mekanizması FİİLEN ÇALIŞTI.** DONE-yüklemi 3/3.
+- **Teşhis dersi (ilk arıza yanlış okundu):** 3 kez görülen "wait for run within 5s" hatasının kökü daemon DEĞİL, **boş diff** idi — dalda gerçek değişiklik yokken pipeline tüm adımları atlayıp anında bitiyor, TUI bağlanacak canlı koşum bulamıyor. Daemon-restart teşhisi gereksizdi; hüküm log'dan verilmeliydi, semptomdan değil (`logs/<run>/rebase.log`: "empty diff after rebase").
+- **Yan ders (hattın bize yakaladığı):** PowerShell `Set-Content` here-string CRLF+BOM yazıyor — pipeline ℹ️ ile işaretledi. Bundan sonra dosya yazımında `-Encoding utf8NoBOM`.
+- **Bilinçli kalıntılar (deneme reposu, kanon-dışı):** test_empty_list kırmızı bırakıldı (çelişki çözülmeden merge — amaç mekanizmayı görmekti) · PR tabanı `gnhf/a-txt-...` dalı (p2 dalları P1 koşum dalından açıldı, kozmetik).
+- **BORÇ (erteleme kapsamına, Salih beyanı):** sistem/koşum çıktılarının Türkçeleştirilmesi — geçiş bitince `.no-mistakes.yaml`/global config dil-yönergesi araştırılır (m.10 commit-İngilizce kuralı SAKLI).
+- **Kalan sıra: P6** (gnhf JSONL + no-mistakes kanıt artefaktları → ölçüm-bankı) → P5 (firstmate, Windows bekliyor). [m.29 deneysel]
