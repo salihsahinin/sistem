@@ -565,3 +565,20 @@ K2-a kural metni kanona (tüzük/KILAVUZ yerleşimi yazım turunda) · K2-b+c ş
 - **Bilinçli kalıntılar (deneme reposu, kanon-dışı):** test_empty_list kırmızı bırakıldı (çelişki çözülmeden merge — amaç mekanizmayı görmekti) · PR tabanı `gnhf/a-txt-...` dalı (p2 dalları P1 koşum dalından açıldı, kozmetik).
 - **BORÇ (erteleme kapsamına, Salih beyanı):** sistem/koşum çıktılarının Türkçeleştirilmesi — geçiş bitince `.no-mistakes.yaml`/global config dil-yönergesi araştırılır (m.10 commit-İngilizce kuralı SAKLI).
 - **Kalan sıra: P6** (gnhf JSONL + no-mistakes kanıt artefaktları → ölçüm-bankı) → P5 (firstmate, Windows bekliyor). [m.29 deneysel]
+
+### Ölçüm dörtlüsü — 2026-08-05 (betik: tools/olcum-dortlu.py, P6)
+
+| koşum#pid | araç | iterasyon | duvar-saati | token | sonuç |
+|---|---|---|---|---|---|
+| `a-txt-dosyasinin-ice-09cba0#14996` | gnhf/claude | 1 | 172 sn (ajan 18 sn) | in 158.455 (cache-read 0) / out 132 | aborted · başarı 0/1 · commit 0 · sebep: max tokens reached (158587/150000) |
+| `a-txt-dosyasinin-ice-09cba0#21496` | gnhf/claude | 3 | 412 sn (ajan 67 sn) | in 587.463 (cache-read 587.433) / out 3.073 | aborted · başarı 2/3 · commit 1 · sebep: stop condition met |
+
+no-mistakes şema keşfi (state.sqlite, read-only):
+- `agent_invocations` (table, 8 satır): id, run_id, step_name, round, purpose, agent, model, model_provider, session_mode, session_key, fallback_reason, started_at, completed_at, duration_ms, subprocess_wait_ms, exit_status, failure_category, input_tokens, output_tokens, cache_read_tokens, cache_creation_tokens, fresh_input_tokens, reasoning_tokens, delta_input_tokens, delta_output_tokens, delta_cache_read_tokens, model_roundtrips, tool_calls, tool_wait_calls, tool_test_lint_calls, tool_edit_calls, tool_read_calls, tool_git_calls, tool_other_calls, workload_files, workload_lines, finding_count
+- `intent_cache` (table, 0 satır): cache_key, summary, agent_name, session_id, created_at
+- `repos` (table, 1 satır): id, working_path, upstream_url, fork_url, default_branch, created_at
+- `run_agent_sessions` (table, 2 satır): run_id, role, agent, session_id, created_at, updated_at
+- `runs` (table, 5 satır): id, repo_id, branch, head_sha, base_sha, submitted_head_sha, status, pr_url, pr_state, pr_state_observed_at, ci_ready_at, last_pushed_sha, push_target_kind, push_target_fingerprint, push_ref, last_pushed_at, push_generation, push_active, error, awaiting_agent_since, parked_ms, created_at, updated_at, intent, intent_source, intent_session_id, intent_score, custody_returned_at
+- `step_results` (table, 45 satır): id, run_id, step_name, step_order, status, exit_code, duration_ms, log_path, findings_json, error, started_at, completed_at, last_activity_at, last_activity, agent_pid, auto_fix_limit
+- `step_rounds` (table, 24 satır): id, step_result_id, round, trigger_type, findings_json, user_findings_json, selected_finding_ids, selection_source, fix_summary, duration_ms, created_at
+Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'ına düşülür (teslim §5), eksik alan [?] (m.39).
