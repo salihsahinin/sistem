@@ -5,7 +5,8 @@
 **Güncelleme:** 2026-08-12 L8-MAC (Carvis/Fable, Mac Cowork) — **L8 Mac geçişi Faz 0-4 DONE (envanter 10/11 diskte, tam liste teslim §1):** gemi (WezTerm+tmux+nvim+OSW+claude CLI) · treehouse 2.1.1 + gnhf 0.1.43 (iki fren Mac'te doğrulandı; cache-sayaç bulgusu TEKRARLANDI) · no-mistakes v1.48.0 uçtan uca (**PR #3**, eskalasyon+safe-fix tek koşumda) · lavish + gh-axi + chrome-devtools-axi. **Oturum yapılanması (Salih kararı): "günaydın jarvis geliştirme" / "günaydın staj" ayrı hatlar; ritüel skill'ler staj kapılı (repo+BULUT), staj-acilis/staj-kapanis staj klasöründe.** Teslim: `raporlar/vardiya-teslim-2026-08-12-l8-mac.md`.
 
 ## Şu an
-- **L8: P1 ✅ P3 ✅ P2 ✅ (+Mac tekrarı ✅) → sırada: firstmate İLK KOŞUM (Salih eliyle, klon+tarif hazır) → P6 enstrümantasyon Mac uyarlaması → EN SON entegrasyon** (envanter-önce kuralı, Salih 08-12). P4 kanon masası BEKLET ("workflow oturdu" beyanına dek).
+- **KATMAN-1 (Salih, 08-12 kapanışta): DOĞRUDAN YALNIZ-FIRSTMATE GEÇİŞİ — Cowork EMEKLİ.** Terminal (CC) = ana-sıra; kilit kaldırma Salih eliyle (komut verildi); kalan frenler: push-ask + md.49 share + pretool tel. Kayıt: senaryo-defteri 08-12 bloğu. Bu kapsülü okuyan terminal oturumu ana-sıra yetkisiyle çalışır; İLK KANON BORCU: m.41/tüzük yazım turu.
+- L8: P1 ✅ P3 ✅ P2 ✅ (+Mac ✅) · **P6 dörtlüleri deftere DÜŞTÜ (paralel oturum, betikle — DONE-yüklemi karşılandı)** · sırada: firstmate ilk koşum → entegrasyon (kanon md'leri workflow'a). P4 kanon masası BEKLET.
 - Çalışma yüzeyi artık Mac (`~/jarvis`, SSH); Windows kurulumunun akıbeti Salih kararı bekliyor. Deneme deposu `~/dev/wf-deneme`, firstmate `~/dev/firstmate`.
 - K1 kalemleri: K1-10 hükümlü (icra-önce) · K1-1 düştü · K1-2..K1-9 + K1-11 BEKLET · K1-12 kapalı.
 - md.49 revize İMZALI: JARVIS genel asistan, şirket/staj projeleri dahil; artefakt PUBLIC üretilmez, `share` yok. **Staj verisi jarvis'e taşınmaz; yöntem yönü serbest.**

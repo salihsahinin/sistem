@@ -606,3 +606,11 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 | koşum | araç/dal | iterasyon | duvar-saati | token | sonuç |
 |---|---|---|---|---|---|
 | `nm#01KZTM13J1N3PPRQS3Q0PT1KPT` | no-mistakes/mac-p2-smoke | 9 adım / 9 tur / 7 çağrı | 6357 sn (ajan 508 sn) | in 213 (cache-read 2.932.989, taze 0) / out 412 | cancelled · PR open: https://github.com/salihsahinin/wf-deneme/pull/3 |
+
+---
+
+## 2026-08-12 — KATMAN-1 KARAR: Doğrudan yalnız-firstmate geçişi (Salih emri, Mac Cowork SON oturumu)
+
+**Karar:** Kademeli plan ve kanıt eşiği REDDEDİLDİ (Carvis m.16 raporunu sundu: K-010 kapıları · m.41 yüzey-yetkisi · V64 planlama-masası notu — emir değişmedi). Sistem DOĞRUDAN yalnız-firstmate/terminal düzenine geçer; **Cowork emekliye ayrılır.** Terminal oturumları (CC) ana-sıra statüsü kazanır; `core/` + `CLAUDE.md` + `.claude/` Edit-deny kilidi kalkar — **kaldırma işlemi Salih eliyle** (Cowork tarafı güvenlik-ayarı değişikliğini kendi koşamadı, komut bloğu son mesajda). **Yerinde kalanlar:** `git push` onayı (ask) · md.49 artefakt/share freni · pretool teli · SessionStart hook.
+**Etki:** m.41 fiilen süpersede — tüzük yazım turu terminal tarafının ilk kanon borcu (V64 masası "geçiş-sonrası yazım borcu"na dönüştü). K-010/A-kapıları bu emirle firstmate önünde kapı olmaktan çıktı; sicil yine de deftere işlenmeye devam eder (P6 betiği bugün ilk dörtlüleri düşürdü — yukarıda).
+**Geri-açma:** Salih beyanı ("Cowork'e dön" / kilidi geri koy).
