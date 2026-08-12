@@ -5,7 +5,11 @@
 # (kabuk-taşıyan ajan zaptedilemez — kapsül güvenlik notu 07-22); kaçırdığı desen olabilir,
 # yanlış-pozitifte mesajı gör ve komutu yeniden ifade et. Gerekçe: raporlar/vardiya-teslim-2026-07-22-aksam.md
 input=$(cat)
-cmd=$(printf '%s' "$input" | python -c "import sys,json;print(json.load(sys.stdin).get('tool_input',{}).get('command',''))" 2>/dev/null)
+# PY seçimi (macOS portu 2026-08-11, Salih izniyle): macOS'ta yalnız python3 var,
+# Windows Git Bash'te yalnız python olabilir. İkisini de dene; bulunamazsa satır 9
+# ham girdiye düşer ve tel bozuk-modda da olsa ayakta kalır.
+PY=$(command -v python3 || command -v python)
+cmd=$(printf '%s' "$input" | "${PY:-python3}" -c "import sys,json;print(json.load(sys.stdin).get('tool_input',{}).get('command',''))" 2>/dev/null)
 [ -z "$cmd" ] && cmd="$input"
 PROT='(core/|CLAUDE\.md|\.claude/)'
 block=0
