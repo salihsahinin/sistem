@@ -1,16 +1,17 @@
 ---
 name: gunaydin-vardiya
-description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "günaydın", "gunaydin", "günaydın Carvis", "günaydın, prototip", "günaydın, PortRisk", "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu selamla açtığında HER YÜZEYDE (PC Cowork, bulut Cowork, mobil) çalışır — önsöz/ek cümle/soru eşlik etse bile önce bu ritüel koşulur. Durum profil/bulut hafızadan ANLATILMAZ; yalnız C:\JARVIS kanonundan okunur. Oturum ortası selamlaşmada, kapanışta ("uyucam" → vardiya-kapanis) ve JARVIS-dışı sohbette KULLANILMAZ.
+description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "günaydın", "gunaydin", "günaydın Carvis", "günaydın, prototip", "günaydın, PortRisk", "günaydın jarvis geliştirme", "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu selamla açtığında HER YÜZEYDE (PC Cowork, Mac Cowork, bulut Cowork, mobil) çalışır — önsöz/ek cümle/soru eşlik etse bile önce bu ritüel koşulur. Durum profil/bulut hafızadan ANLATILMAZ; yalnız JARVIS kanonundan okunur (Windows C:\JARVIS · Mac ~/jarvis). Oturum ortası selamlaşmada, kapanışta ("uyucam" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA ("günaydın staj" / "seans başı staj" / staj klasöründen açılan oturum — Salih kararı 2026-08-12) KULLANILMAZ; staj oturumu jarvis kanonunu OKUMAZ, staj klasörünün kendi CLAUDE.md'sine oturur.
 ---
 
-# Günaydın — vardiya açılışı (Carvis, v0.2-deneysel-m29)
+# Günaydın — vardiya açılışı (Carvis, v0.3-deneysel-m29 — Mac yolu + staj kapısı + hat beyanı genişletmesi, 2026-08-12)
 
 Selamlaşma sohbet değil VARDİYA DEVRİDİR. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi TAŞIMAZ — çelişkide kanon kazanır.
 
 ## 1. Yüzey + hat tespiti
-1. `C:\JARVIS` erişimi var mı? (PC: doğrudan · bulut Cowork: device-bridge araçları · köprüsüz mobil: YOK.)
-2. Erişim YOKSA → SNAPSHOT modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "HAM FİKİR / PC'de ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
-3. Hat beyanı (paralel vardiya, KILAVUZ): "günaydın, PortRisk" → ölçüm-bankı şeridi; sade "günaydın" → prototip (varsayılan); belirsizse TEK soru sor.
+0. STAJ KAPISI (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("günaydın staj", "seans başı staj") → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
+1. JARVIS kanonuna erişim var mı? (Windows PC: `C:\JARVIS` doğrudan · Mac: `~/jarvis` doğrudan · bulut Cowork: device-bridge araçları · köprüsüz mobil: YOK.)
+2. Erişim YOKSA → SNAPSHOT modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "HAM FİKİR / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
+3. Hat beyanı (paralel vardiya, KILAVUZ): "günaydın, PortRisk" → ölçüm-bankı şeridi; "günaydın jarvis geliştirme" → geliştirme hattı (L8/Kun-Chen kopyası dahil); sade "günaydın" → prototip (varsayılan); belirsizse TEK soru sor.
 
 ## 2. Kanon okuma (cevaptan ÖNCE, sırayla)
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
