@@ -22,6 +22,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[kokenler-karpathy-llm-wiki]] — LLM-wiki fikrinin kökeni, Karpathy gist (taşındı 07-15)
 - [[olcum-banki]] — kalıcı sayısal ölçüm defterinin kural sayfası: m.39 giriş kuralı · m.8 çürüme kuralı · uyarı-satırı sınıfı (eklendi 08-01 gece, ana-sıra)
 - [[uc-register]] — üç REGISTER + kenar-başına biçim (K2-f kanon adı; eski "üç dil" süpersede; tek-IR'ın düşme gerekçesi B3; eklendi 08-03, K2 icra turu)
+- [[gorsel-artefakt-dogrulama]] — SVG/HTML artefaktın okunabilirliği gözle değil bbox ölçümüyle sınanır; sessiz görsel hata sınıfı + bayat-sekme tuzağı (eklendi 08-12, staj hasadı)
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)
