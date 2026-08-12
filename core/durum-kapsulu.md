@@ -1,24 +1,28 @@
 # Durum Kapsülü
 
-*Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) + Carvis bulut-klonu serbest.*
+*Her oturumun İLK okuduğu dosya. Üzerine yazılır; arşiv değildir. Açılış: kapsül ORIGIN KLONUNDAN doğrulanır. Mount-git: md.15 FAIL-YAPISAL — SANDBOX'ta git YASAK; Salih terminali + CC (host) + Carvis Mac/bulut-klonu serbest.*
 
-**Güncelleme:** 2026-08-04 P2 KAPANIŞI (Carvis/Fable, PC Cowork) — **P2 no-mistakes DONE 3/3** (v1.41.2 kuruldu · 2 koşum uçtan uca · PR #1+#2 merge · eskalasyon fiilen Salih'e düştü ve karara bağlandı) · gece-senkron arızası ONARILDI (`f5f4073`; kök: ref geride + dirty, V43 2. vaka) · rapor-4'ün 2 `[?]` şerhi kapandı. Teslim: `raporlar/vardiya-teslim-2026-08-04-p2.md`.
+**Güncelleme:** 2026-08-12 L8-MAC (Carvis/Fable, Mac Cowork) — **L8 Mac geçişi Faz 0-4 DONE (envanter 10/11 diskte, tam liste teslim §1):** gemi (WezTerm+tmux+nvim+OSW+claude CLI) · treehouse 2.1.1 + gnhf 0.1.43 (iki fren Mac'te doğrulandı; cache-sayaç bulgusu TEKRARLANDI) · no-mistakes v1.48.0 uçtan uca (**PR #3**, eskalasyon+safe-fix tek koşumda) · lavish + gh-axi + chrome-devtools-axi. **Oturum yapılanması (Salih kararı): "günaydın jarvis geliştirme" / "günaydın staj" ayrı hatlar; ritüel skill'ler staj kapılı (repo+BULUT), staj-acilis/staj-kapanis staj klasöründe.** Teslim: `raporlar/vardiya-teslim-2026-08-12-l8-mac.md`.
 
 ## Şu an
-- **L8 geçiş sırası: P1 ✅ → P3 ✅ → P2 ✅ → P6 (SIRADAKİ) → P5** (firstmate Windows bekliyor, en son). P4 kanon masası BEKLET — Salih "workflow oturdu" deyince yeniden açılır.
-- K1 kalemleri: K1-10 hükümlü (icra-önce) · K1-1 düştü · K1-2..K1-9 + K1-11 BEKLET · K1-12 kapalı. Silme kararı alınmadı, m.8 dokunulmadı.
-- **md.49 revize İMZALI:** JARVIS genel asistan, şirket projeleri dahil; artefaktlar PUBLIC üretilmez, ajan `share` koşamaz (deny kilidi canlı).
-- K-022 staj 11 Ağu (~7 gün) · md.41 üretim freni sürüyor · gece-senkron: bu akşamki koşum OK dönerse arıza resmen kapanır (A1 sayacı sıfırlanmadı, kök-neden onarıldı).
+- **L8: P1 ✅ P3 ✅ P2 ✅ (+Mac tekrarı ✅) → sırada: firstmate İLK KOŞUM (Salih eliyle, klon+tarif hazır) → P6 enstrümantasyon Mac uyarlaması → EN SON entegrasyon** (envanter-önce kuralı, Salih 08-12). P4 kanon masası BEKLET ("workflow oturdu" beyanına dek).
+- Çalışma yüzeyi artık Mac (`~/jarvis`, SSH); Windows kurulumunun akıbeti Salih kararı bekliyor. Deneme deposu `~/dev/wf-deneme`, firstmate `~/dev/firstmate`.
+- K1 kalemleri: K1-10 hükümlü (icra-önce) · K1-1 düştü · K1-2..K1-9 + K1-11 BEKLET · K1-12 kapalı.
+- md.49 revize İMZALI: JARVIS genel asistan, şirket/staj projeleri dahil; artefakt PUBLIC üretilmez, `share` yok. **Staj verisi jarvis'e taşınmaz; yöntem yönü serbest.**
+- K-022 staj BAŞLADI (11 Ağu → fiilen 12 Ağu ilk gün); staj oturumları staj klasöründe, kendi günlük+ritüelleriyle.
+- Gece-senkron: `gece-senkron.ps1` Mac'te koşmuyor (Salih 08-11: "gerek yok") — A1 sicil hattı Windows'a bağlıydı, yeniden tasarım K-009 gündemine.
 
 ## Açık borçlar
-- **P6 = sonraki seansın İLK İŞİ (Salih beyanı).** Keşif komut bloğu HAZIR: teslim raporu §4 (`vardiya-teslim-2026-08-04-p2.md`) — önce o komutlar Salih terminalinden koşulur, çıktıyla `tools/` betiği yazılır; DONE: (token·duvar-saati·iterasyon·sonuç) dörtlüsü deftere BETİKLE.
-- **Damıtma ACİL: senaryo-defteri ~141KB/48KB FLAG** (bu vardiyada +3 blok) · KILAVUZ 18,7/16KB.
-- Salih kararları: şerhli 5 kalem + D-0803-1 · A1 hükmü · K1-11 açıklaması · senkron-script stash-önce adayı (yeni, teslim §3).
-- md.49 yazım turu (tüzük + pano K-022 metni) · sözlük raporu ingest'i · K2-n geriye-dönük denetim.
-- lavish ilk gerçek CC koşumunda test · gnhf tavan-kalibrasyon notu ölçüm-bankına · wiki kuyruğu: gnhf/treehouse/lavish/**no-mistakes (yeni)**.
-- Erteleme kapsamı (geçiş bitince): **Türkçeleştirme turu (koşum çıktıları, yeni)** · Orca hook temizliği · find-skills kararı · SKILL.md mükerrer şerh · lease iadeleri · kural-entegrasyonu.
+- **firstmate ilk koşum çıktısı** → Faz 5 DONE beyanı + `firstmate` wiki adayı.
+- **P6 = dörtlü (token·süre·iterasyon·sonuç) deftere BETİKLE:** `tools/olcum-dortlu.py` var; kaynaklar artık Mac'te canlı (`~/dev/wf-deneme/.gnhf/runs/*/gnhf.log` + `~/.no-mistakes/`). Windows keşif bloğu (teslim 08-04-p2 §4) GEÇERSİZ — Mac yollarıyla yeniden.
+- **İngest bekleyen:** `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` (paralel-oturum kaynak çakışması + 2 epistemik bulgu, HAM).
+- **Damıtma ACİL:** senaryo-defteri ~141KB/48KB FLAG · KILAVUZ 18,7/16KB.
+- Salih kararları: şerhli 5 kalem + D-0803-1 · A1 hükmü · K1-11 açıklaması · senkron stash-önce adayı · Windows-kurulum akıbeti · agile araştırma emri tetiği (fikir-kutusu 08-12).
+- md.49 yazım turu (tüzük + pano K-022 metni) · sözlük raporu ingest'i · K2-n geriye-dönük denetim · wiki kuyruğu: gnhf/treehouse/lavish/no-mistakes(+ci-Gotcha).
+- ADAY: ci adımı CI'sız depoda sonlanmıyor → `--skip ci` usulü · global-memory symlink kararı entegrasyon masasına · no-mistakes 1.41→1.48 sürüm izleme.
+- Erteleme kapsamı (geçiş bitince): Türkçeleştirme turu · Orca hook temizliği · find-skills · SKILL.md mükerrer şerh · lease iadeleri · kural-entegrasyonu.
 
 ## Sonraki ilk iş
-1. **P6 — enstrümantasyon:** teslim §4 keşif bloğu → `tools/` betiği → dörtlü deftere betikle.
-2. Salih kararları (yukarıdaki blok).
-3. Damıtma vardiyası (defter FLAG).
+1. **firstmate ilk koşum** (Salih: tmux `kaptan` → `cd ~/dev/firstmate && claude`; çıktı sonraki jarvis oturumuna).
+2. P6 betiği Mac uyarlaması + dörtlü deftere.
+3. Gelen devir dosyası ingest'i + damıtma vardiyası + Salih karar bloğu.
