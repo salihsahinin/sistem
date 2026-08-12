@@ -1,9 +1,12 @@
 ---
 name: vardiya-kapanis
-description: Carvis'in JARVIS vardiya-KAPANIŞ ritüelini koşar. Salih "uyucam", "kapat", "bitiriyorum", "bugünlük bu kadar", "end of day", "vardiyayı kapat", "günü kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır. Carvis bağlam-şişmesi görürse kapanışı kendisi de önerir (V11 + 07-19 emri). Teslim raporu + hasat + ingest + kapsül tazeleme + commit/push üretir; push'suz gün SAYILMAZ (m.9). Oturum açılışında ("günaydın" → gunaydin-vardiya), ara özet isteğinde ("hizala" → hizalama) ve JARVIS-dışı vedalaşmada KULLANILMAZ.
+description: Carvis'in JARVIS vardiya-KAPANIŞ ritüelini koşar. Salih "uyucam", "kapat", "bitiriyorum", "bugünlük bu kadar", "end of day", "vardiyayı kapat", "günü kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır. Carvis bağlam-şişmesi görürse kapanışı kendisi de önerir (V11 + 07-19 emri). Teslim raporu + hasat + ingest + kapsül tazeleme + commit/push üretir; push'suz gün SAYILMAZ (m.9). Oturum açılışında ("günaydın" → gunaydin-vardiya), ara özet isteğinde ("hizala" → hizalama), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA ("seans bitimi" / staj klasöründen açılan oturum — Salih kararı 2026-08-12) KULLANILMAZ; staj kapanışı staj klasörünün kendi staj-kapanis ritüelidir, jarvis kanonuna yazmaz, teslim raporu/kapsül/push üretmez.
 ---
 
-# Vardiya kapanışı (Carvis, v0.1-deneysel-m29)
+# Vardiya kapanışı (Carvis, v0.2-deneysel-m29 — staj kapısı, 2026-08-12)
+
+## 0. STAJ KAPISI (önce bu)
+Oturum staj klasöründen açıldıysa ya da kapanış beyanı staj bağlamındaysa ("seans bitimi" vb.) → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonuna YAZMAZ (md.49); kapanışı staj klasörünün kendi ritüeli (günlük toparlama + yerel checkpoint) yapar. Tek cümleyle beyan et, staj kapanışına geç.
 
 Kapanış = hafıza yazımıdır: bir sonraki vardiya yalnız burada yazılanı devralır. Bayat kapsül boş kapsülden kötüdür (V4). Şablonların kaynağı `core/sablonlar/` — çelişkide şablon dosyası kazanır.
 
