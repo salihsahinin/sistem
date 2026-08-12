@@ -12,7 +12,9 @@ import argparse, json, re, sqlite3, sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-DEFTER = Path(r"C:\JARVIS\kuyruk\senaryo-defteri.md")
+_WIN_KANON = Path(r"C:\JARVIS")
+KANON = _WIN_KANON if _WIN_KANON.exists() else Path.home() / "jarvis"
+DEFTER = KANON / "kuyruk" / "senaryo-defteri.md"
 NM_DB = Path.home() / ".no-mistakes" / "state.sqlite"
 
 def ts(s):
