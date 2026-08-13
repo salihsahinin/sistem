@@ -18,8 +18,8 @@
 - **P6 = dörtlü (token·süre·iterasyon·sonuç) deftere BETİKLE:** `tools/olcum-dortlu.py` var; kaynaklar artık Mac'te canlı (`~/dev/wf-deneme/.gnhf/runs/*/gnhf.log` + `~/.no-mistakes/`). Windows keşif bloğu (teslim 08-04-p2 §4) GEÇERSİZ — Mac yollarıyla yeniden.
 - **İngest bekleyen:** `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` (paralel-oturum kaynak çakışması + 2 epistemik bulgu, HAM).
 - **Damıtma ACİL:** senaryo-defteri ~141KB/48KB FLAG · KILAVUZ 18,7/16KB.
-- Salih kararları: şerhli 5 kalem + D-0803-1 · A1 hükmü · K1-11 açıklaması · senkron stash-önce adayı · Windows-kurulum akıbeti · agile araştırma emri tetiği (fikir-kutusu 08-12).
-- md.49 yazım turu (tüzük + pano K-022 metni) · sözlük raporu ingest'i · K2-n geriye-dönük denetim · wiki kuyruğu: gnhf/treehouse/lavish/no-mistakes(+ci-Gotcha).
+- Salih kararları: şerhli 5 kalem + D-0803-1 · A1 hükmü · K1-11 açıklaması · senkron stash-önce adayı · Windows-kurulum akıbeti · agile araştırma emri tetiği (fikir-kutusu 08-12) · **spec-kit entegrasyon yolu (A dar-deneme / B desen-aktarımı / C bekle-izle) + V1 ölçek-şerhi m.16 kararı — rapor: `raporlar/2026-08-13-spec-kit-atlas-raporu.md` (08-13 atlas koşumu, ekip-lideri otomasyon bağlamı)**.
+- md.49 yazım turu (tüzük + pano K-022 metni) · sözlük raporu ingest'i · K2-n geriye-dönük denetim · wiki kuyruğu: gnhf/treehouse/lavish/no-mistakes(+ci-Gotcha)/spec-kit.
 - ADAY: ci adımı CI'sız depoda sonlanmıyor → `--skip ci` usulü · global-memory symlink kararı entegrasyon masasına · no-mistakes 1.41→1.48 sürüm izleme.
 - Erteleme kapsamı (geçiş bitince): Türkçeleştirme turu · Orca hook temizliği · find-skills · SKILL.md mükerrer şerh · lease iadeleri · kural-entegrasyonu.
 

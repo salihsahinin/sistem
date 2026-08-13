@@ -614,3 +614,9 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 **Karar:** Kademeli plan ve kanıt eşiği REDDEDİLDİ (Carvis m.16 raporunu sundu: K-010 kapıları · m.41 yüzey-yetkisi · V64 planlama-masası notu — emir değişmedi). Sistem DOĞRUDAN yalnız-firstmate/terminal düzenine geçer; **Cowork emekliye ayrılır.** Terminal oturumları (CC) ana-sıra statüsü kazanır; `core/` + `CLAUDE.md` + `.claude/` Edit-deny kilidi kalkar — **kaldırma işlemi Salih eliyle** (Cowork tarafı güvenlik-ayarı değişikliğini kendi koşamadı, komut bloğu son mesajda). **Yerinde kalanlar:** `git push` onayı (ask) · md.49 artefakt/share freni · pretool teli · SessionStart hook.
 **Etki:** m.41 fiilen süpersede — tüzük yazım turu terminal tarafının ilk kanon borcu (V64 masası "geçiş-sonrası yazım borcu"na dönüştü). K-010/A-kapıları bu emirle firstmate önünde kapı olmaktan çıktı; sicil yine de deftere işlenmeye devam eder (P6 betiği bugün ilk dörtlüleri düşürdü — yukarıda).
 **Geri-açma:** Salih beyanı ("Cowork'e dön" / kilidi geri koy).
+
+---
+
+## 2026-08-13 — m.40b koşum gözlemi: spec-kit araştırması (terminal ana-sıra, ilk büyük atlas koşumu)
+
+Çift-atlas + maskeli hakem, 3 aile, 9 ajan (~1,1M ajan-tokeni [?]). Hayatta-kalma: 42 hakem-noktası → **7 SAĞLAM · 23 DARALDI · 11 DÜŞTÜ · 1 ÇELİŞKİLİ**. V26: 6 ajanda 18+ örneklem iddiası, TAMAMI geçti; bir çapraz-alarm (¬A1'in HN-alıntı şüphesi ↔ A2 kaynakları) hedefli Algolia denetimiyle tez lehine kapandı. Epistemik ders (hakem ortak-kör-nokta tespiti): kanıt sürüm-damgasız taşınmamalı · varlık ≠ canlılık (katalog kaydı ≠ yetenek, yıldız ≠ olgunluk) · alıntı toplamak ≠ kanıt tartmak. Rapor: `raporlar/2026-08-13-spec-kit-atlas-raporu.md` (Salih kararı bekleyen: entegrasyon yolu A/B/C + V1 ölçek-şerhi m.16).
