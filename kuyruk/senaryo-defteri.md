@@ -620,3 +620,14 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 ## 2026-08-13 — m.40b koşum gözlemi: spec-kit araştırması (terminal ana-sıra, ilk büyük atlas koşumu)
 
 Çift-atlas + maskeli hakem, 3 aile, 9 ajan (~1,1M ajan-tokeni [?]). Hayatta-kalma: 42 hakem-noktası → **7 SAĞLAM · 23 DARALDI · 11 DÜŞTÜ · 1 ÇELİŞKİLİ**. V26: 6 ajanda 18+ örneklem iddiası, TAMAMI geçti; bir çapraz-alarm (¬A1'in HN-alıntı şüphesi ↔ A2 kaynakları) hedefli Algolia denetimiyle tez lehine kapandı. Epistemik ders (hakem ortak-kör-nokta tespiti): kanıt sürüm-damgasız taşınmamalı · varlık ≠ canlılık (katalog kaydı ≠ yetenek, yıldız ≠ olgunluk) · alıntı toplamak ≠ kanıt tartmak. Rapor: `raporlar/2026-08-13-spec-kit-atlas-raporu.md` (Salih kararı bekleyen: entegrasyon yolu A/B/C + V1 ölçek-şerhi m.16).
+
+---
+
+## 2026-08-14 — KATMAN-1 KARAR: Skill üretim/evrim/tetikleme yetkisi Carvis'e (Salih emri)
+
+`[tip: karar | kaynak: jarvis-terminal ana-sıra | tarih: 2026-08-14 | hedef: defter | sema: v2]`
+**Durum:** Skill kutusu birikmişti (11 aday, 4 üretilmiş); K-016 üretim kapısı Salih-tetikliydi; bir süredir yeni aday da düşmüyordu.
+**Hüküm:** Skill oluşturma + birikmiş veriye göre yeni versiyon geliştirme + tetikleme/tetikletme yetkisi CARVİS'TE; skill-başına Salih onayı GEREKMEZ — tek istisna: zayıf-yeni aday (m.43 eşiği dolmamış) onaya gider. Kullanılan skill'ler jarvis sözlüğüne işlenir; görev akışlarında skill yoğunluğu artırılır.
+**Akıl-yürütme:** "konuşma = sistem geliştirme" ufku (AB-06/07) ilk somut yetki adımını aldı; eşiği dolu adaylar kutuda bekliyordu; ajan-metodolojisi + ingest şeması adayların spesifikasyonlarını hazır etmişti.
+**Yetki:** Katman-1 (m.31 rol/yetki sınıfı) — Salih beyanı 08-14. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-14`.
+**İlk icra (aynı gün):** ÜRETİLDİ → S-K gorev-emri-derleme · S-E damitma · S-D lojik-ceviri · S-J karar-kaydet · **P-1 pipeline-kosum** (geçmiş-tarama sonucu yeni aday; m.43 sayımı: spec-kit m.40b zinciri + ingest pipeline'ı + metodoloji pipeline'ı = 3 koşum). S-F NOOP (vardiya-kapanis zaten kapsıyor — triyaj hükmü). S-H superseded (ritüel çifti karşıladı). S-I sonraki tura. W-1 wiki-sayfa-yaz zayıf-yeni ADAY → Salih onayına.

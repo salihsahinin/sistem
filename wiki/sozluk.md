@@ -89,3 +89,33 @@ Carvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçes
 ## Fikir kutusu — ilk kayıt
 
 - 2026-07-10: Ölçeklenince ekip lideri katmanı — işçi ajan → ekip lideri → CEO → patron damıtma hattı; her seviye fikir kutusu/öneri filtresi. Geri-açma koşulu: ilk gerçek ajan döngüsü 10 kez sorunsuz döndüğünde.
+
+---
+
+## Skill Hazinesi (eklendi 2026-08-14 — Salih'in açık talimatıyla: "kullandığın skilleri sözlüğe ekle"; dondurulmuş v1 terimlerine dokunulmadı)
+
+*Skill = tetik-koşullu koşum talimatı; sen doğal konuşursun, ilgili skill kendiliğinden devreye girer. Geri-açma: Salih beyanı.*
+
+### gunaydin-vardiya / vardiya-kapanis
+Jarvis oturum aç/kapa ritüelleri. Tetik: "günaydın..." / "uyucam, kapat". Kapanış artık ingest-şeması triyajını da koşar. (Staj karşılıkları: staj-acilis / staj-kapanis — staj klasöründe.)
+
+### karar-modeli · karar-hatti · celiski-kapisi
+Karar üretim ailesi: 3-model karşılaştırması (m.37) · uçtan uca karar hattı · yeni kararın eski kanonla çelişki taraması (m.16). Tetik: "karar modeli", "tam karar hattı", yeni karar anı.
+
+### atlas-kosum
+m.40b çift-atlas araştırması: tez ajanları → hedefli antitez → V26 örneklem denetimi → maskeli hakem. Tetik: "araştır / atlas koştur".
+
+### gorev-emri-derleme *(yeni, 08-14)*
+Beyanını künyeli görev-emrine çevirir: görev-fonksiyonu iskeleti (tipli alanlar, kapsam_disi, dal-bütçesi ≤5, boolean done-yüklemi) + mekanik dürüstlük kapıları. Tetik: "görev emri derle / araştırma emri yaz".
+
+### damitma *(yeni, 08-14)*
+İngest-şeması v2'nin koşum skill'i: bronz dosyaları 4-soru triyajından geçirir, FLAG'li dosyaları ~%50'ye indirir, arşiv-pointer'la. Tetik: "damıt / damıtma turu"; eşikte-toplu ilkesi (erken damıtma israf).
+
+### lojik-ceviri *(yeni, 08-14)*
+Türkçe kural/talimatı m.38 bağlaçlarına (∧ ∨ ¬ → ↔) ve numaralı dallara döker; done-yüklemini boolean'laştırır; geri-çeviri kontrolüyle teslim eder. Tetik: "lojiğe çevir / kurala dök".
+
+### karar-kaydet *(yeni, 08-14)*
+Verilmiş kararı deftere standart blokla (durum + akıl-yürütme + hüküm + yetki + geri-açma + bi-temporal tarih) yazar, ayrı commit atar. YALNIZ elle tetik: "kararı kaydet".
+
+### pipeline-kosum *(yeni, 08-14)*
+Kun-Chen formatlı uçtan-uca hat: manifest + emir → scout araştırması → sentez → ship implementasyonu → "hazır ve sisteme gömülü" beyanı; durum diskte, restart-proof. Tetik: "pipeline kur / pipeline olarak yap".
