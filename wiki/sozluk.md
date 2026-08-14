@@ -119,3 +119,6 @@ Verilmiş kararı deftere standart blokla (durum + akıl-yürütme + hüküm + y
 
 ### pipeline-kosum *(yeni, 08-14)*
 Kun-Chen formatlı uçtan-uca hat: manifest + emir → scout araştırması → sentez → ship implementasyonu → "hazır ve sisteme gömülü" beyanı; durum diskte, restart-proof. Tetik: "pipeline kur / pipeline olarak yap".
+
+### sinav-grill *(yeni, 08-14)*
+Anlayışını adversarial Sokratik sorgulamayla sınar: tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] derinlik haritası + bulanık-blok listesi. YALNIZ senin tetiğinle: "sınav / sınava çek / grill" — ben asla kendiliğimden başlatmam (V55 korunur).
