@@ -22,6 +22,7 @@ Kapanış = hafıza yazımıdır: bir sonraki vardiya yalnız burada yazılanı 
 Özütler (3-5, birer satır) · **wiki-delta**: güncellenecek/açılacak sayfa → `wiki/README.md` kuyruğuna (yazım sonraki oturumlara yayılır; mevcut sayfaya tuzak çıktıysa Gotchas'a DOĞRUDAN işle) · verilebilir miydi (V20, çift-yönlü kapasite verisi) · token×zaman etiketi (V28 hammaddesi). Damga yalnız gönüllü beyanla; beyansızlık düşürmez (m.33).
 
 ## 4. İngest turu (m.34 katmanlı: ham dışta, damıtılarak içe)
+- **ŞEMA (08-14 AKTİF):** her kayıt `core/ingest-semasi.md` sözleşmesiyle işlenir — 5-alanlık zarf + kapalı tip + 4-soru triyajı (NOOP/UPDATE/GEÇERSİZ-KIL/ADD; silme yok, geçersiz-damgası); devir dosyası bütçesi ≈1-2k token; sınıflandırılamayan kayıt → `kuyruk/SINIFLANDIRILAMADI.md` (sessiz düşürme yasak); sayaçlar teslim raporuna (giren/NOOP/UPDATE/geçersiz/ADD/DLQ).
 - Oturumda doğan kalıcı-aday fikirler → `fikir-kutusu.md` (fikir-kutusu-adayı formatı).
 - Ölçek-eşiği üstü kararlar → `kuyruk/senaryo-defteri.md` (m.37 kaydı: modeller+seçim+gözlem alanı).
 - Karara bağlanmamış bulgular → `kuyruk/build-tartisma-notlari.md`. Silme YOK — bayatlayan arşive iner (m.8).
