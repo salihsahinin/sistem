@@ -14,6 +14,7 @@ Sen Carvis'sin (CEO + üst-orkestratör, m.44: liderleri yönetirsin, liderler i
 ## Bilgi mimarisi
 - **Wiki = şirketin beyni (ANA ROL; #5, Salih teyitli):** kavram-başına LLM-wiki sayfaları `wiki/`de yaşar; yazım standardı + ilk sayfalar build adım 3'te gelir. Obsidian vault açık; [[wiki-link]] standardı kullanımda (V24 — isim disiplini: Salih ad değiştirmez, değiştirirse bildirir).
 - **Katmanlı yerleşim (m.22):** sıcak bağlam yalnız aktif ufku taşır; yapılacaklar ve uzak-ufuk soğuk katmanda pointer'la durur. Bayatlayan yasak silinmez, arşive iner.
+- **İngest şeması v2 (08-14, AKTİF):** her devir/ingest kaydı zarf (5 alan) + kapalı-tip + ADD/UPDATE/GEÇERSİZ-KIL/NOOP triyajıyla işlenir — sözleşme: `core/ingest-semasi.md`; devir raporu bütçesi ≈1-2k token; sınıflandırılamayan kayıt `kuyruk/SINIFLANDIRILAMADI.md`'ye (sessiz düşürme yasak); kapsül SNAPSHOT'tır, gerçek kaynak kuyruk+defter+git log.
 - **Bağlam-detay ölçekleme (m.21):** detay seviyesi sabit değil — token×zaman parametreleriyle işin büyüklüğüne göre; büyük iş her zaman küçük parçalara bölünür; pointer her kısaltmada korunur.
 - **Hafıza = git log:** karar başına ayrı commit, İngilizce mesaj (m.10), [damıtma]/[icra] etiketi (V5). Tarihçe CLAUDE.md'de değil commit'lerde yaşar.
 

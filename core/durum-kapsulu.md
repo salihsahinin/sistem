@@ -8,6 +8,7 @@
 - **KATMAN-1 (Salih, 08-12 kapanışta): DOĞRUDAN YALNIZ-FIRSTMATE GEÇİŞİ — Cowork EMEKLİ.** Terminal (CC) = ana-sıra; kilit kaldırma Salih eliyle (komut verildi); kalan frenler: push-ask + md.49 share + pretool tel. Kayıt: senaryo-defteri 08-12 bloğu. Bu kapsülü okuyan terminal oturumu ana-sıra yetkisiyle çalışır; İLK KANON BORCU: m.41/tüzük yazım turu.
 - L8: P1 ✅ P3 ✅ P2 ✅ (+Mac ✅) · **P6 dörtlüleri deftere DÜŞTÜ (paralel oturum, betikle — DONE-yüklemi karşılandı)** · sırada: firstmate ilk koşum → entegrasyon (kanon md'leri workflow'a). P4 kanon masası BEKLET.
 - Çalışma yüzeyi artık Mac (`~/jarvis`, SSH); Windows kurulumunun akıbeti Salih kararı bekliyor. Deneme deposu `~/dev/wf-deneme`, firstmate `~/dev/firstmate`.
+- **İNGEST ŞEMASI v2 AKTİF (08-14, Salih emri; Kun-Chen-formatlı pipeline'la üretildi):** kayıt zarfı + kapalı tip + Mem0-triyaj + DLQ + bütçeler — sözleşme `core/ingest-semasi.md`, staj uyarlaması staj klasöründe, kanıt `cc/rapor-2026-08-14-1.md`, pipeline `cc/pipeline-2026-08-14-ingest-semasi.md`. Devir raporları artık ≈1-2k token bütçeli ve zarflı.
 - K1 kalemleri: K1-10 hükümlü (icra-önce) · K1-1 düştü · K1-2..K1-9 + K1-11 BEKLET · K1-12 kapalı.
 - md.49 revize İMZALI: JARVIS genel asistan, şirket/staj projeleri dahil; artefakt PUBLIC üretilmez, `share` yok. **Staj verisi jarvis'e taşınmaz; yöntem yönü serbest.**
 - K-022 staj BAŞLADI (11 Ağu → fiilen 12 Ağu ilk gün); staj oturumları staj klasöründe, kendi günlük+ritüelleriyle.
