@@ -1,7 +1,7 @@
 {
-"skill": "gunaydin-vardiya",
+"skill": "seans-acilis",
 "target": "%90+",
-"guncelleme": "2026-08-15 v0.4 — emekli tetikler negatif örneğe döndü (anahtar kaydı v1 §3.4)",
+"guncelleme": "2026-08-15 v0.5 — ad seans-acilis (rename); v0.4: emekli tetikler negatif",
 "cases": [
 {
 "id": "p1",
@@ -55,7 +55,7 @@
 "id": "n2",
 "type": "negatif",
 "input": "seans bitimi",
-"expect": "tetiklenmez — vardiya-kapanis tetiklenir"
+"expect": "tetiklenmez — seans-kapanis tetiklenir"
 },
 {
 "id": "n3",

@@ -5,3 +5,4 @@
 | tarih | görev (kısa) | v-vektörü (aktif) | H | eşik | tetik? | model+runtime | n iddia | DESTEKLİ / DAYANAKSIZ / ÇELİŞİR | not |
 |---|---|---|---|---|---|---|---|---|---|
 | 08-15 | (ilk kayıt) E3 kalibrasyon senaryosu — derece.py testi | v2 v3d v4 v7b v10 | 7 | 7 | evet (test) | fable-5 · thinking | — | — | koşum yok, formül doğrulaması |
+| 08-15 | S-9 parquet-özütleme scout çıktısı (gorev-2026-08-15-9) | v2 v3a v3d v4 v7c v8 v9 v10 | 7 | 7 | evet (v3a override) | fable-5 · thinking · atlas işçileri | 95 [?] beklenen | koşum sonrası doldurulacak | karşılık m.40b GÖMÜLÜ zincir (URL-topraklama + CoVe antitez + V26 + maskeli hakem); ayrı skill çağrısı mükerrer — paket "kapı zaten doğruluyor" hükmü |

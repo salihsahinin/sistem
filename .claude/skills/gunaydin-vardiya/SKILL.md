@@ -1,9 +1,9 @@
 ---
-name: gunaydin-vardiya
-description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu açılış beyanıyla başlattığında HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Selamlama sözü zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR (emekli tetikler: `core/baglam-anahtar-kaydi.md`); durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("seans bitimi" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum, "seans başı staj" — ayrım klasörle, Salih 08-12/08-15); staj oturumu jarvis kanonunu okumaz, kendi CLAUDE.md'sine oturur.
+name: seans-acilis
+description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu açılış beyanıyla başlattığında HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Selamlama sözü zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR (emekli tetikler: `core/baglam-anahtar-kaydi.md`); durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("seans bitimi" → seans-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum, "seans başı staj" — ayrım klasörle, Salih 08-12/08-15); staj oturumu jarvis kanonunu okumaz, kendi CLAUDE.md'sine oturur.
 ---
 
-# Seans başı — vardiya açılışı (Carvis, v0.4-deneysel-m29 — emekli-tetik temizliği [anahtar kaydı v1] 2026-08-15; v0.3: Mac yolu + staj kapısı + hat beyanı 2026-08-12)
+# Seans başı — vardiya açılışı (Carvis, v0.5-deneysel-m29 — ad: gunaydin-vardiya → seans-acilis [Salih Katman-1 08-15]; v0.4: emekli-tetik temizliği 08-15; v0.3: Mac yolu + staj kapısı 08-12)
 
 Selamlaşma sohbet değil VARDİYA DEVRİDİR. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi TAŞIMAZ — çelişkide kanon kazanır.
 

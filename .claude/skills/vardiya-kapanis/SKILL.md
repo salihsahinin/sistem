@@ -1,9 +1,9 @@
 ---
-name: vardiya-kapanis
-description: Carvis'in JARVIS vardiya-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açık oturumda BU ritüel — staj işareti değildir), "uyucam", "kapat", "bitiriyorum", "bugünlük bu kadar", "end of day", "vardiyayı kapat", "günü kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir (V11). Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → gunaydin-vardiya), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum — ayrım klasörle, Salih 08-15); staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz, teslim/kapsül/push üretmez.
+name: seans-kapanis
+description: Carvis'in JARVIS vardiya-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açık oturumda BU ritüel — staj işareti değildir), "kapat", "bitiriyorum", "vardiyayı kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir (V11). Kapanış selamı zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR (emekli tetikler: `core/baglam-anahtar-kaydi.md`). Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum — ayrım klasörle, Salih 08-15); staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz, teslim/kapsül/push üretmez.
 ---
 
-# Vardiya kapanışı (Carvis, v0.2-deneysel-m29 — staj kapısı, 2026-08-12)
+# Seans bitimi — vardiya kapanışı (Carvis, v0.3-deneysel-m29 — ad: vardiya-kapanis → seans-kapanis + uyucam-sınıfı tetik emekliliği [Salih Katman-1 08-15]; v0.2: staj kapısı 08-12)
 
 ## 0. STAJ KAPISI (önce bu)
 Oturum STAJ KLASÖRÜNDEN açıldıysa ∨ beyan AÇIKÇA staj bağlamındaysa → BU RİTÜEL KOŞULMAZ. **AYRIM KLASÖRLE yapılır (Salih 08-15): "seans bitimi" cümlesi tek başına staj işareti DEĞİLDİR — jarvis oturumunda jarvis kapanışıdır.** ZAMAN-KAYMASI FRENİ: kapanış sözünden gece/gündüz çıkarımı yapılmaz; zaman yalnız sistem kaynağından. Staj oturumu jarvis kanonuna YAZMAZ (md.49); kapanışı staj klasörünün kendi ritüeli (günlük toparlama + yerel checkpoint) yapar. Tek cümleyle beyan et, staj kapanışına geç.

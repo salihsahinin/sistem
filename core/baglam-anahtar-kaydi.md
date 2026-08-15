@@ -20,18 +20,47 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
 ```json
 {
   "sema": "anahtar-kaydi-v1",
-  "guncelleme": "2026-08-15",
+  "guncelleme": "2026-08-15 (seans-3 devam: uyucam sınıfı + skill rename çifti emekli)",
   "anahtarlar": [
     {
       "anahtar_id": "oturum-acilis-tetigi",
       "tur": "tetik",
-      "guncel": {"deger": "seans başı", "gecerli_bas": "2026-08-15", "kaynak": "Salih Katman-1 08-15 (7d349b5) + seans-3 emri (bağ tüm hafızadan)"},
+      "guncel": {
+        "deger": "seans başı",
+        "gecerli_bas": "2026-08-15",
+        "kaynak": "Salih Katman-1 08-15 (7d349b5) + seans-3 emri (bağ tüm hafızadan)"
+      },
       "emekli": [
-        {"deger": "günaydın", "varyantlar": ["gunaydin", "günaydın carvis", "günaydın jarvis", "günaydın jarvis geliştirme", "günaydın staj", "günaydın, prototip", "günaydın, portrisk", "günaydın vardiya"],
-         "tarih": "2026-08-15", "gerekce": "zaman-kayması: selamlama zaman işareti sanılıyor; tetik oturum-sınırı işaretidir (Salih 08-15). Kalıntı bağ = tip-c anlam kayması riski (rapor-6 A-YT2/B-YT6).",
-         "replaced_by": "seans başı",
-         "izinli_kaliplar": ["günaydın vardiyası", "günaydın vardiyasi", "\\bgunaydin-vardiya\\b", "\\d\\d-\\d\\d günaydın", "ikinci günaydın", "günaydın\\)", "anahtar_terim", "emekli", "kelimesinin skille", "\\bkaç dosyada\\b", "günaydın 1\\d\\d dosya"],
-         "kaldirma_en_erken": "vardiya+3"}
+        {
+          "deger": "günaydın",
+          "varyantlar": [
+            "gunaydin",
+            "günaydın carvis",
+            "günaydın jarvis",
+            "günaydın jarvis geliştirme",
+            "günaydın staj",
+            "günaydın, prototip",
+            "günaydın, portrisk",
+            "günaydın vardiya"
+          ],
+          "tarih": "2026-08-15",
+          "gerekce": "zaman-kayması: selamlama zaman işareti sanılıyor; tetik oturum-sınırı işaretidir (Salih 08-15). Kalıntı bağ = tip-c anlam kayması riski (rapor-6 A-YT2/B-YT6).",
+          "replaced_by": "seans başı",
+          "izinli_kaliplar": [
+            "günaydın vardiyası",
+            "günaydın vardiyasi",
+            "\\bgunaydin-vardiya\\b",
+            "\\d\\d-\\d\\d günaydın",
+            "ikinci günaydın",
+            "günaydın\\)",
+            "anahtar_terim",
+            "emekli",
+            "kelimesinin skille",
+            "\\bkaç dosyada\\b",
+            "günaydın 1\\d\\d dosya"
+          ],
+          "kaldirma_en_erken": "vardiya+3"
+        }
       ],
       "aday": [],
       "not": "İlk koşum vakası. izinli_kaliplar: tüzükteki imza-damgaları ('… günaydın vardiyası') tarihçedir, yeniden yazılmaz; skill klasör adı ayrı anahtar (skill:gunaydin-vardiya)."
@@ -39,42 +68,132 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
     {
       "anahtar_id": "oturum-kapanis-tetigi",
       "tur": "tetik",
-      "guncel": {"deger": "seans bitimi", "gecerli_bas": "2026-08-15", "kaynak": "Salih Katman-1 08-15 (7d349b5)"},
-      "emekli": [],
-      "aday": [
-        {"deger": "uyucam", "varyantlar": ["uyuyacağım", "günü kapat", "bugünlük bu kadar", "end of day"], "gerekce": "aynı sınıf: zaman/gece işareti taşıyan kapanış selamları — Salih kararı bekliyor (SH-10 sorusu)", "replaced_by": "seans bitimi"}
+      "guncel": {
+        "deger": "seans bitimi",
+        "gecerli_bas": "2026-08-15",
+        "kaynak": "Salih Katman-1 08-15 (7d349b5)"
+      },
+      "emekli": [
+        {
+          "deger": "uyucam",
+          "varyantlar": [
+            "uyuyacağım",
+            "uyuyacagim",
+            "günü kapat",
+            "bugünlük bu kadar",
+            "end of day",
+            "iyi geceler"
+          ],
+          "tarih": "2026-08-15",
+          "gerekce": "zaman-kayması simetrisi: kapanış selamı gece işareti sanılıyor (Salih Katman-1 hükmü 08-15 seans-3 soru-cevap; açılıştaki günaydın emekliliğiyle aynı sınıf).",
+          "replaced_by": "seans bitimi",
+          "izinli_kaliplar": [
+            "\"uyucam\" tetiği",
+            "uyucam tetiği",
+            "emekli",
+            "aday"
+          ],
+          "kaldirma_en_erken": "vardiya+3"
+        }
       ],
-      "not": "\"kapat\", \"bitiriyorum\", \"vardiyayı kapat\" zaman işareti taşımaz — aday değil."
+      "aday": [],
+      "not": "\"kapat\", \"bitiriyorum\", \"vardiyayı kapat\" zaman işareti taşımaz — tetik olarak KALDI (Salih 08-15)."
     },
     {
       "anahtar_id": "skill:gunaydin-vardiya",
       "tur": "skill_adi",
-      "guncel": {"deger": "gunaydin-vardiya", "gecerli_bas": "2026-07-19", "kaynak": "ritüel skill'ler repoya (masa 08-01)"},
-      "emekli": [],
-      "aday": [
-        {"deger": "gunaydin-vardiya", "gerekce": "ad emekli tetiği taşıyor (tip-c kalıntı); öneri seans-acilis (staj-acilis ile simetrik) — Katman-1, Salih", "replaced_by": "seans-acilis"}
+      "guncel": {
+        "deger": "seans-acilis",
+        "gecerli_bas": "2026-08-15",
+        "kaynak": "Salih Katman-1 08-15 seans-3 soru-cevap (rename çifti; staj-acilis simetrisi)"
+      },
+      "emekli": [
+        {
+          "deger": "gunaydin-vardiya",
+          "varyantlar": [],
+          "tarih": "2026-08-15",
+          "gerekce": "skill adı emekli tetiği taşıyordu (tip-c kalıntı: ad eski anlamı canlı tutar).",
+          "replaced_by": "seans-acilis",
+          "izinli_kaliplar": [
+            "gunaydin-vardiya v0\\.",
+            "gunaydin-vardiya → seans-acilis",
+            "gunaydin-vardiya→seans-acilis",
+            "emekli",
+            "rename"
+          ],
+          "kaldirma_en_erken": "vardiya+3"
+        }
       ],
-      "not": "Rename = klasör + description + evals + bulut kopyası + tüm skill_adi referansları (veri/baglam.sqlite: referans.ref_turu='skill_adi')."
+      "aday": [],
+      "not": "anahtar_id ad-türevi doğdu (v1 doğum hatası — \"anahtar akıllı olmamalı\" dersinin kendi üstümüzdeki örneği); id KALICI tutuldu, yalnız DEĞER değişti. Rename cascade: klasör (git mv, Salih eliyle — pretool teli) + name: + description + evals + çapraz-referanslar + bulut-kopya borcu."
     },
     {
       "anahtar_id": "skill:vardiya-kapanis",
       "tur": "skill_adi",
-      "guncel": {"deger": "vardiya-kapanis", "gecerli_bas": "2026-07-19", "kaynak": "ritüel skill'ler repoya"},
-      "emekli": [],
-      "aday": [
-        {"deger": "vardiya-kapanis", "gerekce": "simetri: açılış yeniden adlanırsa kapanış da (seans-kapanis) — Salih", "replaced_by": "seans-kapanis"}
+      "guncel": {
+        "deger": "seans-kapanis",
+        "gecerli_bas": "2026-08-15",
+        "kaynak": "Salih Katman-1 08-15 seans-3 soru-cevap (rename çifti)"
+      },
+      "emekli": [
+        {
+          "deger": "vardiya-kapanis",
+          "varyantlar": [],
+          "tarih": "2026-08-15",
+          "gerekce": "açılış skill'iyle ad simetrisi (Salih hükmü: ikisi birden).",
+          "replaced_by": "seans-kapanis",
+          "izinli_kaliplar": [
+            "vardiya-kapanis v0\\.",
+            "vardiya-kapanis → seans-kapanis",
+            "vardiya-kapanis→seans-kapanis",
+            "emekli",
+            "rename"
+          ],
+          "kaldirma_en_erken": "vardiya+3"
+        }
       ],
-      "not": "Ad kendisi zaman işareti taşımıyor; yalnız simetri kararı."
+      "aday": [],
+      "not": "id KALICI (ad-türevi doğum notu skill:gunaydin-vardiya kaydında)."
     },
     {
       "anahtar_id": "ana-sira-yuzeyi",
       "tur": "yuzey",
-      "guncel": {"deger": "terminal ana-sıra", "gecerli_bas": "2026-08-12", "kaynak": "Salih Katman-1 08-12; m.41 geçiş kaydı 08-14"},
+      "guncel": {
+        "deger": "terminal ana-sıra",
+        "gecerli_bas": "2026-08-12",
+        "kaynak": "Salih Katman-1 08-12; m.41 geçiş kaydı 08-14"
+      },
       "emekli": [
-        {"deger": "Cowork", "varyantlar": ["cowork ana-sıra", "ana-sıra(cowork)", "cowork'ün", "cowork oturumu"],
-         "tarih": "2026-08-12", "gerekce": "Cowork emekli (kapsül 08-15); ana-sıra terminal", "replaced_by": "terminal ana-sıra",
-         "izinli_kaliplar": ["cowork emekli", "cowork-sonrası", "cowork homebase", "pc cowork", "mac cowork", "cowork,", "cowork\\)", "cowork\\s+\\d\\d-\\d\\d", "\\(cowork", "cowork/", "/cowork", "cowork ve ", "chat-kapsulu", "imzasi \\d{4}-\\d{2}-\\d{2}, cowork", "cowork gunaydin vardiyasi"],
-         "kaldirma_en_erken": "vardiya+3"}
+        {
+          "deger": "Cowork",
+          "varyantlar": [
+            "cowork ana-sıra",
+            "ana-sıra(cowork)",
+            "cowork'ün",
+            "cowork oturumu"
+          ],
+          "tarih": "2026-08-12",
+          "gerekce": "Cowork emekli (kapsül 08-15); ana-sıra terminal",
+          "replaced_by": "terminal ana-sıra",
+          "izinli_kaliplar": [
+            "cowork emekli",
+            "cowork-sonrası",
+            "cowork homebase",
+            "pc cowork",
+            "mac cowork",
+            "cowork,",
+            "cowork\\)",
+            "cowork\\s+\\d\\d-\\d\\d",
+            "\\(cowork",
+            "cowork/",
+            "/cowork",
+            "cowork ve ",
+            "chat-kapsulu",
+            "imzasi \\d{4}-\\d{2}-\\d{2}, cowork",
+            "cowork gunaydin vardiyasi"
+          ],
+          "kaldirma_en_erken": "vardiya+3"
+        }
       ],
       "aday": [],
       "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli."
