@@ -66,3 +66,10 @@ Türler: `tuzuk_madde` (`m.N`/`md.N` ayrı; harf eki korunur: `m.40b`) · `v_no`
 
 ## Şema evrimi (öneri; additive)
 `kayit.baslik_seviye` · `referans.baglam` (±40 karakter pencere) · `anahtar.durum` değerleri {gozlenen, aktif, deprecated} + `replaced_by` (SH-9) · `dosya_pointer` için `yol_bicimi` alanının tabloya inmesi · `json_kayit`'ta boş kap satırı (`deger_tipi=bos`) · terim listesi `veri/anahtar-terimler.json` dış dosyasına (koda gömülü liste yerine).
+
+## Katmanlar (veri-mühendisliği katmanı v1 — 2026-08-16, deneysel m.29; kanon `core/veri-muhendisligi-katmani.md`)
+Katman = KOŞUL, ad değil (yüklemler kanon §2). **BRONZ** = git-izlenen md/jsonl/json + koşum kütükleri (provenans = commit) · **SİLVER** = bu klasördeki `baglam.sqlite` tabloları (1:1 grain, tipli, tekil, agrege-olmayan, türetilmiş — iki damga: kod SHA + `uretim.git_head_sha`) · **GOLD** = `gorunum/*.csv` + `v_*` görünümler (her metrik tek yerde; agregasyon yalnız burada).
+- `sozlesme/<tablo>.json` — şekil sözleşmeleri (kolon+tip; additive-only; kırıcı = silme/tip/kısıt/yeniden-ad). Üretim: `python3 tools/katman-olcum.py --sozlesme-yaz` (yalnız ilk kurulum/sürüm artışında).
+- `katman-olcum.jsonl` — APPEND-ONLY ölçüm kütüğü (grain: 1 satır = 1 ölçüm olgusu: volume · oran silver/bronz, gold/bronz · veri-testi · sözleşme preflight · freshness). Üretim: `python3 tools/katman-olcum.py` (çıkış 3 test-error · 4 kırıcı sözleşme · 5 freshness-error). Oran-eşiği k=3 koşumdan sonra önerilir. İlk koşum 08-16: bronz 466/9,5 MB · silver 44,0 MB (kayit.metin 8,2 MB) · gold 11/2,91 MB · silver/bronz 4,64×.
+- `yetkinlik-haritasi.jsonl` — öğrenme-değeri conformed boyutu (DEA-C01 domain'leri; kalem etiketi kavram/beceri ↔ servis-adlı; domain-% hesaplanmaz) · `de-pratik.jsonl` — pratik birimi olgu tablosu (geri-bildirim sinyalsiz birim sayılmaz).
+- Sıra: `baglam-tablo.py` → `karar-borcu-tablo.py` → `katman-olcum.py` (silver freshness WARN veriyorsa önce ilk ikisi yeniden koşulur).

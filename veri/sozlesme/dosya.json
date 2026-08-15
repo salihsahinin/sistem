@@ -1,0 +1,87 @@
+{
+ "tablo": "dosya",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "-",
+ "kolonlar": [
+  {
+   "ad": "dosya_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": true
+  },
+  {
+   "ad": "dizin",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "katman",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "tur",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "boyut_bytes",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "satir_sayisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "blob_sha",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ilk_commit",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "son_commit",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "baslik",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "token_kestirim",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "uzanti",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "okunabildi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+}

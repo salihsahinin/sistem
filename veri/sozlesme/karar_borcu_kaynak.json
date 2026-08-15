@@ -1,0 +1,57 @@
+{
+ "tablo": "karar_borcu_kaynak",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "-",
+ "kolonlar": [
+  {
+   "ad": "borc_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "sira",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "dosya_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "satir",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "satir_metin",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "dosya_var",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "satir_var",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kayit_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+}

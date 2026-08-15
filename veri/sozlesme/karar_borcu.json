@@ -1,0 +1,129 @@
+{
+ "tablo": "karar_borcu",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "-",
+ "kolonlar": [
+  {
+   "ad": "borc_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": true
+  },
+  {
+   "ad": "baslik",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kume",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "tur",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "katman",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "karar_sahibi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "durum",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kayit_tarihi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "yas_gun",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "secenekler",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "oneri",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "bagimlilik",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kapanis_kaniti",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "masa_sirasi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "yururluk_aninda",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "icra_borcu",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "not_",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kaynak_sayisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "snapshot_tarih",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "snapshot_sha",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+}

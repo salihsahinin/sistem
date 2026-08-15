@@ -1,0 +1,81 @@
+{
+ "tablo": "anahtar",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "-",
+ "kolonlar": [
+  {
+   "ad": "anahtar_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": true
+  },
+  {
+   "ad": "tur",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "deger",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kaynak_dosya",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "durum",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "replaced_by",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "gecerli_bas",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "gecerli_bitis",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "referans_sayisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "sicak_referans_sayisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ilk_gorulme",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "son_gorulme",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+}

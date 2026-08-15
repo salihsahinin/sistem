@@ -37,3 +37,8 @@
 | 08-15 | 8 kutu adayı (V25/V34/V61/DbC-PBT/find-skills/desc-eval/ölçüm-aracı/S-F+S-H) | 3 RET-0 (görev/kural/kapsanmış) | 4 BEKLET (k_W=0, Z2 yok) | — | — | üretim yok | aynı rapor §3 |
 
 | 08-16 | yol-planla (Hat-5 SH-8) | ✓ Y1(W-1 iskele tutarsızlığı 16→12→8 + onarım-dalı tanımsızdı)+Y3 · kısmî kapsama not: evrim(gorev-emri-derleme şablon-alanı) | Z2 (Salih Hat-5 emri) | ✓ script R 5/5 · İ: 4 iddia → 3 TUTUYOR + 1 DARALT (ToT-eşit-bütçe model-bağımlı: GPT-4+Game-of-24'te fark korunur, zayıf modelde tersine — arXiv 2406.06461; gövde sayısız, kural etkilenmedi) · ¬P yapısal ✓ | ✓ 13/13 + F1e ŞERH: hazine 8840→7962 char (5+4 desc sıkıştırıldı, tetik yüzeyi korundu); 7200 deneysel-sabit aşımı sürüyor — tetik-yüzeyi aşındırmadan kapanmıyor, m.29 kalibrasyon kalemi | **ÜRET-Ü × yeni** · ⟨Salih-beyanı/emir-öncesi · ana-döngü · yan-etki yok · B1 (script'e iniş 10-koşumda) · yukarıdan⟩ | kanıt: cc/rapor-2026-08-15-5.md; şekil-tahmini T-O → FIRST'le T-Ü düzeltildi; sözlük Skill Hazinesi girişi DONDU-şerhiyle atlandı (Salih talimatı bekler) |
+
+## yol-planla ölçüm satırları (skill v0.1 gotcha 'ölçüm borcu'; 10 koşumda kalibrasyon)
+| tarih | koşum | plan (tahmin) | gerçek | onarım | not |
+|---|---|---|---|---|---|
+| 08-16 | veri-mühendisliği katmanı pipeline (S-1 fan-2 → G-1 → SH-1 zincir) | N0→N1 ~25 dk · işçi tavan 600k · onarım tavanı 1 resume | N0→N1 21,7 dk · 382k · onarım 0 · N1→N4 tek yürütücü ~55 dk [?] | tetiklenmedi | ilk gerçek koşum; makespan dili paralel bölümde, yol-maliyeti seri bölümde; h() yok beyanı tutuldu |

@@ -1,0 +1,51 @@
+{
+ "tablo": "referans",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "-",
+ "kolonlar": [
+  {
+   "ad": "kayit_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ref_turu",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ref_deger",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ham",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "konum",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "hedef_var",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "hedef_yol",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+}
