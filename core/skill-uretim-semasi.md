@@ -1,0 +1,103 @@
+# Skill-Üretim Şeması v1 — Kapı-Ağacı (hallucination-freni) · AKTİF: Salih emri 2026-08-15
+
+*Salih'in tasarımı ("kökten dallara akan boolean ağaç; her düğüm matematiksel-anlamlı koşul; en alt dala ulaşan aday skill olur; yol = tür") araştırma-sınanmış hâli. Kanıt: `cc/rapor-2026-08-15-1.md` (m.40b tam şerit: 4 aile × tez→CoVe-Factored antitez→V26→maskeli hakem, 16 işçi; 39 SAĞLAM · 54 DARALDI · 1 DÜŞTÜ · 0 ÇELİŞKİLİ). Tüm sayısal eşikler DENEYSEL m.29 (kör-nokta: kapı-ağacı ↔ LLM-skill için ölçülmüş çalışma YOK; sayılar klinik/JIT/tezaurus/checklist alanlarından TRANSFERdir — üst-sınır olarak alınır, ölçümle kalibre edilir). Koşum skill'i: `.claude/skills/skill-kapisi/` · graf kaynağı: `core/skill-uretim-semasi.d2` (D2 — Salih 08-15: graflar D2 ile; render türev artefakt `raporlar/2026-08-15-skill-uretim-semasi.svg`) · deterministik denetim: `.claude/skills/skill-kapisi/scripts/kapi-denetim.py`.*
+
+## 0. Beş tasarım ilkesi (kanıttan)
+1. **Yapı = ağaç-yürüyüşü + faset-demeti.** Kabul yürüyüşü TEK yol (hit-policy UNIQUE — bir aday tek yaprağa düşer; iki şekle birden uyuyorsa BÖL = tek-sorumluluk kuralı, DMN UNIQUE ihlali). Tür = yol (birincil şekil) + yürüyüşte toplanan fasetler (COLLECT: tetikleyici · yürütme-yeri · yan-etki · basamak · köken). Formalizm çoklu-ebeveyne izin verir (attack-tree = rooted DAG; SKOS polihiyerarşi) — tek-ebeveyn kilidi BİZİM eklediğimiz aksiyomdur, açıkça yazılır; döngü YASAK. [A-YT1, A-YT3, D-YT6]
+2. **Katman sayısı kanıtla değil AMAÇLA savunulur.** Saf AND/OR ağacında derinlik kabul-kümesini değiştirmez (Mauw&Oostdijk Thm 1-2, FTA→DNF); bizim ağaç faset (öznitelik) de ürettiği için derinlik SABİTLENİR: 4 kapı katmanı + yaprak (ESI v5: 4 karar noktası/5 yaprak; Stage-Gate tipik 5, riske ölçekli). Katman-başına düğüm ≤5 (kanon dal-bütçesi; checklist artefaktı <10 üst sınır); toplam kapı kalemi ≤19 (WHO checklist analoğu). Bir düğümün ya 0 ya ≥2 çocuğu vardır (tek-çocuklu katman = dejenere kapı). Cowan ~4 / Miller 7±2 bu şemaya TAŞINMAZ. [A-YT2, A-YT5, D-YT8]
+3. **Sıra: ucuz+çok-eleyen önce; öncelik-kısıtı rank'i ezer.** Bağımsız kapılarda beklenen-maliyet-minimum sırası c_i/(1−p_i) artan (Teorem, ≡ DB rank kuralı). Öncelik kısıtı: GEREK/çözülebilirlik → DEĞER → (inşa) → TOPRAKLAMA → BİÇİM (Voyager ablasyonu: görev-seçimi −%93 > doğrulama −%73; artefakt yokken doğrulama yapılamaz). Erken çıkış her katmanda (ESI). [A-YT6, A-YT7, A-YT8, C-YT4]
+4. **Tekrar ≠ doğrulama; kapı prompt'la kurulmaz.** Aynı-model tekrar geçerlilik kanıtı değildir (halüsinasyonların %43'ü 10/10 yeniden üretilir) → tekrar sayacı yalnız ADAY-TETİKLEYİCİ (m.43 ile uyumlu: aday ≠ üretim). "Uydurma" talimatı ölçülür etki vermez (−2,7/−1,1 puan), öz-gözden-geçirme prompt'u akıl-yürütmeyi DÜŞÜRÜR (GSM8K 95,5→89,0) → her kapı YAPISAL dış sinyale bağlanır (script/kaynak-denetimi/eval/dış-kayıt); üretici ≠ doğrulayıcı; doğrulayıcıya iddia verilir gerekçe verilmez (CoVe-Factored). Aynı katmandaki kapılar FARKLI hata sınıfına bakar (korelasyonlu kapılar ∏-formülünü sahte-güvenliğe çevirir). Her kapı bedel-defteri taşır (yanlış-negatif bedeli — CoVe doğru varlıkların %36'sını da eler). [C-YT1..3, C-YT7, C-YT8]
+5. **Sabit n yok; eşik = beyan edilmiş (τ, önsel) ∨ ardışık test; sayaç pencereli; değer = tekrar × iş-boyutu.** N=3'ün matematiksel içeriği yoktur (Fowler/Roberts konvansiyonu; ampirik dayanak 0). Türetim: Laplace P(tekrar|k)=(k+1)/(k+2) ≥ τ ⇒ k ≥ (2τ−1)/(1−τ); **τ=0,8 (uniform önsel) ⇒ k=3** — m.43'ün N=3'ü bu beyanla anlam kazanır (Jeffreys önselinde k=2). Sayaç ömür-boyu toplam değil son-W-pencere (PyPy decay, TinyLFU reset); eşik çıplak sayı değil bütçe: n×Δ ≥ C_inşa (V8 bütçe = katsayı × bytecode_length; XKCD 1205 = Δ×sıklık×ufuk; xkcd 1319 bakım payı). iid varsayımı şerhli (ajan tekrarları bağımsız değil → τ üst-sınır/sezgi düzeyinde). [B-YT2, B-YT3, B-YT6, B-YT7]
+
+## 1. Ağaç (özet — makine-okur kaynak: `core/skill-uretim-semasi.d2`)
+```
+K0 GEREK ──hayır──▶ RET-0 (aday değil)
+  │evet
+K1 DEĞER (Z1 ∨ Z2) ──hayır──▶ BEKLET (kutu; sayaç işler; zayıf-yeni → Z2 = Salih onayı)
+  │evet
+[İNŞA — eval-önce: ≥3 eval → baseline → minimal gövde]
+  │
+K2 TOPRAKLAMA (R ∧ İ ∧ ¬P) ──hayır──▶ ONAR-2 (eksik liste; ≤3 tur, sonra BEKLET)
+  │evet
+K3 BİÇİM+TÜR (şekil FIRST: T-R > T-O > T-Y > T-Ü; F1..F5 ∧ tür-özel) ──hayır──▶ ONAR-3
+  │evet
+YAPRAK: ÜRET-{R|O|Y|Ü} × {yeni|evrim}  →  BAKIM (ağaç-dışı düzeltme kapısı)
+```
+Sayım: 4 kapı katmanı · kapı düğümü 1+2+3+4=10 · yaprak 4 · terminal 3 (RET/BEKLET/ONAR) · toplam kalem 17 ≤ 19 · her katman ≤5 düğüm ✓.
+
+## 2. Düğüm sözlüğü (a = aday; H = hazine; her koşul boolean, m.38 bağlaçları)
+
+### K0 — GEREK (kök; eleme kapısı; AND-üstü-OR; ucuz + yüksek-ret)
+`K0 := ¬kapsanmış(a,H) ∧ (Y1 ∨ Y2 ∨ Y3)`
+- `kapsanmış(a,H) := ∃ s∈H: tetik(s) ⊇ tetik(a) ∧ çıktı(s) ⊇ çıktı(a)` — tam kapsama → RET-0 (NOOP: S-F örneği); **kısmî** kapsama (tetik ⊇ ∧ çıktı ⊉) → aday devam eder ama yaprak = **EVRİM(s)** (yeni skill değil sürüm; AWM eylem-dizisiyle tekilleştirme).
+- `Y1 baseline-boşluk := skill'siz koşumda DRFR'de ≥1 koşul karşılanmadı ∨ 2 bağımsız koşumda çıktı tutarsız` — "Claude'un tek başına kolayca yapamadığı iş" (Anthropic skill-creator; ölçüm değil doküman-otoritesi) → eval-önce adım 1'in kendisi. [B-YT1]
+- `Y2 kanon-kuralı := ∃ kural∈kanon: gerekli(a,kural) ∧ kural∈LAZY` — iş, sıcak bağlamda olmayan bir kural/pointer setini taşımayı gerektiriyor.
+- `Y3 araç-zinciri := |adım(a)| ≥ 3 ∧ sıra sabit` — 3-soru kapısında ≥2 evet (adım tahmin edilebilir · sabit yol) → B3/B4 adayı.
+- Hayır → **RET-0** (kutuya girmez; tek-adımlı sorgu için skill yok — "n ne olursa olsun").
+
+### K1 — DEĞER (sayım kapısı; OR — Salih'in "Y ∨ Z" katmanı; m.43'ün iki paralel hattı)
+`K1 := Z1 ∨ Z2`
+- **Z1 aşağıdan-veri:** `k_W ≥ k_τ ∧ (Δ̂ bilinmiyor ∨ k_W·Δ̂ ≥ (1+β)·C_inşa)`
+  - `k_W` = son W penceredeki tekrar sayısı (oturumlar-arası; özdeş tekrar ve **farklı-bağlam varyantı AYRI sayılır** — varyant sayısı düşükse yaprak "dar-şablon", yüksekse "genel-yetenek" [B-YT7]).
+  - `k_τ = ⌈(2τ−1)/(1−τ)⌉`; **τ = 0,8 → k_τ = 3** (uniform önsel; m.43 N=3 türetimi). W = 90 gün [? deneysel; PyPy decay/TinyLFU reset ilkesi, değer kalibre edilecek]. β = 0,25 bakım payı [? deneysel; xkcd 1319 ilkesi]. Δ̂ = kullanım-başına tasarruf (token+dk; skill-creator with/without çifti; skill-BAŞINA ölçülür, evrensel değer yok [B-YT8]) — inşa öncesi bilinmiyorsa kapı geçer, BAKIM'da ilk pencerede ölçülür.
+- **Z2 yukarıdan-ihtiyaç:** `Katman-1 emir(a)` (Salih beyanı) → bütçe atlanır; **K2/K3 ATLANMAZ** (topraklama ve biçim her zaman).
+- Hayır → **BEKLET**: kutu satırı + sayaç (`kuyruk/skill-fikir-kutusu.md` m.43 sayaçları); zayıf-yeni aday (k_W<k_τ) yalnız Z2 yoluyla geçer = kanondaki "Salih onayı" hükmü.
+
+### [İNŞA] — eval-önce (K-016): ≥3 eval yaz → skill'siz baseline → eval'i geçen MİNİMAL gövde → K2'ye gir. (Artefaktsız topraklama yapılamaz — sıra sözleşmedir.)
+
+### K2 — TOPRAKLAMA (eleme kapısı; AND; hallucination-freni — yapısal dış sinyal)
+`K2 := R ∧ İ ∧ ¬P`
+- **R referans-varlığı (deterministik, B4 script):** `∀ r∈ref(a): var(r)` — gövde+description'daki her dosya yolu / tüzük maddesi (m.NN) / skill adı / araç-komut yetkili kayıtta VAR (repo · tüzük indeksi · hazine listesi · `which`). Kök halüsinasyon kapısı: dış-kayıt kontrolü; çapraz-model uzlaşı ya da tekrar İKAME DEĞİL (5 sınır modelin ortak uydurduğu 127 paket). [C-YT1]
+- **İ iddia-topraklama (bağımsız doğrulayıcı, CoVe-Factored):** `∀ c∈iddia_sayısal(a) ∪ örneklem(iddia(a), n_val): kaynak(c)∈kanon∪URL ∧ doğrulayıcı(c)=TUTUYOR` — doğrulayıcı ≠ üretici; yalnız İDDİA verilir; n_val = min(|iddia|, max(3, ⌈|iddia|/2⌉)) [? deneysel; literatürde n=3 "yetersiz belgeli"]. TUTMUYOR → o iddia K/X'e ya da çıkar. [C-YT5, C-YT6c]
+- **¬P prompt-kapısı yasağı:** `kapı(a) ⊆ {script, kaynak-denetimi, eval, dış-kayıt}` — skill'in kendi kalite-kontrolü yalnız "dikkatli ol / uydurma" talimatından ibaretse kapı SAYILMAZ (etkisiz ölçüldü). [C-YT3]
+- Hayır → **ONAR-2** (mekanik eksik-referans/iddia listesi ile geri; ≤3 tur, sonra BEKLET). Onarım = ayrı düğüm (yürütülebilir hata + güçlü model koşuluyla kazandırır — CREATOR), eleme değil.
+
+### K3 — BİÇİM + TÜR (çatal + eleme; FIRST hit-policy şekil için, AND biçim için)
+**Şekil (FIRST, sıra bildirilmiş: T-R > T-O > T-Y > T-Ü — ilk tutan birincil tür; ikinciller faset olarak COLLECT):**
+- `T-R RİTÜEL := tetik(a) ∈ {oturum-sınırı, olay(SessionStart/Stop/…)}`
+- `T-O ORKESTRATÖR := çağırır(a) ≥2 skill ∨ ≥1 alt-ajan/pipeline`
+- `T-Y YAN-ETKİLİ := ∃ adım: yazar(kanon: core/·CLAUDE.md·.claude/·tüzük·defter) ∨ commit ∨ push ∨ publish ∨ mesaj-gönder`
+- `T-Ü ÜRETİCİ := aksi` (rapor/öneri/çeviri/karar-taslağı; cc/·raporlar/·scratchpad yazımı yan-etki sayılmaz)
+- İki şekil "birincil" iddiasında eşit ağırlıkta → UNIQUE ihlali → **BÖL**.
+
+**Ortak biçim koşulları (AND; deterministik script F1-F4, F5 hakem):**
+- `F1 description := NE + NE-ZAMAN + NEGATİF-TETİK ("KULLANILMAZ/KULLANMA") ∧ 3.şahıs ∧ len ≤ 1024 char` (kanon 07-17; platform kesme 1536 char/skill, CC docs 08-2026) **∧ Σ_H len(desc) ≤ 0,9 × liste-bütçesi** (%1 bağlam ≈ 2.000 token @200k ≈ 6-8k char [? Türkçe token oranı] — aşımda platform en az çağrılanın description'ını SESSİZCE düşürür = kaçırılan-tetik mekanizması; yeni skill sığmıyorsa hazine kısaltılır ya da `/context` ile bütçe ölçülüp ayar yükseltilir). [D-YT2]
+- `F2 gövde < 500 satır ∧ referans ≤1 seviye derin`
+- `F3 evals/evals.json: tests ≥ 3 ∧ should_trigger ≥ 5 ∧ should_not_trigger ≥ 5` (eval-önce; tam description-eval 20×3 = K-016 borcu, kapı değil)
+- `F4 numaralı adımlar ∧ "Gotchas" bölümü var` (en yüksek-sinyal bölüm)
+- `F5 tek sorumluluk` (şekil UNIQUE'ten türer; description'daki yetenekler tek aileden — hakem)
+
+**Tür-özel koşullar (birincil şekle ∧ COLLECT edilen fasetlere göre):**
+- T-Y birincil → `disable-model-invocation: true` ZORUNLU ∧ yan-etki adımı script/plan-validate-execute ∧ m.31 kapısı yazılı. [D-YT3]
+- T-R/T-O birincil ∧ yan-etki faseti → yan-etki adımı Salih-beyanına bağlı (özel tetik cümlesi) ∧ m.31 kapısı yazılı (elle-flag zorunlu değil — ritüel UX; doküman "tavsiye").
+- T-O → paralellik-uygunluk sorusu gövdede ∧ handoff kontratı (dosya/format) ∧ yürütme-yeri (ana/fork/arka-plan) yazılı. Zincir sınırı için platform tavanı YOK (1+5 = kullanıcı-yığması); kanon "~3-4 skill" [A] → düşürüldü.
+- T-R → zaman-kayması freni ∧ klasör-ayrımı ∧ staj negatif-tetiği.
+- T-Ü → "commit yapmaz" beyanı ∧ çıktı disiplini (D/K/X ∨ ingest zarfı).
+- Hayır → **ONAR-3** (mekanik eksik-alan listesi).
+
+### YAPRAKLAR (kabul + tür): `ÜRET-R | ÜRET-O | ÜRET-Y | ÜRET-Ü` × `{yeni | evrim(s)}` + faset-demeti `⟨tetikleyici: kullanıcı-yalnız|model+kullanıcı|olay · yürütme: ana|fork|arka-plan · yan-etki: var|yok · basamak: B2|B3|B4 · köken: aşağıdan|yukarıdan⟩`. Yaprak = kutu satırı "ÜRETİLDİ" + sözlük Skill Hazinesi girişi + tür-demeti (ileride çağrı-grafı düğümü).
+
+### BAKIM (ağaç-dışı DÜZELTME kapısı — ESI "reassess", TroVE budama)
+- Sayaç pencereli: kullanım(son W) < λ, `λ = max(1, ½·log10(N))` (N = pencere içindeki toplam görev; jarvis ölçeğinde λ=1) → **EMEKLİ-ADAY** (arşiv-pointer; m.8 silme yok). İlk pencerede ölçülen k·Δ < (1+β)·C_inşa → EMEKLİ-ADAY.
+- Platform eşikleri sürüm-damgalı yeniden okunur (1536/%1/5.000-25.000 compaction; alt-ajan derinliği 5→1→3 oynadı).
+- Yukarı-düzeltme: BEKLET'teki aday yeni tekrar/emirle K1'e geri girer.
+
+## 3. Bedel-defteri (her kapı için: sinyal türü · yanlış-negatif bedeli · nerede ödenir)
+| Kapı | Sinyal | YN bedeli | Ödendiği yer |
+|---|---|---|---|
+| K0 | baseline koşum + hazine taraması | gerçek ihtiyacın "kolay iş" sanılması | 1 skill'siz koşum (ucuz) |
+| K1 | sayaç + Salih beyanı | değerli-ama-nadir işin beklemesi (Z2 kaçış yolu) | ~0 |
+| K2-R | script | yol/madde adı değişikliğinde yanlış alarm | ~0 (deterministik) |
+| K2-İ | bağımsız doğrulayıcı | doğru iddianın K'ya düşmesi (CoVe: doğru varlıkların %36'sı elendi — bedel BÜYÜK) | 1 alt-ajan çağrısı |
+| K3 | script + hakem | biçim tutuculuğu (iyi ama alışılmadık skill'in onarıma dönmesi) | ~0 |
+En ucuz kapı en zayıf kapı değildir burada — çünkü R/K3 deterministik; ama **maliyet-sıralı kapı seçimi yasak** ilkesi korunur: K2-İ pahalı ve bedelli olsa da atlanamaz.
+
+## 4. m.16 çelişki taraması + şerh-adayları (Katman-1)
+- **m.43 (N=3):** çelişki YOK — N=3 korunur, ama artık türetimlidir (τ=0,8, uniform önsel) ve sayaç PENCERELİ (W=90 gün) + varyant/özdeş ayrımı. **Şerh-adayı:** m.43 metnine "eşik = Laplace τ=0,8 türevi; sayaç son-W; N sabit değil τ'nun fonksiyonu" gerekçesi düşülmeli (metodoloji §5 madde 2'nin devamı).
+- **07-17 standardı ≤1024 char ↔ platform 1536:** çelişki yok (1024 daha sıkı); ama **hazine-toplamı bütçesi YENİ koşul** (F1 ikinci yarısı) — bugün 13 description = 7.172 char ≈ bütçenin %90-120'si [?] → **Salih'e:** `/context` ile ölçüm ∨ ritüel description'larını kısaltma (849/872 char) ∨ ayar yükseltme.
+- **07-17 "~3-4 skill zinciri [A]":** platform sınırı DEĞİL (kullanıcı-yığması 1+5) → şerh düşürüldü; zincir sınırı = bağlam-bütçesi (compaction 5.000/skill, 25.000 toplam).
+- **Yan-etkili → `disable-model-invocation`:** yalnız T-Y BİRİNCİL şekilde zorunlu; ritüel/orkestratörün yan-etki adımı Salih-beyanı kapısıyla yeter (mevcut ritüel UX'iyle uyum). 07-17 §4 kuralı DARALTILDI (doküman "tavsiye" düzeyi).
+- **Antitez borcu:** bu şema tam m.40b şeridiyle koştu (08-14 metodoloji borcunun aksine) — kanonlaşma öncesi antitez borcu YOK; ölçüm borcu VAR (aşağıda).
+
+## 5. Ölçüm planı (deneysel damgayı kaldırmanın yolu)
+Her `skill-kapisi` koşumu `kuyruk/skill-fikir-kutusu.md`'ye tek satır: aday · katman-başına geçti/düştü · tür · süre. 10 koşumdan sonra: (i) hangi kapı en çok eliyor (c/(1−p) sırası doğrulanır), (ii) yanlış-negatif vakaları (sonradan gerekli çıkan RET/BEKLET), (iii) τ/W/β/n_val kalibrasyonu. Kör noktalar tam listesi: rapor "Kör noktalar" bölümleri (45 kalem).
