@@ -16,6 +16,17 @@
 | SH-10 | **ship** | İLK KOŞUM: "günaydın→skill" anahtarı emekliye ayrılır — script koşumu (baseline 104 dosya) → sıcak katman referansları güncellenir/arşiv-pointer'lanır (silme yok) → skill tetik listesi + description → **skill adı kararı (gunaydin-vardiya → ?; Katman-1, Salih)** → tetik should-not-fire eval → bulut ritüel-kopyası borcu kaydı | SH-9 | commit + metrik önce/sonra | KUYRUKTA |
 | T-6 | teslim | Kaptan beyanı | SH-9..10 | DONE | KUYRUKTA |
 
+## Hat V-1 — Bağlam → Veri Tablosu (proje inşası; Salih emri 08-15 seans-3: "tüm contextimizi jsondan da faydalanarak data tablosuna çevirme projesi")
+*Bu tablo S-6 hattının VERİ ALTYAPISI: anahtar/referans/geçerlilik metrikleri buradan sorgulanır (v0 şema deneysel m.29; S-6 sentezinde alanlar additive genişler). Hat-4 (şema-sıkıştırma, seans-2 kuyruğu) için de substrat.*
+
+| # | Şekil | İş | Intake | Teslim | Durum |
+|---|---|---|---|---|---|
+| İ-1 | **ship** (işçi ajan) | `tools/baglam-tablo.py` (stdlib; md → kayıt/referans/anahtar/json_kayit/dosya/uretim tabloları; SQLite + JSONL + gold CSV görünümleri; idempotent) + `veri/README.md` + `.gitignore` | `cc/gorev-2026-08-15-7.md` | dosyalar + işçi özeti | SAHADA |
+| İ-2 | — | Carvis doğrulama: script'i kendim koşarım, sayaçlar + idempotens + kırık-pointer örneklemi (V26 ruhu) → commit | İ-1 | commit | KUYRUKTA |
+| İ-3 | ship | S-6/G-6 sonrası şema v0→v1: `anahtar` tablosu `core/baglam-anahtar-kaydi.md`'den beslenir (durum/replaced_by/geçerlilik); `anahtar-denetim.py` bu tabloyu kullanır | G-6 + İ-2 | commit | KUYRUKTA |
+| T-V1 | teslim | Kaptan beyanı: bağlam tablosu üretilebilir + sorgulanabilir | İ-1..3 | DONE | KUYRUKTA |
+
 ## Olay günlüğü
 - 08-15 20:3x (seans-3) — Manifest açıldı; paralel-oturum tespiti sonrası (vaka-2 kaydı `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md`) bu hat seans-3'e verildi (Salih: "bu chatte konuşmaya devam edeceğim"). Emir numarası 6 (4/5 seans-2 pipeline'ının Hat-4/5'ine ayrılı). Baseline metrik ölçüldü (yukarıda).
 - 08-15 20:4x — Emir `cc/gorev-2026-08-15-6.md` derlendi (gorev-emri-derleme; Kapı-Ö GEÇTİ, skill çağrısı yok). **S-6 SAHADA:** generic `m40b-cift-atlas-generic` script'i (Hat-2/3 ile aynı), seed 20260821, Workflow `wf_50ef1536-f10` (bu oturum `1620e67b`); seans-2'nin `wf_e9c7f897` (Hat-3) koşumuyla paralel — makine 10 çekirdek, workflow başına ~8 eşzamanlı ajan.
+- 08-15 20:5x — Salih ek emri: proje inşası "bağlam → veri tablosu (JSON'dan faydalanarak)" → Hat V-1 açıldı; emir `cc/gorev-2026-08-15-7.md` (ship; şema v0: dosya·kayit·referans·anahtar·json_kayit·uretim + 7 görünüm; Kapı-Ö GEÇTİ). İşçi ajan sahaya (m.44: Carvis tasarım+emir, işçi kod).
