@@ -28,6 +28,9 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)
+- baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).
+- paralel-oturum-protokolu — vaka-1 (port çakışması 08-12) + vaka-2 (emir üstyazımı 08-15) + vaka-3 (çift-koşum 08-16) birleşik: canlı-oturum kapısı + koşum-önü manifest kapısı kural adayları (kuyruk/gelen-*-paralel-oturum-vaka-*.md); Katman-1 imza sonrası yazılır.
+- veri-tablosu (V-1) — bağlam→veri tablosu v0 şeması (dosya/kayit/referans/anahtar/json_kayit + görünümler), idempotens, sorgu örnekleri; kaynak veri/README.md (08-15 kapanış hasadı).
 - ajan-metodolojisi — görev-fonksiyonu + hafıza-manifesti + B1-B4 merdiveni + lider/işçi dörtlüsü; kural core/ajan-metodolojisi.md, anlatım sayfası aday (08-15 kapanış hasadı).
 - gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 vardiya hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
 - loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
