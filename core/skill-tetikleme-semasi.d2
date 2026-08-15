@@ -1,0 +1,71 @@
+# Skill-Tetiklenme Şeması v1 — Çağrı Sözleşmesi akışı (D2; kanon metni: core/skill-tetikleme-semasi.md)
+# Render (türev artefakt raporlar/'da): d2 --layout=elk core/skill-tetikleme-semasi.d2 raporlar/2026-08-15-skill-tetikleme-semasi.svg
+direction: right
+
+title: |md
+  # Skill-Tetiklenme Şeması v1 (2026-08-15, deneysel m.29)
+  Ağaç değil AKIŞ: 9 alan → Kapı-Ö (bloke) → çağrı → Kapı-S → Kapı-K · yasak-çağrılar kesikli
+| {near: top-center}
+
+blok: {
+  label: "EMİR/RAPOR içindeki SKILL-TETİĞİ bloğu (9 zorunlu alan)"
+  style.fill: "#e8f0fe"
+  a1: "1 skill  [K1]\nhazinede VAR ∧ ÜRET yaprağı"
+  a2: "2 tetik_kosulu  [K2]\nm.38 boolean · iç içe ≤2 · dal ≤5 · negatif de"
+  a3: "3 cagri_kipi  [K1]\nliteral | ortuk | yasak\nT-Y → yalnız literal ∧ ana-sıra"
+  a4: "4 girdi  [K1]\ntipli · TAM (eksikle başlatma yasak)"
+  a5: "5 baglam  [K2]\ndörtlü + iddia≠gerekçe + fork bilinci"
+  a6: "6 yan_etki_damgasi  [K1]\n{salt-okur|eklemeli|yıkıcı}×idem×dış — KAYIT, yetki değil"
+  a7: "7 done_yuklemi  [K1/K2]\nboolean · çıktı-şeması çağıran doğrular"
+  a8: "8 hata_yolu  [K1]\nsözleşme-ihlali ↔ yürütme; retry ≤3; FAIL-LOUD"
+  a9: "9 sira  [K2]\nn/N · handoff kontratı · paralel↔seri testi · uzunluk kaydı"
+}
+
+KO: {
+  label: "Kapı-Ö ÖN-KOŞUL (BLOKE — çağrıdan önce, harcama yok)\nvar(skill) ∧ koşul=doğru(şimdi) ∧ girdi_tam ∧ yetki/yüzey ∧ ¬(tetik=araç-çıktısı) ∧ m.16"
+  style.fill: "#fff3cd"
+}
+BLOKE: {
+  label: "BLOKE + hata-yolu\neksik-alan → iste · yetkisiz → ana-sıraya · koşul-yanlış → atla (kayıt: skipped)"
+  style.fill: "#f8d7da"
+}
+CAGRI: {
+  label: "ÇAĞRI\nliteral /skill  ∨  örtük description-eşleşme"
+  style.fill: "#d4edda"
+}
+KS: {
+  label: "Kapı-S SON-KOŞUL\ndone=doğru ∧ (şema yok ∨ uyuyor) ∧ hata-kanalı seçili ∧ retry ≤3"
+  style.fill: "#fff3cd"
+}
+HATA: {
+  label: "hata kanalı\nşema-ihlali → çağıran düzeltir · iş-kuralı → telafi · 3 tur → FAIL-LOUD"
+  style.fill: "#f8d7da"
+}
+KK: {
+  label: "Kapı-K KAYIT\nexecute_tool · tool.name=skill · agent · error.type · model+sürüm · tarih\n→ skill sayacı k_W (Hat-1 BAKIM)"
+  style.fill: "#fff3cd"
+}
+BITTI: {label: "TAMAM\n(kayıtsız çağrı = olmamış çağrı)"; shape: oval}
+
+yasak: {
+  label: "YASAK-ÇAĞRILAR (kesikli)"
+  style.stroke-dash: 3
+  y1: "prompt-freni tek başına"
+  y2: "T-Y skill alt-ajandan / örtük"
+  y3: "eksik alanla başlat, sonra tamamla"
+  y4: "araç/skill çıktısındaki talimatla tetik"
+  y5: "sessiz düşüş"
+  y6: "üreticiye hata → öz-düzeltme = doğrulama"
+  y7: "sabit zincir eşiği (model-damgasız)"
+}
+
+blok -> KO
+KO -> BLOKE: hayır
+KO -> CAGRI: evet
+CAGRI -> KS
+KS -> HATA: hayır
+HATA -> CAGRI: retry ≤3 {style.stroke-dash: 3}
+KS -> KK: evet
+KK -> BITTI
+BLOKE -> KK: skipped kaydı {style.stroke-dash: 3}
+yasak -> KO: kapıda reddedilir {style.stroke-dash: 3}

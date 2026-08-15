@@ -26,17 +26,17 @@
 - **T — TESLİM: SKILL-ÜRETİM ŞEMASI HAZIR VE SİSTEME GÖMÜLÜ; SKILL-KAPISI GÖMÜLÜ; TEST TURU 14/14 GEÇTİ.** Hat-2 açılıyor.
 - 08-15 — Görev emri derlendi: `cc/gorev-2026-08-15-1.md` (görev-fonksiyonu iskeleti; 4 aile × tez/antitez/hakem = 12 işçi; CoVe-Factored kodla zorlanacak). S-1 → SAHADA (Workflow).
 
-## HAT-2 (KUYRUKTA — Hat-1 T beyanından sonra açılır; Salih emri 08-15 seans içi)
+## HAT-2 (AÇIK 08-15 — Hat-1 T beyanı verildi; Salih emri 08-15 seans içi)
 *Emir: "görev raporunda/emrinde tetikleteceğim skill bu şemaya göre anlamlı yapıda ilerleyebiliyorsa tetiklenebilir" — skill TETİKLENME şeması (ağaç zorunlu değil; bağlam farklı: üretim değil ÇAĞRI). Skill'leri görev raporunda çağırma şeklini kurala bağlar. Oluştur + implement et.*
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-2 | **scout** | Hat-1'in D/C aile bulguları (routing · description-eşleşme · doğrulama kapıları) + Claude Code skill-çağrı mekaniği (description-match / `/name` / `context:fork` / `arguments` / `allowed-tools` / `disable-model-invocation`) + emir-içi çağrı sözleşmesi literatürü (delegasyon dörtlüsü, intake sözleşmesi, handoff kontratı) → gerekirse dar atlas | Hat-1 raporu + `cc/gorev-2026-08-15-2.md` | `cc/rapor-2026-08-15-2.md` | KUYRUKTA |
-| G-2 | — | Sentez: tetiklenme şeması (çağrı-öncesi ön-koşullar · girdi sözleşmesi · sonrası done-yüklemi · zincir/sıra kuralı · yasak-çağrılar) | S-2 + Hat-1 şeması | şema metni | KUYRUKTA |
-| SH-5 | **ship** | `core/skill-tetikleme-semasi.md` + `gorev-emri-derleme` skill'ine "SKILL TETİKLERİ" bloğu + görev-fonksiyonu şablonuna alan + wiring | G-2 | commit | KUYRUKTA |
-| T-2 | teslim | Kaptan beyanı | SH-5 | DONE | KUYRUKTA |
+| S-2 | **scout** | Hat-1'in D/C aile bulguları (routing · description-eşleşme · doğrulama kapıları) + Claude Code skill-çağrı mekaniği (description-match / `/name` / `context:fork` / `arguments` / `allowed-tools` / `disable-model-invocation`) + emir-içi çağrı sözleşmesi literatürü (delegasyon dörtlüsü, intake sözleşmesi, handoff kontratı) → gerekirse dar atlas | Hat-1 raporu + `cc/gorev-2026-08-15-2.md` | `cc/rapor-2026-08-15-2.md` | **DONE** (8 işçi; 28/19/0/0; V26 6/6) |
+| G-2 | — | Sentez: tetiklenme şeması (çağrı-öncesi ön-koşullar · girdi sözleşmesi · sonrası done-yüklemi · zincir/sıra kuralı · yasak-çağrılar) | S-2 + Hat-1 şeması | şema metni | **DONE** |
+| SH-5 | **ship** | `core/skill-tetikleme-semasi.md` + `gorev-emri-derleme` skill'ine "SKILL TETİKLERİ" bloğu + görev-fonksiyonu şablonuna alan + wiring | G-2 | commit | **DONE** (+ D2 + `tetik-denetim.py`) |
+| T-2 | teslim | Kaptan beyanı | SH-5 | DONE | **DONE — TESLİM: SKILL-TETİKLENME ŞEMASI HAZIR VE SİSTEME GÖMÜLÜ** |
 
-## HAT-3 (KUYRUKTA — Hat-2 T-2 beyanından sonra açılır; Salih emri 08-15 seans içi)
+## HAT-3 (AÇIK 08-15 — Hat-2 T-2 verildi; Salih emri 08-15 seans içi)
 *Emir: "AI halüsinasyonun önüne nasıl geçeriz — atlasları koş. Sonuç bağlamında sistemimiz için HALÜSİNASYON-ENGELLEYİCİ PAKET (hafızada duracak) + aynı sonucun SKILL'i (görevlerde tetiklenebilir). Verilen görevin halüsinasyona ne kadar müsait olduğunu matematiksel-anlamlı biçimde DERECELENDİREN formülizasyon (atlaslarla); derece > eşik olan görevlerin çıktısı halüsinasyon-engelleyici skill tetiklenerek üretilir. Tüm süreç Kun-Chen pipeline."*
 *Bağ: Hat-1 C-ailesi (üretilen-artefakt doğrulama kapıları, seri-kapı matematiği) verili girdi · Hat-2 tetiklenme şeması "derece>eşik → skill" kuralının taşıyıcısı · m.39 rakam-damgası + m.40b antitez + V26 örneklem = kanondaki mevcut frenler (KANONDA-BİLİNENLER).*
 
@@ -68,3 +68,7 @@
 | G-5 | — | Sentez: "senaryo-grafında en-iyi-yol" metodolojisi (düğüm/kenar/heuristik/yeniden-planlama kuralları; deneysel m.29) — Salih benzetmesine göre tanımlı | S-5 | metin | KUYRUKTA |
 | SH-8 | **ship** | `core/yol-planlama-metodolojisi.md` (hafıza paketi) + `.claude/skills/yol-planla/` (pipeline-kurma yardımcısı; **Hat-1 skill-kapisi testinden GEÇMELİ**, evals ile) + pipeline-kosum'a bağ + wiring | G-5 | commit | KUYRUKTA |
 | T-5 | teslim | Kaptan beyanı | SH-8 | DONE | KUYRUKTA |
+
+### Hat-2 olay günlüğü
+- 08-15 — Emir `cc/gorev-2026-08-15-2.md` derlendi (2 aile: A çağrı-sözleşmesi · B talimat-içi tetikleme güvenilirliği; Hat-1 D/C bulguları KANONDA-BİLİNENLER). Generic m.40b workflow script'i (aileler args ile) ile S-2 SAHADA.
+- 08-15 — **S-2 DONE** (8 işçi, ~650k token, 35 dk; 28 SAĞLAM · 19 DARALDI; V26 6/6) → `cc/rapor-2026-08-15-2.md`. **G-2 + SH-5 DONE:** kanon + D2 (`raporlar/2026-08-15-skill-tetikleme-semasi.svg`) + şablon bloğu + gorev-emri-derleme adım 4 + `tetik-denetim.py` (test: geçerli çağrı GEÇTİ, T-Y örtük/alt-ajan çağrısı BLOKE) + skill-kapisi T-O bağı + CLAUDE.md/kapsül/defter. **T-2 TESLİM.** Hat-3 açılıyor.

@@ -657,3 +657,14 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 **İcra (aynı seans):** şema + D2 + `skill-kapisi` (kendi kapısını 12/12 geçti) + test turu 14/14 (`raporlar/2026-08-15-skill-semasi-test-turu.md`: DLQ dosyası açıldı · 7 evals.json · karar-kaydet `disable-model-invocation` · ritüel description'ları kısaltıldı) · CLAUDE.md/kapsül/sözlük/kutu wiring. **Şerh-adayları (Katman-1 masası):** m.43 metnine τ-türetimi + pencereli sayaç · hazine desc-bütçesi ölçümü (`/context`).
 
 **m.40b v0.2 koşum gözlemi (08-15, skill-şeması):** 4 aile · 16 işçi · ~1,23M ajan-tokeni · 42 dk · 94 tez iddiası → **39 SAĞLAM · 54 DARALDI · 1 DÜŞTÜ · 0 ÇELİŞKİLİ** · V26 12 örneklem: 9 tutuyor / 2 tutmuyor (ikisi antitez tarafı → K) / 1 erişilemedi · antitez ajanına yalnız iddia satırları KODLA geçirildi (CoVe-Factored ilk mekanik uygulaması) · hakem taraf-maskeli · metodolojik bulgu: WebFetch özetleyicisi bir tabloyu UYDURDU, hakem yerel PDF çıkarımıyla yakaladı (V26'nın gerekliliğinin yeni kanıtı).
+
+---
+
+## 2026-08-15 — KATMAN-1 KARAR: Skill-Tetiklenme Şeması v1 (çağrı sözleşmesi) AKTİF (Salih emri, Hat-2)
+
+`[tip: karar | kaynak: jarvis-terminal ana-sıra | tarih: 2026-08-15 | hedef: defter | sema: v2]`
+**Durum:** Görev emirlerinde skill çağırma biçimi kuralsızdı (delegasyon dörtlüsü vardı, çağrı-özel alanlar yoktu). Salih: "yazacağım görev raporunda tetikleteceğim skill bu şemaya göre anlamlı yapıda ilerleyebiliyorsa tetiklenebilir" — ağaç zorunlu değil.
+**Hüküm:** `core/skill-tetikleme-semasi.md` v1 AKTİF — AKIŞ (DAG): 9 zorunlu alan (skill · tetik_kosulu · cagri_kipi · girdi · baglam · yan_etki_damgasi · done_yuklemi · hata_yolu · sira) + kayıt → Kapı-Ö (bloke ön-koşul: var ∧ koşul-doğru ∧ girdi-tam ∧ yetki/yüzey ∧ ¬araç-çıktısı-tetiği ∧ m.16) → çağrı → Kapı-S (done ∧ şema ∧ hata-kanalı ∧ retry≤3) → Kapı-K (OTel-uyumlu satır → skill sayacı k_W). 7 yasak (pozitif karşılıklı). Şablon bloğu `core/sablonlar/gorev-fonksiyonu.md`; `gorev-emri-derleme` adım 4 + `scripts/tetik-denetim.py`; skill-kapisi K3 T-O koşuluna bağ.
+**Akıl-yürütme:** m.40b dar şerit (2 aile, 8 işçi, `cc/rapor-2026-08-15-2.md`; 28 SAĞLAM · 19 DARALDI · 0 DÜŞTÜ; V26 6/6): alanlar "kim zorluyor" etiketli (K1/K2) · sözleşme tek seferde tam (−%39 parçalı) · fren = kapı, prompt değil (When2Tool) · beyan ≠ yetki (MCP annotations) · tetiklenme ≠ işe yarama · sabit zincir eşiği yok, ölçüm alanı var (pass^k, model-damgası) · iç içe koşul ≤2 (ComplexBench nested %14,9).
+**Kör nokta (dürüstlük):** skill-seviyesi çağrı sözleşmesi hiçbir yerde ölçülmemiş; tüm kanıt araç/API/handoff düzeyinden transfer; yan-etkili aşırı-tetik maliyeti ölçülmemiş; Cowork↔Claude Code yüzey farkı doğrulanmadı.
+**Yetki:** Katman-1 (kanon/kural) — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Deneysel m.29 (retry 3 · iç içe ≤2 · dal ≤5).

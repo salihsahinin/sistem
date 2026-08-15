@@ -11,8 +11,9 @@ description: Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-
 1. **Ölçek kontrolü:** iş emir-dosyasız yapılacak kadar küçükse DERLEME — direkt yap (m.25). Emir dosyası proje-ölçekli/ajanlı işler içindir.
 2. **İskeleti doldur** (`core/sablonlar/gorev-fonksiyonu.md`): alan adları görevin kendi dilinden ("alan adı talimattır") · `kapsam_disi` ZORUNLU dolu ("sana ait olmayan" — iş-tekrarı freni) · dallar numaralı, m.38 bağlaçlı, **dal+koşul ≤5** (aşarsa görevi BÖL) · `done_yuklemi` boolean (derece ifadesi yasak) · blok sırası: statik önce, tarih/SHA/tetikleyen-mesaj EN SONDA (cache).
 3. **Mekanik kapılar (her emirde):** rakam-damgası şartı (m.39: rakam kaynaklı, kestirim `[?]`) · dürüstlük şartı (uydurma YASAK, "bulunamadı" meşru, erişim engeli bayraklanır) · D/K/X etiket disiplini · işçi dönüş bütçesi ≈1-2k token · teslim adresi (`cc/rapor-YYYY-MM-DD-N.md`) · KANONDA-BİLİNENLER bloğu (mükerrer araştırma freni — ilgili eski rapor bulgularını "verili kabul et, üstüne koy" diye listele).
-4. **Künye + kayıt:** dosya `cc/gorev-YYYY-MM-DD-N.md`; pipeline'a bağlıysa manifest tablosuna intake satırı.
-5. **Son okuma:** emri Salih'in beyanına karşı kontrol et — beyanda olup emirde olmayan koşul var mı (DRFR mantığı: her koşul tek tek).
+4. **SKILL TETİKLERİ bloğu (tetiklenme şeması v1 — `core/skill-tetikleme-semasi.md`):** emir bir skill çağırıyorsa çağrı başına 9 alan (skill · tetik_kosulu · cagri_kipi · girdi · baglam · yan_etki_damgasi · done_yuklemi · hata_yolu · sira) + kayit satırı; çağrı yoksa "yok" yaz. Sonra deterministik Kapı-Ö: `python3 .claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py <emir> --repo ~/jarvis` — BLOKE çıkarsa emir teslim edilmez (yan-etkili skill örtük/alt-ajandan çağrılamaz; derece ifadesi yasak; retry ≤3; FAIL-LOUD).
+5. **Künye + kayıt:** dosya `cc/gorev-YYYY-MM-DD-N.md`; pipeline'a bağlıysa manifest tablosuna intake satırı.
+6. **Son okuma:** emri Salih'in beyanına karşı kontrol et — beyanda olup emirde olmayan koşul var mı (DRFR mantığı: her koşul tek tek).
 
 ## Gotchas
 - **Dev-fonksiyon tuzağı:** her şeyi tek emre sıkıştırma — koşul arttıkça izleme düşer (Multi-IF 0,877→0,707); böl, zincirle.
