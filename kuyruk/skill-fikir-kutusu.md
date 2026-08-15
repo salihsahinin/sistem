@@ -32,5 +32,6 @@
 |---|---|---|---|---|---|---|---|
 | 08-15 | skill-kapisi (yeni) | ✓ Y2+Y3 | Z2 | ✓ (9 ref; iddialar rapor-hakemli) | ✓ 12/12 | ÜRET-Ü × yeni · ⟨model+kullanıcı · ana · yan-etki yok · B3+B4 · yukarıdan⟩ | pipeline içi; ilk koşum |
 | 08-15 | 13 mevcut skill (geriye dönük test turu) | 13/13 | geriye dönük | 11/13 → 13/13 (DLQ dosyası açıldı) | 4/13 → 13/13 (7 evals · 2 neg-eval · 1 flag) | tümü GEÇTİ; şekil: 2 T-R · 4 T-O · 1 T-Y · 6 T-Ü | `raporlar/2026-08-15-skill-semasi-test-turu.md` |
+| 08-15 | sema-sikistir (Hat-4 adayı) | ✗ K0: kapsanmış(damitma) — kısmî → | — | — | — | **EVRİM(damitma) v1.1** şema-dalı · ⟨model+kullanıcı · ana · yan-etki yok · B3 · yukarıdan⟩ | ayrı skill açılmadı; kural core/sema-sikistirma.md |
 | 08-15 | 8 kutu adayı (V25/V34/V61/DbC-PBT/find-skills/desc-eval/ölçüm-aracı/S-F+S-H) | 3 RET-0 (görev/kural/kapsanmış) | 4 BEKLET (k_W=0, Z2 yok) | — | — | üretim yok | aynı rapor §3 |
 

@@ -679,3 +679,13 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 **Akıl-yürütme:** m.40b tam şerit (4 aile, 16 işçi, `cc/rapor-2026-08-15-3.md`; 30 SAĞLAM · 63 DARALDI · 0 DÜŞTÜ; V26 1 tutmuyor antitez tarafı). Hakem dürüstlüğü: hazır çok-değişkenli risk formülü literatürde YOK → özgün, toplamsal, deneysel; Claude güncel kuşak ve Türkçe sütunları boş; Aile-D omurgası tek 2026 ön-baskısına yaslı (Kotte).
 **m.16 taraması:** kanonla çelişki yok; V26 revizyon-adayı (örneklem son-üçlük ağırlıklı + tüm sayılar) ve md.21 şerhi (yüksek-tabanda erken çekimserlik zarar) Katman-1 masasına.
 **Yetki:** Katman-1 — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Deneysel m.29.
+
+---
+
+## 2026-08-15 — KATMAN-1 KARAR: Şema-Sıkıştırma v1 AKTİF + damitma v1.1 şema-dalı (Salih emri, Hat-4)
+
+`[tip: karar | kaynak: jarvis-terminal ana-sıra seans-2 | tarih: 2026-08-15 | hedef: defter | sema: v2]`
+**Durum:** Salih sezgisi: "şemalaştırmak bağlam şişmesi için optimizasyon — en iyi nasıl, matematiksel formülize et, hangi bağlam uygun." Defter ~150KB FLAG'de, damıtma planı açık borçtu.
+**Hüküm:** `core/sema-sikistirma.md` v1 AKTİF — 5 ilke (birim=atomik olgu, özet değil · sorgu-uyumu belirleyici, oran tek başına anlamsız · tetik = bağlam/pencere + maliyet, ≤26k'da şema doğruluk kazandırmaz / ≥115k'da kazanır / çeliştirici-sorgu istisnası · çıkar+DOĞRULA + niteleyici-erozyon freni (OR 4,85; tur ≤3) + çift muhasebe · ucuz-katman-önce, beyanla yüksel) + MDL kabul çekirdeği L(şema)+ΣL(kayıt|şema)+L(düzeltme) < ΣL(kayıt) + U uygunluk skoru (kayıt-sınıfı; deneysel — literatürde kayıt-seviyesi skor YOK) + karar tablosu (7 bağlam sınıfı → ŞEMALA/OLGU-SATIRI/HAM+pointer/GRAF-∃-kategori). **Salih'in çarpımsal "oran×kayıp×uyum" biçimi literatürce DESTEKLENMEDİ (2 bağımsız kör-nokta) — koşullu tablo + MDL eşitsizliği olarak kuruldu, beyan edildi.** Ayrı skill AÇILMADI: kapı-ağacı K0 kapsama → **EVRİM(damitma) v1.1** (şema-dalı; kutu koşum-tablosuna satır). D2 graf + rapor.
+**Akıl-yürütme:** m.40b (3 aile, 12 işçi, `cc/rapor-2026-08-15-4.md`; 15/49/2/0; V26 6/6). Kanıt jarvis tasarımını 3 noktada doğruladı (m.20 pointer-inişi = ölçülmüş ucuz-önce; kapsül-SNAPSHOT+git = sürüklenme sigortası; ingest kapalı-tip = MDL düzeltme-terimi). Kör: jarvis bandı 26-115k ölçülmemiş · Türkçe · karar-kanonu sınıfı · U kalibrasyonu (ilk 5 damıtma koşumu).
+**Yetki:** Katman-1 — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Deneysel m.29.

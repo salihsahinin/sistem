@@ -20,3 +20,6 @@ Kural kaynağı: `core/ingest-semasi.md` (zarf+tip+triyaj+DLQ+bütçeler) + v1 k
 - **Pointer koparma:** arşive inen her bloğun yerinde tek satır pointer kalır; pointer'sız arşiv = kayıp.
 - **Çift-gelen tuzağı:** paralel sekmelerden aynı bilgi iki bronz dosyada gelebilir — `kaynak` zarf alanı dedup anahtarıdır, triyajda karşılaştır.
 - Skill kendi başına commit atmaz; commit vardiya akışının işidir.
+
+## ŞEMA-DALI (v1.1, 2026-08-15 Hat-4 evrimi; kural: `core/sema-sikistirma.md` §3)
+FLAG'li dosyada triyajdan ÖNCE kayıt-sınıflarını ayır → sınıf-başına U skoru → ŞEMALA-sınıfını olgu-satırlarına indir (atomik olgu + kaynak-pointer + niteleyici alanı + bi-temporal damga) + ÇIKARIMI DOĞRULA (kaynak satıra geri-eşle; DAYANAKSIZ → kaynakla ∨ düş) · HAM-sınıfı (niteleyici-yoğun hüküm, akıl-yürütme izi) arşive pointer'la, ŞEMAya girmez · ölçüm satırı çift muhasebe (sorgu-anı ↔ depo token) + DLQ oranı + tur ≤3 (erozyon freni). Hedef "oran %50" değil SORGU-UYUMU (kapsül/pano hangi soruları cevaplıyor).

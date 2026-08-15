@@ -1,0 +1,53 @@
+# Şema-Sıkıştırma v1 — karar akışı (D2; kanon: core/sema-sikistirma.md)
+# Render: d2 --layout=elk core/sema-sikistirma.d2 raporlar/2026-08-15-sema-sikistirma.svg
+direction: down
+
+title: |md
+  # Şema-Sıkıştırma v1 (2026-08-15, deneysel m.29)
+  Tek skaler yok: MDL çekirdeği + koşullu karar tablosu · birim = atomik olgu · çıkar+DOĞRULA · çift muhasebe
+| {near: top-center}
+
+girdi: {label: "ŞİŞEN BAĞLAM (FLAG'li dosya / büyüyen korpus)"; shape: oval}
+
+mdl: {
+  label: "MDL ÇEKİRDEĞİ (kabul)\nL(şema) + Σ L(kayıt|şema) + L(düzeltmeler) < Σ L(kayıt)\ndüzeltme listesi = ana bedel (DLQ oranı ↑ ⇒ kazanç erir)"
+  style.fill: "#e8f0fe"
+}
+
+tetik: {
+  label: "TETİK: bağlam/pencere oranı + maliyet (doğruluk değil)\n≤~26k sığıyor → şema doğruluk kazandırmaz (vergi ~4-6 puan ↔ %73 token)\n≥~115k → tam-bağlam kendisi bozulur (−%30) → şema kazanır\nİSTİSNA: çeliştirici sorgu → tam bağlam halüsine eder"
+  style.fill: "#fff3cd"
+}
+
+U: {
+  label: "U (kayıt-sınıfı uygunluk; deneysel)\n+düzenlilik +tekrar +entegrasyon-sorgusu\n−güncelleme-yoğunluğu −niteleyici-yoğunluğu −anlatı"
+  style.fill: "#fff3cd"
+}
+
+semala: {
+  label: "U ≥ 2 → ŞEMALA\nolgu-satırı (atomik + kaynak-pointer + niteleyici alanı + bi-temporal)\n+ ÇIKARIM DOĞRULA (kaynak satıra geri-eşle; DAYANAKSIZ → kaynakla ∨ düş)\ngraf: yalnız ∃-kategori (entegrasyon/temporal) — olgu-listesi ÜSTÜNE opsiyonel"
+  style.fill: "#d4edda"
+}
+olgu: {label: "U ∈ {0,1} → OLGU-SATIRI + pointer\n(ham arşivde kalır — 'olguyu tut hamı at' YASAK)"; style.fill: "#d4edda"}
+ham: {label: "U < 0 → HAM TUT + pointer\n(niteleyici-yoğun hüküm · akıl-yürütme izi · anlatı)\nşemaya yalnız indeks"; style.fill: "#e2e3e5"}
+
+okuma: {
+  label: "OKUMA: ucuz-katman-önce\nşema/özet katmanı → 'cevaplanamaz' beyanı → ham arşive YÜKSEL\n(= m.20 pointer inişi; token −%39-61, doğruluk ±2)"
+  style.stroke-dash: 3
+}
+
+olcum: {
+  label: "ÖLÇÜM (çift muhasebe — tek sayı yasak)\nsorgu-anı token ↔ ingest/depo token · DLQ oranı · tur ≤3 (erozyon OR 4,85)\ngzip proxy yalnız <32KB parça · kalibrasyon kendi korpusunda"
+  style.fill: "#fff3cd"
+}
+
+girdi -> mdl -> tetik
+tetik -> U: "şemalaştırma bölgesi"
+U -> semala
+U -> olgu
+U -> ham
+semala -> olcum
+olgu -> olcum
+ham -> olcum
+okuma -> semala: "geri-düşme yolu" {style.stroke-dash: 3}
+olcum -> U: "U kalibrasyonu (ilk 5 koşum)" {style.stroke-dash: 3}
