@@ -1,0 +1,59 @@
+{
+  "skill": "yol-planla",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce (K-016): set gövdeyle aynı turda, gövde SONRA yazıldı (2026-08-16, SH-8). Kanıt tabanı: cc/rapor-2026-08-15-5.md. Baseline notu: W-1 hattında iskele kararları 3 seansta elle ve tutarsız (işçi-sayısı 16→12→8 gerekçesiz-kayıtlı; limit-kesintisinde onarım dalı tanımsız → plan-dışı devam-script icadı) — DRFR tutarsızlık kanıtı (Y1).",
+  "tests": [
+    {
+      "id": "E1-a-star-vaadi-freni",
+      "prompt": "Görev: 6 araştırma hattını 'A* ile optimal sırala, en kısa yolu bul' — yol planı çıkar.",
+      "assertions": [
+        "Çıktı 'optimal yol' VAAT ETMEZ: kalibre h() yokluğu beyan edilir, arama Dijkstra/greedy ya da ε-sınırlı olarak adlandırılır",
+        "Heuristik kullanılıyorsa 'garanti yok' damgası + kabul edilen kötülük (ε) önceden beyan",
+        "Hedef-fonksiyon seçimi yapılır: hatlar paralelse makespan/kritik-yol dili, seri zincirse yol-maliyeti dili"
+      ]
+    },
+    {
+      "id": "E2-paralel-topoloji",
+      "prompt": "Görev: 4 bağımsız scout + 1 sentez + 1 ship adımlı pipeline için yol planı.",
+      "assertions": [
+        "Her partisyona 'birleştirilebilir mi?' alanı yazılır; scout'lar paralel-fan, sentez birleştirme düğümü olarak işaretlenir",
+        "Makespan alt-sınırı kritik yol + toplam-iş/eşzamanlılık ile verilir",
+        "İskelet (topoloji) ↔ ağırlık (model/token/zaman) iki ayrı bölümde; ağırlıklar koşum-başına özelleştirilebilir damgalı"
+      ]
+    },
+    {
+      "id": "E3-onarim-dali",
+      "prompt": "Görev: uzun koşumda kesinti/sapma olursa ne yapılacağını da içeren yol planı iste.",
+      "assertions": [
+        "Onarım dalı YALNIZ dış doğrulanabilir sinyale bağlanır (test/yürütme/journal durumu); modelin öz-yargısı onarım tetiği DEĞİL",
+        "Onarım TAVANLI: tavan (tur/süre/token) aşılırsa onarım iptal + baştan planla dalı yazılır",
+        "Plan durumu diskte tutulur (manifest/journal pointer'ı) — restart-proof ön-şartı beyan edilir"
+      ]
+    },
+    {
+      "id": "E4-seri-zincirde-iskele-freni",
+      "prompt": "Görev: 3 adımı sıkı sıraya bağlı (her adım öncekinin çıktısını bekler) küçük iş için ağaç-arama iskelesi kur.",
+      "assertions": [
+        "İskele KURULMAZ: seri-bağımlı zincirde dallanma kazancı yok, planlayıcı maliyeti kalır — düz zincir önerilir",
+        "İki iskele kıyaslanacaksa eşit-token-bütçesi şartı yazılır"
+      ]
+    }
+  ],
+  "description_eval": {
+    "note": "Başlangıç seti; 20×3 tam description-eval K-016 borcu.",
+    "should_trigger": [
+      "yolu planla",
+      "yol planı çıkar",
+      "bu pipeline'ın iskelesini seç",
+      "görev grafını kur, hangi sıra en ucuz",
+      "koşum planını topolojiyle çıkar"
+    ],
+    "should_not_trigger": [
+      "şu dosyayı düzelt (m.25 küçük direkt iş)",
+      "pipeline'ı koş (koşum pipeline-kosum'un işi)",
+      "hangi model daha iyi karar ver (karar-modeli işi)",
+      "rotayı Google Maps'te bul (gerçek harita navigasyonu)",
+      "görev emrini derle (derleme gorev-emri-derleme işi; yol-planı bloğu girdi olarak verilir)"
+    ]
+  }
+}

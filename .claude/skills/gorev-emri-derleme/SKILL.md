@@ -1,6 +1,6 @@
 ---
 name: gorev-emri-derleme
-description: Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-şablonlu ajan emrine derler (S-K). Tetik; "araştırma emri yaz", "görev emri derle", "emri hazırla", ajan/atlas/pipeline koşumu öncesi emir dosyası gerektiğinde. KULLANILMAZ; emir dosyası gerektirmeyen küçük direkt işlerde (m.25 ölçek-tercihi), karar üretiminde (karar-modeli/karar-hatti) ve emrin kendisinin koşumunda (koşum atlas-kosum/pipeline-kosum işidir).
+description: Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-şablonlu ajan emrine derler (S-K). Tetik; "araştırma emri yaz", "görev emri derle", "emri hazırla", ajan/atlas/pipeline koşumu öncesi emir dosyası gerektiğinde. KULLANILMAZ; emir dosyası gerektirmeyen küçük direkt işlerde (m.25), karar üretiminde ve emrin koşumunda (atlas-kosum/pipeline-kosum işi).
 ---
 
 # Görev-emri derleme (S-K, v1 — 2026-08-14; m.43 eşiği + 30-15 §6 melez deseni)

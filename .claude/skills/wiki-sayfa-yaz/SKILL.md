@@ -1,6 +1,6 @@
 ---
 name: wiki-sayfa-yaz
-description: Hasat wiki-delta'sından ya da wiki kuyruğundaki adaydan, yazım standardına uygun wiki sayfası üretir (W-1); 6-blok şablon + kanonik damıtılmış örnek + index kaydı + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki sayfası üret", vardiya hasadında wiki-delta işlenirken. KULLANILMAZ; sozluk.md eklemelerinde (sözlük DONDU — yalnız Salih talimatı), toplu üretimde (tempo kuralı; oturum başına 1-2 sayfa), ham senaryo aktarımında (ham log sayfaya girmez, pointer'la durur).
+description: Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki sayfası üret", vardiya hasadında wiki-delta işlenirken. KULLANILMAZ; sozluk.md eklemelerinde (sözlük DONDU), toplu üretimde (oturum başına 1-2 sayfa), ham senaryo/log aktarımında (pointer'la durur).
 ---
 
 # Wiki sayfa yazımı (W-1, v1 — 2026-08-14, Salih onayıyla üretildi)

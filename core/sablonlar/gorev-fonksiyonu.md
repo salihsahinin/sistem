@@ -36,6 +36,8 @@ done_yuklemi:     <boolean değerlendirilebilir; derece ifadesi YASAK>
 done_olcumu:      DRFR — emirdeki her koşul tek tek karşılandı/karşılanmadı
 yeniden_deneme:   3
 
+## YOL-PLANI (opsiyonel; proje-ölçekli işte yol-planla çıktısı buraya gömülür: graf+birleştirilebilir_mi · hedef-fonksiyon beyanı · topoloji · iskelet/ağırlık · maliyet-tavanı · onarım kuralı [dış-sinyal+tavan])
+
 ## SKILL TETİKLERİ (tetiklenme şeması v1 — `core/skill-tetikleme-semasi.md`; emirde skill çağrılıyorsa ZORUNLU, çağrı başına bir blok; yoksa "yok")
 - skill:              <hazinede VAR ∧ kapı-ağacından geçmiş ad>
   tetik_kosulu:       <m.38 boolean; iç içe ≤2; negatif de: "Z ise ÇAĞIRMA">

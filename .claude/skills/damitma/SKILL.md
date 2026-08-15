@@ -1,6 +1,6 @@
 ---
 name: damitma
-description: Kanonun damıtma/ingest turunu koşar (S-E); kuyruk/gelen dosyalarını ingest-şeması v2 triyajından geçirir, boyut-FLAG'li sıcak dosyaları bütçeye indirir, arşiv-pointer disipliniyle. Tetik; "damıt", "damıtma turu", "ingest et", boyut-tetiği FLAG'i görüldüğünde, kümülatif önem ≥150 aşıldığında. KULLANILMAZ; vardiya kapanışının rutin ingest'inde (seans-kapanis kendi koşar), tek küçük not için (eşikte-toplu ilkesi — erken damıtma israftır).
+description: Kanonun damıtma/ingest turunu koşar (S-E); kuyruk/gelen dosyalarını ingest v2 triyajından geçirir, boyut-FLAG'li sıcak dosyaları bütçeye indirir (arşiv-pointer disiplini). Tetik; "damıt", "damıtma turu", "ingest et", boyut-tetiği FLAG'i görüldüğünde, kümülatif önem ≥150 aşıldığında. KULLANILMAZ; vardiya kapanışının rutin ingest'inde (seans-kapanis kendi koşar), tek küçük not için (eşikte-toplu ilkesi — erken damıtma israftır).
 ---
 
 # Damıtma turu (S-E, v1 — 2026-08-14; ingest şeması v2'nin koşum skill'i)
