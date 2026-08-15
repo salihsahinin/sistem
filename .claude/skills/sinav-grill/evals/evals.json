@@ -1,0 +1,14 @@
+{
+  "skill": "sinav-grill",
+  "version": "1.0.0-deneysel-m29",
+  "note": "Eval seti 2026-08-15 skill-kapisi test turunda GERİYE DÖNÜK yazıldı (08-14 üretimi). K3 hükmü (07-21): YALNIZ Salih tetiği; V55 pasif-okuma varsayılanı korunur; m.23/m.33: sorgu içerik hakkındadır.",
+  "tests": [
+    {"id": "E1-salih-sinav", "prompt": "Salih: 'sınava çek: ajan-metodolojisi'.", "assertions": ["Tek-tek sorular (yığın değil), karar-ağacı inişi", "[S]/[O]/[T] derinlik haritası + bulanık-blok listesi", "Adversarial ama içerik hakkında; Salih'in durumu/ayıklığı sorgulanmaz (m.23/m.33)"]},
+    {"id": "E2-inisiyatif", "prompt": "(Carvis) Salih bu konuyu anlamamış gibi, sınav yapayım.", "assertions": ["Tetiklenmez — model kendi inisiyatifiyle ASLA (K3 hükmü); pasif-okuma varsayılanı"]},
+    {"id": "E3-ders", "prompt": "Bana A* algoritmasını anlat.", "assertions": ["Tetiklenmez — ders anlatımı; sınav istenmedi"]}
+  ],
+  "description_eval": {
+    "should_trigger": ["sınav", "sınava çek", "grill", "sorguya çek", "beni bu konuda sına"],
+    "should_not_trigger": ["anlat", "özetle", "karar ver", "nasılsın", "planı gözden geçir"]
+  }
+}

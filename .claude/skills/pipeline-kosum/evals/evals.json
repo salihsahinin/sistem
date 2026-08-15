@@ -1,0 +1,14 @@
+{
+  "skill": "pipeline-kosum",
+  "version": "1.0.0-deneysel-m29",
+  "note": "Eval seti 2026-08-15 skill-kapisi test turunda GERİYE DÖNÜK yazıldı (08-14 üretimi). Canlı koşumlar: cc/pipeline-2026-08-14-*.md, cc/pipeline-2026-08-15-skill-uretim-semasi.md.",
+  "tests": [
+    {"id": "E1-tam-hat", "prompt": "Salih: 'X'i araştır ve sisteme implemente et; pipeline kur.'", "assertions": ["Manifest cc/pipeline-YYYY-MM-DD-<konu>.md: S-n/G-n/SH-n/T tablosu + olay günlüğü", "Emir gorev-emri-derleme ile; scout dağıtımı öncesi paralellik-uygunluk testi", "Rapor DOSYADAN okunur (bildirim özetinden değil); SH rapor inmeden başlamaz", "Teslim beyanı 'X hazır ve sisteme gömülü' tüm satırlar DONE olmadan verilmez"]},
+    {"id": "E2-salt-arastirma", "prompt": "Sadece araştır, implementasyon yok.", "assertions": ["Pipeline kurmaz — atlas-kosum yeter (salt araştırma kapsam dışı)"]},
+    {"id": "E3-oturum-dusmesi", "prompt": "Oturum düştü, yeni oturum pipeline'ı nereden devralır?", "assertions": ["Manifest'ten (durum diskte, restart-proof); güncellenmemiş manifest üzerinden beyan verilmez"]}
+  ],
+  "description_eval": {
+    "should_trigger": ["pipeline kur", "pipeline olarak yap", "kun chen tarzı pipeline", "araştır ve implemente et", "manifest aç, scout sal, ship et"],
+    "should_not_trigger": ["sadece araştır", "karar hattını koştur", "seans bitimi", "iki satırı düzelt", "wiki'ye yaz"]
+  }
+}

@@ -7,4 +7,6 @@
 {"id":"p6","type":"pozitif","input":"yazamayan yüzeyde: bitiriyorum","expect":"HAM damgalı kapanış notu + 'gün HENÜZ SAYILMADI' beyanı"},
 {"id":"n1","type":"negatif","input":"günaydın","expect":"tetiklenmez — gunaydin-vardiya"},
 {"id":"n2","type":"negatif","input":"neredeyiz, toparla","expect":"tetiklenmez — hizalama"},
-{"id":"n3","type":"negatif","input":"iyi geceler (JARVIS-dışı sohbet)","expect":"tetiklenmez — sıradan vedalaşma"}]}
+{"id":"n3","type":"negatif","input":"iyi geceler (JARVIS-dışı sohbet)","expect":"tetiklenmez — sıradan vedalaşma"},
+{"id":"n4","type":"negatif","input":"staj klasöründen açılan oturumda: seans bitimi","expect":"tetiklenmez — staj-kapanis (ayrım klasörle, Salih 08-15); jarvis kanonuna yazılmaz, push üretilmez"},
+{"id":"n5","type":"negatif","input":"kapat şu pencereyi / dosyayı kapat","expect":"tetiklenmez — 'kapat' oturum-sınırı sinyali değil, nesne komutu"}]}

@@ -1,5 +1,6 @@
 ---
 name: karar-kaydet
+disable-model-invocation: true
 description: Verilmiş bir kararı senaryo-defterine standart blokla yazar ve ayrı commit atar (S-J; karar-hatti tamamlayıcısı). YALNIZ elle tetik; Salih ya da vardiya akışı "kararı kaydet / deftere işle" dediğinde. KULLANILMAZ; karar ÜRETMEK için (karar-modeli/karar-hatti işi), rutin vardiya-ingest'inde (vardiya-kapanis kendi yazar) ve model kendi inisiyatifiyle (yan-etki freni — elle tetik esastır).
 ---
 

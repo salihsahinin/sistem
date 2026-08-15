@@ -23,3 +23,4 @@ Kaynak desen: `raporlar/2026-07-21-grill-me-skill-arastirma.md` (mattpocock/skil
 - **Yumuşatma:** sorulan sorunun cevabını Salih'e fısıldama; önerilen-cevap SORUDAN SONRA, Salih cevapladıktan sonra kıyas için açılabilir de (Salih tercihine göre).
 - **Derece-şişirmesi:** [S] etiketi "türetebildi" kanıtı ister, "doğru kelimeyi söyledi" değil.
 - **Kapsam sürünmesi:** sınav ortasında yeni konu açılırsa yeni tur olarak notlanır, mevcut tur bitirilir.
+- Skill kaydetme/commit yapmaz; derinlik haritası rapor olarak döner, kayıt vardiya akışının işidir (yan-etki freni).

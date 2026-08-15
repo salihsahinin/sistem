@@ -1,0 +1,14 @@
+{
+  "skill": "lojik-ceviri",
+  "version": "1.0.0-deneysel-m29",
+  "note": "Eval seti 2026-08-15 skill-kapisi test turunda GERİYE DÖNÜK yazıldı (08-14 üretimi). Kural: tüzük m.38 (+ limit-şerhi: m.16 zorunlu tamamlayıcı).",
+  "tests": [
+    {"id": "E1-kural-cevirisi", "prompt": "Lojiğe çevir: 'aynı adım kümesi oturumlar arası üç kez tekrar ederse skill adayı olur ve kutuya yazılır; üretim ise eval-önce akış ve tetik ister.'", "assertions": ["tekrar-sayısı(küme) ≥ 3 → skill-aday(küme) ∧ kutuya-yaz · skill-üretim(küme) ↔ eval-önce ∧ tetik", "Niceleyici ayrımı (∀/∃) açık; numaralı dallar; done-yüklemi boolean", "Geri-çeviri kontrolü: lojik form Türkçeye geri okununca kaynak cümleyle örtüşüyor", "m.16 çelişki-taraması hatırlatılır (formalizasyon bağımsızlık varsaymaz)"]},
+    {"id": "E2-serbest-metin", "prompt": "Bu vardiya teslim raporunun anlatı paragrafını lojiğe çevir.", "assertions": ["Çevirmez — serbest sohbet/anlatı metni kapsam dışı; yalnız kural/talimat/loop tanımı çevrilir"]},
+    {"id": "E3-kod-basamagi", "prompt": "Bu kuralı doğrudan Python koduna dök.", "assertions": ["Yapmaz — B4 kod yazımı bu skill'in işi değil; B2 lojik form üretir, B3/B4'e geçiş 3-soru kapısıyla ayrı karar"]}
+  ],
+  "description_eval": {
+    "should_trigger": ["lojiğe çevir", "kurala dök", "formüle et", "bu loop kuralını ∧∨¬→ ile yaz", "görev-fonksiyonunun DALLAR bölümünü doldur"],
+    "should_not_trigger": ["raporu özetle", "kodu yaz", "karar ver", "sohbet edelim", "kapsülü güncelle"]
+  }
+}

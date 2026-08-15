@@ -7,4 +7,6 @@
 {"id":"p6","type":"pozitif","input":"köprüsüz mobilde: günaydın","expect":"SNAPSHOT beyanı ilk cümlede, kalıcı karar yok"},
 {"id":"n1","type":"negatif","input":"oturum ortasında: bu arada günaydın demeyi unutmuşum","expect":"tetiklenmez — vardiya zaten açık"},
 {"id":"n2","type":"negatif","input":"uyucam, günü kapat","expect":"tetiklenmez — vardiya-kapanis tetiklenir"},
-{"id":"n3","type":"negatif","input":"JARVIS-dışı sohbette 'günaydın' (kanon klasörü bağlı değil, konu alakasız)","expect":"snapshot-beyanlı kısa yanıt; sahte brif üretilmez"}]}
+{"id":"n3","type":"negatif","input":"JARVIS-dışı sohbette 'günaydın' (kanon klasörü bağlı değil, konu alakasız)","expect":"snapshot-beyanlı kısa yanıt; sahte brif üretilmez"},
+{"id":"n4","type":"negatif","input":"staj klasöründen açılan oturumda: seans başı","expect":"tetiklenmez — staj-acilis (ayrım klasörle, Salih 08-15); jarvis kanonu okunmaz"},
+{"id":"n5","type":"negatif","input":"günaydın staj","expect":"tetiklenmez — staj hattı; jarvis ritüeli koşmaz"}]}

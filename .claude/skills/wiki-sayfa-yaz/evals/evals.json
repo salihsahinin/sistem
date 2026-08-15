@@ -1,0 +1,14 @@
+{
+  "skill": "wiki-sayfa-yaz",
+  "version": "1.0.0-deneysel-m29",
+  "note": "Eval seti 2026-08-15 skill-kapisi test turunda GERİYE DÖNÜK yazıldı (08-14 üretimi; zayıf-yeni aday, Salih onayı 08-14). Kural: wiki yazım standardı (6-blok şablon) + V24 isim disiplini + tempo (oturum başına 1-2 sayfa).",
+  "tests": [
+    {"id": "E1-tek-sayfa", "prompt": "Wiki'ye yaz: hasat wiki-delta'sında 'gnhf' adayı var.", "assertions": ["6-blok şablon + kanonik damıtılmış örnek + index kaydı + [[link]] turu", "Ham senaryo/log sayfaya girmez, pointer'la durur", "Tek sayfa; tempo kuralı hatırlatılır"]},
+    {"id": "E2-toplu", "prompt": "Wiki kuyruğundaki 6 adayı bu oturumda hepsini yaz.", "assertions": ["Yapmaz — tempo kuralı (1-2 sayfa/oturum); sıralama önerir"]},
+    {"id": "E3-sozluk", "prompt": "Sözlüğe yeni terim ekle.", "assertions": ["Yapmaz — sozluk.md DONDU (yalnız Salih talimatı); Skill Hazinesi bölümü ayrı kural"]}
+  ],
+  "description_eval": {
+    "should_trigger": ["wiki'ye yaz", "sayfa aç", "wiki sayfası üret", "hasattaki wiki-delta'yı işle", "kuyruktaki spec-kit adayını sayfaya çevir"],
+    "should_not_trigger": ["sözlüğe ekle", "raporu özetle", "kapsülü güncelle", "karar ver", "notu fikir-kutusuna at"]
+  }
+}

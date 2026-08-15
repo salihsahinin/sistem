@@ -25,3 +25,4 @@ Kural kaynağı: `wiki/README.md` yazım standardı (deneysel m.29) + V24 isim d
 - **İsim disiplini (V24):** mevcut sayfanın adı değiştirilmez; ad değişikliği Salih bildirimi ister.
 - **Güven enflasyonu:** tek kaynaklı taze bulguya "yüksek" yazma.
 - **sozluk.md bu skill'in kapsamı DIŞINDA** — donmuş dosya, yalnız Salih talimatıyla ve ayrı işle.
+- Skill commit yapmaz; sayfa + index yazımı dosyaya, commit vardiya akışının işidir (yan-etki freni).
