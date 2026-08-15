@@ -10,3 +10,6 @@ veri/baglam.jsonl
 veri/gorunum/v_bolum_yogunluk.csv
 veri/gorunum/v_anahtar_terim_dosya.csv
 veri/gorunum/v_dosya_envanter.csv
+
+# macOS Finder metadata
+.DS_Store
