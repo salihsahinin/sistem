@@ -90,3 +90,4 @@
 
 ### Hat-5 olay günlüğü
 - 08-15 — Emir `cc/gorev-2026-08-15-5.md` (3 aile: A yol-planlama güncel durumu · B LLM-planlamada arama · C benzetme formalizasyonu — eleştirel; dürüstlük notu: kanonda önceki A*/kronolojik-partisyon kaydı ARANDI-BULUNAMADI). S-5 SAHADA (12 işçi).
+- 08-15 ~23:0x — **DURAKLATMA (Salih: "limitim bitti şimdilik dur").** Durum: Hat-1/2/3/4 TESLİM (commit'li). Hat-5 S-5 Workflow wf_2682fbbe SAHADAYDI — oturum kesilirse sonuç `.../tasks/wu8yimsde.output`'a düşmemiş olabilir; yeni oturumda kontrol et, yoksa AYNI script+args ile yeniden koş (`m40b-generic.js`, seed 20260820 — cache'ten kısmî geri gelir; args bu manifestin Hat-5 emrinden türetilir). Sonra: rapor derle (`derle.py`) → G-5 → SH-8 (yol-planla skill'i kapı-ağacı testinden) → T-5 → Hat-6 (genişletilmiş kapsam + NİHAİ KARAR ÖNERİSİ Salih'e). Push atılmadı (push-ask; Salih beyanı bekliyor).
