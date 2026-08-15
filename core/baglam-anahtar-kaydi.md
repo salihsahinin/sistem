@@ -30,7 +30,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
         {"deger": "günaydın", "varyantlar": ["gunaydin", "günaydın carvis", "günaydın jarvis", "günaydın jarvis geliştirme", "günaydın staj", "günaydın, prototip", "günaydın, portrisk", "günaydın vardiya"],
          "tarih": "2026-08-15", "gerekce": "zaman-kayması: selamlama zaman işareti sanılıyor; tetik oturum-sınırı işaretidir (Salih 08-15). Kalıntı bağ = tip-c anlam kayması riski (rapor-6 A-YT2/B-YT6).",
          "replaced_by": "seans başı",
-         "izinli_kaliplar": ["günaydın vardiyası", "günaydın vardiyasi", "\\bgunaydin-vardiya\\b", "07-13 günaydın", "günaydın\\)$"],
+         "izinli_kaliplar": ["günaydın vardiyası", "günaydın vardiyasi", "\\bgunaydin-vardiya\\b", "\\d\\d-\\d\\d günaydın", "ikinci günaydın", "günaydın\\)", "anahtar_terim", "emekli", "kelimesinin skille", "\\bkaç dosyada\\b", "günaydın 1\\d\\d dosya"],
          "kaldirma_en_erken": "vardiya+3"}
       ],
       "aday": [],

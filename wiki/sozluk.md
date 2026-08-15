@@ -97,7 +97,7 @@ Carvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçes
 *Skill = tetik-koşullu koşum talimatı; sen doğal konuşursun, ilgili skill kendiliğinden devreye girer. Geri-açma: Salih beyanı.*
 
 ### gunaydin-vardiya / vardiya-kapanis
-Jarvis oturum aç/kapa ritüelleri. Tetik: "günaydın..." / "uyucam, kapat". Kapanış artık ingest-şeması triyajını da koşar. (Staj karşılıkları: staj-acilis / staj-kapanis — staj klasöründe.)
+Jarvis oturum aç/kapa ritüelleri. Tetik: "seans başı" / "seans bitimi" (08-15; eski selamlama tetiği emekli — `core/baglam-anahtar-kaydi.md`; "uyucam" sınıfı emeklilik adayı). Kapanış artık ingest-şeması triyajını da koşar. (Staj karşılıkları: staj-acilis / staj-kapanis — staj klasöründe.)
 
 ### karar-modeli · karar-hatti · celiski-kapisi
 Karar üretim ailesi: 3-model karşılaştırması (m.37) · uçtan uca karar hattı · yeni kararın eski kanonla çelişki taraması (m.16). Tetik: "karar modeli", "tam karar hattı", yeni karar anı.

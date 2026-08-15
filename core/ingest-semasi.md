@@ -43,14 +43,14 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 
 ## 5. Tetikler ve bütçeler (deneysel m.29)
 
-- **Kapsül tavanı ≤200 satır** (Claude Code limiti emsal). ~140 satırda (%70) günaydın brifinde damıtma uyarısı; tavanda zorunlu damıtma turu, ~%50 boşaltılır (MemGPT üçlüsü).
+- **Kapsül tavanı ≤200 satır** (Claude Code limiti emsal). ~140 satırda (%70) açılış brifinde damıtma uyarısı; tavanda zorunlu damıtma turu, ~%50 boşaltılır (MemGPT üçlüsü).
 - **Kümülatif önem tetiği:** kuyruğa giren kayıtların `onem` toplamı ≥150 → damıtma turu açılır (G3'ün 40-madde eşiğine EK; 40 önemsiz not tetiklemez, 8 kritik not tetikler — Generative Agents). λ referansı: 0.99/gün (v1'in kalibre edilmemiş λ'sı buna bağlandı).
 - **Devir raporu bütçesi:** paralel sekmeden ana hatta dönen devir **≈1.000-2.000 token (≈4-8KB)** tavanlı. Korunacak: kararlar + çözülmemiş sorunlar + doğrulama adımları; atılacak: araç çıktıları. Sıra: önce recall, sonra precision (Anthropic).
 - **Damıtma frekansı:** her oturumda değil, EŞİKTE ve TOPLU (LSM: her damıtma bir maliyettir).
 
 ## 6. DLQ — sınıflandırılamayan kayıt kanalı
 
-`kuyruk/SINIFLANDIRILAMADI.md`: 2 vardiya içinde tip/hedef alamayan kayıt buraya taşınır (kaynağından telafi-notuyla). **Sessiz düşürme yasak** — silinmez, günaydın taramasında yeniden denenir (redrive). Burası çöp kutusu değil bekleme/inceleme alanıdır.
+`kuyruk/SINIFLANDIRILAMADI.md`: 2 vardiya içinde tip/hedef alamayan kayıt buraya taşınır (kaynağından telafi-notuyla). **Sessiz düşürme yasak** — silinmez, açılış taramasında yeniden denenir (redrive). Burası çöp kutusu değil bekleme/inceleme alanıdır.
 
 ## 7. Çok-sekme protokolü (şemanın ana kullanım akışı)
 

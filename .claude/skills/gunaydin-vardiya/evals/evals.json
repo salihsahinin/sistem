@@ -1,12 +1,97 @@
-{"skill":"gunaydin-vardiya","target":"%90+","cases":[
-{"id":"p1","type":"pozitif","input":"günaydın","expect":"ritüel koşar (kanon okuma → tek satır durum → brif)"},
-{"id":"p2","type":"pozitif","input":"günaydın, dün konuştuğumuz X konusunda şunu düşündüm...","expect":"ÖNCE ritüel, sonra X'e görev olarak dönülür (önsöz tuzağı)"},
-{"id":"p3","type":"pozitif","input":"günaydın, PortRisk","expect":"ritüel + brif K-002 şeridine daralır"},
-{"id":"p4","type":"pozitif","input":"vardiyayı devral","expect":"ritüel koşar"},
-{"id":"p5","type":"pozitif","input":"gunaydin carvis naber","expect":"ritüel koşar; durum profilden değil kanondan"},
-{"id":"p6","type":"pozitif","input":"köprüsüz mobilde: günaydın","expect":"SNAPSHOT beyanı ilk cümlede, kalıcı karar yok"},
-{"id":"n1","type":"negatif","input":"oturum ortasında: bu arada günaydın demeyi unutmuşum","expect":"tetiklenmez — vardiya zaten açık"},
-{"id":"n2","type":"negatif","input":"uyucam, günü kapat","expect":"tetiklenmez — vardiya-kapanis tetiklenir"},
-{"id":"n3","type":"negatif","input":"JARVIS-dışı sohbette 'günaydın' (kanon klasörü bağlı değil, konu alakasız)","expect":"snapshot-beyanlı kısa yanıt; sahte brif üretilmez"},
-{"id":"n4","type":"negatif","input":"staj klasöründen açılan oturumda: seans başı","expect":"tetiklenmez — staj-acilis (ayrım klasörle, Salih 08-15); jarvis kanonu okunmaz"},
-{"id":"n5","type":"negatif","input":"günaydın staj","expect":"tetiklenmez — staj hattı; jarvis ritüeli koşmaz"}]}
+{
+"skill": "gunaydin-vardiya",
+"target": "%90+",
+"guncelleme": "2026-08-15 v0.4 — emekli tetikler negatif örneğe döndü (anahtar kaydı v1 §3.4)",
+"cases": [
+{
+"id": "p1",
+"type": "pozitif",
+"input": "seans başı",
+"expect": "ritüel koşar (kanon okuma → tek satır durum → brif)"
+},
+{
+"id": "p2",
+"type": "pozitif",
+"input": "seans başı, dün konuştuğumuz X konusunda şunu düşündüm...",
+"expect": "ÖNCE ritüel, sonra X'e görev olarak dönülür (önsöz tuzağı)"
+},
+{
+"id": "p3",
+"type": "pozitif",
+"input": "seans başı, PortRisk",
+"expect": "ritüel + brif K-002 şeridine daralır"
+},
+{
+"id": "p4",
+"type": "pozitif",
+"input": "vardiyayı devral",
+"expect": "ritüel koşar"
+},
+{
+"id": "p5",
+"type": "pozitif",
+"input": "seans basi carvis naber",
+"expect": "ritüel koşar (Türkçe-ASCII varyant); durum profilden değil kanondan"
+},
+{
+"id": "p6",
+"type": "pozitif",
+"input": "köprüsüz mobilde: seans başı",
+"expect": "SNAPSHOT beyanı ilk cümlede, kalıcı karar yok"
+},
+{
+"id": "p7",
+"type": "pozitif",
+"input": "seans başı — önceki pencere 5 dk önce commit atmış, kapanış kaydı yok",
+"expect": "ritüel koşar + paralel-oturum şüphesi beyanı + hat sorusu; sahadaki iş ikinci kez koşulmaz"
+},
+{
+"id": "n1",
+"type": "negatif",
+"input": "oturum ortasında: bu arada selam vermeyi unutmuşum",
+"expect": "tetiklenmez — vardiya zaten açık"
+},
+{
+"id": "n2",
+"type": "negatif",
+"input": "seans bitimi",
+"expect": "tetiklenmez — vardiya-kapanis tetiklenir"
+},
+{
+"id": "n3",
+"type": "negatif",
+"input": "JARVIS-dışı sohbette selamlama (kanon klasörü bağlı değil, konu alakasız)",
+"expect": "snapshot-beyanlı kısa yanıt; sahte brif üretilmez"
+},
+{
+"id": "n4",
+"type": "negatif",
+"input": "staj klasöründen açılan oturumda: seans başı",
+"expect": "tetiklenmez — staj-acilis (ayrım klasörle, Salih 08-15); jarvis kanonu okunmaz"
+},
+{
+"id": "n5",
+"type": "negatif",
+"input": "seans başı staj",
+"expect": "tetiklenmez — staj hattı; jarvis ritüeli koşmaz"
+},
+{
+"id": "n6",
+"type": "negatif",
+"input": "günaydın",
+"expect": "tetiklenmez — emekli tetik (anahtar kaydı 08-15): selamlama oturum-sınırı/zaman işareti değildir; sıradan yanıt, ritüel yok; Salih 'seans başı' derse ritüel"
+},
+{
+"id": "n7",
+"type": "negatif",
+"input": "günaydın carvis, PortRisk'e bakalım",
+"expect": "tetiklenmez — emekli tetik; PortRisk isteği görev olarak devralınır, brif üretilmez"
+},
+{
+"id": "n8",
+"type": "negatif",
+"input": "gunaydin jarvis geliştirme",
+"expect": "tetiklenmez — emekli varyant; hat beyanı yalnız 'seans başı ...' ile"
+}
+]
+}

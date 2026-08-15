@@ -1,20 +1,21 @@
 ---
 name: gunaydin-vardiya
-description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "günaydın", "gunaydin", "günaydın Carvis", "günaydın, prototip", "günaydın, PortRisk", "günaydın jarvis geliştirme", "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu selamla açtığında HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("uyucam" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum, "günaydın staj"/"seans başı staj" — ayrım klasörle, Salih 08-12/08-15); staj oturumu jarvis kanonunu okumaz, kendi CLAUDE.md'sine oturur.
+description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu açılış beyanıyla başlattığında HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Selamlama sözü zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR (emekli tetikler: `core/baglam-anahtar-kaydi.md`); durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("seans bitimi" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA (staj klasöründen açılan oturum, "seans başı staj" — ayrım klasörle, Salih 08-12/08-15); staj oturumu jarvis kanonunu okumaz, kendi CLAUDE.md'sine oturur.
 ---
 
-# Günaydın — vardiya açılışı (Carvis, v0.3-deneysel-m29 — Mac yolu + staj kapısı + hat beyanı genişletmesi, 2026-08-12)
+# Seans başı — vardiya açılışı (Carvis, v0.4-deneysel-m29 — emekli-tetik temizliği [anahtar kaydı v1] 2026-08-15; v0.3: Mac yolu + staj kapısı + hat beyanı 2026-08-12)
 
 Selamlaşma sohbet değil VARDİYA DEVRİDİR. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi TAŞIMAZ — çelişkide kanon kazanır.
 
 ## 0. ZAMAN-KAYMASI FRENİ (Salih Katman-1, 2026-08-15)
-Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: "günaydın"dan sabah/yeni-gün, kapanış sözünden gece ÇIKARIMI YAPILMAZ. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik artık "seans başı"; jarvis↔staj ayrımı CÜMLEYLE DEĞİL KLASÖRLE yapılır (~/jarvis → bu ritüel · staj klasörü → staj-acilis).
+Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünden sabah/yeni-gün, kapanış sözünden gece ÇIKARIMI YAPILMAZ. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik "seans başı" (eski selamlama tetikleri EMEKLİ — `core/baglam-anahtar-kaydi.md` §2; selamlama tek başına ritüeli tetiklemez, Salih emri 08-15); jarvis↔staj ayrımı CÜMLEYLE DEĞİL KLASÖRLE yapılır (~/jarvis → bu ritüel · staj klasörü → staj-acilis).
 
 ## 1. Yüzey + hat tespiti
-0. STAJ KAPISI (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("günaydın staj", "seans başı staj") → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
+0. STAJ KAPISI (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("seans başı staj") → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
 1. JARVIS kanonuna erişim var mı? (Windows PC: `C:\JARVIS` doğrudan · Mac: `~/jarvis` doğrudan · bulut Cowork: device-bridge araçları · köprüsüz mobil: YOK.)
 2. Erişim YOKSA → SNAPSHOT modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "HAM FİKİR / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
-3. Hat beyanı (paralel vardiya, KILAVUZ): "günaydın, PortRisk" → ölçüm-bankı şeridi; "günaydın jarvis geliştirme" → geliştirme hattı (L8/Kun-Chen kopyası dahil); sade "günaydın" → prototip (varsayılan); belirsizse TEK soru sor.
+3. Hat beyanı (paralel vardiya, KILAVUZ): "seans başı, PortRisk" → ölçüm-bankı şeridi; "seans başı jarvis geliştirme" → geliştirme hattı (L8/Kun-Chen kopyası dahil); sade "seans başı" → prototip (varsayılan); belirsizse TEK soru sor.
+4. CANLI-OTURUM ŞÜPHESİ (kural-adayı, `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md`; deneysel): son commit ≤15 dk ∧ kapsülde o vardiyanın kapanış kaydı yok → brifte "paralel-oturum şüphesi" beyan et; diğer oturumun manifestte SAHADA görünen işini ikinci kez koşma, onun dosyalarına yazma; hat paylaşımını Salih'e tek soruyla sor.
 
 ## 2. Kanon okuma (cevaptan ÖNCE, sırayla)
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
