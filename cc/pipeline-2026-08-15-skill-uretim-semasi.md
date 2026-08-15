@@ -42,7 +42,7 @@
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-3 | **scout** | m.40b çift-atlas: halüsinazyon taksonomisi + ölçülmüş önleme teknikleri (RAG/grounding · CoVe · self-consistency · abstention/kalibrasyon · üretici≠doğrulayıcı · yapısal çıktı · uncertainty ifadesi) + GÖREV-MÜSAİTLİK DERECESİ öngörücüleri (hangi görev özellikleri halüsinasyon oranını yükseltir: uzun-kuyruk bilgi · sayısal iddia · çok-adım · kaynak yokluğu · belirsiz spesifikasyon) → formül adayları | `cc/gorev-2026-08-15-3.md` | `cc/rapor-2026-08-15-3.md` | KUYRUKTA |
+| S-3 | **scout** | m.40b çift-atlas: halüsinazyon taksonomisi + ölçülmüş önleme teknikleri (RAG/grounding · CoVe · self-consistency · abstention/kalibrasyon · üretici≠doğrulayıcı · yapısal çıktı · uncertainty ifadesi) + GÖREV-MÜSAİTLİK DERECESİ öngörücüleri (hangi görev özellikleri halüsinasyon oranını yükseltir: uzun-kuyruk bilgi · sayısal iddia · çok-adım · kaynak yokluğu · belirsiz spesifikasyon) → formül adayları | `cc/gorev-2026-08-15-3.md` | `cc/rapor-2026-08-15-3.md` | **SAHADA** (Workflow wf_e9c7f897, 4 aile × 4 = 16 işçi) |
 | G-3 | — | Sentez: paket (frenler listesi + ne-zaman-hangisi) + derece formülü (değişkenler · ağırlıklar · eşik; deneysel m.29 damgalı) + skill tasarımı | S-3 | metin | KUYRUKTA |
 | SH-6 | **ship** | `core/halusinasyon-paketi.md` (hafıza) + `.claude/skills/halusinasyon-engelleyici/` (evals ile) + görev-emri şablonuna `halusinasyon_derecesi` alanı + gorev-emri-derleme'ye eşik-tetiği + wiring | G-3 | commit | KUYRUKTA |
 | T-3 | teslim | Kaptan beyanı | SH-6 | DONE | KUYRUKTA |
@@ -72,3 +72,6 @@
 ### Hat-2 olay günlüğü
 - 08-15 — Emir `cc/gorev-2026-08-15-2.md` derlendi (2 aile: A çağrı-sözleşmesi · B talimat-içi tetikleme güvenilirliği; Hat-1 D/C bulguları KANONDA-BİLİNENLER). Generic m.40b workflow script'i (aileler args ile) ile S-2 SAHADA.
 - 08-15 — **S-2 DONE** (8 işçi, ~650k token, 35 dk; 28 SAĞLAM · 19 DARALDI; V26 6/6) → `cc/rapor-2026-08-15-2.md`. **G-2 + SH-5 DONE:** kanon + D2 (`raporlar/2026-08-15-skill-tetikleme-semasi.svg`) + şablon bloğu + gorev-emri-derleme adım 4 + `tetik-denetim.py` (test: geçerli çağrı GEÇTİ, T-Y örtük/alt-ajan çağrısı BLOKE) + skill-kapisi T-O bağı + CLAUDE.md/kapsül/defter. **T-2 TESLİM.** Hat-3 açılıyor.
+
+### Hat-3 olay günlüğü
+- 08-15 — Emir `cc/gorev-2026-08-15-3.md` derlendi (4 aile: A taksonomi/kök-neden/ölçüm · B önleme teknikleri+bedel · C görev-müsaitlik öngörücüleri · D eşik/karar matematiği; Hat-1 C + Hat-2 + kanon frenleri KANONDA-BİLİNENLER). S-3 SAHADA (16 işçi).
