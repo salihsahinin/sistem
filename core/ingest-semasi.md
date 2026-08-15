@@ -34,7 +34,7 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 
 1. **Eşdeğeri var mı? → NOOP** (kayda "NOOP" damgası, kanona dokunma).
 2. **Tamamlıyor mu? → UPDATE** (mevcut kaydı güçlendir, yeni kayıt açma).
-3. **Çelişiyor mu? → GEÇERSİZ-KIL** (silme YOK — m.8/m.16: eski kayda `gecerli-bitis:` damgası = yeni kaydın tarihi; çelişki Katman-1 sınıfındaysa çelişki-kapısı raporu Salih'e).
+3. **Çelişiyor mu? → GEÇERSİZ-KIL** (silme YOK — m.8/m.16: eski kayda `gecerli-bitis:` damgası = yeni kaydın tarihi; çelişki Katman-1 sınıfındaysa çelişki-kapısı raporu Salih'e). **Yayılım fıkrası (08-15, `core/baglam-anahtar-kaydi.md` §3):** çelişen kayıt bir ANAHTAR değerini (kavram/tetik/ad/yüzey) değiştiriyorsa damga tek başına yetmez — anahtar kaydına `emekli` satırı + sıcak-katman kalıntı-referanslarının aynı vardiyada yeniden yazımı (RESTRICT: kalıntı varken emeklilik tamamlanmamış sayılır); denetim `python3 tools/anahtar-denetim.py`.
 4. **Hiçbiri → ADD** (tipin varsayılan hedefine yaz).
 
 ## 4. Kaynak-doğruluk kuralı (event sourcing)
