@@ -122,3 +122,6 @@ Kun-Chen formatlı uçtan-uca hat: manifest + emir → scout araştırması → 
 
 ### sinav-grill *(yeni, 08-14)*
 Anlayışını adversarial Sokratik sorgulamayla sınar: tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] derinlik haritası + bulanık-blok listesi. YALNIZ senin tetiğinle: "sınav / sınava çek / grill" — ben asla kendiliğimden başlatmam (V55 korunur).
+
+### skill-kapisi *(yeni, 08-15)*
+Skill-üretim şemasının koşum skill'i: bir skill adayını (fikir/kutu satırı/taslak/mevcut skill) kapı-ağacından yürütür — K0 GEREK → K1 DEĞER (m.43 sayacı τ=0,8 ∨ Salih emri) → İNŞA (eval-önce) → K2 TOPRAKLAMA (referans-varlığı script + bağımsız iddia doğrulayıcı, CoVe-Factored) → K3 BİÇİM+TÜR → yaprak (kabul + tür-demeti). Tetik: "kapıdan geçir / şema testi / skill adayını değerlendir"; her yeni skill/evrim ÖNCESİ zorunlu (Katman-1 08-15). Kural: `core/skill-uretim-semasi.md`; graf: `core/skill-uretim-semasi.d2` (D2).

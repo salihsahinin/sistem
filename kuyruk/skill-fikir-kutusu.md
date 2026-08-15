@@ -1,6 +1,6 @@
 # Skill Fikir Kutusu
 
-*(Ev kararı: Fable süzgeci 07-19, Katman 2 — K-019 boyut sigortası gereği ana fikir-kutusundan ayrı. Kural: aday buraya tek satır + pointer'la düşer; tam metin kaynak raporda. "Tekrarlayan-küme→skill" kuralı kanon ADAYI — imza masasında. Üretim kapısı: K-016 (tetik: K-015 DONE ya da Salih öne çeker); her skill eval'le doğar. **YETKİ GÜNCELLEMESİ (Katman-1, 08-14): üretim/evrim/tetikleme yetkisi Carvis'te; skill-başına Salih onayı gerekmez — zayıf-yeni aday hariç; kayıt: senaryo-defteri 08-14 bloğu.**)*
+*(Ev kararı: Fable süzgeci 07-19, Katman 2 — K-019 boyut sigortası gereği ana fikir-kutusundan ayrı. Kural: aday buraya tek satır + pointer'la düşer; tam metin kaynak raporda. "Tekrarlayan-küme→skill" kuralı kanon ADAYI — imza masasında. Üretim kapısı: K-016 (tetik: K-015 DONE ya da Salih öne çeker); her skill eval'le doğar. **YETKİ GÜNCELLEMESİ (Katman-1, 08-14): üretim/evrim/tetikleme yetkisi Carvis'te; skill-başına Salih onayı gerekmez — zayıf-yeni aday hariç; kayıt: senaryo-defteri 08-14 bloğu.** **ŞEMA (Katman-1, 08-15): her aday/üretim/evrim `core/skill-uretim-semasi.md` kapı-ağacından geçer (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR → yaprak); koşum skill'i `skill-kapisi`; m.43 N=3 = Laplace τ=0,8 türevi, sayaç son-90-gün pencereli.**)*
 
 | # | Aday | Tetik-kalıbı | Öncelik | Kaynak | Statü |
 |---|---|---|---|---|---|
@@ -17,11 +17,20 @@
 | S-K | gorev-emri-derleme (Salih "araştır" beyanı → künyeli CC emir dosyası + koşum promptu; şablon: konfigürasyon·m.39·karşı-tez·teslim·dürüstlük-şartı) | "araştırma emri yaz / prompt ver" | YÜKSEK — m.43 eşiği FAZLASIYLA dolu (07-30 tek gecede 21 + 08-01 2 emir; Salih deseni kendisi işaret etti 08-01) | 30-15 §6 (emir derleme MELEZ: içerik E1 + mekanik kapı skill yolu ≈0/5 hata) + `cc/gorev-2026-08-01-{1,2}.md` son örnekler | **ÜRETİLDİ 08-14** (`.claude/skills/gorev-emri-derleme/`; iskelet: `core/sablonlar/gorev-fonksiyonu.md`) |
 | P-1 | pipeline-kosum (manifest + emir + scout + sentez + ship + teslim beyanı; Kun-Chen formatı) | "pipeline kur / pipeline olarak yap" | YÜKSEK — m.43 dolu: spec-kit m.40b zinciri + ingest + metodoloji = 3 koşum (08-13/14, geçmiş-tarama) | `cc/pipeline-2026-08-14-*.md` canlı örnekler | **ÜRETİLDİ 08-14** (`.claude/skills/pipeline-kosum/`) |
 | W-1 | wiki-sayfa-yaz (hasat wiki-delta'sından standartlı sayfa + index + [[link]]) | "wiki'ye yaz / sayfa aç" | zayıf-yeni (m.43 sayımı belgesiz) | wiki kuyruğu birikimi (gnhf/treehouse/lavish/no-mistakes/spec-kit) | **ÜRETİLDİ 08-14** (`.claude/skills/wiki-sayfa-yaz/`; Salih onayı aynı gün — "onaylıyorum" beyanı) |
+| K-1 | skill-kapisi (skill adayını kapı-ağacından yürütür: hüküm + tür-demeti + kutu satırı; script K2-R/K3, bağımsız doğrulayıcı K2-İ) | "kapıdan geçir / şema testi / skill adayını değerlendir"; her üretim/evrim ÖNCESİ zorunlu | YÜKSEK — Z2 Salih emri 08-15 (hallucination açığı) | `core/skill-uretim-semasi.md` + `cc/rapor-2026-08-15-1.md` (16-işçi m.40b) | **ÜRETİLDİ 08-15** (`.claude/skills/skill-kapisi/`; kendi kapısını 12/12 geçti; test turu: `raporlar/2026-08-15-skill-semasi-test-turu.md`) |
 
 Üretim standardı (K-016 açılınca): eval-önce akış · description = NE+NE ZAMAN+negatif-tetik · yan-etki = ayrı elle-tetik skill · <500 satır · çok-modelde test — `raporlar/2026-07-17-skill-nasil-olusturulur.md`.
 
 ## m.43 sayaçları (eşik altı — ≥3'te aday satırına döner)
-- **ölçüm-aracı-yanıldı** — n=2: ① PowerShell 5.1 ANSI karakter sayımı (30-5, defter md.16) · ② Türkçe `İ` grep tuzağı (`grep -i` `İ`↔`i` eşlemiyor → yanlış-pozitif "terim kanonda yok" bulgusu; `cc/rapor-2026-07-30-25.md` P26/P29). Üçüncü vakada m.43 tetiklenir. Kayıt: 2026-07-31 onarım turu (Carvis).
+- **ölçüm-aracı-yanıldı** — **n=3 (EŞİK DOLDU 08-15):** ③ canlılık envanterinde `damitma` git-log sayımı 99 çıktı — "[damıtma]" commit ETİKETİ, skill koşumu değil (proxy sapması; test-turu raporu §2.5). **Kapı hükmü (skill-kapisi K0): RET-0 skill olarak — kural/gotcha sınıfı, prosedür değil; kural-adayı olarak tüzük şerhine (lojik-ceviri); pozitif karşılık: `kapi-denetim.py` ölçüm-proxy uyarısı.** Önceki n=2: ① PowerShell 5.1 ANSI karakter sayımı (30-5, defter md.16) · ② Türkçe `İ` grep tuzağı (`grep -i` `İ`↔`i` eşlemiyor → yanlış-pozitif "terim kanonda yok" bulgusu; `cc/rapor-2026-07-30-25.md` P26/P29). Üçüncü vakada m.43 tetiklenir. Kayıt: 2026-07-31 onarım turu (Carvis).
 - **kaçırılan-tetik** — sayım Katman-1'de (KG-25-3: 30-16 · 30-17 · 30-25 = 3 mü? Salih masasında; eşik dolduysa aday satırı oradan döner).
 
 > **[K] ŞERH — 2026-07-31 (Carvis, öz-bildirim):** Bu dosya onarım turunda yanlışlıkla `cat >` ile ÜZERİNE yazıldı (ls çıktısı 20 satırda kesildiği için dosya yok sanıldı — "ölçüm-aracı-yanıldı" sınıfının ta kendisi, ama araç değil operatör hatası). Orijinal içerik commit'li kanondan (`git show HEAD:`) anında geri yüklendi, kayıp yok; bu bölüm sonradan eklendi. m.8 ihlal girişimi olarak kayda geçirildi.
+
+## Kapı-ağacı koşumları (ölçüm satırları — şema §5 kalibrasyon; 10 koşumda τ/W/β/n_val gözden geçirilir)
+| tarih | aday | K0 | K1 | K2 | K3 | hüküm · tür | süre/not |
+|---|---|---|---|---|---|---|---|
+| 08-15 | skill-kapisi (yeni) | ✓ Y2+Y3 | Z2 | ✓ (9 ref; iddialar rapor-hakemli) | ✓ 12/12 | ÜRET-Ü × yeni · ⟨model+kullanıcı · ana · yan-etki yok · B3+B4 · yukarıdan⟩ | pipeline içi; ilk koşum |
+| 08-15 | 13 mevcut skill (geriye dönük test turu) | 13/13 | geriye dönük | 11/13 → 13/13 (DLQ dosyası açıldı) | 4/13 → 13/13 (7 evals · 2 neg-eval · 1 flag) | tümü GEÇTİ; şekil: 2 T-R · 4 T-O · 1 T-Y · 6 T-Ü | `raporlar/2026-08-15-skill-semasi-test-turu.md` |
+| 08-15 | 8 kutu adayı (V25/V34/V61/DbC-PBT/find-skills/desc-eval/ölçüm-aracı/S-F+S-H) | 3 RET-0 (görev/kural/kapsanmış) | 4 BEKLET (k_W=0, Z2 yok) | — | — | üretim yok | aynı rapor §3 |
+
