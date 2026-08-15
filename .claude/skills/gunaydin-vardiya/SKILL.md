@@ -12,7 +12,7 @@ Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünd
 
 ## 1. Yüzey + hat tespiti
 0. STAJ KAPISI (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("seans başı staj") → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
-1. JARVIS kanonuna erişim var mı? (Windows PC: `C:\JARVIS` doğrudan · Mac: `~/jarvis` doğrudan · bulut Cowork: device-bridge araçları · köprüsüz mobil: YOK.)
+1. JARVIS kanonuna erişim var mı? (Mac: `~/jarvis` doğrudan [varsayılan yüzey] · Windows PC: `C:\JARVIS` doğrudan · bulut claude.ai: origin klonu üzerinden · köprüsüz mobil: YOK.)
 2. Erişim YOKSA → SNAPSHOT modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "HAM FİKİR / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
 3. Hat beyanı (paralel vardiya, KILAVUZ): "seans başı, PortRisk" → ölçüm-bankı şeridi; "seans başı jarvis geliştirme" → geliştirme hattı (L8/Kun-Chen kopyası dahil); sade "seans başı" → prototip (varsayılan); belirsizse TEK soru sor.
 4. CANLI-OTURUM ŞÜPHESİ (kural-adayı, `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md`; deneysel): son commit ≤15 dk ∧ kapsülde o vardiyanın kapanış kaydı yok → brifte "paralel-oturum şüphesi" beyan et; diğer oturumun manifestte SAHADA görünen işini ikinci kez koşma, onun dosyalarına yazma; hat paylaşımını Salih'e tek soruyla sor.

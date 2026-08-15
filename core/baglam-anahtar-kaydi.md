@@ -73,7 +73,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
       "emekli": [
         {"deger": "Cowork", "varyantlar": ["cowork ana-sıra", "ana-sıra(cowork)", "cowork'ün", "cowork oturumu"],
          "tarih": "2026-08-12", "gerekce": "Cowork emekli (kapsül 08-15); ana-sıra terminal", "replaced_by": "terminal ana-sıra",
-         "izinli_kaliplar": ["cowork emekli", "cowork-sonrası", "cowork homebase", "pc cowork", "mac cowork", "cowork,", "cowork\\)", "cowork\\s+\\d\\d-\\d\\d", "\\(cowork", "cowork/", "/cowork", "cowork ve ", "chat-kapsulu"],
+         "izinli_kaliplar": ["cowork emekli", "cowork-sonrası", "cowork homebase", "pc cowork", "mac cowork", "cowork,", "cowork\\)", "cowork\\s+\\d\\d-\\d\\d", "\\(cowork", "cowork/", "/cowork", "cowork ve ", "chat-kapsulu", "imzasi \\d{4}-\\d{2}-\\d{2}, cowork", "cowork gunaydin vardiyasi"],
          "kaldirma_en_erken": "vardiya+3"}
       ],
       "aday": [],
