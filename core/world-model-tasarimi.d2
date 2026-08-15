@@ -1,0 +1,53 @@
+# World-Model Tasarımı v1 — D2 graf (core/world-model-tasarimi.md; deneysel m.29)
+# Derleme: d2 core/world-model-tasarimi.d2 çıktı.svg
+
+kaynak: {
+  label: "GERÇEK KAYNAK (olay kütüğü)\ngit log · koşum kayıtları · kuyruk+defter\n[S8-A-YT5]"
+  style.fill: "#e8f0e8"
+}
+
+v1: {
+  label: "V-1 taban (SQLite, şema v1)\ndosya · kayit · referans · anahtar\n[ilişkisel kalır — S8-D-YT6]"
+  kayit: "kayit (grain: markdown blok\n— yalnız BU tablonun grain'i)"
+  anahtar: "anahtar = CONFORMED BOYUT\n(anahtar-kaydı v1 disipliniyle)\n[S8-A-YT2/YT7, D-YT1]"
+  referans: "referans = factless-fact / M2M köprü\ngalaxy koşulu: zaman grain'i\n(v1 ölçümü: zamanlı %7,6)\n[S8-A-YT2, D-YT3]"
+}
+
+gorunum: {
+  label: "TÜRETİLMİŞ GÖRÜNÜMLER (kayıplı olabilir; kaynak değil)"
+  boyut: "v_boyut_anahtar\n(conformed/shrunken boyut)"
+  olgu: "v_olgu_referans\n(zaman_grain kolonu)"
+  x: "v_x_olcum\n(token/birim dağılımı;\ndil-çarpanı ŞERHLİ)"
+  matris: "design-matrix / küp / gömme\n[açık vektörleştirme; dar kapı\n— S8-D-YT8, A-YT8 GİRMEZ]"
+}
+
+wm: {
+  label: "LEARNED WORLD-MODEL KATMANI\n(koşum-kaydı türevi)"
+  gecis: "birim = GEÇİŞ (durum→eylem→durum)\nkenar birinci-sınıf [S8-B-YT1]"
+  fail: "FAIL/iptal/retry ZORUNLU satır\n[S8-B-YT2]"
+  ozmodel: "öz-model düğümü: yalnız kayıt-türevi\n+ tazeleme damgası + basınç sayacı\n[S8-B-YT5/YT6]"
+  kge: "KGE/gömme: doğrulayıcı-kapılı\nADAY-ÜRETİCİ (10³ kanıtsız)\n[S8-D-YT5]"
+}
+
+ozut: {
+  label: "ÖZÜTLEME HATTI (parquet felsefesi;\nyapılandırılmış alanlara — blok gövdesine KANITSIZ)"
+  sozluk: "1. sözlük/anahtar [lossless]\nvarsayılan-ama-eşikli"
+  encode: "2. yapısal tekilleştirme ÖNCE\nLLM-özeti/codec SONRA (soğuk)\n[S9-AB-YT3]"
+  istatistik: "3. istatistik = yazıcı-sözleşmesi\nmin-maks + üyelik-indeksi\n[S9-CD-YT3, AB-YT4]"
+  sortkey: "4. sort-key zorunlu karar\n[S9-AB-YT6, CD-YT2]"
+  delta: "5. kararlı-önek + delta\nvolatil sona [S9-AB-YT7]"
+  qa: "6. lossy kabul kapısı:\nMDL çekirdeği + yerel QA-eval\nham'a yükselme yolu AÇIK\n[S9-CD-YT6, AB-YT8]"
+}
+
+bus: "BUS MATRIX v1 (yazılı)\nsatır = süreç (grain bildirimi)\nsütun = boyut\ninşa: bir seferde bir satır\n[S8-A-YT1/YT3, D-YT2]"
+
+olcum: "İLK ÖLÇÜM İŞLERİ (§6)\nNDV · tekrar-oranı · dil-çarpanı\nsort-key kıyası · durum-denkliği pilotu"
+
+kaynak -> v1: "baglam-tablo.py\n(idempotent üretim)"
+v1 -> gorunum: "SELECT (yalnız-okur)"
+v1 -> wm: "koşum kayıtları\n(içe-bakış beyanı TEK BAŞINA GİREMEZ)"
+kaynak -> ozut: "ingest v2 / damıtma\nyazım anı kuralları"
+ozut -> v1: "yazıcı-sözleşmesi\n(istatistik + sözlük + sıralama)"
+bus -> v1: "süreç-başına grain bildirimi"
+olcum -> gorunum: "x ölçüleri buradan\n(x İTHAL EDİLMEZ — S8-A-YT6)"
+wm -> gorunum: "durum-denkliği testi\n(yalnız sonlu alt-alanlar)"

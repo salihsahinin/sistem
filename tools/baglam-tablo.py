@@ -22,7 +22,7 @@ import time
 from collections import defaultdict
 from datetime import datetime, timezone
 
-SEMA_SURUMU = "v0"
+SEMA_SURUMU = "v1"  # v1 (2026-08-16, W-1/SH-11): +3 galaxy görünümü (v_boyut_anahtar · v_olgu_referans · v_x_olcum); tablolar DEĞİŞMEDİ (additive)
 CSV_SATIR_TAVANI = 5000
 HEDEF_UZANTILAR = (".md", ".json", ".jsonl")
 JSON_HARIC = {".claude/settings.json", ".mcp.json"}  # sır/ayar riski: yalnız `dosya`da adları
@@ -692,6 +692,43 @@ WHERE r.ref_turu='anahtar_terim' AND k.zarf_json IS NOT NULL
 GROUP BY r.ref_deger, k.dosya_id
 HAVING bitisli>0 AND bitissiz>0
 ORDER BY anahtar_terim, k.dosya_id"""),
+    # --- v1 galaxy görünümleri (W-1/SH-11, 2026-08-16; kanıt: cc/rapor-2026-08-15-8.md A-YT2/D-YT1/D-YT3, tasarım: core/world-model-tasarimi.md) ---
+    ("v_boyut_anahtar", """
+CREATE VIEW v_boyut_anahtar AS
+SELECT a.anahtar_id, a.tur, a.deger, a.durum, a.replaced_by,
+       a.gecerli_bas, a.gecerli_bitis,
+       a.referans_sayisi, a.sicak_referans_sayisi, a.ilk_gorulme, a.son_gorulme
+FROM anahtar a
+ORDER BY a.tur, a.anahtar_id"""),
+    ("v_olgu_referans", """
+CREATE VIEW v_olgu_referans AS
+SELECT r.kayit_id, r.ref_turu, r.ref_deger, r.hedef_var, r.hedef_yol,
+       k.dosya_id, d.katman, d.tur AS dosya_turu, k.bolum_yolu,
+       COALESCE(k.tarih_iso, k.zarf_tarih) AS olay_tarihi,
+       d.son_commit AS dosya_son_commit,
+       CASE WHEN COALESCE(k.tarih_iso, k.zarf_tarih) IS NOT NULL THEN 'zamanli' ELSE 'zamansiz' END AS zaman_grain
+FROM referans r
+JOIN kayit k ON k.kayit_id = r.kayit_id
+JOIN dosya d ON d.dosya_id = k.dosya_id"""),
+    ("v_x_olcum", """
+CREATE VIEW v_x_olcum AS
+WITH sirali AS (
+  SELECT d.katman, k.blok_turu, k.token_kestirim,
+         ROW_NUMBER() OVER (PARTITION BY d.katman, k.blok_turu ORDER BY k.token_kestirim) AS rn,
+         COUNT(*)     OVER (PARTITION BY d.katman, k.blok_turu) AS n
+  FROM kayit k JOIN dosya d ON d.dosya_id = k.dosya_id
+  WHERE k.token_kestirim IS NOT NULL
+)
+SELECT katman, blok_turu, MAX(n) AS birim_sayisi,
+       MIN(token_kestirim) AS token_min,
+       MAX(CASE WHEN rn = (n + 1) / 2 THEN token_kestirim END) AS token_medyan,
+       MAX(token_kestirim) AS token_maks,
+       ROUND(AVG(token_kestirim), 1) AS token_ortalama,
+       SUM(token_kestirim) AS token_toplam,
+       'bytes/4 kestirimi; Türkçe dil-çarpanı ölçülmemiş (rapor-8 C-kör)' AS olcum_serhi
+FROM sirali
+GROUP BY katman, blok_turu
+ORDER BY katman, token_toplam DESC"""),
 ]
 
 
