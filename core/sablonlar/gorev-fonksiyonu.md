@@ -30,6 +30,7 @@ D2: aksi → <eylem>
 D-KATMAN1: <Salih kararı gerektiren durum> → DUR + sor
 
 ## ÇIKTI SÖZLEŞMESİ
+halusinasyon_derecesi: <H = Σ wᵢ·vᵢ (core/halusinasyon-paketi.md §2; scripts/derece.py) · aktif v'ler · eşik 7 (4 pahalı-geri-alma) · H ≥ eşik ∨ atıf-türü ⇒ SKILL TETİKLERİ'ne halusinasyon-engelleyici eklenir>
 cikti_bicimi:     <dosya/rapor/karar-bloğu; işçi dönüşü ≈1-2k token özet>
 done_yuklemi:     <boolean değerlendirilebilir; derece ifadesi YASAK>
 done_olcumu:      DRFR — emirdeki her koşul tek tek karşılandı/karşılanmadı

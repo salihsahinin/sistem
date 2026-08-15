@@ -1,0 +1,56 @@
+# Halüsinasyon-Önleme Paketi v1 — derece → eşik → skill akışı (D2; kanon: core/halusinasyon-paketi.md)
+# Render: d2 --layout=elk core/halusinasyon-paketi.d2 raporlar/2026-08-15-halusinasyon-paketi.svg
+direction: down
+
+title: |md
+  # Halüsinasyon-Önleme Paketi v1 (2026-08-15, deneysel m.29)
+  H(görev) = Σ wᵢ·vᵢ (toplamsal, tamsayı, kanıtsız-tercih) → eşik (7 normal / 4 pahalı-geri-alma) → skill zinciri
+| {near: top-center}
+
+gorev: {label: "GÖREV (emirde)\nçıktı-türü · kaynak durumu · uzunluk · bileşiklik · öncül · runtime"; shape: oval}
+
+derece: {
+  label: "DERECE H = Σ wᵢ·vᵢ  (scripts/derece.py)"
+  style.fill: "#e8f0fe"
+  art: "ARTIRICI: v2 tazelik +3 · v3a atıf +3 (OVERRIDE) · v1 nadirlik +2 · v3b D2T +2 · v3c kod/paket/prosedür +2 · v5 bileşiklik +2 · v6 öncül-şüphesi +2 · v7a kaynak-yok +2 · v3d sayısal +1 · v4 uzunluk +1 · v7b ham-kaynak +1 · v9 thinking∧araç +1[?] · v10 Türkçe +1[?]"
+  az: "AZALTICI: v8 doğrulayıcı/yürütücü var −2 · v7c yapılandırılmış+provenanslı kaynak −1"
+}
+
+esik: {
+  label: "EŞİK (beyan; ima edilen maliyet yazdırılır)\nτ=7 normal · τ=4 pahalı-geri-alma (m.31) · v3a=1 ⇒ override"
+  style.fill: "#fff3cd"
+}
+fiz: {
+  label: "FİZİBİLİTE (sıfırıncı kapı)\nμ_görev-tipi (Wilson) > α ⇒ çekimserlik payı ≥ (μ−α)/(1−α)\nμ ≫ α ⇒ sertifika yok → çekimserlik-etiketli ∨ insan-onayı"
+  style.fill: "#fff3cd"
+}
+
+dusuk: {label: "H ≤ 3 → kanon frenleri yeter\n(m.39 · D/K/X · bulunamadı)"; style.fill: "#d4edda"}
+orta: {label: "4 ≤ H < τ → F1+F2 zorunlu\n(kaynak + destek-kontrolü); skill opsiyonel"; style.fill: "#fff3cd"}
+skill: {
+  label: "H ≥ τ ∨ override → halusinasyon-engelleyici SKILL"
+  style.fill: "#f8d7da"
+  s0: "0 derece + fizibilite"
+  s1: "1 adım-0: öncül / cevaplanabilirlik (çekimserlik izni)"
+  s2: "2 kaynak: yapılandırılmış+provenanslı; hesap→yürütücü; referans→registry"
+  s3: "3 üretim: gerekçe→cevap şeması; iddialar numaralı+pointer'lı"
+  s4: "4 bağımsız doğrulayıcı (yalnız iddia listesi): DESTEKLİ/DAYANAKSIZ/ÇELİŞİR/LOJİK; konum-ağırlıklı örneklem; N=3 sonlu-cevap"
+  s5: "5 teslim: DAYANAKSIZ → kaynakla ∨ çekimser ∨ 'doğrulanmadı'; ölçüm satırı (n, Wilson); IDK=0 / yanlış=−t/(1−t)"
+  s6: "6 kayıt → kuyruk/halusinasyon-kayit.md (≥50 olayda kalibrasyon)"
+}
+
+paket: {
+  label: "PAKET (hafıza) — fren listesi F1-F10 + damga"
+  style.stroke-dash: 3
+  f: "F1 destek-kontrolü · F2 yapılandırılmış kaynak · F3 üretici≠doğrulayıcı · F4 N-örnek · F5 hesap/referans devri · F6 çekimserlik ekonomisi · F7 konum-ağırlıklı örneklem · F8 gerekçe→cevap · F9 model+runtime damgası · F10 ölçü-disiplini\nÖLÇÜSÜZ: Anthropic tavsiyeleri · KAPSAM-DIŞI: DoLa/CAD/ITI · SE (5-10×) · sıcaklık · eğitimli IDK"
+}
+
+gorev -> derece
+derece -> fiz
+fiz -> esik
+esik -> dusuk: "H ≤ 3"
+esik -> orta: "4 ≤ H < τ"
+esik -> skill: "H ≥ τ ∨ v3a"
+paket -> skill: "adımlar frenlerden" {style.stroke-dash: 3}
+paket -> orta: "F1+F2" {style.stroke-dash: 3}
+skill.s6 -> derece: "kalibrasyon (≥50 olay)" {style.stroke-dash: 3}

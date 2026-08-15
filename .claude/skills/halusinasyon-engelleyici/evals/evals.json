@@ -1,0 +1,17 @@
+{
+  "skill": "halusinasyon-engelleyici",
+  "version": "1.0.0-deneysel-m29",
+  "note": "Eval-önce (K-016): set gövdeyle aynı turda, gövde SONA (2026-08-15). Kural: core/halusinasyon-paketi.md. Derece: scripts/derece.py.",
+  "tests": [
+    {"id": "E1-atif-override", "prompt": "Görev: 'PortRisk raporu için 8 akademik kaynak (yazar, yıl, DOI) listele.' Kaynak verilmedi.", "assertions": ["v3a=1 → OVERRIDE: H'den bağımsız skill tetiklenir; ayrıca v7a (kaynak yok) + v1 olası", "Her künye tekil fetch/registry ile doğrulanmadan yazılmaz; doğrulanamayan 'DAYANAKSIZ' etiketiyle çekimser bırakılır ya da çıkarılır", "Ölçüm satırı: n künye · DESTEKLİ/DAYANAKSIZ sayıları (Wilson) · model+sürüm"]},
+    {"id": "E2-derece-alti", "prompt": "Görev: 'Bu dosyadaki 3 fonksiyonu tek cümleyle açıkla' (dosya bağlamda; kod, test var).", "assertions": ["derece.py: v7c(−1)+v8(−2) → H ≤ 0 < 4 → GEREKMEZ; skill kapanır, kanon frenleriyle üretilir (bedel freni)", "Post-hoc kapı (test/yürütme) yeterli — zincir koşulmaz"]},
+    {"id": "E3-tam-zincir", "prompt": "Görev: 'Kohort-damgalı olarak 2025-26 LLM halüsinasyon oranlarını (SimpleQA/HalluLens) 400 kelimede özetle; kaynak URL'leri var ama ham HTML.'", "assertions": ["v2 tazelik(+3) + v3d sayısal(+1) + v4 uzunluk(+1) + v7b ham kaynak(+1) + v10 Türkçe(+1) → H=7 ≥ 7 → TETİK", "Adım sırası: derece → adım-0 → yapılandırılmış kaynak/alıntı-doğrulama → gerekçe→cevap şemasıyla üretim (iddialar numaralı+pointer'lı) → bağımsız doğrulayıcıya YALNIZ iddia listesi → etiketler → teslim + ölçüm satırı + kayıt", "Örneklem konum-ağırlıklı: son üçlük + tüm sayısal iddialar"]},
+    {"id": "E4-oncul-supheli", "prompt": "Görev: 'm.52 tüzük maddesinin gerekçesini özetle.' (tüzükte m.52 yok)", "assertions": ["Adım-0: öncül doğrulanır — m.52 yok → çekimserlik meşru; 'bulunamadı/öncül şüpheli' yazılır, madde uydurulmaz", "Referans-varlığı (registry) kapısı: tüzük indeksi kontrolü"]},
+    {"id": "E5-cove-factored", "prompt": "Doğrulama adımında doğrulayıcı alt-ajana ne verilir?", "assertions": ["Yalnız iddia listesi; kaynak/gerekçe VERİLMEZ (çıpalama freni)", "Etiket seti DESTEKLİ/DAYANAKSIZ/ÇELİŞİR/LOJİK-tutarsız; DAYANAKSIZ ≠ YANLIŞ; sözel güven kapı değil"]}
+  ],
+  "description_eval": {
+    "note": "Başlangıç seti; 20×3 tam description-eval K-016 borcu.",
+    "should_trigger": ["halüsinasyon freniyle üret", "doğrulama zinciriyle yaz", "bu görevin halüsinasyon derecesi eşik üstü, skill'le çıkar", "8 akademik kaynak listele (DOI ile)", "kohort-damgalı oran özeti yaz, kaynaklar ham", "olgusal ve sayısal yoğun rapor üret"],
+    "should_not_trigger": ["bu iki fonksiyonu açıkla (test var)", "sohbet edelim", "kapsülü güncelle", "formülü değiştir", "kararı deftere kaydet", "skill adayını kapıdan geçir"]
+  }
+}

@@ -42,12 +42,12 @@
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-3 | **scout** | m.40b çift-atlas: halüsinazyon taksonomisi + ölçülmüş önleme teknikleri (RAG/grounding · CoVe · self-consistency · abstention/kalibrasyon · üretici≠doğrulayıcı · yapısal çıktı · uncertainty ifadesi) + GÖREV-MÜSAİTLİK DERECESİ öngörücüleri (hangi görev özellikleri halüsinasyon oranını yükseltir: uzun-kuyruk bilgi · sayısal iddia · çok-adım · kaynak yokluğu · belirsiz spesifikasyon) → formül adayları | `cc/gorev-2026-08-15-3.md` | `cc/rapor-2026-08-15-3.md` | **SAHADA** (Workflow wf_e9c7f897, 4 aile × 4 = 16 işçi) |
-| G-3 | — | Sentez: paket (frenler listesi + ne-zaman-hangisi) + derece formülü (değişkenler · ağırlıklar · eşik; deneysel m.29 damgalı) + skill tasarımı | S-3 | metin | KUYRUKTA |
-| SH-6 | **ship** | `core/halusinasyon-paketi.md` (hafıza) + `.claude/skills/halusinasyon-engelleyici/` (evals ile) + görev-emri şablonuna `halusinasyon_derecesi` alanı + gorev-emri-derleme'ye eşik-tetiği + wiring | G-3 | commit | KUYRUKTA |
-| T-3 | teslim | Kaptan beyanı | SH-6 | DONE | KUYRUKTA |
+| S-3 | **scout** | m.40b çift-atlas: halüsinazyon taksonomisi + ölçülmüş önleme teknikleri (RAG/grounding · CoVe · self-consistency · abstention/kalibrasyon · üretici≠doğrulayıcı · yapısal çıktı · uncertainty ifadesi) + GÖREV-MÜSAİTLİK DERECESİ öngörücüleri (hangi görev özellikleri halüsinasyon oranını yükseltir: uzun-kuyruk bilgi · sayısal iddia · çok-adım · kaynak yokluğu · belirsiz spesifikasyon) → formül adayları | `cc/gorev-2026-08-15-3.md` | `cc/rapor-2026-08-15-3.md` | **DONE** (16 işçi; 30/63/0/0; V26 1 tutmuyor antitez → K) |
+| G-3 | — | Sentez: paket (frenler listesi + ne-zaman-hangisi) + derece formülü (değişkenler · ağırlıklar · eşik; deneysel m.29 damgalı) + skill tasarımı | S-3 | metin | **DONE** |
+| SH-6 | **ship** | `core/halusinasyon-paketi.md` (hafıza) + `.claude/skills/halusinasyon-engelleyici/` (evals ile) + görev-emri şablonuna `halusinasyon_derecesi` alanı + gorev-emri-derleme'ye eşik-tetiği + wiring | G-3 | commit | **DONE** (+ D2 + derece.py + kayıt dosyası; skill kapı-ağacını GEÇTİ) |
+| T-3 | teslim | Kaptan beyanı | SH-6 | DONE | **DONE — TESLİM: HALÜSİNASYON PAKETİ + SKILL + DERECE FORMÜLÜ HAZIR VE SİSTEME GÖMÜLÜ** |
 
-## HAT-4 (KUYRUKTA — Hat-3 T-3 beyanından sonra açılır; Salih emri 08-15 seans içi)
+## HAT-4 (AÇIK 08-15 — Hat-3 T-3 verildi; Salih emri 08-15 seans içi)
 *Emir (Salih sezgisi): "şemalaştırmak (graf oluşturmak) bağlamın şiştiği olgular için bir optimizasyon yöntemi. Şişen context'i şemalaştırarak compact etmeyi nasıl en iyi yaparız — araştır, matematiksel formülize et; hangi context'ler şema-sıkıştırmaya uygundur onu da araştır; gereken yerde uygulamak üzere sisteme implement et."*
 *Bağ (KANONDA-BİLİNENLER): m.20 pointer · m.22 katmanlı yerleşim · ingest şeması v2 (zarf+tip = zaten bir şemalaştırma) · damitma skill (boyut-FLAG, ~%50 indirme) · ajan-metodolojisi §2 bağlam-bozulma kanıtları (NoLiMa · Lost-in-the-Middle · context-rot) · Hat-1 (kapı-ağacı = kuralın şemalaştırılması) · Salih UFUK: ontolojik topoloji/Markov (30-11).*
 
@@ -75,3 +75,13 @@
 
 ### Hat-3 olay günlüğü
 - 08-15 — Emir `cc/gorev-2026-08-15-3.md` derlendi (4 aile: A taksonomi/kök-neden/ölçüm · B önleme teknikleri+bedel · C görev-müsaitlik öngörücüleri · D eşik/karar matematiği; Hat-1 C + Hat-2 + kanon frenleri KANONDA-BİLİNENLER). S-3 SAHADA (16 işçi).
+- 08-15 — **S-3 DONE** (16 işçi, ~1,08M token, 43 dk; 30 SAĞLAM · 63 DARALDI · 0 DÜŞTÜ) → `cc/rapor-2026-08-15-3.md`. **G-3 + SH-6 DONE:** paket + formül + skill (kapı-ağacı: ilk koşumda `kuyruk/halusinasyon-kayit.md` eksikliğini yakaladı → açıldı; T-O paralellik satırı eklendi → GEÇTİ) + D2 + şablon/emir-derleme bağı + CLAUDE.md/kapsül/defter. **T-3 TESLİM.** Hat-4 açılıyor.
+
+## HAT-6 (KUYRUKTA — Hat-5 T-5 beyanından sonra açılır; Salih emri 08-15 seans içi; ARAŞTIRMA-ONLY)
+*Emir: "Asıl soru: şu an tüm jarvis'leri aynı hat üzerinde mi açmalıyım yoksa yeni jarvis hatları oluşturabilir miyim — jarvis bağlamı, bağlam matrisinde TRANSPOZE alınabilir mi? Araştırılsın, atlaslar koşsun, bulgular rapor çıksın — ama SADECE KENDİN (Carvis) İÇİN."* → çıktı: `raporlar/2026-08-XX-jarvis-hatlar-transpoze.md` (Carvis-içi referans; implementasyon YOK; Salih'e yalnız pointer + tek-satır bulgu). Kanıt-bağı: kanonda zaten var olan çok-hat örnekleri (staj = ayrı klasör + ayrı ritüel + kendi CLAUDE.md, K-022 md.49; PortRisk/prototip şeritleri; paralel-vardiya senkron kuralı; V43 yarış vakaları; CLAUDE.md hiyerarşisi user/project/local; kapsül=SNAPSHOT/git=gerçek kaynak; AB-07 "sistem = çağrılabilir skill, çoğul sistemler" ufku; Hat-4 şema-sıkıştırma bulguları).
+
+| # | Şekil | İş | Intake | Teslim | Durum |
+|---|---|---|---|---|---|
+| S-6 | **scout** | m.40b çift-atlas: (A) çoklu-oturum/çoklu-hat ajan mimarileri — paylaşılan ↔ ayrık bağlam, ortak-durum (git/dosya/lease/CRDT), yarış ve sapma vakaları, Claude Code paralel oturum + worktree + memory kılavuzu · (B) "bağlam matrisi" formalizasyonu — satır=hat (jarvis-geliştirme/PortRisk/staj/…), sütun=bağlam katmanı (tüzük/kapsül/pano/wiki/skill); transpoze = erişim-deseni değişimi (row-store ↔ column-store · tenant-per-schema ↔ shared-schema · monorepo ↔ polyrepo · CLAUDE.md hiyerarşisi/import) — bilgi korunur, yerellik değişir; hangi iş yükü hangi düzeni ister · (C) bedel/kazanç ölçümleri — bağlam yalıtımı ↔ paylaşımı (context-rot, çapraz-bulaşma, mükerrer iş, senkron maliyeti) · (D) karar kuralı — yeni hat açma ölçütü (boolean: ayrı kanon? ayrı ritüel? ayrı yetki? paylaşılan çekirdek ne?) | `cc/gorev-2026-08-XX-6.md` | `cc/rapor-…-6.md` + Carvis-içi rapor | KUYRUKTA |
+| G-6 | — | Carvis-içi sentez: hat-açma karar kuralı + bağlam-matrisi/transpoze cevabı (deneysel) — implementasyon yok | S-6 | rapor | KUYRUKTA |
+| T-6 | teslim | **Salih'e NİHAİ KARAR ÖNERİSİ (Salih netleştirmesi 08-15): "farklı kanal jarvis açılabilir mi — evet/hayır + koşullar"** (rapor Carvis-içi kalır, öneri sunulur) | G-6 | DONE | KUYRUKTA |

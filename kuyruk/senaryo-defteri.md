@@ -668,3 +668,14 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 **Akıl-yürütme:** m.40b dar şerit (2 aile, 8 işçi, `cc/rapor-2026-08-15-2.md`; 28 SAĞLAM · 19 DARALDI · 0 DÜŞTÜ; V26 6/6): alanlar "kim zorluyor" etiketli (K1/K2) · sözleşme tek seferde tam (−%39 parçalı) · fren = kapı, prompt değil (When2Tool) · beyan ≠ yetki (MCP annotations) · tetiklenme ≠ işe yarama · sabit zincir eşiği yok, ölçüm alanı var (pass^k, model-damgası) · iç içe koşul ≤2 (ComplexBench nested %14,9).
 **Kör nokta (dürüstlük):** skill-seviyesi çağrı sözleşmesi hiçbir yerde ölçülmemiş; tüm kanıt araç/API/handoff düzeyinden transfer; yan-etkili aşırı-tetik maliyeti ölçülmemiş; Cowork↔Claude Code yüzey farkı doğrulanmadı.
 **Yetki:** Katman-1 (kanon/kural) — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Deneysel m.29 (retry 3 · iç içe ≤2 · dal ≤5).
+
+---
+
+## 2026-08-15 — KATMAN-1 KARAR: Halüsinasyon-Önleme Paketi v1 + Görev-Müsaitlik Derece Formülü + halusinasyon-engelleyici skill AKTİF (Salih emri, Hat-3)
+
+`[tip: karar | kaynak: jarvis-terminal ana-sıra | tarih: 2026-08-15 | hedef: defter | sema: v2]`
+**Durum:** Kanonda dağınık frenler vardı (m.39 · D/K/X · bulunamadı · m.40b · V26 · md.20/21 · üretici≠doğrulayıcı) ama teorik dayanağı, tek listesi, görev-düzeyi tetik kuralı ve derece ölçüsü yoktu. Salih: "halüsinasyonun önüne nasıl geçeriz — atlasları koş; paket (hafıza) + skill + matematiksel derece formülü; derece > eşik → skill'le üret."
+**Hüküm:** `core/halusinasyon-paketi.md` v1 AKTİF — 5 ilke (Kalai: üretim hatası ≥ 2× ayırt-etme hatası, singleton alt-sınırı, IDK cezası → fren=kapı · üç kutu: ÇELİŞİR/DAYANAKSIZ/DÜNYA-İLE-ÇELİŞİR + lojik · kaynak≠sıfır risk · üretici≠doğrulayıcı, sözel güven kapı değil · küçük-veri kilidi + eşik=beyan) + F1-F10 fren listesi (damga ÖLÇÜLÜ/ÖLÇÜSÜZ/KAPSAM-DIŞI) + kapı-türü↔artefakt-türü tablosu + **H = Σ wᵢ·vᵢ** (13 boolean değişken, tamsayı ağırlık, kanıtsız-tercih; τ=7 normal / 4 pahalı-geri-alma m.31; v3a atıf override; fizibilite kapısı μ>α; kayıt ≥50 olayda kalibrasyon). Skill `halusinasyon-engelleyici` (7 adım; derece.py; kapı-ağacı GEÇTİ, T-O). Şablon alanı `halusinasyon_derecesi`; gorev-emri-derleme 3b; `kuyruk/halusinasyon-kayit.md`.
+**Akıl-yürütme:** m.40b tam şerit (4 aile, 16 işçi, `cc/rapor-2026-08-15-3.md`; 30 SAĞLAM · 63 DARALDI · 0 DÜŞTÜ; V26 1 tutmuyor antitez tarafı). Hakem dürüstlüğü: hazır çok-değişkenli risk formülü literatürde YOK → özgün, toplamsal, deneysel; Claude güncel kuşak ve Türkçe sütunları boş; Aile-D omurgası tek 2026 ön-baskısına yaslı (Kotte).
+**m.16 taraması:** kanonla çelişki yok; V26 revizyon-adayı (örneklem son-üçlük ağırlıklı + tüm sayılar) ve md.21 şerhi (yüksek-tabanda erken çekimserlik zarar) Katman-1 masasına.
+**Yetki:** Katman-1 — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Deneysel m.29.
