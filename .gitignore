@@ -1,3 +1,12 @@
 .obsidian/
 .secrets/
 arsiv/claude-izler/
+
+# baglam-tablo.py üretilen artefaktlar (veri/gorunum/*.csv İZLENİR — küçük gold görünümler)
+veri/baglam.sqlite
+veri/baglam.sqlite.tmp
+veri/baglam.jsonl
+# büyük/kesilen görünümler: türetilmiş, 5 sn'de yeniden üretilir (Carvis İ-2 kararı 08-15)
+veri/gorunum/v_bolum_yogunluk.csv
+veri/gorunum/v_anahtar_terim_dosya.csv
+veri/gorunum/v_dosya_envanter.csv

@@ -21,8 +21,8 @@
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| İ-1 | **ship** (işçi ajan) | `tools/baglam-tablo.py` (stdlib; md → kayıt/referans/anahtar/json_kayit/dosya/uretim tabloları; SQLite + JSONL + gold CSV görünümleri; idempotent) + `veri/README.md` + `.gitignore` | `cc/gorev-2026-08-15-7.md` | dosyalar + işçi özeti | SAHADA |
-| İ-2 | — | Carvis doğrulama: script'i kendim koşarım, sayaçlar + idempotens + kırık-pointer örneklemi (V26 ruhu) → commit | İ-1 | commit | KUYRUKTA |
+| İ-1 | **ship** (işçi ajan) | `tools/baglam-tablo.py` (stdlib; md → kayıt/referans/anahtar/json_kayit/dosya/uretim tabloları; SQLite + JSONL + gold CSV görünümleri; idempotent) + `veri/README.md` + `.gitignore` | `cc/gorev-2026-08-15-7.md` | dosyalar + işçi özeti | **DONE** (işçi 158k token / 16,5 dk; 947 satır script) |
+| İ-2 | — | Carvis doğrulama: script'i kendim koşarım, sayaçlar + idempotens + kırık-pointer örneklemi (V26 ruhu) → commit | İ-1 | commit | **DONE** (bağımsız koşum: aynı `kayit_id_kume_sha` 3905dfa7… — idempotens çapraz-oturum doğrulandı; günaydın 107 dosya/283 geçiş, sıcak kırılım baseline ile birebir; kırık-pointer görünümü SH-9'un henüz yazılmamış dosyasını yakaladı [4 atıf]) |
 | İ-3 | ship | S-6/G-6 sonrası şema v0→v1: `anahtar` tablosu `core/baglam-anahtar-kaydi.md`'den beslenir (durum/replaced_by/geçerlilik); `anahtar-denetim.py` bu tabloyu kullanır | G-6 + İ-2 | commit | KUYRUKTA |
 | T-V1 | teslim | Kaptan beyanı: bağlam tablosu üretilebilir + sorgulanabilir | İ-1..3 | DONE | KUYRUKTA |
 
@@ -30,3 +30,5 @@
 - 08-15 20:3x (seans-3) — Manifest açıldı; paralel-oturum tespiti sonrası (vaka-2 kaydı `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md`) bu hat seans-3'e verildi (Salih: "bu chatte konuşmaya devam edeceğim"). Emir numarası 6 (4/5 seans-2 pipeline'ının Hat-4/5'ine ayrılı). Baseline metrik ölçüldü (yukarıda).
 - 08-15 20:4x — Emir `cc/gorev-2026-08-15-6.md` derlendi (gorev-emri-derleme; Kapı-Ö GEÇTİ, skill çağrısı yok). **S-6 SAHADA:** generic `m40b-cift-atlas-generic` script'i (Hat-2/3 ile aynı), seed 20260821, Workflow `wf_50ef1536-f10` (bu oturum `1620e67b`); seans-2'nin `wf_e9c7f897` (Hat-3) koşumuyla paralel — makine 10 çekirdek, workflow başına ~8 eşzamanlı ajan.
 - 08-15 20:5x — Salih ek emri: proje inşası "bağlam → veri tablosu (JSON'dan faydalanarak)" → Hat V-1 açıldı; emir `cc/gorev-2026-08-15-7.md` (ship; şema v0: dosya·kayit·referans·anahtar·json_kayit·uretim + 7 görünüm; Kapı-Ö GEÇTİ). İşçi ajan sahaya (m.44: Carvis tasarım+emir, işçi kod).
+- 08-15 20:5x — Salih fikri: "learned world model" (Jarvis'in öğrenme şeklinin düğüm-grafı) → fikir-kutusuna ADAY satırı yazıldı (kart yok, tetik Salih'te); bağ: V-1 tablo substrat · Hat-5 düğüm soyutlaması · S-6 anahtar=düğüm kimliği.
+- 08-15 21:0x — **İ-1 DONE** (işçi: `tools/baglam-tablo.py` 947 satır stdlib · `veri/README.md` · gitignore; 433 dosya → 37.668 kayıt · 42.944 referans · 312 anahtar · 1.821 json_kayit · zarflı 8; ~5 sn). **İ-2 DONE:** Carvis bağımsız koşum → sayaçlar + `kayit_id_kume_sha` özdeş (idempotens iki oturumda); sıcak-katman günaydın kırılımı baseline'la birebir (tüzük 15/SKILL 14/pano 4/vardiya-kapanis 2/ingest 2/CLAUDE 1); büyük CSV'ler gitignore'a alındı (4 küçük görünüm izlenir). Sınırlar README'de. Commit atılıyor; İ-3 G-6'yı bekler.
