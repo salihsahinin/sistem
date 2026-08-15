@@ -24,6 +24,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[uc-register]] — üç REGISTER + kenar-başına biçim (K2-f kanon adı; eski "üç dil" süpersede; tek-IR'ın düşme gerekçesi B3; eklendi 08-03, K2 icra turu)
 - [[gorsel-artefakt-dogrulama]] — SVG/HTML artefaktın okunabilirliği gözle değil bbox ölçümüyle sınanır; sessiz görsel hata sınıfı + bayat-sekme tuzağı (eklendi 08-12, staj hasadı)
 - [[ingest-semasi]] — çok-sekme çıktı akışının zarf+tip+triyaj sözleşmesinin anlatımı; sözleşmenin kendisi core/ingest-semasi.md (eklendi 08-14, ingest pipeline turu; index kaydı 08-14 wiki-sayfa-yaz ilk koşumuyla tamamlandı)
+- [[stokastik-dusunce]] — belirsizlik = veri; seçici-stokastik hibrit hükmü + ajan-protokolü 7 kural + pass^k/T=0 tuzakları (eklendi 08-16, S-1 atlas turu `cc/rapor-2026-08-16-1.md`)
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 
 ## Kuyruk (sonraki oturumlar)

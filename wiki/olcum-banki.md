@@ -53,3 +53,4 @@ m.39 kapsamı dışında, ölçüm değil nitel güvenilirlik ilkesi taşıyan s
 
 ## Bağlantılar
 [[sozluk]] (γ_öz/γ_taşınan ve debi tanımı — ölçeklenme sözlüğü) · [[pointer-sistemi]] (m.20 ailesi — kaynak dosyada, özet burada) · [[token-x-zaman]] (bekleyen "koşum-maliyeti sınıf-medyanları" ölçümü aynı token×zaman çerçevesinde okunur) · aday (henüz wiki sayfası yok, düz metin): `kuyruk/senaryo-defteri.md` — m.37 karar kayıtlarının adresi.
+- [[stokastik-dusunce]] — olasılık beyanlarının değerlendirme zemini (proper skor/Brier) + küçük-n'de "güç yetersiz" damgası kuralı (karşı-link 08-16, S-1 turu).
