@@ -12,6 +12,8 @@
 - Çalışma yüzeyi Mac (`~/jarvis`); Windows akıbeti Salih'te. Deneme depoları: `~/dev/wf-deneme` · `~/dev/firstmate` · `notdefteri` (GitHub, private). K1: K1-10 hükümlü · K1-2..9+K1-11 BEKLET · K1-12 kapalı.
 - md.49: staj verisi jarvis'e TAŞINMAZ, yöntem yönü serbest. K-022 staj sürüyor (kendi klasörü + kendi ritüelleri + kendi ingest şeması). Gece-senkron Mac'te koşmuyor (Salih 08-11 "gerek yok").
 
+- **Oturum tetikleri (Salih 08-15):** açılış "seans başı" · kapanış "seans bitimi"; jarvis↔staj ayrımı KLASÖRLE; selamlama zaman-göstergesi DEĞİL (zaman-kayması freni ritüel skill'lerde; defter 08-15).
+
 ## Açık borçlar
 - **DAMITMA ACİL (Salih-imzalı planla; `damitma` skill'i hazır):** senaryo-defteri ~150KB/48KB · KILAVUZ 18,7/16KB.
 - **İngest bekleyen:** `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` · `raporlar/2026-08-05-KILAVUZ-{birebir-kopya-senaryolar,l8-workflow}.md` (08-14 dal kurtarması, HAM).

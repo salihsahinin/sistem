@@ -631,3 +631,15 @@ Dörtlü çıkarımı: şema yukarıda — token alanı yoksa PR-gövdesi-parse'
 **Akıl-yürütme:** "konuşma = sistem geliştirme" ufku (AB-06/07) ilk somut yetki adımını aldı; eşiği dolu adaylar kutuda bekliyordu; ajan-metodolojisi + ingest şeması adayların spesifikasyonlarını hazır etmişti.
 **Yetki:** Katman-1 (m.31 rol/yetki sınıfı) — Salih beyanı 08-14. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-14`.
 **İlk icra (aynı gün):** ÜRETİLDİ → S-K gorev-emri-derleme · S-E damitma · S-D lojik-ceviri · S-J karar-kaydet · **P-1 pipeline-kosum** (geçmiş-tarama sonucu yeni aday; m.43 sayımı: spec-kit m.40b zinciri + ingest pipeline'ı + metodoloji pipeline'ı = 3 koşum). S-F NOOP (vardiya-kapanis zaten kapsıyor — triyaj hükmü). S-H superseded (ritüel çifti karşıladı). S-I sonraki tura. W-1 wiki-sayfa-yaz zayıf-yeni ADAY → Salih onayına.
+
+
+---
+
+## 2026-08-15 — KATMAN-1 KARAR: Oturum-tetiği revizyonu — "seans başı / seans bitimi" + zaman-kayması freni (Salih emri)
+
+`[tip: karar | kaynak: jarvis-terminal ana-sıra | tarih: 2026-08-15 | hedef: defter | sema: v2]`
+**Durum:** "günaydın/iyi geceler" sınıfı selamlamalar Carvis'te ZAMAN KAYMASI üretiyordu — "günaydın" yeni gün, kapanış sözü gece sanılıyordu; oysa bunlar yalnız oturum-sınırı işaretidir.
+**Hüküm:** (a) Standart tetikler: açılış = "seans başı", kapanış = "seans bitimi" — her iki hatta. (b) jarvis↔staj ayrımı CÜMLEYLE DEĞİL KLASÖRLE yapılır (~/jarvis → jarvis ritüelleri · staj klasörü → staj ritüelleri). (c) ZAMAN-KAYMASI FRENİ: selamlamadan gün/saat çıkarımı YASAK; zaman yalnız sistem kaynağından okunur. Eski tetikler ("günaydın", "uyucam"...) silinmedi, geçerli kalır.
+**Akıl-yürütme:** 08-12 oturum-yapılanması kararının ("günaydın jarvis geliştirme"/"günaydın staj" hatları) revizyonu — cümle-ayrımı yerine klasör-ayrımı hem sağlam hem zaman-bağımsız.
+**Yetki:** Katman-1 (ritüel/kural değişimi) — Salih beyanı 08-15. **Geri-açma:** Salih beyanı. `gecerli-baslangic: 2026-08-15`. Süpersede: 08-12 oturum-yapılanması kararının tetik-cümlesi kısmı `gecerli-bitis: 2026-08-15` (klasör-ayrımı ilkesi yerine geçti; hat yapısı baki).
+**İcra (aynı anda):** gunaydin-vardiya + vardiya-kapanis + staj-acilis skill'lerine tetik+fren işlendi; kapsüle not düştü.

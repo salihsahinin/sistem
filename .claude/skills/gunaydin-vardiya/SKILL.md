@@ -1,11 +1,14 @@
 ---
 name: gunaydin-vardiya
-description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "günaydın", "gunaydin", "günaydın Carvis", "günaydın, prototip", "günaydın, PortRisk", "günaydın jarvis geliştirme", "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu selamla açtığında HER YÜZEYDE (PC Cowork, Mac Cowork, bulut Cowork, mobil) çalışır — önsöz/ek cümle/soru eşlik etse bile önce bu ritüel koşulur. Durum profil/bulut hafızadan ANLATILMAZ; yalnız JARVIS kanonundan okunur (Windows C:\JARVIS · Mac ~/jarvis). Oturum ortası selamlaşmada, kapanışta ("uyucam" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA ("günaydın staj" / "seans başı staj" / staj klasöründen açılan oturum — Salih kararı 2026-08-12) KULLANILMAZ; staj oturumu jarvis kanonunu OKUMAZ, staj klasörünün kendi CLAUDE.md'sine oturur.
+description: Carvis'in JARVIS vardiya-AÇILIŞ ritüelini koşar. Salih "seans başı" (08-15 standart tetik), "günaydın", "gunaydin", "günaydın Carvis", "günaydın, prototip", "günaydın, PortRisk", "günaydın jarvis geliştirme", "vardiyayı devral", "vardiya aç", "oturuma başlayalım" dediğinde ya da yeni oturumu selamla açtığında HER YÜZEYDE (PC Cowork, Mac Cowork, bulut Cowork, mobil) çalışır — önsöz/ek cümle/soru eşlik etse bile önce bu ritüel koşulur. Durum profil/bulut hafızadan ANLATILMAZ; yalnız JARVIS kanonundan okunur (Windows C:\JARVIS · Mac ~/jarvis). Oturum ortası selamlaşmada, kapanışta ("uyucam" → vardiya-kapanis), JARVIS-dışı sohbette ve STAJ OTURUMLARINDA ("günaydın staj" / "seans başı staj" / staj klasöründen açılan oturum — Salih kararı 2026-08-12) KULLANILMAZ; staj oturumu jarvis kanonunu OKUMAZ, staj klasörünün kendi CLAUDE.md'sine oturur.
 ---
 
 # Günaydın — vardiya açılışı (Carvis, v0.3-deneysel-m29 — Mac yolu + staj kapısı + hat beyanı genişletmesi, 2026-08-12)
 
 Selamlaşma sohbet değil VARDİYA DEVRİDİR. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi TAŞIMAZ — çelişkide kanon kazanır.
+
+## 0. ZAMAN-KAYMASI FRENİ (Salih Katman-1, 2026-08-15)
+Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: "günaydın"dan sabah/yeni-gün, kapanış sözünden gece ÇIKARIMI YAPILMAZ. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik artık "seans başı"; jarvis↔staj ayrımı CÜMLEYLE DEĞİL KLASÖRLE yapılır (~/jarvis → bu ritüel · staj klasörü → staj-acilis).
 
 ## 1. Yüzey + hat tespiti
 0. STAJ KAPISI (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("günaydın staj", "seans başı staj") → BU RİTÜEL KOŞULMAZ. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
