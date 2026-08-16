@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """sunum-son50.py — 'Son 50 prompt' gold görünümünden tek-dosya HTML sunum üretir (mobil uyumlu; dış bağımlılık yok; STDLIB ONLY).
-Girdi: veri/gorunum/v_son_50_prompt.csv (+ silver `prompt` sayımları) · Çıktı: raporlar/<tarih>-son-50-prompt-sunum.html
+Girdi: veri/gorunum/v_son_50_prompt.csv (+ silver `prompt` sayımları) · Çıktı: raporlar/son-50-prompt-SUNUM.html (sabit ad; Spotlight'ta 'son-50' aramasının İLK sonucu olsun diye ad anahtarla başlar, tarih içeride)
 Mobil: dokunmatik kaydırma (tablo içinde başlayan kaydırma tabloyu kaydırır, slaydı değil) · büyük ileri/geri düğmeleri · 100dvh · dar ekranda ikincil kolonlar gizli (oturum/sıra/model/kar) · yazı clamp().
 Kullanım: python3 tools/sunum-son50.py [--tarih YYYY-MM-DD] [--repo <yol>] · sonra: open -R <dosya> + open <dosya>
 """
@@ -116,7 +116,7 @@ deck.addEventListener('touchend',e=>{{if(inTable)return;const t=e.changedTouches
 go(0);
 }})();
 </script></body></html>"""
-    out = os.path.join(R, "raporlar", f"{tarih}-son-50-prompt-sunum.html")
+    out = os.path.join(R, "raporlar", "son-50-prompt-SUNUM.html")  # ad arama anahtarıyla BAŞLAR (Spotlight ilk sonuç); tarih dosyanın içinde
     open(out, "w", encoding="utf-8").write(page)
     print(out, len(page.encode()), "bytes;", len(rows), "satır")
 
