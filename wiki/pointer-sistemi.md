@@ -26,3 +26,5 @@ Sıcak bağlam (CLAUDE.md, kapsül, pano) sınırlı ve pahalıdır; her oturum 
 
 ## Bağlantılar
 [[token-x-zaman]] (m.21 bağlam-detay ölçekleme aynı parametrelerle) · katmanlı yerleşim: tüzük m.22 · dosya-açıklama standardı: m.29
+
+*Karşı-link (08-16):* [[baglam-veri-ambari]] — ambar sorgulanır, prompta dökülmez; brife pointer gider (aynı ilke).

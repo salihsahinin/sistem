@@ -26,6 +26,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[ingest-semasi]] — çok-sekme çıktı akışının zarf+tip+triyaj sözleşmesinin anlatımı; sözleşmenin kendisi core/ingest-semasi.md (eklendi 08-14, ingest pipeline turu; index kaydı 08-14 wiki-sayfa-yaz ilk koşumuyla tamamlandı)
 - [[stokastik-dusunce]] — belirsizlik = veri; seçici-stokastik hibrit hükmü + ajan-protokolü 7 kural + pass^k/T=0 tuzakları (eklendi 08-16, S-1 atlas turu `cc/rapor-2026-08-16-1.md`)
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
+- [[baglam-veri-ambari]] — bağlam VERİTABANI (operasyonel, V-1) ↔ bağlam VERİ AMBARI (analitik: aynı SQLite'ta ayrı şema/görünüm; erişim-tasarımı ayrımı; bitemporal + SCD-2 + olay↔nesne köprü) tanımı + Jarvis içerik örnekleri (olgu/boyut/mart) — 'context warehouse' dışta tanımsız, m.29 (eklendi 08-16, rapor-16-3 turu)
 
 ## Kuyruk (sonraki oturumlar)
 - baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).
