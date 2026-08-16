@@ -19,7 +19,7 @@ from datetime import datetime, timezone, timedelta
 
 # --- deneysel m.29 sabitler (ilk 3 koşumda kalibre) ---
 FRESH = {"bronz": {"warn_gun": 3, "error_gun": 14}, "silver": {"warn_gun": 3, "error_gun": 14}, "gold": {"warn_gun": 7, "error_gun": 30}}
-SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak"]
+SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum"]
 TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("kayit.kayit_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kayit_id FROM kayit GROUP BY kayit_id HAVING COUNT(*)>1)", "error"),
     ("kayit.dosya_id not_null", "not_null", "SELECT COUNT(*) FROM kayit WHERE dosya_id IS NULL OR dosya_id=''", "error"),
@@ -31,6 +31,9 @@ TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("karar_borcu.durum accepted_values", "accepted_values", "SELECT COUNT(*) FROM karar_borcu WHERE durum NOT IN ('İMZASIZ','BEKLET','Salih''te','masaya','kısmen-kapandı','kapandı','belirsiz','icra-sırada')", "warn"),
     ("karar_borcu_kaynak.borc_id → karar_borcu", "relationships", "SELECT COUNT(*) FROM karar_borcu_kaynak x LEFT JOIN karar_borcu b ON b.borc_id=x.borc_id WHERE b.borc_id IS NULL", "error"),
     ("karar_borcu_kaynak.satir_var (kırık pointer)", "singular", "SELECT COUNT(*) FROM karar_borcu_kaynak WHERE satir_var=0 OR dosya_var=0", "warn"),
+    ("prompt.prompt_id unique", "unique", "SELECT COUNT(*) FROM (SELECT prompt_id FROM prompt GROUP BY prompt_id HAVING COUNT(*)>1)", "error"),
+    ("amb_olgu_kosum.kosum_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)", "error"),
+    ("amb_olgu_prompt ↔ prompt 1:1", "relationships", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))", "error"),
 ]
 
 

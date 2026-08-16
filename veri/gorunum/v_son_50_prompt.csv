@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-08-16,09:39,9fdc5615,7,emir,wiki-sayfa-yaz,claude-fable-5,177,ayrıca görev bitince yeni görev:son girdiğim 50 promptu bana silver bronze gold katmandan doğru bir şekilde faydalanarak bana çıkar benim so,9446d850-a6b9-4016-b8af-218321566d69
-2,2026-08-16,09:27,a0258404,1,emir,,claude-fable-5,111,ayrıca jarvisin dosyaları için dosya engelini kaldır ki finder'dan jarvis dosyasına istediğim gibi erişebileyim,228b6d85-b446-43cb-9db7-b2c7cd02d2b9
-3,2026-08-16,09:25,9fdc5615,6,emir,,claude-fable-5,209,yeni görev:jarvis için bağlam database'i ve bağlam data warehouse'u tanımladık mı.tanımlamadıysak nasıl tanımlayacağımızı araştır atlasları ,ced94e75-28c1-4d68-b874-b14a682a01b4
-4,2026-08-16,08:18,9fdc5615,5,onay/devam,,claude-fable-5,7,push at,43f6490e-62c6-4221-bc98-7e97caff130a
-5,2026-08-16,02:11,9fdc5615,4,onay/devam,,claude-fable-5,8,devam et,dde3c990-d975-4865-b8b9-a76fcb05c52a
-6,2026-08-16,02:03,9fdc5615,3,emir,"pipeline-kosum,gorev-emri-derleme,yol-planla",claude-fable-5,321,yeni görev:jarvisi optimizde edilmiş oranda bir database olarak tasarlarsak jarvisi geliştirme sürecinde de silver gold katmanı ürettiğimiz ,f24ca53b-3862-404c-8293-03d5e21fba20
-7,2026-08-16,01:34,914d8e47,13,emir,,claude-fable-5,64,dosyayı orijinal halinden ek olarak gönder kendisi yanımda zaten,d0b06b41-6629-4b61-a675-3552ea510e74
-8,2026-08-16,01:28,914d8e47,12,emir,,claude-fable-5,11,ekli gönder,603d5897-9a6c-4835-82e4-190f1bd7cb6f
-9,2026-08-16,01:26,914d8e47,11,soru,,claude-fable-5,90,tamam bu dosyayı arkadaşıma atacağım maline gönderebilir misin bunu yagizkaterli@gmail.com,efd38d72-56aa-499c-886f-5873aedfc1d2
-10,2026-08-16,01:20,914d8e47,10,emir,,claude-fable-5,30,bana en detaylı d2'i render et,9cf3d375-7b12-40ec-9eaa-fefae841c2ac
-11,2026-08-16,01:15,9fdc5615,2,emir,,claude-fable-5,42,"devral, masa öncesi hazırlık dosyasını yaz",95e1f0f0-fe49-4275-b16d-b31cccf333d4
-12,2026-08-16,01:14,77e37b3f,4,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,339aaf1d-b432-44cc-a5d0-97312a350d0a
-13,2026-08-16,01:00,914d8e47,9,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,1b1ad16c-3194-4cf6-b896-ee334e50e443
-14,2026-08-16,00:56,914d8e47,8,emir,,claude-fable-5,121,sentez ship fazları ne onu açıklasana ayrıca bugün inşa edilen ve yazdığın kodları içeren en önemli dosyaları finderda aç,3c4ff465-03de-4460-9dd2-9a9a6220be55
-15,2026-08-16,00:53,77e37b3f,3,onay/devam,,claude-fable-5,7,push at,215a00cd-6bfc-4576-a464-e41a21f5ab32
-16,2026-08-16,00:52,9fdc5615,1,seans-acilis,seans-acilis,claude-fable-5,130,"seans başı,nerede kalmıştık en son gene zorla durdurdum bir görevi ayrıca son yaklaşık 30 saniyesinde opusa düşmüş bir konuşmaydı",fcf00761-50a9-4076-9d88-72c227ef8601
-17,2026-08-16,00:46,60c91bbb,1,emir,,claude-opus-5,298,sistemdeki karar borçlarını kun chenin kullandığı skill ile kapatacağız bana 1 tane masa öncesi hazırlık dosyası yaz okuduktan sonra karar m,dfaa6dd5-31be-4fae-8348-7ea5b0d514b9
-18,2026-08-16,00:22,7bb80b5e,3,onay/devam,skill-kapisi,claude-fable-5,21,izinleri verdim devam,f8212132-81e1-4870-a01b-29f6efea98ba
-19,2026-08-16,00:17,77e37b3f,2,seans-acilis,"gunaydin-vardiya,gorev-emri-derleme,atlas-kosum,wiki-sayfa-yaz",claude-fable-5,131,"seans başı,şöyle bi sıkıntı var ben wezterm konuşmalarımdan birini kaybettim onun transkriptini çek burdan devam edelim o konuşmaya",cb9d3b39-272c-4b5e-8a31-da8bab9c88bf
-20,2026-08-16,00:16,77e37b3f,1,soru,,claude-fable-5,23,kişisel hesabımda mıyız,ebc6fd2e-5597-406c-aae9-aee405d3a473
-21,2026-08-16,00:15,914d8e47,7,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,fa776a33-0775-48d3-96d9-b51170d2c9cd
-22,2026-08-16,00:12,914d8e47,6,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,64c39dc5-0610-4fac-96e5-1e5094ff5283
-23,2026-08-16,00:11,914d8e47,5,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,7e49e8dd-33c5-4ad5-88ae-7602d4cb2052
-24,2026-08-16,00:08,d0e63fae,21,durdur,,claude-fable-5,13,burda çalışma,03fd4457-a18c-42d8-bfac-830ac0be1acf
-25,2026-08-16,00:08,d0e63fae,20,emir,,claude-fable-5,20,kişisel hesabıma geç,3b1adff8-5ea9-4e6d-a8d0-f6570031127f
-26,2026-08-16,00:06,d0e63fae,19,soru,,claude-fable-5,24,şu anda hangi hesaptayız,50d722f4-4c27-43b7-99b2-af93db073aee
-27,2026-08-16,00:05,914d8e47,4,durdur,,claude-fable-5,3,dur,3d26bd96-8191-4ce5-9f3d-75676f1f184a
-28,2026-08-16,00:03,391087ae,1,emir,atlas-kosum,claude-sonnet-5,243,"veri biliminde stokastik düşünce nedir,araştır,atlasları koş,araştırma sonucunu jarvis bağlamlı şekilde sisteme entegre et.jarvis ve ajanlar",4e2bc5a0-472e-48ff-aa08-372717570fa4
-29,2026-08-15,23:59,7bb80b5e,2,onay/devam,,claude-fable-5,33,"A ile devam, klasör taşımayı dene",3318a526-e22b-4c8a-84f7-4deac78cc091
-30,2026-08-15,23:56,d0e63fae,18,onay/devam,,claude-fable-5,27,"devam et, hat-5'i resume et",e837d915-3400-4488-bde0-46f65bac93bf
-31,2026-08-15,23:53,7bb80b5e,1,seans-acilis,gunaydin-vardiya,claude-fable-5,106,"seans başı, biraz önce hesap değiştirdim kaybolan cowork chatlerinin transkriptlerinin devamı burası olsun",c7b82c9c-16cf-499d-a389-f6d60bed470b
-32,2026-08-15,23:53,914d8e47,3,diger,,claude-fable-5,199,şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüketi,a80ee0de-9a7b-4713-b4d8-5fd2ee941720
-33,2026-08-15,23:53,d0e63fae,17,diger,,claude-fable-5,203,❯ şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüke,661bbc5c-3dc8-41d3-b890-008d6f107bb6
-34,2026-08-15,22:56,d50f5885,3,emir,,claude-fable-5,59,bugün yazdırdığım dosyaları görmek için claude finderdan aç,0fd60b49-55f6-4317-916a-66717302b824
-35,2026-08-15,22:48,d0e63fae,16,diger,,claude-fable-5,57,arkada çalışan ajanlar da sağıklı bir şekilde durmalı ama,b46c5b1f-9614-4fab-97ca-697b20fd9362
-36,2026-08-15,22:48,914d8e47,2,diger,,claude-fable-5,58,arkada çalışan ajanlar da sağlıklı bir şekilde durmalı ama,9679c894-0ca9-4a12-9791-2ea380ef1c7f
-37,2026-08-15,22:45,d0e63fae,15,durdur,,claude-fable-5,26,limitim bitti şimdilik dur,75aca6c2-b835-4064-9c9d-d84e33305d0f
-38,2026-08-15,22:35,914d8e47,1,onay/devam,,claude-fable-5,5,devam,78c370d8-12e4-491a-a598-b4e412c68fb9
-39,2026-08-15,22:34,d0e63fae,14,onay/devam,,claude-fable-5,8,devam et,a58a29b7-7f69-4a06-9d2b-6d871b123cd3
-40,2026-08-15,22:34,d50f5885,2,geri-bildirim,,claude-fable-5,34,yanlış kanal çalışıyor nası silcem,b91c28c2-198c-4e30-a116-9ae42d7db3c5
-41,2026-08-15,22:29,1620e67b,5,onay/devam,,<synthetic>,5,devam,60c944b0-b145-484f-9a34-1fd15b0db751
-42,2026-08-15,22:27,d50f5885,1,seans-acilis,gunaydin-vardiya,claude-fable-5,73,"seans başı,şirket claude hesabına kişisel hesabımdan cc'den nasıl geçerim",aec7d7cb-8002-4f67-976d-fb3a27e9ed5e
-43,2026-08-15,22:21,27aa5cbc,1,emir,"gorev-emri-derleme,gunaydin-vardiya,atlas-kosum",claude-fable-5,344,parquet formatının boyutu küçültme felsefesinden faydalanarak jarvisin data tablolarıyla yapacağımız ingestlerde özütleme optimizasyon seçen,17727fd1-a065-42ae-8290-3e5fb5610f01
-44,2026-08-15,21:45,d0e63fae,13,soru,,claude-fable-5,176,"yazdığın tek seferlik olmayan scriptleri açamıyorum neden(senin yyazdığın kodları beraber okuyarak ikimiz de birbirimizi geliştiririz,çok ge",cd284028-8287-4983-8c37-36a6c56ff914
-45,2026-08-15,21:27,d0e63fae,12,emir,,claude-fable-5,382,hatta paralel hatlar 2 boyut olmak üzere modelin seviyesi ve modelin effortuna da bağlı olabilir araştır atlasları koş jarvisi data base e ç,ffe2fe25-427b-4aa1-acc4-ca28d68605aa
-46,2026-08-15,21:07,d0e63fae,11,emir,,claude-fable-5,303,hepsi bitince yeni araştırma görevi:şimdi asıl soru şu ben şu an tüm jarvisleri aynı hat üzerinde mi açmalıyım yoksa yeni jarvis hatları olu,27207bcc-44e8-4586-8217-7817c04d9cd0
-47,2026-08-15,20:50,1620e67b,4,emir,,claude-fable-5,112,"yeni proje fikri:jarvisin mevcut öğrenme şeklini anlatan ,node'lardan oluşan learned world model oluşturma fikri",2c5410bc-474f-4380-8262-11d22140c827
-48,2026-08-15,20:46,1620e67b,3,diger,,claude-fable-5,98,bu arada proje inşa görevi:tüm contextimizi jsondan da faydalanarak data tablosuna çevirme projesi,aaf8502c-1c5d-40d7-8eb6-4a36cfacfdfe
-49,2026-08-15,20:37,1620e67b,2,emir,pipeline-kosum,claude-fable-5,722,(yeni görev:şimdi sezgilerimden dolayı araştırmanı istediğim bir nokta var.tüm contextimizi data scientist bakış açısıyla bir silver katman ,8664c996-b5a9-427f-a9be-4e8b229a4f37
-50,2026-08-15,20:22,1620e67b,1,seans-acilis,"gunaydin-vardiya,gorev-emri-derleme",claude-fable-5,11,"seans başı,",ac584b64-bfc4-472c-89f2-103158dea9fb
+1,2026-08-16,09:57,9fdc5615,8,onay/devam,,claude-fable-5,8,devam et,2f2b8e9d-89c4-47c1-9ec0-8a373fdf90a7
+2,2026-08-16,09:39,9fdc5615,7,emir,wiki-sayfa-yaz,claude-fable-5,177,ayrıca görev bitince yeni görev:son girdiğim 50 promptu bana silver bronze gold katmandan doğru bir şekilde faydalanarak bana çıkar benim so,9446d850-a6b9-4016-b8af-218321566d69
+3,2026-08-16,09:27,a0258404,1,emir,,claude-fable-5,111,ayrıca jarvisin dosyaları için dosya engelini kaldır ki finder'dan jarvis dosyasına istediğim gibi erişebileyim,228b6d85-b446-43cb-9db7-b2c7cd02d2b9
+4,2026-08-16,09:25,9fdc5615,6,emir,,claude-fable-5,209,yeni görev:jarvis için bağlam database'i ve bağlam data warehouse'u tanımladık mı.tanımlamadıysak nasıl tanımlayacağımızı araştır atlasları ,ced94e75-28c1-4d68-b874-b14a682a01b4
+5,2026-08-16,08:18,9fdc5615,5,onay/devam,,claude-fable-5,7,push at,43f6490e-62c6-4221-bc98-7e97caff130a
+6,2026-08-16,02:11,9fdc5615,4,onay/devam,,claude-fable-5,8,devam et,dde3c990-d975-4865-b8b9-a76fcb05c52a
+7,2026-08-16,02:03,9fdc5615,3,emir,"pipeline-kosum,gorev-emri-derleme,yol-planla",claude-fable-5,321,yeni görev:jarvisi optimizde edilmiş oranda bir database olarak tasarlarsak jarvisi geliştirme sürecinde de silver gold katmanı ürettiğimiz ,f24ca53b-3862-404c-8293-03d5e21fba20
+8,2026-08-16,01:34,914d8e47,13,emir,,claude-fable-5,64,dosyayı orijinal halinden ek olarak gönder kendisi yanımda zaten,d0b06b41-6629-4b61-a675-3552ea510e74
+9,2026-08-16,01:28,914d8e47,12,emir,,claude-fable-5,11,ekli gönder,603d5897-9a6c-4835-82e4-190f1bd7cb6f
+10,2026-08-16,01:26,914d8e47,11,soru,,claude-fable-5,90,tamam bu dosyayı arkadaşıma atacağım maline gönderebilir misin bunu yagizkaterli@gmail.com,efd38d72-56aa-499c-886f-5873aedfc1d2
+11,2026-08-16,01:20,914d8e47,10,emir,,claude-fable-5,30,bana en detaylı d2'i render et,9cf3d375-7b12-40ec-9eaa-fefae841c2ac
+12,2026-08-16,01:15,9fdc5615,2,emir,,claude-fable-5,42,"devral, masa öncesi hazırlık dosyasını yaz",95e1f0f0-fe49-4275-b16d-b31cccf333d4
+13,2026-08-16,01:14,77e37b3f,4,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,339aaf1d-b432-44cc-a5d0-97312a350d0a
+14,2026-08-16,01:00,914d8e47,9,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,1b1ad16c-3194-4cf6-b896-ee334e50e443
+15,2026-08-16,00:56,914d8e47,8,emir,,claude-fable-5,121,sentez ship fazları ne onu açıklasana ayrıca bugün inşa edilen ve yazdığın kodları içeren en önemli dosyaları finderda aç,3c4ff465-03de-4460-9dd2-9a9a6220be55
+16,2026-08-16,00:53,77e37b3f,3,onay/devam,,claude-fable-5,7,push at,215a00cd-6bfc-4576-a464-e41a21f5ab32
+17,2026-08-16,00:52,9fdc5615,1,seans-acilis,seans-acilis,claude-fable-5,130,"seans başı,nerede kalmıştık en son gene zorla durdurdum bir görevi ayrıca son yaklaşık 30 saniyesinde opusa düşmüş bir konuşmaydı",fcf00761-50a9-4076-9d88-72c227ef8601
+18,2026-08-16,00:46,60c91bbb,1,emir,,claude-opus-5,298,sistemdeki karar borçlarını kun chenin kullandığı skill ile kapatacağız bana 1 tane masa öncesi hazırlık dosyası yaz okuduktan sonra karar m,dfaa6dd5-31be-4fae-8348-7ea5b0d514b9
+19,2026-08-16,00:22,7bb80b5e,3,onay/devam,skill-kapisi,claude-fable-5,21,izinleri verdim devam,f8212132-81e1-4870-a01b-29f6efea98ba
+20,2026-08-16,00:17,77e37b3f,2,seans-acilis,"gunaydin-vardiya,gorev-emri-derleme,atlas-kosum,wiki-sayfa-yaz",claude-fable-5,131,"seans başı,şöyle bi sıkıntı var ben wezterm konuşmalarımdan birini kaybettim onun transkriptini çek burdan devam edelim o konuşmaya",cb9d3b39-272c-4b5e-8a31-da8bab9c88bf
+21,2026-08-16,00:16,77e37b3f,1,soru,,claude-fable-5,23,kişisel hesabımda mıyız,ebc6fd2e-5597-406c-aae9-aee405d3a473
+22,2026-08-16,00:15,914d8e47,7,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,fa776a33-0775-48d3-96d9-b51170d2c9cd
+23,2026-08-16,00:12,914d8e47,6,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,64c39dc5-0610-4fac-96e5-1e5094ff5283
+24,2026-08-16,00:11,914d8e47,5,onay/devam,,claude-fable-5,27,kişisel hesabımdaysak devam,7e49e8dd-33c5-4ad5-88ae-7602d4cb2052
+25,2026-08-16,00:08,d0e63fae,21,durdur,,claude-fable-5,13,burda çalışma,03fd4457-a18c-42d8-bfac-830ac0be1acf
+26,2026-08-16,00:08,d0e63fae,20,emir,,claude-fable-5,20,kişisel hesabıma geç,3b1adff8-5ea9-4e6d-a8d0-f6570031127f
+27,2026-08-16,00:06,d0e63fae,19,soru,,claude-fable-5,24,şu anda hangi hesaptayız,50d722f4-4c27-43b7-99b2-af93db073aee
+28,2026-08-16,00:05,914d8e47,4,durdur,,claude-fable-5,3,dur,3d26bd96-8191-4ce5-9f3d-75676f1f184a
+29,2026-08-16,00:03,391087ae,1,emir,atlas-kosum,claude-sonnet-5,243,"veri biliminde stokastik düşünce nedir,araştır,atlasları koş,araştırma sonucunu jarvis bağlamlı şekilde sisteme entegre et.jarvis ve ajanlar",4e2bc5a0-472e-48ff-aa08-372717570fa4
+30,2026-08-15,23:59,7bb80b5e,2,onay/devam,,claude-fable-5,33,"A ile devam, klasör taşımayı dene",3318a526-e22b-4c8a-84f7-4deac78cc091
+31,2026-08-15,23:56,d0e63fae,18,onay/devam,,claude-fable-5,27,"devam et, hat-5'i resume et",e837d915-3400-4488-bde0-46f65bac93bf
+32,2026-08-15,23:53,7bb80b5e,1,seans-acilis,gunaydin-vardiya,claude-fable-5,106,"seans başı, biraz önce hesap değiştirdim kaybolan cowork chatlerinin transkriptlerinin devamı burası olsun",c7b82c9c-16cf-499d-a389-f6d60bed470b
+33,2026-08-15,23:53,914d8e47,3,diger,,claude-fable-5,199,şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüketi,a80ee0de-9a7b-4713-b4d8-5fd2ee941720
+34,2026-08-15,23:53,d0e63fae,17,diger,,claude-fable-5,203,❯ şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüke,661bbc5c-3dc8-41d3-b890-008d6f107bb6
+35,2026-08-15,22:56,d50f5885,3,emir,,claude-fable-5,59,bugün yazdırdığım dosyaları görmek için claude finderdan aç,0fd60b49-55f6-4317-916a-66717302b824
+36,2026-08-15,22:48,d0e63fae,16,diger,,claude-fable-5,57,arkada çalışan ajanlar da sağıklı bir şekilde durmalı ama,b46c5b1f-9614-4fab-97ca-697b20fd9362
+37,2026-08-15,22:48,914d8e47,2,diger,,claude-fable-5,58,arkada çalışan ajanlar da sağlıklı bir şekilde durmalı ama,9679c894-0ca9-4a12-9791-2ea380ef1c7f
+38,2026-08-15,22:45,d0e63fae,15,durdur,,claude-fable-5,26,limitim bitti şimdilik dur,75aca6c2-b835-4064-9c9d-d84e33305d0f
+39,2026-08-15,22:35,914d8e47,1,onay/devam,,claude-fable-5,5,devam,78c370d8-12e4-491a-a598-b4e412c68fb9
+40,2026-08-15,22:34,d0e63fae,14,onay/devam,,claude-fable-5,8,devam et,a58a29b7-7f69-4a06-9d2b-6d871b123cd3
+41,2026-08-15,22:34,d50f5885,2,geri-bildirim,,claude-fable-5,34,yanlış kanal çalışıyor nası silcem,b91c28c2-198c-4e30-a116-9ae42d7db3c5
+42,2026-08-15,22:29,1620e67b,5,onay/devam,,<synthetic>,5,devam,60c944b0-b145-484f-9a34-1fd15b0db751
+43,2026-08-15,22:27,d50f5885,1,seans-acilis,gunaydin-vardiya,claude-fable-5,73,"seans başı,şirket claude hesabına kişisel hesabımdan cc'den nasıl geçerim",aec7d7cb-8002-4f67-976d-fb3a27e9ed5e
+44,2026-08-15,22:21,27aa5cbc,1,emir,"gorev-emri-derleme,gunaydin-vardiya,atlas-kosum",claude-fable-5,344,parquet formatının boyutu küçültme felsefesinden faydalanarak jarvisin data tablolarıyla yapacağımız ingestlerde özütleme optimizasyon seçen,17727fd1-a065-42ae-8290-3e5fb5610f01
+45,2026-08-15,21:45,d0e63fae,13,soru,,claude-fable-5,176,"yazdığın tek seferlik olmayan scriptleri açamıyorum neden(senin yyazdığın kodları beraber okuyarak ikimiz de birbirimizi geliştiririz,çok ge",cd284028-8287-4983-8c37-36a6c56ff914
+46,2026-08-15,21:27,d0e63fae,12,emir,,claude-fable-5,382,hatta paralel hatlar 2 boyut olmak üzere modelin seviyesi ve modelin effortuna da bağlı olabilir araştır atlasları koş jarvisi data base e ç,ffe2fe25-427b-4aa1-acc4-ca28d68605aa
+47,2026-08-15,21:07,d0e63fae,11,emir,,claude-fable-5,303,hepsi bitince yeni araştırma görevi:şimdi asıl soru şu ben şu an tüm jarvisleri aynı hat üzerinde mi açmalıyım yoksa yeni jarvis hatları olu,27207bcc-44e8-4586-8217-7817c04d9cd0
+48,2026-08-15,20:50,1620e67b,4,emir,,claude-fable-5,112,"yeni proje fikri:jarvisin mevcut öğrenme şeklini anlatan ,node'lardan oluşan learned world model oluşturma fikri",2c5410bc-474f-4380-8262-11d22140c827
+49,2026-08-15,20:46,1620e67b,3,diger,,claude-fable-5,98,bu arada proje inşa görevi:tüm contextimizi jsondan da faydalanarak data tablosuna çevirme projesi,aaf8502c-1c5d-40d7-8eb6-4a36cfacfdfe
+50,2026-08-15,20:37,1620e67b,2,emir,pipeline-kosum,claude-fable-5,722,(yeni görev:şimdi sezgilerimden dolayı araştırmanı istediğim bir nokta var.tüm contextimizi data scientist bakış açısıyla bir silver katman ,8664c996-b5a9-427f-a9be-4e8b229a4f37
