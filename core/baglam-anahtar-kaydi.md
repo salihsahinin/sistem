@@ -196,7 +196,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
         }
       ],
       "aday": [],
-      "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli."
+      "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli. 08-16 (Carvis/Fable, Salih \"düzelt\"): sıcak-katman kalıntısı KAPANDI — CLAUDE.md \"Yüzey yetkisi\" satırı + SessionStart hook yetki bandı geçiş kaydına yeniden yazıldı; denetim körü: `ana-sıra(Cowork)` kalıbı `\\(cowork` izinli-kalıbına takılıyordu (kalıp gevşetilmedi, kalıntı elle bulundu)."
     }
   ]
 }
