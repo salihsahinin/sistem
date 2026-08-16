@@ -1,0 +1,123 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Son 50 Prompt — sunum</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#0f1115;--fg:#e8e6e1;--muted:#9aa0a6;--acc:#f2b134;--acc2:#4fb0c6;--card:#181b22;--line:#2a2f3a}
+*{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:16px/1.45 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.deck{height:100vh;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;padding:5vh 6vw;display:none;flex-direction:column;overflow:auto}
+.slide.on{display:flex}
+h1{font-size:clamp(28px,4.2vw,56px);margin:0 0 .3em;line-height:1.1} h2{font-size:clamp(20px,2.6vw,34px);margin:0 0 .6em;color:var(--acc)}
+p,li{font-size:clamp(15px,1.5vw,21px);max-width:70ch} .lead{font-size:clamp(18px,2vw,26px);color:var(--fg)}
+.muted{color:var(--muted)} .kicker{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--acc2);margin-bottom:1.2em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:1em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;min-width:0}
+.card h3{margin:0 0 .4em;font-size:18px;color:var(--acc)} .card p{margin:0;font-size:15px;color:#cfd3d8}
+.flow{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin-top:1em} .flow .card{flex:1 1 220px} .arrow{align-self:center;color:var(--acc);font-size:28px}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px;flex:1 1 auto;min-height:0;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13px} th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;white-space:nowrap}
+th{position:sticky;top:0;background:#1f232c;color:var(--acc);z-index:1} td.p{white-space:normal;min-width:34ch;max-width:70ch} td.n{text-align:right;color:var(--muted)} .mono{font-family:ui-monospace,Menlo,monospace} .small{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;background:#2a2f3a;color:#dfe3e8} .t-emir{background:#3b2f0e;color:#f2b134} .t-soru{background:#0f2f3a;color:#4fb0c6} .t-onay-devam{background:#123322;color:#7fd8a5} .t-durdur{background:#3a1616;color:#ff8f8f} .t-seans-acilis,.t-seans-kapanis{background:#2b2542;color:#c9b8ff}
+.nav{position:fixed;right:18px;bottom:14px;color:var(--muted);font-size:12px} .nav b{color:var(--fg)}
+.foot{margin-top:auto;padding-top:1em;color:var(--muted);font-size:12px}
+kbd{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px}
+</style></head><body><div class="deck">
+
+<section class="slide on">
+<div class="kicker">JARVIS · veri-mühendisliği katmanı · 2026-08-16</div>
+<h1>Son 50 Prompt</h1>
+<p class="lead">Salih'in JARVIS'e verdiği son 50 komutun <b>doğrulanmış, sorgulanabilir</b> tablosu — sohbet dökümü değil, veri.</p>
+<p class="muted">Bu tablo ne işe yarar: (1) neyi, ne zaman, hangi oturumda istediğini <b>tek bakışta</b> görürsün; (2) hangi komutun hangi <b>skill'i</b> tetiklediğini ve hangi <b>modelin</b> cevapladığını gösterir; (3) komut türlerinin dağılımını (emir / soru / onay / durdur…) verir — yani JARVIS'i nasıl yönettiğinin ölçümü; (4) her satır ham kaynağına (oturum transkripti) geri-eşlenir — sonradan sorgulanabilir, silinmez.</p>
+<div class="foot">Kaynak: 102 prompt · 14 jarvis oturumu · 2026-08-12 → 2026-08-16 · gold görünüm <span class="mono">v_son_50_prompt</span> · Gezinme: <kbd>→</kbd> <kbd>←</kbd> ya da tıkla</div>
+</section>
+
+<section class="slide">
+<div class="kicker">nasıl üretildi</div>
+<h2>Bronz → Silver → Gold (katman = koşul, ad değil)</h2>
+<div class="flow">
+<div class="card"><h3>BRONZ · ham + provenans</h3><p>Oturum transkriptleri (koşum kütüğü, repo dışı) taranır; yalnız <b>gerçek Salih prompt'ları</b> alınır (araç çıktısı, sistem mesajı, skill enjeksiyonu dışlanır). Ham metin <b>değiştirilmez</b>; append-only; tekil anahtar = kaynak uuid.<br><span class="mono small">veri/bronz/prompt-olay.jsonl</span></p></div>
+<div class="arrow">→</div>
+<div class="card"><h3>SİLVER · 1:1, tipli, tekil, test edilmiş</h3><p>Zaman UTC/TR'ye çevrilir, oturum sırası verilir, tür sınıflandırılır (heuristik, deneysel), sonraki asistanın modeli + tetiklenen skill eklenir. Şekil-sözleşmesi + 3 test: <b>unique · not_null · accepted_values → PASS</b>.<br><span class="mono small">baglam.sqlite → prompt · veri/sozlesme/prompt.json</span></p></div>
+<div class="arrow">→</div>
+<div class="card"><h3>GOLD · tek tanım, iş sorusu</h3><p>"Son 50 prompt" tek bir SQL görünümünde tanımlı; CSV + bu sunum ondan türer. Agregasyon (tür dağılımı) yalnız burada.<br><span class="mono small">v_son_50_prompt · veri/gorunum/v_son_50_prompt.csv</span></p></div>
+</div>
+<p class="muted" style="margin-top:1.2em">Üretici: <span class="mono">tools/prompt-tablo.py</span> (stdlib; deterministik — aynı transkript + aynı kod → aynı tablo). Hat: <span class="mono">tools/katman-hatti.py</span>. Yakalanan iki hata: çatal-oturumlarda aynı uuid'li prompt tekrarı (→ bronz tekilleştirme) · sistem-enjekte "Continue…/Usage limit" mesajları (→ filtre).</p>
+</section>
+
+<section class="slide">
+<div class="kicker">tablo</div>
+<h2>Son 50 prompt (en yeni üstte)</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>tarih</th><th>saat</th><th>oturum</th><th>sıra</th><th>tür</th><th>tetiklenen skill</th><th>model</th><th>kar</th><th>prompt (kısa)</th></tr></thead>
+<tbody><tr><td class='n'>1</td><td>2026-08-16</td><td>09:57</td><td class='mono'>9fdc5615</td><td class='n'>8</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>8</td><td class='p'>devam et</td></tr>
+<tr><td class='n'>2</td><td>2026-08-16</td><td>09:39</td><td class='mono'>9fdc5615</td><td class='n'>7</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>wiki-sayfa-yaz</td><td class='small'>fable-5</td><td class='n'>177</td><td class='p'>ayrıca görev bitince yeni görev:son girdiğim 50 promptu bana silver bronze gold katmandan doğru bir şekilde faydalanarak bana çıkar benim so</td></tr>
+<tr><td class='n'>3</td><td>2026-08-16</td><td>09:27</td><td class='mono'>a0258404</td><td class='n'>1</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>111</td><td class='p'>ayrıca jarvisin dosyaları için dosya engelini kaldır ki finder&#x27;dan jarvis dosyasına istediğim gibi erişebileyim</td></tr>
+<tr><td class='n'>4</td><td>2026-08-16</td><td>09:25</td><td class='mono'>9fdc5615</td><td class='n'>6</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>209</td><td class='p'>yeni görev:jarvis için bağlam database&#x27;i ve bağlam data warehouse&#x27;u tanımladık mı.tanımlamadıysak nasıl tanımlayacağımızı araştır atlasları </td></tr>
+<tr><td class='n'>5</td><td>2026-08-16</td><td>08:18</td><td class='mono'>9fdc5615</td><td class='n'>5</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>7</td><td class='p'>push at</td></tr>
+<tr><td class='n'>6</td><td>2026-08-16</td><td>02:11</td><td class='mono'>9fdc5615</td><td class='n'>4</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>8</td><td class='p'>devam et</td></tr>
+<tr><td class='n'>7</td><td>2026-08-16</td><td>02:03</td><td class='mono'>9fdc5615</td><td class='n'>3</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>pipeline-kosum,gorev-emri-derleme,yol-planla</td><td class='small'>fable-5</td><td class='n'>321</td><td class='p'>yeni görev:jarvisi optimizde edilmiş oranda bir database olarak tasarlarsak jarvisi geliştirme sürecinde de silver gold katmanı ürettiğimiz </td></tr>
+<tr><td class='n'>8</td><td>2026-08-16</td><td>01:34</td><td class='mono'>914d8e47</td><td class='n'>13</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>64</td><td class='p'>dosyayı orijinal halinden ek olarak gönder kendisi yanımda zaten</td></tr>
+<tr><td class='n'>9</td><td>2026-08-16</td><td>01:28</td><td class='mono'>914d8e47</td><td class='n'>12</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>11</td><td class='p'>ekli gönder</td></tr>
+<tr><td class='n'>10</td><td>2026-08-16</td><td>01:26</td><td class='mono'>914d8e47</td><td class='n'>11</td><td><span class='tag t-soru'>soru</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>90</td><td class='p'>tamam bu dosyayı arkadaşıma atacağım maline gönderebilir misin bunu yagizkaterli@gmail.com</td></tr>
+<tr><td class='n'>11</td><td>2026-08-16</td><td>01:20</td><td class='mono'>914d8e47</td><td class='n'>10</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>30</td><td class='p'>bana en detaylı d2&#x27;i render et</td></tr>
+<tr><td class='n'>12</td><td>2026-08-16</td><td>01:15</td><td class='mono'>9fdc5615</td><td class='n'>2</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>42</td><td class='p'>devral, masa öncesi hazırlık dosyasını yaz</td></tr>
+<tr><td class='n'>13</td><td>2026-08-16</td><td>01:14</td><td class='mono'>77e37b3f</td><td class='n'>4</td><td><span class='tag t-seans-kapanis'>seans-kapanis</span></td><td class='mono small'>seans-kapanis</td><td class='small'>fable-5</td><td class='n'>12</td><td class='p'>seans bitimi</td></tr>
+<tr><td class='n'>14</td><td>2026-08-16</td><td>01:00</td><td class='mono'>914d8e47</td><td class='n'>9</td><td><span class='tag t-seans-kapanis'>seans-kapanis</span></td><td class='mono small'>seans-kapanis</td><td class='small'>fable-5</td><td class='n'>12</td><td class='p'>seans bitimi</td></tr>
+<tr><td class='n'>15</td><td>2026-08-16</td><td>00:56</td><td class='mono'>914d8e47</td><td class='n'>8</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>121</td><td class='p'>sentez ship fazları ne onu açıklasana ayrıca bugün inşa edilen ve yazdığın kodları içeren en önemli dosyaları finderda aç</td></tr>
+<tr><td class='n'>16</td><td>2026-08-16</td><td>00:53</td><td class='mono'>77e37b3f</td><td class='n'>3</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>7</td><td class='p'>push at</td></tr>
+<tr><td class='n'>17</td><td>2026-08-16</td><td>00:52</td><td class='mono'>9fdc5615</td><td class='n'>1</td><td><span class='tag t-seans-acilis'>seans-acilis</span></td><td class='mono small'>seans-acilis</td><td class='small'>fable-5</td><td class='n'>130</td><td class='p'>seans başı,nerede kalmıştık en son gene zorla durdurdum bir görevi ayrıca son yaklaşık 30 saniyesinde opusa düşmüş bir konuşmaydı</td></tr>
+<tr><td class='n'>18</td><td>2026-08-16</td><td>00:46</td><td class='mono'>60c91bbb</td><td class='n'>1</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>opus-5</td><td class='n'>298</td><td class='p'>sistemdeki karar borçlarını kun chenin kullandığı skill ile kapatacağız bana 1 tane masa öncesi hazırlık dosyası yaz okuduktan sonra karar m</td></tr>
+<tr><td class='n'>19</td><td>2026-08-16</td><td>00:22</td><td class='mono'>7bb80b5e</td><td class='n'>3</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>skill-kapisi</td><td class='small'>fable-5</td><td class='n'>21</td><td class='p'>izinleri verdim devam</td></tr>
+<tr><td class='n'>20</td><td>2026-08-16</td><td>00:17</td><td class='mono'>77e37b3f</td><td class='n'>2</td><td><span class='tag t-seans-acilis'>seans-acilis</span></td><td class='mono small'>gunaydin-vardiya,gorev-emri-derleme,atlas-kosum,wiki-sayfa-yaz</td><td class='small'>fable-5</td><td class='n'>131</td><td class='p'>seans başı,şöyle bi sıkıntı var ben wezterm konuşmalarımdan birini kaybettim onun transkriptini çek burdan devam edelim o konuşmaya</td></tr>
+<tr><td class='n'>21</td><td>2026-08-16</td><td>00:16</td><td class='mono'>77e37b3f</td><td class='n'>1</td><td><span class='tag t-soru'>soru</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>23</td><td class='p'>kişisel hesabımda mıyız</td></tr>
+<tr><td class='n'>22</td><td>2026-08-16</td><td>00:15</td><td class='mono'>914d8e47</td><td class='n'>7</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>27</td><td class='p'>kişisel hesabımdaysak devam</td></tr>
+<tr><td class='n'>23</td><td>2026-08-16</td><td>00:12</td><td class='mono'>914d8e47</td><td class='n'>6</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>27</td><td class='p'>kişisel hesabımdaysak devam</td></tr>
+<tr><td class='n'>24</td><td>2026-08-16</td><td>00:11</td><td class='mono'>914d8e47</td><td class='n'>5</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>27</td><td class='p'>kişisel hesabımdaysak devam</td></tr>
+<tr><td class='n'>25</td><td>2026-08-16</td><td>00:08</td><td class='mono'>d0e63fae</td><td class='n'>21</td><td><span class='tag t-durdur'>durdur</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>13</td><td class='p'>burda çalışma</td></tr>
+<tr><td class='n'>26</td><td>2026-08-16</td><td>00:08</td><td class='mono'>d0e63fae</td><td class='n'>20</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>20</td><td class='p'>kişisel hesabıma geç</td></tr>
+<tr><td class='n'>27</td><td>2026-08-16</td><td>00:06</td><td class='mono'>d0e63fae</td><td class='n'>19</td><td><span class='tag t-soru'>soru</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>24</td><td class='p'>şu anda hangi hesaptayız</td></tr>
+<tr><td class='n'>28</td><td>2026-08-16</td><td>00:05</td><td class='mono'>914d8e47</td><td class='n'>4</td><td><span class='tag t-durdur'>durdur</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>3</td><td class='p'>dur</td></tr>
+<tr><td class='n'>29</td><td>2026-08-16</td><td>00:03</td><td class='mono'>391087ae</td><td class='n'>1</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>atlas-kosum</td><td class='small'>sonnet-5</td><td class='n'>243</td><td class='p'>veri biliminde stokastik düşünce nedir,araştır,atlasları koş,araştırma sonucunu jarvis bağlamlı şekilde sisteme entegre et.jarvis ve ajanlar</td></tr>
+<tr><td class='n'>30</td><td>2026-08-15</td><td>23:59</td><td class='mono'>7bb80b5e</td><td class='n'>2</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>33</td><td class='p'>A ile devam, klasör taşımayı dene</td></tr>
+<tr><td class='n'>31</td><td>2026-08-15</td><td>23:56</td><td class='mono'>d0e63fae</td><td class='n'>18</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>27</td><td class='p'>devam et, hat-5&#x27;i resume et</td></tr>
+<tr><td class='n'>32</td><td>2026-08-15</td><td>23:53</td><td class='mono'>7bb80b5e</td><td class='n'>1</td><td><span class='tag t-seans-acilis'>seans-acilis</span></td><td class='mono small'>gunaydin-vardiya</td><td class='small'>fable-5</td><td class='n'>106</td><td class='p'>seans başı, biraz önce hesap değiştirdim kaybolan cowork chatlerinin transkriptlerinin devamı burası olsun</td></tr>
+<tr><td class='n'>33</td><td>2026-08-15</td><td>23:53</td><td class='mono'>914d8e47</td><td class='n'>3</td><td><span class='tag t-diger'>diger</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>199</td><td class='p'>şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüketi</td></tr>
+<tr><td class='n'>34</td><td>2026-08-15</td><td>23:53</td><td class='mono'>d0e63fae</td><td class='n'>17</td><td><span class='tag t-diger'>diger</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>203</td><td class='p'>❯ şimdi weztermdeki iki fable jarvise yazıyorum:az önce tekrar hesap değiştim emin olamadığım bir şekilde tokenim çok hızlı bitti token tüke</td></tr>
+<tr><td class='n'>35</td><td>2026-08-15</td><td>22:56</td><td class='mono'>d50f5885</td><td class='n'>3</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>59</td><td class='p'>bugün yazdırdığım dosyaları görmek için claude finderdan aç</td></tr>
+<tr><td class='n'>36</td><td>2026-08-15</td><td>22:48</td><td class='mono'>d0e63fae</td><td class='n'>16</td><td><span class='tag t-diger'>diger</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>57</td><td class='p'>arkada çalışan ajanlar da sağıklı bir şekilde durmalı ama</td></tr>
+<tr><td class='n'>37</td><td>2026-08-15</td><td>22:48</td><td class='mono'>914d8e47</td><td class='n'>2</td><td><span class='tag t-diger'>diger</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>58</td><td class='p'>arkada çalışan ajanlar da sağlıklı bir şekilde durmalı ama</td></tr>
+<tr><td class='n'>38</td><td>2026-08-15</td><td>22:45</td><td class='mono'>d0e63fae</td><td class='n'>15</td><td><span class='tag t-durdur'>durdur</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>26</td><td class='p'>limitim bitti şimdilik dur</td></tr>
+<tr><td class='n'>39</td><td>2026-08-15</td><td>22:35</td><td class='mono'>914d8e47</td><td class='n'>1</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>5</td><td class='p'>devam</td></tr>
+<tr><td class='n'>40</td><td>2026-08-15</td><td>22:34</td><td class='mono'>d0e63fae</td><td class='n'>14</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>8</td><td class='p'>devam et</td></tr>
+<tr><td class='n'>41</td><td>2026-08-15</td><td>22:34</td><td class='mono'>d50f5885</td><td class='n'>2</td><td><span class='tag t-geri-bildirim'>geri-bildirim</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>34</td><td class='p'>yanlış kanal çalışıyor nası silcem</td></tr>
+<tr><td class='n'>42</td><td>2026-08-15</td><td>22:29</td><td class='mono'>1620e67b</td><td class='n'>5</td><td><span class='tag t-onay-devam'>onay/devam</span></td><td class='mono small'>—</td><td class='small'>&lt;synthetic&gt;</td><td class='n'>5</td><td class='p'>devam</td></tr>
+<tr><td class='n'>43</td><td>2026-08-15</td><td>22:27</td><td class='mono'>d50f5885</td><td class='n'>1</td><td><span class='tag t-seans-acilis'>seans-acilis</span></td><td class='mono small'>gunaydin-vardiya</td><td class='small'>fable-5</td><td class='n'>73</td><td class='p'>seans başı,şirket claude hesabına kişisel hesabımdan cc&#x27;den nasıl geçerim</td></tr>
+<tr><td class='n'>44</td><td>2026-08-15</td><td>22:21</td><td class='mono'>27aa5cbc</td><td class='n'>1</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>gorev-emri-derleme,gunaydin-vardiya,atlas-kosum</td><td class='small'>fable-5</td><td class='n'>344</td><td class='p'>parquet formatının boyutu küçültme felsefesinden faydalanarak jarvisin data tablolarıyla yapacağımız ingestlerde özütleme optimizasyon seçen</td></tr>
+<tr><td class='n'>45</td><td>2026-08-15</td><td>21:45</td><td class='mono'>d0e63fae</td><td class='n'>13</td><td><span class='tag t-soru'>soru</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>176</td><td class='p'>yazdığın tek seferlik olmayan scriptleri açamıyorum neden(senin yyazdığın kodları beraber okuyarak ikimiz de birbirimizi geliştiririz,çok ge</td></tr>
+<tr><td class='n'>46</td><td>2026-08-15</td><td>21:27</td><td class='mono'>d0e63fae</td><td class='n'>12</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>382</td><td class='p'>hatta paralel hatlar 2 boyut olmak üzere modelin seviyesi ve modelin effortuna da bağlı olabilir araştır atlasları koş jarvisi data base e ç</td></tr>
+<tr><td class='n'>47</td><td>2026-08-15</td><td>21:07</td><td class='mono'>d0e63fae</td><td class='n'>11</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>303</td><td class='p'>hepsi bitince yeni araştırma görevi:şimdi asıl soru şu ben şu an tüm jarvisleri aynı hat üzerinde mi açmalıyım yoksa yeni jarvis hatları olu</td></tr>
+<tr><td class='n'>48</td><td>2026-08-15</td><td>20:50</td><td class='mono'>1620e67b</td><td class='n'>4</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>112</td><td class='p'>yeni proje fikri:jarvisin mevcut öğrenme şeklini anlatan ,node&#x27;lardan oluşan learned world model oluşturma fikri</td></tr>
+<tr><td class='n'>49</td><td>2026-08-15</td><td>20:46</td><td class='mono'>1620e67b</td><td class='n'>3</td><td><span class='tag t-diger'>diger</span></td><td class='mono small'>—</td><td class='small'>fable-5</td><td class='n'>98</td><td class='p'>bu arada proje inşa görevi:tüm contextimizi jsondan da faydalanarak data tablosuna çevirme projesi</td></tr>
+<tr><td class='n'>50</td><td>2026-08-15</td><td>20:37</td><td class='mono'>1620e67b</td><td class='n'>2</td><td><span class='tag t-emir'>emir</span></td><td class='mono small'>pipeline-kosum</td><td class='small'>fable-5</td><td class='n'>722</td><td class='p'>(yeni görev:şimdi sezgilerimden dolayı araştırmanı istediğim bir nokta var.tüm contextimizi data scientist bakış açısıyla bir silver katman </td></tr>
+</tbody></table></div>
+<div class="foot">Kolonlar: oturum = transkript kimliği (ilk 8) · sıra = o oturumdaki kaçıncı prompt · tür = heuristik sınıf · model = prompt'a cevap veren asistan modeli · kar = karakter · tam metin silver tablosunda (<span class="mono">select metin from prompt where prompt_id=…</span>). Tablo kaydırılabilir.</div>
+</section>
+
+<section class="slide">
+<div class="kicker">okuma</div>
+<h2>Son 50'de ne görünüyor</h2>
+<div class="grid">
+<div class="card"><h3>Tür dağılımı</h3><ul style="margin:0;padding-left:1.1em"><li><b>emir</b> 18</li><li><b>onay/devam</b> 13</li><li><b>diger</b> 5</li><li><b>soru</b> 4</li><li><b>seans-acilis</b> 4</li><li><b>durdur</b> 3</li><li><b>seans-kapanis</b> 2</li><li><b>geri-bildirim</b> 1</li></ul></div>
+<div class="card"><h3>Ne anlatıyor</h3><p>Komutların çoğu <b>emir</b> ("araştır / atlasları koş / entegre et") ve <b>onay/devam</b> — yönetim ritmi: emir ver → koşum → onayla. "durdur" satırları limit/hesap kesintilerini işaretler; açılış/kapanış satırları vardiya sınırlarını verir.</p></div>
+<div class="card"><h3>Sınırlar (dürüstlük)</h3><p>Tür sınıflandırması kural-tabanlı ve <b>deneysel</b>; "diğer" kovası var. Yalnız jarvis oturumları (staj dizini taranmadı). Model alanı ilk asistan cevabının modelidir. Sayılar m.39 damgalı: kaynağı transkript, üretim anı HEAD SHA.</p></div>
+<div class="card"><h3>Sonraki adım</h3><p>Aynı hat her vardiya kapanışında yeniden koşar (yeni prompt'lar bronza <b>eklenir</b>, tablo yeniden türer). Tür sözlüğü 3 koşumdan sonra ölçümle kalibre edilir. İstersen aynı deste ambar martları (<span class="mono">v_amb_acilis_brifi</span>) için de üretilir.</p></div>
+</div>
+</section>
+
+</div>
+<div class="nav"><span id="pos"></span> · <b>→</b> ileri · <b>←</b> geri</div>
+<script>
+const s=[...document.querySelectorAll('.slide')];let i=0;const pos=document.getElementById('pos');
+function go(k){i=(k+s.length)%s.length;s.forEach((e,j)=>e.classList.toggle('on',j===i));pos.textContent=(i+1)+' / '+s.length;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(i+1);if(e.key==='ArrowLeft')go(i-1);});
+document.querySelector('.deck').addEventListener('click',e=>{if(e.target.closest('.tablewrap'))return;go(i+1);});go(0);
+</script></body></html>
