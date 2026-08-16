@@ -141,6 +141,29 @@ def main():
              (SELECT COUNT(*) FROM amb_boyut_anahtar WHERE guncel_mi=1) AS guncel_anahtar,
              (SELECT COUNT(*) FROM amb_kopru_olay_nesne) AS kopru_satiri;
     """)
+    # --- tartışma notları (bronz: veri/tartisma-notu.jsonl; pointer'lı, metin kopyalanmaz) ---
+    tn = os.path.join(repo, "veri", "tartisma-notu.jsonl"); notlar = []
+    if os.path.exists(tn):
+        for l in open(tn, encoding="utf-8"):
+            if l.startswith("{"): notlar.append(json.loads(l))
+    con.executescript("""
+    CREATE TABLE IF NOT EXISTS amb_olgu_tartisma_notu (
+      not_id TEXT PRIMARY KEY, valid_time TEXT, konu TEXT, tetikleyen TEXT, cevap_ozeti TEXT, acik_soru TEXT, katman INTEGER, durum TEXT,
+      oturum TEXT, prompt_sayisi INTEGER, kaynak_kuyruk TEXT, system_time TEXT, kod_sha TEXT
+    );
+    DELETE FROM amb_olgu_tartisma_notu;
+    CREATE TABLE IF NOT EXISTS amb_kopru_not_prompt (not_id TEXT, prompt_id TEXT, sira INTEGER, qualifier TEXT);
+    DELETE FROM amb_kopru_not_prompt;
+    CREATE VIEW IF NOT EXISTS v_tartisma_notu AS
+      SELECT n.not_id, n.valid_time AS tarih, n.durum, n.konu, n.acik_soru, n.prompt_sayisi,
+             (SELECT GROUP_CONCAT(substr(p.ts_tr,12,5)||' '||p.tur||': '||substr(p.metin_kisa,1,60), ' ¦ ') FROM amb_kopru_not_prompt k JOIN prompt p ON p.prompt_id=k.prompt_id WHERE k.not_id=n.not_id) AS prompt_ozet
+      FROM amb_olgu_tartisma_notu n ORDER BY n.valid_time DESC;
+    """)
+    for n in notlar:
+        con.execute("INSERT INTO amb_olgu_tartisma_notu VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", (n["not_id"], n["tarih"], n["konu"], n.get("tetikleyen"), n.get("cevap_ozeti"), n.get("acik_soru"), n.get("katman"), n.get("durum"), n.get("oturum"), len(n.get("prompt_id", [])), n.get("kaynak_kuyruk"), simdi, head))
+        for i, pid in enumerate(n.get("prompt_id", []), 1):
+            con.execute("INSERT INTO amb_kopru_not_prompt VALUES (?,?,?,?)", (n["not_id"], pid, i, "tartisma-konusu"))
+    con.commit()
     con.executemany("INSERT INTO amb_olgu_kosum VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
         (o["kosum_id"], o["wf_id"], o["agent_id"], o["agent_type"], o["oturum"], o.get("aile"), o.get("rol"), o.get("modeller"), o.get("ts_bas"), o.get("ts_son"), o.get("sure_sn"),
          o.get("asistan_mesaj"), o.get("arac_cagrisi"), o.get("input_tokens"), o.get("output_tokens"), o.get("cache_read_input_tokens"), o.get("cache_creation_input_tokens"),
@@ -155,11 +178,12 @@ def main():
     testler = []
     for ad, sql in [("amb_olgu_kosum.kosum_id unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)"),
                     ("amb_olgu_kosum.output_tokens not_null", "SELECT COUNT(*) FROM amb_olgu_kosum WHERE output_tokens IS NULL"),
-                    ("amb_olgu_prompt → prompt 1:1", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))")]:
+                    ("amb_olgu_prompt → prompt 1:1", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))"),
+                    ("amb_kopru_not_prompt.prompt_id → prompt", "SELECT COUNT(*) FROM amb_kopru_not_prompt k LEFT JOIN prompt p ON p.prompt_id=k.prompt_id WHERE p.prompt_id IS NULL")]:
         n = con.execute(sql).fetchone()[0]; testler.append((ad, n, "PASS" if n == 0 else "ERROR"))
     # GOLD CSV
     gdir = os.path.join(repo, "veri", "gorunum")
-    for v in ("v_amb_kosum_maliyet", "v_amb_acilis_brifi"):
+    for v in ("v_amb_kosum_maliyet", "v_amb_acilis_brifi", "v_tartisma_notu"):
         cur = con.execute(f"SELECT * FROM {v}"); cols = [d[0] for d in cur.description]
         with open(os.path.join(gdir, f"{v}.csv"), "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh); w.writerow(cols); w.writerows(cur.fetchall())

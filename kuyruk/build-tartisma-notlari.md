@@ -133,3 +133,8 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-vardiya raporu beğenilmedi
 - **E3 m.37 şerhi:** karar kaydına ex-ante tahmin alanı (KAYIT modu; değerlendirme ≥50 olay) + belirsizlik beyanı aleatorik/epistemik + model-koşulu [A-YT2]. Eksi: kayıt yükü; m.39 gerilimi ([?] damgasıyla çözülür).
 - **E4 halüsinasyon-paketi şerhleri:** F4'e bağımsızlık şartı vurgusu [A-YT5] · F6 propriety zemini [A-YT3] · yeni fren adayı "T=0-tekrarlanabilirlik varsayımı YASAK; audit = çıktı-log" [B-YT3] · F10: kalibrasyon kıyasları protokol-damgalı sıralama [C-YT6].
 - Kör noktalar (şema tasarımcısı bilmeli): JARVIS rejimi (<50 olay, altın-cevapsız, tek kullanıcı) TÜM ailelerde ölçümsüz · güncel-kuşak T=0 oranı yok · Türkçe ölçümsüz · çeşitlilik→seçenek-kalitesi hiç aranmadı (stokastikliğin en güçlü lehte vakası boş).
+
+## 2026-08-16 (seans-7) · TN-001 — Dosya teslimi ergonomisi: open ↔ open -R, teslim standardı (Salih: "son 4 mesaj daha sonra tartışılmak üzere not edilsin — bağlam datası mantığıyla")
+- **Kayıt (pointer, metin kopyalanmadı):** `veri/tartisma-notu.jsonl` TN-001 → 4 prompt kaydı (`prompt` tablosu, oturum 9fdc5615, 10:21-10:27: "raporlar/ Finder'da gözükmüyor" · "open -R ne işe yarıyor" · "sebebi neydi" · "neden ayrı tuttun") + Carvis cevap özeti; ambar görünümü `v_tartisma_notu` (`amb_olgu_tartisma_notu` + `amb_kopru_not_prompt` köprüsü); hafıza kuralı: feedback-dosya-teslimi-finder.
+- **Açık soru (Salih):** teslim standardı A) `open` + `open -R` (mevcut: aç + Finder'da göster) · B) yalnız `open -R` + tam yol (açmayı Salih yapar) · C) yalnız tam yol. Seçim → kural güncellenir (hafıza + KILAVUZ teslim usulü satırı).
+- **Yan bulgu:** sarmalayıcı yüzey (Lavish) sunum tesliminde kafa karıştırdı — "düz dosya" tercihi kural oldu (hafıza).
