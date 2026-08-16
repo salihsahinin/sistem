@@ -1,0 +1,45 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Patron için teslim — rapor</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark">
+<style>
+:root{--bg:#fbfaf7;--fg:#1c1c1a;--muted:#5d5f66;--acc:#8a5a00;--acc2:#0d5c6b;--card:#ffffff;--line:#d9d6cf}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e8e6e1;--muted:#a3a7ad;--acc:#f2b134;--acc2:#4fb0c6;--card:#181b22;--line:#2a2f3a}}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;padding:max(16px,4vw)}
+main{max-width:900px;margin:0 auto} h1{font-size:clamp(26px,5vw,40px);margin:.2em 0} h2{font-size:clamp(19px,3vw,26px);color:var(--acc);margin:1.4em 0 .5em}
+.kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--acc2)} .lead{font-size:clamp(17px,2.4vw,22px)} .muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0} .card h3{margin:0 0 .4em;font-size:17px;color:var(--acc)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)} table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px} th,td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left} th{color:var(--acc);background:rgba(128,128,128,.08)}
+.ok{color:#1b7f3b;font-weight:600} .no{color:#a12626;font-weight:600} .foot{margin-top:2em;color:var(--muted);font-size:13px} code{font-family:ui-monospace,Menlo,monospace;font-size:.92em}
+</style></head><body><main>
+<div class="kicker">JARVIS · rapor · 2026-08-16 · HEAD 202e24b</div>
+<h1>Patron için teslim: insanlar ne kullanıyor, biz ne yapmalıyız</h1>
+<p class="lead"><b>Bu sayfa ne işe yarar:</b> senin sorunun cevabı — "Claude Design mı kullanıyorlar; en modern yöntem ve ölçüm ne?" — bir sayfada; ardından Jarvis'in teslim standardı önerisi. Karar senin.</p>
+
+<div class="card"><h3>Kısa cevap (3 cümle)</h3>
+<p>1) <b>Claude Design gerçekten var</b> — Anthropic Labs ürünü (17 Nisan 2026, önizleme): slayt/tek-sayfa/prototip üretir, PDF · PPTX · <b>tek-dosya HTML</b> · Canva · klasör · org-URL olarak dışa aktarır. 2) <b>Bizim için sınırı var:</b> gizli veriyi o araçlara vermek "Jarvis private" kuralına aykırı; biçim/şablon denemesi için serbest, asıl teslim <b>bilgisayarında duran dosya</b>. 3) "Herkes ne kullanıyor" rakamları satıcı beyanı; <b>araç kaç kişi kullanıyor diye seçilmez</b> — senin anlaman ve çevrimdışı/private/dosya-tabanlı kısıtlarla seçilir.</p></div>
+
+<h2>Modern yöntem = 3 katman</h2>
+<div class="tw"><table><thead><tr><th>Katman</th><th>Kural (bize)</th><th>Kanıt düzeyi</th></tr></thead><tbody>
+<tr><td><b>Kalite tabanı</b><br><span class="muted">otomatik denetlenir; taban, kabul değil</span></td><td>WCAG 2.2: metin kontrastı ≥4,5:1 · 320 px genişlikte sayfa yatay kaymaz · dokunma hedefi ≥24 px · tablo kendi kutusunda kayabilir · mobil + klavye odağı + hareket-azalt</td><td>W3C standardı (kesin); otomatik denetleyiciler sorunların ~%30-57'sini yakalar → puan taban</td></tr>
+<tr><td><b>Anlatım</b><br><span class="muted">patron için</span></td><td>Sonuç başa (BLUF) · etiketli bölümler · <b>tabloyu tablodan önce 1 cümleyle açıkla</b> · süs yok</td><td>Yapılandırılmış özet: kontrollü çalışmalar var (orta); Minto/Knaflic/Tufte: uzman görüşü (kanıtlanmış denmez); süs hatırlamayı düşürür (meta-analiz, küçük-orta)</td></tr>
+<tr><td><b>Üretim döngüsü</b></td><td>Veriden (gold görünüm) otomatik üret → <b>bağımsız</b> denetleyici (tarayıcı taşma testi, kaynak-satıra geri-eşleme) → düzelt; üreten kendi işinin tek hakemi olamaz</td><td>Kazanç üreticiden değil bağımsız denetleyiciden gelir (dergilerde tutarsızlık %8,8→%4,3); iç öz-düzeltme akıl-yürütmede kazanç vermez</td></tr>
+</tbody></table></div>
+
+<h2>"Patron anladı mı" nasıl ölçülür (öneri — literatürde hazır ölçüt yok)</h2>
+<div class="card"><p>Senin tarafında 4 evet/hayır: <b>① bulundu mu</b> (aramada ilk sonuç) · <b>② düz dosya olarak açıldı mı</b> (sarmalayıcı yok, çevrimdışı) · <b>③ ilk ekrandan "bu ne işe yarar / karar ne" 1 cümleyle söylendi mi</b> · <b>④ soru sormadan karar verildi mi</b>. Benim "anlaşılır" dememin değeri sıfır; ölçüm sende. Okunabilirlik formülü (Türkçe Ateşman vb.) yalnız kaba ön-eleme; web-hız metrikleri çevrimdışı dosyada geçersiz. 10 teslimde kalibre edilir.</p></div>
+
+<h2>Teslim standardı önerisi (karar senin)</h2>
+<div class="tw"><table><thead><tr><th>Alan</th><th>Kural</th></tr></thead><tbody>
+<tr><td>Amaç</td><td>İLK KURAL: patron anlasın — güzel/modern değil, "anlaşıldı mı" ölçülür</td></tr>
+<tr><td>Dosya türü</td><td>insan-yüzü = yerel tek-dosya HTML (mobil, çevrimdışı, font gömülü) · dondurulmuş kayıt = PDF · kurumsal paylaşım = PPTX · teknik = .md/.csv ayrı adla</td></tr>
+<tr><td>Ad</td><td><code>&lt;arama-anahtarı&gt;-&lt;konu&gt;-&lt;TÜR&gt;.html</code> — anahtar bir sözcüğün başında (tire yeter); tarih içeride; Finder yorumu</td></tr>
+<tr><td>İlk ekran</td><td>1 cümle "bu ne işe yarar" + sonuç/karar + kaynak künyesi; tablo varsa önce 1 cümle</td></tr>
+<tr><td>Teslim usulü</td><td>tam yol + Finder'da göster + aç; sarmalayıcı yüzey (Lavish/URL) yalnız sen istersen</td></tr>
+<tr><td>Doğrulama</td><td>üreten ≠ denetleyen: bağımsız render/taşma testi + kaynak-satıra geri-eşleme; öz-onay yok</td></tr>
+<tr><td>Araç</td><td>mevcut üretici (kendi script'imiz) varsayılan; Claude Design/Artifact = gizli veri girmeden biçim keşfi; Anthropic tasarım skill'i "patron anlasın" brief'iyle</td></tr>
+</tbody></table></div>
+
+<h2>Bilmediklerimiz (dürüstlük)</h2>
+<div class="card"><p>Karar-vericiye özgü anlama ölçütü literatürde yok (öneri deneysel) · tek-dosya HTML'in bedelleri ölçülmedi (boyut/mobil bellek) · Türkçe'de hiç ölçüm yok · Claude Design'ın güncel özellikleri (Nisan sonrası) doğrulanmadı — 90 günde yeniden bak.</p></div>
+
+<p class="foot">Kaynak: <code>cc/rapor-2026-08-16-4.md</code> (m.40b ekonomi 2 aile · 8 işçi · 354k token · hayatta-kalma 5 SAĞLAM / 17 DARALDI / 2 DÜŞTÜ · V26 2/2) · emir <code>cc/gorev-2026-08-16-4.md</code>. Bu sayfa önerdiği standardı kendine uyguladı: tek dosya, çevrimdışı, mobil, ilk ekran = ne işe yarar, tablo kendi kutusunda, ad anahtarla başlar.</p>
+</main></body></html>
