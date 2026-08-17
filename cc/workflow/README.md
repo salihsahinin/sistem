@@ -5,3 +5,4 @@
 | dosya | koşum | ne |
 |---|---|---|
 | `2026-08-15-skill-semasi-m40b-wf_4eede835.js` | wf_4eede835 (08-15, seans-2 Hat-1) | m.40b çift-atlas: skill-üretim şeması araştırması — aile × (tez → antitez → V26 örneklem → maskeli hakem) |
+| `2026-08-17-silver-temizlik-m40b-wf_bb445659.js` | wf_bb445659 (08-17, seans-8; emir `cc/gorev-2026-08-17-1.md`) | m.40b ekonomi 3 aile (A çelişki-testleri · B bayatlık · C test-mekanizması): tez/antitez Opus-medium → **V26 KURAL-TABANLI** (son üçte-bir + tüm sayısal; Salih 08-17 imzası, rastgele seçim kalktı) Sonnet-low → hakem üst model; model hiyerarşisi KB-02/03 ilk uygulaması (tahmin emirde, gerçekleşen rapor başlığında) |
