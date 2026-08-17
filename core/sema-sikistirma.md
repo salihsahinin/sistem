@@ -34,5 +34,5 @@ FLAG'li dosyada, triyajdan önce: (i) kayıt-sınıflarını ayır (yukarıdaki 
 
 ## 4. m.16 taraması + şerh-adayları + ölçüm borcu
 - Çelişki YOK — m.20/m.22/ingest-v2/damitma bu şemanın önceden-var parçaları; kanıt jarvis tasarımını 3 noktada DOĞRULADI (pointer-inişi = ölçülmüş "ucuz-önce"; kapsül=SNAPSHOT + git-kaynak = compaction-sürüklenmesi sigortası; ingest kapalı-tip = MDL düzeltme-terimi yönetimi).
-- **Şerh-adayı (Katman-1):** "damıtma ~%50 hedefi" orana değil sorgu-uyumuna bağlanmalı (F2 bulgusu); kapsül üstüne-yazma turlarına erozyon-sayacı.
+- **Şerh — İMZALANDI (Salih 08-17 masa KB-17c):** "damıtma ~%50 hedefi" orana değil SORGU-UYUMUNA bağlı (F2 bulgusu; damitma skill'i adım 4); kapsül üstüne-yazma turlarına erozyon-sayacı (teslim raporuna). İlk uygulama: 08-17 defter damıtması (kararlar+pointer korundu; oran 180,9→42,7 KB sonuçtu).
 - **Ölçüm borcu:** Jarvis bandı (26-115k) ölçülmemiş · Türkçe BPE etkisi · karar-kanonu sınıfı · U skorunun kalibrasyonu (ilk 5 damıtma koşumunda sınıf-başına önce/sonra + DRFR); Hat-6 jarvis→DB hattı `veri/baglam.sqlite` üstünde sorgu-anı/ingest çift muhasebesini ölçebilir.

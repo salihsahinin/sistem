@@ -14,7 +14,7 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 
 | # | Başlık | Damga | Not |
 |---|---|---|---|
-| V1 | Çıktı-feedback döngüsü ilkesi (spec-first yerine iterasyon) | gece | JARVIS öğrenme modelinin parçası |
+| V1 | Çıktı-feedback döngüsü ilkesi (spec-first yerine iterasyon) — **ölçek şerhi 08-17 (KB-14): eşik üstü çok-ajan işte intake spec-önce olabilir; eşik altı iterasyon** | gece | JARVIS öğrenme modelinin parçası |
 | V2 | Uzun vadeli metrik: feedback verimi | gece | meta-iş tuzağı şerhli |
 | V3 | Model-otorite hiyerarşisi + prompt derleme deltası | gece | havuz #23 ile aynı gövde |
 | V4 | Hazineden tüketim formları (wiki/kapsül/pano/kart) | gece | havuz #4-benzeri; bayat-kapsül riski kayıtlı |
@@ -47,7 +47,7 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 - **İki öğrenme modeli ayrımı:** PortRisk = yaparken öğrenme + amelelik (anlama-kapısı); JARVIS = sınırda-öğrenme (V19: önce çıktı, müfredat duvardan). Görev emirlerine parametre olarak girer.
 
 | V24 | Obsidian entegrasyonu — JARVIS vault olarak açılır + [[wiki-link]] bağlantı standardı + graph view (yaşayan kütüphane #26 / pointer m.20 kesişimi) | ayık (Salih sorusu, 07-11 gece) | **KARAR (Salih, 07-12): vault ŞİMDİ açılır + [[wiki-link]] standardı kullanımda** — isim disiplini: Salih ad değiştirmez, değişiklik bildirilir → zincir onarılır; hipotez koşulu işler (≥1 hafta kırılmasız = doğrulandı) |
-| V25 | Skill ekosistemi araştırması — hazır Jarvis modelleri/skill'ler mevcut (skill-bulan skill, Obsidian skill'leri, subagents vb.); önce skill kavramı anlaşılır, sonra Jarvis ideasını ve bağlam hazinesini besleyecek skill'ler taranır. **ALTIN KURAL (Salih, 07-11 gece): her skill'i sonunda BİZ kurarız, kurallarını BİZ belirleriz — kaliteli hazır skill'lerden yalnız İLHAM alınır.** | ayık (07-11 gece) | KARAR ALINMADI — Salih talimatı: sonraki oturuma not; gerekçeli tur + build kapsamına araştırma adımı olarak aday. |
+| V25 | Skill ekosistemi araştırması — hazır Jarvis modelleri/skill'ler mevcut (skill-bulan skill, Obsidian skill'leri, subagents vb.); önce skill kavramı anlaşılır, sonra Jarvis ideasını ve bağlam hazinesini besleyecek skill'ler taranır. ~~**ALTIN KURAL (Salih, 07-11 gece): her skill'i sonunda BİZ kurarız, kurallarını BİZ belirleriz — kaliteli hazır skill'lerden yalnız İLHAM alınır.**~~ **REVİZE (Salih Katman-1, 08-17 masa KB-14): hazır araç/kod/metodoloji/metrik/yöntem varsa ONU kullan ve üstüne geliştir; sıfırdan benzerini yapma ('WezTerm varken WezTerm yazmak saçma') — 'yalnız ilham' kuralı emekli; tüm sistem bağlamı için geçerli (KILAVUZ Tasarım ilkeleri).** | ayık (07-11 gece) | KARAR ALINMADI — Salih talimatı: sonraki oturuma not; gerekçeli tur + build kapsamına araştırma adımı olarak aday. |
 
 ## V26-V57 — damıtılmış (tam metin: kuyruk/arsiv-fikir-kutusu-2026-07.md; damıtma 07-22)
 

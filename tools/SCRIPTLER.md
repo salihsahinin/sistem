@@ -16,7 +16,7 @@
 | **baglam-tablo.py** | JARVIS bağlamını (git-izlenen .md/.json/.jsonl) veri tablosuna çevirir → `veri/baglam.sqlite` · `veri/baglam.jsonl` · `veri/gorunum/*.csv` (şema v0; jarvis→veritabanı ilk adım) | `python3 tools/baglam-tablo.py` (sözleşme: `veri/README.md`) | Carvis paralel oturum, 08-15 (`cc/gorev-2026-08-15-7.md`) |
 | **olcum-dortlu.py** | P6 enstrümantasyon: koşum-başına dörtlü (token · duvar-saati · iterasyon · sonuç) — gnhf log + no-mistakes state | `python3 tools/olcum-dortlu.py [--append]` | 08-12 (L8) |
 | **verify-push.py** | Push-doğrulama: ∀ dosya origin ≡ çalışma ağacı ∧ HEAD=origin ∧ commit'lenmemiş değişiklik yok → PASS/teşhis | `python3 tools/verify-push.py` | 08-11 (loop-eng Faz 2) |
-| gece-senkron.ps1 | Windows gece senkronu (origin→PC ff-only); Mac'te koşmuyor (Salih 08-11 "gerek yok") | — | 07-19 |
+| ~~gece-senkron.ps1~~ | EMEKLİ (Salih 08-17 masa KB-16: Windows klonu terk, kanon Mac; dosya m.8 gereği durur) — Windows gece senkronu (origin→PC ff-only) | — | 07-19 · emekli 08-17 |
 | **katman-hatti.py** | Silver/gold katmanını BRONZ'dan uçtan uca YENİDEN üretir (sabit sıra: baglam-tablo → karar-borcu-tablo → prompt-tablo → ambar-tablo); yeni yükleyici listeye EKLENİR | `python3 tools/katman-hatti.py` | 08-16 |
 | **karar-borcu-tablo.py** | `veri/karar-borcu.jsonl` (1 satır = 1 açık karar kalemi) → silver `karar_borcu`; her `dosya:satır` pointer'ını DİSKTE doğrular (kırık pointer FAIL-LOUD) | `python3 tools/karar-borcu-tablo.py` | 08-16 |
 | **prompt-tablo.py** | Salih'in gerçek prompt'ları: transkript (`~/.claude/projects/<proje>/*.jsonl`) → bronz `veri/bronz/prompt-olay.jsonl` (append) → silver `prompt` → gold `v_son_50_prompt` (+CSV) | `python3 tools/prompt-tablo.py` | 08-16 |

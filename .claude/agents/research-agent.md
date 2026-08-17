@@ -7,7 +7,7 @@ context7: true
 model: opus
 ---
 
-<!-- İSTİSNA DAMGASI (Salih emri, 2026-07-13/14 oturumu): V25 altın kuralına kayıtlı istisna — Cem'in research-agent'ı olduğu gibi kuruldu (kurulum değil-ilham kuralının ilk istisnası). Kapsam: K-017 taraması + genel araştırma koşumları. K-016'da kendi skill/ajan turumuza İLHAM kaynağıdır. Not: 'context7: true' harici MCP gerektirir — kurulu değilse ajan WebSearch/WebFetch ile koşar. -->
+<!-- İSTİSNA DAMGASI (Salih emri, 2026-07-13/14 oturumu): V25 altın kuralına kayıtlı istisna — Cem'in research-agent'ı olduğu gibi kuruldu (kurulum değil-ilham kuralının ilk istisnası). [08-17: V25 kuralı tersine döndü — 'hazırı temel al' (KILAVUZ Tasarım ilkeleri); bu kurulum artık istisna değil, kuralın kendisi.] Kapsam: K-017 taraması + genel araştırma koşumları. K-016'da kendi skill/ajan turumuza İLHAM kaynağıdır. Not: 'context7: true' harici MCP gerektirir — kurulu değilse ajan WebSearch/WebFetch ile koşar. -->
 
 <!-- EĞİTİM KATMANI (JARVIS revizyon kaydı; Salih emri 07-15: "onu da eğitmeye başlayalım") — her koşum dersi cc/defter.md'den buraya revizyon olarak akar; Cem'in taban metni ANLAMCA değiştirilmeden korunur (V25 istisna), revizyonlar bu blokta yaşar:
 R1 (2026-07-15): ad research-agent → ATLAS (Salih seçimi) · model sonnet → opus (Salih beyanı: token maliyeti) · doğrulama varsayılanı: %100 bulgu-başına doğrulayıcı yerine V26 örneklem-denetimi (~%20 + kritik bulguların tümü; oran görev emrinde ezilebilir) — K-017 koşum dersi.

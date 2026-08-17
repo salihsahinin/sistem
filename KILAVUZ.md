@@ -34,7 +34,9 @@
 ## Tasarım ilkeleri
 - **Sürtünmesizlik (#18):** sık kullanılan her akışın çağrısı kolay olur ve çapası kurulur; yeni mekanizma tasarlarken ilk soru "bunu çağırmak kaç saniye sürer?"
 - **Bayat-kapsül riski (V4):** kapsül kapanışta güncellenmezse sonraki seans yanlış yere çapalar — yanlış kapsül, boş kapsülden kötüdür; kapanış disiplini bu yüzden atlanmaz.
-- **Metafor haritası (V12):** sistem terimleri tek metafor ailesinden gelir (şirket: seans, pano, tüzük, teslim raporu); yeni terim aile içinde türetilir, tanımı sözlüğe işlenir (sözlük v1 DONDU — ekleme yalnız Salih talimatıyla, m.3).
+- **HAZIRI TEMEL AL (Salih Katman-1, 08-17 masa KB-14 şerhi — V25 'yalnız ilham' kuralının tersine çevrilmesi):** bir iş için güncelde kullanılan hazır araç/kod/metodoloji/metrik/yöntem varsa ONU kullanır, onu temel alarak geliştiririz; sıfırdan benzerini yapmayız (Salih örneği: WezTerm varken WezTerm benzeri yazmak saçma). Seçim ölçütü: yıldız yasağı (md.33) — indirme-sırası + son-sürüm + bakımcı üçlüsü. İstisna gerekiyorsa gerekçe yazılır (m.16).
+- **Ölçek şerhi — V1 iterasyon > spec-first (Salih 08-17 KB-14):** m.25 ölçek-eşiği ÜSTÜ, çok-ajan/otomasyon-sınıfı işlerde intake SPEC-ÖNCE olabilir (spec → plan → tasks iskeleti görev-emri şablonunda); eşik altında iterasyon esastır. Spec-kit aracı kurulmadı, deseni alındı (yeni ilkeyle yeniden değerlendirilebilir).
+- ~~**Metafor haritası (V12)**~~ EMEKLİ 08-17 (şirket metaforu emekli): sistem terimleri metaforsuz; her kavram tek anahtar (`core/baglam-anahtar-kaydi.md`); sözlük v1 DONDU — ekleme yalnız Salih talimatıyla (m.3).
 - **Araç-seçim ölçütü — yıldız yasağı (Salih imzası 08-01 masa-2 md.33):** GitHub yıldız sayısı araç seçiminde ölçüt OLAMAZ; pozitif karşılığı: adaylar indirme-sırası + son-sürüm-tarihi + bakımcı-sayısı üçlüsüyle tablolanır. Reddedilen araç gerekçesiyle "şu an alınmaz" listesine işlenir (md.34) — altı ay sonra aynı soru gelince cevap hazır.
 
 ## Skill-yazım standardı (deneysel damga m.29; kaynak: resmi skill-creator + best-practices — K-013 raporu; Salih onayı 07-12)

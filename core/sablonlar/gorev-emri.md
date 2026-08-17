@@ -13,3 +13,9 @@
 - *(taslak alan, sözlük-dışı — V2)* **Zaman bütçesi / son tarih (#22):**
 - *(taslak alan — V2)* **Hiyerarşi telafisi (#23):** emir ayrıntısı ∝ yetenek farkı × muğlaklık — muhakeme boşluklarını üst model doldurdu mu?
 - *(taslak alan — V2)* **Koşucu sınıfı (#24):** model + effort; karar-yoğunluğuna göre boyutlandır.
+
+## SPEC / PLAN / TASKS (KB-14, Salih 08-17 — proje-ölçekli / çok-ajan işte ZORUNLU; m.25 eşik altında atlanır)
+- **SPEC (ne, neden, kabul ölçütü):** <problem · kullanıcı · done-yüklemi boolean · kapsam dışı>
+- **PLAN (nasıl, hangi parçalar):** <mimari kararlar · bağımlılıklar · riskler · ölçüm (P6 dörtlüsü: token·süre·iterasyon·sonuç)>
+- **TASKS (küçük tipli fonksiyonlar):** <T1..Tn: her biri görev-fonksiyonu şablonuyla; sıra/paralellik; koşum profili (kosum_profili — üst model yazar)>
+*Desen kaynağı: GitHub spec-kit (kurulmadı, iskeleti alındı — 'hazırı temel al' ilkesiyle uyumlu; `raporlar/2026-08-13-spec-kit-atlas-raporu.md`).*
