@@ -1,23 +1,33 @@
 # JARVIS Node — Portföy Komuta Merkezi
 
-**Ne bu:** Salih'in JARVIS sisteminin sistem-reposu ve 6 aylık proof-of-work portföy planının komuta merkezi. Kuruluş: 2026-07-10 ("BUILD VAR" kararı, Salih). Bu repo LOKAL ve ÖZELDİR — CV artefaktı değildir; CV artefaktları ayrı public repolarda yaşar (bkz. `00_MASTER_PLAN.md`).
+**Ne bu:** Salih'in JARVIS sisteminin sistem-reposu ve 6 aylık proof-of-work portföy planının komuta merkezi. Kuruluş: 2026-07-10 ("BUILD VAR" kararı, Salih). Carvis (Jarvis'in üst-orkestratörü rolündeki Claude) bu klasörden açılan her oturumda `CLAUDE.md`'yi okur; kurallar `core/tuzuk-v0.md`'de.
 
-**Statü / onay kapısı:** Bu repo 07-10 oturumunda kuruldu. Salih'in ayık taraması = onay kapısı; veto = `git revert` ya da klasör silme (Homebase kanonuna henüz hiçbir kayıt işlenmedi — kayıt, tarama onayından sonraki ilk commit).
+**Sözlük (Salih 2026-08-17, Katman-1): şirket metaforu EMEKLİ** — "şirket" yalnız Salih'in gerçek işyeridir; Jarvis bir SİSTEMdir, Carvis üst-orkestratör, Salih tek karar verici; halef sözlük ve cascade `core/baglam-anahtar-kaydi.md` (`calisma-modeli`).
+
+**Duruş (Salih 2026-08-17, Katman-1): AÇIK KAYNAK.** Carvis'in davranışını belirleyen her şey (kural, skill, hook, ayar, araç, şablon) bu repoda okunur metin olarak yaşar; kaynak haritası ve gizli `.claude/` klasörüne görünür kapı: `kaynak-kodu/`. GitHub remote **şimdilik private** (Salih); lisans seçimi Salih'te (öneri MIT — remote public'e açılmadan önce). CV artefaktı değildir (tüzük m.14); CV artefaktları ayrı public repolarda yaşar (`00_MASTER_PLAN.md`).
+
+**Onay kapısı:** Salih'in taraması = onay; veto = `git revert`. Katman-1 (kanon) yalnız Salih kararıyla; Katman-2 Carvis yapar + commit'ler (m.31).
 
 ## Okuma sırası
-1. `00_MASTER_PLAN.md` — 6 aylık proof-of-work portföy planı (hedef: bomba gibi CV).
-2. `01_NODE_ARCHITECTURE.md` — node topolojisi + repo yapısı + yazma yüzeyleri + hijyen.
-3. `02_KNOWLEDGE_INDEX_PLAN.md` — yerel bilgi index'i: araştırma sentezi + karar + fazlı rollout.
-4. `03_DUVAR_RAPORU.md` — refutation ethos: planın gerçek sınırları (davranış, pazar, teknik, zaman).
-5. `core/` — temel katman v0: durum kapsülü, pano, tüzük, şablonlar.
-6. `raporlar/` — ajan görev raporları (ham kanıt; karar içermez).
+1. `CLAUDE.md` — oturum sözleşmesi (davranış; ≤80 satır).
+2. `core/durum-kapsulu.md` → `core/pano.md` — şu an neredeyiz.
+3. `core/tuzuk-v0.md` — kural kaynağı (m.NN numaraları buraya işaret eder).
+4. `00_MASTER_PLAN.md` · `01_NODE_ARCHITECTURE.md` · `02_KNOWLEDGE_INDEX_PLAN.md` · `03_DUVAR_RAPORU.md` — kuruluş planları (07-10; tarihçe).
+5. `kaynak-kodu/README.md` — kaynak kodu nerede, nasıl okunur.
 
 ## Klasör haritası
 ```
-core/            temel katman (kapsül, pano, tüzük v0, şablonlar) — KANON: yalnız Salih kararıyla değişir
-kuyruk/          iş kartları (Faz D'de aktifleşir — şimdilik placeholder)
-raporlar/        ajan/araştırma raporları — serbest yazım yüzeyi
-wiki/            kavram wiki'leri hedef alanı (Homebase'deki mevcut wiki'lere işaretçi)
+CLAUDE.md        oturum sözleşmesi (Katman-1)
+core/            kanon: tüzük, kural/şema dosyaları (+ .d2 grafik), kapsül, pano, şablonlar
+kuyruk/          karar defteri (senaryo-defteri), tartışma notları, kutular, gelen ingest'ler
+raporlar/        seans teslimleri (vardiya-teslim-* dosya adı; ad cascade'i sürüyor) + insan-yüzü raporlar/sunumlar
+cc/              görev emirleri (gorev-*), ajan raporları (rapor-*), pipeline manifestleri
+wiki/            kavram sayfaları (Obsidian vault; sozluk.md)
+veri/            bronz kütükler · silver baglam.sqlite (üretilir) · gold gorunum/ · sözleşmeler
+tools/           kalıcı script'ler (indeks: tools/SCRIPTLER.md)
+.claude/         skill'ler, hook'lar, ayarlar, ajan tanımı (gizli klasör → kaynak-kodu/claude)
+kaynak-kodu/     kaynak haritası + .claude'a görünür bağ
+KILAVUZ.md       kullanım kılavuzu · fikir-kutusu.md fikir havuzu · ogrenme/ dersler
 ```
 
-**Kural mirası:** Bu node, Homebase'deki Carvis sözlüğü v1 (DONDU) terimleriyle konuşur; tüzük `core/tuzuk-v0.md`'de.
+**Kural mirası:** Bu node, Homebase'deki Carvis sözlüğü v1 (DONDU) terimleriyle konuşur (`wiki/sozluk.md`); tüzük `core/tuzuk-v0.md`'de.

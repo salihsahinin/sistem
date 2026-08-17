@@ -1,4 +1,4 @@
-# Kalıcı Script İndeksi (görünür kapı — `.claude/` gizli klasörü ve Obsidian .md-filtresi yüzünden)
+# Kalıcı Script İndeksi (görünür kapı — `.claude/` gizli klasörü ve Obsidian .md-filtresi yüzünden; kaynak haritası: `kaynak-kodu/README.md`, açık-kaynak ilkesi 08-17)
 
 *Açıklama: Carvis'in tek-seferlik OLMAYAN (kalıcı, B4 basamağı) script'leri iki yerde yaşar: (1) `tools/` (repo kökü, görünür) · (2) `.claude/skills/<skill>/scripts/` (skill'e bağlı; `.claude` GİZLİ — Finder'da ⌘⇧G ile `~/jarvis/.claude/skills` ya da terminalde `open ~/jarvis/.claude/skills`; Obsidian'da Ayarlar → Files & Links → "Detect all file extensions"). Bu indeks Salih'in "beraber okuma" isteği için açıldı (08-15): her satır yol · ne yapar · nasıl koşulur · okurken bakılacak yer. Kural: yeni kalıcı script buraya satır düşürmeden tamam sayılmaz (deneysel m.29). Tümü stdlib-only Python 3 (ps1 hariç).*
 
@@ -17,6 +17,13 @@
 | **olcum-dortlu.py** | P6 enstrümantasyon: koşum-başına dörtlü (token · duvar-saati · iterasyon · sonuç) — gnhf log + no-mistakes state | `python3 tools/olcum-dortlu.py [--append]` | 08-12 (L8) |
 | **verify-push.py** | Push-doğrulama: ∀ dosya origin ≡ çalışma ağacı ∧ HEAD=origin ∧ commit'lenmemiş değişiklik yok → PASS/teşhis | `python3 tools/verify-push.py` | 08-11 (loop-eng Faz 2) |
 | gece-senkron.ps1 | Windows gece senkronu (origin→PC ff-only); Mac'te koşmuyor (Salih 08-11 "gerek yok") | — | 07-19 |
+| **katman-hatti.py** | Silver/gold katmanını BRONZ'dan uçtan uca YENİDEN üretir (sabit sıra: baglam-tablo → karar-borcu-tablo → prompt-tablo → ambar-tablo); yeni yükleyici listeye EKLENİR | `python3 tools/katman-hatti.py` | 08-16 |
+| **karar-borcu-tablo.py** | `veri/karar-borcu.jsonl` (1 satır = 1 açık karar kalemi) → silver `karar_borcu`; her `dosya:satır` pointer'ını DİSKTE doğrular (kırık pointer FAIL-LOUD) | `python3 tools/karar-borcu-tablo.py` | 08-16 |
+| **prompt-tablo.py** | Salih'in gerçek prompt'ları: transkript (`~/.claude/projects/<proje>/*.jsonl`) → bronz `veri/bronz/prompt-olay.jsonl` (append) → silver `prompt` → gold `v_son_50_prompt` (+CSV) | `python3 tools/prompt-tablo.py` | 08-16 |
+| **ambar-tablo.py** | Bağlam veri AMBARI v0 (`amb_*` şeması, bitemporal): alt-ajan koşum olayları → bronz `veri/bronz/kosum-olay.jsonl` → olgu/boyut tabloları + martlar (`v_amb_kosum_maliyet`, `v_amb_acilis_brifi`) | `python3 tools/ambar-tablo.py` | 08-16 |
+| **katman-olcum.py** | Veri-katmanı ÖLÇÜM + test (unique/not_null/accepted_values/relationships) + freshness + şekil-sözleşmesi preflight → `veri/katman-olcum.jsonl` (append-only) | `python3 tools/katman-olcum.py` | 08-16 |
+| **sunum-son50.py** | "Son 50 prompt" gold görünümünden tek-dosya mobil HTML sunum → `raporlar/son-50-prompt-SUNUM.html` (ad anahtarla başlar) | `python3 tools/sunum-son50.py` → `open -R` + `open` | 08-16 |
+| **sunum-proof-of-work.py** | "JARVIS ne kadar geliştirildi?" proof-of-work sunumu; TÜM rakamlar koşum anında git + dosya sistemi + baglam.sqlite'tan (elle sayı yok) → `raporlar/jarvis-proof-of-work-SUNUM.html` (yazdırma stili: PDF) | `python3 tools/sunum-proof-of-work.py` → `open -R` + `open` | 08-16 (kesik oturumdan; ilk koşum Salih tetiğinde) |
 
 ## Beraber okuma önerisi (Salih isteği 08-15)
 Sıra: `derece.py` (en kısa; formül = tek sözlük) → `tetik-denetim.py` (blok ayrıştırma + kapı) → `kapi-denetim.py` (en uzun; regex-tabanlı kapılar) → `anahtar-denetim.py` / `baglam-tablo.py` (paralel oturumun DB hattı). Her okumada soru: "bu kapı hangi kanıta dayanıyor?" (docstring'de kural dosyası pointer'ı var) ve "hangi kısım heuristik, hangisi hüküm?" — okuma notları `ogrenme/dersler/`e; CV'ye giren gelişme noktası ayrı satır.
