@@ -1,6 +1,6 @@
 ---
 name: seans-kapanis
-description: Carvis'in JARVIS vardiya-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açılan oturumda BU ritüel), "kapat", "bitiriyorum", "vardiyayı kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir. Kapanış selamı zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR. Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (ayrım klasörle; staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz).
+description: Carvis'in JARVIS seans-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açılan oturumda BU ritüel), "kapat", "bitiriyorum", "vardiyayı kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir. Kapanış selamı zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR. Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (ayrım klasörle; staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz).
 ---
 
 # Seans bitimi — vardiya kapanışı (Carvis, v0.3-deneysel-m29 — ad: vardiya-kapanis → seans-kapanis + uyucam-sınıfı tetik emekliliği [Salih Katman-1 08-15]; v0.2: staj kapısı 08-12)

@@ -20,7 +20,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
 ```json
 {
   "sema": "anahtar-kaydi-v1",
-  "guncelleme": "2026-08-15 (seans-3 devam: uyucam sınıfı + skill rename çifti emekli)",
+  "guncelleme": "2026-08-17 (seans-8: calisma-modeli anahtarı — şirket metaforu emeklilik ADAYI, halef sözlük Salih teyidinde)",
   "anahtarlar": [
     {
       "anahtar_id": "oturum-acilis-tetigi",
@@ -197,6 +197,49 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
       ],
       "aday": [],
       "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli. 08-16 (Carvis/Fable, Salih \"düzelt\"): sıcak-katman kalıntısı KAPANDI — CLAUDE.md \"Yüzey yetkisi\" satırı + SessionStart hook yetki bandı geçiş kaydına yeniden yazıldı; denetim körü: `ana-sıra(Cowork)` kalıbı `\\(cowork` izinli-kalıbına takılıyordu (kalıp gevşetilmedi, kalıntı elle bulundu)."
+    },
+    {
+      "anahtar_id": "calisma-modeli",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "Jarvis = sistem (metaforsuz): Carvis üst-orkestratör · Salih tek karar verici · oturum = seans · lider-ajan / işçi-ajan",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 beyanı 08-17 ~09:20 (\"şirket metaforundan vazgeçelim\"; gerekçe: gerçek işyeriyle bağlam karışması — tekilleştirme). Halef SÖZLÜK Carvis önerisidir, Salih teyidi bekler."
+      },
+      "emekli": [],
+      "aday": [
+        {
+          "deger": "şirket simülasyonu",
+          "varyantlar": [
+            "şirket",
+            "sirket",
+            "ceo",
+            "patron",
+            "vardiya"
+          ],
+          "tarih": "2026-08-17",
+          "gerekce": "Salih 08-17: 'jarvisin şirket ceo'su olması metaforuyla gerçekten çalıştığım bir şirket olması bağlam anlaşılmasında sorun çıkarıyor, tekilleştirmemiz lazım, şirket metaforundan vazgeçelim.' Emeklilik KARARI KESİN (Katman-1); 'aday' statüsü yalnız halef değer teyidi + cascade bekliyor diye (protokol §3: replaced_by tekil olmadan emekli yazılamaz).",
+          "consider": "şirket→Jarvis (sistem) · CEO→üst-orkestratör (m.44 zaten) · patron→tek karar verici (m.1; ilk-kural özü: durdurma hakkı) · şirket simülasyonu→çalışma modeli (m.15 özü: CV projeleri Jarvis içinde, CV çıktı) · vardiya→seans (08-15 tetik emekliliğiyle aynı yön) · işçi/lider→işçi-ajan/lider-ajan (dağıtık-sistem terimi; 'ekip lideri' staj bağlamıyla karışmasın diye '-ajan' eki)",
+          "izinli_kaliplar": [
+            "emekli",
+            "metafor",
+            "gerçek işyeri",
+            "gercek isyeri",
+            "staj",
+            "otonet",
+            "otoplus",
+            "vardiya-teslim-\\d",
+            "vardiya-teslim\\.md",
+            "vardiya\\+3",
+            "gunaydin-vardiya",
+            "vardiya-kapanis",
+            "cascade",
+            "anahtar_terim"
+          ],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "not": "Üçüncü koşum vakası — en geniş cascade (tüzük başlığı 'Şirket Tüzüğü', m.2/m.15/m.44 metinleri, kapsül/pano, skill SKILL.md'leri, şablon adı vardiya-teslim, sunum-son50 vb.). 08-17 seans-8'de yapılan: CLAUDE.md v2 (sıcak, metaforsuz yazıldı) + README duruş satırı + bu kayıt; kalan sıcak/ılık kalıntı `python3 tools/anahtar-denetim.py` ADAY sayımıyla ölçülür (baseline defterde). Sıra: Salih halef sözlüğü teyit eder → aday→emekli (replaced_by tekil) → protokol §3 cascade (sıcak→0 aynı seans; ılık kart; soğuk tarihçe). 'işçi/lider' bu anahtarın DIŞINDA (kalıyor, ek '-ajan')."
     }
   ]
 }
