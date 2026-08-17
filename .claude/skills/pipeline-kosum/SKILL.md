@@ -1,6 +1,6 @@
 ---
 name: pipeline-kosum
-description: Kun-Chen formatlı görev pipeline'ını kurar ve uçtan uca yürütür (P-1); manifest + emir → scout → rapor → sentez → ship → teslim, tüm durum diskte (restart-proof). Tetik; "pipeline kur", "pipeline olarak yap", araştır-VE-implemente-et sınıfı proje-ölçekli görevler. KULLANILMAZ; küçük direkt işlerde (m.25), salt araştırmada (atlas-kosum yeter), salt karar üretiminde (karar-hatti), vardiya ritüellerinde.
+description: Kun-Chen formatlı görev pipeline'ını kurar ve uçtan uca yürütür (P-1); manifest + emir → scout → rapor → sentez → ship → teslim, tüm durum diskte (restart-proof). Tetik; "pipeline kur", "pipeline olarak yap", araştır-VE-implemente-et sınıfı proje-ölçekli görevler. KULLANILMAZ; küçük direkt işlerde (m.25), salt araştırmada (atlas-kosum yeter), salt karar üretiminde (karar-hatti), seans ritüellerinde.
 ---
 
 # Pipeline koşum (P-1, v1 — 2026-08-14; m.43 eşiği: spec-kit + ingest + metodoloji koşumları = 3)

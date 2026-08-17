@@ -38,7 +38,7 @@
 - **Sınır (m.13/m.14/md.49):** Jarvis private; çıktı yalnız bilgi + iç sistem; portföy etkisi nicel kanıtsız (C3-1); staj verisi girmez, yöntem yönü serbest.
 
 ## 6. Süreç kuralı — "her ship adımı katman üretir" (deneysel m.29; DataOps kazancı ÖLÇÜMSÜZ — kör)
-- Bir vardiya/ship adımı **DE-artefakt sözleşmesini** şu dördünden EN AZ BİRİYLE karşılar: (a) yeni/güncel silver tablo ya da şekil-sözleşmesi · (b) yeni gold görünüm/metrik (tek-tanım) · (c) yeni veri-testi/freshness kuralı · (d) `katman-olcum.py` koşumu (ölçüm satırları). Karşılamayan adım "DE-artefaktsız" damgalanır (yasak değil, sayaç). Kural, spec-kit bulgusu (küçük işte süreç yükü ~10×) ışığında HAFİF tutulur; 3 vardiyada yük ölçülür, net-zarar çıkarsa gevşetilir.
+- Bir seans/ship adımı **DE-artefakt sözleşmesini** şu dördünden EN AZ BİRİYLE karşılar: (a) yeni/güncel silver tablo ya da şekil-sözleşmesi · (b) yeni gold görünüm/metrik (tek-tanım) · (c) yeni veri-testi/freshness kuralı · (d) `katman-olcum.py` koşumu (ölçüm satırları). Karşılamayan adım "DE-artefaktsız" damgalanır (yasak değil, sayaç). Kural, spec-kit bulgusu (küçük işte süreç yükü ~10×) ışığında HAFİF tutulur; 3 seansta yük ölçülür, net-zarar çıkarsa gevşetilir.
 - **Kapanış ritüeli bağı (öneri, skill evrimi Katman-2):** `seans-kapanis` hasadına 1 satır: `de-pratik` kaydı (kalem + artefakt + sinyal) — skill metnine giriş skill-kapisi EVRİM turunda.
 - **Ölçüm metrik sözlüğü:** freshness · volume (kayıt/byte/token per katman) · schema-change (sözleşme diff) · test-pass · oran (silver/bronz, gold/bronz); lineage-coverage için V-1 `referans` (kaynaksız — deneysel); kalite boyut adları ISO/IEC 25012'den seçilir (accuracy · completeness · consistency · currentness · traceability … — ikincil kaynak, K).
 

@@ -7,7 +7,7 @@
 - **Bağlam:** <bu ne / neden masada — tek-iki cümle>
 - **Model A (<taban>):** <önerme> · token <..> · zaman <..> · kalite <..> · risk <..> | **Model B (<taban>):** ... | **Model C (<taban>):** ... → ✅ <seçilen>
 - **Karşıt-temel:** Model <X> ← <zıt zemin adı> ("<tek-cümle savunusu>"); canlılık <✓/✗> — <YAKINSAMADI / KISMEN YAKINSADI: hangi parça öneriye alındı>
-- **Seçim:** <model> (<kim>, <tarih/vardiya>; görünürlük: <nerede sunuldu>) — onay beklenmedi, veto açık (m.37)
+- **Seçim:** <model> (<kim>, <tarih/seans>; görünürlük: <nerede sunuldu>) — onay beklenmedi, veto açık (m.37)
 - **Geri-alınabilirlik:** <yüksek/orta/düşük> — <tek-satır gerekçe>
 - **Gözlem (koşum sonrası):** bekliyor — <ilk değerlendirme tetiği>
 - **Ders:** <tek cümle; yoksa "bekliyor">

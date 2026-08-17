@@ -1,22 +1,22 @@
 ---
 name: seans-kapanis
-description: Carvis'in JARVIS seans-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açılan oturumda BU ritüel), "kapat", "bitiriyorum", "vardiyayı kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir. Kapanış selamı zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR. Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (ayrım klasörle; staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz).
+description: Carvis'in JARVIS seans-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasöründen açılan oturumda BU ritüel), "kapat", "bitiriyorum", "seansı kapat" dediğinde ya da oturumu bitirme sinyali verdiğinde HER YÜZEYDE çalışır; bağlam-şişmesinde Carvis kendisi de önerir. Kapanış selamı zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR. Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün SAYILMAZ (m.9). KULLANILMAZ; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada ve STAJ OTURUMLARINDA (ayrım klasörle; staj kapanışı staj-kapanis ritüelidir, jarvis kanonuna yazmaz).
 ---
 
-# Seans bitimi — vardiya kapanışı (Carvis, v0.3-deneysel-m29 — ad: vardiya-kapanis → seans-kapanis + uyucam-sınıfı tetik emekliliği [Salih Katman-1 08-15]; v0.2: staj kapısı 08-12)
+# Seans bitimi — seans kapanışı (Carvis, v0.3-deneysel-m29 — ad: vardiya-kapanis → seans-kapanis + uyucam-sınıfı tetik emekliliği [Salih Katman-1 08-15]; v0.2: staj kapısı 08-12)
 
 ## 0. STAJ KAPISI (önce bu)
 Oturum STAJ KLASÖRÜNDEN açıldıysa ∨ beyan AÇIKÇA staj bağlamındaysa → BU RİTÜEL KOŞULMAZ. **AYRIM KLASÖRLE yapılır (Salih 08-15): "seans bitimi" cümlesi tek başına staj işareti DEĞİLDİR — jarvis oturumunda jarvis kapanışıdır.** ZAMAN-KAYMASI FRENİ: kapanış sözünden gece/gündüz çıkarımı yapılmaz; zaman yalnız sistem kaynağından. Staj oturumu jarvis kanonuna YAZMAZ (md.49); kapanışı staj klasörünün kendi ritüeli (günlük toparlama + yerel checkpoint) yapar. Tek cümleyle beyan et, staj kapanışına geç.
 
-Kapanış = hafıza yazımıdır: bir sonraki vardiya yalnız burada yazılanı devralır. Bayat kapsül boş kapsülden kötüdür (V4). Şablonların kaynağı `core/sablonlar/` — çelişkide şablon dosyası kazanır.
+Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı devralır. Bayat kapsül boş kapsülden kötüdür (V4). Şablonların kaynağı `core/sablonlar/` — çelişkide şablon dosyası kazanır.
 
 ## 1. Yüzey + hat tespiti
 - Kanon-yazım kanalı var mı? (PC: doğrudan · bulut: origin-klon + PAT ile commit/push; mount'ta git komutu YASAK — yazım klondan push'lanır, mount'u senkron scripti eşitler.)
-- Kanal YOKSA: tam ritüel koşulamaz → kapanış notunu "HAM FİKİR / PC'de ingest edilecek" damgasıyla üret, Salih'e açıkça söyle: **bu gün m.9 gereği HENÜZ SAYILMADI**, ana vardiya devralınca sayılır.
-- Hat: prototip mi PortRisk mi? Paralel-vardiya senkron kuralı: yalnız KENDİ şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
+- Kanal YOKSA: tam ritüel koşulamaz → kapanış notunu "HAM FİKİR / PC'de ingest edilecek" damgasıyla üret, Salih'e açıkça söyle: **bu gün m.9 gereği HENÜZ SAYILMADI**, ana seans devralınca sayılır.
+- Hat: prototip mi PortRisk mi? Paralel-seans senkron kuralı: yalnız KENDİ şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
 
-## 2. Teslim raporu (`core/sablonlar/vardiya-teslim.md` — beş soru)
-`raporlar/vardiya-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir ADAY kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
+## 2. Teslim raporu (`core/sablonlar/seans-teslim.md` — beş soru)
+`raporlar/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir ADAY kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
 
 ## 3. Hasat (`core/sablonlar/hasat.md`)
 Özütler (3-5, birer satır) · **wiki-delta**: güncellenecek/açılacak sayfa → `wiki/README.md` kuyruğuna (yazım sonraki oturumlara yayılır; mevcut sayfaya tuzak çıktıysa Gotchas'a DOĞRUDAN işle) · verilebilir miydi (V20, çift-yönlü kapasite verisi) · token×zaman etiketi (V28 hammaddesi). Damga yalnız gönüllü beyanla; beyansızlık düşürmez (m.33).
@@ -32,7 +32,7 @@ Kapanış = hafıza yazımıdır: bir sonraki vardiya yalnız burada yazılanı 
 Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (SessionStart hook `1,40p` sert-kapısı — aşan kuyruk sessizce düşer).
 
 ## 6. Boyut-izleme tek bakış (İMZALI kural 07-22)
-Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş vardiyada Salih-imzalı planla.
+Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş seansta Salih-imzalı planla.
 
 ## 6b. Hareket kütüğü + workflow kopyası (okunabilirlik ilkesi, Salih Katman-1 08-17; CLAUDE.md §2)
 `python3 tools/hareket-tablo.py` koş (bugünün `raporlar/hareket-gunlugu-YYYY-MM-DD.md` + bronz/silver/gold tazelenir; test PASS beklenir). Bu seansta Workflow koştuysa script kopyası `cc/workflow/YYYY-MM-DD-<ad>-<wf_id>.js` + README satırı (kaynak: oturum dizini `workflows/scripts/`). İkisi de commit'e girer; eksikse kapanış TAMAM sayılmaz.

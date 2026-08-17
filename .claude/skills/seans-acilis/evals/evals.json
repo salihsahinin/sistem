@@ -24,7 +24,7 @@
 {
 "id": "p4",
 "type": "pozitif",
-"input": "vardiyayı devral",
+"input": "seansı devral",
 "expect": "ritüel koşar"
 },
 {
@@ -49,7 +49,7 @@
 "id": "n1",
 "type": "negatif",
 "input": "oturum ortasında: bu arada selam vermeyi unutmuşum",
-"expect": "tetiklenmez — vardiya zaten açık"
+"expect": "tetiklenmez — seans zaten açık"
 },
 {
 "id": "n2",

@@ -37,4 +37,4 @@ Katman-1 ağırlıklı kararlarda (m.31 sınıfı) isteğe bağlı EK şerit: te
 - Hakemliği tez/antitez ajanlarından birine yaptırma — üretici≠doğrulayıcı (dışsal-geribildirimsiz öz-düzeltme doğruluğu DÜŞÜRÜR; literatür kaydı raporda).
 - Aile sayısını soruya göre seç; her koşuma 5 aile açmak israf (m.25). Tek-aileli küçük soruda üç aşama yine ZORUNLU (kural aile sayısından bağımsız).
 - Örneklem-denetimini atlama — 07-17 serisinde WebFetch 403 vakaları "D sanılan K" üretmişti; denetimsiz hakemlik etiket enflasyonu yapar.
-- Skill kaydetme/commit yapmaz; commit vardiya akışının işidir (yan-etki freni).
+- Skill kaydetme/commit yapmaz; commit seans akışının işidir (yan-etki freni).

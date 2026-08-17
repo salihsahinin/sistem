@@ -18,4 +18,4 @@ Kural kaynağı: tüzük m.38 (bağlaç seti + ek fıkralar) + `core/ajan-metodo
 - **↔ enflasyonu:** çoğu kural tek yönlüdür (→); ↔ yazmadan önce "tersi de zorunlu mu" diye sor.
 - **"Her zaman/asla" tuzağı:** niceleyicisiz mutlak ifade kapsam belirsizliği doğurur — kapsamı yaz ("bu oturumda ∀ commit" gibi).
 - **Format-tax uyarısı:** lojik form TALİMAT içindir; modelin ÇIKTISINI sert şemaya zorlamak ayrı bir karardır ve doğruluk düşürebilir (kanıt kanonda) — karıştırma.
-- Çeviri kanon yazmaz; kural-adayı kanonlaşması G2 (Salih imzası) ister. Skill kaydetme/commit yapmaz; commit vardiya akışının işidir (yan-etki freni).
+- Çeviri kanon yazmaz; kural-adayı kanonlaşması G2 (Salih imzası) ister. Skill kaydetme/commit yapmaz; commit seans akışının işidir (yan-etki freni).

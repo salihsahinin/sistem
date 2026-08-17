@@ -30,4 +30,4 @@ Kanon zinciri: m.16 (çelişki kapısı — TEK fren) · m.38 (lojik form) · m.
 - Tersi de var: her farklılığı çelişki diye çalma — DARALTMA/uzlaşabilir öneriye kapı raporu kesmek tören üretir (m.25 israfı) ve kapının itibarını aşındırır.
 - Kanonu DİSKTEN okuma — bayat-disk masa-tekrarı vakası (07-19, defterde): tarama origin klonundan.
 - Tarama "hatırladığım kadarıyla" olmaz — madde alıntısı zorunlu; alıntısız çelişki iddiası K-sınıfı sayılır.
-- Skill kanon dosyası yazmaz, karar kaydetmez, commit atmaz; kayıt vardiya akışının/karar-kaydet adımının işidir (yan-etki freni).
+- Skill kanon dosyası yazmaz, karar kaydetmez, commit atmaz; kayıt seans akışının/karar-kaydet adımının işidir (yan-etki freni).

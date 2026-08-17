@@ -34,7 +34,7 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 
 1. **Eşdeğeri var mı? → NOOP** (kayda "NOOP" damgası, kanona dokunma).
 2. **Tamamlıyor mu? → UPDATE** (mevcut kaydı güçlendir, yeni kayıt açma).
-3. **Çelişiyor mu? → GEÇERSİZ-KIL** (silme YOK — m.8/m.16: eski kayda `gecerli-bitis:` damgası = yeni kaydın tarihi; çelişki Katman-1 sınıfındaysa çelişki-kapısı raporu Salih'e). **Yayılım fıkrası (08-15, `core/baglam-anahtar-kaydi.md` §3):** çelişen kayıt bir ANAHTAR değerini (kavram/tetik/ad/yüzey) değiştiriyorsa damga tek başına yetmez — anahtar kaydına `emekli` satırı + sıcak-katman kalıntı-referanslarının aynı vardiyada yeniden yazımı (RESTRICT: kalıntı varken emeklilik tamamlanmamış sayılır); denetim `python3 tools/anahtar-denetim.py`.
+3. **Çelişiyor mu? → GEÇERSİZ-KIL** (silme YOK — m.8/m.16: eski kayda `gecerli-bitis:` damgası = yeni kaydın tarihi; çelişki Katman-1 sınıfındaysa çelişki-kapısı raporu Salih'e). **Yayılım fıkrası (08-15, `core/baglam-anahtar-kaydi.md` §3):** çelişen kayıt bir ANAHTAR değerini (kavram/tetik/ad/yüzey) değiştiriyorsa damga tek başına yetmez — anahtar kaydına `emekli` satırı + sıcak-katman kalıntı-referanslarının aynı seansta yeniden yazımı (RESTRICT: kalıntı varken emeklilik tamamlanmamış sayılır); denetim `python3 tools/anahtar-denetim.py`.
 4. **Hiçbiri → ADD** (tipin varsayılan hedefine yaz).
 
 ## 4. Kaynak-doğruluk kuralı (event sourcing)
@@ -50,14 +50,14 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 
 ## 6. DLQ — sınıflandırılamayan kayıt kanalı
 
-`kuyruk/SINIFLANDIRILAMADI.md`: 2 vardiya içinde tip/hedef alamayan kayıt buraya taşınır (kaynağından telafi-notuyla). **Sessiz düşürme yasak** — silinmez, açılış taramasında yeniden denenir (redrive). Burası çöp kutusu değil bekleme/inceleme alanıdır.
+`kuyruk/SINIFLANDIRILAMADI.md`: 2 seans içinde tip/hedef alamayan kayıt buraya taşınır (kaynağından telafi-notuyla). **Sessiz düşürme yasak** — silinmez, açılış taramasında yeniden denenir (redrive). Burası çöp kutusu değil bekleme/inceleme alanıdır.
 
 ## 7. Çok-sekme protokolü (şemanın ana kullanım akışı)
 
 - **Her sekme/oturum kapanışta TEK bronz dosya bırakır:** jarvis hattı → `kuyruk/gelen-YYYY-MM-DD-<konu>.md` (zarflı kayıt listesi, §5 bütçesinde); staj hattı → kendi şeması (`~/staj başlangıç/ingest-semasi.md`; jarvis'e VERİ akmaz — md.49).
-- **Triyajı ana-sıra koşar** (vardiya açılış/kapanış ritüelinin parçası): bronz dosyaları §3 sorularından geçirilir, hedeflerine dağıtılır, dosya "İNGEST EDİLDİ" damgası alır.
+- **Triyajı ana-sıra koşar** (seans açılış/kapanış ritüelinin parçası): bronz dosyaları §3 sorularından geçirilir, hedeflerine dağıtılır, dosya "İNGEST EDİLDİ" damgası alır.
 - **Şema evrimi:** additive-only — yeni zorunlu alan ASLA eklenmez; yeni alan opsiyonel+varsayılanlı; alan/tip silinmez → deprecated (Avro/Protobuf/m.8).
 
 ## 8. Ölçüm (m.35 — şemanın ilk deneği kendisi)
 
-Vardiya teslimlerine sayaçlar: `giren / NOOP / UPDATE / GEÇERSİZ-KIL / ADD / DLQ`. ~10 vardiya sonra eşikler (150, 200 satır, 2k token) ilk kez gerçek veriyle kalibre edilir (v1 §3 sayaçlarıyla aynı havuz).
+Seans teslimlerine sayaçlar: `giren / NOOP / UPDATE / GEÇERSİZ-KIL / ADD / DLQ`. ~10 seans sonra eşikler (150, 200 satır, 2k token) ilk kez gerçek veriyle kalibre edilir (v1 §3 sayaçlarıyla aynı havuz).

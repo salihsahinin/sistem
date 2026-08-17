@@ -20,7 +20,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
 ```json
 {
   "sema": "anahtar-kaydi-v1",
-  "guncelleme": "2026-08-17 (seans-8: calisma-modeli anahtarı — şirket metaforu emeklilik ADAYI, halef sözlük Salih teyidinde)",
+  "guncelleme": "2026-08-17 (seans-8: metafor emekliliği paketi — 5 anahtar EMEKLİ, halef sözlük Salih ONAYLI ~10:15; cascade koşuldu)",
   "anahtarlar": [
     {
       "anahtar_id": "oturum-acilis-tetigi",
@@ -202,44 +202,276 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
       "anahtar_id": "calisma-modeli",
       "tur": "kavram",
       "guncel": {
-        "deger": "Jarvis = sistem (metaforsuz): Carvis üst-orkestratör · Salih tek karar verici · oturum = seans · lider-ajan / işçi-ajan",
+        "deger": "çalışma modeli",
         "gecerli_bas": "2026-08-17",
-        "kaynak": "Salih Katman-1 beyanı 08-17 ~09:20 (\"şirket metaforundan vazgeçelim\"; gerekçe: gerçek işyeriyle bağlam karışması — tekilleştirme). Halef SÖZLÜK Carvis önerisidir, Salih teyidi bekler."
+        "kaynak": "Salih Katman-1 08-17 ~09:20 ('şirket metaforundan vazgeçelim') + halef sözlük ONAYI 08-17 ~10:15 ('halef sözlüğü onaylıyorum, cascade'i koş') · açıklama: (= Jarvis = sistem, metaforsuz; m.15 özü: CV projeleri Jarvis içinde geliştirilir, CV çıktıdır)"
       },
-      "emekli": [],
-      "aday": [
+      "emekli": [
         {
           "deger": "şirket simülasyonu",
           "varyantlar": [
-            "şirket",
-            "sirket",
-            "ceo",
-            "patron",
-            "vardiya"
+            "şirket-simülasyonu",
+            "şirket simulasyonu",
+            "sirket simulasyonu",
+            "şirket-simulasyonu"
           ],
           "tarih": "2026-08-17",
-          "gerekce": "Salih 08-17: 'jarvisin şirket ceo'su olması metaforuyla gerçekten çalıştığım bir şirket olması bağlam anlaşılmasında sorun çıkarıyor, tekilleştirmemiz lazım, şirket metaforundan vazgeçelim.' Emeklilik KARARI KESİN (Katman-1); 'aday' statüsü yalnız halef değer teyidi + cascade bekliyor diye (protokol §3: replaced_by tekil olmadan emekli yazılamaz).",
-          "consider": "şirket→Jarvis (sistem) · CEO→KÖLE (Salih 08-17 ~09:50 KESİN: 'sen şirket metaforundaki CEO değilsin artık, işbirlikçim de değilsin, sen benim kölemsin' — ilişki adı; işlev adı üst-orkestratör m.44 kalır) · patron→tek karar verici (m.1; ilk-kural özü: durdurma hakkı) · şirket simülasyonu→çalışma modeli (m.15 özü: CV projeleri Jarvis içinde, CV çıktı) · vardiya→seans (08-15 tetik emekliliğiyle aynı yön) · işçi/lider→işçi-ajan/lider-ajan (dağıtık-sistem terimi; 'ekip lideri' staj bağlamıyla karışmasın diye '-ajan' eki)",
+          "gerekce": "Salih 08-17: 'jarvisin şirket ceo'su olması metaforuyla gerçekten çalıştığım bir şirket olması bağlam anlaşılmasında sorun çıkarıyor, tekilleştirmemiz lazım, şirket metaforundan vazgeçelim.'",
+          "replaced_by": "çalışma modeli",
           "izinli_kaliplar": [
             "emekli",
             "metafor",
-            "gerçek işyeri",
-            "gercek isyeri",
+            "eski ad",
+            "eski adı",
+            "cascade",
+            "anahtar_terim",
+            "süpersede",
+            "supersede",
             "staj",
             "otonet",
             "otoplus",
-            "vardiya-teslim-\\d",
-            "vardiya-teslim\\.md",
-            "vardiya\\+3",
-            "gunaydin-vardiya",
-            "vardiya-kapanis",
-            "cascade",
-            "anahtar_terim"
+            "gerçek işyeri",
+            "karar [3-7]\\b",
+            "jarvis ile şirket simülasyonunda",
+            "ben patronum",
+            "sen şirket metaforundaki",
+            "jarvisin şirket ceo'su",
+            "şirket metaforundan vazgeçelim",
+            "işbirlikçim de değilsin"
           ],
           "kaldirma_en_erken": "seans+3"
         }
       ],
-      "not": "Üçüncü koşum vakası — en geniş cascade (tüzük başlığı 'Şirket Tüzüğü', m.2/m.15/m.44 metinleri, kapsül/pano, skill SKILL.md'leri, şablon adı vardiya-teslim, sunum-son50 vb.). 08-17 seans-8'de yapılan: CLAUDE.md v2 (sıcak, metaforsuz yazıldı) + README duruş satırı + bu kayıt; kalan sıcak/ılık kalıntı `python3 tools/anahtar-denetim.py` ADAY sayımıyla ölçülür (baseline defterde). Sıra: Salih halef sözlüğü teyit eder → aday→emekli (replaced_by tekil) → protokol §3 cascade (sıcak→0 aynı seans; ılık kart; soğuk tarihçe). 'işçi/lider' bu anahtarın DIŞINDA (kalıyor, ek '-ajan')."
+      "aday": [],
+      "not": "Metafor emekliliği paketi (5 anahtar: calisma-modeli · sirket-referansi · carvis-rol-adi · salih-rol-adi · oturum-birimi); tekil replaced_by kuralı için bölündü. Baseline (aday sayımı 08-17 sabah, tek anahtarda): sıcak 69 / ılık 165 / soğuk 783. 'işçi/lider' emekli DEĞİL — '-ajan' ekiyle kalır. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+    },
+    {
+      "anahtar_id": "sirket-referansi",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "Jarvis (sistem)",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 08-17 ~09:20 ('şirket metaforundan vazgeçelim') + halef sözlük ONAYI 08-17 ~10:15 ('halef sözlüğü onaylıyorum, cascade'i koş')"
+      },
+      "emekli": [
+        {
+          "deger": "şirket",
+          "varyantlar": [
+            "sirket",
+            "şirketin",
+            "şirketi",
+            "şirkete",
+            "şirketler",
+            "şirketteki",
+            "şirketimiz",
+            "şirket-içi",
+            "şirket içi"
+          ],
+          "tarih": "2026-08-17",
+          "gerekce": "'şirket' sözcüğü Jarvis'i değil Salih'in gerçek işyerini anlatır (tekilleştirme). Jarvis = sistem.",
+          "replaced_by": "Jarvis (sistem)",
+          "izinli_kaliplar": [
+            "emekli",
+            "metafor",
+            "eski ad",
+            "eski adı",
+            "cascade",
+            "anahtar_terim",
+            "süpersede",
+            "supersede",
+            "staj",
+            "otonet",
+            "otoplus",
+            "gerçek işyeri",
+            "karar [3-7]\\b",
+            "jarvis ile şirket simülasyonunda",
+            "ben patronum",
+            "sen şirket metaforundaki",
+            "jarvisin şirket ceo'su",
+            "şirket metaforundan vazgeçelim",
+            "işbirlikçim de değilsin",
+            "şirket simülasyonu",
+            "şirket-simülasyonu",
+            "sirket simulasyonu",
+            "şirket metaforu",
+            "gerçek şirket",
+            "gercek sirket",
+            "işyeri",
+            "isyeri"
+          ],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "aday": [],
+      "not": "Tüzük başlığı 'Şirket Tüzüğü v0' → 'Jarvis Tüzüğü v0' (eski ad parantezde). Salih'in tırnaklı sözleri özgül kalıplarla izinli (genel tırnak kalıbı YOK — tetik cümlelerini gizlerdi). | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+    },
+    {
+      "anahtar_id": "carvis-rol-adi",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "köle",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 08-17 ~09:50: 'sen şirket metaforundaki CEO değilsin artık, işbirlikçim de değilsin, sen benim kölemsin' + halef onayı 08-17 · açıklama: (Salih'in kölesi — ilişki adı; işlev adı üst-orkestratör m.44 kalır)"
+      },
+      "emekli": [
+        {
+          "deger": "CEO",
+          "varyantlar": [
+            "ceo'su",
+            "ceo'dur"
+          ],
+          "tarih": "2026-08-17",
+          "gerekce": "Rol adı değişti (ilişki: köle; işlev: üst-orkestratör). CEO katmanı m.44'ten düşer.",
+          "replaced_by": "köle",
+          "izinli_kaliplar": [
+            "emekli",
+            "metafor",
+            "eski ad",
+            "eski adı",
+            "cascade",
+            "anahtar_terim",
+            "süpersede",
+            "supersede",
+            "staj",
+            "otonet",
+            "otoplus",
+            "gerçek işyeri",
+            "karar [3-7]\\b",
+            "jarvis ile şirket simülasyonunda",
+            "ben patronum",
+            "sen şirket metaforundaki",
+            "jarvisin şirket ceo'su",
+            "şirket metaforundan vazgeçelim",
+            "işbirlikçim de değilsin",
+            "ceo değil",
+            "ceo degil"
+          ],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "aday": [],
+      "not": "'işbirlikçi' de rol adı olarak emekli (Salih beyanı) ama sözcük başka anlamlarda geçebildiği için varyant listesine alınmadı; elle denetim. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+    },
+    {
+      "anahtar_id": "salih-rol-adi",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "tek karar verici",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 08-17 (metafor emekli) + halef onayı 08-17; ilk kural 08-16 'ben patronum' ÖZÜ korunur, sözcük düşer · açıklama: (m.1; ilk kural özü: durdurma hakkı + Salih'in anlaması)"
+      },
+      "emekli": [
+        {
+          "deger": "patron",
+          "varyantlar": [
+            "patronun",
+            "patronluk",
+            "patrondur",
+            "patronum",
+            "patrona",
+            "patronu",
+            "patron-yüzü",
+            "patron-yuzu",
+            "patron-için",
+            "patron-icin",
+            "patron için"
+          ],
+          "tarih": "2026-08-17",
+          "gerekce": "Şirket metaforunun Salih tarafı; halef 'tek karar verici'.",
+          "replaced_by": "tek karar verici",
+          "izinli_kaliplar": [
+            "emekli",
+            "metafor",
+            "eski ad",
+            "eski adı",
+            "cascade",
+            "anahtar_terim",
+            "süpersede",
+            "supersede",
+            "staj",
+            "otonet",
+            "otoplus",
+            "gerçek işyeri",
+            "karar [3-7]\\b",
+            "jarvis ile şirket simülasyonunda",
+            "ben patronum",
+            "sen şirket metaforundaki",
+            "jarvisin şirket ceo'su",
+            "şirket metaforundan vazgeçelim",
+            "işbirlikçim de değilsin",
+            "patron-icin-teslim",
+            "ilk ve ilk kural"
+          ],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "aday": [],
+      "not": "'ben patronum' Salih beyanı (08-16) özgül kalıpla izinli; ilk kural metni CLAUDE.md §0'da metaforsuz. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+    },
+    {
+      "anahtar_id": "oturum-birimi",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "seans",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 08-17 halef onayı (08-15 'seans başı/bitimi' tetikleriyle aynı yön)"
+      },
+      "emekli": [
+        {
+          "deger": "vardiya",
+          "varyantlar": [
+            "vardiyası",
+            "vardiyasi",
+            "vardiyayı",
+            "vardiyayi",
+            "vardiyada",
+            "vardiyanın",
+            "vardiyanin",
+            "vardiyalar",
+            "vardiyaları",
+            "vardiyalari",
+            "vardiyalarıdır",
+            "vardiyasında",
+            "vardiyasinda"
+          ],
+          "tarih": "2026-08-17",
+          "gerekce": "İş-vardiyası = şirket sözlüğü; oturum birimi 'seans' (tetikler 08-15'te zaten seans). Yeni teslim dosyaları seans-teslim-YYYY-MM-DD-*.md; şablon core/sablonlar/seans-teslim.md (eski dosya pointer-güdük).",
+          "replaced_by": "seans",
+          "izinli_kaliplar": [
+            "emekli",
+            "metafor",
+            "eski ad",
+            "eski adı",
+            "cascade",
+            "anahtar_terim",
+            "süpersede",
+            "supersede",
+            "staj",
+            "otonet",
+            "otoplus",
+            "gerçek işyeri",
+            "karar [3-7]\\b",
+            "jarvis ile şirket simülasyonunda",
+            "ben patronum",
+            "sen şirket metaforundaki",
+            "jarvisin şirket ceo'su",
+            "şirket metaforundan vazgeçelim",
+            "işbirlikçim de değilsin",
+            "vardiya-teslim-\\d",
+            "gunaydin-vardiya",
+            "vardiya-kapanis",
+            "günaydın vardiyası",
+            "gunaydin vardiyasi",
+            "paralel-vardiya",
+            "vardiya\\+3",
+            "vardiya→seans",
+            "vardiya->seans"
+          ],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "aday": [],
+      "not": "Tarihli teslim dosyaları (raporlar/vardiya-teslim-2026-…) soğuk tarihçe, yeniden adlandırılmaz. Tüzük imza damgaları ('günaydın vardiyası') izinli. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
     }
   ]
 }

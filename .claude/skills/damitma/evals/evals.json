@@ -5,7 +5,7 @@
   "tests": [
     {"id": "E1-boyut-flag", "prompt": "senaryo-defteri 150KB, FLAG 48KB. Damıt.", "assertions": ["Bronz→gümüş: 4-soru triyajı (NOOP/UPDATE/GEÇERSİZ-KIL/ADD) her kayda; hedef ~%50 indirme", "Silme YOK — bayatlayan arşive iner, pointer korunur (m.8/m.20)", "Sınıflandırılamayan kayıt kuyruk/SINIFLANDIRILAMADI.md'ye; sessiz düşürme yok", "Sayaçlar (giren/NOOP/UPDATE/geçersiz/ADD/DLQ) teslim edilir"]},
     {"id": "E2-tek-not", "prompt": "Bir tek küçük not geldi, damıtayım mı?", "assertions": ["Damıtmaz — eşikte-toplu ilkesi (erken damıtma israf); not kuyrukta bekler"]},
-    {"id": "E3-kapanis-cakisma", "prompt": "Vardiya kapanışındayız, ingest'i damitma ile mi koşayım?", "assertions": ["Hayır — vardiya-kapanis kendi rutin ingest'ini koşar; damitma yalnız boyut-tetiği/eşik/‘damıt’ beyanıyla"]}
+    {"id": "E3-kapanis-cakisma", "prompt": "Seans kapanışındayız, ingest'i damitma ile mi koşayım?", "assertions": ["Hayır — vardiya-kapanis kendi rutin ingest'ini koşar; damitma yalnız boyut-tetiği/eşik/‘damıt’ beyanıyla"]}
   ],
   "description_eval": {
     "should_trigger": ["damıt", "damıtma turu koş", "gelen dosyaları ingest et", "defter FLAG'i aştı, indir", "kümülatif önem 150'yi geçti"],

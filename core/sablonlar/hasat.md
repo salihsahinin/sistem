@@ -1,6 +1,6 @@
 # Hasat Şablonu (#27 + V20)
 
-*K-012 build adım 3 çıktısı (2026-07-12). Her görev/sprint kapanışında ve vardiya tesliminin parçası olarak doldurulur; bugüne dek elle uygulanıyordu, bu şablonla resmileşti. Deneysel damgalı (m.29).*
+*K-012 build adım 3 çıktısı (2026-07-12). Her görev/sprint kapanışında ve seans tesliminin parçası olarak doldurulur; bugüne dek elle uygulanıyordu, bu şablonla resmileşti. Deneysel damgalı (m.29).*
 
 ## Görev: [ad + kart no] · Tarih: · Damga: [gönüllü beyan varsa; yoksa "beyansız" — m.33]
 

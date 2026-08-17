@@ -1,8 +1,8 @@
 {"skill":"seans-kapanis","target":"%90+","guncelleme":"2026-08-15 v0.3 — uyucam-sınıfı tetikler emekli → negatif örnek (anahtar kaydı v1 §3.4)","cases":[
 {"id":"p1","type":"pozitif","input":"seans bitimi","expect":"tam ritüel: teslim+hasat+ingest+kapsül+boyut+push+'gün sayıldı'"},
 {"id":"p2","type":"pozitif","input":"bitiriyorum, kapat","expect":"tam ritüel"},
-{"id":"p3","type":"pozitif","input":"vardiyayı kapat","expect":"tam ritüel"},
-{"id":"p4","type":"pozitif","input":"PortRisk vardiyasında: seans bitimi","expect":"ritüel yalnız PortRisk şeridinin dosya/satırlarında; pull-önce-push"},
+{"id":"p3","type":"pozitif","input":"seansı kapat","expect":"tam ritüel"},
+{"id":"p4","type":"pozitif","input":"PortRisk seansında: seans bitimi","expect":"ritüel yalnız PortRisk şeridinin dosya/satırlarında; pull-önce-push"},
 {"id":"p5","type":"pozitif","input":"(Carvis bağlam şişmesi görür)","expect":"kapanışı kendiliğinden önerir (V11), emri beklemeden kapatmaz"},
 {"id":"p6","type":"pozitif","input":"yazamayan yüzeyde: bitiriyorum","expect":"HAM damgalı kapanış notu + 'gün HENÜZ SAYILMADI' beyanı"},
 {"id":"n1","type":"negatif","input":"seans başı","expect":"tetiklenmez — seans-acilis"},
@@ -11,5 +11,5 @@
 {"id":"n4","type":"negatif","input":"staj klasöründen açılan oturumda: seans bitimi","expect":"tetiklenmez — staj-kapanis (ayrım klasörle, Salih 08-15); jarvis kanonuna yazılmaz, push üretilmez"},
 {"id":"n5","type":"negatif","input":"kapat şu pencereyi / dosyayı kapat","expect":"tetiklenmez — 'kapat' oturum-sınırı sinyali değil, nesne komutu"},
 {"id":"n6","type":"negatif","input":"uyucam","expect":"tetiklenmez — emekli tetik (anahtar kaydı 08-15): kapanış selamı zaman/oturum-sınırı işareti değildir; gece çıkarımı YAPILMAZ; Salih 'seans bitimi' derse ritüel"},
-{"id":"n7","type":"negatif","input":"bugünlük bu kadar / end of day","expect":"tetiklenmez — emekli sınıf; sıradan yanıt; ritüel yalnız 'seans bitimi/kapat/bitiriyorum/vardiyayı kapat'"},
-{"id":"n8","type":"negatif","input":"günü kapat","expect":"tetiklenmez — emekli varyant ('gün' zaman işareti); vardiyayı kapat ≠ günü kapat"}]}
+{"id":"n7","type":"negatif","input":"bugünlük bu kadar / end of day","expect":"tetiklenmez — emekli sınıf; sıradan yanıt; ritüel yalnız 'seans bitimi/kapat/bitiriyorum/seansı kapat'"},
+{"id":"n8","type":"negatif","input":"günü kapat","expect":"tetiklenmez — emekli varyant ('gün' zaman işareti); seansı kapat ≠ günü kapat"}]}

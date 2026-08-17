@@ -20,4 +20,4 @@ description: Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-
 - **Dev-fonksiyon tuzağı:** her şeyi tek emre sıkıştırma — koşul arttıkça izleme düşer (Multi-IF 0,877→0,707); böl, zincirle.
 - **`kapsam_disi` boş bırakma:** belgeli arıza sınıfı (iki ajan aynı işi yapar, bir konu boşta kalır).
 - **Paralel emirlerde** dağıtım öncesi zorunlu soru: alt-görevler bağımsız bilgi mi topluyor, ortak çıktı mı üretiyor? Ortak-üretim → tek şerit ∨ paylaşılan karar-manifesti.
-- Skill kaydetme/commit yapmaz; commit vardiya akışının işidir (yan-etki freni).
+- Skill kaydetme/commit yapmaz; commit seans akışının işidir (yan-etki freni).

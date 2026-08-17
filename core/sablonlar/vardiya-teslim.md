@@ -1,9 +1,3 @@
-# Şablon — Vardiya Teslim Raporu
+# EMEKLİ AD → `core/sablonlar/seans-teslim.md`
 
-*(Sözlük: oturum kapanışında yazılan tarihli kayıt. Birikimli, arşive gider; durum kapsülü bunlardan damıtılır. Beş soru:)*
-
-- **Bugün gerçekten ne değişti:**
-- **Hangi karar verildi (kaynak + gerekçe + geri-açma):**
-- **Hangi fikir aday kaldı (karar DEĞİL):**
-- **Sonraki ilk iş:**
-- **Neyi yeniden açmak için hangi koşul gerekir:**
+*vardiya→seans (Salih Katman-1 halef sözlük onayı 2026-08-17; anahtar `oturum-birimi`). Bu dosya silinmedi (m.8), pointer-güdüğe çevrildi; şablonun canlı hâli `seans-teslim.md`. Tarihli eski teslim dosyaları (`raporlar/vardiya-teslim-2026-…`) adlarını korur — tarihçe.*

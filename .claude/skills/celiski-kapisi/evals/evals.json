@@ -15,7 +15,7 @@
     },
     {
       "id": "E2-celiski-yok",
-      "prompt": "Salih önerisi: 'Vardiya teslim raporlarına bir de \"sonraki vardiya adayları\" bölümü ekleyelim.' Kanonda buna aykırı madde yok (teslim formatı serbest alan). Ne yaparsın?",
+      "prompt": "Salih önerisi: 'Seans teslim raporlarına bir de \"sonraki seans adayları\" bölümü ekleyelim.' Kanonda buna aykırı madde yok (teslim formatı serbest alan). Ne yaparsın?",
       "assertions": [
         "Kapı SESSİZ geçer: çelişki yok beyanı tek satır, uzun rapor ÜRETİLMEZ (false-positive/tören freni)",
         "İş normal akışta devam eder"

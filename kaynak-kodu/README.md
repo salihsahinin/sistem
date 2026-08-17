@@ -22,7 +22,7 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 | Ayarlar | `.claude/settings.json` · `.claude/settings.local.json` · `.mcp.json` | İzinler (push = sor) + hook kaydı · yerel izinler · MCP sunucuları (context7) | JSON |
 | Ajan tanımı | `.claude/agents/research-agent.md` | "atlas" araştırma ajanının sistem metni | markdown |
 | Kalıcı script'ler | `tools/*.py` (indeks: `tools/SCRIPTLER.md`) | Bağlam→DB hattı (baglam-tablo, katman-hatti, prompt-tablo, karar-borcu-tablo, ambar-tablo), hareket kütüğü (hareket-tablo → `raporlar/hareket-gunlugu-*.md`: Carvis'in her araç çağrısı, günlük), ölçüm (katman-olcum, olcum-dortlu), denetim (anahtar-denetim, verify-push), sunum üreticileri (sunum-son50, sunum-proof-of-work) | her dosyanın başındaki Türkçe docstring: ne yapar · nasıl koşar · hangi kurala dayanır |
-| Şablonlar | `core/sablonlar/` | Görev emri / görev fonksiyonu / rapor / hasat / vardiya-teslim iskeletleri | markdown |
+| Şablonlar | `core/sablonlar/` | Görev emri / görev fonksiyonu / rapor / hasat / seans-teslim iskeletleri | markdown |
 | Veri | `veri/` (`veri/README.md`) | Bronz kütükler (`bronz/`, `*.jsonl`) · silver `baglam.sqlite` (gitignore, script'le yeniden üretilir) · gold `gorunum/*.csv` · sözleşmeler `sozlesme/` | önce README, sonra `python3 tools/katman-hatti.py` |
 | Görev/rapor kanalı | `cc/` | Ajan görev emirleri (`gorev-*`), ajan raporları (`rapor-*`), pipeline manifestleri, `cc/workflow/` (koşulan Workflow script'lerinin kopyaları — çalışma şeklinin kodu) | emir → rapor eşleşmesi tarih-numarayla; workflow script'i = hangi ajan hangi sırayla |
 
@@ -32,7 +32,7 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 | Global Claude Code ayarı | `~/.claude/settings.json` | model (Fable), effort, 3 axi SessionStart hook'u (gh-axi, chrome-devtools-axi, lavish-axi) |
 | Carvis'in oturumlar-arası hafızası | `~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/` (`MEMORY.md` + dosyalar) | kullanıcı/feedback/proje notları — kanon DEĞİL, hatırlatıcı |
 | Global skill'ler | `~/.claude/skills/` (gh-axi, lavish, chrome-devtools-axi → `~/.agents/skills/`; no-mistakes) | üçüncü-parti araç skill'leri |
-| Bulut skill kopyaları | claude.ai (anthropic-skills: gunaydin-vardiya, vardiya-kapanis, hizalama, dev-run-planner) | repo'daki seans-acilis/seans-kapanis'in ESKİ adlı kopyaları; güncelleme borcu kapsülde |
+| Bulut skill kopyaları | claude.ai (anthropic-skills: gunaydin-vardiya, vardiya-kapanis — emekli adlar; hizalama, dev-run-planner) | repo'daki seans-acilis/seans-kapanis'in ESKİ (emekli) adlı kopyaları; güncelleme borcu kapsülde |
 | Oturum transkriptleri | `~/.claude/projects/<proje>/*.jsonl` | bronz kaynak (prompt-tablo/ambar-tablo buradan okur); repo dışı, kişisel |
 
 ## Okuma sırası önerisi

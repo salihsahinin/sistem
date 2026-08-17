@@ -12,7 +12,7 @@
 - **"Markdown blok" tek başına grain DEĞİLDİR** — v0'daki beyan `kayit` tablosunun grain'idir. Kural: önce İŞ SÜRECİ seç, sonra o sürecin grain'ini tek cümleyle bildir, boyut/olgu ondan sonra (S8-A-YT1, D-YT2). İnşa bir seferde bir süreç satırı (S8-A-YT3).
 - **Bus matrix v1 (yazılı; satır = süreç, sütun = boyut):**
 
-| Süreç (grain bildirimi) | zaman/vardiya | dosya | anahtar | skill | katman | model |
+| Süreç (grain bildirimi) | zaman/seans | dosya | anahtar | skill | katman | model |
 |---|---|---|---|---|---|---|
 | ingest (1 satır = 1 zarf kaydı) | ✓ | ✓ | ✓ | | ✓ | |
 | damıtma (1 satır = 1 kayıt-triyajı) | ✓ | ✓ | ✓ | ✓ | ✓ | |
@@ -22,7 +22,7 @@
 | commit (1 satır = 1 commit; niyet-etiketi doğrulanmadan boyut sayılmaz — S8-A-YT5b) | ✓ | ✓ | | | | |
 
 - **Conformed boyut = bağlam-anahtar-kaydı.** Uyum koşulu: aynı ad + aynı domain; tam kopya gerekmez, katman-başına daraltılmış (shrunken) görünüm meşru (S8-A-YT2, D-YT1). Kararlılık kendiliğinden gelmez — anahtar-kaydının emeklilik/damga disiplini şart (S8-A-YT7). Görünüm: `v_boyut_anahtar`.
-- **`referans` tablosu = factless-fact/M2M köprü.** Galaxy statüsüne geçiş koşulu ÖLÇÜLEBİLİR: referans zaman grain'i kazanırsa (hangi commit/vardiyada doğdu) ikinci olgu tablosu olur (S8-A-YT2, D-YT3). İlk ölçüm (v1, 08-16): zamanlı %7,6 (3.587/47.388) → bugün KÖPRÜ, hedef metrik izlenir. Görünüm: `v_olgu_referans` (zaman_grain kolonu).
+- **`referans` tablosu = factless-fact/M2M köprü.** Galaxy statüsüne geçiş koşulu ÖLÇÜLEBİLİR: referans zaman grain'i kazanırsa (hangi commit/seansta doğdu) ikinci olgu tablosu olur (S8-A-YT2, D-YT3). İlk ölçüm (v1, 08-16): zamanlı %7,6 (3.587/47.388) → bugün KÖPRÜ, hedef metrik izlenir. Görünüm: `v_olgu_referans` (zaman_grain kolonu).
 - **Niteleyici korunur:** referans kayıtları katman/tarih/tür taşır ⇒ çıplak-üçlü/3B-tensör düzleştirmesi kayıplıdır; n-ary/property-graph biçimi kalır (S8-D-YT4). Olay kaydı çok-nesnelidir — vaka-kimliği sütunu EKLENMEZ, nesne-referans kümesi korunur (OCEL; S8-B-YT4).
 
 ## 3. Learned world-model katmanı (koşum-kaydı türevi)
@@ -42,7 +42,7 @@
 
 ## 5. Özütleme optimizasyonu (parquet felsefesi → ingest v2 / damıtma / kapsül)
 *Transfer sınırı (S9-AB-kör): tüm Parquet kanıtı tipli-tablo verisinden; mekanizmalar YAPILANDIRILMIŞ alanlara (anahtar/tip/referans) uygulanır — serbest blok gövdesine uygulanacağı KANITSIZ. Her mekanizma lossless/lossy etiketi taşır.*
-1. **Katman ayrımı [lossless]:** sıkıştırma-birimi ≠ okuma-birimi ≠ paralellik-birimi; V-1'de eşleme: blok≈page · alan-sütunu≈column chunk · dosya/vardiya-dilimi≈row group (S9-AB-YT1).
+1. **Katman ayrımı [lossless]:** sıkıştırma-birimi ≠ okuma-birimi ≠ paralellik-birimi; V-1'de eşleme: blok≈page · alan-sütunu≈column chunk · dosya/seans-dilimi≈row group (S9-AB-YT1).
 2. **Sözlük varsayılan-ama-eşikli [lossless]:** anahtar/kavram/tip alanları dictionary-encode (312 anahtar = düşük-kardinalite adayı); şişerse ham değere düşme kuralı YAZICIDA/ingest hattında yaşar (S9-AB-YT2). Anahtar-kaydı v1 zaten kavram-düzeyi sözlük — bu ilkenin kanonlaşmış hâli.
 3. **Encoding-önce-codec-koşullu [lossless→lossy sırası]:** önce yapısal tekilleştirme (anahtar/pointer/dedup), LLM-özeti/genel sıkıştırma SONRA ve yalnız soğuk katmanda; ters sıra ölçülü marjinal kazanç bırakır (S9-AB-YT3). Sıcak/sorgu-anı katmanına genel sıkıştırma girmez.
 4. **İstatistik katmanı = yazıcı-sözleşmesi [lossless]:** her ingest yazımında kolon istatistiği üretilir (formata güvenilmez; S9-CD-YT3); çift eksen — min/maks sıralı alanlara + üyelik-indeksi sırasız anahtarlara (S9-AB-YT4); yalnız düşük-seçicilikli sorgu sınıfları için (bedava değil; S9-AB-YT5).

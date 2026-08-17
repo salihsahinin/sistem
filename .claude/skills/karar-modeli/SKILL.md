@@ -17,7 +17,7 @@ Kanon zinciri: m.37 (3-model zorunluluğu) · m.37-eki (karşıt-temel) · m.40a
 
 ## Adımlar (sırayla, atlama yok)
 
-1. **Eşik kontrolü.** Soru ölçek-eşiği ÜSTÜ mü? Değilse skill'i bırak, kararı direkt ver (m.25). Şüphede: geri-alınması zor ∨ >1 vardiya etkili ∨ kanon/mimari dokunuşlu → eşik üstü say.
+1. **Eşik kontrolü.** Soru ölçek-eşiği ÜSTÜ mü? Değilse skill'i bırak, kararı direkt ver (m.25). Şüphede: geri-alınması zor ∨ >1 seans etkili ∨ kanon/mimari dokunuşlu → eşik üstü say.
 2. **m.40b kapısı.** Karar yeni mekanizma/araç/desen seçimi mi? → sunumdan ÖNCE dış tarama gerekir (atlas-kosum varsa onu çağır; yoksa kısa web taraması). İç-önceliklendirme kararı → muaf, geç.
 3. **3 model kur.** Her model için: (a) `references/temeller.md`'den FARKLI bir matematiksel taban seç; (b) önermeyi tek cümlede yaz; (c) token × zaman × beklenen-kalite × RİSK — sayısal ya da sıralı (az/orta/çok) doldur; sayı uydurma, kestirimse `[?]` damgala (m.39).
 4. **Karşıt-temel şartı.** ≥1 model, önerinin karar-VARSAYIMINA zıt zeminden kurulur (beklenen-değer ↔ minimax · Bayes ↔ frekans · keşif ↔ sömürü · birikimli-delta ↔ topyekûn-sıkıştırma). İki test: **aygıt gerçek mi** (zıt zemin gerçekten farklı sonuç üretiyor mu) + **canlılık** (o zemini ciddiye alan biri bu modeli savunur muydu). Süs-karşıtlık sayılmaz.

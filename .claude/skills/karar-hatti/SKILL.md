@@ -24,7 +24,7 @@ Kanon zinciri: m.16 · m.37 · m.40 (a-b-c + v0.2) · m.31 (katmanlar) · m.44 (
 4. **Araştırma-önce kontrolü (m.40b).** Soru "dışarıda çözülmüş olma ihtimali olan" sınıfta mı (yeni mekanizma/araç/desen)? **Evet** → **ÇOCUK 2 — atlas-kosum** (v0.2 multi-hop; rapor sunumdan ÖNCE biter). **Hayır — iç-önceliklendirme** → atlas ATLANIR (m.40b muafiyeti; muafiyet dönemsel geriye-dönük denetime tabi — bunu sunumda tek satırla belirt).
 5. **ÇOCUK 3 — karar-modeli.** m.37: 3 model (token×zaman×beklenen-kalite, sayısal) + karşıt-temel + RİSK boyutu (m.42e). Atlas koşulduysa bulguları (hayatta-kalan çekirdek + düşen iddialar) kanıt olarak BESLE — model seçenekleri saha örnekleriyle desteklenir.
 6. **Sunum (m.40a).** "Bu ne / neden masada" özetiyle görünür sunum. Katman ayrımı: **Katman-2** → önerilen işaretli, onay BEKLENMEZ, veto açık · **Katman-1** (kanon/kural, pahalı geri-alma, para, rol, dışarı çıkan iş) → Salih imzası BEKLENİR.
-7. **Kayıt taslağı — yazım YOK.** Senaryo-defteri bloğunu şablona uygun TASLAK olarak üret ve sunuma iliştir; defter yazımı + commit hattın DIŞINDA, vardiya akışında yapılır (yan-etki freni; ileride ayrı elle-tetik `karar-kaydet` skill'i — S-kutusu adayı).
+7. **Kayıt taslağı — yazım YOK.** Senaryo-defteri bloğunu şablona uygun TASLAK olarak üret ve sunuma iliştir; defter yazımı + commit hattın DIŞINDA, seans akışında yapılır (yan-etki freni; ileride ayrı elle-tetik `karar-kaydet` skill'i — S-kutusu adayı).
 
 ## Gotchas
 

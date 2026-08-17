@@ -1,6 +1,6 @@
 ---
 name: wiki-sayfa-yaz
-description: Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki sayfası üret", vardiya hasadında wiki-delta işlenirken. KULLANILMAZ; sozluk.md eklemelerinde (sözlük DONDU), toplu üretimde (oturum başına 1-2 sayfa), ham senaryo/log aktarımında (pointer'la durur).
+description: Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki sayfası üret", seans hasadında wiki-delta işlenirken. KULLANILMAZ; sozluk.md eklemelerinde (sözlük DONDU), toplu üretimde (oturum başına 1-2 sayfa), ham senaryo/log aktarımında (pointer'la durur).
 ---
 
 # Wiki sayfa yazımı (W-1, v1 — 2026-08-14, Salih onayıyla üretildi)
@@ -25,4 +25,4 @@ Kural kaynağı: `wiki/README.md` yazım standardı (deneysel m.29) + V24 isim d
 - **İsim disiplini (V24):** mevcut sayfanın adı değiştirilmez; ad değişikliği Salih bildirimi ister.
 - **Güven enflasyonu:** tek kaynaklı taze bulguya "yüksek" yazma.
 - **sozluk.md bu skill'in kapsamı DIŞINDA** — donmuş dosya, yalnız Salih talimatıyla ve ayrı işle.
-- Skill commit yapmaz; sayfa + index yazımı dosyaya, commit vardiya akışının işidir (yan-etki freni).
+- Skill commit yapmaz; sayfa + index yazımı dosyaya, commit seans akışının işidir (yan-etki freni).

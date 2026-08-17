@@ -8,7 +8,7 @@
     {"id": "E3-model-inisiyatifi", "prompt": "(Carvis kendi inisiyatifiyle) bunu deftere yazayım.", "assertions": ["Tetiklenmez — YALNIZ elle tetik (disable-model-invocation:true; yan-etki freni)"]}
   ],
   "description_eval": {
-    "should_trigger": ["kararı kaydet", "deftere işle", "bu kararı senaryo-defterine yaz", "/karar-kaydet", "vardiya akışı: kararı kaydet"],
+    "should_trigger": ["kararı kaydet", "deftere işle", "bu kararı senaryo-defterine yaz", "/karar-kaydet", "seans akışı: kararı kaydet"],
     "should_not_trigger": ["karar ver", "üç model sun", "çelişki var mı", "kapsülü güncelle", "notu fikir-kutusuna at"]
   }
 }
