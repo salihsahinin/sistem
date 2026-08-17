@@ -9,7 +9,7 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
       → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,olcum] [--snapshot YYYY-MM-DD]
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum] [--snapshot YYYY-MM-DD]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam). Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, os, subprocess, sys, time
@@ -19,6 +19,7 @@ ADIMLAR = [
     ("karar", ["tools/karar-borcu-tablo.py", "--sessiz"]),
     ("prompt", ["tools/prompt-tablo.py", "--sessiz"]),
     ("ambar", ["tools/ambar-tablo.py", "--sessiz"]),
+    ("hareket", ["tools/hareket-tablo.py", "--sessiz"]),
     ("olcum", ["tools/katman-olcum.py"]),
 ]
 

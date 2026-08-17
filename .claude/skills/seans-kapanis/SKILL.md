@@ -32,7 +32,10 @@ Kapanış = hafıza yazımıdır: bir sonraki vardiya yalnız burada yazılanı 
 Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (SessionStart hook `1,40p` sert-kapısı — aşan kuyruk sessizce düşer).
 
 ## 6. Boyut-izleme tek bakış (İMZALI kural 07-22)
-Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 8KB · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş vardiyada Salih-imzalı planla.
+Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş vardiyada Salih-imzalı planla.
+
+## 6b. Hareket kütüğü + workflow kopyası (okunabilirlik ilkesi, Salih Katman-1 08-17; CLAUDE.md §2)
+`python3 tools/hareket-tablo.py` koş (bugünün `raporlar/hareket-gunlugu-YYYY-MM-DD.md` + bronz/silver/gold tazelenir; test PASS beklenir). Bu seansta Workflow koştuysa script kopyası `cc/workflow/YYYY-MM-DD-<ad>-<wf_id>.js` + README satırı (kaynak: oturum dizini `workflows/scripts/`). İkisi de commit'e girer; eksikse kapanış TAMAM sayılmaz.
 
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu GİZLEME — gün sayılmadı de, nedenini yaz.

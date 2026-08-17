@@ -23,6 +23,7 @@
 | **ambar-tablo.py** | Bağlam veri AMBARI v0 (`amb_*` şeması, bitemporal): alt-ajan koşum olayları → bronz `veri/bronz/kosum-olay.jsonl` → olgu/boyut tabloları + martlar (`v_amb_kosum_maliyet`, `v_amb_acilis_brifi`) | `python3 tools/ambar-tablo.py` | 08-16 |
 | **katman-olcum.py** | Veri-katmanı ÖLÇÜM + test (unique/not_null/accepted_values/relationships) + freshness + şekil-sözleşmesi preflight → `veri/katman-olcum.jsonl` (append-only) | `python3 tools/katman-olcum.py` | 08-16 |
 | **sunum-son50.py** | "Son 50 prompt" gold görünümünden tek-dosya mobil HTML sunum → `raporlar/son-50-prompt-SUNUM.html` (ad anahtarla başlar) | `python3 tools/sunum-son50.py` → `open -R` + `open` | 08-16 |
+| **hareket-tablo.py** | Carvis'in TÜM araç çağrıları (yazdı/düzenledi/okudu/koştu/aradı/ajan/skill/workflow) transkriptten → bronz `veri/bronz/hareket-olay.jsonl` → silver `hareket` → gold `v_hareket_gunluk`/`v_son_hareketler` + insan-yüzü `raporlar/hareket-gunlugu-YYYY-MM-DD.md` (okunabilirlik ilkesi 08-17) | `python3 tools/hareket-tablo.py [--tum] [--tarih …]` (katman-hatti adım 5; seans kapanışında koşar) | 08-17 |
 | **sunum-proof-of-work.py** | "JARVIS ne kadar geliştirildi?" proof-of-work sunumu; TÜM rakamlar koşum anında git + dosya sistemi + baglam.sqlite'tan (elle sayı yok) → `raporlar/jarvis-proof-of-work-SUNUM.html` (yazdırma stili: PDF) | `python3 tools/sunum-proof-of-work.py` → `open -R` + `open` | 08-16 (kesik oturumdan; ilk koşum Salih tetiğinde) |
 
 ## Beraber okuma önerisi (Salih isteği 08-15)

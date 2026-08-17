@@ -1,4 +1,5 @@
 wf_id,ajan,modeller,bas,son,ajan_dk_toplam,output_tokens,input_tokens,cache_read,cache_create,arac_cagrisi
+wf_7a8cf19f-175,8,"claude-opus-5,claude-fable-5",2026-08-16T08:17:29.959Z,2026-08-16T08:33:25.779Z,31.0,104408,278,4374107,728724,88
 wf_89527235-dbf,8,"claude-fable-5,claude-opus-5",2026-08-16T06:28:20.519Z,2026-08-16T06:46:56.061Z,36.1,130429,330,5142398,880062,111
 wf_7e3aa1d0-008,8,"claude-opus-5,claude-fable-5",2026-08-15T23:10:41.355Z,2026-08-15T23:32:24.449Z,38.9,131179,354,6166722,800443,112
 wf_a08eccb1-262,12,"claude-opus-5,claude-fable-5",2026-08-15T21:26:05.873Z,2026-08-15T21:45:20.229Z,47.6,166366,430,6068685,1080090,136
