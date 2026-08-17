@@ -159,9 +159,9 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
       "anahtar_id": "ana-sira-yuzeyi",
       "tur": "yuzey",
       "guncel": {
-        "deger": "terminal ana-sıra",
-        "gecerli_bas": "2026-08-12",
-        "kaynak": "Salih Katman-1 08-12; m.41 geçiş kaydı 08-14"
+        "deger": "Claude Code ana-sıra (terminal ∨ masaüstü uygulaması)",
+        "gecerli_bas": "2026-08-17",
+        "kaynak": "Salih Katman-1 08-12; m.41 geçiş kaydı 08-14 · GK-2 08-17 (KB-34): masaüstü uygulaması Claude Code = ana-sıra (parmak izi doğrulandı); Cowork SEKMESİ koşullu (yuzey-parmak-izi.py PASS'la) — 'Cowork' emekli değeri o kapıda yeniden değerlendirilir; model şartı 'en güçlü model'"
       },
       "emekli": [
         {
@@ -174,7 +174,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
           ],
           "tarih": "2026-08-12",
           "gerekce": "Cowork emekli (kapsül 08-15); ana-sıra terminal",
-          "replaced_by": "terminal ana-sıra",
+          "replaced_by": "Claude Code ana-sıra (terminal ∨ masaüstü uygulaması)",
           "izinli_kaliplar": [
             "cowork emekli",
             "cowork-sonrası",
@@ -190,13 +190,19 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
             "cowork ve ",
             "chat-kapsulu",
             "imzasi \\d{4}-\\d{2}-\\d{2}, cowork",
-            "cowork gunaydin vardiyasi"
+            "cowork gunaydin vardiyasi",
+            "cowork sekmesi",
+            "cowork modu",
+            "cowork\\) a\\u00e7\\u0131lan",
+            "cowork-dönemi",
+            "cowork dönemi",
+            "cowork-donemi"
           ],
           "kaldirma_en_erken": "vardiya+3"
         }
       ],
       "aday": [],
-      "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli. 08-16 (Carvis/Fable, Salih \"düzelt\"): sıcak-katman kalıntısı KAPANDI — CLAUDE.md \"Yüzey yetkisi\" satırı + SessionStart hook yetki bandı geçiş kaydına yeniden yazıldı; denetim körü: `ana-sıra(Cowork)` kalıbı `\\(cowork` izinli-kalıbına takılıyordu (kalıp gevşetilmedi, kalıntı elle bulundu)."
+      "not": "İkinci koşum vakası (SH-10 sonrası ayrı tur): CLAUDE.md açıklama notu ve m.41 metni hâlâ Cowork'ü ana-sıra sayan cümleler taşıyor; tarihçe damgaları izinli. 08-16 (Carvis/Fable, Salih \"düzelt\"): sıcak-katman kalıntısı KAPANDI — CLAUDE.md \"Yüzey yetkisi\" satırı + SessionStart hook yetki bandı geçiş kaydına yeniden yazıldı; denetim körü: `ana-sıra(Cowork)` kalıbı `\\(cowork` izinli-kalıbına takılıyordu (kalıp gevşetilmedi, kalıntı elle bulundu). | 08-17 GK-2: güncel değer 'terminal ana-sıra' → 'Claude Code ana-sıra (terminal ∨ masaüstü)'; 'terminal ana-sıra' ifadesi eş-anlamlı kalır (emekli değil). Cowork sekmesi için koşullu geri-dönüş kapısı açık (KB-34)."
     },
     {
       "anahtar_id": "calisma-modeli",

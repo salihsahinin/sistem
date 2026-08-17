@@ -21,13 +21,13 @@
 - **Oturum tetikleri (Salih 08-15):** açılış "seans başı" · kapanış "seans bitimi"; jarvis↔staj ayrımı KLASÖRLE; selamlama zaman-göstergesi DEĞİL (zaman-kayması freni ritüel skill'lerde; defter 08-15).
 
 ## Açık borçlar
-- **DAMITMA ACİL (Salih-imzalı planla; `damitma` skill'i hazır):** senaryo-defteri ~150KB/48KB · KILAVUZ 18,7/16KB.
+- ~~DAMITMA ACİL~~ **KAPANDI 08-17 (KB-37, Salih A):** senaryo-defteri 180,9→42,7 KB (07-29→08-15 blokları `kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-17.md`, 42 satır index, 28 pointer eşlendi) · KILAVUZ 18,7→13,3 KB (4 Cowork-dönemi bölümü `kuyruk/arsiv/KILAVUZ-arsiv-2026-08-17.md`).
 - **İngest bekleyen:** `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` · `raporlar/2026-08-05-KILAVUZ-{birebir-kopya-senaryolar,l8-workflow}.md` (08-14 dal kurtarması, HAM).
-- **Salih kararları → TEK ENVANTER `raporlar/2026-08-16-masa-hazirlik-karar-borclari.md` (37 KB kalem, seans-7) + `veri/karar-borcu.jsonl`; aşağıdaki liste o dosyada birleştirildi (bayat kalemler için C.0 teyit):** şerhli 5 kalem + D-0803-1 · A1 hükmü · K1-11 · stash-önce · Windows akıbeti · agile tetiği · **spec-kit yolu (A dar-deneme / B desen-aktarımı / C bekle-izle) + V1 m.16 şerhi** · **metodoloji 4 şerh-adayı** (m.44 RouteLLM çapası [X] · m.43 gerekçesi · m.46a SHA→son · m.40b antitez borcu) · 9 tam-merge'li `claude/` dalının silimi · K-016 kapanışı + description-eval turu.
+- **Salih kararları → TEK ENVANTER `raporlar/2026-08-16-masa-hazirlik-karar-borclari.md` (37 KB kalem, seans-7) + `veri/karar-borcu.jsonl`; aşağıdaki liste o dosyada birleştirildi (bayat kalemler için C.0 teyit):** şerhli 5 kalem + D-0803-1 · ~~A1 hükmü~~ (KB-33 kapandı-konusuz 08-17) · K1-11 · stash-önce · Windows akıbeti · agile tetiği · **spec-kit yolu (A dar-deneme / B desen-aktarımı / C bekle-izle) + V1 m.16 şerhi** · **metodoloji 4 şerh-adayı** (m.44 RouteLLM çapası [X] · m.43 gerekçesi · m.46a SHA→son · m.40b antitez borcu) · 9 tam-merge'li `claude/` dalının silimi · K-016 kapanışı + description-eval turu.
 - Bulut ritüel-kopyaları güncellemesi (tarayıcı, Salih girişiyle ~5 dk) · md.49 yazım turu (tüzük + pano K-022) · sözlük raporu ingest'i · K2-n geriye-dönük denetim · wiki kuyruğu: gnhf/treehouse/lavish/no-mistakes/spec-kit/ajan-metodolojisi.
 - Erteleme kapsamı (geçiş bitince): ~~Türkçeleştirme turu~~ (KAPANDI 08-17 seans-8 — Salih emri; kalan yalnız commit dili m.10) · Orca hook temizliği · find-skills · SKILL.md mükerrer şerh · lease iadeleri · kural-entegrasyonu.
 
 ## Sonraki ilk iş
-1. **Damıtma planı çıkar → Salih imzası → `damitma` skill'iyle koşum** (İngest-bekleyenler dahil).
+1. ~~Damıtma~~ KAPANDI 08-17 · **Karar masası SÜRÜYOR** (08-17: KB-37/38/33 kapandı, KB-34 koşullu; kalan ~31 kalem, 4'lük partiler, açıklama-bloklu) · İngest-bekleyenler ayrı tur.
 2. P6 betiği Mac uyarlaması + dörtlü deftere.
 3. **Karar-borcu masası** — hazırlık dosyası hazır (`raporlar/2026-08-16-masa-hazirlik-karar-borclari.md`); Salih okur → masa aşamaları (Kun-Chen zinciri).

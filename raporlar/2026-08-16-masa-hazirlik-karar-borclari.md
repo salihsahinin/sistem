@@ -1,3 +1,5 @@
+> **POINTER NOTU (08-17 damıtma):** bu dosyadaki `kuyruk/senaryo-defteri.md:NNN` satır numaraları 08-17 sabahına aittir; 07-29→08-15 blokları `kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-17.md`'ye indi. GÜNCEL pointer'lar `veri/karar-borcu.jsonl` (yükleyici doğrulamalı). Masa 08-17'de başladı: KB-37/38/33 kapandı, KB-34 koşullu.
+
 # Karar-Borcu Masası — Hazırlık Dosyası (Salih için, İNSAN register)
 
 *Carvis/Fable, 2026-08-16 seans-7 (kişisel hesap; Opus'ta zorla durdurulan 60c91bbb oturumundan devralındı — Opus 0 dosya yazmıştı, hiçbir çıktısı devralınmadı). Emir: Salih 08-16 00:46 "sistemdeki karar borçlarını Kun Chen'in kullandığı skill ile kapatacağız — 1 masa-öncesi hazırlık dosyası yaz; okuduktan sonra karar masası aşamalarına geçelim (bağlam datasını çeken; veri tabloları ve veri yapıları oluşturma sürecimize de yardımcı)" + 00:58 "devral, masa öncesi hazırlık dosyasını yaz". Format emsali: `raporlar/2026-08-03-masa-hazirlik-L8.md` (Kun-Chen L8 masası) + `raporlar/2026-08-02-masa-hazirlik-K2.md`. Deneysel m.29. Kural: **hiçbir kalemde hüküm verilmez — karar alanı BOŞ, "MASAYA" damgalı** (Salih 08-03 (c) maddesi).*

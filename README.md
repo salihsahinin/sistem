@@ -4,7 +4,7 @@
 
 **Sözlük (Salih 2026-08-17, Katman-1): şirket metaforu EMEKLİ** — "şirket" yalnız Salih'in gerçek işyeridir; Jarvis bir SİSTEMdir, Carvis üst-orkestratör, Salih tek karar verici; halef sözlük ve cascade `core/baglam-anahtar-kaydi.md` (`calisma-modeli`).
 
-**Duruş (Salih 2026-08-17, Katman-1): AÇIK KAYNAK.** Carvis'in davranışını belirleyen her şey (kural, skill, hook, ayar, araç, şablon) bu repoda okunur metin olarak yaşar; kaynak haritası ve gizli `.claude/` klasörüne görünür kapı: `kaynak-kodu/`. GitHub remote **şimdilik private** (Salih); lisans seçimi Salih'te (öneri MIT — remote public'e açılmadan önce). CV artefaktı değildir (tüzük m.14); CV artefaktları ayrı public repolarda yaşar (`00_MASTER_PLAN.md`).
+**Duruş (Salih 2026-08-17, Katman-1): AÇIK KAYNAK.** Carvis'in davranışını belirleyen her şey (kural, skill, hook, ayar, araç, şablon) bu repoda okunur metin olarak yaşar; kaynak haritası ve gizli `.claude/` klasörüne görünür kapı: `kaynak-kodu/`. GitHub remote **şimdilik private** (Salih); lisans **MIT** (`LICENSE`, Salih kararı 08-17 KB-38 — Türkçe özet: herkes kullanır/değiştirir/dağıtır, tek şart telif satırını korumak; garanti yok). CV artefaktı değildir (tüzük m.14); CV artefaktları ayrı public repolarda yaşar (`00_MASTER_PLAN.md`).
 
 **Onay kapısı:** Salih'in taraması = onay; veto = `git revert`. Katman-1 (kanon) yalnız Salih kararıyla; Katman-2 Carvis yapar + commit'ler (m.31).
 

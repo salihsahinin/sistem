@@ -1,0 +1,9 @@
+=== YÜZEY PARMAK İZİ (yetki-eşitliği karşılaştırması için) ===
+giris: {"CLAUDE_CODE_ENTRYPOINT": "claude-desktop", "bundle": "com.anthropic.claudefordesktop", "sdk": "0.3.229", "TERM_PROGRAM": null, "AI_AGENT": "claude-code_2-1-229_agent", "cwd": "/Users/HasanSalihSahin/jarvis", "HOME": "/Users/HasanSalihSahin"}
+repo: {"git_repo": true, "HEAD": "966c3bb", "origin": "github.com:salihsahinin/jarvis.git", "yazilabilir": true}
+ayar: {"settings": true, "ask": ["Bash(git push:*)"], "deny": [], "hook_olaylari": ["PreToolUse", "SessionStart"]}
+kanon: {"hook_dosyalari": ["pretool-core-tel.sh", "session-start.sh"], "skill_sayisi": 16, "CLAUDE_md_bayt": 6991}
+kisit: {"mount_ipucu": false, "python3": "3.9.6", "git": "git version 2.50.1 (Apple Git-155)", "sqlite3": true, "claude_cli": true}
+env_adlari: ["AI_AGENT", "CLAUDECODE", "CLAUDE_AGENT_SDK_VERSION", "CLAUDE_CODE_CHILD_SESSION", "CLAUDE_CODE_DISABLE_CRON", "CLAUDE_CODE_EAGER_FLUSH", "CLAUDE_CODE_EMIT_TOOL_USE_SUMMARIES", "CLAUDE_CODE_ENABLE_ASK_USER_QUESTION_TOOL", "CLAUDE_CODE_ENTRYPOINT", "CLAUDE_CODE_EXECPATH", "CLAUDE_CODE_HOST_SESSION_ID", "CLAUDE_CODE_MESSAGING_SOCKET", "CLAUDE_CODE_MESSAGING_TOKEN", "CLAUDE_CODE_OAUTH_SCOPES", "CLAUDE_CODE_REPORT_FINDINGS", "CLAUDE_CODE_SDK_HAS_HOST_AUTH_REFRESH", "CLAUDE_CODE_SDK_HAS_OAUTH_REFRESH", "CLAUDE_CODE_SESSION_ID", "CLAUDE_EFFORT", "CLAUDE_PID", "CLAUDE_PREVIEW_CLASSIFIER_FLOOR"]
+parmak_izi_sha8: "2aea0623"
+Karar kuralı (m.41 GK-2): iki yüzeyde 'repo/ayar/kanon/kisit' blokları eşit ∧ ajan araç seti eşit → yetki EŞİT.
