@@ -1,10 +1,31 @@
 > **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/LLM Wiki Starter/00 LLM Wiki — original idea (Karpathy).md`; tespit raporu: `raporlar/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
 
-> Source: Andrej Karpathy, "LLM Wiki" gist, April 2026.
-> https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
-> This is the original idea file. Paste it to a fresh agent if you ever want to rebuild the schema from scratch.
+> **Kaynak:** Andrej Karpathy, "LLM Wiki" gist, Nisan 2026 — https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+> Bu, fikrin ORİJİNAL dosyasıdır; şemayı sıfırdan yeniden kurmak istersen taze bir ajana yapıştırılır. **Türkçeleştirme (Salih emri 2026-08-17, açık-kaynak ilkesi):** aşağıda önce Türkçe özet (Carvis, kendi cümleleriyle — üçüncü-şahıs metin, birebir çeviri yerine özet), altında Karpathy'nin İngilizce aslı birebir korunur (kaynak metin, değiştirilmez).
 
 ---
+
+## Türkçe özet (Carvis, 2026-08-17)
+
+**Ana fikir.** Çoğu insanın LLM+doküman deneyimi RAG'dir: dosyalar yüklenir, LLM soru anında ilgili parçaları bulur, cevap üretir. Çalışır ama her soruda bilgi sıfırdan yeniden keşfedilir; birikim yoktur. Karpathy'nin önerisi farklı: LLM, ham kaynaklarla sen arasında duran **kalıcı, birbirine bağlı bir markdown wiki'sini artımlı olarak inşa eder ve bakımını yapar.** Yeni kaynak geldiğinde yalnız indekslemez — okur, özünü çıkarır, mevcut wiki'ye entegre eder: varlık sayfalarını günceller, konu özetlerini yeniler, yeni verinin eski iddiayla çeliştiği yeri not eder. Bilgi bir kez derlenir, sonra *güncel tutulur*. Wiki **kalıcı ve birikimli bir artefakttır**; çapraz referanslar hazırdır, çelişkiler işaretlidir. Wiki'yi sen yazmazsın — LLM yazar; sen kaynak seçer, keşfeder, doğru soruyu sorarsın. Pratikte: bir yanda LLM ajanı, öbür yanda Obsidian. **Obsidian = IDE, LLM = programcı, wiki = kod tabanı.** Uygulama alanları: kişisel takip, uzun araştırma, kitap okuma (fan wiki'si gibi), ekip wiki'si, rakip analizi, ders notları…
+
+**Mimari — üç katman.** (1) **Ham kaynaklar:** senin seçtiğin doküman koleksiyonu; DEĞİŞMEZ, LLM okur ama yazmaz — hakikat kaynağı. (2) **Wiki:** LLM'in ürettiği markdown dizini (özetler, varlık/kavram sayfaları, karşılaştırmalar, genel bakış, sentez); tamamen LLM'in sorumluluğunda — sen okursun, o yazar. (3) **Şema:** LLM'e wiki'nin yapısını, uzlaşımlarını ve iş akışlarını (ingest, sorgu, bakım) anlatan doküman (Claude Code'da CLAUDE.md, Codex'te AGENTS.md) — LLM'i genel bir sohbet botu değil disiplinli bir wiki bakımcısı yapan asıl yapılandırma dosyası; zamanla LLM'le birlikte evrilir.
+
+**İşlemler.** **Ingest:** kaynağı bırak, LLM okur, çıkarımları seninle tartışır, özet sayfası yazar, indeksi ve ilgili varlık/kavram sayfalarını günceller, log'a satır ekler (tek kaynak 10-15 sayfaya dokunabilir; tek tek ve gözetimli ingest önerilir ama toplu da olur — akışı sen belirle, şemaya yaz). **Sorgu:** wiki'ye soru sor; LLM ilgili sayfaları bulur, okur, atıflı sentez üretir (markdown, tablo, Marp slayt, grafik…). Kilit içgörü: **iyi cevaplar wiki'ye yeni sayfa olarak geri dosyalanır** — keşiflerin de kaynaklar gibi birikir. **Lint:** ara ara sağlık kontrolü — sayfalar arası çelişki, bayat iddia, gelen bağlantısı olmayan yetim sayfa, sayfası olmayan önemli kavram, eksik çapraz referans, web aramasıyla doldurulabilecek boşluk.
+
+**İndeks ve log.** **index.md** içerik-yönelimli katalog: her sayfa link + tek satır özet (+ tarih/kaynak sayısı), kategoriye göre; her ingest'te güncellenir; sorguda LLM önce indeksi okur, sonra sayfalara iner — orta ölçekte (~100 kaynak, yüzlerce sayfa) embedding tabanlı RAG altyapısına gerek bırakmaz. **log.md** kronolojik, yalnız-ekle kütük: ingest/sorgu/lint kayıtları; sabit önekle (`## [2026-04-02] ingest | Başlık`) unix araçlarıyla ayrıştırılabilir (`grep "^## \[" log.md | tail -5`).
+
+**İsteğe bağlı araçlar ve ipuçları.** Wiki büyüyünce arama motoru (örn. `qmd`: yerel, BM25+vektör hibrit, LLM yeniden-sıralama; CLI + MCP) ya da kendi basit arama script'in. Obsidian Web Clipper (web→markdown), görselleri yerel indirme, graph view (wiki'nin şekli: hub'lar, yetimler), Marp (slayt), Dataview (frontmatter sorguları); wiki bir git deposu olduğundan sürüm geçmişi/dallanma bedava.
+
+**Neden çalışır.** Bilgi tabanının yorucu kısmı okumak/düşünmek değil, **muhasebedir**: çapraz referans güncelleme, özetleri güncel tutma, çelişkileri not etme, onlarca sayfada tutarlılık. İnsanlar wiki'yi bakım yükü değerinden hızlı büyüdüğü için terk eder; LLM sıkılmaz, unutmaz, tek geçişte 15 dosyaya dokunur — bakım maliyeti sıfıra yakın olduğu için wiki bakımlı kalır. İnsanın işi kaynak seçmek, analizi yönlendirmek, iyi soru sormak, anlamı düşünmek; gerisi LLM'in. Ruhen Vannevar Bush'un Memex'ine (1945) yakın: özel, aktif küratörlü, dokümanlar arası bağlantıların dokümanlar kadar değerli olduğu bir kişisel bilgi deposu — Bush'un çözemediği "bakımı kim yapar" sorusunu LLM çözer.
+
+**Not.** Doküman bilerek soyuttur: fikri anlatır, uygulamayı değil. Dizin yapısı, şema uzlaşımları, sayfa biçimleri, araçlar — hepsi alana, tercihe ve LLM'e bağlı; her şey isteğe bağlı ve modüler. Doğru kullanım: ajanınla paylaş, ihtiyacına uyan sürümü birlikte kur.
+
+*Jarvis'te karşılığı:* ham kaynak = `raporlar/`, `cc/rapor-*`, transkriptler · wiki = `wiki/` · şema = `CLAUDE.md` + `core/` · index/log = `wiki/README.md` + git log; ilgili sayfalar [[pointer-sistemi]], [[ingest-semasi]], [[baglam-veri-ambari]].
+
+---
+
+## İngilizce aslı (Karpathy, birebir — kaynak metin, değiştirilmez)
 
 # LLM Wiki
 

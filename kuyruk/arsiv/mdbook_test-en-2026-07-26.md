@@ -1,3 +1,5 @@
+> **ARŞİV (2026-08-17):** repo kökünden taşındı — mdBook `test` komutu dokümanının İngilizce kopyası (07-26 "üç register" commit'iyle gelmiş yan dosya; hiçbir yerden referans almıyor, Jarvis kaynak kodu değil). m.8: silinmedi, arşive indi.
+
 # The test command
 
 When writing a book, you sometimes need to automate some tests. For example,

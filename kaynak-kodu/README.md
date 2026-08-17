@@ -8,6 +8,9 @@
 - Gizli dosyaları Finder'da KALICI görmek istersen (senin tercihin, sistem ayarı): Finder'dayken **⌘ ⇧ .** (Command-Shift-Nokta) — bir kez basınca açık kalır, tekrar basınca kapanır.
 - Obsidian'da `.py`/`.sh` görmek için: Ayarlar → Files & Links → "Detect all file extensions".
 
+## Dil kuralı (Salih 2026-08-17)
+Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` = ATLAS, 08-17'de çevrildi; İngilizce aslı `kuyruk/arsiv-atlas-taban-metni-en-2026-07-13.md`), hook'lar, kural/şema dosyaları, script docstring/yorum/çıktı mesajları, wiki sayfaları. Türkçe OLMAYAN ve öyle kalan: kod tanımlayıcıları ve Python/SQL/JSON anahtar sözcükleri · üçüncü-parti araç skill'leri (`~/.claude/skills/` gh-axi, lavish, chrome-devtools-axi, no-mistakes — repo dışı, bizim değil) · commit mesajları (tüzük m.10) · alıntılanan İngilizce kaynak metinler (üstüne Türkçe özet konur; örn. `wiki/kokenler-karpathy-llm-wiki.md`) · Claude Code'un kendi ürettiği dosyalar (`.claude/RESUME.md` gibi).
+
 ## Kaynak kodu nerede (repo içi)
 | Bileşen | Yol | Ne | Nasıl okunur |
 |---|---|---|---|

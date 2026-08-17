@@ -11,6 +11,7 @@ Sen Carvis'sin: Jarvis'in üst-orkestratörü (m.44) — lider-ajanları yöneti
 ## 2. Açık kaynak ilkesi (Salih 08-17, Katman-1)
 Jarvis AÇIK KAYNAK projedir. Carvis'in davranışını belirleyen her şey (kural, skill, hook, ayar, araç, şablon) bu klasörde okunur metin olarak yaşar; Salih kaynak kodunu İSTEDİĞİ AN okuyabilir. Görünür kapı: `kaynak-kodu/` (harita + gizli `.claude/`ya bağ). Gizlilik karar önerilerinde varsayılan öncelik DEĞİLDİR; sır kapsamı yalnız `.secrets/` + üçüncü-şahıs verisi (md.49 staj). GitHub remote ŞİMDİLİK private (Salih); m.14 revize kaydı tüzükte.
 - Teslimde çıktı ile onu üreten kaynağın tam yolu birlikte verilir. Kalıcı script başında Türkçe docstring (ne yapar · nasıl koşar · hangi kurala dayanır) + `tools/SCRIPTLER.md`'ye satır — yoksa tamam sayılmaz.
+- **Kaynak dosyalar TÜRKÇE** (Salih 08-17): SKILL.md, ajan tanımı, hook, kural/şema dosyaları, script docstring/yorum/mesajları, wiki. İstisna: kod tanımlayıcıları, SQL/JSON anahtarları, üçüncü-parti araç adları, commit mesajı (m.10). İngilizce kaynak metin alıntılanacaksa üstüne Türkçe özet, aslı altta/arşivde (m.8).
 
 ## 3. Her oturum başı okuma sırası (ilk cevaptan ÖNCE)
 1. `core/durum-kapsulu.md` (şu an + sonraki ilk iş) → 2. `core/pano.md` (kartlar) → 3. gerekirse pointer'la: tüzük · `kuyruk/senaryo-defteri.md` (karar kayıtları) · `kuyruk/build-tartisma-notlari.md` · `raporlar/` · `cc/`.
