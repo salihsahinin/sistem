@@ -18,7 +18,7 @@
 | F4 | **N-örnek uyuşma** (3; sonlu-cevap/kısa-QA) | sonlu-cevaplı iddialar | SC +3,9..+17,9; 3-5'te doyar; tutarlı-yanılgıyı YAKALAMAZ | N çağrı | ÖLÇÜLÜ |
 | F5 | **Hesap/sembolik → yürütücü**; kod → test/yürütme; dış-referans → registry (Hat-1 K2-R) | sayısal/kod/referans | PAL +15 puan; LATM 12/15 vs 3/15 | ~0 (script) | ÖLÇÜLÜ |
 | F6 | **Çekimserlik ekonomisi**: IDK=0 · yanlış=−t/(1−t) · "bulunamadı"/[ARANAMADI]/DAYANAKSIZ etiketleri; öncül/cevaplanabilirlik denetimi (adım-0) | her görev; özellikle yanlış-öncül/eksik-belirtim | AbstentionBench: akıl-yürütme ince-ayarı çekimserliği −%24 → adım-0 atlanmaz | ~0 | ÖLÇÜLÜ (puanlama) / prompt-düzeyi "bilmiyorum izni" ÖLÇÜSÜZ |
-| F7 | **Konum-ağırlıklı örneklem** (uzun çıktıda SON üçlük + TÜM sayısal iddialar; D2T'de ilk yarı) | uzun-form / sayısal | FActScore: hata sona doğru artar; NUM en yüksek tür (%36,2) | V26 revizyonu | ÖLÇÜLÜ |
+| F7 | **Konum-ağırlıklı örneklem** (uzun çıktıda SON üçlük + TÜM sayısal iddialar; D2T'de ilk yarı) | uzun-form / sayısal | FActScore: hata sona doğru artar; NUM en yüksek tür (%36,2) | V26 revize 08-17 (Salih imzası A) | ÖLÇÜLÜ |
 | F8 | **Çıktı şeması: gerekçe → cevap** sırası; şema istemde açık | yapısal çıktı | cevap-önce −25..−34 puan (tek çalışma, çıkar-sahibi) | ~0 | ÖLÇÜLÜ [K, deneysel] |
 | F9 | **Model-damgası + runtime-modu** ayrı alan (thinking on/off · araç var/yok) | her kayıt | thinking-on araç-halüsinasyonu +1,3..+20,6 (Qwen3); Claude ölçülmemiş | ~0 | ÖLÇÜLÜ (Qwen) / Claude [?] |
 | F10 | **Ölçü-disiplini**: oran = (görev-tipi × ölçüt × kohort) + n + Wilson/Jeffreys; sözel güven yalnız rapor alanı | her rapor | metrik farkı: FActScore %71,5 ↔ "%1,0 halüsinasyon" karşılaştırılamaz | ~0 | ÖLÇÜLÜ |
@@ -60,6 +60,6 @@ Deterministik hesap: `python3 .claude/skills/halusinasyon-engelleyici/scripts/de
 
 ## 3. m.16 taraması + şerh-adayları
 - Kanon frenleriyle ÇELİŞKİ YOK; paket onları teorik dayanağa bağlar (Kalai: IDK cezası → "bulunamadı" meşru; fren=kapı) ve 5 yeni fren ekler (F1 destek-kontrolü etiketi · F6 puanlama · F7 konum-ağırlıklı örneklem · F8 şema sırası · fizibilite kapısı).
-- **V26 revizyon-adayı (Katman-1):** örneklem "rastgele" yerine "son üçlük ağırlıklı + tüm sayısal iddialar" (FActScore konum bulgusu).
+- **V26 revizyonu — İMZALANDI (Salih Katman-1, 2026-08-17, seçenek A):** örneklem "rastgele" yerine KURAL-TABANLI: çıktının son üçte biri + tüm sayısal iddialar (FActScore konum bulgusu; deterministik tasarım ilkesi). Uygulama: `.claude/skills/atlas-kosum/SKILL.md` adım 5. Bilinen açık: işçi kuralı öğrenirse son üçlüğe özenip başı gevşetebilir — ölçüm ilerde (deneysel m.29).
 - **md.21 derece-sorma yasağı şerhi:** erken çekimserlik ortalamada kazanç ama taban doğruluk yüksekken net zarar (TriviaQA) → yasak koşulsuz değil; kural: yüksek-taban görevde önce üret, sonra doğrula.
 - **Kör noktalar (ölçüm borcu):** Claude güncel kuşak oranları · Türkçe · ajan/araç-çağrısı görevleri · prompt-düzeyi "bilmiyorum" etkisi · C_hata elicitation · Aile-D omurgasının tek 2026 ön-baskısına yaslanması (Kotte).

@@ -11,7 +11,7 @@
         "ÜÇ AŞAMA ayrı kurulmuş: (1) tez koşumları paralel+bağımsız (birbirini görmez) · (2) antitez tezleri OKUR, tez-başına ayrı Devil's-Advocate ¬-koşumu · (3) hakemlik ayrı çağrı",
         "CoVe-Factored uygulanmış: antitez ajanının promptuna tezin yalnız İDDİASI konmuş, gerekçesi/kanıt zinciri KONMAMIŞ",
         "Hakemlik maskeli (tez/antitez kimliği ve sırası hakem promptunda etiketlenmemiş) ve hakem üretici ajanlardan ayrı",
-        "V26 örneklem-denetimi hakemlikten ÖNCE planda: rastgele kaynak spot-check + tutmazsa ajanın tüm bulguları K'ya düşer",
+        "V26 örneklem-denetimi hakemlikten ÖNCE planda: kural-tabanlı spot-check (son üçte bir + tüm sayısal iddialar; rastgele değil) + tutmazsa ajanın tüm bulguları K'ya düşer",
         "Sağlamlık ölçütü = adversarial-hayatta-kalma dili kullanılmış ('kör kesişim = en sağlam' dili YOK); düşen/daralan iddialar ayrı raporlanıyor",
         "Etiket sözleşmesi: D/K/X + URL zorunlu · 'bulunamadı' meşru · uydurma yasak · erişim engeli bayraklanır",
         "Karar-öncesi kullanımda m.40b sırası doğru: tarama SUNUMDAN önce"

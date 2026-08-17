@@ -55,7 +55,7 @@ Damga: V1-V17 gece (mobil+HI, geriye dönük beyan) · V18-V23 sabah (ayık). St
 
 | # | Etiket | Özüt | Damga | Statü |
 |---|---|---|---|---|
-| V26 | — | Katmanlı kontrol: lider örneklemle denetler, Jarvis ara kontrol koşar, opsiyonel tester ajanı; miktarlar token-zaman kartlarıyla değişken | ayık (07-11 gece) | KARAR ALINMADI — gerekçeli tur + build gündemine aday |
+| V26 | — | Katmanlı kontrol: lider örneklemle denetler, Jarvis ara kontrol koşar, opsiyonel tester ajanı; miktarlar token-zaman kartlarıyla değişken | ayık (07-11 gece) | atlas-kosum adım 5'te uygulanır; **REVİZE 08-17 (Salih A):** örneklem rastgele değil KURAL-TABANLI (son üçte bir + tüm sayısal iddialar) — deterministik tasarım |
 | V27 | — | Mobil oturum çıktısının Cowork'e düşük sürtünmeli kanalla akması (paylaşımlı dosya, kapsül teslim-adresi, m.27 birleşimi); havuz #19/#20/#25 | ayık (Salih beyanı, 07-12 sabah) | KARAR ALINMADI — build'de uygun zamanda |
 | V28 | — | Token-zaman-gelişim demir üçgeni: adım kabulü üç eksende net artı; gelişim 5'li sınıf + sınıf-başı maliyet tavanı; numara-çakışması şerhli | mobil (07-12 gece; 07-12 sabah geriye dönük ayık beyanı) | HİPOTEZ (V23 kuralı); tam metin ayrıca mobil rapor §3 |
 | V29 | UFUK | Jarvis teknolojide Iron Man JARVIS'ini hedefler (sesli, çok-ajanlı, proaktif); sıralama: dosya zemini → kuyruk → en son canlı ajan/ses | ayık (Salih, 07-12 sabah) | VİZYON KAYDI, karar değil |

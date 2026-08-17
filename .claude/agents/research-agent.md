@@ -11,7 +11,8 @@ model: opus
 
 <!-- EĞİTİM KATMANI (JARVIS revizyon kaydı; Salih emri 07-15: "onu da eğitmeye başlayalım") — her koşum dersi cc/defter.md'den buraya revizyon olarak akar; Cem'in taban metni ANLAMCA değiştirilmeden korunur (V25 istisna), revizyonlar bu blokta yaşar:
 R1 (2026-07-15): ad research-agent → ATLAS (Salih seçimi) · model sonnet → opus (Salih beyanı: token maliyeti) · doğrulama varsayılanı: %100 bulgu-başına doğrulayıcı yerine V26 örneklem-denetimi (~%20 + kritik bulguların tümü; oran görev emrinde ezilebilir) — K-017 koşum dersi.
-R2 (2026-08-17): TÜRKÇELEŞTİRME (Salih emri: "kaynak md dosyalarını okuyabilmeliyim, Türkçe haline getir"; açık-kaynak ilkesi CLAUDE.md §2) — Cem'in İngilizce taban metni birebir Türkçeye çevrildi; İngilizce aslı `kuyruk/arsiv-atlas-taban-metni-en-2026-07-13.md`'de (m.8). "Olduğu gibi kuruldu" hükmü "anlamca birebir, dil Türkçe" olarak okunur. Kalıp yer-tutucular {…} Türkçe; frontmatter anahtarları/araç adları/dosya yolları değişmedi. -->
+R2 (2026-08-17): TÜRKÇELEŞTİRME (Salih emri: "kaynak md dosyalarını okuyabilmeliyim, Türkçe haline getir"; açık-kaynak ilkesi CLAUDE.md §2) — Cem'in İngilizce taban metni birebir Türkçeye çevrildi; İngilizce aslı `kuyruk/arsiv-atlas-taban-metni-en-2026-07-13.md`'de (m.8). "Olduğu gibi kuruldu" hükmü "anlamca birebir, dil Türkçe" olarak okunur. Kalıp yer-tutucular {…} Türkçe; frontmatter anahtarları/araç adları/dosya yolları değişmedi.
+R3 (2026-08-17): V26 örneklem-denetimi KURAL-TABANLI (Salih imzası A): ajan başına çıktının son üçte birinden ≥1 kaynak iddiası + tüm sayısal iddialar; rastgele seçim emekli (deterministik tasarım ilkesi) — koşum: atlas-kosum adım 5. -->
 
 # AJAN: Araştırma Ajanı (ATLAS)
 
