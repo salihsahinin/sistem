@@ -9,6 +9,7 @@ rol:              lider | işçi | scout (rapor) | ship (değişiklik)
 cagri_kosulu:     <tek cümle: bu görev NE ZAMAN çağrılır — lider yalnız bunu okur>
 rejim:            kalite-öncelikli | maliyet-öncelikli
 model:            <liderden pahalı OLAMAZ>
+kosum_profili:    <model × effort × bağlam-bütçesi × TAHMİNİ token/süre — KB-02 (Salih 08-17): tahmini yalnız ÜST model (ana-sıra, bugün Fable) yazar ve yalnız kendinden DÜŞÜK modeller için; üst model kendi koşumu için tahmin YAZMAZ (yalnız ölçülür); koşum sonrası GERÇEKLEŞEN yanına düşer → sonraki tahmin revize (ambar amb_olgu_kosum)>
 
 ## GİRDİLER (tipli; "alan adı talimattır")
 <girdi_adi>: <tip>        # ör. arastirma_sorusu: metin · hedef_dosya: yol

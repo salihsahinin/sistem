@@ -16,6 +16,8 @@ description: Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-
 5. **Künye + kayıt:** dosya `cc/gorev-YYYY-MM-DD-N.md`; pipeline'a bağlıysa manifest tablosuna intake satırı.
 6. **Son okuma:** emri Salih'in beyanına karşı kontrol et — beyanda olup emirde olmayan koşul var mı (DRFR mantığı: her koşul tek tek).
 
+**Koşum profili (KB-02, Salih 08-17):** emrin `kosum_profili` alanını ÜST model doldurur — yalnız alt modeller (Opus/Sonnet/Haiku) için model×effort×bağlam×tahmini token; kendi koşumu için tahmin YAZMAZ; koşum sonrası gerçekleşen değer emre/ambara düşer, sapma sonraki tahmini revize eder.
+
 ## Gotchas
 - **Dev-fonksiyon tuzağı:** her şeyi tek emre sıkıştırma — koşul arttıkça izleme düşer (Multi-IF 0,877→0,707); böl, zincirle.
 - **`kapsam_disi` boş bırakma:** belgeli arıza sınıfı (iki ajan aynı işi yapar, bir konu boşta kalır).

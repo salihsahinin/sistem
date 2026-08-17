@@ -49,7 +49,7 @@
 
 ## 8. Katman-1 sorular (Salih) + icra borçları
 - **S1** İki-amaç karar kuralı: "yavaş ama öğretici yol" hangi koşulda seçilir (kanıtsız kör) — öneri: yalnız Salih beyanıyla, kalem başına, `de-pratik` kaydıyla.
-- **S2** Bus matrix satırları (§7 D2) imza. **S3** KB-01 güncel hükmü (bu tasarım = b + c-ucuz). **S4** silver `kayit.metin` kopyası — ölçüm sonrası pointer+hash'e indirilsin mi (COST tabanı). **S5** DuckDB/3.10+ tetiği: ölçüm eşiği sayısı Salih'te mi Carvis'te mi. **S6** DEA-C01 rehberi kalem ithali (PDF; sürüm doğrulaması) — yetkinlik haritasını doldurmak için.
+- **S2** Bus matrix satırları (§7 D2) imza. **S3** KB-01 güncel hükmü (bu tasarım = b + c-ucuz) — **İMZALANDI (Salih A, 08-17 masa): yazım-anı ölçüm kapısı kanon; katman-hatti son adımı katman-olcum.py, veri/katman-olcum.jsonl append-only.** **S4** silver `kayit.metin` kopyası — ölçüm sonrası pointer+hash'e indirilsin mi (COST tabanı). **S5** DuckDB/3.10+ tetiği: ölçüm eşiği sayısı Salih'te mi Carvis'te mi. **S6** DEA-C01 rehberi kalem ithali (PDF; sürüm doğrulaması) — yetkinlik haritasını doldurmak için.
 - **İcra (Katman-2):** yetkinlik haritası tam ithali · seans-kapanis `de-pratik` alanı (skill-kapisi evrim) · 3 koşumda oran-eşiği önerisi · veri/README §Katmanlar · m.40b antitez borcu: her aile 1 antitez + 1 hakem koştu (tek-şerit değil) ama tez ≤12 ekonomi rejimi — TAM şerit koşulmadı, kanon deneysel kalır.
 
 ## 9. Kör noktalar (rapor-2 hakem; kanona damga)
