@@ -1,3 +1,5 @@
+> **İNGEST EDİLDİ · 2026-08-17** (masa KB-08/09/10, Salih imzası → `wiki/paralel-oturum-protokolu.md` + seans-acilis §1.4-1.5 + KILAVUZ; kural adayları KURAL oldu). Bu dosya tarihçe.
+
 # GELEN — Paralel-oturum çift-koşum, VAKA 3 (2026-08-16 00:12-00:29, S-8 downstream ×2)
 
 > **HAM / ingest edilecek.** Zarf: [tip: ders | kaynak: seans-3-fork terminal 08-16 | tarih: 2026-08-16 | hedef: KILAVUZ paralel-vardiya + seans-acilis canlı-oturum kapısı | sema: v2]. Bağ: vaka-1 (08-12 port çakışması) · vaka-2 (08-15 emir-dosyası üstyazımı).

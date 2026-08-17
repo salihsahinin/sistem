@@ -1,3 +1,5 @@
+> **İNGEST EDİLDİ · 2026-08-17** (masa KB-08/09/10, Salih imzası → `wiki/paralel-oturum-protokolu.md` + seans-acilis §1.4-1.5 + KILAVUZ; kural adayları KURAL oldu). Bu dosya tarihçe.
+
 # GELEN — Paralel-oturum kaynak çakışması, VAKA 2 (2026-08-15 20:22-20:30, terminal ana-sıra)
 
 > **HAM / ingest edilecek** (ingest şeması v2 zarfı aşağıda). Kanon değildir. Bağ: `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` (vaka 1; kural taslağı "paylaşılan kaynak freni") — bu dosya o taslağın 2. saha verisidir, o dosya düzenlenmedi (yan-oturum yeni dosya açar kuralı).

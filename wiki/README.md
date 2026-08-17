@@ -26,6 +26,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[ingest-semasi]] — çok-sekme çıktı akışının zarf+tip+triyaj sözleşmesinin anlatımı; sözleşmenin kendisi core/ingest-semasi.md (eklendi 08-14, ingest pipeline turu; index kaydı 08-14 wiki-sayfa-yaz ilk koşumuyla tamamlandı)
 - [[stokastik-dusunce]] — **EMEKLİ/RED (Salih 08-17):** stokastik entegrasyon geri alındı; sayfa artık halef ilkeyi taşır — DETERMİNİSTİK TASARIM (LLM'ler ve makineler deterministik düşünür, deterministik tasarlanır); eski içerik `kuyruk/arsiv-stokastik-dusunce-wiki-2026-08-16.md`
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
+- [[paralel-oturum-protokolu]] — çoklu oturumun 4 kuralı (canlı-oturum kapısı · manifest kapısı · paylaşılan kaynak/motor freni · git add -A yasağı) — Salih imzası 08-17 masa (KB-08/09/10)
 - [[baglam-veri-ambari]] — bağlam VERİTABANI (operasyonel, V-1) ↔ bağlam VERİ AMBARI (analitik: aynı SQLite'ta ayrı şema/görünüm; erişim-tasarımı ayrımı; bitemporal + SCD-2 + olay↔nesne köprü) tanımı + Jarvis içerik örnekleri (olgu/boyut/mart) — 'context warehouse' dışta tanımsız, m.29 (eklendi 08-16, rapor-16-3 turu)
 
 ## Kuyruk (sonraki oturumlar)

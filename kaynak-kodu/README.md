@@ -32,7 +32,7 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 | Global Claude Code ayarı | `~/.claude/settings.json` | model (Fable), effort, 3 axi SessionStart hook'u (gh-axi, chrome-devtools-axi, lavish-axi) |
 | Carvis'in oturumlar-arası hafızası | `~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/` (`MEMORY.md` + dosyalar) | kullanıcı/feedback/proje notları — kanon DEĞİL, hatırlatıcı |
 | Global skill'ler | `~/.claude/skills/` (gh-axi, lavish, chrome-devtools-axi → `~/.agents/skills/`; no-mistakes) | üçüncü-parti araç skill'leri |
-| Bulut skill kopyaları | claude.ai (anthropic-skills: gunaydin-vardiya, vardiya-kapanis — emekli adlar; hizalama, dev-run-planner) | repo'daki seans-acilis/seans-kapanis'in ESKİ (emekli) adlı kopyaları; güncelleme borcu kapsülde |
+| Bulut skill kopyaları | claude.ai (anthropic-skills: gunaydin-vardiya, vardiya-kapanis — emekli adlar; hizalama, dev-run-planner) | repo'daki seans-acilis/seans-kapanis'in ESKİ (emekli) adlı kopyaları; **KALDIRILACAK** (Salih 08-17 KB-10 H6: tek kaynak repo; Salih eli claude.ai'da) |
 | Oturum transkriptleri | `~/.claude/projects/<proje>/*.jsonl` | bronz kaynak (prompt-tablo/ambar-tablo buradan okur); repo dışı, kişisel |
 
 ## Okuma sırası önerisi

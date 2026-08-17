@@ -14,6 +14,7 @@
 - **Prototip seansı kurulumu:** her zamanki gibi `C:\JARVIS` mount'u (Homebase eklenebilir).
 - **Ölçüm-bankı (PortRisk) seansı kurulumu:** oturum `C:\JARVIS` mount'uyla açılır + yanına `C:\Users\sasah\dev\portrisk` klasörü eklenir. İç-mutfak dosyası (CLAUDE.md, seans kuralı, teslim raporu) public portrisk reposuna ASLA yazılmaz — bağlam hep JARVIS'ten okunur, portrisk'e yalnız proje kodu/testi gider.
 - **Senkron kuralı (çakışma önleme):** her seans kapanışta (a) kendi teslim raporunu `raporlar/`a AYRI dosya yazar (`YYYY-MM-DD-<hat>-teslim.md`), (b) kapsülde YALNIZ kendi şeridinin satırını günceller — diğer şeridin satırına dokunulmaz, (c) kendi commit'lerini atar/push'lar. İki oturum aynı anda açıksa push öncesi pull zorunlu.
+- **KURAL (Salih imzası 08-17 masa KB-08/09/10):** çoklu oturumun 4 kuralı `wiki/paralel-oturum-protokolu.md` — canlı-oturum kapısı · koşum-önü manifest kapısı · paylaşılan kaynak/motor freni · **`git add -A` yasak, `git add <yol>`** (H4).
 - Misyon notu: senkron şimdilik elle yürür — K-009 otomasyonu açılınca bu disiplinin otomatikleşmesi beklenir (geçici kabul, Salih 07-12).
 
 ## Üçlü sohbet düzeni — CC köprüsü (Salih kararı 07-12; m.17'nin ilk uygulaması; deneysel m.29)

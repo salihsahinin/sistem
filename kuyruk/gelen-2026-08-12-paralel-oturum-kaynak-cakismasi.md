@@ -1,3 +1,5 @@
+> **İNGEST EDİLDİ · 2026-08-17** (masa KB-08/09/10, Salih imzası → `wiki/paralel-oturum-protokolu.md` + seans-acilis §1.4-1.5 + KILAVUZ; kural adayları KURAL oldu). Bu dosya tarihçe.
+
 # COWORK DEVİR DOSYASI — PARALEL OTURUM KAYNAK ÇAKIŞMASI + İKİ EPİSTEMİK BULGU
 
 > **HAM FİKİR / ingest edilecek.** Bu dosyayı staj hattındaki Carvis oturumu hazırladı; kanon değildir, ingest edilene kadar hiçbir maddesi kural sayılmaz.
