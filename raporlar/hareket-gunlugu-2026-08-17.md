@@ -1,9 +1,9 @@
-# Hareket günlüğü — 2026-08-17 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `2c1185d`)
+# Hareket günlüğü — 2026-08-17 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `16b9c68`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 154 çağrı, 3 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 168 çağrı, 3 oturum.*
 
-## Oturum `c0298809` — 09:05:28→10:33:06 · 130 çağrı · model fable-5 · hata 4
-**Özet:** koştu 102 · düzenledi 14 · yazdı 9 · okudu 5
+## Oturum `c0298809` — 09:05:28→10:58:24 · 142 çağrı · model fable-5 · hata 4
+**Özet:** koştu 113 · düzenledi 14 · yazdı 9 · okudu 5 · sordu 1
 **Yazılan/düzenlenen dosyalar (11):** `.claude/agents/research-agent.md` · `.claude/skills/seans-kapanis/SKILL.md` · `CLAUDE.md` · `README.md` · `core/baglam-anahtar-kaydi.md` · `core/durum-kapsulu.md` · `core/tuzuk-v0.md` · `kaynak-kodu/README.md` · `tools/hareket-tablo.py` · `wiki/kokenler-karpathy-llm-wiki.md` · `wiki/stokastik-dusunce.md`
 
 | # | saat | fiil | hedef | sonuç |
@@ -138,9 +138,21 @@
 | 128 | 10:31:54 | koştu | seans→seans geri al, bütünlük düzelt, ılık küçükler; denetim ⟨cd ~/jarvis && sed -n 11,15p core/pano.md ¦ cut -c1-200 && python3 - <<'EOF' import json, re # 1) "seans→seans" geri düzelt (vardiya→seans yazımı, izi…⟩ | tamam |
 | 129 | 10:32:47 | koştu | K-024 kartı, kapsül, defter eki, denetim, commit ⟨cd ~/jarvis && python3 - <<'EOF' p='core/pano.md'; L=open(p,encoding='utf-8').read().split('\n') # K-023 satırından sonra K-024 ekle (AKTİF tablosu) i…⟩ | tamam |
 | 130 | 10:33:06 | koştu | Hook/script'lerde metafor sözcüğü var mı; günlük tazele ⟨cd ~/jarvis && grep -n -iE "vardiya¦şirket¦patron¦ceo" .claude/hooks/*.sh tools/*.py 2>/dev/null ¦ grep -v "amb_boyut_vardiya\¦vardiya-teslim-\¦--- BR…⟩ | yok |
+| 131 | 10:33:13 | koştu | Sunum üreticilerinde sözcük düzeltmesi + commit ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/sunum-proof-of-work.py'; s=open(p,encoding='utf-8').read() s=s.replace("<h2>JARVIS = kanon-tabanlı kişisel L…⟩ | tamam |
+| 132 | 10:38:57 | koştu | Ilık kalıntıları dosya bazında say (--json) ⟨cd ~/jarvis && python3 - <<'EOF' import subprocess, json, collections out=subprocess.run(['python3','tools/anahtar-denetim.py','--json','--goster','20…⟩ | tamam |
+| 133 | 10:39:39 | koştu | Canlı dokümanlardaki ılık kalıntı satırlarını bağlamıyla listele ⟨cd ~/jarvis && python3 - <<'EOF' import subprocess, json, collections, re out=subprocess.run(['python3','tools/anahtar-denetim.py','--json','--goster'…⟩ | tamam |
+| 134 | 10:40:52 | koştu | K-024: canlı dokümanları yeniden yaz, tarihli havuzları notla, sözlüğü işaretle; denetim ⟨cd ~/jarvis && python3 - <<'EOF' import re, json, subprocess def rd(p): return open(p,encoding='utf-8').read() def wr(p,s): open(p,'w',encoding='utf-8…⟩ | tamam |
+| 135 | 10:41:10 | koştu | Kalan ılık kalıntı dosya dağılımı (5 anahtar) ⟨cd ~/jarvis && python3 - <<'EOF' import subprocess, json, collections out=subprocess.run(['python3','tools/anahtar-denetim.py','--json','--goster','30…⟩ | tamam |
+| 136 | 10:41:58 | sordu | K-024'ün canlı-doküman kısmı bitti (KILAVUZ, wiki, fikir-kutusu, planlar, sözlük | tamam |
+| 137 | 10:56:04 | koştu | B seçeneği: kayıt dosyalarını yeni sözlüğe çevir (tırnak içi korunur); denetim ⟨cd ~/jarvis && python3 - <<'EOF' import re FILES=['kuyruk/senaryo-defteri.md','kuyruk/build-tartisma-notlari.md','kuyruk/masa-gundemi-2026-07-30.md','…⟩ | tamam |
+| 138 | 10:56:19 | koştu | Kalan 10 ılık kalıntıyı gör ⟨cd ~/jarvis && for k in sirket-referansi carvis-rol-adi salih-rol-adi oturum-birimi; do python3 tools/anahtar-denetim.py --anahtar $k --goster 50 2>&1…⟩ | tamam |
+| 139 | 10:56:39 | koştu | Tırnak içi kalan kalıntıların bağlamı ⟨cd ~/jarvis && python3 - <<'EOF' import re for p,n in [('kuyruk/build-tartisma-notlari.md',3),('kuyruk/senaryo-defteri.md',302),('kuyruk/okuma-defteri…⟩ | tamam |
+| 140 | 10:57:04 | koştu | Son kalıntılar + izinli kalıplar; denetim; SON BİTEN biçimi ⟨cd ~/jarvis && python3 - <<'EOF' import re, json def rd(p): return open(p,encoding='utf-8').read() def wr(p,s): open(p,'w',encoding='utf-8').write(s) …⟩ | tamam |
+| 141 | 10:57:54 | koştu | Pano/kapsül/CLAUDE.md/defter güncelle; denetim; bütçe ⟨cd ~/jarvis && python3 - <<'EOF' import re def rd(p): return open(p,encoding='utf-8').read() def wr(p,s): open(p,'w',encoding='utf-8').write(s) # pano…⟩ | tamam |
+| 142 | 10:58:24 | koştu | CLAUDE.md bütçe; commit; günlük tazele; commit ⟨cd ~/jarvis && python3 - <<'EOF' p='CLAUDE.md'; s=open(p,encoding='utf-8').read() R=[("- Ajan işi — kural dosyaları: `core/ajan-metodolojisi.md` (göre…⟩ | yok |
 
-## Oturum `c3230e78` — 09:15:37→10:13:28 · 16 çağrı · model fable-5 · hata 1
-**Özet:** koştu 7 · okudu 4 · düzenledi 3 · skill çağırdı 1 · yazdı 1
+## Oturum `c3230e78` — 09:15:37→10:38:01 · 17 çağrı · model fable-5 · hata 1
+**Özet:** koştu 7 · okudu 4 · düzenledi 3 · skill çağırdı 1 · yazdı 1 · sordu 1
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -160,9 +172,10 @@
 | 14 | 10:12:48 | okudu | ~/staj başlangıç/ajan-denetim-kartlari.md | tamam |
 | 15 | 10:12:48 | koştu | List research folder and read source report intro ⟨cd "/Users/HasanSalihSahin/staj başlangıç" && ls arastirma/ && echo "=== jarvis rapor §1 ===" && sed -n '1,60p' ~/jarvis/raporlar/2026-07-24-serit5-st…⟩ | tamam |
 | 16 | 10:13:28 | düzenledi | ~/staj başlangıç/gunluk/2026-08-17.md | tamam |
+| 17 | 10:38:01 | sordu | Son anlatımda seni tam olarak nerede kaybettim? | tamam |
 
-## Oturum `07b53fc4` — 10:20:00→10:30:57 · 8 çağrı · model opus-5 · hata 0
-**Özet:** koştu 5 · skill çağırdı 1 · düzenledi 1 · yazdı 1
+## Oturum `07b53fc4` — 10:20:00→10:38:00 · 9 çağrı · model opus-5 · hata 0
+**Özet:** koştu 5 · düzenledi 2 · skill çağırdı 1 · yazdı 1
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -174,4 +187,5 @@
 | 6 | 10:20:59 | düzenledi | ~/staj başlangıç/gunluk/2026-08-17.md | tamam |
 | 7 | 10:28:58 | koştu | prompt-engineering klasörünü aç ⟨mkdir -p "/Users/HasanSalihSahin/staj başlangıç/prompt-engineering"⟩ | tamam |
 | 8 | 10:30:57 | yazdı | ~/staj başlangıç/prompt-engineering/istem-alistirmalari.md | tamam |
+| 9 | 10:38:00 | düzenledi | ~/staj başlangıç/prompt-engineering/istem-alistirmalari.md | tamam |
 
