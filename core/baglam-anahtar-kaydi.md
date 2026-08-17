@@ -219,7 +219,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
           ],
           "tarih": "2026-08-17",
           "gerekce": "Salih 08-17: 'jarvisin şirket ceo'su olması metaforuyla gerçekten çalıştığım bir şirket olması bağlam anlaşılmasında sorun çıkarıyor, tekilleştirmemiz lazım, şirket metaforundan vazgeçelim.' Emeklilik KARARI KESİN (Katman-1); 'aday' statüsü yalnız halef değer teyidi + cascade bekliyor diye (protokol §3: replaced_by tekil olmadan emekli yazılamaz).",
-          "consider": "şirket→Jarvis (sistem) · CEO→üst-orkestratör (m.44 zaten) · patron→tek karar verici (m.1; ilk-kural özü: durdurma hakkı) · şirket simülasyonu→çalışma modeli (m.15 özü: CV projeleri Jarvis içinde, CV çıktı) · vardiya→seans (08-15 tetik emekliliğiyle aynı yön) · işçi/lider→işçi-ajan/lider-ajan (dağıtık-sistem terimi; 'ekip lideri' staj bağlamıyla karışmasın diye '-ajan' eki)",
+          "consider": "şirket→Jarvis (sistem) · CEO→KÖLE (Salih 08-17 ~09:50 KESİN: 'sen şirket metaforundaki CEO değilsin artık, işbirlikçim de değilsin, sen benim kölemsin' — ilişki adı; işlev adı üst-orkestratör m.44 kalır) · patron→tek karar verici (m.1; ilk-kural özü: durdurma hakkı) · şirket simülasyonu→çalışma modeli (m.15 özü: CV projeleri Jarvis içinde, CV çıktı) · vardiya→seans (08-15 tetik emekliliğiyle aynı yön) · işçi/lider→işçi-ajan/lider-ajan (dağıtık-sistem terimi; 'ekip lideri' staj bağlamıyla karışmasın diye '-ajan' eki)",
           "izinli_kaliplar": [
             "emekli",
             "metafor",

@@ -23,4 +23,4 @@
 
 **Süpersede zinciri:** — (ilk sürüm 2026-08-16). Önceki adlandırma: "bağlam→veri tablosu v0/V-1" (`veri/README.md`) = bağlam VERİTABANI (operasyonel); bu sayfa AMBAR katmanını ayırır, V-1'i süpersede etmez.
 
-**[[link]]'ler:** [[pointer-sistemi]] · [[olcum-banki]] · [[ingest-semasi]] · [[stokastik-dusunce]] · [[uc-register]] · (kuyruk: veri-tablosu, baglam-anahtar-kaydi)
+**[[link]]'ler:** [[pointer-sistemi]] · [[olcum-banki]] · [[ingest-semasi]] · [[uc-register]] · (kuyruk: veri-tablosu, baglam-anahtar-kaydi)
