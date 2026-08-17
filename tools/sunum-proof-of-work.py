@@ -119,14 +119,14 @@ kbd{{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px
 
 <section class="slide">
 <div class="kicker">ne inşa edildi</div>
-<h2>JARVIS = kanon-tabanlı kişisel LLM-operasyon şirketi (Claude Code üstünde)</h2>
+<h2>JARVIS = kanon-tabanlı kişisel LLM-operasyon sistemi (Claude Code üstünde)</h2>
 <div class="grid">
 <div class="card"><h3>1 · Kanon (core/)</h3><p>{n_core} kural dosyası; tüzük <b>{n_madde} madde</b> (imzalı karar kayıtları), durum-kapsülü + pano (her oturumun otomatik okuduğu devir katmanı), ingest şeması v2, ajan-metodolojisi v1, skill-üretim/tetikleme şemaları, halüsinasyon-önleme paketi, şema-sıkıştırma, bağlam-anahtar kaydı, world-model tasarımı v1 — {n_d2} D2 grafı.</p></div>
 <div class="card"><h3>2 · Ritüel + skill katmanı</h3><p><b>{len(skills)} skill</b> ({n_eval} eval dosyası): oturum açılış/kapanış ritüelleri, görev-emri derleme, m.40b çift-atlas koşumu, pipeline koşumu, karar modeli, çelişki kapısı, damıtma, halüsinasyon-freni, skill-kapısı (kapı-ağacı), yol-planla, wiki yazımı…</p></div>
 <div class="card"><h3>3 · Araçlar (tools/)</h3><p><b>{len(py)} Python</b> aracı, <b>{f(py_lines)} satır</b>, stdlib-only: bağlam→veri ETL, anahtar denetimi, kapı/tetik denetim script'leri, derece formülü, prompt bronz→silver→gold hattı, sunum üreticileri.</p></div>
 <div class="card"><h3>4 · Veri (veri/)</h3><p>Kanonun kendisi tabloya döküldü: {dbtxt} — SQLite + JSONL + CSV gold görünümleri; sözleşme + testler (unique / not_null / accepted_values).</p></div>
 <div class="card"><h3>5 · Ajan çıktıları (cc/)</h3><p><b>{n_gorev} görev emri</b> + <b>{n_rapor} ajan raporu</b> (tez → antitez → örneklem-denetim → maskeli hakem zinciri), {len([x for x in tracked if x.startswith('cc/pipeline-')])} pipeline manifesti.</p></div>
-<div class="card"><h3>6 · Raporlar + wiki</h3><p><b>{n_raporlar} rapor</b> ({n_teslim} vardiya teslim raporu = her oturumun yazılı devri), <b>{n_wiki} wiki sayfası</b> (6-blok standart, süpersede zinciri), toplam <b>{f(md_lines)} satır</b> markdown.</p></div>
+<div class="card"><h3>6 · Raporlar + wiki</h3><p><b>{n_raporlar} rapor</b> ({n_teslim} seans teslim raporu = her oturumun yazılı devri), <b>{n_wiki} wiki sayfası</b> (6-blok standart, süpersede zinciri), toplam <b>{f(md_lines)} satır</b> markdown.</p></div>
 </div>
 </section>
 
@@ -140,7 +140,7 @@ kbd{{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px
 <div class="card stat"><span class="v">{len(skills)}</span><span class="k">skill</span><span class="s">{n_eval} eval · kapı-ağacından geçirilmiş</span></div>
 <div class="card stat"><span class="v">{n_madde}</span><span class="k">tüzük maddesi</span><span class="s">{n_core} core kural dosyası · {n_d2} D2 graf</span></div>
 <div class="card stat"><span class="v">{n_gorev}+{n_rapor}</span><span class="k">görev emri + ajan raporu</span><span class="s">cc/ köprü kanalı</span></div>
-<div class="card stat"><span class="v">{n_raporlar}</span><span class="k">rapor</span><span class="s">{n_teslim} vardiya teslimi · {n_wiki} wiki sayfası</span></div>
+<div class="card stat"><span class="v">{n_raporlar}</span><span class="k">rapor</span><span class="s">{n_teslim} seans teslimi · {n_wiki} wiki sayfası</span></div>
 <div class="card stat"><span class="v">{f(py_lines)}</span><span class="k">satır Python</span><span class="s">{len(py)} araç, stdlib-only</span></div>
 <div class="card stat"><span class="v">{f(db.get('kayit') or 0)}</span><span class="k">veri kaydı (SQLite)</span><span class="s">{f(db.get('referans') or 0)} referans · {db.get('anahtar')} anahtar · {db.get('prompt')} prompt</span></div>
 </div>

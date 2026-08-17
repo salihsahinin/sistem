@@ -97,7 +97,7 @@ kbd{{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px
 <div class="card"><h3>Tür dağılımı</h3><ul style="margin:0;padding-left:1.1em">{tur_html}</ul></div>
 <div class="card"><h3>Ne anlatıyor</h3><p>Komutların çoğu <b>emir</b> ("araştır / atlasları koş / entegre et") ve <b>onay/devam</b> — yönetim ritmi: emir ver → koşum → onayla. "durdur" satırları limit/hesap kesintilerini işaretler; açılış/kapanış satırları vardiya sınırlarını verir.</p></div>
 <div class="card"><h3>Sınırlar (dürüstlük)</h3><p>Tür sınıflandırması kural-tabanlı ve <b>deneysel</b>; "diğer" kovası var. Yalnız jarvis oturumları (staj dizini taranmadı). Model alanı ilk asistan cevabının modelidir. Sayılar m.39 damgalı: kaynağı transkript, üretim anı HEAD SHA.</p></div>
-<div class="card"><h3>Sonraki adım</h3><p>Aynı hat her vardiya kapanışında yeniden koşar (yeni prompt'lar bronza <b>eklenir</b>, tablo ve bu sunum yeniden türer). Tür sözlüğü 3 koşumdan sonra ölçümle kalibre edilir.</p></div>
+<div class="card"><h3>Sonraki adım</h3><p>Aynı hat her seans kapanışında yeniden koşar (yeni prompt'lar bronza <b>eklenir</b>, tablo ve bu sunum yeniden türer). Tür sözlüğü 3 koşumdan sonra ölçümle kalibre edilir.</p></div>
 </div>
 </section>
 
