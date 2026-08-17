@@ -16,6 +16,8 @@ Kural kaynağı: m.37 kayıt şartı + m.10/V5 commit disiplini + ingest şemas�
 3. **Boyut kontrolü:** defter FLAG'deyse (48KB) kaydı yine yaz ama teslim raporuna "boyut-tetiği: defter" satırı düş.
 4. **Commit:** karar başına AYRI commit, İngilizce mesaj, `[icra]`/`[damıtma]` etiketi. Push yetki durumuna tabidir (serbest beyanı yoksa sor).
 
+**Karar-borcu bağı (KB-07, Salih 08-17):** kaydedilen karar `veri/karar-borcu.jsonl`'daki bir açık kalemi kapatıyorsa aynı adımda o satır `durum: kapandı` + `kapanis_kaniti` (defter pointer'ı) alır; `python3 tools/karar-borcu-tablo.py` kırık-pointer 0 vermeli. Yeni açık karar doğduysa listeye satır düşer (grain: 1 satır = 1 açık kalem).
+
 ## Gotchas
 - **Sahte imza:** Katman-1 kararı Salih imzası olmadan "İMZALI" yazma — imzasızsa "ADAY/İMZASIZ" damgası.
 - **Övgü yok:** hüküm bölümü çıplak veridir (m.7).

@@ -19,6 +19,7 @@
 | skill-koşumu (1 satır = 1 çağrı sözleşmesi) | ✓ | | ✓ | ✓ | | ✓ |
 | araştırma-koşumu (1 satır = 1 işçi-dönüşü) | ✓ | ✓ | | | | ✓ |
 | karar (1 satır = 1 hüküm) | ✓ | ✓ | ✓ | | | |
+| karar-borcu (1 satır = 1 AÇIK karar kalemi — hükmün ön-durumu; kapanınca `karar` satırına akar; Salih imzası 08-17 masa KB-07) | ✓ | ✓ | ✓ (küme/katman) | | ✓ | |
 | commit (1 satır = 1 commit; niyet-etiketi doğrulanmadan boyut sayılmaz — S8-A-YT5b) | ✓ | ✓ | | | | |
 
 - **Conformed boyut = bağlam-anahtar-kaydı.** Uyum koşulu: aynı ad + aynı domain; tam kopya gerekmez, katman-başına daraltılmış (shrunken) görünüm meşru (S8-A-YT2, D-YT1). Kararlılık kendiliğinden gelmez — anahtar-kaydının emeklilik/damga disiplini şart (S8-A-YT7). Görünüm: `v_boyut_anahtar`.

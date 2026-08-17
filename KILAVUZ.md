@@ -8,6 +8,7 @@
 - **Kapanış** ("end of day" / "bitiriyorum" / "uyucam"): seans teslim + kapsül güncellenir + push atılır. Carvis kapanışı kendi de önerebilir (V11 — fiilen yerleşik davranış).
 - **Bağlam-şişme çağrısı (Salih emri 07-19):** Carvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu KENDİLİĞİNDEN belirtir; seans kapanışı + yeni seans önerir (kapanış = teslim raporu + kapsül tazeleme; yeni seans kapsülden devralır — m.27 hattı).
 - Push'lar Carvis'ten otomatik gider (`.secrets/github-pat`); her karar ayrı commit, [damıtma]/[icra] etiketli (V5).
+- **Ağır araç yükleme usulü (Salih imzası 08-17 masa KB-12; ölçüm `raporlar/2026-08-03-model-dusumu-olcum.md`):** çoklu MCP/ToolSearch yüklemesi oturum BAŞINDA ya da AYRI oturumda; uzun oturumun geç evresinde YAPILMAZ (prompt-cache kırılması ~152K token → kota → düşüm).
 
 ## Paralel seans protokolü (Salih kararı 2026-07-12 sabah; m.36 revizyonunun operasyonel devamı — deneysel damga m.29)
 - **Model (m.36 2. rev hizası):** JARVIS projesi İKİ paralel Cowork chat'inde yürür — Jarvis'in iki yarısı: **(1) Prototip seansı** (K-015 şeridi — loop-eng, K-009, K-010, ajan-defter; ÖNCELİK BU) ve **(2) Ölçüm-bankı seansı** (K-002 PortRisk — hasat/etiketleme verisi üretir; çatışmada prototip kazanır). Açılışta hangi hattaysan söylersin: "günaydın, prototip" (ya da sadece "günaydın" — varsayılan bu hat) / "günaydın, PortRisk" — günaydın taraması kapsülden o şeridin durumunu alır. Belirsizse Carvis sorar (tek soru).
