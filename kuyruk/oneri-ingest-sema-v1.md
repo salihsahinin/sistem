@@ -6,7 +6,7 @@
 
 | Katman | Rol | Yaşadığı yer | Giriş bariyeri |
 |---|---|---|---|
-| **K3 — dış (ham giriş)** | her şey önce buraya | `fikir-kutusu.md` + `raporlar/` (vardiya teslimleri, mobil notlar, ajan raporları) | gürültü listesi (KILAVUZ; tek filtre bu) |
+| **K3 — dış (ham giriş)** | her şey önce buraya | `fikir-kutusu.md` + `raporlar/` (seans teslimleri, mobil notlar, ajan raporları) | gürültü listesi (KILAVUZ; tek filtre bu) |
 | **K2 — orta (damıtılmış)** | kavram/karar adayı | `wiki/` sayfaları + `kuyruk/` öneri dosyaları | aşağıdaki geçiş koşulu G1 |
 | **K1 — iç (çekirdek)** | en önemli özütler; sıcak bağlamı besler | `core/` (tüzük · kapsül · pano) + `CLAUDE.md` | YALNIZ Salih imzası (m.31 Katman 1) + kaynak+gerekçe+geri-açma |
 | **K0 — arşiv** | düşen her şey | `arsiv/` | silme yok (m.8); arşivden geri çıkış serbest (pointer korunur) |
@@ -21,7 +21,7 @@
 
 - **Önem (V9):** `önem = katman-tabanı × e^(−λt)` — katman-tabanı: K1=4, K2=2, K3=1; t = son dokunmadan geçen gün; her kullanım t'yi sıfırlar (kullanılan madde çürümez). λ başlangıcı: BAYAT-30g kuralıyla tutarlı olacak şekilde kalibre edilir (deneysel).
 - **Log ağırlığı (V30, çıktı tarafı):** rapora/deftere ne girer sorusunda aday kural `ağırlık ∝ surprisal` — beklenen/rutin çıktı loglanmaz, sapma loglanır. Örnek: "pytest yeşil" tek satır; "pytest'in mount yüzünden yanlış-yeşil verdiği vaka" tam kayıt.
-- **Ölçüm:** şemanın ilk deneği kendisi — her vardiya teslimine 3 sayaç: `giren madde / damıtılan / karara dokunan`. ~10 vardiya verisi birikince V30 formülü (V=ΔG/C) ilk kez gerçek sayıyla denenir; V28 etiketleme verisiyle aynı havuz.
+- **Ölçüm:** şemanın ilk deneği kendisi — her seans teslimine 3 sayaç: `giren madde / damıtılan / karara dokunan`. ~10 seans verisi birikince V30 formülü (V=ΔG/C) ilk kez gerçek sayıyla denenir; V28 etiketleme verisiyle aynı havuz.
 
 ## 4. Açık sorular → Salih cevapları (07-12)
 

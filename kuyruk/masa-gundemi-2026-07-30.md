@@ -121,7 +121,7 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 ### 9. Geçişe başlanacak mı, hangi aşamaya kadar
 - **Soru:** Cowork'ten CC'ye geçiş 6 aşamalı sırayla başlatılsın mı, ve şimdilik hangi aşamada durulsun?
 - **Neden şimdi:** İlk iki aşama kayıpsız ve bugün yapılabilir; 3. aşama yukarıdaki yetki kararına bağlı. Karar verilmezse ikisi de beklemede kalır.
-- **Carvis önerisi:** 1. ve 2. aşamaya izin ver; 3. aşama (yetki kapısı) ayrı imza istesin. 4. aşamadan önce **tek bir deneme vardiyası** CC'de koşulsun ve iki sayı ölçülsün: kaç kez oturum değiştirmek zorunda kaldın, vardiya sonunda bağlam ne kadar doluydu.
+- **Carvis önerisi:** 1. ve 2. aşamaya izin ver; 3. aşama (yetki kapısı) ayrı imza istesin. 4. aşamadan önce **tek bir deneme seansı** CC'de koşulsun ve iki sayı ölçülsün: kaç kez oturum değiştirmek zorunda kaldın, seans sonunda bağlam ne kadar doluydu.
 - **Feda:** Geçiş dilim dilim olur, tek hamlede bitmez; alışkanlık maliyeti bölünerek ödenir.
 - **Kaynak:** `cc/rapor-2026-07-29-6.md` bölüm 5.
 
@@ -157,13 +157,13 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 - **Soru:** Alt-ajanlara iş tipine göre model ve düşünme seviyesi atayan bir merdiven kurulsun mu?
 - **Neden şimdi:** Dört ayrı koşum aynı yere işaret etti, tek kalem olarak birleştirildi. Ölçülmüş gerçek: düşünme sırasında üretilen kelimeler **çıktı olarak faturalanıyor** ve 112 ajanlık koşumun en büyük tek kalemi buydu. Ayar `.claude/` altında olduğu için CC uygulayamıyor, ana sıra işi.
 - **Carvis önerisi:** Kurulsun; salt okuma işleri düşük seviyede, sentez işleri yüksek seviyede koşsun. Uygulanırken öncesi-sonrası ölçüm alınsın.
-- **Feda:** Düşük seviyede koşan bir okuma vardiyası bir şeyi kaçırabilir. Beklenen tasarruf yüzde 40-70 ama bu bir **kestirimdir, ölçüm değildir**.
+- **Feda:** Düşük seviyede koşan bir okuma seansı bir şeyi kaçırabilir. Beklenen tasarruf yüzde 40-70 ama bu bir **kestirimdir, ölçüm değildir**.
 - **Kaynak:** `cc/rapor-2026-07-29-4.md` D-4 (KG-O4-6 + O3 KG-13 + O2 A/B önerisi birleşik).
 
 ### 15. Mount'tan git komutu yasağı kalksın mı
 - **Soru:** "Mount üzerinden git komutu çalıştırılmaz" kuralı gevşetilsin mi?
 - **Neden şimdi:** Bu kuralın gerekçesi, mount'taki git'in bozuk olmasıydı. 30 Temmuz'da merge borcu kapandı, disk artık ana dalda ve git sağlıklı — gerekçe zayıfladı. Kural olduğu gibi kalırsa her commit için terminal açmaya devam ediyoruz.
-- **Carvis önerisi:** Bu vardiyanın kapanışında mount'tan tek bir commit denensin; başarılıysa kural gevşetilsin, aksi halde yerinde kalsın.
+- **Carvis önerisi:** Bu seansın kapanışında mount'tan tek bir commit denensin; başarılıysa kural gevşetilsin, aksi halde yerinde kalsın.
 - **Feda:** Yanlış giderse yeniden bir senkron arızası doğurabilir — ama artık yedek ve temiz bir ana dal var.
 - **Kaynak:** `core/durum-kapsulu.md` açık borçlar (K-011 notu).
 
@@ -288,7 +288,7 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 
 ### 29. S6 — hukuki çevre
 - **Soru:** S6 (yargı/hukuk çevresi) masası şimdi açılsın mı?
-- **Neden şimdi:** Malzeme tamamlandı ve yeri kesinleşti: üç ayrı vardiya bu konuda **negatif** döndü, yani malzemenin tamamı tek bir ailede. Taban artık büyümüyor; masa hazır.
+- **Neden şimdi:** Malzeme tamamlandı ve yeri kesinleşti: üç ayrı seans bu konuda **negatif** döndü, yani malzemenin tamamı tek bir ailede. Taban artık büyümüyor; masa hazır.
 - **Carvis önerisi:** Açılsın ama küçük tutulsun — kaynak tek yerde, tarama bitti.
 - **Feda:** Masa süresi; konunun aciliyeti düşük.
 - **Kaynak:** `cc/rapor-2026-07-29-4.md` D-10 ve bölüm 8.
@@ -323,7 +323,7 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 
 ### 33. Yıldız yasağı
 - **Soru:** Araç seçiminde GitHub yıldız sayısının ölçüt olarak anılması yasaklansın mı?
-- **Neden şimdi:** Bu vardiyanın **en düşük maliyetli, en yüksek dayanaklı** önerisi; iki bağımsız aileden aynı sonuç çıktı.
+- **Neden şimdi:** Bu seansın **en düşük maliyetli, en yüksek dayanaklı** önerisi; iki bağımsız aileden aynı sonuç çıktı.
 - **Carvis önerisi:** Yasaklansın; yerine indirme sırası, son sürüm tarihi ve bakımcı sayısı kullanılsın. Tüzük maddesi değil, kılavuz notu olarak.
 - **Feda:** Yok.
 - **Kaynak:** `cc/rapor-2026-07-29-2.md` KG-10.
@@ -374,7 +374,7 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 
 # KÜME 7 — Küçük onaylar ve temizlik
 
-> **Bu küme kapanırsa ne açılır:** Biriken ufak borçlar tek seferde temizlenir; her biri tek başına masaya gelmeye değmez ama toplamı bir vardiyayı yiyor.
+> **Bu küme kapanırsa ne açılır:** Biriken ufak borçlar tek seferde temizlenir; her biri tek başına masaya gelmeye değmez ama toplamı bir seansı yiyor.
 
 ### 40. Üç ucuz denetim aracı
 - **Soru:** lychee (bağlantı bütünlüğü), obsidiantools (yetim not ve ölü işaretçi), gitleaks (sızmış anahtar) kurulsun mu?
@@ -399,14 +399,14 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 
 ### 43. Dosya düzeltme borçları (paket)
 - **Soru:** Şu beş düzeltme tek pakette onaylansın mı — (a) pasif öğrenme atlasındaki AAR daraltmasının geri alınması, (b) eski hasat satırlarına düzeltme notu düşülmesi, (c) bir rakam düzeltmesi (yüzde 95,8 yerine 95,2), (d) bir dosyanın sessizce düşürdüğü cümlenin kayda geçmesi, (e) ders dosyasındaki iki sürümün birleştirilmesi?
-- **Neden şimdi:** Hepsi m.8 gereği üstü çizili + gerekçeli yapılmalı; toplu yapılmazsa her biri ayrı vardiya açar.
-- **Carvis önerisi:** Paket halinde onaylansın, tek vardiyada işlensin.
+- **Neden şimdi:** Hepsi m.8 gereği üstü çizili + gerekçeli yapılmalı; toplu yapılmazsa her biri ayrı seans açar.
+- **Carvis önerisi:** Paket halinde onaylansın, tek seansta işlensin.
 - **Feda:** Yok.
 - **Kaynak:** `kuyruk/senaryo-defteri.md` 30 Temmuz (2) bloğu · `cc/rapor-2026-07-29-4.md` bölüm 12.
 
 ### 44. Wiki kuyruğu
 - **Soru:** Dört wiki sayfası adayı sıraya alınsın mı — sessiz hata desenleri, CC bağlam mekaniği, karar cephesi, orca güncellemesi?
-- **Carvis önerisi:** Alınsın; ilk boş vardiyada üretilsin.
+- **Carvis önerisi:** Alınsın; ilk boş seansta üretilsin.
 - **v2 notu:** "Karar cephesi" sayfasının içeriği büyüdü — artık kapı-etiket ayrımını (v2'nin taşıyıcı kavramı) da taşımalı; v2 imzalanmadan yazılmamalı (KG-V2-10).
 - **Feda:** Yok.
 - **Kaynak:** `cc/rapor-2026-07-29-4.md` D-21 · `cc/rapor-2026-07-29-5.md` KG-M37-8 · `cc/rapor-2026-07-30-3.md` KG-V2-10.
@@ -418,11 +418,11 @@ Son iki haftada 23 rapor okundu, 6 araştırma koşumu düştü. Hepsinden çık
 - **Kaynak:** `cc/rapor-2026-07-29-6.md` KG-CC-8.
 - **✅ (a) CEVAPLANDI (ana-sıra Cowork çalışma-zamanı envanteri, 08-01 gece-2 — [D-ölçüm]; şerh: bu, oturuma yüklenen liste — Customize UI'ıyla birebir eşleşmesi Salih'in tek bakışıyla teyit edilir):** SKILLS — cowork-starter-pack: setup · good-morning · end-of-day · help · new-project; anthropic-skills paketi: docx · xlsx · pptx · pdf · skill-creator · schedule · morning · setup-cowork · grill-me · consolidate-memory; JARVIS skill'leri (hesap tarafında da yüklü): gunaydin-vardiya · vardiya-kapanis · hizalama · dev-run-planner; CLI-sınıfı: init · review · security-review. BAĞLAYICILAR (MCP) — Google Drive · Gmail · Google Calendar · Claude in Chrome (tarayıcı) · computer-use (masaüstü kontrol, kademeli yetki) · scheduled-tasks (zamanlanmış görev) · mcp-registry (bağlayıcı arama) · cowork iç araçları (artifact · present_files · skill-kaydetme). **Geçiş-kaybı analizi için kritik satır:** Drive/Gmail/Calendar/Chrome/computer-use/scheduled-tasks CC'de YOK ya da farklı kurulum ister — md.8/9 + g24 raporuyla birlikte okunmalı. **(b) AÇIK:** model-seçici UI ana-sıra oturumundan görünmüyor — Salih'in tek bakışı gerekiyor.
 
-### 46. Boyut tetiği — damıtma vardiyası
-- **Soru:** Kutu damıtma vardiyası ilk boş vardiyaya alınsın mı?
+### 46. Boyut tetiği — damıtma seansı
+- **Soru:** Kutu damıtma seansı ilk boş vardiyaya alınsın mı?
 - **Neden şimdi:** Fikir kutusu 19,9 KB ile sınırın dibinde; okuma defteri 40 KB'a ulaştı ve program kapandığı için arşiv adayı.
 - **Carvis önerisi:** Alınsın; silme yok, arşiv işaretçisiyle.
-- **Feda:** Bir vardiya.
+- **Feda:** Bir seans.
 - **Kaynak:** `core/durum-kapsulu.md` boyut tetiği.
 
 ### 47. Erratum refleksi
@@ -454,7 +454,7 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 | Ne | Durum | Kaynak |
 |---|---|---|
 | **Merge borcu ve senkron arızası** | KAPANDI. 16 dosya kurtarıldı, 5 birleştirme yapıldı, ana dal push'landı, elle tetiklenen senkron temiz döndü. Yalancı "başarılı" raporlayan kök neden ortadan kalktı. | `kuyruk/senaryo-defteri.md` 30 Temmuz |
-| **Okuma programı** | KAPANDI. 23 raporun 23'ü okundu, yaklaşık 1 MB, dört vardiyada. | `cc/rapor-2026-07-29-4.md` bölüm 13 |
+| **Okuma programı** | KAPANDI. 23 raporun 23'ü okundu, yaklaşık 1 MB, dört seansta. | `cc/rapor-2026-07-29-4.md` bölüm 13 |
 | **Ç1 (yargıç güvenilirliği tartışması)** | TAM KAPANDI. Kullanım düzeyinde 30 Temmuz sabahı, künye düzeyinde aynı gün ("üç turda bulunamadı" kaydıyla). Sorunun kendisi cevaplandı: yüksek yüzde uyum ile düşük şans düzeltilmiş uyum çelişmiyor, ikisi aynı anda olabilir. | `cc/rapor-2026-07-30-1.md` bölüm 2 |
 | **K14 (Explore ajanı sürdürülemez mi)** | KAPANDI, ölçümle çürütüldü. Ajan sürdürülebiliyor, bağlamını koruyor. Askı kalktı. | `cc/rapor-2026-07-30-1.md` bölüm 5 |
 | **Z6 (m.41 ile m.31 çelişkisi)** | KAPANDI, 29 Temmuz gecesi senin hükmünle. Geriye yalnız metin dokunuşu kaldı (madde 12). | `kuyruk/senaryo-defteri.md` 29 Temmuz gece |
@@ -490,7 +490,7 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 
 *8 raporun yol-seçimleri TEK PAKET olarak masaya (hepsi aynı bütçe/dikkat havuzundan): 30-7 §7 (T1/T2/T3 + `Sonradan-itiraz`; öneri T1+2 hafta veri) · 30-15 §9 (akış kuralı "≥3 damgasız → yeni emir yok"; öneri EVET) · 30-16 §8 (hasat 08-11 tarihli borç · K-016 önceliği YÜKSELDİ) · 30-26 §K (30-16 ile birleşsin mi; öneri EVET) · 30-8 §7 (Adım 0 managed-settings testi — Salih terminali 5-15 dk, ön-koşul; sonra A/B/C) · 30-10 §6 (KG-A..K; kritik: Y1 dedektör + dil hükmü Python) · 30-21 §7 (Yol 1/2/3; öneri Yol 1 = yalnız betik · atlas-kosum'a ucuz model pini) · 30-22 §8 (kayıt disiplini · damga ölçeğine "red" kenarı — değer tercihi).*
 
-**CC-entegrasyon hızlandırma sırası (Salih'in 07-31 önceliği; Carvis önerisi, karar masada):** ① 30-21 betiği (`raporlar/usage/kosum-maliyeti.py`) vardiya-kapanış rutinine + 30-22 JSONL şeması (Katman-2, ≈0 maliyet) → ② ingest frenini imzala (30-15 §9.1) → ③ atlas-kosum model pini ($341,74 ölçülmüş kaldıraç; `.claude/` yazımı = imza) → ④ Adım 0 testi (Salih terminali) → sbx pilotu ancak ondan sonra.
+**CC-entegrasyon hızlandırma sırası (Salih'in 07-31 önceliği; Carvis önerisi, karar masada):** ① 30-21 betiği (`raporlar/usage/kosum-maliyeti.py`) seans-kapanış rutinine + 30-22 JSONL şeması (Katman-2, ≈0 maliyet) → ② ingest frenini imzala (30-15 §9.1) → ③ atlas-kosum model pini ($341,74 ölçülmüş kaldıraç; `.claude/` yazımı = imza) → ④ Adım 0 testi (Salih terminali) → sbx pilotu ancak ondan sonra.
 
 ## EK-3 — İngest turu ③ Katman-1 girdileri (08-01; kalan 12 rapor — tam damıtma `raporlar/2026-08-01-ingest-3-damitma.md`, m.20)
 
@@ -539,7 +539,7 @@ Bunlar masada tartışılmaz. Sadece "gördüm" demen yeterli; itirazın varsa g
 ## EK-7 — gorev-6/7 ingest'i + K-019 damıtma karar-soruları (08-01 gece-2, ana-sıra okuyucu-ajan koşumu; kaynaklar `cc/rapor-2026-08-01-6.md` · `-7.md`)
 
 - **rapor-6 → A5 lider paketi (pointer):** §lider-temel a1-a8 emir-derleme kuralları (boyut→atama · üslup-gömme · gizli-kaynak sözlüğü · kırpma-yasağı · damga-eşleme · numara-şerhi · birleşme-formatı · çapraz-tutarlılık) + (b) görünmez-katman bulgusu (bölümler-arası tutarlılık yalnız ana-döngüde eklenebildi) + (c) maliyet profili (maliyet = tur×bağlam-yeniden-gönderimi + ana-döngü çıkışı; kısılacak yer ajan-başına araç-çağrı) + (d1-d5) tavan/fren tasarım dersleri. Satır 33-55; A5 tasarım paketine DOĞRUDAN girdi. Not: rapor-6 tümüyle damgasız — okurken [K] say.
-- **rapor-7 → Katman-1 kalemleri (§7, sat.309-321):** ① compiler biçimi S1-S4 (ajan mı alet mi — m.44 CEO-devri gerilimi sat.245-247'de çıplak; S2=Katman-1, S1/S3/S4=Katman-2) · ② "sistem felsefesine uygun" okuma-A/B değer tercihi · ③ S-K/S-D skill adaylarının statüsü (eşik: 49 emir/10 gün) · ④ §5.3 ölçümü koşulsun mu (≈1 sa, geri-alma 0 — S1↔S2 seçimini belirler) · ⑤ maliyet-sigortası İHLALİ ($39,79 ham / ≈$17 düzeltmeli [?]) · ⑥ kosum-maliyeti.py 3 kusur şerhi · ⑦ "ölçüm-aracı-yanıldı" kümesi yeni vaka — 30-25 P42c ile m.43 eşiği dolmuş olabilir · ⑧ 30-16 "iki biçim"e üçüncü biçim (deterministik skills: ön-yükleme) · ⑨ emrin dar ön-kabul şerhi.
+- **rapor-7 → Katman-1 kalemleri (§7, sat.309-321):** ① compiler biçimi S1-S4 (ajan mı alet mi — m.44 köle-devri gerilimi sat.245-247'de çıplak; S2=Katman-1, S1/S3/S4=Katman-2) · ② "sistem felsefesine uygun" okuma-A/B değer tercihi · ③ S-K/S-D skill adaylarının statüsü (eşik: 49 emir/10 gün) · ④ §5.3 ölçümü koşulsun mu (≈1 sa, geri-alma 0 — S1↔S2 seçimini belirler) · ⑤ maliyet-sigortası İHLALİ ($39,79 ham / ≈$17 düzeltmeli [?]) · ⑥ kosum-maliyeti.py 3 kusur şerhi · ⑦ "ölçüm-aracı-yanıldı" kümesi yeni vaka — 30-25 P42c ile m.43 eşiği dolmuş olabilir · ⑧ 30-16 "iki biçim"e üçüncü biçim (deterministik skills: ön-yükleme) · ⑨ emrin dar ön-kabul şerhi.
 - **⚠️ EK-5② kanıt seti BÜYÜDÜ:** rapor-6 ($19,32 / tavan aşımı) + rapor-7 ($39,79 / $13-DUR aşımı) → tavan-ihlali vakası artık **6** (4 graf-hattı + bu 2) ∧ tekrar-deseni m.43 eşiği adayı. ② ile aynı oturumda.
 - **K-019 damıtma İCRA DURDU (ajan raporu; plan metni kesim üretmiyor) — 3 karar sorusu:** (1) senaryo-defteri 109KB ama planın "kapanmış ∧ >2 hafta" ölçütüyle taşınacak blok SIFIR (kalan blokların tamamı 07-29→08-01 + [açık] etiketli) — eşik yeniden mi kalibre edilir, yoksa 07-23 kayıtlı alternatif (token-bazlı bölme/re-bütçe) mi? (2) fikir-kutusu MEZUN onay listesi (07-22 taslağı "onaysız inmez" şartı): **V41 · V42 · V44 · V48 · V49 · V50 · V51 · V54 · V57** — tek-tek onay; kazanç mütevazı (~1-2KB). (3) KILAVUZ "bayat-satır" kriteri somutlaşmadan icra edilmesin mi (ajan bayat blok BULAMADI; %8 aşım, "izlemede"). Masa gündemi arşivi masa bitince (plan md.4).
 - **V64 borcu KAPANDI (devirle):** fikir-kutusundaki okunmamış CC-şerit bloğu (07-25: "Cowork'ü saf dışı bırakma niyeti" + m.16 ön-notu) OKUNDU — sorusu Salih'in 08-01 g24 emrine ("optimize oranda CC") EVRİLMİŞ durumda; V64 gündemi g24 raporuna devredildi, ayrı kalem açılmaz. Akraba V62 (mobil köprü) yerinde durur.

@@ -62,7 +62,7 @@ Aday kalemler — sırala, ölç, öner:
 - **D1 · Compaction yönlendirmesi:** CLAUDE.md'ye Faz A.6'daki birebir başlıkla bölüm ekle. İçerik önerisi: *koru* = aktif kararlar, açık borçlar, çelişki-kapısı raporları, dosya yolları; *at* = ham araştırma çıktıları, tool logları, ara akıl yürütme. Kısa tut (CLAUDE.md byte-bütçesi).
 - **D2 · Yeniden-okuma refleksi:** compaction sonrası (ya da uzun oturumda periyodik) kapsülü + açık borç listesini yeniden Read etme kuralı. Gerekçe: kapsül bir tool çıktısıdır, compaction'ın birinci aşamasında temizlenir.
 - **D3 · Not-tutma sertleştirmesi (asıl kaldıraç):** değer üretilir üretilmez diske yaz — compaction'ı olay olmaktan çıkar. m.9 (push'lanmış commit) + m.34 (katmanlı ingest) bunun zaten kanonik hali; eksik olan oturum-içi refleks.
-- **D4 · CLAUDE.md yazım disiplini:** kanon edit'leri toplu ve vardiya sonunda; oturum ortasında CLAUDE.md'ye yazma. (Faz A.3 doğrularsa gerekçe: prefix'i o noktadan itibaren düşürür.)
+- **D4 · CLAUDE.md yazım disiplini:** kanon edit'leri toplu ve seans sonunda; oturum ortasında CLAUDE.md'ye yazma. (Faz A.3 doğrularsa gerekçe: prefix'i o noktadan itibaren düşürür.)
 - **D5 · Skill baş-yükleme:** SKILL.md'lerde kritik talimat ilk satırlara (kırpma yönü).
 - **D6 · Kapsül boyut/biçim politikası:** MEMORY.md sert limitine göre hedef boyut + "kritik içerik tepede" kuralı. (Not: bu kural **kesilme** gerekçesiyle, cache gerekçesiyle değil.)
 - **D7 · Tüzük yükleme politikası:** 40KB'lik tüzüğün oturum ortasında kaç kez ve nasıl Read edildiği; thrash riski varsa bölümlü okuma ya da index+topic ayrımı.

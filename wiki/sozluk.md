@@ -23,21 +23,21 @@ Bir ajana iş verilirken yazılan sözleşme: hedef, izinli aksiyonlar, yasaklar
 *(paket adı: report)*
 İşin dönüşü. Ajan işi bitirince veya durma koşuluna çarpınca yazar. Karar içermez; sonuç ve öneri içerir.
 
-### Vardiya teslim raporu
+### Vardiya teslim raporu ⟨emekli ad 08-17 → seans teslim raporu⟩
 *(paket adı: devir / son-devir)*
 Oturum kapanışında yazılan tarihli kayıt: bugün ne değişti, hangi karar verildi, hangi fikir aday kaldı, sonraki ilk iş ne. Birikimlidir, arşive gider. Durum kapsülü bu raporlardan damıtılır.
 
 ### Pano
 *(paket adı: pano — korundu)*
-Şirketin nabzı tek bakışta: aktif / bekleyen / bloke / son biten işler + iş kartı pointerları. Patronun sabah baktığı tahta.
+Şirketin nabzı tek bakışta: aktif / bekleyen / bloke / son biten işler + iş kartı pointerları. Patronun sabah baktığı tahta. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
 ### İş kuyruğu / İş kartı
 *(paket adı: kuyruk / kuyruk pointerı)*
 Kart, işin adresidir, kendisi değil: durum, dosya yolu, sorumlu, teslim beklentisi ve "ekrana gel: yalnız şu koşulda" satırı. Ajan kartı alır, adresteki klasöre gider, raporu bırakır, durumu günceller. "Ekrana gel" satırı dikkat filtresidir: Salih'e yalnız anormallik ulaşır, rutin görünmez akar. Ölçeklenmenin temeli.
 
-### Şirket tüzüğü
+### Şirket tüzüğü ⟨emekli ad 08-17 → Jarvis tüzüğü⟩
 *(paket adı: kanon)*
-Yalnız patron (Salih) imzasıyla değişen kurallar. Her madde kaynak + gerekçe + geri-açma koşulu taşır. Ajanlar ve Carvis dokunamaz; yalnız öneri sunar.
+Yalnız patron (Salih) imzasıyla değişen kurallar. Her madde kaynak + gerekçe + geri-açma koşulu taşır. Ajanlar ve Carvis dokunamaz; yalnız öneri sunar. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
 ### Öneri dosyası
 *(paket adı: taslak)*
@@ -68,7 +68,7 @@ Akış bölünmeden atılan ham fikirler; tek satır yeter. Sınanmamıştır, k
 ## Akış hattı
 
 ```text
-fikir kutusu → öneri dosyası → şirket tüzüğü
+fikir kutusu → öneri dosyası → şirket tüzüğü ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 (ham yakalama)  (işlenmiş aday)   (imzalı kural)
 ```
 
@@ -78,8 +78,8 @@ Her ok bir emek ve sınama adımıdır. Aşama atlanmaz.
 
 ## Roller
 
-- **Patron (Salih):** Katman 1 kararlar — tüzük değişikliği, silme/birleştirme, dışarı çıkan iş, para, değer tercihi.
-- **CEO (Carvis):** Katman 2 — görev emirlerini yazar, kuyruk ve panoyu yönetir, kaydeder; Salih log'dan tarar, veto = revert.
+- **Patron (Salih):** Katman 1 kararlar — tüzük değişikliği, silme/birleştirme, dışarı çıkan iş, para, değer tercihi. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
+- **CEO (Carvis):** Katman 2 — görev emirlerini yazar, kuyruk ve panoyu yönetir, kaydeder; Salih log'dan tarar, veto = revert. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 - **Ajanlar:** Görev emri sınırları içinde çalışır, rapor yazar; tüzüğe ve kanona dokunamaz.
 
 ## Üslup kuralı (2026-07-10, Salih talimatı)
@@ -88,7 +88,7 @@ Carvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçes
 
 ## Fikir kutusu — ilk kayıt
 
-- 2026-07-10: Ölçeklenince ekip lideri katmanı — işçi ajan → ekip lideri → CEO → patron damıtma hattı; her seviye fikir kutusu/öneri filtresi. Geri-açma koşulu: ilk gerçek ajan döngüsü 10 kez sorunsuz döndüğünde.
+- 2026-07-10: Ölçeklenince ekip lideri katmanı — işçi ajan → ekip lideri → CEO → patron damıtma hattı; her seviye fikir kutusu/öneri filtresi. Geri-açma koşulu: ilk gerçek ajan döngüsü 10 kez sorunsuz döndüğünde. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
 ---
 
@@ -96,7 +96,7 @@ Carvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçes
 
 *Skill = tetik-koşullu koşum talimatı; sen doğal konuşursun, ilgili skill kendiliğinden devreye girer. Geri-açma: Salih beyanı.*
 
-### gunaydin-vardiya / vardiya-kapanis
+### gunaydin-vardiya / vardiya-kapanis ⟨emekli adlar 08-15 → seans-acilis / seans-kapanis⟩
 Jarvis oturum aç/kapa ritüelleri. Tetik: "seans başı" / "seans bitimi" (08-15; eski selamlama tetiği emekli — `core/baglam-anahtar-kaydi.md`; "uyucam" sınıfı emeklilik adayı). Kapanış artık ingest-şeması triyajını da koşar. (Staj karşılıkları: staj-acilis / staj-kapanis — staj klasöründe.)
 
 ### karar-modeli · karar-hatti · celiski-kapisi

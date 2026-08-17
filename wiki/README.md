@@ -1,4 +1,4 @@
-# wiki/ — Şirketin Beyni
+# wiki/ — Jarvis'in Beyni (eski ad: Şirketin Beyni)
 
 > **Açıklama notu:** K-012 build adım 3 çıktısı (2026-07-12). Kavram-başına LLM-wiki sayfaları (#5 ana rol, Salih teyitli; #16). Yazım standardı DENEYSEL DAMGALI (m.29) — kullanım verisiyle kalibre edilir. Kaynak desen: Karpathy LLM-wiki + v2 uzantısı (confidence/süpersede; pointer: `raporlar/2026-07-12-K013-ekosistem-arastirmasi.md`).
 
@@ -33,11 +33,11 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - paralel-oturum-protokolu — vaka-1 (port çakışması 08-12) + vaka-2 (emir üstyazımı 08-15) + vaka-3 (çift-koşum 08-16) birleşik: canlı-oturum kapısı + koşum-önü manifest kapısı kural adayları (kuyruk/gelen-*-paralel-oturum-vaka-*.md); Katman-1 imza sonrası yazılır.
 - veri-tablosu (V-1) — bağlam→veri tablosu v0 şeması (dosya/kayit/referans/anahtar/json_kayit + görünümler), idempotens, sorgu örnekleri; kaynak veri/README.md (08-15 kapanış hasadı).
 - ajan-metodolojisi — görev-fonksiyonu + hafıza-manifesti + B1-B4 merdiveni + lider/işçi dörtlüsü; kural core/ajan-metodolojisi.md, anlatım sayfası aday (08-15 kapanış hasadı).
-- gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 vardiya hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
+- gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 seans hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
 - loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
 - skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
 - kucuk-n-eval — smoke vs sertifika ayrımı + Clopper-Pearson cebi + 3×-koşum ilacı (07-23 sayı-araştırma hasadı; kaynak cc/rapor-2026-07-23-1.md).
-- rol-katmanlari (m.44) — CEO ≠ üst-orkestratör ≠ domain-lider; aday sayfa (07-21 borcu).
+- rol-katmanlari (m.44) — köle ≠ üst-orkestratör ≠ domain-lider (eski ad: CEO ≠ …; emekli 08-17); aday sayfa (07-21 borcu).
 - Çelişki kapısı (m.16) — sonraki oturum adayı (07-12 canlı örnekleri tazeyken); Salih notu: kontrol DAİMA dar kapsamlı, "tüm projeyi tara" yasak sınıfı.
 - DONE kuralı / loop temelleri — loop verisi gelince (Salih 07-12: "beraber loop kurup düşünürken revize ederiz; bu haliyle KILAVUZ'da dursun yeter").
 - İlk parti kalanı (5 kavram planı, 07-10) — tempo kuralıyla sırada.

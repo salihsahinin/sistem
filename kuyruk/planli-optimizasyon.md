@@ -17,4 +17,4 @@
 | O11 | Meta-öğrenme (L2O) | uzun-vade veri hacmi | ≈0 | deferred |
 | O12 | A7 matematiksel-temel denetimi | iş kapanışları | >0 (sezgisel eşik birikir) | armed |
 | O13 | Modern-tokenizer kesin ölçümü | öğrenme P2+ | ≈0 | armed (P2 koşuyor) |
-| O14 | K-019 kutu-damıtma + boyut-izleme | ilk boş vardiya | >0 (kutu şişiyor) | armed |
+| O14 | K-019 kutu-damıtma + boyut-izleme | ilk boş seans | >0 (kutu şişiyor) | armed |

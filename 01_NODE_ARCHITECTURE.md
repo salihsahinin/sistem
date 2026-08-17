@@ -7,7 +7,7 @@
 JARVIS bir merkez değil, bir **node**: Salih'in çok-vault topolojisinde sistem-çekirdeği düğümü. Diğer düğümleri yutmaz; onlarla tanımlı arayüzlerden konuşur (havuz #1 çoklu-vault fikrinin zemini).
 
 ```
-                    SALİH (Patron — tüm düğümlerin üstünde)
+                    SALİH (Patron — tüm düğümlerin üstünde) ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
                        │
    ┌───────────┬───────┴────────┬──────────────┬────────────────┐
    │           │                │              │                │

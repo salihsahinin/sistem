@@ -27,4 +27,4 @@
 4.1 Gece-araştırma tek-atış pilotu (PreToolUse-sonrası; sert-bütçe+tur-tavanı freni) — rapor 12.
 4.2 İmza-masası kalemleri #2-#6 (tüzük oturumu; süzgeç raporu listesi).
 4.3 Kitap kararı (PI önerisi) — Salih, acele yok.
-4.4 K-019 boş vardiya (O14) · K-010 tasarım paketi (held-out şartlı, rapor 15) — kendi tetiklerinde.
+4.4 K-019 boş seans (O14) · K-010 tasarım paketi (held-out şartlı, rapor 15) — kendi tetiklerinde.

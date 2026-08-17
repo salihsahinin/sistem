@@ -2,9 +2,9 @@
 
 *Amaç: 8 kaynak (AI-to-AI) + 15 insan-yüzü (INSAN/SOZEL) raporun BAĞLAM KAYBI OLMADAN sindirilmesi. Yöntem: aile-bazlı partisyon — aynı konunun üç yüzü (kaynak + SOZEL + INSAN) aynı oturumda okunur, oturum sonunda hasat bu deftere yazılır. Sonraki oturum defterden devralır; sıcak bağlama güvenilmez (m.20/m.34). Salih emri 07-28.*
 
-**İşbölümü:** Carvis 4 okuma vardiyasında TÜMÜNÜ okur + hasat yazar · Salih INSAN- (ve isterse SOZEL-) dosyaları kendi temposunda okur — Salih'in okuma notları/itirazları bu defterin "Salih şerhi" satırlarına ingest edilir.
+**İşbölümü:** Carvis 4 okuma seansında TÜMÜNÜ okur + hasat yazar · Salih INSAN- (ve isterse SOZEL-) dosyaları kendi temposunda okur — Salih'in okuma notları/itirazları bu defterin "Salih şerhi" satırlarına ingest edilir.
 
-## Vardiya planı (boyut-dengeli; dosyalar `raporlar/2026-07-26-*`)
+## Seans planı (boyut-dengeli; dosyalar `raporlar/2026-07-26-*`)
 
 | # | Aile(ler) | Dosyalar | Hacim | Durum |
 |---|---|---|---|---|
@@ -14,12 +14,12 @@
 | O4 | ajan-durma + arastirma-promptu + kod-entegrasyonu | `ajan-durma-atlas` + `SOZEL-ajan-durma` + `INSAN-ajan-durma` + `arastirma-promptu-atlas` + `SOZEL-arastirma-promptu` + `INSAN-arastirma-promptu` + `kod-entegrasyonu` + `SOZEL-kod-entegrasyonu` + `INSAN-kod-entegrasyonu` | ~300 KB | **DONE 07-30** (CC koşumu `cc/rapor-2026-07-29-4.md`; hasat aşağıda, ingest ana-sıra 07-30) — **PROGRAM KAPANDI** |
 
 **Çapraz görevler (okuma sırasında toplanır):**
-- Ç1 (r≈0,31 ters-yön): iki ucu O1 (`pasif-ogrenme §7.2`) ve O4 (`arastirma-promptu §4.2`) — her iki vardiya kendi ucunun kanıtını hasada yazar; uzlaştırma önerisi O4 sonunda derlenir.
+- Ç1 (r≈0,31 ters-yön): iki ucu O1 (`pasif-ogrenme §7.2`) ve O4 (`arastirma-promptu §4.2`) — her iki seans kendi ucunun kanıtını hasada yazar; uzlaştırma önerisi O4 sonunda derlenir.
 - Askıdaki K14/K35/K39 geçen her yer işaretlenir (kural olarak KULLANILMAZ).
 - S6 (yargı çevresi) için hukuk hükmü taşıyan pasajlar listelenir.
 - Katman-1 karar masasına girdi olacak bulgular "KARAR-GİRDİSİ" etiketiyle yazılır.
 
-## Hasat şablonu (her vardiya doldurur)
+## Hasat şablonu (her seans doldurur)
 ```
 ### O# HASAT — <tarih, yüzey>
 - Ana hükümler (madde madde, kanıt damgasıyla):
@@ -32,7 +32,7 @@
 
 ## Hasatlar
 
-### O1 HASAT — 2026-07-28, PC Cowork ana vardiya (Carvis/Fable)
+### O1 HASAT — 2026-07-28, PC Cowork ana seans (Carvis/Fable)
 
 **Okunan:** `pasif-ogrenme-atlas` (1181 satır, tam) + `SOZEL-pasif-ogrenme` (357 satır, tam) + `INSAN-pasif-ogrenme` (466 satır, tam).
 
@@ -72,7 +72,7 @@
 - KG-4: **Ajan donma tedbir üçlüsü** (ucuz, bugün uygulanabilir) — ama eşik rakamı N=2, kural olarak yazılamaz.
 - KG-5: **Öğrenme ajanı** — tasarım paketi (§18.a: Bash yok, WebSearch yok, farklı model, ayrı doğrulayıcı, memory:project, eşleştirilmiş A/B eval) onayı AYRI, devreye alma (K-010 kapı-bağımlı) AYRI. Aleyhte cid­di not: S3 ⇒ "geri alması ucuz" yalnız dosya için doğru, Salih'in kafası için değil ⇒ K4 pazarlık dışı.
 - KG-6: **Fikir konseyi (V6x)** — üç sert itiraz; yaşayabilir dar hal: farklı MODEL + üçüncü-şahıs format + erken-uzlaşma freni. Kutuda mı, dar deneme mi, düşsün mü.
-- KG-7: **S6 yargı çevresi** + **K39 güvenlik taraması** (kapsülde zaten kayıtlı; bu vardiya kanıt adreslerini doğruladı).
+- KG-7: **S6 yargı çevresi** + **K39 güvenlik taraması** (kapsülde zaten kayıtlı; bu seans kanıt adreslerini doğruladı).
 - KG-8: **K-022 teması:** K6 kısıtı staj hattına doğrudan girdi — staj verisi JARVIS'e taşınmaz, yazılı izin yoksa. Staj oturumu açılırken bu sınır beyan edilmeli.
 
 **Ç1/S6/K39 dokunuşları:**
@@ -84,7 +84,7 @@
 **Salih şerhi:** *(henüz yok — Salih INSAN-pasif-ogrenme'yi kendi temposunda okuyacak)*
 
 **Sonraki vardiyaya devir notu:**
-1. **⚠️ TUTARSIZLIK BULUNDU — INSAN dosyası K-düzeltmelerini TAŞIMIYOR:** `INSAN-pasif-ogrenme` §6 hâlâ "bekçi var ama kör noktalı/yalnız async" anlatıyor (H34 öncesi hal), §7 "sayı olarak: eksen başına dört"ü damgasız/askısız sunuyor (K35 ihlali), §11 çürütülen üç oturum-sınırını (K36/K37/K38) hâlâ geçerli sınır diye listeliyor. Kapsüldeki "K1-K47 8 kaynak rapora uygulandı" kaydıyla tutarlı — INSAN dosyaları güncellenmemiş. **Salih bu dosyayı okumadan önce bilmeli; A13/F1 dersinin canlı örneği.** Düzeltme işi: ayrı küçük vardiya ya da CC görevi (m.8: üstü çizili + [K] gerekçeyle).
+1. **⚠️ TUTARSIZLIK BULUNDU — INSAN dosyası K-düzeltmelerini TAŞIMIYOR:** `INSAN-pasif-ogrenme` §6 hâlâ "bekçi var ama kör noktalı/yalnız async" anlatıyor (H34 öncesi hal), §7 "sayı olarak: eksen başına dört"ü damgasız/askısız sunuyor (K35 ihlali), §11 çürütülen üç oturum-sınırını (K36/K37/K38) hâlâ geçerli sınır diye listeliyor. Kapsüldeki "K1-K47 8 kaynak rapora uygulandı" kaydıyla tutarlı — INSAN dosyaları güncellenmemiş. **Salih bu dosyayı okumadan önce bilmeli; A13/F1 dersinin canlı örneği.** Düzeltme işi: ayrı küçük seans ya da CC görevi (m.8: üstü çizili + [K] gerekçeyle).
 2. Ç1'in bu ucu hasatta; O4'te `arastirma-promptu §4.2` okunurken hangi ailede "yeniden açıldığı" tespit edilmeli (SOZEL şerhi aile adı vermiyor — muhtemelen arastirma-promptu'nun kendisi).
 3. O2'ye özel bağ: A13 compiler bulguları (F1-F9) LOJIK/SOZEL-onerme-formu ailesinin zemininde — O2 okuması bu hasadın 13. maddesini referans alsın.
 4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli.
@@ -185,16 +185,16 @@
 
 **Özetleme-arıza sınıfı:** 3 YENİ vaka (K24·K21·K19/K20) ⇒ toplam 5; hepsi gövde+ayrı-iddia-listesi formatında, katmansız formatta SIFIR ⇒ **arıza FORMATA bağlı** ⇒ kural adayı: niteleyici-taşıma denetimi (tercih: iddia listesi gövdeden TÜRETİLİR) — KG-O4-2, numarasız.
 
-**KARAR-GİRDİSİ:** KG-O4-1 Ç1 hükmü (aşağıda damga) · KG-O4-2 niteleyici-taşıma · KG-O4-3 K39 üçüncü genişleme: **istemci-taraf ekseni** (kilit 3 yoldan aşılabilir; ucuz çözüm: GitHub ruleset `core/**` evaluate-modda + bypass kapalı) · KG-O4-4 metin∧icra ayrımı (tüzük maddeleri zorlanabilirlik sınıfına etiketlensin mi; m.9 tam zorlanabilir) · KG-O4-5 MAST/B1-B15 KILAVUZ'a · KG-O4-6 dalga zarfı + effort kararı (O3 KG-13 + O2 A/B ile TEK kalem) · KG-O4-7 teşhis kılavuzu + telemetriye "dürtme" alanı · KG-O4-8 K-serisi kaydı · KG-O4-9 V-numara alanı yönetilmiyor (V68-V75/V82 boşlukta; öneri: raporlar numarasız aday üretir — bu koşumda uygulandı) · KG-O4-10 INSAN-pasif-ogrenme düzeltmesi (BU VARDİYADA İŞLENDİ, aşağıda) · KG-O4-11 literatür boşluğu = özgün katkı alanı (3. bağımsız işaret) · KG-O4-12 kabul testi ⊥ optimize eden (SAYIM UYARISI: P83 ile aynı kaynak — aleyhte kanıt 3, 4 değil) · KG-O4-13 lychee+obsidiantools+gitleaks (Salih onayına).
+**KARAR-GİRDİSİ:** KG-O4-1 Ç1 hükmü (aşağıda damga) · KG-O4-2 niteleyici-taşıma · KG-O4-3 K39 üçüncü genişleme: **istemci-taraf ekseni** (kilit 3 yoldan aşılabilir; ucuz çözüm: GitHub ruleset `core/**` evaluate-modda + bypass kapalı) · KG-O4-4 metin∧icra ayrımı (tüzük maddeleri zorlanabilirlik sınıfına etiketlensin mi; m.9 tam zorlanabilir) · KG-O4-5 MAST/B1-B15 KILAVUZ'a · KG-O4-6 dalga zarfı + effort kararı (O3 KG-13 + O2 A/B ile TEK kalem) · KG-O4-7 teşhis kılavuzu + telemetriye "dürtme" alanı · KG-O4-8 K-serisi kaydı · KG-O4-9 V-numara alanı yönetilmiyor (V68-V75/V82 boşlukta; öneri: raporlar numarasız aday üretir — bu koşumda uygulandı) · KG-O4-10 INSAN-pasif-ogrenme düzeltmesi (BU SEANSTA İŞLENDİ, aşağıda) · KG-O4-11 literatür boşluğu = özgün katkı alanı (3. bağımsız işaret) · KG-O4-12 kabul testi ⊥ optimize eden (SAYIM UYARISI: P83 ile aynı kaynak — aleyhte kanıt 3, 4 değil) · KG-O4-13 lychee+obsidiantools+gitleaks (Salih onayına).
 
 **Ç1/S6/K39/K14/K35:** Ç1 §4 tam (damga aşağıda) · S6 üçüncü kez NEGATİF ⇒ malzeme tamamen pasif-ogrenme'de, masa hazır · K39 üç eksen: yüzey ∧ worktree ∧ istemci-taraf · K14 açık (5 dk'lık doğrulama: Explore ajanına agent_ID bak) · K35 dokunuş yok.
 
 **Kapanış envanteri:** B-1..B-15 kanıt borçları + D-1..D-21 Katman-1 kalemleri — tek liste `cc/rapor-2026-07-29-4.md` §13 (pointer; buraya kopyalanmadı). Meta-dersler §13.3: mutlak-niceleyici (6 aile) · bulunamadı≠aranamadı (5 gerekçe) · liste-başı kanıt kapısı · niteleyici erimesi formata bağlı · kanıt gücü ≠ hata yokluğu · aynı kanıtın iki geçişi ≠ iki bağımsız kanıt.
 
-**Salih şerhi:** henüz yok — üç INSAN dosyası temiz, ön-uyarı gerekmiyor; tek istisna INSAN-pasif-ogrenme çelişkisi (bu vardiyada [K] bloğuyla işaretlendi).
+**Salih şerhi:** henüz yok — üç INSAN dosyası temiz, ön-uyarı gerekmiyor; tek istisna INSAN-pasif-ogrenme çelişkisi (bu seansta [K] bloğuyla işaretlendi).
 
 **Ana-sıra damgaları (Katman-2, veto açık) — 07-30:**
 ① **Ç1 ana-sıra damgası:** §4.4 karşıt-okuması yapıldı — "bant (0,13-0,48) geniş, kapsama tesadüf olabilir" itirazı GEÇERLİ; hüküm 1-6 kapsamaya dayanmıyor (raporun kendi beyanıyla tutarlı) ⇒ **§4.6 uzlaştırması KABUL: Ç1 KULLANIM düzeyinde KAPANDI** (künyesiz 0,31 kullanılmaz ∧ simetrik olarak doğrulanmamış ~%85 de kullanılmaz; alet = P19/§7.3 görev-tipi tablosu; "genel kalite" yargıca sorulmaz; yargıç≠üretici aile). **KÜNYE düzeyinde AÇIK** (D5 borcu; erişimli oturumda tek seferde; o güne dek yeniden tartışılmaz). §7.2 damga metni "ÇÜRÜTÜLDÜ"→"ASKIDA/⊨A" düzeltmesi = Katman-1 masası (D-1).
 ② **Dosya düzeltmeleri İŞLENDİ (m.8: üstü-çizili + [K]):** `INSAN-pasif-ogrenme` bekçi bölümüne düzeltme bloğu + `ajan-durma-atlas §4` bayat watchdog satırı. `SOZEL-ajan-durma §4.3`ün sessiz-düşürmesi bu satırla KAYITTA (dosyaya dokunulmadı — düşürdüğü cümle zaten yanlıştı; kayıt yeter).
 ③ **O1 hasat md.5 düzeltme notu (m.8 — eski hasat yeniden yazılmaz):** "600 s = eski watchdog penceresiyle çakışık" yorumu DÜŞTÜ; doğru açıklama Bash aracı tavanı (600.000 ms). 300 s eşiği hükmü (N=2, gözlem) etkilenmez.
-④ **Okuma programı O1-O4 RESMEN KAPANDI:** 23/23 rapor, 4 vardiya, 4 hasat. Açık borçlar §13 envanterinde; program dosyası yeni vardiya AÇMAZ.
+④ **Okuma programı O1-O4 RESMEN KAPANDI:** 23/23 rapor, 4 seans, 4 hasat. Açık borçlar §13 envanterinde; program dosyası yeni seans AÇMAZ.

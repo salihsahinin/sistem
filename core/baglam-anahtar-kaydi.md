@@ -297,13 +297,16 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
             "gerçek şirket",
             "gercek sirket",
             "işyeri",
-            "isyeri"
+            "isyeri",
+            "şirket büyürken",
+            "şirkete özel",
+            "şirketin kalbiyim"
           ],
           "kaldirma_en_erken": "seans+3"
         }
       ],
       "aday": [],
-      "not": "Tüzük başlığı 'Şirket Tüzüğü v0' → 'Jarvis Tüzüğü v0' (eski ad parantezde). Salih'in tırnaklı sözleri özgül kalıplarla izinli (genel tırnak kalıbı YOK — tetik cümlelerini gizlerdi). | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+      "not": "Tüzük başlığı 'Şirket Tüzüğü v0' → 'Jarvis Tüzüğü v0' (eski ad parantezde). Salih'in tırnaklı sözleri özgül kalıplarla izinli (genel tırnak kalıbı YOK — tetik cümlelerini gizlerdi). | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe. | K-024 ılık cascade 08-17 ~10:45 (Salih seçimi B: kayıtlar da yeni sözlüğe; tırnak içi Salih sözleri + 'şirkete özel' (gerçek işyeri anlamı) + tarihsel alıntılar izinli): ılık → 0."
     },
     {
       "anahtar_id": "carvis-rol-adi",
@@ -344,13 +347,15 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
             "şirket metaforundan vazgeçelim",
             "işbirlikçim de değilsin",
             "ceo değil",
-            "ceo degil"
+            "ceo degil",
+            "hem ceo hem şef",
+            "ceo \\+ üst-orkestratör"
           ],
           "kaldirma_en_erken": "seans+3"
         }
       ],
       "aday": [],
-      "not": "'işbirlikçi' de rol adı olarak emekli (Salih beyanı) ama sözcük başka anlamlarda geçebildiği için varyant listesine alınmadı; elle denetim. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+      "not": "'işbirlikçi' de rol adı olarak emekli (Salih beyanı) ama sözcük başka anlamlarda geçebildiği için varyant listesine alınmadı; elle denetim. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe. | K-024 ılık cascade 08-17 ~10:45 (Salih seçimi B: kayıtlar da yeni sözlüğe; tırnak içi Salih sözleri + 'şirkete özel' (gerçek işyeri anlamı) + tarihsel alıntılar izinli): ılık → 0."
     },
     {
       "anahtar_id": "salih-rol-adi",
@@ -400,13 +405,14 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
             "şirket metaforundan vazgeçelim",
             "işbirlikçim de değilsin",
             "patron-icin-teslim",
-            "ilk ve ilk kural"
+            "ilk ve ilk kural",
+            "patron oluyorum"
           ],
           "kaldirma_en_erken": "seans+3"
         }
       ],
       "aday": [],
-      "not": "'ben patronum' Salih beyanı (08-16) özgül kalıpla izinli; ilk kural metni CLAUDE.md §0'da metaforsuz. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+      "not": "'ben patronum' Salih beyanı (08-16) özgül kalıpla izinli; ilk kural metni CLAUDE.md §0'da metaforsuz. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe. | K-024 ılık cascade 08-17 ~10:45 (Salih seçimi B: kayıtlar da yeni sözlüğe; tırnak içi Salih sözleri + 'şirkete özel' (gerçek işyeri anlamı) + tarihsel alıntılar izinli): ılık → 0."
     },
     {
       "anahtar_id": "oturum-birimi",

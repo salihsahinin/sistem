@@ -16,17 +16,17 @@
 |---|---|---|
 | **PortRisk** (`github.com/salihsahinin/portrisk`) | TEK FLAGSHIP — finans-domenli data/ML kanıtı | AKTİF; canlı demoya kadar başka artefakt açılmaz |
 | **vault-index** (bilgi-index CLI) | Dondurulmuş aday — repo #2 | DONDU; geri-açma tetiği: PortRisk canlı-link DONE. Blueprint hazır: `02_KNOWLEDGE_INDEX_PLAN.md` |
-| **JARVIS node** (bu repo) | **Şirket merkezi — tüm projelerin geliştirme aracı** (görev emirleri, pano, raporlar buradan akar) + mülakat anlatısı kaynağı | PRIVATE kalır; CV'ye repo olarak GİRMEZ (red-team: noise/red-flag) ama CV'yi ÜRETEN fabrika budur. Anlatı taşıyıcısı: mülakat + PortRisk README'de "AI-assisted workflow" bölümü |
+| **JARVIS node** (bu repo) | **Şirket merkezi — tüm projelerin geliştirme aracı** (görev emirleri, pano, raporlar buradan akar) + mülakat anlatısı kaynağı | PRIVATE kalır; CV'ye repo olarak GİRMEZ (red-team: noise/red-flag) ama CV'yi ÜRETEN fabrika budur. Anlatı taşıyıcısı: mülakat + PortRisk README'de "AI-assisted workflow" bölümü | ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 | **Yarışma satırı** (IMC Prosperity ya da eşdeğer) | GPA'dan bağımsız ölçülebilir sinyal | Tur açılınca kayıt (pano K-005) |
 
-## 2b. Çalışma modeli: şirket simülasyonu (Salih düzeltmesi, 07-10 — vizyonun kendisi)
+## 2b. Çalışma modeli: şirket simülasyonu (Salih düzeltmesi, 07-10 — vizyonun kendisi) ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
-Salih'in kendi cümlesiyle: *"Jarvis ile şirket simülasyonunda proje geliştire geliştire CV oluşturacağım."* Yani JARVIS yan-altyapı değil, ÜRETİM ARACI:
+Salih'in kendi cümlesiyle: *"Jarvis ile şirket simülasyonunda proje geliştire geliştire CV oluşturacağım."* Yani JARVIS yan-altyapı değil, ÜRETİM ARACI: ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
-- **Patron (Salih):** yön + Katman-1 kararlar + kendi commit'leri (CV kuralı: artefakt yalnız Salih'in GitHub'ında, Salih'in commit'leriyle doğar — 06-30 kararı).
-- **CEO (Carvis):** her sprint için görev emri yazar (done tanımlı), panoyu günceller, raporları toplar; araştırma/iskele işlerini ajanlara dağıtır.
+- **Patron (Salih):** yön + Katman-1 kararlar + kendi commit'leri (CV kuralı: artefakt yalnız Salih'in GitHub'ında, Salih'in commit'leriyle doğar — 06-30 kararı). ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
+- **CEO (Carvis):** her sprint için görev emri yazar (done tanımlı), panoyu günceller, raporları toplar; araştırma/iskele işlerini ajanlara dağıtır. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 - **Ajanlar:** görev emri sınırında araştırma/hazırlık; çıktı `raporlar/`a düşer (bu gecenin 3 raporu ilk örnek).
-- **Döngü:** görev emri → iş → rapor → Salih kararı/commit'i → pano güncellenir → sonraki emir. Şirketin üretim ölçütü = push'lanmış commit; 53:0 duvarı bu döngünün varlık sebebi, simülasyon o duvara karşı dış-çapa işlevi görür (havuz #18'in dürüst sınırı: sürtünmesizlik + dış çapa birlikte).
+- **Döngü:** görev emri → iş → rapor → Salih kararı/commit'i → pano güncellenir → sonraki emir. Şirketin üretim ölçütü = push'lanmış commit; 53:0 duvarı bu döngünün varlık sebebi, simülasyon o duvara karşı dış-çapa işlevi görür (havuz #18'in dürüst sınırı: sürtünmesizlik + dış çapa birlikte). ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
 ## 3. PortRisk hattı — flagship'in DONE merdiveni
 
@@ -72,4 +72,4 @@ SQL → Sprint 2 · İngilizce CV/LinkedIn/profil → Kasım paketi · yarışma
 2. **Yöntem = proof of work; pist = 6 ay (2026-07-10, Salih; soru cevapları).**
 3. **Tek-flagship stratejisi (2026-07-10, Carvis Katman-2 varsayılanı; kaynak: red-team raporu §2.4 + 53:0 kanıtı).** Geri-açma: Salih vetosu YA DA PortRisk canlı-link DONE (o gün vault-index çözülür).
 4. **JARVIS node CV-repo'su değildir (Katman-2; kaynak: red-team §2.3).** Geri-açma: node'dan dar/çalışan/ölçülebilir bir araç çıkarsa o araç ayrı repo olarak değerlendirilir.
-5. **Onay + vizyon düzeltmesi (Salih, 2026-07-10, aynı oturum).** Salih ayık beyanıyla ("ayığım zaten") tarama şartını kapattı ve çerçeveyi düzeltti: JARVIS ≠ CV'ye rakip yan-altyapı; **şirket simülasyonu = CV projelerinin üretim aracı, CV = simülasyonun çıktısı** (§2b). Karantina kalktı; Homebase kaydı yapıldı. Tek-flagship (karar 3) bu modelde şöyle okunur: şirketin aktif proje yuvası tek — PortRisk — canlı demoya kadar.
+5. **Onay + vizyon düzeltmesi (Salih, 2026-07-10, aynı oturum).** Salih ayık beyanıyla ("ayığım zaten") tarama şartını kapattı ve çerçeveyi düzeltti: JARVIS ≠ CV'ye rakip yan-altyapı; **şirket simülasyonu = CV projelerinin üretim aracı, CV = simülasyonun çıktısı** (§2b). Karantina kalktı; Homebase kaydı yapıldı. Tek-flagship (karar 3) bu modelde şöyle okunur: şirketin aktif proje yuvası tek — PortRisk — canlı demoya kadar. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩

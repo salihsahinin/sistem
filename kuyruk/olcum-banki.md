@@ -1,6 +1,6 @@
 # Ölçüm Bankı (deneysel m.29; açılış: Salih imzası 2026-08-01, 08-01-5 ingest K3 kararı)
 
-*Şirketin kalıcı sayısal ölçümleri. Şema: ölçüm · değer ± hata · %95 GA · n · yöntem-notu · kaynak · tarih · damga. Kural: buraya yalnız GA'lı/örneklemli ölçüm girer; kestirim ve kaba sınıf girmez (m.39). Bir ölçüm çürürse silinmez, üstü çizilir + çürüten kaynak yazılır (m.8).*
+*Jarvis'in kalıcı sayısal ölçümleri. Şema: ölçüm · değer ± hata · %95 GA · n · yöntem-notu · kaynak · tarih · damga. Kural: buraya yalnız GA'lı/örneklemli ölçüm girer; kestirim ve kaba sınıf girmez (m.39). Bir ölçüm çürürse silinmez, üstü çizilir + çürüten kaynak yazılır (m.8).*
 
 | # | Ölçüm | Değer | %95 GA | n | Not | Kaynak | Tarih | Damga |
 |---|---|---|---|---|---|---|---|---|

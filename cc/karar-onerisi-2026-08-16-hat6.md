@@ -1,6 +1,6 @@
 # Hat-6 Nihai Karar Önerisi — model×effort · jarvis→DB · kendini-geliştiren düğüm (Salih'e)
 
-*Carvis/Fable, 2026-08-16 seans-5 (G-6 sentez; Salih emri seans-2 "Hat-6 genişledi" + plan-A onayı). Rejim: sentez-yalnız — yeni scout AÇILMADI (ekonomi −%30; kanıt tabanı: rapor-1..5 + rapor-8/9 + V-1 koşum verileri + bu vardiyanın ölçülmüş koşumları). Kanıt boşluğu olan hücreler [BOŞLUK] damgalı. Karar katmanı: üçü de Katman-1 (kural/kanon) — hüküm Salih'te; öneriler m.6 (kibarca tavsiye + gerekçe).*
+*Carvis/Fable, 2026-08-16 seans-5 (G-6 sentez; Salih emri seans-2 "Hat-6 genişledi" + plan-A onayı). Rejim: sentez-yalnız — yeni scout AÇILMADI (ekonomi −%30; kanıt tabanı: rapor-1..5 + rapor-8/9 + V-1 koşum verileri + bu seansın ölçülmüş koşumları). Kanıt boşluğu olan hücreler [BOŞLUK] damgalı. Karar katmanı: üçü de Katman-1 (kural/kanon) — hüküm Salih'te; öneriler m.6 (kibarca tavsiye + gerekçe).*
 
 ## K1 — jarvis→DB: V-1 tablosunun rolü
 **Durum:** V-1 v1 canlı (37,7k kayıt · idempotent · 3 galaxy görünümü). Şu an YALNIZ-OKUR analitik katman.
@@ -11,10 +11,10 @@
 **Gerekçe (b):** parquet-felsefesi transferinin tek "bugün bedava" parçası istatistik-katmanı sözleşmesidir; lossy adımlar (özüt) zaten MDL+QA-eval kapısına bağlı. Riski düşük, geri-alması ucuz (script satırı).
 
 ## K2 — model×effort boyutları: koşum-profili standardı
-**Durum:** eko-rejim bu vardiyada fiilen model×effort kullandı (işçi medium / hakem high / V26 low) — sonuç: S-8 devamı 743k, S-9 769k, Hat-5 449k token; kalite: V26 denetimleri TUTUYOR, hakem hükümleri dolu. Tam-şerit emsali (S-6: 16 işçi hepsi yüksek-efor) ~1M+ idi. Kaba gözlem: **eko-profil ~%40-55 token, hüküm-kalitesi gözle görülür düşüş YOK** [BOŞLUK: sistematik A/B kıyası yapılmadı — tek-vardiya gözlemi].
+**Durum:** eko-rejim bu seansta fiilen model×effort kullandı (işçi medium / hakem high / V26 low) — sonuç: S-8 devamı 743k, S-9 769k, Hat-5 449k token; kalite: V26 denetimleri TUTUYOR, hakem hükümleri dolu. Tam-şerit emsali (S-6: 16 işçi hepsi yüksek-efor) ~1M+ idi. Kaba gözlem: **eko-profil ~%40-55 token, hüküm-kalitesi gözle görülür düşüş YOK** [BOŞLUK: sistematik A/B kıyası yapılmadı — tek-seans gözlemi].
 **Seçenekler:**
 - **(a) ÖNERİLEN: şablon alanı kalıcılaşsın** — `gorev-fonksiyonu.md` ÇIKTI-SÖZLEŞMESİ'ne `model_effort_profili: {rol → model×effort}` + `rejim: kalite-öncelikli | maliyet-öncelikli` alanı; m.40b koşumlarında rejim etiketi zorunlu (zaten manifest kuralı, şablona iner). Her ampirik hücre (model, sürüm, tarih) damgası rapor-5 C-YT8 gereği ZATEN zorunlu — profil alanı bunun koşum-tarafı simetriği.
-- **(b) Serbest kalsın (koşum-başına elle)** — esneklik; ama bu vardiyada 3 koşum profili elle yeniden türetildi (Y1-tipi tekrar).
+- **(b) Serbest kalsın (koşum-başına elle)** — esneklik; ama bu seansta 3 koşum profili elle yeniden türetildi (Y1-tipi tekrar).
 **Gerekçe (a):** kural zaten fiilen var (ekonomi-rejim kaydı afb41d4); şablona inmesi tekrarı keser. Maliyet: şablon +2 satır.
 
 ## K3 — kendini-geliştiren düğüm akışı: ilk pilot
