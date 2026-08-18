@@ -8,8 +8,9 @@ görev + iki damga kod SHA + girdi SHA — cc/rapor-2026-08-16-2.md B3-1). Sıra
 Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-borcu-tablo.py (silver karar_borcu; bronz veri/karar-borcu.jsonl)
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
-      → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum] [--snapshot YYYY-MM-DD]
+      → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only)
+      → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58).
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,tarama] [--snapshot YYYY-MM-DD]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam). Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, os, subprocess, sys, time
@@ -21,13 +22,14 @@ ADIMLAR = [
     ("ambar", ["tools/ambar-tablo.py", "--sessiz"]),
     ("hareket", ["tools/hareket-tablo.py", "--sessiz"]),
     ("olcum", ["tools/katman-olcum.py"]),
+    ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
 ]
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--atla", default="", help="virgüllü adım adları (baglam,karar,prompt,ambar,olcum)")
+    ap.add_argument("--atla", default="", help="virgüllü adım adları (baglam,karar,prompt,ambar,hareket,olcum,tarama)")
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
     a = ap.parse_args(); repo = os.path.abspath(a.repo); atla = set(x for x in a.atla.split(",") if x)
     kod = 0
