@@ -36,6 +36,9 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - ajan-metodolojisi — görev-fonksiyonu + hafıza-manifesti + B1-B4 merdiveni + lider/işçi dörtlüsü; kural core/ajan-metodolojisi.md, anlatım sayfası aday (08-15 kapanış hasadı).
 - gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 seans hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
 - loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
+- silver-saglik — silver temizlik-test mekanizması (bayrak+güncel-görünüm+kuyruk; T-Ç/T-B/T-A; canary + as-of eval) — KB-39..42 imzası sonrası (kaynak `cc/rapor-2026-08-17-1.md` S1-S6).
+- hafiza-teknik-envanteri — 'LLM hafıza yönetimi' şemsiyesi ↔ ~10 teknik × Jarvis J1-J15 eşleme matrisi — KB-43..45 sonrası (kaynak `cc/rapor-2026-08-17-2.md` S2).
+- baglam-butcesi — bağlam-penceresi kategori anlamları + mutlak-token kural seti + Jarvis sondajı — KB-50..52 sonrası (kaynak `cc/rapor-2026-08-17-4.md` S1-S3).
 - skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
 - kucuk-n-eval — smoke vs sertifika ayrımı + Clopper-Pearson cebi + 3×-koşum ilacı (07-23 sayı-araştırma hasadı; kaynak cc/rapor-2026-07-23-1.md).
 - rol-katmanlari (m.44) — köle ≠ üst-orkestratör ≠ domain-lider (eski ad: CEO ≠ …; emekli 08-17); aday sayfa (07-21 borcu).

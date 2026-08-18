@@ -31,7 +31,7 @@ Sabah stajda üç sekme açtın. Yan sekmede Airflow araştırması yaptırdın 
 ## Matematiksel temel (neden "anlamlı")
 
 - **Append-only log + snapshot + projeksiyon** = event sourcing — durum her an ham kayıtlardan yeniden türetilebilir; snapshot bozulsa bilgi kaybı sıfır.
-- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ≈0.99/gün, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
+- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ≈0.99/gün, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). **[Gotcha 08-17: λ değeri kaynakla ÇELİŞİR — Park ve ark. 2023'te çürüme 0,995/sandbox-SAATİ, α=1 gerekçesiz; düzeltme KB-42 Salih imzasında — `cc/rapor-2026-08-17-1.md` S4]** v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
 - **Eşikli toplu compaction** = LSM-tree — write amplification >10: her damıtma pahalıdır, o yüzden seyrek ve toplu yapılır.
 - **Bütçeler** = MemGPT'nin %70-uyarı/%100-tahliye/%50-boşaltma üçlüsü + Claude Code'un 200-satır/25KB indeks limiti (aşan kısım hiç yüklenmez — sıcak bağlam sabit-bütçeli tutulmak zorunda).
 
