@@ -8,8 +8,9 @@ görev + iki damga kod SHA + girdi SHA — cc/rapor-2026-08-16-2.md B3-1). Sıra
 Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-borcu-tablo.py (silver karar_borcu; bronz veri/karar-borcu.jsonl)
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
-      → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only)
-      → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
+      → 5) hareket-tablo.py (bronz veri/bronz/hareket-olay.jsonl ← transkript araç çağrıları; silver hareket; gold v_hareket_gunluk + raporlar/hareket-gunlugu-*.md)
+      → 6) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only)
+      → 7) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
            uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar, yoksa ihlal yalnız kütükte kalırdı).
 Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,tarama] [--snapshot YYYY-MM-DD]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam). Deneysel m.29 (2026-08-16, seans-7).
