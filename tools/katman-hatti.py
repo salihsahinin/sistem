@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""katman-hatti.py — silver/gold katmanını BRONZ'dan uçtan uca YENİDEN üretir (sabit sıra; STDLIB ONLY).
+"""katman-hatti.py — silver/gold katmanını BRONZ'dan uçtan uca YENİDEN üretir (sabit sıra; hat + temel adımlar STDLIB ONLY;
+yalnız opsiyonel --parquet adımları `duckdb` ister).
 
 Neden: `baglam-tablo.py` veri/baglam.sqlite'ı tmp→replace ile SIFIRDAN yazar → sonradan eklenen silver tabloları (karar_borcu, prompt…)
 kaybolur. Çözüm: her türetilmiş tablo kendi BRONZ kaynağından deterministik yeniden yüklenir (functional data engineering: saf/idempotent
@@ -8,7 +9,9 @@ görev + iki damga kod SHA + girdi SHA — cc/rapor-2026-08-16-2.md B3-1). Sıra
 Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-borcu-tablo.py (silver karar_borcu; bronz veri/karar-borcu.jsonl)
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
-      → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only).
+      → 5) hareket-tablo.py (bronz veri/bronz/hareket-olay.jsonl ← transkript; silver hareket; gold v_hareket_gunluk/v_son_hareketler
+           + raporlar/hareket-gunlugu-*.md)
+      → 6) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only).
       → OPSİYONEL (bayrak --parquet; varsayılan KAPALI — KB-55 Salih hükmüne dek): ambar-parquet.py (silver/ambar → veri/parquet/*.parquet
         kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
 Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,parquet,kolon-olcum]
