@@ -14,8 +14,9 @@ Bağımlılık: `duckdb` Python paketi (stdlib DIŞI — kabul kararı KB-55 Sal
 gelmez: İLK koşumda `INSTALL sqlite` eklentiyi extensions.duckdb.org'dan ~/.duckdb/extensions altına indirir (tek seferlik ağ + ev-dizini
 yan etkisi); çevrimdışıysa/engelliyse eklenti yüklenemez → çıkış 4 (kolon tarafı kullanılamaz sınıfı; katman-hatti 'atlandı' sayar).
 
-Hata disiplini: tablo başına COPY + eşdeğerlik bloğu ayrı ayrı korunur — bir tabloda DuckDB/SQLite hatası (ör. sqlite tarayıcı tip
-dönüşümü) o tablonun .tmp dosyasını siler, özete {durum: HATA, neden} satırı yazar, kalan tablolar sürer; sonda çıkış 3. ESDEGERLIK-FAIL /
+Hata disiplini: tablo başına sayım + COPY + eşdeğerlik bloğu ayrı ayrı korunur — bir tabloda DuckDB/SQLite hatası (ör. sqlite tarayıcı tip
+dönüşümü, sqlite_master'da olup sorgu anında düşen görünüm, kilitli DB) o tablonun .tmp dosyasını siler, özete {durum: HATA, neden} satırı
+yazar, kalan tablolar sürer; sonda çıkış 3. ESDEGERLIK-FAIL /
 HATA satırları ve özet satırı `--sessiz` olsa da stderr'e yazılır (hat günlüğünde neden okunur).
 
 Kullanım:
@@ -67,6 +68,12 @@ def git_head(repo):
 def sql_metin(s):
     """SQL tek-tırnak sabiti için kaçış (yol/değer içindeki ' → '')."""
     return str(s).replace("'", "''")
+
+
+def hata_metni(e):
+    """İstisna → tek satırlık 'Tür: ilk satır' metni (özet/kütük satırı için; boş mesajda yalnız tür adı kalır)."""
+    ilk = (str(e).strip().splitlines() or [""])[0]
+    return "%s: %s" % (type(e).__name__, ilk[:300])
 
 
 def tablo_sec(secim):
@@ -156,7 +163,7 @@ def main():
         con.execute("ATTACH '%s' AS b (TYPE sqlite, READ_ONLY);" % sql_metin(db))
     except duckdb.Error as e:
         print("HATA: DuckDB sqlite tarayıcı eklentisi yüklenemedi ya da silver'a bağlanamadı (ilk koşumda eklenti extensions.duckdb.org'dan "
-              "~/.duckdb/extensions altına indirilir — çevrimdışıysa ağ varken bir kez `INSTALL sqlite` koş): %s" % str(e).strip().splitlines()[0],
+              "~/.duckdb/extensions altına indirilir — çevrimdışıysa ağ varken bir kez `INSTALL sqlite` koş): %s" % hata_metni(e),
               file=sys.stderr)
         con.close(); sq.close()
         return 4
@@ -168,16 +175,16 @@ def main():
             continue
         hedef = os.path.join(cikti, tablo + ".parquet")
         tmp = hedef + ".tmp"
-        n_sq = sq.execute("SELECT count(*) FROM %s" % tablo).fetchone()[0]
-        kv = {"git_head": head, "kod_sha": kod_sha, "uretim_ts": uretim_ts, "satir": str(n_sq), "kaynak_tablo": tablo, "sort_key": sort_key,
-              "duckdb": duckdb.__version__, "sqlite": sqlite3.sqlite_version}
-        kv_sql = ", ".join("%s: '%s'" % (k, sql_metin(v)) for k, v in kv.items())
-        sql = ("COPY (SELECT * FROM b.%s ORDER BY %s) TO '%s' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE %d, KV_METADATA {%s}, OVERWRITE_OR_IGNORE)"
-               % (tablo, sort_key, sql_metin(tmp), a.row_group, kv_sql))
-        if a.kuru:
-            ozet.append({"tablo": tablo, "durum": "KURU", "satir": n_sq, "sql": sql[:160]})
-            continue
         try:
+            n_sq = sq.execute("SELECT count(*) FROM %s" % tablo).fetchone()[0]
+            kv = {"git_head": head, "kod_sha": kod_sha, "uretim_ts": uretim_ts, "satir": str(n_sq), "kaynak_tablo": tablo, "sort_key": sort_key,
+                  "duckdb": duckdb.__version__, "sqlite": sqlite3.sqlite_version}
+            kv_sql = ", ".join("%s: '%s'" % (k, sql_metin(v)) for k, v in kv.items())
+            sql = ("COPY (SELECT * FROM b.%s ORDER BY %s) TO '%s' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE %d, KV_METADATA {%s}, OVERWRITE_OR_IGNORE)"
+                   % (tablo, sort_key, sql_metin(tmp), a.row_group, kv_sql))
+            if a.kuru:
+                ozet.append({"tablo": tablo, "durum": "KURU", "satir": n_sq, "sql": sql[:160]})
+                continue
             t0 = time.perf_counter()
             con.execute(sql)
             ms = (time.perf_counter() - t0) * 1000
@@ -186,7 +193,7 @@ def main():
             hata += 1
             if os.path.exists(tmp):
                 os.remove(tmp)
-            ozet.append({"tablo": tablo, "durum": "HATA", "neden": "%s: %s" % (type(e).__name__, str(e).strip().splitlines()[0][:300])})
+            ozet.append({"tablo": tablo, "durum": "HATA", "neden": hata_metni(e)})
             continue
         if farklar:
             hata += 1

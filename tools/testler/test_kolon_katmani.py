@@ -170,6 +170,11 @@ class AmbarParquetGirdiTest(unittest.TestCase):
         self.assertEqual([t for t, _ in secili], ["kayit", "referans"]); self.assertEqual(bilinmeyen, ["kayıt"])
         self.assertEqual(m.tablo_sec("")[0], m.TABLOLAR); self.assertEqual(m.tablo_sec("")[1], [])
 
+    def test_hata_metni_bos_mesajda_dusmez(self):
+        m = modul("ambar-parquet.py")
+        self.assertEqual(m.hata_metni(ValueError("")), "ValueError: ")
+        self.assertEqual(m.hata_metni(ValueError("ilk satır\nikinci")), "ValueError: ilk satır")
+
     def test_sqlite_eklentisi_yuklenemezse_cikis_4(self):
         # duckdb var ama INSTALL/LOAD/ATTACH düşüyor (çevrimdışı eklenti indirimi vb.) → çıkış 4 + stderr yönergesi, traceback yok,
         # dosya üretilmez. Sahte duckdb modülüyle sürülür: paket kurulu olmasa da güvence yolu her yerde test edilir.
@@ -237,20 +242,46 @@ class AmbarParquetTest(unittest.TestCase):
 
     def test_tablo_hatasi_tmp_silinir_kalanlar_surer_cikis_3_stderr(self):
         # şema kayması: 'dosya' tablosu var ama sort key kolonu (dosya_id) yok → DuckDB COPY o tabloda HATA verir; --sessiz olsa da
-        # neden stderr'e düşer, .tmp kalmaz, sıradaki tablo (kayit) yine ihraç edilir, çıkış 3
+        # neden stderr'e düşer, .tmp kalmaz, çıkış 3. Devam kanıtı: ihraç sırası TABLOLAR sırasıdır (dosya=2 < karar_borcu=5) →
+        # HATA'dan SONRA gelen karar_borcu yine ihraç edilir (döngü kırılsaydı dosya oluşmazdı)
         con = sqlite3.connect(self.db)
         con.execute("CREATE TABLE dosya (id TEXT)"); con.execute("INSERT INTO dosya VALUES ('x')")
         con.commit(); con.close()
-        r = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "dosya,kayit", "--sessiz")
+        m = modul("ambar-parquet.py"); sira = [t for t, _ in m.TABLOLAR]
+        self.assertLess(sira.index("dosya"), sira.index("karar_borcu"))
+        r = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "dosya,karar_borcu", "--sessiz")
         self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
         self.assertEqual(r.stdout, "")
         hata = [json.loads(l) for l in r.stderr.splitlines() if l.startswith("{")]
-        self.assertEqual([h["tablo"] for h in hata], ["dosya"])
-        self.assertEqual(hata[0]["durum"], "HATA"); self.assertIn("dosya_id", hata[0]["neden"])
-        self.assertIn("ambar-parquet:", r.stderr)
+        self.assertEqual([(h["tablo"], h["durum"]) for h in hata], [("dosya", "HATA")])  # OK satırı stderr'e düşmez
+        self.assertIn("dosya_id", hata[0]["neden"])
+        self.assertIn("ambar-parquet: 1 OK", r.stderr)
         self.assertFalse(os.path.exists(os.path.join(self.pq, "dosya.parquet.tmp")))
         self.assertFalse(os.path.exists(os.path.join(self.pq, "dosya.parquet")))
-        self.assertTrue(os.path.exists(os.path.join(self.pq, "kayit.parquet")))
+        self.assertTrue(os.path.exists(os.path.join(self.pq, "karar_borcu.parquet")))
+
+    def test_sorgu_aninda_dusen_gorunum_hata_satiri_kalanlar_surer(self):
+        # sqlite_master'da var ama sorgu anında düşen görünüm (yarım kurulmuş silver: dayandığı tablo yok) → sayım (count) aşamasında
+        # sqlite hatası; traceback DEĞİL, HATA satırı + çıkış 3; sonraki görünüm (v_hareket_gunluk, TABLOLAR'da daha sonra) yine ihraç edilir
+        con = sqlite3.connect(self.db)
+        con.execute("CREATE VIEW v_referans_sayim AS SELECT ref_turu FROM olmayan_tablo")
+        con.execute("CREATE VIEW v_hareket_gunluk AS SELECT count(*) AS n FROM kayit")
+        con.commit(); con.close()
+        m = modul("ambar-parquet.py"); sira = [t for t, _ in m.TABLOLAR]
+        self.assertLess(sira.index("v_referans_sayim"), sira.index("v_hareket_gunluk"))
+        r = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "v_referans_sayim,v_hareket_gunluk", "--sessiz")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+        self.assertNotIn("Traceback", r.stderr)
+        hata = [json.loads(l) for l in r.stderr.splitlines() if l.startswith("{")]
+        self.assertEqual([(h["tablo"], h["durum"]) for h in hata], [("v_referans_sayim", "HATA")])
+        self.assertIn("olmayan_tablo", hata[0]["neden"])
+        self.assertFalse(os.path.exists(os.path.join(self.pq, "v_referans_sayim.parquet")))
+        self.assertFalse(os.path.exists(os.path.join(self.pq, "v_referans_sayim.parquet.tmp")))
+        self.assertTrue(os.path.exists(os.path.join(self.pq, "v_hareket_gunluk.parquet")))
+        # --kuru da aynı sözleşme: bozuk görünüm HATA satırı, çıkış 3, dosya yazılmaz
+        r2 = kos("ambar-parquet.py", "--db", self.db, "--cikti", os.path.join(self.tmp, "pq2"), "--tablo", "v_referans_sayim", "--kuru")
+        self.assertEqual(r2.returncode, 3, r2.stdout + r2.stderr)
+        self.assertFalse(os.path.exists(os.path.join(self.tmp, "pq2", "v_referans_sayim.parquet")))
 
     def test_kolon_olcum_parquet_ile(self):
         kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,referans", "--sessiz")
