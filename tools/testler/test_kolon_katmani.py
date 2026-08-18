@@ -65,10 +65,12 @@ class KolonOlcumTest(unittest.TestCase):
         self.assertEqual(r.returncode, 2, r.stderr)
 
     def test_kuru_kosum_kutuge_yazmaz(self):
-        r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--kuru", "--sessiz")
+        # --repo geçici dizin: koşum sonunda dizinde YENİ hiçbir şey olmamalı (kütük yok, çalışma dizini yok — yalnız bu koşumun davranışı)
+        once = sorted(os.listdir(self.tmp))
+        r = kos("kolon-olcum.py", "--repo", self.tmp, "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--kuru", "--sessiz")
         self.assertEqual(r.returncode, 0, r.stderr)
         self.assertFalse(os.path.exists(self.kutuk))
-        self.assertFalse(os.path.exists(os.path.join(REPO, "veri", ".kolon-olcum-tmp")))  # profil çalışma dizini repo'ya açılmaz
+        self.assertEqual(sorted(os.listdir(self.tmp)), once)
 
     def test_satir_motoru_her_sorguda_olcer_ve_kutuk_grain(self):
         # parquet dosyası verilmedi → kolon satırları ATLANDI; sqlite satırları OK; grain = sorgu × motor
@@ -284,10 +286,13 @@ class AmbarParquetTest(unittest.TestCase):
         self.assertFalse(os.path.exists(os.path.join(self.tmp, "pq2", "v_referans_sayim.parquet")))
 
     def test_kolon_olcum_parquet_ile(self):
-        kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,referans", "--sessiz")
+        # her iki araç --repo geçici dizinle: profil çalışma dizini vb. repo altına açılmaz — koşum sonrası dizine yalnız kütük eklenir
+        kos("ambar-parquet.py", "--repo", self.tmp, "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,referans", "--sessiz")
         kutuk = os.path.join(self.tmp, "k.jsonl")
-        r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.pq, "--cikti", kutuk, "--sessiz", "--sorgu", "Q1,Q5")
+        once = sorted(os.listdir(self.tmp))
+        r = kos("kolon-olcum.py", "--repo", self.tmp, "--db", self.db, "--parquet", self.pq, "--cikti", kutuk, "--sessiz", "--sorgu", "Q1,Q5")
         self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(sorted(os.listdir(self.tmp)), sorted(once + ["k.jsonl"]))
         satirlar = oku_jsonl(kutuk)
         self.assertEqual(len(satirlar), 2 * 3)
         for s in satirlar:
@@ -301,7 +306,6 @@ class AmbarParquetTest(unittest.TestCase):
             self.assertEqual(s["parquet_git_head"], s["git_head"], s)
             self.assertIs(s["parquet_bayat"], False)
             self.assertTrue(s["parquet_uretim_ts"])
-        self.assertFalse(os.path.exists(os.path.join(REPO, "veri", ".kolon-olcum-tmp")))
 
     def test_parquet_damga_metadata_yoksa_none_bayat_ise_true(self):
         import duckdb
@@ -340,12 +344,23 @@ class KatmanHattiSecimTest(unittest.TestCase):
             self.assertIn(ad, h.stdout)
         bos = tempfile.mkdtemp(prefix="hat-bos-")
         try:
-            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam,karar,prompt,ambar,hareket,olcum")
+            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, karar,prompt,ambar,hareket,olcum")
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")],
                              ["[atla ] %s" % ad for ad in ("baglam", "karar", "prompt", "ambar", "hareket", "olcum")])
+            # FAIL-LOUD: yazım hatalı --atla adı 'atlandı' diye yankılanmaz; stderr'de listelenir, çıkış 2, hiçbir adım koşmaz
+            r2 = kos("katman-hatti.py", "--repo", bos, "--atla", "olcum,parquett")
+            self.assertEqual(r2.returncode, 2, r2.stdout + r2.stderr)
+            self.assertIn("parquett", r2.stderr)
+            self.assertEqual(r2.stdout, "")
         finally:
             shutil.rmtree(bos, ignore_errors=True)
+
+    def test_atla_sec_bilinen_bilinmeyen_ayrimi(self):
+        m = modul("katman-hatti.py")
+        self.assertEqual(m.atla_sec(" olcum , parquet,kolon-olcum,parquett,"), (["olcum", "parquet", "kolon-olcum"], ["parquett"]))
+        self.assertEqual(m.atla_sec(""), ([], []))
+        self.assertEqual(m.atla_sec("baglam,karar,prompt,ambar,hareket,olcum")[1], [])
 
 
 if __name__ == "__main__":

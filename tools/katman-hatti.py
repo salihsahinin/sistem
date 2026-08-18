@@ -13,8 +13,9 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
         kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
 Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,parquet,kolon-olcum]
           [--snapshot YYYY-MM-DD] [--parquet]
-Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); adım durumu `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI,
-hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan adımlar döngü öncesi `[atla ] <ad>` satırıyla yankılanır. Deneysel m.29 (2026-08-16, seans-7).
+Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); 2 = bilinmeyen --atla adı (stderr'de listelenir, hiçbir adım koşmaz; FAIL-LOUD); adım durumu
+`adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI, hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan
+(bilinen) adımlar döngü öncesi `[atla ] <ad>` satırıyla yankılanır. Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, os, subprocess, sys, time
 
@@ -32,6 +33,14 @@ PARQUET_ADIMLAR = [
     ("kolon-olcum", ["tools/kolon-olcum.py", "--sessiz"]),
 ]
 ATLANDI_KODLARI = {"parquet": {4}}  # duckdb yoksa ambar-parquet 4 döner → hat düşmez, "atlandı" sayılır
+
+
+def atla_sec(secim):
+    """--atla virgüllü listesi → (bilinen adım adları, bilinmeyen adlar); virgül çevresi boşluk kırpılır. Bilinmeyen ad sessizce
+    'atlandı' sayılmaz — çağıran stderr'e listeler ve çıkış 2 verir (FAIL-LOUD; --tablo/--sorgu ile aynı kural)."""
+    adlar = [x.strip() for x in secim.split(",") if x.strip()]
+    bilinen = {ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR}
+    return [x for x in adlar if x in bilinen], [x for x in adlar if x not in bilinen]
 
 
 def adimlari_sec(parquet=False, atla=()):
@@ -57,7 +66,12 @@ def main():
     ap.add_argument("--atla", default="", help="virgüllü adım adları (%s)" % ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR))
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
     ap.add_argument("--parquet", action="store_true", help="opsiyonel kolon katmanı: ambar-parquet + kolon-olcum (DuckDB gerekir)")
-    a = ap.parse_args(); repo = os.path.abspath(a.repo); atla = [x.strip() for x in a.atla.split(",") if x.strip()]
+    a = ap.parse_args(); repo = os.path.abspath(a.repo)
+    atla, bilinmeyen = atla_sec(a.atla)
+    if bilinmeyen:
+        print("HATA: bilinmeyen --atla adı: %s · geçerli adlar: %s" % (", ".join(bilinmeyen), ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR)),
+              file=sys.stderr)
+        sys.exit(2)
     for ad in atla:
         print(f"[atla ] {ad}")
     kod = 0
