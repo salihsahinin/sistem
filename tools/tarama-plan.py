@@ -12,13 +12,15 @@ eşitliği DEĞİL: op + tablo + indeks/AUTOMATIC/COVERING/rowid bayrakları), T
 tarihi farkı — rapor-3 kör noktası). Çıktı: append-only veri/tarama-plan.jsonl (grain: 1 satır = sorgu × stat1-durumu) + stdout tablo.
 
 Sinyaller (rapor-3 B-YT3/C-YT5): AUTOMATIC-INDEX → kalıcı indeks ADAYI (uyarı) · noktasal sorguda SCAN → İHLAL · TEMP-BTREE → indeks-sıralı
-erişim fırsatı (bilgi) · SKIP-SCAN yalnız stat1 ile (bilgi). Çıkış kodu: 0 tamam (ihlal varsa uyarı yazılır) · 2 girdi/ad hatası · 3 ihlal
-YALNIZ --sert ile (hat düşürmez varsayılanı; KB-58 (b) seçeneği).
+erişim fırsatı (bilgi) · SKIP-SCAN yalnız stat1 ile (bilgi). stderr uyarıları (çıkış 0): `UYARI:` = ihlal · `BEKLENTİ DIŞI: <sorgu>(<durum>) <sınıf> ∉ {…}`
+= sınıf beklenti kümesinde değil (uyum=false) · `HATA:` = EXPLAIN'de düşen sorgu (kütükte sonuc=HATA satırı, traceback yok; şema kayması).
+Kaynak DB salt-okur URI ile açılır (mode=ro). Çıkış kodu: 0 tamam (uyarılar stderr'de) · 2 DB yok/açılamıyor, bilinmeyen sorgu adı ya da
+çalışan sorguların TÜMÜ HATA · 3 ihlal YALNIZ --sert ile (beklenti-dışılık --sert'i etkilemez; hat düşürmez varsayılanı; KB-58 (b) seçeneği).
 
 Kullanım: python3 tools/tarama-plan.py [--repo <yol>] [--db veri/baglam.sqlite] [--cikti veri/tarama-plan.jsonl] [--sorgu N1,A2]
                                        [--analizsiz] [--sert] [--sessiz] [--kuru]
 """
-import argparse, json, os, re, shutil, sqlite3, subprocess, sys, tempfile
+import argparse, json, os, re, shutil, sqlite3, subprocess, sys, tempfile, urllib.request
 from datetime import datetime, timezone, timedelta
 
 # Sorgu seti: ad → (açıklama, SQL, parametreler, beklenen sınıflar {stat1 yok}, beklenen sınıflar {stat1 var}, ihlal_ise_ne)
@@ -111,43 +113,55 @@ def sorgu_calisir(con, sql, params, nesneler):
     return True, ""
 
 
+def salt_okur_ac(db):
+    """Kaynak DB'yi SALT-OKUR URI ile açar (mode=ro): yanlışlıkla ANALYZE/yazma denemesi sessizce DB'yi değiştirmez, hata verir;
+    dosya yoksa boş DB de yaratılmaz. Açılamazsa sqlite3.Error yükselir (çağıran çıkış 2'ye çevirir)."""
+    return sqlite3.connect("file:%s?mode=ro" % urllib.request.pathname2url(os.path.abspath(db)), uri=True)
+
+
 def kos(db, secili, analiz):
-    """DB'de (ve istenirse geçici ANALYZE kopyasında) planları toplar; satır listesi döner. Kaynak DB değişmez."""
-    con = sqlite3.connect(db)
-    surum, kaynak_id = con.execute("SELECT sqlite_version(), sqlite_source_id()").fetchone()
-    nesneler = mevcut_nesneler(con)
-    durumlar = [("oldugu-gibi", con, stat1_var(con))]
-    tmpdir = None
-    if analiz:
-        tmpdir = tempfile.mkdtemp(prefix="tarama-plan-")
-        kopya = os.path.join(tmpdir, "analiz.sqlite")
-        shutil.copyfile(db, kopya)
-        kon2 = sqlite3.connect(kopya); kon2.execute("ANALYZE"); kon2.commit()
-        durumlar.append(("analiz-kopya", kon2, True))
-    satirlar = []
-    for ad in secili:
-        acik, sql, params, bek0, bek1, tur = SORGULAR[ad]
-        for durum_adi, c, s1 in durumlar:
-            olur, neden = sorgu_calisir(c, sql, params, nesneler)
-            temel = {"sorgu": ad, "aciklama": acik, "durum": durum_adi, "stat1": s1, "tur": tur}
-            if not olur:
-                satirlar.append(dict(temel, sonuc="ATLANDI", neden=neden)); continue
-            norm, sinif, bayrak = plan_al(c, sql, params)
-            beklenti = bek1 if s1 else bek0
-            uyum = sinif in beklenti
-            ihlal = (tur in IHLAL_TURLERI) and sinif in ("SCAN", "SCAN-COVERING")
-            sinyal = []
-            if sinif == "AUTOMATIC-INDEX": sinyal.append("kalici-indeks-adayi")
-            if "TEMP-BTREE" in bayrak: sinyal.append("indeks-sirali-erisim-firsati")
-            if sinif == "SKIP-SCAN": sinyal.append("skip-scan-aktif(stat1)")
-            if ihlal: sinyal.append("IHLAL:noktasal-tarama")
-            satirlar.append(dict(temel, sonuc="OK", sinif=sinif, plan=" | ".join(norm), bayrak=bayrak, beklenti=sorted(beklenti),
-                                 uyum=uyum, ihlal=ihlal, sinyal=sinyal))
-    con.close()
-    for _, c, _ in durumlar[1:]:
-        c.close()
-    if tmpdir:
-        shutil.rmtree(tmpdir, ignore_errors=True)
+    """DB'de (ve istenirse geçici ANALYZE kopyasında) planları toplar; satır listesi döner. Kaynak DB değişmez (salt-okur bağlantı).
+    Sorgu EXPLAIN'de düşerse (şema kayması: kolon adı vb.) traceback yerine sonuc=HATA satırı yazılır, kalan sorgular sürer.
+    Geçici kopya ve bağlantılar her durumda (hata dahil) kapatılır/silinir. DB açılamazsa sqlite3.Error yükselir."""
+    con = salt_okur_ac(db)
+    kon2, tmpdir, satirlar = None, None, []
+    try:
+        surum, kaynak_id = con.execute("SELECT sqlite_version(), sqlite_source_id()").fetchone()
+        nesneler = mevcut_nesneler(con)
+        durumlar = [("oldugu-gibi", con, stat1_var(con))]
+        if analiz:
+            tmpdir = tempfile.mkdtemp(prefix="tarama-plan-")
+            kopya = os.path.join(tmpdir, "analiz.sqlite")
+            shutil.copyfile(db, kopya)
+            kon2 = sqlite3.connect(kopya); kon2.execute("ANALYZE"); kon2.commit()
+            durumlar.append(("analiz-kopya", kon2, True))
+        for ad in secili:
+            acik, sql, params, bek0, bek1, tur = SORGULAR[ad]
+            for durum_adi, c, s1 in durumlar:
+                olur, neden = sorgu_calisir(c, sql, params, nesneler)
+                temel = {"sorgu": ad, "aciklama": acik, "durum": durum_adi, "stat1": s1, "tur": tur}
+                if not olur:
+                    satirlar.append(dict(temel, sonuc="ATLANDI", neden=neden)); continue
+                try:
+                    norm, sinif, bayrak = plan_al(c, sql, params)
+                except sqlite3.Error as e:
+                    satirlar.append(dict(temel, sonuc="HATA", neden=str(e) or type(e).__name__)); continue
+                beklenti = bek1 if s1 else bek0
+                uyum = sinif in beklenti
+                ihlal = (tur in IHLAL_TURLERI) and sinif in ("SCAN", "SCAN-COVERING")
+                sinyal = []
+                if sinif == "AUTOMATIC-INDEX": sinyal.append("kalici-indeks-adayi")
+                if "TEMP-BTREE" in bayrak: sinyal.append("indeks-sirali-erisim-firsati")
+                if sinif == "SKIP-SCAN": sinyal.append("skip-scan-aktif(stat1)")
+                if ihlal: sinyal.append("IHLAL:noktasal-tarama")
+                satirlar.append(dict(temel, sonuc="OK", sinif=sinif, plan=" | ".join(norm), bayrak=bayrak, beklenti=sorted(beklenti),
+                                     uyum=uyum, ihlal=ihlal, sinyal=sinyal))
+    finally:
+        con.close()
+        if kon2 is not None:
+            kon2.close()
+        if tmpdir:
+            shutil.rmtree(tmpdir, ignore_errors=True)
     return satirlar, surum, kaynak_id
 
 
@@ -172,7 +186,10 @@ def main():
     if bilinmeyen:
         print("HATA: bilinmeyen sorgu adı: %s (geçerli: %s)" % (", ".join(bilinmeyen), ", ".join(SORGULAR)), file=sys.stderr); return 2
     secili = istenen or list(SORGULAR)
-    satirlar, surum, kaynak_id = kos(db, secili, analiz=not a.analizsiz)
+    try:
+        satirlar, surum, kaynak_id = kos(db, secili, analiz=not a.analizsiz)
+    except sqlite3.Error as e:
+        print("HATA: silver DB açılamadı/hazırlanamadı: %s — %s" % (db, e or type(e).__name__), file=sys.stderr); return 2
     tz = timezone(timedelta(hours=3))
     ortak = {"ts": datetime.now(tz).isoformat(timespec="seconds"), "git_head": git_head(repo), "sqlite": surum, "sqlite_source_id": kaynak_id,
              "damga": "deneysel m.29; sınıf = EQP normalize (do_eqp_test gevşek modu); analiz-kopya = geçici kopyada ANALYZE, kaynak DB değişmez"}
@@ -182,19 +199,29 @@ def main():
             for k in kayitlar:
                 fh.write(json.dumps(k, ensure_ascii=False) + "\n")
     ihlaller = [k for k in kayitlar if k.get("ihlal")]
+    uyumsuzlar = [k for k in kayitlar if k["sonuc"] == "OK" and not k["uyum"]]
+    hatalar = [k for k in kayitlar if k["sonuc"] == "HATA"]
     if not a.sessiz:
         print("%-4s %-13s %-6s %-16s %-6s %s" % ("sorgu", "durum", "stat1", "sınıf", "uyum", "plan / sinyal"))
         for k in kayitlar:
             if k["sonuc"] != "OK":
-                print("%-4s %-13s %-6s %-16s %-6s %s" % (k["sorgu"], k["durum"], "-", "ATLANDI", "-", k["neden"])); continue
+                print("%-4s %-13s %-6s %-16s %-6s %s" % (k["sorgu"], k["durum"], "-", k["sonuc"], "-", k["neden"])); continue
             print("%-4s %-13s %-6s %-16s %-6s %s%s" % (k["sorgu"], k["durum"], "var" if k["stat1"] else "yok", k["sinif"], "✓" if k["uyum"] else "✗",
                                                      k["plan"][:90], ("  ← " + ",".join(k["sinyal"])) if k["sinyal"] else ""))
-        print("tarama-plan: %d satır → %s (%s) · sqlite %s (%s) · ihlal %d · HEAD %s" % (
-            len(kayitlar), os.path.relpath(cikti, repo), "KURU" if a.kuru else "eklendi", surum, kaynak_id[:10], len(ihlaller), ortak["git_head"]))
+        print("tarama-plan: %d satır → %s (%s) · sqlite %s (%s) · ihlal %d · beklenti-dışı %d · hata %d · HEAD %s" % (
+            len(kayitlar), os.path.relpath(cikti, repo), "KURU" if a.kuru else "eklendi", surum, kaynak_id[:10], len(ihlaller), len(uyumsuzlar),
+            len(hatalar), ortak["git_head"]))
+    if hatalar:
+        print("HATA: %d sorgu EXPLAIN'de düştü (şema kayması?): %s" % (
+            len(hatalar), " · ".join("%s(%s): %s" % (k["sorgu"], k["durum"], k["neden"]) for k in hatalar)), file=sys.stderr)
+        if not any(k["sonuc"] == "OK" for k in kayitlar):
+            print("HATA: çalışan sorguların tümü düştü; kütük yazıldı, çıkış 2", file=sys.stderr); return 2
     if ihlaller:
         print("UYARI: %d noktasal sorgu tarama (SCAN) planına düştü: %s" % (len(ihlaller), ", ".join(sorted({k["sorgu"] for k in ihlaller}))), file=sys.stderr)
-        if a.sert:
-            return 3
+    for k in uyumsuzlar:
+        print("BEKLENTİ DIŞI: %s(%s) %s ∉ {%s}" % (k["sorgu"], k["durum"], k["sinif"], ", ".join(k["beklenti"])), file=sys.stderr)
+    if ihlaller and a.sert:
+        return 3
     return 0
 
 

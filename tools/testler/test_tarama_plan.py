@@ -2,7 +2,7 @@
 """tarama-plan.py testleri (pipeline cc/pipeline-2026-08-18-tarama-yontemleri.md SH-1; stdlib unittest, Python 3.9).
 Koş: python3 -m unittest discover -s tools/testler -p 'test_*.py' -v
 Davranış testleri: küçük geçici silver DB (repo verisine dokunulmaz); çıkış kodları, plan sınıflandırması, kaynak DB'nin değişmezliği,
-kütük grain'i ve --sert davranışı doğrulanır."""
+kütük grain'i, --sert davranışı, şema kaymasında HATA satırı, beklenti-dışı uyarısı ve katman-hatti içinde koşum (geçici repo) doğrulanır."""
 import hashlib, json, os, shutil, sqlite3, subprocess, sys, tempfile, unittest, importlib.util
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -36,8 +36,22 @@ def kucuk_silver(yol, n=200):
     con.commit(); con.close()
 
 
-def kos(*args):
-    return subprocess.run([sys.executable, ARAC] + list(args), cwd=REPO, capture_output=True, text=True)
+def kos(*args, env=None):
+    return subprocess.run([sys.executable, ARAC] + list(args), cwd=REPO, capture_output=True, text=True, env=env)
+
+
+def gecici_repo(tmp):
+    """Geçici repo iskeleti: tools/ → gerçek tools dizinine symlink (araçlar kendi yolundan --repo türetir → kütük geçici repoya yazılır),
+    veri/baglam.sqlite = küçük silver. Gerçek repo verisine dokunulmaz."""
+    repo = os.path.join(tmp, "repo"); os.makedirs(os.path.join(repo, "veri"))
+    os.symlink(TOOLS, os.path.join(repo, "tools"))
+    kucuk_silver(os.path.join(repo, "veri", "baglam.sqlite"))
+    return repo
+
+
+def hat_kos(repo, *args):
+    return subprocess.run([sys.executable, os.path.join(repo, "tools", "katman-hatti.py"), "--repo", repo,
+                          "--atla", "baglam,karar,prompt,ambar,hareket,olcum"] + list(args), cwd=repo, capture_output=True, text=True)
 
 
 def sha(yol):
@@ -83,9 +97,12 @@ class KosumTest(unittest.TestCase):
 
     def test_kaynak_db_degismez_ve_iki_durum_kaydi(self):
         once = sha(self.db)
-        r = kos("--db", self.db, "--cikti", self.kutuk, "--sessiz")
+        tmpdir = os.path.join(self.tmp, "gecici"); os.mkdir(tmpdir)
+        r = kos("--db", self.db, "--cikti", self.kutuk, "--sessiz", env=dict(os.environ, TMPDIR=tmpdir))
         self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(r.stderr.strip(), "")  # ihlal/beklenti-dışı/hata yok → stderr boş
         self.assertEqual(sha(self.db), once)  # ANALYZE geçici kopyada; kaynak byte-özdeş
+        self.assertEqual(os.listdir(tmpdir), [])  # geçici ANALYZE kopyası silindi
         con = sqlite3.connect(self.db)
         self.assertEqual(con.execute("SELECT count(*) FROM sqlite_master WHERE name='sqlite_stat1'").fetchone()[0], 0); con.close()
         satirlar = oku(self.kutuk)
@@ -121,9 +138,20 @@ class KosumTest(unittest.TestCase):
         con = sqlite3.connect(self.db); con.execute("DROP INDEX ix_kayit_dosya"); con.commit(); con.close()
         r = kos("--db", self.db, "--cikti", self.kutuk, "--sessiz", "--sorgu", "N2", "--analizsiz")
         self.assertEqual(r.returncode, 0); self.assertIn("UYARI", r.stderr)
+        self.assertIn("BEKLENTİ DIŞI: N2(oldugu-gibi) SCAN ∉ {SEARCH}", r.stderr)
         self.assertTrue(oku(self.kutuk)[0]["ihlal"])
         r = kos("--db", self.db, "--kuru", "--sessiz", "--sorgu", "N2", "--analizsiz", "--sert")
         self.assertEqual(r.returncode, 3)
+
+    def test_beklenti_disi_uyari_ihlal_degil_sert_dusurmez(self):
+        # bileşik indeks yok → S1 analiz kopyasında SKIP-SCAN olamaz (SCAN): beklenti-dışı ama ihlal değil (tür skip) → stderr satırı, çıkış 0, --sert de 0
+        con = sqlite3.connect(self.db); con.execute("DROP INDEX ix_ref_tur_deger"); con.commit(); con.close()
+        r = kos("--db", self.db, "--cikti", self.kutuk, "--sessiz", "--sorgu", "S1")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("BEKLENTİ DIŞI: S1(analiz-kopya) SCAN ∉ {SKIP-SCAN}", r.stderr); self.assertNotIn("UYARI", r.stderr)
+        s1 = {s["durum"]: s for s in oku(self.kutuk)}
+        self.assertTrue(s1["oldugu-gibi"]["uyum"]); self.assertFalse(s1["analiz-kopya"]["uyum"]); self.assertFalse(s1["analiz-kopya"]["ihlal"])
+        self.assertEqual(kos("--db", self.db, "--kuru", "--sessiz", "--sorgu", "S1", "--sert").returncode, 0)
 
     def test_eksik_tablo_atlanir(self):
         con = sqlite3.connect(self.db); con.execute("DROP TABLE karar_borcu"); con.commit(); con.close()
@@ -131,14 +159,74 @@ class KosumTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         s = oku(self.kutuk)[0]; self.assertEqual(s["sonuc"], "ATLANDI"); self.assertIn("karar_borcu", s["neden"])
 
+    def test_sema_kaymasi_hata_satiri_kalanlar_surer_tumu_duserse_2(self):
+        # kolon adı değişmiş (şema kayması): A2 EXPLAIN'de düşer → traceback yok, sonuc=HATA satırı + stderr HATA; N1 sürer, çıkış 0
+        con = sqlite3.connect(self.db); con.execute("ALTER TABLE kayit RENAME COLUMN token_kestirim TO tk"); con.commit(); con.close()
+        tmpdir = os.path.join(self.tmp, "gecici"); os.mkdir(tmpdir)
+        r = kos("--db", self.db, "--cikti", self.kutuk, "--sorgu", "A2,N1", env=dict(os.environ, TMPDIR=tmpdir))
+        self.assertEqual(r.returncode, 0, r.stderr); self.assertNotIn("Traceback", r.stderr)
+        self.assertIn("HATA", r.stderr); self.assertIn("A2(oldugu-gibi)", r.stderr); self.assertIn("token_kestirim", r.stderr)
+        self.assertEqual(os.listdir(tmpdir), [])  # hata yolunda da geçici kopya silindi
+        satirlar = oku(self.kutuk); self.assertEqual(len(satirlar), 4)
+        a2 = [s for s in satirlar if s["sorgu"] == "A2"]; n1 = [s for s in satirlar if s["sorgu"] == "N1"]
+        self.assertEqual({s["sonuc"] for s in a2}, {"HATA"}); self.assertTrue(all("token_kestirim" in s["neden"] for s in a2))
+        self.assertEqual({s["sonuc"] for s in n1}, {"OK"})
+        self.assertIn("HATA", r.stdout)  # stdout tablosunda satır etiketi HATA (ATLANDI değil)
+        # çalışan sorguların tümü düşerse çıkış 2 (kütük yine yazılır)
+        r = kos("--db", self.db, "--cikti", self.kutuk + ".2", "--sessiz", "--sorgu", "A2", "--analizsiz")
+        self.assertEqual(r.returncode, 2); self.assertIn("HATA", r.stderr); self.assertNotIn("Traceback", r.stderr)
+        self.assertEqual([s["sonuc"] for s in oku(self.kutuk + ".2")], ["HATA"])
+
+    def test_db_acilamazsa_2_ve_salt_okur(self):
+        # DB olmayan dosya: traceback yok, stderr HATA, çıkış 2
+        bozuk = os.path.join(self.tmp, "bozuk.sqlite")
+        with open(bozuk, "wb") as fh:
+            fh.write(b"bu bir sqlite dosyasi degil" * 100)
+        r = kos("--db", bozuk, "--kuru", "--sessiz")
+        self.assertEqual(r.returncode, 2, r.stderr); self.assertIn("HATA", r.stderr); self.assertNotIn("Traceback", r.stderr)
+        # kaynak bağlantı salt-okur: yazma denemesi hata verir, dosya değişmez
+        m = modul(); once = sha(self.db)
+        con = m.salt_okur_ac(self.db)
+        with self.assertRaises(sqlite3.OperationalError):
+            con.execute("ANALYZE"); con.commit()
+        con.close(); self.assertEqual(sha(self.db), once)
+
 
 class KatmanHattiTest(unittest.TestCase):
-    def test_tarama_adimi_listede(self):
-        sp = importlib.util.spec_from_file_location("kh", os.path.join(TOOLS, "katman-hatti.py"))
-        m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m)
-        adlar = [a for a, _ in m.ADIMLAR]
-        self.assertEqual(adlar[-2:], ["olcum", "tarama"])
-        self.assertIn("--sessiz", dict(m.ADIMLAR)["tarama"])
+    """tarama adımı katman-hatti içinde GERÇEKTEN koşar (geçici repo; tools/ symlink, veri/baglam.sqlite küçük silver)."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="tarama-hat-"); self.repo = gecici_repo(self.tmp)
+        self.kutuk = os.path.join(self.repo, "veri", "tarama-plan.jsonl")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_tarama_adimi_hatta_kosar_ve_kutuk_gecici_repoda(self):
+        r = hat_kos(self.repo)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        satir = [l for l in r.stdout.splitlines() if l.startswith("[OK") and " tarama " in l]
+        self.assertEqual(len(satir), 1, r.stdout)
+        self.assertNotIn("STDERR", r.stdout)  # ihlal yok → yankılanacak uyarı yok
+        self.assertTrue(os.path.exists(self.kutuk), r.stdout)
+        satirlar = oku(self.kutuk); self.assertEqual(len(satirlar), 2 * len(modul().SORGULAR))
+        self.assertFalse(any(s.get("ihlal") for s in satirlar))
+
+    def test_atla_tarama_adim_kosmaz_kutuk_yok(self):
+        r = hat_kos(self.repo, "--atla", "baglam,karar,prompt,ambar,hareket,olcum,tarama")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn("[atla ] tarama", r.stdout); self.assertFalse(os.path.exists(self.kutuk))
+
+    def test_ihlal_uyarisi_hatta_gorunur_hat_dusmez(self):
+        # uyarı modu: ihlal hattı düşürmez (çıkış 0, [OK ] tarama) ama tarama adımının stderr uyarısı hat çıktısında yankılanır
+        db = os.path.join(self.repo, "veri", "baglam.sqlite")
+        con = sqlite3.connect(db); con.execute("DROP INDEX ix_kayit_dosya"); con.commit(); con.close()
+        r = hat_kos(self.repo)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertTrue(any(l.startswith("[OK") and " tarama " in l for l in r.stdout.splitlines()), r.stdout)
+        self.assertIn("STDERR: ", r.stdout); self.assertIn("UYARI", r.stdout); self.assertIn("N2", r.stdout)
+        self.assertIn("BEKLENTİ DIŞI: N2(oldugu-gibi) SCAN ∉ {SEARCH}", r.stdout)
+        self.assertTrue(any(s.get("ihlal") for s in oku(self.kutuk)))
 
 
 if __name__ == "__main__":
