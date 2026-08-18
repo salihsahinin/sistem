@@ -9,10 +9,10 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
       → 5) hareket-tablo.py (bronz veri/bronz/hareket-olay.jsonl ← transkript araç çağrıları; silver hareket; gold v_hareket_gunluk + raporlar/hareket-gunlugu-*.md)
-      → 6) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only)
-      → 7) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
-           uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar, yoksa ihlal yalnız kütükte kalırdı).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,tarama] [--snapshot YYYY-MM-DD]
+      → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
+           uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar, yoksa ihlal yalnız kütükte kalırdı; olcum'dan ÖNCE koşar ki son adım kanonda kalsın)
+      → 7) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only) — SON ADIM (kanon core/veri-muhendisligi-katmani.md §8 S3, Salih A 08-17).
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,tarama,olcum] [--snapshot YYYY-MM-DD]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam). Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, os, subprocess, sys, time
@@ -23,8 +23,8 @@ ADIMLAR = [
     ("prompt", ["tools/prompt-tablo.py", "--sessiz"]),
     ("ambar", ["tools/ambar-tablo.py", "--sessiz"]),
     ("hareket", ["tools/hareket-tablo.py", "--sessiz"]),
-    ("olcum", ["tools/katman-olcum.py"]),
     ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
+    ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
 UYARI_KANALI_ADIMLAR = {"tarama"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
 
@@ -32,7 +32,7 @@ UYARI_KANALI_ADIMLAR = {"tarama"}  # çıkış 0'da bile stderr'i uyarı kanalı
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--atla", default="", help="virgüllü adım adları (baglam,karar,prompt,ambar,hareket,olcum,tarama)")
+    ap.add_argument("--atla", default="", help="virgüllü adım adları (baglam,karar,prompt,ambar,hareket,tarama,olcum)")
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
     a = ap.parse_args(); repo = os.path.abspath(a.repo); atla = set(x for x in a.atla.split(",") if x)
     kod = 0

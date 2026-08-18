@@ -2,16 +2,18 @@
 """tarama-plan.py testleri (pipeline cc/pipeline-2026-08-18-tarama-yontemleri.md SH-1; stdlib unittest, Python 3.9).
 Koş: python3 -m unittest discover -s tools/testler -p 'test_*.py' -v
 Davranış testleri: küçük geçici silver DB (repo verisine dokunulmaz); çıkış kodları, plan sınıflandırması, kaynak DB'nin değişmezliği,
-kütük grain'i, --sert davranışı, şema kaymasında HATA satırı, beklenti-dışı uyarısı ve katman-hatti içinde koşum (geçici repo) doğrulanır."""
+kütük grain'i, --sert davranışı, şema kaymasında HATA satırı, beklenti-dışı uyarısı, katman-hatti içinde koşum (geçici repo) ve hat adım sırası
+(tarama olcum'dan ÖNCE; olcum SON adım — kanon §8 S3) doğrulanır."""
 import hashlib, json, os, shutil, sqlite3, subprocess, sys, tempfile, unittest, importlib.util
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TOOLS = os.path.join(REPO, "tools")
 ARAC = os.path.join(TOOLS, "tarama-plan.py")
+HAT = os.path.join(TOOLS, "katman-hatti.py")
 
 
-def modul():
-    sp = importlib.util.spec_from_file_location("tp", ARAC); m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m); return m
+def modul(yol=ARAC, ad="tp"):
+    sp = importlib.util.spec_from_file_location(ad, yol); m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m); return m
 
 
 def kucuk_silver(yol, n=200):
@@ -213,9 +215,20 @@ class KatmanHattiTest(unittest.TestCase):
         self.assertFalse(any(s.get("ihlal") for s in satirlar))
 
     def test_atla_tarama_adim_kosmaz_kutuk_yok(self):
-        r = hat_kos(self.repo, "--atla", "baglam,karar,prompt,ambar,hareket,olcum,tarama")
+        r = hat_kos(self.repo, "--atla", "baglam,karar,prompt,ambar,hareket,tarama,olcum")
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn("[atla ] tarama", r.stdout); self.assertFalse(os.path.exists(self.kutuk))
+
+    def test_adim_sirasi_tarama_olcumdan_once_olcum_son(self):
+        # kanon core/veri-muhendisligi-katmani.md §8 S3 (Salih A 08-17): "katman-hatti son adımı katman-olcum.py" — tarama salt-okur,
+        # bu yüzden olcum'un ÖNÜNE konur; sıra hem ADIMLAR listesinde hem hat çıktısında ([atla ] satırları) doğrulanır
+        adlar = [ad for ad, _ in modul(HAT, "kh").ADIMLAR]
+        self.assertEqual(adlar, ["baglam", "karar", "prompt", "ambar", "hareket", "tarama", "olcum"])
+        self.assertLess(adlar.index("tarama"), adlar.index("olcum")); self.assertEqual(adlar[-1], "olcum")
+        r = hat_kos(self.repo, "--atla", ",".join(adlar))
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        atla = [l.split()[-1] for l in r.stdout.splitlines() if l.startswith("[atla ]")]
+        self.assertEqual(atla, adlar)
 
     def test_ihlal_uyarisi_hatta_gorunur_hat_dusmez(self):
         # uyarı modu: ihlal hattı düşürmez (çıkış 0, [OK ] tarama) ama tarama adımının stderr uyarısı hat çıktısında yankılanır
