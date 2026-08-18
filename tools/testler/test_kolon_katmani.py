@@ -4,7 +4,8 @@ Koş: python3 -m unittest discover -s tools/testler -p 'test_*.py' -v
 Davranış testleri: araçlar KÜÇÜK geçici bir silver DB üzerinde çalıştırılır (repo verisine dokunulmaz); çıkış kodu, üretilen dosya ve
 kütük satırları (public çıktı sözleşmesi) doğrulanır. DuckDB gerektiren testler paket yoksa ATLANIR (skip) — stdlib tarafı her yerde koşar.
 """
-import json, os, shutil, sqlite3, subprocess, sys, tempfile, unittest, importlib.util
+import contextlib, io, json, os, shutil, sqlite3, subprocess, sys, tempfile, types, unittest, importlib.util
+from unittest import mock
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TOOLS = os.path.join(REPO, "tools")
@@ -43,6 +44,13 @@ def kos(script, *args, py=sys.executable):
     return subprocess.run([py, os.path.join(TOOLS, script)] + list(args), cwd=REPO, capture_output=True, text=True)
 
 
+def modul(script):
+    """tools/<script> dosyasını (tire içeren ad) modül olarak yükler — public fonksiyonları doğrudan çağırmak için."""
+    sp = importlib.util.spec_from_file_location(script.replace("-", "_").replace(".py", ""), os.path.join(TOOLS, script))
+    m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m)
+    return m
+
+
 class KolonOlcumTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="kolon-test-")
@@ -60,6 +68,7 @@ class KolonOlcumTest(unittest.TestCase):
         r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--kuru", "--sessiz")
         self.assertEqual(r.returncode, 0, r.stderr)
         self.assertFalse(os.path.exists(self.kutuk))
+        self.assertFalse(os.path.exists(os.path.join(REPO, "veri", ".kolon-olcum-tmp")))  # profil çalışma dizini repo'ya açılmaz
 
     def test_satir_motoru_her_sorguda_olcer_ve_kutuk_grain(self):
         # parquet dosyası verilmedi → kolon satırları ATLANDI; sqlite satırları OK; grain = sorgu × motor
@@ -81,10 +90,109 @@ class KolonOlcumTest(unittest.TestCase):
         q4 = [s for s in sq if s["sorgu"] == "Q4"][0]; self.assertEqual(q4["satir"], 2)
 
     def test_sorgu_alt_kumesi(self):
-        r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--sessiz", "--sorgu", "Q1,Q6")
+        r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--sessiz", "--sorgu", "Q1, Q6")
         self.assertEqual(r.returncode, 0, r.stderr)
         satirlar = oku_jsonl(self.kutuk)
         self.assertEqual(sorted({s["sorgu"] for s in satirlar}), ["Q1", "Q6"])
+
+    def test_bilinmeyen_sorgu_adi_cikis_2(self):
+        # FAIL-LOUD: yazım hatalı --sorgu sessiz no-op DEĞİL → çıkış 2 + stderr'de ad; kütüğe satır yazılmaz
+        r = kos("kolon-olcum.py", "--db", self.db, "--parquet", self.tmp, "--cikti", self.kutuk, "--sessiz", "--sorgu", "Q1,Q9")
+        self.assertEqual(r.returncode, 2, r.stdout)
+        self.assertIn("Q9", r.stderr)
+        self.assertFalse(os.path.exists(self.kutuk))
+
+    def test_dbstat_tahmini_sablon_tablolari_ve_plan_indeksleri(self):
+        # dbstat sayfa tahmini: şablon tabloları + plandaki USING INDEX; takma ad/alt-dize eşleşmesi yok; COVERING → tablo yerine indeks
+        m = modul("kolon-olcum.py")
+        it = {"ix_kayit_dosya": "kayit", "ix_ref_tur_deger": "referans", "sqlite_autoindex_kayit_1": "kayit"}
+        # Q1 planı: 'dosya' alt-dizesi tablo adı olarak sayılmaz; kayit + indeksi sayılır
+        self.assertEqual(m.plan_nesneleri("SCAN kayit USING INDEX ix_kayit_dosya", ["kayit"], it), {"kayit", "ix_kayit_dosya"})
+        # Q5 planı takma adlı (r/k): referans planda geçmese de şablondan sayılır; iki indeks eklenir
+        self.assertEqual(m.plan_nesneleri("SCAN r USING INDEX ix_ref_tur_deger | SEARCH k USING INDEX sqlite_autoindex_kayit_1",
+                                          ["referans", "kayit"], it),
+                         {"referans", "kayit", "ix_ref_tur_deger", "sqlite_autoindex_kayit_1"})
+        # COVERING INDEX: tablonun sayfaları yerine indeksinki
+        self.assertEqual(m.plan_nesneleri("SCAN kayit USING COVERING INDEX ix_kayit_dosya", ["kayit"], it), {"ix_kayit_dosya"})
+        # AUTOMATIC/PRIMARY KEY erişimi indeks adı üretmez → yalnız tablo
+        self.assertEqual(m.plan_nesneleri("SCAN kayit | SEARCH referans USING AUTOMATIC COVERING INDEX (kayit_id=?)", ["kayit", "referans"], it),
+                         {"kayit", "referans"})
+        self.assertEqual(m.sablon_tablolari(m.SORGULAR["Q5"][1]), ["kayit", "referans"])
+        self.assertEqual(m.sablon_tablolari(m.SORGULAR["Q4"][1]), ["referans"])
+        # uçtan uca: küçük DB'de Q1 satır motoru byte tahmini (dbstat varsa) kayit + ix_kayit_dosya sayfaları = 2 sayfa × page_size
+        r = m.sqlite_olc(self.db, m.SORGULAR["Q1"][1].format(k="kayit", r="referans"), 2, ["kayit"])
+        con = sqlite3.connect(self.db)
+        try:
+            page_size = con.execute("PRAGMA page_size").fetchone()[0]
+            try:
+                beklenen = sum(con.execute("SELECT count(*) FROM dbstat WHERE name=?", (ad,)).fetchone()[0] for ad in ("kayit", "ix_kayit_dosya"))
+            except sqlite3.OperationalError:
+                beklenen = None
+        finally:
+            con.close()
+        if beklenen is None:
+            self.assertIsNone(r["byte"])
+        else:
+            self.assertIn("ix_kayit_dosya", r["plan"])
+            self.assertEqual(r["byte"], beklenen * page_size)
+
+
+class AmbarParquetGirdiTest(unittest.TestCase):
+    """duckdb gerektirmeyen girdi sözleşmesi (bağımlılık denetiminden ÖNCE): DB yok → 2, bilinmeyen tablo adı → 2 (FAIL-LOUD)."""
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="parquet-girdi-")
+        self.db = os.path.join(self.tmp, "silver.sqlite"); kucuk_silver(self.db)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_db_yoksa_cikis_2(self):
+        r = kos("ambar-parquet.py", "--db", os.path.join(self.tmp, "yok.sqlite"), "--cikti", self.tmp, "--kuru")
+        self.assertEqual(r.returncode, 2, r.stderr)
+
+    def test_bilinmeyen_tablo_adi_cikis_2(self):
+        r = kos("ambar-parquet.py", "--db", self.db, "--cikti", os.path.join(self.tmp, "pq"), "--tablo", "kayit, olmayan_tablo", "--kuru")
+        self.assertEqual(r.returncode, 2, r.stdout)
+        self.assertIn("olmayan_tablo", r.stderr)
+        self.assertFalse(os.path.exists(os.path.join(self.tmp, "pq")))
+
+    def test_bozuk_db_cikis_2(self):
+        bozuk = os.path.join(self.tmp, "bozuk.sqlite")
+        with open(bozuk, "w") as fh:
+            fh.write("bu bir sqlite dosyası değil")
+        r = kos("ambar-parquet.py", "--db", bozuk, "--cikti", os.path.join(self.tmp, "pq"), "--tablo", "kayit", "--sessiz")
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertNotIn("Traceback", r.stderr)
+
+    def test_tablo_sec_bosluk_kirpar_ve_bilinmeyeni_ayirir(self):
+        m = modul("ambar-parquet.py")
+        secili, bilinmeyen = m.tablo_sec(" kayit , referans,kayıt")
+        self.assertEqual([t for t, _ in secili], ["kayit", "referans"]); self.assertEqual(bilinmeyen, ["kayıt"])
+        self.assertEqual(m.tablo_sec("")[0], m.TABLOLAR); self.assertEqual(m.tablo_sec("")[1], [])
+
+    def test_sqlite_eklentisi_yuklenemezse_cikis_4(self):
+        # duckdb var ama INSTALL/LOAD/ATTACH düşüyor (çevrimdışı eklenti indirimi vb.) → çıkış 4 + stderr yönergesi, traceback yok,
+        # dosya üretilmez. Sahte duckdb modülüyle sürülür: paket kurulu olmasa da güvence yolu her yerde test edilir.
+        m = modul("ambar-parquet.py")
+
+        class SahteHata(Exception):
+            pass
+
+        class SahteBaglanti:
+            def execute(self, sql):
+                raise SahteHata("IO Error: Failed to download extension \"sqlite_scanner\" (sahte)")
+
+            def close(self):
+                pass
+
+        sahte = types.ModuleType("duckdb"); sahte.Error = SahteHata; sahte.__version__ = "0-sahte"; sahte.connect = lambda: SahteBaglanti()
+        argv = ["ambar-parquet.py", "--db", self.db, "--cikti", os.path.join(self.tmp, "pq"), "--tablo", "kayit"]
+        err = io.StringIO()
+        with mock.patch.dict(sys.modules, {"duckdb": sahte}), mock.patch.object(sys, "argv", argv), contextlib.redirect_stderr(err):
+            kod = m.main()
+        self.assertEqual(kod, 4, err.getvalue())
+        self.assertIn("eklenti", err.getvalue()); self.assertIn("sahte", err.getvalue())
+        self.assertFalse(os.path.exists(os.path.join(self.tmp, "pq", "kayit.parquet")))
 
 
 @unittest.skipUnless(DUCKDB, "duckdb paketi yok — kolon tarafı testleri atlandı (KB-55)")
@@ -120,11 +228,29 @@ class AmbarParquetTest(unittest.TestCase):
         # sort key uygulanmış mı: kayit dosya_id, sira sırası
         sira = con.execute("SELECT dosya_id, sira FROM read_parquet(?)", [os.path.join(self.pq, "kayit.parquet")]).fetchall()
         self.assertEqual(sira, sorted(sira))
-        # atlanan tablo (silver'da yok) çıktı özetinde ATLANDI olarak görünür, koşum düşmez
-        r2 = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,olmayan_tablo")
+        # TABLOLAR'da olan ama bu silver'da bulunmayan tablo (prompt) özette ATLANDI olarak görünür, koşum düşmez, dosya üretilmez
+        r2 = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,prompt")
         self.assertEqual(r2.returncode, 0, r2.stderr)
-        # sadece --tablo ile verilen VE TABLOLAR listesinde olan işlenir; 'olmayan_tablo' listede yok → sessizce dışarıda kalır
-        self.assertNotIn("olmayan_tablo", r2.stdout)
+        ozet = {o["tablo"]: o for o in (json.loads(l) for l in r2.stdout.splitlines() if l.startswith("{"))}
+        self.assertEqual(ozet["prompt"]["durum"], "ATLANDI"); self.assertEqual(ozet["kayit"]["durum"], "OK")
+        self.assertFalse(os.path.exists(os.path.join(self.pq, "prompt.parquet")))
+
+    def test_tablo_hatasi_tmp_silinir_kalanlar_surer_cikis_3_stderr(self):
+        # şema kayması: 'dosya' tablosu var ama sort key kolonu (dosya_id) yok → DuckDB COPY o tabloda HATA verir; --sessiz olsa da
+        # neden stderr'e düşer, .tmp kalmaz, sıradaki tablo (kayit) yine ihraç edilir, çıkış 3
+        con = sqlite3.connect(self.db)
+        con.execute("CREATE TABLE dosya (id TEXT)"); con.execute("INSERT INTO dosya VALUES ('x')")
+        con.commit(); con.close()
+        r = kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "dosya,kayit", "--sessiz")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+        self.assertEqual(r.stdout, "")
+        hata = [json.loads(l) for l in r.stderr.splitlines() if l.startswith("{")]
+        self.assertEqual([h["tablo"] for h in hata], ["dosya"])
+        self.assertEqual(hata[0]["durum"], "HATA"); self.assertIn("dosya_id", hata[0]["neden"])
+        self.assertIn("ambar-parquet:", r.stderr)
+        self.assertFalse(os.path.exists(os.path.join(self.pq, "dosya.parquet.tmp")))
+        self.assertFalse(os.path.exists(os.path.join(self.pq, "dosya.parquet")))
+        self.assertTrue(os.path.exists(os.path.join(self.pq, "kayit.parquet")))
 
     def test_kolon_olcum_parquet_ile(self):
         kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,referans", "--sessiz")
@@ -139,18 +265,56 @@ class AmbarParquetTest(unittest.TestCase):
         for q in ("Q1", "Q5"):
             n = {s["motor"]: s["satir"] for s in satirlar if s["sorgu"] == q}
             self.assertEqual(len(set(n.values())), 1, n)
+        # parquet tazelik damgası: aynı HEAD'de üretildi → parquet_git_head = git_head, bayat değil, üretim zamanı dolu
+        for s in (s for s in satirlar if s["motor"].startswith("duckdb")):
+            self.assertEqual(s["parquet_git_head"], s["git_head"], s)
+            self.assertIs(s["parquet_bayat"], False)
+            self.assertTrue(s["parquet_uretim_ts"])
+        self.assertFalse(os.path.exists(os.path.join(REPO, "veri", ".kolon-olcum-tmp")))
+
+    def test_parquet_damga_metadata_yoksa_none_bayat_ise_true(self):
+        import duckdb
+        m = modul("kolon-olcum.py")
+        duz = os.path.join(self.tmp, "duz.parquet")
+        duckdb.connect().execute("COPY (SELECT 1 AS a) TO '%s' (FORMAT PARQUET)" % duz)
+        d = m.parquet_damga(duckdb, {"kayit": duz, "referans": duz}, "abc1234")
+        self.assertEqual(d, {"parquet_git_head": None, "parquet_uretim_ts": None, "parquet_bayat": None})
+        kos("ambar-parquet.py", "--db", self.db, "--cikti", self.pq, "--tablo", "kayit", "--sessiz")
+        d2 = m.parquet_damga(duckdb, {"kayit": os.path.join(self.pq, "kayit.parquet")}, "olmayan-head")
+        self.assertIs(d2["parquet_bayat"], True); self.assertTrue(d2["parquet_git_head"])
 
 
 class KatmanHattiSecimTest(unittest.TestCase):
     def test_parquet_adimi_varsayilan_kapali_bayrakla_acik(self):
-        sp = importlib.util.spec_from_file_location("kh", os.path.join(TOOLS, "katman-hatti.py"))
-        m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m)
+        m = modul("katman-hatti.py")
         temel = [a for a, _ in m.adimlari_sec()]
         self.assertNotIn("parquet", temel); self.assertNotIn("kolon-olcum", temel)
         acik = [a for a, _ in m.adimlari_sec(parquet=True)]
         self.assertEqual(acik[-2:], ["parquet", "kolon-olcum"])
         self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("kolon-olcum", "baglam"))][-1], "parquet")
-        self.assertIn(4, m.ATLANDI_KODLARI["parquet"])  # duckdb yoksa hat düşmez
+
+    def test_adim_durumu_parquet_4_atlandi_hat_dusmez(self):
+        m = modul("katman-hatti.py")
+        self.assertEqual(m.adim_durumu("parquet", 4), ("ATLANDI", False))  # duckdb/eklenti yok → atlandı, hat düşmez
+        self.assertEqual(m.adim_durumu("parquet", 1), ("KOD 1", True))
+        self.assertEqual(m.adim_durumu("parquet", 3), ("KOD 3", True))    # eşdeğerlik FAIL hattı düşürür
+        self.assertEqual(m.adim_durumu("parquet", 0), ("OK", False))
+        self.assertEqual(m.adim_durumu("kolon-olcum", 4), ("KOD 4", True))  # atlanma yalnız parquet adımının 4'ü için
+        self.assertEqual(m.adim_durumu("baglam", 2), ("KOD 2", True))
+
+    def test_atla_yankisi_ve_yardim_metni(self):
+        # --help tüm adım adlarını listeler; --atla verilen adlar döngü öncesi '[atla ] <ad>' ile yankılanır ve koşulmaz
+        h = kos("katman-hatti.py", "--help")
+        for ad in ("baglam", "hareket", "olcum", "parquet", "kolon-olcum"):
+            self.assertIn(ad, h.stdout)
+        bos = tempfile.mkdtemp(prefix="hat-bos-")
+        try:
+            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam,karar,prompt,ambar,hareket,olcum")
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")],
+                             ["[atla ] %s" % ad for ad in ("baglam", "karar", "prompt", "ambar", "hareket", "olcum")])
+        finally:
+            shutil.rmtree(bos, ignore_errors=True)
 
 
 if __name__ == "__main__":

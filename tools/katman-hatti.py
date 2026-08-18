@@ -11,8 +11,10 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 5) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only).
       → OPSİYONEL (bayrak --parquet; varsayılan KAPALI — KB-55 Salih hükmüne dek): ambar-parquet.py (silver/ambar → veri/parquet/*.parquet
         kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum] [--snapshot YYYY-MM-DD] [--parquet]
-Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam). Deneysel m.29 (2026-08-16, seans-7).
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,olcum,parquet,kolon-olcum]
+          [--snapshot YYYY-MM-DD] [--parquet]
+Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); adım durumu `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI,
+hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan adımlar döngü öncesi `[atla ] <ad>` satırıyla yankılanır. Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, os, subprocess, sys, time
 
@@ -39,13 +41,25 @@ def adimlari_sec(parquet=False, atla=()):
     return [(ad, cmd) for ad, cmd in secili if ad not in atla]
 
 
+def adim_durumu(ad, returncode):
+    """Adım çıkış kodu → (durum etiketi, hat düşer mi). 0 → ('OK', False); ATLANDI_KODLARI[ad] içindeki kod → ('ATLANDI', False)
+    (ör. parquet 4 = duckdb/eklenti yok, opsiyonel katman atlanır); diğer her kod → ('KOD n', True) = FAIL-LOUD, hat çıkış kodu olur."""
+    if returncode == 0:
+        return "OK", False
+    if returncode in ATLANDI_KODLARI.get(ad, set()):
+        return "ATLANDI", False
+    return "KOD %d" % returncode, True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--atla", default="", help="virgüllü adım adları (baglam,karar,prompt,ambar,olcum)")
+    ap.add_argument("--atla", default="", help="virgüllü adım adları (%s)" % ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR))
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
     ap.add_argument("--parquet", action="store_true", help="opsiyonel kolon katmanı: ambar-parquet + kolon-olcum (DuckDB gerekir)")
-    a = ap.parse_args(); repo = os.path.abspath(a.repo); atla = set(x for x in a.atla.split(",") if x)
+    a = ap.parse_args(); repo = os.path.abspath(a.repo); atla = [x.strip() for x in a.atla.split(",") if x.strip()]
+    for ad in atla:
+        print(f"[atla ] {ad}")
     kod = 0
     for ad, cmd in adimlari_sec(parquet=a.parquet, atla=atla):
         args = list(cmd)
@@ -54,14 +68,13 @@ def main():
         t0 = time.time()
         r = subprocess.run([sys.executable] + args, cwd=repo, capture_output=True, text=True)
         dt = time.time() - t0
-        atlandi = r.returncode in ATLANDI_KODLARI.get(ad, set())
-        durum = "OK" if r.returncode == 0 else ("ATLANDI" if atlandi else f"KOD {r.returncode}")
+        durum, duser = adim_durumu(ad, r.returncode)
         print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}")
         if r.stdout.strip() and (r.returncode != 0 or ad == "olcum"):
             print("        " + r.stdout.strip().replace("\n", "\n        ")[:2000])
         if r.returncode != 0:
             print("        STDERR: " + r.stderr.strip()[-600:])
-            if not atlandi:
+            if duser:
                 kod = kod or r.returncode
             if ad in ("baglam",):  # çekirdek düşerse aşağısı anlamsız
                 break
