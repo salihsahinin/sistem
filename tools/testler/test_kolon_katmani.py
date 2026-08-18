@@ -4,7 +4,7 @@ Koş: python3 -m unittest discover -s tools/testler -p 'test_*.py' -v
 Davranış testleri: araçlar KÜÇÜK geçici bir silver DB üzerinde çalıştırılır (repo verisine dokunulmaz); çıkış kodu, üretilen dosya ve
 kütük satırları (public çıktı sözleşmesi) doğrulanır. DuckDB gerektiren testler paket yoksa ATLANIR (skip) — stdlib tarafı her yerde koşar.
 """
-import contextlib, io, json, os, shutil, sqlite3, subprocess, sys, tempfile, types, unittest, importlib.util
+import contextlib, hashlib, io, json, os, shutil, sqlite3, subprocess, sys, tempfile, types, unittest, importlib.util
 from unittest import mock
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -137,6 +137,34 @@ class KolonOlcumTest(unittest.TestCase):
         else:
             self.assertIn("ix_kayit_dosya", r["plan"])
             self.assertEqual(r["byte"], beklenen * page_size)
+
+    def test_sorgu_kolon_listesi_sorgunun_dokundugu_kolonlarla_birebir(self):
+        # SORGULAR üçlüsünün kolon listesi (parquet kolon-chunk byte'ının girdisi) sorgunun DOKUNDUĞU kolon kümesiyle birebir olmalı;
+        # tüketici olarak SQLite'ın kendisi koşturulur: (1) her kaynağı YALNIZ listedeki kolonları açan görünümle değiştirince sorgu koşar
+        # (liste eksiksiz → byte eksik sayılmaz); (2) listeden herhangi bir (kaynak, kolon) düşülünce sorgu 'no such column' ile düşer
+        # (listede fazlalık yok → byte fazla sayılmaz). Ayrıca liste anahtarları = şablonun kullandığı yer tutucular.
+        m = modul("kolon-olcum.py")
+        con = sqlite3.connect(self.db)
+        try:
+            for q, (ad, sablon, kolonlar) in m.SORGULAR.items():
+                self.assertEqual(sorted(kolonlar), sorted(yt for yt in m.YER_TUTUCU if "{%s}" % yt in sablon), q)
+                self.assertTrue(all(kols for kols in kolonlar.values()), q)
+
+                def gorunumlu(cikar=None):
+                    adlar = {}
+                    for yt, kols in kolonlar.items():
+                        secim = [k for k in kols if (yt, k) != cikar]
+                        con.execute("DROP VIEW IF EXISTS temp.g_%s" % yt)
+                        con.execute("CREATE TEMP VIEW g_%s AS SELECT %s FROM %s" % (yt, ", ".join(secim) if secim else "1 AS bos", m.YER_TUTUCU[yt]))
+                        adlar[yt] = "g_%s" % yt
+                    return sablon.format(**{yt: adlar.get(yt, m.YER_TUTUCU[yt]) for yt in m.YER_TUTUCU})
+                con.execute(gorunumlu()).fetchall()
+                for yt, kols in kolonlar.items():
+                    for k in kols:
+                        with self.assertRaises(sqlite3.OperationalError, msg="%s: %s.%s listede fazla" % (q, yt, k)):
+                            con.execute(gorunumlu(cikar=(yt, k))).fetchall()
+        finally:
+            con.close()
 
 
 class AmbarParquetGirdiTest(unittest.TestCase):
@@ -306,6 +334,51 @@ class AmbarParquetTest(unittest.TestCase):
             self.assertEqual(s["parquet_git_head"], s["git_head"], s)
             self.assertIs(s["parquet_bayat"], False)
             self.assertTrue(s["parquet_uretim_ts"])
+
+    def test_parquet_kolon_byte_kolon_listesinden_ve_kutuk_alanlari(self):
+        # kolon tarafı `byte` = sorgunun dokunduğu kolonların parquet kolon-chunk byte toplamı (statik). Küçük DB'de metin deterministik
+        # olarak genişletilir (satır başına 2 KB sözde-rastgele hex — sha256 zinciri, tekrar-üretilir), sonra: Q1 (2 dar kolon) > 0;
+        # Q6 (geniş metin) ≥ Q1; tüm kolonlar ≤ dosya boyutu ve Q1 < tüm kolonlar (kolon atlama diskte görünür); Q5 kaynak başına toplanır;
+        # dosyada olmayan kolon FAIL-LOUD. Uçtan uca CLI: parquet satırı byte/byte_tanimi bu hesapla aynı, TOTAL_BYTES_READ ayrı alanda
+        # notuyla; native satırı byte None + 'bellek-içi' tanımı; sqlite satırı dbstat tanımı.
+        import duckdb
+        m = modul("kolon-olcum.py")
+        con = sqlite3.connect(self.db)
+        for (kid,) in con.execute("SELECT kayit_id FROM kayit").fetchall():
+            ek = "".join(hashlib.sha256(("%s:%d" % (kid, i)).encode()).hexdigest() for i in range(32))  # 2048 hex karakter
+            con.execute("UPDATE kayit SET metin = metin || ? WHERE kayit_id = ?", (ek, kid))
+        con.commit(); con.close()
+        r = kos("ambar-parquet.py", "--repo", self.tmp, "--db", self.db, "--cikti", self.pq, "--tablo", "kayit,referans", "--sessiz")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        kp, rp = os.path.join(self.pq, "kayit.parquet"), os.path.join(self.pq, "referans.parquet")
+        yollar = {"k": kp, "r": rp}
+        b = {q: m.parquet_kolon_byte(duckdb, yollar, m.SORGULAR[q][2]) for q in m.SORGULAR}
+        self.assertGreater(b["Q1"], 0)
+        self.assertGreaterEqual(b["Q6"], b["Q1"], b)
+        tum_kolonlar = [c[1] for c in sqlite3.connect(self.db).execute("PRAGMA table_info(kayit)").fetchall()]
+        hepsi = m.parquet_kolon_byte(duckdb, yollar, {"k": tum_kolonlar})
+        self.assertLess(b["Q1"], hepsi); self.assertLessEqual(hepsi, os.path.getsize(kp))
+        self.assertEqual(b["Q5"], m.parquet_kolon_byte(duckdb, yollar, {"k": m.SORGULAR["Q5"][2]["k"]})
+                         + m.parquet_kolon_byte(duckdb, yollar, {"r": m.SORGULAR["Q5"][2]["r"]}))
+        with self.assertRaises(ValueError):
+            m.parquet_kolon_byte(duckdb, yollar, {"k": ["dosya_id", "olmayan_kolon"]})
+        kutuk = os.path.join(self.tmp, "k.jsonl")
+        r = kos("kolon-olcum.py", "--repo", self.tmp, "--db", self.db, "--parquet", self.pq, "--cikti", kutuk, "--sessiz", "--sorgu", "Q1,Q6")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        satirlar = oku_jsonl(kutuk)
+        self.assertEqual(len(satirlar), 2 * 3)
+        for s in satirlar:
+            self.assertEqual(s["durum"], "OK", s)
+            if s["motor"] == "duckdb-parquet":
+                self.assertEqual(s["byte"], b[s["sorgu"]], s)
+                self.assertEqual(s["byte_tanimi"], m.PARQUET_BYTE_TANIMI)
+                self.assertIn("duck_total_bytes_read", s); self.assertTrue(s["duck_total_bytes_read_notu"])
+            elif s["motor"] == "duckdb-native":
+                self.assertIsNone(s["byte"]); self.assertEqual(s["byte_tanimi"], m.NATIVE_BYTE_TANIMI)
+                self.assertIn("duck_total_bytes_read", s)
+            else:
+                self.assertTrue(s["byte_tanimi"].startswith("dbstat"), s)
+                self.assertNotIn("duck_total_bytes_read", s)
 
     def test_parquet_damga_metadata_yoksa_none_bayat_ise_true(self):
         import duckdb

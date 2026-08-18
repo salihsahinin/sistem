@@ -1,14 +1,22 @@
 #!/usr/bin/env python3
-"""kolon-olcum.py — SATIR (SQLite) ↔ KOLON (DuckDB parquet/native) ölçüm aracı: aynı OLAP sorgu seti iki motorda; süre + okunan/istenen byte
-+ plan; append-only ölçüm kütüğü veri/kolon-olcum.jsonl (DE-artefakt; K-023 "her ship ≥1 artefakt"; deneysel m.29).
-Kanıt/kural kaynağı: cc/rapor-2026-08-18-2.md (S2 ölçüm tablosu, S4 ölçüm yöntemi; C-YT6 ClickBench disiplini: soğuk/ılık 1 + sıcak min(2,3);
-B-YT2/C-YT5 DuckDB profil metrikleri TOTAL_BYTES_READ = "istenen byte" — sayfa önbelleğinden gelen okumalar dahil, fiziksel disk DEĞİL;
-SQLite tarafında eşdeğer sayaç yok → dbstat sayfa tahmini + EXPLAIN QUERY PLAN; motorlar arası byte kıyası aynı tanımda değildir, motor-içi
-önce/sonra kıyası içindir — asimetri her satırda `byte_tanimi` alanıyla damgalanır).
+"""kolon-olcum.py — SATIR (SQLite) ↔ KOLON (DuckDB parquet/native) ölçüm aracı: aynı OLAP sorgu seti iki motorda; süre + sorgunun dokunduğu
+byte + plan; append-only ölçüm kütüğü veri/kolon-olcum.jsonl (DE-artefakt; K-023 "her ship ≥1 artefakt"; deneysel m.29).
+Kanıt/kural kaynağı: cc/rapor-2026-08-18-2.md (S2 ölçüm tablosu, S4 ölçüm yöntemi; C-YT6 ClickBench disiplini: soğuk/ılık 1 + sıcak min(2,3)).
 
-SQLite dbstat tahmini kuralı (statik; fiziksel okuma değil): sayılan b-tree'ler = sorgu şablonunun kullandığı tablolar ({k}→kayit, {r}→referans;
-plan metnindeki takma ad/alt-dize eşleşmesine güvenilmez) + planda `USING [COVERING] INDEX <ad>` ile geçen indeksler; plan bir tabloyu
-COVERING INDEX ile okuyorsa tablonun sayfaları yerine o indeksin sayfaları sayılır (tabloya inilmez). byte = sayfa × page_size.
+`byte` alanı iki motorda da STATİK "sorgunun dokunduğu depolama" tahminidir (fiziksel okuma değil; m.39 her rakam kaynaklı; tanım her satırda
+`byte_tanimi` alanıyla damgalanır — motorlar arası kıyas aynı sınıfta ama aynı tanımda değildir, asimetri kayıtta okunur):
+- SQLite (satır): dbstat sayfa tahmini. Sayılan b-tree'ler = sorgu şablonunun kullandığı tablolar ({k}→kayit, {r}→referans; plan metnindeki
+  takma ad/alt-dize eşleşmesine güvenilmez) + planda `USING [COVERING] INDEX <ad>` ile geçen indeksler; plan bir tabloyu COVERING INDEX ile
+  okuyorsa tablonun sayfaları yerine o indeksin sayfaları sayılır (tabloya inilmez). byte = sayfa × page_size. Satır deposunda tablo b-tree'si
+  sorgu tek kolon istese de BÜTÜN kolonlarıyla sayılır — kolon atlaması yoktur, tahmin bunu yansıtır.
+- DuckDB parquet (kolon): parquet kolon-chunk byte'ı. SORGULAR'daki her sorgu kaynak başına DOKUNDUĞU kolon listesini taşır ({k}: [...],
+  {r}: [...]); byte = o kolonların parquet_metadata(dosya).total_compressed_size toplamı (tüm row group'lar; deterministik, statik) — kolon
+  atlamanın diskteki karşılığı: sorgunun istemediği kolon toplama GİRMEZ. Listede olup dosyada olmayan kolon → FAIL-LOUD (ValueError).
+- DuckDB native (bellek-içi tablo): byte None, byte_tanimi "bellek-içi tablo; byte sayacı yok".
+DuckDB profil sayacı TOTAL_BYTES_READ ayrıca `duck_total_bytes_read` alanında saklanır (cpu_sn ile) — `byte` DEĞİLDİR: DuckDB 1.4.5
+varsayılanlarında yerel parquet dosyasında kolon-chunk okumalarını SAYMAZ (yalnız footer/küçük okumalar; sayfa önbelleği dahil), bu yüzden
+kolon atlamayı göstermez (ölçüldü: 21 kolonlu tam tarama dosyanın %1,4'ünü rapor eder); yanındaki `duck_total_bytes_read_notu` alanı bunu
+satırda söyler. Kolon atlaması kanıtı `byte`tan okunur.
 
 Kolon tarafı `duckdb` paketini ister (stdlib dışı; KB-55). Paket yoksa satır tarafı yine ölçülür, kolon satırları `durum=ATLANDI` yazılır
 (FAIL-LOUD değil — ölçüm bankası büyümeye devam eder). Parquet dosyaları yoksa (tools/ambar-parquet.py koşmamışsa) parquet motoru ATLANDI.
@@ -20,22 +28,34 @@ Kullanım:
   python3 tools/kolon-olcum.py [--repo <yol>] [--db veri/baglam.sqlite] [--parquet veri/parquet] [--cikti veri/kolon-olcum.jsonl]
                                [--tekrar 3] [--sorgu Q1,Q3] [--sessiz] [--kuru]
 Çıkış: 0 tamam · 2 girdi yok ya da bilinmeyen --sorgu adı (stderr'de listelenir; FAIL-LOUD). Grain: 1 satır = 1 (sorgu × motor × ölçüm) olgusu;
-alanlar: ts, git_head, sorgu, motor, ilik_ms (yeni bağlantı, 1. koşum), sicak_ms (min sonraki tekrar), satir, plan/byte, byte_tanimi, surum, damga,
-(kolon) parquet_git_head/parquet_uretim_ts/parquet_bayat.
+alanlar: ts, git_head, sorgu, motor, ilik_ms (yeni bağlantı, 1. koşum), sicak_ms (min sonraki tekrar), satir, plan (sqlite), byte, byte_tanimi,
+surum, damga, (kolon) duck_total_bytes_read/duck_total_bytes_read_notu/cpu_sn, parquet_git_head/parquet_uretim_ts/parquet_bayat.
 """
 import argparse, json, os, re, sqlite3, subprocess, sys, tempfile, time
 from datetime import datetime, timezone, timedelta
 
-# Sorgu seti (rapor S3 sondajıyla aynı; {k}=kayit {r}=referans yer tutucuları)
+# Sorgu seti (rapor S3 sondajıyla aynı; {k}=kayit {r}=referans yer tutucuları). Üçlü: (ad, şablon, kolonlar); kolonlar = sorgunun kaynak
+# başına DOKUNDUĞU kolonlar ({k}: [...], {r}: [...]) — parquet kolon-chunk byte'ı bu listeden hesaplanır; SQL'e yeni kolon girerse liste de
+# güncellenir (liste ↔ şablon uyumu testte, tools/testler/test_kolon_katmani.py).
 SORGULAR = {
-    "Q1": ("dosya×token group-by (2 kolon)", "SELECT dosya_id, count(*) AS n, sum(token_kestirim) AS tok FROM {k} GROUP BY 1 ORDER BY 3 DESC LIMIT 5"),
-    "Q2": ("blok_turu dağılımı", "SELECT blok_turu, count(*) AS n, avg(token_kestirim) AS ort FROM {k} GROUP BY 1 ORDER BY 1"),
-    "Q3": ("tarih×kayıt (ay)", "SELECT substr(tarih_iso,1,7) AS ay, count(*) AS n FROM {k} WHERE tarih_iso IS NOT NULL AND tarih_iso<>'' GROUP BY 1 ORDER BY 1"),
-    "Q4": ("referans türü×değer top", "SELECT ref_turu, ref_deger, count(*) AS c FROM {r} GROUP BY 1,2 ORDER BY c DESC, ref_turu, ref_deger LIMIT 10"),
-    "Q5": ("join kayit⋈referans token by ref_turu", "SELECT r.ref_turu, sum(k.token_kestirim) AS tok, count(distinct k.dosya_id) AS d FROM {r} r JOIN {k} k ON k.kayit_id=r.kayit_id GROUP BY 1 ORDER BY 1"),
-    "Q6": ("geniş kolon: avg(length(metin))", "SELECT avg(length(metin)) AS ort FROM {k}"),
+    "Q1": ("dosya×token group-by (2 kolon)", "SELECT dosya_id, count(*) AS n, sum(token_kestirim) AS tok FROM {k} GROUP BY 1 ORDER BY 3 DESC LIMIT 5",
+           {"k": ["dosya_id", "token_kestirim"]}),
+    "Q2": ("blok_turu dağılımı", "SELECT blok_turu, count(*) AS n, avg(token_kestirim) AS ort FROM {k} GROUP BY 1 ORDER BY 1",
+           {"k": ["blok_turu", "token_kestirim"]}),
+    "Q3": ("tarih×kayıt (ay)", "SELECT substr(tarih_iso,1,7) AS ay, count(*) AS n FROM {k} WHERE tarih_iso IS NOT NULL AND tarih_iso<>'' GROUP BY 1 ORDER BY 1",
+           {"k": ["tarih_iso"]}),
+    "Q4": ("referans türü×değer top", "SELECT ref_turu, ref_deger, count(*) AS c FROM {r} GROUP BY 1,2 ORDER BY c DESC, ref_turu, ref_deger LIMIT 10",
+           {"r": ["ref_turu", "ref_deger"]}),
+    "Q5": ("join kayit⋈referans token by ref_turu", "SELECT r.ref_turu, sum(k.token_kestirim) AS tok, count(distinct k.dosya_id) AS d FROM {r} r JOIN {k} k ON k.kayit_id=r.kayit_id GROUP BY 1 ORDER BY 1",
+           {"k": ["kayit_id", "token_kestirim", "dosya_id"], "r": ["kayit_id", "ref_turu"]}),
+    "Q6": ("geniş kolon: avg(length(metin))", "SELECT avg(length(metin)) AS ort FROM {k}",
+           {"k": ["metin"]}),
 }
 YER_TUTUCU = {"k": "kayit", "r": "referans"}  # şablon yer tutucusu → silver tablo
+PARQUET_BYTE_TANIMI = "parquet kolon-chunk byte (parquet_metadata total_compressed_size; sorgunun dokunduğu kolonlar; statik)"
+NATIVE_BYTE_TANIMI = "bellek-içi tablo; byte sayacı yok"
+DUCK_TBR_NOTU = ("DuckDB profil sayacı TOTAL_BYTES_READ; 1.4.5 varsayılanlarında yerel parquet kolon-chunk okumalarını SAYMAZ "
+                 "(yalnız footer/küçük okumalar; sayfa önbelleği dahil, fiziksel disk değil) — kolon atlama kanıtı değildir, `byte` alanına bak")
 PLAN_INDEKS = re.compile(r"USING (COVERING )?INDEX (\S+)")
 
 
@@ -115,15 +135,16 @@ def sqlite_olc(db, sorgu_sql, tekrar, tablolar):
 
 def duckdb_olc(duckdb, kaynak_sql_uret, sorgu_sql_sablon, tekrar):
     """kaynak_sql_uret(con) → {k},{r} için FROM ifadeleri döner (parquet ya da native). Tutamaç = (bağlantı, sql) çifti.
-    Profil JSON'u geçici dizine yazılır (repo'ya dokunulmaz), koşum sonunda silinir."""
+    Profil JSON'u geçici dizine yazılır (repo'ya dokunulmaz), koşum sonunda silinir. Döner: süreler + satır + duck_total_bytes_read (+ notu)
+    + cpu_sn; `byte`/`byte_tanimi` çağıranda motor türüne göre eklenir (parquet → parquet_kolon_byte, native → None)."""
     def yeni():
         con = duckdb.connect()
         k, r = kaynak_sql_uret(con)
         return (con, sorgu_sql_sablon.format(k=k, r=r))
     ilik, sicak, rows = zamanla(yeni, lambda h: h[0].execute(h[1]).fetchall(), lambda h: h[0].close(), tekrar)
-    # profil (istenen byte + CPU): ayrı bağlantı, tek koşum
+    # profil (TOTAL_BYTES_READ + CPU): ayrı bağlantı, tek koşum; TOTAL_BYTES_READ `byte` değildir (bkz. modül docstring / DUCK_TBR_NOTU)
     con, sql = yeni()
-    byte = cpu = None
+    tbr = cpu = None
     try:
         with tempfile.TemporaryDirectory(prefix="kolon-olcum-") as tmpdir:
             prof = os.path.join(tmpdir, "prof.json")
@@ -132,13 +153,39 @@ def duckdb_olc(duckdb, kaynak_sql_uret, sorgu_sql_sablon, tekrar):
             con.execute(sql).fetchall(); con.execute("PRAGMA disable_profiling")
             with open(prof, encoding="utf-8") as fh:
                 j = json.load(fh)
-            byte = j.get("total_bytes_read"); cpu = j.get("cpu_time")
-    except Exception:  # profil desteklenmiyorsa ölçüm yine kaydedilir (byte/cpu None)
-        byte = None; cpu = None
+            tbr = j.get("total_bytes_read"); cpu = j.get("cpu_time")
+    except Exception:  # profil desteklenmiyorsa ölçüm yine kaydedilir (sayaç/cpu None)
+        tbr = None; cpu = None
     finally:
         con.close()
-    return {"ilik_ms": round(ilik, 3), "sicak_ms": round(sicak, 3), "satir": len(rows), "byte": byte, "cpu_sn": cpu,
-            "byte_tanimi": "DuckDB TOTAL_BYTES_READ (istenen byte; sayfa önbelleği dahil, fiziksel disk değil)"}
+    return {"ilik_ms": round(ilik, 3), "sicak_ms": round(sicak, 3), "satir": len(rows),
+            "duck_total_bytes_read": tbr, "duck_total_bytes_read_notu": DUCK_TBR_NOTU, "cpu_sn": cpu}
+
+
+def parquet_kolon_byte(duckdb, yollar, kolonlar):
+    """Sorgunun dokunduğu kolonların parquet kolon-chunk byte toplamı (kolon tarafı `byte`): kaynak başına ({k}/{r} → dosya)
+    parquet_metadata(dosya).total_compressed_size, path_in_schema ∈ kolon listesi, TÜM row group'lar toplanır. Statik ve deterministik
+    (dosya değişmedikçe aynı) — DuckDB'nin fiilen okuduğu değil, kolon atlamanın DİSKTEKİ karşılığı; SQLite dbstat tahminiyle aynı sınıf.
+    yollar: {"k": kayit.parquet, "r": referans.parquet}; kolonlar: {"k": [...], "r": [...]} (SORGULAR üçlüsünün 3. öğesi).
+    Listede olup dosyada bulunmayan kolon → ValueError (FAIL-LOUD; sessiz 0 sayılıp toplam düşmez)."""
+    toplam = 0
+    con = duckdb.connect()
+    try:
+        for yt, kols in kolonlar.items():
+            if not kols:
+                continue
+            yol = yollar[yt]
+            # dosyadaki her kolonun chunk toplamı (row group'lar üstünden); süzme Python'da (uzun IN (?,…) listesi DuckDB parametre
+            # tip çıkarımını şaşırtıyor)
+            dosyadaki = dict(con.execute(
+                "SELECT path_in_schema, sum(total_compressed_size) FROM parquet_metadata(?) GROUP BY 1", [yol]).fetchall())
+            eksik = [k for k in kols if k not in dosyadaki]
+            if eksik:
+                raise ValueError("parquet_kolon_byte: %s dosyasında olmayan kolon: %s" % (os.path.basename(yol), ", ".join(map(str, eksik))))
+            toplam += int(sum(dosyadaki[k] for k in set(kols)))
+    finally:
+        con.close()
+    return toplam
 
 
 def parquet_damga(duckdb, yollar, head):
@@ -205,13 +252,14 @@ def main():
 
     satirlar = []
     for q in secili:
-        ad, sablon = SORGULAR[q]
+        ad, sablon, kolonlar = SORGULAR[q]
         # 1) satır motoru
         r = sqlite_olc(db, sablon.format(k="kayit", r="referans"), a.tekrar, sablon_tablolari(sablon))
         satirlar.append(dict(ortak, sorgu=q, sorgu_adi=ad, motor="sqlite", durum="OK", **r))
         # 2) kolon motoru — parquet
         if pq_var:
             r = duckdb_olc(duckdb, lambda con: ("read_parquet('%s')" % sql_metin(kp), "read_parquet('%s')" % sql_metin(rp)), sablon, a.tekrar)
+            r["byte"] = parquet_kolon_byte(duckdb, {"k": kp, "r": rp}, kolonlar); r["byte_tanimi"] = PARQUET_BYTE_TANIMI
             satirlar.append(dict(ortak, sorgu=q, sorgu_adi=ad, motor="duckdb-parquet", durum="OK", **r, **damga))
             # 3) kolon motoru — native (bellek-içi tablo; depolama biçimi arşiv değil, önbellek — B-YT5)
             def native(con, kp=kp, rp=rp):
@@ -219,6 +267,7 @@ def main():
                 con.execute("CREATE TABLE referans AS SELECT * FROM read_parquet('%s')" % sql_metin(rp))
                 return "kayit", "referans"
             r = duckdb_olc(duckdb, native, sablon, a.tekrar)
+            r["byte"] = None; r["byte_tanimi"] = NATIVE_BYTE_TANIMI
             r["not"] = "ılık süresi tablo yüklemesini (CREATE TABLE AS) içerir; sıcak = yüklü tabloda min tekrar"
             satirlar.append(dict(ortak, sorgu=q, sorgu_adi=ad, motor="duckdb-native", durum="OK", **r, **damga))
         else:
@@ -232,7 +281,8 @@ def main():
     if not a.sessiz:
         print("%-4s %-16s %-8s %10s %10s %12s %s" % ("sorgu", "motor", "durum", "ılık ms", "sıcak ms", "byte", "satır"))
         for s in satirlar:
-            print("%-4s %-16s %-8s %10s %10s %12s %s" % (s["sorgu"], s["motor"], s["durum"], s.get("ilik_ms", "-"), s.get("sicak_ms", "-"), s.get("byte", "-"), s.get("satir", "-")))
+            print("%-4s %-16s %-8s %10s %10s %12s %s" % (s["sorgu"], s["motor"], s["durum"], s.get("ilik_ms", "-"), s.get("sicak_ms", "-"),
+                                                          "-" if s.get("byte") is None else s["byte"], s.get("satir", "-")))
         print("kolon-olcum: %d satır → %s (%s) · HEAD %s · sqlite %s · duckdb %s%s" % (
             len(satirlar), os.path.relpath(cikti, repo), "KURU" if a.kuru else "eklendi", head, ortak["sqlite"], ortak["duckdb"],
             (" · parquet HEAD %s%s" % (damga["parquet_git_head"], " (BAYAT)" if damga["parquet_bayat"] else "")) if damga else ""))
