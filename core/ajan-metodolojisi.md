@@ -24,7 +24,7 @@ Dört basamak: **(B1) serbest Türkçe → (B2) kontrollü-NL/lojik** (m.38 bağ
 
 - **Varsayılan basamak AŞAĞIDIR; yukarı çıkmak kanıt ister** (Anthropic: "karmaşık sisteme yalnızca basit çözüm başarısız olunca geç").
 - **Basamak-geçiş kapısı üç soru:** (i) adım sayısı önceden tahmin edilebilir mi? (ii) sabit yol kodlanabilir mi? (iii) model-kararına gerçekten ihtiyaç var mı? → evet/evet/hayır ⇒ bir basamak YUKARI (koda dondur). Kriter SAYI değil DOĞA ("code is deterministic"). Kazanç kanıtları: Voyager 15,3× · CodeAct +%20 · PAL +15pp · MCP kod-yürütme %98,7 token.
-- **m.43 şerhi (dürüstlük):** "N=3 tekrar → skill" eşiği ampirik literatürde YOK; kaynağı Rule of Three (Fowler 1999) — ödünç konvansiyon. Deneysel damgası doğru; gerekçesine bu atıf düşülmeli (Salih masası).
+- **m.43 şerhi (dürüstlük):** "N=3 tekrar → skill" eşiği ampirik literatürde YOK; kaynağı Rule of Three (Fowler 1999) — ödünç konvansiyon. Deneysel damgası doğru; gerekçesine bu atıf düşülmeli (Salih masası). **(İMZALANDI 08-20 KB-18 — atıf m.43'e düşüldü; eşik Salih revizyonuyla N=5.)**
 - **Damıtma ucuz-önce:** tekrar-tespiti önce deterministik yapılır (dedup + filtre, LLM'siz) — AWM: kural-tabanlı ≈ LM-tabanlı (SR 35,6 vs 35,5). Ve kazanç FORMATTAN değil YAPIDAN gelir (kod-stili ↔ metin-stili farkı küçük; format-tax ile aynı yön) — her şeyi B4'e çevirmek gerekmez, B2/B3 meşru duraklardır.
 
 ## 4. Lider ≠ İşçi (delegasyon prensipleri — A5 temeli)
@@ -37,9 +37,9 @@ Dört basamak: **(B1) serbest Türkçe → (B2) kontrollü-NL/lojik** (m.38 bağ
 - **Delegasyon varsayılan KAPALI** (CrewAI `allow_delegation=False` ile aynı yön — m.42(d) katı-başlangıç kanonu sektörle hizalı; işçi işçi doğuramaz, lider açıkça yetki verir).
 - **Efor ölçekleme (bilinen, teyitli):** basit iş 1 ajan/3-10 çağrı · kıyas 2-4 ajan · karmaşık 10+ — görev-emrine ajan-sayısı bu cetvelle yazılır.
 
-## 5. Salih masasına şerh-adayları (Katman-1 — karar bekler)
+## 5. Salih masası şerh-adayları — HÜKÜMLER (paket imza 08-20 seans-11, masa KB-18)
 
-1. **m.44 çapası:** "RouteLLM %14 çağrıyla %95 kalite" rakamı birincil kaynaktan DOĞRULANAMADI [X] — damga [D]→[K/X] gözden geçirilmeli ya da tam-metin doğrulama turu koşulmalı.
-2. **m.43 gerekçesi:** N=3'e Rule-of-Three atfı + "LLM alanında doğrulanmadı" notu.
-3. **m.46(a):** SHA alanı şablon SONUNA (cache-kırıcı).
-4. **m.40b borcu:** bu metodolojinin 12 yapı-taşına antitez şeridi koşulmadı; kanon-maddeleşme öncesi hedefli ¬ turu gerekir.
+1. **m.44 çapası — İMZALANDI:** RouteLLM rakamı [X] kaldı; tüzük m.44 satırına şerh düşüldü (çapa değil anekdot; katman kuralı ayakta).
+2. **m.43 gerekçesi — İMZALANDI + REVİZYON:** eşik N=3→**5** (Salih: "skill oluşumu zorlaşsın"); Rule-of-Three atfı + "LLM alanında doğrulanmadı" notu m.43'e düşüldü; pencereli sayaç (W=90 gün) baki; skill-işlev fıkrası (deterministik icra aracı) m.43'e eklendi.
+3. **m.46(a) — İMZALANDI + İCRA:** SHA alanı `core/sablonlar/gorev-emri.md` SONUNA taşındı (görev-fonksiyonu şablonu zaten uyumluydu).
+4. **m.40b borcu — İCRA BORCU:** 12 yapı-taşına hedefli antitez turu kabul; koşum ayrı ekonomi-onayına tabi (tetik Salih).
