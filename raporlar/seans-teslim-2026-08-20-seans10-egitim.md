@@ -1,0 +1,7 @@
+# Seans Teslim Raporu — 2026-08-20, Seans-10 (Carvis/Sonnet 5, masaüstü Claude Code = ana-sıra)
+
+- **Bugün gerçekten ne değişti:** Jarvis kanonunda YOK. Seans tamamen JARVIS-DIŞI eğitim/soru-cevap oturumuydu (SQL/veri mühendisliği kavramları): upsert (INSERT vs upsert, mekanizma, `ON CONFLICT`/`ON DUPLICATE KEY`), upsert vs MERGE farkı, ACID (dört harf + neden-ihtiyaç senaryoları), isolation seviyeleri (dirty/non-repeatable/phantom read), Consistency örnekleri (CHECK/FK/trigger), CTE (recursive dahil), SQL mantıksal işlem sırası + aggregate akümülatör mekanizması, CI/CD, sigmoid (softmax farkı + data engineering kullanım örnekleri). Hiçbir core/ dosyası, wiki, kural, kod değişmedi; hiçbir Katman-1/Katman-2 kararı alınmadı. Rutin hijyen: `tools/hareket-tablo.py` (56 yeni çağrı, silver 1753 satır, gold PASS) + `tools/katman-olcum.py` (10/10 sözleşme PASS, silver freshness WARN — 08-19 son ingest'ten 1 commit geride, beklenen/bilinen drift, bu seansta içerik üretilmediği için ingest'e konu yok).
+- **Hangi karar verildi (kaynak + gerekçe + geri-açma):** Yok.
+- **Hangi fikir aday kaldı (karar DEĞİL):** Yok — içerik jarvis projesiyle ilgili değildi, fikir-kutusu/senaryo-defteri/wiki adayı üretmedi.
+- **Sonraki ilk iş:** Değişmedi — seans-9 kapanışındaki sıradaki ilk iş geçerli: Salih'in PR #2 + PR #3 merge kararı + karar masası (KB-53..58 dahil). Bkz. `core/durum-kapsulu.md`.
+- **Neyi yeniden açmak için hangi koşul gerekir:** N/A.
