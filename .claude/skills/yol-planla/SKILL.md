@@ -1,6 +1,6 @@
 ---
 name: yol-planla
-description: Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa döküp topoloji seçimi + maliyet-tavanı + onarım kuralını YOL-PLANI bloğu olarak üretir (S-Ü); planı üretir, KOŞMAZ. Tetik; "yolu planla", "yol planı çıkar", "iskele seç", pipeline/görev-emri derlemesi öncesi proje-ölçekli işte plan bloğu gerektiğinde. KULLANILMAZ; m.25 küçük direkt işlerde, koşumun kendisinde (pipeline-kosum), karar üretiminde (karar-modeli/karar-hatti), gerçek harita/navigasyon sorularında.
+description: Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa döküp topoloji + maliyet-tavanı + onarım kuralını YOL-PLANI bloğu olarak üretir (S-Ü); planı üretir, KOŞMAZ. Tetik; "yolu planla", "yol planı çıkar", "iskele seç", pipeline/görev-emri öncesi proje-ölçekli işte plan bloğu gerektiğinde. KULLANILMAZ; m.25 küçük direkt işlerde, koşumda (pipeline-kosum), karar üretiminde (karar-modeli/karar-hatti), gerçek harita/navigasyon sorularında.
 ---
 
 # yol-planla — senaryo-graf yol-planı üretimi (v0.1-deneysel-m29, 2026-08-16)
