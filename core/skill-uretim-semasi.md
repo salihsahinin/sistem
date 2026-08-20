@@ -61,7 +61,7 @@ Sayım: 4 kapı katmanı · kapı düğümü 1+2+3+4=10 · yaprak 4 · terminal 
 - İki şekil "birincil" iddiasında eşit ağırlıkta → UNIQUE ihlali → **BÖL**.
 
 **Ortak biçim koşulları (AND; deterministik script F1-F4, F5 hakem):**
-- `F1 description := NE + NE-ZAMAN + NEGATİF-TETİK ("KULLANILMAZ/KULLANMA") ∧ 3.şahıs ∧ len ≤ 1024 char` (kanon 07-17; platform kesme 1536 char/skill, CC docs 08-2026) **∧ Σ_H len(desc) ≤ 0,9 × liste-bütçesi** (%1 bağlam ≈ 2.000 token @200k ≈ 6-8k char [? Türkçe token oranı] — aşımda platform en az çağrılanın description'ını SESSİZCE düşürür = kaçırılan-tetik mekanizması; yeni skill sığmıyorsa hazine kısaltılır ya da `/context` ile bütçe ölçülüp ayar yükseltilir). [D-YT2]
+- `F1 description := NE + NE-ZAMAN + NEGATİF-TETİK ("KULLANILMAZ/KULLANMA") ∧ 3.şahıs ∧ len ≤ 1024 char` (kanon 07-17; platform kesme 1536 char/skill, CC docs 08-2026) **∧ Σ_H len(desc) ≤ 0,9 × liste-bütçesi = 7.380 char** (%1 bağlam @200k = 2.000 token × **4,1 char/token — çevrim ÖLÇÜLDÜ**: Salih /context 08-20, 15 yüklü skill 7.837 char ≈ 1,9k token; KB-19 Karar 33; eski 6-8k belirsizlik bandı kapandı. Aşımda platform en az çağrılanın description'ını SESSİZCE düşürür = kaçırılan-tetik mekanizması; yeni skill sığmıyorsa hazine kısaltılır ya da çapa değişikliği Salih'e). [D-YT2]
 - `F2 gövde < 500 satır ∧ referans ≤1 seviye derin`
 - `F3 evals/evals.json: tests ≥ 3 ∧ should_trigger ≥ 5 ∧ should_not_trigger ≥ 5` (eval-önce; tam description-eval 20×3 = K-016 borcu, kapı değil)
 - `F4 numaralı adımlar ∧ "Gotchas" bölümü var` (en yüksek-sinyal bölüm)
@@ -94,7 +94,7 @@ En ucuz kapı en zayıf kapı değildir burada — çünkü R/K3 deterministik; 
 
 ## 4. m.16 çelişki taraması + şerh-adayları (Katman-1)
 - **m.43 (eşik):** çelişki YOK — eşik sabit sayı değil beyan edilmiş τ'nun fonksiyonu; **Salih 08-20 (KB-18) eşiği doğrudan 5'e beyan etti** (uniform önselde τ≈0,857; 08-15 τ=0,8⇒k=3 beyanı süpersede), sayaç PENCERELİ (W=90 gün) + varyant/özdeş ayrımı baki. **Şerh İMZALANDI (08-20):** m.43 metnine eşik-revizyonu + gerekçe fıkrası (Rule-of-Three atfı tarihsel not) düşüldü.
-- **07-17 standardı ≤1024 char ↔ platform 1536:** çelişki yok (1024 daha sıkı); ama **hazine-toplamı bütçesi YENİ koşul** (F1 ikinci yarısı) — bugün 13 description = 7.172 char ≈ bütçenin %90-120'si [?] → **Salih'e:** `/context` ile ölçüm ∨ ritüel description'larını kısaltma (849/872 char) ∨ ayar yükseltme.
+- **07-17 standardı ≤1024 char ↔ platform 1536:** çelişki yok (1024 daha sıkı); ama **hazine-toplamı bütçesi YENİ koşul** (F1 ikinci yarısı) — **ÖLÇÜM YAPILDI (08-20, KB-19):** eşik 7.380 char (çevrim 4,1 ölçülü); o günkü hazine 16 skill = 8.220 char → aşım 840 char, giderme yolu (kısaltma turu ∨ çapa değişikliği) Salih mikro-kararı.
 - **07-17 "~3-4 skill zinciri [A]":** platform sınırı DEĞİL (kullanıcı-yığması 1+5) → şerh düşürüldü; zincir sınırı = bağlam-bütçesi (compaction 5.000/skill, 25.000 toplam).
 - **Yan-etkili → `disable-model-invocation`:** yalnız T-Y BİRİNCİL şekilde zorunlu; ritüel/orkestratörün yan-etki adımı Salih-beyanı kapısıyla yeter (mevcut ritüel UX'iyle uyum). 07-17 §4 kuralı DARALTILDI (doküman "tavsiye" düzeyi).
 - **Antitez borcu:** bu şema tam m.40b şeridiyle koştu (08-14 metodoloji borcunun aksine) — kanonlaşma öncesi antitez borcu YOK; ölçüm borcu VAR (aşağıda).
