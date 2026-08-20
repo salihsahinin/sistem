@@ -34,3 +34,9 @@
 3. **S3 — Canlı kalanların adresi:** g22 (bellek/RAM) + g24 (CC-oran; rejim parçası KB-27'ye) + ⑧ (m.25/V47) + g23 açık parçaları + ②⑤ kalıntıları → daraltılmış EK-6 masa-hazırlık dosyasına mı, mevcut kalemlere mi dağıtılır (g24→KB-27, ⑤→ölçüm-bankı kartı)?
 
 *Üretim izi: işçi dönüşü bu dosyaya Carvis derlemesiyle indi; ham dönüş oturum kaydında. KB-23/24 jsonl güncel.*
+
+## 4. HÜKÜMLER (Salih, 2026-08-20 seans-11 — defter Karar 41)
+
+- **S1 → A:** K2-d + kümeler ③④⑥⑦ KAPANDI (arşiv damgası, halef kanıtları §1-2 tablolarında; silme yok). **Ek şart (Salih):** düşük-öncelikli borç — ilerde "yanlışlıkla kapanmış kalem var mı" kontrolü yapılacak (külliyat %9 hata şerhi gerekçesiyle).
+- **S2 → DONDUR-tetikli:** ⑨ "diğer" (~95 tekil kalem) tarih-damgalı DONDUR; **tetik (Salih, aynen): "Kalemleri açacağız ama mevcut önemli karar borçları bitince."** Yan emir: karar-borçlarının optimize sıralanması ihtiyacı → fikir-kutusu adayı.
+- **S3 → A (optimize dağıt):** g24-rejim parçası → KB-27 m.46(d) imzasıyla kapandı · ⑤ ölçüm-bankı kalıntısı → ölçüm-bankı hattı (birleştirme sorusu daraltılmış masada) · kalan canlılar → `kuyruk/masa-gundemi-EK6-2026-08-20.md` (~106 kalemden ~9 kaleme indi).
