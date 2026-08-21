@@ -28,15 +28,19 @@
 | Rol | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
 | S-0 | scout (deterministik script, P0) | pointer-sistemi graf modeli silver'dan | silver şema + referans/anahtar tabloları | `tools/pointer-graf.py` · `veri/graf/pointer-sistemi-model.json` | DONE |
-| S-1 | scout (m.40b çift-atlas, P1: 3 aile × 12 işçi) | A graf dosya tipi+araç (D2 önde) · B pointer/PK sisteminin graf şeması · C LLM↔graf iletişimi | `cc/gorev-2026-08-22-2.md` | `cc/rapor-2026-08-22-2.md` | AÇIK |
-| G-1 | sentez (Carvis, P2 giriş) | dosya-tipi kanıt tablosu · şema (düğüm/kenar tipleri) · D2 idiomları · iletişim protokolü v0 | S-1 raporu | rapor §Sentez | BEKLİYOR |
-| SH-1 | ship (P2) | `.d2` üretimi (script) + render + teslim (tam yol, Finder, tarayıcı) | S-0 + G-1 | `graf/pointer-sistemi-v0.{d2,svg,png}` | BEKLİYOR |
-| SH-2 | ship (P4) | uzun-vade plan + protokol v0 + KB kalemi (ÖNERİ) | G-1 (aile C) | `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` | BEKLİYOR |
-| SH-3 | kayıt | commit'ler · workflow kopyası · SCRIPTLER.md satırı · kapsül pointer | SH-1/2 | git log | BEKLİYOR |
-| T | teslim | kaptan beyanı | tümü DONE | tek cümle | BEKLİYOR |
+| S-1 | scout (m.40b çift-atlas, P1: 3 aile × 12 işçi) | A graf dosya tipi+araç (D2 önde) · B pointer/PK sisteminin graf şeması · C LLM↔graf iletişimi | `cc/gorev-2026-08-22-2.md` | `cc/rapor-2026-08-22-2.md` | DONE |
+| G-1 | sentez (Carvis, P2 giriş) | dosya-tipi kanıt tablosu · şema (düğüm/kenar tipleri) · D2 idiomları · iletişim protokolü v0 | S-1 raporu | rapor §Sentez S1-S6 | DONE |
+| SH-1 | ship (P2) | `.d2` üretimi (script) + render + teslim (tam yol, Finder, tarayıcı) | S-0 + G-1 | `graf/pointer-sistemi-v0-{genel,silver,pointer,ilke,kronoloji}.{d2,svg}` + `-kenarlar.txt` + `-uretim.json` (PNG girmez — A-YT5) | DONE |
+| SH-2 | ship (P4) | uzun-vade plan + protokol v0 + KB kalemi (ÖNERİ) | G-1 (aile C) | `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` + KB-60 | DONE |
+| SH-3 | kayıt | commit'ler · workflow kopyası · SCRIPTLER.md satırı · kapsül pointer | SH-1/2 | git log (kapanış commit'i) | DONE |
+| T | teslim | kaptan beyanı | tümü DONE | tek cümle (aşağıda) | DONE |
 
 *Paralellik-uygunluk: S-0 ve S-1 bağımsız (biri silver okur, diğeri dış kanıt) → paralel; P2 ortak üretim → tek şerit (Carvis).*
 
 ## Olay günlüğü
 - 02:3x emir devralındı (vektör-DB pipeline T beyanından sonra); kapı + çelişki kapısı + YOL-PLANI yukarıda; envanter sondajı: silver PK'lar (kayit_id · dosya_id · anahtar_id · borc_id · hareket_id · prompt_id), referans 11 tür (dosya_pointer hedef_var 6.964/1.107 kırık), anahtar 328 (6 tür), dosya 571 (4 katman), karar_borcu_kaynak 246/246 çözümlü, wiki 17 sayfa; d2 v0.8.1 (dagre+ELK).
 - 02:4x P0 DONE: `tools/pointer-graf.py` (stdlib, FAIL-LOUD) → model 58 düğüm / 56 kenar; iki koşum birebir (determinizm ✓); D2: tek-pano TAM (7089×4419 — okunmuyor, arşiv) + ÇOK-PANOLU kademeleme (genel 1953×2073 · silver 1459×1662 · pointer 2052×1474 · ilke 1682×764 · kronoloji 923×1405); ELK render: aynı .d2 → bayt-birebir SVG (ELK ve dagre ikisi de) — Karar 65 için yerel ölçüm. d2 PNG çıkışı asılı kaldı (headless tarayıcı; 2 dk zaman aşımı) → SVG + QuickLook önizleme yolu. Gözle kontrol: genel + pointer panoları okunur (tek-pano tam graf reddedildi — anlaşılırlık ölçütü). P2 teslimi P1 raporu + idiom teyidi sonrası.
+- 03:1x P1 TAMAM: wf_0d9a3e7a-a69 12/12, hata 0; ~203k çıktı-token · 216 araç · 21,8 dk; hayatta-kalma 9/21/0/0; V26 42/4/2 (A/B temiz → D; C iki tarafta TUTMUYOR → K). `atlas-derle.py` → `cc/rapor-2026-08-22-2.md` (141 KB + sentez S1-S6); script kopyası `cc/workflow/2026-08-22-pointer-graf-d2-m40b-wf_0d9a3e7a.js`.
+- 03:1x P2 KESİNLEŞTİ (idiom teyidi): script'e üretim kaydı + N-koşum sha (A-YT2/C-YT2), kenar listesi LLM görünümü (C-YT4), prov:wasRevisionOf etiketi (B-YT4), d2 sürüm başlığı (A-YT1) eklendi; 5 pano × 5 render BİREBİR (`graf/pointer-sistemi-v0-uretim.json`). **İLK D2 TESLİM EDİLDİ** (SendUserFile: genel.svg + pointer.svg + genel.d2; Finder `open -R`; tam yol /Users/HasanSalihSahin/jarvis/graf/). P3 kapısı: Salih beyanı bekleniyor (düzeltme → onarım tavan 2 tur).
+- 03:2x P4 DONE: `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` (protokol v0 P1-P6 · kademeler G0-G5 · determinizm şartnamesi · riskler) + KB-60 (masada, öneri a). Defter m.40b gözlemi.
+- **T BEYANI:** ilk pointer-grafı (D2, 5 pano + kenar listesi + üretim kaydı) teslim edildi; uzun-vade graf-dili planı masada (KB-60); P3 Salih kapısı açık.

@@ -1,5 +1,6 @@
 # Jarvis POINTER SİSTEMİ — GENEL BAKIŞ (pano 0/4) — ayrıntı panoları: silver · pointer · ilke · kronoloji (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 647d93c · HEAD ceaf50d · render: d2 --layout=elk (deterministik, Karar 65)
+# üretici: tools/pointer-graf.py · silver 647d93c · HEAD 2836821 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: down
 classes: {
   kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
@@ -33,7 +34,7 @@ hat.silver -> pointer: "referans.kayit_id → kayit (FK)" { class: fk }
 pointer -> anahtar: "m.N · V-n · K-NNN · [[wiki]] · skill · terim → çözümleme" { class: fk }
 pointer -> dosya: "dosya_pointer → yol (6.964 çözümlü / 1.107 KIRIK)" { class: kirik }
 pointer -> dis: "url · sha · tarih · etiket"
-anahtar -> anahtar: "replaced_by (süpersede)" { class: supersede }
+anahtar -> anahtar: "replaced_by = prov:wasRevisionOf (süpersede)" { class: supersede }
 hat.silver -> dosya: "kayit.dosya_id → dosya (FK)" { class: fk }
 hat.silver -> ambar: "koşum/tahmin olguları" { class: fk }
 ilke -> hat.silver: "uygular: kayit_id = ADRES · pointer→hedef · arşiv · SCD-2" { class: uygular }

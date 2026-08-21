@@ -11,7 +11,7 @@ Düğüm türleri: tablo (silver; PK sütunları + satır sayısı) · referans_
           hat_katmani (bronz/silver/gold) · ilke (m.20/21/22/8 — kanon SABİTİ, pointer'lı) · kronoloji (kuruluş adımları — kanon SABİTİ).
 Kenar türleri: fk (PK→FK) · pointer_hedef (referans türü → hedef sınıfı; çözümlü/kırık sayısı) · supersede (anahtar.replaced_by) ·
           turetir (bronz→silver→gold; uretim provenansı) · ilke_uygular (ilke → mekanizma) · kronoloji_sonra (adım → adım).
-Çıkış kodu: 0 tamam · 2 DB yok/okunamadı · 3 boş tablo (FAIL-LOUD).
+Çıkış kodu: 0 tamam · 2 DB yok/okunamadı · 3 boş tablo · 4 render determinizmi BOZUK (FAIL-LOUD).
 Kullanım: python3 tools/pointer-graf.py [--db veri/baglam.sqlite] [--json veri/graf/pointer-sistemi-model.json] [--d2 graf/pointer-sistemi-v0.d2]
 """
 import argparse, json, os, sqlite3, subprocess, sys, datetime
@@ -86,6 +86,8 @@ def main():
     ap.add_argument("--json", default="veri/graf/pointer-sistemi-model.json")
     ap.add_argument("--d2", default=None, help="TAM şema-düzeyi tek-pano D2 (ör. graf/pointer-sistemi-v0-tam.d2) — büyük, arşiv amaçlı")
     ap.add_argument("--d2-dizin", default=None, help="ÇOK-PANOLU çıktı dizini: genel + silver + pointer + ilke + kronoloji (ör. graf/) — okunur kademeleme")
+    ap.add_argument("--render", type=int, default=0, metavar="N", help="panoları d2 --layout=elk ile SVG'ye çevir; N≥2 ise her panoyu N kez render edip sha256 eşitliğini ölç (Karar 65 kaydı) → graf/pointer-sistemi-v0-uretim.json")
+    ap.add_argument("--kenar-listesi", default=None, help="LLM-okunur düz kenar listesi (script-üretimli, deterministik; ör. graf/pointer-sistemi-v0-kenarlar.txt)")
     ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args()
     if not os.path.exists(a.db):
@@ -192,10 +194,19 @@ def main():
         yaz_d2(a.d2, nodes, edges, sayim, meta)
         if not a.sessiz:
             print(f"d2 (tam) → {a.d2}  (render: d2 --layout=elk {a.d2} {a.d2[:-3]}.svg)")
+    yollar = []
     if a.d2_dizin:
         yollar = yaz_panolar(a.d2_dizin, nodes, edges, sayim, meta)
         if not a.sessiz:
             print("d2 panolar → " + " · ".join(yollar) + "  (render: her biri için d2 --layout=elk X.d2 X.svg)")
+    if a.kenar_listesi:
+        yaz_kenar_listesi(a.kenar_listesi, nodes, edges, meta)
+        if not a.sessiz: print(f"kenar listesi → {a.kenar_listesi}")
+    if a.render and yollar:
+        kayit = render_et(yollar, a.render, meta)
+        if not a.sessiz:
+            print("render → " + " · ".join(f"{os.path.basename(k['svg'])}: {k['determinizm']} ({k['genislik']}×{k['yukseklik']})" for k in kayit["panolar"]) + f"  · kayıt {kayit['dosya']}")
+        if any(k["determinizm"] != "BİREBİR" for k in kayit["panolar"]): return 4
     return 0
 
 def d2id(s):  # D2 anahtarı: nokta/iki-nokta/boşluk yok
@@ -292,9 +303,16 @@ def yaz_d2(yol, nodes, edges, sayim, meta):
     with open(yol, "w", encoding="utf-8") as f:
         f.write("\n".join(L) + "\n")
 
+def d2_surum():
+    try:
+        return subprocess.check_output(["d2", "--version"], stderr=subprocess.STDOUT).decode().strip().split()[0]
+    except Exception:
+        return "bilinmiyor"
+
 def _bas(meta, baslik, yon="right"):
     return [f"# Jarvis POINTER SİSTEMİ — {baslik} (türetilmiş görünüm; ham kaynak silver/bronz)",
-            f"# üretici: tools/pointer-graf.py · silver {str(meta['silver_git_head'])[:7]} · HEAD {meta['git_head']} · render: d2 --layout=elk (deterministik, Karar 65)",
+            f"# üretici: tools/pointer-graf.py · silver {str(meta['silver_git_head'])[:7]} · HEAD {meta['git_head']} · d2 {d2_surum()} · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)",
+            "# içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları",
             f"direction: {yon}",
             "classes: {",
             "  kutu: { style: { fill: \"#F4F4F4\"; stroke: \"#444444\"; font-size: 16; border-radius: 6 } }",
@@ -343,7 +361,7 @@ def yaz_panolar(dizin, nodes, edges, sayim, meta):
       f"pointer -> anahtar: \"m.N · V-n · K-NNN · [[wiki]] · skill · terim → çözümleme\" {{ class: fk }}",
       f"pointer -> dosya: \"dosya_pointer → yol ({tr(N['ref:dosya_pointer']['cozumlu'])} çözümlü / {tr(N['ref:dosya_pointer']['kirik'])} KIRIK)\" {{ class: kirik }}",
       "pointer -> dis: \"url · sha · tarih · etiket\"",
-      "anahtar -> anahtar: \"replaced_by (süpersede)\" { class: supersede }",
+      "anahtar -> anahtar: \"replaced_by = prov:wasRevisionOf (süpersede)\" { class: supersede }",
       "hat.silver -> dosya: \"kayit.dosya_id → dosya (FK)\" { class: fk }",
       "hat.silver -> ambar: \"koşum/tahmin olguları\" { class: fk }",
       "ilke -> hat.silver: \"uygular: kayit_id = ADRES · pointer→hedef · arşiv · SCD-2\" { class: uygular }",
@@ -384,7 +402,7 @@ def yaz_panolar(dizin, nodes, edges, sayim, meta):
     for n in dis:
         L.append(f"  {d2id(n['label'])}: \"{n['label']}\" {{ class: dis }}")
     L.append("}")
-    L.append("anahtar -> anahtar: \"replaced_by (süpersede, SCD-2)\" { class: supersede }")
+    L.append("anahtar -> anahtar: \"replaced_by = prov:wasRevisionOf (süpersede, SCD-2)\" { class: supersede }")
     for e in edges:
         if e["type"] != "pointer_hedef": continue
         src = f"pointer.{d2id(e['from'].split(':',1)[1])}"
@@ -414,6 +432,45 @@ def yaz_panolar(dizin, nodes, edges, sayim, meta):
         onceki = kid
     yol = os.path.join(dizin, "pointer-sistemi-v0-kronoloji.d2"); open(yol, "w", encoding="utf-8").write("\n".join(L) + "\n"); yollar.append(yol)
     return yollar
+
+def yaz_kenar_listesi(yol, nodes, edges, meta):
+    """LLM-okunur İKİNCİ GÖRÜNÜM: adlandırılmış incident/kenar listesi (C-YT4: kodlama sabit kurallı, script-üretimli; D2 kaynağı LLM'e verilmez)."""
+    N = {n["id"]: n for n in nodes}
+    L = [f"# Jarvis pointer sistemi — kenar listesi (LLM-okunur görünüm; üretici tools/pointer-graf.py; silver {str(meta['silver_git_head'])[:7]}; düğüm {len(nodes)} · kenar {len(edges)})",
+         "# biçim: KAYNAK --tip[etiket]--> HEDEF ; sıralama sabit (from,type,to,label); sayılar silver'dan",
+         "", "## DÜĞÜMLER (kind · id · label · sayı)"]
+    for n in nodes:
+        sayi = n.get("satir", n.get("sayi", ""))
+        L.append(f"{n['kind']} · {n['id']} · {n['label']}" + (f" · {tr(sayi)}" if sayi != "" else ""))
+    L += ["", "## KENARLAR"]
+    for e in edges:
+        L.append(f"{e['from']} --{e['type']}" + (f"[{e['label']}]" if e['label'] else "") + f"--> {e['to']}")
+    os.makedirs(os.path.dirname(yol) or ".", exist_ok=True)
+    open(yol, "w", encoding="utf-8").write("\n".join(L) + "\n")
+
+def render_et(yollar, n_kosum, meta):
+    """Panoları d2 --layout=elk ile SVG'ye çevirir; her panoyu n_kosum kez render edip sha256 eşitliğini ölçer (C-YT2/B-YT7); üretim kaydı yazar (A-YT2)."""
+    import hashlib, re, shutil, tempfile
+    kayit = {"d2_surum": d2_surum(), "layout": "elk", "n_kosum": n_kosum, "silver_git_head": meta["silver_git_head"], "git_head": meta["git_head"],
+             "olcum_zamani": meta["uretim_zamani"], "not": "aynı .d2 × aynı d2 sürümü × aynı motor → SVG sha256 eşitliği; sürümler-arası eşitlik BEKLENMEZ (A-YT2)", "panolar": []}
+    for d2yol in yollar:
+        svg = d2yol[:-3] + ".svg"
+        shalar = []
+        for i in range(max(1, n_kosum)):
+            hedef = svg if i == 0 else os.path.join(tempfile.gettempdir(), f"pg_{os.path.basename(svg)}.{i}")
+            r = subprocess.run(["d2", "--layout=elk", d2yol, hedef], capture_output=True, text=True)
+            if r.returncode != 0:
+                print(f"HATA: d2 render başarısız: {d2yol}\n{r.stderr[-400:]}", file=sys.stderr); sys.exit(4)
+            shalar.append(hashlib.sha256(open(hedef, "rb").read()).hexdigest())
+            if i > 0: os.remove(hedef)
+        svgtxt = open(svg, encoding="utf-8").read()
+        w = re.search(r'width="(\d+)"', svgtxt); h = re.search(r'height="(\d+)"', svgtxt)
+        kayit["panolar"].append({"d2": d2yol, "svg": svg, "sha256": shalar[0], "determinizm": "BİREBİR" if len(set(shalar)) == 1 else f"FARKLI ({len(set(shalar))} ayrı sha)",
+                                 "genislik": int(w.group(1)) if w else None, "yukseklik": int(h.group(1)) if h else None})
+    kayit["dosya"] = os.path.join(os.path.dirname(yollar[0]) or ".", "pointer-sistemi-v0-uretim.json")
+    with open(kayit["dosya"], "w", encoding="utf-8") as f:
+        json.dump(kayit, f, ensure_ascii=False, indent=1)
+    return kayit
 
 if __name__ == "__main__":
     sys.exit(main())

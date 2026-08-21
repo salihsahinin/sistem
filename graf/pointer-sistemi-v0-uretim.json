@@ -1,0 +1,52 @@
+{
+ "d2_surum": "v0.8.1-HEAD",
+ "layout": "elk",
+ "n_kosum": 5,
+ "silver_git_head": "647d93cb5124b0459995dffee70aff2a340a274c",
+ "git_head": "2836821",
+ "olcum_zamani": "2026-08-22T02:55:24+03:00",
+ "not": "aynı .d2 × aynı d2 sürümü × aynı motor → SVG sha256 eşitliği; sürümler-arası eşitlik BEKLENMEZ (A-YT2)",
+ "panolar": [
+  {
+   "d2": "graf/pointer-sistemi-v0-genel.d2",
+   "svg": "graf/pointer-sistemi-v0-genel.svg",
+   "sha256": "7cf0970bacd9d521de8d11ce842249fb652d9824447eca43163734c454d29137",
+   "determinizm": "BİREBİR",
+   "genislik": 2095,
+   "yukseklik": 2073
+  },
+  {
+   "d2": "graf/pointer-sistemi-v0-silver.d2",
+   "svg": "graf/pointer-sistemi-v0-silver.svg",
+   "sha256": "ccc29497623169e7ad901f59729f4fa46b2c90fd820211d4ba44f863e8ac382c",
+   "determinizm": "BİREBİR",
+   "genislik": 1461,
+   "yukseklik": 1662
+  },
+  {
+   "d2": "graf/pointer-sistemi-v0-pointer.d2",
+   "svg": "graf/pointer-sistemi-v0-pointer.svg",
+   "sha256": "96a5bbe67bf289924eaf3a444da766b37b789b2e4186d78f5885527bf003ebad",
+   "determinizm": "BİREBİR",
+   "genislik": 2113,
+   "yukseklik": 1476
+  },
+  {
+   "d2": "graf/pointer-sistemi-v0-ilke.d2",
+   "svg": "graf/pointer-sistemi-v0-ilke.svg",
+   "sha256": "c0aa80aa9c17914301949efc07bbb3aca83d583e2ac7b60dcf55bd4f51f59526",
+   "determinizm": "BİREBİR",
+   "genislik": 1696,
+   "yukseklik": 764
+  },
+  {
+   "d2": "graf/pointer-sistemi-v0-kronoloji.d2",
+   "svg": "graf/pointer-sistemi-v0-kronoloji.svg",
+   "sha256": "79fc30dcafd1248fa3776637c0ef5f352f5495dd6f8ac3ee7566d3760ca4a903",
+   "determinizm": "BİREBİR",
+   "genislik": 923,
+   "yukseklik": 1405
+  }
+ ],
+ "dosya": "graf/pointer-sistemi-v0-uretim.json"
+}

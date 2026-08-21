@@ -1,5 +1,6 @@
 # Jarvis POINTER SİSTEMİ — POINTER TÜRLERİ → ÇÖZÜMLEME HEDEFLERİ (pano 2/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 647d93c · HEAD ceaf50d · render: d2 --layout=elk (deterministik, Karar 65)
+# üretici: tools/pointer-graf.py · silver 647d93c · HEAD 2836821 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
   kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
@@ -43,7 +44,7 @@ dis: "REPO DIŞI" {
   url: "url" { class: dis }
   zaman: "zaman" { class: dis }
 }
-anahtar -> anahtar: "replaced_by (süpersede, SCD-2)" { class: supersede }
+anahtar -> anahtar: "replaced_by = prov:wasRevisionOf (süpersede, SCD-2)" { class: supersede }
 pointer.anahtar_terim -> anahtar.anahtar_terim: "terim → anahtar kaydı" { class: fk }
 pointer.dosya_pointer -> dosya: "yol → dosya (hedef_var ile çözümlü/kırık)" { class: kirik }
 pointer.etiket -> dis.etiket: "#etiket (serbest sınıflandırma)" { class: fk }
