@@ -451,6 +451,8 @@ Aynı görünen iki farklı gerçek. **Zamana bağlı değerler olayın yanına 
 
 ## 12. OLAP'ta optimum normalizasyon: yöntem ve metrikler
 
+> **AÇIK BORÇ (Salih, 2026-08-21):** bu bölüm yüzeysel kaldı — anlaşılmadı. Diğer bölümlerdeki gibi *cevapladığı soru → tanım → ölçülmüş örnek* ritmiyle, terim terim yeniden yazılacak. Aşağıdaki içerik ve 12.5b ölçümleri o yazımın ham maddesidir.
+
 OLTP'de cevap hazırdı: 3NF. OLAP'ta hazır cevap yok, çünkü tekrarın tehlikesi ortadan kalkıyor (ambar türevdir, kaynak değil) ve geriye saf bir **maliyet optimizasyonu** kalıyor. O yüzden burada "kural" değil **ölçüm prosedürü** kullanılır.
 
 ### 12.1 Normalizasyondan önceki karar: tanecik (grain)
@@ -527,7 +529,44 @@ Aynı veri, iki şema: yıldız (fact + 2 boyut) ve OBT.
 
 > Yani soru "ne kadar normalize edeyim" değil, **"bu tablonun kaynağı kim ve düzeltme kime fatura ediliyor"**dur.
 
-**Bu ölçümün sınırları (dürüstlük şartı):** SQLite = satır-deposu, tek makine, eşzamanlılık yok, bölüm budama yok, sıkıştırma yok. Kolonsal motorda beklenen değişim: (a) depolama farkı **büyük ölçüde erir** — tekrarlı düşük-kardinaliteli metin sütunları sözlük/RLE ile sıkışır; (b) okuma farkı **büyüyebilir** — kolon budama sayesinde OBT'de yalnız gereken sütunlar okunur; (c) bölüm budama yeni bir eksen olarak devreye girer. **Bu üç etkinin hiçbiri burada ölçülmedi** — DuckDB/Parquet ortamında aynı betikle yeniden ölçülmeli.
+**Bu ölçümün sınırları (dürüstlük şartı):** SQLite = satır-deposu, tek makine, eşzamanlılık yok, bölüm budama yok, sıkıştırma yok. Kolonsal motorda beklenen değişim: (a) depolama farkı erir — tekrarlı düşük-kardinaliteli metin sütunları sözlük/RLE ile sıkışır; (b) okuma farkı **büyüyebilir** — kolon budama sayesinde OBT'de yalnız gereken sütunlar okunur; (c) bölüm budama yeni bir eksen olarak devreye girer. Bu üç öngörünün ikisi 12.5b'de ölçüldü ve **biri yanlış çıktı**.
+
+### 12.5b Aynı karar, kolonsal motorda *(betik: `10-olap-duckdb-olcum.py`, DuckDB 1.4.5 + Parquet/ZSTD)*
+
+Aynı veri, aynı iş yükü, aynı ağırlıklar — tek fark motor ve depolama biçimi:
+
+| Eksen | SQLite (satır-deposu) | DuckDB + Parquet (kolonsal) |
+|---|---|---|
+| Ağırlıklı okuma — yıldız | 374.2 ms | **3.5 ms** |
+| Ağırlıklı okuma — OBT | 157.9 ms | **2.0 ms** |
+| OBT'nin okuma avantajı | 2.37× | **1.77× (daraldı)** |
+| Depolama farkı | +%208 · +55.7 byte/satır | +%98 · **+7.1 byte/satır** |
+| Düzeltme maliyeti | 1 satır ↔ 228 satır (41×) | 0.01 MB ↔ 7.22 MB yeniden yazım (42×) |
+| Ağırlıklı taranan byte | ölçülemez | yıldız 1.57 MB ↔ OBT 1.02 MB (1.54×) |
+
+**Üç sonuç, üçü de karar değiştiriyor:**
+
+**(1) Motor seçimi, şema seçiminden bir büyüklük mertebesi daha etkili.** Aynı iş yükü 374 ms → 3.5 ms, yani ~%100'lük değil ~100 KAT'lık fark. Şema tartışmasının kazandırdığı 2.37×, motor değişiminin kazandırdığı ~107× yanında küçük kalıyor. **Önce doğru motor, sonra şema.**
+
+**(2) Denormalizasyonun okuma avantajı kolonsalda DARALIYOR** (2.37× → 1.77×). Sebebi: vektörize hash join'de küçük boyut tablosu neredeyse bedava, ve kolon budama zaten yıldız şemada da çalışıyor. Yani "OLAP = denormalize et" refleksi, kolonsal motorda satır-deposundakinden **daha zayıf** bir argüman.
+
+**(3) Asıl karar metriği tablo değil, KARDİNALİTE.** Gömülen her boyut sütununun fact satırı başına maliyeti ayrı ayrı ölçüldü:
+
+| Gömülen sütun | Farklı değer | Sıkıştırma | byte/satır |
+|---|---|---|---|
+| `musteri_ad` | 50.000 | 5.1× | **3.10** |
+| `fiyat` | ~2.000 (float) | 1.4× | 1.12 |
+| `urun_ad` | 2.000 | 1.6× | 1.07 |
+| `sehir` | 81 | 1.0× | 0.88 |
+| `marka` | 150 | 2.2× | 0.47 |
+| `segment` | 5 | 1.1× | 0.34 |
+| `kategori` | 12 | 1.6× | 0.31 |
+
+Düşük kardinaliteli sütunları gömmek **satır başına 0.3 byte** — pratikte bedava. Yüksek kardinaliteli `musteri_ad`'ı gömmek 3.1 byte, yani 10 katı; toplam farkın tek başına %43'ü o sütundan geliyor.
+
+> **Kolonsal ortamda karar birimi tablo değil sütundur:** "boyutu gömeyim mi" diye sorulmaz, "bu sütunu gömeyim mi" diye sorulur ve cevap sütunun kardinalitesinden okunur. Düşük kardinaliteli filtre/kırılım sütunlarını göm, yüksek kardinaliteli kimlik/ad sütunlarını boyutta bırak.
+
+**Bu ölçümün de sınırları:** bölümleme (`PARTITION_BY`) yok — bölüm budama ölçülmedi; dosyalar `tarih, urun_kod` sıralı yazıldı, dolayısıyla Q3'ün tarih filtresi satır-grubu min/max budamasından kısmen faydalanmış olabilir (ayrıştırılmadı); eşzamanlılık ve bulut maliyet (kredi) eksenleri yok; tek koşum, soğuk önbellek ölçülmedi.
 
 ### 12.6 Başlangıç hipotezleri (ölçümle doğrulanacak, kural değil)
 
@@ -619,5 +658,6 @@ Yeniden açma koşulu: <metrik> <eşik> aşarsa
 | `07-4nf.py` | m×n şişmesi ve m+n çözümü |
 | `08-maliyet-olcum.py` | 3NF ↔ denormalize okuma/yazma maliyeti |
 | `09-olap-sema-karar.py` | **Yıldız ↔ OBT karar ölçümü** (ağırlıklı iş yükü + depolama + tazeleme) — kendi verinde yeniden kullanılabilir |
+| `10-olap-duckdb-olcum.py` | **Aynı karar kolonsal motorda** (DuckDB+Parquet): sıkıştırılmış depolama · taranan byte (kolon budama) · sütun başına kardinalite maliyeti · dosya yeniden yazma. `<venv>/bin/python` ister |
 
 Koşum: `python3 ogrenme/dersler/2026-08-21-normalizasyon-kod/09-olap-sema-karar.py`
