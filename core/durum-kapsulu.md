@@ -17,7 +17,7 @@
 ## Açık borçlar
 - **Salih el işleri:** claude.ai bulut skill kopyalarını sil (`gunaydin-vardiya`, `vardiya-kapanis` — emekli adlar; KB-10 H6) · Cowork sekmesinde `python3 tools/yuzey-parmak-izi.py` çıktısı (KB-34 GK-2 kapısı) · KB-19 için terminalde `/context` sayısı.
 - **Boyut-tetiği → DAMITMA KOŞTU 08-21 (Salih onayı):** defter 89,6→28,4 ✓ · pano 21,5→12,8 (0,8 aşım kart gövdeleri — kart damıtması ayrı Salih kararı) · kutu 30,9→24,8 (kalan aşım KB-36 süpürmesine bağlı) · kapsül ≤8 ✓; arşivler `kuyruk/arsiv/{senaryo-defteri,pano,fikir-kutusu}-arsivi-2026-08-21.md` · rapor `raporlar/2026-08-21-damitma-turu.md`.
-- **İngest bekleyen:** `raporlar/2026-08-05-KILAVUZ-{birebir-kopya-senaryolar,l8-workflow}.md` (HAM). (Paralel şeridin `cc/rapor-2026-08-17-1/2/4` sentezleri İNGEST EDİLDİ — KB-39..45, 50..52.)
+- ~~İngest bekleyen~~ **İB-02 KAPANDI 08-21 seans-12:** 2 KILAVUZ HAM raporu triyajlandı + damgalandı — kurulum katmanı SÜPERSEDE (Mac geçişi 08-12), kullanım katmanı CANLI = **entegrasyon-masası hazırlık dosyasının ana malzemesi** (KB-22/KB-29 borcu; masa partileri bitti → derleme TETİKLENDİ, sıradaki iş adayı). KILAVUZ.md'ye pointer eklenmedi (kural-kaynağı; karar entegrasyon masasına).
 - Erteleme kapsamı: Orca hook temizliği · find-skills · SKILL.md mükerrer şerh · lease iadeleri · kural-entegrasyonu · md.49 yazım turu · K2-n geriye-dönük denetim · wiki kuyruğu (gnhf/treehouse/lavish/no-mistakes/spec-kit/ajan-metodolojisi).
 
 ## Sonraki ilk iş
