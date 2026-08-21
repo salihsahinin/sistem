@@ -37,6 +37,9 @@ Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB ·
 ## 6b. Hareket kütüğü + workflow kopyası (okunabilirlik ilkesi, Salih Katman-1 08-17; CLAUDE.md §2)
 `python3 tools/hareket-tablo.py` koş (bugünün `raporlar/hareket-gunlugu-YYYY-MM-DD.md` + bronz/silver/gold tazelenir; test PASS beklenir). Bu seansta Workflow koştuysa script kopyası `cc/workflow/YYYY-MM-DD-<ad>-<wf_id>.js` + README satırı (kaynak: oturum dizini `workflows/scripts/`). İkisi de commit'e girer; eksikse kapanış TAMAM sayılmaz.
 
+## 6c. Skill eşik koşumu (Salih imzası 08-21, defter Karar 51)
+`python3 tools/skill-esik.py` koş — `v_skill_kosum` verisinde n≥10 skill×model çiftlerinin medyan token/süre bandı; 2× üstü koşumlar SAPMA satırı olarak teslim raporuna. Ayrıca bu seansın ajan koşum hükümleri (done-yüklemi PASS/FAIL, DRFR'den) `veri/bronz/kosum-sonuc.jsonl`'e düşülür (ÖNERİ-damgalı alan, Karar 52). Otomatik kural değişikliği YOK.
+
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` YASAK — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu GİZLEME — gün sayılmadı de, nedenini yaz.
 
