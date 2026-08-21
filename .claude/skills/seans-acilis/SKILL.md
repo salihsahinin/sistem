@@ -22,6 +22,7 @@ Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünd
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
 2. `core/durum-kapsulu.md` — ORIGIN KLONUNDAN doğrula: `.git/config`teki origin URL ile bulut konteynerde clone at, mount ile diff'le. Mount'ta git komutu YASAK (okuma dahil); klon bulutta serbest.
 3. `core/pano.md` — AKTİF/BEKLEYEN/BLOKE + "Ekrana gel" filtresi.
+3b. **Silver tazelik kapısı (KB-54 A, Salih imzası 08-21, Karar 62):** `uretim.git_head_sha` ≠ git HEAD → brifte "silver bayat" uyarısı + `tools/katman-hatti.py` koşumu (~5-10 sn, idempotent); atlanırsa adresli erişim yanlış satır getirebilir (08-18 vakası: 25/27 blok uyuşmazlığı).
 4. `raporlar/usage/senkron-log.jsonl` — son satır: senkron sayacı ilerledi mi, arıza var mı (arıza → sayaç sıfırlanmaz ama kök-neden raporlanır).
 5. Kapsülün işaret ettiği son seans-teslim raporu (devir borçları buradan).
 6. Gerekirse pointer'la in: fikir-kutusu · senaryo-defteri · cc/defter — hepsi kapsül/CLAUDE.md adresliyorsa.
