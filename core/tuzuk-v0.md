@@ -17,7 +17,7 @@
 7. **Övgü-merci yasağı** (Salih düzeltmesi, 2026-07-09): gözlem çıplak veriyle verilir; hak/ödül/takdir çerçevesi kullanılmaz; değerlendirme yalnız işin kendi ölçütüyle. **Pozitif karşılık (md.22, imza 08-20 KB-28):** karşılık fiilen bu maddede tanımlı — gözlemi çıplak veri + işin kendi ölçütüyle ver.
 8. **Otomatik silme yasağı** (sondevir ilkesi; havuz işleme kuralı): hiçbir kayıt kendiliğinden silinmez/birleştirilmez; yalnız Salih kararıyla. **Pozitif karşılık (md.22, imza 08-20 KB-28):** silmek yerine arşive indir + yerinde pointer bırak (m.22/m.34 mekanizması).
 9. **Proof-of-work metriği** (kayıtlı 2026-06-10'dan beri; yeniden teyit 07-10): gün ancak push'lanmış commit'le sayılır; plan/niyet/markdown kanıt değildir.
-10. **Commit disiplini** (2026-07-09): mesajlar İngilizce; her karar/mantıksal parça ayrı commit. **Ek — arıza/revert önekleri (KB-48 A, Salih imzası 2026-08-21; defter Karar 52):** arıza-düzeltme commit'i `[ariza]`, geri-alma commit'i `[revert]` önekiyle atılır (mevcut `[icra]`/`[damıtma]` ailesine ek) — CFR/MTTR türevi metriklerin ön-koşulu; geriye dönük dönüştürme YOK; metrik görünümü veri birikince ayrı karar (agile atlası KB-48).
+10. **Commit disiplini** (2026-07-09): mesajlar İngilizce; her karar/mantıksal parça ayrı commit. **Ek — arıza/revert önekleri (KB-48 A, Salih imzası 2026-08-21; defter Karar 55):** arıza-düzeltme commit'i `[ariza]`, geri-alma commit'i `[revert]` önekiyle atılır (mevcut `[icra]`/`[damıtma]` ailesine ek) — CFR/MTTR türevi metriklerin ön-koşulu; geriye dönük dönüştürme YOK; metrik görünümü veri birikince ayrı karar (agile atlası KB-48).
 
 ## Karar kayıtları (bu node'un kuruluşu)
 

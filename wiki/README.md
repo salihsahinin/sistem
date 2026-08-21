@@ -16,7 +16,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[token-x-zaman]] — iki eksenli maliyet modeli (tüzük dipnotu; farklılaşma tezinin çekirdeği)
 - [[pointer-sistemi]] — m.20; özet sıcakta, detay dosyada
 - [[adversarial-hayatta-kalma]] — m.40b v0.2 sağlamlık ölçütü; DARALTILDI/DÜŞTÜ kovaları (eklendi 07-22, K-019 turu)
-- [[ai2ai-rapor-formati]] — ajandan-ajana rapor/emir biçim standardının derleyici sayfası (md.19-25 + m.46 + zarf disiplini; kural koymaz, adresler; eklendi 08-21, Karar 51e)
+- [[ai2ai-rapor-formati]] — ajandan-ajana rapor/emir biçim standardının derleyici sayfası (md.19-25 + m.46 + zarf disiplini; kural koymaz, adresler; eklendi 08-21, Karar 54e)
 - [[sozluk]] — Carvis sözlüğü (Homebase'ten taşındı 07-15; DONDU — ekleme yalnız Salih talimatıyla, m.3)
 - [[loop-engineering]] — loop kurma el kitabı (Homebase'ten taşındı 07-15)
 - [[orca]] — Orca/ADE notları (Homebase'ten taşındı 07-15)
