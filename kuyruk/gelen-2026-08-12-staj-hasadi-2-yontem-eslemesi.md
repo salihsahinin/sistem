@@ -83,3 +83,6 @@ Bu md.49'un operasyonel hâli — sınır beyanı artık dosya sistemiyle uygula
 ## Bağlar
 
 [[adversarial-hayatta-kalma]] (dış doğrulama satırı adayı) · [[olcum-banki]] (m.39 karşılığı) · [[pointer-sistemi]] (m.20 ≡ geç materyalizasyon) · [[token-x-zaman]] (paralellik vergisi ≡ shared-nothing bedeli) · kardeş: `gelen-2026-08-12-staj-hasadi.md` · staj tarafı ham kayıt: `~/staj başlangıç/gunluk/2026-08-12.md`
+
+---
+*İNGEST EDİLDİ · 2026-08-21 damıtma turu (triyaj: NOOP — içerik karar-borcu kütüğünde izleniyor: ai2ai+ölçek-yasaları → KB-36 kutu-adayları [masada] · tavan-rejim → KB-27 Karar 39 · staj-hasadı → KB-10 H4/H6 kararı; bu dosya bronz kaynak olarak yerinde kalır, m.8).*

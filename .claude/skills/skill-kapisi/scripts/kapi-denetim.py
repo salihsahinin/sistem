@@ -64,7 +64,7 @@ def main():
     tot = 0; cnt = 0
     for f in glob.glob(os.path.join(repo, '.claude', 'skills', '*', 'SKILL.md')):
         fm2, _, _ = frontmatter(load(f)); tot += len(fm2.get('description', '')); cnt += 1
-    budget_chars = 7200  # 0,9 × (%1 × 200k token ≈ 2.000 token ≈ 8.000 char) [? deneysel; Türkçe token oranı belirsiz]
+    budget_chars = 7380  # 0,9 × (%1 × 200k token = 2.000 token) × 4,1 char/token — çevrim ÖLÇÜLDÜ (Salih /context 2026-08-20: 15 yüklü skill 7.837 char ≈ 1,9k token; KB-19 Karar 33). 200k = en küçük pencereli koşucu (alt-model skill koşucuları, KB-03); pencere/politika değişimi Katman-1.
     R['facets']['hazine_desc_toplam'] = tot; R['facets']['hazine_skill_sayisi'] = cnt
     if tot > budget_chars:
         warn(f"F1e-hazine-bütçesi: {cnt} skill description toplamı {tot} char > {budget_chars} — platform en az çağrılanın description'ını sessizce düşürebilir; /context ile ölç ∨ kısalt")

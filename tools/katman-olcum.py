@@ -19,7 +19,7 @@ from datetime import datetime, timezone, timedelta
 
 # --- deneysel m.29 sabitler (ilk 3 koşumda kalibre) ---
 FRESH = {"bronz": {"warn_gun": 3, "error_gun": 14}, "silver": {"warn_gun": 3, "error_gun": 14}, "gold": {"warn_gun": 7, "error_gun": 30}}
-SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum"]
+SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum", "amb_olgu_tahmin", "amb_olgu_kosum_sonuc"]
 TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("kayit.kayit_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kayit_id FROM kayit GROUP BY kayit_id HAVING COUNT(*)>1)", "error"),
     ("kayit.dosya_id not_null", "not_null", "SELECT COUNT(*) FROM kayit WHERE dosya_id IS NULL OR dosya_id=''", "error"),
@@ -34,6 +34,11 @@ TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("prompt.prompt_id unique", "unique", "SELECT COUNT(*) FROM (SELECT prompt_id FROM prompt GROUP BY prompt_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_kosum.kosum_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_prompt ↔ prompt 1:1", "relationships", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))", "error"),
+    ("amb_olgu_tahmin.tahmin_id unique", "unique", "SELECT COUNT(*) FROM (SELECT tahmin_id FROM amb_olgu_tahmin GROUP BY tahmin_id HAVING COUNT(*)>1)", "error"),
+    ("amb_olgu_tahmin.wf_id → amb_olgu_kosum", "relationships", "SELECT COUNT(*) FROM amb_olgu_tahmin t WHERE t.wf_id IS NOT NULL AND NOT EXISTS (SELECT 1 FROM amb_olgu_kosum k WHERE k.wf_id=t.wf_id)", "error"),
+    ("amb_olgu_tahmin bant tutarlılığı (min≤max)", "singular", "SELECT COUNT(*) FROM amb_olgu_tahmin WHERE (tahmin_cikti_min>tahmin_cikti_max) OR (tahmin_arac_min>tahmin_arac_max) OR (tahmin_sure_min_sn>tahmin_sure_max_sn) OR (tahmin_girdi_min>tahmin_girdi_max)", "error"),
+    ("amb_olgu_kosum_sonuc.sonuc accepted_values", "accepted_values", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc WHERE sonuc NOT IN ('PASS','FAIL')", "error"),
+    ("amb_olgu_kosum_sonuc.kosum_id → amb_olgu_kosum", "relationships", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc s LEFT JOIN amb_olgu_kosum k ON k.kosum_id=s.kosum_id WHERE k.kosum_id IS NULL", "error"),
 ]
 
 

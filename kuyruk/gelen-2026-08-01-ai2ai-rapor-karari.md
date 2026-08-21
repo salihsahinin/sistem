@@ -35,3 +35,6 @@ V46 lojik-çeviri (aynı damar: insan→LLM çevirisi Carvis'te; LLM→insan çe
 - Carvis şerhi 2 — **m.25 istisnası:** ölçek-eşiği altı işe pipeline kurulmaz (su-bardağı frenli).
 - Kanon tohumları: m.17 (ajan-başına ingest) · m.21 (bağlam-detay ölçekleme) · m.44 (lider/işçi katmanları) · gorev-11 (kronolojik partisyon) · gorev-18 (pipeline sentezi: rank→derle→tırman→takas).
 - Katman-1 adayı: "genel çalışma ilkeleri"ne giriş (tüzük/KILAVUZ) masa kararıdır; ilk uygulama-gözlemi birleşik ingest turunda alınır.
+
+---
+*İNGEST EDİLDİ · 2026-08-21 damıtma turu (triyaj: NOOP — içerik karar-borcu kütüğünde izleniyor: ai2ai+ölçek-yasaları → KB-36 kutu-adayları [masada] · tavan-rejim → KB-27 Karar 39 · staj-hasadı → KB-10 H4/H6 kararı; bu dosya bronz kaynak olarak yerinde kalır, m.8).*

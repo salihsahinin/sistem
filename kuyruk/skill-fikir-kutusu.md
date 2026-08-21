@@ -1,6 +1,6 @@
 # Skill Fikir Kutusu
 
-*(Ev kararı: Fable süzgeci 07-19, Katman 2 — K-019 boyut sigortası gereği ana fikir-kutusundan ayrı. Kural: aday buraya tek satır + pointer'la düşer; tam metin kaynak raporda. "Tekrarlayan-küme→skill" kuralı kanon ADAYI — imza masasında. Üretim kapısı: K-016 (tetik: K-015 DONE ya da Salih öne çeker); her skill eval'le doğar. **YETKİ GÜNCELLEMESİ (Katman-1, 08-14): üretim/evrim/tetikleme yetkisi Carvis'te; skill-başına Salih onayı gerekmez — zayıf-yeni aday hariç; kayıt: senaryo-defteri 08-14 bloğu.** **ŞEMA (Katman-1, 08-15): her aday/üretim/evrim `core/skill-uretim-semasi.md` kapı-ağacından geçer (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR → yaprak); koşum skill'i `skill-kapisi`; m.43 N=3 = Laplace τ=0,8 türevi, sayaç son-90-gün pencereli.**)*
+*(Ev kararı: Fable süzgeci 07-19, Katman 2 — K-019 boyut sigortası gereği ana fikir-kutusundan ayrı. Kural: aday buraya tek satır + pointer'la düşer; tam metin kaynak raporda. "Tekrarlayan-küme→skill" kuralı kanon ADAYI — imza masasında. Üretim kapısı: K-016 (tetik: K-015 DONE ya da Salih öne çeker); her skill eval'le doğar. **YETKİ GÜNCELLEMESİ (Katman-1, 08-14): üretim/evrim/tetikleme yetkisi Carvis'te; skill-başına Salih onayı gerekmez — zayıf-yeni aday hariç; kayıt: senaryo-defteri 08-14 bloğu.** **ŞEMA (Katman-1, 08-15): her aday/üretim/evrim `core/skill-uretim-semasi.md` kapı-ağacından geçer (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR → yaprak); koşum skill'i `skill-kapisi`; m.43 eşik N=5 (Salih 08-20 KB-18; Laplace uniform önselde τ≈0,857), sayaç son-90-gün pencereli.**)*
 
 | # | Aday | Tetik-kalıbı | Öncelik | Kaynak | Statü |
 |---|---|---|---|---|---|
@@ -42,3 +42,5 @@
 | tarih | koşum | plan (tahmin) | gerçek | onarım | not |
 |---|---|---|---|---|---|
 | 08-16 | veri-mühendisliği katmanı pipeline (S-1 fan-2 → G-1 → SH-1 zincir) | N0→N1 ~25 dk · işçi tavan 600k · onarım tavanı 1 resume | N0→N1 21,7 dk · 382k · onarım 0 · N1→N4 tek yürütücü ~55 dk [?] | tetiklenmedi | ilk gerçek koşum; makespan dili paralel bölümde, yol-maliyeti seri bölümde; h() yok beyanı tutuldu |
+
+- **V80 · Önerme→DbC→PBT skill adayı** (Karar 54d, Salih 08-21): m.38 lojik önermelerinden Design-by-Contract sözleşmeleri (ön/son-koşul assert'leri) + Property-Based-Test üretimi — lojik→kod merdiveninin B4 ayağı. **ÖZEL EŞİK: N=4 (Salih şerhi; genel m.43 eşiği 5, yalnız bu aday 4)**; sayaç 1/4 (kaynak: `raporlar/2026-08-15-skill-semasi-test-turu.md:38`). İnşa yok; eşik dolunca ∨ Salih emriyle `skill-kapisi`'na.

@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-08-17,10:12,c3230e78,4,diger,,claude-opus-5,124,konuyu boşver yeni task geldi şu an ai ile yazılım projesi geliştirmede best practice'ler nelerdir onu öğrenmeye başlayalım,41157968-109c-4db7-b9d4-7e761a393b76
-2,2026-08-17,10:05,c0298809,3,diger,,claude-fable-5,248,"commitler ingilizce kayabilir, iki güncelleme:1-stokastik düşünceyi sisteme entegre etmek kötü bir karardı transkript geçmişinden oradan yap",5f182214-26ff-4f20-8079-1a5ecb34b92d
-3,2026-08-17,09:23,c0298809,2,diger,,claude-fable-5,81,ayrıca kaynak kodlarını kaynak md dosyalarını okuyabilmeliyim türkçe haline getir,b9c73a06-c759-49b2-9cf3-e9e9fef534e8
-4,2026-08-17,09:21,c3230e78,3,diger,,claude-fable-5,25,hatırlamıyorum sen açıkla,c4faceb8-3903-4bde-9f1d-548b6aea28c9
-5,2026-08-17,09:18,c3230e78,2,diger,,claude-fable-5,116,yeni claude.md oluşumuyla şu an ilgilenemem şimdilik son öğrendiklerimize tekrar turu sonra öğrenme sürecinden devam,b3969fa7-f335-4d93-b9e3-eb1551c863dd
-6,2026-08-17,09:15,c3230e78,1,seans-acilis,staj-acilis,claude-fable-5,71,"seans başı, staj en son ne yapmıştık ne öğreniyordum ordan devam edelim",753e7955-18ae-4293-88eb-eba3e0c3b0f2
-7,2026-08-17,09:04,c0298809,1,diger,,claude-fable-5,340,"en son claude.md dosyalarını sildirmiştim çünkü uzun koşumlardan sonra sistem istediğim gibi cevap vermemeye başlamıştı,claude.md'yi baştan ",c9ebb761-383f-414a-a278-9f0a969c8997
-8,2026-08-16,13:02,cd0d73bf,4,emir,,claude-sonnet-5,80,kendinin ve tüm laude claude.md lerin silinmesini sağlayacak terminal kodunu yaz,65092c95-c4d4-40a6-a21f-3e22e598bbb3
-9,2026-08-16,13:01,cd0d73bf,3,diger,,,3,gir,6977ea74-809d-4376-96e2-7c5d5ba165fd
-10,2026-08-16,13:00,cd0d73bf,2,soru,,claude-fable-5,55,kendininkini nasıl sileceğimi giren terminal kodunu git,9155a03f-04fa-4c0f-9f98-f8e37fec2912
-11,2026-08-16,12:57,cd0d73bf,1,emir,,claude-fable-5,42,kendin hariç tüm claude.md dosyalarını sil,12554f76-3a43-4c41-ae3f-9ce5831e897a
-12,2026-08-16,11:51,77e37b3f,5,soru,,claude-fable-5,199,ya senin ilk hazırladığın son-50 html'i ni her şeyi bilebilecek birisine atacaktım da bana jarvisi ne kadar geliştirdin diye sordu proof of ,4a1b37a3-d034-4cb8-80ff-229e7fe4e8d5
-13,2026-08-16,11:45,914d8e47,19,soru,,claude-fable-5,109,senin html'de göstermen gereken şey jarvisin böyle bir data sürecine sahip olması zaten neden onu yapmıyorsun,97f0bf93-01fe-4134-beec-fc221f8ceca1
-14,2026-08-16,11:43,914d8e47,18,soru,,claude-fable-5,74,bi de sen neden karar önerisi sunarken gizliliği bu kadar önceliklendirdin,16f2399a-bd6f-441e-831d-6b2167e90897
-15,2026-08-16,11:41,914d8e47,17,diger,,claude-fable-5,105,ben şu an sadece 0'dan bakan veri mühendisi senior birisi için hazırlanmış tek sayfa html sunum istiyorum,00dd99c0-600f-4df2-aad5-ee18ab2f8915
-16,2026-08-16,11:39,914d8e47,16,soru,,claude-fable-5,237,"""JARVIS · RAPOR · 2026-08-16 · HEAD 202E24B Patron için teslim: insanlar ne kullanıyor, biz ne yapmalıyız""tamam da ben teslimi anlamadım yap",8d5c2fe2-4de0-44dc-9da1-f46707bf6576
-17,2026-08-16,11:31,914d8e47,15,diger,,claude-fable-5,93,"tamam da hiçbir şey bilmeden buna bakan birisi bir şey anlamıyor ki bunu, o senaryo için,üret",e037250e-e066-44a3-b50b-2d785b0a0d74
-18,2026-08-16,11:29,914d8e47,14,diger,,claude-fable-5,67,html hazırlatmıştım ya sana sunumu onu tek sayfa olarak hazırlasana,d2eedb14-a61d-405f-a2a5-3a450e96d040
-19,2026-08-16,11:25,9fdc5615,27,emir,,claude-fable-5,58,"""sorgu_durumu görünümünü ambara ekle"" sözünü önerdin neden",fdb3266a-0d6e-41fd-b977-3e15d96d77af
-20,2026-08-16,11:22,9fdc5615,26,soru,,claude-fable-5,85,bende sorgulanmamış olduğunu nasıl tanımlıyorsun mesela matematiksel formülize olarak,5a1ff3cb-d6cf-47a5-83a2-f08930a6427c
-21,2026-08-16,11:20,9fdc5615,25,diger,,claude-fable-5,86,işte yazdıklarının çoğunu henüz sorgulamıyorum vakti gelince her birini sorgulayacağım,e27b93d7-5587-4e4d-90f1-08b7c6877a66
-22,2026-08-16,11:19,9fdc5615,24,diger,,claude-fable-5,170,senle mesela böyle data engineer olarak birbirimizi geliştirebiliriz ama çalışmamanı istediğim zaman durdurma hakkına sahip olduğum için pat,8a3d5446-ad68-49d6-b9a3-c635a0e6bd8e
-23,2026-08-16,11:14,9fdc5615,23,emir,,claude-fable-5,157,modern yöntemleri kullanalım yani insanlar claude design mı kullanıyomuş bunun için en modern metodolojiler metrikler nedir araştır atlaslar,bd4e5395-4bcc-4e28-84f6-65ff6adf5780
-24,2026-08-16,11:12,9fdc5615,22,diger,,claude-fable-5,128,tamam da son-50 yazınca çıkan ilk sonuç:1- anlamamı sağlayacak bir dosya tipinde 2-anlamamı sağlayacak bir dosya olmalı 2 görev,7fef2b3e-6838-4922-8265-d4c14757a463
-25,2026-08-16,11:04,9fdc5615,21,diger,,,181,"ben şimdi önceden windows kullanıyordum ya,kafam karışmış. ""ctrl space diye aklıma kaydedip düşündüğüm için mac'te yazdığımı unutup""(tırnak ",0e44c5ad-4ae2-48ff-896a-1b7011975d61
-26,2026-08-16,10:58,9fdc5615,20,emir,,claude-fable-5,78,ctrl derken commandi kast etmiştim yanlış anladın bunu data uzayından düzelt,b859d268-ea1e-4710-babc-afb4f868dc3c
-27,2026-08-16,10:56,9fdc5615,19,diger,,claude-fable-5,33,ctrl-space'i de spotlight'a bağla,93819609-bd1a-4a63-8856-300b83e545bc
-28,2026-08-16,10:52,9fdc5615,18,diger,,claude-fable-5,74,"benim airdrobuma atsana,bu arada hala ctrl-space basıp aratınca gözükmüyor",e8bb690e-dbd8-4de0-aa87-8db753d9d5f5
-29,2026-08-16,10:47,9fdc5615,17,diger,,claude-fable-5,58,benim sunum için html sayfam vardı ya onu mobil uyumlu yap,cd9bdde9-3ed5-42ad-904e-90448b6fedc0
-30,2026-08-16,10:46,9fdc5615,16,onay/devam,,claude-fable-5,7,push at,4886bd58-d90a-4e48-8728-6cce7035083e
-31,2026-08-16,10:45,a0258404,5,emir,,claude-fable-5,6,düzelt,75215ae8-d2a0-4e47-89c7-b15cccae8bec
-32,2026-08-16,10:40,a0258404,4,soru,,claude-fable-5,72,şu anda cowork ile wezterm chatlerim arasında bir hiyerarşi farkı var mı,25a2f95e-1b32-4a8d-b44d-e026b81ba4d1
-33,2026-08-16,10:36,a0258404,3,soru,,claude-fable-5,67,(bağlam datası mantığıyla bunu gold taskine mi çevirmek gerekiyor?),cedb8cdb-67f3-4913-b215-3d9c29a79f85
-34,2026-08-16,10:35,a0258404,2,soru,,claude-fable-5,23,bu oturumu ben mi açtım,aabd4a03-9006-47ca-8356-19f4cbe7e928
-35,2026-08-16,10:32,9fdc5615,15,diger,,,88,son 4 mesaj daha sonra tartışılmak üzere not edilsin(bağlam datası mantığını kullanarak),49f8641c-61f5-45c0-b02c-d8674ad66c31
-36,2026-08-16,10:27,9fdc5615,14,soru,,claude-fable-5,55,yani ama ikisini neden ayrı tuttun onu sormak istiyorum,e880346c-869c-4aa2-bf2f-248bccce1405
-37,2026-08-16,10:27,9fdc5615,13,soru,,claude-fable-5,51,"öğrenmek için soruyorum,bunu yapmanın sebebi neydi?",4f89811c-7a6f-47f1-801e-f772fb7d77b3
-38,2026-08-16,10:25,9fdc5615,12,soru,,claude-fable-5,25,open -R ne işe yarıyor ki,37741732-7cd3-467a-aaf7-59094c7229a1
-39,2026-08-16,10:21,9fdc5615,11,diger,,claude-fable-5,129,"tamam da dosyanın nerde olduğunu söylüyosun findera yazıyorum ""raporlar/"" dosya gözükmüyor bu sorunu bir daha yaşamak istemiyorum",adad2bbf-55ec-479e-bccc-13e37f979c96
-40,2026-08-16,10:13,9fdc5615,10,emir,,claude-fable-5,82,hayır şu an sunumu html olarak oluştur çünkü neden böyle haptığını henüz anlamadım,8a7b5175-188c-4802-9c12-6d2492096716
-41,2026-08-16,10:09,9fdc5615,9,emir,,claude-fable-5,109,yeni görev:üstünde kısaca bu tablonun ne işe yaradığını anlatacak şekilde tabloyu de içeren bir sunum hazırla,e0cce13e-ab01-4ad1-9cfb-3baf80207ee7
-42,2026-08-16,09:57,9fdc5615,8,onay/devam,,claude-fable-5,8,devam et,2f2b8e9d-89c4-47c1-9ec0-8a373fdf90a7
-43,2026-08-16,09:39,9fdc5615,7,emir,wiki-sayfa-yaz,claude-fable-5,177,ayrıca görev bitince yeni görev:son girdiğim 50 promptu bana silver bronze gold katmandan doğru bir şekilde faydalanarak bana çıkar benim so,9446d850-a6b9-4016-b8af-218321566d69
-44,2026-08-16,09:27,a0258404,1,emir,,claude-fable-5,111,ayrıca jarvisin dosyaları için dosya engelini kaldır ki finder'dan jarvis dosyasına istediğim gibi erişebileyim,228b6d85-b446-43cb-9db7-b2c7cd02d2b9
-45,2026-08-16,09:25,9fdc5615,6,emir,,claude-fable-5,209,yeni görev:jarvis için bağlam database'i ve bağlam data warehouse'u tanımladık mı.tanımlamadıysak nasıl tanımlayacağımızı araştır atlasları ,ced94e75-28c1-4d68-b874-b14a682a01b4
-46,2026-08-16,08:18,9fdc5615,5,onay/devam,,claude-fable-5,7,push at,43f6490e-62c6-4221-bc98-7e97caff130a
-47,2026-08-16,02:11,9fdc5615,4,onay/devam,,claude-fable-5,8,devam et,dde3c990-d975-4865-b8b9-a76fcb05c52a
-48,2026-08-16,02:03,9fdc5615,3,emir,"pipeline-kosum,gorev-emri-derleme,yol-planla",claude-fable-5,321,yeni görev:jarvisi optimizde edilmiş oranda bir database olarak tasarlarsak jarvisi geliştirme sürecinde de silver gold katmanı ürettiğimiz ,f24ca53b-3862-404c-8293-03d5e21fba20
-49,2026-08-16,01:34,914d8e47,13,emir,,claude-fable-5,64,dosyayı orijinal halinden ek olarak gönder kendisi yanımda zaten,d0b06b41-6629-4b61-a675-3552ea510e74
-50,2026-08-16,01:28,914d8e47,12,emir,,claude-fable-5,11,ekli gönder,603d5897-9a6c-4835-82e4-190f1bd7cb6f
+1,2026-08-19,19:25,25679332,12,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,bee6a4bb-5ff1-40f5-9e0d-e5d7738e0c33
+2,2026-08-19,17:38,239c2df3,24,diger,,claude-opus-5,1,a,1cbcf94f-841f-4af6-9a73-16a2f0965091
+3,2026-08-19,17:37,239c2df3,23,soru,,claude-opus-5,20,sahip_id<>1 ne demek,91ea5304-4645-4c3e-9558-3fb7bb8bab18
+4,2026-08-19,17:35,239c2df3,22,diger,,claude-opus-5,28,1 satır döner marka sahip id,f545f934-1f01-47b6-a6b3-d9392bfbb199
+5,2026-08-19,14:14,239c2df3,21,diger,,claude-opus-5,156,"bu gidişatı sevmedim,daha önceden sql okumaları çalıştığımız bi dönem vardı staja başlamadan önce:o dönemki çalışmalarımızdan ilerleyelim ya",9bc6e504-7a44-4a62-b765-68697fae68c4
+6,2026-08-19,14:11,239c2df3,20,diger,,claude-opus-5,19,sen açıkla soruları,23d2a1eb-73df-40ae-89da-2d449e2bf746
+7,2026-08-19,13:54,239c2df3,19,diger,,claude-opus-5,279,"@""/Users/HasanSalihSahin/Downloads/wishlist_score (1).sql"" şimdi yeni görev:sql okumayı öğreniyorum.bu kodu beraber okuyalım.okurken motorun",38413d2d-1221-4dc1-baf8-5dfd58e34aa5
+8,2026-08-19,11:50,239c2df3,18,emir,,claude-fable-5,80,/Users/HasanSalihSahin/staj başlangıç/wishlist-analiz/ dosyasını açamadım sen aç,6c1b8f9a-cf7a-446b-a195-3283422698c8
+9,2026-08-19,11:33,239c2df3,17,soru,,claude-fable-5,126,kontrolüme sunulanlar: 1-okeydir 2-okeydir 3-okeydir açık sorular: 1-staj reposuna 2-90 gün kalsın 3-kabul 4-yapalım ne lazım,14184ef0-21d7-4c23-8821-09e7af194df7
+10,2026-08-19,11:20,239c2df3,16,diger,,claude-fable-5,690,"m8:4 bayrağın da yanması en yüksek puan burada hemfikiriz.ama 3 bayraklı kombinasyonlarda örneğin ""aynı şehir-acil talep-taze talep"" üçlüsü,",ab89f4b4-32a9-4987-8abe-499f73184130
+11,2026-08-19,11:00,239c2df3,15,diger,,claude-fable-5,39,parti 3'ü anlamadım daha detaylı açıkla,f788227b-6a5b-4e97-9966-5cc8eed767a0
+12,2026-08-19,10:55,239c2df3,14,diger,,claude-fable-5,104,uyumun oranını canlılığın oranından yüksek tut yeter sayının kendisinin optimizasyonunu sana bırakıyorum,7c4ddf46-2799-47c2-9fb5-a436ea501945
+13,2026-08-19,10:49,239c2df3,13,diger,,claude-fable-5,1050,k4.2'de kalan cevap:az teklifle kazanmak rakip sayısı arttıkça daha değerli(rakip sayısı arttıkça alınan risk başarıya dönüşür) m5.1:A diyec,08ac2b53-087f-4290-8ef1-2c8d54f8d1bc
+14,2026-08-19,10:22,239c2df3,12,diger,,claude-fable-5,217,"K4.3:teklif sayısı azken A,ama verilen toplam teklif sayısı arttıkça B'ye yakınsayan bir formülizasyonumuz olsun.çünkü fazla teklif verilmes",753b4a94-2f1d-4624-88ff-90d4a08a345b
+15,2026-08-19,10:14,239c2df3,11,diger,,claude-fable-5,671,k4.1:A K4.2:eğer galerinin kazandığı ihaledeki rakip sayısı ve verdiği teklif sayısı artarsa bu durum galeriye istikrar sinyali sağlar.Bir g,3a5c91ac-bd3e-45ef-87f5-a81ebea14e3e
+16,2026-08-19,09:47,239c2df3,10,diger,,claude-fable-5,1452,"-k3.1:bilinmesi gereken 2 faktör var,türkiye devamlı yüksek enflasyona sahip olduğu için stokçuluk yapmak galerici için + bir pozisyon sağla",05b96500-8305-48de-a383-41bc3672c1c3
+17,2026-08-18,18:33,239c2df3,9,diger,,claude-fable-5,17,a olsun yeni soru,8a8b1927-7388-4cf5-abc1-c95bcfafb8e4
+18,2026-08-18,18:29,239c2df3,8,diger,,claude-fable-5,790,"-şimdi elimizde x ve y ekseninden oluşan bi düzlem düşün.y ekseni bize galeri sayısını veriyor.x ekseni ise ""katılınan ihale sayısı"".Burada ",8809f706-726f-4a7c-ae94-b3574f0461d9
+19,2026-08-18,18:08,239c2df3,7,diger,,claude-fable-5,549,"-k2.1 için cevabımı güncelliyorum:yol 1 den gidelim ama yol 1'de şöyle bir açık var:A arabası sadece 1 tane teklif vermesine rağmen ""%89'und",4b1162d2-ed1c-4a1f-9fe5-448068312ef7
+20,2026-08-18,18:01,239c2df3,6,diger,,claude-fable-5,143,-k1 de eşikten sonra puan sabit taban değil aradaki gün sayısının önemi azalıyor demek istedim -önerinden gidelim kendi sayısından hesaplans,a64ad594-d3d0-4a2e-a6f9-86895ff54b2d
+21,2026-08-18,17:58,239c2df3,5,soru,,claude-fable-5,334,-K1 c diyeceğim çünkü belirli bir eşikten sonra örneğin son katılım 120 gün önce veya 150 gün önce olsun aradaki 30 günün çok bir anlamı kal,17319dac-d145-421e-9f66-b75b8eaddc1b
+22,2026-08-18,17:48,239c2df3,4,emir,,claude-fable-5,197,dökümantasyonu okumadım.kararları basit senaryolar üzerinden verecek şekilde güncelle sen dökümantasyona uyarlarsın.bana analayabileceğim bi,1e1caff9-026c-4033-80d8-af56cae086ab
+23,2026-08-18,17:41,239c2df3,3,diger,,claude-fable-5,65,K2 'yi daha detaylı açıkla neyin kararını verdiğimi tam anlamadım,b961a854-919f-4674-b4fb-36b3c437068e
+24,2026-08-18,17:33,239c2df3,2,soru,,claude-fable-5,253,"devam,ben modeli tanımsal olarak seçeceğim sen formülize edeceksin.tanımsal olarak seçeceğim kararı,hangi konuda neyin kararını alıyorum açı",962b856e-8653-4935-8c3c-c48f70c65143
+25,2026-08-18,17:14,239c2df3,1,diger,seans-acilis,claude-fable-5,626,"@""/Users/HasanSalihSahin/Downloads/wishlist_scores_202608181706.csv"" @""/Users/HasanSalihSahin/Downloads/DATAAI-Galeri Öncelik Skoru (Wishli",ec2ee834-6d03-4d17-ac64-60101b61ff8c
+26,2026-08-18,14:57,914d8e47,20,soru,,claude-fable-5,248,"""Last login: Tue Aug 18 14:40:39 on ttys002 HasanSalihSahin@otoplus-M9V6411422 ~ % ~/Desktop/dun-gece-ne-yaptik-SUNUM.html zsh: permission d",540b25fd-bdf8-4982-9e38-b583652261a7
+27,2026-08-18,14:54,25679332,11,soru,,claude-fable-5,35,nerde çalışıyor nasıl izleyebilirim,ecbf69bf-ba3f-4e24-984a-e366cd7d5f00
+28,2026-08-18,14:53,25679332,10,onay/devam,,claude-fable-5,8,devam et,1f30d7cd-e4d0-4239-9dfa-e363d4710a23
+29,2026-08-18,14:47,25679332,9,onay/devam,,claude-fable-5,8,devam et,4c566444-f508-4daf-93e1-258b47b0eee3
+30,2026-08-18,14:45,25679332,8,soru,,claude-fable-5,80,no-mistakes/worktree/veri dosyası içinde 2 dosya vardı görünümü kayboldu ne oldu,fcc7989f-881f-4c6e-97e8-510904b4b425
+31,2026-08-18,14:28,25679332,7,diger,,claude-fable-5,139,"""hiçbir klasör gizli olmasın"" için kararım:kapı +readme satırının yanında o gizli dizinin kendisi de artık gizli olmasın bana görünür olsun",2392de84-7760-4493-98a8-1eca33a16069
+32,2026-08-18,13:54,25679332,6,soru,,claude-fable-5,71,bu klasörler neden gizli sistemde hiçbir klasör gizli olsun istemiyorum,327471c9-4147-4209-ade9-c91466da3ee7
+33,2026-08-18,13:51,25679332,5,emir,,claude-fable-5,31,no-mistakes dosya yolunu göster,b028a0aa-9894-4dcd-9eb8-e6cb9e5d6fcf
+34,2026-08-18,13:41,25679332,4,soru,,claude-fable-5,54,no-mistakes bir sürü şey için erişim izni istedi neden,06d42978-260f-4d61-bac9-ee0169e5ce99
+35,2026-08-18,11:53,25679332,3,emir,,claude-fable-5,269,bitince yeni görev:bağlam tablo verileriyle tarama yapacağın zaman seq scan gibi diğer tarama metotlarını araştırıp nasıl kullanacağını sist,39429a7f-f62a-4f84-a33f-47b998d2fe78
+36,2026-08-18,11:41,25679332,2,emir,,claude-fable-5,697,"yeni görev:""Adı: Columnar storage (sütunsal depolama) — Redshift'te veriler satır satır değil, kolon kolon diskte ayrı bloklar halinde tutul",423ee760-8470-4a86-85ad-38f64700bdd6
+37,2026-08-18,09:44,25679332,1,seans-acilis,seans-acilis,claude-fable-5,659,"seans başı,yeni görev:""index'in kök-dal-yaprak katmanlarında gezinip aranan değerin heap'teki adresini bulması ve o adrese tek seferde ""atla",e55409bc-ada5-48ef-b1ec-54024f5cfaf1
+38,2026-08-18,09:42,501b9a20,7,diger,,claude-fable-5,3,xit,1f58e801-f3b9-48f1-9b39-27c6514f912b
+39,2026-08-18,09:11,501b9a20,6,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,7a6859ec-305b-4a76-8381-5020a1e6d0a5
+40,2026-08-17,23:56,65b51351,2,emir,,claude-fable-5,34,"başka oturum var,karar masasını aç",e85f4248-55de-418d-9ea6-8c7363098cb9
+41,2026-08-17,23:52,65b51351,1,seans-acilis,seans-acilis,claude-fable-5,46,"seans başı,kaç karar borcumuz var anlık olarak",2fd21f66-0372-47df-be37-b8d4e55de8a8
+42,2026-08-17,23:51,c0298809,13,diger,,claude-fable-5,333,""" Context window 804.2k / 1M (80%) Messages 762.1k 76.2% System tools 15.4k 1.5% MCP tools 8.6k 0.9% Skills 7.5k 0.8% System prompt 5.7k 0.6",1e4f0ff2-ae92-44ed-9093-f0c1f0b230c0
+43,2026-08-17,23:48,501b9a20,5,diger,,claude-fable-5,7,push et,d01d675e-a7f3-48f3-9440-c808659b1660
+44,2026-08-17,23:45,c0298809,12,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,18b9b0e3-cf61-4e00-b562-deca66ce955c
+45,2026-08-17,23:21,c0298809,11,diger,,claude-fable-5,72,context windows %75 olduğu için kalan kararlara diğer oturumda bakacağız,7c516096-6b0e-4a22-b2a9-247a5b743303
+46,2026-08-17,23:19,501b9a20,4,emir,,claude-fable-5,308,yeni görev:coworkte context window sekmesini açtığım anda context windowun anlık olarak hangi terimlerden yüzde kaç oranda oluştuğunu görebi,b107b12a-45c4-482d-b16f-4553546cbd94
+47,2026-08-17,23:15,501b9a20,3,diger,,claude-fable-5,7,push et,b6a187db-fa23-4b1e-a9af-fd90ebfd1be1
+48,2026-08-17,22:11,ef916858,4,soru,,claude-opus-5,61,bus matrisi sisteme nasıl bir artı ve nasıl bir eksi sağlıyor,5a8e1c2f-a510-4721-961d-4d3831645157
+49,2026-08-17,22:09,ef916858,3,soru,,claude-opus-5,31,bu tabloyu ne için kullanacağız,22dac5b3-1939-459f-8cf9-28aa34d4a4e5
+50,2026-08-17,22:07,ef916858,2,soru,,claude-opus-5,54,biz bu tabloyu ne için kullanacaktık örnek senaryo ver,5513324e-0978-4c15-9ad2-4fccb1a6c7ee

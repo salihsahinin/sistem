@@ -1,6 +1,6 @@
 ---
 name: sinav-grill
-description: Salih'in bir plan/karar/konu anlayışını adversarial Sokratik sorgulamayla sınar (S-I); tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] derinlik haritası + bulanık-blok listesi. Tetik; YALNIZ Salih beyanı — "sınav", "sınava çek", "grill", "sorguya çek". KULLANILMAZ; model kendi inisiyatifiyle ASLA tetiklemez, ders anlatımında, karar üretiminde, ayıklık/ruh-hali sorgusunda (sorgu İÇERİK hakkındadır, Salih'in durumu hakkında değil).
+description: Salih'in bir plan/karar/konu anlayışını adversarial Sokratik sorgulamayla sınar (S-I); tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] haritası + bulanık-blok listesi. Tetik; YALNIZ Salih beyanı — "sınav", "sınava çek", "grill", "sorguya çek". KULLANILMAZ; model kendi inisiyatifiyle ASLA tetiklemez, ders anlatımında, karar üretiminde, ayıklık/ruh-hali sorgusunda (sorgu İÇERİK hakkındadır, Salih'in durumu hakkında değil).
 ---
 
 # Sınav/Grill (S-I, v1 — 2026-08-14; Pocock `grilling` deseni madenlendi — V25: kurulum yok, yeniden yazım)

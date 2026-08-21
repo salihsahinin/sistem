@@ -1,7 +1,6 @@
 ---
 name: skill-kapisi
-description: Bir skill ADAYINI (yeni fikir, kutu satırı, taslak ya da mevcut skill) kapı-ağacından yürütür (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR) ve GEÇTİ/BEKLET/ONAR/RET hükmü + tür-demeti üretir; deterministik kapılar script'le, iddia-topraklama bağımsız doğrulayıcıyla. Tetik; "kapıdan geçir", "şema testi", "skill adayını değerlendir", yeni skill üretimi/evrimi ÖNCESİ (zorunlu), hazine denetimi. KULLANILMAZ; skill'in kendisini yazmak için, skill'i çalıştırmak için, m.25 küçük direkt işlerde.
-argument-hint: "<aday: ad + amaç + tetik-kalıbı | skill dizini>"
+description: Skill ADAYINI (fikir, kutu satırı, taslak ya da mevcut skill) kapı-ağacından yürütür (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR); GEÇTİ/BEKLET/ONAR/RET hükmü + tür-demeti üretir; deterministik kapılar script'le. Tetik; "kapıdan geçir", "şema testi", "skill adayını değerlendir", yeni skill üretimi/evrimi ÖNCESİ (zorunlu), hazine denetimi. KULLANILMAZ; skill'in kendisini yazmak için, skill'i çalıştırmak için, m.25 küçük direkt işlerde. argument-hint: "<aday: ad + amaç + tetik-kalıbı | skill dizini>"
 metadata: { owner: carvis, version: "1.0.0-deneysel-m29", kural: "core/skill-uretim-semasi.md" }
 ---
 

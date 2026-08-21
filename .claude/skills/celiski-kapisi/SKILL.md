@@ -1,12 +1,6 @@
 ---
 name: celiski-kapisi
-description: Yeni bir karar/kural/kanon-değişikliği önerisi masaya geldiğinde kanonu tarar;
-  önceki kararla çelişki varsa karar ALINMADAN ÖNCE çelişki + artı/eksi + plan raporu sunar
-  (m.16). Kullan: "çelişki var mı", "kanonla uyumlu mu", "tüzüğe aykırı mı", "m.16 kapısı"
-  dendiğinde ya da ölçek-eşiği üstü her yeni karar/kural önerisinin sunum ÖNCESİNDE.
-  KULLANMA: su-bardağı alt-kararlar, yazım/biçim düzeltmeleri, onaylı iş içindeki
-  alt-adımlar (m.25/m.31 eşiği altı) — direkt yap.
-argument-hint: "<yeni öneri/karar tek cümle>"
+description: Yeni karar/kural/kanon-değişikliği önerisinde kanonu tarar; çelişki varsa karar ALINMADAN ÖNCE çelişki + artı/eksi + plan raporu sunar (m.16). Kullan: "çelişki var mı", "kanonla uyumlu mu", "tüzüğe aykırı mı", "m.16 kapısı" dendiğinde ya da ölçek-eşiği üstü her yeni öneri sunumu ÖNCESİNDE. KULLANMA: su-bardağı alt-kararlar, yazım/biçim düzeltmeleri, onaylı iş içindeki alt-adımlar (m.25/m.31 altı) — direkt yap. argument-hint: "<yeni öneri/karar tek cümle>"
 metadata: { owner: carvis, version: "0.1.0-deneysel-m29" }
 ---
 

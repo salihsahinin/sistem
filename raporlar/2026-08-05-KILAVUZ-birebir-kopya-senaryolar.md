@@ -1,5 +1,7 @@
 # KILAVUZ — Kun Chen L8 Yığınının BİREBİR KOPYASI: Kurulum + Diyaloglu Kullanım Senaryoları
 
+> **İNGEST EDİLDİ · 2026-08-21 (İB-02 triyajı — bu şerhle birlikte okunur):** (1) **Kurulum katmanı (§0-3) SÜPERSEDE** — rapor Windows/WSL2 zemininde yazıldı; 08-12 L8 **Mac** geçişi (envanter 11/11 CANLI, Karar 35; KB-16: Windows klonu TERK) fiilî kurulumu Mac'te yaptı — kurulum kaydı `raporlar/vardiya-teslim-2026-08-12-l8-mac.md`. Config metinleri (tmux.conf/wezterm.lua) referans değerini korur. (2) **Kullanım katmanı (§4 S1-S15 + §5 kalıplar + §6 ritim) CANLI** — platform-bağımsız; entegrasyon-masası hazırlık dosyasının (KB-22/KB-29 borcu) ana malzemesi. (3) §7 `[?]` listesinin çoğu Mac kurulumuyla fiilen çözüldü; AGENTS symlink sorusu Karar 47 ile çözüldü (CC AGENTS.md tüketmiyor — statik levha; symlink/bakım tetiği = Codex girişi); telefon-SSH hâlâ açık. Dosya bronz kaynak olarak yerinde kalır (m.8).
+
 *Salih emri (2026-08-05): **"birebir kopyalayacağız" — Kun Chen'in araçları VE arayüzleri kopyalanacak.** Bu rapor o emrin zemini üzerine yazıldı; alternatif/ikame tartışması açılmaz.*
 *Kaynak: `raporlar/kaynak-L8-agentic-workflow-transkript.md` (video, zaman damgalı) + `cc/rapor-2026-08-03-4.md` §II.1 birincil-kaynak künyesi `[D-belge]` + P1/P2/P3/P6 saha kayıtları.*
 *`[?]` = birincil kaynakta doğrulanmadı, ilk koşumda `--help`/README ile teyit edilir (m.39). Rakamlar `[deneysel m.29]`.*

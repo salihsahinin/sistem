@@ -1,5 +1,7 @@
 # KILAVUZ — L8 / Kun-Chen Workflow'u JARVIS'te Kullanmak
 
+> **İNGEST EDİLDİ · 2026-08-21 (İB-02 triyajı — bu şerhle birlikte okunur):** (1) **"Birebir kopya mümkün değil" tezi (§0) ve "firstmate Windows'ta yok / P5 BLOKE" satırları (§1.3, §8, S12) SÜPERSEDE** — Salih birebir-kopya yolunu seçti ve 08-12 **Mac** geçişiyle yığın fiilen kuruldu (envanter 11/11 CANLI, Karar 35; firstmate klonlu, ilk koşum 08-13; tmux §2.B'deki "⛔ gerekmiyor" hükmünün TERSİNE kuruldu ve kullanılıyor). (2) "P4 BEKLET" → Karar 44 (KB-29): P4/K1 kalemleri **entegrasyon-masası hazırlık dosyası** kapsamına devredildi; K1-11 Salih'te. (3) Windows yolları/sürümler 08-05 damgalı tarihîdir (kanon Mac `~/jarvis`; no-mistakes v1.41.2→v1.48.0; `olcum-dortlu.py` Mac uyarlaması hâlâ AÇIK borç = İB-13). (4) **CANLI kalanlar:** §1.1 darboğaz tezi · §2.A kavram sözlüğü · §3 araç-değer analizi · §5 kırmızı çizgiler (ilkeler) · §6.0 karar ağacı + senaryo iskeletleri · §7 gün şablonu · Ç3/Ç4 çelişki kayıtları (K1-3/K1-4 — entegrasyon masası kalemleri). Dosya bronz kaynak olarak yerinde kalır (m.8).
+
 *Salih için, İNSAN register. Tek başına, yardımsız okunur. Karar yok, ingest yok — bu bir **kullanım** dosyasıdır.*
 *Kaynaklar: `raporlar/kaynak-L8-agentic-workflow-transkript.md` (video) · `cc/rapor-2026-08-03-4.md` (analiz) · `raporlar/2026-08-03-masa-hazirlik-L8.md` (masa) · P1/P2/P3/P6 saha kayıtları (`kuyruk/senaryo-defteri.md` 08-04/08-05 blokları). Sahada doğrulanmamış her satır `[?]` ile işaretli (m.39).*
 *Rakamlar `[deneysel m.29]` — bant olarak okunur, tek sayı olarak alıntılanmaz.*
