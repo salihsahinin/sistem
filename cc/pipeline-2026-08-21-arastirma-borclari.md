@@ -14,7 +14,7 @@ Açılışta son commit 1 dk taze (146eab1, masa parti-6) → diğer oturum CANL
 | AB-1 skill-bakım sistemi | fikir-kutusu.md:101 (Salih emri 08-20 "araştırması yapılmak üzere not et"; tetik: Salih "araştır" emri) | bu emirle ÇEKİLDİ; V25 (kutu:50) hazır-araç taraması bindirmeli |
 | AB-2 idempotens sistematik entegrasyonu | ledger İB-39 (Salih 08-20 KB-18 eki; icra-sırada, "araştırma koşumu tetik Salih") | bu emirle ÇEKİLDİ |
 | AB-3 usage-otomasyon yol seçimi | ledger İB-08 (masa_yolu "İCRA (m.40 araştırma-önce)"; kısa atlas şartı) | araştırma-önce şartı bu koşumla kapanır |
-| AB-4 token-verim okuyucu ön-katmanı | fikir-kutusu.md:79 V59 "ARAŞTIRILACAK" + cc/gorev-2026-07-22-1.md §3 ATLAS-V59 | emir 07-22'de yazılmış, HİÇ KOŞMAMIŞ (manifest kapısı: cc/rapor'larda ATLAS-V59 izi 0) |
+| AB-4 token-verim okuyucu ön-katmanı | fikir-kutusu.md:79 V59 "ARAŞTIRILACAK" + cc/gorev-2026-07-22-1.md §3 ATLAS-V59 | emir 07-22'de yazılmış, HİÇ KOŞMAMIŞ (manifest kapısı: cc/rapor'larda ATLAS-V59 izi 0) **⟨ŞERH 21:5x — YANLIŞ ÇIKTI: cc/rapor-2026-07-22-1.md:111 "ATLAS V59" (boşluklu) bölümü VAR; tireli grep ıskaladı → kısmi mükerrer koşum, ders teslim raporunda⟩** |
 | AB-5 cascade-failure kaynak doğrulama | cc/rapor-2026-08-15-3.md:538 ("araştırma-borcu olarak kaydedilmeli" — ledger'da kaydı YOK; kayıt devir-notuna) | bu emirle ÇEKİLDİ |
 | KAPSAM DIŞI | UFUK üçlüsü (Katman-1 vizyon, karar yok) · KB-17b taban-oranı + İB-10 hakem-sapması (ölçüm koşumu, araştırma değil) · KB-31 (BEKLET-tetikli: Codex alımı) | girmedi |
 
@@ -37,6 +37,7 @@ Açılışta son commit 1 dk taze (146eab1, masa parti-6) → diğer oturum CANL
 ## Olay günlüğü
 - 21:24 açılış: canlı-oturum kapısı işledi (146eab1 1 dk taze → paralel fren aktif); manifest kapısı: araştırma-borcu pipeline'ı daha önce koşmamış (cc/pipeline-* 8 dosya tarandı, git log -15 temiz).
 - 21:2x envanter: ledger 77 kayıt tarandı (İB-08/İB-39 araştırma sınıfı; KB-31 BEKLET-tetikli kapsam dışı), kutu araştırma-tetikli 2 kalem (skill-bakım, V59), rapor-08-15-3:538 kayıtsız araştırma-borcu bulundu.
-- 21:3x emir derlendi (`cc/gorev-2026-08-21-arastirma-borclari.md`), 7 koşum-profili tahmini bronz'a yazıldı, işçiler salındı.
-- 22:0x S-1a/S-1b/S-2/S-3/S-4a/S-4b/S-5 raporları indi (7/7); V26 örneklem denetimi: S-3 ccusage/OTLP + S-4a LLMLingua/RouteLLM rakamlarına bakıldı; S-5 arxiv sayfası Carvis'çe çapraz açıldı (başlık/bölüm teyidi).
-- 22:1x G-1 sentez + SH-1 commit'ler; teslim raporu yazıldı; T beyanı verildi. Gerçekleşen koşum ölçüleri teslim raporu §5'te (tahmin↔gerçek işlemesi ana-oturum/kapanış ritüeline devir).
+- 21:3x emir derlendi; ilk Kapı-Ö koşumu BLOKE (kayit alanı eksik) → onarıldı → GEÇTİ; 7 koşum-profili tahmini bronz'a yazıldı (HEAD 146eab1); açılış commit'i b8f0a38; 7 işçi tek dalgada salındı (6× sonnet + 1× haiku).
+- 21:4x-21:5x raporlar indi (7/7, tüm done_yuklemi DRFR PASS). V26 örneklem denetimi (3 nokta): S-5 arxiv künyesi Carvis'çe çapraz açıldı — künye D teYİT, ama ajanın "doğrusal olmayan artış" güçlendirmesi özette YOK → DAYANAKSIZ düşürüldü · S-4a contextual-retrieval rakamları (%35/%49/%67 + $1.02/M) kaynakta birebir PASS · S-3 "internal format" alıntısı sessions sayfasında birebir PASS.
+- 21:5x ARIZA-DERSİ: manifest kapısının "ATLAS-V59 hiç koşmamış" hükmü YANLIŞ çıktı (tire↔boşluk grep ıskası; 07-22 raporunda bölüm varmış) → AB-4 kısmen mükerrer; hafifletici: S-4a o raporu kendiliğinden bulup pointer'la üstüne koydu, tekrar-araştırma sınırlı kaldı. Kural adayı devir-notunda.
+- 22:0x G-1 sentez + SH-1 commit'ler; teslim raporu `raporlar/seans-teslim-2026-08-21-arastirma-borclari.md`; T beyanı verildi. Tahmin↔gerçek işlemesi (ambar) ana-oturum/kapanış ritüeline devir.
