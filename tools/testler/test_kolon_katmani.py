@@ -417,10 +417,10 @@ class KatmanHattiSecimTest(unittest.TestCase):
             self.assertIn(ad, h.stdout)
         bos = tempfile.mkdtemp(prefix="hat-bos-")
         try:
-            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, karar,prompt,ambar,hareket,olcum")
+            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, karar,prompt,ambar,hareket,tarama,olcum")
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")],
-                             ["[atla ] %s" % ad for ad in ("baglam", "karar", "prompt", "ambar", "hareket", "olcum")])
+                             ["[atla ] %s" % ad for ad in ("baglam", "karar", "prompt", "ambar", "hareket", "tarama", "olcum")])
             # FAIL-LOUD: yazım hatalı --atla adı 'atlandı' diye yankılanmaz; stderr'de listelenir, çıkış 2, hiçbir adım koşmaz
             r2 = kos("katman-hatti.py", "--repo", bos, "--atla", "olcum,parquett")
             self.assertEqual(r2.returncode, 2, r2.stdout + r2.stderr)
@@ -433,7 +433,7 @@ class KatmanHattiSecimTest(unittest.TestCase):
         m = modul("katman-hatti.py")
         self.assertEqual(m.atla_sec(" olcum , parquet,kolon-olcum,parquett,"), (["olcum", "parquet", "kolon-olcum"], ["parquett"]))
         self.assertEqual(m.atla_sec(""), ([], []))
-        self.assertEqual(m.atla_sec("baglam,karar,prompt,ambar,hareket,olcum")[1], [])
+        self.assertEqual(m.atla_sec("baglam,karar,prompt,ambar,hareket,tarama,olcum")[1], [])
 
 
 if __name__ == "__main__":
