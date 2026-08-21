@@ -25,3 +25,6 @@ Kapsam adayları: koşum-tavanları · ε/agresiflik kadranları · damıtma tet
 ## Bağlar
 
 `cc/rapor-2026-08-01-10.md` K1 (tavan↔m.40b çelişkisi, seçenek a-d) · `-13.md` (ölçüm-gecikmesi vakası) · `-15.md` §8 (referans mimari: kota+debi+burst+ivme+hiyerarşi) · `-18.md` KL18-2/KL18-12 · `kuyruk/olcum-banki.md` bekleyen kalemler · masa icra borcu: deterministik çağrı-kapısı TASARIMI.
+
+---
+*İNGEST EDİLDİ · 2026-08-21 damıtma turu (triyaj: NOOP — içerik karar-borcu kütüğünde izleniyor: ai2ai+ölçek-yasaları → KB-36 kutu-adayları [masada] · tavan-rejim → KB-27 Karar 39 · staj-hasadı → KB-10 H4/H6 kararı; bu dosya bronz kaynak olarak yerinde kalır, m.8).*

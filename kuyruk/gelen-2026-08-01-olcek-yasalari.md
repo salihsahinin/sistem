@@ -174,3 +174,6 @@ Kapsamı daraltmak için bir cevaba ihtiyacın varsa sorularını topluca sor �
 ---
 
 *Damga: HAM FİKİR / PC'de ingest edilecek. Hazırlayan: Carvis / chat yüzeyi — Claude Opus 5, 2026-08-01. §7 kararları çözülmeden kanon katmanına indirilmez.*
+
+---
+*İNGEST EDİLDİ · 2026-08-21 damıtma turu (triyaj: NOOP — içerik karar-borcu kütüğünde izleniyor: ai2ai+ölçek-yasaları → KB-36 kutu-adayları [masada] · tavan-rejim → KB-27 Karar 39 · staj-hasadı → KB-10 H4/H6 kararı; bu dosya bronz kaynak olarak yerinde kalır, m.8).*

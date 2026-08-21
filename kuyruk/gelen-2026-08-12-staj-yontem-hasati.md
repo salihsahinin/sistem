@@ -83,3 +83,6 @@
 - **JARVIS karşılığı:** artefakt üreten her koşum (HTML rapor, diyagram, görsel anlatım) teslimden önce ölçüm kapısından geçer; "iyi görünüyor" teslim gerekçesi değildir. Ekran görüntüsü de yeterli değil — tek ekran kapsar, 7 şekilli dosyada örneklem hatasıdır.
 - **Kapsam sınırı (fazla söz vermemek için):** bu tur yalnız metin-metin kesişimini tarıyor; metin-çizgi ve kutu-kutu örtüşmesi ölçülmüyor.
 - **Çıktı:** [[gorsel-artefakt-dogrulama]] wiki sayfası (6 bloklu şema, SOP + 6 gotcha) + index kaydı.
+
+---
+*İNGEST EDİLDİ · 2026-08-21 damıtma turu (triyaj: NOOP — içerik karar-borcu kütüğünde izleniyor: ai2ai+ölçek-yasaları → KB-36 kutu-adayları [masada] · tavan-rejim → KB-27 Karar 39 · staj-hasadı → KB-10 H4/H6 kararı; bu dosya bronz kaynak olarak yerinde kalır, m.8).*
