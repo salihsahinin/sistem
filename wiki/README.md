@@ -29,6 +29,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 *(index tamlama 07-22, K-019 turu — dört sayfa taşınmış ama index'e işlenmemişti)*
 - [[paralel-oturum-protokolu]] — çoklu oturumun 4 kuralı (canlı-oturum kapısı · manifest kapısı · paylaşılan kaynak/motor freni · git add -A yasağı) — Salih imzası 08-17 masa (KB-08/09/10)
 - [[baglam-veri-ambari]] — bağlam VERİTABANI (operasyonel, V-1) ↔ bağlam VERİ AMBARI (analitik: aynı SQLite'ta ayrı şema/görünüm; erişim-tasarımı ayrımı; bitemporal + SCD-2 + olay↔nesne köprü) tanımı + Jarvis içerik örnekleri (olgu/boyut/mart) — 'context warehouse' dışta tanımsız, m.29 (eklendi 08-16, rapor-16-3 turu)
+- [[no-mistakes]] — kod-değişikliği doğrulama pipeline'ı (review·test·lint·push·PR·CI); safe-fix ↔ insana-eskalasyon ↔ bilinçli no-op üç-sınıf ayrımı + ci-adımı/`--skip ci` ve paralel-oturum dal-değişimi gotcha'ları (eklendi 08-21, İB-04 icra turu, paralel s13)
 
 ## Kuyruk (sonraki oturumlar)
 - baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).

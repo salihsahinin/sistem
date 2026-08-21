@@ -11,7 +11,7 @@
 
 **Neden:** paralel seans Jarvis'in kendi kararı (m.36 rev.); tek çalışma ağacı + iki oturum = birinin yarım işini diğerinin yayımlaması, mükerrer koşum (08-15/16 toplam ~549k token), sessiz kaynak bozulması. Senkron elle yürür (K-009 otomasyonu açılınca otomatikleşmesi beklenir).
 
-**Gotchas:** yanlış-pozitif (sen kapatmışsın ama commit taze) → tek soru yeter, iş durmaz · staj oturumu ayrı klasör/ayrı ritüel (md.49) ama paylaşılan makine kaynakları (Docker/port) bu kurala TABİ · telefon oturumu yan-oturumdur, kanon yazmaz (m.41).
+**Gotchas:** yanlış-pozitif (sen kapatmışsın ama commit taze) → tek soru yeter, iş durmaz · staj oturumu ayrı klasör/ayrı ritüel (md.49) ama paylaşılan makine kaynakları (Docker/port) bu kurala TABİ · telefon oturumu yan-oturumdur, kanon yazmaz (m.41) · **araç-kaynaklı dal değişimi (vaka 08-21 s13):** diğer oturumun [[no-mistakes]] koşumu working tree'yi dala geçirip merge yürütebilir (UU çakışma + staged dosyalar) — bu hâldeyken commit atmak merge'i yabancı adına tamamlar ya da yanlış dala yazar; git-yazma işlemleri ağaç main'e dönüp temizlenene dek BEKLETİLİR, sonra pathspec'li commit (`git commit -- <yol>`) diğer oturumun stage'ini dışarıda tutar · manifest-kapısı grep'i varyant-toleranslı yazılır (tire/boşluk: `ATLAS[- ]?V59` vakası 08-21 — tireli desen boşluklu başlığı ıskaladı, kısmi mükerrer koşum; KURAL-ADAYI Salih'te).
 
 **Süpersede zinciri:** `PARALEL-VARDIYA-ILK-DENEME.md` (07-12 ilk deneme talimatı) → bu sayfa (arıza kayıtlarıyla kural).
 
