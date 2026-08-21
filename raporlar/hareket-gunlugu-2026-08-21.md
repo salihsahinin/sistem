@@ -1,10 +1,10 @@
-# Hareket günlüğü — 2026-08-21 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `1423456`)
+# Hareket günlüğü — 2026-08-21 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `647d93c`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 447 çağrı, 7 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 464 çağrı, 8 oturum.*
 
-## Oturum `aa05a9d1` — 00:02:12→22:25:02 · 96 çağrı · model fable-5 · hata 1
-**Özet:** koştu 80 · düzenledi 9 · okudu 3 · yazdı 2 · ajan gönderdi 1 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (8):** `AGENTS.md` · `KILAVUZ.md` · `core/durum-kapsulu.md` · `core/ingest-semasi.md` · `core/pano.md` · `core/skill-uretim-semasi.md` · `core/tuzuk-v0.md` · `wiki/ai2ai-rapor-formati.md`
+## Oturum `aa05a9d1` — 00:02:12→22:26:46 · 101 çağrı · model fable-5 · hata 1
+**Özet:** koştu 84 · düzenledi 9 · yazdı 3 · okudu 3 · ajan gönderdi 1 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (9):** `AGENTS.md` · `KILAVUZ.md` · `core/durum-kapsulu.md` · `core/ingest-semasi.md` · `core/pano.md` · `core/skill-uretim-semasi.md` · `core/tuzuk-v0.md` · `raporlar/seans-teslim-2026-08-21-seans11-karar-masasi.md` · `wiki/ai2ai-rapor-formati.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -104,6 +104,11 @@
 | 184 | 22:22:26 | koştu | İnsan-yüzü günlükleri commit'le + push + son doğrulama ⟨cd /Users/HasanSalihSahin/jarvis git add raporlar/2026-08-21-son-50-prompt.md raporlar/hareket-gunlugu-2026-08-21.md && git commit -q -m "[icra] Human…⟩ | tamam |
 | 185 | 22:24:17 | skill çağırdı | seans-kapanis | tamam |
 | 186 | 22:25:02 | koştu | Boyut izleme + skill eşik + hareket kütüğü ⟨cd /Users/HasanSalihSahin/jarvis echo "=== boyutlar ==="; for f in core/durum-kapsulu.md core/pano.md fikir-kutusu.md kuyruk/senaryo-defteri.md CLAUDE…⟩ | yok |
+| 187 | 22:25:13 | koştu | kosum-sonuc şemasını gör ⟨cd /Users/HasanSalihSahin/jarvis; head -2 veri/bronz/kosum-sonuc.jsonl 2>/dev/null ¦ cut -c1-300⟩ | tamam |
+| 188 | 22:25:22 | koştu | Bu seansın 2 ajan hükmünü kosum-sonuc'a düş ⟨cd /Users/HasanSalihSahin/jarvis H=$(git rev-parse --short HEAD); TS=$(date '+%Y-%m-%dT%H:%M:%S%z' ¦ sed 's/\(..\)$/:\1/') cat >> veri/bronz/kosum-son…⟩ | tamam |
+| 189 | 22:26:20 | yazdı | raporlar/seans-teslim-2026-08-21-seans11-karar-masasi.md | tamam |
+| 190 | 22:26:37 | koştu | Kapsülü kapanış haline çevir + bütçe kontrolü ⟨cd /Users/HasanSalihSahin/jarvis python3 - <<'EOF' path = 'core/durum-kapsulu.md' lines = open(path).read().split('\n') yeni_g = ("**Güncelleme:** 202…⟩ | tamam |
+| 191 | 22:26:46 | koştu | Kapanış commit'i + pull + push + doğrulama ⟨cd /Users/HasanSalihSahin/jarvis git add raporlar/seans-teslim-2026-08-21-seans11-karar-masasi.md core/durum-kapsulu.md veri/bronz/kosum-sonuc.jsonl r…⟩ | tamam |
 
 ## Oturum `15a8e689` — 09:10:37→11:18:24 · 38 çağrı · model opus-5 · hata 0
 **Özet:** koştu 34 · yazdı 3 · düzenledi 1
@@ -393,8 +398,8 @@
 | 57 | 18:10:15 | koştu |  ⟨ls -la /Users/HasanSalihSahin/jarvis/cc/rapor-2026-08-15-8.md 2>&1⟩ | tamam |
 | 58 | 18:13:56 | koştu |  ⟨grep -n -i "birim bağlam\¦birim baglam\¦context unit\¦unit of context" /Users/HasanSalihSahin/jarvis/cc/rapor-2026-08-15-8.md ¦ head -30⟩ | tamam |
 
-## Oturum `68d0d8ee` — 21:23:55→22:04:05 · 87 çağrı · model fable-5 · hata 4
-**Özet:** koştu 45 · okudu 12 · düzenledi 8 · ajan gönderdi 7 · yazdı 6 · skill çağırdı 4 · web'e baktı 3 · araç aradı 2
+## Oturum `68d0d8ee` — 21:23:55→22:29:37 · 89 çağrı · model fable-5 · hata 4
+**Özet:** koştu 47 · okudu 12 · düzenledi 8 · ajan gönderdi 7 · yazdı 6 · skill çağırdı 4 · web'e baktı 3 · araç aradı 2
 **Yazılan/düzenlenen dosyalar (9):** `cc/gorev-2026-08-21-arastirma-borclari.md` · `cc/pipeline-2026-08-21-arastirma-borclari.md` · `raporlar/seans-teslim-2026-08-21-arastirma-borclari.md` · `tools/SCRIPTLER.md` · `tools/kosum-maliyeti.py` · `tools/pano-akis.py` · `wiki/README.md` · `wiki/no-mistakes.md` · `wiki/paralel-oturum-protokolu.md`
 
 | # | saat | fiil | hedef | sonuç |
@@ -486,6 +491,8 @@
 | 85 | 22:03:32 | düzenledi | wiki/README.md | tamam |
 | 86 | 22:03:45 | koştu | Wiki sayfası + index + komşu-gotcha commit'i (pathspec'li) ⟨git branch --show-current; test -f .git/MERGE_HEAD && echo MERGE-VAR ¦¦ echo merge-yok; git add wiki/no-mistakes.md && git commit -m "[icra] IB-04 par…⟩ | tamam |
 | 87 | 22:04:05 | koştu | İB-11 tam kaydı (kaynak pointer'ları) ⟨python3 -c " import json for line in open('veri/karar-borcu.jsonl'): line=line.strip() if not line or line.startswith('#'): continue r=json.loads(line…⟩ | tamam |
+| 88 | 22:29:28 | koştu | m.9 beyanıyla main'i push'la ⟨git branch --show-current && git push 2>&1 ¦ tail -3⟩ | tamam |
+| 89 | 22:29:37 | koştu | Remote'ta commit'lerimin varlığını doğrula ⟨git fetch -q; git log origin/main --oneline -5 ¦ cut -c1-90; git status --short ¦ head -3⟩ | tamam |
 
 ## Oturum `5156f305` — 21:47:26→21:47:27 · 2 çağrı · model opus-5 · hata 0
 **Özet:** koştu 2
@@ -494,4 +501,20 @@
 |---|---|---|---|---|
 | 1 | 21:47:26 | koştu | List wiki pages and glossary headings ⟨ls wiki/ 2>/dev/null ¦ head -50 && echo "--- SOZLUK BASLIKLARI ---" && grep -E "^#{2,3} " wiki/sozluk.md 2>/dev/null ¦ head -60⟩ | tamam |
 | 2 | 21:47:27 | koştu | Check which of these terms already exist in repo ⟨grep -rilE "window function¦predicate pushdown¦MVCC¦SCD¦Iceberg¦CDC¦idempoten¦trunk-based¦mutation testing¦softmax" wiki/ core/ 2>/dev/null ¦ head -20⟩ | tamam |
+
+## Oturum `1e6cf688` — 22:29:17→22:30:26 · 10 çağrı · model opus-5 · hata 0
+**Özet:** koştu 9 · skill çağırdı 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 22:29:17 | skill çağırdı | seans-acilis | tamam |
+| 2 | 22:29:24 | koştu | Tarih, git log ve durum kontrolü ⟨date "+%Y-%m-%d %H:%M:%S %Z" && echo "--- git log -8 ---" && git log --format='%h %ad %s' --date=format:'%m-%d %H:%M' -8 && echo "--- status ---" && g…⟩ | tamam |
+| 3 | 22:29:26 | koştu | Senkron log ve pano başlıkları ⟨echo "=== senkron-log son 3 ===" && tail -3 raporlar/usage/senkron-log.jsonl 2>/dev/null && echo "=== pano AKTIF/Ekrana gel ===" && grep -n -i "ekrana…⟩ | tamam |
+| 4 | 22:29:33 | koştu | Pano kartlarını oku ⟨sed -n '9,45p' core/pano.md⟩ | tamam |
+| 5 | 22:29:35 | koştu | Silver tazelik kapısı: uretim.git_head_sha kontrolü ⟨python3 -c " import sqlite3 c=sqlite3.connect('veri/baglam.sqlite') try: r=c.execute(\"select * from uretim\").fetchall() print(r[:5]) except Exceptio…⟩ | tamam |
+| 6 | 22:29:48 | koştu | Silver katman hattını tazele ⟨timeout 300 python3 tools/katman-hatti.py 2>&1 ¦ tail -20⟩ | tamam |
+| 7 | 22:29:48 | koştu | EK-6 masa gündemini oku ⟨echo "=== EK-6 masa gündemi ===" && wc -l kuyruk/masa-gundemi-EK6-2026-08-20.md && head -60 kuyruk/masa-gundemi-EK6-2026-08-20.md⟩ | tamam |
+| 8 | 22:29:51 | koştu | Katman hattı çıktısını oku ⟨tail -12 /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/1e6cf688-74fe-40ee-8f0d-32c4286f75be/tasks/bv9rl8ovf.output⟩ | tamam |
+| 9 | 22:29:53 | koştu | Entegrasyon masa gündemini oku ⟨echo "=== ENTEGRASYON masa gündemi ===" && wc -l kuyruk/masa-gundemi-entegrasyon-2026-08-21.md && cat kuyruk/masa-gundemi-entegrasyon-2026-08-21.md⟩ | tamam |
+| 10 | 22:30:26 | koştu | Silver katman hattını tazele (timeout'suz) ⟨python3 tools/katman-hatti.py 2>&1 ¦ tail -12⟩ | yok |
 
