@@ -1,0 +1,57 @@
+# Jarvis POINTER SİSTEMİ — POINTER TÜRLERİ → ÇÖZÜMLEME HEDEFLERİ (pano 2/4) (türetilmiş görünüm; ham kaynak silver/bronz)
+# üretici: tools/pointer-graf.py · silver 647d93c · HEAD ceaf50d · render: d2 --layout=elk (deterministik, Karar 65)
+direction: right
+classes: {
+  kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
+  pointer: { style: { fill: "#E8F0FE"; stroke: "#1A56DB"; border-radius: 6 } }
+  anahtar: { style: { fill: "#FFF4E5"; stroke: "#B45309"; border-radius: 6 } }
+  hat: { style: { fill: "#ECFDF5"; stroke: "#047857"; bold: true; border-radius: 6 } }
+  ilke: { shape: hexagon; style: { fill: "#FDF2F8"; stroke: "#9D174D" } }
+  kron: { shape: page; style: { fill: "#FFFFFF"; stroke: "#6B7280" } }
+  dis: { shape: cloud; style: { fill: "#FAFAFA"; stroke: "#9CA3AF" } }
+  kirik: { style: { stroke: "#DC2626"; stroke-dash: 3; font-size: 14 } }
+  supersede: { style: { stroke: "#B45309"; stroke-dash: 5 } }
+  fk: { style: { stroke: "#444444"; font-size: 14 } }
+  turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
+  uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
+}
+pointer: "REFERANS TÜRLERİ (referans.ref_turu)" {
+  anahtar_terim: "anahtar_terim · 29.247" { class: pointer }
+  dosya_pointer: "dosya_pointer · 8.071\n6.964 çözümlü / 1.107 KIRIK" { class: pointer }
+  etiket: "etiket · 5.408" { class: pointer }
+  kart: "kart · 2.025" { class: pointer }
+  sha: "sha · 628" { class: pointer }
+  skill_adi: "skill_adi · 1.456" { class: pointer }
+  tarih: "tarih · 1.819" { class: pointer }
+  tuzuk_madde: "tuzuk_madde · 7.669" { class: pointer }
+  url: "url · 3.476" { class: pointer }
+  v_no: "v_no · 3.099" { class: pointer }
+  wiki_link: "wiki_link · 164" { class: pointer }
+}
+anahtar: "ANAHTAR KAYDI (anahtar.tur)" {
+  anahtar_terim: "anahtar_terim · 27" { class: anahtar }
+  kart: "kart · 23" { class: anahtar }
+  skill: "skill · 16" { class: anahtar }
+  tuzuk_madde: "tuzuk_madde · 137" { class: anahtar }
+  v_no: "v_no · 82" { class: anahtar }
+  wiki_sayfa: "wiki_sayfa · 43" { class: anahtar }
+}
+dosya: "dosya tablosu · 571" { class: kutu }
+dis: "REPO DIŞI" {
+  etiket: "etiket" { class: dis }
+  git: "git" { class: dis }
+  url: "url" { class: dis }
+  zaman: "zaman" { class: dis }
+}
+anahtar -> anahtar: "replaced_by (süpersede, SCD-2)" { class: supersede }
+pointer.anahtar_terim -> anahtar.anahtar_terim: "terim → anahtar kaydı" { class: fk }
+pointer.dosya_pointer -> dosya: "yol → dosya (hedef_var ile çözümlü/kırık)" { class: kirik }
+pointer.etiket -> dis.etiket: "#etiket (serbest sınıflandırma)" { class: fk }
+pointer.kart -> anahtar.kart: "K-NNN → pano kartı (anahtar kaydı)" { class: fk }
+pointer.sha -> dis.git: "git commit/blob (provenans)" { class: fk }
+pointer.skill_adi -> anahtar.skill: "skill adı → hazine" { class: fk }
+pointer.tarih -> dis.zaman: "zaman damgası (as-of)" { class: fk }
+pointer.tuzuk_madde -> anahtar.tuzuk_madde: "m.N → tüzük maddesi (anahtar kaydı)" { class: fk }
+pointer.url -> dis.url: "dış kaynak (repo dışı)" { class: fk }
+pointer.v_no -> anahtar.v_no: "V-n → kural/öneri numarası (anahtar kaydı)" { class: fk }
+pointer.wiki_link -> anahtar.wiki_sayfa: "[[sayfa]] → wiki sayfası (anahtar kaydı)" { class: fk }

@@ -27,7 +27,7 @@
 ## Görev tablosu (Kun-Chen)
 | Rol | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-0 | scout (deterministik script, P0) | pointer-sistemi graf modeli silver'dan | silver şema + referans/anahtar tabloları | `tools/pointer-graf.py` · `veri/graf/pointer-sistemi-model.json` | AÇIK |
+| S-0 | scout (deterministik script, P0) | pointer-sistemi graf modeli silver'dan | silver şema + referans/anahtar tabloları | `tools/pointer-graf.py` · `veri/graf/pointer-sistemi-model.json` | DONE |
 | S-1 | scout (m.40b çift-atlas, P1: 3 aile × 12 işçi) | A graf dosya tipi+araç (D2 önde) · B pointer/PK sisteminin graf şeması · C LLM↔graf iletişimi | `cc/gorev-2026-08-22-2.md` | `cc/rapor-2026-08-22-2.md` | AÇIK |
 | G-1 | sentez (Carvis, P2 giriş) | dosya-tipi kanıt tablosu · şema (düğüm/kenar tipleri) · D2 idiomları · iletişim protokolü v0 | S-1 raporu | rapor §Sentez | BEKLİYOR |
 | SH-1 | ship (P2) | `.d2` üretimi (script) + render + teslim (tam yol, Finder, tarayıcı) | S-0 + G-1 | `graf/pointer-sistemi-v0.{d2,svg,png}` | BEKLİYOR |
@@ -39,3 +39,4 @@
 
 ## Olay günlüğü
 - 02:3x emir devralındı (vektör-DB pipeline T beyanından sonra); kapı + çelişki kapısı + YOL-PLANI yukarıda; envanter sondajı: silver PK'lar (kayit_id · dosya_id · anahtar_id · borc_id · hareket_id · prompt_id), referans 11 tür (dosya_pointer hedef_var 6.964/1.107 kırık), anahtar 328 (6 tür), dosya 571 (4 katman), karar_borcu_kaynak 246/246 çözümlü, wiki 17 sayfa; d2 v0.8.1 (dagre+ELK).
+- 02:4x P0 DONE: `tools/pointer-graf.py` (stdlib, FAIL-LOUD) → model 58 düğüm / 56 kenar; iki koşum birebir (determinizm ✓); D2: tek-pano TAM (7089×4419 — okunmuyor, arşiv) + ÇOK-PANOLU kademeleme (genel 1953×2073 · silver 1459×1662 · pointer 2052×1474 · ilke 1682×764 · kronoloji 923×1405); ELK render: aynı .d2 → bayt-birebir SVG (ELK ve dagre ikisi de) — Karar 65 için yerel ölçüm. d2 PNG çıkışı asılı kaldı (headless tarayıcı; 2 dk zaman aşımı) → SVG + QuickLook önizleme yolu. Gözle kontrol: genel + pointer panoları okunur (tek-pano tam graf reddedildi — anlaşılırlık ölçütü). P2 teslimi P1 raporu + idiom teyidi sonrası.

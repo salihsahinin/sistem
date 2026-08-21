@@ -1,0 +1,1087 @@
+{
+ "meta": {
+  "uretici": "tools/pointer-graf.py",
+  "db": "veri/baglam.sqlite",
+  "silver_uretim": "2026-08-21T22:30:34+03:00",
+  "silver_git_head": "647d93cb5124b0459995dffee70aff2a340a274c",
+  "git_head": "ceaf50d",
+  "uretim_zamani": "2026-08-22T02:39:14+03:00",
+  "dugum_sayisi": 58,
+  "kenar_sayisi": 56,
+  "sema": "pointer-graf-model v0 (deneysel m.29)",
+  "not": "gövde deterministik (sıralı); yalnız meta.uretim_zamani değişir"
+ },
+ "nodes": [
+  {
+   "id": "anahtar:anahtar_terim",
+   "kind": "anahtar_turu",
+   "label": "anahtar_terim",
+   "sayi": 27,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "anahtar:kart",
+   "kind": "anahtar_turu",
+   "label": "kart",
+   "sayi": 23,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "anahtar:skill",
+   "kind": "anahtar_turu",
+   "label": "skill",
+   "sayi": 16,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "anahtar:tuzuk_madde",
+   "kind": "anahtar_turu",
+   "label": "tuzuk_madde",
+   "sayi": 137,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "anahtar:v_no",
+   "kind": "anahtar_turu",
+   "label": "v_no",
+   "sayi": 82,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "anahtar:wiki_sayfa",
+   "kind": "anahtar_turu",
+   "label": "wiki_sayfa",
+   "sayi": 43,
+   "deprecated": 0,
+   "supersede_li": 0
+  },
+  {
+   "id": "dis:etiket",
+   "kind": "dis",
+   "label": "etiket"
+  },
+  {
+   "id": "dis:git",
+   "kind": "dis",
+   "label": "git"
+  },
+  {
+   "id": "dis:url",
+   "kind": "dis",
+   "label": "url"
+  },
+  {
+   "id": "dis:zaman",
+   "kind": "dis",
+   "label": "zaman"
+  },
+  {
+   "id": "katman:ilik",
+   "kind": "dosya_katmani",
+   "label": "ilik",
+   "sayi": 81
+  },
+  {
+   "id": "katman:sicak",
+   "kind": "dosya_katmani",
+   "label": "sicak",
+   "sayi": 35
+  },
+  {
+   "id": "katman:soguk",
+   "kind": "dosya_katmani",
+   "label": "soguk",
+   "sayi": 406
+  },
+  {
+   "id": "katman:yapisal",
+   "kind": "dosya_katmani",
+   "label": "yapisal",
+   "sayi": 49
+  },
+  {
+   "id": "hat:bronz",
+   "kind": "hat_katmani",
+   "label": "bronz (git-izlenen md/json/jsonl)",
+   "sayi": 571
+  },
+  {
+   "id": "hat:gold",
+   "kind": "hat_katmani",
+   "label": "gold (veri/gorunum/*.csv)",
+   "sayi": 20,
+   "dosyalar": [
+    "v_amb_acilis_brifi.csv",
+    "v_amb_kosum_maliyet.csv",
+    "v_anahtar_terim_dosya.csv",
+    "v_bolum_yogunluk.csv",
+    "v_boyut_anahtar.csv",
+    "v_celiski_adayi.csv",
+    "v_dosya_envanter.csv",
+    "v_hareket_gunluk.csv",
+    "v_karar_borcu.csv",
+    "v_kirik_pointer.csv",
+    "v_kosum_tahmin_sapma.csv",
+    "v_olgu_referans.csv",
+    "v_pano_akis.csv",
+    "v_referans_sayim.csv",
+    "v_skill_kosum.csv",
+    "v_son_50_prompt.csv",
+    "v_son_hareketler.csv",
+    "v_tartisma_notu.csv",
+    "v_x_olcum.csv",
+    "v_zarf_kayitlar.csv"
+   ]
+  },
+  {
+   "id": "hat:silver",
+   "kind": "hat_katmani",
+   "label": "silver (veri/baglam.sqlite)",
+   "sayi": 135624
+  },
+  {
+   "id": "ilke:adres",
+   "kind": "ilke",
+   "label": "adresli-erişim kuralı (08-18)",
+   "ozet": "kayit_id = yol#satır#sha8 → SEARCH USING INDEX; tarif+testler+hijyen, sarmalayıcı yok",
+   "kaynak": "KILAVUZ.md tasarım-ilkeleri · kuyruk/senaryo-defteri.md Karar 62"
+  },
+  {
+   "id": "ilke:m20",
+   "kind": "ilke",
+   "label": "m.20 pointer ilkesi",
+   "ozet": "özet + ADRES; detay sıcak bağlama taşınmaz, karar anında pointer izlenir",
+   "kaynak": "core/tuzuk-v0.md m.20 · wiki/pointer-sistemi.md"
+  },
+  {
+   "id": "ilke:m21",
+   "kind": "ilke",
+   "label": "m.21 dönüş yolu",
+   "ozet": "özet kısalır, pointer DÜŞMEZ (bağlam-detay ölçekleme)",
+   "kaynak": "core/tuzuk-v0.md m.21"
+  },
+  {
+   "id": "ilke:m22",
+   "kind": "ilke",
+   "label": "m.22 arşiv pointer",
+   "ozet": "bayat kayıt silinmez, arşive iner, pointer arşiv adresine güncellenir",
+   "kaynak": "core/tuzuk-v0.md m.22"
+  },
+  {
+   "id": "ilke:m8",
+   "kind": "ilke",
+   "label": "m.8 silme yasağı → süpersede",
+   "ozet": "kayıt silinmez; yeni kayıt eskisini süpersede eder (anahtar.replaced_by, SCD-2)",
+   "kaynak": "core/tuzuk-v0.md m.8 · core/baglam-anahtar-kaydi.md §3"
+  },
+  {
+   "id": "kron:k0711",
+   "kind": "kronoloji",
+   "label": "2026-07-11 · tüzük m.20-22 imzalandı (pointer ilkesi kanon)",
+   "tarih": "2026-07-11",
+   "kaynak": "core/tuzuk-v0.md"
+  },
+  {
+   "id": "kron:k0712",
+   "kind": "kronoloji",
+   "label": "2026-07-12 · PAT kararı: yalnız pointer izlendi — kanonik örnek",
+   "tarih": "2026-07-12",
+   "kaynak": "wiki/pointer-sistemi.md"
+  },
+  {
+   "id": "kron:k0718",
+   "kind": "kronoloji",
+   "label": "2026-07-18 · pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)",
+   "tarih": "2026-07-18",
+   "kaynak": "raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md"
+  },
+  {
+   "id": "kron:k0724",
+   "kind": "kronoloji",
+   "label": "2026-07-24 · graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş",
+   "tarih": "2026-07-24",
+   "kaynak": "raporlar/2026-07-24-serit2-graph-engineering.md"
+  },
+  {
+   "id": "kron:k0815",
+   "kind": "kronoloji",
+   "label": "2026-08-15 · silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)",
+   "tarih": "2026-08-15",
+   "kaynak": "cc/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md"
+  },
+  {
+   "id": "kron:k0817",
+   "kind": "kronoloji",
+   "label": "2026-08-17 · hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)",
+   "tarih": "2026-08-17",
+   "kaynak": "kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-21.md:26"
+  },
+  {
+   "id": "kron:k0818",
+   "kind": "kronoloji",
+   "label": "2026-08-18 · adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)",
+   "tarih": "2026-08-18",
+   "kaynak": "kuyruk/senaryo-defteri.md:173-175"
+  },
+  {
+   "id": "kron:k0822",
+   "kind": "kronoloji",
+   "label": "2026-08-22 · pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği",
+   "tarih": "2026-08-22",
+   "kaynak": "cc/pipeline-2026-08-22-pointer-graf-d2.md"
+  },
+  {
+   "id": "ref:anahtar_terim",
+   "kind": "referans_turu",
+   "label": "anahtar_terim",
+   "sayi": 29247,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:dosya_pointer",
+   "kind": "referans_turu",
+   "label": "dosya_pointer",
+   "sayi": 8071,
+   "cozumlu": 6964,
+   "kirik": 1107
+  },
+  {
+   "id": "ref:etiket",
+   "kind": "referans_turu",
+   "label": "etiket",
+   "sayi": 5408,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:kart",
+   "kind": "referans_turu",
+   "label": "kart",
+   "sayi": 2025,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:sha",
+   "kind": "referans_turu",
+   "label": "sha",
+   "sayi": 628,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:skill_adi",
+   "kind": "referans_turu",
+   "label": "skill_adi",
+   "sayi": 1456,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:tarih",
+   "kind": "referans_turu",
+   "label": "tarih",
+   "sayi": 1819,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:tuzuk_madde",
+   "kind": "referans_turu",
+   "label": "tuzuk_madde",
+   "sayi": 7669,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:url",
+   "kind": "referans_turu",
+   "label": "url",
+   "sayi": 3476,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:v_no",
+   "kind": "referans_turu",
+   "label": "v_no",
+   "sayi": 3099,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "ref:wiki_link",
+   "kind": "referans_turu",
+   "label": "wiki_link",
+   "sayi": 164,
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "id": "tablo:amb_kopru_not_prompt",
+   "kind": "tablo",
+   "label": "amb_kopru_not_prompt",
+   "satir": 8,
+   "pk": null,
+   "kolonlar": [
+    "not_id",
+    "prompt_id",
+    "sira",
+    "qualifier"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_karar_borcu",
+   "kind": "tablo",
+   "label": "amb_olgu_karar_borcu",
+   "satir": 97,
+   "pk": null,
+   "kolonlar": [
+    "borc_id",
+    "kume",
+    "katman",
+    "karar_sahibi",
+    "durum",
+    "tur",
+    "masa_sirasi",
+    "valid_from",
+    "valid_to",
+    "system_time",
+    "kod_sha",
+    "baslik"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_kosum",
+   "kind": "tablo",
+   "label": "amb_olgu_kosum",
+   "satir": 345,
+   "pk": null,
+   "kolonlar": [
+    "kosum_id",
+    "wf_id",
+    "agent_id",
+    "agent_type",
+    "oturum",
+    "aile",
+    "rol",
+    "modeller",
+    "valid_time_bas",
+    "valid_time_son",
+    "sure_sn",
+    "asistan_mesaj",
+    "arac_cagrisi",
+    "input_tokens",
+    "output_tokens",
+    "cache_read_input_tokens",
+    "cache_creation_input_tokens",
+    "ilk_prompt_kisa",
+    "kaynak_dosya",
+    "system_time",
+    "kod_sha"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_kosum_sonuc",
+   "kind": "tablo",
+   "label": "amb_olgu_kosum_sonuc",
+   "satir": 6,
+   "pk": null,
+   "kolonlar": [
+    "kosum_id",
+    "sonuc",
+    "kaynak",
+    "aciklama",
+    "system_time",
+    "kod_sha"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_prompt",
+   "kind": "tablo",
+   "label": "amb_olgu_prompt",
+   "satir": 357,
+   "pk": null,
+   "kolonlar": [
+    "prompt_id",
+    "oturum_id",
+    "sira",
+    "tur",
+    "sonraki_skill",
+    "sonraki_model",
+    "uzunluk_kar",
+    "kelime",
+    "metin_kisa",
+    "valid_time",
+    "kod_sha",
+    "system_time"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_tahmin",
+   "kind": "tablo",
+   "label": "amb_olgu_tahmin",
+   "satir": 39,
+   "pk": null,
+   "kolonlar": [
+    "tahmin_id",
+    "gorev_emri_dosya",
+    "gorev_emri_satir",
+    "rol",
+    "model_sinifi",
+    "effort",
+    "tahmin_cikti_min",
+    "tahmin_cikti_max",
+    "tahmin_girdi_min",
+    "tahmin_girdi_max",
+    "tahmin_arac_min",
+    "tahmin_arac_max",
+    "tahmin_sure_min_sn",
+    "tahmin_sure_max_sn",
+    "tahmin_serbest_metin",
+    "tahmin_formul_mu",
+    "tahmin_kaynagi",
+    "wf_id",
+    "kaynak_rapor_dosya",
+    "kaynak_rapor_satir",
+    "system_time",
+    "kod_sha"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:amb_olgu_tartisma_notu",
+   "kind": "tablo",
+   "label": "amb_olgu_tartisma_notu",
+   "satir": 2,
+   "pk": null,
+   "kolonlar": [
+    "not_id",
+    "valid_time",
+    "konu",
+    "tetikleyen",
+    "cevap_ozeti",
+    "acik_soru",
+    "katman",
+    "durum",
+    "oturum",
+    "prompt_sayisi",
+    "kaynak_kuyruk",
+    "system_time",
+    "kod_sha"
+   ],
+   "grup": "ambar"
+  },
+  {
+   "id": "tablo:anahtar",
+   "kind": "tablo",
+   "label": "anahtar",
+   "satir": 328,
+   "pk": "anahtar_id",
+   "kolonlar": [
+    "anahtar_id",
+    "tur",
+    "deger",
+    "kaynak_dosya",
+    "durum",
+    "replaced_by",
+    "gecerli_bas",
+    "gecerli_bitis",
+    "referans_sayisi",
+    "sicak_referans_sayisi",
+    "ilk_gorulme",
+    "son_gorulme"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:dosya",
+   "kind": "tablo",
+   "label": "dosya",
+   "satir": 571,
+   "pk": "dosya_id",
+   "kolonlar": [
+    "dosya_id",
+    "dizin",
+    "katman",
+    "tur",
+    "boyut_bytes",
+    "satir_sayisi",
+    "blob_sha",
+    "ilk_commit",
+    "son_commit",
+    "baslik",
+    "token_kestirim",
+    "uzanti",
+    "okunabildi"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:hareket",
+   "kind": "tablo",
+   "label": "hareket",
+   "satir": 2356,
+   "pk": "hareket_id",
+   "kolonlar": [
+    "hareket_id",
+    "ts_utc",
+    "ts_tr",
+    "tarih_tr",
+    "saat_tr",
+    "oturum_id",
+    "oturum_kisa",
+    "sira",
+    "arac",
+    "fiil",
+    "hedef",
+    "dosya",
+    "repo_ici",
+    "sonuc",
+    "model",
+    "kaynak_dosya",
+    "yuklendi_head"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:json_kayit",
+   "kind": "tablo",
+   "label": "json_kayit",
+   "satir": 18795,
+   "pk": null,
+   "kolonlar": [
+    "dosya_id",
+    "satir_no",
+    "json_yolu",
+    "deger",
+    "deger_tipi"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:karar_borcu",
+   "kind": "tablo",
+   "label": "karar_borcu",
+   "satir": 97,
+   "pk": "borc_id",
+   "kolonlar": [
+    "borc_id",
+    "baslik",
+    "kume",
+    "tur",
+    "katman",
+    "karar_sahibi",
+    "durum",
+    "kayit_tarihi",
+    "yas_gun",
+    "secenekler",
+    "oneri",
+    "bagimlilik",
+    "kapanis_kaniti",
+    "masa_sirasi",
+    "yururluk_aninda",
+    "icra_borcu",
+    "not_",
+    "kaynak_sayisi",
+    "snapshot_tarih",
+    "snapshot_sha"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:karar_borcu_kaynak",
+   "kind": "tablo",
+   "label": "karar_borcu_kaynak",
+   "satir": 246,
+   "pk": null,
+   "kolonlar": [
+    "borc_id",
+    "sira",
+    "dosya_id",
+    "satir",
+    "satir_metin",
+    "dosya_var",
+    "satir_var",
+    "kayit_id"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:kayit",
+   "kind": "tablo",
+   "label": "kayit",
+   "satir": 48957,
+   "pk": "kayit_id",
+   "kolonlar": [
+    "kayit_id",
+    "dosya_id",
+    "sira",
+    "bolum_yolu",
+    "blok_turu",
+    "satir_bas",
+    "satir_son",
+    "metin",
+    "metin_kisa",
+    "token_kestirim",
+    "tarih_ipucu",
+    "tarih_iso",
+    "zarf_tip",
+    "zarf_kaynak",
+    "zarf_tarih",
+    "zarf_hedef",
+    "zarf_sema",
+    "zarf_onem",
+    "zarf_gecerli_bitis",
+    "zarf_json",
+    "madde_derinlik"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:prompt",
+   "kind": "tablo",
+   "label": "prompt",
+   "satir": 357,
+   "pk": "prompt_id",
+   "kolonlar": [
+    "prompt_id",
+    "ts_utc",
+    "ts_tr",
+    "tarih_tr",
+    "oturum_id",
+    "oturum_kisa",
+    "sira",
+    "metin",
+    "metin_kisa",
+    "uzunluk_kar",
+    "kelime",
+    "tur",
+    "sonraki_model",
+    "sonraki_skill",
+    "kaynak_dosya",
+    "yuklendi_head"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:referans",
+   "kind": "tablo",
+   "label": "referans",
+   "satir": 63062,
+   "pk": null,
+   "kolonlar": [
+    "kayit_id",
+    "ref_turu",
+    "ref_deger",
+    "ham",
+    "konum",
+    "hedef_var",
+    "hedef_yol"
+   ],
+   "grup": "silver"
+  },
+  {
+   "id": "tablo:uretim",
+   "kind": "tablo",
+   "label": "uretim",
+   "satir": 1,
+   "pk": null,
+   "kolonlar": [
+    "uretim_zamani",
+    "git_head_sha",
+    "dosya_sayisi",
+    "kayit_sayisi",
+    "referans_sayisi",
+    "sema_surumu",
+    "script_sha",
+    "anahtar_sayisi",
+    "json_kayit_sayisi",
+    "sure_sn",
+    "python_surumu",
+    "kayit_id_kume_sha",
+    "notlar"
+   ],
+   "grup": "silver"
+  }
+ ],
+ "edges": [
+  {
+   "from": "hat:bronz",
+   "type": "turetir",
+   "to": "hat:silver",
+   "label": "tools/katman-hatti.py (sıfırdan, idempotent)"
+  },
+  {
+   "from": "hat:silver",
+   "type": "turetir",
+   "to": "hat:gold",
+   "label": "v_* görünümler → CSV"
+  },
+  {
+   "from": "hat:silver",
+   "type": "uretim_provenansi",
+   "to": "tablo:uretim",
+   "label": "git_head_sha · script_sha · kayit_id_kume_sha"
+  },
+  {
+   "from": "ilke:adres",
+   "type": "ilke_uygular",
+   "to": "tablo:kayit",
+   "label": "SEARCH USING INDEX"
+  },
+  {
+   "from": "ilke:m20",
+   "type": "ilke_uygular",
+   "to": "tablo:kayit",
+   "label": "kayit_id = ADRES (yol#satır#sha8)"
+  },
+  {
+   "from": "ilke:m20",
+   "type": "ilke_uygular",
+   "to": "tablo:referans",
+   "label": "pointer → hedef"
+  },
+  {
+   "from": "ilke:m21",
+   "type": "ilke_uygular",
+   "to": "tablo:referans",
+   "label": "dönüş yolu: pointer düşmez"
+  },
+  {
+   "from": "ilke:m22",
+   "type": "ilke_uygular",
+   "to": "tablo:dosya",
+   "label": "arşiv yolu güncellenir"
+  },
+  {
+   "from": "ilke:m8",
+   "type": "ilke_uygular",
+   "to": "tablo:anahtar",
+   "label": "replaced_by / gecerli_bitis (SCD-2)"
+  },
+  {
+   "from": "kron:k0711",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0712",
+   "label": ""
+  },
+  {
+   "from": "kron:k0712",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0718",
+   "label": ""
+  },
+  {
+   "from": "kron:k0718",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0724",
+   "label": ""
+  },
+  {
+   "from": "kron:k0724",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0815",
+   "label": ""
+  },
+  {
+   "from": "kron:k0815",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0817",
+   "label": ""
+  },
+  {
+   "from": "kron:k0817",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0818",
+   "label": ""
+  },
+  {
+   "from": "kron:k0818",
+   "type": "kronoloji_sonra",
+   "to": "kron:k0822",
+   "label": ""
+  },
+  {
+   "from": "ref:anahtar_terim",
+   "type": "pointer_hedef",
+   "to": "anahtar:anahtar_terim",
+   "label": "terim → anahtar kaydı",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "ref:dosya_pointer",
+   "type": "pointer_hedef",
+   "to": "tablo:dosya",
+   "label": "yol → dosya (hedef_var ile çözümlü/kırık) · 6.964 çözümlü / 1.107 KIRIK",
+   "cozumlu": 6964,
+   "kirik": 1107
+  },
+  {
+   "from": "ref:etiket",
+   "type": "pointer_hedef",
+   "to": "dis:etiket",
+   "label": "#etiket (serbest sınıflandırma)"
+  },
+  {
+   "from": "ref:kart",
+   "type": "pointer_hedef",
+   "to": "anahtar:kart",
+   "label": "K-NNN → pano kartı (anahtar kaydı)",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "ref:sha",
+   "type": "pointer_hedef",
+   "to": "dis:git",
+   "label": "git commit/blob (provenans)"
+  },
+  {
+   "from": "ref:skill_adi",
+   "type": "pointer_hedef",
+   "to": "anahtar:skill",
+   "label": "skill adı → hazine",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "ref:tarih",
+   "type": "pointer_hedef",
+   "to": "dis:zaman",
+   "label": "zaman damgası (as-of)"
+  },
+  {
+   "from": "ref:tuzuk_madde",
+   "type": "pointer_hedef",
+   "to": "anahtar:tuzuk_madde",
+   "label": "m.N → tüzük maddesi (anahtar kaydı)",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "ref:url",
+   "type": "pointer_hedef",
+   "to": "dis:url",
+   "label": "dış kaynak (repo dışı)"
+  },
+  {
+   "from": "ref:v_no",
+   "type": "pointer_hedef",
+   "to": "anahtar:v_no",
+   "label": "V-n → kural/öneri numarası (anahtar kaydı)",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "ref:wiki_link",
+   "type": "pointer_hedef",
+   "to": "anahtar:wiki_sayfa",
+   "label": "[[sayfa]] → wiki sayfası (anahtar kaydı)",
+   "cozumlu": 0,
+   "kirik": 0
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:anahtar_terim",
+   "label": "27"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:kart",
+   "label": "23"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:skill",
+   "label": "16"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:tuzuk_madde",
+   "label": "137"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:v_no",
+   "label": "82"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "icerir",
+   "to": "anahtar:wiki_sayfa",
+   "label": "43"
+  },
+  {
+   "from": "tablo:anahtar",
+   "type": "supersede",
+   "to": "tablo:anahtar",
+   "label": "replaced_by → anahtar_id",
+   "sutun": "replaced_by",
+   "hedef_sutun": "anahtar_id"
+  },
+  {
+   "from": "tablo:dosya",
+   "type": "icerir",
+   "to": "katman:ilik",
+   "label": "81"
+  },
+  {
+   "from": "tablo:dosya",
+   "type": "icerir",
+   "to": "katman:sicak",
+   "label": "35"
+  },
+  {
+   "from": "tablo:dosya",
+   "type": "icerir",
+   "to": "katman:soguk",
+   "label": "406"
+  },
+  {
+   "from": "tablo:dosya",
+   "type": "icerir",
+   "to": "katman:yapisal",
+   "label": "49"
+  },
+  {
+   "from": "tablo:json_kayit",
+   "type": "fk",
+   "to": "tablo:dosya",
+   "label": "dosya_id → dosya_id",
+   "sutun": "dosya_id",
+   "hedef_sutun": "dosya_id"
+  },
+  {
+   "from": "tablo:karar_borcu_kaynak",
+   "type": "fk",
+   "to": "tablo:dosya",
+   "label": "dosya_id → dosya_id",
+   "sutun": "dosya_id",
+   "hedef_sutun": "dosya_id"
+  },
+  {
+   "from": "tablo:karar_borcu_kaynak",
+   "type": "fk",
+   "to": "tablo:karar_borcu",
+   "label": "borc_id → borc_id",
+   "sutun": "borc_id",
+   "hedef_sutun": "borc_id"
+  },
+  {
+   "from": "tablo:karar_borcu_kaynak",
+   "type": "fk",
+   "to": "tablo:kayit",
+   "label": "kayit_id → kayit_id",
+   "sutun": "kayit_id",
+   "hedef_sutun": "kayit_id"
+  },
+  {
+   "from": "tablo:kayit",
+   "type": "fk",
+   "to": "tablo:dosya",
+   "label": "dosya_id → dosya_id",
+   "sutun": "dosya_id",
+   "hedef_sutun": "dosya_id"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "fk",
+   "to": "tablo:dosya",
+   "label": "hedef_yol → dosya_id",
+   "sutun": "hedef_yol",
+   "hedef_sutun": "dosya_id"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "fk",
+   "to": "tablo:kayit",
+   "label": "kayit_id → kayit_id",
+   "sutun": "kayit_id",
+   "hedef_sutun": "kayit_id"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:anahtar_terim",
+   "label": "29.247"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:dosya_pointer",
+   "label": "8.071"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:etiket",
+   "label": "5.408"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:kart",
+   "label": "2.025"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:sha",
+   "label": "628"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:skill_adi",
+   "label": "1.456"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:tarih",
+   "label": "1.819"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:tuzuk_madde",
+   "label": "7.669"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:url",
+   "label": "3.476"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:v_no",
+   "label": "3.099"
+  },
+  {
+   "from": "tablo:referans",
+   "type": "icerir",
+   "to": "ref:wiki_link",
+   "label": "164"
+  }
+ ]
+}

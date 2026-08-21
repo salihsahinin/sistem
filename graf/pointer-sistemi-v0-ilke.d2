@@ -1,0 +1,32 @@
+# Jarvis POINTER SİSTEMİ — POINTER İLKESİ → MEKANİZMA (pano 3/4) (türetilmiş görünüm; ham kaynak silver/bronz)
+# üretici: tools/pointer-graf.py · silver 647d93c · HEAD ceaf50d · render: d2 --layout=elk (deterministik, Karar 65)
+direction: right
+classes: {
+  kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
+  pointer: { style: { fill: "#E8F0FE"; stroke: "#1A56DB"; border-radius: 6 } }
+  anahtar: { style: { fill: "#FFF4E5"; stroke: "#B45309"; border-radius: 6 } }
+  hat: { style: { fill: "#ECFDF5"; stroke: "#047857"; bold: true; border-radius: 6 } }
+  ilke: { shape: hexagon; style: { fill: "#FDF2F8"; stroke: "#9D174D" } }
+  kron: { shape: page; style: { fill: "#FFFFFF"; stroke: "#6B7280" } }
+  dis: { shape: cloud; style: { fill: "#FAFAFA"; stroke: "#9CA3AF" } }
+  kirik: { style: { stroke: "#DC2626"; stroke-dash: 3; font-size: 14 } }
+  supersede: { style: { stroke: "#B45309"; stroke-dash: 5 } }
+  fk: { style: { stroke: "#444444"; font-size: 14 } }
+  turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
+  uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
+}
+adres: "adresli-erişim kuralı (08-18)\nkayit_id = yol#satır#sha8 → SEARCH USING INDEX; tarif+testler+hijyen, sarmalayıcı yok" { class: ilke; tooltip: "KILAVUZ.md tasarım-ilkeleri · kuyruk/senaryo-defteri.md Karar 62" }
+m20: "m.20 pointer ilkesi\nözet + ADRES; detay sıcak bağlama taşınmaz, karar anında pointer izlenir" { class: ilke; tooltip: "core/tuzuk-v0.md m.20 · wiki/pointer-sistemi.md" }
+m21: "m.21 dönüş yolu\nözet kısalır, pointer DÜŞMEZ (bağlam-detay ölçekleme)" { class: ilke; tooltip: "core/tuzuk-v0.md m.21" }
+m22: "m.22 arşiv pointer\nbayat kayıt silinmez, arşive iner, pointer arşiv adresine güncellenir" { class: ilke; tooltip: "core/tuzuk-v0.md m.22" }
+m8: "m.8 silme yasağı → süpersede\nkayıt silinmez; yeni kayıt eskisini süpersede eder (anahtar.replaced_by, SCD-2)" { class: ilke; tooltip: "core/tuzuk-v0.md m.8 · core/baglam-anahtar-kaydi.md §3" }
+kayit: "kayit · 48.957" { class: kutu }
+referans: "referans · 63.062" { class: kutu }
+dosya: "dosya · 571" { class: kutu }
+anahtar: "anahtar · 328" { class: kutu }
+adres -> kayit: "SEARCH USING INDEX" { class: uygular }
+m20 -> kayit: "kayit_id = ADRES (yol#satır#sha8)" { class: uygular }
+m20 -> referans: "pointer → hedef" { class: uygular }
+m21 -> referans: "dönüş yolu: pointer düşmez" { class: uygular }
+m22 -> dosya: "arşiv yolu güncellenir" { class: uygular }
+m8 -> anahtar: "replaced_by / gecerli_bitis (SCD-2)" { class: uygular }
