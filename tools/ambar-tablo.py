@@ -7,6 +7,10 @@ bronz kütüklerden DETERMİNİSTİK türer (kod SHA + girdi SHA). Kanıt: cc/ra
 
 BRONZ (yeni): veri/bronz/kosum-olay.jsonl — işçi-ajan koşum olayları (Workflow + Agent alt-ajan transkriptleri: ~/.claude/projects/<proje>/**/subagents/**/agent-*.jsonl);
   1 satır = 1 ajan koşumu {wf_id, agent_id, agent_type, aile/rol (ilk prompt'tan), model(ler), ts_bas, ts_son, sure_sn, token in/out/cache_read/cache_create, arac_cagrisi, oturum}.
+BRONZ (KB-02/03, 08-21): veri/bronz/tahmin-olay.jsonl — üst modelin alt-model koşum TAHMİNLERİ (1 satır = 1 (görev-emri, rol) tahmini; aile-BAĞIMSIZ granülarite;
+  bu script yalnız OKUR — üretim elle/emir-derleme anında). Silver: amb_olgu_tahmin. Gold: v_kosum_tahmin_sapma (JOIN wf_id + rol_norm deterministik CASE —
+  amb_olgu_kosum.rol serbest metindir) · v_skill_kosum (KB-03 dar pilot; iki dürüst blok: ana-sıra prompt sayımı + yalnız KESİN agent_type→skill eşlemesi
+  [atlas→atlas-kosum]; kayıplı haritalama GÖMÜLMEZ; FAIL kolonu bugün hep NULL — kaynak damga alanı yok, Katman-1 önerisi teslim raporunda).
 SİLVER/AMBAR (materyalize): amb_olgu_kosum (grain: 1 satır = 1 işçi-ajan koşumu; OTel gen_ai.usage.* adları eşleme sözlüğü olarak, kolon değil)
   · amb_olgu_prompt (1 satır = 1 Salih prompt'u; valid_time = ts, system_time = yükleme) · amb_olgu_karar_borcu (1 satır = 1 açık kalem snapshot'ı; valid_from = kayit_tarihi)
   · amb_boyut_anahtar (SCD-2 görünüm: gecerli_bas/gecerli_bitis/guncel_mi — Kimball asgari 3) · amb_kopru_olay_nesne (factless + qualifier — OCEL event_object; referans'tan)
@@ -95,6 +99,12 @@ def main():
             for o in yeni: fh.write(json.dumps({**o, "yuklendi_head": head, "yuklendi_ts": simdi}, ensure_ascii=False) + "\n")
     hepsi = list(mevcut.values()) + [{**o, "yuklendi_head": head, "yuklendi_ts": simdi} for o in yeni]
 
+    # --- BRONZ: tahmin olayları (KB-02; veri/bronz/tahmin-olay.jsonl — bu script yalnız OKUR, üretim elle/emir anında) ---
+    tyol = os.path.join(repo, "veri", "bronz", "tahmin-olay.jsonl"); tahminler = []
+    if os.path.exists(tyol):
+        for l in open(tyol, encoding="utf-8"):
+            if l.startswith("{"): tahminler.append(json.loads(l))
+
     if a.kuru:
         print(f"(kuru) bronz koşum: {len(olaylar)} ajan koşumu ({len(yeni)} yeni) · wf sayısı {len({o['wf_id'] for o in olaylar if o['wf_id']})}"); return
     con = sqlite3.connect(os.path.join(repo, "veri", "baglam.sqlite"))
@@ -140,6 +150,58 @@ def main():
              (SELECT wf_id||' · '||ajan||' ajan · '||output_tokens||' out-token' FROM v_amb_kosum_maliyet LIMIT 1) AS son_kosum,
              (SELECT COUNT(*) FROM amb_boyut_anahtar WHERE guncel_mi=1) AS guncel_anahtar,
              (SELECT COUNT(*) FROM amb_kopru_olay_nesne) AS kopru_satiri;
+    CREATE TABLE IF NOT EXISTS amb_olgu_tahmin (
+      tahmin_id TEXT PRIMARY KEY, gorev_emri_dosya TEXT, gorev_emri_satir INTEGER, rol TEXT, model_sinifi TEXT, effort TEXT,
+      tahmin_cikti_min INTEGER, tahmin_cikti_max INTEGER, tahmin_girdi_min INTEGER, tahmin_girdi_max INTEGER,
+      tahmin_arac_min INTEGER, tahmin_arac_max INTEGER, tahmin_sure_min_sn INTEGER, tahmin_sure_max_sn INTEGER,
+      tahmin_serbest_metin TEXT, tahmin_formul_mu INTEGER, tahmin_kaynagi TEXT, wf_id TEXT,
+      kaynak_rapor_dosya TEXT, kaynak_rapor_satir TEXT, system_time TEXT, kod_sha TEXT
+    );
+    DELETE FROM amb_olgu_tahmin;
+    CREATE VIEW IF NOT EXISTS v_kosum_tahmin_sapma AS
+      WITH k AS (
+        SELECT wf_id, aile,
+          CASE WHEN rol LIKE '%ANTİTEZ%' THEN 'ANTİTEZ'
+               WHEN rol LIKE '%TEZ%' THEN 'TEZ'
+               WHEN rol LIKE '%V26%' THEN 'V26'
+               WHEN rol LIKE '%HAKEM%' THEN 'HAKEM'
+               ELSE NULL END AS rol_norm,
+          modeller, output_tokens, input_tokens + cache_creation_input_tokens AS yeni_girdi_tokens, arac_cagrisi, sure_sn
+        FROM amb_olgu_kosum WHERE wf_id IS NOT NULL)
+      SELECT t.tahmin_id, t.wf_id, k.aile, t.rol, t.model_sinifi, k.modeller AS gercek_model,
+             t.tahmin_cikti_min, t.tahmin_cikti_max, k.output_tokens AS gercek_cikti,
+             CASE WHEN t.tahmin_formul_mu=1 THEN 'FORMÜL'
+                  WHEN t.tahmin_cikti_min IS NULL THEN 'TAHMİN-YOK'
+                  WHEN k.output_tokens IS NULL THEN 'GERÇEK-YOK'
+                  WHEN k.output_tokens < t.tahmin_cikti_min THEN 'ALTINDA'
+                  WHEN k.output_tokens > t.tahmin_cikti_max THEN 'ÜSTÜNDE' ELSE 'BANDA' END AS cikti_durum,
+             ROUND(k.output_tokens*1.0/NULLIF(t.tahmin_cikti_max,0), 2) AS cikti_gercek_bolu_tahmin_ust,
+             t.tahmin_arac_min, t.tahmin_arac_max, k.arac_cagrisi AS gercek_arac,
+             CASE WHEN t.tahmin_arac_min IS NULL THEN 'TAHMİN-YOK' WHEN k.arac_cagrisi IS NULL THEN 'GERÇEK-YOK'
+                  WHEN k.arac_cagrisi < t.tahmin_arac_min THEN 'ALTINDA'
+                  WHEN k.arac_cagrisi > t.tahmin_arac_max THEN 'ÜSTÜNDE' ELSE 'BANDA' END AS arac_durum,
+             t.tahmin_sure_min_sn, t.tahmin_sure_max_sn, ROUND(k.sure_sn,0) AS gercek_sure_sn,
+             CASE WHEN t.tahmin_sure_min_sn IS NULL THEN 'TAHMİN-YOK' WHEN k.sure_sn IS NULL THEN 'GERÇEK-YOK'
+                  WHEN k.sure_sn < t.tahmin_sure_min_sn THEN 'ALTINDA'
+                  WHEN k.sure_sn > t.tahmin_sure_max_sn THEN 'ÜSTÜNDE' ELSE 'BANDA' END AS sure_durum,
+             t.tahmin_girdi_min, t.tahmin_girdi_max, k.yeni_girdi_tokens AS gercek_yeni_girdi,
+             t.tahmin_serbest_metin, t.gorev_emri_dosya
+      FROM amb_olgu_tahmin t
+      LEFT JOIN k ON k.wf_id = t.wf_id AND k.rol_norm = t.rol
+      ORDER BY t.wf_id, t.rol, k.aile;
+    CREATE VIEW IF NOT EXISTS v_skill_kosum AS
+      SELECT 'ana-sira-prompt' AS kaynak, TRIM(je.value) AS skill, p.sonraki_model AS model,
+             COUNT(*) AS n, NULL AS output_tokens, NULL AS sure_dk, NULL AS fail_n
+      FROM amb_olgu_prompt p, json_each('["'||REPLACE(TRIM(p.sonraki_skill), ',', '","')||'"]') je
+      WHERE p.sonraki_skill IS NOT NULL AND TRIM(p.sonraki_skill) <> ''
+      GROUP BY TRIM(je.value), p.sonraki_model
+      UNION ALL
+      SELECT 'ajan-kosum-vekil',
+             CASE WHEN agent_type='atlas' THEN 'atlas-kosum' ELSE NULL END AS skill,
+             modeller, COUNT(*), SUM(output_tokens), ROUND(SUM(sure_sn)/60.0,1), NULL
+      FROM amb_olgu_kosum
+      GROUP BY CASE WHEN agent_type='atlas' THEN 'atlas-kosum' ELSE NULL END, modeller
+      ORDER BY kaynak, n DESC;
     """)
     # --- tartışma notları (bronz: veri/tartisma-notu.jsonl; pointer'lı, metin kopyalanmaz) ---
     tn = os.path.join(repo, "veri", "tartisma-notu.jsonl"); notlar = []
@@ -169,21 +231,35 @@ def main():
          o.get("asistan_mesaj"), o.get("arac_cagrisi"), o.get("input_tokens"), o.get("output_tokens"), o.get("cache_read_input_tokens"), o.get("cache_creation_input_tokens"),
          o.get("ilk_prompt_kisa"), o.get("kaynak_dosya"), o.get("yuklendi_ts"), o.get("yuklendi_head")) for o in hepsi])
     con.commit()
+    con.executemany("INSERT INTO amb_olgu_tahmin VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
+        (t["tahmin_id"], t.get("gorev_emri_dosya"), t.get("gorev_emri_satir"), t.get("rol"), t.get("model_sinifi"), t.get("effort"),
+         t.get("tahmin_cikti_min"), t.get("tahmin_cikti_max"), t.get("tahmin_girdi_min"), t.get("tahmin_girdi_max"),
+         t.get("tahmin_arac_min"), t.get("tahmin_arac_max"), t.get("tahmin_sure_min_sn"), t.get("tahmin_sure_max_sn"),
+         t.get("tahmin_serbest_metin"), 1 if t.get("tahmin_formul_mu") else 0, t.get("tahmin_kaynagi"), t.get("wf_id"),
+         t.get("kaynak_rapor_dosya"), t.get("kaynak_rapor_satir"), t.get("yuklendi_ts"), t.get("yuklendi_head")) for t in tahminler])
+    con.commit()
     # sözleşme (ilk kez)
     syol = os.path.join(repo, "veri", "sozlesme", "amb_olgu_kosum.json")
     if not os.path.exists(syol):
         cols = [{"ad": r[1], "tip": r[2] or "ANY", "not_null": bool(r[3]), "pk": bool(r[5])} for r in con.execute("PRAGMA table_info(amb_olgu_kosum)")]
         json.dump({"tablo": "amb_olgu_kosum", "surum": "0.1.0-deneysel-m29", "katman": "ambar", "grain": "1 satır = 1 işçi-ajan koşumu (Workflow/Agent alt-ajanı)", "kolonlar": cols,
                    "kural": "additive-only; token kolonları OTel gen_ai.usage.* eşleme sözlüğüne bağlanır (kolon adı olarak gömülmez)"}, open(syol, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    tsyol = os.path.join(repo, "veri", "sozlesme", "amb_olgu_tahmin.json")
+    if not os.path.exists(tsyol):
+        cols = [{"ad": r[1], "tip": r[2] or "ANY", "not_null": bool(r[3]), "pk": bool(r[5])} for r in con.execute("PRAGMA table_info(amb_olgu_tahmin)")]
+        json.dump({"tablo": "amb_olgu_tahmin", "surum": "0.1.0-deneysel-m29", "katman": "ambar", "grain": "1 satır = 1 (görev-emri, rol) tahmini — aile-BAĞIMSIZ (KB-02; gerçek aile-bazlı, JOIN v_kosum_tahmin_sapma'da)", "kolonlar": cols,
+                   "kural": "additive-only; üst model (fable) satırlarında tahmin alanları NULL; formül tahminlerde bant NULL + tahmin_formul_mu=1"}, open(tsyol, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     testler = []
     for ad, sql in [("amb_olgu_kosum.kosum_id unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)"),
                     ("amb_olgu_kosum.output_tokens not_null", "SELECT COUNT(*) FROM amb_olgu_kosum WHERE output_tokens IS NULL"),
                     ("amb_olgu_prompt → prompt 1:1", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))"),
-                    ("amb_kopru_not_prompt.prompt_id → prompt", "SELECT COUNT(*) FROM amb_kopru_not_prompt k LEFT JOIN prompt p ON p.prompt_id=k.prompt_id WHERE p.prompt_id IS NULL")]:
+                    ("amb_kopru_not_prompt.prompt_id → prompt", "SELECT COUNT(*) FROM amb_kopru_not_prompt k LEFT JOIN prompt p ON p.prompt_id=k.prompt_id WHERE p.prompt_id IS NULL"),
+                    ("amb_olgu_tahmin.tahmin_id unique", "SELECT COUNT(*) FROM (SELECT tahmin_id FROM amb_olgu_tahmin GROUP BY tahmin_id HAVING COUNT(*)>1)"),
+                    ("amb_olgu_tahmin.wf_id → amb_olgu_kosum", "SELECT COUNT(*) FROM amb_olgu_tahmin t WHERE t.wf_id IS NOT NULL AND NOT EXISTS (SELECT 1 FROM amb_olgu_kosum k WHERE k.wf_id=t.wf_id)")]:
         n = con.execute(sql).fetchone()[0]; testler.append((ad, n, "PASS" if n == 0 else "ERROR"))
     # GOLD CSV
     gdir = os.path.join(repo, "veri", "gorunum")
-    for v in ("v_amb_kosum_maliyet", "v_amb_acilis_brifi", "v_tartisma_notu"):
+    for v in ("v_amb_kosum_maliyet", "v_amb_acilis_brifi", "v_tartisma_notu", "v_kosum_tahmin_sapma", "v_skill_kosum"):
         cur = con.execute(f"SELECT * FROM {v}"); cols = [d[0] for d in cur.description]
         with open(os.path.join(gdir, f"{v}.csv"), "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh); w.writerow(cols); w.writerows(cur.fetchall())
@@ -191,7 +267,7 @@ def main():
     n_kosum = con.execute("SELECT COUNT(*), COUNT(DISTINCT wf_id) FROM amb_olgu_kosum").fetchone()
     con.close()
     if not a.sessiz:
-        print(f"ambar v0: amb_olgu_kosum {n_kosum[0]} ajan koşumu / {n_kosum[1]} workflow ({len(yeni)} yeni bronz olay) · amb_olgu_prompt · amb_olgu_karar_borcu · görünümler amb_boyut_anahtar/amb_kopru_olay_nesne/amb_boyut_vardiya · martlar v_amb_kosum_maliyet + v_amb_acilis_brifi (CSV)")
+        print(f"ambar v0: amb_olgu_kosum {n_kosum[0]} ajan koşumu / {n_kosum[1]} workflow ({len(yeni)} yeni bronz olay) · amb_olgu_tahmin {len(tahminler)} tahmin · amb_olgu_prompt · amb_olgu_karar_borcu · görünümler amb_boyut_anahtar/amb_kopru_olay_nesne/amb_boyut_vardiya · martlar v_amb_kosum_maliyet + v_amb_acilis_brifi + v_kosum_tahmin_sapma + v_skill_kosum (CSV)")
         for t in testler: print(f"  [{t[2]}] {t[0]} ihlal {t[1]}")
         print("  açılış-brifi martı: " + " · ".join(f"{k}={str(v)[:60]}" for k, v in zip(bcols, brif)))
     sys.exit(3 if any(t[2] == "ERROR" for t in testler) else 0)
