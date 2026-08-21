@@ -1,0 +1,41 @@
+# Pipeline Manifesti — POINTER SİSTEMİNİN GRAFI (D2): araştır → şema → ilk .d2 → graf-dili uzun-vade planı (2026-08-22, seans-13; Kun-Chen deseni + kronolojik partisyonlu YOL-PLANI)
+
+*Salih emri (08-22 ~02:10, aynen): "hepsi bitince yeni görev:bizim tüm pointer sistemimizin(database primary keyler ve sistemin kuruluşundaki ilkemiz doğrultusundaki sürecimiz) graflar için olan güncel dosya tipinde grafını oluştur.böylece senle böyle konuşmamızın yanında aynı zamanda graflarla da iletişim sağlamaya başlayalım böylede llm'lerin geleceği olan graf engineeringe pratik olur araştırarak başla atlasları koşarak sonra ilk d2 yi göreceğim şekilde kun chen tarzı pipeline'ı.ayrıca pipeline'ı a* algoritmasından yola çıkarak tanımladığımız olan "kronolojik partisyonlara ayırma" kullanarak tasarla.ilk çıktıdan sonraki uzun vade graf dilinde konuşma için de planlama yap". Desen: P-1 pipeline-kosum v1 + atlas-kosum (m.40b v0.2) + yol-planla (S-Ü, senaryo-graf). Rejim: **[maliyet-öncelikli]** (işçi dış-erişim 10-15, effort low/medium, aile ≤3). Oturum düşerse yeni oturum BURADAN devralır.*
+
+**Okuma (Carvis, varsayım beyanı):** "graflar için güncel dosya tipi" = ilk çıktı **D2** (`.d2`, Salih: "ilk d2'yi göreceğim şekilde"; `d2 v0.8.1` kurulu, dagre+ELK) — alternatiflerin (Mermaid/DOT/GraphML/JSON-Graph/Turtle) amaç-matrisi atlas A'da kanıtlanır. "Pointer sistemi" = silver PK/FK + `referans` türleri + anahtar kaydı (süpersede) + m.20/21/22/8 süreci + 07-18 typed-link önerisi. "A*'dan yola çıkarak tanımladığımız kronolojik partisyonlara ayırma" = `yol-planla` skill'inin (durum,zaman) senaryo-grafı + defter 07-22 "kapı takvime değil kanıt akışına bağlanır" ilkesi; **kanon şerhi: plan A* VAAT ETMEZ (h() yok; yol-planla gotcha) — adlandırma kritik-yol/Dijkstra, `garanti: yok`.** Yanlış okuma varsa tek cümle yeter.
+
+## Çelişki kapısı (m.16) — hüküm: ÇELİŞKİ YOK
+- `core/world-model-tasarimi.md:7`: "taban ilişkisel kalır; graf motoru ayrıştırılmaz; gerekirse ayrı katman" → bu iş graf MOTORU değil graf DOSYASI/GÖRÜNÜMÜ (türetilmiş, kayıplı görünüm — world-model:8 ile uyumlu: ham blok gerçek kaynak kalır).
+- Karar 65 determinizm: graf dosyası deterministik script'le türetilir (aynı silver → aynı .d2, sabit sıralama); yerleşim motoru determinizmi atlas A'da sınanır; LLM-inşa graf GİRMEZ (rapor-08-22-1 A-YT8).
+- 07-24 graf-mühendisliği: "etiketi alma, pratiği al; elle index bayatlar → türetilmiş" → graf elle çizilmez, türetilir.
+
+## Koşum-önü manifest kapısı (KB-08)
+`cc/pipeline-*.md` 10 dosya + `git log -20`: pointer-graf/D2 pipeline'ı YOK. Verili emsaller: `raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md` (Model A typed-link, KARAR YOK) · `raporlar/2026-07-24-serit2-graph-engineering.md` · `cc/rapor-2026-08-22-1.md` (LLM-graf girmez) · `core/baglam-anahtar-kaydi.md` · `veri/README.md` (silver şema). Canlı-oturum: son commit 8446446 bu oturum → paralel yok.
+
+## YOL-PLANI bloğu (yol-planla S-Ü; kronolojik partisyon = (DURUM, ZAMAN) düğümü; kapılar kanıt-akışına bağlı, takvim yok)
+**Graf (düğüm = (DURUM, ZAMAN-dilimi); kenar = pozitif süreli geçiş → DAG):**
+| Partisyon | DURUM (giriş → çıkış) | Zaman-dilimi | Kim | Birleştirilebilir_mi | Çıktı |
+|---|---|---|---|---|---|
+| **P0 ENVANTER** | şema bilinmiyor → graf MODELİ diskte | T0 (P1 ile paralel) | Carvis (deterministik script) | evet (P2'de P1 ile birleşir) | `tools/pointer-graf.py` → `veri/graf/pointer-sistemi-model.json` (düğüm: tablo/PK/anahtar-türü/referans-türü/katman/dizin; kenar: PK→FK · referans→hedef · süpersede · üretim hattı bronz→silver→gold) |
+| **P1 ATLAS** | kanıt yok → 3 aile raporu | T0 | 12 işçi (Opus/Sonnet/Fable) | evet | `cc/gorev-2026-08-22-2.md` → `cc/rapor-2026-08-22-2.md` |
+| **P2 ŞEMA + İLK D2** | model + kanıt → `.d2` + render | T1 = P0 ∧ P1 | Carvis (script; D2 idiomları P1-A/B'den) | — (birleştirme düğümü) | `graf/pointer-sistemi-v0.d2` (şema-düzeyi, ~30-60 düğüm, sabit sıralama) + `graf/pointer-sistemi-v0.svg/.png` (`d2 --layout=elk`) → Salih'e tam yol + Finder + tarayıcı |
+| **P3 KAPI** | Salih görmedi → gördü/teyit ∨ düzeltme | T2 (Salih beyanı = dış sinyal) | Salih | — | beyan; düzeltme → P2 onarım (tavan 2 tur) |
+| **P4 UZUN-VADE PLAN** | protokol yok → "graf dilinde konuşma" v0 + yol haritası | T1-T2 (P3'e bağlı değil; teyitle kesinleşir) | Carvis (P1-C yapı-taşları) | evet | `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` + karar-masası kalemi (ÖNERİ) |
+| **T** | beyan | T2 | Carvis | — | "ilk pointer-grafı (D2) teslim edildi; uzun-vade planı masada" |
+**Hedef-fonksiyon (beyan):** makespan — P0 ∥ P1 paralel (fan), P2 birleştirme, P3 ∥ P4 fan, T; kritik yol = P1 (~20 dk) → P2 (~15 dk) → render/teslim; en-kısa-yol dili kullanılmaz (paralel iş). **İskelet ↔ ağırlık:** iskelet yukarıdaki DAG (metrik-bağımsız); ağırlıklar = KB-02 tahminleri (P1: emir kosum_profili; P0/P2 Carvis ≤30k; P4 ≤25k) — değişimi iskeleti bozmaz. **Arama/öncelik:** kritik-yol sıralaması; heuristik (LLM süre/token kestirimi) → `garanti: yok`, kabul edilen sapma ±%50 (ε). **Maliyet tavanı (dışarıdan: token −%30 rejimi):** alt-model çıktı ≤250k · ana bağlam ≤120k · süre ≤75 dk · atlas koşumu 1 (+resume tavan 1). **Onarım kuralı:** yalnız DIŞ sinyal açar — workflow journal (ajan hata/boş sonuç) · script FAIL-LOUD çıkış kodu · `d2` derleme/render hatası · Salih "yanlış" beyanı; tavan 2 onarım turu/partisyon, aşılırsa baştan planla; modelin öz-yargısı tetik DEĞİL. **Anytime≠dinamik:** statik maliyet ("ucuz-önce": şema-düzeyi v0, örnek-düzeyi alt-graflar P4'e). **Damgalar:** deneysel m.29 · garanti yok · A* VAAT EDİLMEZ · her ampirik hücre (model, sürüm, tarih) taşır.
+
+## Görev tablosu (Kun-Chen)
+| Rol | Şekil | İş | Intake | Teslim | Durum |
+|---|---|---|---|---|---|
+| S-0 | scout (deterministik script, P0) | pointer-sistemi graf modeli silver'dan | silver şema + referans/anahtar tabloları | `tools/pointer-graf.py` · `veri/graf/pointer-sistemi-model.json` | AÇIK |
+| S-1 | scout (m.40b çift-atlas, P1: 3 aile × 12 işçi) | A graf dosya tipi+araç (D2 önde) · B pointer/PK sisteminin graf şeması · C LLM↔graf iletişimi | `cc/gorev-2026-08-22-2.md` | `cc/rapor-2026-08-22-2.md` | AÇIK |
+| G-1 | sentez (Carvis, P2 giriş) | dosya-tipi kanıt tablosu · şema (düğüm/kenar tipleri) · D2 idiomları · iletişim protokolü v0 | S-1 raporu | rapor §Sentez | BEKLİYOR |
+| SH-1 | ship (P2) | `.d2` üretimi (script) + render + teslim (tam yol, Finder, tarayıcı) | S-0 + G-1 | `graf/pointer-sistemi-v0.{d2,svg,png}` | BEKLİYOR |
+| SH-2 | ship (P4) | uzun-vade plan + protokol v0 + KB kalemi (ÖNERİ) | G-1 (aile C) | `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` | BEKLİYOR |
+| SH-3 | kayıt | commit'ler · workflow kopyası · SCRIPTLER.md satırı · kapsül pointer | SH-1/2 | git log | BEKLİYOR |
+| T | teslim | kaptan beyanı | tümü DONE | tek cümle | BEKLİYOR |
+
+*Paralellik-uygunluk: S-0 ve S-1 bağımsız (biri silver okur, diğeri dış kanıt) → paralel; P2 ortak üretim → tek şerit (Carvis).*
+
+## Olay günlüğü
+- 02:3x emir devralındı (vektör-DB pipeline T beyanından sonra); kapı + çelişki kapısı + YOL-PLANI yukarıda; envanter sondajı: silver PK'lar (kayit_id · dosya_id · anahtar_id · borc_id · hareket_id · prompt_id), referans 11 tür (dosya_pointer hedef_var 6.964/1.107 kırık), anahtar 328 (6 tür), dosya 571 (4 katman), karar_borcu_kaynak 246/246 çözümlü, wiki 17 sayfa; d2 v0.8.1 (dagre+ELK).
