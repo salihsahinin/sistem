@@ -1,0 +1,27 @@
+# Pipeline Manifesti — Vektör-DB: bağlam verisi NEREDE ve NASIL vektör olarak tutulur (2026-08-22, seans-13, ARAŞTIRMA-YALNIZ)
+
+*Salih emri (08-22 ~01:50, aynen): "yeni görev:vektörler lineer cebirin ve llm'lerin ortaya çıkış sürecinin atası ve data science'da veriyi bir depolama yöntemi.normalde bağlamı saklamanın yollarından bahsetmiştik(graflar,databaseler,llm wiki gibi),vektörler de bağlam datasını saklamanın yollarından biri bizim aktif hedefimiz bağlam datasını tüm yöntemlerin toplamı optimize bir şekilde saklamaktı.dolayısıyla araştır atlasları koş bağlam datasını hangi alanlarda,konularda vektör  database olarak tutmamız lazım ve nasıl tutmamız lazım literatür ve güncel bilgimiz bağlamında araştır pipeline dur go". Desen: P-1 pipeline-kosum v1 + atlas-kosum (m.40b v0.2). Rejim: **[maliyet-öncelikli]** (token −%30: işçi dış-erişim bütçesi 10-15, effort low/medium, aile ≤3). Oturum düşerse yeni oturum BURADAN devralır.*
+
+**Okuma (Carvis, varsayım beyanı):** "pipeline dur go" = pipeline olarak kur, **araştırma-sonunda DUR** (uygulama/şema/kod YOK; bulgular D/K/X raporu + karar-masası kalemi), **go** = hemen başla. Yanlışsa tek cümleyle düzelt — SH aşaması açılır.
+
+## Çelişki kapısı (m.16) — hüküm: ÇELİŞKİ YOK, SIRA KORUNUR
+- **Beyan 9 (08-17, Katman-1):** hafıza mimarisi = LLM-wiki + bağlam DB teknikleri birlikte; vektör DB **ertelendi**. **Karar 60 / KB-43 (08-21):** FTS5-önce (BM25 + anahtar-genişletme + zaman-farkındalı sorgu, embedding'siz); **hibrit/vektör kararı İB-20 yerel eval ölçümünden SONRA**; icra İB-43 (icra-sırada, henüz koşmadı — silver'da FTS/vektör tablosu 0).
+- Bu emir KARAR değil ARAŞTIRMA (m.40b araştırma-önce): "hangi veri sınıfı için vektör, hangisi için değil + nasıl" kanıtı, Karar 60'ın "SONRA" adımındaki masanın girdisidir. Uygulama önerisi çıkarsa masaya KB kalemi olarak gider; Karar 60 sırasını (FTS5 → ölç → hibrit/vektör) değiştirmek Salih'in ayrı Katman-1 kararıdır.
+
+## Koşum-önü manifest kapısı (KB-08)
+`cc/pipeline-*.md` 9 dosya + `git log -15` tarandı (01:45): vektör-DB konulu koşum YOK. En yakın emsaller (VERİLİ, işçiye taşınır, yeniden araştırılmaz): `cc/rapor-2026-08-17-2.md` (hafıza teknikleri; wf_5164f579) · `cc/rapor-2026-08-21-ab4-tez.md` (contextual retrieval) · `cc/rapor-2026-08-18-1/2/3.md` (indeks/kolon/tarama). Canlı-oturum kapısı: son commit 43d49c1 bu oturumun (01:42) → paralel oturum YOK; `git add <yol>` disiplini yine geçerli.
+
+## Görev tablosu
+| Rol | Şekil | İş | Intake | Teslim | Durum |
+|---|---|---|---|---|---|
+| S-1 | scout (m.40b çift-atlas, 3 aile × tez→antitez→V26→hakem = 12 işçi) | A LİTERATÜR: hangi sorgu/veri sınıfı hangi yöntemde kazanır (yoğun ↔ sözcüksel ↔ hibrit ↔ graf ↔ SQL) · B NASIL: tek-kullanıcı ~49k parça Türkçe markdown+SQLite için depo/model/parçalama/hibrit/işletim yığını · C KOMPOZİSYON: çok-depolu mimarilerin veri→depo ayrımı + eval tarifi (İB-20) + Jarvis veri-sınıfı haritası + eşik | `cc/gorev-2026-08-22-1.md` | `cc/rapor-2026-08-22-1.md` (atlas-derle.py mekanik + sentez elle) | AÇIK |
+| G-1 | sentez (Carvis) | veri-sınıfı × yöntem matrisi · "nerede vektör / nerede değil" hayatta-kalan çekirdek · NASIL yığını · İB-20 eval tarifi · KB kalemi taslağı (açıklama-bloklu) | S-1 raporu | rapor §Sentez + teslim raporu | BEKLİYOR |
+| SH-1 | kayıt (ship DEĞİL — DUR) | commit'ler (emir · manifest · rapor · workflow kopyası `cc/workflow/` · bronz tahmin/kayıt satırları) + karar-borcu KB kalemi önerisi (ledger'a yazım Salih onayına: ÖNERİ damgası) + kapsül pointer | G-1 | git log | BEKLİYOR |
+| T | teslim | kaptan beyanı: "vektör-DB araştırma raporu hazır; karar masasına girdi; uygulama YOK (dur)" | tüm satırlar DONE | tek cümle | BEKLİYOR |
+
+*Paralellik-uygunluk testi: 3 aile bağımsız KANIT toplar (ortak üretim yok) → paralel serbest; tez↔antitez m.40b gereği birbirinden habersiz; hakem üretici değil → 12 işçi, barrier yok (pipeline()).*
+
+## Olay günlüğü
+- 01:45 emir devralındı; koşum-önü kapı + çelişki kapısı (yukarıda); kanon taraması için Explore ajanı (Sonnet sınıfı) arka plana salındı (KANONDA-BİLİNENLER hammaddesi).
+- 01:5x Jarvis sondajı (deterministik, sqlite3 3.51.0): silver 63,9 MB · kayit 48.957 (metin ort. 232 B, maks 19,2 KB, toplam 11,4 MB) · referans 63.062 · dosya 571 · json_kayit 18.795 · hareket 2.356 · FTS/vec/embed tablosu YOK · Python 3.9.6, vektör/embedding paketi kurulu DEĞİL · bronz git-izlenen md/json/jsonl 570 dosya, 15,8 MB · wiki 17 sayfa.
+- 02:0x Salih ek talimatı (aynen): "determinizmle çelişkilerde determinizm kazanır bunu atlasa belirt" → emir degismezler + KANON ilke + hakem şeması `deterministik: e/h` alanı; defter Karar 65. Explore kanon-taraması döndü (39 araç, ~120k token): KANONDA bloğuna 1 ek madde (Beyan 9 tam metni · wiki/baglam-veri-ambari:28 · world-model:7-8 · 07-10 blueprint tetikleri · TR-eki bulgusu · graf-yetim ölçümü). Kapı-Ö tetik-denetim GEÇTİ (0 çağrı).
