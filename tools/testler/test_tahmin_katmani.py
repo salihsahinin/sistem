@@ -44,6 +44,11 @@ def kucuk_repo(kok):
                              "rol": "Atlas TEZ araştırmacısı", "sure_sn": 300, "arac_cagrisi": 18, "output_tokens": 12000, **ortak}, ensure_ascii=False) + "\n")
         fh.write(json.dumps({"kosum_id": "wf_test1:a2", "wf_id": "wf_test1", "agent_id": "a2", "aile": "B",
                              "rol": "Atlas TEZ araştırmacısı", "sure_sn": 400, "arac_cagrisi": 22, "output_tokens": 20000, **ortak}, ensure_ascii=False) + "\n")
+    # bronz koşum-hükmü (Karar 52 ÖNERİ): a1 FAIL → vekil blokta sonuc_n/fail_n sayımı test edilir
+    with open(os.path.join(kok, "veri", "bronz", "kosum-sonuc.jsonl"), "w", encoding="utf-8") as fh:
+        fh.write("# test bronz hüküm\n")
+        fh.write(json.dumps({"kosum_id": "wf_test1:a1", "sonuc": "FAIL", "kaynak": "test done-yüklemi DRFR 2/4",
+                             "aciklama": "test", "yuklendi_head": "test123", "yuklendi_ts": "2026-08-21T09:06:00+00:00"}, ensure_ascii=False) + "\n")
     # bronz tahmin: (1) bantlı TEZ (wf eşleşir) · (2) formül V26 (wf NULL — koşum-öncesi yazım deseni)
     with open(os.path.join(kok, "veri", "bronz", "tahmin-olay.jsonl"), "w", encoding="utf-8") as fh:
         fh.write("# test bronz tahmin\n")
@@ -96,9 +101,11 @@ class TahminKatmaniTest(unittest.TestCase):
         # ana-sıra bloğu: virgüllü skill json_each ile atomik satırlara ayrılır
         skiller = {r[0] for r in con.execute("SELECT skill FROM v_skill_kosum WHERE kaynak='ana-sira-prompt'")}
         self.assertEqual(skiller, {"pipeline-kosum", "gorev-emri-derleme"})
-        # vekil blok: yalnız KESİN eşleme (atlas → atlas-kosum); token/süre toplanır
-        n, tok = con.execute("SELECT n, output_tokens FROM v_skill_kosum WHERE kaynak='ajan-kosum-vekil' AND skill='atlas-kosum'").fetchone()
-        self.assertEqual((n, tok), (2, 32000))
+        # vekil blok: yalnız KESİN eşleme (atlas → atlas-kosum); token/süre toplanır; hüküm sayımı (Karar 52):
+        # 2 koşumun 1'inin hükmü var ve FAIL → sonuc_n=1, fail_n=1 (0 ≠ veri-yok ayrımı sonuc_n'de)
+        n, tok, sonuc_n, fail_n = con.execute(
+            "SELECT n, output_tokens, sonuc_n, fail_n FROM v_skill_kosum WHERE kaynak='ajan-kosum-vekil' AND skill='atlas-kosum'").fetchone()
+        self.assertEqual((n, tok, sonuc_n, fail_n), (2, 32000, 1, 1))
         con.close()
 
     def test_gold_csv_ve_sozlesme(self):
