@@ -1,0 +1,46 @@
+{
+ "tablo": "erisim_genisletme",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "1 satır = 1 kayit: anahtar-genişletme metni (referans değerleri + başlık + bölüm yolu + zaman) — FTS5 kayit_fts'nin ikinci sütunu; her hat koşumunda yeniden türetilir",
+ "kolonlar": [
+  {
+   "ad": "kayit_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": true
+  },
+  {
+   "ad": "dosya_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "katman",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "zaman",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "genisletme",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "ref_sayisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only; kırıcı = silme/tip/kısıt/yeniden-ad",
+ "kaynak": "tools/erisim-fts.py (KB-43 a / Karar 60, İB-43, 2026-08-22)"
+}
