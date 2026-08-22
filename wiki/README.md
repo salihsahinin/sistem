@@ -31,6 +31,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[baglam-veri-ambari]] — bağlam VERİTABANI (operasyonel, V-1) ↔ bağlam VERİ AMBARI (analitik: aynı SQLite'ta ayrı şema/görünüm; erişim-tasarımı ayrımı; bitemporal + SCD-2 + olay↔nesne köprü) tanımı + Jarvis içerik örnekleri (olgu/boyut/mart) — 'context warehouse' dışta tanımsız, m.29 (eklendi 08-16, rapor-16-3 turu)
 - [[no-mistakes]] — kod-değişikliği doğrulama pipeline'ı (review·test·lint·push·PR·CI); safe-fix ↔ insana-eskalasyon ↔ bilinçli no-op üç-sınıf ayrımı + ci-adımı/`--skip ci` ve paralel-oturum dal-değişimi gotcha'ları (eklendi 08-21, İB-04 icra turu, paralel s13)
 - [[silver-saglik]] — silver temizliği = SİLME değil bayrak + güncel-görünüm (`v_guncel_*`) + tespit-damgalı kuyruk; T-Ç1..6 deterministik çelişki testleri · T-B 4 bayatlık ADAYI · T-A ön-eleme (LLM yalnız kanıt-bulucu); `tools/silver-saglik.py` + kural dosyası; ilk koşum gotcha'ları (eklendi 08-22, İB-42 icrası; Karar 58)
+- [[tarama-yontemleri]] — tarama yöntemi kataloğu PG ↔ SQLite EQP ↔ DuckDB/parquet ↔ rg + seçim kuralı (SEARCH-önce · dokunulan sayfa, yüzde değil · AUTOMATIC INDEX = indeks adayı · LIKE→aralık · ANALYZE hijyeni) + plan-regresyon testi (`tarama-plan.py`) (eklendi 08-22, İB-35; Karar 64)
 
 ## Kuyruk (sonraki oturumlar)
 - baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).
