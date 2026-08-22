@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `9ddb576`)
+# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `db16a6e`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 235 çağrı, 2 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 251 çağrı, 2 oturum.*
 
 ## Oturum `b2b05897` — 01:35:07→19:07:58 · 115 çağrı · model fable-5 · hata 3
 **Özet:** koştu 80 · yazdı 8 · düzenledi 7 · okudu 6 · skill çağırdı 4 · MCP aracı 4 · araç 3 · workflow başlattı 2 · ajan gönderdi 1
@@ -124,9 +124,9 @@
 | 114 | 19:07:35 | koştu | Son commit'e diğer oturumun dosyası sızdı mı, çalışma ağacı durumu ve katman-hatti.py'nin sahipliğini kontrol et ⟨cd ~/jarvis && echo "=== son commit kapsamı (yabancı dosya sızdı mı?) ===" && git show --stat HEAD ¦ grep -E 'katman-hatti¦baglam-tablo¦session-start¦…⟩ | tamam |
 | 115 | 19:07:58 | araç | {"files": "['/Users/HasanSalihSahin/jarvis/graf/pointer-sistemi-v0-kiri", "caption": "İB-48 G1: kırık-pointer panosu (1.137 kırık · 461 hedef · 92", "status": "normal"} | tamam |
 
-## Oturum `11b49d44` — 18:26:55→19:26:17 · 120 çağrı · model fable-5 · hata 6
-**Özet:** koştu 97 · yazdı 10 · düzenledi 7 · okudu 4 · skill çağırdı 2
-**Yazılan/düzenlenen dosyalar (13):** `.claude/hooks/session-start.sh` · `.claude/skills/seans-acilis/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `.claude/skills/skill-kapisi/SKILL.md` · `cc/pipeline-2026-08-22-silver-saglik.md` · `tools/baglam-seyir.py` · `tools/erisim-fts.py` · `tools/kural-sayaci.py` · `tools/silver-saglik.py` · `veri/sozlesme/erisim-eval-sorular.jsonl` · `veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md` · `veri/sozlesme/silver-saglik-kurallar.json` · `wiki/silver-saglik.md`
+## Oturum `11b49d44` — 18:26:55→19:33:35 · 136 çağrı · model fable-5 · hata 6
+**Özet:** koştu 106 · yazdı 13 · düzenledi 9 · okudu 6 · skill çağırdı 2
+**Yazılan/düzenlenen dosyalar (18):** `.claude/hooks/session-start.sh` · `.claude/skills/damitma/SKILL.md` · `.claude/skills/seans-acilis/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `.claude/skills/skill-kapisi/SKILL.md` · `.claude/skills/wiki-sayfa-yaz/SKILL.md` · `cc/pipeline-2026-08-22-silver-saglik.md` · `tools/baglam-seyir.py` · `tools/deneyim-tablo.py` · `tools/erisim-fts.py` · `tools/kural-sayaci.py` · `tools/silver-saglik.py` · `tools/wiki-baglanti.py` · `veri/sozlesme/deneyim-kurallar.json` · `veri/sozlesme/erisim-eval-sorular.jsonl` · `veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md` · `veri/sozlesme/silver-saglik-kurallar.json` · `wiki/silver-saglik.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -250,4 +250,20 @@
 | 118 | 19:25:27 | koştu | fts5+guncel filtresini S02 sorgusunda adım adım incele ⟨cd ~/jarvis && python3 - <<'EOF' import importlib.util, sqlite3 spec=importlib.util.spec_from_file_location("e","tools/erisim-fts.py"); e=importlib.ut…⟩ | tamam |
 | 119 | 19:25:49 | koştu | Tokenizasyon (tire ayırıcı) ve gevşetme sırasını düzelt, eval'i yeniden koş ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/erisim-fts.py'; s=open(p,encoding='utf-8').read() eski=''' kelimeler = [w for w in re.findall(r"[0-9A-Za-zÇĞ…⟩ | tamam |
 | 120 | 19:26:17 | koştu | katman-hatti'yi erisim adımı dahil tam koştur ⟨cd ~/jarvis && echo "=== katman-hatti TAM (11 adım) ===" && python3 tools/katman-hatti.py 2>&1 ¦ grep -E "^\[¦erisim-eval¦UYARI baglam" ¦ cut -c1-150;…⟩ | yok |
+| 121 | 19:27:10 | koştu | erisim-fts'e --taban bayrağı (grep taban çizgisi isteğe bağlı) + erisim_genisletme sözleşmesi ⟨cd ~/jarvis && python3 - <<'EOF' import json,sqlite3 # 1) --taban bayrağı (grep taban çizgisi yalnız istenince; hat adımı hızlı) p='tools/erisim-fts.p…⟩ | tamam |
+| 122 | 19:27:53 | koştu | SCRIPTLER/README/manifest/ledger: erişim katmanı (İB-43) kapanış kayıtları ⟨cd ~/jarvis && python3 - <<'EOF' import json # SCRIPTLER p='tools/SCRIPTLER.md'; s=open(p,encoding='utf-8').read() hedef=[l for l in s.split('\n') if …⟩ | tamam |
+| 123 | 19:28:20 | koştu | Kapsül seans-14 satırını yoğunlaştır, İB-43 paketini commit'le, paralel oturum/ağaç durumunu göster ⟨cd ~/jarvis && python3 - <<'EOF' p='core/durum-kapsulu.md'; s=open(p,encoding='utf-8').read() import re i=s.index("- **08-22 SEANS-14"); j=s.index("\n…⟩ | tamam |
+| 124 | 19:28:41 | koştu | Kapsülü bütçeye indir ve commit'le; KB-44/45 (deneyim katmanı, konsolidasyon) hükümlerini oku ⟨cd ~/jarvis && python3 - <<'EOF' p='core/durum-kapsulu.md'; s=open(p,encoding='utf-8').read() i=s.index("- **08-22 SEANS-14"); j=s.index("\n",i) yeni=…⟩ | tamam |
+| 125 | 19:29:06 | koştu | Ambar koşum tabloları şeması/örnekleri, ambar-tablo yapısı ve kapi-denetim kullanımı (İB-44/45 hazırlık) ⟨cd ~/jarvis && python3 - <<'EOF' import sqlite3 c=sqlite3.connect('veri/baglam.sqlite') for t in ('amb_olgu_kosum','amb_olgu_kosum_sonuc','amb_olgu_ta…⟩ | tamam |
+| 126 | 19:29:34 | okudu | .claude/skills/damitma/SKILL.md [bütün] | tamam |
+| 127 | 19:29:41 | okudu | .claude/skills/wiki-sayfa-yaz/SKILL.md [bütün] | tamam |
+| 128 | 19:29:53 | koştu | Koşum tablosu model/agent/hüküm dağılımı ve wiki bağlantı satırı biçimleri (İB-44/45 sondajı) ⟨cd ~/jarvis && python3 - <<'EOF' import sqlite3 c=sqlite3.connect('veri/baglam.sqlite') print("modeller:", c.execute("select modeller, count(*) from a…⟩ | tamam |
+| 129 | 19:30:16 | yazdı | veri/sozlesme/deneyim-kurallar.json | tamam |
+| 130 | 19:31:15 | yazdı | tools/deneyim-tablo.py | tamam |
+| 131 | 19:31:51 | yazdı | tools/wiki-baglanti.py | tamam |
+| 132 | 19:32:14 | düzenledi | .claude/skills/damitma/SKILL.md | tamam |
+| 133 | 19:32:25 | düzenledi | .claude/skills/wiki-sayfa-yaz/SKILL.md | tamam |
+| 134 | 19:32:33 | koştu | deneyim-tablo ve wiki-baglanti ilk koşumları; damitma/wiki-sayfa-yaz skill'lerini kapı-denetiminden geçir ⟨cd ~/jarvis && echo "=== deneyim-tablo ===" && python3 tools/deneyim-tablo.py --benzer "Atlas antitez ajanı aile B silver temizlik" --k 4; echo "çıkış…⟩ | tamam |
+| 135 | 19:33:20 | koştu | wiki karşı-linklerini uygula; katman-hatti deneyim adımı; SCRIPTLER/README/ledger İB-44/45 ⟨cd ~/jarvis && echo "=== wiki-baglanti --uygula ===" && python3 tools/wiki-baglanti.py --uygula --sessiz && python3 tools/wiki-baglanti.py --json ¦ py…⟩ | tamam |
+| 136 | 19:33:35 | koştu | wiki-baglanti etiket düzeltmesi; katman-hatti 12 adım tam koşum; düzenlenen skill'lerde kapı-denetimi ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/wiki-baglanti.py'; s=open(p,encoding='utf-8').read() eski=' giden = {ad: sorted({m.group(1).strip() for m in…⟩ | yok |
 

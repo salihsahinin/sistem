@@ -28,3 +28,5 @@ Sıcak bağlam (CLAUDE.md, kapsül, pano) sınırlı ve pahalıdır; her oturum 
 [[token-x-zaman]] (m.21 bağlam-detay ölçekleme aynı parametrelerle) · katmanlı yerleşim: tüzük m.22 · dosya-açıklama standardı: m.29
 
 *Karşı-link (08-16):* [[baglam-veri-ambari]] — ambar sorgulanır, prompta dökülmez; brife pointer gider (aynı ilke).
+
+**Bağlantılar:** · [[adversarial-hayatta-kalma]] (karşı-link 08-22) · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[ingest-semasi]] (karşı-link 08-22) · [[kokenler-karpathy-llm-wiki]] (karşı-link 08-22) · [[olcum-banki]] (karşı-link 08-22) · [[paralel-oturum-protokolu]] (karşı-link 08-22) · [[silver-saglik]] (karşı-link 08-22) · [[uc-register]] (karşı-link 08-22)

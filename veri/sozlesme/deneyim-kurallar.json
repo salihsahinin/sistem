@@ -1,0 +1,20 @@
+{
+ "sema": "deneyim-kurallar-v0",
+ "surum": "0.1.0-deneysel-m29",
+ "kaynak_karar": "KB-44 (a) + MODEL-KUŞAĞI ŞERHİ — Karar 60 (08-21 seans-11; Salih aynen: 'deneyim tablosu gelişen llm teknolojisine ayak uyduracak seviyede olmalı yarın bir gün daha güçlü modeller geldiği zaman görev koşumları da eski perspektiften bu bağlamda olması gerektiği kadar etkilenmeli'); icra İB-44 2026-08-22 seans-14",
+ "kural": "Deneyim yörüngesi model + model-kuşağı + tarih taşır (ZORUNLU); kuşak değişiminde eski yörüngeler 'eski-kuşak' damgası alır ve AĞIRLIK (iskonto) ile çekilir — silinmez (m.8). Sabitler deneysel m.29; kuşak haritası model-adı desenlerinden deterministik türer (bilinmeyen model → kuşak '?' , ağırlık 0,5, uyarı).",
+ "guncel_kusak": "5",
+ "kusak_haritasi": [
+  {"desen": "fable-5", "kusak": "5", "sinif": "fable"},
+  {"desen": "opus-5", "kusak": "5", "sinif": "opus"},
+  {"desen": "sonnet-5", "kusak": "5", "sinif": "sonnet"},
+  {"desen": "haiku-4-5", "kusak": "4.5", "sinif": "haiku"},
+  {"desen": "sonnet-4-5", "kusak": "4.5", "sinif": "sonnet"},
+  {"desen": "opus-4", "kusak": "4", "sinif": "opus"},
+  {"desen": "sonnet-4", "kusak": "4", "sinif": "sonnet"},
+  {"desen": "<synthetic>", "kusak": "-", "sinif": "synthetic", "not": "harness sentetik mesajı; model değil — çoklu model listesinde yok sayılır"}
+ ],
+ "iskonto": {"5": 1.0, "4.5": 0.7, "4": 0.5, "3": 0.2, "?": 0.5, "-": 0.0},
+ "iskonto_not": "Eski-kuşak yörüngesi few-shot çekmede bm25 skoru × ağırlık ile sıralanır; yörünge çıkarılmaz. Değerler kalibrasyon borcu (≥10 kuşak-karşılaştırmalı koşum).",
+ "cift_kurali": "Başarı/başarısızlık ÇİFTİ = aynı (wf_id ∨ aile+rol ∨ agent_type+emir-önek) altında en az bir PASS ve bir FAIL hükmü; çift yalnız KURAL ADAYI üretir (ExpeL b-kanalı) — kanonlaşma dış geri-besleme (test/koşum sonucu/Salih imzası) ile, damitma adımı."
+}

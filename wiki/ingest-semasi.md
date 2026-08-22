@@ -42,3 +42,5 @@ Sabah stajda üç sekme açtın. Yan sekmede Airflow araştırması yaptırdın 
 - **Kapsüle tarihçe yazma:** kapsül "şu an"dır; hikâye commit'lerde ve raporlarda yaşar.
 - **`diger` sayacı yükseliyorsa** yeni bir tip doğuyor demektir — küme additive-only genişletilir, tip asla silinmez (deprecated edilir).
 - **Damıtmayı erkene alma:** eşik gelmeden damıtmak write-amplification'dır; eşiği bekle, toplu yap.
+
+**Bağlantılar:** · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[baglam-veri-ambari]] (karşı-link 08-22) · [[kokenler-karpathy-llm-wiki]] (karşı-link 08-22) · [[paralel-oturum-protokolu]] (karşı-link 08-22) · [[silver-saglik]] (karşı-link 08-22)

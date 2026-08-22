@@ -1,0 +1,148 @@
+{
+ "tablo": "deneyim",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "1 satır = 1 görev-yörüngesi (işçi-ajan koşumu) + hüküm + model-kuşağı; KB-44 (a) Karar 60",
+ "kolonlar": [
+  {
+   "ad": "kosum_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": true
+  },
+  {
+   "ad": "wf_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "agent_type",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "aile",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "rol",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "emir_ozet",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "model",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "model_sinifi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "model_kusagi",
+   "tip": "TEXT",
+   "not_null": true,
+   "pk": false
+  },
+  {
+   "ad": "eski_kusak",
+   "tip": "INTEGER",
+   "not_null": true,
+   "pk": false
+  },
+  {
+   "ad": "agirlik",
+   "tip": "REAL",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "tarih",
+   "tip": "TEXT",
+   "not_null": true,
+   "pk": false
+  },
+  {
+   "ad": "valid_time_bas",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "sure_sn",
+   "tip": "REAL",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "input_tokens",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "output_tokens",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "arac_cagrisi",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "oturum",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "hukum",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "hukum_kaynak",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "tahmin_var",
+   "tip": "INTEGER",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "guncel_kusak",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kod_sha",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  }
+ ],
+ "kural": "additive-only; model/model_kusagi/tarih ZORUNLU (Salih şerhi)",
+ "kaynak": "tools/deneyim-tablo.py (İB-44, 2026-08-22)"
+}

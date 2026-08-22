@@ -17,7 +17,7 @@ Kural kaynağı: `wiki/README.md` yazım standardı (deneysel m.29) + V24 isim d
    - *Süpersede zinciri:* çelişen eski iddia SİLİNMEZ — "yerini aldı: [tarih, yeni iddia]" damgası.
    - *[[link]]'ler:* ilgili sayfalara bağla.
 3. **Index kaydı:** `wiki/README.md` Index'e tek satır (`[[ad]] — hook (eklendi tarih, kaynak turu)`); aday kuyruktan geldiyse kuyruk satırını düşür.
-4. **Bağlantı turu (A-MEM dersi — notlar statik değil):** yeni sayfanın komşuları gözden geçirilir; gerekiyorsa komşu sayfaya karşı-link ya da Gotcha güncellemesi işlenir.
+4. **Bağlantı turu = NOT EVRİMİ (A-MEM dersi — notlar statik değil; KB-45 (a) Karar 60, İB-45 08-22):** (a) deterministik: `python3 tools/wiki-baglanti.py` (kuru rapor: karşı-link adayları + kırık [[link]]) → `--uygula` ile yeni sayfanın bağladığı eski sayfalara karşı-link satırı EKLENİR (silme yok; sozluk.md dokunulmaz); (b) elle: komşu sayfada süpersede/etiket/Gotcha güncellemesi gerekiyorsa işlenir. Sayaç (güncellenen sayfa · yetim→pointer) teslim raporuna — KB-45 ölçümü.
 5. **Teslim:** üretim, ingest-şeması zarfıyla teslim raporuna kaydedilir (`tip: kavram`).
 
 ## Gotchas
