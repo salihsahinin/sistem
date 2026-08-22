@@ -20,7 +20,7 @@ from datetime import datetime, timezone, timedelta
 # --- deneysel m.29 sabitler (ilk 3 koşumda kalibre) ---
 FRESH = {"bronz": {"warn_gun": 3, "error_gun": 14}, "silver": {"warn_gun": 3, "error_gun": 14}, "gold": {"warn_gun": 7, "error_gun": 30}}
 SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum", "amb_olgu_tahmin", "amb_olgu_kosum_sonuc",
-                     "anahtar_kaydi", "silver_kuyruk", "silver_saglik_son", "silver_karantina_aday"]  # silver-sağlık (İB-42, 08-22)
+                     "anahtar_kaydi", "silver_kuyruk", "silver_saglik_son", "silver_karantina_aday", "baglam_olay"]  # silver-sağlık (İB-42, 08-22)
 TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("kayit.kayit_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kayit_id FROM kayit GROUP BY kayit_id HAVING COUNT(*)>1)", "error"),
     ("kayit.dosya_id not_null", "not_null", "SELECT COUNT(*) FROM kayit WHERE dosya_id IS NULL OR dosya_id=''", "error"),

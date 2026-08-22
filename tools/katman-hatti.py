@@ -11,6 +11,7 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
       → 5) hareket-tablo.py (bronz veri/bronz/hareket-olay.jsonl ← transkript araç çağrıları; silver hareket; gold v_hareket_gunluk/v_son_hareketler
            + raporlar/hareket-gunlugu-*.md)
+      → 5b) baglam-seyir.py (transkript usage → bronz baglam-olay.jsonl; silver baglam_olay; gold v_baglam_seyri/v_baglam_gunluk — KB-50/52 (a) İB-22; uyarı kanalı)
       → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
            uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar; olcum'dan ÖNCE koşar ki son adım kanonda kalsın)
       → 7) silver-saglik.py (Karar 58: anahtar_kaydi JOIN · kayit.gecerlilik bayrakları · T-Ç/T-B/T-A · v_guncel_* · silver_kuyruk; uyarı kanalı, hat düşürmez; --kapi yalnız ritüellerde)
@@ -18,7 +19,7 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 8) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only) — SON ADIM (kanon core/veri-muhendisligi-katmani.md §8 S3, Salih A 08-17).
       → OPSİYONEL (bayrak --parquet; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan KAPALI): ambar-parquet.py (silver/ambar → veri/parquet/*.parquet
         kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,tarama,saglik,hijyen,olcum,parquet,kolon-olcum]
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,seyir,tarama,saglik,hijyen,olcum,parquet,kolon-olcum]
           [--snapshot YYYY-MM-DD] [--parquet]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); 2 = bilinmeyen --atla adı (stderr'de listelenir, hiçbir adım koşmaz; FAIL-LOUD); adım durumu
 `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI, hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan
@@ -32,11 +33,12 @@ ADIMLAR = [
     ("prompt", ["tools/prompt-tablo.py", "--sessiz"]),
     ("ambar", ["tools/ambar-tablo.py", "--sessiz"]),
     ("hareket", ["tools/hareket-tablo.py", "--sessiz"]),
+    ("seyir", ["tools/baglam-seyir.py", "--sessiz"]),  # bağlam kompozisyonu: transkript usage → bronz/silver/gold (KB-50/52 a, İB-22; uyarı kanalı)
     ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
     ("saglik", ["tools/silver-saglik.py", "--sessiz"]),  # silver-sağlık: bayrak + güncel görünüm + kuyruk (Karar 58 / İB-42; uyarı modu — kapı yalnız --kapi ile seans-kapanis/damitma)
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
-UYARI_KANALI_ADIMLAR = {"tarama", "saglik"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
+UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
 # Opsiyonel kolon katmanı (pipeline kolon-katmani SH-1/SH-2; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan kapalı)
 PARQUET_ADIMLAR = [
     ("parquet", ["tools/ambar-parquet.py", "--sessiz"]),
