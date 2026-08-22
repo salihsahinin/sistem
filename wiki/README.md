@@ -30,6 +30,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[paralel-oturum-protokolu]] — çoklu oturumun 4 kuralı (canlı-oturum kapısı · manifest kapısı · paylaşılan kaynak/motor freni · git add -A yasağı) — Salih imzası 08-17 masa (KB-08/09/10)
 - [[baglam-veri-ambari]] — bağlam VERİTABANI (operasyonel, V-1) ↔ bağlam VERİ AMBARI (analitik: aynı SQLite'ta ayrı şema/görünüm; erişim-tasarımı ayrımı; bitemporal + SCD-2 + olay↔nesne köprü) tanımı + Jarvis içerik örnekleri (olgu/boyut/mart) — 'context warehouse' dışta tanımsız, m.29 (eklendi 08-16, rapor-16-3 turu)
 - [[no-mistakes]] — kod-değişikliği doğrulama pipeline'ı (review·test·lint·push·PR·CI); safe-fix ↔ insana-eskalasyon ↔ bilinçli no-op üç-sınıf ayrımı + ci-adımı/`--skip ci` ve paralel-oturum dal-değişimi gotcha'ları (eklendi 08-21, İB-04 icra turu, paralel s13)
+- [[silver-saglik]] — silver temizliği = SİLME değil bayrak + güncel-görünüm (`v_guncel_*`) + tespit-damgalı kuyruk; T-Ç1..6 deterministik çelişki testleri · T-B 4 bayatlık ADAYI · T-A ön-eleme (LLM yalnız kanıt-bulucu); `tools/silver-saglik.py` + kural dosyası; ilk koşum gotcha'ları (eklendi 08-22, İB-42 icrası; Karar 58)
 
 ## Kuyruk (sonraki oturumlar)
 - baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).
@@ -39,7 +40,6 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - gnhf / treehouse / lavish — L8 araç üçlüsü aday sayfaları: durma-koşullu koşum (K-009/A3 kanıt bağı) · worktree havuzu/lease · yerel işaretle-geri-bildir döngüsü + share-yasağı (08-04 L8 seans hasadı; kaynak cc/rapor-2026-08-03-4.md + teslim 08-04).
 - loop-aday-yüklemi — L3 kademeli form + tekrar-birimi + loop↔skill sınırı (g23 raporu; masa kararlarından SONRA yazılır — 08-01 gece hasadı).
 - indeks-aramasi — 'index seek' düzeltilmiş tanım + terim haritası (SQL Server Index Seek/Key Lookup · Postgres Index Scan/IOS/Bitmap · SQLite SEARCH↔SCAN + rowid ikinci iniş · InnoDB PK) + Jarvis erişim yolu (kök→dal→yaprak→heap: kapsül işaretçisi → silver anahtar → kayit_id → aralık; sha8 tazelik) — KB-53/54 imzası sonrası (kaynak `cc/rapor-2026-08-18-1.md` S1-S4).
-- silver-saglik — silver temizlik-test mekanizması (bayrak+güncel-görünüm+kuyruk; T-Ç/T-B/T-A; canary + as-of eval) — KB-39..42 imzası sonrası (kaynak `cc/rapor-2026-08-17-1.md` S1-S6).
 - hafiza-teknik-envanteri — 'LLM hafıza yönetimi' şemsiyesi ↔ ~10 teknik × Jarvis J1-J15 eşleme matrisi — KB-43..45 sonrası (kaynak `cc/rapor-2026-08-17-2.md` S2).
 - baglam-butcesi — bağlam-penceresi kategori anlamları + mutlak-token kural seti + Jarvis sondajı — KB-50..52 sonrası (kaynak `cc/rapor-2026-08-17-4.md` S1-S3).
 - skill-katmanlari — proje-skill vs hesap-skill + terfi süzgeci + pointer-ilkeli skill deseni (07-23 hasadı).
