@@ -1,12 +1,44 @@
 #!/usr/bin/env bash
-# JARVIS SessionStart hook (deneysel m.29; kurulum 2026-07-19, Dilim 1 paketi)
-# Amaç: CC her açılışta CANLI kanonu okur + yetki bandını görür (rapor 3 Opsiyon 2: mimari > talimat)
-# rev 2026-08-17: m.41 GK-2 (Salih KB-34) — yüzey adı Claude Code (terminal ∨ masaüstü), model şartı 'en güçlü model', Cowork sekmesi parmak-izi koşulu
-# rev 2026-08-16 (Carvis/Fable, Salih "düzelt"): yetki bandı m.41 GEÇİŞ KAYDI'na hizalandı — Cowork-dönemi metni (CC=yan-oturum · ana-sıra(Cowork) · settings-deny kilidi) bayattı; kalıntı-referans kapatıldı (bağlam-anahtar-kaydı: ana-sira-yuzeyi)
-echo "=== JARVIS SessionStart ==="
-echo "--- YETKİ BANDI (m.41 + GK 08-12/08-14 + GK-2 08-17): Bu yüzey CLAUDE CODE (terminal ∨ masaüstü uygulaması; giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA; Cowork SEKMESİ ana-sıra ⟺ tools/yuzey-parmak-izi.py eşitliği PASS. Kanon/inşa kararı geçerliliği: (ana-sıra ∧ model = mevcut EN GÜÇLÜ model, bugün Fable) ∨ Salih açık imzası — GEREKLİLİK, yeterlilik değil; zayıf model ya da yan-oturum (bulut/mobil chat, yan sekme) karar ALMAZ, bulguyu devir dosyasıyla taşır. Edit-deny kilidi KALKTI (efb2c13); kalan frenler: git push onaya tabi (m.9 push şartı BAKİ) · md.49 share freni · PreToolUse teli. Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih kararıyla; Katman-2 Carvis yapar+commit'ler, veto = revert. ---"
-echo "--- core/durum-kapsulu.md (ilk 40 satır) ---"
-sed -n '1,40p' core/durum-kapsulu.md 2>/dev/null || echo "(kapsül okunamadı)"
-echo "--- core/pano.md güncelleme satırı ---"
-sed -n '1,8p' core/pano.md 2>/dev/null || echo "(pano okunamadı)"
+# JARVIS SessionStart hook — BRİF ≤2 KB (KB-51 (a), Salih imzası 08-21 Karar 61; icra İB-24 2026-08-22 seans-14).
+# Tarihçe: kurulum 2026-07-19 (Dilim 1: kapsül ilk 40 satır + yetki bandı, 11 KB); rev 08-16/08-17 yetki bandı GK-2.
+# Neden indi: harness yalnız ~2 KB önizlemeyi bağlama koyar (25,8 KB → 2 KB; KB-51) → tam kapsül BURADA DEĞİL, elle okunur (CLAUDE.md §3).
+# İB-27 (KB-54 (a) Karar 62): silver tazelik — uretim.git_head_sha ≠ HEAD → "BAYAT" + katman-hatti tarifi (otomasyon: tespit; koşum ritüelde).
+# Çıktı sert-kapılı: head -c 2000. Her satır tek bakışta; deterministik (yalnız disk + git).
+cd "$(dirname "$0")/../.." 2>/dev/null || true
+{
+echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ==="
+echo "YETKİ (m.41 GK-2): Claude Code (giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."
+python3 - <<'PY' 2>/dev/null || echo "BRİF: silver okunamadı (python3 ya da veri/baglam.sqlite yok) → python3 tools/katman-hatti.py"
+import sqlite3, subprocess, re
+def sh(c):
+    try: return subprocess.run(c, shell=True, capture_output=True, text=True).stdout.strip()
+    except Exception: return "?"
+head = sh("git rev-parse --short HEAD"); when = sh("git log -1 --format=%ci")[:16]
+print("HEAD: %s (%s) · %s" % (head, when, sh("git status -sb | head -1 | sed 's/## //'")))
+try:
+    c = sqlite3.connect("file:veri/baglam.sqlite?mode=ro", uri=True)
+    u = c.execute("SELECT git_head_sha, uretim_zamani FROM uretim ORDER BY uretim_zamani DESC LIMIT 1").fetchone()
+    taze = bool(u and head and u[0].startswith(head))
+    print("SİLVER: %s (%s) → %s" % ((u[0][:7] if u else "?"), (u[1][:16] if u else "?"), "TAZE" if taze else "BAYAT → python3 tools/katman-hatti.py (~12 sn; Karar 62 İB-27)"))
+    try:
+        r = c.execute("SELECT acik_salih_karari, acik_icra_borcu, son_teslim, son_kosum FROM v_amb_acilis_brifi LIMIT 1").fetchone()
+        if r: print("AS-OF: açık Salih kararı %s · açık icra borcu %s · son teslim %s · son koşum %s" % (r[0], r[1], (r[2] or "-")[:60], (r[3] or "-")[:50]))
+    except Exception: pass
+    try:
+        s = c.execute("SELECT sonuc FROM silver_saglik_son WHERE test_id='T-C3-sicak'").fetchone()
+        q = c.execute("SELECT COUNT(*) FROM silver_kuyruk").fetchone()[0]
+        print("SİLVER-SAĞLIK: sıcak kalıntı %s · kuyruk aday %s (v_silver_kuyruk_ozet)" % ((s[0] if s else "?"), q))
+    except Exception: pass
+except Exception as e:
+    print("SİLVER: okunamadı (%s) → python3 tools/katman-hatti.py" % e)
+try:
+    t = open("core/durum-kapsulu.md", encoding="utf-8").read()
+    m = re.search(r"## Sonraki ilk iş\s*\n(.*?)\n", t, re.S)
+    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:400])
+    g = re.search(r"\*\*Güncelleme:\*\*\s*(.{0,150})", t)
+    if g: print("KAPSÜL: " + re.sub(r"[*`]", "", g.group(1)))
+except Exception: pass
+PY
+echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (TAMAMI) → core/pano.md → ritüel 'seans başı' (seans-acilis: canlı-oturum kapısı = git log -5 + hareket kütüğü)."
 echo "=== /SessionStart ==="
+} | head -c 2000
