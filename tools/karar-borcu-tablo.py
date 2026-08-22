@@ -47,9 +47,15 @@ def oku_jsonl(yol):
     return satirlar
 
 
+DURUM_ESANLAM = {"masada": "masaya", "Salihte": "Salih'te", "kapandi": "kapandı", "icra-sirada": "icra-sırada"}  # yazım varyantı → tek enum (08-22: KB-59/60/61 "masada" hat kırdı)
+
+
 def dogrula(kayitlar):
     hatalar, ids = [], set()
     for k in kayitlar:
+        if k.get("durum") in DURUM_ESANLAM:
+            print("[UYARI] %s: durum '%s' → '%s' (eşanlam normalize; kaynağı düzelt)" % (k.get("borc_id"), k["durum"], DURUM_ESANLAM[k["durum"]]), file=sys.stderr)
+            k["durum"] = DURUM_ESANLAM[k["durum"]]
         for alan in ZORUNLU:
             if alan not in k or k[alan] in (None, "", []):
                 hatalar.append(f"{k.get('borc_id','?')}: zorunlu alan eksik → {alan}")
