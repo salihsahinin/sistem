@@ -4,9 +4,10 @@
 # Çıktı: koşum-başına dörtlü (token · duvar-saati · iterasyon · sonuç), markdown blok.
 # --append: bloğu senaryo-defterine yazar (mükerrer runId#pid atlanır). m.39: eksik alan [?].
 # Kullanım:
-#   python C:\JARVIS\tools\olcum-dortlu.py                 # önizleme (stdout)
-#   python C:\JARVIS\tools\olcum-dortlu.py --append        # deftere yaz
-#   python C:\JARVIS\tools\olcum-dortlu.py --repo C:\dev\baska-repo
+#   python3 ~/jarvis/tools/olcum-dortlu.py                      # önizleme (stdout)  [Mac; Windows: python C:\JARVIS\tools\olcum-dortlu.py]
+#   python3 ~/jarvis/tools/olcum-dortlu.py --append             # deftere yaz
+#   python3 ~/jarvis/tools/olcum-dortlu.py --repo ~/dev/firstmate # hedef repo (gnhf koşumlarının olduğu yer)
+# Mac uyarlaması 2026-08-22 (İB-13, K-022 P6): kanon kökü ~/jarvis (Windows kökü varsa o), --repo varsayılanı ~/dev/wf-deneme → yoksa ~/dev/firstmate → yoksa cwd; mantık değişmedi.
 
 import argparse, json, re, sqlite3, sys
 from datetime import datetime, timezone
@@ -161,7 +162,9 @@ def nm_block():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--repo", default=r"C:\dev\wf-deneme")
+    _adaylar = [Path(r"C:\dev\wf-deneme"), Path.home() / "dev" / "wf-deneme", Path.home() / "dev" / "firstmate"]
+    _repo_vars = next((str(p) for p in _adaylar if p.exists()), str(Path.cwd()))
+    ap.add_argument("--repo", default=_repo_vars, help="gnhf koşumlarının olduğu hedef repo (.gnhf/runs/*/gnhf.log); varsayılan: ilk var olan aday ya da cwd")
     ap.add_argument("--defter", default=str(DEFTER))
     ap.add_argument("--append", action="store_true")
     a = ap.parse_args()
