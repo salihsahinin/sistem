@@ -1,0 +1,60 @@
+# Jarvis POINTER SİSTEMİ — ODAK PANOSU — cc/rapor-2026-08-22-2.md (1-2 sıçrama; sınıf başına ≤18) (türetilmiş görünüm; ham kaynak silver/bronz)
+# üretici: tools/pointer-graf.py · silver 9e78140 · HEAD 2928f84 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
+direction: right
+classes: {
+  kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
+  pointer: { style: { fill: "#E8F0FE"; stroke: "#1A56DB"; border-radius: 6 } }
+  anahtar: { style: { fill: "#FFF4E5"; stroke: "#B45309"; border-radius: 6 } }
+  hat: { style: { fill: "#ECFDF5"; stroke: "#047857"; bold: true; border-radius: 6 } }
+  ilke: { shape: hexagon; style: { fill: "#FDF2F8"; stroke: "#9D174D" } }
+  kron: { shape: page; style: { fill: "#FFFFFF"; stroke: "#6B7280" } }
+  dis: { shape: cloud; style: { fill: "#FAFAFA"; stroke: "#9CA3AF" } }
+  kirik: { style: { stroke: "#DC2626"; stroke-dash: 3; font-size: 14 } }
+  supersede: { style: { stroke: "#B45309"; stroke-dash: 5 } }
+  fk: { style: { stroke: "#444444"; font-size: 14 } }
+  turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
+  uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
+}
+merkez: "cc/rapor-2026-08-22-2.md soguk · rapor · 368 satır · 298 blok" { class: hat }
+ice_cc_pipeline_2026_08_22_pointer_graf_d2_md: "cc/pipeline-2026-08-22-pointer-graf-d2.md" { class: kutu }
+ice_cc_pipeline_2026_08_22_pointer_graf_d2_md -> merkez: "3 pointer" { class: fk }
+ice_raporlar_hareket_gunlugu_2026_08_22_md: "raporlar/hareket-gunlugu-2026-08-22.md" { class: kutu }
+ice_raporlar_hareket_gunlugu_2026_08_22_md -> merkez: "3 pointer" { class: fk }
+ice_kuyruk_senaryo_defteri_md: "kuyruk/senaryo-defteri.md" { class: kutu }
+ice_kuyruk_senaryo_defteri_md -> merkez: "2 pointer" { class: fk }
+ice_KILAVUZ_md: "KILAVUZ.md" { class: kutu }
+ice_KILAVUZ_md -> merkez: "1 pointer" { class: fk }
+ice_cc_gorev_2026_08_22_2_md: "cc/gorev-2026-08-22-2.md" { class: kutu }
+ice_cc_gorev_2026_08_22_2_md -> merkez: "1 pointer" { class: fk }
+ice_core_durum_kapsulu_md: "core/durum-kapsulu.md" { class: kutu }
+ice_core_durum_kapsulu_md -> merkez: "1 pointer" { class: fk }
+ice_graf_README_md: "graf/README.md" { class: kutu }
+ice_graf_README_md -> merkez: "1 pointer" { class: fk }
+ice_raporlar_2026_08_22_graf_dili_uzun_vade_plani_md: "raporlar/2026-08-22-graf-dili-uzun-vade-plani.md" { class: kutu }
+ice_raporlar_2026_08_22_graf_dili_uzun_vade_plani_md -> merkez: "1 pointer" { class: fk }
+disa_anahtar_terim: "anahtar_terim · 203" { class: pointer }
+merkez -> disa_anahtar_terim { class: fk }
+disa_tarih: "tarih · 182" { class: pointer }
+merkez -> disa_tarih { class: fk }
+disa_url: "url · 126" { class: pointer }
+merkez -> disa_url { class: fk }
+disa_v_no: "v_no · 24" { class: pointer }
+merkez -> disa_v_no { class: fk }
+disa_etiket: "etiket · 23" { class: pointer }
+merkez -> disa_etiket { class: fk }
+disa_dosya_pointer: "dosya_pointer · 14 · 8 KIRIK" { class: pointer }
+merkez -> disa_dosya_pointer { class: kirik }
+disa_tuzuk_madde: "tuzuk_madde · 14" { class: pointer }
+merkez -> disa_tuzuk_madde { class: fk }
+disa_sha: "sha · 3" { class: pointer }
+merkez -> disa_sha { class: fk }
+kb_KB_60: "KB-60" { class: anahtar }
+kb_KB_60 -> merkez: "kaynak olarak kullanır" { class: uygular }
+kb_KB_61: "KB-61" { class: anahtar }
+kb_KB_61 -> merkez: "kaynak olarak kullanır" { class: uygular }
+kb_IB_48: "İB-48" { class: anahtar }
+kb_IB_48 -> merkez: "kaynak olarak kullanır" { class: uygular }
+kb_IB_49: "İB-49" { class: anahtar }
+kb_IB_49 -> merkez: "kaynak olarak kullanır" { class: uygular }
+# düğüm sayısı: 21 (tavan 50; sınıf başına ≤18)

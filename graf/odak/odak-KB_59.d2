@@ -1,0 +1,39 @@
+# Jarvis POINTER SİSTEMİ — ODAK PANOSU — KB-59 (1-2 sıçrama; sınıf başına ≤18) (türetilmiş görünüm; ham kaynak silver/bronz)
+# üretici: tools/pointer-graf.py · silver 9e78140 · HEAD 2928f84 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
+direction: right
+classes: {
+  kutu: { style: { fill: "#F4F4F4"; stroke: "#444444"; font-size: 16; border-radius: 6 } }
+  pointer: { style: { fill: "#E8F0FE"; stroke: "#1A56DB"; border-radius: 6 } }
+  anahtar: { style: { fill: "#FFF4E5"; stroke: "#B45309"; border-radius: 6 } }
+  hat: { style: { fill: "#ECFDF5"; stroke: "#047857"; bold: true; border-radius: 6 } }
+  ilke: { shape: hexagon; style: { fill: "#FDF2F8"; stroke: "#9D174D" } }
+  kron: { shape: page; style: { fill: "#FFFFFF"; stroke: "#6B7280" } }
+  dis: { shape: cloud; style: { fill: "#FAFAFA"; stroke: "#9CA3AF" } }
+  kirik: { style: { stroke: "#DC2626"; stroke-dash: 3; font-size: 14 } }
+  supersede: { style: { stroke: "#B45309"; stroke-dash: 5 } }
+  fk: { style: { stroke: "#444444"; font-size: 14 } }
+  turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
+  uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
+}
+merkez: "KB-59 · kapandı · Katman-1-kural VEKTÖR KOLU = ÖLÇÜM ŞARTNAMESİ — bağlam verisinde vektörün yeri (yalnız kavramsal düzyazı " { class: anahtar }
+bag_KB_43: "KB-43" { class: anahtar }
+merkez -> bag_KB_43: "bağımlılık" { class: uygular }
+bag_IB_43: "İB-43" { class: anahtar }
+merkez -> bag_IB_43: "bağımlılık" { class: uygular }
+ters_KB_60: "KB-60" { class: anahtar }
+ters_KB_60 -> merkez: "buna bağımlı" { class: uygular }
+ters_IB_47: "İB-47" { class: anahtar }
+ters_IB_47 -> merkez: "buna bağımlı" { class: uygular }
+dosya_cc_rapor_2026_08_22_1_md: "cc/rapor-2026-08-22-1.md soguk · rapor" { class: kutu }
+kayit_cc_rapor_2026_08_22_1_md_383_383_65d8cd3b: "#383 Aile C — C: KOMPOZİSYON — çok-depolu mim ### S6. Karar masası kalemi — KB-59 taslağı (açıklama-bloklu; ledger'a" { class: kutu }
+merkez -> kayit_cc_rapor_2026_08_22_1_md_383_383_65d8cd3b: "kaynak (kayıt)" { class: fk }
+kayit_cc_rapor_2026_08_22_1_md_383_383_65d8cd3b -> dosya_cc_rapor_2026_08_22_1_md: "dosya_id" { class: fk }
+kayit_cc_rapor_2026_08_22_1_md_345_345_0621508a: "#345 Aile C — C: KOMPOZİSYON — çok-depolu mim ## Sentez (Carvis yorumu — mekanik derlemenin DIŞINDA; elle eklenir)" { class: kutu }
+merkez -> kayit_cc_rapor_2026_08_22_1_md_345_345_0621508a: "kaynak (kayıt)" { class: fk }
+kayit_cc_rapor_2026_08_22_1_md_345_345_0621508a -> dosya_cc_rapor_2026_08_22_1_md: "dosya_id" { class: fk }
+dosya_cc_gorev_2026_08_22_1_md: "cc/gorev-2026-08-22-1.md soguk · emir" { class: kutu }
+merkez -> dosya_cc_gorev_2026_08_22_1_md: "kaynak (dosya)" { class: fk }
+dosya_cc_pipeline_2026_08_22_vektor_db_baglam_md: "cc/pipeline-2026-08-22-vektor-db-baglam.md ilik · pipeline" { class: kutu }
+merkez -> dosya_cc_pipeline_2026_08_22_vektor_db_baglam_md: "kaynak (dosya)" { class: fk }
+# düğüm sayısı: 10 (tavan 50; sınıf başına ≤18)

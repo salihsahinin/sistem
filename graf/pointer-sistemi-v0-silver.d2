@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — SİLVER TABLOLARI — PK/FK (pano 1/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 647d93c · HEAD 2836821 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver 9e78140 · HEAD 2928f84 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -26,7 +26,16 @@ anahtar: "anahtar · 328 satır" {
   gecerli_bas: TEXT
   gecerli_bitis: TEXT
 }
-dosya: "dosya · 571 satır" {
+anahtar_kaydi: "anahtar_kaydi · 20 satır" {
+  shape: sql_table
+  kaydi_id: TEXT
+  anahtar_id: TEXT
+  tur: TEXT
+  rol: TEXT
+  deger: TEXT
+  deger_norm: TEXT
+}
+dosya: "dosya · 585 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: primary_key }
   dizin: TEXT
@@ -35,7 +44,7 @@ dosya: "dosya · 571 satır" {
   blob_sha: TEXT
   son_commit: TEXT
 }
-hareket: "hareket · 2.356 satır" {
+hareket: "hareket · 2.519 satır" {
   shape: sql_table
   hareket_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
@@ -43,27 +52,27 @@ hareket: "hareket · 2.356 satır" {
   dosya: TEXT
   yuklendi_head: TEXT
 }
-json_kayit: "json_kayit · 18.795 satır" {
+json_kayit: "json_kayit · 25.581 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: foreign_key }
   json_yolu: TEXT
   deger: TEXT
 }
-karar_borcu: "karar_borcu · 97 satır" {
+karar_borcu: "karar_borcu · 103 satır" {
   shape: sql_table
   borc_id: TEXT { constraint: primary_key }
   tur: TEXT
   durum: TEXT
   bagimlilik: TEXT
 }
-karar_borcu_kaynak: "karar_borcu_kaynak · 246 satır" {
+karar_borcu_kaynak: "karar_borcu_kaynak · 266 satır" {
   shape: sql_table
   borc_id: TEXT { constraint: foreign_key }
   dosya_id: TEXT { constraint: foreign_key }
   satir: TEXT
   kayit_id: TEXT { constraint: foreign_key }
 }
-kayit: "kayit · 48.957 satır" {
+kayit: "kayit · 50.072 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: primary_key }
   dosya_id: TEXT { constraint: foreign_key }
@@ -73,20 +82,47 @@ kayit: "kayit · 48.957 satır" {
   satir_son: TEXT
   zarf_tip: TEXT
 }
-prompt: "prompt · 357 satır" {
+prompt: "prompt · 370 satır" {
   shape: sql_table
   prompt_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
   sonraki_skill: TEXT
   yuklendi_head: TEXT
 }
-referans: "referans · 63.062 satır" {
+referans: "referans · 65.148 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: foreign_key }
   ref_turu: TEXT
   ref_deger: TEXT
   hedef_var: TEXT
   hedef_yol: TEXT { constraint: foreign_key }
+}
+silver_karantina_aday: "silver_karantina_aday · 500 satır" {
+  shape: sql_table
+  cift_id: TEXT
+  anahtar_terim: TEXT
+  kayit_id_a: TEXT
+  kayit_id_b: TEXT
+  dosya_a: TEXT
+  dosya_b: TEXT
+}
+silver_kuyruk: "silver_kuyruk · 239 satır" {
+  shape: sql_table
+  kuyruk_id: TEXT
+  tip: TEXT
+  hedef_tur: TEXT
+  hedef_id: TEXT
+  dosya_id: TEXT
+  neden: TEXT
+}
+silver_saglik_son: "silver_saglik_son · 14 satır" {
+  shape: sql_table
+  test_id: TEXT
+  ad: TEXT
+  sinif: TEXT
+  siddet: TEXT
+  ihlal: TEXT
+  sonuc: TEXT
 }
 uretim: "uretim · 1 satır" {
   shape: sql_table

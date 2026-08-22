@@ -11,7 +11,8 @@ Düğüm türleri: tablo (silver; PK sütunları + satır sayısı) · referans_
           hat_katmani (bronz/silver/gold) · ilke (m.20/21/22/8 — kanon SABİTİ, pointer'lı) · kronoloji (kuruluş adımları — kanon SABİTİ).
 Kenar türleri: fk (PK→FK) · pointer_hedef (referans türü → hedef sınıfı; çözümlü/kırık sayısı) · supersede (anahtar.replaced_by) ·
           turetir (bronz→silver→gold; uretim provenansı) · ilke_uygular (ilke → mekanizma) · kronoloji_sonra (adım → adım).
-Çıkış kodu: 0 tamam · 2 DB yok/okunamadı · 3 boş tablo · 4 render determinizmi BOZUK (FAIL-LOUD).
+Çıkış kodu: 0 tamam · 2 DB yok/okunamadı · 3 boş tablo · 4 render determinizmi BOZUK · 5 test FAIL (FAIL-LOUD).
+G1 (İB-48): --odak X (örnek-düzeyi alt-graf) · --kirik (kırık-pointer panosu) · --test (T1-T5).
 Kullanım: python3 tools/pointer-graf.py [--db veri/baglam.sqlite] [--json veri/graf/pointer-sistemi-model.json] [--d2 graf/pointer-sistemi-v0.d2]
 """
 import argparse, json, os, sqlite3, subprocess, sys, datetime
@@ -88,6 +89,10 @@ def main():
     ap.add_argument("--d2-dizin", default=None, help="ÇOK-PANOLU çıktı dizini: genel + silver + pointer + ilke + kronoloji (ör. graf/) — okunur kademeleme")
     ap.add_argument("--render", type=int, default=0, metavar="N", help="panoları d2 --layout=elk ile SVG'ye çevir; N≥2 ise her panoyu N kez render edip sha256 eşitliğini ölç (Karar 65 kaydı) → graf/pointer-sistemi-v0-uretim.json")
     ap.add_argument("--kenar-listesi", default=None, help="LLM-okunur düz kenar listesi (script-üretimli, deterministik; ör. graf/pointer-sistemi-v0-kenarlar.txt)")
+    ap.add_argument("--odak", action="append", default=[], metavar="X", help="ÖRNEK-DÜZEYİ odak panosu (G1/İB-48): X = KB-n/İB-n ∨ kayit_id (yol#satır#sha8) ∨ dosya yolu; 1-2 sıçrama, ≤50 düğüm → graf/odak/<slug>.d2 (tekrarlanabilir)")
+    ap.add_argument("--kirik", action="store_true", help="KIRIK-POINTER panosu (G1/İB-48): kaynak dosya → hedef (hedef_var=0), en çok N → graf/pointer-sistemi-v0-kirik.d2")
+    ap.add_argument("--ust", type=int, default=18, help="odak/kırık panolarında sınıf başına en çok düğüm (varsayılan 18; toplam ≤50)")
+    ap.add_argument("--test", action="store_true", help="T1-T5 testleri: model determinizmi · d2 anahtar tutarlılığı · düğüm tavanı · FK hedefleri · render sha (--render ile) → PASS/FAIL, çıkış 5")
     ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args()
     if not os.path.exists(a.db):
@@ -202,6 +207,18 @@ def main():
     if a.kenar_listesi:
         yaz_kenar_listesi(a.kenar_listesi, nodes, edges, meta)
         if not a.sessiz: print(f"kenar listesi → {a.kenar_listesi}")
+    for x in a.odak:
+        y = yaz_odak(cur, x, a.d2_dizin or "graf", a.ust, meta)
+        if y: yollar.append(y); (not a.sessiz) and print(f"odak panosu → {y}")
+    if a.kirik:
+        y = yaz_kirik(cur, a.d2_dizin or "graf", a.ust, meta); yollar.append(y)
+        if not a.sessiz: print(f"kırık-pointer panosu → {y}")
+    if a.test:
+        sonuc = testler(a, nodes, edges, yollar)
+        if not a.sessiz:
+            for t in sonuc: print(f"  {t[0]} {t[1]}: {t[2]}")
+        if any(t[1] == "FAIL" for t in sonuc):
+            print("TEST FAIL (FAIL-LOUD)", file=sys.stderr); return 5
     if a.render and yollar:
         kayit = render_et(yollar, a.render, meta)
         if not a.sessiz:
@@ -471,6 +488,157 @@ def render_et(yollar, n_kosum, meta):
     with open(kayit["dosya"], "w", encoding="utf-8") as f:
         json.dump(kayit, f, ensure_ascii=False, indent=1)
     return kayit
+
+# ====================== G1 (İB-48): odak panoları · kırık-pointer panosu · testler ======================
+def slug(x):
+    """D2 anahtarı için ASCII slug (Türkçe harfler çevrilir; determinizm: locale-bağımsız, bytewise sıralanabilir)."""
+    tbl = str.maketrans("İıŞşĞğÜüÖöÇç", "IiSsGgUuOoCc")
+    x = str(x).translate(tbl)
+    return "".join(ch if (ch.isascii() and ch.isalnum()) else "_" for ch in x)[:60].strip("_") or "x"
+
+def _esc(t):
+    return str(t).replace('"', "'").replace("\n", " ")
+
+def yaz_odak(cur, x, dizin, ust, meta):
+    """Örnek-düzeyi odak panosu: X çevresinde 1-2 sıçrama; sınıf başına ≤ust düğüm; sıralama sayım DESC, id ASC (deterministik)."""
+    import re
+    L = _bas(meta, f"ODAK PANOSU — {x} (1-2 sıçrama; sınıf başına ≤{ust})", "right")
+    dugum = set()
+    def d(key, label, cls):
+        if key in dugum: return
+        dugum.add(key); L.append(f"{key}: \"{_esc(label)}\" {{ class: {cls} }}")
+    def e(a, b, lbl="", cls=None):
+        ek = f" {{ class: {cls} }}" if cls else ""
+        L.append(f"{a} -> {b}: \"{_esc(lbl)}\"{ek}" if lbl else f"{a} -> {b}{ek}")
+    kb = re.match(r"^(KB|İB|IB)-\d+$", x)
+    if kb:
+        r = q(cur, "SELECT borc_id, baslik, durum, tur, bagimlilik FROM karar_borcu WHERE borc_id=?".replace("?", f"'{x}'"))
+        if not r:
+            print(f"HATA: karar_borcu'nda yok: {x}", file=sys.stderr); return None
+        bid, baslik, durum, tur, bag = r[0]
+        merkez = "merkez"; d(merkez, f"{bid} · {durum} · {tur}\n{(baslik or '')[:90]}", "anahtar")
+        # bağımlılıklar (dışa) + bağımlı olanlar (içe)
+        try: bags = json.loads(bag) if bag else []
+        except Exception: bags = [b.strip() for b in (bag or "").replace("[", "").replace("]", "").replace('"', "").split(",") if b.strip()]
+        for b in sorted(bags)[:ust]:
+            d(f"bag_{slug(b)}", f"{b}", "anahtar"); e(merkez, f"bag_{slug(b)}", "bağımlılık", "uygular")
+        for (o,) in q(cur, f"SELECT borc_id FROM karar_borcu WHERE bagimlilik LIKE '%{x}%' AND borc_id<>'{x}' ORDER BY borc_id LIMIT {ust}"):
+            d(f"ters_{slug(o)}", f"{o}", "anahtar"); e(f"ters_{slug(o)}", merkez, "buna bağımlı", "uygular")
+        # kaynak satırları → kayıt/dosya
+        kaynaklar = q(cur, f"SELECT dosya_id, satir, kayit_id FROM karar_borcu_kaynak WHERE borc_id='{x}' ORDER BY sira LIMIT {ust}")
+        kayitlar = []
+        for dosya_id, satir, kayit_id in kaynaklar:
+            dk = f"dosya_{slug(dosya_id)}"
+            kat = q(cur, f"SELECT katman, tur FROM dosya WHERE dosya_id='{dosya_id}'")
+            d(dk, f"{dosya_id}\n{(kat[0][0]+' · '+kat[0][1]) if kat else 'dosya'}", "kutu")
+            if kayit_id:
+                kk = f"kayit_{slug(kayit_id)}"
+                mk = q(cur, f"SELECT metin_kisa, bolum_yolu FROM kayit WHERE kayit_id='{kayit_id}'")
+                d(kk, f"#{satir} {(mk[0][1] or '')[:40]}\n{(mk[0][0] or '')[:70]}" if mk else f"#{satir}", "kutu")
+                e(merkez, kk, "kaynak (kayıt)", "fk"); e(kk, dk, "dosya_id", "fk"); kayitlar.append(kayit_id)
+            else:
+                e(merkez, dk, "kaynak (dosya)", "fk")
+        # 2. sıçrama: kaynak kayıtların pointer'ları (tür bazında sayım)
+        if kayitlar:
+            idl = ",".join(f"'{k}'" for k in kayitlar)
+            for rt, n, kirik in q(cur, f"SELECT ref_turu, count(*), sum(CASE WHEN hedef_var=0 THEN 1 ELSE 0 END) FROM referans WHERE kayit_id IN ({idl}) GROUP BY 1 ORDER BY 2 DESC, 1 LIMIT {ust}"):
+                rk = f"ref_{slug(rt)}"; d(rk, f"{rt} · {tr(n)}" + (f" · {tr(kirik)} KIRIK" if kirik else ""), "pointer")
+                e(rk, merkez, "kaynak kayıtların pointer'ları", "kirik" if kirik else "fk")
+    elif "#" in x:
+        r = q(cur, f"SELECT kayit_id, dosya_id, bolum_yolu, metin_kisa, satir_bas, satir_son FROM kayit WHERE kayit_id='{x}'")
+        if not r:
+            print(f"HATA: kayit yok: {x}", file=sys.stderr); return None
+        kid, dosya_id, bolum, mk, sb, ss = r[0]
+        merkez = "merkez"; d(merkez, f"KAYIT #{sb}-{ss} · {(bolum or '')[:40]}\n{(mk or '')[:80]}", "kutu")
+        dk = f"dosya_{slug(dosya_id)}"; d(dk, f"{dosya_id}", "kutu"); e(merkez, dk, "dosya_id (FK)", "fk")
+        for rt, rd, hv, hy in q(cur, f"SELECT ref_turu, ref_deger, hedef_var, hedef_yol FROM referans WHERE kayit_id='{x}' ORDER BY ref_turu, ref_deger LIMIT {ust*2}"):
+            rk = f"ref_{slug(rt+'_'+rd)}"; d(rk, f"{rt}: {rd[:40]}" + (" · KIRIK" if hv == 0 else ""), "pointer")
+            e(merkez, rk, "", "kirik" if hv == 0 else "fk")
+        for (b,) in q(cur, f"SELECT borc_id FROM karar_borcu_kaynak WHERE kayit_id='{x}' ORDER BY borc_id LIMIT {ust}"):
+            d(f"kb_{slug(b)}", b, "anahtar"); e(f"kb_{slug(b)}", merkez, "kaynak olarak kullanır", "uygular")
+    else:
+        r = q(cur, f"SELECT dosya_id, katman, tur, satir_sayisi FROM dosya WHERE dosya_id='{x}' OR dosya_id LIKE '%{x}' ORDER BY length(dosya_id) LIMIT 1")
+        if not r:
+            print(f"HATA: dosya yok: {x}", file=sys.stderr); return None
+        dosya_id, katman, tur, satir = r[0]
+        nk = q(cur, f"SELECT count(*) FROM kayit WHERE dosya_id='{dosya_id}'")[0][0]
+        merkez = "merkez"; d(merkez, f"{dosya_id}\n{katman} · {tur} · {tr(satir or 0)} satır · {tr(nk)} blok", "hat")
+        # içe: bu dosyaya pointer veren kaynak dosyalar
+        for src, n in q(cur, f"SELECT k.dosya_id, count(*) c FROM referans r JOIN kayit k ON k.kayit_id=r.kayit_id WHERE r.ref_turu='dosya_pointer' AND r.hedef_yol='{dosya_id}' GROUP BY 1 ORDER BY c DESC, 1 LIMIT {ust}"):
+            sk = f"ice_{slug(src)}"; d(sk, f"{src}", "kutu"); e(sk, merkez, f"{tr(n)} pointer", "fk")
+        # dışa: bu dosyanın bloklarının pointer'ları (tür bazında)
+        for rt, n, kirik in q(cur, f"SELECT r.ref_turu, count(*), sum(CASE WHEN r.hedef_var=0 THEN 1 ELSE 0 END) FROM referans r JOIN kayit k ON k.kayit_id=r.kayit_id WHERE k.dosya_id='{dosya_id}' GROUP BY 1 ORDER BY 2 DESC, 1 LIMIT {ust}"):
+            rk = f"disa_{slug(rt)}"; d(rk, f"{rt} · {tr(n)}" + (f" · {tr(kirik)} KIRIK" if kirik else ""), "pointer")
+            e(merkez, rk, "", "kirik" if kirik else "fk")
+        for (b,) in q(cur, f"SELECT DISTINCT borc_id FROM karar_borcu_kaynak WHERE dosya_id='{dosya_id}' ORDER BY borc_id LIMIT {ust}"):
+            d(f"kb_{slug(b)}", b, "anahtar"); e(f"kb_{slug(b)}", merkez, "kaynak olarak kullanır", "uygular")
+    L.append(f"# düğüm sayısı: {len(dugum)} (tavan 50; sınıf başına ≤{ust})")
+    os.makedirs(os.path.join(dizin, "odak"), exist_ok=True)
+    yol = os.path.join(dizin, "odak", f"odak-{slug(x)}.d2")
+    open(yol, "w", encoding="utf-8").write("\n".join(L) + "\n")
+    return yol
+
+def yaz_kirik(cur, dizin, ust, meta):
+    """Kırık-pointer panosu: hedef_var=0 dosya_pointer'ları — en çok N kaynak dosya → en çok N hedef; sayılar kenarda."""
+    L = _bas(meta, f"KIRIK POINTER PANOSU — dosya_pointer · hedef_var=0 (en çok {ust} kaynak → en çok {ust} hedef)", "right")
+    toplam, hedef_n, kaynak_n = q(cur, "SELECT count(*), count(DISTINCT ref_deger), count(DISTINCT kayit_id) FROM referans WHERE ref_turu='dosya_pointer' AND hedef_var=0")[0]
+    L.append(f"ozet: \"KIRIK dosya_pointer · {tr(toplam)} referans · {tr(hedef_n)} ayrı hedef · {tr(kaynak_n)} ayrı kayıt\" {{ class: kirik }}")
+    L.append("kaynak: \"KAYNAK DOSYALAR (en çok kırık pointer veren)\" {")
+    kaynaklar = q(cur, f"SELECT k.dosya_id, count(*) c FROM referans r JOIN kayit k ON k.kayit_id=r.kayit_id WHERE r.ref_turu='dosya_pointer' AND r.hedef_var=0 GROUP BY 1 ORDER BY c DESC, 1 LIMIT {ust}")
+    for src, n in kaynaklar:
+        L.append(f"  {slug(src)}: \"{_esc(src)} · {tr(n)}\" {{ class: kutu }}")
+    L.append("}")
+    L.append("hedef: \"HEDEFLER (var olmayan yol/ad)\" {")
+    hedefler = q(cur, f"SELECT ref_deger, count(*) c FROM referans WHERE ref_turu='dosya_pointer' AND hedef_var=0 GROUP BY 1 ORDER BY c DESC, 1 LIMIT {ust}")
+    for h, n in hedefler:
+        L.append(f"  {slug(h)}: \"{_esc(h)} · {tr(n)}\" {{ class: dis }}")
+    L.append("}")
+    srcs = ",".join(f"'{s}'" for s, _ in kaynaklar); hs = ",".join(f"'{h}'" for h, _ in hedefler)
+    if kaynaklar and hedefler:
+        for src, h, n in q(cur, f"SELECT k.dosya_id, r.ref_deger, count(*) c FROM referans r JOIN kayit k ON k.kayit_id=r.kayit_id WHERE r.ref_turu='dosya_pointer' AND r.hedef_var=0 AND k.dosya_id IN ({srcs}) AND r.ref_deger IN ({hs}) GROUP BY 1,2 ORDER BY c DESC, 1, 2 LIMIT {ust*3}"):
+            L.append(f"kaynak.{slug(src)} -> hedef.{slug(h)}: \"{tr(n)}\" {{ class: kirik }}")
+    L.append(f"# düğüm sayısı: {2 + len(kaynaklar) + len(hedefler)} (tavan 50)")
+    yol = os.path.join(dizin, "pointer-sistemi-v0-kirik.d2")
+    open(yol, "w", encoding="utf-8").write("\n".join(L) + "\n")
+    return yol
+
+def testler(a, nodes, edges, yollar):
+    """T1 model determinizmi (JSON iki okuma) · T2 d2 anahtar tutarlılığı (kenar uçları tanımlı mı) · T3 düğüm tavanı (≤50; tam hariç) · T4 FK hedefleri modelde · T5 render sha (yalnız --render ≥2 ile; render_et çıkış 4 verir)."""
+    import re
+    out = []
+    # T1: model gövdesi ikinci üretimle eşit mi (diskteki JSON ile karşılaştır)
+    try:
+        disk = json.load(open(a.json, encoding="utf-8"))
+        out.append(("T1 model-determinizm", "PASS" if (disk["nodes"] == nodes and disk["edges"] == edges) else "FAIL", f"{len(nodes)} düğüm / {len(edges)} kenar"))
+    except Exception as ex:
+        out.append(("T1 model-determinizm", "FAIL", str(ex)))
+    # T2 + T3: her .d2 panosu
+    for y in yollar:
+        if y.endswith("-tam.d2"): continue
+        txt = open(y, encoding="utf-8").read()
+        tanimli, uc, yigin = set(), [], []
+        for ln in txt.split("\n"):
+            st = ln.strip()
+            if not st or st.startswith("#") or st.startswith("direction") or st.startswith("vars") or st.startswith("classes"): continue
+            m = re.match(r'^([A-Za-z0-9_.]+)\s*->\s*([A-Za-z0-9_.]+)', st)
+            if m:
+                uc.append((m.group(1), m.group(2))); continue
+            m = re.match(r'^([A-Za-z0-9_]+):\s*"', st) or re.match(r'^([A-Za-z0-9_]+):\s*\{', st)
+            if m:
+                key = ".".join(yigin + [m.group(1)]); tanimli.add(key)
+                if st.endswith("{") and not st.endswith("} {") : yigin.append(m.group(1))
+            if st == "}" and yigin: yigin.pop()
+        tanimli_kok = {k.split(".")[-1] for k in tanimli} | tanimli
+        eksik = [f"{s}->{t}" for s, t in uc if not ((s in tanimli or s.split(".")[-1] in tanimli_kok or s.rsplit(".",1)[0] in tanimli) and (t in tanimli or t.split(".")[-1] in tanimli_kok or t.rsplit(".",1)[0] in tanimli))]
+        dugum_sayisi = len(tanimli)
+        out.append((f"T2 anahtar-tutarlılık {os.path.basename(y)}", "PASS" if not eksik else "FAIL", f"{len(uc)} kenar, tanımsız uç {len(eksik)}" + (": " + ", ".join(eksik[:3]) if eksik else "")))
+        out.append((f"T3 düğüm-tavanı {os.path.basename(y)}", "PASS" if dugum_sayisi <= 60 else "FAIL", f"{dugum_sayisi} anahtar (tavan ~50; kapsayıcılar dahil ≤60)"))
+    # T4: FK hedefleri modelde var mı
+    ids = {n["id"] for n in nodes}
+    kopuk = [f"{e['from']}→{e['to']}" for e in edges if e["from"] not in ids or e["to"] not in ids]
+    out.append(("T4 kenar-uçları-modelde", "PASS" if not kopuk else "FAIL", f"{len(edges)} kenar, kopuk {len(kopuk)}"))
+    out.append(("T5 render-sha", "PASS" if a.render and a.render >= 2 else "ATLANDI", "render_et: sha eşitsizliğinde çıkış 4" if a.render else "--render N≥2 verilmedi"))
+    return out
 
 if __name__ == "__main__":
     sys.exit(main())
