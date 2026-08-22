@@ -40,6 +40,9 @@ Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB ·
 ## 6c. Skill eşik koşumu (Salih imzası 08-21, defter Karar 51)
 `python3 tools/skill-esik.py` koş — `v_skill_kosum` verisinde n≥10 skill×model çiftlerinin medyan token/süre bandı; 2× üstü koşumlar SAPMA satırı olarak teslim raporuna. Ayrıca bu seansın ajan koşum hükümleri (done-yüklemi PASS/FAIL, DRFR'den) `veri/bronz/kosum-sonuc.jsonl`'e düşülür (ÖNERİ-damgalı alan, Karar 52). Otomatik kural değişikliği YOK.
 
+## 6d. Silver-sağlık kapısı (Salih imzası 08-21, defter Karar 58 — KB-39/40/41 (a); icra İB-42 08-22)
+`python3 tools/silver-saglik.py --kapi` koş (hareket-tablo'dan SONRA; ~1-2 sn). Çıkış 6 = T-Ç çelişki hatası (çift-güncel anahtar · aralık örtüşmesi · sıcak emekli-kalıntı · karar_borcu çift/kırık bağımlılık) → hat DURUR: kaynağı bronz'da düzelt (anahtar kaydı / ledger / sıcak dosya), yeniden koş; kapı geçmeden commit yok. Çıkış 0'da özet satırını teslim raporuna al: WARN sayısı (ılık kalıntı), kuyruk (YETİM/KAPANDI/SÜPERSEDE aday sayıları — `v_silver_kuyruk_ozet`) ve T-A çift sayısı; aday kuyruğu KARAR DEĞİL, Salih triyajı (silme yok, m.8). Kütük `veri/silver-saglik.jsonl` append-only.
+
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` YASAK — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu GİZLEME — gün sayılmadı de, nedenini yaz.
 

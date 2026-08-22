@@ -14,6 +14,7 @@ Kural kaynağı: `core/ingest-semasi.md` (zarf+tip+triyaj+DLQ+bütçeler) + v1 k
 4. **Boyut-FLAG damıtması (hedef = SORGU-UYUMU, oran değil — Salih imzası 08-17 KB-17c):** önce 'damıtılmış dosya hangi sorulara cevap vermeli' listesi yazılır, o cevapları veren satırlar KALIR; oran (~%50) sonuçtur, hedef değil. Kapsül üstüne-yazma turlarında EROZYON SAYACI: kaybolan niteleyici/pointer sayılır, teslim raporuna düşer. KORUNACAK: kararlar + çözülmemiş sorunlar + doğrulama adımları + pointer'lar; DÜŞECEK: araç çıktıları, tarihçe-anlatısı (arşive pointer'la iner, silinmez). Sıra: önce recall, sonra precision.
 5. **Kapılar:** kural-adayı kanonlaşması YALNIZ Salih imzasıyla (G2) — damıtma aday taşır, imzalamaz.
 6. **Kapanış:** sayaçlar (`giren/NOOP/UPDATE/geçersiz/ADD/DLQ`) teslim raporuna; işlenen bronz dosyalara "İNGEST EDİLDİ · <tarih>" damgası; SINIFLANDIRILAMADI'daki eski kayıtlar yeniden denenir (redrive).
+7. **Silver-sağlık kapısı (Karar 58, KB-39/40/41 (a); İB-42 08-22):** damıtma turu kapanmadan `python3 tools/silver-saglik.py --kapi` — T-Ç çelişki hatası (çıkış 6) varsa tur KAPANMAZ; arşive indirilen bloklar için `v_silver_kuyruk` SÜPERSEDE/YETİM adayları damıtmanın GİRDİSİDİR (aday = öneri, silme kararı Salih'in; pointer koparma kuralı aynen).
 
 ## Gotchas
 - **Kapsül-şişirme:** damıtma çıktısını kapsüle tarihçe olarak yazma — kapsül snapshot'tır, "şu an + sıradaki"den fazlasını taşımaz.
