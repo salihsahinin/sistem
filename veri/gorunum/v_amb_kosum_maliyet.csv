@@ -1,4 +1,6 @@
 wf_id,ajan,modeller,bas,son,ajan_dk_toplam,output_tokens,input_tokens,cache_read,cache_create,arac_cagrisi
+wf_0d9a3e7a-a69,12,"claude-opus-5,claude-fable-5,claude-sonnet-5",2026-08-21T23:31:55.746Z,2026-08-21T23:53:40.801Z,60.0,203154,10451,12856818,1486861,216
+wf_7277331e-7cf,12,"claude-fable-5,claude-sonnet-5,claude-opus-5",2026-08-21T22:58:04.192Z,2026-08-21T23:18:00.060Z,55.8,221501,9464,12256012,1576571,189
 wf_504b263e-897,12,"claude-opus-5,claude-fable-5,claude-sonnet-5",2026-08-18T10:49:38.071Z,2026-08-18T11:14:17.113Z,66.3,255286,576,10526563,1408651,191
 wf_a10539fd-c86,12,"claude-opus-5,claude-sonnet-5,claude-fable-5",2026-08-18T08:51:31.115Z,2026-08-18T09:14:36.554Z,53.5,213597,592,11767813,1711486,205
 wf_c77339e2-143,12,"claude-sonnet-5,claude-fable-5,claude-opus-5",2026-08-18T06:54:00.004Z,2026-08-18T07:14:52.274Z,53.5,193801,596,11266413,1488569,199
@@ -24,4 +26,4 @@ wf_50ef1536-f10,16,"claude-fable-5,claude-opus-5",2026-08-15T17:44:50.299Z,2026-
 wf_e9c7f897-923,16,"claude-fable-5,claude-opus-5",2026-08-15T17:25:10.527Z,2026-08-15T18:08:40.932Z,153.7,595825,67604,25914780,2368336,374
 wf_2308cd48-e90,8,"claude-opus-5,claude-fable-5",2026-08-15T16:42:05.779Z,2026-08-15T17:16:39.387Z,69.1,278931,64559,11794371,1887094,164
 wf_4eede835-0a2,16,"claude-opus-5,claude-fable-5",2026-08-15T15:34:20.103Z,2026-08-15T16:16:40.208Z,147.6,593653,47082,30519466,3009909,391
-,71,"claude-fable-5,claude-opus-5,claude-sonnet-5,claude-haiku-4-5-20251001,<synthetic>,claude-opus-5,claude-fable-5,claude-opus-5,<synthetic>,claude-fable-5,claude-opus-5",2026-08-13T13:20:50.887Z,2026-08-21T18:39:45.199Z,780.0,2186476,444706,300243794,24400224,2814
+,72,"claude-fable-5,claude-opus-5,claude-sonnet-5,claude-haiku-4-5-20251001,<synthetic>,claude-opus-5,claude-fable-5,claude-opus-5,<synthetic>,claude-fable-5,claude-opus-5",2026-08-13T13:20:50.887Z,2026-08-21T22:49:17.745Z,784.8,2204342,444830,304581477,24746455,2853
