@@ -19,7 +19,8 @@ from datetime import datetime, timezone, timedelta
 
 # --- deneysel m.29 sabitler (ilk 3 koşumda kalibre) ---
 FRESH = {"bronz": {"warn_gun": 3, "error_gun": 14}, "silver": {"warn_gun": 3, "error_gun": 14}, "gold": {"warn_gun": 7, "error_gun": 30}}
-SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum", "amb_olgu_tahmin", "amb_olgu_kosum_sonuc"]
+SOZLESME_TABLOLAR = ["dosya", "kayit", "referans", "anahtar", "karar_borcu", "karar_borcu_kaynak", "prompt", "amb_olgu_kosum", "amb_olgu_tahmin", "amb_olgu_kosum_sonuc",
+                     "anahtar_kaydi", "silver_kuyruk", "silver_saglik_son", "silver_karantina_aday"]  # silver-sağlık (İB-42, 08-22)
 TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("kayit.kayit_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kayit_id FROM kayit GROUP BY kayit_id HAVING COUNT(*)>1)", "error"),
     ("kayit.dosya_id not_null", "not_null", "SELECT COUNT(*) FROM kayit WHERE dosya_id IS NULL OR dosya_id=''", "error"),
@@ -114,7 +115,9 @@ def preflight(repo):
     if not (os.path.exists(yol) and os.path.isdir(d)): return []
     con = sqlite3.connect(yol); res = []
     for p in sorted(glob.glob(os.path.join(d, "*.json"))):
-        s = json.load(open(p, encoding="utf-8")); t = s["tablo"]
+        s = json.load(open(p, encoding="utf-8"))
+        if "tablo" not in s: continue  # kural/şartname JSON'ları (ör. silver-saglik-kurallar.json) şekil sözleşmesi değildir
+        t = s["tablo"]
         canli = {r[1]: (r[2] or "ANY") for r in con.execute(f"PRAGMA table_info({t})")}
         kirici, ek = [], []
         for c in s["kolonlar"]:

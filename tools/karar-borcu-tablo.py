@@ -90,7 +90,15 @@ def dosya_satirlari(repo, rel):
 
 
 def pointer_coz(repo, ptr):
-    """'dosya:satır' → (dosya, satır|None, dosya_var, satir_var, metin)."""
+    """'dosya:satır' → (dosya, satır|None, dosya_var, satir_var, metin).
+    Ek (08-22): 'dosya:satır (açıklama)' / 'dosya §2 G1' / 'dosya Karar 66' gibi AÇIKLAMA KUYRUKLU pointer'larda ilk boşluğa kadarki parça
+    yol olarak denenir (LLM-yazımı kaynak satırları; kanon biçim yine 'dosya:satır'). Dosya gerçekten yoksa FAIL-LOUD aynen kalır."""
+    ptr = ptr.strip()
+    if " " in ptr:
+        bas = ptr.split(" ", 1)[0].rstrip(",;")
+        adayi = bas.rsplit(":", 1)[0] if (":" in bas and bas.rsplit(":", 1)[1].isdigit()) else bas
+        if os.path.exists(os.path.join(repo, adayi)):
+            ptr = bas
     if ":" in ptr and ptr.rsplit(":", 1)[1].isdigit():
         dosya, satir = ptr.rsplit(":", 1)
         satir = int(satir)

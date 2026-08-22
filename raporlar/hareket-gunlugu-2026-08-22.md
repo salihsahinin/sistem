@@ -1,10 +1,10 @@
-# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `ee59480`)
+# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `9e78140`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 101 çağrı, 2 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 158 çağrı, 2 oturum.*
 
-## Oturum `b2b05897` — 01:35:07→18:24:47 · 94 çağrı · model fable-5 · hata 3
-**Özet:** koştu 67 · yazdı 7 · skill çağırdı 4 · MCP aracı 4 · düzenledi 4 · okudu 4 · workflow başlattı 2 · ajan gönderdi 1 · araç 1
-**Yazılan/düzenlenen dosyalar (8):** `cc/gorev-2026-08-22-1.md` · `cc/gorev-2026-08-22-2.md` · `cc/pipeline-2026-08-22-pointer-graf-d2.md` · `cc/pipeline-2026-08-22-vektor-db-baglam.md` · `core/durum-kapsulu.md` · `ogrenme/dersler/2026-08-22-P0a-attention-blogu-tekrar.md` · `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` · `tools/pointer-graf.py`
+## Oturum `b2b05897` — 01:35:07→18:39:57 · 107 çağrı · model fable-5 · hata 3
+**Özet:** koştu 75 · yazdı 8 · düzenledi 7 · skill çağırdı 4 · MCP aracı 4 · okudu 4 · workflow başlattı 2 · araç 2 · ajan gönderdi 1
+**Yazılan/düzenlenen dosyalar (9):** `cc/gorev-2026-08-22-1.md` · `cc/gorev-2026-08-22-2.md` · `cc/pipeline-2026-08-22-pointer-graf-d2.md` · `cc/pipeline-2026-08-22-vektor-db-baglam.md` · `core/durum-kapsulu.md` · `graf/README.md` · `ogrenme/dersler/2026-08-22-P0a-attention-blogu-tekrar.md` · `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` · `tools/pointer-graf.py`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -102,9 +102,23 @@
 | 92 | 02:59:23 | düzenledi | core/durum-kapsulu.md | tamam |
 | 93 | 02:59:31 | koştu | Kapsül boyutunu doğrula; pointer-graf pipeline kapanışını (script, graf dosyaları, rapor, manifest, plan, ledger, defter, kapsül) commit'le ⟨cd ~/jarvis && wc -lc core/durum-kapsulu.md ¦ awk '{print "kapsül: "$1" satır / "$2" bayt (sınır 40 / 8192)"}' && git add tools/pointer-graf.py graf/ …⟩ | tamam |
 | 94 | 18:24:47 | koştu | Resume kapısı: saat, son 5 commit, çalışma ağacı ve arka plan görev durumu ⟨cd ~/jarvis && echo "=== RESUME KAPISI (Karar 57) ===" && date '+%H:%M' && git log -5 --format='%h %cd %s' --date=format:'%H:%M' ¦ cut -c1-90 && git s…⟩ | tamam |
+| 95 | 18:33:05 | yazdı | graf/README.md | tamam |
+| 96 | 18:33:08 | koştu | Manifeste P3 kapısı geçti (Salih 'd2 tamam') satırını ekle ⟨cd ~/jarvis && python3 - <<'EOF' p='cc/pipeline-2026-08-22-pointer-graf-d2.md'; s=open(p,encoding='utf-8').read().rstrip('\n') s+="\n- 18:2x **P3 KAPI…⟩ | tamam |
+| 97 | 18:33:16 | koştu | graf/README.md ve manifest P3 satırını commit'le; README'yi Finder'da göster ⟨cd ~/jarvis && git add graf/README.md cc/pipeline-2026-08-22-pointer-graf-d2.md && git commit -q -m "[icra] graf/README.md: human-facing reading guide…⟩ | tamam |
+| 98 | 18:33:17 | araç | {"files": "['/Users/HasanSalihSahin/jarvis/graf/README.md']", "caption": "Görseli anlatan yazı: dosya haritası · renk/biçim sözlüğü · ", "status": "normal"} | tamam |
+| 99 | 18:37:37 | koştu | Ledger'daki son İB/KB numaralarını, KILAVUZ tasarım-ilkeleri bölümünün yerini ve defterdeki son Karar numarasını bul ⟨cd ~/jarvis && python3 - <<'EOF' import json,re ib=[];kb=[] for l in open('veri/karar-borcu.jsonl',encoding='utf-8'): try: d=json.loads(l) except: con…⟩ | tamam |
+| 100 | 18:38:42 | koştu | Ledger: KB-59/KB-60 kapanışı (a) + İB-47/48/49 + KB-61; defter Karar 66-67; KILAVUZ tasarım-ilkelerine graf-dili protokolü pointer'ı ⟨cd ~/jarvis && python3 - <<'EOF' import json,subprocess,datetime head=subprocess.check_output(['git','rev-parse','--short','HEAD']).decode().strip() t…⟩ | tamam |
+| 101 | 18:38:46 | düzenledi | core/durum-kapsulu.md | tamam |
+| 102 | 18:38:56 | düzenledi | core/durum-kapsulu.md | tamam |
+| 103 | 18:38:58 | düzenledi | core/durum-kapsulu.md | tamam |
+| 104 | 18:39:04 | koştu | Kapsül boyutunu doğrula; Karar 66-67 kayıtlarını (ledger, defter, KILAVUZ, kapsül) commit'le ⟨cd ~/jarvis && wc -lc core/durum-kapsulu.md ¦ awk '{print "kapsül: "$1" satır / "$2" bayt (sınır 40 / 8192)"}' && git add veri/karar-borcu.jsonl kuyru…⟩ | tamam |
+| 105 | 18:39:15 | koştu | Beklenmedik yeni manifest dosyasının zamanını ve başlığını oku (paralel oturum şüphesi — Karar 57) ⟨cd ~/jarvis && stat -f '%Sm %N' -t '%H:%M:%S' cc/pipeline-2026-08-22-silver-saglik.md && head -12 cc/pipeline-2026-08-22-silver-saglik.md ¦ cut -c1-30…⟩ | tamam |
+| 106 | 18:39:47 | koştu | Ledger'da İB-42 satırının durumunu, dosya zamanını ve diğer oturumun commit'lenmemiş değişikliklerini kontrol et (çakışma denetimi) ⟨cd ~/jarvis && echo "=== ledger İB-42 satırı (SAHADA damgası var mı?) ===" && grep -n '"borc_id": *"İB-42"' veri/karar-borcu.jsonl ¦ cut -c1-120 && py…⟩ | tamam |
+| 107 | 18:39:57 | koştu | Ledger'da kendi satırlarımın (KB-59/60/61, İB-47/48/49) ve diğer oturumun İB-42 damgasının birlikte durduğunu doğrula; diğer oturumun commit kapsamını gör ⟨cd ~/jarvis && python3 -c " import json ids={} for l in open('veri/karar-borcu.jsonl',encoding='utf-8'): try: d=json.loads(l) except: continue i | tamam |
 
-## Oturum `11b49d44` — 18:26:55→18:27:58 · 7 çağrı · model fable-5 · hata 0
-**Özet:** koştu 6 · skill çağırdı 1
+## Oturum `11b49d44` — 18:26:55→18:51:40 · 51 çağrı · model fable-5 · hata 4
+**Özet:** koştu 46 · yazdı 4 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (4):** `cc/pipeline-2026-08-22-silver-saglik.md` · `tools/silver-saglik.py` · `veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md` · `veri/sozlesme/silver-saglik-kurallar.json`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -115,4 +129,48 @@
 | 5 | 18:27:22 | koştu | Karar-borcu ledger'ındaki açık kalemleri durum/küme kırılımıyla listele ⟨python3 - <<'EOF' import json,collections rows=[json.loads(l) for l in open('veri/karar-borcu.jsonl',encoding='utf-8') if l.strip() and not l.startswi…⟩ | tamam |
 | 6 | 18:27:33 | koştu | Pano, silver tazeliği, senkron log, 08-22 teslim raporu ve KB-59/60 kayıtlarını oku ⟨echo "=== pano.md (ilk 60 satır) ===" && sed -n 1,60p core/pano.md ¦ cut -c1-400 echo; echo "=== silver tazelik ===" && sqlite3 veri/baglam.sqlite "se…⟩ | tamam |
 | 7 | 18:27:58 | koştu | KB-59/60 durum enum düzeltmesi, silver'ı katman-hatti ile tazele, borç tablosunu yeniden üret ⟨python3 - <<'EOF' # KB-59/60 durum 'masada' → enum 'masaya' (karar-borcu-tablo.py DURUM seti); değer düzeltmesi, alan adı değişmez import io p='veri/k…⟩ | yok |
+| 8 | 18:28:23 | koştu | Silver üretim damgasını, pointer ayrıştırma biçimini ve değişen dosyaları kontrol et ⟨echo "=== uretim kolonları + son satır ===" && sqlite3 veri/baglam.sqlite "pragma table_info(uretim);" ¦ cut -d'¦' -f2 ¦ tr '\n' ' '; echo; sqlite3 ve…⟩ | tamam |
+| 9 | 18:28:31 | koştu | Rapor sentez satır numaralarını ve hareket kütüğünün son kaydını bul ⟨echo "=== rapor-1 Sentez başlıkları ===" && grep -n "^#.*[Ss]entez\¦^## S[0-9]\¦^### S[0-9]\¦^\*\*S[0-9]" cc/rapor-2026-08-22-1.md ¦ head -12 echo "==…⟩ | tamam |
+| 10 | 18:28:52 | koştu | Bugünkü hareket kütüğünden oturum kimliklerini ve zaman aralıklarını çıkar (paralel-oturum kontrolü) ⟨python3 - <<'EOF' import json,collections rows=[json.loads(l) for l in open('veri/bronz/hareket-olay.jsonl',encoding='utf-8') if l.strip()] today=[r f…⟩ | hata |
+| 11 | 18:28:57 | koştu | Bugünkü hareket kütüğünden oturum kimliklerini ve zaman aralıklarını çıkar (paralel-oturum kontrolü) ⟨python3 - <<'EOF' import json,collections rows=[] for l in open('veri/bronz/hareket-olay.jsonl',encoding='utf-8'): l=l.strip() if not l or l.startswit…⟩ | tamam |
+| 12 | 18:29:14 | koştu | KB-59/60 kaynak pointer'larını dosya:satır biçimine çevir ve borç tablosunu yeniden üret ⟨python3 - <<'EOF' import json p='veri/karar-borcu.jsonl' out=[] for l in open(p,encoding='utf-8'): if l.strip() and not l.startswith('#'): r=json.load…⟩ | tamam |
+| 13 | 18:29:19 | koştu | İki hazır masa dosyasının gündem kalemlerini listele ⟨echo "=== EK-6 masası kalemleri ===" && grep -nE "^\¦ *[0-9①-⑨]¦^## ¦^### ¦^\*\*[0-9①-⑨]" kuyruk/masa-gundemi-EK6-2026-08-20.md ¦ cut -c1-170 ¦ head -…⟩ | tamam |
+| 14 | 18:29:24 | koştu | EK-6 ve entegrasyon masa dosyalarının kalem satırlarını oku ⟨echo "=== EK-6 (satır 5-22) ===" && sed -n 5,22p kuyruk/masa-gundemi-EK6-2026-08-20.md ¦ cut -c1-260 echo; echo "=== Entegrasyon (satır 7-30) ===" && …⟩ | tamam |
+| 15 | 18:29:38 | koştu | Tüm pipeline manifestlerinin durum satırlarını tara (açık koşum var mı) ⟨echo "=== pipeline manifestleri: durum satırları ===" && for f in cc/pipeline-*.md; do echo "-- $f"; grep -m2 -nE "^\*\*Durum¦^- \*\*Durum¦Durum:¦DURU…⟩ | tamam |
+| 16 | 18:29:45 | koştu | Kısmen-kapalı karar kalemlerinin kalan parçalarını ve 08-22 hareket günlüğü başlığını oku ⟨python3 - <<'EOF' import json rows=[json.loads(l) for l in open('veri/karar-borcu.jsonl',encoding='utf-8') if l.strip() and not l.startswith('#')] for…⟩ | tamam |
+| 17 | 18:29:59 | koştu | Ledger onarımı ve silver tazeleme çıktılarını yollu git add ile commit'le ⟨git add veri/karar-borcu.jsonl veri/gorunum/v_karar_borcu.csv veri/gorunum/v_kirik_pointer.csv veri/katman-olcum.jsonl veri/tarama-plan.jsonl veri/bro…⟩ | hata |
+| 18 | 18:30:04 | koştu | İzlenen veri dosyalarını ve iki raporu commit'le (git add -u veri/, -A kullanılmadı) ⟨git add -u veri/ && git add raporlar/2026-08-22-son-50-prompt.md raporlar/hareket-gunlugu-2026-08-22.md && git commit -q -m "[icra] Session-14 opening…⟩ | tamam |
+| 19 | 18:31:04 | koştu | İB-02'yi ledger'da kapsülle eşitleyip kapat, tabloyu yeniden üret, commit'le ve push durumunu göster ⟨python3 - <<'EOF' import json p='veri/karar-borcu.jsonl'; out=[] for l in open(p,encoding='utf-8'): if l.strip() and not l.startswith('#'): r=json.loa…⟩ | tamam |
+| 20 | 18:33:23 | koştu | İB-42 ve bağlı KB-39/40/41 hükümlerini, alternatif kalemleri ve mevcut silver-sağlık izlerini oku ⟨python3 - <<'EOF' import json rows={} for l in open('veri/karar-borcu.jsonl',encoding='utf-8'): if l.strip() and not l.startswith('#'): r=json.loads(l…⟩ | tamam |
+| 21 | 18:33:48 | koştu | Silver-sağlık araştırma raporunun sentez bölümünü (test/yüklem tanımları) oku ⟨echo "=== rapor-2026-08-17-1 sentez S1-S2 (T-Ç/T-B/T-A tanımları) ===" && sed -n 340,400p cc/rapor-2026-08-17-1.md ¦ cut -c1-1200⟩ | tamam |
+| 22 | 18:34:02 | koştu | Silver tablolarını, satır sayılarını, görünümleri ve ana tablo şemalarını listele ⟨echo "=== tablolar + satır sayıları ===" && for t in $(sqlite3 veri/baglam.sqlite "select name from sqlite_master where type='table' order by name;");…⟩ | tamam |
+| 23 | 18:34:13 | koştu | Araç listesini ve katman-hatti.py'nin adım yapısını oku ⟨echo "=== tools listesi ===" && ls -la tools/*.py ¦ awk '{print $5, $9}' ¦ sort -k2 ¦ head -60 echo; echo "=== katman-hatti.py docstring + adımlar ===…⟩ | tamam |
+| 24 | 18:34:22 | koştu | katman-olcum.py yapısını ve test çıktı biçimini oku ⟨echo "=== katman-olcum.py (ilk 70) ===" && sed -n 1,70p tools/katman-olcum.py ¦ cut -c1-200 && grep -n "^def \¦PASS\¦FAIL\¦sozlesme" tools/katman-olcu…⟩ | tamam |
+| 25 | 18:34:33 | koştu | anahtar-denetim.py mantığını ve Karar 58 metnini oku ⟨echo "=== anahtar-denetim.py (ilk 50) ===" && sed -n 1,50p tools/anahtar-denetim.py ¦ cut -c1-220 && grep -n "^def \¦^[A-Z_]* = " tools/anahtar-deneti…⟩ | tamam |
+| 26 | 18:34:50 | koştu | Silver dağılım sondajı: katman, anahtar durumları, zarf, görünüm tanımları, referans türleri ⟨S="sqlite3 veri/baglam.sqlite" echo "=== dosya.katman ===" && $S "select katman, count(*), sum(token_kestirim) from dosya group by 1;" echo "=== anaht…⟩ | hata |
+| 27 | 18:35:03 | koştu | Silver dağılım sondajı (python/sqlite3): katman, anahtar durumları, zarf, görünümler, referans türleri ⟨python3 - <<'EOF' import sqlite3 c=sqlite3.connect('veri/baglam.sqlite') def q(t,s): print("===",t,"==="); for r in c.execute(s): print(" ",r) q("dosy…⟩ | tamam |
+| 28 | 18:35:31 | koştu | Bağlam anahtar kaydının biçimini ve JSON bloğunun yapısını oku ⟨echo "=== anahtar-kaydi.md (ilk 30) ===" && sed -n 1,30p core/baglam-anahtar-kaydi.md ¦ cut -c1-260 echo "=== JSON blok: kayıt sayısı + ilk 2 + alan a…⟩ | tamam |
+| 29 | 18:35:39 | koştu | anahtar-denetim.py bütünlük/kalıp/tarama mantığını oku (T-Ç3 tek-tanım için) ⟨sed -n 47,140p tools/anahtar-denetim.py ¦ cut -c1-240⟩ | tamam |
+| 30 | 18:35:47 | koştu | baglam-tablo.py'de anahtar tablosu ve katman atama mantığını bul ⟨echo "=== baglam-tablo.py: anahtar/katman/kayit_id ===" && grep -n "def katman\¦def .*anahtar\¦INSERT INTO anahtar\¦kayit_id = \¦'gozlenen'\¦CREATE VI…⟩ | tamam |
+| 31 | 18:35:58 | koştu | baglam-tablo.py anahtar satırlarının nasıl üretildiğini oku ⟨echo "=== baglam-tablo 885-935 ===" && sed -n 885,935p tools/baglam-tablo.py ¦ cut -c1-200⟩ | tamam |
+| 32 | 18:36:04 | koştu | Şekil sözleşmesi dosyalarını ve preflight mantığını oku ⟨echo "=== sozlesme dizini ===" && ls veri/sozlesme/ && echo "--- kayit.json ---" && head -c 600 veri/sozlesme/kayit.json; echo; echo "=== katman-olcum…⟩ | tamam |
+| 33 | 18:36:13 | koştu | SCRIPTLER satır biçimini ve veri-mühendisliği kanonunun §8'ini oku ⟨echo "=== SCRIPTLER.md (ilk 8) ===" && sed -n 1,8p tools/SCRIPTLER.md ¦ cut -c1-260 echo; echo "=== DE kanonu başlık + §8 ===" && sed -n 1,12p core/ve…⟩ | tamam |
+| 34 | 18:36:25 | koştu | Kapı noktaları, ilgili ledger kalemleri, veri/README başlıkları, anahtar-denetim çıkış mantığı, anahtar terim listesi ve sıcak/ılık kayıt sayısı ⟨echo "=== skill kapı noktaları ===" && grep -n "katman-hatti\¦katman-olcum\¦çıkış 6\¦silver" .claude/skills/seans-kapanis/SKILL.md .claude/skills/dami…⟩ | tamam |
+| 35 | 18:38:27 | koştu | sqlite sürümü, süpersede-damgalı sıcak/ılık dosyalar, teslim dosyası sayısı ve kapanış kanıtı tarih biçimi sondajı ⟨python3 - <<'EOF' import sqlite3,glob,re,os print("sqlite:",sqlite3.sqlite_version) c=sqlite3.connect('veri/baglam.sqlite') print("=== sıcak/ılık dosy…⟩ | tamam |
+| 36 | 18:39:00 | yazdı | cc/pipeline-2026-08-22-silver-saglik.md | tamam |
+| 37 | 18:39:11 | koştu | İB-42'yi ledger'da SAHADA damgala ve manifesti commit'le ⟨python3 - <<'EOF' import json p='veri/karar-borcu.jsonl'; out=[] for l in open(p,encoding='utf-8'): if l.strip() and not l.startswith('#'): r=json.loa…⟩ | tamam |
+| 38 | 18:41:07 | yazdı | veri/sozlesme/silver-saglik-kurallar.json | tamam |
+| 39 | 18:41:31 | yazdı | veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md | tamam |
+| 40 | 18:44:54 | yazdı | tools/silver-saglik.py | tamam |
+| 41 | 18:45:01 | koştu | silver-saglik canary testi ve gerçek silver'da kuru koşum ⟨cd ~/jarvis && echo "=== CANARY ===" && python3 tools/silver-saglik.py --test; echo "çıkış: $?"; echo; echo "=== KURU KOŞUM (gerçek silver) ===" && ti…⟩ | tamam |
+| 42 | 18:45:38 | koştu | İki gerçek koşum + tablo dökümü sha256 determinizm testi + aday dağılımlarını incele ⟨cd ~/jarvis && SP=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/11b49d44-6d63-4871-a8da-621d9bbd89b3/scratchpad; mkdir -p $SP dump(){ python3 …⟩ | tamam |
+| 43 | 18:46:22 | koştu | Süpersede regex'ini daralt ve anahtar-denetim ile ılık/sıcak kalıntı sayılarını çapraz kontrol et ⟨cd ~/jarvis && python3 - <<'EOF' import json p='veri/sozlesme/silver-saglik-kurallar.json'; k=json.load(open(p,encoding='utf-8')) k['supersede_damga']…⟩ | tamam |
+| 44 | 18:47:12 | koştu | Kural regex düzeltmesi, katman-hatti'ye saglik adımı, sözleşmeleri güncelle, silver-saglik yeniden koş ve tam hattı doğrula ⟨cd ~/jarvis && python3 - <<'EOF' import json,re # A. kural dosyası: çok-satırlı JSON'a dayanıklı regex p='veri/sozlesme/silver-saglik-kurallar.json'; …⟩ | yok |
+| 45 | 18:47:51 | koştu | Paralel oturumun ledger yazımını (KB-61) ve git durumunu kontrol et ⟨cd ~/jarvis && echo "=== git log -4 ===" && git log -4 --format='%h %ci %s' ¦ cut -c1-110 && echo "=== status ===" && git status --short ¦ head -20 &&…⟩ | tamam |
+| 46 | 18:48:36 | koştu | KB-61 enum düzeltmesi + eşanlam normalizasyonu + preflight/guard yamaları, commit, ardından katman-hatti tam koşum ⟨cd ~/jarvis && python3 - <<'EOF' import json,re # A1. KB-61 durum masada→masaya p='veri/karar-borcu.jsonl'; s=open(p,encoding='utf-8').read(); n=s.cou…⟩ | yok |
+| 47 | 18:50:18 | koştu | Kırık karar-borcu pointer'larını listele ⟨cd ~/jarvis && python3 tools/karar-borcu-tablo.py 2>&1 ¦ tail -12 && echo "=== v_kirik_pointer ===" && python3 -c " import sqlite3; c=sqlite3.connect(…⟩ | hata |
+| 48 | 18:50:33 | koştu | karar-borcu-tablo pointer_coz fonksiyonunu göster ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/karar-borcu-tablo.py'; s=open(p,encoding='utf-8').read() import re i=s.index('def pointer_coz(repo, ptr):');…⟩ | tamam |
+| 49 | 18:50:44 | koştu | Pointer ayrıştırıcıya açıklama-kuyruğu toleransı ekle ve tabloyu yeniden üret ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/karar-borcu-tablo.py'; s=open(p,encoding='utf-8').read() eski=''' """'dosya:satır' → (dosya, satır¦None, dos…⟩ | tamam |
+| 50 | 18:51:21 | koştu | SCRIPTLER ve veri/README belgelerini ekle; damitma/seans-kapanis skill adım yapısını oku ⟨cd ~/jarvis && python3 - <<'EOF' # SCRIPTLER.md satırı (tools/ bölümündeki karar-borcu-tablo satırından sonra) p='tools/SCRIPTLER.md'; s=open(p,encodi…⟩ | tamam |
+| 51 | 18:51:40 | koştu | Ritüel skill'lerine silver-sağlık kapı adımlarını ekle ve katman-hatti'yi tam koştur ⟨cd ~/jarvis && python3 - <<'EOF' p='.claude/skills/seans-kapanis/SKILL.md'; s=open(p,encoding='utf-8').read() eski='\n## 7. Commit + push (m.9 — proof…⟩ | yok |
 
