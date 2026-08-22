@@ -1,6 +1,6 @@
 {
  "tablo": "kayit",
- "surum": "1.0.0-deneysel-m29",
+ "surum": "1.1.0-deneysel-m29",
  "katman": "silver",
  "grain": "-",
  "kolonlar": [
@@ -129,7 +129,26 @@
    "tip": "INTEGER",
    "not_null": false,
    "pk": false
+  },
+  {
+   "ad": "gecerlilik",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "gecerlilik_neden",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "tespit_tarihi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
   }
  ],
- "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)"
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)",
+ "not": "1.1.0 (08-22): +gecerlilik/gecerlilik_neden/tespit_tarihi — silver-saglik.py türetir (Karar 58; additive)"
 }

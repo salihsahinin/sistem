@@ -1,0 +1,195 @@
+{
+ "sema": "silver-saglik-kurallar-v0",
+ "surum": "0.1.0-deneysel-m29",
+ "kural": "TEST TANIMI ≠ KOŞUM TANIMI (rapor-2026-08-17-1 C-YT6): bu dosya testleri, şiddetleri ve sabitleri tanımlar; hangi dilimde/ne zaman koşacağı tools/silver-saglik.py bayraklarındadır. Additive-only: test silinmez, şiddet düşürülebilir/yükseltilebilir (test-adı bazlı merdiven, C-YT5). Tüm sabitler deneysel m.29 — ≥10 koşumda kalibrasyon (KB-39 kapanış notu).",
+ "kaynak_karar": "Karar 58 (08-21 seans-11): KB-39 (a) bayrak + güncel-görünüm + kuyruk · KB-40 (a) 4 yüklem + 2 koruma · KB-41 (a) deterministik ön-eleme → LLM yalnız kanıt-bulucu → silver_karantina → Salih triyajı",
+ "pencere": {
+  "birim": "seans",
+  "deger": 3,
+  "kaynak": "rapor-2026-08-17-1 S2 Adım 2 — pencere birimi SEANS sayısı, takvim günü değil; emeklilik-kaldırma ≥3 seans ile aynı birim; DENEYSEL",
+  "sayac": "raporlar/{seans,vardiya}-teslim-*.md dosya sayısı (tarih > hedef tarihi)"
+ },
+ "min_n_surum": {
+  "deger": 2,
+  "kaynak": "B-YT2 Delta/Iceberg min-N sürüm tabanı (N=1 tarihçe değil yalnız erişilebilirlik korur)"
+ },
+ "testler": [
+  {
+   "id": "T-C1",
+   "ad": "anahtar başına TAM-BİR güncel (gecerli_bitis boş sayısı = 1; damgasız güncel yok)",
+   "sinif": "celiski",
+   "siddet": "error",
+   "kaynak": "A-YT1/YT2 SCD-2 tek-güncel + COALESCE sentinel"
+  },
+  {
+   "id": "T-C2",
+   "ad": "aralık örtüşmesi yok (emekli.tarih ≤ güncel.gecerli_bas; güncel damgalı)",
+   "sinif": "celiski",
+   "siddet": "error",
+   "kaynak": "A-YT1 LEAD/PARTITION BY aralık testi"
+  },
+  {
+   "id": "T-C3-sicak",
+   "ad": "emekli değer KALINTISI sıcak kayit'ta (izinli-kalıp hariç) = 0",
+   "sinif": "celiski",
+   "siddet": "error",
+   "kaynak": "anahtar-denetim.py ile TEK TANIM (norm + compile_patterns içe aktarılır); kayit.metin kopyası bu test için KALIR (S4)"
+  },
+  {
+   "id": "T-C3-ilik",
+   "ad": "emekli değer KALINTISI ılık kayit'ta (izinli-kalıp hariç)",
+   "sinif": "celiski",
+   "siddet": "warn",
+   "kaynak": "anahtar-denetim ılık = uyarı"
+  },
+  {
+   "id": "T-C4a",
+   "ad": "karar_borcu: açık kalemlerde aynı (normalize) başlık birden çok satır = 0",
+   "sinif": "celiski",
+   "siddet": "error",
+   "kaynak": "S2 T-Ç4 'aynı kalem için birden çok açık durum yok'"
+  },
+  {
+   "id": "T-C4b",
+   "ad": "karar_borcu: açık kalemin bağımlılığı var olmayan borc_id'ye gitmiyor",
+   "sinif": "celiski",
+   "siddet": "error",
+   "kaynak": "referans bütünlüğü (relationships)"
+  },
+  {
+   "id": "T-C4c",
+   "ad": "karar_borcu: kapanış kanıtı 'Karar NN' taşıyan ama durumu açık kalem (ledger↔kanon kayması adayı)",
+   "sinif": "celiski",
+   "siddet": "warn",
+   "kaynak": "08-22 İB-02 vakası (kapsül kapattı, ledger açık kaldı)"
+  },
+  {
+   "id": "T-C5",
+   "ad": "zarf: aynı anahtar_terim aynı dosyada gecerli_bitis dolu ∧ boş (v_celiski_adayi)",
+   "sinif": "celiski",
+   "siddet": "warn",
+   "kaynak": "mevcut görünüm; zarf 11/49.790 — bugün ölü, yaygınlaşırsa canlanır"
+  },
+  {
+   "id": "T-C6",
+   "ad": "kaynak+birim denetimi: katsayilar listesindeki her sayısal sabit kanonda BULUNMALI ve damgalı olmalı (kalibre | kalibre-edilmemis | tasinmaz)",
+   "sinif": "celiski",
+   "siddet": "warn",
+   "kaynak": "B-YT7; ilk vaka λ (KB-42 → Karar 59)"
+  },
+  {
+   "id": "T-B-SUPERSEDED",
+   "ad": "sıcak/ılık dosya başlığı/ilk blokları süpersede-damgalı (EMEKLİ AD · EMEKLİ — · SÜPERSEDE) → 'arşive indir + pointer' ADAYI",
+   "sinif": "bayatlik",
+   "siddet": "aday",
+   "kaynak": "B-YT4 MUSTIE Superseded (deterministik parça)"
+  },
+  {
+   "id": "T-B-MISLEADING",
+   "ad": "çelişki kaydında KAYBEDEN taraf: T-C3 sıcak kalıntı kayıtları ∪ T-C5 bitişli taraf → 'yeniden yaz / emekli damgası' ADAYI",
+   "sinif": "bayatlik",
+   "siddet": "aday",
+   "kaynak": "B-YT4 MUSTIE Misleading (deterministik parça)"
+  },
+  {
+   "id": "T-B-YETIM",
+   "ad": "soğuk dosya: sıcak/ılık'tan 0 gelen dosya_pointer ∧ anahtar kaynağı değil ∧ karar_borcu kaynağı değil ∧ yaş > pencere ∧ muaf değil → 'bağlantılandır / pointer'a indir' ADAYI (SİLME DEĞİL)",
+   "sinif": "bayatlik",
+   "siddet": "aday",
+   "kaynak": "B-YT5 Wikipedia yetim; B-YT1 referanssızlık ∧ yaş"
+  },
+  {
+   "id": "T-B-KAPANDI",
+   "ad": "karar_borcu durum=kapandı ∧ kapanış > pencere → 'tarihçe etiketi' ADAYI (ledger'da kalır, m.8)",
+   "sinif": "bayatlik",
+   "siddet": "aday",
+   "kaynak": "S2 Adım 2 KAPANDI yüklemi"
+  },
+  {
+   "id": "T-A-ONELEME",
+   "ad": "anlamsal çelişki ön-elemesi: aynı anahtar_terim ∧ sıcak ∧ farklı dosya ∧ aynı blok_turu ∧ sinyal ∧ uzunluk ≥ eşik → aday ÇİFT (LLM kanıt-bulucu girdisi; bu script LLM çağırmaz)",
+   "sinif": "anlamsal",
+   "siddet": "aday",
+   "kaynak": "KB-41 (a) ContraDoc %54↔%70-93"
+  }
+ ],
+ "muafiyet": {
+  "dosya_onek": [
+   "core/",
+   "CLAUDE.md",
+   "KILAVUZ.md",
+   "veri/sozlesme/",
+   ".claude/skills/"
+  ],
+  "dosya_icerir": [
+   "/arsiv/",
+   "-arsiv",
+   "arsiv-"
+  ],
+  "not": "B-YT2 sınırsız muafiyet kancası: Katman-1 kararı (core/ + CLAUDE.md) · aktif anahtar kaynağı (anahtar.kaynak_dosya; script otomatik) · replaced_by hedefi (script otomatik) · K-019 sabit-önek (desen listesi bu alan; Salih genişletir) · arşiv zaten indirilmiş (YETİM eylemi anlamsız)"
+ },
+ "supersede_damga": {
+  "baslik_regex": "(^|[^\\wğüşıöçĞÜŞİÖÇ])(EMEKLİ AD|EMEKLİ —|EMEKLİ –|EMEKLİ -|SÜPERSEDE(?!-ADAY)|SUPERSEDE(?!-ADAY))([^\\wğüşıöçĞÜŞİÖÇ]|$)",
+  "ilk_blok_sayisi": 3,
+  "not": "yalnız başlık + ilk N blok; gövdedeki 'emekli' sözcüğü kural ANLATIMI olabilir (README 'metafor EMEKLİ') — dar desen, yanlış-pozitif kabulü yok · 08-22 ilk koşum: 'SÜPERSEDE-ADAYI' (masa gündemi, aday anlatımı) yanlış-pozitif → (?!-ADAY) eklendi"
+ },
+ "yetim": {
+  "min_yas_seans": 3,
+  "esik_gelen_bag": 0,
+  "not": "eşik 0/1/3 kuyruk-kapasite parametresi (B-YT5); ilk değer 0 = hiç bağ yok"
+ },
+ "on_eleme": {
+  "katman": [
+   "sicak"
+  ],
+  "ayni_blok_turu": true,
+  "min_uzunluk": 80,
+  "sinyal_regex": "(\\d|yasak|zorunlu|değil|degil|yok|asla|yalnız|yalniz|her zaman|≤|≥|=)",
+  "max_cift_kayit": 500,
+  "not": "KB-41 (a) huni; çift sayısı COST tabanı (çift × alt-model maliyeti); precision kazancı ÖLÇÜLMEMİŞ → ilk 10 koşum insan-etiketli"
+ },
+ "katsayilar": [
+  {
+   "id": "lambda-ingest",
+   "kanon_dosya": "core/ingest-semasi.md",
+   "kanon_regex": "0,995/sandbox|d\\^t|tazelik\\(t\\)",
+   "kanon_deger": "d^t (t=SEANS)",
+   "kaynak": "Generative Agents (Park ve ark. 2023): 0,995/sandbox-saati, α=1 gerekçesiz",
+   "durum": "tasinmaz",
+   "not": "KB-42 → Karar 59 (08-21): değer Jarvis'e TAŞINMAZ, form tazelik(t)=d^t; d kalibrasyon borcu"
+  },
+  {
+   "id": "pencere-bayatlik-seans",
+   "kanon_dosya": "veri/sozlesme/silver-saglik-kurallar.json",
+   "kanon_regex": "\"birim\": \"seans\",\\s*\"deger\": 3",
+   "kanon_deger": "3 seans",
+   "kaynak": "yok — deneysel m.29 (emeklilik-kaldırma ≥3 seans ile aynı birim)",
+   "durum": "kalibre-edilmemis"
+  },
+  {
+   "id": "fresh-katman-olcum",
+   "kanon_dosya": "tools/katman-olcum.py",
+   "kanon_regex": "\"warn_gun\": 3, \"error_gun\": 14",
+   "kanon_deger": "silver warn 3 gün / error 14 gün",
+   "kaynak": "yok — deneysel m.29 (ilk 3 koşumda kalibre)",
+   "durum": "kalibre-edilmemis"
+  },
+  {
+   "id": "anahtar-denetim-ilik-esik",
+   "kanon_dosya": "tools/anahtar-denetim.py",
+   "kanon_regex": "--ilik-uyari', 1\\)\\); k2 = int\\(opt\\('--ilik-eylem', 10\\)",
+   "kanon_deger": "k1=1 uyarı · k2=10 eylem",
+   "kaynak": "yok — deneysel (anahtar-kaydı v1 08-15)",
+   "durum": "kalibre-edilmemis"
+  },
+  {
+   "id": "skill-esik-karar-51",
+   "kanon_dosya": "tools/skill-esik.py",
+   "kanon_regex": "ESIK|esik",
+   "kanon_deger": "bkz. script sabitleri",
+   "kaynak": "Karar 51 (08-21) eşik kuralı canlı",
+   "durum": "kalibre-edilmemis",
+   "not": "yalnız varlık denetimi; değer/birim satırı Karar 51 metninden eklenecek"
+  }
+ ]
+}
