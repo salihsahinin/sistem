@@ -44,3 +44,5 @@
 - 03:1x P2 KESİNLEŞTİ (idiom teyidi): script'e üretim kaydı + N-koşum sha (A-YT2/C-YT2), kenar listesi LLM görünümü (C-YT4), prov:wasRevisionOf etiketi (B-YT4), d2 sürüm başlığı (A-YT1) eklendi; 5 pano × 5 render BİREBİR (`graf/pointer-sistemi-v0-uretim.json`). **İLK D2 TESLİM EDİLDİ** (SendUserFile: genel.svg + pointer.svg + genel.d2; Finder `open -R`; tam yol /Users/HasanSalihSahin/jarvis/graf/). P3 kapısı: Salih beyanı bekleniyor (düzeltme → onarım tavan 2 tur).
 - 03:2x P4 DONE: `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` (protokol v0 P1-P6 · kademeler G0-G5 · determinizm şartnamesi · riskler) + KB-60 (masada, öneri a). Defter m.40b gözlemi.
 - **T BEYANI:** ilk pointer-grafı (D2, 5 pano + kenar listesi + üretim kaydı) teslim edildi; uzun-vade graf-dili planı masada (KB-60); P3 Salih kapısı açık.
+- 18:2x **P3 KAPISI GEÇTİ:** Salih (aynen) "d2 tamam" → G0 kapandı, onarım turu 0. Salih isteği: "bana görseli anlatan bir yazı da hazırla" → `graf/README.md` (renk/biçim sözlüğü + 5 panonun okunuşu + neyi göstermediği); KB-59/KB-60 yeniden açıklandı (sohbet).
+
