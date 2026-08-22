@@ -14,10 +14,11 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
            uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar; olcum'dan ÖNCE koşar ki son adım kanonda kalsın)
       → 7) silver-saglik.py (Karar 58: anahtar_kaydi JOIN · kayit.gecerlilik bayrakları · T-Ç/T-B/T-A · v_guncel_* · silver_kuyruk; uyarı kanalı, hat düşürmez; --kapi yalnız ritüellerde)
+      → 7b) hat-içi HİJYEN (ANALYZE + PRAGMA optimize → sqlite_stat1; KB-53 (a) İB-26; yükleyici değil, --atla hijyen ile atlanır)
       → 8) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only) — SON ADIM (kanon core/veri-muhendisligi-katmani.md §8 S3, Salih A 08-17).
       → OPSİYONEL (bayrak --parquet; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan KAPALI): ambar-parquet.py (silver/ambar → veri/parquet/*.parquet
         kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
-Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,tarama,saglik,olcum,parquet,kolon-olcum]
+Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,hareket,tarama,saglik,hijyen,olcum,parquet,kolon-olcum]
           [--snapshot YYYY-MM-DD] [--parquet]
 Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); 2 = bilinmeyen --atla adı (stderr'de listelenir, hiçbir adım koşmaz; FAIL-LOUD); adım durumu
 `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI, hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan
@@ -48,7 +49,7 @@ def atla_sec(secim):
     """--atla virgüllü listesi → (bilinen adım adları, bilinmeyen adlar); virgül çevresi boşluk kırpılır. Bilinmeyen ad sessizce
     'atlandı' sayılmaz — çağıran stderr'e listeler ve çıkış 2 verir (FAIL-LOUD; --tablo/--sorgu ile aynı kural)."""
     adlar = [x.strip() for x in secim.split(",") if x.strip()]
-    bilinen = {ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR}
+    bilinen = {ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR} | {"hijyen"}
     return [x for x in adlar if x in bilinen], [x for x in adlar if x not in bilinen]
 
 
@@ -69,6 +70,24 @@ def adim_durumu(ad, returncode):
     return "KOD %d" % returncode, True
 
 
+def hijyen(repo, atla=""):
+    """SQLite hijyeni (KB-53 (a), İB-26): ANALYZE (sqlite_stat1 deterministik; planlayıcı girdisi) + PRAGMA optimize; yükleyici DEĞİL, hat-içi tek adım.
+    'hijyen' --atla ile atlanabilir; DB yoksa ATLANDI. Çıkış: 0 tamam · 1 hata (hat düşmez: uyarı kanalı)."""
+    if "hijyen" in [x.strip() for x in atla.split(",") if x.strip()]:
+        print("[atla  ] hijyen"); return 0
+    import sqlite3
+    db = os.path.join(repo, "veri", "baglam.sqlite")
+    if not os.path.exists(db):
+        print("[ATLANDI] hijyen        DB yok"); return 0
+    t0 = time.time()
+    try:
+        con = sqlite3.connect(db); con.execute("ANALYZE"); con.execute("PRAGMA optimize"); con.commit()
+        n = con.execute("SELECT COUNT(*) FROM sqlite_stat1").fetchone()[0]; con.close()
+        print("[OK     ] hijyen %6.1fs  ANALYZE + PRAGMA optimize (sqlite_stat1 %d satır)" % (time.time() - t0, n)); return 0
+    except Exception as e:
+        print("[UYARI  ] hijyen %6.1fs  %s" % (time.time() - t0, e)); return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -85,6 +104,8 @@ def main():
         print(f"[atla ] {ad}")
     kod = 0
     for ad, cmd in adimlari_sec(parquet=a.parquet, atla=atla):
+        if ad == "olcum":
+            kod = max(kod, hijyen(repo, a.atla))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
         args = list(cmd)
         if a.snapshot and ad in ("karar",): args += ["--snapshot", a.snapshot]
         if a.snapshot and ad == "olcum": args += ["--simdi", a.snapshot + "T00:00:00"]

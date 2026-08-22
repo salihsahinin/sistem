@@ -1,9 +1,9 @@
-# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `9e78140`)
+# Hareket günlüğü — 2026-08-22 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `2928f84`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 158 çağrı, 2 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 188 çağrı, 2 oturum.*
 
-## Oturum `b2b05897` — 01:35:07→18:39:57 · 107 çağrı · model fable-5 · hata 3
-**Özet:** koştu 75 · yazdı 8 · düzenledi 7 · skill çağırdı 4 · MCP aracı 4 · okudu 4 · workflow başlattı 2 · araç 2 · ajan gönderdi 1
+## Oturum `b2b05897` — 01:35:07→19:06:11 · 112 çağrı · model fable-5 · hata 3
+**Özet:** koştu 78 · yazdı 8 · düzenledi 7 · okudu 6 · skill çağırdı 4 · MCP aracı 4 · workflow başlattı 2 · araç 2 · ajan gönderdi 1
 **Yazılan/düzenlenen dosyalar (9):** `cc/gorev-2026-08-22-1.md` · `cc/gorev-2026-08-22-2.md` · `cc/pipeline-2026-08-22-pointer-graf-d2.md` · `cc/pipeline-2026-08-22-vektor-db-baglam.md` · `core/durum-kapsulu.md` · `graf/README.md` · `ogrenme/dersler/2026-08-22-P0a-attention-blogu-tekrar.md` · `raporlar/2026-08-22-graf-dili-uzun-vade-plani.md` · `tools/pointer-graf.py`
 
 | # | saat | fiil | hedef | sonuç |
@@ -115,10 +115,15 @@
 | 105 | 18:39:15 | koştu | Beklenmedik yeni manifest dosyasının zamanını ve başlığını oku (paralel oturum şüphesi — Karar 57) ⟨cd ~/jarvis && stat -f '%Sm %N' -t '%H:%M:%S' cc/pipeline-2026-08-22-silver-saglik.md && head -12 cc/pipeline-2026-08-22-silver-saglik.md ¦ cut -c1-30…⟩ | tamam |
 | 106 | 18:39:47 | koştu | Ledger'da İB-42 satırının durumunu, dosya zamanını ve diğer oturumun commit'lenmemiş değişikliklerini kontrol et (çakışma denetimi) ⟨cd ~/jarvis && echo "=== ledger İB-42 satırı (SAHADA damgası var mı?) ===" && grep -n '"borc_id": *"İB-42"' veri/karar-borcu.jsonl ¦ cut -c1-120 && py…⟩ | tamam |
 | 107 | 18:39:57 | koştu | Ledger'da kendi satırlarımın (KB-59/60/61, İB-47/48/49) ve diğer oturumun İB-42 damgasının birlikte durduğunu doğrula; diğer oturumun commit kapsamını gör ⟨cd ~/jarvis && python3 -c " import json ids={} for l in open('veri/karar-borcu.jsonl',encoding='utf-8'): try: d=json.loads(l) except: continue i | tamam |
+| 108 | 19:03:42 | koştu | Koşum-önü kapı (paralel oturum canlı mı), katman-hatti adım yapısı, kırık-pointer dağılımı ve KB kaynak satırlarını oku ⟨cd ~/jarvis && echo "=== saat / son commit'ler ===" && date '+%H:%M' && git log -5 --format='%h %cd %s' --date=format:'%H:%M' ¦ cut -c1-100 && git sta…⟩ | tamam |
+| 109 | 19:05:30 | koştu | pointer-graf.py'ye G1: --odak (KB/kayıt/dosya odak panoları), --kirik (kırık-pointer panosu), --test (T1-T5) ekle; üç odak + kırık panosunu üret, test ve render et ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/pointer-graf.py'; s=open(p,encoding='utf-8').read() # --- argümanlar --- s=s.replace(''' ap.a | tamam |
+| 110 | 19:05:58 | koştu | slug'ı ASCII'ye çevir; odak + kırık panolarını test+render ile yeniden üret; iki panonun önizleme PNG'sini al ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/pointer-graf.py'; s=open(p,encoding='utf-8').read() s=s.replace('''def slug(x): return "".join(ch if ch.isal…⟩ | tamam |
+| 111 | 19:06:10 | okudu | /tmp/pgpng/odak-KB_59.svg.png [bütün] | tamam |
+| 112 | 19:06:11 | okudu | /tmp/pgpng/pointer-sistemi-v0-kirik.svg.png [bütün] | tamam |
 
-## Oturum `11b49d44` — 18:26:55→18:51:40 · 51 çağrı · model fable-5 · hata 4
-**Özet:** koştu 46 · yazdı 4 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (4):** `cc/pipeline-2026-08-22-silver-saglik.md` · `tools/silver-saglik.py` · `veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md` · `veri/sozlesme/silver-saglik-kurallar.json`
+## Oturum `11b49d44` — 18:26:55→19:06:13 · 76 çağrı · model fable-5 · hata 6
+**Özet:** koştu 68 · yazdı 6 · skill çağırdı 1 · okudu 1
+**Yazılan/düzenlenen dosyalar (6):** `.claude/hooks/session-start.sh` · `cc/pipeline-2026-08-22-silver-saglik.md` · `tools/kural-sayaci.py` · `tools/silver-saglik.py` · `veri/sozlesme/silver-saglik-kanit-bulucu-prompt.md` · `veri/sozlesme/silver-saglik-kurallar.json`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -173,4 +178,29 @@
 | 49 | 18:50:44 | koştu | Pointer ayrıştırıcıya açıklama-kuyruğu toleransı ekle ve tabloyu yeniden üret ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/karar-borcu-tablo.py'; s=open(p,encoding='utf-8').read() eski=''' """'dosya:satır' → (dosya, satır¦None, dos…⟩ | tamam |
 | 50 | 18:51:21 | koştu | SCRIPTLER ve veri/README belgelerini ekle; damitma/seans-kapanis skill adım yapısını oku ⟨cd ~/jarvis && python3 - <<'EOF' # SCRIPTLER.md satırı (tools/ bölümündeki karar-borcu-tablo satırından sonra) p='tools/SCRIPTLER.md'; s=open(p,encodi…⟩ | tamam |
 | 51 | 18:51:40 | koştu | Ritüel skill'lerine silver-sağlık kapı adımlarını ekle ve katman-hatti'yi tam koştur ⟨cd ~/jarvis && python3 - <<'EOF' p='.claude/skills/seans-kapanis/SKILL.md'; s=open(p,encoding='utf-8').read() eski='\n## 7. Commit + push (m.9 — proof…⟩ | yok |
+| 52 | 18:52:38 | koştu | --kapi ve preflight doğrulaması; SH-1/SH-2/SH-3 için üç ayrı commit ⟨cd ~/jarvis && echo "=== --kapi gerçek silver ===" && python3 tools/silver-saglik.py --kapi --sessiz 2>/dev/null; echo "kapi çıkış: $?" echo "=== pref…⟩ | tamam |
+| 53 | 18:52:52 | koştu | Paralel oturumun son commit'lerini, kapsülün güncel hâlini ve yeni ledger satırlarını oku ⟨cd ~/jarvis && git log -4 --format='%h %ci %s' ¦ cut -c1-100 && echo "=== kapsül 'Şu an' ilk 3 satır + son 6 satır ===" && sed -n 6,8p core/durum-kaps…⟩ | tamam |
+| 54 | 18:53:36 | koştu | Manifest T beyanı, ledger İB-42 kısmen-kapandı, kapsül seans-14 satırı ve kapanış commit'i ⟨cd ~/jarvis && python3 - <<'EOF' import json,re,os # 1. manifest p='cc/pipeline-2026-08-22-silver-saglik.md'; s=open(p,encoding='utf-8').read() s=s.re…⟩ | tamam |
+| 55 | 18:53:42 | koştu | Teslim dosyasını Finder'da göster ⟨open -R /Users/HasanSalihSahin/jarvis/tools/silver-saglik.py && echo "Finder'da gösterildi"⟩ | tamam |
+| 56 | 18:59:05 | koştu | Paralel oturumun şeridini ve aday icra kalemlerinin şartnamelerini oku ⟨cd ~/jarvis && echo "=== git log -5 ===" && git log -5 --format='%h %ci %s' ¦ cut -c1-120 && echo "=== diğer oturum son 6 hareket ===" && python3 - <<…⟩ | tamam |
+| 57 | 18:59:40 | koştu | tarama-plan kapsamını ve KB-43/46/50/51/53/54 hükümlerini oku ⟨cd ~/jarvis && echo "=== tarama-plan.py docstring ===" && sed -n 1,30p tools/tarama-plan.py ¦ cut -c1-200 && echo "=== KB-50/51/53/54 hükümleri ===" &…⟩ | tamam |
+| 58 | 18:59:50 | koştu | SessionStart hook yapılandırmasını ve script dosyalarını bul ⟨cd ~/jarvis && echo "=== settings.json hooks ===" && python3 -c " import json; s=json.load(open('.claude/settings.json')); print(json.dumps(s.get('hoo…⟩ | tamam |
+| 59 | 18:59:56 | koştu | Mevcut SessionStart hook script'ini ve çıktı boyutunu oku ⟨cd ~/jarvis && echo "=== session-start.sh ===" && cat .claude/hooks/session-start.sh && echo "=== çıktı boyutu ===" && bash .claude/hooks/session-star…⟩ | tamam |
+| 60 | 19:00:04 | koştu | hareket tablosu şeması, Read örnekleri ve açılış-brifi görünümü ⟨cd ~/jarvis && python3 - <<'EOF' import sqlite3 c=sqlite3.connect('veri/baglam.sqlite') print("=== hareket şema ===", [r[1] for r in c.execute("pragma…⟩ | hata |
+| 61 | 19:00:15 | koştu | hareket Read kayıtlarının biçimini (offset/limit yakalanıyor mu) ve açılış brifi görünümünü incele ⟨cd ~/jarvis && python3 - <<'EOF' import sqlite3,json c=sqlite3.connect('veri/baglam.sqlite') print("=== Read örnekleri (silver) ===") for r in c.execu…⟩ | tamam |
+| 62 | 19:00:30 | koştu | hareket-tablo.py özetleyici ve görünüm tanımlarını oku ⟨cd ~/jarvis && echo "=== hareket-tablo girdi_ozet 46-85 ===" && sed -n 46,85p tools/hareket-tablo.py ¦ cut -c1-200 && echo "=== hareket-tablo CREATE V…⟩ | tamam |
+| 63 | 19:00:35 | koştu | hareket-tablo silver yazım ve görünüm bloğunu oku ⟨cd ~/jarvis && echo "=== hareket-tablo 150-192 ===" && sed -n 150,192p tools/hareket-tablo.py ¦ cut -c1-220⟩ | tamam |
+| 64 | 19:00:40 | koştu | pano-akis.py durumunu (İB-41) oku ⟨cd ~/jarvis && echo "=== pano-akis.py docstring ===" && sed -n 1,25p tools/pano-akis.py ¦ cut -c1-200 && echo "=== pano-akis izleri ===" && grep -n "p…⟩ | tamam |
+| 65 | 19:00:49 | koştu | katman-olcum.py main bloğunu oku (T2/T3 ekleme yeri) ⟨cd ~/jarvis && echo "=== katman-olcum main 156-215 ===" && sed -n 156,215p tools/katman-olcum.py ¦ cut -c1-230⟩ | tamam |
+| 66 | 19:01:00 | koştu | baglam-tablo indeks yerleri, KILAVUZ erişim kuralı ve ilgili skill dosyalarını bul ⟨cd ~/jarvis && echo "=== baglam-tablo indeks/uretim satırları ===" && grep -n "CREATE INDEX\¦INSERT INTO uretim\¦PRAGMA\¦ANALYZE" tools/baglam-tablo.p…⟩ | tamam |
+| 67 | 19:02:29 | koştu | Bileşik indeks DDL'i ve katman-hatti hat-içi ANALYZE/optimize hijyenini ekle; tarama-plan alan adlarını gör ⟨cd ~/jarvis && echo "=== tarama-plan.jsonl son satır (alan adları) ===" && tail -1 veri/tarama-plan.jsonl ¦ cut -c1-500 python3 - <<'EOF' # A1. baglam…⟩ | tamam |
+| 68 | 19:03:01 | koştu | SessionStart hook'unu ≤2 KB brif + silver tazelik kontrolü olarak yeniden yaz ve çıktısını ölç ⟨cd ~/jarvis && cat > .claude/hooks/session-start.sh <<'EOF' #!/usr/bin/env bash # JARVIS SessionStart hook — BRİF ≤2 KB (KB-51 (a), Salih imzası 08-21…⟩ | hata |
+| 69 | 19:03:13 | okudu | .claude/hooks/session-start.sh [bütün] | tamam |
+| 70 | 19:03:33 | yazdı | .claude/hooks/session-start.sh | tamam |
+| 71 | 19:03:37 | koştu | Yeni SessionStart hook çıktısını ve boyutunu doğrula ⟨cd ~/jarvis && bash .claude/hooks/session-start.sh; echo; echo "boyut: $(bash .claude/hooks/session-start.sh ¦ wc -c) byte (sınır 2000)"⟩ | tamam |
+| 72 | 19:04:22 | koştu | hareket-tablo.py'ye okuma tipi sınıflaması ve v_okuma_orani görünümü ekle (İB-29) ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/hareket-tablo.py'; s=open(p,encoding='utf-8').read() # 1) girdi_ozet: okuma tipi (Read offset/limit · Bash s…⟩ | tamam |
+| 73 | 19:05:00 | yazdı | tools/kural-sayaci.py | tamam |
+| 74 | 19:05:36 | koştu | katman-olcum'a erişim testleri T1-T3 ekle; İB-41'i ledger'da kapat ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/katman-olcum.py'; s=open(p,encoding='utf-8').read() # T1/T2/T3 erişim testleri (KB-53 (a) İB-25): olgular + …⟩ | tamam |
+| 75 | 19:05:56 | koştu | Kural sayacını CLAUDE.md + seans-acilis ile koştur ⟨cd ~/jarvis && python3 tools/kural-sayaci.py --skill seans-acilis; echo "çıkış: $?"⟩ | tamam |
+| 76 | 19:06:13 | koştu | kural-sayaci düzeltmesi; katman-hatti tam koşum (indeks, hijyen, okuma-oranı, T1-T3) ve sonuç sorguları ⟨cd ~/jarvis && python3 - <<'EOF' p='tools/kural-sayaci.py'; s=open(p,encoding='utf-8').read() s=s.replace("taşıyorsa fazla sayılır — bu yüzden sayı ÜS…⟩ | yok |
 

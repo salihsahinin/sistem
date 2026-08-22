@@ -1,6 +1,6 @@
 {
  "tablo": "hareket",
- "surum": "1.0.0-deneysel-m29",
+ "surum": "1.1.0-deneysel-m29",
  "katman": "silver",
  "grain": "1 satır = 1 Carvis araç çağrısı (jarvis ana-oturum transkriptleri)",
  "kolonlar": [
@@ -105,7 +105,14 @@
    "tip": "TEXT",
    "not_null": false,
    "pk": false
+  },
+  {
+   "ad": "okuma_tipi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
   }
  ],
- "kural": "additive-only; kırıcı = silme/tip/kısıt/yeniden-ad"
+ "kural": "additive-only; kırıcı = silme/tip/kısıt/yeniden-ad",
+ "not": "1.1.0 (08-22): +okuma_tipi (aralik|butun|NULL) — İB-29 KB-53 (a); additive"
 }

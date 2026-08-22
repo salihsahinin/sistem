@@ -12,7 +12,7 @@ Katmanlar (yüklem = koşul, ad değil): BRONZ = git-izlenen md/jsonl/json + ko�
 conformed tablolar (1:1, tipli, tekil, agrege-olmayan) · GOLD = veri/gorunum/*.csv + SQL görünümler (tek-tanım metrik).
 
 Kullanım: python3 tools/katman-olcum.py [--repo <yol>] [--simdi 2026-08-16T02:00:00] [--sozlesme-yaz] [--kuru] [--sessiz]
-Çıkış: 0 tamam · 3 veri-testi ERROR · 4 sözleşme KIRICI · 5 freshness ERROR (yüksek kod baskın). Uyarılar (warn) çıkışı değiştirmez.
+Çıkış: 0 tamam · 3 veri-testi ERROR · 4 sözleşme KIRICI · 5 freshness ERROR (yüksek kod baskın). Uyarılar (warn) çıkışı değiştirmez.\nEk (08-22, KB-53 (a) İB-25): erişim testleri T1 (tarama-plan noktasal SCAN=0) · T2 (sqlite_stat1 ∧ tazelik; WARN) · T3 (dbstat b-ağacı derinliği, bilgi olgusu).
 """
 import argparse, csv, glob, json, os, sqlite3, subprocess, sys
 from datetime import datetime, timezone, timedelta
@@ -156,6 +156,54 @@ def freshness(bronz, silver, gold, simdi, head):
     return out
 
 
+def erisim_testleri(repo, head):
+    """KB-53 (a) İB-25 — erişim-yolu testleri (T1-T3). T1: noktasal sorgu seti EQP'de SCAN yok → tarama-plan.py son koşumundan okunur
+    (aynı hatta önce koşar; tek tanım orada) · T2: sqlite_stat1 var (katman-hatti hijyeni ANALYZE) ∧ uretim.git_head_sha = HEAD (tazelik)
+    · T3: dbstat b-ağacı derinliği (bilgi satırı; dbstat yoksa 'yok'). Dönüş: (test listesi [test,tur,ihlal,sonuc], bilgi olguları [(nesne,metrik,deger,birim,not)])."""
+    testler, bilgi = [], []
+    yol = os.path.join(repo, "veri", "baglam.sqlite")
+    # T1 — tarama-plan son koşumu (stat1-yok durumu; noktasal sınıf)
+    tp = os.path.join(repo, "veri", "tarama-plan.jsonl"); son_ts, ihlal1, n1 = None, 0, 0
+    if os.path.exists(tp):
+        rows = []
+        with open(tp, encoding="utf-8") as fh:
+            for line in fh:
+                try: rows.append(json.loads(line))
+                except Exception: pass
+        if rows:
+            son_ts = max(r.get("ts", "") for r in rows)
+            for r in rows:
+                if r.get("ts") == son_ts and r.get("tur") == "noktasal" and r.get("durum") != "analiz-kopya":
+                    n1 += 1
+                    if str(r.get("sinif", "")).startswith("SCAN"): ihlal1 += 1
+    testler.append({"test": "erisim T1 noktasal sorgu SCAN yok (tarama-plan son koşum, %d sorgu)" % n1, "tur": "erisim", "ihlal": ihlal1,
+                    "sonuc": "PASS" if (n1 and ihlal1 == 0) else ("WARN" if n1 == 0 else "ERROR")})
+    if not os.path.exists(yol):
+        return testler, bilgi
+    con = sqlite3.connect(yol)
+    # T2 — stat1 ∧ tazelik
+    try:
+        stat1 = con.execute("SELECT COUNT(*) FROM sqlite_stat1").fetchone()[0]
+    except sqlite3.Error:
+        stat1 = 0
+    try:
+        u = con.execute("SELECT git_head_sha FROM uretim ORDER BY uretim_zamani DESC LIMIT 1").fetchone(); taze = bool(u and head and u[0].startswith(head))
+    except sqlite3.Error:
+        taze = False
+    ihlal2 = (0 if stat1 > 0 else 1) + (0 if taze else 1)
+    testler.append({"test": "erisim T2 sqlite_stat1 var (%d) ∧ uretim.head = HEAD (%s)" % (stat1, "evet" if taze else "HAYIR"), "tur": "erisim", "ihlal": ihlal2, "sonuc": "PASS" if ihlal2 == 0 else "WARN"})
+    # T3 — dbstat derinlik (bilgi)
+    try:
+        for ad, derinlik, sayfa in con.execute("""SELECT name, MAX(LENGTH(path)-LENGTH(REPLACE(path,'/',''))) AS derinlik, COUNT(*) AS sayfa FROM dbstat
+                                                  WHERE name IN ('kayit','ix_kayit_dosya','ix_kayit_dosya_satir','referans','ix_ref_kayit','ix_ref_tur_deger','anahtar','karar_borcu')
+                                                  GROUP BY name ORDER BY name"""):
+            bilgi.append((ad, "btree_derinlik", derinlik, "seviye", "dbstat; sayfa %d" % sayfa))
+    except sqlite3.Error as e:
+        bilgi.append(("dbstat", "btree_derinlik", None, "seviye", "dbstat yok: %s" % str(e)[:60]))
+    con.close()
+    return testler, bilgi
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -169,6 +217,7 @@ def main():
         for p in sozlesme_yaz(repo): print("sözleşme yazıldı:", os.path.relpath(p, repo))
     bronz, silver, gold = olc_bronz(repo), olc_silver(repo), olc_gold(repo)
     testler, pf = testleri_kos(repo), preflight(repo)
+    et, ebilgi = erisim_testleri(repo, head); testler = testler + et  # KB-53 (a) İB-25 T1-T3
     fr = freshness(bronz, silver, gold, simdi, head)
     kosum_id = f"{simdi.strftime('%Y%m%dT%H%M%S')}-{head}"
     olgular = []
@@ -186,6 +235,7 @@ def main():
     gb = sum(v["byte"] for v in gold.values())
     if bronz["byte"]: olgu("oran", "gold/bronz", "byte_orani", round(gb / bronz["byte"], 3), "x")
     for t in testler: olgu("silver", t["test"], "veri_testi_ihlal", t["ihlal"], "adet", t["sonuc"], t["tur"])
+    for (nesne, metrik, deger, birim, not_) in ebilgi: olgu("silver", nesne, metrik, deger, birim, "-", not_)
     for p in pf: olgu("silver", p["tablo"], "sozlesme_preflight", len(p["kirici"]), "kırıcı", p["sonuc"], "; ".join(p["kirici"] + p["additive_ek"])[:200])
     for f in fr: olgu(f["katman"], f["nesne"], "freshness_gun", None if f["yas_gun"] is None else round(f["yas_gun"], 2), "gün", f["sonuc"], f.get("not", ""))
     if not a.kuru:

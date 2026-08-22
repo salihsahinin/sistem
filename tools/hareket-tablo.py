@@ -10,7 +10,7 @@ BRONZ (kaynak-konform, ham + provenans; append-only): `veri/bronz/hareket-olay.j
   ts, oturum, arac, girdi_ozet (ham argümanın kısaltılmışı; kod/metin gövdesi KOPYALANMAZ — yalnız hedef), sonuc (tamam/hata/yok), model, kaynak_dosya}.
 SİLVER (1:1 grain, tipli, tekil): `veri/baglam.sqlite` tablosu `hareket` — TR zaman, oturum-içi sıra, Türkçe fiil, hedef dosya (repo-göreli), repo_ici.
   Sözleşme `veri/sozlesme/hareket.json` (additive-only). Testler: unique(hareket_id) · not_null(arac) · accepted_values(fiil).
-GOLD (iş-konform, tek tanım): `v_hareket_gunluk` (gün × oturum × fiil sayımı) · `v_son_hareketler` (son 300) → `veri/gorunum/*.csv`
+GOLD (iş-konform, tek tanım): `v_hareket_gunluk` (gün × oturum × fiil sayımı) · `v_son_hareketler` (son 300) · `v_okuma_orani` (İB-29: aralık↔bütün okuma; KB-53 (a)) → `veri/gorunum/*.csv`
   + İNSAN-YÜZÜ: `raporlar/hareket-gunlugu-YYYY-MM-DD.md` (o günün her seansı: saat · fiil · hedef · sonuç; ad arama anahtarıyla başlar).
 Kullanım: python3 tools/hareket-tablo.py [--tarih YYYY-MM-DD] [--tum] [--kuru] [--sessiz] [--proje-dizin <yol>] [--repo <yol>]
   --tum: bronzdaki HER gün için günlük dosyası üretir (geriye dönük). Varsayılan: yalnız bugün (TR).
@@ -49,6 +49,11 @@ def girdi_ozet(arac, inp, repo):
     dosya = None; repo_ici = False
     if arac in ("Write", "Edit", "MultiEdit", "NotebookEdit", "Read"):
         h, dosya, repo_ici = kisa_yol(inp.get("file_path") or inp.get("notebook_path"), repo)
+        if arac == "Read":  # İB-29 (KB-53 (a)): aralık (offset/limit) ↔ bütün okuma sayacı — bronz özete ek, içerik yok
+            if inp.get("offset") is not None or inp.get("limit") is not None:
+                h = "%s [aralık %s+%s]" % (h, inp.get("offset") if inp.get("offset") is not None else 0, inp.get("limit") if inp.get("limit") is not None else "∞")
+            else:
+                h = "%s [bütün]" % h
     elif arac == "Bash":
         c = re.sub(r"\s+", " ", (inp.get("command") or "")).strip()
         h = (inp.get("description") or "").strip() + " ⟨" + c[:150] + ("…" if len(c) > 150 else "") + "⟩"
@@ -78,6 +83,26 @@ def girdi_ozet(arac, inp, repo):
     return (h or "")[:300], dosya, repo_ici
 
 
+OKUMA_ARALIK_RX = re.compile(r"(sed\s+-n\s+['\"]?\d+(,\d+)?p|\bhead\s+(-n\s*)?-?\d+|\btail\s+(-n\s*)?[-+]?\d+|\bawk\s+['\"]NR\s*[<>=]|\bhead\s+-c\s*\d+)")
+OKUMA_BUTUN_RX = re.compile(r"(^|[;&|]\s*)cat\s+[^|<>;&]+\.(md|py|json|jsonl|txt|sh|sql|d2|csv)\b")
+
+
+def okuma_tipi(arac, inp):
+    """İB-29 (KB-53 (a) Karar 62): okuma hareketini 'aralik' | 'butun' | None olarak sınıflar — deterministik, yalnız argümandan.
+    Read: offset∨limit → aralik, yoksa butun · Bash: sed -n 'a,bp' / head -n / tail -n / awk NR / head -c → aralik; 'cat <dosya>' → butun;
+    başka Bash (grep/python/git…) → None (okuma sayılmaz). Ölçüm girdisi: ince-tutkal (KB-53 b) kararı düşük aralık-oranında masaya döner."""
+    inp = inp or {}
+    if arac == "Read":
+        return "aralik" if (inp.get("offset") is not None or inp.get("limit") is not None) else "butun"
+    if arac == "Bash":
+        c = inp.get("command") or ""
+        if OKUMA_ARALIK_RX.search(c):
+            return "aralik"
+        if OKUMA_BUTUN_RX.search(c):
+            return "butun"
+    return None
+
+
 def bronz_topla(proje_dizin, repo):
     olaylar = []
     for f in sorted(glob.glob(os.path.join(proje_dizin, "*.jsonl"))):
@@ -99,7 +124,7 @@ def bronz_topla(proje_dizin, repo):
                 if not (isinstance(x, dict) and x.get("type") == "tool_use"): continue
                 arac = x.get("name") or "?"; hid = x.get("id") or f"{oturum}:{r.get('uuid')}:{arac}"
                 ozet, dosya, repo_ici = girdi_ozet(arac, x.get("input"), repo)
-                olaylar.append({"hareket_id": hid, "ts": r.get("timestamp"), "oturum": oturum, "arac": arac, "girdi_ozet": ozet,
+                olaylar.append({"hareket_id": hid, "ts": r.get("timestamp"), "oturum": oturum, "arac": arac, "girdi_ozet": ozet, "okuma_tipi": okuma_tipi(arac, x.get("input")),
                                 "dosya": dosya, "repo_ici": repo_ici, "sonuc": sonuc.get(hid, "yok"), "model": msg.get("model"),
                                 "kaynak_dosya": os.path.basename(f)})
     return olaylar
@@ -152,16 +177,26 @@ def main():
                          "tarih_tr": ttr.strftime("%Y-%m-%d") if ttr else None, "saat_tr": ttr.strftime("%H:%M:%S") if ttr else None,
                          "oturum_id": o["oturum"], "oturum_kisa": o["oturum"][:8], "sira": sira[o["oturum"]], "arac": arac, "fiil": fiil,
                          "hedef": o.get("girdi_ozet"), "dosya": o.get("dosya"), "repo_ici": 1 if o.get("repo_ici") else 0, "sonuc": o.get("sonuc"),
-                         "model": (o.get("model") or "").replace("claude-", "") or None, "kaynak_dosya": o.get("kaynak_dosya"), "yuklendi_head": o.get("yuklendi_head") or head})
+                         "model": (o.get("model") or "").replace("claude-", "") or None, "kaynak_dosya": o.get("kaynak_dosya"), "yuklendi_head": o.get("yuklendi_head") or head,
+                         "okuma_tipi": o.get("okuma_tipi")})
     testler, gunler = [], sorted({s["tarih_tr"] for s in satirlar if s["tarih_tr"]})
     if not a.kuru:
         db = os.path.join(repo, "veri", "baglam.sqlite"); con = sqlite3.connect(db)
         con.executescript("""
         CREATE TABLE IF NOT EXISTS hareket (
           hareket_id TEXT PRIMARY KEY, ts_utc TEXT, ts_tr TEXT, tarih_tr TEXT, saat_tr TEXT, oturum_id TEXT, oturum_kisa TEXT, sira INTEGER,
-          arac TEXT NOT NULL, fiil TEXT, hedef TEXT, dosya TEXT, repo_ici INTEGER, sonuc TEXT, model TEXT, kaynak_dosya TEXT, yuklendi_head TEXT
+          arac TEXT NOT NULL, fiil TEXT, hedef TEXT, dosya TEXT, repo_ici INTEGER, sonuc TEXT, model TEXT, kaynak_dosya TEXT, yuklendi_head TEXT,
+          okuma_tipi TEXT
         );
         DELETE FROM hareket;
+        CREATE VIEW IF NOT EXISTS v_okuma_orani AS
+          SELECT tarih_tr, oturum_kisa,
+                 SUM(CASE WHEN okuma_tipi='aralik' THEN 1 ELSE 0 END) AS aralik,
+                 SUM(CASE WHEN okuma_tipi='butun' THEN 1 ELSE 0 END) AS butun,
+                 ROUND(1.0*SUM(CASE WHEN okuma_tipi='aralik' THEN 1 ELSE 0 END) / NULLIF(SUM(CASE WHEN okuma_tipi IN ('aralik','butun') THEN 1 ELSE 0 END),0), 3) AS aralik_orani,
+                 SUM(CASE WHEN okuma_tipi='aralik' AND arac='Read' THEN 1 ELSE 0 END) AS read_aralik,
+                 SUM(CASE WHEN okuma_tipi='butun' AND arac='Read' THEN 1 ELSE 0 END) AS read_butun
+          FROM hareket WHERE okuma_tipi IS NOT NULL GROUP BY tarih_tr, oturum_kisa ORDER BY tarih_tr DESC, oturum_kisa;
         CREATE VIEW IF NOT EXISTS v_hareket_gunluk AS
           SELECT tarih_tr, oturum_kisa, fiil, COUNT(*) AS n, MIN(saat_tr) AS ilk, MAX(saat_tr) AS son,
                  SUM(CASE WHEN sonuc='hata' THEN 1 ELSE 0 END) AS hata, COUNT(DISTINCT CASE WHEN fiil IN ('yazdı','düzenledi') THEN dosya END) AS yazilan_dosya
@@ -170,7 +205,10 @@ def main():
           SELECT ROW_NUMBER() OVER (ORDER BY ts_utc DESC) AS n, tarih_tr, saat_tr, oturum_kisa, sira, fiil, arac, hedef, sonuc, model, hareket_id
           FROM hareket ORDER BY ts_utc DESC LIMIT 300;
         """)
-        con.executemany("INSERT INTO hareket VALUES (:hareket_id,:ts_utc,:ts_tr,:tarih_tr,:saat_tr,:oturum_id,:oturum_kisa,:sira,:arac,:fiil,:hedef,:dosya,:repo_ici,:sonuc,:model,:kaynak_dosya,:yuklendi_head)", satirlar)
+        kol = {r[1] for r in con.execute("PRAGMA table_info(hareket)")}
+        if "okuma_tipi" not in kol:
+            con.execute("ALTER TABLE hareket ADD COLUMN okuma_tipi TEXT")  # additive (eski DB'de)
+        con.executemany("INSERT INTO hareket VALUES (:hareket_id,:ts_utc,:ts_tr,:tarih_tr,:saat_tr,:oturum_id,:oturum_kisa,:sira,:arac,:fiil,:hedef,:dosya,:repo_ici,:sonuc,:model,:kaynak_dosya,:yuklendi_head,:okuma_tipi)", satirlar)
         con.commit()
         sdir = os.path.join(repo, "veri", "sozlesme"); os.makedirs(sdir, exist_ok=True); syol = os.path.join(sdir, "hareket.json")
         if not os.path.exists(syol):
@@ -183,7 +221,7 @@ def main():
             n = con.execute(sql, prm).fetchone()[0]; testler.append((ad, n, "PASS" if n == 0 else "ERROR"))
         # --- GOLD ---
         gdir = os.path.join(repo, "veri", "gorunum"); os.makedirs(gdir, exist_ok=True)
-        for v in ("v_hareket_gunluk", "v_son_hareketler"):
+        for v in ("v_hareket_gunluk", "v_son_hareketler", "v_okuma_orani"):
             cur = con.execute(f"SELECT * FROM {v}"); cols = [d[0] for d in cur.description]
             with open(os.path.join(gdir, f"{v}.csv"), "w", newline="", encoding="utf-8") as fh:
                 w = csv.writer(fh); w.writerow(cols); w.writerows(cur.fetchall())

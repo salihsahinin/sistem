@@ -629,6 +629,7 @@ CREATE TABLE uretim (
   kayit_id_kume_sha TEXT, notlar TEXT
 );
 CREATE INDEX ix_kayit_dosya ON kayit(dosya_id, sira);
+CREATE INDEX ix_kayit_dosya_satir ON kayit(dosya_id, satir_bas, satir_son);  -- KB-53 (a) İB-26: adresli erişim (dosya + satır aralığı) bileşik indeksi, 08-22
 CREATE INDEX ix_ref_kayit ON referans(kayit_id);
 CREATE INDEX ix_ref_tur_deger ON referans(ref_turu, ref_deger);
 CREATE INDEX ix_json_dosya ON json_kayit(dosya_id);
