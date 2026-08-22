@@ -22,7 +22,8 @@ Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünd
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
 2. `core/durum-kapsulu.md` — ORIGIN KLONUNDAN doğrula: `.git/config`teki origin URL ile bulut konteynerde clone at, mount ile diff'le. Mount'ta git komutu YASAK (okuma dahil); klon bulutta serbest.
 3. `core/pano.md` — AKTİF/BEKLEYEN/BLOKE + "Ekrana gel" filtresi.
-3b. **Silver tazelik kapısı (KB-54 A, Salih imzası 08-21, Karar 62):** `uretim.git_head_sha` ≠ git HEAD → brifte "silver bayat" uyarısı + `tools/katman-hatti.py` koşumu (~5-10 sn, idempotent); atlanırsa adresli erişim yanlış satır getirebilir (08-18 vakası: 25/27 blok uyuşmazlığı).
+3b. **Silver tazelik kapısı (KB-54 A, Salih imzası 08-21, Karar 62):** `uretim.git_head_sha` ≠ git HEAD → brifte "silver bayat" uyarısı + `tools/katman-hatti.py` koşumu (~5-10 sn, idempotent); atlanırsa adresli erişim yanlış satır getirebilir (08-18 vakası: 25/27 blok uyuşmazlığı). **Tespit otomatik (İB-27, 08-22):** SessionStart hook brifinde `SİLVER: … → TAZE | BAYAT` satırı; BAYAT görülürse koşum bu adımda (hook koşmaz, yalnız söyler).
+3c. **Adresli erişim kuralı (KB-53 A, Karar 62; KILAVUZ tasarım-ilkeleri satırı; İB-28):** kanon okurken adres biliniyorsa ARALIK oku (`Read offset/limit` ∨ `sed -n 'a,bp'`), anahtar biliniyorsa silver'dan blok çek (`sqlite3 veri/baglam.sqlite` — `v_guncel_kayit`; kayit_id sha8'i getirme anında yeniden hesaplanır, tutmuyorsa dosyaya düş + bayrak); dosya BÜTÜNÜ yalnız adres yokken (kapsül/pano gibi tamamı okunması gereken küçük dosyalar hariç). Oran `v_okuma_orani`'nda sayılır (İB-29) — düşük aralık-oranı ince-tutkal (KB-53 b) kararını masaya döndürür.
 4. `raporlar/usage/senkron-log.jsonl` — son satır: senkron sayacı ilerledi mi, arıza var mı (arıza → sayaç sıfırlanmaz ama kök-neden raporlanır).
 5. Kapsülün işaret ettiği son seans-teslim raporu (devir borçları buradan).
 6. Gerekirse pointer'la in: fikir-kutusu · senaryo-defteri · cc/defter — hepsi kapsül/CLAUDE.md adresliyorsa.
@@ -37,6 +38,7 @@ Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünd
 - Ne derse emirdir; tek fren çelişki kapısı (m.16): önce çelişki+artı/eksi+plan raporu, sonra emir.
 - Yasaklar: günlük-özüt/ruh-hali/psikolog (m.23) · ayıklık sorgusu (m.33) · otomatik silme (m.8).
 - Yazamayan yüzeyde karar kaydı üretme; damgalı not bırak, ana seans ingest eder.
+- **Bağlam bütçesi (KB-50 A, Karar 61; İB-46):** tek araç çıktısı >~10k token bağlama dökülmez — dosyaya yaz, özet + pointer ver (ör. büyük `cat`/workflow çıktısı); alt-ajan dönüşü ≤2k; eşzamanlı kural sayısı ≤100 (`tools/kural-sayaci.py`). Uzun koşumda (Workflow/atlas) hasat kontrol listesi seans-kapanis §6e'dedir.
 
 ## Gotchas
 - **Önsöz tuzağı:** Salih selamla birlikte soru/önsöz yazarsa modelin içeriğe atlaması — ritüel HER ZAMAN önce (2026-07-23 arızasının kökü).

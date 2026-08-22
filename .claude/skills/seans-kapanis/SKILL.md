@@ -29,7 +29,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 - Model değişimi yaşandıysa: ingest kanona DEĞİL şerhli klasöre (`model değişikliği ile.../ingest-YYYY-MM-DD.md`) — KILAVUZ protokolü.
 
 ## 5. Kapsül tazeleme (`core/durum-kapsulu.md`)
-Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (SessionStart hook `1,40p` sert-kapısı — aşan kuyruk sessizce düşer).
+Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (kanon bütçesi; 08-22 İB-24'ten beri SessionStart hook kapsülü DEĞİL ≤2 KB brifi basar — kapsül açılışta ELLE okunur, bu yüzden "Sonraki ilk iş" ilk maddesi ve Güncelleme satırı brife girer: ikisini kısa ve kendini açıklar tut).
 
 ## 6. Boyut-izleme tek bakış (İMZALI kural 07-22)
 Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş seansta Salih-imzalı planla.
@@ -42,6 +42,9 @@ Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB ·
 
 ## 6d. Silver-sağlık kapısı (Salih imzası 08-21, defter Karar 58 — KB-39/40/41 (a); icra İB-42 08-22)
 `python3 tools/silver-saglik.py --kapi` koş (hareket-tablo'dan SONRA; ~1-2 sn). Çıkış 6 = T-Ç çelişki hatası (çift-güncel anahtar · aralık örtüşmesi · sıcak emekli-kalıntı · karar_borcu çift/kırık bağımlılık) → hat DURUR: kaynağı bronz'da düzelt (anahtar kaydı / ledger / sıcak dosya), yeniden koş; kapı geçmeden commit yok. Çıkış 0'da özet satırını teslim raporuna al: WARN sayısı (ılık kalıntı), kuyruk (YETİM/KAPANDI/SÜPERSEDE aday sayıları — `v_silver_kuyruk_ozet`) ve T-A çift sayısı; aday kuyruğu KARAR DEĞİL, Salih triyajı (silme yok, m.8). Kütük `veri/silver-saglik.jsonl` append-only.
+
+## 6e. Uzun-koşum politikası + bağlam bütçesi (Salih imzası 08-21, defter Karar 61 — KB-50/52 (a); icra İB-46 08-22)
+Kapanışta HASAT KONTROL LİSTESİ (uzun oturumun kaybolmaması için, 4 soru — her biri tek satır): (1) bu oturumda doğan kalıcı kural/karar ADAYI ingest'e girdi mi · (2) açık pipeline/manifest T beyanı aldı mı ya da SAHADA damgası kaldı mı · (3) Workflow/ajan koşumlarının tahmin↔gerçek kaydı (KB-02) ambara düştü mü · (4) paralel oturum varsa devir notu/çakışma kaydı var mı. **Araç-çıktısı kuralı (KB-50 a):** >~10k token tek araç çıktısı bağlama dökülmez — özet + pointer (dosyaya yaz, yolunu ver); bu seansta ihlal olduysa teslim raporuna "araç-çıktısı aşımı: <araç/yol>" satırı. **Kural-sayacı:** `python3 tools/kural-sayaci.py` (CLAUDE.md + bu seansta çağrılan skill'ler) — eşik 100 aşıldıysa teslim raporuna "kural-eşiği: N" + damıtma tetiği. 128K bağlam uyarısı İB-22 (baglam_kompozisyon ölçüm hattı) verisi gelince eklenecek (bu satır o borcun pointer'ıdır).
 
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` YASAK — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu GİZLEME — gün sayılmadı de, nedenini yaz.
