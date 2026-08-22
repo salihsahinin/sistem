@@ -93,3 +93,10 @@ Desen (rapor `cc/rapor-2026-08-18-2.md` S4): **SQLite = yazma deposu (silver, OL
 - **Kütükler:** `veri/silver-saglik.jsonl` APPEND-ONLY (1 satır = 1 test × 1 koşum) · `veri/silver-kuyruk.jsonl` OLAY-KAYNAKLI (ACILDI/KAPANDI; drenaj + yaş buradan; DB her koşumda sıfırdan yazıldığı için damga bu kütükte yaşar).
 - **Canary:** `--test` — tohumlu ihlal DB'sinde 11 test FAIL vermeli (dbt unit-test deseni); determinizm: aynı HEAD + disk + kütük → tablo dökümleri byte-eş (08-22: 2 koşum BİREBİR, 864 satır).
 - İlk koşum (08-22, HEAD 9e78140): T-Ç error 0 · T-Ç3-ılık 112 (anahtar-denetim satır-grain 99; fark = blok-grain + kök snapshot dosyalarının katmanı — iki `katman()` tanımı ayrı: `baglam-tablo.katman_bul` ↔ `anahtar-denetim.katman`; tekleştirme borcu) · kuyruk 239 (YETİM 215 · KAPANDI 21 · SÜPERSEDE 3) · T-A 6.554 çift (huni geniş; COST tabanı ölçüldü, kalibrasyon ≥10 koşum).
+
+## Erişim-yolu paketi (KB-53/54 (a), Karar 62; icra İB-25/26/27/29, 2026-08-22 seans-14)
+- **Bileşik indeks** `ix_kayit_dosya_satir (dosya_id, satir_bas, satir_son)` — adresli erişim (dosya + satır aralığı) için; `baglam-tablo.py` DDL (additive).
+- **Hat-içi hijyen** (`katman-hatti.py`, olcum'dan önce; `--atla hijyen`): `ANALYZE` + `PRAGMA optimize` → `sqlite_stat1` (08-22: 24 satır). tarama-plan bu adımdan ÖNCE koştuğu için "stat1 yok" durumunu da kaydeder.
+- **Erişim testleri** (`katman-olcum.py`): T1 noktasal sorgu SCAN=0 (tarama-plan son koşumundan; tek tanım orada) · T2 `sqlite_stat1` var ∧ `uretim.git_head_sha` = HEAD (WARN) · T3 dbstat b-ağacı derinliği bilgi olguları (`btree_derinlik`; 08-22: kayit 3 seviye / 11.041 sayfa, indeksler 3 seviye).
+- **Okuma-oranı sayacı** (`hareket.okuma_tipi` ∈ {aralik, butun, NULL}; `v_okuma_orani` gün × oturum): Read offset/limit ∨ Bash `sed -n a,bp`/`head`/`tail`/`awk NR` = aralık; Read tam ∨ `cat <dosya>` = bütün. Bronz özetleyici 08-22'den itibaren sınıflar (eski satırlar NULL). KB-53 (b) ince-tutkal kararının ölçüm girdisi (düşük aralık-oranı → masaya).
+- **Açılış tazelik kontrolü** (İB-27): SessionStart hook `uretim.git_head_sha ≠ HEAD` → "BAYAT → katman-hatti" satırı (tespit otomatik; koşum ritüelde).
