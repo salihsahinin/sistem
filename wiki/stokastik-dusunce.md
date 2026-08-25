@@ -10,4 +10,4 @@
 
 **Süpersede zinciri:** stokastik-dusunce (08-16, E1) → **deterministik tasarım ilkesi** (Salih 08-17; kanon: `CLAUDE.md` §6 + `kuyruk/senaryo-defteri.md` 08-17 Karar 5).
 
-**Bağlantılar:** [[adversarial-hayatta-kalma]] (üretici≠doğrulayıcı — deterministik kapı olarak kalır) · [[olcum-banki]] · [[token-x-zaman]].
+**Bağlantılar:** [[adversarial-hayatta-kalma]] (üretici≠doğrulayıcı — deterministik kapı olarak kalır) · [[olcum-banki]] · [[token-x-zaman]]. · [[dil-secimi]] (karşı-link 08-26)

@@ -24,3 +24,5 @@ AI2AI = üç register'ın L2'si ([[uc-register]]): hedef okuyucu MODEL olduğund
 
 ## Bağlantılar
 [[uc-register]] · [[ingest-semasi]] · [[adversarial-hayatta-kalma]] · [[pointer-sistemi]]
+
+**Bağlantılar:** · [[dil-secimi]] (karşı-link 08-26)

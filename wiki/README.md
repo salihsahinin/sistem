@@ -33,6 +33,7 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [[silver-saglik]] — silver temizliği = SİLME değil bayrak + güncel-görünüm (`v_guncel_*`) + tespit-damgalı kuyruk; T-Ç1..6 deterministik çelişki testleri · T-B 4 bayatlık ADAYI · T-A ön-eleme (LLM yalnız kanıt-bulucu); `tools/silver-saglik.py` + kural dosyası; ilk koşum gotcha'ları (eklendi 08-22, İB-42 icrası; Karar 58)
 - [[tarama-yontemleri]] — tarama yöntemi kataloğu PG ↔ SQLite EQP ↔ DuckDB/parquet ↔ rg + seçim kuralı (SEARCH-önce · dokunulan sayfa, yüzde değil · AUTOMATIC INDEX = indeks adayı · LIKE→aralık · ANALYZE hijyeni) + plan-regresyon testi (`tarama-plan.py`) (eklendi 08-22, İB-35; Karar 64)
 
+- [[dil-secimi]] — hangi İŞ SINIFI hangi dilde (hook · CLI/veri hattı · ajan döngüsü · MCP sunucusu · dağıtılabilir ikili · konfig/şema · politika · sandbox) + üç yatay kural (nadir-dil kapısı · iki-yol parite testi · sürüm-pinli kanal) + CUE eşiği; ÖNERİ damgalı, kanon statüsü KB-64 (eklendi 08-26, seans-16 dil-seçimi atlası wf_d8cf4f3a)
 ## Kuyruk (sonraki oturumlar)
 - baglam-anahtar-kaydi — silver-katman anahtar/emeklilik/yayılım/metrik kavramı; kural core/baglam-anahtar-kaydi.md, denetim tools/anahtar-denetim.py; ilk vakalar günaydın/Cowork/uyucam (08-15 seans-3 kapanış hasadı).
 - paralel-oturum-protokolu — vaka-1 (port çakışması 08-12) + vaka-2 (emir üstyazımı 08-15) + vaka-3 (çift-koşum 08-16) birleşik: canlı-oturum kapısı + koşum-önü manifest kapısı kural adayları (kuyruk/gelen-*-paralel-oturum-vaka-*.md); Katman-1 imza sonrası yazılır.

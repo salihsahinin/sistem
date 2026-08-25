@@ -15,4 +15,4 @@
 
 **Süpersede zinciri:** `PARALEL-VARDIYA-ILK-DENEME.md` (07-12 ilk deneme talimatı) → bu sayfa (arıza kayıtlarıyla kural).
 
-**Bağlantılar:** [[ingest-semasi]] · [[pointer-sistemi]] · kaynak vakalar: `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` · `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md` · `kuyruk/gelen-2026-08-16-paralel-oturum-vaka-3.md` (üçü İNGEST EDİLDİ 08-17). · [[silver-saglik]] (karşı-link 08-22)
+**Bağlantılar:** [[ingest-semasi]] · [[pointer-sistemi]] · kaynak vakalar: `kuyruk/gelen-2026-08-12-paralel-oturum-kaynak-cakismasi.md` · `kuyruk/gelen-2026-08-15-paralel-oturum-vaka-2.md` · `kuyruk/gelen-2026-08-16-paralel-oturum-vaka-3.md` (üçü İNGEST EDİLDİ 08-17). · [[silver-saglik]] (karşı-link 08-22) · [[dil-secimi]] (karşı-link 08-26)
