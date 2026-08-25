@@ -1,0 +1,30 @@
+# Pipeline Manifesti — DİL SEÇİMİ: Jarvis sistemi + "Jarvis gibi ürünlerle ekosistem" için hangi durumda hangi dil (Go · CUE-sınıfı · Python · TS · Rust · shell) — 2026-08-26, seans-16 (ARAŞTIRMA → borçlar masaya · borçsuz değişiklikler SHIP)
+
+*Salih emri (08-26 00:0x, seans-16 açılışı, aynen): "jarvis bir sistem ve jarvis gibi ürünlerle bir ekosistem oluşturmak istiyorsam hangi durumlar için sistemde kodları hangi dilde(örneğin go,cue lang'de yazdığı gibi) yazmak en mantıklıdır bunu araştır atlasları koş pipeline kur,araştırma sonucu borçları  karar masasına taşımak üzere borç olmayan değişiklikleri implement et."*
+
+**Okuma (Carvis, varsayım beyanı):** (1) "araştır atlasları koş" = m.40b v0.2 çift-atlas (tez → antitez → V26 → hakem), 3 aile (token −%30 tabanı) · (2) "pipeline kur" = bu manifest (P-1) · (3) "borçları karar masasına taşı" = Katman-1 gerektiren bulgular (yeni dil/araç-zinciri ekleme m.42 · kanon kuralı · hook değişikliği) **ledger'a KB kalemi** (ÖNERİ damgalı, `veri/karar-borcu.jsonl` + `karar-borcu-tablo.py`) · (4) "borç olmayan değişiklikleri implement et" = Katman-2 icra (ölçüm script'i · bronz ölçüm satırı · wiki sayfası · pointer'lar · manifest/rapor/workflow kopyası) — kanon dosyasına (core/, CLAUDE.md, tüzük, KILAVUZ) DOKUNULMAZ; yeni dil/araç KURULMAZ. Yanlışsa tek cümleyle düzelt.
+
+## Çelişki kapısı (m.16) — hüküm: ÇELİŞKİ YOK, ÖNCEKİ HÜKÜM VERİLİ ZEMİN
+- **rapor-2026-07-30-10 §4.6 (07-30, Salih emri "Go mu Rust mı"):** dedektör/hook = Python stdlib · Rust hiçbir sınıfta · **Go'nun tek meşru tetiği = tek-ikili olarak başka makineye dağıtım** (o gün tetik yoktu). Bugünkü soru ("ekosistem", "Jarvis gibi ürünler") TAM O TETİĞİ sorar → önceki hükümle çelişmez, hükmün "tetik çekildi mi" dalını açar. Zemin de değişti: 126 satır → 8.583 satır Python + 2.048 satır JS; Windows → Mac (hook 241,5 → 30,7 ms).
+- **Karar 65 determinizm önceliği · "hazırı temel al" · açık kaynak/Türkçe kaynak · m.42 bağımlılık bedeli · m.30 policy-as-code (regex/liste):** hepsi araştırma değişmezi olarak emre yazıldı; yeni dil eklemek = m.42 + m.16 sınıfı → Salih kararı (masaya).
+- **E-4 (08-24 seans-15, commit'siz):** "Kun Chen gibi ürünler" — bu koşum E-4'ün dil boyutunu besler; E-4'ün kendisi entegrasyon masasında kalır.
+
+## Koşum-önü manifest kapısı (KB-08)
+`cc/pipeline-*.md` 10 dosya + `git log -15` + `rg -il "cue|golang|dil seçimi"` tarandı (00:1x): dil sorusu **1 kez** koştu (`cc/gorev-2026-07-30-10.md` → `cc/rapor-2026-07-30-10.md`, PC/Opus) — kapsamı icra-katmanı (ne koda taşınır + Go/Rust); ekosistem/dağıtım/konfig-dili boyutu YOK → mükerrer değil, VERİLİ zemin işçiye taşındı. Canlı-oturum kapısı: son commit b4be474 (08-24 09:36) → paralel oturum YOK; **commit'siz seans-15 izi var** (E-4 satırı + GBM dersi dosyaları) — bu oturum onlara yazmaz, kapanışta devralınır; `git add <yol>` disiplini.
+
+## Görev tablosu
+| Rol | Şekil | İş | Intake | Teslim | Durum |
+|---|---|---|---|---|---|
+| S-0 | sondaj (Carvis, deterministik) | kod envanteri (dil × dosya × satır) + Mac başlangıç-gecikmesi ölçümü (n=10 medyan) + kurulu araç-zinciri envanteri | `rg --files` · `time`-benzeri Python ölçüm | emir KANONDA bloğu (rakamlar) | DONE 00:1x |
+| S-1 | scout (m.40b çift-atlas, 3 aile × tez→antitez→V26→hakem = 12 işçi) | A SİSTEM ÇEKİRDEĞİ: iş sınıfı × dil (ölçülmüş) + Anthropic/MCP SDK güncel dil desteği + agentic-CLI fiilî dağılım + LLM dil-başına kod-üretim doğruluğu + araç-zinciri/tekrar-üretilebilirlik · B KONFİG/ŞEMA/POLİTİKA/KURAL dilleri: envanter + durum × dil + CUE derin + tek-kullanıcı eşiği · C EKOSİSTEM: axi/MCP protokol + dağıtım kanalı + polyglot/plugin + geçiş-eşiği vakaları + çok-ürün anatomi | `cc/gorev-2026-08-26-1.md` | `cc/rapor-2026-08-26-1.md` (atlas-derle.py mekanik + sentez elle) | SAHADA |
+| G-1 | sentez (Carvis) | iş-sınıfı × dil matrisi (Jarvis bugün + ekosistem ufku) · konfig/şema dili hükmü · dağıtım+protokol kuralı · geçiş-eşiği kuralı · LLM-üretim ekseni · **BORÇ AYRIMI**: KB kalemleri (Katman-1) ↔ borçsuz değişiklikler (Katman-2) | S-1 raporu | rapor §Sentez | — |
+| SH-1 | ship (Katman-2, borçsuz) | sentezin "borçsuz" listesi: aday — `tools/kod-envanter.py` (dil×dosya×satır + başlangıç-gecikmesi ölçümü, bronz satır) · `wiki/dil-secimi.md` (bulgular + kural adayları ÖNERİ damgalı) · SCRIPTLER.md + wiki README satırı · bronz tahmin/koşum/halüsinasyon kayıtları · workflow kopyası `cc/workflow/` | G-1 | commit'ler (`git add <yol>`) | — |
+| SH-2 | masaya (ledger) | KB kalemleri `veri/karar-borcu.jsonl` (ÖNERİ damgalı; açıklama-bloklu seçenekler) + `karar-borcu-tablo.py` koşumu + kapsül/pano pointer | G-1 | ledger satırları + `v_karar_borcu` | — |
+| T | teslim | kaptan beyanı: "dil-seçimi raporu hazır; N KB kalemi masada; borçsuz değişiklikler gömülü" + insan-yüzü rapor (`raporlar/`) + `open -R` | tüm satırlar DONE | tek cümle (aşağıda) | — |
+
+*Paralellik-uygunluk testi: 3 aile bağımsız KANIT toplar (A sistem dili · B konfig dili · C ekosistem/dağıtım — dik; örtüşen tek nokta "LLM dil-başına doğruluk" A4'te sabitlendi, B3/C4 ona atıf yapmaz) → paralel serbest; tez↔antitez m.40b gereği birbirinden habersiz; hakem üretici değil → 12 işçi, barrier yok (pipeline()).*
+
+## Olay günlüğü
+- 00:06 seans-16 açılış ritüeli; kapsül/pano/silver TAZE; koşum-önü kapı + çelişki kapısı (yukarıda).
+- 00:1x S-0 sondaj: 43 py / 8.583 satır (tools/ 27 · 6.675; stdlib-only) · 10 workflow js / 2.048 · 2 bash hook / 68 · 1 ps1 / 22; kurulu DEĞİL go/rust/cue/pkl/nickel/jsonnet/opa/dhall/deno/bun/uv; node v26.7.0 · Python 3.9.6 · sqlite3 3.51.0 · rg 14.1.1. Mac gecikme (n=10 medyan): taban 1,6 ms · bash 2,1 · sqlite3 2,7 · python3 15,4 · python3+stdlib 26,7 · node 23,8 · PreToolUse teli 30,7 · SessionStart 67,7 · kural-sayaci.py 105,5 → derlenmiş ikili tavan kazancı ≈14 ms/çağrı.
+- 00:1x emir `cc/gorev-2026-08-26-1.md` derlendi (gorev-emri-derleme; H=7 TETİK v3a override → m.40b gömülü zincir; deneyim 5 benzer yörünge, PASS 1); Kapı-Ö tetik-denetim: aşağıda.
