@@ -14,4 +14,4 @@
 
 **Süpersede zinciri:** "kör kesişim = en sağlam" (v0.1 dili, 07-17) → yerini aldı: [2026-07-21, m.40b v0.2 — sağlamlık = adversarial-hayatta-kalma; kör-şerit Katman-1 opsiyonuna indi].
 
-**Bağlantılar:** [[token-x-zaman]] (antitez şeridinin bilinçli ×token bedeli) · [[pointer-sistemi]] (ham kanıt taşınır, türetilmiş yargı taşınmaz — m.20 ailesi) · aday: [[rol-katmanlari]] (m.44; üretici≠doğrulayıcı ayrımının örgütsel hali). · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[stokastik-dusunce]] (karşı-link 08-22) · [[uc-register]] (karşı-link 08-22)
+**Bağlantılar:** [[token-x-zaman]] (antitez şeridinin bilinçli ×token bedeli) · [[pointer-sistemi]] (ham kanıt taşınır, türetilmiş yargı taşınmaz — m.20 ailesi) · aday: [[rol-katmanlari]] (m.44; üretici≠doğrulayıcı ayrımının örgütsel hali). · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[stokastik-dusunce]] (karşı-link 08-22) · [[uc-register]] (karşı-link 08-22) · [[anakronizm-freni]] (karşı-link 08-26)

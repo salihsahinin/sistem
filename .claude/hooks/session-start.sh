@@ -3,6 +3,7 @@
 # Tarihçe: kurulum 2026-07-19 (Dilim 1: kapsül ilk 40 satır + yetki bandı, 11 KB); rev 08-16/08-17 yetki bandı GK-2.
 # Neden indi: harness yalnız ~2 KB önizlemeyi bağlama koyar (25,8 KB → 2 KB; KB-51) → tam kapsül BURADA DEĞİL, elle okunur (CLAUDE.md §3).
 # İB-27 (KB-54 (a) Karar 62): silver tazelik — uretim.git_head_sha ≠ HEAD → "BAYAT" + katman-hatti tarifi (otomasyon: tespit; koşum ritüelde).
+# Karar 68 (08-26): ZAMAN-ZEMİNİ satırı — bugün (sistem saati) + model kesim tablosu; anakronizm freni.
 # Çıktı sert-kapılı: head -c 2000. Her satır tek bakışta; deterministik (yalnız disk + git).
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
@@ -15,6 +16,15 @@ def sh(c):
     except Exception: return "?"
 head = sh("git rev-parse --short HEAD"); when = sh("git log -1 --format=%ci")[:16]
 print("HEAD: %s (%s) · %s" % (head, when, sh("git status -sb | head -1 | sed 's/## //'")))
+try:  # Karar 68 (08-26) anakronizm freni: BUGÜN sistem saatinden + model kesim tablosu (veri/model-kesim.jsonl, satıcı tablosu V26'lı) — model hafızası ≠ bugün
+    import json, datetime
+    ks = {}
+    for l in open("veri/model-kesim.jsonl", encoding="utf-8"):
+        d = json.loads(l)
+        if d["kesim_turu"] == "reliable": ks[d["model_ad"].replace("Claude ", "")] = d["kesim_tarihi"]
+    print("ZAMAN-ZEMİNİ (Karar 68): BUGÜN %s · kesim(reliable) %s · zaman-bağımlı iddia AS-OF damgasız ÇIKMAZ; model-hafızası = 'AS-OF ≤ kesim, doğrulanmadı' → canlı çek (tools/anakronizm-denetim.py)" % (datetime.date.today().isoformat(), " · ".join("%s %s" % kv for kv in ks.items())))
+except Exception as e:
+    print("ZAMAN-ZEMİNİ: kesim tablosu okunamadı (%s) — veri/model-kesim.jsonl" % e)
 try:
     c = sqlite3.connect("file:veri/baglam.sqlite?mode=ro", uri=True)
     u = c.execute("SELECT git_head_sha, uretim_zamani FROM uretim ORDER BY uretim_zamani DESC LIMIT 1").fetchone()
@@ -34,7 +44,7 @@ except Exception as e:
 try:
     t = open("core/durum-kapsulu.md", encoding="utf-8").read()
     m = re.search(r"## Sonraki ilk iş\s*\n(.*?)\n", t, re.S)
-    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:400])
+    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:260])
     g = re.search(r"\*\*Güncelleme:\*\*\s*(.{0,150})", t)
     if g: print("KAPSÜL: " + re.sub(r"[*`]", "", g.group(1)))
 except Exception: pass

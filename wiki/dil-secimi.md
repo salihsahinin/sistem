@@ -48,3 +48,5 @@
 
 ## Bağlantılar
 [[tarama-yontemleri]] (ölçüm-önce seçim kuralı aynı desen) · [[silver-saglik]] · [[paralel-oturum-protokolu]] · [[no-mistakes]] · [[stokastik-dusunce]] (deterministik tasarım ilkesi, Karar 65) · [[ai2ai-rapor-formati]] · [[olcum-banki]] (yerel eşik kalibrasyonu) · [[pointer-sistemi]]
+
+**Bağlantılar:** · [[anakronizm-freni]] (karşı-link 08-26)

@@ -23,6 +23,6 @@
 
 **Süpersede zinciri:** — (ilk sürüm 2026-08-16). Önceki adlandırma: "bağlam→veri tablosu v0/V-1" (`veri/README.md`) = bağlam VERİTABANI (operasyonel); bu sayfa AMBAR katmanını ayırır, V-1'i süpersede etmez.
 
-**[[link]]'ler:** [[pointer-sistemi]] · [[olcum-banki]] · [[ingest-semasi]] · [[uc-register]] · [[silver-saglik]] (silver temizliği: bayrak + v_guncel_* + kuyruk, 08-22) · (kuyruk: veri-tablosu, baglam-anahtar-kaydi) · [[kokenler-karpathy-llm-wiki]] (karşı-link 08-22) · [[tarama-yontemleri]] (karşı-link 08-22)
+**[[link]]'ler:** [[pointer-sistemi]] · [[olcum-banki]] · [[ingest-semasi]] · [[uc-register]] · [[silver-saglik]] (silver temizliği: bayrak + v_guncel_* + kuyruk, 08-22) · (kuyruk: veri-tablosu, baglam-anahtar-kaydi) · [[kokenler-karpathy-llm-wiki]] (karşı-link 08-22) · [[tarama-yontemleri]] (karşı-link 08-22) · [[anakronizm-freni]] (karşı-link 08-26)
 
 **Hafıza mimarisi hedefi (Salih 2026-08-17, Katman-1 beyanı):** Jarvis'te hafıza tek yöntem değil, LLM-hafıza yöntemlerinin optimize bileşimi: LLM-wiki (`wiki/`) + veri tekniği (bu DB): ilişkisel silver tablolar · anahtar-değer (`core/baglam-anahtar-kaydi.md`) · özet belleği (`core/durum-kapsulu.md`) · çalışma belleği (CLAUDE.md + SessionStart enjeksiyonu) · graf (`referans` tablosu, `v_referans_sayim`, Obsidian [[link]]). Vektör DB bilinçli ertelendi (grep+SQLite'ı geçmeyen katman eklenmez; ölçüm tetikli). Kayıt: defter 08-17 Beyan 9.
