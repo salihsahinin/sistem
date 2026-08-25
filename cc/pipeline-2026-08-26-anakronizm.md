@@ -13,7 +13,7 @@ Zaman-kayması freni (seans-acilis §0, 08-15) · silver tazelik kapısı (Karar
 ## Görev tablosu
 | Rol | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-0 | scout (tek Sonnet, atlas tipi, ≤10 erişim) | Multi-SWE-bench · SWE-bench Multilingual · Aider polyglot liderlik tablolarında GÜNCEL (2026) model satırları; Go/TS/Python(+Java/Rust) için 2025-04 Tablo-4'e oran; as-of + URL; bulunamadı meşru | prompt (manifestte özet) | `cc/rapor-2026-08-26-3.md` (ajan dönüşü + Carvis notu) | SAHADA |
+| S-0 | scout (tek Sonnet, atlas tipi, ≤10 erişim) | Multi-SWE-bench · SWE-bench Multilingual · Aider polyglot liderlik tablolarında GÜNCEL (2026) model satırları; Go/TS/Python(+Java/Rust) için 2025-04 Tablo-4'e oran; as-of + URL; bulunamadı meşru | prompt (manifestte özet) | `cc/rapor-2026-08-26-3.md` (ajan dönüşü + Carvis notu) | DONE 01:3x |
 | S-1 | scout (m.40b 3 aile × 4 = 12 işçi) | A LLM zamansal zemin · B veri/kayıt katmanı (bitemporal/as-of/TTL) · C ajan/işletim pratiği (damga · doğrula-önce · lint · hazır araç) | `cc/gorev-2026-08-26-2.md` | `cc/rapor-2026-08-26-2.md` | SAHADA |
 | G-1 | sentez (Carvis) | anakronizm taksonomisi × Jarvis vakası · tazelik-sınıfı kuralı · damga kuralı (rapor + CHAT) · kayıt şeması · deterministik denetim · borç ayrımı | S-0 + S-1 | rapor §Sentez | — |
 | SH-1 | ship (Katman-2 artılar) | aday: `tools/anakronizm-denetim.py` (tarihsiz sürüm/sayı/"güncel" kalıpları lint + bayatlık testi) · damga şablonu · wiki sayfası · skill/emir şablonlarına as-of alanı · kod-envanter'e kesim-tarihi satırı · kayıtlar | G-1 | commit'ler | — |
@@ -23,3 +23,4 @@ Zaman-kayması freni (seans-acilis §0, 08-15) · silver tazelik kapısı (Karar
 ## Olay günlüğü
 - 01:1x Salih beyanı → defter **Karar 68** (aynen kayıt). Çelişki kapısı + manifest kapısı (yukarıda). Emir `cc/gorev-2026-08-26-2.md` derlendi (H=7 TETİK; Kapı-Ö aşağıda).
 - 01:2x Kapı-Ö GEÇTİ (0 çağrı); açılış commit'i 4df7014. S-0 tek Sonnet atlas ajanı salındı (≤10 erişim). S-1 KOŞUM BAŞLADI: Workflow **wf_9030bba4-c00** (kopya `cc/workflow/2026-08-26-anakronizm-freni-m40b-wf_9030bba4.js`); 9 KB-02 tahmin satırı bronz'a (kaynak: wf_d8cf4f3a gerçekleşmeleri — önceki tahmin bandı 150-220k'nın altında kaldığı için bant DÜŞÜRÜLDÜ: tez 1-15k · antitez 2-18k · V26 0,05-1k).
+- 01:3x S-0 TAMAM (10 erişim, 40k token, 2,4 dk): dil-başına güncel ölçüm BULUNAMADI (arXiv tek sürüm v1 2025-04-03 ✓; resmî leaderboard data.json 2024 SWE-bench Lite verisi — bayat/yanlış; swebench.com JS-render); Aider tepe gpt-5 high %88,0 (2025-08-23; sayfa 'last updated 2025-11-20' → leaderboard ~9 ay bayat) — Carvis V26 2/2 TUTUYOR. Anakronizm vakası #4: ajan 'Claude Mythos Preview bilinen ad değil' dedi (kendi kesimi). Rapor `cc/rapor-2026-08-26-3.md`.
