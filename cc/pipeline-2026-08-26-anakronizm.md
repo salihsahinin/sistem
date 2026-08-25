@@ -22,3 +22,4 @@ Zaman-kayması freni (seans-acilis §0, 08-15) · silver tazelik kapısı (Karar
 
 ## Olay günlüğü
 - 01:1x Salih beyanı → defter **Karar 68** (aynen kayıt). Çelişki kapısı + manifest kapısı (yukarıda). Emir `cc/gorev-2026-08-26-2.md` derlendi (H=7 TETİK; Kapı-Ö aşağıda).
+- 01:2x Kapı-Ö GEÇTİ (0 çağrı); açılış commit'i 4df7014. S-0 tek Sonnet atlas ajanı salındı (≤10 erişim). S-1 KOŞUM BAŞLADI: Workflow **wf_9030bba4-c00** (kopya `cc/workflow/2026-08-26-anakronizm-freni-m40b-wf_9030bba4.js`); 9 KB-02 tahmin satırı bronz'a (kaynak: wf_d8cf4f3a gerçekleşmeleri — önceki tahmin bandı 150-220k'nın altında kaldığı için bant DÜŞÜRÜLDÜ: tez 1-15k · antitez 2-18k · V26 0,05-1k).
