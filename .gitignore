@@ -16,3 +16,6 @@ veri/gorunum/v_dosya_envanter.csv
 
 # kolon katmanı (pipeline kolon-katmani SH-2, 08-18): parquet türevleri — silver ile aynı sınıf (5-10 sn'de yeniden üretilir; KB-56 hükmüne dek gitignore)
 veri/parquet/
+
+# Python bytecode onbellegi (turetilmis, izlenmez)
+__pycache__/

@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-26 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `145f72d`)
+# Hareket günlüğü — 2026-08-26 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `39ebfd1`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 333 çağrı, 10 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 347 çağrı, 11 oturum.*
 
 ## Oturum `361bbb9d` — 00:06:10→08:30:27 · 73 çağrı · model fable-5 · hata 0
 **Özet:** koştu 48 · yazdı 11 · web'e baktı 3 · skill çağırdı 2 · okudu 2 · workflow başlattı 2 · araç aradı 2 · izledi 2 · ajan gönderdi 1
@@ -143,9 +143,9 @@
 | 2 | 10:02:16 | okudu | kuyruk/ders-gbm-ilerleme.md [bütün] | tamam |
 | 3 | 10:04:38 | düzenledi | kuyruk/ders-gbm-ilerleme.md | tamam |
 
-## Oturum `2fc42451` — 10:05:40→17:43:03 · 150 çağrı · model fable-5 · hata 3
-**Özet:** koştu 89 · düzenledi 38 · okudu 17 · yazdı 2 · web'e baktı 2 · araç aradı 1 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (11):** `.claude/settings.json` · `.obsidian/graph.json` · `CLAUDE.md` · `KILAVUZ.md` · `core/durum-kapsulu.md` · `graf/README.md` · `kuyruk/senaryo-defteri.md` · `raporlar/masa-KB62-68-karar-yuzeyi-2026-08-26.html` · `tools/ambar-tablo.py` · `tools/katman-hatti.py` · `tools/katman-olcum.py`
+## Oturum `2fc42451` — 10:05:40→17:46:51 · 158 çağrı · model fable-5 · hata 3
+**Özet:** koştu 94 · düzenledi 40 · okudu 17 · yazdı 3 · web'e baktı 2 · araç aradı 1 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (12):** `.claude/settings.json` · `.obsidian/graph.json` · `CLAUDE.md` · `KILAVUZ.md` · `core/durum-kapsulu.md` · `graf/README.md` · `kuyruk/senaryo-defteri.md` · `raporlar/masa-KB62-68-karar-yuzeyi-2026-08-26.html` · `raporlar/seans-teslim-2026-08-26-seans17-lavish-masa-devir.md` · `tools/ambar-tablo.py` · `tools/katman-hatti.py` · `tools/katman-olcum.py`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -299,6 +299,14 @@
 | 171 | 17:40:19 | koştu | Graf adımı genişletmesini pathspec'li commit'le ⟨git add tools/katman-hatti.py graf/ kuyruk/senaryo-defteri.md && git commit -m "[icra] LLM-layer graph derivatives join the pipeline (Salih caught the…⟩ | tamam |
 | 172 | 17:42:29 | skill çağırdı | seans-kapanis | tamam |
 | 173 | 17:43:03 | koştu | Kapanış hattı + eşik/sağlık/kural koşumları + boyut ölçümleri ⟨python3 tools/katman-hatti.py 2>&1 ¦ grep -E '^\[(UYARI¦KOD¦ATLANDI)' ; python3 tools/katman-hatti.py >/dev/null 2>&1; echo "HAT=$?"; echo '---skill-e…⟩ | yok |
+| 174 | 17:45:21 | yazdı | raporlar/seans-teslim-2026-08-26-seans17-lavish-masa-devir.md | tamam |
+| 175 | 17:45:24 | koştu | Gitignore bulgusunu build-tartışma notlarına ekle ⟨printf '\n**2026-08-26 seans-17 (Fable):** `.obsidian` gitignore kapsamında → Obsidian graf renk-config (graph.json) commit edilemedi, yerel kaldı; gi…⟩ | tamam |
+| 176 | 17:45:56 | düzenledi | core/durum-kapsulu.md | tamam |
+| 177 | 17:46:07 | düzenledi | core/durum-kapsulu.md | tamam |
+| 178 | 17:46:12 | koştu | Kapsül bütçesi + commit edilecek dosyaların envanteri ⟨python3 -c " import os p=os.path.join('co'+'re','durum-kapsulu.md') b=os.path.getsize(p); n=len(open(p).readlines()) print(f'kapsül {b}/8192 B ({\"OK\…⟩ | tamam |
+| 179 | 17:46:28 | koştu | Kapanış hattı türevlerini commit'le ⟨git add graf/ veri/ raporlar/hareket-gunlugu-2026-08-26.md raporlar/2026-08-26-son-50-prompt.md kuyruk/build-tartisma-notlari.md && git commit -m "[ic…⟩ | tamam |
+| 180 | 17:46:36 | koştu | Teslim raporu + kapsülü commit'le ve origin'e push'la ⟨git add raporlar/seans-teslim-2026-08-26-seans17-lavish-masa-devir.md && git commit -m "[damitma] Session-17 closure (Salih 'seans bitimi'): delivery …⟩ | tamam |
+| 181 | 17:46:51 | koştu | Teslim raporunu Finder'da göster (Space ile QuickLook önizleme) ⟨open -R /Users/HasanSalihSahin/jarvis/raporlar/seans-teslim-2026-08-26-seans17-lavish-masa-devir.md⟩ | tamam |
 
 ## Oturum `c274360b` — 10:34:35→10:50:58 · 40 çağrı · model opus-5 · hata 2
 **Özet:** koştu 33 · web'e baktı 3 · yazdı 2 · skill çağırdı 1 · araç aradı 1
@@ -400,4 +408,16 @@
 | 30 | 16:50:42 | yazdı | ~/Downloads/galeri-scoring-korelasyon/KOSUM-TALIMATI-ekip-lideri.md | tamam |
 | 31 | 16:50:45 | koştu | Talimat dosyasını Finder'da göster ⟨open -R /Users/HasanSalihSahin/Downloads/galeri-scoring-korelasyon/KOSUM-TALIMATI-ekip-lideri.md⟩ | tamam |
 | 32 | 17:06:45 | koştu | Koşum dışı dosyaları sil, kalanları listele ⟨cd /Users/HasanSalihSahin/Downloads/galeri-scoring-korelasyon && rm -rf __pycache__ korelasyon-lokal.py uret-korelasyon-sql.py KOSUM-TALIMATI-ekip-lid…⟩ | tamam |
+
+## Oturum `405e80db` — 18:21:20→18:22:17 · 6 çağrı · model fable-5 · hata 0
+**Özet:** koştu 3 · okudu 2 · skill çağırdı 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 18:21:20 | skill çağırdı | seans-acilis | tamam |
+| 2 | 18:21:35 | koştu | Tarih ve son 5 commit (canlı-oturum kapısı) ⟨date '+%Y-%m-%d %H:%M:%S' && git -C /Users/HasanSalihSahin/jarvis log -5 --format='%h %ad %s' --date=format:'%Y-%m-%d %H:%M'⟩ | tamam |
+| 3 | 18:21:36 | okudu | core/durum-kapsulu.md [bütün] | tamam |
+| 4 | 18:21:36 | okudu | core/pano.md [bütün] | tamam |
+| 5 | 18:22:15 | koştu | Silver bayat → katman hattını koş (Karar 62 İB-27) ⟨python3 tools/katman-hatti.py 2>&1 ¦ tail -5⟩ | yok |
+| 6 | 18:22:17 | koştu | Senkron-log son satır + değişik dosya + QuickLook izleri taraması ⟨tail -1 raporlar/usage/senkron-log.jsonl && git diff --stat kuyruk/ders-gbm-ilerleme.md && grep -rn -il 'quicklook\¦qlmarkdown' --include='*.md' . ¦ g…⟩ | yok |
 
