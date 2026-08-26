@@ -2,7 +2,10 @@
   "permissions": {
     "deny": [],
     "ask": [
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(screencapture:*)",
+      "Bash(rec:*)",
+      "Bash(sox:*)"
     ]
   },
   "hooks": {
