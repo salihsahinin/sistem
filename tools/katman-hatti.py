@@ -40,10 +40,11 @@ ADIMLAR = [
     ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
     ("saglik", ["tools/silver-saglik.py", "--sessiz"]),  # silver-sağlık: bayrak + güncel görünüm + kuyruk (Karar 58 / İB-42; uyarı modu — kapı yalnız --kapi ile seans-kapanis/damitma)
     ("erisim", ["tools/erisim-fts.py", "--insa", "--eval", "--sessiz"]),  # erişim katmanı: FTS5 indeks + İB-20 eval (KB-43 a / Karar 60; saglik SONRASI — gecerlilik bayrağı)
+    ("graf", ["tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "2"]),  # pointer-graf türetimi (İB-48 3/3, Karar 67 G1; README graf/ satır 55 deseni; uyarı kanalı)
     ("anakronizm", ["tools/anakronizm-denetim.py", "--sessiz"]),  # anakronizm lint (KB-67 a / Karar 69): UYARI kanalı; İHLAL=çıkış 3 hattı DÜŞÜRMEZ, sayılır — kapı sertleşmesi iterasyonla, Salih masası
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
-UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
+UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm", "graf"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
 UYARI_KODLARI = {"anakronizm": {3}}  # KB-67 a: bu kodlar 'UYARI' etiketi alır, hat düşmez (İHLAL sayılır-raporlanır; pre-commit yok)
 # Opsiyonel kolon katmanı (pipeline kolon-katmani SH-1/SH-2; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan kapalı)
 PARQUET_ADIMLAR = [
