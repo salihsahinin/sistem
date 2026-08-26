@@ -40,7 +40,10 @@ ADIMLAR = [
     ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
     ("saglik", ["tools/silver-saglik.py", "--sessiz"]),  # silver-sağlık: bayrak + güncel görünüm + kuyruk (Karar 58 / İB-42; uyarı modu — kapı yalnız --kapi ile seans-kapanis/damitma)
     ("erisim", ["tools/erisim-fts.py", "--insa", "--eval", "--sessiz"]),  # erişim katmanı: FTS5 indeks + İB-20 eval (KB-43 a / Karar 60; saglik SONRASI — gecerlilik bayrağı)
-    ("graf", ["tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "2"]),  # pointer-graf türetimi (İB-48 3/3, Karar 67 G1; README graf/ satır 55 deseni; uyarı kanalı)
+    ("graf", ["tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "2",
+              "--d2", "graf/pointer-sistemi-v0-tam.d2", "--kenar-listesi", "graf/pointer-sistemi-v0-kenarlar.txt"]),
+    # ↑ pointer-graf türetimi (İB-48 3/3, Karar 67 G1; uyarı kanalı). --d2/--kenar-listesi = LLM/makine katmanı METİN türevleri
+    #   (tam.d2 + kenarlar.txt) her koşumda tazelenir; tam.svg render'ı HATTA GİRMEZ (dev arşiv panosu; elle: d2 --layout=elk)
     ("anakronizm", ["tools/anakronizm-denetim.py", "--sessiz"]),  # anakronizm lint (KB-67 a / Karar 69): UYARI kanalı; İHLAL=çıkış 3 hattı DÜŞÜRMEZ, sayılır — kapı sertleşmesi iterasyonla, Salih masası
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
