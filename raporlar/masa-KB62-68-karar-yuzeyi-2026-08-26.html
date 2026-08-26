@@ -35,7 +35,7 @@
     </div>
   </header>
 
-  <div class="alert alert-success text-sm"><span><strong>5/7 hüküm KAYITLI — Karar 69 (10:2x):</strong> KB-62 a · KB-63 a (şerhli) · KB-64 a · KB-65 b · KB-66 a (notundan İB-51 açıldı). KB-62 + KB-64 icrası TAMAM. <strong>AÇIK: KB-67 · KB-68</strong> — hükümlerini aşağıdan işaretleyip gönderebilirsin.</span></div>
+  <div class="alert alert-success text-sm"><span><strong>MASA 7/7 TAMAM — Karar 69 + EK (10:4x):</strong> KB-62 a (icra ✓) · KB-63 a (şerhli) · KB-64 a (icra ✓) · KB-65 b · KB-66 a (İB-51 açıldı; CLAUDE.md satır seçimin bekliyor) · KB-67 a (icra ✓ — hatta UYARI adımı) · KB-68 a (İB-52 açıldı). Masa kapatılabilir — istersen <em>Send &amp; End</em>.</span></div>
 
   <!-- BÖLÜM 1: DİL SEÇİMİ -->
   <h2 class="text-xl font-bold px-1">1 · Dil seçimi (atlas 8/22/0/0 — wf_d8cf4f3a)</h2>
@@ -225,7 +225,7 @@
   <!-- KB-67 -->
   <section class="card bg-base-100 shadow-md" data-lavish-question="KB-67">
     <div class="card-body space-y-3">
-      <h3 class="card-title">KB-67 · Lint rejimi</h3>
+      <h3 class="card-title">KB-67 · Lint rejimi <span class="badge badge-success">✓ KAYITLI: a — hatta UYARI adımı eklendi; sertleşme iterasyonla</span></h3>
       <p class="text-sm"><strong>Ne demek:</strong> <code>anakronizm-denetim.py</code> taban ölçümü: 201 dosyada 114 İHLAL / 319 UYARI (kalibre edilmiş; ilk kalıp seti 1.665 yanlış-pozitiften indirildi).</p>
       <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb67'); if(!c){return;} const n=f.get('not67')||''; window.lavish.queuePrompt('KB-67 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-67: '+c, element:event.currentTarget, queueKey:'KB-67', data:{karar:'KB-67', hukum:c, not:n}});">
         <div class="space-y-2">
@@ -258,7 +258,7 @@
   <!-- KB-68 -->
   <section class="card bg-base-100 shadow-md" data-lavish-question="KB-68">
     <div class="card-body space-y-3">
-      <h3 class="card-title">KB-68 · Bayatlık kuyruğu politikası</h3>
+      <h3 class="card-title">KB-68 · Bayatlık kuyruğu politikası <span class="badge badge-success">✓ KAYITLI: a — İB-52 açıldı (İB-50 ile birleşik tur)</span></h3>
       <p class="text-sm"><strong>Ne demek:</strong> AS-OF damgası eskiyen kayıtlar <code>v_bayat_aday</code> kuyruğuna düşer; eşik + boşaltma temposu + silver kolonu kararı. Emsal uyarısı: Wikipedia 2010 kategorisinde bugün hâlâ 3.126 açık sayfa — boşaltmasız damga = borç.</p>
       <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb68'); if(!c){return;} const n=f.get('not68')||''; window.lavish.queuePrompt('KB-68 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-68: '+c, element:event.currentTarget, queueKey:'KB-68', data:{karar:'KB-68', hukum:c, not:n}});">
         <div class="space-y-2">
