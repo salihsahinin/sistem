@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-08-26,08:25,361bbb9d,8,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,1869c69a-49be-4788-9de2-4bb807f09a3e
-2,2026-08-26,08:19,361bbb9d,7,diger,,claude-fable-5,53,çok kaynaklı kısıt birleştirme için örnek senaryo ver,6f6619b8-cc3a-40e7-b58b-f53cb24e3d1f
-3,2026-08-26,08:17,361bbb9d,6,onay/devam,,claude-fable-5,27,sonuç olark python devam mı,9e7d7074-e8af-4696-b14b-37b93afd8a26
-4,2026-08-26,00:56,361bbb9d,5,emir,,claude-fable-5,146,1 yap ve bundan sonra sistemde anakronizm yapmayı yasaklıyorum bunu önleyecek şekilde nasıl yapacağını araştır atlasları koş artıları implem,29d12925-227b-4a04-bf99-328b3441800b
-5,2026-08-26,00:54,361bbb9d,4,soru,,claude-fable-5,83,yeni modellerin o modellere göre hangi oranlarda ne kadar geliştiğini biliyor musun,119926cc-2f3a-4b3c-8872-eb99d617fd57
-6,2026-08-26,00:53,361bbb9d,3,diger,,claude-fable-5,29,llm doğruluğu neye göre düşük,1bf5153f-cfcf-4484-97ee-a1be7fd77435
-7,2026-08-26,00:51,361bbb9d,2,diger,,claude-fable-5,77,şu an sonuç olarak sen nerelerde go yazacan veya onu karar masasına taşıyacan,b92fe9eb-dd71-403c-be99-b3c38ede1183
-8,2026-08-26,00:35,aee0f67e,2,diger,,claude-sonnet-5,39,burda tez içeriklerini okumak istiyorum,628bc613-b833-44b5-bb9b-140f704bcccc
-9,2026-08-26,00:32,aee0f67e,1,soru,,claude-sonnet-5,48,bunu nasıl açıyoduk chatleri kısayol tuşu olarak,4eada31e-f33a-46aa-8c3b-ecec928c8099
-10,2026-08-26,00:06,361bbb9d,1,seans-acilis,seans-acilis,claude-fable-5,335,"seans başı,jarvis bir sistem ve jarvis gibi ürünlerle bir ekosistem oluşturmak istiyorsam hangi durumlar için sistemde kodları hangi dilde(ö",fa69aff3-bd17-4528-b402-06a36dd74ae9
-11,2026-08-25,18:20,1801d9ae,7,emir,,claude-sonnet-5,478,"hayır onu demiyorum az önce anlattığım logaritmik clustering kullanarak bunlar üzerinde dönüşüm yapamıyor musun "" x = log1p(km) dönüşümü uyg",70b5b50c-5d7b-4443-8913-883ddb0487de
-12,2026-08-25,18:17,1801d9ae,6,diger,,claude-sonnet-5,533,"``` km_segment ""(154350.0, 206116.0]"" ""(206116.0, 263400.0]"" ""(-0.001, 53525.0]"" ""(263400.0, 343526.0]"" ""(104303.0, 154350.0]"" ""(53525.0, 10",80003b24-7aa3-4bc7-a107-9edf2129ca8d
-13,2026-08-25,18:14,1801d9ae,5,diger,,claude-sonnet-5,462,"``` km_segment ""(0, 30000]"" ""(30000, 53525]"" ""(53525, 104303]"" ""(104303, 154350]"" ""(154350, 206116]"" ""(206116, 263400]"" ""(263400, 343526]"" """,be40e6d8-8945-4cfd-8fca-51d975570aaf
-14,2026-08-25,18:07,1801d9ae,4,diger,,claude-sonnet-5,254,"sana hesaplanmış segmentleri verdim işte price_segment ""(131999.999, 722500.0]"" ""(722500.0, 1077000.0]"" ""(1077000.0, 1461500.0]"" ""(1461500.0",e4843167-6d78-467e-bb59-36656f2812ce
-15,2026-08-25,18:02,1801d9ae,3,diger,,claude-sonnet-5,178,"``` km_segment ""(0, 30000]"" ""(30000, 53525]"" ""(53525, 104303]"" ""(104303, 154350]"" ""(154350, 206116]"" ""(206116, 263400]"" ""(263400, 343526]"" """,2f156b17-4a4c-439b-bfd2-d5ecd5e15e3d
-16,2026-08-25,17:59,1801d9ae,2,diger,,claude-sonnet-5,174,clustering algoritması kullanarak range'leri belirleyeceğiz ama km arttıkça bulunduğu segmentin range'i geniş olmalı mantıken çünkü km 0'a y,a9671167-07c9-4ec7-9e86-14f5d83d5e4e
-17,2026-08-25,17:56,1801d9ae,1,soru,,claude-sonnet-5,268,"araçları kilometresine göre segmentlere ayırmak istiyoruz sahibinden datasından 0-50k km,50-100k km gibi.range'leri hesaplamak için hangi cl",8ab83d12-81bb-450c-bdd8-6c8e83697018
-18,2026-08-25,17:32,8e6b8222,11,onay/devam,,claude-sonnet-5,31,"evet devam et, zayıf yanı anlat",fe880288-0215-458a-983b-ef4970a8dca2
-19,2026-08-25,17:29,8e6b8222,10,diger,,claude-sonnet-5,49,"evet devam et, hız/bellek karşılaştırmasını anlat",7a76d110-176d-4748-9a0a-26ddd4a658f2
-20,2026-08-25,17:24,8e6b8222,9,emir,,claude-sonnet-5,80,tamam da bana ankara-istanbul iki şehir için iki iterasyon adımını ağaçta göster,7d9ffd24-f500-4194-a25e-d7f6001f0b04
-21,2026-08-25,17:21,8e6b8222,8,soru,,claude-sonnet-5,98,"şehir_encoded değeri bizim için ne anlama geliyor,cat_boost için örnek bir ağaç senaryosunda anlat",f171f0a4-6d09-4a97-9072-d2ccb77c00b6
-22,2026-08-25,17:15,8e6b8222,7,diger,,claude-sonnet-5,22,catboost için de anlat,82cc58cd-ae6a-44a6-8c30-18d093584a37
-23,2026-08-25,17:12,8e6b8222,6,soru,,claude-sonnet-5,172,"-kategorik sütun ne demek örnek ver -one-hot encoding,label encoding,target encoding nedir açıkla örnek ver -xgboost için kategorik değişken",d00118bd-24e7-4321-a469-247978f11573
-24,2026-08-25,17:08,8e6b8222,5,diger,,claude-sonnet-5,43,"devam et, kategorik değişken işlemeyi anlat",1d12816c-9154-4913-b632-14c4cfe64eb5
-25,2026-08-25,17:07,8e6b8222,4,emir,,claude-sonnet-5,32,örnek bir oblivious tree oluştur,382656af-2532-4405-a09e-694d90c1a985
-26,2026-08-25,17:05,8e6b8222,3,soru,,claude-sonnet-5,75,oblivious tree'de farkı en son seviye çıkarıyorsa orada örneğin ne yer alır,31e3206e-a56c-439a-bdb9-977e8a89e8c1
-27,2026-08-25,17:00,8e6b8222,2,diger,,claude-sonnet-5,54,sırayla her bir sütun için farkları açıkla her cevapta,887fe4bc-eb81-4a40-92a8-543bd7ba7682
-28,2026-08-25,16:59,8e6b8222,1,diger,,claude-sonnet-5,66,lightgbm xgboost catboost hap bilgi formatında farklarından bahset,9bad3082-6dcc-40c6-8882-d5cb45fab56f
-29,2026-08-25,16:56,563ea60e,26,diger,,claude-sonnet-5,1,x,daf330fc-b99e-4201-8a6f-353830d08a57
-30,2026-08-25,16:47,563ea60e,25,soru,,claude-sonnet-5,117,"-hangi trim için galerinin alıp almayacağını soramazdık -anchor günü ne bilmiyorum,evet bence ama nedenini bilmiyorum",3e38c454-87a4-4b58-acd4-fd6e71aac581
-31,2026-08-25,16:42,563ea60e,24,diger,,claude-fable-5,106,"-türev biliyorum,ortalama biliyorum,varyansı unuttum -hiç model eğitmedim -p1 başlayalım ama hızlı geçerek",0ee596c4-02e1-4676-95ee-c97831f3e579
-32,2026-08-25,16:39,563ea60e,23,soru,,claude-fable-5,207,bu html özet niteliğinde olmuş biraz şimdi öğrenme sürecini küçük kronolojik partisyonlara ayır bir konudan başlayalım bu sefer 0'dan daha y,81cd840a-c73d-4c77-b008-342e3ea09049
-33,2026-08-25,15:07,563ea60e,22,soru,,claude-fable-5,3619,"Draw as the engineer who has to live with the decision, not as a decorator: a diagram earns its place when it lets a cold reader see a mecha",acc06d39-0cf2-42d3-8e6d-cbf9d95de8b5
-34,2026-08-25,14:50,563ea60e,21,diger,"dataviz,artifact-diagramming",claude-fable-5,187,"biz featureları weightler vererek hesap yapmak istemiyoruz.xg boost,cat boost ya da light gbm gibi modellerle forecasting yapmayı planlıyoru",909c5867-01fd-4d39-be9f-adbf2f57372c
-35,2026-08-25,14:14,563ea60e,20,soru,,claude-fable-5,3159,-w_butce=w_karsilanabilirlik=w_fiyat yani benzer şeyleri ölçüyor -başlangıçta featureları daha hedef doğrultusunda tasarlamalıyız çünkü bu m,73b607b3-6ae5-4f82-99fd-30c274a80ad6
-36,2026-08-25,13:56,563ea60e,19,soru,,claude-fable-5,809,"-burada tespit ettiğim bulgu şu:p_devir,p_butce,p_bosluk paralel ilerleyen feature'lar(biri artınca diğeri de artıyor).hepsinin sahibinden b",2031fbb0-5ecf-410b-bd5c-53c5256f8b58
-37,2026-08-25,13:49,563ea60e,18,diger,,claude-sonnet-5,21,nihai tablosunu anlat,56ccffbf-9899-4b01-b50b-003e06acffe3
-38,2026-08-25,12:31,563ea60e,17,soru,,claude-sonnet-5,212,-p_rekabet ve p_tazelik için ayrı sabit önerisi getir -bir de mesela p_rekabet nasıl ölçülüyor yani bir galeri için daha fazla veri ile ölçt,e1b947ff-0d6d-4a8e-9fc8-0c4b6420be72
-39,2026-08-25,12:18,563ea60e,16,soru,,claude-sonnet-5,161,"0.50 skor dağılımda her zaman ortalama grupta mı bulunuyor,çoğunluk 0.5'in altındayken null olan bir değere 0.5 vermek onu ön sırada varsaym",80e1d82b-1869-4638-ba22-d4092dd3b921
-40,2026-08-25,12:10,563ea60e,15,soru,,claude-sonnet-5,792,""" -- Grup alt skorlari. Olculemeyen bilesen notr_dolgu sayilir, paydada -- ise HER ZAMAN grubun tam agirligi durur -- bu ikisi birlikte, sko",05d7fc5b-e16f-4b68-b44d-a7450224aeae
-41,2026-08-25,12:09,563ea60e,14,soru,,claude-sonnet-5,31,y.* yerine y deseydik ne olurdu,dba74acf-c005-484b-b879-da51a6ee6ba3
-42,2026-08-25,12:07,563ea60e,13,soru,,claude-fable-5,21,y.* ne anlama geliyor,9bada09e-ce60-4621-870b-4734cb7b8ba9
-43,2026-08-25,12:01,563ea60e,12,diger,,claude-fable-5,23,skorlu cte'sine geçelim,301c49cd-aebc-46a1-9f92-775fcfa52189
-44,2026-08-25,11:04,563ea60e,11,diger,,claude-sonnet-5,32,bana 10 yüzdelik sütununu açıkla,8e1a6645-aaa7-4568-8a2f-14daee3b4438
-45,2026-08-25,11:03,563ea60e,10,soru,,claude-sonnet-5,57,hangi durumlarda rank mantıklı hangi durumlarda cume_dist,13c368d0-72c7-4d25-8afd-8b12ddf24288
-46,2026-08-25,10:59,563ea60e,9,soru,,claude-sonnet-5,73,"cume dist kısmına geçelim,nasıl çalışır,hangi tablolar için kullanılıyor,",5b373385-fa5b-41f2-932f-4d20faa9b83a
-47,2026-08-25,10:53,563ea60e,8,soru,,claude-sonnet-5,80,-neden rankta hem pay hem paydadan 1 çıkardık -etkin_teklif sayısı ne anlatıyor,a70a3b68-081b-4d9d-8661-3cab19aec111
-48,2026-08-25,10:46,563ea60e,7,soru,,claude-sonnet-5,4025,""" yuzdelik AS ( SELECT t.*, COUNT(*) OVER (PARTITION BY t.trim_id) AS aday_sayisi, CASE WHEN t.etkin_teklif IS NOT NULL THEN (RANK() OVER (P",ce830778-e5e8-45e7-892b-b242a0ca499e
-49,2026-08-25,10:44,563ea60e,6,diger,,claude-sonnet-5,34,td.is_eligible olma şartları neler,fa4f4427-1cf5-457c-97a1-412142049d12
-50,2026-08-25,10:17,563ea60e,5,emir,,claude-sonnet-5,243,""" FROM public.galeri_scoring_trim_dealer td CROSS JOIN agirliklar w LEFT JOIN public.galeri_scoring_dealer gd ON gd.dealer_id = td.dealer_id",84f95fef-28cf-4348-84a8-54bf26333d25
+1,2026-08-26,10:04,2fc42451,3,diger,,claude-fable-5,43,kaldığımız yerden devam en son yarım kalmış,7901a9aa-53dd-4b2b-a29b-f244d2d1682a
+2,2026-08-26,10:04,8e6b8222,13,onay/devam,,claude-sonnet-5,23,evet düş ama not olarak,18a17e97-b3fd-472b-bc12-ac262fc7d16f
+3,2026-08-26,10:02,8e6b8222,12,soru,,claude-sonnet-5,43,bu teknikleri jarviste nasıl kullanabilirim,16197cad-234e-45fc-bea5-215e903d8c78
+4,2026-08-26,10:00,1801d9ae,8,seans-kapanis,seans-kapanis,claude-sonnet-5,12,seans bitimi,9d3f7832-8c64-4175-9924-24277b012089
+5,2026-08-26,09:59,aecfcdc0,12,seans-kapanis,staj-kapanis,claude-opus-5,12,seans bitimi,605f0fc5-5bdf-4f27-bb03-b27a1e43df51
+6,2026-08-26,08:37,361bbb9d,9,soru,,claude-fable-5,68,sen şimdi python kullanarak no mistakes gibi ürünler yapabilir misin,d1447bee-e2ed-4e25-8695-3c2c9af96fed
+7,2026-08-26,08:25,361bbb9d,8,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,1869c69a-49be-4788-9de2-4bb807f09a3e
+8,2026-08-26,08:19,361bbb9d,7,diger,,claude-fable-5,53,çok kaynaklı kısıt birleştirme için örnek senaryo ver,6f6619b8-cc3a-40e7-b58b-f53cb24e3d1f
+9,2026-08-26,08:17,361bbb9d,6,onay/devam,,claude-fable-5,27,sonuç olark python devam mı,9e7d7074-e8af-4696-b14b-37b93afd8a26
+10,2026-08-26,00:56,361bbb9d,5,emir,,claude-fable-5,146,1 yap ve bundan sonra sistemde anakronizm yapmayı yasaklıyorum bunu önleyecek şekilde nasıl yapacağını araştır atlasları koş artıları implem,29d12925-227b-4a04-bf99-328b3441800b
+11,2026-08-26,00:54,361bbb9d,4,soru,,claude-fable-5,83,yeni modellerin o modellere göre hangi oranlarda ne kadar geliştiğini biliyor musun,119926cc-2f3a-4b3c-8872-eb99d617fd57
+12,2026-08-26,00:53,361bbb9d,3,diger,,claude-fable-5,29,llm doğruluğu neye göre düşük,1bf5153f-cfcf-4484-97ee-a1be7fd77435
+13,2026-08-26,00:51,361bbb9d,2,diger,,claude-fable-5,77,şu an sonuç olarak sen nerelerde go yazacan veya onu karar masasına taşıyacan,b92fe9eb-dd71-403c-be99-b3c38ede1183
+14,2026-08-26,00:35,aee0f67e,2,diger,,claude-sonnet-5,39,burda tez içeriklerini okumak istiyorum,628bc613-b833-44b5-bb9b-140f704bcccc
+15,2026-08-26,00:32,aee0f67e,1,soru,,claude-sonnet-5,48,bunu nasıl açıyoduk chatleri kısayol tuşu olarak,4eada31e-f33a-46aa-8c3b-ecec928c8099
+16,2026-08-26,00:06,361bbb9d,1,seans-acilis,seans-acilis,claude-fable-5,335,"seans başı,jarvis bir sistem ve jarvis gibi ürünlerle bir ekosistem oluşturmak istiyorsam hangi durumlar için sistemde kodları hangi dilde(ö",fa69aff3-bd17-4528-b402-06a36dd74ae9
+17,2026-08-25,18:20,1801d9ae,7,emir,,claude-sonnet-5,478,"hayır onu demiyorum az önce anlattığım logaritmik clustering kullanarak bunlar üzerinde dönüşüm yapamıyor musun "" x = log1p(km) dönüşümü uyg",70b5b50c-5d7b-4443-8913-883ddb0487de
+18,2026-08-25,18:17,1801d9ae,6,diger,,claude-sonnet-5,533,"``` km_segment ""(154350.0, 206116.0]"" ""(206116.0, 263400.0]"" ""(-0.001, 53525.0]"" ""(263400.0, 343526.0]"" ""(104303.0, 154350.0]"" ""(53525.0, 10",80003b24-7aa3-4bc7-a107-9edf2129ca8d
+19,2026-08-25,18:14,1801d9ae,5,diger,,claude-sonnet-5,462,"``` km_segment ""(0, 30000]"" ""(30000, 53525]"" ""(53525, 104303]"" ""(104303, 154350]"" ""(154350, 206116]"" ""(206116, 263400]"" ""(263400, 343526]"" """,be40e6d8-8945-4cfd-8fca-51d975570aaf
+20,2026-08-25,18:07,1801d9ae,4,diger,,claude-sonnet-5,254,"sana hesaplanmış segmentleri verdim işte price_segment ""(131999.999, 722500.0]"" ""(722500.0, 1077000.0]"" ""(1077000.0, 1461500.0]"" ""(1461500.0",e4843167-6d78-467e-bb59-36656f2812ce
+21,2026-08-25,18:02,1801d9ae,3,diger,,claude-sonnet-5,178,"``` km_segment ""(0, 30000]"" ""(30000, 53525]"" ""(53525, 104303]"" ""(104303, 154350]"" ""(154350, 206116]"" ""(206116, 263400]"" ""(263400, 343526]"" """,2f156b17-4a4c-439b-bfd2-d5ecd5e15e3d
+22,2026-08-25,17:59,1801d9ae,2,diger,,claude-sonnet-5,174,clustering algoritması kullanarak range'leri belirleyeceğiz ama km arttıkça bulunduğu segmentin range'i geniş olmalı mantıken çünkü km 0'a y,a9671167-07c9-4ec7-9e86-14f5d83d5e4e
+23,2026-08-25,17:56,1801d9ae,1,soru,,claude-sonnet-5,268,"araçları kilometresine göre segmentlere ayırmak istiyoruz sahibinden datasından 0-50k km,50-100k km gibi.range'leri hesaplamak için hangi cl",8ab83d12-81bb-450c-bdd8-6c8e83697018
+24,2026-08-25,17:32,8e6b8222,11,onay/devam,,claude-sonnet-5,31,"evet devam et, zayıf yanı anlat",fe880288-0215-458a-983b-ef4970a8dca2
+25,2026-08-25,17:29,8e6b8222,10,diger,,claude-sonnet-5,49,"evet devam et, hız/bellek karşılaştırmasını anlat",7a76d110-176d-4748-9a0a-26ddd4a658f2
+26,2026-08-25,17:24,8e6b8222,9,emir,,claude-sonnet-5,80,tamam da bana ankara-istanbul iki şehir için iki iterasyon adımını ağaçta göster,7d9ffd24-f500-4194-a25e-d7f6001f0b04
+27,2026-08-25,17:21,8e6b8222,8,soru,,claude-sonnet-5,98,"şehir_encoded değeri bizim için ne anlama geliyor,cat_boost için örnek bir ağaç senaryosunda anlat",f171f0a4-6d09-4a97-9072-d2ccb77c00b6
+28,2026-08-25,17:15,8e6b8222,7,diger,,claude-sonnet-5,22,catboost için de anlat,82cc58cd-ae6a-44a6-8c30-18d093584a37
+29,2026-08-25,17:12,8e6b8222,6,soru,,claude-sonnet-5,172,"-kategorik sütun ne demek örnek ver -one-hot encoding,label encoding,target encoding nedir açıkla örnek ver -xgboost için kategorik değişken",d00118bd-24e7-4321-a469-247978f11573
+30,2026-08-25,17:08,8e6b8222,5,diger,,claude-sonnet-5,43,"devam et, kategorik değişken işlemeyi anlat",1d12816c-9154-4913-b632-14c4cfe64eb5
+31,2026-08-25,17:07,8e6b8222,4,emir,,claude-sonnet-5,32,örnek bir oblivious tree oluştur,382656af-2532-4405-a09e-694d90c1a985
+32,2026-08-25,17:05,8e6b8222,3,soru,,claude-sonnet-5,75,oblivious tree'de farkı en son seviye çıkarıyorsa orada örneğin ne yer alır,31e3206e-a56c-439a-bdb9-977e8a89e8c1
+33,2026-08-25,17:00,8e6b8222,2,diger,,claude-sonnet-5,54,sırayla her bir sütun için farkları açıkla her cevapta,887fe4bc-eb81-4a40-92a8-543bd7ba7682
+34,2026-08-25,16:59,8e6b8222,1,diger,,claude-sonnet-5,66,lightgbm xgboost catboost hap bilgi formatında farklarından bahset,9bad3082-6dcc-40c6-8882-d5cb45fab56f
+35,2026-08-25,16:56,563ea60e,26,diger,,claude-sonnet-5,1,x,daf330fc-b99e-4201-8a6f-353830d08a57
+36,2026-08-25,16:47,563ea60e,25,soru,,claude-sonnet-5,117,"-hangi trim için galerinin alıp almayacağını soramazdık -anchor günü ne bilmiyorum,evet bence ama nedenini bilmiyorum",3e38c454-87a4-4b58-acd4-fd6e71aac581
+37,2026-08-25,16:42,563ea60e,24,diger,,claude-fable-5,106,"-türev biliyorum,ortalama biliyorum,varyansı unuttum -hiç model eğitmedim -p1 başlayalım ama hızlı geçerek",0ee596c4-02e1-4676-95ee-c97831f3e579
+38,2026-08-25,16:39,563ea60e,23,soru,,claude-fable-5,207,bu html özet niteliğinde olmuş biraz şimdi öğrenme sürecini küçük kronolojik partisyonlara ayır bir konudan başlayalım bu sefer 0'dan daha y,81cd840a-c73d-4c77-b008-342e3ea09049
+39,2026-08-25,15:07,563ea60e,22,soru,,claude-fable-5,3619,"Draw as the engineer who has to live with the decision, not as a decorator: a diagram earns its place when it lets a cold reader see a mecha",acc06d39-0cf2-42d3-8e6d-cbf9d95de8b5
+40,2026-08-25,14:50,563ea60e,21,diger,"dataviz,artifact-diagramming",claude-fable-5,187,"biz featureları weightler vererek hesap yapmak istemiyoruz.xg boost,cat boost ya da light gbm gibi modellerle forecasting yapmayı planlıyoru",909c5867-01fd-4d39-be9f-adbf2f57372c
+41,2026-08-25,14:14,563ea60e,20,soru,,claude-fable-5,3159,-w_butce=w_karsilanabilirlik=w_fiyat yani benzer şeyleri ölçüyor -başlangıçta featureları daha hedef doğrultusunda tasarlamalıyız çünkü bu m,73b607b3-6ae5-4f82-99fd-30c274a80ad6
+42,2026-08-25,13:56,563ea60e,19,soru,,claude-fable-5,809,"-burada tespit ettiğim bulgu şu:p_devir,p_butce,p_bosluk paralel ilerleyen feature'lar(biri artınca diğeri de artıyor).hepsinin sahibinden b",2031fbb0-5ecf-410b-bd5c-53c5256f8b58
+43,2026-08-25,13:49,563ea60e,18,diger,,claude-sonnet-5,21,nihai tablosunu anlat,56ccffbf-9899-4b01-b50b-003e06acffe3
+44,2026-08-25,12:31,563ea60e,17,soru,,claude-sonnet-5,212,-p_rekabet ve p_tazelik için ayrı sabit önerisi getir -bir de mesela p_rekabet nasıl ölçülüyor yani bir galeri için daha fazla veri ile ölçt,e1b947ff-0d6d-4a8e-9fc8-0c4b6420be72
+45,2026-08-25,12:18,563ea60e,16,soru,,claude-sonnet-5,161,"0.50 skor dağılımda her zaman ortalama grupta mı bulunuyor,çoğunluk 0.5'in altındayken null olan bir değere 0.5 vermek onu ön sırada varsaym",80e1d82b-1869-4638-ba22-d4092dd3b921
+46,2026-08-25,12:10,563ea60e,15,soru,,claude-sonnet-5,792,""" -- Grup alt skorlari. Olculemeyen bilesen notr_dolgu sayilir, paydada -- ise HER ZAMAN grubun tam agirligi durur -- bu ikisi birlikte, sko",05d7fc5b-e16f-4b68-b44d-a7450224aeae
+47,2026-08-25,12:09,563ea60e,14,soru,,claude-sonnet-5,31,y.* yerine y deseydik ne olurdu,dba74acf-c005-484b-b879-da51a6ee6ba3
+48,2026-08-25,12:07,563ea60e,13,soru,,claude-fable-5,21,y.* ne anlama geliyor,9bada09e-ce60-4621-870b-4734cb7b8ba9
+49,2026-08-25,12:01,563ea60e,12,diger,,claude-fable-5,23,skorlu cte'sine geçelim,301c49cd-aebc-46a1-9f92-775fcfa52189
+50,2026-08-25,11:04,563ea60e,11,diger,,claude-sonnet-5,32,bana 10 yüzdelik sütununu açıkla,8e1a6645-aaa7-4568-8a2f-14daee3b4438

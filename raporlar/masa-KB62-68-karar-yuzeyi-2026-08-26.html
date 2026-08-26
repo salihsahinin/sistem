@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası — KB-62..68 (2026-08-26)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  :where(img, svg, video) { max-width: 100%; height: auto; }
+  body { background: var(--color-base-200); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-6">
+
+  <!-- BAŞLIK + KÜNYE -->
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası — KB-62..68 <span class="badge badge-primary">7 karar</span></h1>
+      <p class="text-sm opacity-80">Seans-16'nın iki m.40b atlası masaya 7 Katman-1 kararı bıraktı. Her kalemde seçenekler
+        <strong>ne demek · ne yaparım · artı · eksi</strong> bloklarıyla sunulur (CLAUDE.md §5); önerilen seçenek rozetlidir ama
+        <strong>önceden seçili DEĞİLDİR</strong> — kör-onay yok (m.6). Hükmü işaretle, istersen not düş,
+        <em>«Hükmü kuyruğa al»</em> ile kuyruğa gönder; en sonda Lavish'in <em>Send to Agent</em> düğmesiyle hepsi Carvis'e iner.</p>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="badge badge-outline">Kaynak: raporlar/2026-08-26-dil-secimi-ekosistem.md §4</span>
+        <span class="badge badge-outline">raporlar/2026-08-26-anakronizm-freni.md §4</span>
+        <span class="badge badge-outline">Ledger: veri/karar-borcu.jsonl KB-62..68</span>
+        <span class="badge badge-outline">Öneri damgası: deneysel m.29 · her rakam kaynaklı m.39</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="alert alert-success text-sm"><span><strong>5/7 hüküm KAYITLI — Karar 69 (10:2x):</strong> KB-62 a · KB-63 a (şerhli) · KB-64 a · KB-65 b · KB-66 a (notundan İB-51 açıldı). KB-62 + KB-64 icrası TAMAM. <strong>AÇIK: KB-67 · KB-68</strong> — hükümlerini aşağıdan işaretleyip gönderebilirsin.</span></div>
+
+  <!-- BÖLÜM 1: DİL SEÇİMİ -->
+  <h2 class="text-xl font-bold px-1">1 · Dil seçimi (atlas 8/22/0/0 — wf_d8cf4f3a)</h2>
+  <p class="text-sm px-1 opacity-80">Sentez tek cümlede: tek "en mantıklı dil" yok; 9 hücrelik iş-sınıfı matrisinin 7'sinde hüküm
+  «olduğu gibi kal: Python-stdlib + bash». Değişen iki şey: sistem Python'u 3.9.6 <strong>EOL</strong> (2025-10-31) ve
+  ekosistem tetiği (MCP sunucusu / dış-makine dağıtımı).</p>
+
+  <!-- KB-62 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-62">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-62 · Python yorumlayıcı tabanı <span class="badge badge-warning">3.9.6 EOL</span> <span class="badge badge-success">✓ KAYITLI: a — icra tamam (3.13.15 pinli)</span></h3>
+      <p class="text-sm"><strong>Ne demek:</strong> 27 script / 7.484 satırlık <code>tools/*.py</code> macOS sistem Python'uyla koşuyor;
+      upstream güvenlik yaması 2025-10-31'den beri YOK; Apple geri-yaması bilinmiyor (AS-OF 2026-08-26).</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb62'); if(!c){return;} const n=f.get('not62')||''; window.lavish.queuePrompt('KB-62 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-62: '+c, element:event.currentTarget, queueKey:'KB-62', data:{karar:'KB-62', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb62" value="(a) Homebrew python@3.13 + env-shebang" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) Homebrew <code>python@3.13</code> + <code>#!/usr/bin/env python3</code></strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> brew kurulumu + PATH doğrulaması + kod-envanter'e sürüm kaydı + <code>brew pin</code>.<br>
+            <span class="text-success">Artı:</span> Homebrew zaten kurulu (+0 yeni zincir); stdlib-only projede kilitlenecek bağımlılık yok; "hazırı temel al" ile uyumlu.
+            <span class="text-error">Eksi:</span> brew yükseltmeleri sürüm atlatabilir — pin komutu şart.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb62" value="(b) uv + requires-python + uv.lock" class="radio mt-1">
+            <span class="text-sm"><strong>(b) uv + <code>requires-python</code> + uv.lock</strong><br>
+            <em>Ne yaparım:</em> uv kurar, lock dosyası üretirim.
+            <span class="text-success">Artı:</span> en deterministik.
+            <span class="text-error">Eksi:</span> +1 araç zinciri (m.42); stdlib projede lock boş.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb62" value="(c) sistem Python'da kal" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Sistem Python'da kal</strong><br>
+            <em>Ne yaparım:</em> hiçbir şey.
+            <span class="text-success">Artı:</span> 0 iş.
+            <span class="text-error">Eksi:</span> yamasız yorumlayıcı riski süreklileşir.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not62" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KB-63 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-63">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-63 · Ekosistem ilk ürün sınıfı + dili <span class="badge badge-accent">E-4'ün dil boyutu</span> <span class="badge badge-success">✓ KAYITLI: a — şerhin hükme işlendi</span></h3>
+      <p class="text-sm"><strong>Ne demek:</strong> "Jarvis gibi ürün" için İLK arayüz ne olacak, hangi dilde yazılacak?
+      <strong>Bağ:</strong> entegrasyon masasındaki E-4 kalemi (Kun-Chen desenli ürün hattı — senin 08-24 beyanın) bu hükme bağlı;
+      burada dil+sınıf seçilir, E-4'te paketleme standardı/eşik/ilk aday karara bağlanır.</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb63'); if(!c){return;} const n=f.get('not63')||''; window.lavish.queuePrompt('KB-63 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-63: '+c, element:event.currentTarget, queueKey:'KB-63', data:{karar:'KB-63', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb63" value="(a) Python MCP stdio sunucusu şimdi; Go'ya geçiş dış-makine tetiği T1 çekilince parite testiyle" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) Python MCP stdio sunucusu</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> bugünkü <code>tools/</code> script'lerini MCP araçları olarak açan stdio sunucusu; dağıtım <code>uv tool</code>/pipx.<br>
+            <span class="text-success">Artı:</span> SDK Tier-1 · +0 zincir · LLM doğruluğu en yüksek sınıf · Salih okur.
+            <span class="text-error">Eksi:</span> dış makinede Python ister. <em>Öneri eki: (b) Go tek-ikili, dış-makine tetiği (T1) çekilince parite testiyle.</em></span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb63" value="(b) Go tek-ikili" class="radio mt-1">
+            <span class="text-sm"><strong>(b) Go tek-ikili</strong><br>
+            <em>Ne yaparım:</em> Go zinciri kurulur; nadir-dil kapısı (spec referansı + vet + parite testi) devrede.
+            <span class="text-success">Artı:</span> çalışma-zamanı kurdurmaz; bit-bit tekrar-üretilebilir derleme (Go 1.21+).
+            <span class="text-error">Eksi:</span> +1 zincir; LLM Go doğruluğu düşük (Multi-SWE %7,5, 2025-04 — gösterge).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb63" value="(c) TS/npm paketi" class="radio mt-1">
+            <span class="text-sm"><strong>(c) TS/npm</strong><br>
+            <em>Ne yaparım:</em> Kun Chen'in axi kanalının birebir yolu: npm paketi.
+            <span class="text-success">Artı:</span> Claude Code plugin'leri npm/bun'ı otomatik kurar; node zaten var.
+            <span class="text-error">Eksi:</span> ikinci dil; Salih okumaz.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not63" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KB-64 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-64">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-64 · Dil-kuralı setinin kanon statüsü <span class="badge badge-success">✓ KAYITLI: a — KILAVUZ pointer yazıldı</span></h3>
+      <p class="text-sm"><strong>Ne demek:</strong> 3 yatay kural (nadir-dil kapısı · iki-yol parite testi · sürüm-pinli kanal) nerede yaşayacak?</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb64'); if(!c){return;} const n=f.get('not64')||''; window.lavish.queuePrompt('KB-64 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-64: '+c, element:event.currentTarget, queueKey:'KB-64', data:{karar:'KB-64', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb64" value="(a) wiki/dil-secimi.md kural-kaynağı + KILAVUZ'a 1 satır pointer" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) <code>wiki/dil-secimi.md</code> kural-kaynağı + KILAVUZ'a 1 satır pointer</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> sayfa zaten yazıldı (seans-16 gömüsü); KILAVUZ'a pointer satırı eklerim.
+            <span class="text-success">Artı:</span> yaşayan sayfa, süpersede zinciri işler.
+            <span class="text-error">Eksi:</span> kanon değil (bağlayıcılığı zayıf).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb64" value="(b) tüzüğe madde" class="radio mt-1">
+            <span class="text-sm"><strong>(b) Tüzüğe madde</strong> — <span class="text-success">Artı:</span> tam bağlayıcılık.
+            <span class="text-error">Eksi:</span> kural henüz k=1 koşumluk; olgunlaşmadan kanonlaşır.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb64" value="(c) kural yok, vaka-bazlı" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Kural yok, vaka-bazlı</strong> — <span class="text-success">Artı:</span> 0 bakım.
+            <span class="text-error">Eksi:</span> her dil sorusu yeniden araştırılır.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not64" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KB-65 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-65">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-65 · Hook biçimi <span class="badge badge-warning">sigorta dosyası — Katman-1</span> <span class="badge badge-success">✓ KAYITLI: b — dokunulmuyor</span></h3>
+      <p class="text-sm"><strong>Ne demek:</strong> Sıcak hook'lar (PreToolUse/SessionStart) bash 68 satır + python; ölçülen gecikme 30,7 / 67,7 ms. Derlenmiş ikilinin tavan kazancı ~14 ms/çağrı (yerel n=10).</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb65'); if(!c){return;} const n=f.get('not65')||''; window.lavish.queuePrompt('KB-65 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-65: '+c, element:event.currentTarget, queueKey:'KB-65', data:{karar:'KB-65', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb65" value="(b) olduğu gibi kal" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(b) Olduğu gibi</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> hiçbir şey; hook sayısı/gecikme büyürse (a) yeniden masaya.<br>
+            <span class="text-success">Artı:</span> 30,7 ms zaten düşük; fren dosyasına dokunma riski 0.
+            <span class="text-error">Eksi:</span> kazanılabilir ~15 ms masada kalır.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb65" value="(a) EXEC biçimi + tek-süreç Python (~15 ms)" class="radio mt-1">
+            <span class="text-sm"><strong>(a) EXEC biçimi + tek-süreç Python</strong> — <span class="text-success">Artı:</span> ~15 ms; deterministik EXEC formu.
+            <span class="text-error">Eksi:</span> sigorta dosyasına dokunulur (07-30 H4 sınıfı risk).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb65" value="(c) yalnız EXEC biçimi" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Yalnız EXEC biçimi</strong> — biçim standardı değişir, süreç aynı kalır; kazanç sınırlı, dokunma riski aynı.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not65" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- BÖLÜM 2: ANAKRONİZM -->
+  <h2 class="text-xl font-bold px-1 pt-2">2 · Anakronizm freni (Karar 68 icrası — atlas 1/29/1/0 — wf_9030bba4)</h2>
+  <p class="text-sm px-1 opacity-80">Tek kural: zaman-bağımlı her iddia AS-OF damgası taşır; damga eskiyse canlı çekilir.
+  Kural KOD olarak gömüldü (lint + kesim tablosu + ZAMAN-ZEMİNİ satırı); aşağıdaki 3 hüküm yerleşim/rejim/politika sorusu.</p>
+
+  <!-- KB-66 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-66">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-66 · Kural metninin kanon yerleşimi <span class="badge badge-warning">CLAUDE.md 7 KB DOLU</span> <span class="badge badge-success">✓ KAYITLI: a — çıkacak satır seçimin bekleniyor · İB-51 açıldı</span></h3>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb66'); if(!c){return;} const n=f.get('not66')||''; window.lavish.queuePrompt('KB-66 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-66: '+c, element:event.currentTarget, queueKey:'KB-66', data:{karar:'KB-66', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb66" value="(a) CLAUDE.md §6'ya 1 satır pointer + gövde wiki'de; çıkacak satırı Salih seçer" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) CLAUDE.md §6'ya 1 satır pointer + gövde wiki</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> "bir satır girer, bir satır çıkar" — çıkacak satırı SEN seçersin; girecek satırı taslaklarım.<br>
+            <span class="text-success">Artı:</span> kural her seans bağlama girer.
+            <span class="text-error">Eksi:</span> satır takası gerekir (bütçe dolu).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb66" value="(b) tüzüğe madde" class="radio mt-1">
+            <span class="text-sm"><strong>(b) Tüzüğe madde</strong> — <span class="text-success">Artı:</span> tam metin kanonda.
+            <span class="text-error">Eksi:</span> kural k=1, olgunlaşmamış.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb66" value="(c) yalnız wiki + KILAVUZ pointer" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Yalnız wiki + KILAVUZ pointer</strong> — <span class="text-success">Artı:</span> dokunma yok.
+            <span class="text-error">Eksi:</span> seans başında görünmez (ZAMAN-ZEMİNİ satırı kısmen telafi eder).</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not66" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KB-67 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-67">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-67 · Lint rejimi</h3>
+      <p class="text-sm"><strong>Ne demek:</strong> <code>anakronizm-denetim.py</code> taban ölçümü: 201 dosyada 114 İHLAL / 319 UYARI (kalibre edilmiş; ilk kalıp seti 1.665 yanlış-pozitiften indirildi).</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb67'); if(!c){return;} const n=f.get('not67')||''; window.lavish.queuePrompt('KB-67 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-67: '+c, element:event.currentTarget, queueKey:'KB-67', data:{karar:'KB-67', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb67" value="(a) stdlib lint + katman-hatti'ye UYARI-kanallı adım (İHLAL hattı düşürmez, sayılır; pre-commit yok)" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) UYARI-kanallı katman-hatti adımı</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> lint'i hatta adım olarak eklerim; İHLAL sayılır, iş durdurmaz.<br>
+            <span class="text-success">Artı:</span> yanlış-pozitif oranı ölçülmeden engel konmaz (kalibrasyon disiplini).
+            <span class="text-error">Eksi:</span> ihlal commit'lenebilir.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb67" value="(b) pre-commit engel" class="radio mt-1">
+            <span class="text-sm"><strong>(b) Pre-commit engel</strong> — <span class="text-success">Artı:</span> sert kapı.
+            <span class="text-error">Eksi:</span> yanlış-pozitif iş durdurur (114/319 tabanla erken).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb67" value="(c) Vale'e geçiş" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Vale'e geçiş</strong> — <span class="text-success">Artı:</span> hazır ürün.
+            <span class="text-error">Eksi:</span> +1 Go zinciri; Türkçe kalıplar yine elle yazılır.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not67" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KB-68 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="KB-68">
+    <div class="card-body space-y-3">
+      <h3 class="card-title">KB-68 · Bayatlık kuyruğu politikası</h3>
+      <p class="text-sm"><strong>Ne demek:</strong> AS-OF damgası eskiyen kayıtlar <code>v_bayat_aday</code> kuyruğuna düşer; eşik + boşaltma temposu + silver kolonu kararı. Emsal uyarısı: Wikipedia 2010 kategorisinde bugün hâlâ 3.126 açık sayfa — boşaltmasız damga = borç.</p>
+      <form onsubmit="event.preventDefault(); const f=new FormData(event.currentTarget); const c=f.get('kb68'); if(!c){return;} const n=f.get('not68')||''; window.lavish.queuePrompt('KB-68 hükmü: '+c+(n?' — not: '+n:''), {tag:'karar', text:'KB-68: '+c, element:event.currentTarget, queueKey:'KB-68', data:{karar:'KB-68', hukum:c, not:n}});">
+        <div class="space-y-2">
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-primary bg-base-200 cursor-pointer">
+            <input type="radio" name="kb68" value="(a) tek eşik 90 gün + kapanışta N=3 yeniden-çekim + silver'a additive cekim_tarihi/kaynak_tarihi kolonu" class="radio radio-primary mt-1">
+            <span class="text-sm"><strong>(a) Tek eşik 90 gün · kapanışta N=3 · additive kolon</strong> <span class="badge badge-primary badge-sm">ÖNERİ</span><br>
+            <em>Ne yaparım:</em> silver şemasına iki kolon (additive, kırıcı değil); kapanış ritüeline 3'lük yeniden-çekim.<br>
+            <span class="text-success">Artı:</span> ölçüm başlar; eşik sonra veriyle kalibre edilir.
+            <span class="text-error">Eksi:</span> 90 gün kestirim.</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb68" value="(b) sınıf-başına eşik (sürüm 30 / skor 90 / kavram 365) + N=5" class="radio mt-1">
+            <span class="text-sm"><strong>(b) Sınıf-başına eşik + N=5</strong> — <span class="text-success">Artı:</span> ince ayar.
+            <span class="text-error">Eksi:</span> eşik tablosu kaynaksız (m.39 sorunu).</span>
+          </label>
+          <label class="flex gap-3 items-start p-3 rounded-lg border border-base-300 cursor-pointer">
+            <input type="radio" name="kb68" value="(c) yalnız rapor; boşaltma Salih tetiğinde" class="radio mt-1">
+            <span class="text-sm"><strong>(c) Yalnız rapor</strong> — <span class="text-success">Artı:</span> otomasyon yok, kontrol sende.
+            <span class="text-error">Eksi:</span> Wikipedia borç emsali — kuyruk birikir.</span>
+          </label>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 mt-3">
+          <input type="text" name="not68" placeholder="İsteğe bağlı not / şerh" class="input input-sm input-bordered flex-1">
+          <button type="submit" class="btn btn-sm btn-primary">Hükmü kuyruğa al</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- KAPANIŞ -->
+  <footer class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h3 class="card-title text-base">Masa kapanışı</h3>
+      <p class="text-sm">7 hükmü kuyruğa aldıktan sonra Lavish üst çubuğundaki <strong>Send to Agent</strong> ile gönder —
+      Carvis hükümleri <code>kuyruk/senaryo-defteri.md</code> taslağına + ledger'a işler, (a) hükümlerinin icrası ayrı commit'lerle gelir.
+      Eksik bıraktığın kalem masada AÇIK kalır; serbest metin şerhi için sayfada herhangi bir yeri işaretleyip not da düşebilirsin.</p>
+      <p class="text-xs opacity-70">Sıradaki bağlı iş: E-4 (Kun-Chen desenli ürün hattı, entegrasyon masası kalem 13) — KB-63 hükmünle açılır.
+      Yüzey: raporlar/masa-KB62-68-karar-yuzeyi-2026-08-26.html · üreten: Carvis seans-17 (lavish denemesi, Salih tetiği 08-24).</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
