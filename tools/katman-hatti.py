@@ -44,6 +44,7 @@ ADIMLAR = [
               "--d2", "graf/pointer-sistemi-v0-tam.d2", "--kenar-listesi", "graf/pointer-sistemi-v0-kenarlar.txt"]),
     # ↑ pointer-graf türetimi (İB-48 3/3, Karar 67 G1; uyarı kanalı). --d2/--kenar-listesi = LLM/makine katmanı METİN türevleri
     #   (tam.d2 + kenarlar.txt) her koşumda tazelenir; tam.svg render'ı HATTA GİRMEZ (dev arşiv panosu; elle: d2 --layout=elk)
+    ("obsidian-harita", ["tools/obsidian-harita.py", "--sessiz"]),  # Karar 72 EK (Salih seçimi A): silver referans → graf/obsidian-harita*.md (gitignore'lu türev; backtick pointer kütlesi Obsidian grafiğine, gövdelere dokunmadan)
     ("anakronizm", ["tools/anakronizm-denetim.py", "--sessiz"]),  # anakronizm lint (KB-67 a / Karar 69): UYARI kanalı; İHLAL=çıkış 3 hattı DÜŞÜRMEZ, sayılır — kapı sertleşmesi iterasyonla, Salih masası
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]

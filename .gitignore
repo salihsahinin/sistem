@@ -19,3 +19,5 @@ veri/parquet/
 
 # Python bytecode onbellegi (turetilmis, izlenmez)
 __pycache__/
+# Obsidian harita türevleri (Karar 72 EK): silverdan her koşumda yeniden üretilir
+graf/obsidian-harita*.md
