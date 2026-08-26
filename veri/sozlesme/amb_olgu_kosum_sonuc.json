@@ -39,6 +39,12 @@
    "tip": "TEXT",
    "not_null": false,
    "pk": false
+  },
+  {
+   "ad": "wf_id",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
   }
  ],
  "kural": "ÖNERİ-damgalı alan (Salih 08-21 Karar 52; nihai Katman-1 şema imzası AÇIK); hüküm orkestratörce teslim-al adımında yazılır, transkriptten türetilmez"

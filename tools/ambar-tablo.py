@@ -167,7 +167,7 @@ def main():
     );
     DELETE FROM amb_olgu_tahmin;
     CREATE TABLE IF NOT EXISTS amb_olgu_kosum_sonuc (
-      kosum_id TEXT PRIMARY KEY, sonuc TEXT, kaynak TEXT, aciklama TEXT, system_time TEXT, kod_sha TEXT
+      kosum_id TEXT PRIMARY KEY, sonuc TEXT, kaynak TEXT, aciklama TEXT, system_time TEXT, kod_sha TEXT, wf_id TEXT
     );
     DELETE FROM amb_olgu_kosum_sonuc;
     CREATE VIEW IF NOT EXISTS v_kosum_tahmin_sapma AS
@@ -252,8 +252,15 @@ def main():
          t.get("tahmin_serbest_metin"), 1 if t.get("tahmin_formul_mu") else 0, t.get("tahmin_kaynagi"), t.get("wf_id"),
          t.get("kaynak_rapor_dosya"), t.get("kaynak_rapor_satir"), t.get("yuklendi_ts"), t.get("yuklendi_head")) for t in tahminler])
     con.commit()
-    con.executemany("INSERT INTO amb_olgu_kosum_sonuc VALUES (?,?,?,?,?,?)", [
-        (h["kosum_id"], h.get("sonuc"), h.get("kaynak"), h.get("aciklama"), h.get("yuklendi_ts"), h.get("yuklendi_head")) for h in hukumler])
+    # İB-50: wf-düzeyi hüküm köprüsü ('wf_' önekli kosum_id → wf_id kolonu) + süpersede (düzeltme satırı eskisini
+    # güncel görünümden düşürür; bronz ham kalır — Karar 58 deseni). wf_id kolonu eski DB'de yoksa additive eklenir.
+    if "wf_id" not in [r[1] for r in con.execute("PRAGMA table_info(amb_olgu_kosum_sonuc)")]:
+        con.execute("ALTER TABLE amb_olgu_kosum_sonuc ADD COLUMN wf_id TEXT")
+    susp = {h.get("supersedes") for h in hukumler if h.get("supersedes")}
+    con.executemany("INSERT INTO amb_olgu_kosum_sonuc VALUES (?,?,?,?,?,?,?)", [
+        (h["kosum_id"], h.get("sonuc"), h.get("kaynak"), h.get("aciklama"), h.get("yuklendi_ts"), h.get("yuklendi_head"),
+         h.get("wf_id") or (h["kosum_id"] if h["kosum_id"].startswith("wf_") else None))
+        for h in hukumler if h["kosum_id"] not in susp])
     con.commit()
     # sözleşme (ilk kez)
     syol = os.path.join(repo, "veri", "sozlesme", "amb_olgu_kosum.json")
@@ -279,7 +286,7 @@ def main():
                     ("amb_olgu_tahmin.tahmin_id unique", "SELECT COUNT(*) FROM (SELECT tahmin_id FROM amb_olgu_tahmin GROUP BY tahmin_id HAVING COUNT(*)>1)"),
                     ("amb_olgu_tahmin.wf_id → amb_olgu_kosum", "SELECT COUNT(*) FROM amb_olgu_tahmin t WHERE t.wf_id IS NOT NULL AND NOT EXISTS (SELECT 1 FROM amb_olgu_kosum k WHERE k.wf_id=t.wf_id)"),
                     ("amb_olgu_kosum_sonuc.sonuc accepted_values", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc WHERE sonuc NOT IN ('PASS','FAIL')"),
-                    ("amb_olgu_kosum_sonuc.kosum_id → amb_olgu_kosum", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc s LEFT JOIN amb_olgu_kosum k ON k.kosum_id=s.kosum_id WHERE k.kosum_id IS NULL")]:
+                    ("amb_olgu_kosum_sonuc → amb_olgu_kosum (kosum_id ∨ wf_id; İB-50)", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc s LEFT JOIN amb_olgu_kosum k ON k.kosum_id=s.kosum_id LEFT JOIN (SELECT DISTINCT wf_id FROM amb_olgu_kosum WHERE wf_id IS NOT NULL AND wf_id<>'') w ON w.wf_id=s.wf_id WHERE k.kosum_id IS NULL AND w.wf_id IS NULL")]:
         n = con.execute(sql).fetchone()[0]; testler.append((ad, n, "PASS" if n == 0 else "ERROR"))
     # GOLD CSV
     gdir = os.path.join(repo, "veri", "gorunum")

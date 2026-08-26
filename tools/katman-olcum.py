@@ -39,7 +39,7 @@ TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("amb_olgu_tahmin.wf_id → amb_olgu_kosum", "relationships", "SELECT COUNT(*) FROM amb_olgu_tahmin t WHERE t.wf_id IS NOT NULL AND NOT EXISTS (SELECT 1 FROM amb_olgu_kosum k WHERE k.wf_id=t.wf_id)", "error"),
     ("amb_olgu_tahmin bant tutarlılığı (min≤max)", "singular", "SELECT COUNT(*) FROM amb_olgu_tahmin WHERE (tahmin_cikti_min>tahmin_cikti_max) OR (tahmin_arac_min>tahmin_arac_max) OR (tahmin_sure_min_sn>tahmin_sure_max_sn) OR (tahmin_girdi_min>tahmin_girdi_max)", "error"),
     ("amb_olgu_kosum_sonuc.sonuc accepted_values", "accepted_values", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc WHERE sonuc NOT IN ('PASS','FAIL')", "error"),
-    ("amb_olgu_kosum_sonuc.kosum_id → amb_olgu_kosum", "relationships", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc s LEFT JOIN amb_olgu_kosum k ON k.kosum_id=s.kosum_id WHERE k.kosum_id IS NULL", "error"),
+    ("amb_olgu_kosum_sonuc → amb_olgu_kosum (kosum_id ∨ wf_id; İB-50)", "relationships", "SELECT COUNT(*) FROM amb_olgu_kosum_sonuc s LEFT JOIN amb_olgu_kosum k ON k.kosum_id=s.kosum_id LEFT JOIN (SELECT DISTINCT wf_id FROM amb_olgu_kosum WHERE wf_id IS NOT NULL AND wf_id<>'') w ON w.wf_id=s.wf_id WHERE k.kosum_id IS NULL AND w.wf_id IS NULL", "error"),
 ]
 
 
