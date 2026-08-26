@@ -1,0 +1,40 @@
+# Seans Teslim — 2026-08-26 00:06 → 08:3x, SEANS-16 (prototip hattı; Claude Code CLI ana-sıra / Fable 5 — reliable kesim 2026-01, satıcı tablosu çekimi 2026-08-26)
+
+*Şablon `core/sablonlar/seans-teslim.md` (beş soru) + `core/sablonlar/hasat.md`. Çıplak veri; her rakam kaynaklı; AS-OF damgaları Karar 68 gereği.*
+
+## 1. Bugün gerçekten ne değişti
+- **İki m.40b atlası koştu, ikisi de teslim edildi:** (a) dil-seçimi wf_d8cf4f3a-1a8 (12 işçi · 189 araç · 16,7 dk · 8/22/0/0 · V26 37/4/4) → `cc/rapor-2026-08-26-1.md` + `raporlar/2026-08-26-dil-secimi-ekosistem.md` + `wiki/dil-secimi.md`; (b) anakronizm freni wf_9030bba4-c00 (12 işçi · 196 araç · 19,4 dk · 1/29/1/0 · V26 46/4/7) → `cc/rapor-2026-08-26-2.md` + `raporlar/2026-08-26-anakronizm-freni.md` + `wiki/anakronizm-freni.md`. S-0 liderlik taraması (1 Sonnet, 10 erişim) → `cc/rapor-2026-08-26-3.md`: dil-başına güncel LLM ölçümü BULUNAMADI.
+- **Gömülen borçsuz değişiklikler (Katman-2):** `tools/kod-envanter.py` (dil × katman × dizin + araç-zinciri + başlangıç-gecikmesi; bronz `veri/kod-envanter.jsonl` 62 olgu) · `tools/anakronizm-denetim.py` (D1/D2/D3; taban 201 dosya → 114 İHLAL / 319 UYARI; bronz + gold `v_bayat_aday.csv`) · `veri/model-kesim.jsonl` (4 model × 2 kesim, V26 ✓) · SessionStart brifine ZAMAN-ZEMİNİ satırı (1.672 B ≤ 2 KB) · atlas-kosum SKILL disiplinine "her iddia AS-OF" · 2 wiki sayfası + index + 10 karşı-link · SCRIPTLER/veri README · 2 workflow kopyası + README · 18 KB-02 tahmin satırı · 3 kosum-sonuc PASS · 2 halüsinasyon-kayıt satırı.
+- **Kanon:** Karar 68 (Salih, Katman-1) deftere aynen; CLAUDE.md/tüzük/core/ DOKUNULMADI (yerleşim KB-66). Kapsül 8.162 B.
+- **Ölçümler (Mac 26.6.1, n=10 medyan, 08-26):** yerel exe taban 1,6 ms · python3 15,4 · node 23,8 · PreToolUse teli 30,7 · SessionStart 67,7 → derlenmiş ikilinin tavan kazancı ≈14 ms/çağrı. Kod envanteri (git-izlenen): Python 46 dosya / 8.906 satır · JS 10 / 2.054 · bash 2 / 68 · ps1 1 / 22; stdlib-dışı import yalnız duckdb (4 dosya); go/cargo/cue/pkl/opa/uv/deno/bun kurulu DEĞİL.
+- **Seans-15 (08-24/25) commit'siz izi devralındı:** E-4 satırı (`kuyruk/masa-gundemi-entegrasyon`) + GBM dersi (`raporlar/gradient-boosting-sifirdan-ders-2026-08-25.html`, `kuyruk/ders-gbm-ilerleme.md`) + 08-24 hareket günlüğü/son-50 → ayrı commit.
+
+## 2. Hangi kararlar verildi (kaynak + gerekçe + geri-açma)
+- **Karar 68 · ANAKRONİZM YASAĞI** (Salih 01:1x, aynen defterde): zaman-bağımlı iddia zamanı belirtilmeden "bugün" gibi sunulamaz; önleme mekanik (Karar 65). Tetikleyen vaka: Carvis'in üç anakronizmi (07-30 "Rust SDK yok" hükmünü 08-26'ya damgasız taşıma · 2025-04 Multi-SWE-bench sayısını tarihsiz "düşük" deme · hafızadan SWE-bench skoru anlatma) + S-0 ajanının dördüncüsü ("Mythos Preview bilinen ad değil"). Geri-açma: yok (Katman-1; kanon yerleşimi KB-66).
+- **Carvis alt-kararları (Katman-2, m.25):** 3 aile tabanı (token −%30) · lint İHLAL/UYARI ayrımı (yanlış-pozitif 1.665 → kalibre) · Vale yerine stdlib regex (+0 zincir; KB-67'ye seçenek) · kesim tablosu model-başına satır (tek skaler değil) · S-0 tek Sonnet ajan (tam zincir yok, Carvis V26 2/2).
+- **Salih'e taşınan (masada, ÖNERİ damgalı, açıklama-bloklu):** KB-62 Python 3.9.6 EOL pini (a: Homebrew python@3.13) · KB-63 ekosistem ilk ürün sınıfı+dili (a: Python MCP stdio; Go dış-makine tetiğinde) · KB-64 dil kural-setinin kanon statüsü (a: wiki + KILAVUZ pointer) · KB-65 hook biçimi (b: olduğu gibi) · KB-66 Karar 68 kural metninin yerleşimi (a: CLAUDE.md 1 satır takası + wiki gövde) · KB-67 lint rejimi (a: stdlib + katman-hatti UYARI-kanallı adım, pre-commit yok) · KB-68 bayatlık kuyruğu politikası (a: 90 gün + kapanışta N=3 + `cekim_tarihi` kolonu). Ledger tablo exit 0.
+
+## 3. ADAY kalan fikirler (karar değil)
+V82 nadir-dil kapısı · V83 kısıt-kaynağı sayacı → CUE eşiği tetik-denetim'e · V84 yerel LLM dil-doğruluk ölçümü · V85 chat-çıktısı damga denetimi (fikir-kutusu, s16). Tartışma notları: kesim beyanı model-başına · hat ERROR grain uyuşmazlığı (İB-50) · atlas çıktı-token sayım yöntemi · "DARALDI" kovasının iki anlamı (hakem şemasına `daralma_turu` adayı). Wiki kuyruğu: kesim-tablosu-ve-model-hafizasi · nadir-dil-kapisi.
+
+## 4. Sonraki ilk iş
+1. **Salih:** KB-62..68 masası (iki insan-yüzü rapor §4; öneriler a/a/a/b · a/a/a) → KB-63 karara bağlanınca E-4 (entegrasyon masası).
+2. **Carvis (kararsız):** İB-50 kosum-sonuc grain düzeltmesi (hat ERROR → PASS) · İB-48 kalanı (graf adımı) · `anakronizm-denetim.py`'yi seans kapanışına ekle (KB-67 (a) gelirse hatta).
+3. **Salih tetikli:** V84 yerel ölçüm ("ölç") · İB-49 D2 mini-eval · İB-47 vektör ölçüm kolu · masalar EK-6 / entegrasyon.
+
+## 5. Yeniden-açma koşulları
+- Go/Rust/CUE: yalnız T1 (dış makineye Python kurdurmadan dağıtım) ∨ T2 (yerel ölçülmüş gecikme/hacim sınırı) ∨ "çok-kaynaklı kısıt birleştirme"de ilk KAÇAN çelişki vakası; her durumda parite testi + sürüm-pinli kanal + nadir-dil kapısı.
+- Anakronizm lint sertleştirme (pre-commit): yanlış-pozitif oranı ölçülünce (UYARI 319 tabanı üzerinden).
+- Dil-başına LLM doğruluk hükmü: Multi-SWE-bench yeni sürüm ∨ V84 yerel ölçüm gelince (2025-04 sayıları gösterge).
+
+## Hasat (`core/sablonlar/hasat.md`) — Görev: seans-16 (K-015/K-023 hattı) · Damga: beyansız (m.33)
+1. **Özütler:** (i) dil sorusunun cevabı ikinci kez "dil değil" çıktı — 07-30'da mimari, 08-26'da iş-sınıfı matrisi + yorumlayıcı pini + ekosistem tetiği · (ii) as-of damgası zorunluluğu hakem hayatta-kalmasını 8/22 → 1/29 çekti: DARALDI kovası "damga eklendi"yi de sayıyor → şema adayı · (iii) leaderboard/resmî veri deposu bile bayat olabiliyor (Aider 2025-11-20; Multi-SWE data.json 2024) → "canlı kaynak" da AS-OF ister · (iv) kesim beyanı model-başına ve iki türlü (reliable/training); ajanın "bilinen ad değil" hükmü = kendi kesimi · (v) lint ilk kalıp seti 1.665 yanlış-pozitif — Türkçe zaman-çivi listesi kaynaksız, kalibrasyon ölçümle.
+2. **Wiki-delta:** açıldı: `dil-secimi`, `anakronizm-freni`; kuyruğa: kesim-tablosu-ve-model-hafizasi, nadir-dil-kapisi; Gotchas doğrudan işlendi (dil-secimi: SDK tazeliği; anakronizm-freni: "bilmiyorum ≠ yok", leaderboard bayatlığı).
+3. **Verilebilir miydi (V20):** atlas koşumları ve S-0 alt-modellere verildi (Opus/Sonnet). Verilmeyen: sentez + borç ayrımı + lint kalibrasyonu (yargı; çelişki kapısı) — alt-modele verilemez çünkü kanon bilgisi + Katman ayrımı gerekiyor; kod-envanter/lint yazımı Sonnet'e verilebilirdi (verilmedi: tek-seferlik, gözetim maliyeti > kazanç).
+4. **Token×zaman:** çok × uzun — 172 tur, ilk-tur bağlam 52,6k, **max bağlam 489.382 (142 tur >128K)**, ana-sıra çıktı 728,8k; alt-ajan usage 643k + 746k + 40k; iki koşum toplam ~36 dk duvar-saati; beklenti: atlas başına ~20 dk TUTTU, ana-sıra çıktısı beklentinin üstünde (iki pipeline + kapanış). **Uzun-koşum: max bağlam 489.382 (142 tur üstte).**
+
+### Hasat kontrol listesi (KB-50/52, uzun koşum)
+(1) Kalıcı kural/karar adayı ingest'e girdi mi → EVET: Karar 68 defter; KB-62..68 ledger; V82-85 kutu; tartışma notu 4 madde. (2) Açık pipeline T beyanı → EVET: `cc/pipeline-2026-08-26-dil-secimi-ekosistem.md` T DONE; `cc/pipeline-2026-08-26-anakronizm.md` T DONE. (3) Tahmin↔gerçek (KB-02) → tahmin 18 satır bronz'da; gerçekleşen rapor künyelerinde (atlas-derle) ve amb_olgu_kosum'da (12+12 satır); sapma: çıktı-token sayımı bant altında (İB-50 sayım teyidi). (4) Paralel oturum → YOK; seans-15 izi devralındı (commit).
+
+### Kapanış koşumları
+katman-hatti: silver tazelendi (HEAD 5f6f4fc; hareket günlüğü `raporlar/hareket-gunlugu-2026-08-26.md` 85 satır) · **hat ERROR 1:** `amb_olgu_kosum_sonuc.kosum_id → amb_olgu_kosum` ihlal 5 (grain; İB-50) · silver-sağlık kapısı çıkış 0 (T-B adayları: süpersede 3 · yetim 219 · kapandı 30 · T-A ön-eleme 6.712 çift/500 yazıldı) · skill-eşik: 6 çift, yeni-pencere sapması 0 (atlas-kosum×opus n=185 medyan 25,3k tok / 469 sn) · kural-sayacı 18/100 · anakronizm-denetim taban 114/319 (bronz 433 satır) · araç-çıktısı aşımı: 2 (ilk turda workflow şablonu + skill/şablon toplu okuması >10k → dosyaya düştü, özetle okundu) · boyut-tetiği: **fikir-kutusu 26,4/20 KB** · **KILAVUZ 17,7/16 KB** · pano 12,9/12 (damıtma adayları; Salih-imzalı plan).
