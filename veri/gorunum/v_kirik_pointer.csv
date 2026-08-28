@@ -83,6 +83,7 @@ tam.svg,ciplak_ad,4,4,core/durum-kapsulu.md,core/durum-kapsulu.md#5-5#7bcd8f9f
 tools/adres-getir.py,yol,4,3,cc/rapor-2026-08-18-1.md,cc/rapor-2026-08-18-1.md#396-396#2d8385b0
 yol/dosya.md,yol,4,2,KILAVUZ.md,KILAVUZ.md#48-48#bc3535ec
 .agents/AGENTS.md,yol,3,1,raporlar/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md,raporlar/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md#107-107#ef9dceb6
+02_model_egit.py,ciplak_ad,3,1,raporlar/hareket-gunlugu-2026-08-28.md,raporlar/hareket-gunlugu-2026-08-28.md#38-38#8e8ad83a
 CLAUDE.local.md,ciplak_ad,3,3,cc/gorev-2026-07-29-3.md,cc/gorev-2026-07-29-3.md#35-35#c276833a
 Haritası.md,ciplak_ad,3,3,ogrenme/loop-eng-yol-haritasi.md,ogrenme/loop-eng-yol-haritasi.md#1-1#3670ba97
 KNOWLEDGE-MAP.md,ciplak_ad,3,2,02_KNOWLEDGE_INDEX_PLAN.md,02_KNOWLEDGE_INDEX_PLAN.md#7-7#5ccb0fb0
@@ -101,6 +102,7 @@ docs/install.md,yol,3,1,cc/rapor-2026-08-26-1.md,cc/rapor-2026-08-26-1.md#252-25
 grading.json,ciplak_ad,3,3,cc/rapor-2026-08-15-2.md,cc/rapor-2026-08-15-2.md#273-273#2790a4f0
 gunluk/2026-08-26.md,yol,3,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#101-101#a143ba61
 gunluk/YYYY-AA-GG.md,yol,3,3,paylasim/ekip-skilleri/README.md,paylasim/ekip-skilleri/README.md#12-15#f1ab9d85
+kuyruk/ders-gbm/02_model_egit.py,yol,3,1,raporlar/hareket-gunlugu-2026-08-28.md,raporlar/hareket-gunlugu-2026-08-28.md#25-26#d378431c
 mem0/memory/storage.py,yol,3,1,cc/rapor-2026-08-18-1.md,cc/rapor-2026-08-18-1.md#260-260#a4102373
 private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/d0e63fae-1660-4d00-bdca-e44606622225/scratchpad/derle.py,yol,3,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#175-175#a8c2a569
 progress.md,ciplak_ad,3,2,cc/rapor-2026-08-17-2.md,cc/rapor-2026-08-17-2.md#221-221#b2e7578d
@@ -405,7 +407,7 @@ masa-uret.py,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-16.md,raporlar/harek
 mcp.md,ciplak_ad,1,1,cc/rapor-2026-08-17-4.md,cc/rapor-2026-08-17-4.md#89-89#96aad700
 memory/CLAUDE.md,yol,1,1,cc/gorev-2026-08-14-1.md,cc/gorev-2026-08-14-1.md#11-11#4d32f16a
 metrics.json,ciplak_ad,1,1,raporlar/2026-07-17-skill-fikri-kutusu.md,raporlar/2026-07-17-skill-fikri-kutusu.md#125-125#f11915d5
-model.json,ciplak_ad,1,1,fikir-kutusu.md,fikir-kutusu.md#110-110#dc50d1a9
+model.json,ciplak_ad,1,1,fikir-kutusu.md,fikir-kutusu.md#112-112#dc50d1a9
 monitors/monitors.json,yol,1,1,cc/rapor-2026-08-26-1.md,cc/rapor-2026-08-26-1.md#281-281#eadcc209
 next.md,ciplak_ad,1,1,cc/rapor-2026-08-22-2.md,cc/rapor-2026-08-22-2.md#104-104#93719367
 notes.md,ciplak_ad,1,1,cc/rapor-2026-08-03-4.md,cc/rapor-2026-08-03-4.md#339-339#894b58bc
