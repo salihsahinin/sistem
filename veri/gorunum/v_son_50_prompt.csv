@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-08-27,00:29,405e80db,4,onay/devam,,claude-fable-5,37,2. başlık:a diyeceğim ve icraya başla,c8f2836d-7454-489e-b606-123b192cf0b9
-2,2026-08-27,00:24,563ea60e,58,onay/devam,,claude-sonnet-5,15,"netleşti, devam",ece2536f-f306-4b99-b06b-fd948b0eb776
-3,2026-08-27,00:11,563ea60e,57,soru,,claude-sonnet-5,273,""" Negatif gradyanı (eksi türevi) alalım — optimizasyonda ""hangi yöne gidersem kayıp azalır"" sorusunun cevabı hep negatif gradyandır (türev, ",db14f552-e36c-46d0-8a07-7c7341fd58b2
-4,2026-08-27,00:08,563ea60e,56,diger,,claude-sonnet-5,14,p12'ye geçelim,77f526fe-965d-4bff-8d62-cd926adef200
-5,2026-08-27,00:06,563ea60e,55,soru,,claude-sonnet-5,74,"sonuç olarak elimizde 2 ağaç mı var,bu iki ağacın eşik koşulları ne oluyor",5955f7f2-b405-4a82-b744-77b6c742921d
-6,2026-08-27,00:04,563ea60e,54,emir,,claude-sonnet-5,72,sonuç olarak verinin 2 modelden sırayla akışı örnek bir senaryoda göster,193ae607-0ce0-4a82-a988-3f47c16c034b
-7,2026-08-27,00:02,563ea60e,53,diger,,claude-sonnet-5,49,"evet endişelendiriyor, ezber riski gibi görünüyor",5163fbc5-d95c-4d47-805d-f70aacfdcec0
-8,2026-08-27,00:00,563ea60e,52,onay/devam,,claude-sonnet-5,30,"evet, doğru eşikle yeniden kur",1d062a50-4cf6-4aa2-9d7a-36954d6c6d73
-9,2026-08-26,23:58,563ea60e,51,soru,,claude-sonnet-5,40,toplam hata sütununu nasıl hesaplamıştın,5630de6d-a06a-4536-bcb3-b5873e381343
-10,2026-08-26,23:56,563ea60e,50,soru,,claude-sonnet-5,152,boosting başarılı ama hepsine aynı miktarda etkili olmuyor gittikçe 0'a yakınsar yeni model için yeni seçilen eşiğin daha iyi olduğunu nasıl,597c50d6-8fff-4bf7-8dee-ebf3a0cccbf0
-11,2026-08-26,23:49,563ea60e,49,diger,,claude-sonnet-5,70,artıkların kare farkları toplamını da 0'a eşitlemeye çalışırdım devam,72d3b88c-5931-4a98-ad95-631ee01ef5db
-12,2026-08-26,23:45,563ea60e,48,onay/devam,,claude-sonnet-5,5,devam,7abc1573-71af-4f48-94aa-6f8598fa00d4
-13,2026-08-26,23:41,563ea60e,47,diger,,claude-sonnet-5,44,sağ grubu çok hatalı tahmin etti çünkü devam,64eebe67-6f9c-477c-a8bf-1ba6ce24bfbc
-14,2026-08-26,23:35,563ea60e,46,onay/devam,,claude-sonnet-5,5,devam,b034d495-c6b3-4813-9397-581a2dd50676
-15,2026-08-26,23:07,563ea60e,45,soru,,claude-sonnet-5,138,tamam ama buradaki etiket kısmının sonucunu biz biliyoruz zaten modeli bilmediğimiz senaryoda nasıl kullanacağız o kısım gelecek mi devam,ff1c9438-4e43-4942-8660-e31f7c5965ca
-16,2026-08-26,23:03,563ea60e,44,soru,,claude-sonnet-5,42,grup 2 nin ortalaması neden 2.5 nasıl oldu,3ddf12b6-bb02-4177-abb1-d58f3e877c0e
-17,2026-08-26,22:59,563ea60e,43,soru,,claude-sonnet-5,44,bölünmüş grup nasıl çalışıyordu tekrar anlat,0768031a-d605-4923-ad09-955971292d2d
-18,2026-08-26,22:57,563ea60e,42,diger,,claude-sonnet-5,80,konu arasına geçmeden önceki kısımdan devam edelim en son p5 anlatıyon tekrar p5,844a161f-cebe-4153-b390-2d79e5eeb3a9
-19,2026-08-26,22:50,405e80db,3,onay/devam,,claude-fable-5,5,devam,ded859ce-fd8a-4438-8ad5-9241332d81de
-20,2026-08-26,18:27,405e80db,2,soru,,<synthetic>,266,""" Organization access is disabled Your organization’s access has been disabled. Contact your admin. Your organization has disabled Claude su",e6915c21-0249-4b5f-8c20-6954eddb4447
-21,2026-08-26,18:21,405e80db,1,seans-acilis,seans-acilis,claude-fable-5,454,"seans başı, -quicklook formatından vazgeçiyorum iyi bir md editor değil bu konuda alınmış kararları da iptal edip context windowa otomatik y",ef0c2d46-f87e-4e72-9725-76a87b0841cb
-22,2026-08-26,17:42,2fc42451,10,seans-kapanis,seans-kapanis,claude-fable-5,12,seans bitimi,8554d091-604e-4f8b-bcba-963b22f285c3
-23,2026-08-26,17:36,2fc42451,9,soru,,claude-fable-5,85,pointer-sistemi-v0-tam.d2 / .svg dosyasını yani llm için hazırlanmış tam d2 neden yok,016fb099-d6dd-4648-8cc0-41493ac330ce
-24,2026-08-26,17:27,2fc42451,8,emir,,claude-fable-5,248,-obsidianın artı olacak tarafından faydalanalım(sisteme eksisi olmayıp artı sağlayacaksa) -pointer ağını görmek istiyorum render edilmiş dos,a4b257c5-9dc7-433a-8a40-5a9d5fee1e7e
-25,2026-08-26,17:09,be4a4b92,6,soru,,claude-fable-5,94,bu koşum sonuçları bana sadece matris mi döndürecek db ile ilgili özel verileri de içerecek mi,024db852-da9c-454f-bf1c-369920d18b0f
-26,2026-08-26,17:06,be4a4b92,5,emir,,claude-fable-5,245,galeri-scoring-korelasyon dosyasında sadece redshifte ve db'ye erişimi olan ekip arkadaşımın tüm featurelar için koşturacağı kodlar bulunsun,6e667daf-fc06-4f9f-b1ab-49de5bb8bc3b
-27,2026-08-26,16:49,be4a4b92,4,emir,,claude-fable-5,94,koşumları ekip liderine yaptıracağım şimdi hangi kodları hangi sırayla koşması gerektiğini yaz,713fd17e-3043-49ad-9341-8285b1ce4c5e
-28,2026-08-26,16:32,be4a4b92,3,soru,,claude-fable-5,121,şimdi benim redshift tarafına erişimim yok matrisi gene de çıkarabilir miyim? bir de koşumları nasıl yapacağımı tarif et,2c7e7792-3e53-4ebf-affc-2f7e15a06e83
-29,2026-08-26,16:21,be4a4b92,2,diger,,claude-fable-5,75,ben am korelasyon matrisini sözlükteki TÜM featurelar için yapmak istiyorum,8a6c0f75-29aa-4d79-a468-b91e8f2f2445
-30,2026-08-26,16:15,be4a4b92,1,emir,anthropic-skills:xlsx,claude-fable-5,1233,"@""/Users/HasanSalihSahin/Downloads/galeri_scoring_veri_sozlugu_1.xlsx"" "" Hangi feature'ların gerçekten paralel olduğunu varsayımla değil mat",9ce5d2f9-8c77-4c35-830f-b31cffb02265
-31,2026-08-26,15:22,563ea60e,41,diger,,claude-opus-5,135,modeli beraber kuracağız kurarken nelere dikkat etmeliyim eldeki datayla en iyi cat boost algoritmalı model eğitme önerisi fikir olarak,9bb37494-f04d-4b55-be4e-8c95e351b9c6
-32,2026-08-26,15:19,563ea60e,40,diger,,claude-opus-5,13,fikir önerisi,345cbfc2-7ee3-48e2-901b-9034a50e1f0a
-33,2026-08-26,15:16,563ea60e,39,soru,,claude-opus-5,133,konu arası yan görev:ihalelerde galeri skorlamak için cat boost ile eğittiğim bi model olmasını istiyorsam bu model nasıl çalışabilir,a2d56f20-7ef2-476e-be58-daf8db8dc123
-34,2026-08-26,14:15,57c9790d,1,soru,,claude-sonnet-5,35,shap tekniği nedir açıkla örnek ver,15877a86-3090-4a6a-b718-379869834fbb
-35,2026-08-26,11:58,f2653d57,1,diger,,claude-sonnet-5,44,gitte yeni branch açmak için terminal komutu,90c3b220-1354-4370-8400-179b3776e227
-36,2026-08-26,11:45,563ea60e,38,diger,,claude-sonnet-5,47,rastgele k-fold zaman boyutunu içermiyor devam,f2b01f2b-8dc0-4fad-ab48-7b707c8e68a5
-37,2026-08-26,11:41,563ea60e,37,diger,,claude-sonnet-5,168,"bilmiyorum ama zamanı bloklara ayırıp rastgele karıştırmayı her bir blok için uygulayabiliriz,o zaman böldüğümüz bloğun büyüklüğü önemli olu",9eb1df67-b2b0-4ed8-b2f8-8f5bab4bd7ee
-38,2026-08-26,11:37,563ea60e,36,diger,,claude-sonnet-5,60,3 tanesiyle eğitir 2 tanesiyle sınarız(g1-g5 böleriz) devam,2a14af2b-ff47-4d90-b9ae-8ed805ebbe66
-39,2026-08-26,11:32,563ea60e,35,soru,,claude-sonnet-5,109,c'yi bir değişken olarak doğru seçmeye çalışan bir sistem oluşturmak mı hedef kontrol sorusunu cevapla devam,450b782b-a314-4809-870a-eddf0a6a9ee1
-40,2026-08-26,11:28,563ea60e,34,onay/devam,,claude-sonnet-5,5,devam,dfbb0a40-8fa0-49de-96bd-2088d4353316
-41,2026-08-26,11:25,563ea60e,33,soru,,claude-sonnet-5,150,"0.24'mü.varyansın formülünün neden """"elindeki en iyi sabit tahmini (ortalama) kullansan bile, ortalamada ne kadar hata kalır"" a cevap verdiğ",1d63d321-7135-4269-9641-99e0bb6050c2
-42,2026-08-26,11:19,563ea60e,32,onay/devam,,claude-sonnet-5,12,"dibine,devam",43d95456-756e-4770-9f26-3bb76b1ca2bd
-43,2026-08-26,11:17,563ea60e,31,diger,,claude-sonnet-5,86,5 galeri için tahmini bir c sayısı bulmaya çalışıyoruz da ondan(en iyi c sayısı) devam,c68012fe-dc3e-4dd8-96b4-ef345eb174cb
-44,2026-08-26,11:15,563ea60e,30,onay/devam,,claude-sonnet-5,39,z burda nedir onu hatırlat sonra devam,1253be67-6928-40e1-ad45-05d08d7d8576
-45,2026-08-26,11:12,563ea60e,29,onay/devam,,claude-sonnet-5,13,anladım devam,f5f74479-a662-43f0-9f95-9e519de7ee65
-46,2026-08-26,11:10,563ea60e,28,onay/devam,,claude-sonnet-5,19,anladım şu an devam,0174ecc8-b042-4122-a68c-3ce8461fb756
-47,2026-08-26,11:04,2fc42451,7,soru,,claude-fable-5,420,-insan formatı için quick look penceresinde açtığımız dosyalar için quick lookun sağladığı özelliklerden maksimum verim sağlayacak şekilde r,4f6fac6f-9294-4c32-8b45-13af8f75c2c2
-48,2026-08-26,10:54,563ea60e,27,diger,,claude-sonnet-5,161,"p3'ü baştan ve daha yavaş ilerleyecek şekilde anlat anlamıyorum,ayrıca bugün yeni bir gün bu konuşmayı dün yaptığım için neler konuştuğumuzu",3ef30a4e-e70e-4820-ada4-87be20b3ad9a
-49,2026-08-26,10:52,2fc42451,6,diger,,claude-fable-5,430,-ayrıca yan görev:hazırladığın md dosyalarını vs code üzerinden görüntüleyince benim için anlaşılır olmuyor farklı bir viewer kullanalım mac,d18954c8-3cfa-48e0-bda5-034be34408c8
-50,2026-08-26,10:49,c274360b,4,diger,,claude-opus-5,110,son kararların planlanması pushların atılması yeni tasarımlar fable modeller yapılır onay yok kalan iş fable'a,ac85fa89-11c8-4838-8a2c-998273239d9b
+1,2026-08-28,15:00,563ea60e,116,seans-kapanis,seans-kapanis,claude-sonnet-5,12,seans bitimi,d072beab-e008-4bf2-86ce-3ebb23e07621
+2,2026-08-28,14:58,563ea60e,115,emir,,claude-sonnet-5,141,bu konudan devam etmeyelim başka bir oturumda hazır datasetlerimle kod üzerinde işlem yapmaya devam edeceğim durumu anlatan bi prompt hazırl,93641363-e8d2-40a1-8cdd-f43ebb34bfeb
+3,2026-08-28,14:49,563ea60e,114,soru,,claude-sonnet-5,72,Başlangıç — relevans'tan gelen hedef sayılar (net_artık) nasıl oluştular,e82f303f-47ef-486c-951e-67e2d7f6cf9b
+4,2026-08-28,14:45,563ea60e,113,diger,,claude-sonnet-5,95,relevansla ağaçta eğitimin kökten dallara ilerleyişini simüle ettiğin bi senaryo üzerinde anlat,ffe11b71-4655-437f-bf3d-323155c7c8a7
+5,2026-08-28,14:42,563ea60e,112,soru,,claude-sonnet-5,53,"relevans bilgisi nedir,yeti rank bunu nerede kullanır",9a21ccc5-1a3d-4a30-9c20-96192c897171
+6,2026-08-28,14:37,563ea60e,111,soru,,claude-sonnet-5,162,softmax için anlattığın yerlere hatırlatma benzetme niteliğinde cümleler kurarak öğretme bana 0'dan model relevans bilgisi kullanarak ağacı ,dbc03c6f-ca4b-4f0a-8369-e67849815fdd
+7,2026-08-28,14:34,563ea60e,110,diger,,claude-sonnet-5,52,relevansın eğitim sürecine dahil olmuş halini açıkla,9f6cd2e1-3256-4589-8867-25fa9d3a21ef
+8,2026-08-28,14:30,563ea60e,109,soru,,claude-sonnet-5,94,peki yetirank bu relevans bilgisini skorları çıkarıp sıralama yaparken nerede nasıl kullanıyor,d0d4e903-cfce-4bac-8ed8-6898c413eb0b
+9,2026-08-28,14:29,563ea60e,108,soru,,claude-sonnet-5,95,yani skorları softmaxtaki gibi olasılığa çevirmiyor direk skorları büyükten küçüğe sıralıyor mu,03969f9f-f360-4315-8f72-4f2bd5b5fb4e
+10,2026-08-28,14:25,563ea60e,107,soru,,claude-sonnet-5,226,tamam da şunu anlamaya çalışıyorum şimdi diyelim ki ihalede ilk araç için 50 galeri bulundu 10 tanesi teklif 1 tanesi kazandı diyelim yetira,63fef730-ff45-4812-a038-262690f2277f
+11,2026-08-28,14:21,563ea60e,106,soru,,claude-sonnet-5,202,ben şunu anlamaya çalışıyorum yetirank kullanınca tanımsal olarak senaryo nasıl değişiyor yetirank her galeriye 0 ile 5 arasında bir değer m,f94d356a-f837-4bd0-95ef-beb13243063c
+12,2026-08-28,14:13,563ea60e,105,soru,,claude-sonnet-5,61,yetirankin nasıl çalıştığını önce bi anlayım basit bi örnekte,74597779-d99f-4743-885b-812ebdc976a9
+13,2026-08-28,14:11,563ea60e,104,diger,,claude-sonnet-5,469,""" Groupwise loss function. OneHotMaxSize set to 10 0: test: 0.8381333 best: 0.8381333 (0) total: 59.8ms remaining: 1m 59s 200: test: 0.89929",f9377cdb-d87d-4aed-892b-efa6654f6fce
+14,2026-08-28,14:08,563ea60e,103,diger,,claude-sonnet-5,424,""" Groupwise loss function. OneHotMaxSize set to 10 0: test: 0.9593518 best: 0.9593518 (0) total: 61.5ms remaining: 2m 2s 200: test: 1.000000",a8f64c1e-dfde-4061-ab08-fbbfc8e6a2b9
+15,2026-08-28,14:02,563ea60e,102,soru,,claude-sonnet-5,283,"tamamdır şimdi kaldığımız yerden devam edelim yeti rank ile model eğitecektik en son "" * 4: kazandı * 3: ikinci oldu (kıl payı kaçırdı) * 2:",3f3af535-92e1-4535-b97f-396a17f5cfb6
+16,2026-08-28,12:39,563ea60e,101,soru,,claude-sonnet-5,469,"yetirank ile model kurma kararı alındı yetirankı anlamam lazım hatta ekipte şöyle bir örnek geldi "" * Belki şöyle de olabilir: 4: kazandı * ",9e8a597b-ce21-4586-9fe0-1d913b40d01a
+17,2026-08-28,12:30,563ea60e,100,soru,,claude-sonnet-5,221,Shrink model to first 273 iterations. ortalama sıra: 1.9166666666666667 Hit Rate@1: 0.5833333333333334 Hit Rate@3: 0.875 Hit Rate@5: 0.9375 ,fcb8625f-5d9b-44d0-bfce-d3167d1e106f
+18,2026-08-28,12:07,563ea60e,99,soru,,claude-sonnet-5,80,yeni yan görev:yeti rank kullanılması düşünülüyor bu sistemden farkı nedir anlat,fedb887d-c34d-4e42-b6c5-a44fb97e040a
+19,2026-08-28,11:39,563ea60e,98,soru,,claude-sonnet-5,206,bizim yapacağımız modelde ihale bilgisi olmayan(hiç ihaleye katılmamış) ama sahibinden verisi olan biri catboostta sırf ihale verisi null ol,c0c34975-12f5-4e3e-86f5-9c29ca30cafa
+20,2026-08-28,10:59,563ea60e,97,diger,,claude-sonnet-5,42,"evet devam edelim, adım 5'i çalıştırıyorum",6a87e638-71a6-4973-9d69-7fd9fae8601f
+21,2026-08-28,10:58,563ea60e,96,soru,,claude-sonnet-5,48,"en iyi değerin ""0.8618"" olması ne anlama geliyor",208dfc26-51d4-4b76-b276-6aa1ec4b3b04
+22,2026-08-28,10:54,563ea60e,95,soru,,claude-sonnet-5,113,"adım 5'e geçmeden önce: ""test:"" ile geçen kısımdaki değer bize ne anlatıyor,0-200-400 sayıları bize ne anlatıyor",c30353fe-e759-40c9-a39c-4352ea6f50aa
+23,2026-08-28,10:50,563ea60e,94,diger,,claude-sonnet-5,395,""" Groupwise loss function. OneHotMaxSize set to 10 0: test: 0.6299247 best: 0.6299247 (0) total: 74.8ms remaining: 2m 29s 200: test: 0.85904",c718b4d5-4e92-4e99-a8a7-9fff57eb6a80
+24,2026-08-28,10:47,563ea60e,93,soru,,claude-sonnet-5,74,"ama ""KATEGORIK"" türkçe bir kelime catboost kütüphanesi türkçeyi anlıyor mu",7fb633f3-5edf-40bf-8f8e-e82faff1a656
+25,2026-08-28,10:43,563ea60e,92,soru,,claude-sonnet-5,179,"-""alt"" ile kurulan satırları anlamadım dataframe ne demek alt ne iş yapıyor -cat_features için tanımladığımız değer her zaman kategorik bilg",cd5e3d16-c6ab-4b84-ac45-d7e313b6e395
+26,2026-08-28,10:34,563ea60e,91,diger,,claude-sonnet-5,40,"çalıştırdım, 15 çıktı, listede hepsi var",0898bf83-c9ca-4270-a50b-2e7d94e8f839
+27,2026-08-28,10:31,563ea60e,90,onay/devam,,claude-sonnet-5,17,evet devam edelim,4896d257-4988-42c1-918a-3b0fe63756e0
+28,2026-08-28,10:30,563ea60e,89,soru,,claude-sonnet-5,100,-araba fiyatının 3 seçenekli olması eğitim hızlı olsun diye mi -etiket bilgisi nerede kullanılacak,fb8562d9-37d5-4438-8ae2-dbd3aaf97f82
+29,2026-08-28,10:25,563ea60e,88,diger,,claude-sonnet-5,84,çalıştırdım ama devam etmeden önce bana sentetik dataseti tanıt(tüm kolon bilgileri),03daf617-f55e-47a3-b7f9-cb14001238fd
+30,2026-08-28,10:21,563ea60e,87,diger,,claude-sonnet-5,811,""" (.venv) HasanSalihSahin@otoplus-M9V6411422 ders-gbm % python egitim.py (2880, 20) hafta arac_id galeri_id marka seri ... ilan_eslesme guru",1b4780b6-d41b-4341-807a-a2146e36f938
+31,2026-08-28,10:20,563ea60e,86,diger,,claude-sonnet-5,1742,HasanSalihSahin@otoplus-M9V6411422 / % source /Users/HasanSalihSahin/jarvis/kuyruk/ders-gbm/.venv/bin/activate <ihSahin/jarvis/kuyruk/ders-g,f7db79fd-81be-4137-a7b3-5db06c58a86d
+32,2026-08-28,10:19,563ea60e,85,soru,,claude-sonnet-5,31,mac'te ▷ klavye kısayolu yok mu,f980b0ff-f1b1-418c-8dac-6eaad8e2c22b
+33,2026-08-28,10:16,563ea60e,84,soru,,claude-sonnet-5,49,direk böyle vs code üzerinde çalıştıramıyor muyum,6e6e5fd8-a69c-4a38-ba8d-2dfe143a77d0
+34,2026-08-28,10:10,563ea60e,83,diger,,claude-opus-5,133,"hayır ben ""model eğitme"" sürecini kendim yapmak istiyorum benim için senin model eğitmeni istemedim süreci yaparak öğrenmek istiyorum",2a22ec2e-4076-4df7-b959-7159c9071159
+35,2026-08-28,10:07,563ea60e,82,diger,,claude-opus-5,84,ben direk sentetik dataset ile catboost kullanarak lokalimde model eğitmek istiyorum,04623100-2405-4acd-8116-d9944c22f7c1
+36,2026-08-28,09:59,563ea60e,81,emir,,claude-opus-5,77,bana bir tane sentetik dataset oluştur catboost algoritmasını ona uygulayalım,1bb5ed66-b1d4-4b1c-9e1b-44ffb271fd28
+37,2026-08-28,09:54,563ea60e,80,soru,,claude-sonnet-5,92,tamam kaldığımız yerden devam edelim(P öğrenme serisinden en son ne yaptık nereye geçiyoruz),71887577-203c-4ac6-bc61-74ca4a419a06
+38,2026-08-28,09:47,563ea60e,79,emir,,claude-sonnet-5,168,"-"" CatBoost'un (ve genel olarak gradyan-inişli her aracın) API'si zaten ""bir kaybı minimize et"" üzerine kurulu; "" burada bahsettiğin API ne ",25290523-3ddd-4204-85a2-71a4dc59e92a
+39,2026-08-28,09:44,563ea60e,78,diger,,claude-sonnet-5,78,""" Loss(araba) = −log(P(gerçek kazanan)) "" eksi ile çarpma kısmına geçişi anlat",38a3f43c-3d9d-4035-8bfb-330e35349d3e
+40,2026-08-28,09:37,563ea60e,77,soru,,claude-sonnet-5,69,evet geçelim formülün nereden geldiğini ve neden böyle olduğunu anlat,997a737a-1294-4963-84ae-d5c4fd565625
+41,2026-08-28,09:33,7759bc05,2,seans-kapanis,seans-kapanis,claude-sonnet-5,12,seans bitimi,b0d3c5b2-94e4-4047-bdb1-8efddd8b40f5
+42,2026-08-28,09:33,6108b705,2,onay/devam,,claude-opus-5,5,devam,8164e75c-43b9-4931-82a3-4a8344201e9b
+43,2026-08-27,18:04,6108b705,1,seans-acilis,seans-acilis,claude-opus-5,202,"seans başı,not al proje fikri:obsidian pointer sistemi bizim sistemimize yetersiz geldiği için bizimki çok katmanlı olduğu için bizimkini si",df5291e1-eb5e-40eb-845c-e25b09a1c49d
+44,2026-08-27,18:01,563ea60e,76,soru,,claude-sonnet-5,562,""" Neden bu bizim için önemli: P12'de kanıtladığımız −dL/dF = artık sonucunun bu kadar temiz (fazladan bir sabit olmadan, direkt y−F) çıkması",48b10547-d83c-451d-9e97-f445c24803c2
+45,2026-08-27,17:58,563ea60e,75,soru,,claude-sonnet-5,18,neden euler sayısı,e69a157d-cf77-455c-8d98-ca00298056cc
+46,2026-08-27,17:56,563ea60e,74,diger,,claude-sonnet-5,157,""" Σ_i P(i) = Σ_i [e^(skor_i) / Σ_k e^(skor_k)] = [Σ_i e^(skor_i)] / [Σ_k e^(skor_k)] "" sigma işareti kafa karıştırıyor küçük örnekte sigması",1262bf29-1260-46f7-8fa5-5058629a84c5
+47,2026-08-27,16:44,563ea60e,73,diger,,claude-sonnet-5,435,""" P(galeri_i kazanır) = e^(skor_i) / Σ e^(skor_hepsi) "" formülü ispatla "" Loss = −log(P(A)) = −log(0.415) = 0.880 "" ispatla daha sonra "" KAZ",b6d6cd56-79ad-413b-a298-56a0b24af4d0
+48,2026-08-27,16:20,563ea60e,72,soru,,claude-sonnet-5,137,"yani ağacın sonunda etiket değeri olarak model neyi ölçecek modelin bilmeyip de bizim bildiğimiz hangi ""gelecek"" değerini nasıl ölçeceğiz",05d3ab61-cb18-4dfe-ac4f-7c29cacad80d
+49,2026-08-27,15:50,563ea60e,71,diger,,claude-sonnet-5,12,label olarak,b00b15e0-b6cf-4e59-9a38-8836f13f696a
+50,2026-08-27,15:49,563ea60e,70,soru,,claude-sonnet-5,42,yan soru:doğrulama değerleri nasıl seçilir,c911f616-6d2c-4d3b-bc77-c15e939d62a3
