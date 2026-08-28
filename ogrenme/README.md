@@ -19,6 +19,10 @@
 3. **Yarı 2 — mühendislik:** "bu konu JARVIS'te nasıl kullanılır?" — m.37 formatında **3 model** (token×zaman×beklenen-kalite, sayısal; biri ✅ önerili) sunulur. Onay beklenmez ama karar ANA SIRAYA (Şerit 1) aday olarak devredilir; senaryo-defteri kaydı orada düşülür (şerit-senkron kuralı 6).
 4. **Kapanış:** ders kaydı `dersler/`e · kapsülde YALNIZ öğrenme satırı güncellenir · partisyon DONE/YARIM işaretlenir · anlama-kapısı geçilmediyse partisyon bölünür (m.21: büyük iş küçük parçaya).
 
+## Matematik kuralı (Karar 73, Salih Katman-1, 2026-08-29)
+- Her öğrenme dersinde **en az 1 matematik-bağlantılı içerik** bulunur; yeni öğrenme deseni/metrik **formülüyle** yazılır (tanım + sembol tablosu + elle işletilmiş sayısal örnek). Kanon gövdesi: [core/varlik-felsefesi.md](../core/varlik-felsefesi.md) §2.
+- Kurs şeritleri bu klasörün altındadır: [mit-6006/](mit-6006/README.md) (MIT 6.006 birebir kursu; birincil kaynak BK-1) · [mat-felsefesi/](mat-felsefesi/README.md) (matematik felsefesi serisi).
+
 ## Sınırlar
 - Bu şerit kanon/kural değiştirmez; çıktısı ders kaydı + karar adayıdır.
 - Öğretme akış-modu kuralına tabi: Salih akıştaysa teori ertelenir, iş bitince dönülür.
