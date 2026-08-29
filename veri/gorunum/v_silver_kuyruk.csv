@@ -75,6 +75,7 @@ T-B-KAPANDI,karar_borcu,İB-48,,"kapanış 2026-08-22, 6 seans önce","tarihçe 
 T-B-SUPERSEDED,dosya,core/sablonlar/vardiya-teslim.md,core/sablonlar/vardiya-teslim.md,süpersede damgası başlık/ilk 3 blok,arşive indir + pointer bırak (m.8),2026-08-22,7,,aday
 T-B-SUPERSEDED,dosya,kuyruk/masa-gundemi-entegrasyon-2026-08-21.md,kuyruk/masa-gundemi-entegrasyon-2026-08-21.md,süpersede damgası başlık/ilk 3 blok,arşive indir + pointer bırak (m.8),2026-08-22,7,,aday
 T-B-SUPERSEDED,dosya,wiki/stokastik-dusunce.md,wiki/stokastik-dusunce.md,süpersede damgası başlık/ilk 3 blok,arşive indir + pointer bırak (m.8),2026-08-22,7,,aday
+T-B-SUPERSEDED,dosya,kuyruk/olcum-banki.md,kuyruk/olcum-banki.md,süpersede damgası başlık/ilk 3 blok,arşive indir + pointer bırak (m.8),2026-08-29,0,,aday
 T-B-YETIM,dosya,cc/gorev-2026-07-15-1.md,cc/gorev-2026-07-15-1.md,gelen bağ 0 ≤ 0 ∧ yaş 52 seans > 3 (≈1029 token),bağlantılandır (pointer) ya da pointer'a indir — SİLME DEĞİL,2026-08-22,7,52,aday
 T-B-YETIM,dosya,cc/gorev-2026-07-15-2.md,cc/gorev-2026-07-15-2.md,gelen bağ 0 ≤ 0 ∧ yaş 52 seans > 3 (≈744 token),bağlantılandır (pointer) ya da pointer'a indir — SİLME DEĞİL,2026-08-22,7,52,aday
 T-B-YETIM,dosya,cc/gorev-2026-07-17-1.md,cc/gorev-2026-07-17-1.md,gelen bağ 0 ≤ 0 ∧ yaş 50 seans > 3 (≈795 token),bağlantılandır (pointer) ya da pointer'a indir — SİLME DEĞİL,2026-08-22,7,50,aday

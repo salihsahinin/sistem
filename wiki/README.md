@@ -54,3 +54,4 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - İlk parti kalanı (5 kavram planı, 07-10) — tempo kuralıyla sırada.
 - kesim-tablosu-ve-model-hafizasi — model-başına reliable/training kesimi, 'bilmiyorum ≠ yok', S-0 ajan vakası; kaynak veri/model-kesim.jsonl + rapor 08-26-2 A1-1/C1-2 (s16 hasadı 08-26); anakronizm-freni M2'nin ayrıntı sayfası (tempo: sonraki oturum).
 - nadir-dil-kapisi — V82 kural adayı; kaynak rapor 08-26-1 S4 + B3-2 (s16 hasadı 08-26); KB-63/64 kararı sonrası yazılır.
+- bakim-kk — skill bakımının kullanım-kanıtı katmanı: skill-doctor entegrasyonu + kanıt-izli öneri kuralı + kapı-uygulama zinciri; kaynak Karar 75/77 + `core/skill-uretim-semasi.md` §BAKIM + ilk çevrim raporu (s20 hasadı 08-29; tempo: sonraki oturum).

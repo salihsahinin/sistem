@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `bf215c7`)
+# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `12df11c`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 343 çağrı, 8 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 415 çağrı, 8 oturum.*
 
 ## Oturum `7ae8954e` — 01:27:57→01:56:52 · 59 çağrı · model fable-5 · hata 2
 **Özet:** koştu 35 · yazdı 10 · okudu 7 · düzenledi 6 · skill çağırdı 1
@@ -124,9 +124,9 @@
 | 11 | 10:49:45 | koştu | Check whether my earlier note is already committed at HEAD ⟨git show HEAD:kuyruk/ders-gbm-ilerleme.md ¦ grep -n "P-sonrası uygulama\¦Anlatılacaklar kuyruğu" ; echo "---"; git log --oneline -- kuyruk/ders-gbm-il…⟩ | tamam |
 | 12 | 10:49:56 | koştu | Re-check current git status after possible parallel commit ⟨git status && echo "---HEAD---" && git log -3 --oneline && echo "---ORIGIN---" && git log -3 --oneline origin/main 2>/dev/null && git status -sb ¦ hea…⟩ | tamam |
 
-## Oturum `405e80db` — 10:49:41→12:28:54 · 61 çağrı · model fable-5 · hata 0
-**Özet:** koştu 42 · okudu 9 · düzenledi 4 · yazdı 3 · skill çağırdı 2 · ajan gönderdi 1
-**Yazılan/düzenlenen dosyalar (5):** `.claude/skills/skill-kapisi/SKILL.md` · `core/skill-uretim-semasi.md` · `raporlar/2026-08-29-damitma-turu.md` · `raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html` · `raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html`
+## Oturum `405e80db` — 10:49:41→13:44:10 · 90 çağrı · model fable-5 · hata 1
+**Özet:** koştu 59 · okudu 12 · düzenledi 11 · yazdı 4 · skill çağırdı 3 · ajan gönderdi 1
+**Yazılan/düzenlenen dosyalar (9):** `.claude/skills/seans-kapanis/SKILL.md` · `.claude/skills/skill-kapisi/SKILL.md` · `core/ajan-metodolojisi.md` · `core/skill-uretim-semasi.md` · `core/tuzuk-v0.md` · `raporlar/2026-08-29-damitma-turu.md` · `raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html` · `raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html` · `raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -191,9 +191,38 @@
 | 114 | 12:27:30 | koştu | Tüzük m.37 ve m.13 maddelerini oku ⟨grep -n '^13\.\¦^37\.' core/tuzuk-v0.md ¦ cut -c1-200 && echo '---m37 tam---' && sed -n "$(grep -n '^37\.' core/tuzuk-v0.md ¦ cut -d: -f1)p" core/tuzu…⟩ | tamam |
 | 115 | 12:28:18 | koştu | E1/E12 tüzük fıkraları + E2 KILAVUZ satırı + E4 ajan-metodolojisi bölümü ⟨python3 - <<'EOF' # E1 → m.37 ek fıkra · E12 → m.13 ek cümle (tüzük, Salih imzaları Karar 76 masasından) L = open('core/tuzuk-v0.md', encoding='utf-8'…⟩ | tamam |
 | 116 | 12:28:54 | koştu | Defter Karar 76 + kanon yazımlarını pathspec commit'le ⟨cat >> kuyruk/senaryo-defteri.md <<'EOF' **Karar 76 (2026-08-29 seans-20 · ÜÇÜNCÜ LAVISH MASASI — ENTEGRASYON 13/13, yüzey `raporlar/masa-entegrasyon-…⟩ | tamam |
+| 117 | 12:31:55 | koştu | Karar 75+76 commit'lerini push'la (Salih beyanı) ⟨git push origin main 2>&1 ¦ tail -1⟩ | tamam |
+| 118 | 12:31:55 | okudu | kuyruk/masa-gundemi-EK6-2026-08-20.md [bütün] | tamam |
+| 119 | 12:33:01 | koştu | Önerileri uygula + K2 deterministik denetim + iddia-topraklama ⟨cat >> .claude/skills/seans-kapanis/SKILL.md <<'EOF' - **Paylaşılan-jsonl merge tuzağı (BAKIM-KK 08-29 kanıtı: 2 başarısız oturum, 3-4'er merge deneme…⟩ | hata |
+| 120 | 12:33:15 | düzenledi | .claude/skills/seans-kapanis/SKILL.md | tamam |
+| 121 | 12:33:22 | düzenledi | core/ajan-metodolojisi.md | tamam |
+| 122 | 12:33:29 | koştu | K2-R kapı-denetim script'i (tel-uyumlu yol) + K2-İ scores.json topraklaması ⟨SK=$(find . -path './.git' -prune -o -name kapi-denetim.py -print ¦ head -1) && HEDEF=$(dirname $(find . -path './.git' -prune -o -path '*seans-kapani…⟩ | tamam |
+| 123 | 12:33:59 | koştu | Karar 77 kayıtları + pathspec commit ⟨python3 - <<'EOF' # BAKIM-KK satırı: kabul 0/2 → 2/2 L = open('kuyruk/skill-fikir-kutusu.md', encoding='utf-8').read() L = L.replace("¦ 0/2 (kapıda — …⟩ | tamam |
+| 124 | 12:36:13 | yazdı | raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html | tamam |
+| 125 | 12:36:16 | koştu | EK-6 masasını Lavish oturumu olarak aç ⟨lavish-axi raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html 2>&1 ¦ head -4⟩ | tamam |
+| 126 | 12:36:23 | koştu | Lavish poll: EK-6 hükümlerini bekle ⟨lavish-axi poll raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html --agent-reply "EK-6 masası hazır — masa kuyruğunun SON dosyası: 8 kalem + 2 ucuz teyit.…⟩ | tamam |
+| 127 | 13:35:13 | okudu | /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/405e80db-9dcd-41d0-a47a-90c60257cad7/tasks/bbwojccz1.output [aralık 0+30] | tamam |
+| 128 | 13:35:48 | koştu | Tüzük m.43 ve m.25 metinlerini oku ⟨grep -n '^43\.\¦^25\.' core/tuzuk-v0.md ¦ cut -c1-150 && sed -n "$(grep -n '^43\.' core/tuzuk-v0.md ¦ cut -d: -f1)p" core/tuzuk-v0.md ¦ fold -s -w 160…⟩ | tamam |
+| 129 | 13:36:12 | koştu | Edit hedeflerinin birebir metin parçalarını çek ⟨L43=$(grep -n '^43\.' core/tuzuk-v0.md ¦ cut -d: -f1); sed -n "${L43}p" core/tuzuk-v0.md ¦ tail -c 220; echo; echo '---m25 son 160---'; L25=$(grep -n …⟩ | tamam |
+| 130 | 13:36:22 | düzenledi | core/tuzuk-v0.md | tamam |
+| 131 | 13:36:26 | düzenledi | core/tuzuk-v0.md | tamam |
+| 132 | 13:36:29 | düzenledi | core/skill-uretim-semasi.md | tamam |
+| 133 | 13:36:36 | düzenledi | core/skill-uretim-semasi.md | tamam |
+| 134 | 13:36:39 | düzenledi | .claude/skills/skill-kapisi/SKILL.md | tamam |
+| 135 | 13:36:54 | koştu | F7 icrası: olcum-banki süpersede-pointer + gündem dosyasına kapanış damgası ⟨wc -c kuyruk/olcum-banki.md && head -3 kuyruk/olcum-banki.md && mv kuyruk/olcum-banki.md kuyruk/arsiv/olcum-banki-arsivi-2026-08-29.md && cat > kuyruk…⟩ | tamam |
+| 136 | 13:37:20 | koştu | Defter Karar 78 + tüm icra dosyalarını pathspec commit'le ⟨cat >> kuyruk/senaryo-defteri.md <<'EOF' **Karar 78 (2026-08-29 seans-20 · DÖRDÜNCÜ LAVISH MASASI — EK-6 daraltılmış 10/10, yüzey `raporlar/masa-EK6-k…⟩ | tamam |
+| 137 | 13:37:27 | koştu | Lavish'e uygulama özeti + kalan feedback için bekle ⟨lavish-axi poll raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html --agent-reply "10/10 işlendi (Karar 78, commit'li): m.43 birim=GÖREV + eşik N=3 (zincir…⟩ | tamam |
+| 138 | 13:37:45 | okudu | /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/405e80db-9dcd-41d0-a47a-90c60257cad7/tasks/b4i75zs8w.output [aralık 0+20] | tamam |
+| 139 | 13:38:06 | koştu | Karar 78 EK beyan kaydı + commit ⟨cat >> kuyruk/senaryo-defteri.md <<'EOF' **Karar 78 EK (aynı gün, Send&End son paketi):** F2/F3 hükmünün ikinci beyan ifadesi aynen: "birim=görev dedi…⟩ | tamam |
+| 140 | 13:42:44 | koştu | Karar 77+78+EK commit'lerini push'la (Salih beyanı) ⟨git push origin main 2>&1 ¦ tail -1⟩ | tamam |
+| 141 | 13:43:12 | skill çağırdı | seans-kapanis | tamam |
+| 142 | 13:43:40 | koştu | Kapanış öncesi: çalışma ağacı + araç varlığı + boyutlar ⟨git status --short ¦ head -8; ls tools/bayat-cekim.py tools/bag-tablo.py 2>&1; for f in kuyruk/senaryo-defteri.md fikir-kutusu.md KILAVUZ.md core/pano…⟩ | tamam |
+| 143 | 13:43:52 | koştu | Paralel oturumun commit'lerini devral ⟨git log -6 --format='%h %ad %s' --date=format:'%H:%M' ¦ cut -c1-130⟩ | tamam |
+| 144 | 13:44:05 | koştu | Bayatlık kuyruğu N=3 listesi (İB-52 adımı, ilk kapanış koşumu) ⟨python3 tools/bayat-cekim.py --liste 2>&1 ¦ head -15⟩ | tamam |
+| 145 | 13:44:10 | koştu | Hat (bag dahil) + skill-eşik + silver-sağlık kapısı + kural sayacı ⟨python3 tools/katman-hatti.py 2>&1 ¦ grep -E '\[.*\] (bag¦obsidian¦anakronizm¦olcum)' ¦ head -4; echo "hat çıkış: $?"; python3 tools/skill-esik.py 2>&…⟩ | yok |
 
-## Oturum `37c3509e` — 11:04:45→12:23:40 · 13 çağrı · model sonnet-5 · hata 0
-**Özet:** koştu 11 · okudu 2
+## Oturum `37c3509e` — 11:04:45→13:33:57 · 20 çağrı · model sonnet-5 · hata 0
+**Özet:** koştu 15 · okudu 5
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -210,6 +239,13 @@
 | 11 | 12:23:34 | koştu | Locate E12 card in the HTML ⟨grep -n "E12\b" /Users/HasanSalihSahin/jarvis/raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html ¦ head -5⟩ | tamam |
 | 12 | 12:23:37 | okudu | raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html [aralık 236+30] | tamam |
 | 13 | 12:23:40 | koştu | Find m.13 definition in tüzük ⟨grep -n "^13\.\¦m\.13" /Users/HasanSalihSahin/jarvis/core/tuzuk-v0.md 2>/dev/null ¦ head -5⟩ | tamam |
+| 14 | 13:24:20 | koştu | Locate F2 card and birim=görev text in new decision surface ⟨grep -n "F2\b\¦birim.*görev\¦birim=görev" /Users/HasanSalihSahin/jarvis/raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html ¦ head -20⟩ | tamam |
+| 15 | 13:24:22 | okudu | raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html [aralık 70+30] | tamam |
+| 16 | 13:31:28 | koştu | Locate F7 card in decision surface ⟨grep -n "F7\b" /Users/HasanSalihSahin/jarvis/raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html ¦ head -5⟩ | tamam |
+| 17 | 13:31:31 | okudu | raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html [aralık 153+25] | tamam |
+| 18 | 13:31:34 | koştu | Find K-023 definition for context ⟨grep -n "K-023" /Users/HasanSalihSahin/jarvis/core/pano.md /Users/HasanSalihSahin/jarvis/kuyruk/senaryo-defteri.md 2>/dev/null ¦ head -10⟩ | tamam |
+| 19 | 13:33:54 | koştu | Locate T1 T2 cards about absorbe teyit ⟨grep -n "T1\b\¦T2\b\¦absorbe" /Users/HasanSalihSahin/jarvis/raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html ¦ head -30⟩ | tamam |
+| 20 | 13:33:57 | okudu | raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html [aralık 186+20] | tamam |
 
 ## Oturum `fff44f10` — 11:27:22→11:35:05 · 3 çağrı · model sonnet-5 · hata 0
 **Özet:** ajan gönderdi 3
@@ -220,9 +256,9 @@
 | 2 | 11:32:07 | ajan gönderdi | [claude-code-guide] Explain following subagent output in Claude Code | tamam |
 | 3 | 11:35:05 | ajan gönderdi | [claude-code-guide] Correct info on live subagent monitoring | tamam |
 
-## Oturum `0fa78c95` — 11:30:15→12:29:28 · 171 çağrı · model fable-5 · hata 2
-**Özet:** koştu 101 · düzenledi 37 · okudu 22 · yazdı 9 · ajan gönderdi 1 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (17):** `.claude/skills/damitma/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `raporlar/2026-08-29-ib53-kapsama-haritasi.md` · `raporlar/2026-08-29-ib54-delinme-kok-neden.md` · `tools/SCRIPTLER.md` · `tools/ambar-parquet.py` · `tools/anakronizm-denetim.py` · `tools/bag-tablo.py` · `tools/baglam-tablo.py` · `tools/bayat-cekim.py` · `tools/katman-hatti.py` · `tools/katman-olcum.py` · `tools/pointer-graf.py` · `tools/pointer-kayma.py` · `veri/README.md` · `veri/sozlesme/bag.json` · `veri/sozlesme/parquet_uretim.json`
+## Oturum `0fa78c95` — 11:30:15→13:42:49 · 207 çağrı · model fable-5 · hata 2
+**Özet:** koştu 124 · düzenledi 42 · okudu 25 · yazdı 13 · skill çağırdı 2 · ajan gönderdi 1
+**Yazılan/düzenlenen dosyalar (23):** `.claude/skills/damitma/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `raporlar/2026-08-29-ib33-kolon-olcum-k3.md` · `raporlar/2026-08-29-ib51-kural-envanteri.md` · `raporlar/2026-08-29-ib53-kapsama-haritasi.md` · `raporlar/2026-08-29-ib54-delinme-kok-neden.md` · `tools/SCRIPTLER.md` · `tools/ambar-parquet.py` · `tools/anakronizm-denetim.py` · `tools/bag-tablo.py` · `tools/baglam-tablo.py` · `tools/bayat-cekim.py` · `tools/katman-hatti.py` · `tools/katman-olcum.py` · `tools/kural-envanter.py` · `tools/pointer-graf.py` · `tools/pointer-kayma.py` · `tools/testler/test_kolon_katmani.py` · `veri/README.md` · `veri/sozlesme/bag.json` · `veri/sozlesme/parquet_uretim.json` · `wiki/README.md` · `wiki/kolon-katmani.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -397,4 +433,40 @@
 | 169 | 12:29:04 | yazdı | veri/sozlesme/parquet_uretim.json | tamam |
 | 170 | 12:29:25 | koştu | Hat --parquet (venv, olcum öncesi) + 2 ek kolon-ölçüm koşumu (k=3) + oran özeti ⟨S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad; python3 tools/katman-hatti.py --parquet > $S/…⟩ | yok |
 | 171 | 12:29:28 | koştu | Kolon katmanı birim testleri (venv ve stdlib python) ⟨.venv/bin/python -m unittest tools/testler/test_kolon_katmani.py 2>&1 ¦ tail -4; echo "=== stdlib python ile (duckdb'siz) aynı testler"; python3 -m un…⟩ | yok |
+| 172 | 12:30:14 | koştu | Canlı-oturum kontrolü + kolon-katmanı birim test hatalarının ayrıntısı ⟨git log -3 --format='%h %ad %s' --date=format:'%H:%M' ¦ cut -c1-110; echo "=== birim test hataları"; .venv/bin/python -m unittest tools/testler/test_k…⟩ | tamam |
+| 173 | 12:30:27 | okudu | tools/testler/test_kolon_katmani.py [aralık 380+48] | tamam |
+| 174 | 12:31:08 | düzenledi | tools/testler/test_kolon_katmani.py | tamam |
+| 175 | 12:31:12 | düzenledi | tools/testler/test_kolon_katmani.py | tamam |
+| 176 | 12:31:14 | koştu | Test dosyasının import'ları (sys/shutil var mı) + SCRIPTLER satır konumu ⟨head -30 tools/testler/test_kolon_katmani.py ¦ grep -n -E '^import¦^from' ¦ cut -c1-120; grep -n -E 'kolon-olcum.py¦kolon-olcum ' tools/SCRIPTLER.md ¦…⟩ | tamam |
+| 177 | 12:31:56 | yazdı | raporlar/2026-08-29-ib33-kolon-olcum-k3.md | tamam |
+| 178 | 12:32:10 | koştu | Kolon katmanı birim testleri (venv + stdlib) + rapor lint'i ⟨.venv/bin/python -m unittest tools/testler/test_kolon_katmani.py 2>&1 ¦ tail -3; echo "=== stdlib"; python3 -m unittest tools/testler/test_kolon_katma…⟩ | tamam |
+| 179 | 12:32:20 | koştu | İB-30/31/33 ledger güncellemesi + tablo ⟨python3 - <<'EOF' import json yol="veri/karar-borcu.jsonl"; out=[] G={"İB-33":("kapandı","08-29 k=3 KAPANDI (şerhli): 3 koşum × 6 sorgu × 3 motor @bf2…⟩ | tamam |
+| 180 | 12:32:26 | koştu | SCRIPTLER ve README hat-sırası notları (venv, sıra, parquet_uretim) ⟨python3 - <<'EOF' p="tools/SCRIPTLER.md"; s=open(p,encoding="utf-8").read() a="çıkış 4 = atlandı); yeni yükleyici `olcum`'un ÖNÜNE eklenir" assert a i…⟩ | tamam |
+| 181 | 12:32:33 | koştu | Kalan birim-test hatasının ayrıntısı ⟨.venv/bin/python -m unittest tools/testler/test_kolon_katmani.py 2>&1 ¦ grep -E -A14 '^(FAIL¦ERROR):' ¦ cut -c1-260 ¦ head -30⟩ | tamam |
+| 182 | 12:32:57 | düzenledi | tools/testler/test_kolon_katmani.py | tamam |
+| 183 | 12:33:12 | koştu | Birim testleri (venv+stdlib) + kirli dosya listesi ⟨.venv/bin/python -m unittest tools/testler/test_kolon_katmani.py 2>&1 ¦ tail -2; python3 -m unittest tools/testler/test_kolon_katmani.py 2>&1 ¦ tail -…⟩ | tamam |
+| 184 | 12:33:44 | koştu | Kolon katmanı zinciri commit'i (pathspec; push yok) ⟨git add tools/katman-hatti.py tools/ambar-parquet.py tools/baglam-tablo.py tools/katman-olcum.py tools/testler/test_kolon_katmani.py tools/SCRIPTLER.m…⟩ | tamam |
+| 185 | 12:34:02 | skill çağırdı | wiki-sayfa-yaz kolon-katmani — İB-34 (KB-55 a): SQLite yazma deposu + parquet toplu türev + DuckDB okuyucu deseni; Redshift↔Jarvis eşleme (DEA-C01, K-023); k=3 ölçüm özeti 08-29 | tamam |
+| 186 | 12:34:06 | koştu | Wiki kuyruğu, DEA-C01 yetkinlik kalemi, Redshift↔Jarvis eşleme kaynağı ⟨echo "=== wiki/README.md kuyruk + kolon"; grep -n -i -E 'kolon¦kuyruk¦bekleyen¦yazılacak' wiki/README.md ¦ cut -c1-200 ¦ head -12; echo "=== yetkinlik…⟩ | tamam |
+| 187 | 12:34:08 | koştu | Mevcut wiki sayfası şablonu + index satır biçimi ⟨echo "=== örnek wiki sayfası (6-blok şablon)"; sed -n '1,40p' wiki/silver-saglik.md ¦ cut -c1-220; echo "=== wiki index satır biçimi"; grep -n -E 'sil…⟩ | tamam |
+| 188 | 12:35:09 | yazdı | wiki/kolon-katmani.md | tamam |
+| 189 | 12:35:12 | düzenledi | wiki/README.md | tamam |
+| 190 | 12:35:18 | koştu | Wiki bağlantı turu (karşı-link, kırık [[link]]) kuru → uygula ⟨python3 tools/wiki-baglanti.py 2>&1 ¦ tail -8 ¦ cut -c1-200; echo "=== uygula"; python3 tools/wiki-baglanti.py --uygula 2>&1 ¦ tail -6 ¦ cut -c1-200; …⟩ | tamam |
+| 191 | 12:35:19 | koştu | Wiki sayfası anakronizm lint'i ⟨python3 tools/anakronizm-denetim.py --kuru --dosya wiki/kolon-katmani.md 2>&1 ¦ head -4 ¦ cut -c1-220⟩ | tamam |
+| 192 | 12:35:23 | koştu | İB-34 ledger kapanışı + tablo ⟨python3 - <<'EOF' import json yol="veri/karar-borcu.jsonl"; out=[] for raw in open(yol,encoding="utf-8"): l=raw.rstrip("\n") if l.strip() and not l.st…⟩ | tamam |
+| 193 | 12:35:39 | koştu | İB-34 wiki commit'i (pathspec; push yok) ⟨git log -2 --format='%h %ad %s' --date=format:'%H:%M' ¦ cut -c1-100; git add wiki/kolon-katmani.md wiki/README.md wiki/baglam-veri-ambari.md wiki/olcu…⟩ | tamam |
+| 194 | 12:35:53 | koştu | İB-51 / KB-66 / KB-50 kayıtları (kural-kümeleme görevi ve bağlam bütçesi) ⟨sqlite3 -separator $'\n' veri/baglam.sqlite "select borc_id¦¦' ¦ '¦¦durum¦¦' ¦ BAŞLIK: '¦¦baslik, 'İCRA: '¦¦coalesce(icra_borcu,''), 'NOT: '¦¦coalesce…⟩ | tamam |
+| 195 | 12:35:55 | koştu | kural-sayaci: ne sayıyor, bugünkü sayım ⟨echo "=== kural-sayaci.py docstring"; sed -n '1,30p' tools/kural-sayaci.py ¦ cut -c1-200; echo "=== koşum"; python3 tools/kural-sayaci.py 2>&1 ¦ tail …⟩ | tamam |
+| 196 | 12:35:59 | koştu | Kural kaynaklarının kaba envanteri (tüzük maddeleri, KILAVUZ md., skill'ler, core) ⟨echo "=== tüzük madde sayısı"; grep -c -E '^\*\*m\.[0-9]+' core/tuzuk-v0.md; grep -o -E '^\*\*m\.[0-9]+[a-z]?' core/tuzuk-v0.md ¦ head -3; grep -c -E …⟩ | tamam |
+| 197 | 12:36:25 | okudu | tools/kural-sayaci.py [aralık 30+60] | tamam |
+| 198 | 12:36:28 | koştu | Tüzük/KILAVUZ/skill/core kural taşıyıcılarının yapısı ve boyutları ⟨echo "=== tüzük numaralı madde"; grep -c -E '^[0-9]+\. \*\*' core/tuzuk-v0.md; grep -E '^[0-9]+\. \*\*' core/tuzuk-v0.md ¦ tail -2 ¦ cut -c1-80; echo …⟩ | tamam |
+| 199 | 12:37:34 | yazdı | tools/kural-envanter.py | tamam |
+| 200 | 12:37:46 | koştu | Kural envanteri koşumu + sınıf/taşıyıcı dağılımı ⟨python3 tools/kural-envanter.py; echo "exit=$?"; echo "=== sınıf → taşıyıcı dosya dağılımı (birim; ilk 4 dosya)"; python3 - <<'EOF' import csv, collec…⟩ | tamam |
+| 201 | 12:39:09 | yazdı | raporlar/2026-08-29-ib51-kural-envanteri.md | tamam |
+| 202 | 12:39:14 | düzenledi | tools/SCRIPTLER.md | tamam |
+| 203 | 12:39:22 | koştu | İB-51 raporu lint + md-link hedef kontrolü ⟨python3 tools/anakronizm-denetim.py --kuru --dosya raporlar/2026-08-29-ib51-kural-envanteri.md 2>&1 ¦ head -3 ¦ cut -c1-220; grep -o -E '\]\(\.\./[^)]…⟩ | tamam |
+| 204 | 12:39:29 | koştu | İB-51 ledger güncellemesi + tablo + canlı-oturum kontrolü ⟨python3 - <<'EOF' import json yol="veri/karar-borcu.jsonl"; out=[] for raw in open(yol,encoding="utf-8"): l=raw.rstrip("\n") if l.strip() and not l.st…⟩ | tamam |
+| 205 | 12:39:47 | koştu | İB-51 (1)+(2) commit'i (pathspec; push yok) ⟨git add tools/kural-envanter.py tools/SCRIPTLER.md raporlar/2026-08-29-ib51-kural-envanteri.md veri/kural-envanter.jsonl veri/gorunum/v_kural_envanter…⟩ | tamam |
+| 206 | 13:42:45 | okudu | .claude/hooks/pretool-core-tel.sh [bütün] | tamam |
+| 207 | 13:42:49 | koştu | Hook kayıtları + workflow şablonlarında bütçe/ajan sayacı izleri ⟨echo "=== settings hooks"; python3 -c " import json; s=json.load(open('kaynak-kodu/claude/settings.json')); print(json.dumps(s.get('hooks',{}),ensure_…⟩ | tamam |
 
