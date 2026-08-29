@@ -45,3 +45,6 @@ Dört basamak: **(B1) serbest Türkçe → (B2) kontrollü-NL/lojik** (m.38 bağ
 2. **m.43 gerekçesi — İMZALANDI + REVİZYON:** eşik N=3→**5** (Salih: "skill oluşumu zorlaşsın"); Rule-of-Three atfı + "LLM alanında doğrulanmadı" notu m.43'e düşüldü; pencereli sayaç (W=90 gün) baki; skill-işlev fıkrası (deterministik icra aracı) m.43'e eklendi.
 3. **m.46(a) — İMZALANDI + İCRA:** SHA alanı `core/sablonlar/gorev-emri.md` SONUNA taşındı (görev-fonksiyonu şablonu zaten uyumluydu).
 4. **m.40b borcu — İCRA BORCU:** 12 yapı-taşına hedefli antitez turu kabul; koşum ayrı ekonomi-onayına tabi (tetik Salih).
+
+## Firstmate rolü (Salih beyanı 08-29, Karar 76 E4 — aynen: "ana ajan gene jarvis olsun firstmate jarvisin ve benim kullandığım bir ajan olsun nasıl çalıştığını ve hangi konularda başarılı çalıştığını da tespit edelim")
+Ana ajan JARVIS'tir (m.44 baki — üst-orkestratörlük devredilmez); firstmate = Jarvis'in VE Salih'in kullandığı YARDIMCI ajan — ikame değil araç. Hangi iş sınıfında başarılı çalıştığı beyan'la değil ÖLÇÜMLE tespit edilir: koşum kayıtları (görev sınıfı · sonuç · süre/token) → başarı-tespiti ölçüm borcu İB-59; rol tanımının kalıcı metni bu ölçümle masaya döner.
