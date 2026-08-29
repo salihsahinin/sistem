@@ -48,4 +48,6 @@
 ## BAKIM-KK koşumları (Karar 75; kural: core/skill-uretim-semasi.md §BAKIM)
 | tarih | örneklem | verim (ham) | kalite (ham, n) | kapsama | öneri (kabul/toplam) | rapor |
 |---|---|---|---|---|---|---|
-| 2026-08-29 | 12/143 (45 g) | 0,72 | 1,0 (n=6) | 12/12 | 0/2 (kapıda — Salih imzası bekler) | raporlar/skill-doctor-rapor-2026-08-29.html |
+| 2026-08-29 | 12/143 (45 g) | 0,72 | 1,0 (n=6) | 12/12 | 2/2 (imza 08-29, Karar 77; kapı GEÇTİ) | raporlar/skill-doctor-rapor-2026-08-29.html |
+
+- **Kapı koşumu 2026-08-29 (Karar 77):** aday = seans-kapanis Gotcha evrimi (BAKIM-KK önerisi) · K0 evrim-kısmî ✓ · K1 Z2 (Salih imzası) · İNŞA: satır eklendi · K2-R script 7/7 ✓ (1 [K] heuristik: katman-hatti script-referansı) · K2-İ: 3 sayısal iddia scores.json'la deterministik doğrulandı (Karar 48 kısıt-dışı sınıf) · K3 T-R uyumlu · HÜKÜM: ÜRET evrim(s) GEÇTİ. İkinci öneri (heredoc-hijyeni) skill değil KANON satırı → kapı dışı, imzayla ajan-metodolojisine yazıldı.

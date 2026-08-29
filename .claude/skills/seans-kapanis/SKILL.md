@@ -57,3 +57,4 @@ Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5,
 - **Çift-şerit çiğneme:** diğer hattın kapsül satırına/teslim dosyasına dokunma (07-12 senkron kuralı).
 - **Sessiz push arızası:** push hata verirse "commit attım" diye geçme; m.9 push ister, commit değil.
 - **Övgü kapanışı:** "harika bir gündü" merci yok (m.7) — kapanış çıplak veridir.
+- **Paylaşılan-jsonl merge tuzağı (BAKIM-KK 08-29 kanıtı: 2 başarısız oturum, 3-4'er merge denemesi — b2b05897 · aa05a9d1, dosya `veri/sozlesme/tarama-plan.jsonl` sınıfı; Salih imzası Karar 77):** kapanış commit'inden ÖNCE paylaşılan türev-jsonl'de `git status -- <dosya>` ile staged↔working-tree ayrımını TEK seferde teşhis et; çakışmada merge'i elle deneme — dosya TÜREV ise üreticisini yeniden koş (katman-hatti adımı) ve üretilen hâli commit'le (deterministik yeniden-türetim > merge tahmini; vaka-4 ailesi).

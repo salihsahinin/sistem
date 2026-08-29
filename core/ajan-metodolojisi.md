@@ -48,3 +48,6 @@ Dört basamak: **(B1) serbest Türkçe → (B2) kontrollü-NL/lojik** (m.38 bağ
 
 ## Firstmate rolü (Salih beyanı 08-29, Karar 76 E4 — aynen: "ana ajan gene jarvis olsun firstmate jarvisin ve benim kullandığım bir ajan olsun nasıl çalıştığını ve hangi konularda başarılı çalıştığını da tespit edelim")
 Ana ajan JARVIS'tir (m.44 baki — üst-orkestratörlük devredilmez); firstmate = Jarvis'in VE Salih'in kullandığı YARDIMCI ajan — ikame değil araç. Hangi iş sınıfında başarılı çalıştığı beyan'la değil ÖLÇÜMLE tespit edilir: koşum kayıtları (görev sınıfı · sonuç · süre/token) → başarı-tespiti ölçüm borcu İB-59; rol tanımının kalıcı metni bu ölçümle masaya döner.
+
+## Koşum hijyeni ekleri
+- **Heredoc-python hijyeni (BAKIM-KK 08-29 kanıtı, Salih imzası Karar 77 — oturum 11b49d44: 18 hata-benzeri çıktı, ≥3 düzeltme turu):** ≥15 satırlık python işi Bash heredoc'a değil scratchpad'de `.py` dosyasına yazılır ve oradan koşulur — "deterministik iş script'e gömülür" kuralının koşum-anı karşılığı; sözdizim hatası yazım katmanında yakalanır.
