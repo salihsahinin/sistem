@@ -18,7 +18,7 @@
 
 ## DONDURULMUŞ (S2 hükmü)
 
-- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8).
+- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8). **AÇILDI 2026-08-29 (Salih beyanı, seans-21):** deterministik envanter 64 kalem (~95 F1-tahminiydi) → `kuyruk/masa-gundemi-DONDUR9-2026-08-29.md`; sıra: çapraz-okuma turu → daraltılmış masa.
 
 ## KAPANANLAR (S1 hükmü — arşiv damgası)
 
