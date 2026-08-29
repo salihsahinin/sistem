@@ -195,17 +195,22 @@ class KosumTest(unittest.TestCase):
 
 
 class KatmanHattiTest(unittest.TestCase):
-    """tarama adımı katman-hatti içinde GERÇEKTEN koşar (geçici repo; tools/ symlink, veri/baglam.sqlite küçük silver)."""
+    """tarama adımı katman-hatti içinde GERÇEKTEN koşar (geçici repo; tools/ symlink, veri/baglam.sqlite küçük silver).
+    08-29 dersi: adım listesi SABİT yazılmıştı (7 adım) ve hat 16 adıma çıkınca 4 test sessizce düştü — liste artık katman-hatti.ADIMLAR'dan
+    TÜRETİLİR; geçici repoda koşamayan adımlar (git/uretim gerektirenler: graf, obsidian-harita, anakronizm, deneyim…) `--atla` ile dışarıda tutulur,
+    yalnız `tarama` gerçekten koşar. Sabit kalan tek şey KANON değişmezleri: tarama olcum'dan önce, olcum SON adım."""
 
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="tarama-hat-"); self.repo = gecici_repo(self.tmp)
         self.kutuk = os.path.join(self.repo, "veri", "tarama-plan.jsonl")
+        self.adlar = [ad for ad, _ in modul(HAT, "kh").ADIMLAR]  # hat'ın kendi listesi (türetilmiş, sabit değil)
+        self.atla_hepsi = ",".join(self.adlar); self.atla_tarama_haric = ",".join(a for a in self.adlar if a != "tarama")
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def test_tarama_adimi_hatta_kosar_ve_kutuk_gecici_repoda(self):
-        r = hat_kos(self.repo)
+        r = hat_kos(self.repo, "--atla", self.atla_tarama_haric)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         satir = [l for l in r.stdout.splitlines() if l.startswith("[OK") and " tarama " in l]
         self.assertEqual(len(satir), 1, r.stdout)
@@ -215,17 +220,17 @@ class KatmanHattiTest(unittest.TestCase):
         self.assertFalse(any(s.get("ihlal") for s in satirlar))
 
     def test_atla_tarama_adim_kosmaz_kutuk_yok(self):
-        r = hat_kos(self.repo, "--atla", "baglam,karar,prompt,ambar,hareket,tarama,olcum")
+        r = hat_kos(self.repo, "--atla", self.atla_hepsi)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn("[atla ] tarama", r.stdout); self.assertFalse(os.path.exists(self.kutuk))
 
     def test_adim_sirasi_tarama_olcumdan_once_olcum_son(self):
         # kanon core/veri-muhendisligi-katmani.md §8 S3 (Salih A 08-17): "katman-hatti son adımı katman-olcum.py" — tarama salt-okur,
-        # bu yüzden olcum'un ÖNÜNE konur; sıra hem ADIMLAR listesinde hem hat çıktısında ([atla ] satırları) doğrulanır
-        adlar = [ad for ad, _ in modul(HAT, "kh").ADIMLAR]
-        self.assertEqual(adlar, ["baglam", "karar", "prompt", "ambar", "hareket", "tarama", "olcum"])
+        # bu yüzden olcum'un ÖNÜNE konur; sıra hem ADIMLAR listesinde hem hat çıktısında ([atla ] satırları) doğrulanır (liste sabit DEĞİL)
+        adlar = self.adlar
+        self.assertIn("tarama", adlar); self.assertIn("olcum", adlar); self.assertEqual(len(adlar), len(set(adlar)), "adım adı tekrarı")
         self.assertLess(adlar.index("tarama"), adlar.index("olcum")); self.assertEqual(adlar[-1], "olcum")
-        r = hat_kos(self.repo, "--atla", ",".join(adlar))
+        r = hat_kos(self.repo, "--atla", self.atla_hepsi)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         atla = [l.split()[-1] for l in r.stdout.splitlines() if l.startswith("[atla ]")]
         self.assertEqual(atla, adlar)
@@ -234,13 +239,12 @@ class KatmanHattiTest(unittest.TestCase):
         # uyarı modu: ihlal hattı düşürmez (çıkış 0, [OK ] tarama) ama tarama adımının stderr uyarısı hat çıktısında yankılanır
         db = os.path.join(self.repo, "veri", "baglam.sqlite")
         con = sqlite3.connect(db); con.execute("DROP INDEX ix_kayit_dosya"); con.commit(); con.close()
-        r = hat_kos(self.repo)
+        r = hat_kos(self.repo, "--atla", self.atla_tarama_haric)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertTrue(any(l.startswith("[OK") and " tarama " in l for l in r.stdout.splitlines()), r.stdout)
         self.assertIn("STDERR: ", r.stdout); self.assertIn("UYARI", r.stdout); self.assertIn("N2", r.stdout)
         self.assertIn("BEKLENTİ DIŞI: N2(oldugu-gibi) SCAN ∉ {SEARCH}", r.stdout)
         self.assertTrue(any(s.get("ihlal") for s in oku(self.kutuk)))
-
 
 if __name__ == "__main__":
     unittest.main()
