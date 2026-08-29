@@ -24,4 +24,4 @@
 
 **Süpersede zinciri:** "seçicilik %5-10 üstünde seq scan" folklor kuralı → **yerini aldı: 2026-08-21 Karar 64 — yüzde kuralı yazılmaz, karar değişkeni dokunulan sayfa** · "silver yenilemesi sonrası bakım gerekmez" (örtük) → **yerini aldı: 2026-08-22 İB-26 hat-içi ANALYZE+PRAGMA optimize**.
 
-**Bağlantılar:** [[baglam-veri-ambari]] (OLTP/OLAP ayrımı, parquet KB-55) · [[silver-saglik]] (aynı hatta bayrak/kuyruk) · [[pointer-sistemi]] (adresli erişim) · kaynaklar: `cc/rapor-2026-08-18-3.md` · `cc/pipeline-2026-08-18-tarama-yontemleri.md` · `KILAVUZ.md` · `tools/tarama-plan.py`. · [[dil-secimi]] (karşı-link 08-26)
+**Bağlantılar:** [[baglam-veri-ambari]] (OLTP/OLAP ayrımı, parquet KB-55) · [[silver-saglik]] (aynı hatta bayrak/kuyruk) · [[pointer-sistemi]] (adresli erişim) · kaynaklar: `cc/rapor-2026-08-18-3.md` · `cc/pipeline-2026-08-18-tarama-yontemleri.md` · `KILAVUZ.md` · `tools/tarama-plan.py`. · [[dil-secimi]] (karşı-link 08-26) · [[kolon-katmani]] (karşı-link 08-29)

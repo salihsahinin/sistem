@@ -55,4 +55,4 @@ m.39 kapsamı dışında, ölçüm değil nitel güvenilirlik ilkesi taşıyan s
 [[sozluk]] (γ_öz/γ_taşınan ve debi tanımı — ölçeklenme sözlüğü) · [[pointer-sistemi]] (m.20 ailesi — kaynak dosyada, özet burada) · [[token-x-zaman]] (bekleyen "koşum-maliyeti sınıf-medyanları" ölçümü aynı token×zaman çerçevesinde okunur) · aday (henüz wiki sayfası yok, düz metin): `kuyruk/senaryo-defteri.md` — m.37 karar kayıtlarının adresi.
 - [[stokastik-dusunce]] — EMEKLİ/RED (Salih 08-17): olasılık-beyanı/Brier hattı sisteme GİRMEZ; sayfa halef "deterministik tasarım" ilkesini taşır (karşı-link 08-16'da açılmıştı, 08-17 güncellendi).
 
-**Bağlantılar:** · [[baglam-veri-ambari]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[no-mistakes]] (karşı-link 08-22) · [[dil-secimi]] (karşı-link 08-26) · [[anakronizm-freni]] (karşı-link 08-26)
+**Bağlantılar:** · [[baglam-veri-ambari]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[no-mistakes]] (karşı-link 08-22) · [[dil-secimi]] (karşı-link 08-26) · [[anakronizm-freni]] (karşı-link 08-26) · [[kolon-katmani]] (karşı-link 08-29)
