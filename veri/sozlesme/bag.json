@@ -1,0 +1,26 @@
+{
+ "tablo": "bag",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "1 satır = 1 TİPLİ BAĞ (kaynak → hedef; PROV yönü: kaynak = yeni sürüm wasRevisionOf hedef = eski sürüm); tip enum {wasRevisionOf} (ilk adım, Karar 74 M-1 b); kural-tabanlı atama R1/R2/R3 (LLM atamaz); bitemporal: gecerli_* = olay zamanı, kayit_zamani/gecersiz_zamani = kayıt zamanı (kütük veri/bag-olay.jsonl)",
+ "kolonlar": [
+  {"ad": "bag_id", "tip": "TEXT", "not_null": false, "pk": true},
+  {"ad": "tip", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kaynak_tur", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kaynak_id", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "hedef_tur", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "hedef_id", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kural", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "gecerli_bas", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "gecerli_bitis", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kayit_zamani", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "gecersiz_zamani", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "aciklama", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kaynak_dosya", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kod_sha", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "snapshot_tarih", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "kosum_id", "tip": "TEXT", "not_null": false, "pk": false}
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası). tip enum'una yeni değer (CiTO supports/disputes/extends/updates · OpenLineage türetme) = additive ama Salih masası (KB-61 a/b kalanı)",
+ "kaynak": "tools/bag-tablo.py (KB-61 → Karar 74 M-1 b, 2026-08-29)"
+}

@@ -2,15 +2,15 @@
  "d2_surum": "v0.8.1-HEAD",
  "layout": "elk",
  "n_kosum": 2,
- "silver_git_head": "3f39b2ec3145d48ce27a75c18cf517a947fb2981",
- "git_head": "3f39b2e",
- "olcum_zamani": "2026-08-29T11:51:28+03:00",
+ "silver_git_head": "0612826be3c14c51e08f890b3a9d118f9d44a001",
+ "git_head": "0612826",
+ "olcum_zamani": "2026-08-29T11:57:32+03:00",
  "not": "aynı .d2 × aynı d2 sürümü × aynı motor → SVG sha256 eşitliği; sürümler-arası eşitlik BEKLENMEZ (A-YT2)",
  "panolar": [
   {
    "d2": "graf/pointer-sistemi-v0-genel.d2",
    "svg": "graf/pointer-sistemi-v0-genel.svg",
-   "sha256": "19b7859916552e357185c03b09fd6ada920ce3760f1dbcd98f353524d158b4f8",
+   "sha256": "9d1329981835441912de1aaedafefdc7a2fcb799bd4bf86c27a10b5caa5540a9",
    "determinizm": "BİREBİR",
    "genislik": 2101,
    "yukseklik": 2073
@@ -18,15 +18,15 @@
   {
    "d2": "graf/pointer-sistemi-v0-silver.d2",
    "svg": "graf/pointer-sistemi-v0-silver.svg",
-   "sha256": "dc457894dc440bc63ba0e5396e2958383d067ef1bad482cd9c28c783873c41a4",
+   "sha256": "9e676b1a23cae0d6c9c8d1b00fb189e31b83933c0c022a93ad83e892fdcec613",
    "determinizm": "BİREBİR",
-   "genislik": 1483,
-   "yukseklik": 5750
+   "genislik": 1817,
+   "yukseklik": 6289
   },
   {
    "d2": "graf/pointer-sistemi-v0-pointer.d2",
    "svg": "graf/pointer-sistemi-v0-pointer.svg",
-   "sha256": "4d45a73b002d887cb619c9d6e2b5b95b4ccf1226cd594cfb9dd9cf4e246010f7",
+   "sha256": "af41cc3278118a0cd8a7010b5fe88f44f41af7f2246634832ed3fcce8f21e2b5",
    "determinizm": "BİREBİR",
    "genislik": 2113,
    "yukseklik": 1476
@@ -34,9 +34,9 @@
   {
    "d2": "graf/pointer-sistemi-v0-ilke.d2",
    "svg": "graf/pointer-sistemi-v0-ilke.svg",
-   "sha256": "4a8944fae92fda8a1b09bff49b289d32d7f22c205a0ece7d7107d478ac10fe90",
+   "sha256": "6976ff5ca183ab0af57590d1d45142f1bff8b0faf8b556dd21d943fedfa0ca85",
    "determinizm": "BİREBİR",
-   "genislik": 1697,
+   "genislik": 1696,
    "yukseklik": 764
   },
   {
@@ -50,7 +50,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-kirik.d2",
    "svg": "graf/pointer-sistemi-v0-kirik.svg",
-   "sha256": "12d6e8fa5fe6aec77bbc70f9f1b570f463b6f9a62c3e572cbaa629464a74e5ff",
+   "sha256": "34ab1f487bf6c8f3b425d9ba50792eb200ed16911b29301753b912045ce849d8",
    "determinizm": "BİREBİR",
    "genislik": 3183,
    "yukseklik": 2596

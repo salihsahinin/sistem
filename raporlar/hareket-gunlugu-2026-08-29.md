@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `3f39b2e`)
+# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `0612826`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 225 çağrı, 8 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 252 çağrı, 8 oturum.*
 
 ## Oturum `7ae8954e` — 01:27:57→01:56:52 · 59 çağrı · model fable-5 · hata 2
 **Özet:** koştu 35 · yazdı 10 · okudu 7 · düzenledi 6 · skill çağırdı 1
@@ -124,9 +124,9 @@
 | 11 | 10:49:45 | koştu | Check whether my earlier note is already committed at HEAD ⟨git show HEAD:kuyruk/ders-gbm-ilerleme.md ¦ grep -n "P-sonrası uygulama\¦Anlatılacaklar kuyruğu" ; echo "---"; git log --oneline -- kuyruk/ders-gbm-il…⟩ | tamam |
 | 12 | 10:49:56 | koştu | Re-check current git status after possible parallel commit ⟨git status && echo "---HEAD---" && git log -3 --oneline && echo "---ORIGIN---" && git log -3 --oneline origin/main 2>/dev/null && git status -sb ¦ hea…⟩ | tamam |
 
-## Oturum `405e80db` — 10:49:41→11:51:19 · 54 çağrı · model fable-5 · hata 0
-**Özet:** koştu 38 · okudu 8 · yazdı 3 · skill çağırdı 2 · düzenledi 2 · ajan gönderdi 1
-**Yazılan/düzenlenen dosyalar (4):** `core/skill-uretim-semasi.md` · `raporlar/2026-08-29-damitma-turu.md` · `raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html` · `raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html`
+## Oturum `405e80db` — 10:49:41→11:52:06 · 57 çağrı · model fable-5 · hata 0
+**Özet:** koştu 39 · okudu 8 · düzenledi 4 · yazdı 3 · skill çağırdı 2 · ajan gönderdi 1
+**Yazılan/düzenlenen dosyalar (5):** `.claude/skills/skill-kapisi/SKILL.md` · `core/skill-uretim-semasi.md` · `raporlar/2026-08-29-damitma-turu.md` · `raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html` · `raporlar/masa-entegrasyon-karar-yuzeyi-2026-08-29.html`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -184,6 +184,9 @@
 | 107 | 11:50:24 | düzenledi | core/skill-uretim-semasi.md | tamam |
 | 108 | 11:50:51 | koştu | seans-kapanis Gotchas bölümünün kuyruğunu gör (diff tabanı) ⟨grep -n 'Gotcha' .claude/skills/seans-kapanis/SKILL.md ¦ head -2 && tail -6 .claude/skills/seans-kapanis/SKILL.md⟩ | tamam |
 | 109 | 11:51:19 | koştu | Öneri diff'leri + report.json yaz, HTML render et ⟨RD="/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/405e80db-9dcd-41d0-a47a-90c60257cad7/scratchpad/skill-doctor-run1" mkdir -p "$RD/proposed/se…⟩ | tamam |
+| 110 | 11:51:29 | düzenledi | .claude/skills/skill-kapisi/SKILL.md | tamam |
+| 111 | 11:51:35 | düzenledi | .claude/skills/skill-kapisi/SKILL.md | tamam |
+| 112 | 11:52:06 | koştu | Ölçüm satırı + kutu + defter Karar 75 + commit + raporu Finder'da göster ⟨RD="/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/405e80db-9dcd-41d0-a47a-90c60257cad7/scratchpad/skill-doctor-run1" cp "$RD/report.html" rapo…⟩ | tamam |
 
 ## Oturum `37c3509e` — 11:04:45→11:50:11 · 4 çağrı · model sonnet-5 · hata 0
 **Özet:** koştu 4
@@ -204,9 +207,9 @@
 | 2 | 11:32:07 | ajan gönderdi | [claude-code-guide] Explain following subagent output in Claude Code | tamam |
 | 3 | 11:35:05 | ajan gönderdi | [claude-code-guide] Correct info on live subagent monitoring | tamam |
 
-## Oturum `0fa78c95` — 11:30:15→11:51:22 · 69 çağrı · model fable-5 · hata 2
-**Özet:** koştu 41 · düzenledi 12 · okudu 11 · yazdı 3 · ajan gönderdi 1 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (9):** `.claude/skills/damitma/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `tools/SCRIPTLER.md` · `tools/anakronizm-denetim.py` · `tools/baglam-tablo.py` · `tools/bayat-cekim.py` · `tools/katman-olcum.py` · `tools/pointer-kayma.py` · `veri/README.md`
+## Oturum `0fa78c95` — 11:30:15→11:56:48 · 93 çağrı · model fable-5 · hata 2
+**Özet:** koştu 50 · okudu 18 · düzenledi 18 · yazdı 5 · ajan gönderdi 1 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (13):** `.claude/skills/damitma/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `tools/SCRIPTLER.md` · `tools/anakronizm-denetim.py` · `tools/bag-tablo.py` · `tools/baglam-tablo.py` · `tools/bayat-cekim.py` · `tools/katman-hatti.py` · `tools/katman-olcum.py` · `tools/pointer-graf.py` · `tools/pointer-kayma.py` · `veri/README.md` · `veri/sozlesme/bag.json`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -279,4 +282,28 @@
 | 67 | 11:50:50 | düzenledi | tools/SCRIPTLER.md | tamam |
 | 68 | 11:51:12 | koştu | Tam hat koşumu + İB-52 kolon/test doğrulaması ⟨python3 tools/katman-hatti.py > /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/hat2.txt 2>&1; e…⟩ | yok |
 | 69 | 11:51:22 | koştu | D3↔cekim-olay köprüsü birim testi (geçici dizinde) + bayat-cekim modları ⟨cd /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad && python3 - <<'EOF' import importlib.util, o…⟩ | yok |
+| 70 | 11:51:45 | koştu | bayat-cekim modları: liste, hatalı kaydet (negatif test), ölçüm satırı ⟨echo "=== --liste" && python3 tools/bayat-cekim.py --liste; echo "exit=$?"; echo "=== --kaydet hatalı (sonuc yok)"; python3 tools/bayat-cekim.py --kay…⟩ | tamam |
+| 71 | 11:51:46 | koştu | kaynak>cekim uyarısı veren 7 kaydı incele ⟨sqlite3 -separator ' ¦ ' /Users/HasanSalihSahin/jarvis/veri/baglam.sqlite "select dosya_id, cekim_tarihi, kaynak_tarihi, tarih_ipucu, substr(replace(m…⟩ | tamam |
+| 72 | 11:52:15 | koştu | İB-52 ledger satırını kapanış kanıtıyla kapat; tabloyu koş; kirli dosyaları listele ⟨python3 - <<'EOF' import json yol="veri/karar-borcu.jsonl"; out=[] for raw in open(yol,encoding="utf-8"): l=raw.rstrip("\n") if l.strip() and not l.st…⟩ | tamam |
+| 73 | 11:52:22 | koştu | KB-61 kaydı + mevcut süpersede/bitemporal alanların doluluk durumu + graf kenar türleri ⟨echo "=== KB-61"; sqlite3 -separator $'\n' veri/baglam.sqlite "select 'BAŞLIK: '¦¦baslik, 'SEÇENEK: '¦¦coalesce(secenekler,''), 'ÖNERİ: '¦¦coalesce(on…⟩ | tamam |
+| 74 | 11:53:14 | koştu | İB-52 commit'i (pathspec; push yok) ⟨git log -3 --format='%h %ad %s' --date=format:'%H:%M' ¦ cut -c1-110; git add tools/baglam-tablo.py tools/anakronizm-denetim.py tools/katman-olcum.py t…⟩ | tamam |
+| 75 | 11:53:18 | koştu | anahtar_kaydi şeması + süpersede adayları + hat adım listesi ⟨echo "=== anahtar_kaydi şema"; sqlite3 veri/baglam.sqlite "pragma table_info(anahtar_kaydi)" ¦ cut -d'¦' -f2 ¦ tr '\n' ' '; echo; sqlite3 -separator '…⟩ | tamam |
+| 76 | 11:53:19 | okudu | tools/pointer-graf.py [aralık 1+60] | tamam |
+| 77 | 11:53:20 | okudu | tools/pointer-graf.py [aralık 130+45] | tamam |
+| 78 | 11:53:21 | okudu | tools/pointer-graf.py [aralık 450+30] | tamam |
+| 79 | 11:53:59 | okudu | tools/pointer-graf.py [aralık 60+70] | tamam |
+| 80 | 11:54:05 | koştu | R1/R3 kural aday sayıları ve örnekleri ⟨echo "=== R3 arşiv-pointer adayları"; sqlite3 -separator ' ¦ ' veri/baglam.sqlite "select count(*), count(distinct r.kayit_id) from referans r join ka…⟩ | tamam |
+| 81 | 11:54:08 | koştu | Kuyruk replay deseni, sözleşme şablonu, sözleşme denetimi, D2 pano kenar seçimi ⟨echo "=== silver-saglik kuyruk replay 395-432"; sed -n '395,432p' tools/silver-saglik.py ¦ cut -c1-150; echo "=== sozlesme/silver_kuyruk.json"; cat ve…⟩ | tamam |
+| 82 | 11:54:36 | okudu | tools/pointer-graf.py [aralık 372+36] | tamam |
+| 83 | 11:54:37 | okudu | tools/katman-olcum.py [aralık 103+34] | tamam |
+| 84 | 11:54:38 | okudu | tools/katman-hatti.py [aralık 26+36] | tamam |
+| 85 | 11:54:39 | koştu | README'de hat sırası ve silver tablo listesi satırları ⟨echo "=== README hat sırası (78) + silver tablo listesi"; sed -n '78p' veri/README.md ¦ cut -c1-900; echo; grep -n -E 'silver_kuyruk¦anahtar_kaydi' ve…⟩ | tamam |
+| 86 | 11:56:11 | yazdı | tools/bag-tablo.py | tamam |
+| 87 | 11:56:21 | yazdı | veri/sozlesme/bag.json | tamam |
+| 88 | 11:56:24 | düzenledi | tools/katman-hatti.py | tamam |
+| 89 | 11:56:36 | düzenledi | tools/katman-olcum.py | tamam |
+| 90 | 11:56:37 | düzenledi | tools/pointer-graf.py | tamam |
+| 91 | 11:56:40 | düzenledi | tools/pointer-graf.py | tamam |
+| 92 | 11:56:44 | düzenledi | tools/pointer-graf.py | tamam |
+| 93 | 11:56:48 | düzenledi | tools/pointer-graf.py | tamam |
 

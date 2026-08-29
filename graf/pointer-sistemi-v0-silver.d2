@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — SİLVER TABLOLARI — PK/FK (pano 1/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 3f39b2e · HEAD 3f39b2e · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver 0612826 · HEAD 0612826 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -35,7 +35,20 @@ anahtar_kaydi: "anahtar_kaydi · 20 satır" {
   deger: TEXT
   deger_norm: TEXT
 }
-baglam_olay: "baglam_olay · 7.877 satır" {
+bag: "bag · 20 satır" {
+  shape: sql_table
+  bag_id: TEXT { constraint: primary_key }
+  tip: TEXT
+  kaynak_tur: TEXT
+  kaynak_id: TEXT
+  hedef_tur: TEXT
+  hedef_id: TEXT
+  kural: TEXT
+  gecerli_bas: TEXT
+  kayit_zamani: TEXT
+  gecersiz_zamani: TEXT
+}
+baglam_olay: "baglam_olay · 7.919 satır" {
   shape: sql_table
   olay_id: TEXT
   ts_utc: TEXT
@@ -101,7 +114,7 @@ dosya: "dosya · 655 satır" {
   blob_sha: TEXT
   son_commit: TEXT
 }
-erisim_genisletme: "erisim_genisletme · 53.473 satır" {
+erisim_genisletme: "erisim_genisletme · 53.518 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -110,7 +123,7 @@ erisim_genisletme: "erisim_genisletme · 53.473 satır" {
   genisletme: TEXT
   ref_sayisi: TEXT
 }
-hareket: "hareket · 3.506 satır" {
+hareket: "hareket · 3.533 satır" {
   shape: sql_table
   hareket_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
@@ -118,7 +131,7 @@ hareket: "hareket · 3.506 satır" {
   dosya: TEXT
   yuklendi_head: TEXT
 }
-json_kayit: "json_kayit · 393.390 satır" {
+json_kayit: "json_kayit · 402.604 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: foreign_key }
   json_yolu: TEXT
@@ -131,14 +144,14 @@ karar_borcu: "karar_borcu · 114 satır" {
   durum: TEXT
   bagimlilik: TEXT
 }
-karar_borcu_kaynak: "karar_borcu_kaynak · 310 satır" {
+karar_borcu_kaynak: "karar_borcu_kaynak · 312 satır" {
   shape: sql_table
   borc_id: TEXT { constraint: foreign_key }
   dosya_id: TEXT { constraint: foreign_key }
   satir: TEXT
   kayit_id: TEXT { constraint: foreign_key }
 }
-kayit: "kayit · 53.473 satır" {
+kayit: "kayit · 53.518 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: primary_key }
   dosya_id: TEXT { constraint: foreign_key }
@@ -148,7 +161,7 @@ kayit: "kayit · 53.473 satır" {
   satir_son: TEXT
   zarf_tip: TEXT
 }
-kayit_fts: "kayit_fts · 53.473 satır" {
+kayit_fts: "kayit_fts · 53.518 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -162,7 +175,7 @@ kayit_fts_config: "kayit_fts_config · 1 satır" {
   k: TEXT
   v: TEXT
 }
-kayit_fts_content: "kayit_fts_content · 53.473 satır" {
+kayit_fts_content: "kayit_fts_content · 53.518 satır" {
   shape: sql_table
   id: TEXT
   c0: TEXT
@@ -171,17 +184,17 @@ kayit_fts_content: "kayit_fts_content · 53.473 satır" {
   c3: TEXT
   c4: TEXT
 }
-kayit_fts_data: "kayit_fts_data · 4.540 satır" {
+kayit_fts_data: "kayit_fts_data · 4.543 satır" {
   shape: sql_table
   id: TEXT
   block: TEXT
 }
-kayit_fts_docsize: "kayit_fts_docsize · 53.473 satır" {
+kayit_fts_docsize: "kayit_fts_docsize · 53.518 satır" {
   shape: sql_table
   id: TEXT
   sz: TEXT
 }
-kayit_fts_idx: "kayit_fts_idx · 2.635 satır" {
+kayit_fts_idx: "kayit_fts_idx · 2.624 satır" {
   shape: sql_table
   segid: TEXT
   term: TEXT
@@ -194,7 +207,7 @@ prompt: "prompt · 637 satır" {
   sonraki_skill: TEXT
   yuklendi_head: TEXT
 }
-referans: "referans · 70.224 satır" {
+referans: "referans · 70.358 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: foreign_key }
   ref_turu: TEXT
@@ -244,3 +257,5 @@ karar_borcu_kaynak.dosya_id -> dosya.dosya_id: "FK" { class: fk }
 karar_borcu_kaynak.kayit_id -> kayit.kayit_id: "FK" { class: fk }
 json_kayit.dosya_id -> dosya.dosya_id: "FK" { class: fk }
 anahtar.replaced_by -> anahtar.anahtar_id: "süpersede" { class: supersede }
+anahtar_kaydi -> anahtar_kaydi: "wasRevisionOf · R1 · 10 bağ (10 açık)" { class: supersede }
+kayit -> dosya: "wasRevisionOf · R3 · 10 bağ (10 açık)" { class: supersede }

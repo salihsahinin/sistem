@@ -232,7 +232,7 @@ wishlist-analiz/2026-08-18-karar-masasi-model-secimi.md,yol,2,2,raporlar/hareket
 .claude/projects/-Users-HasanSalihSahin-jarvis/914d8e47-f03d-46d2-a755-114e700f687e/subagents/workflows/wf_aee52e2f-b7e/journal.jsonl,yol,1,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#466-466#9eb9004a
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-anlatim-bicimi-dogrudan.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-17.md,raporlar/hareket-gunlugu-2026-08-17.md#265-265#e96a5858
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-dosya-teslimi-finder.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-16.md,raporlar/hareket-gunlugu-2026-08-16.md#397-397#d9ef0716
-.claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-maliyet-tahmini-alt-model.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#230-230#253e1404
+.claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-maliyet-tahmini-alt-model.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#239-239#253e1404
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-parallel-sessions-keep-talking.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#279-279#44c294dd
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-ses-ekran-kaydi-onay.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#350-350#41fde8c2
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/user-mac-primary.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#37-37#5c1b2588
@@ -409,7 +409,7 @@ karar-kaydet/SKILL.md,yol,1,1,raporlar/2026-07-17-skill-nasil-olusturulur.md,rap
 karar-kaydet/damitma/CLAUDE.md,yol,1,1,cc/pipeline-2026-08-15-baglam-silver-katmani.md,cc/pipeline-2026-08-15-baglam-silver-katmani.md#51-51#3e68eb91
 karar-modeli/SKILL.md,yol,1,1,raporlar/2026-07-17-skill-nasil-olusturulur.md,raporlar/2026-07-17-skill-nasil-olusturulur.md#48-54#0717bb72
 karar-modeli/references/temeller.md,yol,1,1,cc/rapor-2026-07-30-17.md,cc/rapor-2026-07-30-17.md#456-456#20b61c3a
-kaynak-kodu/skills/damitma/SKILL.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#235-235#b3e4005e
+kaynak-kodu/skills/damitma/SKILL.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#244-244#b3e4005e
 kaynaklar/mit-6006-s20-KUNYE.md,yol,1,1,ogrenme/mit-6006/README.md,ogrenme/mit-6006/README.md#3-3#719c4bb9
 kaynaklar/mit-6042j-f10-KUNYE.md,yol,1,1,ogrenme/mit-6042j/README.md,ogrenme/mit-6042j/README.md#3-3#2f463b49
 kod-entegrasyonu.md,ciplak_ad,1,1,cc/rapor-2026-07-26-1.md,cc/rapor-2026-07-26-1.md#105-105#0a64e4c4
@@ -478,6 +478,7 @@ raw.githubusercontent.com/.../README.md,yol,1,1,cc/rapor-2026-07-30-11.md,cc/rap
 raw.githubusercontent.com/bitol-io/open-data-contract-standard/main/schema/odcs-json-schema-latest.json,yol,1,1,cc/rapor-2026-08-14-1.md,cc/rapor-2026-08-14-1.md#167-167#b09e3397
 raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md,yol,1,1,raporlar/2026-07-21-grill-me-skill-arastirma.md,raporlar/2026-07-21-grill-me-skill-arastirma.md#71-71#0596ce97
 references/rapor-sablonu.md,yol,1,1,cc/rapor-2026-07-30-20.md,cc/rapor-2026-07-30-20.md#142-142#57fabecf
+report.json,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#186-186#028dd805
 run.sh,ciplak_ad,1,1,raporlar/2026-07-26-arastirma-promptu-atlas.md,raporlar/2026-07-26-arastirma-promptu-atlas.md#200-204#e40af757
 s/SKILL.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#158-158#21760229
 scratchpad/nullmodel.py,yol,1,1,cc/rapor-2026-07-29-5.md,cc/rapor-2026-07-29-5.md#330-330#9c8d67d2

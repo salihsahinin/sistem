@@ -61,7 +61,7 @@ FK = [  # (kaynak_tablo.sütun, hedef_tablo.sütun)
 ]
 TABLO_PK = {"kayit": "kayit_id", "dosya": "dosya_id", "referans": None, "anahtar": "anahtar_id",
             "karar_borcu": "borc_id", "karar_borcu_kaynak": None, "hareket": "hareket_id", "prompt": "prompt_id",
-            "json_kayit": None, "uretim": None}
+            "json_kayit": None, "uretim": None, "bag": "bag_id"}
 GOSTER_SUTUN = {  # şema-düzeyi D2'de gösterilecek sütunlar (hepsi değil — okunurluk)
     "kayit": ["kayit_id", "dosya_id", "sira", "bolum_yolu", "satir_bas", "satir_son", "zarf_tip"],
     "dosya": ["dosya_id", "dizin", "katman", "tur", "blob_sha", "son_commit"],
@@ -73,6 +73,7 @@ GOSTER_SUTUN = {  # şema-düzeyi D2'de gösterilecek sütunlar (hepsi değil �
     "prompt": ["prompt_id", "oturum_id", "sonraki_skill", "yuklendi_head"],
     "json_kayit": ["dosya_id", "json_yolu", "deger"],
     "uretim": ["uretim_zamani", "git_head_sha", "script_sha", "kayit_id_kume_sha"],
+    "bag": ["bag_id", "tip", "kaynak_tur", "kaynak_id", "hedef_tur", "hedef_id", "kural", "gecerli_bas", "kayit_zamani", "gecersiz_zamani"],
 }
 
 def tr(n):  # 48957 → "48.957"
@@ -145,6 +146,11 @@ def main():
     for tur, n, dep, rep in q(cur, "SELECT tur, count(*), sum(durum='deprecated'), sum(replaced_by IS NOT NULL AND replaced_by<>'') FROM anahtar GROUP BY 1 ORDER BY 1"):
         node(f"anahtar:{tur}", "anahtar_turu", tur, sayi=n, deprecated=dep or 0, supersede_li=rep or 0)
         edge("tablo:anahtar", "icerir", f"anahtar:{tur}", f"{tr(n)}")
+
+    # --- tipli bağlar (KB-61 b, Karar 74 M-1): silver `bag` → tablo→tablo kenarı, tip = PROV/CiTO adı; kural + sayı etikette ---
+    if "bag" in sayim:
+        for tip, kt, ht, kural, n, acik in q(cur, "SELECT tip, kaynak_tur, hedef_tur, kural, count(*), sum(gecersiz_zamani IS NULL) FROM bag GROUP BY 1,2,3,4 ORDER BY 1,4,2,3"):
+            edge(f"tablo:{kt}", tip, f"tablo:{ht}", f"{kural} · {tr(n)} bağ ({tr(acik or 0)} açık)", kural=kural, sayi=n, acik=acik or 0)
 
     # --- dosya katmanları (sıcak/ılık/soğuk/yapısal) ---
     for katman, n in q(cur, "SELECT katman, count(*) FROM dosya GROUP BY 1 ORDER BY 1"):
@@ -402,6 +408,10 @@ def yaz_panolar(dizin, nodes, edges, sayim, meta):
         if st in sayim and dt in sayim:
             cls = "supersede" if st == dt == "anahtar" else "fk"
             L.append(f"{st}.{sc} -> {dt}.{dc}: \"{'süpersede' if cls=='supersede' else 'FK'}\" {{ class: {cls} }}")
+    for e in edges:  # tipli bağlar (KB-61 b): bag satırlarından tablo→tablo, tip etiketi = PROV adı
+        if e["type"] == "wasRevisionOf":
+            st, dt = e["from"].split(":", 1)[1], e["to"].split(":", 1)[1]
+            L.append(f"{st} -> {dt}: \"wasRevisionOf · {e['label']}\" {{ class: supersede }}")
     yol = os.path.join(dizin, "pointer-sistemi-v0-silver.d2"); open(yol, "w", encoding="utf-8").write("\n".join(L) + "\n"); yollar.append(yol)
     # ---------------- PANO 2: POINTER türleri → hedefler ----------------
     L = _bas(meta, "POINTER TÜRLERİ → ÇÖZÜMLEME HEDEFLERİ (pano 2/4)", "right")

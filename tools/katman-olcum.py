@@ -34,6 +34,15 @@ TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("karar_borcu_kaynak.satir_var (kırık pointer)", "singular", "SELECT COUNT(*) FROM karar_borcu_kaynak WHERE satir_var=0 OR dosya_var=0", "warn"),
     ("kayit.cekim_tarihi not_null (İB-52)", "not_null", "SELECT COUNT(*) FROM kayit WHERE cekim_tarihi IS NULL OR cekim_tarihi=''", "warn"),
     ("kayit.kaynak_tarihi ≤ cekim_tarihi (İB-52; gelecek-tarihli blok = uyarı)", "singular", "SELECT COUNT(*) FROM kayit WHERE kaynak_tarihi IS NOT NULL AND cekim_tarihi IS NOT NULL AND kaynak_tarihi > cekim_tarihi", "warn"),
+    ("bag.bag_id unique (KB-61 b)", "unique", "SELECT COUNT(*) FROM (SELECT bag_id FROM bag GROUP BY bag_id HAVING COUNT(*)>1)", "error"),
+    ("bag.tip accepted_values {wasRevisionOf} (KB-61 b: tek tip)", "accepted_values", "SELECT COUNT(*) FROM bag WHERE tip NOT IN ('wasRevisionOf')", "error"),
+    ("bag açık bağ uçları var (kaynak/hedef → anahtar_kaydi|anahtar|kayit|dosya)", "relationships",
+     "SELECT COUNT(*) FROM bag b WHERE b.gecersiz_zamani IS NULL AND NOT ("
+     "  (b.kaynak_tur='anahtar_kaydi' AND EXISTS (SELECT 1 FROM anahtar_kaydi x WHERE x.kaydi_id=b.kaynak_id)) OR (b.kaynak_tur='anahtar' AND EXISTS (SELECT 1 FROM anahtar x WHERE x.anahtar_id=b.kaynak_id))"
+     "  OR (b.kaynak_tur='kayit' AND EXISTS (SELECT 1 FROM kayit x WHERE x.kayit_id=b.kaynak_id)) OR (b.kaynak_tur='dosya' AND EXISTS (SELECT 1 FROM dosya x WHERE x.dosya_id=b.kaynak_id)))"
+     " OR NOT ((b.hedef_tur='anahtar_kaydi' AND EXISTS (SELECT 1 FROM anahtar_kaydi x WHERE x.kaydi_id=b.hedef_id)) OR (b.hedef_tur='anahtar' AND EXISTS (SELECT 1 FROM anahtar x WHERE x.anahtar_id=b.hedef_id))"
+     "  OR (b.hedef_tur='kayit' AND EXISTS (SELECT 1 FROM kayit x WHERE x.kayit_id=b.hedef_id)) OR (b.hedef_tur='dosya' AND EXISTS (SELECT 1 FROM dosya x WHERE x.dosya_id=b.hedef_id)))", "warn"),
+    ("bag bitemporal tutarlılık (gecerli_bas ≤ bitis · kayit_zamani ≤ gecersiz_zamani)", "singular", "SELECT COUNT(*) FROM bag WHERE (gecerli_bitis IS NOT NULL AND gecerli_bas > gecerli_bitis) OR (gecersiz_zamani IS NOT NULL AND kayit_zamani > gecersiz_zamani)", "error"),
     ("prompt.prompt_id unique", "unique", "SELECT COUNT(*) FROM (SELECT prompt_id FROM prompt GROUP BY prompt_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_kosum.kosum_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_prompt ↔ prompt 1:1", "relationships", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))", "error"),

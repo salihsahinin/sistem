@@ -2,12 +2,12 @@
  "meta": {
   "uretici": "tools/pointer-graf.py",
   "db": "veri/baglam.sqlite",
-  "silver_uretim": "2026-08-29T11:51:21+03:00",
-  "silver_git_head": "3f39b2ec3145d48ce27a75c18cf517a947fb2981",
-  "git_head": "3f39b2e",
-  "uretim_zamani": "2026-08-29T11:51:28+03:00",
-  "dugum_sayisi": 77,
-  "kenar_sayisi": 56,
+  "silver_uretim": "2026-08-29T11:57:25+03:00",
+  "silver_git_head": "0612826be3c14c51e08f890b3a9d118f9d44a001",
+  "git_head": "0612826",
+  "uretim_zamani": "2026-08-29T11:57:32+03:00",
+  "dugum_sayisi": 78,
+  "kenar_sayisi": 58,
   "sema": "pointer-graf-model v0 (deneysel m.29)",
   "not": "gövde deterministik (sıralı); yalnız meta.uretim_zamani değişir"
  },
@@ -114,11 +114,13 @@
    "id": "hat:gold",
    "kind": "hat_katmani",
    "label": "gold (veri/gorunum/*.csv)",
-   "sayi": 31,
+   "sayi": 33,
    "dosyalar": [
     "v_amb_acilis_brifi.csv",
     "v_amb_kosum_maliyet.csv",
     "v_anahtar_terim_dosya.csv",
+    "v_bag.csv",
+    "v_bag_ozet.csv",
     "v_baglam_gunluk.csv",
     "v_baglam_seyri.csv",
     "v_bayat_aday.csv",
@@ -153,7 +155,7 @@
    "id": "hat:silver",
    "kind": "hat_katmani",
    "label": "silver (veri/baglam.sqlite)",
-   "sayi": 755325
+   "sayi": 764981
   },
   {
    "id": "ilke:adres",
@@ -250,7 +252,7 @@
    "id": "ref:anahtar_terim",
    "kind": "referans_turu",
    "label": "anahtar_terim",
-   "sayi": 31477,
+   "sayi": 31536,
    "cozumlu": 0,
    "kirik": 0
   },
@@ -258,9 +260,9 @@
    "id": "ref:dosya_pointer",
    "kind": "referans_turu",
    "label": "dosya_pointer",
-   "sayi": 9738,
-   "cozumlu": 8433,
-   "kirik": 1305
+   "sayi": 9793,
+   "cozumlu": 8487,
+   "kirik": 1306
   },
   {
    "id": "ref:etiket",
@@ -282,7 +284,7 @@
    "id": "ref:sha",
    "kind": "referans_turu",
    "label": "sha",
-   "sayi": 1044,
+   "sayi": 1048,
    "cozumlu": 0,
    "kirik": 0
   },
@@ -290,7 +292,7 @@
    "id": "ref:skill_adi",
    "kind": "referans_turu",
    "label": "skill_adi",
-   "sayi": 1687,
+   "sayi": 1699,
    "cozumlu": 0,
    "kirik": 0
   },
@@ -298,7 +300,7 @@
    "id": "ref:tarih",
    "kind": "referans_turu",
    "label": "tarih",
-   "sayi": 3158,
+   "sayi": 3160,
    "cozumlu": 0,
    "kirik": 0
   },
@@ -306,7 +308,7 @@
    "id": "ref:tuzuk_madde",
    "kind": "referans_turu",
    "label": "tuzuk_madde",
-   "sayi": 7946,
+   "sayi": 7948,
    "cozumlu": 0,
    "kirik": 0
   },
@@ -543,10 +545,36 @@
    "grup": "silver"
   },
   {
+   "id": "tablo:bag",
+   "kind": "tablo",
+   "label": "bag",
+   "satir": 20,
+   "pk": "bag_id",
+   "kolonlar": [
+    "bag_id",
+    "tip",
+    "kaynak_tur",
+    "kaynak_id",
+    "hedef_tur",
+    "hedef_id",
+    "kural",
+    "gecerli_bas",
+    "gecerli_bitis",
+    "kayit_zamani",
+    "gecersiz_zamani",
+    "aciklama",
+    "kaynak_dosya",
+    "kod_sha",
+    "snapshot_tarih",
+    "kosum_id"
+   ],
+   "grup": "silver"
+  },
+  {
    "id": "tablo:baglam_olay",
    "kind": "tablo",
    "label": "baglam_olay",
-   "satir": 7877,
+   "satir": 7919,
    "pk": null,
    "kolonlar": [
     "olay_id",
@@ -714,7 +742,7 @@
    "id": "tablo:erisim_genisletme",
    "kind": "tablo",
    "label": "erisim_genisletme",
-   "satir": 53473,
+   "satir": 53518,
    "pk": null,
    "kolonlar": [
     "kayit_id",
@@ -730,7 +758,7 @@
    "id": "tablo:hareket",
    "kind": "tablo",
    "label": "hareket",
-   "satir": 3506,
+   "satir": 3533,
    "pk": "hareket_id",
    "kolonlar": [
     "hareket_id",
@@ -758,7 +786,7 @@
    "id": "tablo:json_kayit",
    "kind": "tablo",
    "label": "json_kayit",
-   "satir": 393390,
+   "satir": 402604,
    "pk": null,
    "kolonlar": [
     "dosya_id",
@@ -803,7 +831,7 @@
    "id": "tablo:karar_borcu_kaynak",
    "kind": "tablo",
    "label": "karar_borcu_kaynak",
-   "satir": 310,
+   "satir": 312,
    "pk": null,
    "kolonlar": [
     "borc_id",
@@ -821,7 +849,7 @@
    "id": "tablo:kayit",
    "kind": "tablo",
    "label": "kayit",
-   "satir": 53473,
+   "satir": 53518,
    "pk": "kayit_id",
    "kolonlar": [
     "kayit_id",
@@ -857,7 +885,7 @@
    "id": "tablo:kayit_fts",
    "kind": "tablo",
    "label": "kayit_fts",
-   "satir": 53473,
+   "satir": 53518,
    "pk": null,
    "kolonlar": [
     "kayit_id",
@@ -886,7 +914,7 @@
    "id": "tablo:kayit_fts_content",
    "kind": "tablo",
    "label": "kayit_fts_content",
-   "satir": 53473,
+   "satir": 53518,
    "pk": null,
    "kolonlar": [
     "id",
@@ -904,7 +932,7 @@
    "id": "tablo:kayit_fts_data",
    "kind": "tablo",
    "label": "kayit_fts_data",
-   "satir": 4540,
+   "satir": 4543,
    "pk": null,
    "kolonlar": [
     "id",
@@ -916,7 +944,7 @@
    "id": "tablo:kayit_fts_docsize",
    "kind": "tablo",
    "label": "kayit_fts_docsize",
-   "satir": 53473,
+   "satir": 53518,
    "pk": null,
    "kolonlar": [
     "id",
@@ -928,7 +956,7 @@
    "id": "tablo:kayit_fts_idx",
    "kind": "tablo",
    "label": "kayit_fts_idx",
-   "satir": 2635,
+   "satir": 2624,
    "pk": null,
    "kolonlar": [
     "segid",
@@ -967,7 +995,7 @@
    "id": "tablo:referans",
    "kind": "tablo",
    "label": "referans",
-   "satir": 70224,
+   "satir": 70358,
    "pk": null,
    "kolonlar": [
     "kayit_id",
@@ -1177,9 +1205,9 @@
    "from": "ref:dosya_pointer",
    "type": "pointer_hedef",
    "to": "tablo:dosya",
-   "label": "yol → dosya (hedef_var ile çözümlü/kırık) · 8.433 çözümlü / 1.305 KIRIK",
-   "cozumlu": 8433,
-   "kirik": 1305
+   "label": "yol → dosya (hedef_var ile çözümlü/kırık) · 8.487 çözümlü / 1.306 KIRIK",
+   "cozumlu": 8487,
+   "kirik": 1306
   },
   {
    "from": "ref:etiket",
@@ -1290,6 +1318,15 @@
    "hedef_sutun": "anahtar_id"
   },
   {
+   "from": "tablo:anahtar_kaydi",
+   "type": "wasRevisionOf",
+   "to": "tablo:anahtar_kaydi",
+   "label": "R1 · 10 bağ (10 açık)",
+   "kural": "R1",
+   "sayi": 10,
+   "acik": 10
+  },
+  {
    "from": "tablo:dosya",
    "type": "icerir",
    "to": "katman:ilik",
@@ -1354,6 +1391,15 @@
    "hedef_sutun": "dosya_id"
   },
   {
+   "from": "tablo:kayit",
+   "type": "wasRevisionOf",
+   "to": "tablo:dosya",
+   "label": "R3 · 10 bağ (10 açık)",
+   "kural": "R3",
+   "sayi": 10,
+   "acik": 10
+  },
+  {
    "from": "tablo:referans",
    "type": "fk",
    "to": "tablo:dosya",
@@ -1373,13 +1419,13 @@
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:anahtar_terim",
-   "label": "31.477"
+   "label": "31.536"
   },
   {
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:dosya_pointer",
-   "label": "9.738"
+   "label": "9.793"
   },
   {
    "from": "tablo:referans",
@@ -1397,25 +1443,25 @@
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:sha",
-   "label": "1.044"
+   "label": "1.048"
   },
   {
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:skill_adi",
-   "label": "1.687"
+   "label": "1.699"
   },
   {
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:tarih",
-   "label": "3.158"
+   "label": "3.160"
   },
   {
    "from": "tablo:referans",
    "type": "icerir",
    "to": "ref:tuzuk_madde",
-   "label": "7.946"
+   "label": "7.948"
   },
   {
    "from": "tablo:referans",

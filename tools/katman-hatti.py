@@ -39,6 +39,7 @@ ADIMLAR = [
     ("seyir", ["tools/baglam-seyir.py", "--sessiz"]),  # bağlam kompozisyonu: transkript usage → bronz/silver/gold (KB-50/52 a, İB-22; uyarı kanalı)
     ("tarama", ["tools/tarama-plan.py", "--sessiz"]),  # tarama-yöntemi plan-regresyon testi (uyarı modu; salt-okur, ~1 sn; KB-53 İB-25 / KB-58)
     ("saglik", ["tools/silver-saglik.py", "--sessiz"]),  # silver-sağlık: bayrak + güncel görünüm + kuyruk (Karar 58 / İB-42; uyarı modu — kapı yalnız --kapi ile seans-kapanis/damitma)
+    ("bag", ["tools/bag-tablo.py", "--sessiz"]),  # tipli-bağ katmanı ilk adım (KB-61 → Karar 74 M-1 b): silver `bag` (yalnız wasRevisionOf; R1/R2/R3 kural-tabanlı) + bitemporal kütük; saglik SONRASI (anahtar_kaydi), graf ÖNCESİ (kenar tipi)
     ("erisim", ["tools/erisim-fts.py", "--insa", "--eval", "--sessiz"]),  # erişim katmanı: FTS5 indeks + İB-20 eval (KB-43 a / Karar 60; saglik SONRASI — gecerlilik bayrağı)
     ("graf", ["tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "2",
               "--d2", "graf/pointer-sistemi-v0-tam.d2", "--kenar-listesi", "graf/pointer-sistemi-v0-kenarlar.txt"]),
