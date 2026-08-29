@@ -87,7 +87,7 @@
 1. **⚠️ TUTARSIZLIK BULUNDU — INSAN dosyası K-düzeltmelerini TAŞIMIYOR:** `INSAN-pasif-ogrenme` §6 hâlâ "bekçi var ama kör noktalı/yalnız async" anlatıyor (H34 öncesi hal), §7 "sayı olarak: eksen başına dört"ü damgasız/askısız sunuyor (K35 ihlali), §11 çürütülen üç oturum-sınırını (K36/K37/K38) hâlâ geçerli sınır diye listeliyor. Kapsüldeki "K1-K47 8 kaynak rapora uygulandı" kaydıyla tutarlı — INSAN dosyaları güncellenmemiş. **Salih bu dosyayı okumadan önce bilmeli; A13/F1 dersinin canlı örneği.** Düzeltme işi: ayrı küçük seans ya da CC görevi (m.8: üstü çizili + [K] gerekçeyle).
 2. Ç1'in bu ucu hasatta; O4'te `arastirma-promptu §4.2` okunurken hangi ailede "yeniden açıldığı" tespit edilmeli (SOZEL şerhi aile adı vermiyor — muhtemelen arastirma-promptu'nun kendisi).
 3. O2'ye özel bağ: A13 compiler bulguları (F1-F9) LOJIK/SOZEL-onerme-formu ailesinin zemininde — O2 okuması bu hasadın 13. maddesini referans alsın.
-4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli.
+4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli. **[DÜZELTME NOTU 2026-08-29, m.8 — İB-11: bu borç 07-30'da KAPANDI — `cc/rapor-2026-07-30-1.md` 7/7 birincil metin (4 teyit · 2 daraldı · 1 rakam hatası: Staab %95,8→%95,2; AAR self-led; Park ham %65,67). Eski satır yeniden yazılmadı.]**
 
 ---
 
