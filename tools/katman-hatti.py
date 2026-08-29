@@ -27,7 +27,7 @@ Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,pro
 `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI, hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan
 (bilinen) adımlar döngü öncesi `[atla ] <ad>` satırıyla yankılanır. Deneysel m.29 (2026-08-16, seans-7).
 """
-import argparse, os, subprocess, sys, time
+import argparse, json, os, subprocess, sys, time
 
 ADIMLAR = [
     ("baglam", ["tools/baglam-tablo.py", "--sessiz"]),
@@ -126,14 +126,17 @@ def main():
     ap.add_argument("--atla", default="", help="virgüllü adım adları (%s)" % ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR))
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
     ap.add_argument("--parquet", action="store_true", help="opsiyonel kolon katmanı: ambar-parquet + kolon-olcum (DuckDB gerekir)")
+    ap.add_argument("--json", action="store_true", help="axi-standardı (İB-58): stdout = TEK makine-okur JSON nesnesi; insan satırları/ilerleme stderr'e")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
+    insan = sys.stderr if a.json else sys.stdout  # axi: makine kanalı stdout, insan kanalı stderr
+    kayitlar = []; t_bas = time.time()
     atla, bilinmeyen = atla_sec(a.atla)
     if bilinmeyen:
         print("HATA: bilinmeyen --atla adı: %s · geçerli adlar: %s" % (", ".join(bilinmeyen), ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR)),
               file=sys.stderr)
         sys.exit(2)
     for ad in atla:
-        print(f"[atla ] {ad}")
+        print(f"[atla ] {ad}", file=insan); kayitlar.append({"adim": ad, "durum": "atla", "sure_s": 0.0, "kod": None, "uyari": False})
     kod = 0
     for ad, cmd in adimlari_sec(parquet=a.parquet, atla=atla):
         if ad == "olcum":
@@ -145,17 +148,26 @@ def main():
         r = subprocess.run([yorumlayici_sec(repo, ad)] + args, cwd=repo, capture_output=True, text=True)
         dt = time.time() - t0
         durum, duser = adim_durumu(ad, r.returncode)
-        print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}")
+        uyari = bool(r.returncode != 0 or (ad in UYARI_KANALI_ADIMLAR and r.stderr.strip()))
+        kayitlar.append({"adim": ad, "durum": durum, "sure_s": round(dt, 2), "kod": r.returncode, "uyari": uyari,
+                         "stderr_son": r.stderr.strip()[-300:] if uyari else ""})
+        print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}", file=insan)
         if r.stdout.strip() and (r.returncode != 0 or ad == "olcum"):
-            print("        " + r.stdout.strip().replace("\n", "\n        ")[:2000])
-        if r.returncode != 0 or (ad in UYARI_KANALI_ADIMLAR and r.stderr.strip()):
-            print("        STDERR: " + r.stderr.strip()[-600:])
+            print("        " + r.stdout.strip().replace("\n", "\n        ")[:2000], file=insan)
+        if uyari:
+            print("        STDERR: " + r.stderr.strip()[-600:], file=insan)
         if duser:
             kod = kod or r.returncode
             if ad in ("baglam",):  # çekirdek düşerse aşağısı anlamsız
                 break
-            if ad in ("baglam",):  # çekirdek düşerse aşağısı anlamsız
-                break
+    if a.json:  # axi-standardı: tek satır JSON, alanlar sabit; head/kod_sha determinizm damgası
+        try:
+            head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=repo, capture_output=True, text=True).stdout.strip()
+        except Exception:
+            head = None
+        print(json.dumps({"arac": "katman-hatti", "surum": "v1", "git_head": head, "cikis": kod, "sure_s": round(time.time() - t_bas, 2),
+                          "adim_n": len(kayitlar), "ok_n": sum(1 for k in kayitlar if k["durum"] == "OK"), "uyari_n": sum(1 for k in kayitlar if k["uyari"]),
+                          "adimlar": kayitlar}, ensure_ascii=False))
     sys.exit(kod)
 
 
