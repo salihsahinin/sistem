@@ -21,7 +21,7 @@
 ## Uyum envanteri (AS-OF 2026-08-29, ölçüm: `grep '"--json"' tools/*.py`)
 - `tools/*.py` toplam **43** · `--json` olan **8** (anakronizm-denetim.py,katman-hatti.py,kod-envanter.py,kural-sayaci.py,pointer-graf.py,silver-saglik.py,wiki-baglanti.py,yuzey-parmak-izi.py) · `--sessiz` olan **30**.
 - **İlk aday katman-hatti (08-29 UYGULANDI):** `python3 tools/katman-hatti.py --json` → tek satır JSON (`arac, surum, git_head, cikis, sure_s, adim_n, ok_n, uyari_n, adimlar[{adim, durum, sure_s, kod, uyari, stderr_son}]`); insan satırları stderr'e. Geri uyum: `--json`süz çıktı değişmedi (test_tarama_plan 13/13).
-- Sonraki adaylar (kullanım sıklığına göre): `silver-saglik.py` (--kapi kodu 6 zaten sözlükte; --json yok) · `hareket-tablo.py` · `loop-dedektor.py` · `erisim-fts.py --sorgu` (ajan aracı olmaya en yakın: sorgu → JSON sonuç).
+- Sonraki adaylar (kullanım sıklığına göre): `anahtar-denetim.py` — **kanon↔kod uyuşmazlığı:** `core/baglam-anahtar-kaydi.md` §5 `--json / --anahtar / --goster` bayraklarını vaat ediyor, kodda argparse YOK (08-29 ölçümü; Katman-1 metni düzeltilmez, kod kanona çekilir) · `hareket-tablo.py` · `loop-dedektor.py` · `erisim-fts.py --sorgu` (ajan aracı olmaya en yakın: sorgu → JSON sonuç). `silver-saglik.py` zaten `--json` + kapı kodu 6.
 
 ## Süpersede / bağlar
 - 08-26 "E-4 ertelendi" → yerini aldı: 08-29 Karar 76 E-4 (a) erteleme kalktı, İB-58. · Dil: KB-63 (Python MCP stdio ilk arayüz). · Kardeşler: `core/ajan-metodolojisi.md` §1 (alan adı talimattır) · `core/skill-tetikleme-semasi.md` (yan-etki damgası) · Karar 65 (determinizm) · KB-50 (bağlam bütçesi) · İB-39 (idempotens).
