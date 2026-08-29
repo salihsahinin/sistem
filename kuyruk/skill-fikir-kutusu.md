@@ -44,3 +44,8 @@
 | 08-16 | veri-mühendisliği katmanı pipeline (S-1 fan-2 → G-1 → SH-1 zincir) | N0→N1 ~25 dk · işçi tavan 600k · onarım tavanı 1 resume | N0→N1 21,7 dk · 382k · onarım 0 · N1→N4 tek yürütücü ~55 dk [?] | tetiklenmedi | ilk gerçek koşum; makespan dili paralel bölümde, yol-maliyeti seri bölümde; h() yok beyanı tutuldu |
 
 - **V80 · Önerme→DbC→PBT skill adayı** (Karar 54d, Salih 08-21): m.38 lojik önermelerinden Design-by-Contract sözleşmeleri (ön/son-koşul assert'leri) + Property-Based-Test üretimi — lojik→kod merdiveninin B4 ayağı. **ÖZEL EŞİK: N=4 (Salih şerhi; genel m.43 eşiği 5, yalnız bu aday 4)**; sayaç 1/4 (kaynak: `raporlar/2026-08-15-skill-semasi-test-turu.md:38`). İnşa yok; eşik dolunca ∨ Salih emriyle `skill-kapisi`'na.
+
+## BAKIM-KK koşumları (Karar 75; kural: core/skill-uretim-semasi.md §BAKIM)
+| tarih | örneklem | verim (ham) | kalite (ham, n) | kapsama | öneri (kabul/toplam) | rapor |
+|---|---|---|---|---|---|---|
+| 2026-08-29 | 12/143 (45 g) | 0,72 | 1,0 (n=6) | 12/12 | 0/2 (kapıda — Salih imzası bekler) | raporlar/skill-doctor-rapor-2026-08-29.html |

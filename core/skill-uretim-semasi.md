@@ -81,6 +81,12 @@ Sayım: 4 kapı katmanı · kapı düğümü 1+2+3+4=10 · yaprak 4 · terminal 
 - Sayaç pencereli: kullanım(son W) < λ, `λ = max(1, ½·log10(N))` (N = pencere içindeki toplam görev; jarvis ölçeğinde λ=1) → **EMEKLİ-ADAY** (arşiv-pointer; m.8 silme yok). İlk pencerede ölçülen k·Δ < (1+β)·C_inşa → EMEKLİ-ADAY.
 - Platform eşikleri sürüm-damgalı yeniden okunur (1536/%1/5.000-25.000 compaction; alt-ajan derinliği 5→1→3 oynadı).
 - Yukarı-düzeltme: BEKLET'teki aday yeni tekrar/emirle K1'e geri girer.
+- **BAKIM-KK — kullanım-kanıtı katmanı (Karar 75, Salih emri 08-29; hazırı temel al: Warp skill-doctor, `~/dev/common-skills/.agents/skills/skill-doctor/`; her şey YEREL, transkript dışarı çıkmaz):** periyodik transkript notlaması (verimlilik + kod-kalitesi rubrikleri, 45-gün pencere / 12-oturum örneklem) BAKIM'a üçüncü sinyali ekler — sayaç ve Δ̂ "ne kadar kullanıldı"yı, BAKIM-KK "kullanılınca ne oldu"yu ölçer:
+  - **Kanıt-izli öneri kuralı:** skill-düzenleme önerisi YALNIZ başarısız-oturum kanıtına dayanır (ham rubrik puanı <0,5 olan oturumlar); genel best-practice'ten öneri üretilmez; her öneri oturum + puanlayıcı + an atfı taşır (m.39'un bakım karşılığı).
+  - **Tetiklenmeme sinyali:** başarısız oturumda tetiklenmesi gereken skill hiç tetiklenmemişse bu çoğunlukla DESCRIPTION sorunudur → **DESCRIPTION-ONAR adayı** (ONAR-3'ün kullanım-kanıtlı varyantı; İB-07 description-eval'e girdi).
+  - **Öneri = DIFF, dosyaya dokunmaz:** öneriler ayrı dizinde unified-diff olarak durur; uygulanması = EVRİM ADAYI olarak bu ağaca girer (K0'dan; hızlı yol Z2 Salih imzası). Otomatik uygulama YOK (skill-doctor'un "uygulayayım mı" adımı devre dışı).
+  - **Kapsama sayacı:** `skill_coverage` (örneklem oturumlarında ≥1 skill tespiti oranı) pencere-başına ölçüm satırına yazılır; düşük kapsama = tetikleme-isabeti sorunu adayı.
+  - Tetik: Salih emri ∨ pencere dolumu (45 gün [? deneysel m.29, skill-doctor varsayılanıyla hizalı; ilk koşum 08-29, kalibrasyon 3 koşumda]).
 
 ## 3. Bedel-defteri (her kapı için: sinyal türü · yanlış-negatif bedeli · nerede ödenir)
 | Kapı | Sinyal | YN bedeli | Ödendiği yer |
@@ -100,4 +106,4 @@ En ucuz kapı en zayıf kapı değildir burada — çünkü R/K3 deterministik; 
 - **Antitez borcu:** bu şema tam m.40b şeridiyle koştu (08-14 metodoloji borcunun aksine) — kanonlaşma öncesi antitez borcu YOK; ölçüm borcu VAR (aşağıda).
 
 ## 5. Ölçüm planı (deneysel damgayı kaldırmanın yolu)
-Her `skill-kapisi` koşumu `kuyruk/skill-fikir-kutusu.md`'ye tek satır: aday · katman-başına geçti/düştü · tür · süre. 10 koşumdan sonra: (i) hangi kapı en çok eliyor (c/(1−p) sırası doğrulanır), (ii) yanlış-negatif vakaları (sonradan gerekli çıkan RET/BEKLET), (iii) τ/W/β/n_val kalibrasyonu. Kör noktalar tam listesi: rapor "Kör noktalar" bölümleri (45 kalem).
+Her `skill-kapisi` koşumu `kuyruk/skill-fikir-kutusu.md`'ye tek satır: aday · katman-başına geçti/düştü · tür · süre. 10 koşumdan sonra: (i) hangi kapı en çok eliyor (c/(1−p) sırası doğrulanır), (ii) yanlış-negatif vakaları (sonradan gerekli çıkan RET/BEKLET), (iii) τ/W/β/n_val kalibrasyonu. **BAKIM-KK koşum satırı (Karar 75):** tarih · örneklem n · verim/kalite ham ortalama · skill_coverage · öneri sayısı (kabul/toplam) — aynı dosyaya. Kör noktalar tam listesi: rapor "Kör noktalar" bölümleri (45 kalem).
