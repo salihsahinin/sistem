@@ -29,3 +29,7 @@ ogrenme/kaynaklar/mit-6042j-f10/
 
 # Ajan freni sayaç durumu (İB-54; oturum başına, türev)
 .claude/hooks/state/
+
+# Vektör ölçüm kolu indeksi (İB-47; sqlite-vec türev, ~500 MB)
+veri/erisim-vektor.sqlite
+veri/erisim-vektor-*.npy

@@ -1,0 +1,4 @@
+model,model_id,st_surum,torch_surum,dim,n,cihaz,sha256,sure_sn,git_head,uretim_ts,metin_sinir,not_
+e5,intfloat/multilingual-e5-large,6.0.0,2.13.0,1024,300,mps,d90e789f73e6b2f6d92b2afc050e7cacdfefb6e9e7011cd58585cdbaf0f077e2,16.3,153e573,2026-08-29T15:12:10+03:00,2000,normalize=True · max_seq 512 · batch 32 · sıra kayit_id ASC · torch.manual_seed(0)
+e5,intfloat/multilingual-e5-large,6.0.0,2.13.0,1024,53983,mps,21b71148531dad9ed72b48fac4b8c19fbc6be5542892bc276925be6f1f95bc78,3529.9,3af770e,2026-08-29T16:11:18+03:00,2000,normalize=True · max_seq 512 · batch 32 · sıra kayit_id ASC · torch.manual_seed(0)
+bge,BAAI/bge-m3,6.0.0,2.13.0,1024,53983,mps,0b68c1309a4f8f77cfc449fa8ff4d122c51f9d87161bd5345da7ee6899049a13,3151.6,9300665,2026-08-29T17:03:58+03:00,2000,normalize=True · max_seq 512 · batch 32 · sıra kayit_id ASC · torch.manual_seed(0)
