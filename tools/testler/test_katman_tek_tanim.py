@@ -27,11 +27,17 @@ class KatmanTekTanimTest(unittest.TestCase):
         self.assertEqual(fark, [], "tek-tanım kırıldı: %s" % fark[:5])
 
     def test_eski_tanimla_farklar_bilinen_siniflarda(self):
-        bilinen = ("kuyruk/gelen-", "CEP-KAPSULU-", "CHAT-KAPSULU-", "secim-turu-", "PARALEL-VARDIYA-ILK-DENEME", "Clippings/")  # Clippings/: eski tanım ılık, silver soğuk (08-29 bulgusu)
-        fark = [y for y in self.yollar if self.ad._katman_yerel(y) != self.bt.katman_bul(y)]
-        beklenmeyen = [y for y in fark if not y.startswith(bilinen)]
+        """Eski↔yeni fark yalnız İKİ YAPISAL SINIFTA kalır (sabit yol listesi değil — 08-29 dersi: liste her yeni cc/ alt-klasöründe bayatladı):
+        (A) eski SOĞUK → silver ILIK: yalnız kuyruk/gelen-* ve kök snapshot kapsülleri (CEP-/CHAT-KAPSULU-*, secim-turu-*, PARALEL-VARDIYA-ILK-DENEME) — açık liste, küçük, durağan.
+        (B) eski ILIK → silver SOĞUK: eski tanımın VARSAYILAN dalı ılık, silver'ın varsayılanı soğuk (README/SKILL/tools/veri/sozlesme/cc/<alt-klasör>/Clippings…) — yapısal, listelenmez.
+        Değişmez: SICAK küme iki tanımda BİREBİR; soğuk→ılık terfisi yalnız (A)'da."""
+        sinif_a = ("kuyruk/gelen-", "CEP-KAPSULU-", "CHAT-KAPSULU-", "secim-turu-", "PARALEL-VARDIYA-ILK-DENEME")
+        fark = [(y, self.ad._katman_yerel(y), self.bt.katman_bul(y)) for y in self.yollar if self.ad._katman_yerel(y) != self.bt.katman_bul(y)]
+        sicak_fark = [f for f in fark if "sicak" in f[1:]]
+        self.assertEqual(sicak_fark, [], "SICAK küme ayrıştı: %s" % sicak_fark[:5])
+        beklenmeyen = [f for f in fark if not ((f[1], f[2]) == ("soguk", "ilik") and f[0].startswith(sinif_a)) and not (f[1], f[2]) == ("ilik", "soguk")]
         self.assertEqual(beklenmeyen, [], "eski↔yeni tanım farkı bilinmeyen sınıfta: %s" % beklenmeyen[:5])
-
+        self.assertTrue(fark, "fark 0 — eski yerel tanım silinmiş/eşitlenmiş olabilir; docstring'i güncelle (FAIL-LOUD)")
 
 if __name__ == "__main__":
     unittest.main()

@@ -15,7 +15,7 @@
 - **Oturum tetikleri:** "seans başı" · "seans bitimi"; jarvis↔staj ayrımı KLASÖRLE. Eski seans özetleri (s2..s19) teslim raporları + git log (m.8 pointer).
 
 ## Açık borçlar
-- **Salih el işleri:** claude.ai bulut skill kopyalarını sil (KB-10 H6) · Cowork parmak-izi çıktısı (KB-34) · `brew uninstall --cask qlmarkdown` (isteğe bağlı, Karar 72) · **Finder md varsayılanını VS Code yap** (Get Info → Open with → Change All; Karar 80).
+- **Salih el işleri:** claude.ai bulut skill kopyalarını sil (KB-10 H6) · Cowork sekmesi parmak-izi çıktısı (KB-34) · `brew uninstall --cask qlmarkdown` (isteğe bağlı, Karar 72) · **Finder md varsayılanını VS Code yap** (Get Info → Open with → Change All; Karar 80).
 - **Boyut-tetiği:** defter **55,8/48** (Karar 74-78 kayıtları) · KILAVUZ 16,6/16 — damıtma ilk boş seansta Salih onayıyla (08-29 turunun devamı; arşivler `kuyruk/arsiv/*-2026-08-29.md`).
 - md.21/② şerhi KB-17b ölçümüne bağlı BEKLET (Salih 08-20 hükmü) · erteleme kapsamı: find-skills · lease iadeleri · md.49 yazım turu · wiki kuyruğu (+`bakim-kk` adayı) · 8 damgasız `kuyruk/gelen-*` redrive borcu (damıtma raporu 08-29).
 

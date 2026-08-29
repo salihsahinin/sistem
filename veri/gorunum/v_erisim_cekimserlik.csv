@@ -3,4 +3,4 @@ vektor-e5,9300665,19,43,0.5309,0.4865,0.5223,0.837,0.789,0.884,öneri [?] n kü�
 vektor-bge,9300665,19,49,0.8973,0.8009,0.8213,0.81,0.947,0.673,öneri [?] n küçük; kural: top1 skor ≥ eşik → çekimser
 vektor-e5-i8,9300665,19,45,68.7386,63.3877,67.9338,0.813,0.737,0.889,öneri [?] n küçük; kural: top1 skor ≥ eşik → çekimser
 vektor-bge-i8,9300665,19,50,114.8564,102.5671,105.5936,0.814,0.947,0.68,öneri [?] n küçük; kural: top1 skor ≥ eşik → çekimser
-fts5+gen,e5cb12b,19,46,-14.9874,-31.5339,-19.8567,0.788,0.684,0.891,öneri [?] n küçük; kural: top1 skor ≥ eşik → çekimser
+fts5+gen,2d3a94d,19,55,-16.6498,-27.6742,-22.1103,0.793,0.895,0.691,öneri [?] n küçük; kural: top1 skor ≥ eşik → çekimser
