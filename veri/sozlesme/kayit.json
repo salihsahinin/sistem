@@ -1,6 +1,6 @@
 {
  "tablo": "kayit",
- "surum": "1.1.0-deneysel-m29",
+ "surum": "1.2.0-deneysel-m29",
  "katman": "silver",
  "grain": "-",
  "kolonlar": [
@@ -147,8 +147,20 @@
    "tip": "TEXT",
    "not_null": false,
    "pk": false
+  },
+  {
+   "ad": "cekim_tarihi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
+  },
+  {
+   "ad": "kaynak_tarihi",
+   "tip": "TEXT",
+   "not_null": false,
+   "pk": false
   }
  ],
  "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)",
- "not": "1.1.0 (08-22): +gecerlilik/gecerlilik_neden/tespit_tarihi — silver-saglik.py türetir (Karar 58; additive)"
+ "not": "1.1.0 (08-22): +gecerlilik/gecerlilik_neden/tespit_tarihi — silver-saglik.py türetir (Karar 58; additive) · 1.2.0 (08-29): +cekim_tarihi (erişim: son_commit ∨ bronz cekim-olay en yenisi) / kaynak_tarihi (bloğun kendi tarihi: tarih_iso ∨ zarf_tarih) — baglam-tablo.py türetir (İB-52, KB-68 a; additive)"
 }

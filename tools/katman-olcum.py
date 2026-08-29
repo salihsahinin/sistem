@@ -32,6 +32,8 @@ TESTLER = [  # (ad, tür, sql → ihlal sayısı, şiddet)
     ("karar_borcu.durum accepted_values", "accepted_values", "SELECT COUNT(*) FROM karar_borcu WHERE durum NOT IN ('İMZASIZ','BEKLET','Salih''te','masaya','kısmen-kapandı','kapandı','belirsiz','icra-sırada')", "warn"),
     ("karar_borcu_kaynak.borc_id → karar_borcu", "relationships", "SELECT COUNT(*) FROM karar_borcu_kaynak x LEFT JOIN karar_borcu b ON b.borc_id=x.borc_id WHERE b.borc_id IS NULL", "error"),
     ("karar_borcu_kaynak.satir_var (kırık pointer)", "singular", "SELECT COUNT(*) FROM karar_borcu_kaynak WHERE satir_var=0 OR dosya_var=0", "warn"),
+    ("kayit.cekim_tarihi not_null (İB-52)", "not_null", "SELECT COUNT(*) FROM kayit WHERE cekim_tarihi IS NULL OR cekim_tarihi=''", "warn"),
+    ("kayit.kaynak_tarihi ≤ cekim_tarihi (İB-52; gelecek-tarihli blok = uyarı)", "singular", "SELECT COUNT(*) FROM kayit WHERE kaynak_tarihi IS NOT NULL AND cekim_tarihi IS NOT NULL AND kaynak_tarihi > cekim_tarihi", "warn"),
     ("prompt.prompt_id unique", "unique", "SELECT COUNT(*) FROM (SELECT prompt_id FROM prompt GROUP BY prompt_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_kosum.kosum_id unique", "unique", "SELECT COUNT(*) FROM (SELECT kosum_id FROM amb_olgu_kosum GROUP BY kosum_id HAVING COUNT(*)>1)", "error"),
     ("amb_olgu_prompt ↔ prompt 1:1", "relationships", "SELECT ABS((SELECT COUNT(*) FROM amb_olgu_prompt)-(SELECT COUNT(*) FROM prompt))", "error"),

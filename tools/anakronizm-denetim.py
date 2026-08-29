@@ -96,7 +96,29 @@ def d2_damga_varligi(yol, metin):
     return [{"denetim": "D2", "dosya": yol, "satir": 1, "kalip": "-", "ornek": bas.strip().replace("\n", " ")[:120], "yas_gun": None, "not": "ilk 12 satırda tarih damgası yok"}]
 
 
-def d3_bayatlik(yol, metin, bugun, esik):
+def cekim_olaylari(repo):
+    """Bronz `veri/bronz/cekim-olay.jsonl` (tools/bayat-cekim.py yazar; İB-52) → {dosya_id: en yeni cekim_tarihi (date)}.
+    Yeniden-çekim dosyaya dokunmadan damga tazeler; D3 bu damgayı dosya-içi damgalarla birlikte sayar (yoksa boş sözlük)."""
+    out = {}
+    yol = os.path.join(repo, "veri", "bronz", "cekim-olay.jsonl")
+    if not os.path.exists(yol):
+        return out
+    with open(yol, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            try:
+                o = json.loads(line); t = date.fromisoformat((o.get("cekim_tarihi") or "")[:10])
+            except (json.JSONDecodeError, ValueError):
+                continue
+            d = o.get("dosya_id")
+            if d and (d not in out or t > out[d]):
+                out[d] = t
+    return out
+
+
+def d3_bayatlik(yol, metin, bugun, esik, cekim=None):
     tarihler = []
     for m in RX_DAMGA.finditer(metin):
         try:
@@ -105,6 +127,8 @@ def d3_bayatlik(yol, metin, bugun, esik):
             continue
         if t <= bugun:
             tarihler.append(t)
+    if cekim and cekim <= bugun:
+        tarihler.append(cekim)  # İB-52: bronz yeniden-çekim damgası (dosya-dışı)
     if not tarihler:
         return []
     en_yeni = max(tarihler); yas = (bugun - en_yeni).days
@@ -157,12 +181,13 @@ def main():
     ts = datetime.now(timezone(timedelta(hours=3))).replace(microsecond=0).isoformat()
     kosum_id = "anakronizm:%s:%s" % (head, bugun.isoformat())
     bulgular = []
+    cekim = cekim_olaylari(repo)
     for f in dosyalar:
         try:
             metin = open(os.path.join(repo, f), encoding="utf-8", errors="replace").read()
         except OSError:
             continue
-        bulgular += d1_zaman_civi(f, metin) + d2_damga_varligi(f, metin) + d3_bayatlik(f, metin, bugun, a.esik_gun)
+        bulgular += d1_zaman_civi(f, metin) + d2_damga_varligi(f, metin) + d3_bayatlik(f, metin, bugun, a.esik_gun, cekim.get(f))
     for b in bulgular:
         b.update({"ts": ts, "kod_sha": head, "kosum_id": kosum_id})
     for b in bulgular:

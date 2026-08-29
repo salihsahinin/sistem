@@ -931,6 +931,36 @@ def main():
     con.executemany("INSERT INTO anahtar VALUES (%s)" % ",".join("?" * 12), anahtar_rows)
     con.executemany("INSERT INTO json_kayit VALUES (?,?,?,?,?)", json_rows)
 
+    # ---- İB-52 (KB-68 a, Karar 69 EK; anakronizm M4 kayıt şeması) — ADDITIVE iki kolon, türetilmiş ----
+    # kaynak_tarihi = bloğun KENDİ taşıdığı tarih (yayın/olay: tarih_iso ∨ zarf_tarih; yoksa NULL = tarih taşımıyor).
+    # cekim_tarihi  = ERİŞİM tarihi: dosyanın son commit günü ∨ bronz `veri/bronz/cekim-olay.jsonl`'daki (tools/bayat-cekim.py yazar)
+    #                 en yeni yeniden-çekim günü — hangisi büyükse. Yeniden-çekim dosyaya DOKUNMADAN damga tazeler (m.8; churn yok).
+    # DDL'e değil ALTER'la eklenir ki eski INSERT genişliği (21) ve JSONL dışa-aktarımı aynen kalsın (additive-only sözleşmesi).
+    con.execute("ALTER TABLE kayit ADD COLUMN cekim_tarihi TEXT")
+    con.execute("ALTER TABLE kayit ADD COLUMN kaynak_tarihi TEXT")
+    _gun = "'[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]*'"
+    con.execute("UPDATE kayit SET kaynak_tarihi = CASE WHEN tarih_iso GLOB %s THEN substr(tarih_iso,1,10) "
+                "WHEN zarf_tarih GLOB %s THEN substr(zarf_tarih,1,10) END" % (_gun, _gun))
+    con.execute("UPDATE kayit SET cekim_tarihi = (SELECT substr(d.son_commit,1,10) FROM dosya d WHERE d.dosya_id=kayit.dosya_id)")
+    cekim_son = {}
+    cekim_yolu = os.path.join(cikti, "bronz", "cekim-olay.jsonl")
+    if os.path.exists(cekim_yolu):
+        with open(cekim_yolu, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                try:
+                    o = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                d, t = o.get("dosya_id"), (o.get("cekim_tarihi") or "")[:10]
+                if d and t and t > cekim_son.get(d, ""):
+                    cekim_son[d] = t
+        for d, t in sorted(cekim_son.items()):
+            con.execute("UPDATE kayit SET cekim_tarihi=? WHERE dosya_id=? AND (cekim_tarihi IS NULL OR cekim_tarihi<?)", (t, d, t))
+    notlar["cekim_olay_dosya"] = len(cekim_son)
+
     kume_sha = sha1_hex("\n".join(sorted(r[0] for r in kayit_rows)))
     with open(script_yolu, "rb") as fh:
         script_sha = sha1_hex(fh.read())
