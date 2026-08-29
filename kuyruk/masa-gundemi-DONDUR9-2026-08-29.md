@@ -32,7 +32,7 @@
 | Kod | Kalem | Adres | ÇO-1 |
 |---|---|---|---|
 | R10-K1 | Bütçe-tavanı ↔ m.40b kontratı çelişkisi (a/b/c/d) | rapor-10:229 | SÜPERSEDE-ADAY (07-30 ④ + KB-27 + İB-54) |
-| R10-K2 | Raporun statüsü: "tam diyalektik" sayılmama hükmü | rapor-10:230 | ÇO-BEKLİYOR |
+| R10-K2 | Raporun statüsü: "tam diyalektik" sayılmama hükmü | rapor-10:230 | SÜPERSEDE-ADAY — KB-25 m.40b SAĞLAM/DARALDI/DÜŞTÜ kanonu (Karar 42-47 bandı) koşum-statü düzenini kurdu |
 | R10-K3 | V39 tek-nokta ≡ activation patching şerh adayı | rapor-10:231 | ÇO-BEKLİYOR |
 | R10-K4 | "Yüksek trafik ≠ yüksek değer" wiki eki | rapor-10:232 | ÇO-BEKLİYOR (İB-04 kesişim) |
 | R10-K5 | "Karar-noktası kalitesi ablasyon-görelidir" tanım duruşu | rapor-10:233 | ÇO-BEKLİYOR |
@@ -118,7 +118,7 @@
 | Kod | Kalem | Adres | ÇO-1 |
 |---|---|---|---|
 | R19-A2 | m.44 RouteLLM çapasına niteleyici şerh | rapor-19:273 | ABSORBE (İMZALI — `core/ajan-metodolojisi.md:44`) |
-| R19-K-b | KOD BULUNAMADI (§2.3 listesi "K-b" diyor) | rapor-19 (tüm) | BAYRAK — kaynak taraması borç |
+| R19-K-b | LLM-routing niteleyicileri (öneri-tablosu satırı) | rapor-19:244 | ABSORBE — A2 ile AYNI İŞ (m.44 şerhi imzalı); bayrak KAPANDI |
 
 ### rapor-20 — pipeline/AI2AI ailesi (4)
 | Kod | Kalem | Adres | ÇO-1 |
@@ -128,8 +128,23 @@
 | R20-K1-i | Ucuz-modele katı şema dayatma ölçümü | rapor-20:415 | AÇIK (iz 0; İB-12 kesişim) |
 | R20-K1-m | #24 pin ↔ fiiliyat (atlas opus-pini) | rapor-20:650 | AÇIK-BAĞLI (İB-09) |
 
-## Sonraki adım
-1. **ÇO-2 turu:** kalan ~24 ÇO-BEKLİYOR kalemi (ağırlık: ufuk/partisyon ailesi R11/R13 + rapor-18 kayıt-sınıfı + R10 mek-yorum) — kaynak-metin dip okumasıyla etiketlenir; R19-K-b bayrağı çözülür (rapor-19 tam taraması).
-2. **Daraltılmış masa:** ÇO sonrası CANLI kalanlar EK-6 usulüyle (kalem başına açıklama-bloklu, ayrı oturum) Salih'e. ABSORBE/SÜPERSEDE/RED-EMSALLİ adayları masada tek-tek onayla kapanır (m.31 — hüküm Salih'te).
+## ÇO-2 — üst-soru gruplaması (aynı seans; kalan kalemler tek-tek değil KARARA göre kümelendi)
+
+Kalan ÇO-BEKLİYOR kalemlerinin çoğu 4 üst-soruya iner — masada 24 ayrı kalem değil 4 üst-karar + tekiller görüşülür:
+
+- **ÜST-A — UFUK-SİSTEMİ kurulacak mı? (~14 kalem, en büyük aile):** R13-KM1/KM3/KM4/KM5/KM6 · R13-KM2≡R14-1 (5. eksen) · R11-KL1≡KL16-1 (kelime ayrımı) · KL2 (m.22) · KL3 · KL4≡KL16-7 · KL5≡KL16-4 · KL6 · KL16-3. Hepsi "ufuk-etiketi/partisyon/cephe mimarisi kurulsun mu" tek Katman-1 kararına bağlı: kurulmazsa aile RAF'a, kurulursa alt-kalemler sıralanır. Silver'da sistemin hiç izi yok — 08-01'den beri hiçbir parçası inşa edilmemiş.
+- **ÜST-B — ε/ayar-politikası paketi (4):** R14-2/3/4/5 — m.37 v2 kalibrasyon kapısının (KB-26, açık Salih borcu) ardında; masaya KB-26 ile BİRLİKTE gelir. R14-5'in ölçüm-bankı ayağı DE-GOLD süpersedesiyle (Karar 78 F7) yeniden adreslenir.
+- **ÜST-C — kayıt/şerh sınıfı toplu yazım turu (~10):** KL18-3/4/5/8/9/13 · R10-K3/K4/K5 · R12-K1-2/4/6 · KL16-6. Tek-cümle kayıt/şerh/terim kalemleri — masada TOPLU onay bloğu; onaylanırsa Carvis tek yazım turunda işler (kanon-yüzeyi satırları Salih imzalı).
+- **ÜST-D — eski-koşum hakemlik borçları (3):** R13-KM7 · R18-KL18-10 · R10-K2 — KB-25 m.40b kanonu (SAĞLAM/DARALDI/DÜŞTÜ + deterministik∧idempotent yönü) ışığında "bu borçlar hâlâ anlamlı mı" TEK sorusu.
+- **Tekiller / devir-adayları:** R9-K2 (RCSP formalizasyonu — ÜST-A komşusu, ayrı durur) · R9-K5→İB-08 · KL18-6→İB-60/İB-12 · KL18-7 (envanter ölçütü) · KL18-11 (kapsam-freni usulü) · KL18-14≡R10-K7 (ham-metin kuralı — atlas-kosum gotcha adayı; K2-n damga-kuralının komşusu) · R20-K1-g→İB-61 · R20-K1-i→İB-12 · R12-K1-1/3/5 (m.43 emeklilik ailesi — BAKIM-KK kısmi kesişim: skill-doctor çevrimi bakım işlevini fiilen taşıyor, emeklilik FIKRASI hâlâ yok) · R15-a/b/c (K-010 güvenlik ailesi — A1-A4 kapı-hattına bağlı).
+
+## Daraltılmış masa taslağı (Salih tetiğiyle açılır — EK-6 usulü: ayrı oturum, kalem başına açıklama-bloklu)
+1. Onay-kapanışları (tek-tek onay yeter): ABSORBE ×3 (R19-A2+K-b · R12-K1-7) · SÜPERSEDE ×3 (R10-K1 · R20-K1-d · R10-K2) · RED-EMSALLİ ex-ante ailesi · ABSORBE-ADAY KL18-1.
+2. ÜST-A ufuk-sistemi kararı (kur/rafa — en büyük hacim).
+3. ÜST-C toplu yazım-turu onayı.
+4. ÜST-D hakemlik-borçları hükmü.
+5. Devir onayları (İB-08/12/60/61 + BAKIM-KK + K-010 hattı + atlas-kosum gotcha).
+6. ÜST-B → KB-26 masasına iliştirme.
+7. Tekiller: R9-K2 · KL18-7 · KL18-11.
 
 *Hükümler Salih'te; bu dosya envanter + emare, karar değil (m.31).*
