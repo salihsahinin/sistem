@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `4ff2fd6`)
+# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `cf4c7c5`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 64 çağrı, 2 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 87 çağrı, 5 oturum.*
 
 ## Oturum `7ae8954e` — 01:27:57→01:56:52 · 59 çağrı · model fable-5 · hata 2
 **Özet:** koştu 35 · yazdı 10 · okudu 7 · düzenledi 6 · skill çağırdı 1
@@ -68,9 +68,9 @@
 | 58 | 01:56:38 | düzenledi | ogrenme/mit-6042j/dersler/2026-08-29-L01-giris-ve-ispatlar.md | tamam |
 | 59 | 01:56:52 | koştu | Karar 73 EK paketini commit'le ve push'la ⟨git add .gitignore core/varlik-felsefesi.md ogrenme/README.md kuyruk/senaryo-defteri.md ogrenme/kaynaklar/mit-6042j-f10-KUNYE.md ogrenme/mit-6042j && …⟩ | tamam |
 
-## Oturum `563ea60e` — 10:46:13→10:46:38 · 5 çağrı · model sonnet-5 · hata 0
-**Özet:** koştu 3 · düzenledi 1 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (1):** `kuyruk/ders-gbm-ilerleme.md`
+## Oturum `563ea60e` — 10:46:13→10:47:32 · 11 çağrı · model sonnet-5 · hata 0
+**Özet:** koştu 7 · düzenledi 2 · skill çağırdı 1 · yazdı 1
+**Yazılan/düzenlenen dosyalar (3):** `core/durum-kapsulu.md` · `kuyruk/ders-gbm-ilerleme.md` · `raporlar/seans-teslim-2026-08-29-gbm-uplift-kuyruk.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -79,4 +79,45 @@
 | 70 | 10:46:30 | skill çağırdı | seans-kapanis | tamam |
 | 71 | 10:46:34 | koştu | Quick status check ⟨date "+%Y-%m-%d %H:%M" && git status --short ¦ wc -l && git log --oneline -3⟩ | tamam |
 | 72 | 10:46:38 | koştu | Check modified files and run required closure tools ⟨git status --short echo "---" python3 tools/hareket-tablo.py 2>&1 ¦ tail -5 echo "---" python3 tools/silver-saglik.py --kapi 2>&1 ¦ tail -4 echo "EXIT…⟩ | yok |
+| 73 | 10:46:48 | koştu | Get summary lines for report ⟨python3 tools/silver-saglik.py --kapi 2>&1 ¦ grep "silver-saglik:" python3 tools/skill-esik.py 2>&1 ¦ tail -3 python3 tools/kural-sayaci.py 2>&1 ¦ tai…⟩ | tamam |
+| 74 | 10:47:05 | yazdı | raporlar/seans-teslim-2026-08-29-gbm-uplift-kuyruk.md | tamam |
+| 75 | 10:47:14 | düzenledi | core/durum-kapsulu.md | tamam |
+| 76 | 10:47:18 | koştu | Check capsule budget, stage session files ⟨wc -c core/durum-kapsulu.md; wc -l core/durum-kapsulu.md echo "---STAGE---" git add \ core/durum-kapsulu.md \ kuyruk/ders-gbm-ilerleme.md \ raporlar/s…⟩ | tamam |
+| 77 | 10:47:22 | koştu | Full staged status check ⟨git status --short⟩ | tamam |
+| 78 | 10:47:32 | koştu | Commit and push session close ⟨git commit -m "$(cat <<'EOF' [icra] Session close (Salih 'seans bitimi', paralel şerit 2026-08-29): uplift modeli anlatılacaklar kuyruğuna Kısa devam-…⟩ | tamam |
+
+## Oturum `be4a4b92` — 10:47:12→10:50:41 · 5 çağrı · model fable-5 · hata 0
+**Özet:** koştu 3 · skill çağırdı 1 · okudu 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 33 | 10:47:12 | skill çağırdı | seans-kapanis | tamam |
+| 34 | 10:48:54 | koştu | Git durumu, son commitler ve origin farkını göster ⟨git log --oneline -5 && git status --short ¦ head -20 && git fetch origin --quiet 2>&1 ¦ head -2; git status -sb ¦ head -2⟩ | tamam |
+| 35 | 10:48:54 | okudu | core/durum-kapsulu.md [bütün] | tamam |
+| 36 | 10:50:34 | koştu | Untracked klasörü tanı, teslim ve hasat şablonlarını oku ⟨ls -la /Users/HasanSalihSahin/jarvis/kuyruk/galeri-siralama/ 2>/dev/null ¦ head -10; echo ---; head -30 /Users/HasanSalihSahin/jarvis/core/sablonlar/s…⟩ | tamam |
+| 37 | 10:50:41 | koştu | Hareket kütüğünü tazele ve skill eşik koşumunu yap ⟨python3 tools/hareket-tablo.py 2>&1 ¦ tail -5; echo "=== skill-esik ==="; python3 tools/skill-esik.py 2>&1 ¦ tail -8⟩ | yok |
+
+## Oturum `8e6b8222` — 10:47:49→10:49:56 · 9 çağrı · model sonnet-5 · hata 0
+**Özet:** koştu 6 · skill çağırdı 1 · araç 1 · sordu 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 4 | 10:47:49 | skill çağırdı | anthropic-skills:vardiya-kapanis | tamam |
+| 5 | 10:47:52 | koştu | Check git status, recent log, and remote config ⟨git status && echo "---LOG---" && git log -5 --oneline && echo "---REMOTE---" && git remote -v⟩ | tamam |
+| 6 | 10:48:00 | koştu | Show staged diff of durum-kapsulu.md ⟨git diff --cached core/durum-kapsulu.md ¦ head -100⟩ | tamam |
+| 7 | 10:48:20 | koştu | Show staged diff of ders-gbm-ilerleme.md ⟨git diff --cached kuyruk/ders-gbm-ilerleme.md⟩ | tamam |
+| 8 | 10:48:28 | araç | {} | tamam |
+| 9 | 10:48:30 | koştu | Check file modification timestamps and current time ⟨ls -la --time-style=full-iso /Users/HasanSalihSahin/jarvis/raporlar/seans-teslim-2026-08-29-gbm-uplift-kuyruk.md /Users/HasanSalihSahin/jarvis/core/du…⟩ | tamam |
+| 10 | 10:49:02 | sordu | Şu an 6 paralel oturum aktif ve staged değişikliklerin çoğu (durum-kapsülü, hare | tamam |
+| 11 | 10:49:45 | koştu | Check whether my earlier note is already committed at HEAD ⟨git show HEAD:kuyruk/ders-gbm-ilerleme.md ¦ grep -n "P-sonrası uygulama\¦Anlatılacaklar kuyruğu" ; echo "---"; git log --oneline -- kuyruk/ders-gbm-il…⟩ | tamam |
+| 12 | 10:49:56 | koştu | Re-check current git status after possible parallel commit ⟨git status && echo "---HEAD---" && git log -3 --oneline && echo "---ORIGIN---" && git log -3 --oneline origin/main 2>/dev/null && git status -sb ¦ hea…⟩ | tamam |
+
+## Oturum `405e80db` — 10:49:41→10:50:32 · 3 çağrı · model fable-5 · hata 0
+**Özet:** koştu 3
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 56 | 10:49:41 | koştu | Tanınmayan commit'ler + yeni klasör + çalışma ağacı ⟨git log -7 --format='%h %ad %s' --date=format:'%m-%d %H:%M' ¦ cut -c1-150 && echo '=== galeri-siralama ===' && ls -la kuyruk/galeri-siralama/ 2>/dev/n…⟩ | tamam |
+| 57 | 10:49:42 | koştu | Silver bayat → hattı koş ⟨python3 tools/katman-hatti.py 2>&1 ¦ tail -2⟩ | yok |
+| 58 | 10:50:32 | koştu | Açık Salih kararlarını ve açılış brifi görünümünü çek ⟨sqlite3 -separator ' ¦¦ ' veri/baglam.sqlite "SELECT borc_id, substr(baslik,1,90), durum, COALESCE(substr(oneri,1,80),'-') FROM karar_borcu WHERE kara…⟩ | tamam |
 
