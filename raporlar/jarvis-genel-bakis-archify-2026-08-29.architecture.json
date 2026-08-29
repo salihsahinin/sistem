@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "JARVIS — Genel Bakış",
+    "output": "jarvis-genel-bakis-archify-2026-08-29.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/salihsahinin/jarvis",
+      "revision": "1b326670c1e2ba1803926a651a1ca987b21bd6dc"
+    },
+    "views": [
+      {
+        "id": "karar-hatti",
+        "label": "Karar hattı",
+        "focus": [
+          "salih",
+          "carvis",
+          "kuyruk",
+          "gitrepo"
+        ],
+        "note": "Ana yol: Salih'in emri Carvis'te icraya, karar defterine ve karar başına commit'e iner; push yalnız Salih beyanıyla (m.9)."
+      },
+      {
+        "id": "ritual-fren",
+        "label": "Ritüel + frenler",
+        "focus": [
+          "kanon",
+          "claudedir",
+          "carvis"
+        ],
+        "note": "Her seans kapsül → pano okumasıyla açılır; .claude ritüel ve skill yükler, PreToolUse telleri kanonu ana-sıraya kilitler."
+      },
+      {
+        "id": "veri-katmani",
+        "label": "Veri katmanı",
+        "focus": [
+          "carvis",
+          "tools",
+          "bronz",
+          "silver"
+        ],
+        "note": "Seans kapanışı transkripti bronz JSONL'e indirir; katman-hatti.py silver + gold türetir; açılış brifi ve adresli erişim silver'dan beslenir."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "kanon",
+      "type": "database",
+      "label": "core/ — kanon",
+      "sublabel": "tüzük · durum-kapsülü · pano",
+      "pos": [
+        40,
+        100
+      ],
+      "size": [
+        150,
+        64
+      ],
+      "tag": "Katman-1",
+      "sources": [
+        {
+          "path": "core/tuzuk-v0.md",
+          "label": "tüzük"
+        },
+        {
+          "path": "core/durum-kapsulu.md",
+          "label": "kapsül"
+        }
+      ]
+    },
+    {
+      "id": "claudedir",
+      "type": "security",
+      "label": ".claude/ — skill + hook",
+      "sublabel": "16 skill · ritüeller · PreToolUse teli",
+      "pos": [
+        300,
+        100
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": ".claude/skills/seans-acilis/SKILL.md",
+          "label": "seans-acilis"
+        }
+      ]
+    },
+    {
+      "id": "raporlar",
+      "type": "frontend",
+      "label": "raporlar/ — teslim yüzeyi",
+      "sublabel": "seans teslimleri · masa HTML",
+      "pos": [
+        600,
+        100
+      ],
+      "size": [
+        180,
+        64
+      ],
+      "sources": [
+        {
+          "path": "raporlar/seans-teslim-2026-08-29-seans20-masa-maratonu.md",
+          "label": "örnek teslim"
+        }
+      ]
+    },
+    {
+      "id": "salih",
+      "type": "external",
+      "label": "Salih",
+      "sublabel": "tek karar verici",
+      "pos": [
+        40,
+        290
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "carvis",
+      "type": "backend",
+      "label": "Carvis — Claude Code",
+      "sublabel": "ana-sıra üst-orkestratör (Fable)",
+      "pos": [
+        300,
+        290
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "tag": "m.44",
+      "sources": [
+        {
+          "path": "CLAUDE.md",
+          "label": "oturum sözleşmesi"
+        }
+      ]
+    },
+    {
+      "id": "kuyruk",
+      "type": "database",
+      "label": "kuyruk/ — karar defteri",
+      "sublabel": "senaryo-defteri · masa gündemleri",
+      "pos": [
+        600,
+        290
+      ],
+      "size": [
+        180,
+        64
+      ],
+      "sources": [
+        {
+          "path": "kuyruk/senaryo-defteri.md",
+          "label": "defter"
+        }
+      ]
+    },
+    {
+      "id": "gitrepo",
+      "type": "cloud",
+      "label": "git — proof-of-work",
+      "sublabel": "karar başına commit · push m.9",
+      "pos": [
+        940,
+        290
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "ajanlar",
+      "type": "backend",
+      "label": "Alt-ajanlar / workflow",
+      "sublabel": "atlas · pipeline · İB koşumları",
+      "pos": [
+        40,
+        470
+      ],
+      "size": [
+        160,
+        64
+      ],
+      "tag": "cc/ emir-rapor"
+    },
+    {
+      "id": "tools",
+      "type": "backend",
+      "label": "tools/ — betikler",
+      "sublabel": "katman-hatti · hareket-tablo · sayaçlar",
+      "pos": [
+        300,
+        470
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "tools/katman-hatti.py",
+          "label": "katman-hatti"
+        }
+      ]
+    },
+    {
+      "id": "bronz",
+      "type": "database",
+      "label": "veri/bronz",
+      "sublabel": "hareket-olay JSONL",
+      "pos": [
+        600,
+        470
+      ],
+      "size": [
+        160,
+        60
+      ]
+    },
+    {
+      "id": "silver",
+      "type": "database",
+      "label": "veri/baglam.sqlite",
+      "sublabel": "silver + gold görünümler",
+      "pos": [
+        940,
+        470
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sources": [
+        {
+          "path": "veri/gorunum/v_amb_acilis_brifi.csv",
+          "label": "gold örneği"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "~/jarvis çalışma alanı (açık kaynak, tek canlı alan)",
+      "wraps": [
+        "kanon",
+        "claudedir",
+        "raporlar",
+        "carvis",
+        "kuyruk",
+        "gitrepo",
+        "ajanlar",
+        "tools",
+        "bronz",
+        "silver"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "emir",
+      "from": "salih",
+      "to": "carvis",
+      "label": "emir · \"seans başı\"",
+      "variant": "emphasis"
+    },
+    {
+      "id": "katman1-imza",
+      "from": "salih",
+      "to": "kanon",
+      "label": "Katman-1 imza",
+      "variant": "security"
+    },
+    {
+      "id": "acilis-okuma",
+      "from": "kanon",
+      "to": "carvis",
+      "label": "açılış okuması: kapsül → pano",
+      "toSide": "top"
+    },
+    {
+      "id": "ritual-yuku",
+      "from": "claudedir",
+      "to": "carvis",
+      "label": "ritüel + skill · fren telleri",
+      "variant": "security",
+      "labelDy": 40
+    },
+    {
+      "id": "karar-kaydi",
+      "from": "carvis",
+      "to": "kuyruk",
+      "label": "karar kaydı",
+      "variant": "emphasis"
+    },
+    {
+      "id": "commit",
+      "from": "kuyruk",
+      "to": "gitrepo",
+      "label": "commit (m.9)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "teslim",
+      "from": "carvis",
+      "to": "raporlar",
+      "label": "insan-yüzü teslim",
+      "fromSide": "top"
+    },
+    {
+      "id": "ajan-kosumu",
+      "from": "carvis",
+      "to": "ajanlar",
+      "label": "görev emri → koşum raporu (cc/)",
+      "variant": "dashed",
+      "labelDy": 55
+    },
+    {
+      "id": "kapanis-kosumlari",
+      "from": "carvis",
+      "to": "tools",
+      "label": "kapanış koşumları",
+      "variant": "dashed",
+      "labelDy": 50
+    },
+    {
+      "id": "harekat-kutugu",
+      "from": "tools",
+      "to": "bronz",
+      "label": "hareket kütüğü"
+    },
+    {
+      "id": "katman-hatti",
+      "from": "bronz",
+      "to": "silver",
+      "label": "katman-hatti"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Karar hattı",
+      "items": [
+        "Salih tek karar vericidir; ölçek-üstü karar Lavish masasına gelir",
+        "Hüküm senaryo-defterine, karar başına commit'e iner",
+        "Push yalnız Salih beyanıyla (m.9); Katman-1 (core/) yalnız Salih imzasıyla değişir"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Ritüel + frenler",
+      "items": [
+        "Her seans kapsül → pano okumasıyla açılır, teslim raporuyla kapanır",
+        "PreToolUse telleri core/ yazımını ana-sıraya kilitler",
+        "Ajan fan-out'u deterministik sayaç-frenlidir (İB-54: uyarı 36 · durdurma 72)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Veri katmanı",
+      "items": [
+        "Seans transkripti hareket kütüğüyle bronz JSONL'e iner",
+        "katman-hatti.py silver (baglam.sqlite) + gold görünümleri türetir (16 adım, idempotent)",
+        "SessionStart brifi ve oturum-içi adresli erişim silver'dan beslenir"
+      ]
+    }
+  ]
+}
