@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası — Açık Kararlar (2026-08-29)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  :where(img, svg, video) { max-width: 100%; height: auto; }
+  body { background: var(--color-base-200); }
+  .opt-blok { border-left: 3px solid var(--color-base-300); }
+  .opt-blok.onerilen { border-left-color: var(--color-primary); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-6">
+
+  <!-- BAŞLIK + KÜNYE -->
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası — Açık Kararlar <span class="badge badge-primary">8 karar + 1 hızlı</span></h1>
+      <p class="text-sm opacity-80">İkinci Lavish masası (ilki: KB-62..68, 08-26). Gündem = kanonda birikmiş <strong>tüm açık Salih kararları</strong>:
+        DB'de bekleyen KB kalemleri (KB-17/26/27/61) + kapsül Salih-tetikleri (damıtma, hibrit-arama, İB-51, büyük masa sırası).
+        Her kalemde seçenekler <strong>ne demek · ne yaparım · artı · eksi</strong> bloklarıyla (CLAUDE.md §5); önerilen rozetli ama
+        <strong>önceden seçili DEĞİL</strong> — kör-onay yok (m.6). Hükmü işaretle → "Hükmü kuyruğa yaz" → sağ panelden <strong>Send to Agent</strong>.</p>
+      <p class="text-xs opacity-60">AS-OF 2026-08-29 · silver HEAD cf4c7c5 hattı yeşil · kaynaklar: <code>karar_borcu</code> tablosu (snapshot 08-29) ·
+        <code>core/durum-kapsulu.md</code> · defter. Rakamlar kaynağında damgalı (m.29/m.39).</p>
+    </div>
+  </header>
+
+  <!-- ÖZET TABLO -->
+  <section class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Gündem özeti</h2>
+      <div class="overflow-x-auto">
+        <table class="table table-sm">
+          <thead><tr><th>#</th><th>Kalem</th><th>Sınıf</th><th>Önerilen</th></tr></thead>
+          <tbody>
+            <tr><td>M-1</td><td>KB-61 graf tipli-bağ katmanı</td><td>şema (Katman-1)</td><td>(b) yalnız süpersede + bitemporal</td></tr>
+            <tr><td>M-2</td><td>Hibrit-arama yolu + İB-43 soru-seti teyidi</td><td>ölçüm şartnamesi</td><td>(a) teyit + vektör ölçüm kolu</td></tr>
+            <tr><td>M-3</td><td>Damıtma onayı — 4 dosya bütçe aşımı</td><td>bakım onayı</td><td>(a) dördünü damıt</td></tr>
+            <tr><td>M-4</td><td>KB-27 koşum-tavanı rejimi</td><td>fren tasarımı</td><td>(d) paket: A→B + C rejim-etiketi</td></tr>
+            <tr><td>M-5</td><td>KB-17 kanon şerhleri (3 kalem)</td><td>kural yazımı</td><td>(a) üçünü öneri metniyle imzala</td></tr>
+            <tr><td>M-6</td><td>KB-26 m.37 v2 yürürlüğü</td><td>kural yürürlüğü</td><td>(a) İB-10 kalibrasyonunu bekle</td></tr>
+            <tr><td>M-7</td><td>İB-51 kural-kümeleme atlası tetiği</td><td>araştırma tetiği</td><td>(a) tetikle, Fable-dışı</td></tr>
+            <tr><td>M-8</td><td>Büyük masa sırası: EK-6 ∨ entegrasyon</td><td>gündem sırası</td><td>(b) entegrasyon önce</td></tr>
+            <tr><td>M-9</td><td>galeri-siralama/ commit durumu</td><td>hızlı (evet/hayır)</td><td>(a) commit'le</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-xs opacity-70 mt-1">
+        <strong>Bilgi şeridi (karar gerektirmez):</strong> İB-49 D2 mini-eval tetiği kendiliğinden DOLDU (şartı "İB-48 sonrası ∨ Salih"; İB-48 08-26'da kapandı) — sıradaki uygun oturumda koşulur ·
+        gece-loop önerisi 08-29 beyanınla RAFA (m.16 raporu defterde kalır) · Karar 72/72-EK icra tamam (Obsidian yüzey + 2.812-kenar harita hattı).
+      </div>
+    </div>
+  </section>
+
+  <!-- M-1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-1">
+    <div class="card-body">
+      <h2 class="card-title">M-1 · KB-61 — Graf G2: tipli-bağ katmanı <span class="badge badge-outline">Katman-1 şema</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> pointer grafındaki bağlar tiplensin mi? Kenar enum adayları hazır standartlardan:
+        süpersede = <code>prov:wasRevisionOf</code> · destek/itiraz/genişletme = CiTO <code>supports/disputes/extends/updates</code> · türetme = OpenLineage.
+        Bitemporal alanlar (created/valid/invalid) anahtar kaydına additive. Tip ataması KURAL-tabanlı — LLM atamaz (Karar 65).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-1','KB-61 tipli-bağ');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) yalnız süpersede + bitemporal"> <strong>(b) Yalnız süpersede + bitemporal</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> ilk tip olarak yalnız <code>prov:wasRevisionOf</code> (süpersede) + zaman alanları; diğer tipler sonra.
+            <strong>Ne yaparım:</strong> silver'a additive kolon + kural-tabanlı atama + pano/kenar-listesine tip etiketi — küçük şema dokunuşu.
+            <strong>Artı:</strong> süpersede ve zaman verisi silver'da ZATEN var (replaced_by, gecerli_bas/bitis) — sıfıra yakın yeni veri işi, m.8 arşiv zinciri grafda görünür olur.
+            <strong>Eksi:</strong> destek/itiraz tipleri ertelenir. <strong>Öneri gerekçesi:</strong> DB'deki kayıtlı öneri de (b); en düşük riskli additive adım.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) tam tipli-bağ + bitemporal şimdi"> <strong>(a) Tam tipli-bağ şimdi</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> tüm enum (süpersede+CiTO+türetme) tek turda. <strong>Ne yaparım:</strong> daha geniş şema + kural seti + testler.
+            <strong>Artı:</strong> tek dokunuş, tam ifade gücü. <strong>Eksi:</strong> destek/itiraz için kural-tabanlı atama sinyali bugün zayıf — yanlış-tip riski; iş ~3-4× büyür.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) tipsiz kal"> <strong>(c) Tipsiz kal</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> FK + pointer_hedef yeter, G2 kapanır. <strong>Artı:</strong> sıfır iş. <strong>Eksi:</strong> süpersede zinciri grafda görünmez kalır; 07-18 Model A açık sorusu açık kalır.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-2 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-2">
+    <div class="card-body">
+      <h2 class="card-title">M-2 · Hibrit-arama yolu + İB-43 soru-seti teyidi <span class="badge badge-outline">ölçüm şartnamesi</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> erişim katmanında sıradaki adım ne? Ölçülen taban (08-22): FTS5+güncel <strong>recall@5 0,571</strong> ↔ grep 0,238.
+        Hibrit/vektör hükmü Karar 60 sırasına "ölçümle döner" diye bağlandı; İB-47 şartnamesi hazır (yerel gömücü + sqlite-vec + RRF, API gömücü YASAK — Karar 65/66).
+        Ön-koşul: altın soru setinin senin teyidin (+≥100'e büyütme).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-2','hibrit-arama yolu');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) soru setini teyit et + İB-47 vektör ölçüm kolunu tetikle"> <strong>(a) Teyit + vektör ölçüm kolu</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> soru setini onaylarsın; FTS5-tek · vektör · RRF · grep dörtlüsü aynı sette ölçülür, hüküm ölçümle masaya döner.
+            <strong>Ne yaparım:</strong> seti ≥100'e büyütür, İB-47 şartnamesini koşarım (deterministik testli). <strong>Artı:</strong> Karar 66'nın çizdiği yol; hüküm veriye oturur.
+            <strong>Eksi:</strong> gömme koşumu yerel CPU süresi + kurulum (~yarım gün iş). <strong>Öneri gerekçesi:</strong> "ölçüm-önce" ilken (m.35/39) tam bu.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) FTS5-tek kabul, vektör kolu iptal"> <strong>(b) FTS5-tek kabul</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> 0,571 yeter sayılır, vektör kolu kapanır. <strong>Artı:</strong> sıfır ek iş; sistem bugünkü hâliyle yaşar.
+            <strong>Eksi:</strong> kavramsal-düzyazı sorgularında bilinen FTS zaafı ölçülmeden kabullenilir; Karar 66 geri alınmış olur (m.16 kaydı gerekir).</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) beklet"> <strong>(c) Beklet</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> soru-seti teyidi sonraya. <strong>Artı:</strong> bugün vakit yok ise maliyetsiz. <strong>Eksi:</strong> İB-43/47 zinciri bloke kalır (2 borç).</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-3">
+    <div class="card-body">
+      <h2 class="card-title">M-3 · Damıtma onayı — 4 dosya bütçe aşımı <span class="badge badge-outline">bakım</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> boyut-tetiği 08-26'da çaldı, o günden beri büyüdü (bugünkü ölçüm, wc -c):
+        defter <strong>70,3/48 KB</strong> · kutu <strong>30,6/20</strong> · KILAVUZ <strong>20,4/16</strong> · pano <strong>12,8/12</strong>.
+        Damıtma = m.8 usulü: silme yok, bayat blok arşive iner + pointer kalır (emsal: 08-21 turu, defter 89,6→28,4).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-3','damıtma onayı');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) dört dosyayı damıt"> <strong>(a) Dördünü damıt</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> damitma skill'iyle tek tur; arşiv dosyaları + rapor; hat yeşil çıkışıyla commit. <strong>Artı:</strong> uzun-koşum davranış bozulması riski düşer (CLAUDE.md v1 dersi: 14 KB şişme = davranış arızası). <strong>Eksi:</strong> ~1 saatlik oturum işi.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) yalnız defter + kutu"> <strong>(b) Yalnız en şişkin ikili (defter + kutu)</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> %46 ve %53 aşımlı ikili damıtılır; KILAVUZ/pano sonraya. <strong>Artı:</strong> yarı iş, en büyük risk gider. <strong>Eksi:</strong> tetik listesi açık kalır, kapsül uyarısı sürer.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) ertele"> <strong>(c) Ertele</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Eksi:</strong> defter %46 aşımda ve her seans büyüyor; erteleme birikimi büyütür.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-4 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-4">
+    <div class="card-body">
+      <h2 class="card-title">M-4 · KB-27 — Koşum-tavanı rejimi <span class="badge badge-outline">fren tasarımı</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> prompt-freni 2 kez delindi (<strong>$30,94 = 1,89× aşım</strong>); kalıcı fren hangi biçimde?
+        Dosyadaki kayıtlı öneri: A→B hattı + C rejim-etiketiyle genel ilke; 08-15 ekonomi-rejimi (−%30) fiilen bir rejim-etiketi örneği.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-4','KB-27 tavan rejimi');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(d) paket: A sınıf-bazlı fren + B mekanik düzeltmeler + C rejim-etiketi ilkesi"> <strong>(d) Paket: A→B + C</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> sınıf-bazlı deterministik çağrı-tavanı (A) + mekanik düzeltmeler (B) + "rejim etiketi" genel ilkesi (C: her koşum bir rejimle açılır, tavanları rejim belirler).
+            <strong>Ne yaparım:</strong> önce 2 delinme vakasının kök-neden analizi (karar gerektirmeyen kısım), sonra fren kodu + kural satırı. <strong>Artı:</strong> tek delinme sınıfı daha yaşanmaz; −%30 hedefi kurumsallaşır. <strong>Eksi:</strong> en büyük iş paketi (~1 oturum).</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) yalnız A sınıf-bazlı anomali freni"> <strong>(a) Yalnız A</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> delinmeyi durduran çekirdek kısım hızlı gelir. <strong>Eksi:</strong> rejim ilkesi kanunsuz kalır, gelecek istisnalar gene ad-hoc.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) yalnız C rejim-etiketi ilkesi"> <strong>(c) Yalnız C</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> yazım işi, kod yok. <strong>Eksi:</strong> deterministik fren gelmez — delinme teknik olarak hâlâ mümkün.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-5">
+    <div class="card-body">
+      <h2 class="card-title">M-5 · KB-17 — Kanon şerhleri (3 kalem, kalem-kalem imza) <span class="badge badge-outline">kural yazımı</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> 08-15'ten devreden 3 şerh adayı — kayıtlı öneri metinleri:
+        ① V26 doğrulama örneklemi "rastgele" → <em>"son üçlük ağırlıklı + tüm sayısal iddialar"</em> (FActScore konum bulgusu: halüsinasyon metin sonuna yığılır) ·
+        ② md.21 derece-sorma yasağı koşulsuz değil → <em>yüksek-tabanlı konuda "önce üret, sonra doğrula"</em> şerhi ·
+        ③ damıtma hedefi sabit orana değil <em>sorgu-uyumuna</em> bağlanır. (KB-17b taban-oranı ölçümü ayrı BEKLET-tetiklidir, bu kaleme dahil değil.)</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-5','KB-17 şerhleri');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) üçünü öneri metniyle imzala"> <strong>(a) Üçünü öneri metniyle imzala</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> şerhleri ilgili kural dosyalarına yazar, KB-17'yi kapatırım. <strong>Artı:</strong> 14 gündür açık kalem kapanır; üç öneri de ölçüm/emsal kaynaklı. <strong>Eksi:</strong> ② md.21 şerhi yasağı yumuşatır — kötüye kullanım riski şerh metninde sınırlanmalı.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) seçmeli imza — hangileri olduğunu notla yaz"> <strong>(b) Seçmeli imza</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> yalnız işaretlediklerin imzalanır (bu kartı annotate ederek ①/②/③ belirt). <strong>Artı:</strong> ince kontrol. <strong>Eksi:</strong> kalem parçalı kalırsa takip maliyeti.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) reddet/beklet"> <strong>(c) Beklet</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Eksi:</strong> V26 örneklem zaafı (halüsinasyonun yığıldığı bölge az örnekleniyor) sürer.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-6 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-6">
+    <div class="card-body">
+      <h2 class="card-title">M-6 · KB-26 — m.37 v2 yürürlüğü <span class="badge badge-outline">kural yürürlüğü</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> m.37 v2'nin fıkraları (karar-modeli standardı) kalibrasyon koşumu şartına bağlı; eksen-örtüsü fıkrası İMZASIZ duruyor. İB-10 (denetçi kalibrasyon koşumu) henüz koşmadı.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-6','KB-26 m.37 v2');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) İB-10 kalibrasyonunu bekle, sonra yürürlük"> <strong>(a) Kalibrasyonu bekle</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> fıkralar İB-10 koşumundan sonra kanıtla yürürlüğe girer. <strong>Ne yaparım:</strong> İB-10'u öne alırım (Fable-dışı koşulabilir, ucuz). <strong>Artı:</strong> kuralın kendi şartı korunur — "kalibrasyonsuz yürürlük yok" ilkesi tutarlı. <strong>Eksi:</strong> m.37 v2 bir süre daha askıda.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) içerik-imzalı fıkraları şartsız yürürlüğe al"> <strong>(b) Şartsız yürürlük</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> beklemeden netlik. <strong>Eksi:</strong> kuralın kendi kalibrasyon şartını deler (m.16 kaydı gerekir).</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) eksen-örtüsü sentezini ayrı imzala, kalanı beklet"> <strong>(c) Yalnız eksen-örtüsü imzası</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> imzasız fıkra ayrılıp imzalanır, kalibrasyon-şartlılar bekler. <strong>Artı:</strong> imzasızlık ayıbı kapanır. <strong>Eksi:</strong> parçalı yürürlük karmaşası.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-7 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-7">
+    <div class="card-body">
+      <h2 class="card-title">M-7 · İB-51 — Kural-kümeleme atlası tetiği <span class="badge badge-outline">araştırma tetiği</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> sisteme birikmiş kuralları kümeleyip görev-sınıfına göre yükleme mekanizması araştırılsın mı?
+        Kayıtlı plan: deterministik kural envanteri → kümeleme + eşleme şeması (LLM-router GİRMEZ, Karar 65) → yükleme mekanizması raporu.
+        m.40b sınıfı yeni mekanizma → atlas koşumu senin tetiğinde; LLM-maliyetli etiketli.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-7','İB-51 atlas tetiği');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) tetikle — Fable-dışı modelle koş"> <strong>(a) Tetikle (Fable-dışı)</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> envanter+kümeleme deterministik kısmı önce (ucuz), atlası Sonnet-sınıfı işçilerle koşarım (m.25 −%30 uyumlu). <strong>Artı:</strong> kural sayısı 19/100 ama büyüyor; erken şema ucuz. <strong>Eksi:</strong> atlas token maliyeti (işçi bütçe 10-15k ile sınırlı).</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) beklet — kural sayacı eşiğe yaklaşınca"> <strong>(b) Beklet</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> sayaç (19/100) belli eşiğe (ör. 50) gelince tetiklenir. <strong>Artı:</strong> bugün sıfır maliyet. <strong>Eksi:</strong> kural dağınıklığı o güne dek büyür.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-8 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-8">
+    <div class="card-body">
+      <h2 class="card-title">M-8 · Büyük masa sırası — EK-6 ∨ entegrasyon <span class="badge badge-outline">gündem sırası</span></h2>
+      <p class="text-sm opacity-80"><strong>Soru:</strong> iki hazır BÜYÜK masa bekliyor: <strong>EK-6</strong> (<code>kuyruk/masa-gundemi-EK6-2026-08-20.md</code>, 9 kalem — m.43 çelişki adayı dahil) ∨
+        <strong>entegrasyon</strong> (<code>kuyruk/masa-gundemi-entegrasyon-2026-08-21.md</code>, 13 kalem — E-1 araç sınırı, E-2 firstmate, E-3 ritim, E-4 ürün hattı dahil).
+        E-4 için 08-26 erteleme beyanın ("şu an geçilmeyecek") kayıtlı — entegrasyon masası açılırsa o kalemde beyanın sorulur.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-8','büyük masa sırası');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) entegrasyon masası önce"> <strong>(b) Entegrasyon önce</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1"><strong>Gerekçe:</strong> staj CANLI (K-022 11/11) — E-1/E-2/E-3 kalemleri günlük çalışma ritmini doğrudan etkiliyor; EK-6 çoğunlukla dondurulmuş kalemler. <strong>Ne yaparım:</strong> bir sonraki masa oturumunda 13 kalemi bu formatta hazırlarım. <strong>Eksi:</strong> daha uzun masa (~13 kalem).</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) EK-6 önce"> <strong>(a) EK-6 önce</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> daha kısa (9 kalem), m.43 çelişki adayı (İB-14) çözülür. <strong>Eksi:</strong> staj-ritmi kalemleri bekler.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(c) ikisi de sonra"> <strong>(c) İkisi de sonra</strong>
+            <div class="text-sm opacity-80 mt-1"><strong>Ne demek:</strong> bu masa kapanır, büyükler ayrı tetiğine kalır. <strong>Eksi:</strong> 22 kalem açık bekler.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M-9 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M-9">
+    <div class="card-body">
+      <h2 class="card-title">M-9 · Hızlı: <code>kuyruk/galeri-siralama/</code> commit'lensin mi? <span class="badge badge-outline">evet/hayır</span></h2>
+      <p class="text-sm opacity-80">GBM ders şeridinin hands-on dosyaları (4 script + README, kendi .gitignore'u veriyi dışarıda tutuyor) repo'da İZSİZ duruyor —
+        ders oturumu kapanırken commit'lenmemiş. Açık-kaynak ilkesi (CLAUDE.md §2) her hareketi görünür ister.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M-9','galeri-siralama commit');">
+        <div class="space-y-2">
+          <label class="opt-blok onerilen block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(a) commit'le"> <strong>(a) Commit'le</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+            <div class="text-sm opacity-80 mt-1">Ders şeridinin kaydı tamamlanır (proof-of-work m.9); .DS_Store hariç, veri zaten gitignore'lu.</div>
+          </label>
+          <label class="opt-blok block p-3 rounded bg-base-200 cursor-pointer">
+            <input type="radio" name="secim" value="(b) bırak — ders oturumu kendisi halleder"> <strong>(b) Bırak</strong>
+            <div class="text-sm opacity-80 mt-1">Ders şeridi bir sonraki oturumunda kendi commit'ler; izsizlik o güne dek sürer.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 text-center pb-6">
+    Karar Masası 2 · 2026-08-29 · üretici: Carvis (Fable, ana-sıra) · hükümler defter + karar_borcu güncellemesiyle kayda geçer, commit ayrı atılır (m.9 push senin beyanınla).
+    Kalemleri işaretledikçe kuyruğa yaz; bitince sağ panelden <strong>Send to Agent</strong>.
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, {
+    tag: 'hukum', text: kalem + ': ' + secim, element: form,
+    queueKey: kalem, data: { kalem: kalem, hukum: secim }
+  });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
