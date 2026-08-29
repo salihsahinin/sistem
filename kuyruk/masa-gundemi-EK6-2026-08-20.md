@@ -1,5 +1,7 @@
 # Masa Gündemi — EK-6 DARALTILMIŞ (2026-08-20)
 
+
+**MASA KAPANDI 2026-08-29 (4. Lavish masası, Karar 78 — 10/10 hüküm):** F1 vaka-tetikli beklet · F2 birim=GÖREV + m.43 N=3 (Salih notu aynen defterde) · F3 düzeltme+aynı-sayaç N=3 · F4 → İB-60 loop-dedektör · F5 süpersede-kapat (1,73× → İB-54) · F6 m.25 V47 şerhi İMZA · F7 DE-GOLD tek kaynak · F8 → İB-61 teyit turu · T1/T2 süpersede-kapat. ⑨ DONDUR baki (açma tetiği Salih beyanında).
 *Künye: EK-6 külliyatının (~106 K1 kalemi / 9 küme, 08-01 gece ingest'i) triyaj-sonrası CANLI kalanları. Triyaj: `raporlar/2026-08-20-ek6-triyaj-supersede.md` (hükümler §4: S1 süpersede kapanışları · S2 ⑨ DONDUR-tetikli · S3 optimize dağıtım — Salih 08-20, defter Karar 41). Külliyat şerhi baki: F2 denetimi 3/34 TUTMADI + 1 icat-rakam — kalemler denetimli okunur. Bu masa ayrı oturumda açılır; kalem başına açıklama-bloklu sunum.*
 
 ## Kalemler (9)

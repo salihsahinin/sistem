@@ -246,3 +246,14 @@
 - **Öneri 1 (seans-kapanis Gotcha — paylaşılan-jsonl merge tuzağı):** kapı-ağacından geçirildi (Z2 imza; K2-R script 7/7 ✓ · K2-İ 3 rakam scores.json'la doğrulandı · K3 ✓) → SKILL.md'ye YAZILDI (Edit kanalıyla — PreToolUse teli Bash yazımını doğru şekilde engelledi, Karar 69 EK-2 usul emsali). Hüküm: ÜRET evrim(s), v-damga koşum satırında.
 - **Öneri 2 (heredoc-python hijyeni):** skill değil kanon satırı → kapı dışı, imzayla `core/ajan-metodolojisi.md` "Koşum hijyeni ekleri" bölümüne YAZILDI.
 - BAKIM-KK ölçüm satırı güncellendi: öneri kabul **2/2**. İlk BAKIM-KK çevrimi UÇTAN UCA kapandı: koşum → kanıt → öneri-diff → imza → kapı → uygulama (Karar 75 mimarisinin ilk tam turu).
+
+**Karar 78 (2026-08-29 seans-20 · DÖRDÜNCÜ LAVISH MASASI — EK-6 daraltılmış 10/10, yüzey `raporlar/masa-EK6-karar-yuzeyi-2026-08-29.html`; masa kuyruğu BOŞALDI):**
+- **F2+F3 → m.43 2. REVİZYON (Salih notu aynen: "birim=eşittir görev diyelim ama görev sayısı adım sayısından daha az olacağı için N=5 eşiği artık N=3 olsun" + "n=3 sayılacak"):** tekrar-BİRİMİ = GÖREV (skill-öncesi loop tekrarı AYNI görev-sayacına; ayrı tetik ayağı yok) + eşik **N=5→3** (gerekçe: görev birimi adımdan seyrek; zincir 3→5→3 kayıtlı; τ≈0,8). YAZILDI: tüzük m.43 fıkrası + şema (2 yer) + skill-kapisi K1 metni. İB-14'ün τ-çelişki adayı bu beyanla KAPANDI (m.16 raporu masada sunulmuştu).
+- **F1 → (a):** g22 bellek paketi VAKA-TETİKLİ BEKLET (Mac'te kayıtlı bellek vakası 0; ilk vakada masaya döner).
+- **F4 → (a) İB-60 AÇILDI:** kural-tabanlı loop-dedektörü (silver hareket dizilerinden deterministik; LLM'siz, Karar 65) — paralel havuza; çıktısı k_W görev-sayacını besler.
+- **F5 → (a) SÜPERSEDE-KAPAT:** g24 CC-oran m.41 GK-2 ile konusuz; 1,73× kosum-maliyeti kalibrasyon bulgusu + K1-24-b gerekçe-disiplini İB-54 kök-neden analizinin girdisine devredildi.
+- **F6 → (a) İMZA (+serbest-mesaj teyidi "f6 imza"):** m.25'e V47-form şerhi YAZILDI — pipeline eşiği durma-kurallı düzen (pilot→parti→iyileşme kapısı→tavan). V47 MEZUN-iniş adımı.
+- **F7 → (a):** ölçüm-bankı TEK KAYNAK = DE-katmanı GOLD; `kuyruk/olcum-banki.md` süpersede-pointer'a döndü (içerik `kuyruk/arsiv/olcum-banki-arsivi-2026-08-29.md`).
+- **F8 → (a) İB-61 AÇILDI:** pipeline/loop belirsizleri (~4 kalem) absorbe-teyit turu (İB-14 deseni; kanıt-pointer'lı tablo → hükümler Salih'e).
+- **T1/T2 → (a) SÜPERSEDE-KAPAT:** K2-d tetik(D8) + g23 asgari-log (İB-14 kanıtlarıyla).
+- **Durum:** EK-6 gündem dosyası kapanış-damgalı; masa kuyruğu BOŞ — ⑨ DONDUR (~95 kalem) açma tetiği Salih beyanında ("mevcut önemli karar borçları bitince"); İB-60/61 paralel havuza eklendi.
