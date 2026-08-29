@@ -1,5 +1,14 @@
 # Masa Gündemi — ⑨ DONDUR AÇILIŞI (2026-08-29)
 
+**MASA KAPANDI 2026-08-29 (5. Lavish masası, Karar 79 — 7/7 hüküm; yüzey `raporlar/masa-dondur9-karar-yuzeyi-2026-08-29.html`, Send&End):**
+- **D1 → (a) TOPLU ONAY:** 9 kalem kanıtlarıyla KAPANDI (R19-A2+K-b · R12-K1-7 absorbe; R10-K1 · R20-K1-d · R10-K2 süpersede; R9-K1≡KL9 RED-emsalli arşiv; KL18-1 İB-54 absorbe).
+- **D2 → (a) RAF:** ufuk-sistemi ailesi (17 kod) tarih-damgalı arşiv; **yeniden-açma tetiği: K-010 ilk canlı ajan kurulunca ∨ Salih beyanı.**
+- **D3 → (a) TOPLU ONAY + YAZIM İB'Sİ:** İB-62 açıldı (`cc/gorev-2026-08-29-yazim-turu-ib62.md`); kanon-yüzeyi 3 satır (KL18-8 m.39 şerhi · KL18-13 kanon adayı · R12-K1-2 m.8 şerhi) yazım öncesi Salih imzasına.
+- **D4 → (b) KOŞTUR:** rapor-13 + rapor-18'e maskeli geç-hakemlik — 2 hakem ajanı koşuldu; raporlar `cc/rapor-2026-08-29-hakem-r13.md` + `-r18.md`.
+- **D5 → (a) TOPLU DEVİR:** 16 kalem adreslere devredildi (tablo aşağıda); atlas-kosum gotcha satırı YAZILDI, K-020 kartına R14-6 notu YAZILDI; kalanı pointer-kayıt (bu dosya = tek kaynak).
+- **D6 → (a) KB-26'YA İLİŞTİ:** R14-2/3/4/5 ε-paketi KB-26 (m.37 v2) masa gündemine ek — KB-26 açıldığında birlikte görüşülür; R14-5'in ölçüm ayağı DE-GOLD adresiyle (Karar 78 F7).
+- **D7 → (c) İB-05'E:** R9-K2 · KL18-7 · KL18-11 erteleme kapsamına eklendi (İB-05 listesi + bu kayıt).
+
 *Künye: EK-6 külliyatının S2 hükmüyle dondurulan ⑨ "diğer" kümesinin açılış envanteri. Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3 madde 9; tam metinler cc/rapor-2026-08-01-{9..20}.md. Açma tetiği: Salih beyanı bu seansta ("mevcut önemli karar borçları bitince" şartı doldu — masa kuyruğu 08-29 Karar 78 ile boşaldı). ÇO-1 = çapraz-okuma 1. turu (aynı seans, İB-14 usulü: silver `v_guncel_kayit` tema-taraması + tüzük/kanon hedefli okuma; kanıt pointer'lı).*
 
 **Sayım düzeltmesi (m.39):** §2.3 "~95 satır" F1-TAHMİNİYDİ; kod-listesinin deterministik sayımı **64 kalem**. Birleşik aileler tekilleştirilince **etkin ~56**. Bu envanter o teyit sayımıdır.
@@ -138,13 +147,5 @@ Kalan ÇO-BEKLİYOR kalemlerinin çoğu 4 üst-soruya iner — masada 24 ayrı k
 - **ÜST-D — eski-koşum hakemlik borçları (3):** R13-KM7 · R18-KL18-10 · R10-K2 — KB-25 m.40b kanonu (SAĞLAM/DARALDI/DÜŞTÜ + deterministik∧idempotent yönü) ışığında "bu borçlar hâlâ anlamlı mı" TEK sorusu.
 - **Tekiller / devir-adayları:** R9-K2 (RCSP formalizasyonu — ÜST-A komşusu, ayrı durur) · R9-K5→İB-08 · KL18-6→İB-60/İB-12 · KL18-7 (envanter ölçütü) · KL18-11 (kapsam-freni usulü) · KL18-14≡R10-K7 (ham-metin kuralı — atlas-kosum gotcha adayı; K2-n damga-kuralının komşusu) · R20-K1-g→İB-61 · R20-K1-i→İB-12 · R12-K1-1/3/5 (m.43 emeklilik ailesi — BAKIM-KK kısmi kesişim: skill-doctor çevrimi bakım işlevini fiilen taşıyor, emeklilik FIKRASI hâlâ yok) · R15-a/b/c (K-010 güvenlik ailesi — A1-A4 kapı-hattına bağlı).
 
-## Daraltılmış masa taslağı (Salih tetiğiyle açılır — EK-6 usulü: ayrı oturum, kalem başına açıklama-bloklu)
-1. Onay-kapanışları (tek-tek onay yeter): ABSORBE ×3 (R19-A2+K-b · R12-K1-7) · SÜPERSEDE ×3 (R10-K1 · R20-K1-d · R10-K2) · RED-EMSALLİ ex-ante ailesi · ABSORBE-ADAY KL18-1.
-2. ÜST-A ufuk-sistemi kararı (kur/rafa — en büyük hacim).
-3. ÜST-C toplu yazım-turu onayı.
-4. ÜST-D hakemlik-borçları hükmü.
-5. Devir onayları (İB-08/12/60/61 + BAKIM-KK + K-010 hattı + atlas-kosum gotcha).
-6. ÜST-B → KB-26 masasına iliştirme.
-7. Tekiller: R9-K2 · KL18-7 · KL18-11.
-
-*Hükümler Salih'te; bu dosya envanter + emare, karar değil (m.31).*
+## Masa sonucu (Karar 79 ile bağlandı — üstteki kapanış bloğu esas)
+64 kalemin nihai dağılımı: **9 KAPANDI** (D1) · **17 RAF** (D2, tetik-yazılı) · **13 yazım İB-62'de** (D3) · **2 hakemlikte** (D4) · **16 DEVREDİLDİ** (D5, adresler yukarıdaki tabloda) · **4 KB-26 gündeminde** (D6) · **3 İB-05'te** (D7). ⑨ DONDUR kümesi kapalı; bu dosya arşiv-kaynak (m.8).

@@ -18,7 +18,7 @@
 
 ## DONDURULMUŞ (S2 hükmü)
 
-- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8). **AÇILDI 2026-08-29 (Salih beyanı, seans-21):** deterministik envanter 64 kalem (~95 F1-tahminiydi) → `kuyruk/masa-gundemi-DONDUR9-2026-08-29.md`; sıra: çapraz-okuma turu → daraltılmış masa.
+- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8). **AÇILDI 2026-08-29 (Salih beyanı, seans-21):** deterministik envanter 64 kalem (~95 F1-tahminiydi) → `kuyruk/masa-gundemi-DONDUR9-2026-08-29.md`; sıra: çapraz-okuma turu → daraltılmış masa. **MASA KAPANDI aynı gün (5. Lavish masası, Karar 79 — 7/7 hüküm):** D1 toplu-onay 9 kapanış · D2 ufuk-sistemi RAF (tetik: K-010 ajan dönemi ∨ Salih beyanı) · D3 yazım İB'si · D4 geç-hakemlik KOŞTUR · D5 toplu devir 16 · D6 ε→KB-26 · D7 tekiller→İB-05. ⑨ kümesi fiilen KAPANDI; kalıntı işler Karar 79 kaydında.
 
 ## KAPANANLAR (S1 hükmü — arşiv damgası)
 

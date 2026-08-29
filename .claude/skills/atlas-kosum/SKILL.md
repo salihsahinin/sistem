@@ -30,3 +30,4 @@ Katman-1 ağırlıklı kararlarda (m.31 sınıfı) isteğe bağlı EK şerit: te
 - Aile sayısını soruya göre seç; her koşuma 5 aile açmak israf (m.25). Tek-aileli küçük soruda üç aşama yine ZORUNLU (kural aile sayısından bağımsız).
 - Örneklem-denetimini atlama — 07-17 serisinde WebFetch 403 vakaları "D sanılan K" üretmişti; denetimsiz hakemlik etiket enflasyonu yapar.
 - Skill kaydetme/commit yapmaz; commit seans akışının işidir (yan-etki freni).
+- Ham-metin kuralı (Karar 79 D5 devri; kaynak KL18-14≡R10-K7, `cc/rapor-2026-08-01-18.md:387`): özet/ajan katmanından gelen hiçbir tırnak-içi ifade ham kaynakta eşleşmeden `[D]` damgası almaz; birebir alıntıda hangi bölümden (abstract/gövde) alındığı yazılır — 08-01 koşumunda ~60 künyeden 5'i özet katmanında bozuk üretildi, ham metinden grep'lenen hiçbiri yanlış çıkmadı.
