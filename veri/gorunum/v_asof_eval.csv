@@ -1,0 +1,81 @@
+kol,sorgu,yuzey,n_sonuc,emekli_kalinti_top5,eski_deger_gecen,guncel_deger_var,recall5
+emekli-terim,Cowork (ana-sira-yuzeyi),ham,5,2,5,0,
+emekli-terim,Cowork (ana-sira-yuzeyi),yuzey,5,0,2,0,
+emekli-terim,şirket simülasyonu (calisma-modeli),ham,5,0,5,1,
+emekli-terim,şirket simülasyonu (calisma-modeli),yuzey,5,0,5,1,
+emekli-terim,CEO (carvis-rol-adi),ham,5,0,5,1,
+emekli-terim,CEO (carvis-rol-adi),yuzey,5,0,5,1,
+emekli-terim,günaydın (oturum-acilis-tetigi),ham,5,1,5,0,
+emekli-terim,günaydın (oturum-acilis-tetigi),yuzey,5,0,5,1,
+emekli-terim,vardiya (oturum-birimi),ham,5,0,5,0,
+emekli-terim,vardiya (oturum-birimi),yuzey,5,0,5,1,
+emekli-terim,uyucam (oturum-kapanis-tetigi),ham,5,0,5,1,
+emekli-terim,uyucam (oturum-kapanis-tetigi),yuzey,5,0,5,1,
+emekli-terim,patron (salih-rol-adi),ham,5,0,5,1,
+emekli-terim,patron (salih-rol-adi),yuzey,5,0,5,1,
+emekli-terim,şirket (sirket-referansi),ham,5,0,5,0,
+emekli-terim,şirket (sirket-referansi),yuzey,5,0,5,0,
+emekli-terim,gunaydin-vardiya (skill:gunaydin-vardiya),ham,5,1,5,1,
+emekli-terim,gunaydin-vardiya (skill:gunaydin-vardiya),yuzey,5,0,5,1,
+emekli-terim,vardiya-kapanis (skill:vardiya-kapanis),ham,5,0,1,1,
+emekli-terim,vardiya-kapanis (skill:vardiya-kapanis),yuzey,5,0,4,1,
+bilgi-guncelleme,S17,ham,50,0,,,0
+bilgi-guncelleme,S17,yuzey,50,0,,,1
+bilgi-guncelleme,S17,auto,50,0,,,0
+bilgi-guncelleme,S18,ham,50,2,,,0
+bilgi-guncelleme,S18,yuzey,50,0,,,1
+bilgi-guncelleme,S18,auto,50,2,,,0
+bilgi-guncelleme,S19,ham,50,0,,,0
+bilgi-guncelleme,S19,yuzey,50,0,,,1
+bilgi-guncelleme,S19,auto,50,0,,,0
+bilgi-guncelleme,S20,ham,50,0,,,1
+bilgi-guncelleme,S20,yuzey,50,0,,,1
+bilgi-guncelleme,S20,auto,50,0,,,1
+bilgi-guncelleme,S21,ham,50,0,,,1
+bilgi-guncelleme,S21,yuzey,50,0,,,1
+bilgi-guncelleme,S21,auto,50,0,,,1
+bilgi-guncelleme,S71,ham,50,0,,,1
+bilgi-guncelleme,S71,yuzey,50,0,,,1
+bilgi-guncelleme,S71,auto,50,0,,,1
+bilgi-guncelleme,S72,ham,50,0,,,0
+bilgi-guncelleme,S72,yuzey,50,0,,,1
+bilgi-guncelleme,S72,auto,50,0,,,0
+bilgi-guncelleme,S73,ham,50,0,,,1
+bilgi-guncelleme,S73,yuzey,50,0,,,1
+bilgi-guncelleme,S73,auto,50,0,,,1
+bilgi-guncelleme,S74,ham,50,1,,,0
+bilgi-guncelleme,S74,yuzey,50,0,,,0
+bilgi-guncelleme,S74,auto,50,1,,,0
+bilgi-guncelleme,S75,ham,50,0,,,0
+bilgi-guncelleme,S75,yuzey,50,0,,,0
+bilgi-guncelleme,S75,auto,50,0,,,0
+bilgi-guncelleme,S76,ham,50,0,,,1
+bilgi-guncelleme,S76,yuzey,50,0,,,1
+bilgi-guncelleme,S76,auto,50,0,,,1
+bilgi-guncelleme,S77,ham,50,0,,,0
+bilgi-guncelleme,S77,yuzey,50,0,,,0
+bilgi-guncelleme,S77,auto,50,0,,,0
+bilgi-guncelleme,S78,ham,1,0,,,0
+bilgi-guncelleme,S78,yuzey,50,0,,,1
+bilgi-guncelleme,S78,auto,1,0,,,0
+bilgi-guncelleme,S79,ham,50,3,,,0
+bilgi-guncelleme,S79,yuzey,50,0,,,1
+bilgi-guncelleme,S79,auto,50,3,,,0
+bilgi-guncelleme,S80,ham,50,0,,,1
+bilgi-guncelleme,S80,yuzey,50,0,,,1
+bilgi-guncelleme,S80,auto,50,0,,,1
+bilgi-guncelleme,S81,ham,1,0,,,1
+bilgi-guncelleme,S81,yuzey,1,0,,,1
+bilgi-guncelleme,S81,auto,1,0,,,1
+bilgi-guncelleme,S82,ham,50,0,,,1
+bilgi-guncelleme,S82,yuzey,50,0,,,0
+bilgi-guncelleme,S82,auto,50,0,,,1
+bilgi-guncelleme,S83,ham,3,0,,,0
+bilgi-guncelleme,S83,yuzey,1,0,,,0
+bilgi-guncelleme,S83,auto,3,0,,,0
+bilgi-guncelleme,S84,ham,50,0,,,0
+bilgi-guncelleme,S84,yuzey,50,0,,,0
+bilgi-guncelleme,S84,auto,50,0,,,0
+bilgi-guncelleme,S85,ham,50,0,,,1
+bilgi-guncelleme,S85,yuzey,50,0,,,1
+bilgi-guncelleme,S85,auto,50,0,,,1

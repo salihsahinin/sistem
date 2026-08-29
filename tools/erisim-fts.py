@@ -29,7 +29,9 @@ YETENEK = ("bilgi-cikarma", "cok-oturum", "zamansal", "bilgi-guncelleme", "cekim
 GEN_REF_TURLERI = ("anahtar_terim", "tuzuk_madde", "kart", "skill_adi", "v_no", "wiki_link", "etiket")
 KATMAN_ONCELIK = {"sicak": 0, "ilik": 1, "yapisal": 2, "soguk": 3}
 ZAMAN_RX = re.compile(r"(?<!\d)(\d{4}-\d{2}-\d{2}|\d{2}-\d{2})(?!\d)")
-GUNCEL_RX = re.compile(r"\b(güncel|guncel|son|şu an|su an|bugün|bugun|en yeni|şimdi|simdi)\b", re.I)
+GUNCEL_RX = re.compile(r"\b(güncel|guncel|son|şu an|su an|bugün|bugun|en yeni|şimdi|simdi|yerine|artık|artik|eski adı|eski adi|yeni adı|yeni adi|ne oldu|değişti|degisti|kullanılıyor|kullaniliyor)\b", re.I)
+# 08-29 as-of eval (İB-42): güncelleme soruları "X yerine ne kullanılıyor / ne oldu / eski-yeni adı" kalıbıyla yazılıyor; ilk liste bunları yakalamıyordu →
+# auto yüzey bilgi-guncelleme'de ham ile aynı kalıyordu (0,45 ↔ yüzey 0,70). Genişletme deterministik; etkisi tools/asof-eval.py + erisim-kalibrasyon ile ölçülür.
 TR_FOLD = str.maketrans({"ı": "i", "İ": "i", "ğ": "g", "Ğ": "g", "ü": "u", "Ü": "u", "ş": "s", "Ş": "s", "ö": "o", "Ö": "o", "ç": "c", "Ç": "c"})
 
 

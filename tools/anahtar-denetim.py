@@ -15,17 +15,41 @@ TR = str.maketrans({'ı':'i','İ':'i','ğ':'g','Ğ':'g','ü':'u','Ü':'u','ş':'
 def norm(s):
     return unicodedata.normalize('NFC', s).translate(TR).lower()
 
-def katman(yol):
+def _katman_yerel(yol):
+    """ESKİ yerel tanım (08-15 → 08-29): yalnız baglam-tablo.py bulunamazsa yedek. Tek-tanım kuralı (İB-42 kalanı, 08-29): katman = silver
+    `dosya.katman` üreticisi `baglam-tablo.katman_bul` — iki tanım ayrışınca T-Ç3 (silver-saglik) ile bu denetim farklı sayıyordu.
+    Bilinen farklar (kayıt): kuyruk/gelen-* eski tanımda soğuk, silver'da ılık · kök CEP-/CHAT-KAPSULU-* eski tanımda soğuk, silver'da ılık."""
     if yol == 'CLAUDE.md' or yol.startswith('core/') or (yol.startswith('.claude/skills/') and yol.endswith('/SKILL.md')):
         return 'sicak'
     if yol.startswith(('raporlar/', 'cc/rapor-', 'cc/gorev-', 'ogrenme/')) or yol.startswith('model de'):
         return 'soguk'
     if yol.startswith(('kuyruk/arsiv', 'kuyruk/gelen-')):
         return 'soguk'
-    # kök snapshot/tarihçe dosyaları (bayat kapsüller, ilk-deneme talimatı, seçim turu) = tarihçe
     if re.match(r'^(CEP-KAPSULU-|CHAT-KAPSULU-|secim-turu-|PARALEL-VARDIYA-ILK-DENEME)', yol):
         return 'soguk'
     return 'ilik'
+
+
+def _katman_bul_yukle():
+    try:
+        import importlib.util
+        yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'baglam-tablo.py')
+        spec = importlib.util.spec_from_file_location('baglam_tablo', yol); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+        return m.katman_bul
+    except Exception:
+        return None
+
+
+_KATMAN_BUL = _katman_bul_yukle()
+
+
+def katman(yol):
+    """TEK TANIM: silver ile aynı (baglam-tablo.katman_bul); 'yapisal' bu denetimde geçmez (.md tarar). Yedek: eski yerel tanım + stderr uyarısı."""
+    if _KATMAN_BUL is not None:
+        k = _KATMAN_BUL(yol)
+        return k if k in ('sicak', 'ilik', 'soguk') else 'soguk'
+    print('UYARI: baglam-tablo.katman_bul yüklenemedi — eski yerel katman tanımı kullanılıyor (tek-tanım kuralı askıda)', file=sys.stderr)
+    return _katman_yerel(yol)
 
 def git_md(repo):
     try:
