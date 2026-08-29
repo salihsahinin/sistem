@@ -41,6 +41,7 @@ mobile.md,ciplak_ad,6,5,cc/rapor-2026-07-29-6.md,cc/rapor-2026-07-29-6.md#101-10
 nullmodel.py,ciplak_ad,6,4,cc/gorev-2026-07-30-2.md,cc/gorev-2026-07-30-2.md#10-10#a1060ac3
 skill-uretim-semasi.svg,ciplak_ad,6,1,raporlar/hareket-gunlugu-2026-08-16.md,raporlar/hareket-gunlugu-2026-08-16.md#123-123#363ad079
 slots.json,ciplak_ad,6,2,.claude/agents/research-agent.md,.claude/agents/research-agent.md#1-8#01e20494
+tam.d2,ciplak_ad,6,4,graf/README.md,graf/README.md#55-55#057489ad
 .claude/skills/gunaydin-vardiya/evals/evals.json,yol,5,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#146-146#e9bb19b2
 .claude/skills/vardiya-kapanis/evals/evals.json,yol,5,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#137-137#29aa0638
 Havuzu.md,ciplak_ad,5,4,cc/gorev-2026-07-13-1.md,cc/gorev-2026-07-13-1.md#10-10#19c2f13b
@@ -61,7 +62,6 @@ mdbook_test.md,ciplak_ad,5,3,kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-21.md,ku
 raporlar/hareket-gunlugu-YYYY-MM-DD.md,yol,5,5,.claude/skills/seans-kapanis/SKILL.md,.claude/skills/seans-kapanis/SKILL.md#38-38#23cc2ca1
 rel.md,ciplak_ad,5,4,.claude/skills/pipeline-kosum/SKILL.md,.claude/skills/pipeline-kosum/SKILL.md#22-22#b29fde4c
 sozluk/notasyon.md,yol,5,2,cc/rapor-2026-08-03-1.md,cc/rapor-2026-08-03-1.md#211-211#42d24017
-tam.d2,ciplak_ad,5,3,graf/README.md,graf/README.md#55-55#057489ad
 todo.md,ciplak_ad,5,1,cc/rapor-2026-08-17-4.md,cc/rapor-2026-08-17-4.md#251-251#c9d6a2f4
 veri/bronz/kosum-tahmin.jsonl,yol,5,1,cc/rapor-2026-08-21-M1.md,cc/rapor-2026-08-21-M1.md#16-16#7641c6c7
 .claude/projects/-Users-HasanSalihSahin-jarvis/memory/MEMORY.md,yol,4,2,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#36-36#174dc01a
@@ -81,6 +81,7 @@ prompt-caching.md,ciplak_ad,4,3,raporlar/2026-07-26-LOJIK-onerme-formu.md,raporl
 raporlar/rel.md,yol,4,2,cc/pipeline-2026-08-14-ajan-metodolojisi.md,cc/pipeline-2026-08-14-ajan-metodolojisi.md#16-16#2e67c89c
 sozluk/terim.md,yol,4,2,cc/rapor-2026-08-03-1.md,cc/rapor-2026-08-03-1.md#272-272#f4a2c2f2
 staj/P0-kalibrasyon/P0-tahminlerim.md,yol,4,3,cc/rapor-2026-07-30-12.md,cc/rapor-2026-07-30-12.md#361-361#22598c04
+tam.svg,ciplak_ad,4,4,core/durum-kapsulu.md,core/durum-kapsulu.md#5-5#7bcd8f9f
 tools/adres-getir.py,yol,4,3,cc/rapor-2026-08-18-1.md,cc/rapor-2026-08-18-1.md#396-396#2d8385b0
 yol/dosya.md,yol,4,2,KILAVUZ.md,KILAVUZ.md#43-43#b4088e6c
 .agents/AGENTS.md,yol,3,1,raporlar/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md,raporlar/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md#107-107#ef9dceb6
@@ -111,7 +112,6 @@ progress.md,ciplak_ad,3,2,cc/rapor-2026-08-17-2.md,cc/rapor-2026-08-17-2.md#221-
 raporlar/usage/skill-log.jsonl,yol,3,1,cc/rapor-2026-07-30-16.md,cc/rapor-2026-07-30-16.md#134-134#b8fd0fec
 skills.sh,ciplak_ad,3,1,cc/rapor-2026-07-13-1.md,cc/rapor-2026-07-13-1.md#333-333#e8adf38d
 spec.md,ciplak_ad,3,1,cc/rapor-2026-08-26-1.md,cc/rapor-2026-08-26-1.md#149-149#c588d80d
-tam.svg,ciplak_ad,3,3,core/durum-kapsulu.md,core/durum-kapsulu.md#5-5#7bcd8f9f
 tasks.md,ciplak_ad,3,2,cc/gorev-2026-08-14-2.md,cc/gorev-2026-08-14-2.md#14-14#4b9bc7ec
 tools-reference.md,ciplak_ad,3,3,raporlar/2026-07-26-SOZEL-ajan-durma.md,raporlar/2026-07-26-SOZEL-ajan-durma.md#97-97#588730a4
 tools/tahmin-tablo.py,yol,3,2,cc/rapor-2026-08-21-1b.md,cc/rapor-2026-08-21-1b.md#47-47#02a75b6f
@@ -277,10 +277,11 @@ Users/HasanSalihSahin/Downloads/6-2/pages/calendar/data.json,yol,1,1,raporlar/ha
 Users/HasanSalihSahin/Downloads/6/data.json,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#17-17#aa845b1e
 Users/HasanSalihSahin/Downloads/6/video_galleries/lecture-videos/data.json,yol,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#20-20#81ec8b09
 Users/HasanSalihSahin/Downloads/galeri-scoring-korelasyon/KOSUM-TALIMATI-ekip-lideri.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#409-409#93b35fb4
-X.d2,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#47-47#bea0a529
-X.svg,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#47-47#bea0a529
+X.d2,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#48-48#bea0a529
+X.svg,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#48-48#bea0a529
 __init__.py,ciplak_ad,1,1,cc/rapor-2026-08-14-2.md,cc/rapor-2026-08-14-2.md#170-170#17e8c89a
 a.d2,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#292-292#5b522774
+a.md,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#22-22#8b72e55d
 actions.py,ciplak_ad,1,1,cc/rapor-2026-08-15-3.md,cc/rapor-2026-08-15-3.md#441-441#5477371b
 activeContext.md,ciplak_ad,1,1,cc/rapor-2026-08-17-2.md,cc/rapor-2026-08-17-2.md#221-221#b2e7578d
 adres-getir.py,ciplak_ad,1,1,raporlar/seans-teslim-2026-08-21-seans11-karar-masasi.md,raporlar/seans-teslim-2026-08-21-seans11-karar-masasi.md#18-18#3779bb30
@@ -299,6 +300,7 @@ arastirma-promptu-atlas.md,ciplak_ad,1,1,cc/rapor-2026-07-26-1.md,cc/rapor-2026-
 args.d2,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#292-292#5b522774
 atlas-kosum/SKILL.md,yol,1,1,cc/rapor-2026-07-30-20.md,cc/rapor-2026-07-30-20.md#464-464#c00f9941
 atlas.md,ciplak_ad,1,1,raporlar/2026-07-24-serit3-ekip-lideri-klasor-duzeni.md,raporlar/2026-07-24-serit3-ekip-lideri-klasor-duzeni.md#76-87#53f8d11b
+b.md,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#22-22#8b72e55d
 baglam.jsonl,ciplak_ad,1,1,cc/rapor-2026-08-21-ab2-idempotens.md,cc/rapor-2026-08-21-ab2-idempotens.md#12-12#00b7beed
 başlangıç/ajan-denetim-kartlari.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-17.md,raporlar/hareket-gunlugu-2026-08-17.md#260-260#3160a6bf
 başlangıç/etl-redshift-mufredat.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-17.md,raporlar/hareket-gunlugu-2026-08-17.md#256-256#e987d387
@@ -428,7 +430,7 @@ notes.md,ciplak_ad,1,1,cc/rapor-2026-08-03-4.md,cc/rapor-2026-08-03-4.md#339-339
 obsidian.json,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#329-329#02ea25d6
 olap-karar.py,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-21.md,raporlar/hareket-gunlugu-2026-08-21.md#131-131#8e3bec32
 operations.md,ciplak_ad,1,1,cc/rapor-2026-08-26-1.md,cc/rapor-2026-08-26-1.md#153-153#d49001ef
-out.json,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#40-40#7d138d41
+out.json,ciplak_ad,1,1,tools/SCRIPTLER.md,tools/SCRIPTLER.md#41-41#7d138d41
 pipeline-kosum/SKILL.md,yol,1,1,raporlar/hareket-gunlugu-2026-08-26.md,raporlar/hareket-gunlugu-2026-08-26.md#20-20#9bb761fb
 pointer.svg,ciplak_ad,1,1,cc/pipeline-2026-08-22-pointer-graf-d2.md,cc/pipeline-2026-08-22-pointer-graf-d2.md#44-44#7137e109
 private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/1620e67b-d1dc-48c2-bced-080dfb43b3e7/scratchpad/args-6.json,yol,1,1,raporlar/hareket-gunlugu-2026-08-15.md,raporlar/hareket-gunlugu-2026-08-15.md#288-288#1ceb2280

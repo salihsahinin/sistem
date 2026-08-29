@@ -21,6 +21,7 @@ Kural kaynağı: `core/ingest-semasi.md` (zarf+tip+triyaj+DLQ+bütçeler) + v1 k
 ## Gotchas
 - **Kapsül-şişirme:** damıtma çıktısını kapsüle tarihçe olarak yazma — kapsül snapshot'tır, "şu an + sıradaki"den fazlasını taşımaz.
 - **Pointer koparma:** arşive inen her bloğun yerinde tek satır pointer kalır; pointer'sız arşiv = kayıp.
+- **Sessiz satır-kayması (vaka 08-29, Karar 74 M-3 turu):** damıtılan dosyaya giden `dosya:satır` pointer'ları kırılmadan başka içeriğe düşebilir (kutu:29 V13→V38, defter:156 Karar 48→65); `karar-borcu-tablo.py` bunu GÖRMEZ. Adım 4'ten sonra, commit'ten ÖNCE: `python3 tools/pointer-kayma.py --ref HEAD` → KAYMIŞ/KIRIK pointer'lar önerilen arşiv adresine çevrilir (m.8 arşiv-pointer), sonra `karar-borcu-tablo.py` kırık 0.
 - **Çift-gelen tuzağı:** paralel sekmelerden aynı bilgi iki bronz dosyada gelebilir — `kaynak` zarf alanı dedup anahtarıdır, triyajda karşılaştır.
 - Skill kendi başına commit atmaz; commit seans akışının işidir.
 
