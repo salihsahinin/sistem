@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `cf4c7c5`)
+# Hareket günlüğü — 2026-08-29 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `753e3a1`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 87 çağrı, 5 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 132 çağrı, 6 oturum.*
 
 ## Oturum `7ae8954e` — 01:27:57→01:56:52 · 59 çağrı · model fable-5 · hata 2
 **Özet:** koştu 35 · yazdı 10 · okudu 7 · düzenledi 6 · skill çağırdı 1
@@ -86,8 +86,9 @@
 | 77 | 10:47:22 | koştu | Full staged status check ⟨git status --short⟩ | tamam |
 | 78 | 10:47:32 | koştu | Commit and push session close ⟨git commit -m "$(cat <<'EOF' [icra] Session close (Salih 'seans bitimi', paralel şerit 2026-08-29): uplift modeli anlatılacaklar kuyruğuna Kısa devam-…⟩ | tamam |
 
-## Oturum `be4a4b92` — 10:47:12→10:50:41 · 5 çağrı · model fable-5 · hata 0
-**Özet:** koştu 3 · skill çağırdı 1 · okudu 1
+## Oturum `be4a4b92` — 10:47:12→10:55:13 · 16 çağrı · model fable-5 · hata 0
+**Özet:** koştu 9 · düzenledi 3 · okudu 2 · skill çağırdı 1 · yazdı 1
+**Yazılan/düzenlenen dosyalar (3):** `core/durum-kapsulu.md` · `fikir-kutusu.md` · `raporlar/seans-teslim-2026-08-29-galeri-scoring-korelasyon.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -96,6 +97,17 @@
 | 35 | 10:48:54 | okudu | core/durum-kapsulu.md [bütün] | tamam |
 | 36 | 10:50:34 | koştu | Untracked klasörü tanı, teslim ve hasat şablonlarını oku ⟨ls -la /Users/HasanSalihSahin/jarvis/kuyruk/galeri-siralama/ 2>/dev/null ¦ head -10; echo ---; head -30 /Users/HasanSalihSahin/jarvis/core/sablonlar/s…⟩ | tamam |
 | 37 | 10:50:41 | koştu | Hareket kütüğünü tazele ve skill eşik koşumunu yap ⟨python3 tools/hareket-tablo.py 2>&1 ¦ tail -5; echo "=== skill-esik ==="; python3 tools/skill-esik.py 2>&1 ¦ tail -8⟩ | yok |
+| 38 | 10:50:44 | koştu | Silver sağlık kapısı, kural sayacı ve bağlam seyri koşumları ⟨python3 tools/silver-saglik.py --kapi 2>&1 ¦ tail -6; echo "KAPI-CIKIS:$?"; echo "=== kural-sayaci ==="; python3 tools/kural-sayaci.py 2>&1 ¦ tail -4;…⟩ | tamam |
+| 39 | 10:51:50 | koştu | Fikir kutusu son adayı, gbm klasörleri ve staged dosyaları kontrol et ⟨tail -12 /Users/HasanSalihSahin/jarvis/fikir-kutusu.md; echo ---; ls /Users/HasanSalihSahin/jarvis/kuyruk/ ¦ grep -i "ders-gbm\¦galeri" ; echo ---; gi…⟩ | tamam |
+| 40 | 10:52:07 | koştu | Güncel git log ve status kontrolü ⟨git log --oneline -3; echo ---; git status --short ¦ head -15⟩ | tamam |
+| 41 | 10:53:47 | yazdı | raporlar/seans-teslim-2026-08-29-galeri-scoring-korelasyon.md | tamam |
+| 42 | 10:54:02 | düzenledi | fikir-kutusu.md | tamam |
+| 43 | 10:54:10 | okudu | core/durum-kapsulu.md [aralık 5+6] | tamam |
+| 44 | 10:54:19 | düzenledi | core/durum-kapsulu.md | tamam |
+| 45 | 10:54:29 | koştu | Kapsül bütçesini ve commit'e girecek dosyaları kontrol et ⟨wc -c core/durum-kapsulu.md && wc -l core/durum-kapsulu.md && git status --short ¦ grep -v "^ M graf\¦son-50-prompt" ¦ head -12⟩ | tamam |
+| 46 | 10:55:02 | düzenledi | core/durum-kapsulu.md | tamam |
+| 47 | 10:55:08 | koştu | Kapsül boyutunu doğrula, şerit dosyalarını pathspec ile commit'le ⟨wc -c core/durum-kapsulu.md && git add core/durum-kapsulu.md fikir-kutusu.md raporlar/seans-teslim-2026-08-29-galeri-scoring-korelasyon.md raporlar/ha…⟩ | tamam |
+| 48 | 10:55:13 | koştu | Origin ile rebase edip push at ⟨git pull --rebase origin main 2>&1 ¦ tail -3 && git push origin main 2>&1 ¦ tail -3 && git status -sb ¦ head -1⟩ | tamam |
 
 ## Oturum `8e6b8222` — 10:47:49→10:49:56 · 9 çağrı · model sonnet-5 · hata 0
 **Özet:** koştu 6 · skill çağırdı 1 · araç 1 · sordu 1
@@ -112,12 +124,53 @@
 | 11 | 10:49:45 | koştu | Check whether my earlier note is already committed at HEAD ⟨git show HEAD:kuyruk/ders-gbm-ilerleme.md ¦ grep -n "P-sonrası uygulama\¦Anlatılacaklar kuyruğu" ; echo "---"; git log --oneline -- kuyruk/ders-gbm-il…⟩ | tamam |
 | 12 | 10:49:56 | koştu | Re-check current git status after possible parallel commit ⟨git status && echo "---HEAD---" && git log -3 --oneline && echo "---ORIGIN---" && git log -3 --oneline origin/main 2>/dev/null && git status -sb ¦ hea…⟩ | tamam |
 
-## Oturum `405e80db` — 10:49:41→10:50:32 · 3 çağrı · model fable-5 · hata 0
-**Özet:** koştu 3
+## Oturum `405e80db` — 10:49:41→11:25:47 · 34 çağrı · model fable-5 · hata 0
+**Özet:** koştu 27 · okudu 4 · skill çağırdı 2 · yazdı 1
+**Yazılan/düzenlenen dosyalar (1):** `raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
 | 56 | 10:49:41 | koştu | Tanınmayan commit'ler + yeni klasör + çalışma ağacı ⟨git log -7 --format='%h %ad %s' --date=format:'%m-%d %H:%M' ¦ cut -c1-150 && echo '=== galeri-siralama ===' && ls -la kuyruk/galeri-siralama/ 2>/dev/n…⟩ | tamam |
 | 57 | 10:49:42 | koştu | Silver bayat → hattı koş ⟨python3 tools/katman-hatti.py 2>&1 ¦ tail -2⟩ | yok |
 | 58 | 10:50:32 | koştu | Açık Salih kararlarını ve açılış brifi görünümünü çek ⟨sqlite3 -separator ' ¦¦ ' veri/baglam.sqlite "SELECT borc_id, substr(baslik,1,90), durum, COALESCE(substr(oneri,1,80),'-') FROM karar_borcu WHERE kara…⟩ | tamam |
+| 59 | 10:51:08 | koştu | Masa kalemlerinin tam seçenek/öneri metinleri ⟨sqlite3 -separator $'\n----\n' veri/baglam.sqlite "SELECT borc_id ¦¦ ' ¦¦ ' ¦¦ baslik ¦¦ ' ¦¦ SEÇENEKLER: ' ¦¦ COALESCE(secenekler,'-') ¦¦ ' ¦¦ ÖNERİ:…⟩ | tamam |
+| 60 | 10:51:10 | koştu | İlk masa yüzeyinin tasarım desenine bak ⟨ls -la raporlar/masa-KB62-68-karar-yuzeyi-2026-08-26.html && grep -o '<title>[^<]*</title>' raporlar/masa-KB62-68-karar-yuzeyi-2026-08-26.html; grep -…⟩ | tamam |
+| 61 | 10:51:16 | skill çağırdı | lavish | tamam |
+| 62 | 10:51:22 | koştu | Input playbook'unu aç (karar toplama zorunlu rehberi) ⟨lavish-axi playbook input 2>&1 ¦ head -80⟩ | tamam |
+| 63 | 10:51:26 | koştu | Comparison ve table playbook'larını aç ⟨lavish-axi playbook comparison 2>&1 ¦ head -30; echo '==='; lavish-axi playbook table 2>&1 ¦ head -25⟩ | tamam |
+| 64 | 10:52:09 | koştu | Damıtma adaylarının güncel boyutları ⟨for f in fikir-kutusu.md KILAVUZ.md kuyruk/senaryo-defteri.md core/pano.md; do printf '%s: %s KB\n' "$f" "$(echo "scale=1; $(wc -c < $f)/1024" ¦ bc)";…⟩ | tamam |
+| 65 | 10:54:43 | yazdı | raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html | tamam |
+| 66 | 10:54:46 | koştu | Masa yüzeyini Lavish oturumu olarak aç ⟨lavish-axi raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html 2>&1 ¦ head -15⟩ | tamam |
+| 67 | 10:54:58 | koştu | Lavish poll: Salih'in masa hükümlerini bekle ⟨lavish-axi poll raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html --agent-reply "Masa 2 hazır: 8 karar + 1 hızlı kalem. Her kartta seçeneği işa…⟩ | tamam |
+| 68 | 11:16:23 | okudu | /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/405e80db-9dcd-41d0-a47a-90c60257cad7/tasks/bz69qs2hq.output [bütün] | tamam |
+| 69 | 11:17:23 | koştu | Karar 74 çakışması + M-5 şerh hedef dosyalarını bul ⟨grep -c 'Karar 74' kuyruk/senaryo-defteri.md; grep -n 'V26' core/halusinasyon-paketi.md ¦ head -5; grep -rn 'md\.21' KILAVUZ.md core/*.md kuyruk/senar…⟩ | tamam |
+| 70 | 11:18:29 | koştu | Defter Karar 74 kaydı + M-9 galeri-siralama commit'i ⟨cat >> kuyruk/senaryo-defteri.md <<'EOF' **Karar 74 (2026-08-29 seans-20 · İKİNCİ LAVISH MASASI 9/9, yüzey `raporlar/masa-acik-kararlar-karar-yuzeyi-2…⟩ | tamam |
+| 71 | 11:18:41 | koştu | Karar 74 defter kaydını ve masa yüzeyini commit'le ⟨git show --stat HEAD ¦ tail -12; git add kuyruk/senaryo-defteri.md raporlar/masa-acik-kararlar-karar-yuzeyi-2026-08-29.html && git commit -m "$(cat <<…⟩ | tamam |
+| 72 | 11:18:46 | skill çağırdı | damitma Boyut-FLAG damıtması, Salih onayı Karar 74 M-3(a): kuyruk/senaryo-defteri.md 70,3/48 · fikir-kutusu.md 30,6/20 · KILAVUZ.md 20,4/16 · core/pano.md 12,8/12 | tamam |
+| 73 | 11:19:29 | koştu | Damgasız gelen dosyaları + defter blok haritası ⟨ls kuyruk/gelen-*.md 2>/dev/null && grep -L 'İNGEST EDİLDİ' kuyruk/gelen-*.md 2>/dev/null; echo '=== defter blok başlıkları ==='; grep -n '^\*\*Karar\…⟩ | tamam |
+| 74 | 11:20:21 | koştu | M-9 geri al (untrack, dosyalar diskte) + defter arıza kaydı ⟨git rm -r --cached -q kuyruk/galeri-siralama && git commit -m "$(cat <<'EOF' [revert] Decision 74 / M-9 rollback: untrack kuyruk/galeri-siralama (file…⟩ | tamam |
+| 75 | 11:21:06 | koştu | Defter 154-176 blok sınırlarını ve boyutunu doğrula ⟨sed -n '150,155p' kuyruk/senaryo-defteri.md && sed -n '176,178p' kuyruk/senaryo-defteri.md && awk 'NR>=154 && NR<=176' kuyruk/senaryo-defteri.md ¦ wc …⟩ | tamam |
+| 76 | 11:21:14 | okudu | kuyruk/senaryo-defteri.md [aralık 177+75] | tamam |
+| 77 | 11:22:06 | koştu | Defteri damıt: 3 bölge arşive, index satırları yerine ⟨python3 - <<'EOF' L = open('kuyruk/senaryo-defteri.md', encoding='utf-8').read().split('\n') # 1-indexli aralıklar (mevcut dosya): arşive inecekler A …⟩ | tamam |
+| 78 | 11:22:21 | koştu | Karar 69 EK-2 tam metnini arşive indir, özet satır bırak ⟨python3 - <<'EOF' L = open('kuyruk/senaryo-defteri.md', encoding='utf-8').read().split('\n') hedef = next(i for i,s in enumerate(L) if s.startswith('*…⟩ | tamam |
+| 79 | 11:22:31 | koştu | KB-62 icra detayını arşive indir ⟨python3 - <<'EOF' L = open('kuyruk/senaryo-defteri.md', encoding='utf-8').read().split('\n') hedef = next(i for i,s in enumerate(L) if s.strip().start…⟩ | tamam |
+| 80 | 11:22:35 | okudu | fikir-kutusu.md [bütün] | tamam |
+| 81 | 11:23:19 | koştu | Kutuyu damıt: kuruluş serisi + kapanmış satırlar arşive ⟨python3 - <<'EOF' L = open('fikir-kutusu.md', encoding='utf-8').read().split('\n') ARS_ARALIK = list(range(11,51)) # V1-V25 kuruluş bloğu + öncelik ka…⟩ | tamam |
+| 82 | 11:23:36 | koştu | Kutu: yüzey listesi + numarasız paket + UFUK üçlüsünü sıkıştır ⟨python3 - <<'EOF' metin = open('fikir-kutusu.md', encoding='utf-8').read() L = metin.split('\n') yeni = [] ufuk_yapildi = False for s in L: if s.start…⟩ | tamam |
+| 83 | 11:23:45 | koştu | V87'yi sıkıştır, tam metni arşive ⟨python3 - <<'EOF' L = open('fikir-kutusu.md', encoding='utf-8').read().split('\n') i = next(n for n,s in enumerate(L) if s.startswith('- **V87')) tam …⟩ | tamam |
+| 84 | 11:23:51 | okudu | KILAVUZ.md [bütün] | tamam |
+| 85 | 11:24:37 | koştu | KILAVUZ'u damıt: eski paralel-seans + gerekçe kuyrukları arşive, bayat satırlar düzeltilir ⟨python3 - <<'EOF' L = open('KILAVUZ.md', encoding='utf-8').read().split('\n') ESKI = [14,15,16,17,19] # Cowork/Windows dönemi paralel-seans tarifi ars…⟩ | tamam |
+| 86 | 11:25:04 | koştu | KILAVUZ: eski skill bölümü arşive, Karar 71 + gürültü listesi sıkıştır ⟨python3 - <<'EOF' metin = open('KILAVUZ.md', encoding='utf-8').read() L = metin.split('\n') def bul(onek): return next(i for i,s in enumerate(L) if s.…⟩ | tamam |
+| 87 | 11:25:17 | koştu | Obsidian-uyum satırını sıkıştır ⟨python3 - <<'EOF' L = open('KILAVUZ.md', encoding='utf-8').read().split('\n') i = next(n for n,s in enumerate(L) if '**İPTAL 08-26 s18 (Karar 72' in s…⟩ | tamam |
+| 88 | 11:25:27 | koştu | Pano Güncelleme anlatısını arşive indir ⟨python3 - <<'EOF' L = open('core/pano.md', encoding='utf-8').read().split('\n') i = next(n for n,s in enumerate(L) if s.startswith('**Güncelleme:**'))…⟩ | tamam |
+| 89 | 11:25:47 | koştu | Hat koşumu + silver-sağlık kapısı + deneyim çifti sayımı ⟨python3 tools/katman-hatti.py 2>&1 ¦ grep -cE '\[PASS¦\[OK' ; python3 tools/silver-saglik.py --kapi; echo "kapı çıkış: $?"; sqlite3 veri/baglam.sqlite…⟩ | yok |
+
+## Oturum `37c3509e` — 11:04:45→11:11:45 · 3 çağrı · model sonnet-5 · hata 0
+**Özet:** koştu 3
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 11:04:45 | koştu | Search canon for API embedder ban rationale ⟨grep -rn "API gömücü\¦API embed\¦Karar 65\¦Karar 66" /Users/HasanSalihSahin/jarvis/core/ /Users/HasanSalihSahin/jarvis/kuyruk/ 2>/dev/null ¦ grep -v B…⟩ | tamam |
+| 2 | 11:11:38 | koştu | Search canon for m.37, İB-10, eksen-örtüsü, kalibrasyon context ⟨grep -rn "m\.37\¦İB-10\¦eksen-örtüsü\¦kalibrasyon" /Users/HasanSalihSahin/jarvis/core/tuzuk-v0.md /Users/HasanSalihSahin/jarvis/kuyruk/senaryo-defteri…⟩ | tamam |
+| 3 | 11:11:45 | koştu | Search for m.37 v2, eksen-örtüsü, Brier calibration references ⟨grep -rn "m\.37 v2\¦eksen-örtüsü\¦eksen örtüsü\¦Fable-dışı\¦Brier" /Users/HasanSalihSahin/jarvis/core/*.md /Users/HasanSalihSahin/jarvis/kuyruk/*.md 2…⟩ | tamam |
 

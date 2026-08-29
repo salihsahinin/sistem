@@ -2,15 +2,15 @@
  "d2_surum": "v0.8.1-HEAD",
  "layout": "elk",
  "n_kosum": 2,
- "silver_git_head": "4745df9acdca2ca8852a20fc46b00f715eff8751",
- "git_head": "4745df9",
- "olcum_zamani": "2026-08-29T01:28:26+03:00",
+ "silver_git_head": "753e3a1a6dd5fdbf6dc309d8f5d181198b224364",
+ "git_head": "753e3a1",
+ "olcum_zamani": "2026-08-29T11:26:03+03:00",
  "not": "aynı .d2 × aynı d2 sürümü × aynı motor → SVG sha256 eşitliği; sürümler-arası eşitlik BEKLENMEZ (A-YT2)",
  "panolar": [
   {
    "d2": "graf/pointer-sistemi-v0-genel.d2",
    "svg": "graf/pointer-sistemi-v0-genel.svg",
-   "sha256": "68e31d1d29d993c3b5d0ef11d9f7ee02bfffe7eec1dd45240bf6a42e5048a450",
+   "sha256": "624afc88cc8c9805444b3b7eb590aa12ffe020c5a099ee9417c6ac7157305ac3",
    "determinizm": "BİREBİR",
    "genislik": 2101,
    "yukseklik": 2073
@@ -18,7 +18,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-silver.d2",
    "svg": "graf/pointer-sistemi-v0-silver.svg",
-   "sha256": "b38cf66b7320ead7c401dcfb4c56ea3e2cb69041182d5606a1f6ce8c5af22b36",
+   "sha256": "4c9ab8c346d62c7b147b64d4ca8137814e06c1ae96fa150b71b3a305f05989ab",
    "determinizm": "BİREBİR",
    "genislik": 1483,
    "yukseklik": 5750
@@ -26,7 +26,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-pointer.d2",
    "svg": "graf/pointer-sistemi-v0-pointer.svg",
-   "sha256": "7fdc6201f2f9993b61652c147c263be2dd866f0f461463af28cc0abf0ac3934a",
+   "sha256": "54a12384a7b812c84d4e16e4ec7d11350d55ac49377446e46d456b694f018b79",
    "determinizm": "BİREBİR",
    "genislik": 2113,
    "yukseklik": 1476
@@ -34,7 +34,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-ilke.d2",
    "svg": "graf/pointer-sistemi-v0-ilke.svg",
-   "sha256": "9c81946374a530fd15be6e50891a58e26266d3c2487947f270f8b00c0f74cfae",
+   "sha256": "13f504e4c33d5eaabe0c515703d13bbb41622eab7296ad0d32c86dfa87b80e51",
    "determinizm": "BİREBİR",
    "genislik": 1696,
    "yukseklik": 764
@@ -50,10 +50,10 @@
   {
    "d2": "graf/pointer-sistemi-v0-kirik.d2",
    "svg": "graf/pointer-sistemi-v0-kirik.svg",
-   "sha256": "ebb10d147dd6d843ea3aa125fb12c1c57d2f75458a48229f5358247e0d2738e5",
+   "sha256": "51261a991ffa914ba2010dca7f18f8f00a35f35fcf17514cc527b4063c63a48f",
    "determinizm": "BİREBİR",
-   "genislik": 3133,
-   "yukseklik": 2608
+   "genislik": 3183,
+   "yukseklik": 2569
   }
  ],
  "dosya": "graf/pointer-sistemi-v0-uretim.json"

@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — KIRIK POINTER PANOSU — dosya_pointer · hedef_var=0 (en çok 18 kaynak → en çok 18 hedef) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 4745df9 · HEAD 4745df9 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver 753e3a1 · HEAD 753e3a1 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -16,7 +16,7 @@ classes: {
   turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
   uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
 }
-ozet: "KIRIK dosya_pointer · 1.261 referans · 510 ayrı hedef · 1.010 ayrı kayıt" { class: kirik }
+ozet: "KIRIK dosya_pointer · 1.293 referans · 524 ayrı hedef · 1.034 ayrı kayıt" { class: kirik }
 kaynak: "KAYNAK DOSYALAR (en çok kırık pointer veren)" {
   cc_rapor_2026_08_17_4_md: "cc/rapor-2026-08-17-4.md · 87" { class: kutu }
   raporlar_hareket_gunlugu_2026_08_15_md: "raporlar/hareket-gunlugu-2026-08-15.md · 69" { class: kutu }
@@ -31,11 +31,11 @@ kaynak: "KAYNAK DOSYALAR (en çok kırık pointer veren)" {
   raporlar_2026_07_26_antitez_hakemlik_md: "raporlar/2026-07-26-antitez-hakemlik.md · 18" { class: kutu }
   cc_rapor_2026_08_26_2_md: "cc/rapor-2026-08-26-2.md · 17" { class: kutu }
   raporlar_hareket_gunlugu_2026_08_14_md: "raporlar/hareket-gunlugu-2026-08-14.md · 16" { class: kutu }
+  raporlar_hareket_gunlugu_2026_08_29_md: "raporlar/hareket-gunlugu-2026-08-29.md · 16" { class: kutu }
   raporlar_hareket_gunlugu_2026_08_18_md: "raporlar/hareket-gunlugu-2026-08-18.md · 15" { class: kutu }
   cc_rapor_2026_08_15_1_md: "cc/rapor-2026-08-15-1.md · 14" { class: kutu }
   cc_rapor_2026_08_17_2_md: "cc/rapor-2026-08-17-2.md · 14" { class: kutu }
   cc_rapor_2026_08_18_1_md: "cc/rapor-2026-08-18-1.md · 14" { class: kutu }
-  raporlar_hareket_gunlugu_2026_08_22_md: "raporlar/hareket-gunlugu-2026-08-22.md · 14" { class: kutu }
 }
 hedef: "HEDEFLER (var olmayan yol/ad)" {
   MEMORY_md: "MEMORY.md · 77" { class: dis }
@@ -44,6 +44,7 @@ hedef: "HEDEFLER (var olmayan yol/ad)" {
   env_vars_md: "env-vars.md · 20" { class: dis }
   claude_CLAUDE_md: ".claude/CLAUDE.md · 16" { class: dis }
   claude_skills_vardiya_kapanis_SKILL_md: ".claude/skills/vardiya-kapanis/SKILL.md · 16" { class: dis }
+  data_json: "data.json · 14" { class: dis }
   sub_agents_md: "sub-agents.md · 13" { class: dis }
   claude_skills_gunaydin_vardiya_SKILL_md: ".claude/skills/gunaydin-vardiya/SKILL.md · 12" { class: dis }
   explain_md: "explain.md · 12" { class: dis }
@@ -55,7 +56,6 @@ hedef: "HEDEFLER (var olmayan yol/ad)" {
   DURUM_md: "DURUM.md · 10" { class: dis }
   staj_README_md: "staj/README.md · 10" { class: dis }
   memory_md: "memory.md · 9" { class: dis }
-  run_loop_py: "run_loop.py · 9" { class: dis }
 }
 kaynak.cc_rapor_2026_08_01_5_md -> hedef.config_json: "23" { class: kirik }
 kaynak.cc_rapor_2026_08_17_4_md -> hedef.MEMORY_md: "21" { class: kirik }
@@ -66,10 +66,10 @@ kaynak.raporlar_hareket_gunlugu_2026_08_17_md -> hedef.baslangic_gunluk_2026_08_
 kaynak.cc_rapor_2026_08_17_4_md -> hedef.memory_md: "9" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_16_md -> hedef.claude_json: "7" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_16_md -> hedef.derle_py: "7" { class: kirik }
-kaynak.cc_rapor_2026_08_15_1_md -> hedef.run_loop_py: "5" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.agent_view_md: "4" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_14_md -> hedef.claude_skills_vardiya_kapanis_SKILL_md: "4" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_15_md -> hedef.derle_py: "4" { class: kirik }
+kaynak.raporlar_hareket_gunlugu_2026_08_29_md -> hedef.data_json: "4" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.sub_agents_md: "3" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_17_md -> hedef.derle_py: "3" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.env_vars_md: "2" { class: kirik }
@@ -77,6 +77,7 @@ kaynak.raporlar_hareket_gunlugu_2026_08_16_md -> hedef.MEMORY_md: "2" { class: k
 kaynak.raporlar_hareket_gunlugu_2026_08_17_md -> hedef.MEMORY_md: "2" { class: kirik }
 kaynak.cc_gorev_2026_07_26_1_md -> hedef.routines_md: "1" { class: kirik }
 kaynak.cc_rapor_2026_08_17_4_md -> hedef.claude_CLAUDE_md: "1" { class: kirik }
+kaynak.cc_rapor_2026_08_26_2_md -> hedef.data_json: "1" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.MEMORY_md: "1" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.routines_md: "1" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_15_md -> hedef.MEMORY_md: "1" { class: kirik }
