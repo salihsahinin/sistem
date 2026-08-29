@@ -257,3 +257,4 @@
 - **F8 → (a) İB-61 AÇILDI:** pipeline/loop belirsizleri (~4 kalem) absorbe-teyit turu (İB-14 deseni; kanıt-pointer'lı tablo → hükümler Salih'e).
 - **T1/T2 → (a) SÜPERSEDE-KAPAT:** K2-d tetik(D8) + g23 asgari-log (İB-14 kanıtlarıyla).
 - **Durum:** EK-6 gündem dosyası kapanış-damgalı; masa kuyruğu BOŞ — ⑨ DONDUR (~95 kalem) açma tetiği Salih beyanında ("mevcut önemli karar borçları bitince"); İB-60/61 paralel havuza eklendi.
+**Karar 78 EK (aynı gün, Send&End son paketi):** F2/F3 hükmünün ikinci beyan ifadesi aynen: "birim=görev dediğimiz için N sayısı iterasyonları daha yavaş ilerleyeceği için N=3 olacak revize edilsin" — icra zaten tamam (m.43/şema/skill-kapisi N=3); paket yeniden-gönderim çıktı, mükerrer işlem YOK (masa-1 2. tur emsali: yazmadan önce yeniden-oku).
