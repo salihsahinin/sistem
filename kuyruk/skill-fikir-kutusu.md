@@ -27,6 +27,10 @@
 - **kaçırılan-tetik** — sayım Katman-1'de (KG-25-3: 30-16 · 30-17 · 30-25 = 3 mü? Salih masasında; eşik dolduysa aday satırı oradan döner).
 
 > **[K] ŞERH — 2026-07-31 (Carvis, öz-bildirim):** Bu dosya onarım turunda yanlışlıkla `cat >` ile ÜZERİNE yazıldı (ls çıktısı 20 satırda kesildiği için dosya yok sanıldı — "ölçüm-aracı-yanıldı" sınıfının ta kendisi, ama araç değil operatör hatası). Orijinal içerik commit'li kanondan (`git show HEAD:`) anında geri yüklendi, kayıp yok; bu bölüm sonradan eklendi. m.8 ihlal girişimi olarak kayda geçirildi.
+- **loop-aday `30ec7336`** (İB-60 dedektörü 2026-08-29, k_W=4/62 oturum, n=3, tekrar 4, 2026-08-15→2026-08-24): `Bash:py:inline → Edit:CLAUDE.md → Bash:py:inline` — m.43 ADAY (inşa ayrı karar; K-016/skill-kapisi)
+- **loop-aday `e0844c8e`** (İB-60 dedektörü 2026-08-29, k_W=4/62 oturum, n=3, tekrar 4, 2026-08-15→2026-08-18): `Bash:py:inline → Workflow → Bash:py:inline` — m.43 ADAY (inşa ayrı karar; K-016/skill-kapisi)
+- **loop-aday `5aeba191`** (İB-60 dedektörü 2026-08-29, k_W=3/62 oturum, n=3, tekrar 3, 2026-08-16→2026-08-22): `Write:cc → Bash:py:inline → Workflow` — m.43 ADAY (inşa ayrı karar; K-016/skill-kapisi)
+- **loop-aday `3ccbcfa4`** (İB-60 dedektörü 2026-08-29, k_W=3/62 oturum, n=3, tekrar 3, 2026-08-15→2026-08-18): `Write:cc → Bash:py:tetik-denetim+echo → Bash:py:inline` — m.43 ADAY (inşa ayrı karar; K-016/skill-kapisi)
 
 ## Kapı-ağacı koşumları (ölçüm satırları — şema §5 kalibrasyon; 10 koşumda τ/W/β/n_val gözden geçirilir)
 | tarih | aday | K0 | K1 | K2 | K3 | hüküm · tür | süre/not |
