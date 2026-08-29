@@ -49,14 +49,15 @@ ADIMLAR = [
     ("anakronizm", ["tools/anakronizm-denetim.py", "--sessiz"]),  # anakronizm lint (KB-67 a / Karar 69): UYARI kanalı; İHLAL=çıkış 3 hattı DÜŞÜRMEZ, sayılır — kapı sertleşmesi iterasyonla, Salih masası
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
-UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm", "graf"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
+UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm", "graf", "tarama-duckdb"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
 UYARI_KODLARI = {"anakronizm": {3}}  # KB-67 a: bu kodlar 'UYARI' etiketi alır, hat düşmez (İHLAL sayılır-raporlanır; pre-commit yok)
 # Opsiyonel kolon katmanı (pipeline kolon-katmani SH-1/SH-2; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan kapalı)
 PARQUET_ADIMLAR = [
     ("parquet", ["tools/ambar-parquet.py", "--sessiz"]),
     ("kolon-olcum", ["tools/kolon-olcum.py", "--sessiz"]),
+    ("tarama-duckdb", ["tools/tarama-plan-duckdb.py", "--sessiz"]),  # DuckDB/parquet plan-sınıfı denetimi (İB-38, KB-58 a; uyarı modu; zone-map footer simülasyonu)
 ]
-ATLANDI_KODLARI = {"parquet": {4}}  # duckdb yoksa ambar-parquet 4 döner → hat düşmez, "atlandı" sayılır
+ATLANDI_KODLARI = {"parquet": {4}, "tarama-duckdb": {4}}  # duckdb yoksa ambar-parquet / tarama-duckdb 4 döner → hat düşmez, "atlandı" sayılır
 
 
 def atla_sec(secim):

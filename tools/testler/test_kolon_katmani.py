@@ -399,9 +399,10 @@ class KatmanHattiSecimTest(unittest.TestCase):
         self.assertNotIn("parquet", temel); self.assertNotIn("kolon-olcum", temel)
         acik = [a for a, _ in m.adimlari_sec(parquet=True)]
         # 08-29 (İB-31): kolon katmanı olcum'un ÖNÜNDE koşar — olcum SON ADIM kalır (kanon §8 S3), parquet_uretim satırları olcum testine görünür
-        self.assertEqual(acik[-3:], ["parquet", "kolon-olcum", "olcum"])
-        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("kolon-olcum", "baglam", "olcum"))][-1], "parquet")
-        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("olcum",))][-2:], ["parquet", "kolon-olcum"])
+        self.assertEqual(acik[-4:], ["parquet", "kolon-olcum", "tarama-duckdb", "olcum"])  # tarama-duckdb: İB-38 (08-29)
+        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("kolon-olcum", "tarama-duckdb", "baglam", "olcum"))][-1], "parquet")
+        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("olcum",))][-3:], ["parquet", "kolon-olcum", "tarama-duckdb"])
+        self.assertEqual(m.adim_durumu("tarama-duckdb", 4), ("ATLANDI", False))
 
     def test_yorumlayici_parquet_adimlari_venv(self):
         # Karar 63 (venv) / İB-30: parquet adımları repo-içi .venv/bin/python varsa onunla, yoksa sys.executable ile; diğer adımlar hep sys.executable
