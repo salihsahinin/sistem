@@ -70,8 +70,21 @@ def atla_sec(secim):
 def adimlari_sec(parquet=False, atla=()):
     """Koşulacak adım listesi (ad, komut): temel hat + (parquet bayrağıyla) kolon katmanı; --atla adları çıkarılır."""
     atla = set(atla)
-    secili = list(ADIMLAR) + (list(PARQUET_ADIMLAR) if parquet else [])
+    secili = list(ADIMLAR)
+    if parquet:  # kolon katmanı olcum'un ÖNÜNE girer (kanon §8 S3: olcum SON ADIM kalır; parquet_uretim satırları olcum testine görünür — İB-31, 08-29)
+        i = next((n for n, (ad, _) in enumerate(secili) if ad == "olcum"), len(secili))
+        secili = secili[:i] + list(PARQUET_ADIMLAR) + secili[i:]
     return [(ad, cmd) for ad, cmd in secili if ad not in atla]
+
+
+def yorumlayici_sec(repo, ad):
+    """Adım yorumlayıcısı: parquet adımları (duckdb ister) repo-içi `.venv/bin/python` varsa onunla koşar (Karar 63 KB-55 'venv';
+    İB-30 'duckdb venv yolu hat'a bağlanır', 08-29); yoksa sys.executable → ambar-parquet çıkış 4 → ATLANDI (hat düşmez)."""
+    if ad in {x for x, _ in PARQUET_ADIMLAR}:
+        venv_py = os.path.join(repo, ".venv", "bin", "python")
+        if os.path.exists(venv_py):
+            return venv_py
+    return sys.executable
 
 
 def adim_durumu(ad, returncode):
@@ -127,7 +140,7 @@ def main():
         if a.snapshot and ad in ("karar",): args += ["--snapshot", a.snapshot]
         if a.snapshot and ad == "olcum": args += ["--simdi", a.snapshot + "T00:00:00"]
         t0 = time.time()
-        r = subprocess.run([sys.executable] + args, cwd=repo, capture_output=True, text=True)
+        r = subprocess.run([yorumlayici_sec(repo, ad)] + args, cwd=repo, capture_output=True, text=True)
         dt = time.time() - t0
         durum, duser = adim_durumu(ad, r.returncode)
         print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}")

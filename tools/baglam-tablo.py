@@ -628,6 +628,10 @@ CREATE TABLE uretim (
   anahtar_sayisi INTEGER, json_kayit_sayisi INTEGER, sure_sn REAL, python_surumu TEXT,
   kayit_id_kume_sha TEXT, notlar TEXT
 );
+CREATE TABLE parquet_uretim (
+  kosum_id TEXT, tablo TEXT, durum TEXT, satir INTEGER, byte INTEGER, ms REAL,
+  git_head TEXT, uretim_ts TEXT, duckdb TEXT, neden TEXT
+);
 CREATE INDEX ix_kayit_dosya ON kayit(dosya_id, sira);
 CREATE INDEX ix_kayit_dosya_satir ON kayit(dosya_id, satir_bas, satir_son);  -- KB-53 (a) İB-26: adresli erişim (dosya + satır aralığı) bileşik indeksi, 08-22
 CREATE INDEX ix_ref_kayit ON referans(kayit_id);

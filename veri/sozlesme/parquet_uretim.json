@@ -1,0 +1,20 @@
+{
+ "tablo": "parquet_uretim",
+ "surum": "1.0.0-deneysel-m29",
+ "katman": "silver",
+ "grain": "1 satır = 1 (ambar-parquet koşumu × tablo) üretim/eşdeğerlik olgusu; durum ∈ {OK, ESDEGERLIK-FAIL, HATA, ATLANDI, KURU}; aynı git_head için son koşum geçerli (idempotent üstüne-yazma); tablo baglam-tablo DDL'inde boş yaratılır, tools/ambar-parquet.py doldurur (İB-31, KB-55 a)",
+ "kolonlar": [
+  {"ad": "kosum_id", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "tablo", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "durum", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "satir", "tip": "INTEGER", "not_null": false, "pk": false},
+  {"ad": "byte", "tip": "INTEGER", "not_null": false, "pk": false},
+  {"ad": "ms", "tip": "REAL", "not_null": false, "pk": false},
+  {"ad": "git_head", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "uretim_ts", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "duckdb", "tip": "TEXT", "not_null": false, "pk": false},
+  {"ad": "neden", "tip": "TEXT", "not_null": false, "pk": false}
+ ],
+ "kural": "additive-only: kolon EKLEME serbest; silme/tip değişimi/kısıt kaldırma = KIRICI (yeni sürüm + emeklilik damgası)",
+ "kaynak": "tools/ambar-parquet.py + tools/baglam-tablo.py DDL (İB-31, 2026-08-29)"
+}

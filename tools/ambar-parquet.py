@@ -203,6 +203,22 @@ def main():
         os.replace(tmp, hedef)  # atomik takas (temp → rename; C-YT2)
         ozet.append({"tablo": tablo, "durum": "OK", "satir": n_sq, "byte": os.path.getsize(hedef), "ms": round(ms, 1),
                      "sort_key": sort_key, "dosya": os.path.relpath(hedef, repo)})
+    # İB-31 (KB-55 a, 08-29): eşdeğerlik/üretim özeti silver `parquet_uretim` tablosuna — katman-olcum testi buradan okur
+    # (ESDEGERLIK-FAIL/HATA = 0 · parquet git_head = silver HEAD). Aynı HEAD için son koşum geçerli (idempotent); tablo baglam-tablo DDL'inde
+    # boş yaratılır, hat sıfırdan kurulduğunda satır yoksa test 0 ihlal (parquet koşmadı = ihlal değil). Kuru koşumda yazılmaz.
+    if not a.kuru:
+        try:
+            sq.execute("CREATE TABLE IF NOT EXISTS parquet_uretim (kosum_id TEXT, tablo TEXT, durum TEXT, satir INTEGER, byte INTEGER, ms REAL, "
+                       "git_head TEXT, uretim_ts TEXT, duckdb TEXT, neden TEXT)")
+            kosum_id = "parquet:%s:%s" % (head, uretim_ts)
+            sq.execute("DELETE FROM parquet_uretim WHERE git_head=?", (head,))
+            sq.executemany("INSERT INTO parquet_uretim VALUES (?,?,?,?,?,?,?,?,?,?)",
+                           [(kosum_id, o["tablo"], o["durum"], o.get("satir"), o.get("byte"), o.get("ms"), head, uretim_ts, duckdb.__version__,
+                             json.dumps(o.get("neden") or o.get("farklar"), ensure_ascii=False) if (o.get("neden") or o.get("farklar")) else None)
+                            for o in ozet])
+            sq.commit()
+        except sqlite3.Error as e:
+            print("UYARI: parquet_uretim yazılamadı (silver salt-okur/kilitli?): %s" % e, file=sys.stderr)
     con.close(); sq.close()
 
     ok = [o for o in ozet if o["durum"] == "OK"]

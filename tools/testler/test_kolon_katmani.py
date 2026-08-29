@@ -398,8 +398,23 @@ class KatmanHattiSecimTest(unittest.TestCase):
         temel = [a for a, _ in m.adimlari_sec()]
         self.assertNotIn("parquet", temel); self.assertNotIn("kolon-olcum", temel)
         acik = [a for a, _ in m.adimlari_sec(parquet=True)]
-        self.assertEqual(acik[-2:], ["parquet", "kolon-olcum"])
-        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("kolon-olcum", "baglam"))][-1], "parquet")
+        # 08-29 (İB-31): kolon katmanı olcum'un ÖNÜNDE koşar — olcum SON ADIM kalır (kanon §8 S3), parquet_uretim satırları olcum testine görünür
+        self.assertEqual(acik[-3:], ["parquet", "kolon-olcum", "olcum"])
+        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("kolon-olcum", "baglam", "olcum"))][-1], "parquet")
+        self.assertEqual([a for a, _ in m.adimlari_sec(parquet=True, atla=("olcum",))][-2:], ["parquet", "kolon-olcum"])
+
+    def test_yorumlayici_parquet_adimlari_venv(self):
+        # Karar 63 (venv) / İB-30: parquet adımları repo-içi .venv/bin/python varsa onunla, yoksa sys.executable ile; diğer adımlar hep sys.executable
+        m = modul("katman-hatti.py")
+        bos = tempfile.mkdtemp(prefix="hat-venv-")
+        try:
+            self.assertEqual(m.yorumlayici_sec(bos, "parquet"), sys.executable)
+            os.makedirs(os.path.join(bos, ".venv", "bin")); open(os.path.join(bos, ".venv", "bin", "python"), "w").close()
+            self.assertEqual(m.yorumlayici_sec(bos, "parquet"), os.path.join(bos, ".venv", "bin", "python"))
+            self.assertEqual(m.yorumlayici_sec(bos, "kolon-olcum"), os.path.join(bos, ".venv", "bin", "python"))
+            self.assertEqual(m.yorumlayici_sec(bos, "baglam"), sys.executable)
+        finally:
+            shutil.rmtree(bos, ignore_errors=True)
 
     def test_adim_durumu_parquet_4_atlandi_hat_dusmez(self):
         m = modul("katman-hatti.py")
@@ -417,10 +432,13 @@ class KatmanHattiSecimTest(unittest.TestCase):
             self.assertIn(ad, h.stdout)
         bos = tempfile.mkdtemp(prefix="hat-bos-")
         try:
-            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, karar,prompt,ambar,hareket,tarama,olcum")
+            # Boş repoda hiçbir adım koşmamalı: liste hattın kendi ADIMLAR'ından türetilir (08-29: sabit liste bayatlamıştı — deneyim/bag gibi
+            # sonradan eklenen FAIL-LOUD adımlar boş repoda çıkış 2 veriyordu; test yankı + yardım metnini sınar, adım kümesini değil)
+            m = modul("katman-hatti.py")
+            tum = [a for a, _ in m.adimlari_sec()]
+            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, " + ",".join(tum[1:]))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-            self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")],
-                             ["[atla ] %s" % ad for ad in ("baglam", "karar", "prompt", "ambar", "hareket", "tarama", "olcum")])
+            self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")], ["[atla ] %s" % ad for ad in tum])
             # FAIL-LOUD: yazım hatalı --atla adı 'atlandı' diye yankılanmaz; stderr'de listelenir, çıkış 2, hiçbir adım koşmaz
             r2 = kos("katman-hatti.py", "--repo", bos, "--atla", "olcum,parquett")
             self.assertEqual(r2.returncode, 2, r2.stdout + r2.stderr)
