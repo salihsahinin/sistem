@@ -38,3 +38,8 @@ Jarvis'in kendi veri katmanı (bronz/silver/gold) GBM için aday veri üretiyor:
 - Anakronizm-denetim yanlış-pozitif ayıklama (433 bronz satır, 114 ihlal/319 uyarı zaten etiketli gibi duruyor — en hazır veri, ilk model denemesi için aday)
 - Görev başına token tüketim tahmini (m.25 −%30 hedefine hizmet)
 Sıra: önce P1-P17 dersini bitir (model eğitme deneyimi yok, varyans P3'te yeniden kurulacak), sonra en hazır veri olan anakronizm-ayıklama üzerinde ilk uygulamalı model denemesi.
+
+## Anlatılacaklar kuyruğu — P17 sonrası açılan konular (2026-08-29)
+P1-P17 tamamlandı (bkz. yukarıdaki durum tablosu), sentetik veri + CatBoost pratiği bitti (QuerySoftMax → YetiRank, ders dışı ama fiilen koşuldu, bkz. `kuyruk/ders-gbm/`). Ders sonrası soru-cevap akışında açılan, henüz P-numarası verilmemiş, sıradaki oturumda ELLE (P3/P9-P12 disipliniyle: tanım→mekanizma→somut örnek→ispat) işlenecek konular:
+
+- **Uplift modeli (2026-08-29 talebi):** "rekabeti diri tutmak için hangi galerilere promosyon" sorusundan doğdu — ters-sıralamanın neden bunu cevaplamadığı (item-özel uyumsuzluk ≠ genel pasiflik) zaten anlatıldı, kısa bir "nasıl yapılır" da verildi (nedensel çıkarımın imkansız problemi, rastgele A/B deneyi, T-learner iki-CatBoost-modeli, Qini eğrisi) — ama BU, hızlı/özet geçişti, dersin "yavaş, elle, ispatlı" standardında DEĞİL. Sıradaki oturumda: (1) nedensel çıkarımın imkansız problemini küçük somut bir örnekle (G1-G5 tarzı, 5 galeri) yeniden kur, (2) rastgele deney tasarımını elle simüle et (sentetik veri gibi), (3) T-learner'ı iki küçük ağaçla elle hesapla, (4) Qini eğrisini elle bir kaç noktayla çiz. Akraba: F7 (CatBoost tangent'indeki ileri fikir, aynı konu).
