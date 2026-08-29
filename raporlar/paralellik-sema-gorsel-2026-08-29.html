@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paralellik Şeması — Bernstein → Manifest + PK Kuralları (İB-63)</title>
+<style>
+  :root { --bg:#12100d; --panel:#1c1915; --panel2:#242019; --ink:#e8e2d6; --dim:#a89f8d; --line:#3a342a;
+          --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --acc:#d4b483; --code:#8ecae6; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink);
+      font:15px/1.55 -apple-system,'SF Pro Text',Segoe UI,sans-serif; }
+  .wrap { max-width:1060px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:26px; margin:0 0 4px; color:var(--acc); } h2 { font-size:19px; margin:34px 0 10px; color:var(--acc);
+      border-bottom:1px solid var(--line); padding-bottom:6px; }
+  h3 { font-size:15px; margin:18px 0 6px; }
+  .kunye { color:var(--dim); font-size:13px; margin-bottom:6px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:10px 0; }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; } .tscroll { overflow-x:auto; }
+  th,td { border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  th { background:var(--panel2); color:var(--acc); font-weight:600; }
+  code, .mono { font-family:'SF Mono',Menlo,monospace; font-size:12.5px; color:var(--code); }
+  pre { background:#0d0b09; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto;
+        font-size:12.5px; line-height:1.5; color:var(--code); }
+  .tag { display:inline-block; padding:1px 8px; border-radius:99px; font-size:11.5px; border:1px solid var(--line); margin-left:6px; }
+  .t-ok { color:var(--ok); border-color:var(--ok); } .t-bad { color:var(--bad); border-color:var(--bad); }
+  .t-warn { color:var(--warn); border-color:var(--warn); } .t-acc { color:var(--acc); }
+  .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px; }
+  .grid2 > * { min-width:0; }
+  .pk { border-left:3px solid var(--acc); }
+  .src { color:var(--dim); font-size:11.5px; }
+  svg { max-width:100%; height:auto; display:block; margin:8px auto; }
+  .not { color:var(--dim); font-size:13px; }
+  ul { margin:6px 0; padding-left:22px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Paralellik Şeması — tam hal</h1>
+<div class="kunye">İB-63 atlası ürünü · Bernstein Koşulları → birim-manifest şeması (20 alan) + PK-1..12 kural seti + deterministik kapı · AS-OF 2026-08-29 seans-21 · kanıt zinciri: <span class="mono">raporlar/2026-08-29-ib63-paralel-pipeline-atlas.md</span> (tez/antitez/V26/hakem dosyalarıyla) · statü: <b>ADAY — implement hükmü karar masasında</b> (m.31); A1 bağlantısı Karar 81 EK-2 ile İMZALI.</div>
+
+<h2>1 · Çekirdek: Bernstein Koşulları (senin "lineer bağımsızlık" sezginin formal adı)</h2>
+<div class="card">
+<p>İki iş birimi <b>P₁</b> ve <b>P₂</b>; her birinin okuma kümesi <b>O</b> (okur) ve yazma kümesi <b>Y</b> (yazar). Üç kesişim de boşsa sıra fark etmez → <b>paralel-güvenli</b>:</p>
+<svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bernstein koşulları küme diyagramı">
+  <!-- P1 -->
+  <rect x="30" y="40" width="270" height="210" rx="12" fill="#242019" stroke="#3a342a"/>
+  <text x="165" y="66" fill="#d4b483" font-size="16" text-anchor="middle" font-weight="600">P₁ (ör. İB-58 axi-standardı)</text>
+  <ellipse cx="110" cy="160" rx="62" ry="46" fill="#8ecae622" stroke="#8ecae6"/>
+  <text x="110" y="156" fill="#8ecae6" font-size="13" text-anchor="middle">O₁ okur</text>
+  <text x="110" y="174" fill="#8ecae6" font-size="10.5" text-anchor="middle">KILAVUZ, cc/…</text>
+  <ellipse cx="222" cy="160" rx="62" ry="46" fill="#f8717122" stroke="#f87171"/>
+  <text x="222" y="156" fill="#f87171" font-size="13" text-anchor="middle">Y₁ yazar</text>
+  <text x="222" y="174" fill="#f87171" font-size="10.5" text-anchor="middle">tools/katman-hatti.py</text>
+  <!-- P2 -->
+  <rect x="660" y="40" width="270" height="210" rx="12" fill="#242019" stroke="#3a342a"/>
+  <text x="795" y="66" fill="#d4b483" font-size="16" text-anchor="middle" font-weight="600">P₂ (ör. İB-30 --parquet)</text>
+  <ellipse cx="740" cy="160" rx="62" ry="46" fill="#8ecae622" stroke="#8ecae6"/>
+  <text x="740" y="156" fill="#8ecae6" font-size="13" text-anchor="middle">O₂ okur</text>
+  <text x="740" y="174" fill="#8ecae6" font-size="10.5" text-anchor="middle">veri/, graf/</text>
+  <ellipse cx="852" cy="160" rx="62" ry="46" fill="#f8717122" stroke="#f87171"/>
+  <text x="852" y="156" fill="#f87171" font-size="13" text-anchor="middle">Y₂ yazar</text>
+  <text x="852" y="174" fill="#f87171" font-size="10.5" text-anchor="middle">tools/katman-hatti.py</text>
+  <!-- kesişim okları -->
+  <line x1="284" y1="150" x2="790" y2="150" stroke="#f87171" stroke-width="2.2" stroke-dasharray="6 4"/>
+  <text x="480" y="120" fill="#f87171" font-size="13.5" text-anchor="middle" font-weight="600">Y₁ ∩ Y₂ = {katman-hatti.py} ≠ ∅ → ÇAKIŞMA</text>
+  <text x="480" y="140" fill="#f87171" font-size="12" text-anchor="middle">(gerçek vaka: iç envanterde doğrulandı)</text>
+  <line x1="170" y1="205" x2="800" y2="205" stroke="#4ade80" stroke-width="1.6"/>
+  <text x="480" y="228" fill="#4ade80" font-size="12.5" text-anchor="middle">O₁∩Y₂ = ∅ ✓ · Y₁∩O₂ = ∅ ✓ — ama üçünden BİRİ dolu olduğu için hüküm: SIRALI</text>
+  <text x="480" y="278" fill="#e8e2d6" font-size="14" text-anchor="middle" font-weight="600">Kural: (Y₁∩Y₂ = ∅) ∧ (Y₁∩O₂ = ∅) ∧ (O₁∩Y₂ = ∅) → PARALEL-SERBEST; değilse SIRALI ∨ RED</text>
+</svg>
+<p class="not"><b>Hakem hükmü (kritik):</b> Bu koşul <b>GEREKLİDİR ama tek başına YETERLİ DEĞİLDİR</b>. Dört belgeli delik: görünmez ayak izleri (özdeş 1000 LLM-koşumu → 80 farklı çıktı), granülerlik seçimi, dışa-görünür yan etkiler, dinamik kümeler. Delikleri şemanın kalan alanları + PK-2..12 kapatır: <b>beyan + zorlama + doğrulama</b> rejimi ve <b>sıralama ↔ dışlama çift-ekseni</b>.</p>
+</div>
+
+<h2>2 · Birim-manifest şeması — 20 alan (pipeline + loop ortak)</h2>
+<div class="tscroll"><table>
+  <tr><th>Grup</th><th>Alan</th><th>Ne taşır</th><th>Kaynak</th></tr>
+  <tr><td rowspan="3">Kimlik</td><td><code>birim_id</code></td><td>İB-xx ya da <code>loop:katman-hatti</code></td><td rowspan="3" class="src">emir + hız-sapması dersi (pist)</td></tr>
+  <tr><td><code>tur</code></td><td>pipeline | loop</td></tr>
+  <tr><td><code>pist</code></td><td>K-010 | K-015 | K-022 | meta — otonomi-pisti payı ölçülebilir olsun (26 gün/%2 vakası bir daha görünmez kalmasın)</td></tr>
+  <tr><td rowspan="3">Ayak izi<br><span class="src">(Bernstein girdisi)</span></td><td><code>okur[]</code></td><td>okunan dosya/dizin/<code>sqlite#tablo</code> öğeleri</td><td rowspan="3" class="src">hakem-A Kural-Taslak-1, 3</td></tr>
+  <tr><td><code>yazar[]</code></td><td>yazılan öğeler — <b>yan ürünler dahil</b> (log, türev, cache)</td></tr>
+  <tr><td><code>granul</code></td><td>dosya | bolum | kayit — kesişim denetimi ORTAK granülde; belirsizlik → dosyaya terfi</td></tr>
+  <tr><td rowspan="2">Sıra ↔ Dışlama<br><span class="src">(çift eksen)</span></td><td><code>sira[]</code></td><td>statik DAG kenarları (needs-benzeri); koşumda keşif YASAK, gerekirse restart</td><td rowspan="2" class="src">hakem-A KT-5 + hakem-B m.6-5</td></tr>
+  <tr><td><code>dislama_grubu</code></td><td>adlandırılmış kira: <code>silver-yazar</code> | <code>kanon-yazar</code> | null — TTL + sahip + yenileme + ölü-sahip süpürgesi; <b>Salih'in kilidi asla süpürülmez</b></td></tr>
+  <tr><td rowspan="4">Jarvis-özel</td><td><code>silver</code></td><td>okur | yazar | hayir — <code>yazar</code> ikiliği ASLA paralel (tek-yazar kuyruğu + busy_timeout)</td><td rowspan="4" class="src">hakem-B m.3 + iç envanter</td></tr>
+  <tr><td><code>commit_kapsami[]</code></td><td>bu birimin <code>git add</code> yol listesi (H4 kuralının makineleşmesi)</td></tr>
+  <tr><td><code>kanon_yuzeyi</code></td><td>true → HER ŞEYLE sıralı + Salih imza hattı; otomasyon paketine giremez</td></tr>
+  <tr><td><code>dis_etki[]</code></td><td>push, bildirim, dış-API… — varsa seri-sınıf ∨ idempotency zorunlu</td></tr>
+  <tr><td rowspan="3">Zorlama<br><span class="src">(hermetiklik rejimi)</span></td><td><code>zorlama_modu</code></td><td>worktree | yol-kapisi | yok — tam-beyan VARSAYILMAZ, kısıtlanır</td><td rowspan="3" class="src">hakem-A KT-4 (beyan+zorla+doğrula)</td></tr>
+  <tr><td><code>beyan_disi_politikasi</code></td><td>hata | seri — beyan-dışı erişimde gürültülü hata ya da otomatik-serileştirme</td></tr>
+  <tr><td><code>idempotency_anahtari</code></td><td>retry kimliği; graf-dışı kalıcı kayıtta</td></tr>
+  <tr><td rowspan="3">Loop-üçlüsü</td><td><code>iterasyon_ayak_izi</code></td><td>sabit | buyuyen — büyüyense kapı her N iterasyonda yeniden değerlendirir</td><td rowspan="3" class="src">emir kapsamı (Salih 2. beyanı)</td></tr>
+  <tr><td><code>tetik_turu</code></td><td>zamanli | olayli | seans</td></tr>
+  <tr><td><code>durma_kosulu</code></td><td>loop için ZORUNLU alan (V47 durma-kurallı düzenle aynı aile)</td></tr>
+  <tr><td rowspan="3">Ajan-üçlüsü</td><td><code>kapsam_beyani</code></td><td>ajanın dokunacağı alan beyanı</td><td rowspan="3" class="src">hakem-A KT-6: paralel-izin güvenlik verir, doğruluk vermez</td></tr>
+  <tr><td><code>belirlenimsiz_girdi[]</code></td><td>model-çıktısı, web… — görünmez okuma kümeleri DAMGALANIR</td></tr>
+  <tr><td><code>dogrulama_kapisi</code></td><td>çıktıyı doğrulayan test/karşılaştırma adımı</td></tr>
+</table></div>
+
+<h3>Doldurulmuş iki örnek (gerçek birimler)</h3>
+<div class="grid2">
+<pre>{ "birim_id": "İB-58",            <span style="color:#a89f8d">// pipeline örneği</span>
+  "tur": "pipeline", "pist": "meta",
+  "okur": ["KILAVUZ.md", "tools/katman-hatti.py",
+           "cc/rapor-2026-08-22-*.md"],
+  "yazar": ["tools/katman-hatti.py",
+            "cc/rapor-*-ib58.md"],
+  "granul": "dosya",
+  "sira": ["İB-30"],               <span style="color:#4ade80">// masa-girdisi ④: sıra kenarı</span>
+  "dislama_grubu": null,
+  "silver": "okur",
+  "commit_kapsami": ["tools/", "cc/"],
+  "kanon_yuzeyi": false,
+  "dis_etki": [], "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "kapsam_beyani": "katman-hatti axi sarımı",
+  "belirlenimsiz_girdi": ["model-çıktısı"],
+  "dogrulama_kapisi": "katman-hatti 16-adım exit 0" }</pre>
+<pre>{ "birim_id": "loop:katman-hatti", <span style="color:#a89f8d">// loop örneği</span>
+  "tur": "loop", "pist": "meta",
+  "okur": ["core/", "kuyruk/", "cc/", "raporlar/",
+           "veri/bronz/"],
+  "yazar": ["veri/baglam.sqlite",
+            "veri/gorunum/*.csv", "graf/*"],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": "silver-yazar",  <span style="color:#f87171">// PK-5: tek kira</span>
+  "silver": "yazar",
+  "commit_kapsami": ["veri/", "graf/"],
+  "kanon_yuzeyi": false, "dis_etki": [],
+  "zorlama_modu": "yok",            <span style="color:#fbbf24">// bugün: kilitsiz!</span>
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "16 adım exit 0 ∨ hata" }</pre>
+</div>
+
+<h2>3 · PK-1..12 kural seti</h2>
+<div class="grid2">
+<div class="card pk"><b>PK-1 · Bernstein gerekliliği</b><br>Çakışan çift (aynı öğe ∧ ≥1 yazma) → ya AYRIK ya <code>sira</code> ile SIRALI; ikisi de değilse RED.<div class="src">Bernstein/BHG Teorem 2.1 — hakemlikten SAĞLAM</div></div>
+<div class="card pk"><b>PK-2 · Yeterlilik şerhi</b><br>PK-1 geçse bile <code>dis_etki≠∅ ∨ belirlenimsiz_girdi≠∅</code> → PK-6/9 devrede. Paralel-izin güvenlik verir; doğruluk <code>dogrulama_kapisi</code>nındır.<div class="src">hakem-A KT-6/7</div></div>
+<div class="card pk"><b>PK-3 · Granül eşitliği</b><br>Kesişim denetimi ortak granülde; belirsizlik → dosya granülüne terfi (kaba-güvenli).<div class="src">hakem-A KT-3 (PG kilit-terfisi emsali)</div></div>
+<div class="card pk"><b>PK-4 · Beyan zorlaması</b><br>Hermetiklik varsayılmaz: <code>zorlama_modu</code> kısıtlar, beyan-dışı erişim politikaya göre hata ∨ otomatik-seri.<div class="src">hakem-A KT-4 (Bazel emsali)</div></div>
+<div class="card pk"><b>PK-5 · Silver tek-yazar</b><br><code>silver:yazar</code> iki birim ASLA paralel; tek uygulama-kuyruğu + <code>busy_timeout</code> (dolarsa kuyruğa iade); <code>dislama_grubu:"silver-yazar"</code> zorunlu.<div class="src">SQLite WAL sözleşmesi — hakem-B'de SAĞLAM</div></div>
+<div class="card pk"><b>PK-6 · Kanon yüzeyi</b><br><code>kanon_yuzeyi:true</code> birim her şeyle sıralı + Salih imza hattında; hiçbir otomasyon paketine paralel giremez.<div class="src">m.31/m.41 + iç envanter (deny boşluğu)</div></div>
+<div class="card pk"><b>PK-7 · Çift eksen</b><br>Sıra = statik çevrimsiz DAG (koşumda keşif yasak). Dışlama = adlandırılmış kira (TTL+sahip+yenileme+süpürge; <b>Salih kilidi süpürülmez</b>). Biri diğerine indirgenemez.<div class="src">hakem-B m.5-6 + orkestratör emsalleri</div></div>
+<div class="card pk"><b>PK-8 · Bütünlük ≠ tazelik</b><br>Yazım: write-then-swap. Bayat-okuma AYRI fren ister: sürüm-damgalı KOŞULLU yazma (atomic-rename bayat-okumayı kapsamaz — git lockfile "eski VEYA yeni").<div class="src">hakem-B m.4 (alt-iddia düşüşünden doğdu)</div></div>
+<div class="card pk"><b>PK-9 · Dış etki</b><br><code>dis_etki</code>li birim ya seri-sınıf ya idempotency-anahtarlı; retry kimliği graf-dışı kalıcı kayıtta.<div class="src">hakem-A KT-7</div></div>
+<div class="card pk"><b>PK-10 · Loop iterasyonu</b><br>İki loop ancak ayak izleri HER iterasyonda ayrıksa paralel; <code>buyuyen</code> ayak izi → periyodik yeniden değerlendirme.<div class="src">emir kapsamı + KT-5 dinamik-keşif</div></div>
+<div class="card pk"><b>PK-11 · Koşum-önü kapı</b><br>Paralel paket açılmadan <code>tools/paralel-kapi.py</code> (LLM'siz, Karar 65) tüm çiftleri tarar → PARALEL-SERBEST / SIRALI(neden) / RED(neden). Kapısız fan-out yasak — İB-54 freninin küme-düzeyi eşi.<div class="src">İB-63 sentezi</div></div>
+<div class="card pk"><b>PK-12 · Ana-oturum önceliği</b><br>Loop, ana-oturumun beyan edilmiş yazar-kümesine dokunuyorsa BEKLER — canlı-paralel H4 kuralının loop düzlemine genelleşmesi.<div class="src">paralel-oturum protokolü + iç envanter</div></div>
+</div>
+
+<h2>4 · Deterministik kapı — karar akışı (paralel-kapi.py)</h2>
+<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kapı karar akışı">
+  <defs><marker id="ok" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 z" fill="#a89f8d"/></marker></defs>
+  <rect x="380" y="14" width="220" height="44" rx="10" fill="#242019" stroke="#d4b483"/><text x="490" y="41" fill="#d4b483" font-size="14" text-anchor="middle">Çift (Pᵢ, Pⱼ) al — manifest'lerden</text>
+  <line x1="490" y1="58" x2="490" y2="86" stroke="#a89f8d" marker-end="url(#ok)"/>
+  <rect x="360" y="88" width="260" height="42" rx="10" fill="#242019" stroke="#3a342a"/><text x="490" y="114" fill="#e8e2d6" font-size="13.5" text-anchor="middle">PK-6: biri kanon_yuzeyi mi?</text>
+  <line x1="620" y1="109" x2="770" y2="109" stroke="#f87171" marker-end="url(#ok)"/><text x="695" y="100" fill="#f87171" font-size="12" text-anchor="middle">evet</text>
+  <rect x="772" y="88" width="182" height="42" rx="10" fill="#2b1414" stroke="#f87171"/><text x="863" y="114" fill="#f87171" font-size="13" text-anchor="middle">SIRALI + Salih hattı</text>
+  <line x1="490" y1="130" x2="490" y2="156" stroke="#a89f8d" marker-end="url(#ok)"/><text x="512" y="150" fill="#a89f8d" font-size="12">hayır</text>
+  <rect x="360" y="158" width="260" height="42" rx="10" fill="#242019" stroke="#3a342a"/><text x="490" y="184" fill="#e8e2d6" font-size="13.5" text-anchor="middle">PK-5: ikisi de silver:yazar mı?</text>
+  <line x1="620" y1="179" x2="770" y2="179" stroke="#f87171" marker-end="url(#ok)"/><text x="695" y="170" fill="#f87171" font-size="12" text-anchor="middle">evet</text>
+  <rect x="772" y="158" width="182" height="42" rx="10" fill="#2b1414" stroke="#f87171"/><text x="863" y="184" fill="#f87171" font-size="13" text-anchor="middle">SIRALI (tek kuyruk)</text>
+  <line x1="490" y1="200" x2="490" y2="226" stroke="#a89f8d" marker-end="url(#ok)"/><text x="512" y="220" fill="#a89f8d" font-size="12">hayır</text>
+  <rect x="330" y="228" width="320" height="56" rx="10" fill="#242019" stroke="#3a342a"/><text x="490" y="251" fill="#e8e2d6" font-size="13.5" text-anchor="middle">PK-1 (ortak granülde, PK-3):</text><text x="490" y="270" fill="#8ecae6" font-size="13" text-anchor="middle">Y∩Y = ∅ ∧ Y∩O = ∅ ∧ O∩Y = ∅ ?</text>
+  <line x1="650" y1="256" x2="770" y2="256" stroke="#fbbf24" marker-end="url(#ok)"/><text x="710" y="247" fill="#fbbf24" font-size="12" text-anchor="middle">hayır</text>
+  <rect x="772" y="228" width="182" height="56" rx="10" fill="#2b2414" stroke="#fbbf24"/><text x="863" y="251" fill="#fbbf24" font-size="13" text-anchor="middle">sira kenarı var mı?</text><text x="863" y="270" fill="#fbbf24" font-size="11.5" text-anchor="middle">var → SIRALI · yok → RED</text>
+  <line x1="490" y1="284" x2="490" y2="310" stroke="#a89f8d" marker-end="url(#ok)"/><text x="512" y="304" fill="#4ade80" font-size="12">evet</text>
+  <rect x="330" y="312" width="320" height="42" rx="10" fill="#242019" stroke="#3a342a"/><text x="490" y="338" fill="#e8e2d6" font-size="13.5" text-anchor="middle">PK-9/2: dis_etki idempotent-siz mi?</text>
+  <line x1="650" y1="333" x2="770" y2="333" stroke="#f87171" marker-end="url(#ok)"/><text x="710" y="324" fill="#f87171" font-size="12" text-anchor="middle">evet</text>
+  <rect x="772" y="312" width="182" height="42" rx="10" fill="#2b1414" stroke="#f87171"/><text x="863" y="338" fill="#f87171" font-size="13" text-anchor="middle">SIRALI (seri-sınıf)</text>
+  <line x1="490" y1="354" x2="490" y2="380" stroke="#a89f8d" marker-end="url(#ok)"/><text x="512" y="374" fill="#a89f8d" font-size="12">hayır</text>
+  <rect x="340" y="382" width="300" height="52" rx="10" fill="#14261b" stroke="#4ade80"/><text x="490" y="404" fill="#4ade80" font-size="14.5" text-anchor="middle" font-weight="600">PARALEL-SERBEST</text><text x="490" y="423" fill="#4ade80" font-size="11.5" text-anchor="middle">(loop ise PK-10/12 koşum-boyu izlenir; kira PK-7 ile alınır)</text>
+</svg>
+
+<h2>5 · 4-düzlem çakışma matrisi — bugünkü gerçek çiftler (iç envanter, kaynak-koddan doğrulanmış)</h2>
+<div class="tscroll"><table>
+  <tr><th>Düzlem</th><th>Gerçek riskli çift</th><th>Çakışma türü</th><th>Bugünkü koruma</th><th>Çözen kural</th></tr>
+  <tr><td>loop × loop</td><td>katman-hatti × katman-hatti (iki oturum)</td><td>silver son-yazan-kazanır (kilitsiz tmp→replace)</td><td><span class="tag t-bad">yalnız el kararı</span></td><td>PK-5 + PK-7 kira</td></tr>
+  <tr><td>pipeline × pipeline</td><td>İB-58 × İB-30</td><td>Y∩Y = {tools/katman-hatti.py}</td><td><span class="tag t-bad">AÇIK</span></td><td>PK-1 → <code>sira</code> kenarı</td></tr>
+  <tr><td>loop × pipeline</td><td>seans-kapanış × silver-yazan herhangi İB</td><td>kapanış katman-hatti'yi çağırır → silver ikili-yazar</td><td><span class="tag t-warn">ritüel disiplini</span></td><td>PK-5 dışlama-grubu</td></tr>
+  <tr><td>loop × ana-oturum</td><td>hareket-kütüğü/bayat-çekim × ana-oturum dosyaları</td><td>Y∩O bayat-okuma</td><td><span class="tag t-warn">H4 (yalnız commit'te)</span></td><td>PK-12 + PK-8</td></tr>
+</table></div>
+<p class="not">Doğrulanmış yapısal boşluklar: koşum-önü yazar∩yazar kontrolü hiçbir yerde yok · <code>deny:[]</code> → core/ Edit/Write makine-korumasız (tel yalnız Bash) · kira mekanizması 0. Masa-girdisi ④ bu üçünü acil-fren olarak taşıyor.</p>
+
+<h2>6 · K-010 bağlantısı (Karar 81 EK-2 — İMZALI)</h2>
+<div class="card">
+<b>A1 yeni biçim:</b> ardışık <b>5 başarılı otomasyon-koşumu</b> ∧ açık incident 0 — birim KOŞUM, takvim değil; PC 7/24 açık (Karar 81 EK). <b>İlk koşumlar bu şemanın pilotundan sayılır:</b> masa şema+PK'yı imzalar → manifest doldurma turu → <code>paralel-kapi.py</code> → kapının PARALEL-SERBEST verdiği 2-3 İB ile ilk çok-pipeline koşumu → her başarılı koşum A1 sayacına +1. Yani <b>bu sayfadaki şema, K-010 kapısının saatini başlatan mekanizmadır.</b>
+</div>
+
+<div class="not" style="margin-top:26px">Statü: şema + kurallar ADAY (m.31 — hüküm karar masasında; masa tetiği Salih'te). Üretici: Carvis (Fable, ana-sıra) · kaynak zinciri commit'lerde: tezler <span class="mono">c78bba1/719ae1d/ed3ed38</span> · antitezler <span class="mono">4781502/c98914d/253ff96</span> · V26 <span class="mono">1628d6b</span> · hakemler <span class="mono">0f41634/40be3f9</span> · sentez <span class="mono">97089db</span>.</div>
+</div>
+</body>
+</html>
