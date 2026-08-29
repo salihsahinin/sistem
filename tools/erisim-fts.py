@@ -91,8 +91,11 @@ def fts_sorgu_kur(sorgu):
     return parcalar
 
 
-def sorgula(con, sorgu, k=5, genisletme=True, zaman_farkindali=True, guncel_yuzey=False):
-    """Dönüş: (sonuç listesi [kayit_id, dosya_id, katman, zaman, skor, metin_kisa], meta)."""
+GEN_AGIRLIK = 0.5  # bm25 genişletme kolonu ağırlığı (metin 1,0). 2,0 → 0,5 (08-29, İB-43 kalibrasyonu: 7 ağırlık × 100 soru; nDCG@10 0,433→0,452, bilgi-guncelleme r@5 0,40→0,45; kural: her ikisi ≥ mevcut) — değişiklik yalnız tools/erisim-kalibrasyon.py ölçümüyle
+
+
+def sorgula(con, sorgu, k=5, genisletme=True, zaman_farkindali=True, guncel_yuzey=False, gen_agirlik=None):
+    """Dönüş: (sonuç listesi [kayit_id, dosya_id, katman, zaman, skor, metin_kisa], meta). gen_agirlik: genişletme kolonu bm25 ağırlığı (None = GEN_AGIRLIK)."""
     parcalar = fts_sorgu_kur(sorgu)
     meta = {"parca": len(parcalar), "gevsetildi": False, "zaman_filtre": None, "guncel": False, "guncel_yuzey": guncel_yuzey}
     if not parcalar:
@@ -102,7 +105,8 @@ def sorgula(con, sorgu, k=5, genisletme=True, zaman_farkindali=True, guncel_yuze
     if zaman_farkindali and tarihler:
         t = tarihler[0]; zaman_on = t if len(t) == 10 else None; meta["zaman_filtre"] = t
     guncel = bool(zaman_farkindali and GUNCEL_RX.search(sorgu)); meta["guncel"] = guncel
-    agir = "bm25(kayit_fts, 0, 0, 0, 0, 0, 1.0, 2.0)" if genisletme else "bm25(kayit_fts, 0, 0, 0, 0, 0, 1.0, 0.0)"
+    ga = GEN_AGIRLIK if gen_agirlik is None else float(gen_agirlik)
+    agir = "bm25(kayit_fts, 0, 0, 0, 0, 0, 1.0, %s)" % (repr(ga) if genisletme else "0.0")
     kolonlar = "metin" if not genisletme else None
 
     def calistir(match):
@@ -175,7 +179,10 @@ def sorulari_oku(repo):
 def degerlendir(con, sorular, k=5, taban=False):
     yontemler = {"fts5": lambda q: sorgula(con, q, k, genisletme=False, zaman_farkindali=False)[0],
                  "fts5+gen": lambda q: sorgula(con, q, k, genisletme=True, zaman_farkindali=True)[0],
-                 "fts5+guncel": lambda q: sorgula(con, q, k, genisletme=True, zaman_farkindali=True, guncel_yuzey=True)[0]}
+                 "fts5+guncel": lambda q: sorgula(con, q, k, genisletme=True, zaman_farkindali=True, guncel_yuzey=True)[0],
+                 # fts5+auto (08-29, İB-43 kalibrasyonu): güncel yüzey yalnız soruda güncellik sözcüğü varsa (GUNCEL_RX) — deterministik yönlendirme;
+                 # gerekçe: sabit yüzey bilgi-guncelleme'yi 0,40→0,70 çıkarırken cok-oturum/zamansal'ı düşürüyordu; auto ikisini de korudu (v_erisim_kalibrasyon)
+                 "fts5+auto": lambda q: sorgula(con, q, k, genisletme=True, zaman_farkindali=True, guncel_yuzey=bool(GUNCEL_RX.search(q)))[0]}
     if taban:  # COST tabanı (grep): ~370 ms/soru — yalnız --taban ile (hat adımında kapalı; ölçüm turunda açık)
         yontemler = {"grep": lambda q: grep_taban(con, q, k), **yontemler}
     sonuc = []
