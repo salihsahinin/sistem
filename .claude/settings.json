@@ -18,6 +18,15 @@
             "command": "bash .claude/hooks/pretool-core-tel.sh"
           }
         ]
+      },
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/pretool-ajan-fren.sh"
+          }
+        ]
       }
     ],
     "SessionStart": [

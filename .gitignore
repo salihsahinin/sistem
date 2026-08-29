@@ -26,3 +26,6 @@ catboost_info/
 # MIT 6.006 arsivi (Karar 73): 81 MB ikili kaynak — kunye ogrenme/kaynaklar/mit-6006-s20-KUNYE.md
 ogrenme/kaynaklar/mit-6006-s20/
 ogrenme/kaynaklar/mit-6042j-f10/
+
+# Ajan freni sayaç durumu (İB-54; oturum başına, türev)
+.claude/hooks/state/

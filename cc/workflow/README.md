@@ -4,6 +4,7 @@
 
 | dosya | koşum | ne |
 |---|---|---|
+| `fren-sablonu.js` | ŞABLON (koşum değil; 08-29, İB-54 adım 2, Karar 74 M-4 d paket B) | Workflow script'ine kopyalanan deterministik fren bloğu: `ajan()` sarmalayıcısı taahhüt anında sayar, AJAN_TAVAN 36 (p50 12 × 3) aşımında fırlatır; `dalga()` fan-out genişliğini DALGA_TAVAN 12'ye böler (tek-dalga kuralı); rejim etiketi m.46(d). Yeni workflow bu bloğu taşımadan koşulmaz (atlas-kosum/pipeline-kosum emri satırı) |
 | `2026-08-15-skill-semasi-m40b-wf_4eede835.js` | wf_4eede835 (08-15, seans-2 Hat-1) | m.40b çift-atlas: skill-üretim şeması araştırması — aile × (tez → antitez → V26 örneklem → maskeli hakem) |
 | `2026-08-17-silver-temizlik-m40b-wf_bb445659.js` | wf_bb445659 (08-17, seans-8; emir `cc/gorev-2026-08-17-1.md`) | m.40b ekonomi 3 aile (A çelişki-testleri · B bayatlık · C test-mekanizması): tez/antitez Opus-medium → **V26 KURAL-TABANLI** (son üçte-bir + tüm sayısal; Salih 08-17 imzası, rastgele seçim kalktı) Sonnet-low → hakem üst model; model hiyerarşisi KB-02/03 ilk uygulaması (tahmin emirde, gerçekleşen rapor başlığında) |
 | `2026-08-17-hafiza-teknik-m40b-wf_5164f579.js` | wf_5164f579 (08-17, seans-8; emir `cc/gorev-2026-08-17-2.md`; ilk deneme wf_10a18dc7 `DISIPLIN` tanımsız → 0 ajan, düzeltilip yeniden) | aynı iskelet: 3 aile (A literatür taksonomisi · B sektör pratiği · C eksik adayların ölçülmüş kazancı); hakem yapı-taşı = teknik-sınıfı + **Jarvis-eşleme** (kullanıyoruz-eş / kısmi / eksik-aday / girmez); V26 antitez örnekleminde ÇÜRÜTÜLEMEDİ satırları hariç (koşum-1 bulgusu) |
