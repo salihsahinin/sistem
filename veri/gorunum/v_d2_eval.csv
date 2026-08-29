@@ -1,0 +1,5 @@
+kol,n,derleme_ok,ort_precision,ort_recall,ort_dogruluk,tercih_A
+a-uretim,5,5,1.0,1.0,,
+b1-okuma,5,0,,,0.96,
+b2-sql,5,0,,,1.0,
+c-hakem,3,0,,,,2

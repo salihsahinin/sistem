@@ -1,0 +1,1 @@
+{"B2-1": "SELECT COUNT(DISTINCT ref_turu) FROM referans;", "B2-2": "SELECT COUNT(*) FROM referans WHERE ref_turu='dosya_pointer' AND hedef_var=0;", "B2-3": "SELECT ref_turu FROM referans GROUP BY ref_turu ORDER BY COUNT(*) DESC LIMIT 1;", "B2-4": "SELECT COUNT(*) FROM bag;", "B2-5": "SELECT COUNT(*) FROM bag WHERE kural='R1';"}
