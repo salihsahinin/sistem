@@ -1,0 +1,4 @@
+veri/
+catboost_info/
+*.cbm
+model.json
