@@ -1,0 +1,15 @@
+# Denetim paketi P7
+
+KOD: tools/kural-envanter.py → veri/kural-envanter.jsonl (son 5 satır)
+ÖLÇÜT: İDDİA'daki her sayı, ad, işaret/yön, tarih ve dayanak HAM VERİ'de birebir destekleniyorsa PASS; tek bir uyuşmazlık, ham veride olmayan bir dayanak ya da ham verideki tarihle çelişen bir tarih varsa FAIL. Yalnız verilen ham veriye bak; dış bilgi kullanma.
+
+## HAM VERİ
+```
+{"ts": "2026-08-29T12:37:47+03:00", "kod_sha": "a6eaa5f", "kosum_id": "kural-envanter:a6eaa5f:2026-08-29", "tasiyici": "T0 her-oturum", "dosya_sayisi": 1, "birim": 19, "byte": 6033, "siniflar": {"ajan-koşum": 8, "veri-hattı": 4, "karar": 10, "teslim": 5, "ritüel": 3, "git": 6, "üslup-yasak": 4, "kanon-bakım": 7, "zaman": 5}}
+{"ts": "2026-08-29T12:37:47+03:00", "kod_sha": "a6eaa5f", "kosum_id": "kural-envanter:a6eaa5f:2026-08-29", "tasiyici": "T1 ritüel-skill", "dosya_sayisi": 2, "birim": 52, "byte": 15731, "siniflar": {"ritüel": 29, "zaman": 22, "karar": 20, "ajan-koşum": 12, "kanon-bakım": 18, "teslim": 13, "git": 13, "üslup-yasak": 10, "genel": 3, "veri-hattı": 8}}
+{"ts": "2026-08-29T12:37:47+03:00", "kod_sha": "a6eaa5f", "kosum_id": "kural-envanter:a6eaa5f:2026-08-29", "tasiyici": "T2 çağrı-skill", "dosya_sayisi": 14, "birim": 203, "byte": 54297, "siniflar": {"karar": 80, "ajan-koşum": 87, "teslim": 48, "zaman": 43, "genel": 33, "üslup-yasak": 14, "ritüel": 21, "git": 22, "kanon-bakım": 34, "veri-hattı": 32}}
+{"ts": "2026-08-29T12:37:47+03:00", "kod_sha": "a6eaa5f", "kosum_id": "kural-envanter:a6eaa5f:2026-08-29", "tasiyici": "T3 kanon-pointer", "dosya_sayisi": 12, "birim": 416, "byte": 168424, "siniflar": {"ritüel": 73, "karar": 154, "kanon-bakım": 120, "zaman": 102, "üslup-yasak": 44, "ajan-koşum": 164, "genel": 64, "git": 45, "veri-hattı": 100, "teslim": 68}}
+{"ts": "2026-08-29T12:37:47+03:00", "kod_sha": "a6eaa5f", "kosum_id": "kural-envanter:a6eaa5f:2026-08-29", "tasiyici": "T4 wiki", "dosya_sayisi": 20, "birim": 327, "byte": 94657, "siniflar": {"karar": 59, "ajan-koşum": 85, "teslim": 62, "genel": 78, "kanon-bakım": 100, "zaman": 85, "git": 29, "üslup-yasak": 8, "veri-hattı": 80, "ritüel": 27}}
+```
+
+## İDDİA (ölçüm tarihi 2026-07-15): kural envanterinde T0 her-oturum taşıyıcısı 19 birim, T1 ritüel-skill 52 birim, T3 kanon-pointer 416 birim; toplam 1.017 birim.
