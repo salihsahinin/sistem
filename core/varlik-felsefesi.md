@@ -19,9 +19,11 @@ Kanon yalnız işletim kaydı değil, Salih'in kalıcı bilgi tabanıdır: ders 
 | # | Kaynak | Künye | Yerel adres | Statü |
 |---|---|---|---|---|
 | BK-1 | MIT OCW 6.006 Introduction to Algorithms, Spring 2020 (Demaine · Ku · Solomon) — tam site aynası: 21 ders (video transkript+not), 9 problem oturumu, 19 recitation, 8 problem seti+çözüm, 3 quiz+çözüm | [ogrenme/kaynaklar/mit-6006-s20-KUNYE.md](ogrenme/kaynaklar/mit-6006-s20-KUNYE.md) | `ogrenme/kaynaklar/mit-6006-s20/` (gitignore'lu ikili kütle; künye commit'li) | **BİRİNCİL** (Salih beyanı 08-29); ilk kurs bu — sonraki kurslar sırada |
+| BK-2 | MIT OCW 6.042J Mathematics for Computer Science, Fall 2010 (Leighton · van Dijk) — 6.006'nın resmî ÖN-KOŞULU; ispat-vurgulu ayrık matematik: 25 ders videosu (transkriptli), Lehman-Leighton-Meyer kurs notları 20 bölüm (Bölüm 8 OCW'de yok), 46 recitation, 12 problem seti, sınavlar | [ogrenme/kaynaklar/mit-6042j-f10-KUNYE.md](ogrenme/kaynaklar/mit-6042j-f10-KUNYE.md) | `ogrenme/kaynaklar/mit-6042j-f10/` (gitignore'lu; künye commit'li) | **BİRİNCİL** (Salih beyanı 08-29, "1. derece öncelikli"); "neden" görevi: her iddianın gerekçesi/ispatı kurs kaydında işlenir |
 
 Sicile ekleme yalnız Salih beyanıyla (Katman-1). Birincil kaynak = sistemin öğrenme içeriği ve algoritmik dayanakları önce buradan gerekçelenir; ikincil kaynak (blog, özet, model-hafızası) birincille çelişirse birincil kazanır.
 
 ## 5. Kurs şeritleri (bu felsefenin işletimi)
-- **MIT 6.006 birebir kursu:** [ogrenme/mit-6006/README.md](ogrenme/mit-6006/README.md) — kurs içeriği BİREBİR, sıra ve kapsam OCW ile aynı; sadakat sözleşmesi orada.
+- **MIT 6.006 birebir kursu (BK-1):** [ogrenme/mit-6006/README.md](ogrenme/mit-6006/README.md) — kurs içeriği BİREBİR, sıra ve kapsam OCW ile aynı; sadakat sözleşmesi orada. Ritim: video-önce.
+- **MIT 6.042J birebir kursu (BK-2, Karar 73 EK):** [ogrenme/mit-6042j/README.md](ogrenme/mit-6042j/README.md) — birebir + "NEDEN" görevi (her iddianın gerekçesi/ispatı kursun kendi malzemesinden işlenir). Ritim: ders-kaydı-önce ("0'dan anlatım"). 6.006'nın ön-koşulu olduğundan matematik zinciri: 6.042J → 6.006.
 - **Matematik felsefesi serisi:** [ogrenme/mat-felsefesi/README.md](ogrenme/mat-felsefesi/README.md) — Salih emriyle tasarlanan ayrıntılı seri (tasarım 08-29).
