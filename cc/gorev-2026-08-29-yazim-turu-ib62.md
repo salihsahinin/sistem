@@ -11,7 +11,7 @@
 | 3 | R12-K1-2 | m.8 altına açık yazım: "emeklilik = arşiv, silme değil" — ÖNCE Karar 76 E9 süpersede-kapanışıyla örtüşme teyidi; örtüşüyorsa yalnız pointer düşülür | tüzük m.8 şerhi | **İMZA-GEREKLİ** (örtüşme çıkarsa düşer) |
 | 4 | KL18-3 | H40 daraltılmış form: "soyutlama izni bir GARANTİ ile lisanslanır; derleme en güçlü ama tek olmayan biçim" (rapor-18:381) | wiki adayı ∨ defter† | Katman-2 |
 | 5 | KL18-4 | düzeltme şerhi: "hiyerarşinin tepesinde buluşur" → "o yolun en yüksek rank'li düğümünde buluşur" (rapor-18:382) | rapor-16 §5.2 şerh satırı | Katman-2 |
-| 6 | KL18-5 | ayrım kaydı: stall-on-demand (verimlilik) ≠ kısayol (doğruluk) (rapor-18:383) | defter† | Katman-2 |
+| 6 | KL18-5 | ayrım kaydı: stall-on-demand (verimlilik) ≠ kısayol (doğruluk) (rapor-18:383) — **hakem DARALIR (Karar 79 D4):** "kısayol yokluğu = yanlış cevap" kanadı [D-belge] esaslı yazılır, stall-on-demand kanadı [K] damgalı | defter† | Katman-2 |
 | 7 | KL18-9 | üslup satırı: "yanlış-pozitif/negatif" yerine "hangi yönde yanılır" yazılır (rapor-18:390) | KILAVUZ üslup | Katman-2 |
 | 8 | R10-K3 | V39 ŞERH 3 eki: tek-nokta-değişimi ≡ activation patching izomorfizmi (rapor-10:231) | V39 şerh bloğu | Katman-2 |
 | 9 | R10-K4 | wiki eki: "yüksek trafik ≠ yüksek değer" (attention-sink ↔ gorev-8 dersi, iki bağımsız literatür; rapor-10:232) | wiki kritik-karar-noktası | Katman-2 |
