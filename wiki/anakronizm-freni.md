@@ -43,3 +43,5 @@
 
 ## Bağlantılar
 [[dil-secimi]] (tetikleyen vaka) · [[silver-saglik]] (bayatlık adayları T-B) · [[adversarial-hayatta-kalma]] · [[olcum-banki]] (m.39 rakam damgası) · [[paralel-oturum-protokolu]] · [[baglam-veri-ambari]] (bitemporal) · [[pointer-sistemi]] (adres + tarih) · [[stokastik-dusunce]] (Karar 65)
+
+**Bağlantılar:** · [[baglam-anahtar-kaydi]] (karşı-link 08-29)
