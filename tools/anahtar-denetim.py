@@ -4,11 +4,12 @@
 Emekli değerlerin (ve varyantlarının) git-izlenen markdown dosyalarındaki KALINTI referanslarını katman bazında sayar
 (sıcak = ihlal, ılık = uyarı, soğuk = tarihçe), izinli tarihçe-kalıplarını ayırır, kayıt bütünlüğünü denetler
 (damgasız/halefsiz/çevrimli/çift-güncel). LLM yok; yalnız sayım — anlamsal yargı Salih triyajına.
+Yazar: salt-okur (yalnız kayıt dosyası + git-izlenen .md dosyaları okunur; hiçbir dosyaya yazmaz).
 Kullanım: python3 tools/anahtar-denetim.py [--repo <kök>] [--kayit core/baglam-anahtar-kaydi.md] [--anahtar <id>]
-          [--goster N] [--json] [--ilik-uyari k1] [--ilik-eylem k2]
+          [--goster N] [--ilik-uyari k1] [--ilik-eylem k2] [--json] [--sessiz]
 Çıkış: 0 temiz · 1 sıcak ihlal ∨ bütünlük hatası (FAIL-LOUD) · 2 kullanım hatası.
 """
-import sys, os, re, json, subprocess, unicodedata
+import sys, os, re, json, subprocess, unicodedata, argparse
 
 TR = str.maketrans({'ı':'i','İ':'i','ğ':'g','Ğ':'g','ü':'u','Ü':'u','ş':'s','Ş':'s','ö':'o','Ö':'o','ç':'c','Ç':'c'})
 
@@ -56,18 +57,27 @@ def git_md(repo):
     try:
         out = subprocess.run(['git', '-c', 'core.quotepath=off', 'ls-files', '-z'], cwd=repo, capture_output=True, check=True).stdout
     except Exception as e:
-        print(f"FAIL-LOUD: git ls-files başarısız ({e})"); sys.exit(2)
+        print(f"FAIL-LOUD: git ls-files başarısız ({e})", file=sys.stderr); sys.exit(2)
     return [p for p in out.decode('utf-8', 'replace').split('\0') if p.endswith('.md')]
 
+def git_head(repo):
+    try:
+        return subprocess.run(['git', 'rev-parse', '--short', 'HEAD'], cwd=repo, capture_output=True, text=True, check=True).stdout.strip()
+    except Exception:
+        return '?'
+
 def load_registry(path):
-    text = open(path, encoding='utf-8').read()
+    try:
+        text = open(path, encoding='utf-8').read()
+    except OSError as e:
+        print(f"FAIL-LOUD: kayıt dosyası okunamadı: {path} ({e})", file=sys.stderr); sys.exit(2)
     m = re.search(r'```json\s*\n(.*?)\n```', text, re.S)
     if not m:
-        print("FAIL-LOUD: kayıtta ```json bloğu yok"); sys.exit(2)
+        print("FAIL-LOUD: kayıtta ```json bloğu yok", file=sys.stderr); sys.exit(2)
     try:
         return json.loads(m.group(1))
     except json.JSONDecodeError as e:
-        print(f"FAIL-LOUD: kayıt JSON hatası: {e}"); sys.exit(2)
+        print(f"FAIL-LOUD: kayıt JSON hatası: {e}", file=sys.stderr); sys.exit(2)
 
 def integrity(reg):
     errs = []
@@ -106,17 +116,22 @@ def compile_patterns(vals):
     return pats
 
 def main():
-    argv = sys.argv[1:]
-    def opt(name, default=None):
-        if name in argv:
-            i = argv.index(name); return argv[i+1] if i+1 < len(argv) else default
-        return default
-    repo = os.path.abspath(opt('--repo', os.getcwd()))
-    kayit = opt('--kayit', 'core/baglam-anahtar-kaydi.md')
-    filt = opt('--anahtar')
-    goster = int(opt('--goster', 12))
-    k1 = int(opt('--ilik-uyari', 1)); k2 = int(opt('--ilik-eylem', 10))
-    as_json = '--json' in argv
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--repo', default=os.getcwd(), help='repo kökü (varsayılan: cwd)')
+    ap.add_argument('--kayit', default='core/baglam-anahtar-kaydi.md', help='anahtar kaydı dosyası, repo-göreli (varsayılan core/baglam-anahtar-kaydi.md)')
+    ap.add_argument('--anahtar', default=None, help='yalnız bu anahtar_id filtrelenir')
+    ap.add_argument('--goster', type=int, default=12, help='anahtar başına örnek satır sayısı (varsayılan 12)')
+    ap.add_argument('--ilik-uyari', type=int, default=1, help='ılık ihlal UYARI eşiği (varsayılan 1)')
+    ap.add_argument('--ilik-eylem', type=int, default=10, help='ılık ihlal EYLEM eşiği (varsayılan 10)')
+    ap.add_argument('--json', action='store_true', help="axi-standardı (İB-58): stdout = TEK makine-okur JSON nesnesi; insan satırları stderr'e")
+    ap.add_argument('--sessiz', action='store_true', help='insan satırlarını basma')
+    a = ap.parse_args()
+    repo = os.path.abspath(a.repo)
+    kayit = a.kayit
+    filt = a.anahtar
+    goster = a.goster
+    k1 = a.ilik_uyari; k2 = a.ilik_eylem
+    insan = sys.stderr if a.json else sys.stdout  # axi: makine kanalı stdout, insan kanalı stderr
     kayit_path = os.path.join(repo, kayit)
     reg = load_registry(kayit_path)
     errs = integrity(reg)
@@ -129,12 +144,12 @@ def main():
             texts[f] = None
     report = {'kayit': kayit, 'butunluk_hatalari': errs, 'anahtarlar': [], 'sonuc': 'TEMİZ'}
     hot_viol_total = 0
-    for a in reg.get('anahtarlar', []):
-        aid = a['anahtar_id']
+    for rec in reg.get('anahtarlar', []):
+        aid = rec['anahtar_id']
         if filt and aid != filt: continue
-        entry = {'anahtar_id': aid, 'tur': a.get('tur'), 'guncel': (a.get('guncel') or {}).get('deger'), 'emekli': [], 'aday': []}
+        entry = {'anahtar_id': aid, 'tur': rec.get('tur'), 'guncel': (rec.get('guncel') or {}).get('deger'), 'emekli': [], 'aday': []}
         for kind in ('emekli', 'aday'):
-            for e in a.get(kind, []):
+            for e in rec.get(kind, []):
                 vals = [e.get('deger', '')] + list(e.get('varyantlar', []))
                 pats = compile_patterns(vals)
                 allow = [re.compile(norm(p), re.I) for p in e.get('izinli_kaliplar', [])]
@@ -164,26 +179,28 @@ def main():
         report['anahtarlar'].append(entry)
     if hot_viol_total or errs:
         report['sonuc'] = 'İHLAL'
-    if as_json:
+    cikis = 1 if report['sonuc'] == 'İHLAL' else 0
+    report['arac'] = 'anahtar-denetim'; report['surum'] = '0.2'; report['git_head'] = git_head(repo); report['cikis'] = cikis
+    if a.json:
         print(json.dumps(report, ensure_ascii=False, indent=1))
-    else:
-        print(f"=== anahtar-denetim — kayıt {kayit} — {len(files)} md dosya")
+    if not a.sessiz:
+        print(f"=== anahtar-denetim — kayıt {kayit} — {len(files)} md dosya", file=insan)
         if errs:
-            print("BÜTÜNLÜK HATALARI:"); [print("  - " + x) for x in errs]
+            print("BÜTÜNLÜK HATALARI:", file=insan); [print("  - " + x, file=insan) for x in errs]
         for e in report['anahtarlar']:
-            print(f"\n## {e['anahtar_id']} [{e['tur']}] güncel='{e['guncel']}'")
+            print(f"\n## {e['anahtar_id']} [{e['tur']}] güncel='{e['guncel']}'", file=insan)
             for kind, label in (('emekli', 'EMEKLİ'), ('aday', 'ADAY (sayılır, ihlal üretmez)')):
                 for it in e[kind]:
                     c = it['sayim']
-                    print(f"  {label}: '{it['deger']}' → '{it['replaced_by']}' ({it.get('tarih') or 'tarihsiz'})")
+                    print(f"  {label}: '{it['deger']}' → '{it['replaced_by']}' ({it.get('tarih') or 'tarihsiz'})", file=insan)
                     print(f"    sıcak: ihlal {c['sicak']['ihlal']} / izinli {c['sicak']['izinli']} · ılık: ihlal {c['ilik']['ihlal']} / izinli {c['ilik']['izinli']}"
-                          + (f" [{it.get('ilik_hukum')}]" if kind == 'emekli' else '') + f" · soğuk(tarihçe): {c['soguk']['ihlal'] + c['soguk']['izinli']}")
-                    if it['sicak_ihlal_dosya']: print(f"    sıcak ihlal dosyaları: {', '.join(it['sicak_ihlal_dosya'])}")
-                    if it['ilik_ihlal_dosya']: print(f"    ılık ihlal dosyaları: {', '.join(it['ilik_ihlal_dosya'])}")
+                          + (f" [{it.get('ilik_hukum')}]" if kind == 'emekli' else '') + f" · soğuk(tarihçe): {c['soguk']['ihlal'] + c['soguk']['izinli']}", file=insan)
+                    if it['sicak_ihlal_dosya']: print(f"    sıcak ihlal dosyaları: {', '.join(it['sicak_ihlal_dosya'])}", file=insan)
+                    if it['ilik_ihlal_dosya']: print(f"    ılık ihlal dosyaları: {', '.join(it['ilik_ihlal_dosya'])}", file=insan)
                     for h in it['ornek']:
-                        print(f"      - {h['dosya']}:{h['satir']} [{h['katman']}] {h['metin']}")
-        print(f"\n=== SONUÇ: {report['sonuc']} (sıcak ihlal toplam {hot_viol_total}; bütünlük hatası {len(errs)})")
-    sys.exit(1 if report['sonuc'] == 'İHLAL' else 0)
+                        print(f"      - {h['dosya']}:{h['satir']} [{h['katman']}] {h['metin']}", file=insan)
+        print(f"\n=== SONUÇ: {report['sonuc']} (sıcak ihlal toplam {hot_viol_total}; bütünlük hatası {len(errs)})", file=insan)
+    sys.exit(cikis)
 
 if __name__ == '__main__':
     main()
