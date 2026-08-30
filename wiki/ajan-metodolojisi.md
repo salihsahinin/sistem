@@ -1,5 +1,7 @@
 # ajan-metodolojisi
 
+*AS-OF 2026-08-30 (yazım: paralel icra oturumu, İB-04 wiki turu; kural kaynağı `core/ajan-metodolojisi.md` — çelişkide kanon kazanır).*
+
 ## Üst blok
 Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sınanmış kural seti. Dört ayak: görev = TİPLİ FONKSİYON (dal-bütçesi ≤5) · hafıza = MANİFEST (eager/lazy) · B1→B4 lojik-kod merdiveni · lider/işçi dörtlü delegasyon + model hiyerarşisi + firstmate rolü. Durum: GÜNCEL · son-teyit 2026-08-30. Kaynak: `core/ajan-metodolojisi.md` v1 (AKTİF 2026-08-14; araştırma dayanağı `cc/rapor-2026-08-14-2.md` — Opus lider + 4 atlas). Kaba güven: ORTA — tek araştırma turu (m.40b antitez şeridi KOŞULMADI, borç §5 madde 4'te açık), ama 2 haftalık kullanım + üç Salih revizyonuyla (KB-18 08-20, Karar 48 08-21, Karar 76 08-29) pekişmiş.
 
