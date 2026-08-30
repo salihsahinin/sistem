@@ -55,6 +55,7 @@ d1829feb,ADAY,3,2,4,0,0,2026-08-26,2026-08-29,0fa78c95,Bash:py:inline → Write:
 f3dbae9d,ADAY,3,2,4,1,0,2026-08-20,2026-08-29,3311c08d,Write:raporlar → Edit:core/durum-kapsulu.md
 c946c1bf,ADAY,3,2,3,0,0,2026-08-15,2026-08-22,11b49d44,Bash:echo+tail+cut → Bash:cat
 a18a2ef7,ADAY,3,2,3,0,0,2026-08-17,2026-08-22,11b49d44,Bash:git:add → Bash:git:add+git:commit
+87a1098f,ADAY,3,2,3,1,0,2026-08-20,2026-08-29,2fc42451,Bash:git:add+git:commit → Skill:seans-kapanis
 58f1e601,ADAY,3,2,3,1,0,2026-08-15,2026-08-24,0019c6bb,Bash:mkdir → Write:dış
 638ede41,ADAY,3,2,3,0,0,2026-08-15,2026-08-22,7bb80b5e,Bash:py:inline → Bash:-
 f72e036d,ADAY,3,2,3,0,0,2026-08-15,2026-08-17,1620e67b,Bash:py:inline → Bash:for
@@ -126,6 +127,7 @@ d822db0e,ESIK-ALTI,2,2,4,0,0,2026-08-24,2026-08-26,2fc42451,Bash:lavish-axi+1+he
 43f62454,ESIK-ALTI,2,2,4,0,0,2026-08-20,2026-08-25,3311c08d,Edit:core/durum-kapsulu.md → Bash:wc
 d5dbf043,ESIK-ALTI,2,2,4,0,0,2026-08-15,2026-08-18,25679332,Write:cc → Workflow
 3216c95b,ESIK-ALTI,2,2,4,0,0,2026-08-24,2026-08-26,2fc42451,Write:raporlar → Bash:lavish-axi+1+head
+80396649,ESIK-ALTI,2,2,3,0,0,2026-08-18,2026-08-29,25679332,Bash:echo → Bash:py:inline
 9ae982c1,ESIK-ALTI,2,2,3,0,0,2026-08-21,2026-08-29,aa937b62,Bash:git:add+git:commit → Agent:general-purpose
 119561ef,ESIK-ALTI,2,2,3,0,0,2026-08-20,2026-08-29,33beff9d,Bash:py:inline → Bash:py:inline+1+grep
 b5aae6de,ESIK-ALTI,2,2,3,0,0,2026-08-20,2026-08-22,11b49d44,Bash:py:inline → Read:.claude/skills
@@ -165,7 +167,6 @@ f7a528f9,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-08-21,aa937b62,Bash:git:add → Bas
 01beddae,ESIK-ALTI,2,2,2,1,0,2026-08-22,2026-08-29,0fa78c95,Bash:git:add → Skill:wiki-sayfa-yaz
 8eb6961a,ESIK-ALTI,2,2,2,0,0,2026-08-20,2026-08-29,aa05a9d1,Bash:git:add+git:commit → Bash:grep+head+echo
 e69c2047,ESIK-ALTI,2,2,2,1,0,2026-08-21,2026-08-24,2fc42451,Bash:git:add+git:commit → Bash:open
-87a1098f,ESIK-ALTI,2,2,2,1,0,2026-08-20,2026-08-24,2fc42451,Bash:git:add+git:commit → Skill:seans-kapanis
 7a652986,ESIK-ALTI,2,2,2,0,0,2026-08-12,2026-08-15,d0e63fae,Bash:git:add+git:commit → Write:cc
 2c8eb3c9,ESIK-ALTI,2,2,2,1,0,2026-08-24,2026-08-29,2fc42451,Bash:git:log+head+echo → Read:core/durum-kapsulu.md
 71353c95,ESIK-ALTI,2,2,2,0,0,2026-08-15,2026-08-17,c0298809,Bash:grep → Bash:py:inline

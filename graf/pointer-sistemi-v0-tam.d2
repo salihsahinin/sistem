@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — şema-düzeyi graf v0 (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 9784b2d3e02c1895ab9a6ccb33eeab51c94cc202 · HEAD 9784b2d · düğüm 79 · kenar 58
+# üretici: tools/pointer-graf.py · silver 95fcf8c287d721aef663903a852a7929776996d2 · HEAD 95fcf8c · düğüm 79 · kenar 58
 # render: d2 --layout=elk <bu dosya> <çıktı.svg>  (ELK: deterministik yerleşim — Karar 65)
 direction: right
 vars: { d2-config: { layout-engine: elk } }
@@ -17,8 +17,8 @@ classes: {
   turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
 }
 hat: "VERİ HATTI (lineage)" {
-  bronz: "bronz (git-izlenen md/json/jsonl) · 761" { class: hat }
-  silver: "silver (veri/baglam.sqlite) · 965.768" { class: hat }
+  bronz: "bronz (git-izlenen md/json/jsonl) · 764" { class: hat }
+  silver: "silver (veri/baglam.sqlite) · 981.204" { class: hat }
   gold: "gold (veri/gorunum/*.csv) · 47" { class: hat }
 }
 silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
@@ -54,7 +54,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     kayit_zamani: TEXT
     gecersiz_zamani: TEXT
   }
-  baglam_olay: "baglam_olay · 9.508 satır" {
+  baglam_olay: "baglam_olay · 9.523 satır" {
     shape: sql_table
     olay_id: TEXT
     ts_utc: TEXT
@@ -111,7 +111,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     term: TEXT
     pgno: TEXT
   }
-  dosya: "dosya · 761 satır" {
+  dosya: "dosya · 764 satır" {
     shape: sql_table
     dosya_id: TEXT { constraint: primary_key }
     dizin: TEXT
@@ -120,7 +120,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     blob_sha: TEXT
     son_commit: TEXT
   }
-  erisim_genisletme: "erisim_genisletme · 58.193 satır" {
+  erisim_genisletme: "erisim_genisletme · 58.306 satır" {
     shape: sql_table
     kayit_id: TEXT
     dosya_id: TEXT
@@ -129,7 +129,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     genisletme: TEXT
     ref_sayisi: TEXT
   }
-  hareket: "hareket · 4.301 satır" {
+  hareket: "hareket · 4.306 satır" {
     shape: sql_table
     hareket_id: TEXT { constraint: primary_key }
     oturum_id: TEXT
@@ -137,7 +137,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     dosya: TEXT
     yuklendi_head: TEXT
   }
-  json_kayit: "json_kayit · 570.924 satır" {
+  json_kayit: "json_kayit · 585.558 satır" {
     shape: sql_table
     dosya_id: TEXT { constraint: foreign_key }
     json_yolu: TEXT
@@ -157,7 +157,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     satir: TEXT
     kayit_id: TEXT { constraint: foreign_key }
   }
-  kayit: "kayit · 58.193 satır" {
+  kayit: "kayit · 58.306 satır" {
     shape: sql_table
     kayit_id: TEXT { constraint: primary_key }
     dosya_id: TEXT { constraint: foreign_key }
@@ -167,7 +167,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     satir_son: TEXT
     zarf_tip: TEXT
   }
-  kayit_fts: "kayit_fts · 58.193 satır" {
+  kayit_fts: "kayit_fts · 58.306 satır" {
     shape: sql_table
     kayit_id: TEXT
     dosya_id: TEXT
@@ -181,7 +181,7 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     k: TEXT
     v: TEXT
   }
-  kayit_fts_content: "kayit_fts_content · 58.193 satır" {
+  kayit_fts_content: "kayit_fts_content · 58.306 satır" {
     shape: sql_table
     id: TEXT
     c0: TEXT
@@ -190,12 +190,12 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     c3: TEXT
     c4: TEXT
   }
-  kayit_fts_data: "kayit_fts_data · 4.870 satır" {
+  kayit_fts_data: "kayit_fts_data · 4.873 satır" {
     shape: sql_table
     id: TEXT
     block: TEXT
   }
-  kayit_fts_docsize: "kayit_fts_docsize · 58.193 satır" {
+  kayit_fts_docsize: "kayit_fts_docsize · 58.306 satır" {
     shape: sql_table
     id: TEXT
     sz: TEXT
@@ -215,14 +215,14 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     byte: TEXT
     ms: TEXT
   }
-  prompt: "prompt · 730 satır" {
+  prompt: "prompt · 731 satır" {
     shape: sql_table
     prompt_id: TEXT { constraint: primary_key }
     oturum_id: TEXT
     sonraki_skill: TEXT
     yuklendi_head: TEXT
   }
-  referans: "referans · 75.745 satır" {
+  referans: "referans · 75.954 satır" {
     shape: sql_table
     kayit_id: TEXT { constraint: foreign_key }
     ref_turu: TEXT
@@ -264,20 +264,20 @@ silver: "SİLVER (veri/baglam.sqlite) — PK = ADRES" {
     script_sha: TEXT
     kayit_id_kume_sha: TEXT
   }
-  ambar: "AMBAR olgu tabloları · 7 tablo · 1.446 satır" { class: tablo }
+  ambar: "AMBAR olgu tabloları · 7 tablo · 1.447 satır" { class: tablo }
 }
 pointer: "REFERANS TÜRLERİ (pointer'lar) — referans tablosundan" {
-  anahtar_terim: "anahtar_terim · 33.223" { class: pointer }
-  dosya_pointer: "dosya_pointer · 11.229 · 9.760 çözümlü / 1.469 KIRIK" { class: pointer }
+  anahtar_terim: "anahtar_terim · 33.265" { class: pointer }
+  dosya_pointer: "dosya_pointer · 11.257 · 9.786 çözümlü / 1.471 KIRIK" { class: pointer }
   etiket: "etiket · 5.630" { class: pointer }
-  kart: "kart · 2.089" { class: pointer }
-  sha: "sha · 1.145" { class: pointer }
-  skill_adi: "skill_adi · 1.840" { class: pointer }
-  tarih: "tarih · 3.769" { class: pointer }
-  tuzuk_madde: "tuzuk_madde · 8.235" { class: pointer }
-  url: "url · 4.802" { class: pointer }
+  kart: "kart · 2.093" { class: pointer }
+  sha: "sha · 1.204" { class: pointer }
+  skill_adi: "skill_adi · 1.855" { class: pointer }
+  tarih: "tarih · 3.826" { class: pointer }
+  tuzuk_madde: "tuzuk_madde · 8.237" { class: pointer }
+  url: "url · 4.803" { class: pointer }
   v_no: "v_no · 3.473" { class: pointer }
-  wiki_link: "wiki_link · 310" { class: pointer }
+  wiki_link: "wiki_link · 311" { class: pointer }
 }
 anahtar_kaydi: "ANAHTAR KAYDI (çözümleme hedefi; süpersede zinciri)" {
   anahtar_terim: "anahtar_terim · 27" { class: anahtar }
@@ -290,7 +290,7 @@ anahtar_kaydi: "ANAHTAR KAYDI (çözümleme hedefi; süpersede zinciri)" {
 dosya_katmani: "DOSYA KATMANLARI (sıcak/ılık/soğuk/yapısal)" {
   ilik: "ilik · 99" { class: tablo }
   sicak: "sicak · 36" { class: tablo }
-  soguk: "soguk · 524" { class: tablo }
+  soguk: "soguk · 527" { class: tablo }
   yapisal: "yapisal · 102" { class: tablo }
 }
 dis: "REPO DIŞI HEDEFLER" {
@@ -334,7 +334,7 @@ kronoloji.k0815 -> kronoloji.k0817
 kronoloji.k0817 -> kronoloji.k0818
 kronoloji.k0818 -> kronoloji.k0822
 pointer.anahtar_terim -> anahtar_kaydi.anahtar_terim: "terim → anahtar kaydı"
-pointer.dosya_pointer -> silver.dosya: "yol → dosya (hedef_var ile çözümlü/kırık) · 9.760 çözümlü / 1.469 KIRIK" { class: kirik }
+pointer.dosya_pointer -> silver.dosya: "yol → dosya (hedef_var ile çözümlü/kırık) · 9.786 çözümlü / 1.471 KIRIK" { class: kirik }
 pointer.etiket -> dis.etiket: "#etiket (serbest sınıflandırma)"
 pointer.kart -> anahtar_kaydi.kart: "K-NNN → pano kartı (anahtar kaydı)"
 pointer.sha -> dis.git: "git commit/blob (provenans)"

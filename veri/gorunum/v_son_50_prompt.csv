@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-08-30,09:03,33beff9d,4,seans-kapanis,seans-kapanis,claude-fable-5,25,"seans bitimi, pushları at",66f36860-8891-4fbf-9d5e-a3d08f7dba25
-2,2026-08-29,20:34,c2e5f984,19,diger,,claude-fable-5,268,"kalan gerçek k010 zincirini de işlem sırasına optimize edilmiş bir şekilde yerleştir (karar ve icra katmanlarına,ayrıca öğrenmem gereken şey",3db0a8b8-a0ba-43d1-8c7a-1706a1af0acc
-3,2026-08-29,20:33,c2e5f984,18,diger,,claude-fable-5,9,a3 uyarla,fb8538d8-a930-4048-a910-62ff40ae0729
-4,2026-08-29,20:29,c2e5f984,17,diger,,claude-fable-5,481,"zamanlı-loop mekanizması derken kast edilen ""belirli zamanda kendi kendiine tetiklenen looplar"" ise şimdilik bu durum öncelik değil çünkü ke",290a7497-4b7b-48e7-b5b1-dbbc1cacdfd7
-5,2026-08-29,20:16,c2e5f984,16,diger,,claude-fable-5,245,"a+b birleşik olsun, masayı şimdi açmayacağız.2 sorum var: -bernstein koşullarından türeterek oluşturduğun şemayı html formatında görsel olar",d191848c-3bf5-48a9-a3b1-a509ed67ef25
-6,2026-08-29,20:10,c2e5f984,15,diger,,claude-fable-5,242,"-gece senkron uyarlamasını yapmamıza gerek yok zaten sistem geceleri de çalışır bir hale gelecek,""5 ardışık gün ok"" olması da bizi zaman ola",9c96ffd0-b893-4a5e-a929-3942fdf1aa33
-7,2026-08-29,20:00,c2e5f984,14,soru,,claude-fable-5,201,"mesele sadece k010 araştırması değil direk k010'a bir türlü geçemiyor olmamız ilerleyiş sıramız yeterince optimize edildi mi,sistem tasarlam",4ecbbe66-9518-4119-bf11-3b91a8906eca
-8,2026-08-29,19:55,c2e5f984,13,soru,,claude-fable-5,86,k-010 otomasyon sınıfına geçiş için gereken araştırma borçları İB listesinde mevcut mu,590da089-e9f6-4cc9-94c2-80a451d773a8
-9,2026-08-29,19:47,33beff9d,3,diger,,claude-fable-5,121,"karar kısmı karar masasında tartışılmak üzere ertelensin,kalan İB havuzundan devam(kararımın gerekmediği şekilde olanlar)",3f502a13-b509-400a-8735-f83915d1f293
-10,2026-08-29,19:43,33beff9d,2,soru,,claude-fable-5,23,yetim uyarı eşiği nedir,21cf4fd3-ddc1-4d49-b5df-0268f6d09b5a
-11,2026-08-29,19:16,33beff9d,1,seans-acilis,seans-acilis,claude-fable-5,306,"seans başı,bu oturum en son contexti %100 dolduğu için durdurulmak zorunda kalınmış icra borcu kapatma oturumunun devamı olacak,bir önceki i",86e2b523-26ac-42f8-b159-3d744b505f18
-12,2026-08-29,19:12,0fa78c95,31,emir,,,5768,## Context Usage **Model:** claude-fable-5 **Tokens:** 80k / 1m (8%) ### Estimated usage by category | Category | Tokens | Percentage | |---,8a671c86-a99c-45a6-9c75-cc5de7a58025
-13,2026-08-29,18:57,0fa78c95,30,diger,,claude-fable-5,111,"devam(ib43 açıklamasında ""gen"" kelimesi geçiyor,icra borcunu kapatırken model düşümü yaşanmaması için önlem al)",ab7f7bfd-e9a3-4af9-ae7b-a41455aa71c6
-14,2026-08-29,18:53,0fa78c95,29,diger,,claude-fable-5,48,kalan icra borçları neler(kararımın gerekmediği),a216aa0e-cc9e-4c98-9312-94080a5ef307
-15,2026-08-29,18:51,0fa78c95,28,soru,,claude-fable-5,56,arkada koşan shell'de output yüzdeleri ilerlemiyor neden,ba1b6724-a5b1-4ddc-82e7-e7ed74181ab9
-16,2026-08-29,18:49,c2e5f984,12,emir,,claude-fable-5,732,bitince yeni araştırma görevi:sistemde icra borçlarını tek seferde tek promptta kapattırmak istediğim zaman jarvisin hangi pipeline'ları par,eebe9d6d-e049-491c-a2c7-952eca594d39
-17,2026-08-29,18:31,e0839c9b,5,diger,,claude-sonnet-5,27,"netleşti, blok 2'ye geçelim",5f874144-ec41-472c-8fdd-064362f84c1a
-18,2026-08-29,18:29,e0839c9b,4,soru,,claude-sonnet-5,44,"gerçek bir bağıntı ne demek,bağıntı ne demek",c031c0dd-d83c-4d27-80a4-554225e4bb25
-19,2026-08-29,18:26,e0839c9b,3,soru,,claude-sonnet-5,143,cevap:sıralı index taraması ile sıra kaygısı gütmeden yapılan index taraması farklıdır.burada geçen index kelimesinin ne anlama geldiğini an,5023f3ae-d3e9-449a-8b69-bbbbe761b1f2
-20,2026-08-29,18:19,e0839c9b,2,diger,,claude-sonnet-5,33,algoritmalara girişten başlayalım,ce48b9a4-9153-4865-b2fe-a6d1c7639e44
-21,2026-08-29,18:18,e0839c9b,1,diger,,claude-sonnet-5,77,mit derslerinde 2 tane çekilip öğrenme serisi oluşturulmuştu hangileri belirt,aee28dba-0357-40b8-8939-8e870c41e07e
-22,2026-08-29,18:12,c2e5f984,11,diger,atlas-kosum,claude-fable-5,13,atlası koştur,64616bd9-be4d-4663-a143-efa0307649aa
-23,2026-08-29,18:11,0fa78c95,27,diger,atlas-kosum,claude-fable-5,78,"hükümler başka oturumda yapılacak,kalan icra borçlarından başla ve sırayla koş",bb47fa5f-8370-437e-8fa9-e8a28d3e38ea
-24,2026-08-29,18:08,0fa78c95,26,soru,,claude-fable-5,55,monitör işleminin sonucu nedir nasıl bir sonuca varıldı,b69a3efc-a3c9-4e63-b00f-ba7ebb608cd1
-25,2026-08-29,18:07,0fa78c95,25,diger,,claude-fable-5,16,durum raporu ver,acbd9ecd-e46f-4004-81b8-cabd4f0002e7
-26,2026-08-29,16:25,7ae8954e,3,seans-kapanis,seans-kapanis,claude-fable-5,115,"seans bitimi,dipnot:paralelde devam eden jarvis koşumları mevut sadece kendi kısmınla ilgili olan yeri seans bitimi",80139b5a-e15a-4e96-8cb6-192caa3721c3
-27,2026-08-29,16:18,c2e5f984,10,soru,,claude-fable-5,240,"""bizimkine ayak uyduracak tool"" inşası için gerekli araştırmalar yapıldı mı?hangi halihazırdaki toolların ve metriklerin ve yöntemlerin kull",539dabdb-f4ad-45c8-8b21-6719637bb946
-28,2026-08-29,16:13,c2e5f984,9,diger,,claude-fable-5,37,"a seçeneği, karar 72 revizyonunu işle",919b850e-b983-45f7-840f-759676710d33
-29,2026-08-29,16:10,c2e5f984,8,soru,,claude-fable-5,236,değişiklik notu:sistemdeki md dosyalarını varsayılan olarak obsidianda açmayı seçersem oluşturduğun tüm md dosyalarının jarvis vaultunda göz,9381cf8b-f380-43ae-8354-6cc2a14be021
-30,2026-08-29,15:40,c2e5f984,7,diger,,claude-fable-5,80,damıtma sonraki seansta yapılır şartlı beklemelerin listesini ver en önemlilerin,00e56695-8000-407f-b393-92e264b53787
-31,2026-08-29,15:36,c2e5f984,6,soru,,claude-fable-5,37,şu anda sistemde karar borcu ne kaldı,4ae15fd1-a7c7-4d05-84a1-820feb43dca1
-32,2026-08-29,15:35,0fa78c95,24,diger,,claude-fable-5,80,"""API Error: Connection lost mid-response. The response above may be incomplete.""",74336d99-1a52-4c56-8da6-7c725583a97c
-33,2026-08-29,15:34,37c3509e,30,soru,,claude-sonnet-5,140,""" API Error: Connection lost mid-response. The response above may be incomplete. "" böyle bi hata aldım internetim düzgün ama neden oluyor bu",5620589e-5043-43b5-994e-07812a05a50c
-34,2026-08-29,15:33,37c3509e,29,soru,,claude-sonnet-5,72,"""ÇALIŞMADI"" denerek caps lock açık bir şekilde yazılmasının sebebi nedir",b2bc49ea-f269-43e8-b881-b8f053a4e8d9
-35,2026-08-29,15:31,37c3509e,28,soru,,claude-sonnet-5,138,""" bu işlem arkada olurken senin bu süreçte kapatabileceğin bir icra borcu var mı 1 skill available "" hangi skill tetiklendi ne oldu burda",269b845b-38c8-4d08-99e8-60a7cee15659
-36,2026-08-29,15:30,0fa78c95,23,soru,,claude-fable-5,78,bu işlem arkada olurken senin bu süreçte kapatabileceğin bir icra borcu var mı,53569a94-515e-4956-af1a-c1e06153d0ed
-37,2026-08-29,15:29,37c3509e,27,diger,,claude-sonnet-5,501,""" tail -f /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/gomme.log [e5] 14848/53983 ·",d8cedf8f-bf94-44ed-98ca-f9927a0e5d3a
-38,2026-08-29,15:26,0fa78c95,22,diger,,claude-fable-5,152,""" ! tail -f /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/gomme.log "" bunu nereye ya",9425f9fe-5a9e-4f5b-adca-db47285e725f
-39,2026-08-29,15:26,c2e5f984,5,diger,,claude-fable-5,41,"1-2-3 imza, yazım turunu koş, pushları at",2241f67f-2859-459a-a13b-49028085f3b6
-40,2026-08-29,15:20,0fa78c95,21,soru,,claude-fable-5,34,süreci ekranımda nasıl gözlemlerim,78bff7df-d850-42d2-84f9-0c924a29e417
-41,2026-08-29,15:19,0fa78c95,20,soru,,claude-fable-5,26,durum nedir ne kadar kaldı,5f82c712-2f1d-47db-85a1-c20cd38714c0
-42,2026-08-29,15:14,37c3509e,26,diger,,claude-sonnet-5,9,d7 açıkla,0bfc8d12-37b8-422b-ae5a-45e1c282d97a
-43,2026-08-29,15:13,37c3509e,25,diger,,claude-sonnet-5,9,d6 açıkla,78ac6e7c-3c57-478e-a473-798cb58f753a
-44,2026-08-29,15:12,37c3509e,24,diger,,claude-sonnet-5,9,d5 açıkla,48ea5946-c2a6-476d-93ec-1beec74e118a
-45,2026-08-29,15:10,0fa78c95,19,soru,,claude-fable-5,26,durum nedir ne kadar kaldı,1e4592de-5d4f-4e92-94d0-896ad90ca2e6
-46,2026-08-29,15:10,37c3509e,23,diger,,claude-sonnet-5,9,d4 açıkla,e5c6bf2d-4c0b-426f-a37b-811bf2df631d
-47,2026-08-29,15:06,37c3509e,22,diger,,claude-sonnet-5,9,d3 açıkla,3ab2737b-5898-4fe9-8b3b-ec2cc099ece3
-48,2026-08-29,14:59,37c3509e,21,diger,,claude-sonnet-5,9,d2 açıkla,2982d311-72f1-4efe-a4d2-b4edf81995db
-49,2026-08-29,14:57,37c3509e,20,diger,,claude-sonnet-5,35,yeni karar masası d1 tek tek açıkla,502648ad-e87f-4dce-a678-2566f37bac93
-50,2026-08-29,14:47,c2e5f984,4,emir,,claude-fable-5,139,ayrıca yan görev:https://github.com/tt-a1i/archify.git reposunu sisteme çek archify kullanarak jarvis reposuna genel bakış diyagram oluştur,d64bf41c-afef-464c-a971-8f0103ff29c1
+1,2026-08-30,09:08,c2e5f984,20,seans-kapanis,seans-kapanis,claude-fable-5,35,buraya sonra geçilecek seans bitimi,9b3050ca-1a5b-4e76-a869-ffe0891278c5
+2,2026-08-30,09:03,33beff9d,4,seans-kapanis,seans-kapanis,claude-fable-5,25,"seans bitimi, pushları at",66f36860-8891-4fbf-9d5e-a3d08f7dba25
+3,2026-08-29,20:34,c2e5f984,19,diger,,claude-fable-5,268,"kalan gerçek k010 zincirini de işlem sırasına optimize edilmiş bir şekilde yerleştir (karar ve icra katmanlarına,ayrıca öğrenmem gereken şey",3db0a8b8-a0ba-43d1-8c7a-1706a1af0acc
+4,2026-08-29,20:33,c2e5f984,18,diger,,claude-fable-5,9,a3 uyarla,fb8538d8-a930-4048-a910-62ff40ae0729
+5,2026-08-29,20:29,c2e5f984,17,diger,,claude-fable-5,481,"zamanlı-loop mekanizması derken kast edilen ""belirli zamanda kendi kendiine tetiklenen looplar"" ise şimdilik bu durum öncelik değil çünkü ke",290a7497-4b7b-48e7-b5b1-dbbc1cacdfd7
+6,2026-08-29,20:16,c2e5f984,16,diger,,claude-fable-5,245,"a+b birleşik olsun, masayı şimdi açmayacağız.2 sorum var: -bernstein koşullarından türeterek oluşturduğun şemayı html formatında görsel olar",d191848c-3bf5-48a9-a3b1-a509ed67ef25
+7,2026-08-29,20:10,c2e5f984,15,diger,,claude-fable-5,242,"-gece senkron uyarlamasını yapmamıza gerek yok zaten sistem geceleri de çalışır bir hale gelecek,""5 ardışık gün ok"" olması da bizi zaman ola",9c96ffd0-b893-4a5e-a929-3942fdf1aa33
+8,2026-08-29,20:00,c2e5f984,14,soru,,claude-fable-5,201,"mesele sadece k010 araştırması değil direk k010'a bir türlü geçemiyor olmamız ilerleyiş sıramız yeterince optimize edildi mi,sistem tasarlam",4ecbbe66-9518-4119-bf11-3b91a8906eca
+9,2026-08-29,19:55,c2e5f984,13,soru,,claude-fable-5,86,k-010 otomasyon sınıfına geçiş için gereken araştırma borçları İB listesinde mevcut mu,590da089-e9f6-4cc9-94c2-80a451d773a8
+10,2026-08-29,19:47,33beff9d,3,diger,,claude-fable-5,121,"karar kısmı karar masasında tartışılmak üzere ertelensin,kalan İB havuzundan devam(kararımın gerekmediği şekilde olanlar)",3f502a13-b509-400a-8735-f83915d1f293
+11,2026-08-29,19:43,33beff9d,2,soru,,claude-fable-5,23,yetim uyarı eşiği nedir,21cf4fd3-ddc1-4d49-b5df-0268f6d09b5a
+12,2026-08-29,19:16,33beff9d,1,seans-acilis,seans-acilis,claude-fable-5,306,"seans başı,bu oturum en son contexti %100 dolduğu için durdurulmak zorunda kalınmış icra borcu kapatma oturumunun devamı olacak,bir önceki i",86e2b523-26ac-42f8-b159-3d744b505f18
+13,2026-08-29,19:12,0fa78c95,31,emir,,,5768,## Context Usage **Model:** claude-fable-5 **Tokens:** 80k / 1m (8%) ### Estimated usage by category | Category | Tokens | Percentage | |---,8a671c86-a99c-45a6-9c75-cc5de7a58025
+14,2026-08-29,18:57,0fa78c95,30,diger,,claude-fable-5,111,"devam(ib43 açıklamasında ""gen"" kelimesi geçiyor,icra borcunu kapatırken model düşümü yaşanmaması için önlem al)",ab7f7bfd-e9a3-4af9-ae7b-a41455aa71c6
+15,2026-08-29,18:53,0fa78c95,29,diger,,claude-fable-5,48,kalan icra borçları neler(kararımın gerekmediği),a216aa0e-cc9e-4c98-9312-94080a5ef307
+16,2026-08-29,18:51,0fa78c95,28,soru,,claude-fable-5,56,arkada koşan shell'de output yüzdeleri ilerlemiyor neden,ba1b6724-a5b1-4ddc-82e7-e7ed74181ab9
+17,2026-08-29,18:49,c2e5f984,12,emir,,claude-fable-5,732,bitince yeni araştırma görevi:sistemde icra borçlarını tek seferde tek promptta kapattırmak istediğim zaman jarvisin hangi pipeline'ları par,eebe9d6d-e049-491c-a2c7-952eca594d39
+18,2026-08-29,18:31,e0839c9b,5,diger,,claude-sonnet-5,27,"netleşti, blok 2'ye geçelim",5f874144-ec41-472c-8fdd-064362f84c1a
+19,2026-08-29,18:29,e0839c9b,4,soru,,claude-sonnet-5,44,"gerçek bir bağıntı ne demek,bağıntı ne demek",c031c0dd-d83c-4d27-80a4-554225e4bb25
+20,2026-08-29,18:26,e0839c9b,3,soru,,claude-sonnet-5,143,cevap:sıralı index taraması ile sıra kaygısı gütmeden yapılan index taraması farklıdır.burada geçen index kelimesinin ne anlama geldiğini an,5023f3ae-d3e9-449a-8b69-bbbbe761b1f2
+21,2026-08-29,18:19,e0839c9b,2,diger,,claude-sonnet-5,33,algoritmalara girişten başlayalım,ce48b9a4-9153-4865-b2fe-a6d1c7639e44
+22,2026-08-29,18:18,e0839c9b,1,diger,,claude-sonnet-5,77,mit derslerinde 2 tane çekilip öğrenme serisi oluşturulmuştu hangileri belirt,aee28dba-0357-40b8-8939-8e870c41e07e
+23,2026-08-29,18:12,c2e5f984,11,diger,atlas-kosum,claude-fable-5,13,atlası koştur,64616bd9-be4d-4663-a143-efa0307649aa
+24,2026-08-29,18:11,0fa78c95,27,diger,atlas-kosum,claude-fable-5,78,"hükümler başka oturumda yapılacak,kalan icra borçlarından başla ve sırayla koş",bb47fa5f-8370-437e-8fa9-e8a28d3e38ea
+25,2026-08-29,18:08,0fa78c95,26,soru,,claude-fable-5,55,monitör işleminin sonucu nedir nasıl bir sonuca varıldı,b69a3efc-a3c9-4e63-b00f-ba7ebb608cd1
+26,2026-08-29,18:07,0fa78c95,25,diger,,claude-fable-5,16,durum raporu ver,acbd9ecd-e46f-4004-81b8-cabd4f0002e7
+27,2026-08-29,16:25,7ae8954e,3,seans-kapanis,seans-kapanis,claude-fable-5,115,"seans bitimi,dipnot:paralelde devam eden jarvis koşumları mevut sadece kendi kısmınla ilgili olan yeri seans bitimi",80139b5a-e15a-4e96-8cb6-192caa3721c3
+28,2026-08-29,16:18,c2e5f984,10,soru,,claude-fable-5,240,"""bizimkine ayak uyduracak tool"" inşası için gerekli araştırmalar yapıldı mı?hangi halihazırdaki toolların ve metriklerin ve yöntemlerin kull",539dabdb-f4ad-45c8-8b21-6719637bb946
+29,2026-08-29,16:13,c2e5f984,9,diger,,claude-fable-5,37,"a seçeneği, karar 72 revizyonunu işle",919b850e-b983-45f7-840f-759676710d33
+30,2026-08-29,16:10,c2e5f984,8,soru,,claude-fable-5,236,değişiklik notu:sistemdeki md dosyalarını varsayılan olarak obsidianda açmayı seçersem oluşturduğun tüm md dosyalarının jarvis vaultunda göz,9381cf8b-f380-43ae-8354-6cc2a14be021
+31,2026-08-29,15:40,c2e5f984,7,diger,,claude-fable-5,80,damıtma sonraki seansta yapılır şartlı beklemelerin listesini ver en önemlilerin,00e56695-8000-407f-b393-92e264b53787
+32,2026-08-29,15:36,c2e5f984,6,soru,,claude-fable-5,37,şu anda sistemde karar borcu ne kaldı,4ae15fd1-a7c7-4d05-84a1-820feb43dca1
+33,2026-08-29,15:35,0fa78c95,24,diger,,claude-fable-5,80,"""API Error: Connection lost mid-response. The response above may be incomplete.""",74336d99-1a52-4c56-8da6-7c725583a97c
+34,2026-08-29,15:34,37c3509e,30,soru,,claude-sonnet-5,140,""" API Error: Connection lost mid-response. The response above may be incomplete. "" böyle bi hata aldım internetim düzgün ama neden oluyor bu",5620589e-5043-43b5-994e-07812a05a50c
+35,2026-08-29,15:33,37c3509e,29,soru,,claude-sonnet-5,72,"""ÇALIŞMADI"" denerek caps lock açık bir şekilde yazılmasının sebebi nedir",b2bc49ea-f269-43e8-b881-b8f053a4e8d9
+36,2026-08-29,15:31,37c3509e,28,soru,,claude-sonnet-5,138,""" bu işlem arkada olurken senin bu süreçte kapatabileceğin bir icra borcu var mı 1 skill available "" hangi skill tetiklendi ne oldu burda",269b845b-38c8-4d08-99e8-60a7cee15659
+37,2026-08-29,15:30,0fa78c95,23,soru,,claude-fable-5,78,bu işlem arkada olurken senin bu süreçte kapatabileceğin bir icra borcu var mı,53569a94-515e-4956-af1a-c1e06153d0ed
+38,2026-08-29,15:29,37c3509e,27,diger,,claude-sonnet-5,501,""" tail -f /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/gomme.log [e5] 14848/53983 ·",d8cedf8f-bf94-44ed-98ca-f9927a0e5d3a
+39,2026-08-29,15:26,0fa78c95,22,diger,,claude-fable-5,152,""" ! tail -f /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/gomme.log "" bunu nereye ya",9425f9fe-5a9e-4f5b-adca-db47285e725f
+40,2026-08-29,15:26,c2e5f984,5,diger,,claude-fable-5,41,"1-2-3 imza, yazım turunu koş, pushları at",2241f67f-2859-459a-a13b-49028085f3b6
+41,2026-08-29,15:20,0fa78c95,21,soru,,claude-fable-5,34,süreci ekranımda nasıl gözlemlerim,78bff7df-d850-42d2-84f9-0c924a29e417
+42,2026-08-29,15:19,0fa78c95,20,soru,,claude-fable-5,26,durum nedir ne kadar kaldı,5f82c712-2f1d-47db-85a1-c20cd38714c0
+43,2026-08-29,15:14,37c3509e,26,diger,,claude-sonnet-5,9,d7 açıkla,0bfc8d12-37b8-422b-ae5a-45e1c282d97a
+44,2026-08-29,15:13,37c3509e,25,diger,,claude-sonnet-5,9,d6 açıkla,78ac6e7c-3c57-478e-a473-798cb58f753a
+45,2026-08-29,15:12,37c3509e,24,diger,,claude-sonnet-5,9,d5 açıkla,48ea5946-c2a6-476d-93ec-1beec74e118a
+46,2026-08-29,15:10,0fa78c95,19,soru,,claude-fable-5,26,durum nedir ne kadar kaldı,1e4592de-5d4f-4e92-94d0-896ad90ca2e6
+47,2026-08-29,15:10,37c3509e,23,diger,,claude-sonnet-5,9,d4 açıkla,e5c6bf2d-4c0b-426f-a37b-811bf2df631d
+48,2026-08-29,15:06,37c3509e,22,diger,,claude-sonnet-5,9,d3 açıkla,3ab2737b-5898-4fe9-8b3b-ec2cc099ece3
+49,2026-08-29,14:59,37c3509e,21,diger,,claude-sonnet-5,9,d2 açıkla,2982d311-72f1-4efe-a4d2-b4edf81995db
+50,2026-08-29,14:57,37c3509e,20,diger,,claude-sonnet-5,35,yeni karar masası d1 tek tek açıkla,502648ad-e87f-4dce-a678-2566f37bac93
