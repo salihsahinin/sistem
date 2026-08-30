@@ -35,3 +35,5 @@ veri/erisim-vektor.sqlite
 veri/erisim-vektor-*.npy
 # katman-hatti kirası (Karar 83 A2, PK-7): geçici kilit dosyası, izlenmez
 veri/.kira-*.json
+# Salih dosyası — COMMIT'LENMEZ (Karar 73 EK freni, 08-28 GBM şeridi)
+kuyruk/galeri-siralama/
