@@ -151,3 +151,10 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-seans raporu beğenilmedi).
 - **Monoton-artan-genişlik segmentasyon:** ham ölçekte Jenks/KMeans veri-yoğunluğuna göre optimize eder, genişliğin artmasını GARANTİ ETMEZ. İki ayrı araç, ayrı ön-koşul: (a) ham satır verisi varsa → `log1p(x)` üzerinde kümele (KMeans/Jenks), sınırları `exp(x)-1` ile geri çevir — 0'a yakın dar, uçta geniş aralık yapısal olarak garanti olur; (b) yalnız BİTMİŞ bin sınırları elde varsa (ham veri yok) → PAVA/izotonik regresyon, ardışık genişlik ihlallerini en-az-müdahaleyle (en küçük kareler optimal, toplam aralık korunur) düzeltir, veri gerektirmez, rastgelelik yok. JARVIS'in kendi bucketing ihtiyacı doğarsa (ör. bağlam-boyutu/token-maliyeti segmentasyonu, `v_baglam_seyri` türü görünümler) uygulanabilir aday. Detay: `raporlar/seans-teslim-2026-08-26-sahibinden-segmentasyon.md`.
 
 **2026-08-26 seans-17 (Fable):** `.obsidian` gitignore kapsamında → Obsidian graf renk-config (graph.json) commit edilemedi, yerel kaldı; gizli-klasör kuralı (CLAUDE.md §2: nokta-dizin = kaynak-kodu kapısı + görünürlük) ile gitignore ilişkisi karara bağlanmadı — Salih hükmü bekliyor (aday: .obsidian ayar dosyaları versiyonlansın mı, yoksa yerel-cihaz sınıfı mı).
+
+## 2026-08-30 (icra devam oturumu kapanışı) — karara bağlanmamış bulgular
+- **Tüm-kod A/B kuralı (aday):** sorgu-yönlendirme ifadesi (GUNCEL_RX) sıralamayı da etkiliyorsa kolon-tek A/B yanıltır; vaka `raporlar/2026-08-29-ib42-kalan.md` §2 (yanlış geri alma, 8 dk'da ölçümle düzeltildi). Kural adayı: erişim katmanında her sabit değişikliği `erisim-kalibrasyon.py` TÜMÜ metriğiyle ölçülür.
+- **Sabit-liste testi sınıfı:** 08-29'da iki test (katman tek-tanım, test_tarama_plan) sabit liste yüzünden düştü → "liste üreticiden türetilir" kuralı (AXI A7 komşusu); tüzük/KILAVUZ satırı Salih.
+- **Kanon vaadi ↔ kod:** `core/baglam-anahtar-kaydi.md` §5 bayrakları kodda yok; sınıf olarak "kanon → kod sözleşme testi" (SCRIPTLER satırı ↔ argparse eşitliği) aday.
+- **Loop-dedektörü 2-gram sorusu** ve **İB-57 kural eşikleri** masada (teslim raporu §3).
+
