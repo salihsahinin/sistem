@@ -1,0 +1,38 @@
+{
+  "birim_id": "ib-55-a3-revizyon",
+  "aciklama": "İB-55 A3 araç-güvence yazımının Karar 82/82-EK biçimine revizyonu (§3 geçiş planı: Routine ayağı → Salih-tetikli uzun-loop 3 OK; A1 = 5 otomasyon-koşumu)",
+  "tur": "pipeline",
+  "pist": "K-010",
+  "durum": "tamam-2026-08-30",
+  "oncelik": 2,
+  "okur": [
+    "raporlar/2026-08-29-ib55-a3-arac-guvence.md",
+    "kuyruk/k010-zincir-2026-08-29.md",
+    "git@946791eore/pano.md",
+    "git@946791e:kuyruk/senaryo-defteri.md",
+    "raporlar/2026-08-29-ib63-paralel-pipeline-atlas.md"
+  ],
+  "yazar": [
+    "raporlar/2026-08-29-ib55-a3-arac-guvence.md"
+  ],
+  "granul": "bolum",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "raporlar/2026-08-29-ib55-a3-arac-guvence.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "§3 başlığında 'REV-2 (Karar 82)' damgası varsa yeniden uygulanmaz",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "yalnız İB-55 raporu; §1-2 korunur, §3-4 revize, SÜPERSEDE notu 'uygulandı' damgalanır",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "§3'te 'Routine 3 OK' ana-plan satırı kalmadı ∧ 'Salih-tetikli uzun-loop' 3 ayak yazılı (grep)"
+}

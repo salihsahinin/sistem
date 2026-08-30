@@ -1,0 +1,51 @@
+{
+  "birim_id": "ib-39-atlas",
+  "aciklama": "İB-39 idempotens atlası koşumu (emir cc/gorev-2026-08-29-ib39-idempotens-atlas.md; m.40b tez×3 → antitez → V26 → hakem → sentez; ≤12 ajan)",
+  "tur": "pipeline",
+  "pist": "K-010",
+  "durum": "tamam-2026-08-30",
+  "oncelik": 3,
+  "okur": [
+    "cc/gorev-2026-08-29-ib39-idempotens-atlas.md",
+    "raporlar/2026-08-29-ib39-ic-envanter.md",
+    "git@946791e:tools/AXI-STANDARDI.md",
+    "git@946791e:veri/README.md",
+    "tools/katman-hatti.py",
+    "cc/rapor-2026-07-26-SOZEL-ajan-durma.md",
+    "core/skill-tetikleme-semasi.md",
+    "cc/workflow/fren-sablonu.js",
+    "web"
+  ],
+  "yazar": [
+    "cc/rapor-2026-08-29-ib39-*.md",
+    "raporlar/2026-08-29-ib39-idempotens-atlas.md",
+    "cc/workflow/2026-08-30-idempotens-m40b-*.js",
+    "cc/workflow/README.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "ib-58-anahtar-denetim-argparse"
+  ],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "cc/rapor-2026-08-29-ib39-*.md",
+    "raporlar/2026-08-29-ib39-idempotens-atlas.md",
+    "cc/workflow/2026-08-30-idempotens-m40b-*.js",
+    "cc/workflow/README.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: git log'da 'IB-39 … run' commit'i ∨ raporlar/2026-08-29-ib39-idempotens-atlas.md varsa KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "sentez yazıldı ∧ A+B ≥8 birincil kaynak AS-OF damgalı ∧ C script'leri sınıflandı ∧ 3 entegrasyon seçeneği ∧ masa kalemi taslağı",
+  "kapsam_beyani": "işçi ajanlar yalnız cc/rapor-2026-08-29-ib39-*.md yazar; kod/kanon değiştirmez; fren-sablonu AJAN_TAVAN 36 / DALGA 12",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
+  "dogrulama_kapisi": "V26 kural-tabanlı örneklem + maskeli hakem + tools/atlas-derle.py mekanik derleme"
+}

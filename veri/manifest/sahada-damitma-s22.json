@@ -1,0 +1,51 @@
+{
+  "birim_id": "sahada-damitma-s22",
+  "aciklama": "PARALEL OTURUM (s22, 08-30 09:21 itibarıyla canlı): defter/KILAVUZ/pano/fikir-kutusu damıtması + kendi kapanış ritüeli (kapsül, teslim raporu, katman-hatti, hareket kütüğü)",
+  "tur": "pipeline",
+  "pist": "meta",
+  "durum": "canli-diger-oturum",
+  "oncelik": 0,
+  "okur": [
+    "kuyruk/senaryo-defteri.md",
+    "KILAVUZ.md",
+    "core/pano.md",
+    "fikir-kutusu.md",
+    "core/durum-kapsulu.md"
+  ],
+  "yazar": [
+    "kuyruk/senaryo-defteri.md",
+    "kuyruk/arsiv/*-2026-08-30.md",
+    "KILAVUZ.md",
+    "core/pano.md",
+    "fikir-kutusu.md",
+    "core/durum-kapsulu.md",
+    "raporlar/seans-teslim-2026-08-30-seans22*.md",
+    "raporlar/hareket-gunlugu-2026-08-30.md",
+    "veri/bronz/*",
+    "veri/gorunum/*",
+    "veri/*.jsonl",
+    "veri/baglam.sqlite",
+    "veri/graf/*",
+    "graf/*"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": "kanon-yazar",
+  "silver": "yazar",
+  "commit_kapsami": [],
+  "kanon_yuzeyi": true,
+  "dis_etki": [
+    "push"
+  ],
+  "idempotency_anahtari": null,
+  "zorlama_modu": "yok",
+  "beyan_disi_politikasi": "seri",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "seans bitimi",
+  "kapsam_beyani": "tahmini ayak-izi (o oturumun beyanı yok; git status + mtime'dan türetildi 09:21) · veri ayak-izi 946791e commit içeriğinden (35 veri dosyası: bronz/gorunum/jsonl/sqlite/graf; README değil)",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": null
+}

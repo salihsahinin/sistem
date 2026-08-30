@@ -1,0 +1,51 @@
+{
+  "birim_id": "loop-kapanis-bu-oturum",
+  "aciklama": "Bu oturumun kapanış loop'u: hareket-tablo.py (hareket kütüğü) + katman-hatti.py (silver/gold/graf) + teslim raporu — PK-5 gereği diğer oturumun aynı loop'uyla SERİ",
+  "tur": "loop",
+  "pist": "meta",
+  "durum": "planli-kapanis",
+  "oncelik": 9,
+  "okur": [
+    "veri/bronz/*",
+    "veri/baglam.sqlite",
+    "raporlar/*.md",
+    "kuyruk/*.md",
+    "core/*.md"
+  ],
+  "yazar": [
+    "veri/*",
+    "graf/*",
+    "raporlar/hareket-gunlugu-2026-08-30.md",
+    "raporlar/seans-teslim-2026-08-30-paralel-icra-kademe.md",
+    "raporlar/2026-08-30-paralel-kademe-pilot.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "ib-a2-tatbikat",
+    "ib-55-a3-revizyon",
+    "ib-58-anahtar-denetim-argparse",
+    "ib-39-atlas",
+    "ib-04-wiki-ajan-metodolojisi",
+    "ib-58-erisim-fts-axi"
+  ],
+  "dislama_grubu": "silver-yazar",
+  "silver": "yazar",
+  "commit_kapsami": [
+    "veri/*",
+    "graf/*",
+    "raporlar/*"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [
+    "push"
+  ],
+  "idempotency_anahtari": "katman-hatti idempotent (uretim.git_head_sha = HEAD ise no-op); hareket-tablo append-only hareket_id tekil",
+  "zorlama_modu": "yok",
+  "beyan_disi_politikasi": "seri",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "katman-hatti --json cikis=0 ∧ push tamam",
+  "kapsam_beyani": "kapsül/pano/defter: paralel oturum kapandıktan sonra yalnız pointer satırı",
+  "belirlenimsiz_girdi": [],
+  "dogrulama_kapisi": "katman-hatti --json cikis 0 · silver-saglik gate"
+}

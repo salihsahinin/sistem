@@ -1,0 +1,48 @@
+{
+  "birim_id": "ib-a2-tatbikat",
+  "aciklama": "K-010 A2 tatbikat-kaydı derlemesi: 3 yaşanmış kanıt (PreToolUse teli PASS · M-9 revert tatbikatı · İB-54 fren kurulumu) tek kayıt dosyasına",
+  "tur": "pipeline",
+  "pist": "K-010",
+  "durum": "tamam-2026-08-30",
+  "oncelik": 1,
+  "okur": [
+    "raporlar/2026-08-29-ib54-delinme-kok-neden.md",
+    "raporlar/seans-teslim-2026-08-29-seans20-masa-maratonu.md",
+    "raporlar/2026-08-29-ib55-a3-arac-guvence.md",
+    "kuyruk/k010-zincir-2026-08-29.md",
+    "kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-29.md",
+    "git@946791e:kuyruk/senaryo-defteri.md",
+    "git@946791eore/pano.md",
+    ".claude/hooks/pretool-core-tel.sh",
+    ".claude/hooks/pretool-ajan-fren.sh",
+    ".claude/settings.json",
+    "cc/workflow/fren-sablonu.js",
+    "tools/testler/test_fren_hook.py",
+    "raporlar/hareket-gunlugu-2026-08-29.md"
+  ],
+  "yazar": [
+    "raporlar/2026-08-30-k010-a2-tatbikat-kaydi.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "ib-55-a3-revizyon"
+  ],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "raporlar/2026-08-30-k010-a2-tatbikat-kaydi.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "raporlar/2026-08-30-k010-a2-tatbikat-kaydi.md var → yeniden yazma, ek yok",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "yalnız kayıt dosyası; kanon/pano/defter/zincir dosyasına YAZMAZ; imza satırı boş bırakılır (İB-54(3) Salih)",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "her kanıt satırında dosya:satır pointer; pointer varlığı grep ile mekanik test"
+}

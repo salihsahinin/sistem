@@ -1,0 +1,46 @@
+{
+  "birim_id": "ib-58-anahtar-denetim-argparse",
+  "aciklama": "anahtar-denetim.py → argparse + AXI standardı (A1 --json iki kanal, A2 çıkış sözlüğü, A5 docstring=yardım, A7 FAIL-LOUD); kanon §5 vaadi (--json/--anahtar/--goster) kodla eşitlenir; İB-58 2. aday",
+  "tur": "pipeline",
+  "pist": "K-015",
+  "durum": "tamam-2026-08-30",
+  "oncelik": 1,
+  "okur": [
+    "tools/anahtar-denetim.py",
+    "tools/AXI-STANDARDI.md",
+    "tools/katman-hatti.py",
+    "tools/baglam-tablo.py",
+    "core/baglam-anahtar-kaydi.md",
+    "tools/testler/test_katman_tek_tanim.py",
+    "tools/SCRIPTLER.md"
+  ],
+  "yazar": [
+    "tools/anahtar-denetim.py",
+    "tools/testler/test_anahtar_denetim.py",
+    "tools/SCRIPTLER.md",
+    "tools/AXI-STANDARDI.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "tools/anahtar-denetim.py",
+    "tools/testler/test_anahtar_denetim.py",
+    "tools/SCRIPTLER.md",
+    "tools/AXI-STANDARDI.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "'import argparse' satırı varsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "davranış değişmez (aynı girdi → aynı sayım); yalnız arayüz; core/ dosyasına YAZMAZ",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "pytest test_anahtar_denetim.py yeşil ∧ eski çağrı biçimi aynı çıktı (diff) ∧ --json çıktısı json.loads ∧ bilinmeyen bayrak → çıkış 2"
+}

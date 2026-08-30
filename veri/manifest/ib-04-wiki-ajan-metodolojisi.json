@@ -1,0 +1,41 @@
+{
+  "birim_id": "ib-04-wiki-ajan-metodolojisi",
+  "aciklama": "İB-04 wiki kuyruğundan 1 sayfa: wiki/ajan-metodolojisi.md (kural core/ajan-metodolojisi.md; anlatım sayfası; 6-blok şablon + index + [[link]] turu)",
+  "tur": "pipeline",
+  "pist": "K-015",
+  "durum": "tamam-2026-08-30",
+  "oncelik": 3,
+  "okur": [
+    "core/ajan-metodolojisi.md",
+    "wiki/README.md",
+    ".claude/skills/wiki-sayfa-yaz/SKILL.md",
+    "wiki/sozluk.md",
+    "wiki/loop-engineering.md",
+    "wiki/paralel-oturum-protokolu.md"
+  ],
+  "yazar": [
+    "wiki/ajan-metodolojisi.md",
+    "wiki/README.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "wiki/ajan-metodolojisi.md",
+    "wiki/README.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "wiki/ajan-metodolojisi.md varsa yeniden yazma",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "sozluk.md DONDU — dokunulmaz; core/ajan-metodolojisi.md yalnız okunur",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "tools/wiki-baglanti.py --json kırık link 0 ∧ 6 blok başlığı grep"
+}
