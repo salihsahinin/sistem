@@ -121,3 +121,8 @@
 ## V57
 
 | V57 | **OKUMA KARARI — Wittgenstein, Philosophical Investigations (KABUL, Salih 07-19 ikinci günaydın vardiyası):** okuma-listesi raporunun (`raporlar/` 07-17/18 CC serisi, rapor-16) tek-kitap önerisi kabul edildi; sabah bilinçli-açık bırakılan kalem kapandı (m.31 değer-tercihi, imza masası 6/6). Tempo Salih'te, kart AÇILMAZ; eşlemeler hipotez-damgalı kalır (dürüstlük şerhi rapor-16). | ayık (Salih, 07-19) | KABUL — okuma temposu serbest; pointer: süzgeç raporu §16 |
+
+
+## 2026-08-30 damıtma eki (s22)
+| V47 | KURAL ADAYI | "Sayı değil kural teslim et": sabit sayı yerine durma-kurallı düzen (pilot+parti+iyileşme kapısı+tavan); eşikler türetilmiş/sezgisel | ayık (07-13 sabah) | ADAY; A7/m.39 ailesi |
+*(V47 kanonlaştı — m.25 V47-şerhi, Karar 78 F6 İMZALI; gövdeden bu satır düştü, m.8 arşiv.)*

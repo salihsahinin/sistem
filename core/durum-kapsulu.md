@@ -16,8 +16,8 @@
 
 ## Açık borçlar
 - **Salih el işleri:** claude.ai bulut skill kopyalarını sil (KB-10 H6) · Cowork sekmesi parmak-izi çıktısı (KB-34) · `brew uninstall --cask qlmarkdown` (isteğe bağlı, Karar 72) · **Finder md varsayılanını VS Code yap** (Get Info → Open with → Change All; Karar 80).
-- **Boyut-tetiği:** defter **67,5/48** (Karar 74-82, iki oturum) · KILAVUZ 17,3/16 · pano 12,6/12 · fikir-kutusu ~20/20 — **damıtma SONRAKİ SEANS (Salih hükmü s21)**; arşivler `kuyruk/arsiv/*-2026-08-29.md`.
-- md.21/② şerhi KB-17b ölçümüne bağlı BEKLET (Salih 08-20 hükmü) · erteleme kapsamı: find-skills · lease iadeleri · md.49 yazım turu · wiki kuyruğu (+`bakim-kk` adayı) · 8 damgasız `kuyruk/gelen-*` redrive borcu (damıtma raporu 08-29).
+- **Boyut-tetiği — DAMITMA s22 KOŞULDU (08-30):** defter **42,2/48 ✓** (Karar 69-78 → arşiv-index) · pano 11,9/12 ✓ · kutu 20,0/20 ✓ (V47 kanonlaş-indi, V86 İB-53 şerhli) · **KILAVUZ 16,9/16 — kalan tek aşım:** Skill-Standardı↔core-şema mükerrerlik denetimi sonraki tura. Arşivler `kuyruk/arsiv/*-2026-08-30.md`; 13 pointer içerik-eşlemeyle düzeltildi (kırık 0).
+- md.21/② şerhi KB-17b ölçümüne bağlı BEKLET (Salih 08-20 hükmü) · erteleme kapsamı: find-skills · lease iadeleri · md.49 yazım turu · wiki kuyruğu (+`bakim-kk` adayı) · gelen-* redrive KAPANDI (s22 teyidi: 8/8 zaten damgalıydı — eski satır bayattı).
 
 ## Sonraki ilk iş
 0. **K-010 zinciri ADIM-0 (`kuyruk/k010-zincir-2026-08-29.md`; masayı beklemez):** A2 tatbikat-kaydı derlemesi · ÖB-1/ÖB-2 (Salih) · anahtar-denetim argparse (kanon vaadi) · seans-21 teslim raporu. **Havuz (karar gerektirmez; 08-30 güncel):** İB-55 A3 yazımı · İB-57 headless eşleme · İB-58 axi-standardı (ilk aday katman-hatti) · İB-60 loop-dedektör · İB-61 absorbe-teyit turu · İB-56 Codex araştırması (Fable-dışı) · İB-59 firstmate ölçümü (pilot işi Salih seçer) · İB-39 atlas KOŞUMU (emir hazır; İB-63 sentezi teslim → koşulabilir) · İB-56 (Karar 82 b: öncelik DÜŞTÜ) · İB-07/09 LLM ölçüm koşumları · İB-04 wiki (11 aday, 1-2/seans) · İB-06 sayaç eşikleri · İB-63 (paralel oturumda SAHADA — dokunma). Karar-gerektirmeyen deterministik havuz 08-29 20:0x itibarıyla BOŞ.
