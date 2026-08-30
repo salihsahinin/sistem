@@ -1,9 +1,9 @@
 {
   "birim_id": "loop-kapanis-bu-oturum",
-  "aciklama": "Bu oturumun kapanış loop'u: hareket-tablo.py (hareket kütüğü) + katman-hatti.py (silver/gold/graf) + teslim raporu — PK-5 gereği diğer oturumun aynı loop'uyla SERİ",
+  "aciklama": "Bu oturumun kapanış loop'u: hareket-tablo.py (hareket kütüğü) + katman-hatti.py (silver/gold/graf) + teslim raporu — PK-5 gereği diğer oturumun aynı loop'uyla SERİ | durum güncellemesi 08-30 öğle: oturum kapandı (Salih beyanı 'koşan oturum yok'), commit'ler 946791e/d8f86bd",
   "tur": "loop",
   "pist": "meta",
-  "durum": "planli-kapanis",
+  "durum": "tamam-2026-08-30",
   "oncelik": 9,
   "okur": [
     "veri/bronz/*",

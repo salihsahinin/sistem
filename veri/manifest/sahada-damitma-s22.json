@@ -1,9 +1,9 @@
 {
   "birim_id": "sahada-damitma-s22",
-  "aciklama": "PARALEL OTURUM (s22, 08-30 09:21 itibarıyla canlı): defter/KILAVUZ/pano/fikir-kutusu damıtması + kendi kapanış ritüeli (kapsül, teslim raporu, katman-hatti, hareket kütüğü)",
+  "aciklama": "PARALEL OTURUM (s22, 08-30 09:21 itibarıyla canlı): defter/KILAVUZ/pano/fikir-kutusu damıtması + kendi kapanış ritüeli (kapsül, teslim raporu, katman-hatti, hareket kütüğü) | durum güncellemesi 08-30 öğle: oturum kapandı (Salih beyanı 'koşan oturum yok'), commit'ler 946791e/d8f86bd",
   "tur": "pipeline",
   "pist": "meta",
-  "durum": "canli-diger-oturum",
+  "durum": "tamam-2026-08-30",
   "oncelik": 0,
   "okur": [
     "kuyruk/senaryo-defteri.md",

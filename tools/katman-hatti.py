@@ -139,22 +139,23 @@ def adim_durumu(ad, returncode):
     return "KOD %d" % returncode, True
 
 
-def hijyen(repo, atla=""):
+def hijyen(repo, atla="", insan=sys.stdout):
     """SQLite hijyeni (KB-53 (a), İB-26): ANALYZE (sqlite_stat1 deterministik; planlayıcı girdisi) + PRAGMA optimize; yükleyici DEĞİL, hat-içi tek adım.
-    'hijyen' --atla ile atlanabilir; DB yoksa ATLANDI. Çıkış: 0 tamam · 1 hata (hat düşmez: uyarı kanalı)."""
+    'hijyen' --atla ile atlanabilir; DB yoksa ATLANDI. Çıkış: 0 tamam · 1 hata (hat düşmez: uyarı kanalı).
+    insan: --json modunda stderr (AXI A1 tek-JSON-nesnesi sözleşmesi; 08-30 düzeltmesi — satırlar stdout'a sızıyordu)."""
     if "hijyen" in [x.strip() for x in atla.split(",") if x.strip()]:
-        print("[atla  ] hijyen"); return 0
+        print("[atla  ] hijyen", file=insan); return 0
     import sqlite3
     db = os.path.join(repo, "veri", "baglam.sqlite")
     if not os.path.exists(db):
-        print("[ATLANDI] hijyen        DB yok"); return 0
+        print("[ATLANDI] hijyen        DB yok", file=insan); return 0
     t0 = time.time()
     try:
         con = sqlite3.connect(db); con.execute("ANALYZE"); con.execute("PRAGMA optimize"); con.commit()
         n = con.execute("SELECT COUNT(*) FROM sqlite_stat1").fetchone()[0]; con.close()
-        print("[OK     ] hijyen %6.1fs  ANALYZE + PRAGMA optimize (sqlite_stat1 %d satır)" % (time.time() - t0, n)); return 0
+        print("[OK     ] hijyen %6.1fs  ANALYZE + PRAGMA optimize (sqlite_stat1 %d satır)" % (time.time() - t0, n), file=insan); return 0
     except Exception as e:
-        print("[UYARI  ] hijyen %6.1fs  %s" % (time.time() - t0, e)); return 0
+        print("[UYARI  ] hijyen %6.1fs  %s" % (time.time() - t0, e), file=insan); return 0
 
 
 def main():
@@ -180,7 +181,7 @@ def main():
     try:
         for ad, cmd in adimlari_sec(parquet=not a.parquet_yok, atla=atla):
             if ad == "olcum":
-                kod = max(kod, hijyen(repo, a.atla))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
+                kod = max(kod, hijyen(repo, a.atla, insan))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
             args = list(cmd)
             if a.snapshot and ad in ("karar",): args += ["--snapshot", a.snapshot]
             if a.snapshot and ad == "olcum": args += ["--simdi", a.snapshot + "T00:00:00"]
