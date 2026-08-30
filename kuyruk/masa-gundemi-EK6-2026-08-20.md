@@ -14,7 +14,7 @@
 6. **g24 CC-oran çekirdeği** — CC-oran matrisi/hedef-metni 4 seçenek + gerekçe-disiplini (K1-24-b) + `kosum-maliyeti.py` 1,73× şişiklik kalibrasyon bulgusu (`:558-564`). Rejim-etiketi parçası KAPANDI (m.46(d), Karar 39); K1-24-l "K-009'dan önce oku" notu K-009 açılış gündemine pointer.
 7. **⑧ m.25 eşiği V47 formu** — "pipeline sınıfı için m.25 eşiğinin V47 formunda yazılması (K1-K6+kalibrasyon protokolü)"; halefi yok, K0-Y3 yakın ama aynı değil (#8/#105).
 8. **⑤ ölçüm-bankı tekleştirme** — `kuyruk/olcum-banki.md` ↔ DE-katmanı GOLD "ölçüm-bankı satırları" (`core/veri-muhendisligi-katmani.md:17`) çakışıyor; tek kaynak kararı.
-9. **① pipeline/loop kanonu belirsizleri** — ~4 kalem (dar-ajan zinciri, "özetle DENMEZ" yasağı; rapor-13:313-315, rapor-20 K1-c, EK-F K1-l/K1-o): ajan-metodolojisi + ingest-şeması kısmen absorbe etmiş görünüyor, kalem-kalem bakış gerekir.
+9. **① pipeline/loop kanonu belirsizleri** — ~4 kalem (dar-ajan zinciri, "özetle DENMEZ" yasağı; rapor-20 K1-c, EK-F K1-l/K1-o): ajan-metodolojisi + ingest-şeması kısmen absorbe etmiş görünüyor, kalem-kalem bakış gerekir. **KAPANDI (Karar 83 C3, Salih 08-30):** İB-61 teyit turu (`raporlar/2026-08-29-ib61-absorbe-teyit.md`) — ①absorbe-kapandı ②tek-cümle ajan-metodolojisi §1'e imzalı ③kapat-konusuz ④kapat+İB-06 ölçüm kalemi ⑤~~rapor-13:313-315~~ pointer YANLIŞTI, düşürüldü (rapor-13 borçları kendi kalemi).
 
 ## DONDURULMUŞ (S2 hükmü)
 

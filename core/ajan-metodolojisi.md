@@ -4,7 +4,7 @@
 
 ## 1. Görev = FONKSİYON (ama küçük fonksiyon)
 
-- **Tipli alanlar; alan adı talimattır.** Görev-emri başlıkları kozmetik değil davranışsaldır (DSPy: `research_request` ≠ `request`, başka hiçbir şey değişmeden çıktı kalitesi değişir). Alanlar `ad: tip` yazılır; adlar görevin kendi dilinden seçilir.
+- **Tipli alanlar; alan adı talimattır.** Görev-emri başlıkları kozmetik değil davranışsaldır (DSPy: `research_request` ≠ `request`, başka hiçbir şey değişmeden çıktı kalitesi değişir). Alanlar `ad: tip` yazılır; adlar görevin kendi dilinden seçilir. İşçi/ara ajana "özetle" DENMEZ; tipli alan doldurtulur (rapor-20 K1-c ölçümü 0,48 ↔ 0,96; Salih imzası 2026-08-30 Karar 83 C3-②).
 - **Sözleşme üçlüsü:** `ön-koşul` (trigger) · `değişmez` (predicate) · **`done-yüklemi`** (postcondition — boolean değerlendirilebilir; "iyi bir rapor" gibi derece ifadesi YASAK) + `yeniden-deneme tavanı` (varsayılan 3). Kanıt: AgentSpec >%90 güvensiz-yürütme önleme, DSPy Assertions +%164 kısıt-geçme, CrewAI guardrail+retry=3.
 - **Dallar birinci-sınıf ve numaralı.** Koşullar gövdeye gömülmez; `D1: eğer X ∧ ¬Y → ... · D2: aksi → ...` biçiminde m.38 bağlaçlarıyla ayrı yazılır (LangGraph `Command(goto)` deseninin metin karşılığı). Katman-1 sınıfı karar gerektiren dal = `DUR + Salih'e sor` (interrupt deseni = m.31 kapısı).
 - **DAL-BÜTÇESİ FRENİ (bu bölümün en önemli kuralı):** sözleşme zenginleştikçe DEĞİL, küçüldükçe tutar — koşul/tur arttıkça başarı ölçülü düşüyor (Multi-IF: o1-preview 3 turda 0,877→0,707). Bir görev-fonksiyonunda **dal+koşul toplamı ≤5** (deneysel); aşılıyorsa fonksiyon BÖLÜNÜR — büyük iş = fonksiyon ZİNCİRİ, dev fonksiyon değil. Bu, m.21'in ilk ampirik dayanağıdır.
