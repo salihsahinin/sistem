@@ -99,6 +99,13 @@
    "kaynak": "B-YT5 Wikipedia yetim; B-YT1 referanssızlık ∧ yaş"
   },
   {
+   "id": "T-B-YETIM-UYARI",
+   "ad": "YETİM aday sayısı > uyarı eşiği (351 = son-10-koşum medyanı 234 × 1,5) → UYARI kanalı; hattı düşürmez",
+   "sinif": "bayatlik",
+   "siddet": "warn",
+   "kaynak": "Karar 83 B1 (Salih imzası 2026-08-30, 6. masa); kalibrasyon silver-saglik-kalibrasyon.py, pencere birimi KOŞUM (10); m.29"
+  },
+  {
    "id": "T-B-KAPANDI",
    "ad": "karar_borcu durum=kapandı ∧ kapanış > pencere → 'tarihçe etiketi' ADAYI (ledger'da kalır, m.8)",
    "sinif": "bayatlik",
@@ -136,7 +143,8 @@
  "yetim": {
   "min_yas_seans": 3,
   "esik_gelen_bag": 0,
-  "not": "eşik 0/1/3 kuyruk-kapasite parametresi (B-YT5); ilk değer 0 = hiç bağ yok"
+  "uyari_esigi": 351,
+  "not": "eşik 0/1/3 kuyruk-kapasite parametresi (B-YT5); ilk değer 0 = hiç bağ yok · uyari_esigi 351 = son-10-koşum medyanı (234) × 1,5, pencere birimi KOŞUM (Karar 83 B1, Salih 08-30; m.29 — yeniden kalibrasyon: silver-saglik-kalibrasyon.py)"
  },
  "on_eleme": {
   "katman": [

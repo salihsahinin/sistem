@@ -358,6 +358,11 @@ def t_b(con, S, kural, seanslar, snapshot):
         if y > min_yas:
             yet.append(did); S.kuyruga("T-B-YETIM", "dosya", did, did, "gelen bağ %d ≤ %d ∧ yaş %d seans > %d (≈%s token)" % (gelen.get(did, 0), esik, y, min_yas, tok), "bağlantılandır (pointer) ya da pointer'a indir — SİLME DEĞİL", y)
     S.ekle("T-B-YETIM", len(yet), yet, "yaşı bilinmeyen (son_commit boş): %d" % yas_bilinmeyen)
+    # Karar 83 B1 (Salih 08-30): aday sayısı > uyarı eşiği (medyan×1,5) → WARN kanalı; hattı düşürmez, pencere birimi KOŞUM
+    uyari_esigi = int(kural["yetim"].get("uyari_esigi", 0))
+    if uyari_esigi:
+        asim = len(yet) if len(yet) > uyari_esigi else 0
+        S.ekle("T-B-YETIM-UYARI", asim, yet[:5] if asim else (), "aday %d / eşik %d (medyan 234 × 1,5; Karar 83 B1, m.29)" % (len(yet), uyari_esigi))
     # KAPANDI — karar_borcu kapandı ∧ kapanış > pencere
     kap = []
     for bid, kayit_tarihi, kanit in con.execute("SELECT borc_id, kayit_tarihi, kapanis_kaniti FROM karar_borcu WHERE durum='kapandı' ORDER BY borc_id"):

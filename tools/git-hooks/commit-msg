@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# commit-msg teli — m.10 (commit İngilizce) makine-zorlaması (Karar 83 B4, Salih imzası 2026-08-30; İB-10 "en ucuz koda-taşıma" adayı 1/2).
+# Kural: commit KONU SATIRI (ilk satır) Türkçe aksanlı karakter içeremez (m.10: commit mesajı İngilizce; gövde serbest bırakıldı —
+# dar kapsam, yanlış-pozitif riski düşük tutuldu). İhlalde commit reddedilir; mesaj yeniden yazılır.
+# KURULUM (bilinçli ertelenmiş — canlı paralel oturum varken hook devreye ALINMADI, H4 ihtiyatı; aktivasyon tek komut):
+#   git config core.hooksPath tools/git-hooks
+# Devre dışı bırakma: git config --unset core.hooksPath
+konu=$(head -1 "$1")
+if printf '%s' "$konu" | grep -q '[çğıöşüÇĞİÖŞÜ]'; then
+  echo "commit-msg TELİ (m.10, Karar 83 B4): konu satırı İngilizce olmalı — Türkçe karakter bulundu: $konu" >&2
+  exit 1
+fi
+exit 0

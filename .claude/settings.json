@@ -1,11 +1,20 @@
 {
   "permissions": {
-    "deny": [],
+    "deny": [
+      "Edit(wiki/sozluk.md)",
+      "Write(wiki/sozluk.md)"
+    ],
     "ask": [
       "Bash(git push:*)",
       "Bash(screencapture:*)",
       "Bash(rec:*)",
-      "Bash(sox:*)"
+      "Bash(sox:*)",
+      "Edit(core/tuzuk-v0.md)",
+      "Write(core/tuzuk-v0.md)",
+      "Edit(CLAUDE.md)",
+      "Write(CLAUDE.md)",
+      "Edit(.claude/settings.json)",
+      "Write(.claude/settings.json)"
     ]
   },
   "hooks": {

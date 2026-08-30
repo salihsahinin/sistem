@@ -33,3 +33,5 @@ ogrenme/kaynaklar/mit-6042j-f10/
 # Vektör ölçüm kolu indeksi (İB-47; sqlite-vec türev, ~500 MB)
 veri/erisim-vektor.sqlite
 veri/erisim-vektor-*.npy
+# katman-hatti kirası (Karar 83 A2, PK-7): geçici kilit dosyası, izlenmez
+veri/.kira-*.json

@@ -19,11 +19,14 @@ Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-b
       → 7a) erisim-fts.py (FTS5 kayit_fts + erisim_genisletme; İB-20 eval 4 yöntem → veri/erisim-eval.jsonl + v_erisim_eval; KB-43 (a) İB-43)
       → 7b) hat-içi HİJYEN (ANALYZE + PRAGMA optimize → sqlite_stat1; KB-53 (a) İB-26; yükleyici değil, --atla hijyen ile atlanır)
       → 8) katman-olcum.py (ölçüm/test/sözleşme/freshness → veri/katman-olcum.jsonl append-only) — SON ADIM (kanon core/veri-muhendisligi-katmani.md §8 S3, Salih A 08-17).
-      → OPSİYONEL (bayrak --parquet; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan KAPALI): ambar-parquet.py (silver/ambar → veri/parquet/*.parquet
-        kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py (satır↔kolon ölçüm kütüğü).
+      → VARSAYILAN AÇIK (Karar 83 B2, Salih imzası 08-30 — İB-33 k=3 ölçümüyle Karar 63 şartı doldu; şerh: soğuk ayak purge'süz): ambar-parquet.py
+        (silver/ambar → veri/parquet/*.parquet kolon-bazlı türev; DuckDB ister, yoksa çıkış 4 = "atlandı" sayılır, hat düşmez) → kolon-olcum.py
+        (satır↔kolon ölçüm kütüğü). Kapatma: --parquet-yok.
+KİRA (Karar 83 A2, PK-5/PK-7): eşzamanlı iki katman-hatti koşumu son-yazan-kazanır riskini taşır → veri/.kira-katman-hatti.json adlandırılmış
+kirası alınır (TTL 600 sn m.29, pilotta kalibre; ölü-sahip süpürülür, sahip="salih" kirası ASLA süpürülmez); 60 sn içinde alınamazsa çıkış 5.
 Kullanım: python3 tools/katman-hatti.py [--repo <yol>] [--atla baglam,karar,prompt,ambar,deneyim,hareket,seyir,tarama,saglik,erisim,hijyen,olcum,parquet,kolon-olcum]
-          [--snapshot YYYY-MM-DD] [--parquet]
-Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); 2 = bilinmeyen --atla adı (stderr'de listelenir, hiçbir adım koşmaz; FAIL-LOUD); adım durumu
+          [--snapshot YYYY-MM-DD] [--parquet-yok]
+Çıkış: ilk FAIL-LOUD adımın kodu (0 = tümü tamam); 5 = kira alınamadı (60 sn bekleme sonrası); 2 = bilinmeyen --atla adı (stderr'de listelenir, hiçbir adım koşmaz; FAIL-LOUD); adım durumu
 `adim_durumu()` ile karara bağlanır (0 → OK; ATLANDI_KODLARI'ndaki kod → ATLANDI, hat düşmez; diğer → KOD n, hat düşer). --atla ile çıkarılan
 (bilinen) adımlar döngü öncesi `[atla ] <ad>` satırıyla yankılanır. Deneysel m.29 (2026-08-16, seans-7).
 """
@@ -67,6 +70,40 @@ def atla_sec(secim):
     adlar = [x.strip() for x in secim.split(",") if x.strip()]
     bilinen = {ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR} | {"hijyen"}
     return [x for x in adlar if x in bilinen], [x for x in adlar if x not in bilinen]
+
+
+KIRA_YOLU = os.path.join("veri", ".kira-katman-hatti.json")  # PK-7 adlandırılmış kira (Karar 83 A2; gitignore-sınıfı geçici dosya)
+KIRA_TTL_S = 600  # m.29: ölçümsüz ilk değer, pilotta kalibre (İB-63 cevaplanmamış soru 3)
+
+
+def kira_al(repo):
+    """Adlandırılmış kira (PK-5 silver tek-yazar + PK-7): dosya varsa ve TTL taze ise bekle (60 sn) → çıkış 5 ("dene-geç" değil,
+    kuyruğa iade çağıranın). Ölü-sahip (TTL aşımı) süpürülür; sahip="salih" kirası ASLA süpürülmez (PK-7, Salih kilidi)."""
+    yol = os.path.join(repo, KIRA_YOLU); t0 = time.time()
+    while True:
+        try:
+            fd = os.open(yol, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.write(fd, json.dumps({"sahip": "katman-hatti", "pid": os.getpid(), "ts": time.time()}).encode()); os.close(fd)
+            return yol
+        except FileExistsError:
+            try:
+                with open(yol) as f: k = json.load(f)
+            except Exception:
+                k = {}
+            if k.get("sahip") != "salih" and time.time() - float(k.get("ts", 0) or 0) > KIRA_TTL_S:
+                try: os.remove(yol)
+                except FileNotFoundError: pass
+                continue
+            if time.time() - t0 > 60:
+                print("[KIRA] %s dolu (sahip=%s pid=%s) — eşzamanlı katman-hatti koşulmaz (PK-5); sonra yeniden dene" %
+                      (KIRA_YOLU, k.get("sahip"), k.get("pid")), file=sys.stderr)
+                sys.exit(5)
+            time.sleep(2)
+
+
+def kira_birak(yol):
+    try: os.remove(yol)
+    except (FileNotFoundError, TypeError): pass
 
 
 def adimlari_sec(parquet=False, atla=()):
@@ -125,7 +162,8 @@ def main():
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ap.add_argument("--atla", default="", help="virgüllü adım adları (%s)" % ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR))
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
-    ap.add_argument("--parquet", action="store_true", help="opsiyonel kolon katmanı: ambar-parquet + kolon-olcum (DuckDB gerekir)")
+    ap.add_argument("--parquet", action="store_true", help="(geriye-uyum; Karar 83 B2'den beri varsayılan zaten AÇIK)")
+    ap.add_argument("--parquet-yok", action="store_true", help="kolon katmanını kapat (Karar 83 B2: varsayılan AÇIK; duckdb yoksa zaten ATLANDI)")
     ap.add_argument("--json", action="store_true", help="axi-standardı (İB-58): stdout = TEK makine-okur JSON nesnesi; insan satırları/ilerleme stderr'e")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
     insan = sys.stderr if a.json else sys.stdout  # axi: makine kanalı stdout, insan kanalı stderr
@@ -138,37 +176,41 @@ def main():
     for ad in atla:
         print(f"[atla ] {ad}", file=insan); kayitlar.append({"adim": ad, "durum": "atla", "sure_s": 0.0, "kod": None, "uyari": False})
     kod = 0
-    for ad, cmd in adimlari_sec(parquet=a.parquet, atla=atla):
-        if ad == "olcum":
-            kod = max(kod, hijyen(repo, a.atla))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
-        args = list(cmd)
-        if a.snapshot and ad in ("karar",): args += ["--snapshot", a.snapshot]
-        if a.snapshot and ad == "olcum": args += ["--simdi", a.snapshot + "T00:00:00"]
-        t0 = time.time()
-        r = subprocess.run([yorumlayici_sec(repo, ad)] + args, cwd=repo, capture_output=True, text=True)
-        dt = time.time() - t0
-        durum, duser = adim_durumu(ad, r.returncode)
-        uyari = bool(r.returncode != 0 or (ad in UYARI_KANALI_ADIMLAR and r.stderr.strip()))
-        kayitlar.append({"adim": ad, "durum": durum, "sure_s": round(dt, 2), "kod": r.returncode, "uyari": uyari,
-                         "stderr_son": r.stderr.strip()[-300:] if uyari else ""})
-        print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}", file=insan)
-        if r.stdout.strip() and (r.returncode != 0 or ad == "olcum"):
-            print("        " + r.stdout.strip().replace("\n", "\n        ")[:2000], file=insan)
-        if uyari:
-            print("        STDERR: " + r.stderr.strip()[-600:], file=insan)
-        if duser:
-            kod = kod or r.returncode
-            if ad in ("baglam",):  # çekirdek düşerse aşağısı anlamsız
-                break
-    if a.json:  # axi-standardı: tek satır JSON, alanlar sabit; head/kod_sha determinizm damgası
-        try:
-            head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=repo, capture_output=True, text=True).stdout.strip()
-        except Exception:
-            head = None
-        print(json.dumps({"arac": "katman-hatti", "surum": "v1", "git_head": head, "cikis": kod, "sure_s": round(time.time() - t_bas, 2),
-                          "adim_n": len(kayitlar), "ok_n": sum(1 for k in kayitlar if k["durum"] == "OK"), "uyari_n": sum(1 for k in kayitlar if k["uyari"]),
-                          "adimlar": kayitlar}, ensure_ascii=False))
-    sys.exit(kod)
+    kira_yolu = kira_al(repo)  # Karar 83 A2: hat boyunca tek-yazar kirası (finally ile bırakılır)
+    try:
+        for ad, cmd in adimlari_sec(parquet=not a.parquet_yok, atla=atla):
+            if ad == "olcum":
+                kod = max(kod, hijyen(repo, a.atla))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
+            args = list(cmd)
+            if a.snapshot and ad in ("karar",): args += ["--snapshot", a.snapshot]
+            if a.snapshot and ad == "olcum": args += ["--simdi", a.snapshot + "T00:00:00"]
+            t0 = time.time()
+            r = subprocess.run([yorumlayici_sec(repo, ad)] + args, cwd=repo, capture_output=True, text=True)
+            dt = time.time() - t0
+            durum, duser = adim_durumu(ad, r.returncode)
+            uyari = bool(r.returncode != 0 or (ad in UYARI_KANALI_ADIMLAR and r.stderr.strip()))
+            kayitlar.append({"adim": ad, "durum": durum, "sure_s": round(dt, 2), "kod": r.returncode, "uyari": uyari,
+                             "stderr_son": r.stderr.strip()[-300:] if uyari else ""})
+            print(f"[{durum:7}] {ad:11} {dt:5.1f}s  {' '.join(args)}", file=insan)
+            if r.stdout.strip() and (r.returncode != 0 or ad == "olcum"):
+                print("        " + r.stdout.strip().replace("\n", "\n        ")[:2000], file=insan)
+            if uyari:
+                print("        STDERR: " + r.stderr.strip()[-600:], file=insan)
+            if duser:
+                kod = kod or r.returncode
+                if ad in ("baglam",):  # çekirdek düşerse aşağısı anlamsız
+                    break
+        if a.json:  # axi-standardı: tek satır JSON, alanlar sabit; head/kod_sha determinizm damgası
+            try:
+                head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=repo, capture_output=True, text=True).stdout.strip()
+            except Exception:
+                head = None
+            print(json.dumps({"arac": "katman-hatti", "surum": "v1", "git_head": head, "cikis": kod, "sure_s": round(time.time() - t_bas, 2),
+                              "adim_n": len(kayitlar), "ok_n": sum(1 for k in kayitlar if k["durum"] == "OK"), "uyari_n": sum(1 for k in kayitlar if k["uyari"]),
+                              "adimlar": kayitlar}, ensure_ascii=False))
+        sys.exit(kod)
+    finally:
+        kira_birak(kira_yolu)
 
 
 if __name__ == "__main__":
