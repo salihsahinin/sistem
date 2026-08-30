@@ -3,3 +3,4 @@
 önceki koşumlar: a20630 tur-1 TEMİZ + G1 kanaryası ENGELLENDİ (dil arızası) · e2e715 tur-1 TEMİZ (token-tavanı arızası) — sayaç sıfırdan; bu satırlar TUR sayılmaz
 
 2026-08-30T23:22 · çıkış 0 · ERROR 0 · WARN 2 · TEMİZ · ardışık-temiz 1
+2026-08-30T23:43 · çıkış 0 · ERROR 0 · WARN 2 · TEMİZ · ardışık-temiz 2
