@@ -38,6 +38,6 @@ Toplam: 5 birim tamam, 1 bekliyor · duvar saati 09:36→10:15 (39 dk) · alt-aj
 - **erisim-fts AXI birimi** (İB-58/3): s22 kapanınca kademe-3b olarak koşulur (manifest hazır; kapı BEKLE'den çıkınca).
 - **Bu oturumun kapanış loop'u** (hareket kütüğü + katman-hatti + teslim): PK-12 BEKLE — s22'nin kapanış commit'i (veri/ 28 kirli dosya) atılmadan koşulmaz; Salih hükmü: s22'yi kapat → sonra bu oturum "seans bitimi".
 - Masaya: manifest şeması + PK imzası (İB-63 ①) · `paralel-kapi.py` ③ · snapshot-okur alanı · AS-OF doğrulama satırı · İB-39 masa taslağı 8 kalem (`raporlar/2026-08-29-ib39-idempotens-atlas.md`).
-- K-010 sayaçları: A1 0/5 (bu koşumlar pilot sayılır mı — Salih; pilot seçimi masa kalemi) · A2 kanıt 3/3 KAYITLI (`raporlar/2026-08-30-k010-a2-tatbikat-kaydi.md`, imza boş) · A3 0/3 · ÖB-1/2 Salih'te.
+- K-010 sayaçları: **A1 — Salih hükmü 10:2x "a1 sayacına bu koşumlar sayılır" → 5 birim-koşumu = 5/5 (birim tanımı ve zaman-ayrıklık şerhi: `kuyruk/gelen-2026-08-30-a1-sayac-karar.md`; zincir/pano sayacı s22 kapanınca işlenir)** · A2 kanıt 3/3 KAYITLI (`raporlar/2026-08-30-k010-a2-tatbikat-kaydi.md`, imza boş) · A3 0/3 · ÖB-1/2 Salih'te.
 
 *Yeniden üretim:* `python3 tools/paralel-kapi.py [--kademe N] [--json]` (manifestler repoda); kademe kütüğü satırları bu tabloda; ajan çıktıları hareket kütüğünde (kapanışta iner).
