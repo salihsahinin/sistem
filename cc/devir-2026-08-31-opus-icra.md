@@ -173,3 +173,50 @@ Salih'in negatif bulgusu düz "yok" olarak DEĞİL, **KISMİ** olarak ayakta: 12
 - **Commit'ler (hepsi lokal, PUSH YOK):** `081cb1f` · `7509b65` · `5e45d09` · `b722f7a` · `ab60ca3` · `fed8b31` · `c1f5c05` · `9693529` (+ bu güncellemenin commit'i).
 - **Kapanış ritüeli yine KOŞULMADI** (ana oturumun işi): hareket kütüğü, katman-hattı, silver-sağlık kapısı, kapsül tazeleme, push. `veri/bronz/fren-olay.jsonl` bu oturumun fren olaylarını taşıyor ve **hâlâ commit'lenmedi**.
 - **Kanona yazılmadı, hüküm verilmedi, push atılmadı.**
+
+---
+
+# EK TUR 2 — Salih hükümleri 6a + İB-07 tamamlama (2026-08-31, aynı oturum)
+
+*Tetik: Salih ek emri (ana oturum kanalıyla), iki iş sıralı. Yetki aynı: hüküm yok, kanona yazım yok, push yok, `git add <yol>`.*
+
+## F1. İş 1 — İB-66 bağımsız maskeli hakem (Salih 6a) → `e8909f5`
+
+Hakemlik adımı, **sentezi yazan liderden ayrı** bir maskeli hakem ajanıyla yeniden koşuldu. Hakem `cc/rapor-2026-08-31-ib66-hakem.md` ve sentez dosyasını **açmadı** (bağımsızlık beyanı raporunda); yeni web araması yapmadı — bu bir PUANLAMA turuydu, kanıt tabanı aynı ham raporlar.
+
+**Etiketler DEĞİŞTİ → "bağımsız hakemle teyitli" damgası DÜŞMEDİ.** Sentez `raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md` **"bağımsız hakemle DÜZELTİLDİ"** damgasını taşıyor; m.8 gereği hiçbir satır silinmedi — künyeye görünür uyarı satırı, sonuna **§ EK — BAĞIMSIZ HAKEM DÜZELTMESİ** bölümü eklendi. Yeni hakem raporu: `cc/rapor-2026-08-31-ib66-hakem-bagimsiz.md`.
+
+| | Önceki (lider-hakem) | Bağımsız hakem |
+|---|---|---|
+| İddia | 46 | **98** |
+| D · K · X | 27 · 11 · 8 | **55 · 37 · 6** |
+
+İki sayım farklı tabana oturuyor (98 ≠ 46), doğrudan kıyaslanamaz. Kıyaslanabilir olan: bağımsız hakem **üç V26 satırında daha SERT** hüküm verdi (Temporal, Phoenix → K değil **X**) ve D oranının ürüne/aileye göre değil **kaynağın gerçekten açılıp açılmadığına** göre ayrıştığını tespit etti.
+
+**V26 ile 4 ayrışma** — biri yapısal ve İB-66'ya özgü değil: *V26'nın "somut ve URL'li iddia" örneklem kuralı, kanıt açısından en tehlikeli sınıfı — URL'siz / model-hafızalı iddiaları — sistematik olarak dışarıda bırakıyor.* Ayrıca V26 bir satırı "DESTEKLİYOR" kaydedip asıl bulguyu (A2 hükmünün çürüdüğünü) ihlal listesine yazmamış; tutarlı okumada V26 oranı **%55,6 değil %44,4**, kanıt ihlali **6 değil 5**.
+
+**Ne ayakta kaldı:** kriter matrisinin yapısı, **0/12** bulgusu, **KISMİ** hükmü, seviye-sayım tanımı ve 4 prompt şablonu — C ailesi 13 D / 5 K / 0 X aldı ve hakem `parent_tool_use_id` = 0 bulgusunu **kendi salt-okuma sondasıyla doğruladı**. **Ne zayıfladı:** OTel GenAI ve Braintrust iddialarına dayanan tasarım gerekçeleri.
+
+## F2. İş 2 — İB-07 kalan 15 hücre → `e1308d0`
+
+Fren revizyonu sonrası kalan **q06-q20 tekrar-3** hücreleri koşuldu. **Kütük 60/60** (`veri/description-eval.jsonl`); her `sorgu_id` tam 3 kez; iki tur `kosum_id` ile ayrık (`ib07:7509b654:…` 45 satır · `ib07-ek:e8909f5:…` 15 satır). **Donmuş altın set ve SKILL.md description'ları değişmedi** (`git status` boş döndü) — Salih'in "set DEĞİŞTİRİLMEZ" kaydına uyuldu; eski kütük satırlarına dokunulmadı (append-only).
+
+**Sonuç n=60: 60/60 isabet, 14 skill + HİÇBİRİ sınıfının hepsinde P=R=1,00, karışan çift 0.** İkinci tur 15/15, 0 format-dışı dönüş, 5 senkron dalga, hook reddi yok.
+
+**KB-20 önerisi: kapanabilir — ama şerh önerinin İÇİNDE:** altın sorgu setini **ölçülen sistemin kendisi türetti**; bu ölçüm skill-tetikleme doğruluğunun **ÜST SINIRINI** verir, gerçek beklenen başarımı değil. Kendi yazdığı sorgularda %100 isabet, description'ların bağımsız/gerçek kullanıcı ifadelerine karşı sağlamlığı hakkında **hiçbir şey söylemiyor**. Bağımsız sorgu setiyle yeniden ölçüm **ayrı borç olarak açık**.
+
+**İkinci şerh `[?]`:** 2. turun 14-skill prompt bloğu aynı (değişmemiş) kaynak dosyalardan yeniden kuruldu, ama 1. tur şablonuyla **karakter-birebir aynılığı kanıtlanamıyor** → tekrar-1/2 kolu ile tekrar-3 kolu arasında düşük ama sıfır olmayan ölçüm-tutarlılığı riski.
+
+## F3. EK TUR 2 SONRASI DURUM
+
+- **Emirdeki 7 birimin 7'si de TAMAM.** İB-07 artık kısmi değil (60/60); İB-66 bağımsız hakemle düzeltilmiş.
+- **Ajan sayacı: 106 → 123 / 144** (pay 21). Fren AÇIK kaldı, `JARVIS_FREN_KAPALI` kullanılmadı.
+- **Ek tur 2 commit'leri (lokal, PUSH YOK):** `e8909f5` (İB-66 bağımsız hakem + düzeltme notu) · `e1308d0` (İB-07 60/60) (+ bu güncellemenin commit'i).
+- **Kapanış ritüeli hâlâ KOŞULMADI** (ana oturumun işi): hareket kütüğü, katman-hattı, silver-sağlık kapısı, kapsül tazeleme, push. `veri/bronz/fren-olay.jsonl` bu oturumun fren olaylarını taşıyor ve **hâlâ commit'lenmedi**.
+
+## F4. EK TUR 2'NİN AÇTIĞI SORULAR (Salih'e)
+
+12. **V26 örneklem kuralının yapısal açığı (bağımsız hakem bulgusu, İB-66'ya özgü DEĞİL):** kural "somut ve URL'li iddia" seçtiği için URL'siz / model-hafızalı iddialar — kanıt açısından en riskli sınıf — hiç örnekleme girmiyor. Kural revize edilsin mi (örn. örneklemin bir kotası zorunlu olarak URL'siz iddialardan)? Bu, m.40b koşum sözleşmesini ilgilendirir, tek atlası değil.
+13. **Hakem bağımsızlığı kurallaşsın mı?** Bu turda bağımsız hakem, lider-hakemden farklı hüküm üretti ve V26'nın kaçırdığı bir ihlali yakaladı. "Sentezi yazan ajan hakemlik yapamaz" m.40b'ye sabit kural olarak yazılsın mı?
+14. **İB-07 bağımsız sorgu seti borcu:** üst-sınır şerhi gereği açık kalan "bağımsız sorgu setiyle yeniden ölçüm" ayrı İB olarak açılsın mı, yoksa KB-20 bu haliyle mi kapatılsın?
+15. **İB-66 tasarım gerekçelerinin tazelenmesi:** OTel GenAI ve Braintrust iddiaları zayıfladı; §3-§4 tasarım bölümü bu iki dayanak olmadan yeniden mi tartılsın (yeni kanıt turu), yoksa mevcut şerhle mi kalsın?
