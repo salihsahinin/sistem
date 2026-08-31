@@ -3,7 +3,7 @@
   "aciklama": "İB-67 + İB-68 ORTAK TARAMALI tek birim (Salih emri: tek tarama, iki rapor) — paper-adayı yenilik doğrulama + ürünleşme-adayı pazar doğrulama (emirler cc/gorev-2026-08-31-ib67-*.md, cc/gorev-2026-08-31-ib68-*.md; m.40b, ≤12 ajan)",
   "tur": "pipeline",
   "pist": "K-020",
-  "durum": "planli",
+  "durum": "tamam-2026-08-31 (metodolojik şerh: 8 işçi raporunda birincil kaynak 1 kez açıldı; KISMİ hükümler negatif-kanıt zayıflığı taşıyor — MK-67/3)",
   "oncelik": 2,
   "okur": [
     "cc/gorev-2026-08-31-ib67-paper-aday-bulgu-envanteri.md",
@@ -27,7 +27,9 @@
     "veri/manifest/ib-67-68-paper-urun-envanteri.json"
   ],
   "granul": "dosya",
-  "sira": ["ib-66-gozlemlenebilir-nested-loop"],
+  "sira": [
+    "ib-66-gozlemlenebilir-nested-loop"
+  ],
   "dislama_grubu": null,
   "silver": "hayir",
   "commit_kapsami": [
@@ -46,6 +48,9 @@
   "tetik_turu": "seans",
   "durma_kosulu": "İB-67: ≥8 aday repo-pointer'lı ∧ aday başına ≥3 bağımsız arama izi ∧ en-yakın-komşu AS-OF ∧ ≥1 paper-iskeleti · İB-68: ≥6 aday repo-kanıtlı ∧ rakip taraması AS-OF ∧ pazar-sinyali dolu ∨ 'sinyalsiz' ∧ ≥1 ürün-iskeleti · her ikisinde masa-kalemi taslağı",
   "kapsam_beyani": "paper/ürün İNŞASI YASAK (iskelet önerisi); fiyat iddiası YASAK (m.39); dışa temas YASAK (md.14 remote private); yenilik/pazar iddiası taramasız damgalanmaz; hüküm masaya (m.31, Katman-1 para+dışarı-iş)",
-  "belirlenimsiz_girdi": ["model-çıktısı", "web"],
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
   "dogrulama_kapisi": "aday başına adversarial 'BU ZATEN VAR — bul' antitezi + birincil-kaynak URL + V26 SEO-gürültü freni + maskeli hakem"
 }
