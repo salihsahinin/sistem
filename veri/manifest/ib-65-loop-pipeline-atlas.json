@@ -1,0 +1,47 @@
+{
+  "birim_id": "ib-65-loop-pipeline-atlas",
+  "aciklama": "İB-65 loop↔pipeline↔hibrit seçim ölçütleri + nested-loop kompozisyon atlası (emir cc/gorev-2026-08-30-ib65-loop-pipeline-secim-atlas.md; m.40b tam kontrat, ≤12 ajan)",
+  "tur": "pipeline",
+  "pist": "K-020",
+  "durum": "tamam-2026-08-31",
+  "oncelik": 2,
+  "okur": [
+    "cc/gorev-2026-08-30-ib65-loop-pipeline-secim-atlas.md",
+    "raporlar/2026-08-29-ib39-idempotens-atlas.md",
+    "raporlar/2026-08-29-ib57-headless-esleme-taslak.md",
+    "kuyruk/k010-zincir-2026-08-29.md",
+    "ogrenme/loop-eng-yol-haritasi.md",
+    "git@f08209b:veri/manifest/",
+    "tools/loop-dedektor.py",
+    "tools/gnhf-izle.py",
+    "web"
+  ],
+  "yazar": [
+    "cc/rapor-2026-08-31-ib65-*.md",
+    "raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md",
+    "veri/manifest/ib-65-loop-pipeline-atlas.json"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "cc/rapor-2026-08-31-ib65-*.md",
+    "raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md",
+    "veri/manifest/ib-65-loop-pipeline-atlas.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md VARSA KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "sentez ∧ A+B ≥8 birincil kaynak AS-OF ∧ C ≥20 birim pointer'lı sınıflandı ∧ 3 seçim-kuralı modeli (≥1 karşıt-temelli, sayısal) ∧ nested-loop kural taslağı m.38 lojik formda ∧ masa kalemi taslağı",
+  "kapsam_beyani": "işçiler yalnız cc/rapor-2026-08-31-ib65-*.md yazar; kod/kanon değişmez; koşum-biçimi HÜKMÜ verilmez (masaya öneri) ; manifest envanteri SNAPSHOT okunur (git@f08209b:veri/manifest/, PK-8) — canlı manifest yazımıyla çakışmaz",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
+  "dogrulama_kapisi": "V26 kural-tabanlı örneklem + maskeli hakem + tools/atlas-derle.py mekanik derleme"
+}
