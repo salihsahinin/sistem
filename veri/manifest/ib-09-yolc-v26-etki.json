@@ -1,0 +1,40 @@
+{
+  "birim_id": "ib-09-yolc-v26-etki",
+  "aciklama": "İB-09 Yol-C V26-yakalama model-etkisi ölçümü (emir cc/gorev-2026-08-30-ib09-yolc-v26-etki.md; Opus-5 ↔ Sonnet-5 denetçi çifti, donmuş geçmiş koşumlar; firstmate lider-rolde — İB-59 ölçüm pilotu, Karar 83 EK-2)",
+  "tur": "pipeline",
+  "pist": "K-016",
+  "durum": "tamam-2026-08-31",
+  "oncelik": 1,
+  "okur": [
+    "cc/gorev-2026-08-30-ib09-yolc-v26-etki.md",
+    "cc/rapor-2026-08-29-ib63-atlas-*.md",
+    "cc/rapor-2026-08-29-ib53-atlas-v26-*.md"
+  ],
+  "yazar": [
+    "veri/v26-model-etki.jsonl",
+    "raporlar/2026-08-30-ib09-yolc-v26-etki.md",
+    "veri/manifest/ib-09-yolc-v26-etki.json"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "veri/v26-model-etki.jsonl",
+    "raporlar/2026-08-30-ib09-yolc-v26-etki.md",
+    "veri/manifest/ib-09-yolc-v26-etki.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-08-30-ib09-yolc-v26-etki.md VARSA ∨ git log'da 'IB-09 V26 model' commit'i VARSA KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "≥2 vaka × 2 model kütükte ∧ pozitif kontrol (K-DÜŞÜŞ vakası) her iki modelde etiketlendi ∧ fark tablosu + pin-kararı girdi paragrafı",
+  "kapsam_beyani": "web araması YASAK (girdi donmuş geçmiş koşum dosyaları); pin/kanon değişikliği YOK (hüküm Salih'te); tavan 8 denetçi koşumu",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "pozitif kontrol = İB-63 antitez-B K-DÜŞÜŞ vakası; negatif kontrol = tez-tarafı 8/8 PASS; fark satırları pointer'lı"
+}
