@@ -14,7 +14,7 @@ ajan-kosum-vekil,,"<synthetic>,claude-fable-5,claude-opus-5",1,43122,18.7,0,0
 ajan-kosum-vekil,atlas-kosum,claude-haiku-4-5-20251001,1,4408,1.0,0,0
 ajan-kosum-vekil,atlas-kosum,,1,0,1.4,0,0
 ana-sira-prompt,seans-acilis,claude-fable-5,19,,,,
-ana-sira-prompt,seans-kapanis,claude-fable-5,14,,,,
+ana-sira-prompt,seans-kapanis,claude-fable-5,15,,,,
 ana-sira-prompt,gunaydin-vardiya,claude-fable-5,7,,,,
 ana-sira-prompt,atlas-kosum,claude-fable-5,6,,,,
 ana-sira-prompt,gorev-emri-derleme,claude-fable-5,6,,,,
@@ -32,6 +32,7 @@ ana-sira-prompt,atlas-kosum,claude-sonnet-5,1,,,,
 ana-sira-prompt,celiski-kapisi,claude-fable-5,1,,,,
 ana-sira-prompt,dataviz,claude-fable-5,1,,,,
 ana-sira-prompt,lavish,claude-fable-5,1,,,,
+ana-sira-prompt,loop,claude-fable-5,1,,,,
 ana-sira-prompt,no-mistakes,claude-fable-5,1,,,,
 ana-sira-prompt,skill-kapisi,claude-fable-5,1,,,,
 ana-sira-prompt,staj-acilis,claude-fable-5,1,,,,

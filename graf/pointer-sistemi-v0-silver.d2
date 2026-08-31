@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — SİLVER TABLOLARI — PK/FK (pano 1/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver ba7628c · HEAD ba7628c · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver c5a1ebe · HEAD c5a1ebe · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -48,7 +48,7 @@ bag: "bag · 26 satır" {
   kayit_zamani: TEXT
   gecersiz_zamani: TEXT
 }
-baglam_olay: "baglam_olay · 10.072 satır" {
+baglam_olay: "baglam_olay · 10.294 satır" {
   shape: sql_table
   olay_id: TEXT
   ts_utc: TEXT
@@ -105,7 +105,7 @@ deneyim_fts_idx: "deneyim_fts_idx · 19 satır" {
   term: TEXT
   pgno: TEXT
 }
-dosya: "dosya · 786 satır" {
+dosya: "dosya · 795 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: primary_key }
   dizin: TEXT
@@ -114,7 +114,7 @@ dosya: "dosya · 786 satır" {
   blob_sha: TEXT
   son_commit: TEXT
 }
-erisim_genisletme: "erisim_genisletme · 59.056 satır" {
+erisim_genisletme: "erisim_genisletme · 59.162 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -123,7 +123,7 @@ erisim_genisletme: "erisim_genisletme · 59.056 satır" {
   genisletme: TEXT
   ref_sayisi: TEXT
 }
-hareket: "hareket · 4.545 satır" {
+hareket: "hareket · 4.635 satır" {
   shape: sql_table
   hareket_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
@@ -131,27 +131,27 @@ hareket: "hareket · 4.545 satır" {
   dosya: TEXT
   yuklendi_head: TEXT
 }
-json_kayit: "json_kayit · 674.855 satır" {
+json_kayit: "json_kayit · 689.223 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: foreign_key }
   json_yolu: TEXT
   deger: TEXT
 }
-karar_borcu: "karar_borcu · 127 satır" {
+karar_borcu: "karar_borcu · 132 satır" {
   shape: sql_table
   borc_id: TEXT { constraint: primary_key }
   tur: TEXT
   durum: TEXT
   bagimlilik: TEXT
 }
-karar_borcu_kaynak: "karar_borcu_kaynak · 364 satır" {
+karar_borcu_kaynak: "karar_borcu_kaynak · 369 satır" {
   shape: sql_table
   borc_id: TEXT { constraint: foreign_key }
   dosya_id: TEXT { constraint: foreign_key }
   satir: TEXT
   kayit_id: TEXT { constraint: foreign_key }
 }
-kayit: "kayit · 59.056 satır" {
+kayit: "kayit · 59.162 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: primary_key }
   dosya_id: TEXT { constraint: foreign_key }
@@ -161,7 +161,7 @@ kayit: "kayit · 59.056 satır" {
   satir_son: TEXT
   zarf_tip: TEXT
 }
-kayit_fts: "kayit_fts · 59.056 satır" {
+kayit_fts: "kayit_fts · 59.162 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -175,7 +175,7 @@ kayit_fts_config: "kayit_fts_config · 1 satır" {
   k: TEXT
   v: TEXT
 }
-kayit_fts_content: "kayit_fts_content · 59.056 satır" {
+kayit_fts_content: "kayit_fts_content · 59.162 satır" {
   shape: sql_table
   id: TEXT
   c0: TEXT
@@ -184,17 +184,17 @@ kayit_fts_content: "kayit_fts_content · 59.056 satır" {
   c3: TEXT
   c4: TEXT
 }
-kayit_fts_data: "kayit_fts_data · 4.951 satır" {
+kayit_fts_data: "kayit_fts_data · 4.966 satır" {
   shape: sql_table
   id: TEXT
   block: TEXT
 }
-kayit_fts_docsize: "kayit_fts_docsize · 59.056 satır" {
+kayit_fts_docsize: "kayit_fts_docsize · 59.162 satır" {
   shape: sql_table
   id: TEXT
   sz: TEXT
 }
-kayit_fts_idx: "kayit_fts_idx · 2.828 satır" {
+kayit_fts_idx: "kayit_fts_idx · 2.799 satır" {
   shape: sql_table
   segid: TEXT
   term: TEXT
@@ -209,14 +209,14 @@ parquet_uretim: "parquet_uretim · 0 satır" {
   byte: TEXT
   ms: TEXT
 }
-prompt: "prompt · 768 satır" {
+prompt: "prompt · 787 satır" {
   shape: sql_table
   prompt_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
   sonraki_skill: TEXT
   yuklendi_head: TEXT
 }
-referans: "referans · 77.587 satır" {
+referans: "referans · 77.833 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: foreign_key }
   ref_turu: TEXT

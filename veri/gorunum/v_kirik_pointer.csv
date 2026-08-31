@@ -211,6 +211,7 @@ gunluk/2026-08-13.md,yol,2,2,raporlar/hareket-gunlugu-2026-08-17.md,raporlar/har
 ib55-a3-arac-guvence.md,ciplak_ad,2,2,core/durum-kapsulu.md,core/durum-kapsulu.md#7-7#c53e7942
 ib61-absorbe-teyit.md,ciplak_ad,2,2,core/durum-kapsulu.md,core/durum-kapsulu.md#7-7#c53e7942
 integrated-browser.md,ciplak_ad,2,1,cc/rapor-2026-08-29-ib53-atlas-antitez-c.md,cc/rapor-2026-08-29-ib53-atlas-antitez-c.md#148-150#d2dab0f5
+iteration-N.jsonl,ciplak_ad,2,2,cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md,cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md#5-8#4c10433c
 kapsül/pano/CLAUDE.md,yol,2,1,cc/rapor-2026-08-18-1.md,cc/rapor-2026-08-18-1.md#357-357#024e26fc
 karar-hatti/SKILL.md,yol,2,2,cc/rapor-2026-07-30-11.md,cc/rapor-2026-07-30-11.md#34-34#e8a95bf9
 kararlar.md,ciplak_ad,2,2,paylasim/ekip-skilleri/README.md,paylasim/ekip-skilleri/README.md#48-48#01a9f7e5
@@ -461,6 +462,7 @@ hooks-guide.md,ciplak_ad,1,1,raporlar/2026-07-17-skill-nasil-olusturulur.md,rapo
 hooks/hooks.json,yol,1,1,cc/rapor-2026-08-26-1.md,cc/rapor-2026-08-26-1.md#305-305#c5a78436
 i.md,ciplak_ad,1,1,raporlar/hareket-gunlugu-2026-08-29.md,raporlar/hareket-gunlugu-2026-08-29.md#657-657#d208cc71
 ianjsikes.md,ciplak_ad,1,1,cc/rapor-2026-08-29-ib53-atlas-antitez-a.md,cc/rapor-2026-08-29-ib53-atlas-antitez-a.md#461-461#5f842969
+ib-69-a2.json,ciplak_ad,1,1,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md#18-18#18ae56c4
 ile.../ingest-2026-08-03.md,yol,1,1,kuyruk/arsiv/pano-arsivi-2026-08-21.md,kuyruk/arsiv/pano-arsivi-2026-08-21.md#7-7#5b6bffb5
 ile.../ingest-YYYY-MM-DD.md,yol,1,1,.claude/skills/seans-kapanis/SKILL.md,.claude/skills/seans-kapanis/SKILL.md#30-30#9f0b24c3
 improve_description.py,ciplak_ad,1,1,cc/rapor-2026-08-15-1.md,cc/rapor-2026-08-15-1.md#243-243#dff718a0
@@ -542,6 +544,11 @@ rapor-YYYY-MM-DD-N.md,ciplak_ad,1,1,cc/README.md,cc/README.md#8-8#c11b5aff
 raporlar/2026-07-17-otomasyon-vizyon-mimarisi-arastirma-3model.md,yol,1,1,raporlar/2026-07-17-otomasyon-vizyon-mimarisi-3model.md,raporlar/2026-07-17-otomasyon-vizyon-mimarisi-3model.md#157-165#6ee2a178
 raporlar/2026-08-30-ib07-description-eval.md,yol,1,1,cc/gorev-2026-08-30-ib07-description-eval.md,cc/gorev-2026-08-30-ib07-description-eval.md#12-12#9cbdc515
 raporlar/2026-08-30-ib09-yolc-v26-etki.md,yol,1,1,cc/gorev-2026-08-30-ib09-yolc-v26-etki.md,cc/gorev-2026-08-30-ib09-yolc-v26-etki.md#12-12#85b56061
+raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md,yol,1,1,cc/gorev-2026-08-30-ib65-loop-pipeline-secim-atlas.md,cc/gorev-2026-08-30-ib65-loop-pipeline-secim-atlas.md#12-12#e3e8b1ae
+raporlar/2026-08-3x-ib66-gozlemlenebilir-nested-loop-atlas.md,yol,1,1,cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md,cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md#12-12#2bd1718f
+raporlar/2026-08-3x-ib67-paper-aday-envanteri.md,yol,1,1,cc/gorev-2026-08-31-ib67-paper-aday-bulgu-envanteri.md,cc/gorev-2026-08-31-ib67-paper-aday-bulgu-envanteri.md#12-12#92a24352
+raporlar/2026-08-3x-ib68-urun-aday-envanteri.md,yol,1,1,cc/gorev-2026-08-31-ib68-urun-aday-envanteri.md,cc/gorev-2026-08-31-ib68-urun-aday-envanteri.md#12-12#814c5d39
+raporlar/2026-08-3x-ib69-matris-a1-formalizasyon.md,yol,1,1,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md#18-18#18ae56c4
 raporlar/2026-MM-DD-jarvis-teslim.md,yol,1,1,PARALEL-VARDIYA-ILK-DENEME.md,PARALEL-VARDIYA-ILK-DENEME.md#23-23#27be6542
 raporlar/arastirma-cephe-haritasi.md,yol,1,1,raporlar/2026-07-18-gece-arastirma-sistemi-kullanim.md,raporlar/2026-07-18-gece-arastirma-sistemi-kullanim.md#97-97#8c4c7dc0
 raporlar/graf-durum.md,yol,1,1,raporlar/2026-07-24-serit2-graph-engineering.md,raporlar/2026-07-24-serit2-graph-engineering.md#119-119#3eac9dfd
@@ -619,6 +626,7 @@ vale.sh,ciplak_ad,1,1,cc/rapor-2026-08-26-2.md,cc/rapor-2026-08-26-2.md#326-326#
 vardiya-teslim-2026-07-10-mobil.md,ciplak_ad,1,1,raporlar/vardiya-teslim-2026-07-10-11-FINAL.md,raporlar/vardiya-teslim-2026-07-10-11-FINAL.md#3-5#8fa8b111
 veri/anahtar-terimler.json,yol,1,1,veri/README.md,veri/README.md#68-68#da4bae45
 veri/description-eval.jsonl,yol,1,1,cc/gorev-2026-08-30-ib07-description-eval.md,cc/gorev-2026-08-30-ib07-description-eval.md#7-7#244487a3
+veri/manifest/ib-69-a1.json,yol,1,1,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md,cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md#18-18#18ae56c4
 veri/sozlesme/description-eval-sorgular.json,yol,1,1,cc/gorev-2026-08-30-ib07-description-eval.md,cc/gorev-2026-08-30-ib07-description-eval.md#6-6#d8a982e2
 veri/sozlesme/tarama-plan.jsonl,yol,1,1,.claude/skills/seans-kapanis/SKILL.md,.claude/skills/seans-kapanis/SKILL.md#61-61#2ed645e8
 veri/teslim-olcum.jsonl,yol,1,1,cc/rapor-2026-08-16-4.md,cc/rapor-2026-08-16-4.md#211-211#bb8caa70
