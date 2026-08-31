@@ -3,7 +3,7 @@
   "aciklama": "İB-69 AİLE-2: otomasyon-geçişi uygulaması + prototip sürecinin kurallaştırılması (aile-1 şemasını OKUR; SIRALI) — pilot tasarımı koşumsuz (emir cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md; m.40b, ≤10 ajan)",
   "tur": "pipeline",
   "pist": "K-020",
-  "durum": "planli",
+  "durum": "tamam-2026-08-31",
   "oncelik": 3,
   "okur": [
     "cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md",
@@ -18,7 +18,9 @@
     "veri/manifest/ib-69-a2.json"
   ],
   "granul": "dosya",
-  "sira": ["ib-69-a1"],
+  "sira": [
+    "ib-69-a1"
+  ],
   "dislama_grubu": null,
   "silver": "hayir",
   "commit_kapsami": [
@@ -35,6 +37,9 @@
   "tetik_turu": "seans",
   "durma_kosulu": "uygun-iş envanteri ≥10 sınıflandırılmış pointer'lı ∧ K-020 birleşme önerisi 3 model (≥1 karşıt-temelli, sayısal) ∧ kural+şema paketi m.38 formunda ∧ pilot tasarımı (maliyet kaba, KOŞULMAZ) ∧ masa kalemi taslağı",
   "kapsam_beyani": "prototip İNŞASI/koşumu YASAK (pilot yalnız TASARIM; koşum onayı masada); kanon değişikliği YOK; manifest tur alanı önerisi TASLAK",
-  "belirlenimsiz_girdi": ["model-çıktısı", "web"],
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
   "dogrulama_kapisi": "m.40b zinciri (tez → antitez → V26 → maskeli hakem); aile-1 şemasına uyum denetimi"
 }
