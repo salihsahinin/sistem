@@ -289,3 +289,42 @@ TANIM: T = ana repoda etkin herhangi bir tel/fren (hook, kural, kanon kısıtı)
 | ≥2 prompt şablonu m.38 formda | ✅ §5.3, **4 şablon** |
 | Masa-kalemi taslağı | ✅ §6 |
 | **Eksik** | Maskeli hakem AYRI ajanla koşulamadı (ajan freni); 4 `[?]` hücre (CrewAI/Temporal/Langfuse/Phoenix K1) kapatılmadı; Model A ön koşulu (gerçek nested koşumda `parent_tool_use_id` doğrulaması) yapılmadı — inşa öncesi şart olarak masaya taşındı |
+
+
+---
+
+## EK — BAĞIMSIZ HAKEM DÜZELTMESİ (2026-08-31, Salih 6a hükmü)
+
+*m.8 gereği hiçbir satır silinmedi ∨ değiştirilmedi; bu bölüm üstüne nottur. Kaynak: `cc/rapor-2026-08-31-ib66-hakem-bagimsiz.md`. Koşum: bağımsız maskeli hakem ajanı (opus), sentezi yazan liderden AYRI; hakem sentezi ve önceki hakem raporunu AÇMADI (bağımsızlık beyanı raporunda). Yeni web araması yapılmadı — bu bir PUANLAMA turudur, kanıt tabanı aynı ham raporlardır.*
+
+### 1. Hüküm DEĞİŞTİ — "teyitli" damgası DÜŞMEZ
+
+| | Önceki (lider-hakem) | Bağımsız hakem |
+|---|---|---|
+| İddia sayısı | 46 (İ-01…İ-46) | **98** |
+| D | 27 | **55** (%56,1) |
+| K | 11 | **37** (%37,8) |
+| X | 8 | **6** (%6,1) |
+
+İki sayım **doğrudan karşılaştırılamaz** — bağımsız hakem iddiaları daha ince ayrıştırdı (98 ≠ 46), dolayısıyla oranlar farklı tabana oturuyor. Karşılaştırılabilir olan şudur: **bağımsız hakem üç V26 satırında öncekinden SERT hüküm verdi** (Temporal ve Phoenix satırlarına K değil **X**) ve blok dağılımının ürüne/aileye göre değil **kaynağın gerçekten açılıp açılmadığına göre** ayrıştığını tespit etti (C ve V26 blokları yüksek D, çünkü dosyaları/URL'leri fiilen açtılar).
+
+### 2. En zayıf üç iddia (bağımsız hakem)
+
+1. **OTel GenAI "konuşma içeriği event'e taşınır"** — kaynak model hafızası, **sıfır kanıt**; üstelik B ailesinin tasarım-tavsiye listesine temel yapılmış. → Bu raporun §3-§4'ünde OTel'e dayanan tasarım gerekçeleri **bu şerhle okunmalıdır**.
+2. **Braintrust "en zayıf aday" + "gözlemlenebilirlik araçlarının hepsi post-hoc"** — ürün sınıflandırması fetch aracının arızasına dayandırılıp **evrensel niceleyiciye** yükseltilmiş.
+3. **Temporal "liveness nested workflow'lara da uygulanır"** — birincil URL diye sunulmuş, gövdede arama özeti itiraf edilmiş, sayfada cümle yok.
+
+### 3. V26 ile 4 ayrışma (bağımsız hakemin çapraz kontrolü)
+
+- **(a)** V26 ihlal #5 (A2'de iddia-düzeyi AS-OF yok) **kanıt ihlali değil biçim kusuru** → kanıt ihlali sayısı **6 değil 5**.
+- **(b)** V26, Braintrust satırını "DESTEKLİYOR" diye kaydedip **asıl bulguyu — A2 hükmünün çürüdüğünü — ihlal listesine yazmamış**; bağımsız hakem bunu V26'nın kaçırdığı **en ağır ihlal** sayıyor (antitez turu bağımsız yakalamış).
+- **(c)** V26'nın "somut ve URL'li iddia" örneklem kuralı, kanıt açısından **en tehlikeli sınıfı — URL'siz / model-hafızalı iddiaları — sistematik olarak dışarıda bırakıyor**. Bu, örneklem kuralının yapısal açığıdır ve İB-66'ya özgü değildir.
+- **(d)** Ölçüt tutarsızlığı: aynı kusur sınıfı Jaeger'de "tam destek + ayrı ihlal maddesi", OTel Logs'ta "KISMİ" kodlanmış; **tutarlı okumada V26 oranı %55,6 değil %44,4**.
+
+### 4. Ne değişti, ne değişmedi
+
+- **DEĞİŞMEDİ:** kriter matrisinin yapısı, "beş kriteri birlikte karşılayan ürün 0/12" bulgusu, **KISMİ** hükmü, seviye-sayım tanımı (§5) ve 4 prompt şablonu — bağımsız hakem bu bloklara (özellikle C ailesine: 13 D / 5 K / 0 X) yüksek destek verdi; `parent_tool_use_id` = 0 bulgusunu kendi salt-okuma sondasıyla **doğruladı**.
+- **DEĞİŞTİ:** hakem rakamları · V26 ihlal sayısı (6 → **5 kanıt ihlali**) · V26 doğrulama oranı (%55,6 → tutarlı okumada **%44,4**) · OTel ve Braintrust'a dayanan tasarım gerekçelerinin ağırlığı **düştü**.
+- **AÇIK KALDI:** 4 `[?]` canlılık hücresi (bu tur yeni kanıt toplamadı, toplamaması gerekiyordu) · Model A ön koşulu (`parent_tool_use_id` gerçek nested koşumda doğrulaması).
+
+**Sonuç:** "bağımsız hakemle teyitli" damgası **DÜŞMEZ**; belge **"bağımsız hakemle DÜZELTİLDİ"** damgasını taşır. Sentezin ana hükmü (KISMİ, 0/12) ayakta; dayanaklarının bir kısmı zayıfladı.
