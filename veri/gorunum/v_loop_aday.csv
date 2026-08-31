@@ -2,7 +2,7 @@ imza_sha8,durum,k_W,n,toplam_tekrar,skill_ici,kapsanan,ilk_tarih,son_tarih,ornek
 565800b2,ADAY,16,2,16,1,0,2026-08-12,2026-08-30,0019c6bb,Read:core/durum-kapsulu.md → Read:core/pano.md
 9ea5a732,ADAY,12,2,21,0,0,2026-08-15,2026-08-29,1620e67b,Bash:py:inline → Bash:cat
 6621a797,ADAY,12,2,20,0,0,2026-08-15,2026-08-30,25679332,Bash:cat → Bash:py:inline
-228c0b3f,ADAY,10,2,18,0,0,2026-08-12,2026-08-30,0fa78c95,Write:raporlar → Bash:py:inline
+228c0b3f,ADAY,10,2,19,0,0,2026-08-12,2026-08-30,0fa78c95,Write:raporlar → Bash:py:inline
 b8b726ed,ADAY,9,2,12,0,0,2026-08-15,2026-08-26,25679332,Bash:py:inline → Workflow
 a89d67a0,ADAY,8,2,12,0,0,2026-08-15,2026-08-29,33beff9d,Bash:sed+cut+echo → Bash:py:inline
 03e1ddc2,ADAY,8,2,9,0,0,2026-08-17,2026-08-30,0fa78c95,Bash:py:inline → Bash:git:add
@@ -13,6 +13,7 @@ c70a0d0c,ADAY,7,2,9,0,0,2026-08-15,2026-08-30,239c2df3,Bash:py:inline → Write:
 f1115411,ADAY,6,2,13,0,0,2026-08-15,2026-08-18,1620e67b,Workflow → Bash:py:inline
 fb1a22b0,ADAY,6,2,12,0,0,2026-08-12,2026-08-30,501b9a20,Bash:cat → Edit:core/durum-kapsulu.md
 b1ce058e,ADAY,6,2,8,0,0,2026-08-16,2026-08-30,0fa78c95,Bash:py:inline → Write:tools
+5bcf23b3,ADAY,6,2,7,0,0,2026-08-20,2026-08-30,11b49d44,Bash:py:inline → Bash:git:add+git:commit
 a7196d6e,ADAY,6,2,7,0,0,2026-08-15,2026-08-26,2fc42451,Bash:sed+cut → Bash:py:inline
 d79d6eef,ADAY,6,2,6,1,0,2026-08-20,2026-08-29,024f2785,Skill:seans-acilis → Read:core/durum-kapsulu.md
 5be55e49,ADAY,5,3,5,1,0,2026-08-20,2026-08-29,2fc42451,Skill:seans-acilis → Read:core/durum-kapsulu.md → Read:core/pano.md
@@ -20,7 +21,6 @@ d79d6eef,ADAY,6,2,6,1,0,2026-08-20,2026-08-29,024f2785,Skill:seans-acilis → Re
 8d21b56d,ADAY,5,2,7,0,0,2026-08-15,2026-08-30,11b49d44,Bash:py:inline → Write:cc
 e6451b46,ADAY,5,2,7,0,0,2026-08-16,2026-08-30,11b49d44,Write:cc → Bash:py:inline
 d75b1d89,ADAY,5,2,7,0,0,2026-08-15,2026-08-21,1620e67b,Write:cc → Bash:py:tetik-denetim+echo
-5bcf23b3,ADAY,5,2,6,0,0,2026-08-20,2026-08-29,11b49d44,Bash:py:inline → Bash:git:add+git:commit
 30ec7336,ADAY,4,3,4,0,0,2026-08-15,2026-08-24,2fc42451,Bash:py:inline → Edit:CLAUDE.md → Bash:py:inline
 e0844c8e,ADAY,4,3,4,0,0,2026-08-15,2026-08-18,25679332,Bash:py:inline → Workflow → Bash:py:inline
 0c15ebc0,ADAY,4,3,4,1,0,2026-08-21,2026-08-30,0019c6bb,Read:core/durum-kapsulu.md → Read:core/pano.md → Bash:tail
