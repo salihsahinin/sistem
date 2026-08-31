@@ -12,3 +12,5 @@
 **İşlenecek yerler (s22 kapanışında ya da bu oturumun kapanışında; PK-12 nedeniyle şimdi yazılmadı):** `kuyruk/k010-zincir-2026-08-29.md` durum sayacı ("A1: 0/5 koşum" → 5/5, kaynak bu not + pilot raporu) · `core/pano.md` K-010 A1 · defter Karar 83 (ya da 82 EK-2) satırı.
 
 *Damga: İŞLENDİ 2026-08-30 öğle (karar-masası oturumu, Karar 83 EK): zincir sayacı A1=5/5-şerhli + pano K-010 + defter Karar 83 EK yazıldı — bu not pointer'a indi (m.8, silinmez).*
+
+**İŞLENDİ (2026-08-31 kapanış):** hüküm s22 masasında kanona indi — Karar 83 EK-2 (A1 5/5 KESİN, iki şerh kabul); zincir sayacı + pano K-010 güncel. Bu not tarihçe (m.8).
