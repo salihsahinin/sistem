@@ -1,10 +1,10 @@
 kaynak,skill,model,n,output_tokens,sure_dk,sonuc_n,fail_n
 ajan-kosum-vekil,atlas-kosum,claude-opus-5,205,6368877,2020.6,0,0
+ajan-kosum-vekil,,claude-sonnet-5,128,892506,263.3,4,0
 ajan-kosum-vekil,,claude-fable-5,120,1941770,429.8,0,0
-ajan-kosum-vekil,,claude-sonnet-5,114,602652,205.9,4,0
-ajan-kosum-vekil,,claude-opus-5,23,467835,173.7,2,0
-ajan-kosum-vekil,atlas-kosum,claude-sonnet-5,21,404915,126.9,1,0
-ajan-kosum-vekil,,claude-haiku-4-5-20251001,8,16752,6.8,1,0
+ajan-kosum-vekil,,claude-haiku-4-5-20251001,53,56222,12.0,1,0
+ajan-kosum-vekil,,claude-opus-5,30,587203,217.2,2,0
+ajan-kosum-vekil,atlas-kosum,claude-sonnet-5,26,456898,138.8,1,0
 ajan-kosum-vekil,,<synthetic>,8,0,0.1,0,0
 ajan-kosum-vekil,,"<synthetic>,claude-opus-5",3,28256,21.5,0,0
 ajan-kosum-vekil,atlas-kosum,"<synthetic>,claude-opus-5",3,51794,23.5,0,0
@@ -13,7 +13,7 @@ ajan-kosum-vekil,,"claude-fable-5,claude-opus-5",1,44606,17.9,0,0
 ajan-kosum-vekil,,"<synthetic>,claude-fable-5,claude-opus-5",1,43122,18.7,0,0
 ajan-kosum-vekil,atlas-kosum,claude-haiku-4-5-20251001,1,4408,1.0,0,0
 ajan-kosum-vekil,atlas-kosum,,1,0,1.4,0,0
-ana-sira-prompt,seans-acilis,claude-fable-5,19,,,,
+ana-sira-prompt,seans-acilis,claude-fable-5,20,,,,
 ana-sira-prompt,seans-kapanis,claude-fable-5,16,,,,
 ana-sira-prompt,gunaydin-vardiya,claude-fable-5,7,,,,
 ana-sira-prompt,atlas-kosum,claude-fable-5,6,,,,
@@ -34,6 +34,7 @@ ana-sira-prompt,dataviz,claude-fable-5,1,,,,
 ana-sira-prompt,lavish,claude-fable-5,1,,,,
 ana-sira-prompt,loop,claude-fable-5,1,,,,
 ana-sira-prompt,no-mistakes,claude-fable-5,1,,,,
+ana-sira-prompt,seans-kapanis,claude-opus-5,1,,,,
 ana-sira-prompt,skill-kapisi,claude-fable-5,1,,,,
 ana-sira-prompt,staj-acilis,claude-fable-5,1,,,,
 ana-sira-prompt,staj-kapanis,claude-opus-5,1,,,,
