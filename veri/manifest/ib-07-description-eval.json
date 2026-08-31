@@ -3,7 +3,7 @@
   "aciklama": "İB-07 description-eval tam koşumu (emir cc/gorev-2026-08-30-ib07-description-eval.md; 20 sorgu × 3 tekrar × 14 ritüel-dışı skill; firstmate lider-rolde — İB-59 ölçüm pilotu, Karar 83 EK-2)",
   "tur": "pipeline",
   "pist": "K-016",
-  "durum": "kismi-2026-08-31 (ajan-freni DURDUR 72; kütük 45/60, eksik q06-q20 tekrar3 = 15 satır)",
+  "durum": "tamam-2026-08-31 (60/60; iki turlu — 45 satır ilk tur, 15 satır fren-revizyonu sonrası ek tur)",
   "oncelik": 1,
   "okur": [
     "cc/gorev-2026-08-30-ib07-description-eval.md",

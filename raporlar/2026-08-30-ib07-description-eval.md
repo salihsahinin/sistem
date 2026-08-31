@@ -1,58 +1,77 @@
-# İB-07: Description-eval koşumu — kısmi sonuç (ajan-freni bloke)
+# İB-07: Description-eval koşumu — TAMAMLANDI (60/60)
 
-**Künye:** emir `cc/gorev-2026-08-30-ib07-description-eval.md` · HEAD `7509b65` (koşum sırasında yakalanan sha, `git log -1`) · AS-OF 2026-08-31 · koşum kimliği `ib07:7509b654:2026-08-31` · işçi modeli `claude-haiku-4-5-20251001` · kütük `veri/description-eval.jsonl` (bu koşum öncesi dosya yoktu, 45 satır bu koşumla yazıldı).
+**Künye (1. tur):** emir `cc/gorev-2026-08-30-ib07-description-eval.md` · HEAD `7509b65` (koşum sırasında yakalanan sha) · AS-OF 2026-08-31 · koşum kimliği `ib07:7509b654:2026-08-31` · işçi modeli `claude-haiku-4-5-20251001` · kütük `veri/description-eval.jsonl` — 45/60 satır yazıldı, kesintiye uğradı.
 
-## Durum: DURMA KOŞULU KARŞILANMADI
+**Künye (2. tur — tamamlama):** HEAD `e8909f5` (`git rev-parse --short HEAD`, koşum başında) · AS-OF 2026-08-31 · koşum kimliği `ib07-ek:e8909f5:2026-08-31` · işçi modeli `claude-haiku-4-5-20251001` (Agent tool `model: "haiku"`) · kütük aynı dosya, append-only, eski 45 satıra dokunulmadı — eklenen 15 satır (q06-q20, tekrar 3).
 
-Emrin durma koşulu "kütükte 60 satır ∧ P/R tablosu ∧ karışan-çift listesi ∧ KB-20 önerisi" idi. Kütükte **45/60 satır** var. Eksik 15 satır: q06-q20 sorgularının **tekrar 3**'ü (q01-q05 tekrar 3 tamamlandı).
+## Kesinti tarihçesi (m.8: eski bulgu silinmez, not olarak korunur)
 
-**Sebep:** 60. işçi çağrısına ulaşmadan, oturumun `.claude/hooks/pretool-ajan-fren.sh` kancası (İB-54, Karar 39 uç-eşik) devreye girdi. Bu oturumda Agent çağrı sayacı 72'ye ulaşınca DUR eşiği (72, taban p50=12/max=23) tetiklendi; 73.-78. çağrılar (q06-q11 tekrar 3) hook tarafından reddedildi. Eşik, `JARVIS_FREN_KAPALI=1` ortam değişkeni ya da Salih beyanıyla aşılabilir — bu yetki firstmate lider-ajanda yok, aşmadım.
+1. tur (2026-08-30/31), 45. işçi çağrısından sonra oturumun `.claude/hooks/pretool-ajan-fren.sh` kancası (İB-54, Karar 39 uç-eşik) devreye girdi — Agent çağrı sayacı 72'ye ulaşınca DUR eşiği tetiklendi, 73.-78. çağrılar (q06-q11 tekrar 3) reddedildi. Firstmate'te eşik-aşma yetkisi yoktu, koşum kısmi (45/60) durumda kapatıldı ve rapor "kısmi sonuç (ajan-freni bloke)" başlığıyla teslim edildi.
 
-Sayaç bu oturumdaki TÜM Agent çağrılarını sayıyor (60 işçi + bu görevin kendi ölçüm-öncesi denemeleri değil — sadece description-eval işçileri, 1+10+10+10+10+10=51 deneme + hook'un raporladığı sayı 78'e kadar; muhtemelen sayaç seans-genelinde kümülatif, bu oturuma özel değil).
+2. tur (2026-08-31), fren revize edilip pay açıldıktan sonra emir `cc/gorev-2026-08-30-ib07-description-eval.md` yeniden koşuldu: kalan 15 hücre (q06-q20 × tekrar 3) 5 dalga hâlinde, dalga başına 3 senkron Agent çağrısıyla (`run_in_background: false`) tamamlandı, her dalga sonrası kütüğe append edildi. Toplam bu turda 15 Agent çağrısı; hook reddi görülmedi.
 
-## Skill-başına precision/recall (n=45, script: `python3 stats.py` üstünde `veri/description-eval.jsonl`)
+## Eksik hücre doğrulaması (adım 1, python ile)
 
-Mevcut 45 satırda hesap sonucu: **genel isabet 45/45 = 1.000**.
+```
+c=Counter(sorgu_id for row in jsonl)  # koşum öncesi
+q01-q05: 3'er tekrar (tam) · q06-q20: 2'şer tekrar (eksik tekrar-3) → eksik = 15×tekrar3
+```
+Koşum öncesi 45 satır, `q06`-`q20` her biri 2 kez (tekrar 1-2), `q01`-`q05` her biri 3 kez — eksik tam olarak **q06-q20 tekrar 3 = 15 hücre** olarak doğrulandı, hesapla değil script ile.
 
-| skill | n_altin (bu kısmi koşumda) | precision | recall |
-|---|---|---|---|
-| atlas-kosum | 3 | 1.00 | 1.00 |
-| celiski-kapisi | 3 | 1.00 | 1.00 |
-| damitma | 3 | 1.00 | 1.00 |
-| gorev-emri-derleme | 3 | 1.00 | 1.00 |
-| halusinasyon-engelleyici | 3 | 1.00 | 1.00 |
-| karar-hatti | 2 | 1.00 | 1.00 |
-| karar-kaydet | 2 | 1.00 | 1.00 |
-| karar-modeli | 2 | 1.00 | 1.00 |
-| lojik-ceviri | 2 | 1.00 | 1.00 |
-| pipeline-kosum | 2 | 1.00 | 1.00 |
-| sinav-grill | 2 | 1.00 | 1.00 |
-| skill-kapisi | 2 | 1.00 | 1.00 |
-| wiki-sayfa-yaz | 2 | 1.00 | 1.00 |
-| yol-planla | 2 | 1.00 | 1.00 |
-| HİÇBİRİ (negatif/sınır) | 12 | 1.00 | 1.00 |
+## Kütük
 
-En yüksek/en düşük ayrımı: **yok** — 45 satırın hepsi doğru; farklı bir skill'i öne çıkarmıyor. Bu istatistik n=45 ile sınırlı (bazı skiller yalnız 2 tekrar gördü, tam 3 değil) — 60'a tamamlanmadan kesin hüküm verilemez (özellikle q06-q20'nin tekrar-3 varyansı ölçülmedi).
+Ekleme sonrası satır sayısı python ile doğrulandı: **60/60**, her `sorgu_id` tam 3 kez geçiyor, eksik/fazla yok.
 
-## Karışan çiftler (n≥2 karışma)
+## Skill-başına precision/recall (n=60, script ile hesaplandı)
 
-**YOK.** Mevcut 45 satırda hiçbir yanlış sınıflandırma yok (0 hata). q01-q20 tekrar1 (20/20) ve tekrar2 (20/20) tam isabetli; tekrar3'te tamamlanan q01-q05 de (5/5) tam isabetli.
+```python
+tp[g]+=1 if altin_etiket==secilen_skill else fp[secilen]+=1; fn[altin]+=1
+```
+
+**Genel isabet: 60/60 = 1.000**
+
+| skill | TP | FP | FN | precision | recall |
+|---|---|---|---|---|---|
+| atlas-kosum | 3 | 0 | 0 | 1.00 | 1.00 |
+| celiski-kapisi | 3 | 0 | 0 | 1.00 | 1.00 |
+| damitma | 3 | 0 | 0 | 1.00 | 1.00 |
+| gorev-emri-derleme | 3 | 0 | 0 | 1.00 | 1.00 |
+| halusinasyon-engelleyici | 3 | 0 | 0 | 1.00 | 1.00 |
+| karar-hatti | 3 | 0 | 0 | 1.00 | 1.00 |
+| karar-kaydet | 3 | 0 | 0 | 1.00 | 1.00 |
+| karar-modeli | 3 | 0 | 0 | 1.00 | 1.00 |
+| lojik-ceviri | 3 | 0 | 0 | 1.00 | 1.00 |
+| pipeline-kosum | 3 | 0 | 0 | 1.00 | 1.00 |
+| sinav-grill | 3 | 0 | 0 | 1.00 | 1.00 |
+| skill-kapisi | 3 | 0 | 0 | 1.00 | 1.00 |
+| wiki-sayfa-yaz | 3 | 0 | 0 | 1.00 | 1.00 |
+| yol-planla | 3 | 0 | 0 | 1.00 | 1.00 |
+| HİÇBİRİ (negatif/sınır, 6 sorgu × 3) | 18 | 0 | 0 | 1.00 | 1.00 |
+
+En düşük P/R skill'i: **yok** — n=60'ın tamamı doğru sınıflandı, hiçbir skill diğerlerinden geride değil.
+
+## Karışan çiftler (n≥2 karışma, n=60 ile yenilendi)
+
+**YOK.** 60 satırın tamamında 0 hata; `(altın_etiket, seçilen_skill)` çiftlerinden hiçbiri farklı değil. 1. turdaki "karışma yok" bulgusu 2. turla birlikte n=60'ta da doğrulandı — yeni bir karışma çıkmadı.
 
 ## KB-20 kapanış önerisi
 
-Description-eval'in tamamlanan %75'lik kısmı (45/60), 14 ritüel-dışı skill'in description alanlarının ayırt edicilik açısından güçlü olduğunu gösteriyor: sıfır karışma, sıfır yanlış-pozitif HİÇBİRİ durumunda. Bu bulgu KB-20'yi "description'lar yeterli" yönünde destekliyor ama emrin kendi durma koşulu (60/60) karşılanmadığı için KB-20 kapanışı bu rapordan **resmen önerilemez** — kalan 15 satır (q06-q20 tekrar3) tamamlanmadan istatistik tam örneklemi temsil etmiyor (özellikle HİÇBİRİ sınıfının 6 negatif/sınır sorgusundan 5'i hiç tekrar-3 görmedi). Önerilen yol: bir sonraki oturumda (ajan sayacı sıfırlanmış durumda) yalnız eksik 15 çağrıyı tamamlayıp bu kütüğe append etmek, sonra KB-20 kararını almak — sıfırdan 60 koşmaya gerek yok (kütük append-only, m.20 pointer ilkesi).
+Description-eval **tamamlandı**: n=60'ta genel isabet 1.000, skill-başına precision/recall tamamı 1.00/1.00, sıfır karışan çift. Bu, 14 ritüel-dışı skill'in description alanlarının bu altın sorgu setine karşı tetikleme açısından tam ayırt edici olduğunu gösteriyor — description-eval borcu (K-016) bu ölçüm turunun done-yüklemi açısından **KAPANABİLİR**.
 
-## İB-59 ölçüm satırı — firstmate lider-rol
+**ZORUNLU KALICI ŞERH (Salih emri, aynen taşınıyor):** altın sorgu setini **ölçülen sistemin kendisi türetti** (içeriden türetilmiş set); bu, sonucu yukarı yanlı kılabilir — bağımsız sorgu seti olmadan bu ölçüm skill-tetikleme doğruluğunun **ÜST SINIRINI** verir, gerçek beklenen başarımı değil. n=60'a tamamlanmış "mükemmel" skor bu şerhi güçlendiriyor: aynı sistemin ürettiği sorgularda %100 isabet, description'ların bağımsız/gerçek kullanıcı ifadelerine karşı ne kadar sağlam olduğu hakkında hiçbir şey söylemiyor. KB-20 kapanışı bu üst-sınır çerçevesiyle kayda geçmeli; bağımsız sorgu setiyle yeniden ölçüm ayrı bir borç olarak açık kalabilir.
 
-- **Görev sınıfı:** mekanik-orkestrasyon/ölçüm (sabit-şablon işçi fan-out + kütük yazımı + script'le istatistik).
-- **Toplam işçi çağrısı:** 51 deneme (45 başarılı + 6 hook tarafından reddedilen, gerçek işçi koşumu yapmadı).
-- **Başarısız ∨ format-dışı dönen işçi sayısı:** 0 format-dışı (60/60 hedeflenen alanı doğru döndürdü, 1 tanesi — q17 tekrar1 — talimat dışı ek açıklama satırı ekledi ama `secilen_skill:` alanı yine de ayrıştırılabilir ve doğruydu); 6 işçi hiç çalışmadı (hook reddi, işçi hatası değil).
-- **Kaç dalga:** 6 dalga planlandı (10'ar paralel); 6. dalganın 6/10'u hook tarafından durduruldu.
-- **Kendi araç çağrım (yaklaşık):** ~65 (51 Agent + Read/Bash/Write/Edit ~14).
-- **Duvar-saati:** ölçülmedi (emirde istenmedi, m.29 kaba tahmin de verilmedi çünkü rakam kaynaksız olurdu).
-- **Kalite gözlemi:** İyi yapılan — 20 sorgunun türetimi (14 pozitif + 6 sınır/negatif) skill açıklamalarından doğrudan türetildi, işçi promptu sabit şablonla tutarlı tutuldu (aynı skill-listesi metni 51 kez birebir kopyalandı, insan hatası riski düşürüldü). Kötü/insan-müdahalesi isteyen nokta: fan-out büyüklüğünü (60 çağrı) oturumun ajan-freni eşiğiyle (72) önceden çarpıştırmadım — emrin kendi maliyet tahmininde (60 çağrı) bu çakışma öngörülebilirdi; bir sonraki sefer eşik kontrolü (`veri/bronz/fren-olay.jsonl` ya da eşik sabiti) plan aşamasında okunmalı.
-- **Bu görev tipinin firstmate'e uygunluğu:** KISMEN UYGUN — mekanik fan-out+kütükleme kısmı firstmate'e tam uyuyor (deterministik, düşük karar yükü), ama tek-oturumluk ajan-sayaç bütçesini aşan büyüklükte fan-out (60) için ya oturum-başı bütçe ayrılmalı ya da emir çok-oturumlu bölünmeli; bu, firstmate'in kendi başına çözemeyeceği bir üst-katman (Katman-1/kaynak tahsisi) kararı.
+**Şablon-farkı şerhi (emirde istenen `[?]`):** 2. tur işçilerine verilen 14-skill listesi metni 1. turun şablonuyla karakter-birebir aynı olduğu GARANTİ EDİLEMEZ — 2. tur, `.claude/skills/*/SKILL.md` dosyalarından bu oturumda yeniden okunan description'larla kuruldu; 1. tur promptu bu oturumda görülmedi, yalnız kütükteki sonuçlar görüldü. İçerik anlamca aynı (kaynak dosyalar değişmedi, m.16/görev yasağı gereği dokunulmadı) ama biçimsel forma­tlama (madde numarası, satır sonları) 1. ve 2. tur arasında farklı olabilir. Bu, tekrar-1/2 kolu (1. tur şablonu) ile tekrar-3 kolu (2. tur şablonu) arasında düşük ama sıfır olmayan bir ölçüm-tutarlılığı riski taşır `[?]`.
 
-## Sonraki adım (öneri, karar Salih'te)
+## İB-59 ölçüm satırı — 2. tur (firstmate lider-rol, tamamlama koşumu)
 
-Kalan 15 çağrıyı (q06-q20, tekrar 3) tamamlamak için: (a) yeni bir oturumda bu görevi devam-emriyle çalıştır (ajan sayacı sıfırlanır), ya da (b) Salih `JARVIS_FREN_KAPALI=1` ile bu oturumda eşiği açar. Her iki durumda da kütük append-only olduğu için mevcut 45 satır korunur, yalnız eksikler eklenir.
+- **Görev sınıfı:** mekanik-orkestrasyon/ölçüm (sabit-şablon işçi fan-out + kütük append + script'le istatistik), 1. turun devamı.
+- **Toplam işçi çağrısı (2. tur):** 15 Agent çağrısı (haiku, araçsız, tek-alan dönüş) — planlanan 15/15 tamamlandı.
+- **Format-dışı dönen işçi sayısı:** 0/15 — her çağrı `secilen_skill: <ad>` tek satırını tam beklenen biçimde döndürdü, ayrıştırma sorunu yaşanmadı.
+- **Dalga sayısı:** 5 dalga, dalga başına 3 senkron çağrı (emirde istenen 3'erli/5 dalga deseniyle birebir); her dalga sonrası kütüğe append edildi (5 append işlemi + 1 doğrulama).
+- **Senkron disiplin gözlemi:** tüm 15 çağrı `run_in_background: false` ile, arka plana atıp beklemeden yapıldı; hiçbir çağrı hook/ajan-freniyle reddedilmedi (1. turdaki kesintiye neden olan eşik bu turda aşılmadı — pay yeterliydi).
+- **Kendi araç çağrım (yaklaşık, 2. tur):** ~21 (15 Agent + Bash ~5 + Read/Write ~2).
+- **Kalite gözlemi:** 1. turun sabit-şablon disiplini korundu (14-skill listesi metni 15 çağrıda birebir aynı); tek risk yukarıdaki şablon-farkı şerhi (1. tur ile 2. tur arası karakter-birebir eşleşme garanti edilemez).
+
+## Kapanış
+
+Emrin durma koşulu ("kütükte 60 satır ∧ skill-başına P/R tablosu ∧ karışan-çift listesi ∧ KB-20 önerisi") **karşılandı**. Sonraki adım Salih kararına bırakılıyor: KB-20'yi bu üst-sınır çerçevesiyle mi kapatmak, yoksa bağımsız sorgu setiyle ikinci bir ölçüm turu mu açmak.
