@@ -1,0 +1,42 @@
+{
+  "birim_id": "ib-07-description-eval",
+  "aciklama": "İB-07 description-eval tam koşumu (emir cc/gorev-2026-08-30-ib07-description-eval.md; 20 sorgu × 3 tekrar × 14 ritüel-dışı skill; firstmate lider-rolde — İB-59 ölçüm pilotu, Karar 83 EK-2)",
+  "tur": "pipeline",
+  "pist": "K-016",
+  "durum": "kismi-2026-08-31 (ajan-freni DURDUR 72; kütük 45/60, eksik q06-q20 tekrar3 = 15 satır)",
+  "oncelik": 1,
+  "okur": [
+    "cc/gorev-2026-08-30-ib07-description-eval.md",
+    ".claude/skills/*/SKILL.md",
+    "core/skill-tetikleme-semasi.md"
+  ],
+  "yazar": [
+    "veri/sozlesme/description-eval-sorgular.json",
+    "veri/description-eval.jsonl",
+    "raporlar/2026-08-30-ib07-description-eval.md",
+    "veri/manifest/ib-07-description-eval.json"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "veri/sozlesme/description-eval-sorgular.json",
+    "veri/description-eval.jsonl",
+    "raporlar/2026-08-30-ib07-description-eval.md",
+    "veri/manifest/ib-07-description-eval.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-08-30-ib07-description-eval.md VARSA ∨ git log'da 'IB-07 description-eval' commit'i VARSA KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "kütükte 60 satır ∧ skill-başına P/R tablosu ∧ karışan-çift listesi (n≥2) ∧ KB-20 kapanış önerisi tek paragraf",
+  "kapsam_beyani": "SKILL.md description alanları DEĞİŞTİRİLMEZ (ölçüm turu); işçi ajanlar araçsız tek-alan döner; kanon/kod dokunulmaz",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "altın etiketli sorgu seti dosyada sabitlenir → harness deterministik karşılaştırma; her rakam kütük satırından"
+}

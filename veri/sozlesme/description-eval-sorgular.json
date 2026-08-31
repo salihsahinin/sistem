@@ -1,0 +1,122 @@
+[
+  {
+    "sorgu_id": "q01",
+    "sorgu": "Bu mimari deseni dışarıda kim çözmüş, atlas koştur bakalım.",
+    "altin_etiket": "atlas-kosum",
+    "gerekce": "'atlas koştur' doğrudan tetik ifadesi; dış tarama isteği."
+  },
+  {
+    "sorgu_id": "q02",
+    "sorgu": "Bu yeni kural önerim tüzükle çelişiyor mu, önce kontrol et.",
+    "altin_etiket": "celiski-kapisi",
+    "gerekce": "'tüzüğe aykırı mı' kalıbına denk; m.16 kapısı tetiği."
+  },
+  {
+    "sorgu_id": "q03",
+    "sorgu": "kuyruk/gelen dosyaları şişti, damıtma turu koştur.",
+    "altin_etiket": "damitma",
+    "gerekce": "'damıtma turu' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q04",
+    "sorgu": "Bu araştırma isteğimi künyeli görev emrine derle, ajana öyle vereceğim.",
+    "altin_etiket": "gorev-emri-derleme",
+    "gerekce": "'görev emri derle' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q05",
+    "sorgu": "Bu raporu doğrulama zinciriyle üret, her iddia kaynağa bağlı olsun.",
+    "altin_etiket": "halusinasyon-engelleyici",
+    "gerekce": "'doğrulama zinciriyle yaz' kalıbına denk tetik."
+  },
+  {
+    "sorgu_id": "q06",
+    "sorgu": "Bu kararı baştan sona hatta işle, çelişki kontrolünden model kıyasına kadar.",
+    "altin_etiket": "karar-hatti",
+    "gerekce": "'baştan sona işle'/'karar hattı' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q07",
+    "sorgu": "Az önce verdiğimiz kararı senaryo defterine işle.",
+    "altin_etiket": "karar-kaydet",
+    "gerekce": "'kararı deftere işle' elle-tetik kalıbı."
+  },
+  {
+    "sorgu_id": "q08",
+    "sorgu": "Bu tasarım sorusu için farklı matematik temelli 3 model sun.",
+    "altin_etiket": "karar-modeli",
+    "gerekce": "'3 model' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q09",
+    "sorgu": "Bu kuralı m.38 bağlaç setiyle lojik forma çevir, dallara dök.",
+    "altin_etiket": "lojik-ceviri",
+    "gerekce": "'lojiğe çevir' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q10",
+    "sorgu": "Bu projeyi pipeline olarak kur, scout'tan ship'e kadar uçtan uca yürüt.",
+    "altin_etiket": "pipeline-kosum",
+    "gerekce": "'pipeline kur' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q11",
+    "sorgu": "Beni bu plan üzerinde sınava çek, tek tek sorularla sorguya al.",
+    "altin_etiket": "sinav-grill",
+    "gerekce": "'sınava çek'/'sorguya çek' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q12",
+    "sorgu": "Bu yeni skill fikrini kapı ağacından geçir, gerçekten gerek var mı bak.",
+    "altin_etiket": "skill-kapisi",
+    "gerekce": "'kapıdan geçir' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q13",
+    "sorgu": "Bu wiki-delta'yı standart şablonla wiki'ye yaz, sayfa aç.",
+    "altin_etiket": "wiki-sayfa-yaz",
+    "gerekce": "'wiki'ye yaz'/'sayfa aç' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q14",
+    "sorgu": "Bu proje ölçekli görevi senaryo-grafa dök, yol planını çıkar.",
+    "altin_etiket": "yol-planla",
+    "gerekce": "'yolu planla'/'yol planı çıkar' doğrudan tetik ifadesi."
+  },
+  {
+    "sorgu_id": "q15",
+    "sorgu": "Bugün hava nasıl, dışarı çıksam mı?",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "JARVIS bağlamı dışı, hazineyle ilgisiz gündelik soru."
+  },
+  {
+    "sorgu_id": "q16",
+    "sorgu": "Günaydın, seans başı, kaldığımız yerden devam edelim.",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "Ritüel skill (seans-acilis) ölçüm kapsamı dışında; işçiye ritüel adı verilmedi, seçebileceği 14 arasında karşılığı yok."
+  },
+  {
+    "sorgu_id": "q17",
+    "sorgu": "Tamamdır, seans bitimi, kapatalım bugünü.",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "Ritüel skill (seans-kapanis) ölçüm kapsamı dışında; 14 içinde karşılığı yok."
+  },
+  {
+    "sorgu_id": "q18",
+    "sorgu": "2 artı 2 kaç eder, çabuk söyle.",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "Basit bilinen-cevap soru, hiçbir skill kapsamına girmiyor."
+  },
+  {
+    "sorgu_id": "q19",
+    "sorgu": "Şu Python fonksiyonundaki off-by-one hatasını düzelt.",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "Doğrudan kod düzeltme işi (m.25 direkt yap), 14 skill'in hiçbiri kod yazımı değil."
+  },
+  {
+    "sorgu_id": "q20",
+    "sorgu": "JARVIS kısaltması ne anlama geliyor, sözlükte bak.",
+    "altin_etiket": "HİÇBİRİ",
+    "gerekce": "sozluk.md donduruldu; wiki-sayfa-yaz sözlük eklemesinde KULLANILMAZ, salt terim sorgusu direkt cevap."
+  }
+]
