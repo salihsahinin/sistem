@@ -1,0 +1,40 @@
+{
+  "birim_id": "ib-69-a2",
+  "aciklama": "İB-69 AİLE-2: otomasyon-geçişi uygulaması + prototip sürecinin kurallaştırılması (aile-1 şemasını OKUR; SIRALI) — pilot tasarımı koşumsuz (emir cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md; m.40b, ≤10 ajan)",
+  "tur": "pipeline",
+  "pist": "K-020",
+  "durum": "planli",
+  "oncelik": 3,
+  "okur": [
+    "cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md",
+    "raporlar/2026-08-31-ib69-matris-a1-formalizasyon.md",
+    "veri/karar-borcu.jsonl",
+    "tools/paralel-kapi.py",
+    "web"
+  ],
+  "yazar": [
+    "cc/rapor-2026-08-31-ib69-a2-*.md",
+    "raporlar/2026-08-31-ib69-matris-a2-kurallastirma.md",
+    "veri/manifest/ib-69-a2.json"
+  ],
+  "granul": "dosya",
+  "sira": ["ib-69-a1"],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "cc/rapor-2026-08-31-ib69-a2-*.md",
+    "raporlar/2026-08-31-ib69-matris-a2-kurallastirma.md",
+    "veri/manifest/ib-69-a2.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-08-31-ib69-matris-a2-kurallastirma.md VARSA KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "uygun-iş envanteri ≥10 sınıflandırılmış pointer'lı ∧ K-020 birleşme önerisi 3 model (≥1 karşıt-temelli, sayısal) ∧ kural+şema paketi m.38 formunda ∧ pilot tasarımı (maliyet kaba, KOŞULMAZ) ∧ masa kalemi taslağı",
+  "kapsam_beyani": "prototip İNŞASI/koşumu YASAK (pilot yalnız TASARIM; koşum onayı masada); kanon değişikliği YOK; manifest tur alanı önerisi TASLAK",
+  "belirlenimsiz_girdi": ["model-çıktısı", "web"],
+  "dogrulama_kapisi": "m.40b zinciri (tez → antitez → V26 → maskeli hakem); aile-1 şemasına uyum denetimi"
+}
