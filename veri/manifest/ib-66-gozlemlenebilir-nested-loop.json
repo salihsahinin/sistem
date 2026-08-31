@@ -1,0 +1,44 @@
+{
+  "birim_id": "ib-66-gozlemlenebilir-nested-loop",
+  "aciklama": "İB-66 gözlemlenebilir iç-içe LLM loop atlası — ürün taraması (adversarial) + tasarım + 2x-nesting prompt desenleri (emir cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md; m.40b tam kontrat, ≤12 ajan)",
+  "tur": "pipeline",
+  "pist": "K-020",
+  "durum": "tamam-kismi-2026-08-31 (bağımsız maskeli hakem koşulamadı — ajan freni DURDUR; hakem adımı lider-ajanca yapıldı, raporda KOŞUM KESİNTİSİ bölümünde beyanlı)",
+  "oncelik": 2,
+  "okur": [
+    "cc/gorev-2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md",
+    "tools/gnhf-izle.py",
+    "raporlar/2026-08-31-k010-a3-loop-1.md",
+    "raporlar/2026-08-30-k010-a3-goal-1.md",
+    "kuyruk/senaryo-defteri.md",
+    "web"
+  ],
+  "yazar": [
+    "cc/rapor-2026-08-31-ib66-*.md",
+    "raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md",
+    "veri/manifest/ib-66-gozlemlenebilir-nested-loop.json"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "cc/rapor-2026-08-31-ib66-*.md",
+    "raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md",
+    "veri/manifest/ib-66-gozlemlenebilir-nested-loop.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md VARSA KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "kriter-matrisi ∧ ≥10 araç matriste (birincil kaynak, AS-OF) ∧ yok/var/kısmi hükmü matristen gerekçeli ∧ tasarım 3 model sayısal ∧ seviye-sayım tanımı + ≥2 prompt şablonu m.38 formda ∧ masa-kalemi taslağı",
+  "kapsam_beyani": "kod/ürün İNŞASI YASAK (tasarım önerisi yeter); kanon değişmez; hüküm masaya",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
+  "dogrulama_kapisi": "S1 hipotez adversarial çürütme + kriter-matrisi ön-yazımı + V26 örneklem + maskeli hakem"
+}
