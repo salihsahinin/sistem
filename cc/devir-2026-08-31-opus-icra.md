@@ -109,3 +109,67 @@ Salih'in negatif bulgusu düz "yok" olarak DEĞİL, **KISMİ** olarak ayakta: 12
 4. **Kapanış ritüeli KOŞULMADI** (ana oturumun işi): hareket kütüğü, katman-hattı, silver-sağlık kapısı, kapsül tazeleme, push — hiçbiri yapılmadı. `veri/bronz/fren-olay.jsonl` bu oturumun 8 fren olayını taşıyor ve **henüz commit'lenmedi**.
 
 **PUSH ATILMADI (m.9).** 5 commit lokal: `081cb1f` · `7509b65` · `5e45d09` · `b722f7a` (+ bu devir dosyasının commit'i).
+
+---
+
+# EK TUR — fren-revizyonu sonrası (2026-08-31, aynı oturum)
+
+*Tetik: Salih hükmü B (ana oturum kanalıyla) — ajan freni `5218209` ile revize edildi: DURDUR 72 → **144**, UYARI 36 → **72**, fren AÇIK kaldı, `JARVIS_FREN_KAPALI` KULLANILMADI. Yan-oturum yetkisi aynı: karar/hüküm yok, kanona yazım yok, push yok, `git add <yol>`.*
+
+## E1. Ek turda biten birimler
+
+| Birim | Durum | Rapor | Commit |
+|---|---|---|---|
+| İB-67 paper-aday envanteri | **TAMAM** (metodolojik şerhli) | `raporlar/2026-08-31-ib67-paper-aday-envanteri.md` | `fed8b31` |
+| İB-68 ürün-aday envanteri | **TAMAM** (aynı ortak taramadan) | `raporlar/2026-08-31-ib68-urun-aday-envanteri.md` | `fed8b31` |
+| İB-69 AİLE-1 matris formalizasyon | **TAMAM** (durma koşulu tam) | `raporlar/2026-08-31-ib69-matris-a1-formalizasyon.md` | `c1f5c05` |
+| İB-69 AİLE-2 kurallaştırma | **TAMAM** (durma koşulu tam) | `raporlar/2026-08-31-ib69-matris-a2-kurallastirma.md` | `9693529` |
+
+**Emirdeki 3 birimin 3'ü de koşuldu.** Sıra korundu: İB-67+68 (ortak tek birim) → İB-69 a1 → İB-69 a2 (a1 şemasını okudu). Her birim öncesi `paralel-kapi` taraması yapıldı; canlı ayak-izi çakışması **0** (tek RED bayat `durum=tamam` birimiyle — bilinen v0.2 açığı).
+
+**Ajan sayacı: 78 → 106** (eşik 144, pay 38 kaldı). Harcama: İB-67+68 = 10 · İB-69a1 = 8 · İB-69a2 = 7 · koordinasyon 3. **Bütçe aşılmadı, hiçbir birim bütçe nedeniyle daraltılmadı.**
+
+**Lider disiplini (4/4 arıza dersinin sonucu):** üç birimin üçünde de işçiler SENKRON koştu, arka-plan bekleme arızası **tekrarlamadı** — talimatla düzeldi. Bu, İB-59 için ek veri: arıza rol yeteneği değil **talimat açığı** sınıfındaydı.
+
+## E2. İB-67 — paper adayları
+
+8 aday, hepsi repo-pointer'lı; **YOK-bulundu 0 · KISMİ 5 · DÜŞTÜ 3**; 32 arama izi. En güçlü hayatta kalan: **İB-49 D2 mini-eval** (tek tekrar-üretilebilir repo-içi ölçüm kümesi; "D2 için benchmark yok" ayağı antitezde çürütülemedi; iki mekanizma ayağı DW-Bench / Lost-in-Serialization / ONTO ile kaplı; venue sınıfı **workshop**).
+
+**⚠️ Bu koşumun en önemli metodolojik bulgusu (rapora işlendi):** 8 işçi raporunun tamamında birincil kaynak **yalnız 1 kez** açıldı (IFScale, arXiv 2507.11538); dış-kaynak ailelerinde hakemden **sıfır D** çıktı. Dolayısıyla "DÜŞTÜ" hükümleri arama-sonucu düzeyinde sağlam, **"KISMİ" hükümlerinin bir kısmı negatif-kanıt zayıflığıdır — "bulamadık" ≠ "yok"**. Paper kararı öncesi birincil-kaynak açma turu şart (MK-67/3).
+
+**m.39 ihlali yakalandı ve izole edildi:** bir işçi açılmamış sayfalardan rakip fiyat tutarı yazdı; tutarlar **hiçbir senteze taşınmadı** (yalnız "ücretli plan MEVCUT/YOK" varlık beyanı kullanıldı), ham rapor m.8 gereği ihlal damgasıyla duruyor. Düzeltme biçimi masaya soruldu (MK-68/4).
+
+## E3. İB-68 — ürün adayları
+
+7 aday repo-kanıtlı; **sinyalli 6 · sinyalsiz 1** (gnhf-izle); rekabet **DOYGUN 5 · ORTA 2**. En güçlü: **paralel-kapı + manifest rejimi** — D-etiketli çalışan kanıt (8 birim / 28 çift, N=1→3, çakışma 0), rekabet ORTA, ve en yakın rakipten **ölçülebilir mekanizma farkı**: Nx koşum-SONRASI I/O ihlal bayrağı verir, bizimki koşum-ÖNCESİ deterministik hüküm verir. Hakem 67 iddiada **D 19 · K 31 · X 17**; V26 %78 (4 ihlal). Uydurma arXiv kimliği aranmış, **bulunamamış** (6 kimlik sondajlandı, hepsi gerçek).
+
+## E4. İB-69 — matris koşumu (iki aile)
+
+**AİLE-1 (`c1f5c05`) — MATRİS-KOŞUM ŞEMASI v0.** Salih'in sezgisi literatürde **tam faktöriyel deney tasarımı / parameter sweep**: eksen=faktör, değer=seviye, hücre=koşu, yineleme=tekrar. Dışarıda promptfoo · Optuna GridSampler · W&B Sweeps · lm-eval-harness deklaratif olarak çözmüş; Jarvis'te desen zaten **üç kez fiilen koştu** (İB-07 20×3, İB-49 4 kol × N=5, atlas aile×şerit) — icat edilecek şey yok, **eksik olan tek şey ortak şemaydı**. Beş zorunlu alan tipli m.38 formunda yazıldı. 9 birincil kaynak GERÇEKTEN açıldı (işçi başına ≥2 WebFetch kotası işe yaradı — E2'deki zaafın doğrudan karşı-önlemi). Hakem D15/K4/X7.
+
+**İki hakem hükmü şemayı değiştirdi:**
+- **(A)** Emrin `~300k` maliyet tabanı **matris hücresi için YANLIŞ tabandır** — o birim İB-66'nın L1 gnhf CLI iterasyonu; hücre tek çağrıdır → iki-tabanlı model zorunlu. İB-07'nin gerçek hücre maliyeti **ölçülmedi** (borç M-1), tahminle doldurulması yasaklandı.
+- **(B)** Klasik successive halving **tek-atış LLM hücresine uygulanamaz** (Optuna budamayı `trial.report(step)`'e bağlar; tek tamamlamada "adım" yok) → `η/(η−1)` formülü şemadan ÇIKARILDI; indirim yalnız deterministik iki-kademe eşik filtresinden.
+
+**AİLE-2 (`9693529`).** 35 kalem sınıflandı: **12 UYGUN** (6'sı hemen koşulabilir — başta İB-07'nin kalan 15 hücresi) · **23 UYGUN-DEĞİL** (karar-gerektiren / tek-atış / serbest-metin / insan-girişi). **Emrin bir beklentisi çürüdü ve hakem onayladı: İB-06 bugün koşulamaz** — beş alt-borcun dördü eşik-altı sayaçta (kapı 2/10 · H 3/50 · damıtma 0/5 · emeklilik 1/10), beşincisi sıralı zincir.
+- **K-020 girdisi (karar VERİLMEDİ):** M1 promptfoo sarmalama · **M2 kendi harness genellemesi = önerilen** (kalite skoru 13/13 → **9/13** indirildi: token alanlarının kaynağı yok) · M3 karşıt-temelli "hiç altyapı kurma". Karar öncesi iki ucuz ölçüm şart koşuldu.
+- **Manifest tipi:** S-A (`tur` alanına `matris` değeri) ∨ S-B (ayrı blok); **göç maliyeti her ikisinde de 0 dosya** (17 manifest = 16 pipeline + 1 loop). S-A öneriliyor, hüküm masada. İB-65'in %29 kapsama açığı bulgusuyla aynı masaya bağlanır.
+- **Pilot:** hakem 30 hücreden **20'ye indirdi** (10 hücre kütükte zaten var = %33 mükerrer) ve **bugün BLOKE** ilan etti — 2. modelin tam snapshot kimliği yok; bu **onay meselesi değil, veri eksiği** (aile-1'in "eksen değerleri TAM küme" kuralı ihlali).
+- **Fren kuralı düzeltildi:** sabit tavan değil **denklem** — `N_hücre + sayac_oturum ≤ 143`, planlama tavanı 116. Çağrı maliyeti **toplamsal** (çarpan 1,00 + sabit oturum tabanı 27); çarpansal varyantların üçü de hakemden X aldı.
+- **`~300k` sorusu KAPANDI ama "ÖLÇÜLDÜ" damgasını KAYBETTİ:** 535k/2 = 267,5k → ~300k %12,1 yuvarlama, n=2.
+
+## E5. EK TURUN AÇIK SORULARI (Salih'e; yan-oturum hüküm vermedi)
+
+7. **Aile-1 raporuna 4 şerh borcu:** AİLE-2, aile-1 sentezinde dört düzeltme gerektiğini tespit etti (§4 "ÖLÇÜLDÜ" damgası düşmeli · §4'e toplamsal çağrı modeli · §6.1 Ö-A kapsam şerhi · §2 `sema` tipi açıklığı) ama **aile-1 raporuna DOKUNMADI** (kapsam dışı). Düzeltme aile-1 raporuna mı işlensin, yoksa aile-2'deki şerhlerle mi kalsın (m.8: düzeltme = üstüne not)?
+8. **Birincil-kaynak açma kotası kurallaşsın mı?** İB-67/68 turunda 8 raporda 1 açılmış kaynak vardı; İB-69'da işçi başına ≥2 WebFetch kotası konunca 9 + 8 gerçek açılma oldu. **Kota m.40b koşum sözleşmesine yazılsın mı** (MK-67/3'ün sorusu)?
+9. **m.39 ihlalli ham rapor:** `cc/rapor-2026-08-31-ib68-b3-pazar-dagitim.md` fiyat tutarları taşıyor, ihlal damgalı. Üstüne düzeltme notu mu, yoksa mevcut damga yeterli mi (MK-68/4)?
+10. **T_hucre ölçüm borcu (M-1):** pilotla kapanmıyor; tek mekanizma transkript `usage` hasadı (`hareket-tablo.py`'de usage grep 0). Ayrı icra kalemi açılsın mı?
+11. **İB-07 kalanı artık matris-envanterinde "hemen koşulabilir" listesinin başında** (15 hücre). Fren payı bu oturumda 38 — ana oturum isterse burada koşulabilir, yoksa sonraki oturuma kalır.
+
+## E6. EK TUR SONRASI DURUM
+
+- **Emirdeki 7 birimin 6'sı TAMAM, 1'i KISMİ** (İB-07, 45/60 — ilk turdan kalan).
+- **Ajan sayacı 106 / 144** (pay 38). Fren AÇIK, kapatılmadı.
+- **Commit'ler (hepsi lokal, PUSH YOK):** `081cb1f` · `7509b65` · `5e45d09` · `b722f7a` · `ab60ca3` · `fed8b31` · `c1f5c05` · `9693529` (+ bu güncellemenin commit'i).
+- **Kapanış ritüeli yine KOŞULMADI** (ana oturumun işi): hareket kütüğü, katman-hattı, silver-sağlık kapısı, kapsül tazeleme, push. `veri/bronz/fren-olay.jsonl` bu oturumun fren olaylarını taşıyor ve **hâlâ commit'lenmedi**.
+- **Kanona yazılmadı, hüküm verilmedi, push atılmadı.**
