@@ -3,7 +3,7 @@
   "aciklama": "İB-69 AİLE-1: LLM çıktı-matrisi formalizasyonu + emsal taraması (faktöriyel tarama sınıfı) → MATRİS-KOŞUM ŞEMASI v0; K-020 girdisi (emir cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md; m.40b, ≤10 ajan)",
   "tur": "pipeline",
   "pist": "K-020",
-  "durum": "planli",
+  "durum": "tamam-2026-08-31",
   "oncelik": 3,
   "okur": [
     "cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md",
@@ -36,6 +36,9 @@
   "tetik_turu": "seans",
   "durma_kosulu": "MATRİS-KOŞUM ŞEMASI v0 (eksen tanımı + hücre sözleşmesi + deterministik toplama kuralları + maliyet modeli + kütük standardı) ∧ ≥6 birincil kaynak AS-OF ∧ şema m.38/tipli-alan formunda ∧ nested-loop eksen-eşlemesi ölçütlü",
   "kapsam_beyani": "prototip İNŞASI/koşumu YASAK; K-020 kararı VERİLMEZ (girdi); maliyet modeli ZORUNLU alan (hücre-çarpımı × ~300k iterasyon tabanı); mükerrer araştırma açılmaz (hazırı-temel-al)",
-  "belirlenimsiz_girdi": ["model-çıktısı", "web"],
+  "belirlenimsiz_girdi": [
+    "model-çıktısı",
+    "web"
+  ],
   "dogrulama_kapisi": "m.40b tez → antitez → V26 kural-tabanlı örneklem → maskeli hakem"
 }
