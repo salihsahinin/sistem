@@ -17,12 +17,16 @@ LLM/embedding YOK; hibrit/vektör KARARI bu ölçümden SONRA masada (Beyan 9 ba
    sıcak>ılık>soğuk, sonra dosya/sıra), fts5 (yalnız metin), fts5+gen (metin+genişletme+zaman), fts5+guncel (= fts5+gen ∧ v_guncel yüzeyi: sıcak/ılık ∧ gecerlilik=guncel — Karar 58 sinerjisi; boşsa tüm korpus)} → recall@5 (beklenen dosya top-5'te) · MRR · süre(ms) ·
    çekimserlikte top-1 skor (eşik kalibresi borç). Kütük `veri/erisim-eval.jsonl` APPEND-ONLY (1 satır = soru × yöntem × koşum) + gold `v_erisim_eval` CSV
    (yöntem × yetenek özet). COST tabanı = fts5 ↔ grep süre/recall (DE kanonu §1.3: tabanı geçmeyen eklenmez). Yöntem sütunu vektör/RRF kollarına AÇIK (İB-47).
-Kullanım: python3 tools/erisim-fts.py [--repo <yol>] [--insa] [--eval [--taban]] [--sorgu "metin" [--k 5]] [--sessiz] [--kuru]  (bayraksız = --insa --eval; --taban = grep taban çizgisi de koşar)
-Çıkış: 0 · 2 FTS5 yok/DB yok/soru dosyası yok · 3 eval testi ERROR (soru seti şema hatası). Deneysel m.29.
+Kullanım: python3 tools/erisim-fts.py [--repo <yol>] [--insa] [--eval [--taban]] [--sorgu "metin" [--k 5] [--json]] [--sessiz] [--kuru]  (bayraksız = --insa --eval; --taban = grep taban çizgisi de koşar)
+AXI (İB-58/3; AXI-STANDARDI A1/A2/A4/A6/A7): `--sorgu --json` → stdout TEK JSON nesnesi {arac, surum, git_head, cikis, sorgu, k, meta, n_sonuc, sonuclar[{kayit_id, dosya_id, katman, zaman, skor, metin_kisa}]};
+  zaman alanı yok → aynı silver + aynı sorgu = bit-eşit çıktı (A4). `--json` yalnız `--sorgu` ile (aksi kod 2, A7).
+Yan-etki (A6): --sorgu SALT-OKUR — `--json`'da kayit_fts yoksa KURMAZ, kod 2 (silver'a yazmaz; `--json`süz eski davranış: uyarı + kur) · --insa/--eval YAZAR (silver kayit_fts/erisim_genisletme · veri/erisim-eval.jsonl append · v_erisim_eval.csv).
+Çıkış: 0 · 2 FTS5 yok/DB yok/soru dosyası yok/`--json`ün `--sorgu`suz kullanımı/`--json`da kayit_fts yok · 3 eval testi ERROR (soru seti şema hatası). Deneysel m.29.
 """
 import argparse, csv, json, os, re, sqlite3, subprocess, sys, time
 from datetime import datetime, timezone
 
+SURUM = "0.2"  # 0.2 = AXI İB-58/3 (--sorgu --json + A2 çıkış sözlüğü); 0.1 = AXI-öncesi
 SORU_YOLU = "veri/sozlesme/erisim-eval-sorular.jsonl"
 EVAL_LOG = "veri/erisim-eval.jsonl"
 YETENEK = ("bilgi-cikarma", "cok-oturum", "zamansal", "bilgi-guncelleme", "cekimserlik")
@@ -159,10 +163,15 @@ def grep_taban(con, sorgu, k=5):
 
 
 # ------------------------------------------------------------------ eval
+def hata_cik(msg):
+    """A7 FAIL-LOUD + A2: stderr tek satır teşhis + kod 2 (girdi/kullanım/ortam) — sys.exit(str)'in örtük 1'i yerine docstring sözlüğü."""
+    print(msg, file=sys.stderr); sys.exit(2)
+
+
 def sorulari_oku(repo):
     yol = os.path.join(repo, SORU_YOLU)
     if not os.path.exists(yol):
-        sys.exit("[HATA] soru seti yok: %s" % SORU_YOLU)
+        hata_cik("[HATA] soru seti yok: %s" % SORU_YOLU)
     out, hata = [], []
     with open(yol, encoding="utf-8") as fh:
         for i, l in enumerate(fh, 1):
@@ -237,12 +246,15 @@ def main():
     ap.add_argument("--sorgu", default=None); ap.add_argument("--k", type=int, default=5)
     ap.add_argument("--sessiz", action="store_true"); ap.add_argument("--kuru", action="store_true")
     ap.add_argument("--taban", action="store_true", help="grep taban çizgisini de koş (COST tabanı; ~370 ms/soru)")
+    ap.add_argument("--json", action="store_true", help="--sorgu çıktısı stdout'ta TEK JSON nesnesi (AXI A1, İB-58/3); yalnız --sorgu ile")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
+    if a.json and not a.sorgu:
+        hata_cik("[HATA] --json yalnız --sorgu ile (İB-58/3 kapsamı: --insa/--eval insan-yüzlü kaldı)")
     if not fts5_var():
-        sys.exit("[HATA] bu Python'un sqlite3'ünde FTS5 yok (compile_options ENABLE_FTS5) — KB-43 (a) ön-koşulu")
+        hata_cik("[HATA] bu Python'un sqlite3'ünde FTS5 yok (compile_options ENABLE_FTS5) — KB-43 (a) ön-koşulu")
     db = os.path.join(repo, "veri", "baglam.sqlite")
     if not os.path.exists(db):
-        sys.exit("[HATA] silver yok: veri/baglam.sqlite (önce tools/katman-hatti.py)")
+        hata_cik("[HATA] silver yok: veri/baglam.sqlite (önce tools/katman-hatti.py)")
     con = sqlite3.connect(db); head = git_head(repo)
     yap_insa = a.insa or (not a.eval and not a.sorgu)
     yap_eval = a.eval or (not a.insa and not a.sorgu)
@@ -252,12 +264,21 @@ def main():
         try:
             con.execute("SELECT 1 FROM kayit_fts LIMIT 1")
         except sqlite3.Error:
+            if a.json:  # A6 salt-okur sözü: --json yolunda silver'a YAZILMAZ (PK-5) → FAIL-LOUD
+                hata_cik("[HATA] kayit_fts yok — önce tools/katman-hatti.py (erisim adımı) ∨ --insa (--json'suz)")
             print("[uyarı] kayit_fts yok → kuruluyor"); insa(con)
     if a.sorgu:
         rows, meta = sorgula(con, a.sorgu, a.k, True, True)
-        print("sorgu: %r · %s" % (a.sorgu, meta))
-        for r in rows:
-            print("  %-45s %-7s %-10s %8.3f  %s" % (r[1], r[2], (r[3] or "-"), (r[4] or 0), (r[5] or "").replace("\n", " ")[:80]))
+        if a.json:
+            print(json.dumps({"arac": "erisim-fts", "surum": SURUM, "git_head": head, "cikis": 0, "sorgu": a.sorgu, "k": a.k,
+                              "meta": meta, "n_sonuc": len(rows),
+                              "sonuclar": [{"kayit_id": r[0], "dosya_id": r[1], "katman": r[2], "zaman": r[3],
+                                            "skor": (round(r[4], 4) if r[4] is not None else None),
+                                            "metin_kisa": (r[5] or "").replace("\n", " ")} for r in rows]}, ensure_ascii=False))
+        else:
+            print("sorgu: %r · %s" % (a.sorgu, meta))
+            for r in rows:
+                print("  %-45s %-7s %-10s %8.3f  %s" % (r[1], r[2], (r[3] or "-"), (r[4] or 0), (r[5] or "").replace("\n", " ")[:80]))
     if yap_eval:
         sorular, hata = sorulari_oku(repo)
         if hata:

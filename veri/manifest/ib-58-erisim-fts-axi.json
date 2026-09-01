@@ -1,13 +1,46 @@
 {
   "birim_id": "ib-58-erisim-fts-axi",
   "aciklama": "İB-58 3. aday: erisim-fts.py --sorgu → AXI A1 --json tek nesne (arac/surum/git_head/cikis + sonuçlar), A2 çıkış sözlüğü, A7 FAIL-LOUD; ajan aracı olmaya en yakın script (AXI-STANDARDI satır 24)",
-  "tur": "pipeline", "pist": "K-015", "durum": "planli", "oncelik": 3,
-  "okur": ["tools/erisim-fts.py", "tools/AXI-STANDARDI.md", "tools/SCRIPTLER.md", "veri/baglam.sqlite", "tools/testler/test_katman_tek_tanim.py"],
-  "yazar": ["tools/erisim-fts.py", "tools/testler/test_erisim_fts.py", "tools/SCRIPTLER.md", "tools/AXI-STANDARDI.md"],
-  "granul": "dosya", "sira": ["ib-58-anahtar-denetim-argparse"], "dislama_grubu": null, "silver": "okur",
-  "commit_kapsami": ["tools/erisim-fts.py", "tools/testler/test_erisim_fts.py", "tools/SCRIPTLER.md", "tools/AXI-STANDARDI.md"], "kanon_yuzeyi": false, "dis_etki": [],
+  "tur": "pipeline",
+  "pist": "K-015",
+  "durum": "tamam",
+  "oncelik": 3,
+  "okur": [
+    "tools/erisim-fts.py",
+    "tools/AXI-STANDARDI.md",
+    "tools/SCRIPTLER.md",
+    "veri/baglam.sqlite",
+    "tools/testler/test_katman_tek_tanim.py"
+  ],
+  "yazar": [
+    "tools/erisim-fts.py",
+    "tools/testler/test_erisim_fts.py",
+    "tools/SCRIPTLER.md",
+    "tools/AXI-STANDARDI.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "ib-58-anahtar-denetim-argparse"
+  ],
+  "dislama_grubu": null,
+  "silver": "okur",
+  "commit_kapsami": [
+    "tools/erisim-fts.py",
+    "tools/testler/test_erisim_fts.py",
+    "tools/SCRIPTLER.md",
+    "tools/AXI-STANDARDI.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
   "idempotency_anahtari": "erisim-fts.py içinde 'arac' JSON alanı varsa iş bitmiştir",
-  "zorlama_modu": "yol-kapisi", "beyan_disi_politikasi": "hata", "iterasyon_ayak_izi": "sabit", "tetik_turu": "seans",
-  "durma_kosulu": null, "kapsam_beyani": "YALNIZ --sorgu yolu; --insa/--eval (silver YAZAR) bu birimde KOŞULMAZ (PK-5: diğer oturumun katman-hatti'siyle çakışır); sayım/sıralama mantığı değişmez",
-  "belirlenimsiz_girdi": ["model-çıktısı"], "dogrulama_kapisi": "unittest test_erisim_fts.py yeşil ∧ --sorgu eski/yeni insan-çıktı diff boş ∧ --sorgu --json json.loads"
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "YALNIZ --sorgu yolu; --insa/--eval (silver YAZAR) bu birimde KOŞULMAZ (PK-5: diğer oturumun katman-hatti'siyle çakışır); sayım/sıralama mantığı değişmez",
+  "belirlenimsiz_girdi": [
+    "model-çıktısı"
+  ],
+  "dogrulama_kapisi": "unittest test_erisim_fts.py yeşil ∧ --sorgu eski/yeni insan-çıktı diff boş ∧ --sorgu --json json.loads"
 }
