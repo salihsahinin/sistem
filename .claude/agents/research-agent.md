@@ -4,7 +4,7 @@ description: Atlas (eski adı research-agent) — araştırma için bu ajanı ku
 color: blue
 tools: Read, Write, Grep, Glob, Bash, WebFetch, WebSearch, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 context7: true
-model: opus
+model: sonnet
 ---
 
 <!-- İSTİSNA DAMGASI (Salih emri, 2026-07-13/14 oturumu): V25 altın kuralına kayıtlı istisna — Cem'in research-agent'ı olduğu gibi kuruldu (kurulum değil-ilham kuralının ilk istisnası). [08-17: V25 kuralı tersine döndü — 'hazırı temel al' (KILAVUZ Tasarım ilkeleri); bu kurulum artık istisna değil, kuralın kendisi.] Kapsam: K-017 taraması + genel araştırma koşumları. K-016'da kendi skill/ajan turumuza İLHAM kaynağıdır. Not: 'context7: true' harici MCP gerektirir — kurulu değilse ajan WebSearch/WebFetch ile koşar. -->
@@ -12,7 +12,8 @@ model: opus
 <!-- EĞİTİM KATMANI (JARVIS revizyon kaydı; Salih emri 07-15: "onu da eğitmeye başlayalım") — her koşum dersi cc/defter.md'den buraya revizyon olarak akar; Cem'in taban metni ANLAMCA değiştirilmeden korunur (V25 istisna), revizyonlar bu blokta yaşar:
 R1 (2026-07-15): ad research-agent → ATLAS (Salih seçimi) · model sonnet → opus (Salih beyanı: token maliyeti) · doğrulama varsayılanı: %100 bulgu-başına doğrulayıcı yerine V26 örneklem-denetimi (~%20 + kritik bulguların tümü; oran görev emrinde ezilebilir) — K-017 koşum dersi.
 R2 (2026-08-17): TÜRKÇELEŞTİRME (Salih emri: "kaynak md dosyalarını okuyabilmeliyim, Türkçe haline getir"; açık-kaynak ilkesi CLAUDE.md §2) — Cem'in İngilizce taban metni birebir Türkçeye çevrildi; İngilizce aslı `kuyruk/arsiv-atlas-taban-metni-en-2026-07-13.md`'de (m.8). "Olduğu gibi kuruldu" hükmü "anlamca birebir, dil Türkçe" olarak okunur. Kalıp yer-tutucular {…} Türkçe; frontmatter anahtarları/araç adları/dosya yolları değişmedi.
-R3 (2026-08-17): V26 örneklem-denetimi KURAL-TABANLI (Salih imzası A): ajan başına çıktının son üçte birinden ≥1 kaynak iddiası + tüm sayısal iddialar; rastgele seçim emekli (deterministik tasarım ilkesi) — koşum: atlas-kosum adım 5. -->
+R3 (2026-08-17): V26 örneklem-denetimi KURAL-TABANLI (Salih imzası A): ajan başına çıktının son üçte birinden ≥1 kaynak iddiası + tüm sayısal iddialar; rastgele seçim emekli (deterministik tasarım ilkesi) — koşum: atlas-kosum adım 5.
+R4 (2026-09-02): model opus → SONNET (Salih Katman-1 kararı, Karar 85: Opus saf dışı; ikili = Fable planlayıcı + Sonnet işçi). Ölçüm şerhi (m.39): atlas-tez/antitez rollerinde Sonnet örneklemi n=5/2 (Opus n=80/87) — kalite eşdeğerliği ÖLÇÜLMEDİ; ilk 3 Sonnet atlas koşumu hakem D/K/X oranıyla Opus tabanına (D12/K8/X3 sınıfı) kıyaslanır, sapma masaya döner. -->
 
 # AJAN: Araştırma Ajanı (ATLAS)
 

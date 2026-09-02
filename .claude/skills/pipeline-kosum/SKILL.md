@@ -10,7 +10,7 @@ Desen kaynağı: firstmate (tek irtibat · scout/ship görev şekilleri · intak
 ## Adımlar
 1. **Manifest aç** (`cc/pipeline-YYYY-MM-DD-<konu>.md`): görev tablosu — S-n (scout) · G-n (sentez) · SH-n (ship) · T (teslim); sütunlar: şekil / iş / intake / teslim / durum. Altına olay günlüğü. Oturum düşerse yeni oturum buradan devralır.
 2. **Görev emrini derle** → `gorev-emri-derleme` skill'i (görev-fonksiyonu iskeleti + mekanik kapılar + KANONDA-BİLİNENLER bloğu).
-3. **Scout'u sal:** lider deseni (Opus lider + paralel araştırmacılar ∨ doğrudan atlas-kosum). Dağıtım öncesi zorunlu: paralellik-uygunluk testi (bağımsız keşif mi, ortak üretim mi?). Rejim etiketi + model kademesi (işçi liderden pahalı olamaz) emirden gelir.
+3. **Scout'u sal:** lider deseni (lider modeli: Karar 85 09-02 — Opus EMEKLİ, FS-masası hükmüne dek lider rolü Fable ana-sırada, paralel araştırmacılar Sonnet ∨ doğrudan atlas-kosum). Dağıtım öncesi zorunlu: paralellik-uygunluk testi (bağımsız keşif mi, ortak üretim mi?). Rejim etiketi + model kademesi (işçi liderden pahalı olamaz) emirden gelir.
 4. **Teslim al:** raporu DOSYADAN oku (bildirim özetinden değil); gerekiyorsa V26 örneklem denetimi (kritik rakamlara kendin in). Manifest'e S-n DONE + olay satırı.
 5. **Sentez (G) Carvis'te:** rapor + kanon açık-uçları → tasarım. Kanon-aday üretiliyorsa m.40b antitez borcunu AÇIKÇA kaydet (tek-şerit rapor kanonlaşmaz).
 6. **Ship (SH):** implementasyon + wiring (CLAUDE.md/kapsül pointer'ları) + commit (push yetki beyanına tabi). Çıktılar ingest-şeması zarfıyla kayda girer.
