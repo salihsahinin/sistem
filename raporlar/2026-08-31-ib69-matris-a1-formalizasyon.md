@@ -2,6 +2,17 @@
 
 **Künye:** emir `cc/gorev-2026-08-31-ib69-matris-kosum-atlas.md` · HEAD `fed8b31` (`git rev-parse --short HEAD`, koşum anı) · **AS-OF 2026-08-31** · zincir m.40b v0.2 (5 tez → antitez → V26 → maskeli hakem → sentez) · **8 Agent çağrısı** (7 işçi Sonnet-5 `[rejim: maliyet-öncelikli]`, 1 hakem Opus-5) · aile-başına ajan tavanı 10, aşılmadı · **AİLE-2 KOŞULMADI** (ayrı sıralı birim).
 
+## DÜZELTME NOTU (Karar 86 D7-⑦, 2026-09-02 — aile-2 hakem bulguları; m.8: satır silinmedi)
+
+Aile-2 raporu (`raporlar/2026-08-31-ib69-matris-a2-kurallastirma.md` §6.1, satır 259-265) bu şemaya dört şerh düşmüştür. Satırdaki asıl metin DEĞİŞTİRİLMEDİ; aşağıdaki dört madde ayrı şerhtir, üstteki tanımların yerine geçmez:
+
+1. **§4 `T_gnhf ≈ 300k` damgası** (bu belgede satır 116) — "**ÖLÇÜLDÜ**" YANLIŞ damga. Doğrusu: "**TÜRETİLDİ, ÖLÇÜLMEDİ**" — kaynak 2 iterasyonun TOPLAMINI (535k) ölçtü, 535k ÷ 2 = 267,5k; "~300k" bu değerden **%12,1 yukarı yuvarlanmıştır**; n=2, tek vaka. Kaynak: `raporlar/2026-08-31-k010-a3-loop-1.md:12`, aile-2 §6.1 madde 1.
+2. **§4'e (bu belgede satır 110-144) F-1 eklenmeli** — çağrı maliyeti toplamsaldır: çarpan **1,00** + sabit oturum tabanı **27** (n=1); KAPI-2'nin doğru sınırı **≤143**'tür (hook `n >= 144`'te bloke eder). Aile-2 §6.1 madde 2.
+3. **§6.1 Ö-A'ya (bu belgede satır 181) kapsam şerhi** — matris-İÇİ hücrelerin ortak append-only kütüğe yazması Ö-A'nın (PK-10 AYAK İZİ) kapsamı DIŞINDADIR (paralel-kapı birim-ARASI çalışır, hücre-arası değil); POSIX kısa-satır append atomikliği VARSAYILDI, doğrulanmadı `[?]`. Aile-2 §6.1 madde 3.
+4. **§2'ye (bu belgede satır 75-77) açıklık** — `cikti.tip = sema` durumunda deterministik toplama (T1-T5) YALNIZ enum/sayı alt-alanları üzerinde tanımlıdır; serbest-metin alt-alanları (örn. İB-67'nin `en_yakin_komsu`, `kanit_url`'ü) kütükte taşınır ama T1-T5'e GİRMEZ. Aile-2 §6.1 madde 4.
+
+---
+
 **Kapsam beyanı:** bu belge TASARIMDIR. Prototip inşa edilmedi, hiçbir matris koşulmadı, K-020 kararı VERİLMEDİ (bu rapor K-020'nin girdisidir, hüküm masada). Kanon dosyalarına (`core/`, `CLAUDE.md`, `kuyruk/`, `tools/`) dokunulmadı.
 
 **Ham işçi raporları:**
@@ -73,6 +84,7 @@ HUCRE := {
   etiket   : kapalı küme (enum) — ör. İB-07 `secilen_skill` ∈ {14 skill} ∪ {HİÇBİRİ}
   sayi     : reel ∨ tam — ör. İB-49 `precision`, `recall`, `dogruluk`, `derleme_kodu`
   sema     : anahtarları önceden sabit obje — ör. {hukum: D|K|X, gerekce_sha}
+                 > ⚠ DÜZELTME NOTU'na bak (madde 4)
 }
 Ö1 (tiplilik):  cikti.tip ∈ {etiket, sayi, sema}   ∧  ¬(cikti.tip = serbest_metin)
       ¬Ö1  →  bu bir MATRİS DEĞİLDİR; toplama LLM-yargıç gerektirir → §3 İSTİSNA dalı
@@ -107,12 +119,15 @@ KARAR 65 KOŞULLU FORMU (hakem tavsiyesi, şemaya bu haliyle girer):
 
 ---
 
+> ⚠ DÜZELTME NOTU'na bak (madde 2)
+
 ## 4. ZORUNLU ALAN 4 — MALİYET MODELİ (iki tabanlı + iki kapılı)
 
 **HAKEM HÜKMÜ (A):** Emrin `~300k iterasyon tabanı (önbellek-okumalı gnhf birimi, 08-30 e2e715)` sabiti **matris hücresi için yanlış tabandır**. İB-66'nın kendi metni tabanı kapsamla sınırlıyor — taban "işçi/gnhf koşumları içindir" (`raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md:132`) ve o birim aynı raporun `:187` satırında **L1 = çok-turlu gnhf CLI iterasyonudur**. Matris hücresi ise üç iç emsalin üçünde de tek istek/yanıt ya da tek Agent çağrısıdır. Aynı sabiti iki farklı birime koymak ölçümün kapsam beyanını ihlal eder (m.29).
 
 ```
 TANIM
+  > ⚠ DÜZELTME NOTU'na bak (madde 1)
   T_gnhf  = 300k    [ÖLÇÜLDÜ, önbellek-okuma DAHİL; İB-66:132 · vaka e2e715, 08-30]
                     [?] ham ölçüm satırı `raporlar/2026-08-31-k010-a3-loop-1.md:12-13`
                         bu koşumda AÇILMADI — teyit borcu
@@ -175,6 +190,8 @@ RESUME KURALI (tek sorguyla çıkmalı — İB-07'de ELLE yapıldı, ders budur)
 ## 6. (d) NESTED-LOOP EKSEN EŞLEMESİ — hangi eksen dış, hangisi iç
 
 ### 6.1 Dört ölçüt (m.38 formunda) + öncelik sırası
+
+> ⚠ DÜZELTME NOTU'na bak (madde 3, Ö-A kapsam şerhi)
 
 | # | Ölçüt | Karar yüklemi | Ölçülebilir tanım |
 |---|---|---|---|

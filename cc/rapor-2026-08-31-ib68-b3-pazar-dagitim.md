@@ -1,3 +1,5 @@
+> ⚠ m.39 İHLALİ (Karar 86 D7-⑨, 2026-09-02): bu ham rapordaki rakip FİYAT TUTARLARI açılmamış sayfalardan yazılmıştır (V26 ihlali, İB-67/68 sentezine taşınmadı); tutarlar geçersizdir, yalnız 'ücretli plan MEVCUT/YOK' varlık beyanı kullanılır. Satırlar m.8 gereği silinmedi.
+
 # Rapor — B68-4 Pazar-Doğrulama + Dağıtım Emsalleri
 
 **Künye:** AS-OF 2026-08-31 · aile B3 · model sonnet · ajan pazar-doğrulama-işçi · dizin `/Users/HasanSalihSahin/jarvis`
