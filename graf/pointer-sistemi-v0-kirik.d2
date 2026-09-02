@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — KIRIK POINTER PANOSU — dosya_pointer · hedef_var=0 (en çok 18 kaynak → en çok 18 hedef) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 37e4584 · HEAD 37e4584 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver f3240ad · HEAD f3240ad · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -16,7 +16,7 @@ classes: {
   turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
   uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
 }
-ozet: "KIRIK dosya_pointer · 1.763 referans · 675 ayrı hedef · 1.420 ayrı kayıt" { class: kirik }
+ozet: "KIRIK dosya_pointer · 1.772 referans · 679 ayrı hedef · 1.427 ayrı kayıt" { class: kirik }
 kaynak: "KAYNAK DOSYALAR (en çok kırık pointer veren)" {
   cc_rapor_2026_08_31_ib66_hakem_bagimsiz_md: "cc/rapor-2026-08-31-ib66-hakem-bagimsiz.md · 136" { class: kutu }
   cc_rapor_2026_08_17_4_md: "cc/rapor-2026-08-17-4.md · 87" { class: kutu }
@@ -50,12 +50,12 @@ hedef: "HEDEFLER (var olmayan yol/ad)" {
   antitez_md: "antitez.md · 19" { class: dis }
   claude_CLAUDE_md: ".claude/CLAUDE.md · 17" { class: dis }
   claude_skills_vardiya_kapanis_SKILL_md: ".claude/skills/vardiya-kapanis/SKILL.md · 16" { class: dis }
+  03_egit_py: "03_egit.py · 15" { class: dis }
   data_json: "data.json · 14" { class: dis }
   private_tmp_claude_501__Users_HasanSalihSahin_jarvis_0fa78c9: "private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c-4e7a-8f68-60b6d04f6a0c/scratchpad/soru-buyut.py · 14" { class: dis }
   iteration_N_jsonl: "iteration-N.jsonl · 13" { class: dis }
   settings_local_json: "settings.local.json · 13" { class: dis }
   sub_agents_md: "sub-agents.md · 13" { class: dis }
-  claude_skills_gunaydin_vardiya_SKILL_md: ".claude/skills/gunaydin-vardiya/SKILL.md · 12" { class: dis }
 }
 kaynak.cc_rapor_2026_08_31_ib66_hakem_bagimsiz_md -> hedef.a2_md: "25" { class: kirik }
 kaynak.cc_rapor_2026_08_31_ib66_hakem_bagimsiz_md -> hedef.b_md: "24" { class: kirik }
@@ -68,8 +68,8 @@ kaynak.cc_rapor_2026_08_31_ib66_hakem_bagimsiz_md -> hedef.antitez_md: "19" { cl
 kaynak.cc_rapor_2026_08_17_4_md -> hedef.env_vars_md: "14" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_29_md -> hedef.private_tmp_claude_501__Users_HasanSalihSahin_jarvis_0fa78c9: "14" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_15_md -> hedef.claude_skills_vardiya_kapanis_SKILL_md: "12" { class: kirik }
-kaynak.raporlar_hareket_gunlugu_2026_08_15_md -> hedef.claude_skills_gunaydin_vardiya_SKILL_md: "11" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_16_md -> hedef.derle_py: "7" { class: kirik }
+kaynak.raporlar_hareket_gunlugu_2026_08_31_md -> hedef.03_egit_py: "7" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_15_md -> hedef.derle_py: "4" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_29_md -> hedef.data_json: "4" { class: kirik }
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.sub_agents_md: "3" { class: kirik }
@@ -78,6 +78,7 @@ kaynak.cc_rapor_2026_08_29_ib53_atlas_antitez_a_md -> hedef.b_md: "2" { class: k
 kaynak.raporlar_2026_07_26_antitez_hakemlik_md -> hedef.env_vars_md: "2" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_16_md -> hedef.MEMORY_md: "2" { class: kirik }
 kaynak.raporlar_hareket_gunlugu_2026_08_17_md -> hedef.MEMORY_md: "2" { class: kirik }
+kaynak.raporlar_seans_teslim_2026_08_31_galeri_siralama_sentetik_mo -> hedef.03_egit_py: "2" { class: kirik }
 kaynak.cc_rapor_2026_08_17_4_md -> hedef.claude_CLAUDE_md: "1" { class: kirik }
 kaynak.cc_rapor_2026_08_26_2_md -> hedef.data_json: "1" { class: kirik }
 kaynak.cc_rapor_2026_08_29_ib53_atlas_tez_a_md -> hedef.b_md: "1" { class: kirik }
