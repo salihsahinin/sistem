@@ -17,7 +17,7 @@ printf '%s' "$cmd" | grep -qE ">{1,2}[[:space:]]*\"?\.?/?(core/|CLAUDE\.md|\.cla
 printf '%s' "$cmd" | grep -qE "\b(mv|cp|rm|touch|truncate|tee|dd|install)\b.*${PROT}" && block=1
 # sed/perl -i yalnız AYNI boru segmentinde (| ; && || ile ayrılmamış) ve korunan yolla birlikteyse yazımdır; 'sed -n … | grep -i core/' salt-okurdur
 # (09-02 sağlık turu yanlış-pozitifi, Karar 86 D6-2: -i başka komuta aitken tel tetikleniyordu)
-printf '%s' "$cmd" | grep -qE "\b(sed|perl)\b[^|;&]*[[:space:]]-i[^|;&]*${PROT}" && block=1
+printf '%s' "$cmd" | grep -qE "\b(sed|perl)\b[^|;&]*[[:space:]]-[[:alpha:]]*i[^|;&]*${PROT}" && block=1   # -i · -pi · -ni (bayrak grubu)
 printf '%s' "$cmd" | grep -qE "\bgit[[:space:]]+(checkout|restore|reset|clean|rm|mv)\b.*${PROT}" && block=1
 if [ "$block" = "1" ]; then
   echo "TEL (m.41 kilit): Bash ile core/ · CLAUDE.md · .claude/ yazımı bu yüzeyde engellidir. Bu bir tökezleme-telidir; iş meşruysa ana-sıra(Cowork/Fable) ya da Salih eliyle yapılır. Komut: $cmd" >&2
