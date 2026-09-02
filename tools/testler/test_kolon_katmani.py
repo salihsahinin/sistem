@@ -429,14 +429,16 @@ class KatmanHattiSecimTest(unittest.TestCase):
     def test_atla_yankisi_ve_yardim_metni(self):
         # --help tüm adım adlarını listeler; --atla verilen adlar döngü öncesi '[atla ] <ad>' ile yankılanır ve koşulmaz
         h = kos("katman-hatti.py", "--help")
+        # argparse yardım metnini terminal genişliğine sarar; "kolon-olcum" tire sonrasında satır kırılabilir → boşluk/satır sonu düzleştirilir
+        duz = h.stdout.replace("-\n", "-").replace(" ", "").replace("\n", "")
         for ad in ("baglam", "hareket", "olcum", "parquet", "kolon-olcum"):
-            self.assertIn(ad, h.stdout)
+            self.assertIn(ad, duz)
         bos = tempfile.mkdtemp(prefix="hat-bos-")
         try:
             # Boş repoda hiçbir adım koşmamalı: liste hattın kendi ADIMLAR'ından türetilir (08-29: sabit liste bayatlamıştı — deneyim/bag gibi
             # sonradan eklenen FAIL-LOUD adımlar boş repoda çıkış 2 veriyordu; test yankı + yardım metnini sınar, adım kümesini değil)
             m = modul("katman-hatti.py")
-            tum = [a for a, _ in m.adimlari_sec()]
+            tum = [a for a, _ in m.adimlari_sec(parquet=True)]  # CLI varsayılanı parquet AÇIK (Karar 83 B2) → kolon adımları da atlanmalı
             r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, " + ",".join(tum[1:]))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")], ["[atla ] %s" % ad for ad in tum])

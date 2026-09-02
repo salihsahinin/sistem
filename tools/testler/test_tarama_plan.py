@@ -20,7 +20,7 @@ def kucuk_silver(yol, n=200):
     """kayit/referans/dosya/karar_borcu şemasının gerekli alt kümesi; skip-scan için ref_turu düşük kardinaliteli (2 değer × 100 satır)."""
     con = sqlite3.connect(yol)
     con.executescript("""
-    CREATE TABLE kayit (kayit_id TEXT PRIMARY KEY, dosya_id TEXT, sira INTEGER, bolum_yolu TEXT, blok_turu TEXT, satir_bas INTEGER, satir_son INTEGER, metin TEXT, token_kestirim INTEGER);
+    CREATE TABLE kayit (kayit_id TEXT PRIMARY KEY, dosya_id TEXT, sira INTEGER, bolum_yolu TEXT, blok_turu TEXT, satir_bas INTEGER, satir_son INTEGER, metin TEXT, token_kestirim INTEGER, tarih_iso TEXT);
     CREATE INDEX ix_kayit_dosya ON kayit(dosya_id, sira);
     CREATE TABLE referans (kayit_id TEXT, ref_turu TEXT, ref_deger TEXT);
     CREATE INDEX ix_ref_kayit ON referans(kayit_id);
@@ -30,7 +30,7 @@ def kucuk_silver(yol, n=200):
     """)
     for i in range(n):
         d = "core/a%d.md" % (i % 5)
-        con.execute("INSERT INTO kayit VALUES (?,?,?,?,?,?,?,?,?)", ("%s#%d-%d#x%d" % (d, i, i, i), d, i, "B › " + str(i % 3), "madde" if i % 2 else "paragraf", i, i, "m%d" % i, i % 7))
+        con.execute("INSERT INTO kayit VALUES (?,?,?,?,?,?,?,?,?,?)", ("%s#%d-%d#x%d" % (d, i, i, i), d, i, "B › " + str(i % 3), "madde" if i % 2 else "paragraf", i, i, "m%d" % i, i % 7, "2026-%02d-01" % (i % 12 + 1)))
         con.execute("INSERT INTO referans VALUES (?,?,?)", ("%s#%d-%d#x%d" % (d, i, i, i), "kart" if i % 2 else "v_no", "K-%03d" % (i % 4)))
     for i in range(5):
         con.execute("INSERT INTO dosya VALUES (?,?)", ("core/a%d.md" % i, "B › %d" % i))
@@ -203,7 +203,8 @@ class KatmanHattiTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="tarama-hat-"); self.repo = gecici_repo(self.tmp)
         self.kutuk = os.path.join(self.repo, "veri", "tarama-plan.jsonl")
-        self.adlar = [ad for ad, _ in modul(HAT, "kh").ADIMLAR]  # hat'ın kendi listesi (türetilmiş, sabit değil)
+        kh = modul(HAT, "kh")
+        self.adlar = [ad for ad, _ in kh.adimlari_sec(parquet=True)]  # hat'ın GERÇEK koşum sırası (türetilmiş, sabit değil); kolon katmanı Karar 83 B2'den beri varsayılan AÇIK ve olcum'un önüne girer
         self.atla_hepsi = ",".join(self.adlar); self.atla_tarama_haric = ",".join(a for a in self.adlar if a != "tarama")
 
     def tearDown(self):

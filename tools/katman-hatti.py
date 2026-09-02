@@ -80,6 +80,7 @@ def kira_al(repo):
     """Adlandırılmış kira (PK-5 silver tek-yazar + PK-7): dosya varsa ve TTL taze ise bekle (60 sn) → çıkış 5 ("dene-geç" değil,
     kuyruğa iade çağıranın). Ölü-sahip (TTL aşımı) süpürülür; sahip="salih" kirası ASLA süpürülmez (PK-7, Salih kilidi)."""
     yol = os.path.join(repo, KIRA_YOLU); t0 = time.time()
+    os.makedirs(os.path.dirname(yol), exist_ok=True)  # boş/yeni repoda veri/ henüz yoksa kira dosyası açılamıyordu (09-02 test bulgusu)
     while True:
         try:
             fd = os.open(yol, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
