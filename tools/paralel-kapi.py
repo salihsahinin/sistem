@@ -88,6 +88,35 @@ def cakisma(x, y):
     return out
 
 def canli(b): return str(b.get('durum', '')).startswith('canli')
+def tamamlandi(b): return str(b.get('durum', '')).startswith(('tamam', 'kapandi'))
+
+def tur_turet(b):
+    """Saf fonksiyon (LLM YOK, deterministik) — manifestin `tur` alanını mevcut alanlardan TÜRETİR.
+
+    Öncelik 1 — MATRİS: `matris` anahtarı ∨ adı 'eksen' veya 'hucre' ile başlayan herhangi bir üst
+    alan varsa (İB-69 a1 şeması, raporlar/2026-08-31-ib69-matris-a1-formalizasyon.md §1/§3 — EKSEN/HUCRE
+    blokları, alan adları `eksenler`, `hucre_tipi`, `hucre_anahtari` …) → 'matris'.
+
+    Öncelik 2 — Model-1 karar tablosu (raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md §5.1),
+    üç yüklem manifestin şu alanlarından okunur (kaynak belgede yüklem→alan eşlemesi LİTERAL VERİLMEMİŞ;
+    aşağıdaki eşleme bu koşumda seçilen PROXY'dir — AÇIK SORU, Salih onayı gerekir):
+      Y1 SÜREKLİ?              ← tetik_turu ∉ {None, 'seans'} (yalnız 'seans' tek-turlu/oturum-tetikli sayılır)
+      Y2 tekrar-sayısı bilinir? ← dis_tavan alanı dolu (§232: hibrit/loop için dış-tavan zorunlu alanı)
+      Y3 iç-sıra sabit?        ← iterasyon_ayak_izi == 'sabit' (PK-10 kuralı zaten 'sabit'/'buyuyen' ayrımı kullanıyor)
+    ¬Y1 ∧ Y3 → pipeline · Y1 ∧ ¬Y2 ∧ ¬Y3 → loop · Y1 ∧ Y3 → hibrit · aksi tüm kombinasyonlar → belirsiz (masaya).
+    """
+    if 'matris' in b or any(k.startswith('eksen') or k.startswith('hucre') for k in b):
+        return 'matris'
+    y1 = b.get('tetik_turu') not in (None, 'seans')
+    y3 = b.get('iterasyon_ayak_izi') == 'sabit'
+    y2 = b.get('dis_tavan') is not None
+    if not y1 and y3:
+        return 'pipeline'
+    if y1 and not y2 and not y3:
+        return 'loop'
+    if y1 and y3:
+        return 'hibrit'
+    return 'belirsiz'
 
 def hukum(x, y):
     sira = (y['birim_id'] in x['sira']) or (x['birim_id'] in y['sira'])
@@ -161,23 +190,29 @@ def main():
     if not os.path.isdir(dizin):
         print(f'HATA: manifest dizini yok: {dizin}', file=sys.stderr); sys.exit(2)
     birimler, hatalar = yukle(dizin)
+    # Kapı v0.2 (PK): durum='tamam*'|'kapandi*' birimler dalga planından VE çakışma taramasından düşer —
+    # yalnız canlı (tamamlanmamış) birimler taranır; sira/bütünlük denetimi (yukle) tüm birimler üzerinde kalır.
+    tamam_birimler = {bid: b for bid, b in birimler.items() if tamamlandi(b)}
+    canli_birimler = {bid: b for bid, b in birimler.items() if not tamamlandi(b)}
     ciftler = []
-    for x, y in combinations(sorted(birimler.values(), key=lambda b: b['birim_id']), 2):
+    for x, y in combinations(sorted(canli_birimler.values(), key=lambda b: b['birim_id']), 2):
         h, n = hukum(x, y); ciftler.append({'a': x['birim_id'], 'b': y['birim_id'], 'hukum': h, 'neden': n})
     uyarilar = {b: birim_uyarilari(birimler[b]) for b in sorted(birimler)}
     uyarilar = {k: v for k, v in uyarilar.items() if v}
-    plan, bekleyen = dalgalar(birimler, ciftler, a.kademe)
+    plan, bekleyen = dalgalar(canli_birimler, ciftler, a.kademe)
     red = sum(1 for c in ciftler if c['hukum'] == 'RED')
     cikis = 1 if hatalar else (3 if red else 0)
     sayim = {}
     for c in ciftler: sayim[c['hukum']] = sayim.get(c['hukum'], 0) + 1
     out = {'arac': ARAC, 'surum': SURUM, 'git_head': git_head(a.repo), 'cikis': cikis, 'birim_n': len(birimler),
-           'planli_n': sum(1 for b in birimler.values() if not canli(b)), 'kademe': a.kademe, 'hukum_sayim': sayim,
+           'planli_n': sum(1 for b in canli_birimler.values() if not canli(b)), 'tamam_birim_n': len(tamam_birimler),
+           'kademe': a.kademe, 'hukum_sayim': sayim,
            'butunluk_hatalari': hatalar, 'ciftler': ciftler, 'uyarilar': uyarilar, 'dalgalar': plan, 'bekleyen': bekleyen}
     if a.json:
         print(json.dumps(out, ensure_ascii=False)); sys.exit(cikis)
     if not a.sessiz:
         print(f"=== paralel-kapi v{SURUM} @ {out['git_head']} — {len(birimler)} birim ({out['planli_n']} planlı) · kademe={a.kademe or '∞'} · hüküm sayımı {sayim}")
+        print(f"tamam-birim düşüldü: {len(tamam_birimler)}")
         if hatalar: print('BÜTÜNLÜK HATALARI:'); [print('  - ' + h) for h in hatalar]
         print('\n## Çiftler')
         for c in ciftler: print(f"  {c['hukum']:16} {c['a']} × {c['b']} — {c['neden']}")
