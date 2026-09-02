@@ -61,5 +61,14 @@ Envanterin %29'u iki-değerli alana sığmıyor; 17 manifest = 16 pipeline + 1 l
 - **(a) ÖNERİLEN — Sıra 72 → 71 (baseline ölçümü) → 70 → 73; K-020 = M2 (kendi harness genellemesi, İB-69 a2 önerisi; iki ucuz ön-ölçüm koşulu).** Gerekçe: 72 (bayat-dosya karantinası) diğer üçünün tarama yükünü düşürür; 71 hedef koyabilmek için önce oranı ölçer (m.39); 73 (eğitim serisi) en büyük iş, en son bilgiyle yazılır.
 - **(b) Farklı sıra (nota yaz).**
 
-## Hükümler
-(masa sonrası doldurulur)
+## Hükümler — MASA KAPANDI 2026-09-02 (Salih, Send&End; 8/8 hüküm = (a) önerilen; bağlayıcı kayıt defter Karar 86)
+- **D1 → (a)** statik skill-orkestratör. **Salih notu:** hafızalı ekip-lideri kurulmasa da yapılan işlerden çıkan öğrenme desenleri/mimariler/şemalar/kurallar ileride kullanılmak üzere AKTARILMALI → `kuyruk/ekip-lideri-ogrenme-desenleri.md` tohum dosyası (İB-74).
+- **D2 → (a)** tek Fable ana oturumu + Sonnet işçi pipeline'ı. **Salih notu:** Fable bağlamı büyüdüğünde bağlamı Sonnet işçilere devreden ekip-lideri tasarımına YAKIN tarihte geçilecek (hafıza/yetki başta sınırlı, bağlam devri esas) → İB-75.
+- **D3 → (a)** üç kural kanon (tüzük m.40 ek fıkra; atlas-kosum adım 3/5/6).
+- **D4 → (a)** İB-76 katman-başına fren sayacı (düşük öncelik).
+- **D5 → (a)** M1 + S-A `matris` — paralel-kapi.py + 17 manifest (Sonnet işçi, commit 45ce557). **AÇIK SORU Salih'e:** yüklem-ağacı proxy alanlarla (tetik_turu/dis_tavan/iterasyon_ayak_izi) bağlandı → 17 manifestin tümü `pipeline`; İB-65'in beklediği `hibrit` ayrımı manifest alanlarından çıkmıyor — proxy kabul mü, şemaya Y1/Y2/Y3 alanları mı?
+- **D6 → (a)** paket: 1 (seans-kapanis §6g) + 2 (core-tel regex) YAZILDI · **3 anakronizm tarihli-dosya muafiyeti = kural kararı, Salih imzası AYRI bekler** · 4 damıtma tetiği · 5 D5 ile · 6 Salih el işi (ssh-add).
+- **D7 → (a)** toplu: ⑦ + ⑨ rapor üstüne-notları (Sonnet işçi) · ④ → İB-76 · ⑩ → İB-08 notu · ⑮ şerhle kalır.
+- **D8 → (a)** sıra 72 → 71 → 70 → 73; K-020 = M2 (pano güncellendi).
+- **Masa-sonrası ek hüküm (Salih, mesajla 09-02):** CLAUDE.md'de bütçe için yapılan 3 kısaltma (Salih'in-anlaması satırı · deterministik-tasarım satırı · Cowork parmak-izi satırı) Carvis önerisiyle GEÇERLİ — imzalı.
+- **Arıza:** bu masanın icra yazımları (10 dosya) commit'ten önce reflog'suz bir geri-almayla kayboldu, aynı seansta yeniden uygulandı (defter Karar 86 arıza kaydı; tohum dosyasına ders).

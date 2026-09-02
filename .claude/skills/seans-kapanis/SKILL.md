@@ -50,6 +50,9 @@ Kapanışta HASAT KONTROL LİSTESİ (uzun oturumun kaybolmaması için, 4 soru �
 ## 6f. Bayatlık kuyruğu N=3 yeniden-çekim (Salih imzası 08-26, defter Karar 69 EK — KB-68 (a); icra İB-52 08-29)
 `python3 tools/bayat-cekim.py --liste` → D3 kuyruğunun (`v_bayat_aday`, eşik 90 gün) en yaşlı 3 dosyası + yeniden-çekilecek D1 iddiaları. Her hedef için CANLI çekim (M3: kanıt tarihi yazılır) → hüküm `--kaydet <dosya> --sonuc teyit|guncellendi|sonlandi [--kaynak-tarihi]` (bronz `cekim-olay.jsonl`; teyit dosyaya dokunmaz, damga silver'dan tazelenir; silme yok m.8). Sonra `--olcum` (kuyruk/hedef/bugün sayıları → `katman-olcum.jsonl`) ve teslim raporuna tek satır: "bayat-çekim: kuyruk K · çekilen M/3". Kuyruk boşsa "0 aday" yazılır, adım geçilir (uydurma yok). Hat (`katman-hatti`) bu adımdan SONRA koşar ki `kayit.cekim_tarihi` taze olsun.
 
+## 6g. Birim-test kapısı (Karar 86 D6-1, Salih hükmü 2026-09-02)
+`python3 -m unittest discover -s tools/testler -p 'test_*.py'` koş (~60 sn). FAIL/ERROR varsa kapanış DURUR: kök-neden `[ariza]` commit'iyle düzeltilir ya da teslim raporuna "test-kapısı: N FAIL — <neden>" satırı + İB açılır; yeşil olmadan push beyanı istenmez. Gerekçe: 08-30 kanon değişikliği (parquet varsayılanı) süiti sessizce kırdı, 3 kapanış fark etmedi (09-02 sağlık turu). Sonucu teslim raporuna tek satır: "test-kapısı: N test · FAIL 0 · skip K".
+
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına AYRI commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` YASAK — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu GİZLEME — gün sayılmadı de, nedenini yaz.
 
