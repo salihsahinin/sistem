@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word-RAM hesaplama modeli</title>
+<style>
+:root{--fg:#1a1a1a;--bg:#ffffff;--muted:#555;--border:#ddd;--accent:#0072B2;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--fg);
+background:var(--bg);margin:0;padding:24px;line-height:1.5;}
+h1{font-size:1.5rem;margin:0 0 12px;}
+#kaynak{font-size:.9rem;color:var(--muted);border-left:3px solid var(--accent);
+padding:6px 12px;margin-bottom:20px;background:#f7f7f7;}
+#govde{display:grid;grid-template-columns:1fr;gap:20px;}
+@media(min-width:900px){#govde{grid-template-columns:2fr 1fr;align-items:start;}}
+#gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;overflow:auto;}
+#gorsel svg{max-width:100%;height:auto;}
+#aciklama{border:1px solid var(--border);border-radius:6px;padding:12px 16px;background:#fafafa;}
+#aciklama h2{font-size:1rem;margin:0 0 8px;}
+#aciklama ul{margin:0;padding-left:20px;}
+#aciklama li{margin:4px 0;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid var(--border);padding:6px 10px;text-align:left;font-size:.92rem;}
+th{background:#f0f0f0;}
+#kunye{margin-top:20px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);
+padding-top:8px;}
+#ogrenme{margin-top:12px;font-size:.85rem;color:var(--muted);font-style:italic;}
+#ogrenme-hedef{font-size:1.05rem;font-weight:600;background:#fff3cd;border-left:3px solid var(--accent);
+padding:8px 12px;margin-bottom:12px;}
+#on-bilgi,#cozulmus-ornek,#kendini-sina,#tuzaklar,#sonraki-adim{margin-top:16px;border:1px solid var(--border);
+border-radius:6px;padding:10px 16px;}
+#cozulmus-ornek ol{padding-left:20px;}
+#cozulmus-ornek li{margin:6px 0;}
+#cozulmus-ornek em{color:var(--accent);font-style:normal;}
+#kendini-sina ul{list-style:none;padding-left:0;}
+#kendini-sina li{margin:8px 0;}
+#kendini-sina details{margin-top:4px;}
+#kendini-sina summary{cursor:pointer;color:var(--accent);}
+#tuzaklar{background:#fdecea;}
+#gorsel section{border-bottom:1px dashed var(--border);padding:10px 0;}
+#gorsel section:first-child{padding-top:0;}
+#gorsel section:last-child{border-bottom:none;}
+#gorsel section h3{font-size:1.05rem;margin:0 0 6px;}
+.anlatim-ornek{background:#eef6fc;border-left:3px solid var(--accent);padding:6px 12px;margin:8px 0;}
+.anlatim-not{background:#fdecea;border-left:3px solid #D55E00;padding:6px 12px;margin:8px 0;font-size:.9rem;}
+#ozet-gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;margin-top:16px;overflow:auto;}
+#ozet-gorsel svg{max-width:100%;height:auto;}
+#ozet-gorsel h2{font-size:1rem;margin:0 0 8px;}
+</style>
+</head>
+<body>
+<h1 id="baslik">Word-RAM hesaplama modeli</h1>
+<div id="kaynak"><strong>Kaynak:</strong> MIT 6.006 L1 Blok 5: hesaplama modeli, hangi işlemlerin sabit sürede (O(1)) sayıldığının sözleşmesidir; bu kursun modeli Word-RAM — RAM (rastgele erişim) + kelime (w bit blok) + adres sığma sınırı (w ≥ log2 n). — <em>ogrenme/mit-6006/dersler/2026-08-29-L01-algoritma-ve-hesaplama.md#blok-5</em></div>
+<div id="ogrenme-hedef">Öğrenme hedefi: Word-RAM modelinde hangi işlemlerin neden O(1) sayıldığını açıklayabilmeli ve Python&#x27;un list/dict yapılarının bu modelin doğrudan kendisi olmadığını ayırt edebilmelisin.</div>
+<div id="on-bilgi"><h2>Ön bilgi</h2><ul><li>O(1)/Θ(n) gibi asimptotik gösterimin ne ölçtüğü (Blok 4)</li><li>bit ve bayt arasındaki fark (1 bayt = 8 bit)</li><li>&quot;temel işlem&quot; fikri: her temel işlemin sabit sürede olduğu varsayımı (Blok 4)</li></ul></div>
+<div id="govde">
+<div id="gorsel-kol">
+<div id="gorsel"><section><h3>1. Hesaplama modeli nedir</h3><p>Bir hesaplama modeli, makinede hangi işlemlerin sabit (O(1)) sürede yapılabildiğinin sözleşmesidir. Bu kursun sözleşmesi: Word-RAM.</p></section>
+<section><h3>2. RAM — random access memory</h3><p>Bellekte herhangi bir adrese sabit sürede erişilir; 0&#x27;ıncı hücreye gitmek de milyonuncu hücreye gitmek de aynı maliyettedir. Bellek bir bit dizisidir ama adresleme bit değil bayt (8 bit) üzerindendir.</p><div class="anlatim-ornek">1000. bayta erişmek ile 1 milyonuncu bayta erişmek aynı sürede olur — mesafe önemli değil, tek adres hesaplama işlemi yeterli.</div></section>
+<section><h3>3. Kelime (machine word)</h3><p>CPU&#x27;nun bellekten tek seferde alıp işleyebildiği sabit genişlikteki bit bloğuna kelime (word) denir, genişliği w bit. Bugünkü makinelerde w = 64.</p><div class="anlatim-not">&quot;Kelime&quot; burada dildeki sözcük değil — CPU&#x27;nun bir hamlede işlediği bit bloğu.</div></section>
+<section><h3>4. CPU&#x27;nun sabit sürede yaptığı işler</h3><p>O(1) sayılan işlemler: tamsayı aritmetiği (topla, çıkar, çarp, tam böl, mod), mantıksal karşılaştırmalar (ve, veya, değil, eşit, küçük, büyük), ve adresi verilen bir kelimeyi okuma/yazma.</p></section>
+<section><h3>5. Adres sığma sınırı — somut hesap</h3><p>Bellek adresi w bite sığmalı, yani w ≥ log2(n). Bu sınırı iki tarihsel örnekle somutlaştıralım: w=32 ve w=64 bitlik adreslemenin sınırları.</p><div class="anlatim-ornek">w=32: 2^32 bayt = 4×2^30 bayt = 4 GiB (eski 32-bit işletim sistemlerinin disk/bellek sınırı buradan gelir). w=64: 2^64 bayt = 16×2^60 bayt = ~16 EiB.</div><table><thead><tr><th>w (bit)</th><th>adres sayısı</th><th>bellek sınırı</th></tr></thead><tbody><tr><td>32</td><td>2^32</td><td>4 GiB</td></tr><tr><td>64</td><td>2^64</td><td>~16 EiB</td></tr></tbody></table></section>
+<section><h3>6. Karşıt örnek — Python bu model DEĞİL</h3><p>Python&#x27;daki list, dict, set gibi yapılar Word-RAM&#x27;in üzerine kurulmuş daha karmaşık bir katmandır; gerçek maliyeti (bazen O(n) olabilecek işlemleri) gizler.</p><div class="anlatim-not">Kurs bu gizli maliyeti StaticArray gibi ilkel yapılarla görünür kılmaya çalışır — sıradaki blok bu yüzden StaticArray ile başlıyor.</div></section></div>
+
+</div>
+<div id="aciklama"><h2>Açıklama</h2><ul><li>Word-RAM = RAM (sabit süreli adres erişimi) + kelime (w bitlik işlem birimi) + adres sığma sınırı (w ≥ log2 n).</li><li>CPU&#x27;nun O(1) saydığı işlemler: aritmetik, karşılaştırma, kelime okuma/yazma.</li><li>w=32→4GiB, w=64→~16EiB — adres uzayı üstel büyür.</li><li>Python&#x27;un yerleşik veri yapıları bu modelin üzerine kurulu, doğrudan kendisi değil.</li></ul></div>
+</div>
+<div id="cozulmus-ornek"><h2>Çözülmüş örnek</h2><ol><li>adım 1 — <em>w bit ile kaç farklı adres temsil edilir? 2 üzeri w tane. neden: w bitlik bir sayı 0 ile 2^w-1 arası değer alabilir, her değer bir bellek adresidir.</em></li><li>adım 2 — <em>bellek boyutunu bayt cinsinden hesapla: adres sayısı × 1 bayt. neden: Word-RAM&#x27;de adresleme bayt üzerinden yapılır (bit üzerinden değil).</em></li><li>adım 3 — <em>w=32 için: 2^32 bayt = 4×2^30 bayt = 4 GiB. neden: 2^32 = 4 × 2^30, ve 2^30 bayt tanım gereği 1 GiB&#x27;dir.</em></li><li>adım 4 — <em>w=64 için: 2^64 bayt = 16×2^60 bayt = 16 EiB. neden: 2^64 = 16 × 2^60, ve 2^60 bayt 1 EiB&#x27;dir.</em></li><li>adım 5 — <em>sonuç: w büyüdükçe adreslenebilir bellek üstel artar; bu yüzden 32 bitten 64 bite geçiş adresleme sınırını devasa büyütür (4 GB → ~16 EB).</em></li></ol></div>
+<div id="kendini-sina"><h2>Kendini sına</h2><ul><li>Word-RAM&#x27;de n kelimelik bir bloğun TAMAMINI okumak neden O(1) değil, Θ(n)&#x27;dir?<details><summary>cevap</summary>CPU tek adımda yalnız O(1) kadar kelimeye dokunabilir (sabit sayıda kelime üstünde işlem yapar); n ayrı kelimeye dokunmak en az n ayrı adım gerektirir, dolayısıyla toplam iş girdiyle orantılı büyür.</details></li><li>64 bitlik adresleme neden 32 bitlikten kıyaslanamayacak kadar fazla bellek adresleyebilir?<details><summary>cevap</summary>Adreslenebilir bellek 2 üzeri w ile büyür — üstel bir ilişki. w&#x27;yi 32&#x27;den 64&#x27;e, yani sadece 2 katına çıkarmak, adres uzayını 2^32 kat büyütür (4 GB&#x27;tan ~16 EB&#x27;a).</details></li><li>Python&#x27;un list/dict/set yapıları neden doğrudan Word-RAM modelinin kendisi sayılmaz?<details><summary>cevap</summary>Bu yapılar Word-RAM&#x27;in ÜZERİNE kurulmuş ek bir katmandır; gerçek maliyetlerini (örn. bir listeye ekleme bazen O(n) olabilir) gizler — kurs bu gizli maliyeti StaticArray gibi ilkel yapılarla görünür kılmayı hedefler.</details></li><li>&quot;Kelime&quot; (word) burada günlük dildeki hangi kavramla karıştırılmamalı?<details><summary>cevap</summary>Sözcük/kelime (dildeki kelime) ile karıştırılmamalı — burada &quot;kelime&quot; CPU&#x27;nun bellekten tek seferde okuyup işleyebildiği sabit genişlikte bit bloğudur (bugün genelde 64 bit).</details></li></ul></div>
+<div id="tuzaklar"><h2>Tuzaklar</h2><ul><li>&quot;Kelime&quot; (machine word) günlük dildeki sözcük anlamındaki kelime değildir — CPU&#x27;nun işlediği sabit bit-genişliğindeki bloktur.</li><li>&quot;RAM&#x27;de sabit sürede erişim&quot; = &quot;bellek sonsuz büyüklükte&quot; demek değildir; adres, w bite sığmak zorundadır (w ≥ log2 n sınırı vardır).</li><li>Θ(1) &quot;hiç süre almaz&quot; demek değildir; &quot;girdi boyutundan BAĞIMSIZ sabit süre alır&quot; demektir.</li><li>Python&#x27;daki O(1) görünen bir işlem (örn. list.append) gerçek Word-RAM&#x27;de her zaman O(1) olmayabilir — dil ile model arasında gizli maliyet katmanı var.</li></ul></div>
+<div id="sonraki-adim"><strong>Sonraki adım:</strong> Blok 6 — StaticArray: Word-RAM üzerine kurulan ilk somut veri yapısı (get_at/set_at neden Θ(1))</div>
+
+<div id="kunye">2026-09-03 · içerik sınıfı: kavram-iliskisi · görsel türü: yapılandırılmış anlatım (kavram + somut örnek + karşıt örnek) · araç: anlatim · kip: öğrenme·cdn · format: birincil: anlatim · doğrulama: 18/18 PASS</div>
+</body>
+</html>
