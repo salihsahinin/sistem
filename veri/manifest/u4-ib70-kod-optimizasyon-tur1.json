@@ -1,0 +1,32 @@
+{
+  "birim_id": "u4-ib70-kod-optimizasyon-tur1",
+  "aciklama": "İB-70 ilk kod-optimizasyon turu: tools/*.py + .claude/hooks/*.sh (salt-okur) + cc/workflow/ denetimi, RAPOR (kod değişikliği YOK)",
+  "tur": "rapor",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "tools",
+    ".claude/hooks",
+    "cc/workflow"
+  ],
+  "yazar": [
+    "raporlar/2026-09-03-ib70-kod-optimizasyon-tur1.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "raporlar/2026-09-03-ib70-kod-optimizasyon-tur1.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "raporlar/2026-09-03-ib70-kod-optimizasyon-tur1.md varsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "KOD DEĞİŞİKLİĞİ YOK, salt-okur analiz + rapor; tur aralığı ÖNERİLMEZ (masa/Fable kalemi); rapor ≤120 satır"
+}

@@ -1,0 +1,46 @@
+{
+  "birim_id": "u3-ib72-karantina-mekanizmasi",
+  "aciklama": "İB-72 bayat-dosya karantina mekanizması: veri/karantina.jsonl şeması + tools/karantina.py (--ekle/--liste/--denetle) + katman-hatti.py/erisim-fts.py tarama dışlaması + testler",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "tools/katman-hatti.py",
+    "tools/erisim-fts.py",
+    "tools/AXI-STANDARDI.md",
+    "core/tuzuk-v0.md",
+    "veri/README.md"
+  ],
+  "yazar": [
+    "tools/karantina.py",
+    "tools/testler/test_karantina.py",
+    "veri/karantina.jsonl",
+    "tools/SCRIPTLER.md",
+    "veri/README.md",
+    "tools/katman-hatti.py",
+    "tools/erisim-fts.py"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "tools/karantina.py",
+    "tools/testler/test_karantina.py",
+    "veri/karantina.jsonl",
+    "tools/SCRIPTLER.md",
+    "veri/README.md",
+    "tools/katman-hatti.py",
+    "tools/erisim-fts.py"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "tools/karantina.py --denetle PASS veriyorsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "tescil yetkisi yalnız Salih; bu birim yalnız MEKANİZMAYI kurar, hiçbir dosyayı karantinaya EKLEMEZ; silme YOK (m.8)"
+}
