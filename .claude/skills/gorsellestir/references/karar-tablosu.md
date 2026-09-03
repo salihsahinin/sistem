@@ -18,7 +18,7 @@ Damga: **D** = birincil kaynaklı, adversarial'dan sağlam · **DENEYSEL** = lit
 | `akis-miktari` | kaynak → hedef miktar | sankey | Mermaid `sankey-beta` | chord | D (data-to-viz, FT flow) |
 | belirsiz / karma | — | bölüm başına ayrı görsel (≤3) ∨ tek soru | — | — | m.4 |
 
-**Araç önceliğinin gerekçesi:** d2/dot çevrimdışı + kurulu + deterministik (09-03 ölçümü: aynı girdi → bayt-bayt aynı SVG) + font gömülü SVG → varsayılan. Mermaid/Vega-Lite CDN ile çevrimiçi render; tarayıcısız doğrulama yok → yalnız d2/dot'un vermediği türlerde ve yapısal kapıyla. `vl-convert` kurulursa Vega-Lite çevrimdışına geçer (Salih beyanı).
+**Araç önceliğinin gerekçesi:** d2/dot çevrimdışı + kurulu + deterministik (09-03 ölçümü: aynı girdi → bayt-bayt aynı SVG) + font gömülü SVG → varsayılan. Mermaid/Vega-Lite CDN ile çevrimiçi render; tarayıcısız doğrulama yok → yalnız d2/dot'un vermediği türlerde ve yapısal kapıyla. **Offline kip (Salih hükmü 09-03, kurulum izinli):** `vl-convert` 1.9.0 (`.venv`) + `mmdc` 11.17.0 (+ puppeteer chrome) kuruldu → `--offline` bayrağıyla Vega-Lite ve Mermaid de yerelde SVG'ye çevrilip gömülür; dış URL sıfır; kapı gerçek render'ı doğrular. Varsayılan kip `cdn` (Salih 4. seçenek kabul), offline istendiğinde sunulur.
 
 **Görsel-kalite kuralları (kapı zorlar):** bar/area eksen sıfırdan (lie-factor) · Okabe–Ito renk-körü-güvenli palet · veri satırı = kaynak satırı · 5 zorunlu blok (başlık · kaynak · görsel · açıklama · künye).
 

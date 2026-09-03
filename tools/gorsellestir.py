@@ -183,6 +183,33 @@ def dot_render(spec_metni):
     return _cli_render_svg(lambda i, o: ["dot", "-Tsvg", i, "-o", o], spec_metni, "dot")
 
 
+def mermaid_render_offline(spec_metni):
+    """mmdc (mermaid-cli) ile gerçek SVG üretir (offline kip; chromium kuruluysa çalışır)."""
+    return _cli_render_svg(lambda i, o: ["mmdc", "-i", i, "-o", o], spec_metni, "mmdc")
+
+
+def vegalite_render_offline(spec_nesne, repo_kok):
+    """.venv/bin/python + vl_convert ile Vega-Lite spec'ini SVG'ye çevirir (offline kip,
+    sistem python3'te vl_convert YOK — bu yüzden repo kökündeki venv'e subprocess ile gidilir)."""
+    venv_py = os.path.join(repo_kok, ".venv", "bin", "python") if repo_kok else None
+    if not venv_py or not os.path.isfile(venv_py):
+        return None, "vl-convert yok (.venv/bin/python bulunamadı)"
+    spec_json = json.dumps(spec_nesne, ensure_ascii=False, sort_keys=True)
+    kod = "import sys, vl_convert as vlc\nsys.stdout.write(vlc.vegalite_to_svg(sys.stdin.read()))\n"
+    try:
+        r = subprocess.run(
+            [venv_py, "-c", kod], input=spec_json, capture_output=True, text=True, timeout=30,
+        )
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return None, "vl-convert çalıştırılamadı: %s" % e
+    if r.returncode != 0:
+        return None, "vl-convert exit=%s stderr=%s" % (r.returncode, r.stderr.strip()[:300])
+    svg = r.stdout
+    if not svg.strip() or "<svg" not in svg:
+        return None, "SVG boş/geçersiz"
+    return svg, "render OK (%d bayt)" % len(svg.encode("utf-8"))
+
+
 def mermaid_kontrol(spec_metni):
     """Mermaid metnini yapısal kontrolden geçirir (tarayıcısız — gerçek render YAPILAMAZ)."""
     satirlar = [s for s in spec_metni.splitlines() if s.strip() != ""]
@@ -289,8 +316,10 @@ def _tablo_html(spec_nesne):
     return "<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>" % (tr_baslik, "".join(gov))
 
 
-def gorsel_blogu_uret(spec, arac_kontrolleri):
-    """(gorsel_html, kontroller_listesi) döndürür. arac_kontrolleri: bu çağrıya eklenecek liste referansı."""
+def gorsel_blogu_uret(spec, arac_kontrolleri, offline=False, repo_kok=None):
+    """(gorsel_html, kontroller_listesi) döndürür. arac_kontrolleri: bu çağrıya eklenecek liste
+    referansı. offline=True → mermaid/vegalite CDN yerine gerçek SVG'ye render edilip inline gömülür
+    (Salih hükmü 09-03)."""
     arac = spec["arac"]
     ic_spec = spec["spec"]
 
@@ -307,6 +336,10 @@ def gorsel_blogu_uret(spec, arac_kontrolleri):
     if arac == "mermaid":
         ok, not_ = mermaid_kontrol(ic_spec)
         arac_kontrolleri.append(("arac:mermaid-yapi", "PASS" if ok else "FAIL", not_))
+        if offline:
+            svg, render_not = mermaid_render_offline(ic_spec)
+            arac_kontrolleri.append(("arac:mermaid-render-offline", "PASS" if svg else "FAIL", render_not))
+            return svg or "<p>mermaid offline render başarısız: %s</p>" % html.escape(render_not)
         return (
             '<script type="module">\n'
             'import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";\n'
@@ -320,6 +353,10 @@ def gorsel_blogu_uret(spec, arac_kontrolleri):
         vs = vegalite_palet_enjekte(vs)
         ok, not_ = vegalite_kontrol(vs)
         arac_kontrolleri.append(("arac:vegalite-yapi", "PASS" if ok else "FAIL", not_))
+        if offline:
+            svg, render_not = vegalite_render_offline(vs, repo_kok)
+            arac_kontrolleri.append(("arac:vegalite-render-offline", "PASS" if svg else "FAIL", render_not))
+            return svg or "<p>vegalite offline render başarısız: %s</p>" % html.escape(render_not)
         vs_json = json.dumps(vs, ensure_ascii=False, sort_keys=True)
         return (
             '<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>\n'
@@ -344,9 +381,10 @@ def gorsel_blogu_uret(spec, arac_kontrolleri):
 KUNYE_YER_TUTUCU = "@@DOGRULAMA-OZETI@@"
 
 
-def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None):
+def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_kok=None):
     """HTML üretir. dogrulama_ozeti None ise künyeye yer-tutucu konur (sonradan tek-geçiş
-    string-replace ile doldurulur) — böylece render (d2/dot CLI) yalnız BİR kez çalışır."""
+    string-replace ile doldurulur) — böylece render (d2/dot/mermaid/vegalite CLI) yalnız BİR kez
+    çalışır. offline=True → künyede 'kip: offline' yazar, CDN script'i eklenmez (Salih hükmü 09-03)."""
     baslik = html.escape(spec.get("baslik", ""))
     kaynak_ozet = html.escape(spec.get("kaynak_ozet", ""))
     kaynak_pointer = html.escape(spec.get("kaynak_pointer", ""))
@@ -355,13 +393,14 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None):
     ogrenme = spec.get("ogrenme_notu")
     ogrenme_html = ('<div id="ogrenme">Öğrenme notu: %s</div>' % html.escape(ogrenme)) if ogrenme else ""
 
-    gorsel_html = gorsel_blogu_uret(spec, arac_kontrolleri)
+    gorsel_html = gorsel_blogu_uret(spec, arac_kontrolleri, offline=offline, repo_kok=repo_kok)
 
-    kunye = "%s · içerik sınıfı: %s · görsel türü: %s · araç: %s · doğrulama: %s" % (
+    kunye = "%s · içerik sınıfı: %s · görsel türü: %s · araç: %s · kip: %s · doğrulama: %s" % (
         html.escape(spec.get("tarih", "")),
         html.escape(spec.get("icerik_sinifi", "")),
         html.escape(spec.get("gorsel_turu", "")),
         html.escape(spec.get("arac", "")),
+        "offline" if offline else "cdn",
         html.escape(dogrulama_ozeti) if dogrulama_ozeti is not None else KUNYE_YER_TUTUCU,
     )
 
@@ -391,7 +430,7 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None):
 # HTML DOĞRULAMA
 # ---------------------------------------------------------------------------
 
-def html_dogrula(html_metin):
+def html_dogrula(html_metin, offline=False):
     sonuclar = []
     zorunlu_id = ["baslik", "kaynak", "gorsel", "aciklama", "kunye"]
     eksik = [i for i in zorunlu_id if ('id="%s"' % i) not in html_metin]
@@ -402,10 +441,18 @@ def html_dogrula(html_metin):
     sonuclar.append(("html:boyut", "PASS" if boyut < MAKS_BOYUT else "FAIL",
                       "%d bayt" % boyut))
 
+    # dış URL taraması yalnız src=/href= öznitelikleri üzerinden yapılır; SVG'nin kendi
+    # xmlns="http://www.w3.org/2000/svg" gibi ad-alanı bildirimleri src/href DEĞİLDİR, bu regex
+    # onları zaten yakalamaz — "xmlns hariç" şartı böylece kendiliğinden sağlanır.
     dis_url = re.findall(r'(?:src|href)="(https?://[^"]+)"', html_metin)
-    kotu = [u for u in dis_url if not any(u.startswith("https://" + izin) or u.startswith("http://" + izin) for izin in IZINLI_CDN)]
-    sonuclar.append(("html:cdn-allowlist", "PASS" if not kotu else "FAIL",
-                      "izinsiz: %s" % ", ".join(kotu) if kotu else "tümü cdn.jsdelivr.net"))
+    if offline:
+        sonuclar.append(("html:offline-sifir-dis-url", "PASS" if not dis_url else "FAIL",
+                          "0 dış URL (xmlns hariç)" if not dis_url
+                          else "beklenmeyen dış URL: %s" % ", ".join(dis_url)))
+    else:
+        kotu = [u for u in dis_url if not any(u.startswith("https://" + izin) or u.startswith("http://" + izin) for izin in IZINLI_CDN)]
+        sonuclar.append(("html:cdn-allowlist", "PASS" if not kotu else "FAIL",
+                          "izinsiz: %s" % ", ".join(kotu) if kotu else "tümü cdn.jsdelivr.net"))
 
     return sonuclar
 
@@ -453,6 +500,8 @@ def main(argv=None):
     ap.add_argument("--cikti")
     ap.add_argument("--dogrula", action="store_true")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--offline", action="store_true",
+                     help="mermaid/vegalite CDN yerine gerçek SVG'ye render edip inline gömer (Salih hükmü 09-03); varsayılan kip cdn")
     ap.add_argument("--repo", default=os.getcwd())
     ns = ap.parse_args(argv)
 
@@ -478,12 +527,13 @@ def main(argv=None):
                               ensure_ascii=False))
         return 2
 
+    kok_render = git_kok(ns.repo)
     arac_kontrolleri = []
-    html_metin = html_uret(spec, arac_kontrolleri) if sema_gecti else None
+    html_metin = html_uret(spec, arac_kontrolleri, offline=ns.offline, repo_kok=kok_render) if sema_gecti else None
 
     tum_kontroller = list(sema_kontrolleri) + arac_kontrolleri
     if html_metin is not None:
-        tum_kontroller += html_dogrula(html_metin)
+        tum_kontroller += html_dogrula(html_metin, offline=ns.offline)
 
     gecti = all(s == "PASS" for _, s, _ in tum_kontroller)
     ozet = "%d/%d PASS" % (sum(1 for _, s, _ in tum_kontroller if s == "PASS"), len(tum_kontroller))
@@ -493,7 +543,7 @@ def main(argv=None):
         # determinizm ve performans: tek CLI çağrısı yeter).
         html_metin = html_metin.replace(KUNYE_YER_TUTUCU, html.escape(ozet))
 
-    kok = git_kok(ns.repo)
+    kok = kok_render
     cikti_yolu, jarvis_kok_mu = cikti_yolu_belirle(spec, ns.repo, ns.cikti)
 
     yazildi = False
@@ -511,6 +561,7 @@ def main(argv=None):
             "arac": ARAC,
             "surum": SURUM,
             "git_head": git_head(ns.repo),
+            "kip": "offline" if ns.offline else "cdn",
             "cikti": cikti_yolu if yazildi else None,
             "kontroller": [{"ad": a, "sonuc": s, "not": n} for a, s, n in tum_kontroller],
             "gecti": gecti,

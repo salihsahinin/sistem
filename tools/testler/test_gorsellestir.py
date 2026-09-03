@@ -132,6 +132,54 @@ class GorsellestirTest(unittest.TestCase):
         with open(cikti1, "rb") as fh1, open(cikti2, "rb") as fh2:
             self.assertEqual(fh1.read(), fh2.read())
 
+    def test_offline_vegalite_gercek_svg_ve_cdn_yok(self):
+        vega_spec = {
+            "mark": "bar",
+            "encoding": {
+                "x": {"field": "kategori", "type": "nominal"},
+                "y": {"field": "deger", "type": "quantitative"},
+            },
+            "data": {"values": [{"kategori": "a", "deger": 5}, {"kategori": "b", "deger": 7}]},
+        }
+        spec = dict(TEMEL_SPEC, arac="vegalite", spec=vega_spec, icerik_sinifi="sayisal-karsilastirma")
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--offline", "--dogrula", "--json", "--repo", KOK)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        with open(cikti, encoding="utf-8") as fh:
+            html_metin = fh.read()
+        self.assertNotIn("cdn.jsdelivr.net", html_metin)
+        self.assertIn("<svg", html_metin)
+        self.assertIn("kip: offline", html_metin)
+
+    def test_offline_mermaid_gercek_svg_veya_atlanir(self):
+        # mmdc/chromium bu ortamda kurulu olmayabilir; kuruluysa 0, değilse test kendini atlar
+        # (uydurma sonuç yok — case gereği "çalışmıyorsa exit≠0 → FAIL mesajı").
+        mmdc_var = subprocess.run(["which", "mmdc"], capture_output=True, text=True).returncode == 0
+        if not mmdc_var:
+            self.skipTest("mmdc/chromium yok")
+        spec = dict(TEMEL_SPEC, arac="mermaid", spec="flowchart LR\na-->b", gorsel_turu="akis-semasi")
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--offline", "--dogrula", "--json")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        with open(cikti, encoding="utf-8") as fh:
+            html_metin = fh.read()
+        self.assertNotIn("cdn.jsdelivr.net", html_metin)
+        self.assertIn("<svg", html_metin)
+
+    def test_offline_determinizm_iki_uretim_esit(self):
+        spec = dict(TEMEL_SPEC, arac="d2", spec="x -> y")
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti1 = os.path.join(self.dizin, "cikti1.html")
+        cikti2 = os.path.join(self.dizin, "cikti2.html")
+        r1 = kosum(spec_yol, "--cikti", cikti1, "--offline", "--dogrula")
+        r2 = kosum(spec_yol, "--cikti", cikti2, "--offline", "--dogrula")
+        self.assertEqual(r1.returncode, 0, r1.stderr)
+        self.assertEqual(r2.returncode, 0, r2.stderr)
+        with open(cikti1, "rb") as fh1, open(cikti2, "rb") as fh2:
+            self.assertEqual(fh1.read(), fh2.read())
+
     def test_jarvis_disi_dizinde_kutuk_yazilmadi(self):
         # jarvis-dışı bir git deposu simüle edilir: kök adı 'jarvis' DEĞİL.
         disi_repo = os.path.join(self.dizin, "baska-proje")
