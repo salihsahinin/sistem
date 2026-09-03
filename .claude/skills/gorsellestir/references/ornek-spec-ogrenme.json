@@ -1,0 +1,17 @@
+{
+  "_not": "Örnek spec (İB-77 vaka-1, öğrenme partisyonu → concept map, d2). Alan sözleşmesi tools/gorsellestir.py docstring'inde.",
+  "baslik": "CAP teoremi ile ACID'in ilişkisi",
+  "kaynak_ozet": "Öğrenme partisyonu: CAP (tutarlılık, erişilebilirlik, bölünme toleransı) dağıtık sistemin ağ bölünmesinde yaptığı seçimi; ACID (atomiklik, tutarlılık, yalıtım, dayanıklılık) tek bir işlemin garantilerini tanımlar. İki 'tutarlılık' aynı şey değildir.",
+  "kaynak_pointer": "oturum: 2026-09-03 İB-77 vaka-1",
+  "icerik_sinifi": "kavram-iliskisi",
+  "gorsel_turu": "concept map (Novak: genel kavram üstte, etiketli oklar)",
+  "arac": "d2",
+  "spec": "direction: down\nds: Dağıtık veri sistemi\ncap: CAP teoremi {\n  c: C — tutarlılık (doğrusallaştırılabilirlik)\n  a: A — erişilebilirlik\n  p: P — bölünme toleransı\n}\nacid: ACID (tek işlem) {\n  at: A — atomiklik\n  co: C — tutarlılık (kısıt bütünlüğü)\n  iso: I — yalıtım\n  du: D — dayanıklılık\n}\nds -> cap: sistem düzeyinde\nds -> acid: işlem düzeyinde\ncap.p -> cap.c: bölünmede seçim\ncap.p -> cap.a: bölünmede seçim\ncap.c -> acid.co: AYNI ŞEY DEĞİL {style.stroke-dash: 3}\n",
+  "aciklama": [
+    "CAP sistem düzeyinde bir seçimdir: ağ bölünmesi (P) olduğunda C ile A aynı anda tutulamaz.",
+    "ACID tek bir işlemin dört garantisidir; dağıtık olup olmamasından bağımsızdır.",
+    "İki 'C' farklı kavramdır — kesikli ok bu tuzağı işaretler."
+  ],
+  "tarih": "2026-09-03",
+  "ogrenme_notu": "ilk kez öğrenilen konu: önce harita, sonra çözülmüş örnek."
+}

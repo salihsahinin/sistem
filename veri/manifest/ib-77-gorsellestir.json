@@ -3,7 +3,7 @@
   "aciklama": "İB-77: 'görselleştir' komutu skill'i — m.40b atlas (A kuram+öğrenme · B araç+LLM emsal · C iç envanter) → sentez → skill-kapisi → implementasyon (skill + tools/gorsellestir-*.py) → 3 vaka + ~/.claude/skills symlink (emir cc/gorev-2026-09-03-ib77-gorsellestir-atlas.md; Salih emri 09-03)",
   "tur": "pipeline",
   "pist": "K-016",
-  "durum": "sahada-2026-09-03",
+  "durum": "tamam-2026-09-03",
   "oncelik": 1,
   "okur": [
     "cc/gorev-2026-09-03-ib77-gorsellestir-atlas.md",

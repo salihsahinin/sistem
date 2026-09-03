@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model başına ajan koşum sayısı (amb_olgu_kosum, 2026-09-02 ölçümü)</title>
+<style>
+:root{--fg:#1a1a1a;--bg:#ffffff;--muted:#555;--border:#ddd;--accent:#0072B2;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--fg);
+background:var(--bg);margin:0;padding:24px;line-height:1.5;}
+h1{font-size:1.5rem;margin:0 0 12px;}
+#kaynak{font-size:.9rem;color:var(--muted);border-left:3px solid var(--accent);
+padding:6px 12px;margin-bottom:20px;background:#f7f7f7;}
+#govde{display:grid;grid-template-columns:1fr;gap:20px;}
+@media(min-width:900px){#govde{grid-template-columns:2fr 1fr;align-items:start;}}
+#gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;overflow:auto;}
+#gorsel svg{max-width:100%;height:auto;}
+#aciklama{border:1px solid var(--border);border-radius:6px;padding:12px 16px;background:#fafafa;}
+#aciklama h2{font-size:1rem;margin:0 0 8px;}
+#aciklama ul{margin:0;padding-left:20px;}
+#aciklama li{margin:4px 0;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid var(--border);padding:6px 10px;text-align:left;font-size:.92rem;}
+th{background:#f0f0f0;}
+#kunye{margin-top:20px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);
+padding-top:8px;}
+#ogrenme{margin-top:12px;font-size:.85rem;color:var(--muted);font-style:italic;}
+</style>
+</head>
+<body>
+<h1 id="baslik">Model başına ajan koşum sayısı (amb_olgu_kosum, 2026-09-02 ölçümü)</h1>
+<div id="kaynak"><strong>Kaynak:</strong> İcra çıktısı: İB-77 öncesi model×görev maliyet tablosu (Sonnet işçi ölçümü, 09-02). Tek-model satır sayıları: Opus 242, Sonnet 177, Fable 120, Haiku 69. Karar 85 sonrası Opus emekli. — <em>kuyruk/senaryo-defteri.md Karar 85 (c) · amb_olgu_kosum sorgusu 2026-09-02</em></div>
+<div id="govde">
+<div id="gorsel"><script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<div id="vega-hedef"></div>
+<script>
+vegaEmbed('#vega-hedef', {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "config": {"range": {"category": ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]}}, "data": {"values": [{"kosum": 242, "model": "claude-opus-5"}, {"kosum": 177, "model": "claude-sonnet-5"}, {"kosum": 120, "model": "claude-fable-5"}, {"kosum": 69, "model": "claude-haiku-4-5"}]}, "description": "Model başına koşum sayısı", "encoding": {"color": {"field": "model", "legend": null, "type": "nominal"}, "x": {"field": "kosum", "title": "koşum sayısı (tek-model satır)", "type": "quantitative"}, "y": {"field": "model", "sort": "-x", "title": "model", "type": "nominal"}}, "height": 180, "mark": "bar", "width": 420}, {actions:false});
+</script></div>
+<div id="aciklama"><h2>Açıklama</h2><ul><li>Opus 242 koşumla en yüksek hacim — atlas tez/antitez rollerinin tamamına yakını Opus&#x27;ta koşmuştu.</li><li>Sonnet 177: V26 denetimi ve &#x27;diğer&#x27; sınıfı; Karar 85 ile tüm işçi rolleri buraya geçiyor.</li><li>Haiku 69: yalnız tek-alan eval işçisi (İB-07).</li></ul></div>
+</div>
+
+<div id="kunye">2026-09-03 · içerik sınıfı: sayisal-karsilastirma · görsel türü: çubuk grafik (uzunluk/pozisyon kodlaması; eksen 0&#x27;dan) · araç: vegalite · doğrulama: 13/13 PASS</div>
+</body>
+</html>

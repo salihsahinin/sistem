@@ -1,0 +1,77 @@
+{
+  "skill": "gorsellestir",
+  "version": "0.1.0-deneysel-m29",
+  "note": "Eval-önce akış (K-016; skill-kapisi İNŞA adımı). İB-77 atlası 2026-09-03 (Salih emri: 'görselleştir' dediğim an o anki içerik doğru görselleştirilsin; yan-oturumda da). Testler temiz-bağlam alt-ajanda PLANLAMA modunda koşulabilir (gerçek render yakmadan yapı kontratı); E5 gerçek render + doğrulama kapısı çıkış kodu.",
+  "tests": [
+    {
+      "id": "E1-icerik-sinifi-surec",
+      "prompt": "Az önce git rebase'in nasıl çalıştığını 5 adımda anlattın. görselleştir",
+      "assertions": [
+        "Hedef partisyon = son cevap (Salih başka bölüm belirtmedi) olarak beyan edilmiş",
+        "icerik_sinifi = 'surec' seçilmiş ve karar tablosu satırı gerekçeyle (pointer) gösterilmiş",
+        "Görsel tür = akış diyagramı, araç = d2 (offline, deterministik) ∨ Mermaid flowchart; seçim gerekçesi tabloya pointer",
+        "Tek-dosya HTML üretildi: başlık + kaynak partisyon özeti + görsel + Mayer signaling/contiguity uygulanmış açıklama",
+        "Doğrulama kapısı LLM'siz koştu (render exit 0, dosya boyutu, zorunlu bloklar) ve sonucu tek satır raporlandı",
+        "Teslim: tam mutlak yol + open komutu; HTML içeriği sohbete DÖKÜLMEDİ (KB-50)"
+      ]
+    },
+    {
+      "id": "E2-sayisal-veri-tablosu",
+      "prompt": "Son cevabında 4 modelin token/süre tablosu vardı. görselleştir",
+      "assertions": [
+        "icerik_sinifi = 'sayisal-karsilastirma' → çubuk grafik (Cleveland–McGill: uzunluk/pozisyon kodlaması), araç Vega-Lite",
+        "Spec'te bar için eksen sıfırdan başlıyor (lie-factor freni) ve renk paleti renk-körü-güvenli sabit listeden",
+        "Vega-Lite spec LLM'siz yapısal kontrolden geçti (JSON parse, mark ∈ izinli liste, encoding kanalları, veri satır sayısı = tablo satır sayısı)",
+        "Veri değerleri kaynak tablodan birebir (uydurma satır yok) — kapı satır sayısı ve toplamı karşılaştırdı"
+      ]
+    },
+    {
+      "id": "E3-kavram-iliskisi-ogrenme",
+      "prompt": "seans başı staj ... [öğrenme oturumu] CAP teoremi ile ACID'in ilişkisini anlattın. görselleştir",
+      "assertions": [
+        "icerik_sinifi = 'kavram-iliskisi' → concept map (Novak: en genel kavram üstte, etiketli oklar), araç d2 ∨ dot",
+        "Yan-oturum (jarvis dışı cwd) tespit edilmiş: çıktı <cwd>/gorsel/ altına yazıldı, jarvis kütüğüne (veri/bronz) YAZILMADI",
+        "Öğrenme kuralları uygulanmış: coherence (süs yok), signaling (ana kavram vurgulu), spatial contiguity (etiket düğümün yanında)",
+        "Kanon/kural dosyasına dokunulmadı; commit yapılmadı"
+      ]
+    },
+    {
+      "id": "E4-belirsiz-sinif-sor",
+      "prompt": "görselleştir",
+      "assertions": [
+        "Son partisyon birden fazla içerik sınıfı taşıyorsa (örn. hem süreç hem sayısal tablo) skill TEK soru sorar: hangi bölüm / hangi sınıf — ya da her bölüm için ayrı görsel önerir (m.4: cevap sonucu değiştirir)",
+        "Son partisyon görselleştirilemez sınıfta (sohbet, tek cümle) → 'görselleştirilecek yapı yok' beyanı + neden; uydurma görsel ÜRETİLMEZ"
+      ]
+    },
+    {
+      "id": "E5-dogrulama-kapisi-gercek",
+      "prompt": "[gerçek koşum] tools/gorsellestir.py ile örnek spec'ten HTML üret ve --dogrula çıkış kodunu ver",
+      "assertions": [
+        "Geçerli d2 spec → HTML üretildi, --dogrula exit 0",
+        "Bozuk d2 spec (sözdizimi hatası) → exit ≠ 0, stderr'de neden; HTML üretilmedi ya da HATA damgalı",
+        "Aynı spec iki kez → bayt-bayt aynı görsel (deterministik; HTML'de zaman damgası yalnız künye satırında)"
+      ]
+    }
+  ],
+  "description_eval": {
+  "should_trigger": [
+    "görselleştir",
+    "bunu görselleştir",
+    "görselleştirir misin",
+    "az önce anlattığını şemaya dök",
+    "bu süreci diyagram yap",
+    "bu tabloyu grafik yap",
+    "kavramları haritala",
+    "akış diyagramı çiz"
+  ],
+  "should_not_trigger": [
+    "görsel tasarım ilkeleri nelerdir (soru, üretim isteği değil)",
+    "bir resim/illüstrasyon üret (image generation — kapsam dışı)",
+    "bu HTML sayfasını Lavish'te aç (lavish skill'i)",
+    "graf/ dizinindeki d2'yi yeniden üret (tools/pointer-graf.py)",
+    "seans başı / seans bitimi (ritüel)",
+    "hizala (oturum kronolojisi — hizalama skill'i)",
+    "mermaid sözdizimini açıkla (öğretim, üretim değil)"
+  ]
+  }
+}

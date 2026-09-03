@@ -1,0 +1,3 @@
+{"arac": "d2", "cikti": "/Users/HasanSalihSahin/jarvis/raporlar/gorsel-vaka-1-ogrenme.html", "dogrulama": "13/13 PASS", "gorsel_turu": "concept map (Novak: genel kavram üstte, etiketli oklar)", "icerik_sinifi": "kavram-iliskisi", "tarih": "2026-09-03"}
+{"arac": "vegalite", "cikti": "/Users/HasanSalihSahin/jarvis/raporlar/gorsel-vaka-2-icra.html", "dogrulama": "13/13 PASS", "gorsel_turu": "çubuk grafik (uzunluk/pozisyon kodlaması; eksen 0'dan)", "icerik_sinifi": "sayisal-karsilastirma", "tarih": "2026-09-03"}
+{"arac": "tablo", "cikti": "/Users/HasanSalihSahin/jarvis/raporlar/gorsel-vaka-3-masa.html", "dogrulama": "13/13 PASS", "gorsel_turu": "tablo / matris (nitel karşılaştırma)", "icerik_sinifi": "karsilastirma", "tarih": "2026-09-03"}
