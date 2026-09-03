@@ -1,0 +1,34 @@
+{
+  "birim_id": "u1-galeri-yaprak-doluluk-yeni-trim",
+  "aciklama": "Galeri şeridi yarım birimi bitirme: kuyruk/galeri-siralama/16_yeni_trim.py + 17_yeni_trim_html.py koşumu, yeni-trim.html üretimi, ekip notu §18 yazımı (md.49 jarvis-dışı, commit'lenmez)",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "cc/devir-2026-09-02-opus-galeri-yaprak-doluluk.md",
+    "kuyruk/galeri-siralama/16_yeni_trim.py",
+    "kuyruk/galeri-siralama/17_yeni_trim_html.py",
+    "kuyruk/galeri-siralama/model_yogun_d3.cbm",
+    "kuyruk/galeri-siralama/veri2u_s77"
+  ],
+  "yazar": [
+    "kuyruk/galeri-siralama/yeni-trim-sonuc.json",
+    "kuyruk/galeri-siralama/yeni-trim.html",
+    "kuyruk/galeri-siralama/bulgular-model-eksikleri.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "yeni-trim.html varsa ve 4 sekme doluysa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "kuyruk/galeri-siralama/ COMMIT'LENMEZ (Karar 73 EK); yalnız devir §2 reçetesi + §2 risk notları uygulanır; §6 sorularına cevap verilmez"
+}

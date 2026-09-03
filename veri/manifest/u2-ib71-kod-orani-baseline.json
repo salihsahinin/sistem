@@ -1,0 +1,40 @@
+{
+  "birim_id": "u2-ib71-kod-orani-baseline",
+  "aciklama": "İB-71 baseline: tools/kod-orani-olcum.py (repo envanteri + bağlam-penceresi proxy'si) + veri/kod-orani.jsonl + rapor",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "veri/bronz/hareket-olay.jsonl",
+    "tools/AXI-STANDARDI.md",
+    "tools/SCRIPTLER.md"
+  ],
+  "yazar": [
+    "tools/kod-orani-olcum.py",
+    "tools/testler/test_kod_orani.py",
+    "veri/kod-orani.jsonl",
+    "raporlar/2026-09-03-ib71-kod-orani-baseline.md",
+    "tools/SCRIPTLER.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "tools/kod-orani-olcum.py",
+    "tools/testler/test_kod_orani.py",
+    "veri/kod-orani.jsonl",
+    "raporlar/2026-09-03-ib71-kod-orani-baseline.md",
+    "tools/SCRIPTLER.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "veri/kod-orani.jsonl bugünkü git_head ile satır içeriyorsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "tur önerisi YAZILMAZ (masa/Fable işi); stdlib-only, LLM yok, AXI A1/A2/A7 uyumlu"
+}
