@@ -26,4 +26,4 @@ Kanon adı **"üç REGISTER + kenar-başına biçim"** — eski ad "üç dil" (s
 ## Bağlantılar
 [[sozluk]] · [[adversarial-hayatta-kalma]] (S-hükümlerini eleyen hakem hattı) · [[pointer-sistemi]]
 
-**Bağlantılar:** · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[baglam-veri-ambari]] (karşı-link 08-22)
+**Bağlantılar:** · [[ai2ai-rapor-formati]] (karşı-link 08-22) · [[baglam-veri-ambari]] (karşı-link 08-22) · [[ajan-metodolojisi]] (karşı-link 09-03)

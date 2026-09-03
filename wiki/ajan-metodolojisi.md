@@ -47,3 +47,5 @@ Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sın
 - `cc/rapor-2026-08-14-2.md` (araştırma dayanağı)
 - `cc/gorev-2026-08-29-ib39-idempotens-atlas.md` (örnek görev emri)
 - `kuyruk/senaryo-defteri.md` (Karar 48·76, KB-18)
+
+**Bağlantılar:** · [[gnhf]] (karşı-link 09-03)

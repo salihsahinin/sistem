@@ -1,0 +1,36 @@
+{
+  "birim_id": "u7-ib64abc-gorev-emri-derleme",
+  "aciklama": "İB-64a/b/c görev emirleri DERLEME (koşum YOK) — gorev-emri-derleme skill'i, ledger + K-010 kartı + k010-zincir kaynaklı 3 emir dosyası",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "veri/karar-borcu.jsonl",
+    "core/pano.md",
+    "kuyruk/k010-zincir-2026-08-29.md"
+  ],
+  "yazar": [
+    "cc/gorev-2026-09-03-ib64a-guardrail-emsalleri.md",
+    "cc/gorev-2026-09-03-ib64b-denetim-catali-emsalleri.md",
+    "cc/gorev-2026-09-03-ib64c-ekip-lideri-paketi.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "cc/gorev-2026-09-03-ib64a-guardrail-emsalleri.md",
+    "cc/gorev-2026-09-03-ib64b-denetim-catali-emsalleri.md",
+    "cc/gorev-2026-09-03-ib64c-ekip-lideri-paketi.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "3 emir dosyası var ∧ her biri m.40b tam kontrat alanlarını içeriyorsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "yalnız EMİR DERLEME; koşum (atlas-kosum) bu birimde YAPILMAZ; m.40b tam kontrat: yapan≠ölçen · V26 kotası · ≥2 birincil kaynak"
+}

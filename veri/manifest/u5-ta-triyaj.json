@@ -1,0 +1,38 @@
+{
+  "birim_id": "u5-ta-triyaj",
+  "aciklama": "Karar 83 B3 (a): T-A katmanlı triyaj scripti — tools/ta-triyaj.py deterministik ön-sınıflandırma + şiddet-sıralı ilk 20 → rapor",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "veri/silver-saglik.jsonl",
+    "tools/silver-saglik.py",
+    "tools/AXI-STANDARDI.md"
+  ],
+  "yazar": [
+    "tools/ta-triyaj.py",
+    "tools/testler/test_ta_triyaj.py",
+    "raporlar/2026-09-03-ta-triyaj-ilk20.md",
+    "tools/SCRIPTLER.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "okur",
+  "commit_kapsami": [
+    "tools/ta-triyaj.py",
+    "tools/testler/test_ta_triyaj.py",
+    "raporlar/2026-09-03-ta-triyaj-ilk20.md",
+    "tools/SCRIPTLER.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "raporlar/2026-09-03-ta-triyaj-ilk20.md varsa iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "deterministik, LLM YOK; şiddet formülü belirsizse formül raporda yazılır, seçim masaya bırakılır"
+}

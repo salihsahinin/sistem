@@ -26,4 +26,4 @@
 ## Bağlantılar
 [[pointer-sistemi]] (m.21 ölçekleme aynı parametrelerle çalışır) · farklılaşma tezi: `kuyruk/build-tartisma-notlari.md` #0 · üç-kart deseni: tüzük m.31
 
-**Bağlantılar:** · [[adversarial-hayatta-kalma]] (karşı-link 08-22) · [[olcum-banki]] (karşı-link 08-22) · [[stokastik-dusunce]] (karşı-link 08-22)
+**Bağlantılar:** · [[adversarial-hayatta-kalma]] (karşı-link 08-22) · [[olcum-banki]] (karşı-link 08-22) · [[stokastik-dusunce]] (karşı-link 08-22) · [[ajan-metodolojisi]] (karşı-link 09-03)

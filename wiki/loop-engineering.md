@@ -50,3 +50,5 @@ Tek hatayı düzeltme, o hatayı yakalayacak kuralı skill'e göm (sonraki büt�
 - Resmi docs: https://code.claude.com/docs/en/goal · /routines · /workflows · /agents
 - İsmin kökeni: Addy Osmani, "Loop Engineering" (06.2026) — https://addyosmani.com/blog/loop-engineering/ · The New Stack (Boris Cherny): https://thenewstack.io/loop-engineering/
 - **Backlog:** `[C] Loop Engineering — Sonrası.md` — 8 bekleyen madde (auto mode, skill-as-verifier, ikinci-ajan review, ultraplan, dispatch, bağlam hijyeni, paralel çalışma, Jarvis desenleri); 3 aktif madde (Faz 1/2/4) kapanmadan hiçbiri açılmaz, hatırlatma yalnız tetikleyici bağlamda.
+
+**Bağlantılar:** · [[gnhf]] (karşı-link 09-03)

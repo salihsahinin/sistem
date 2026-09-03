@@ -37,3 +37,5 @@ Göz kontrolü bu sınıfı güvenilir biçimde yakalamaz: ekran görüntüsü s
 ## Bağlantılar
 
 [[adversarial-hayatta-kalma]] (aynı damar: iddia kendi üreticisinin gözüyle değil bağımsız sınamayla ayakta kalır) · [[olcum-banki]] (denetim çıktısı sayıya iner — arıza sayısı kaydedilebilir bir ölçüm) · [[pointer-sistemi]] (kanonik örnek damıtıldı; ham vaka staj günlüğünde `gunluk/2026-08-12.md`) · ingest kaydı: `kuyruk/gelen-2026-08-12-staj-hasadi.md`
+
+**Bağlantılar:** · [[lavish]] (karşı-link 09-03)

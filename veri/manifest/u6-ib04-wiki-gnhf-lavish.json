@@ -1,0 +1,45 @@
+{
+  "birim_id": "u6-ib04-wiki-gnhf-lavish",
+  "aciklama": "İB-04 wiki kuyruğu: gnhf.md ve lavish.md sayfaları (wiki-sayfa-yaz skill'i, 6-blok şablon + index + [[link]])",
+  "tur": "icra",
+  "pist": "cowork-icra-2026-09-03",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "wiki/README.md",
+    "KILAVUZ.md",
+    "kuyruk/senaryo-defteri.md"
+  ],
+  "yazar": [
+    "wiki/gnhf.md",
+    "wiki/lavish.md",
+    "wiki/README.md",
+    "wiki/ai2ai-rapor-formati.md",
+    "wiki/ajan-metodolojisi.md",
+    "wiki/gorsel-artefakt-dogrulama.md",
+    "wiki/loop-engineering.md",
+    "wiki/olcum-banki.md",
+    "wiki/paralel-oturum-protokolu.md",
+    "wiki/pointer-sistemi.md",
+    "wiki/token-x-zaman.md",
+    "wiki/uc-register.md"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "wiki/gnhf.md",
+    "wiki/lavish.md",
+    "wiki/README.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "wiki/gnhf.md ve wiki/lavish.md var ∧ wiki/README.md index'inde ikisi de listeliyse iş bitmiştir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "tempo kuralı oturum başına 1-2 sayfa (İB-04); no-mistakes.md zaten var, tekrar yazılmaz"
+}
