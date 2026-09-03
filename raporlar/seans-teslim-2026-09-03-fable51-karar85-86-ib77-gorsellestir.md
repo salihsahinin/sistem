@@ -38,3 +38,4 @@ Skill: koşum kütüğünde kapı FAIL oranı >%20 ∨ Salih 3 koşumda "yanlı�
 - Teşhis: 3 görsel (6.006 tümevarım) tür olarak doğru, YAPI olarak eksik (hedef/örnek/sınama/tuzak yok) — Salih beyanı 0/3.
 - Düzeltme v0.2: skill adım 0 kip tespiti + `ogrenme` bloğu zorunlu; `tools/gorsellestir.py --ogrenme` (kapı: 4 blok + yetenek-fiilli hedef + ≥2 "adım — neden" + ≥2 gizli-cevaplı soru + ≥1 tuzak; 14 test yeşil); iki öğrenme sürümü 18/18 PASS: `raporlar/gorsel-2026-09-03-og1-tumevarim-mantik-ogrenme.html`, `…-og2-somut-ornek-ogrenme.html`.
 - Kalibrasyon: karar-tablosu kayıt satırı; ilk 3 öğrenme-kipli koşumda Salih beyanı (gönüllü) beklenir.
+- **2. beyan (aynı kapanış):** "öğretme süreci d2 grafı olarak yansıtılmasın; format konuya göre değişken" → v0.3: öğrenme-format tablosu + `arac=anlatim` (adım|neden tabloları) + `ozet_gorsel` sonda; anlatım sürümü 19/19: `raporlar/gorsel-2026-09-03-og3-tumevarim-anlatim-ogrenme.html`; 18 test yeşil.

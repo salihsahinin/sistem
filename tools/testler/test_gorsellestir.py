@@ -4,7 +4,9 @@ Koş: python3 -m unittest tools.testler.test_gorsellestir
 
 Kapsam: d2 örneği → HTML + --dogrula 0 · bozuk d2 → 3 · vegalite bar scale.zero:false → 3 ·
 vegalite geçerli → 0 + palet enjekte · tablo satır-uzunluğu uyumsuz → 3 · determinizm (iki
-üretim bayt-bayt eşit) · jarvis-dışı dizinde kütük yazılmadı.
+üretim bayt-bayt eşit) · jarvis-dışı dizinde kütük yazılmadı · anlatim+ozet_gorsel(d2) öğrenme
+kipi → 0 + id="ozet-gorsel" + ≥2 <section> · anlatim tek bölüm → 3 · anlatim tablo satır
+uzunluğu uyumsuz → 3 · ozet_gorsel bozuk d2 → 3.
 
 AÇIK SORU: mermaid ve vega-lite için gerçek tarayıcı-render doğrulaması bu ortamda YAPILAMAZ
 (mmdc yok, headless tarayıcı yok); doğrulama yalnız YAPISAL kontrol seviyesindedir (spec şeması,
@@ -232,6 +234,82 @@ class GorsellestirTest(unittest.TestCase):
 
     def test_ogrenme_kendini_sina_tek_soru_exit_3(self):
         spec = self._ogrenme_spec(kendini_sina=[{"soru": "Tek soru?", "cevap": "Tek cevap."}])
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
+    def _anlatim_spec(self, **override):
+        anlatim = {
+            "bolumler": [
+                {
+                    "baslik": "Taban adımı",
+                    "metin": "Önerme n=1 için doğrudan kontrol edilir.",
+                    "tablo": {"basliklar": ["adım", "neden"],
+                              "satirlar": [["n=1 kontrol", "başlangıç kurulur"]]},
+                },
+                {
+                    "baslik": "Tümevarım hipotezi",
+                    "metin": "n=k için önerme doğru varsayılır.",
+                    "not": "Hipotezi kanıtlamadan sonuç çıkarma.",
+                },
+                {
+                    "baslik": "Tümevarım adımı",
+                    "metin": "n=k+1 için önerme, hipotez kullanılarak kanıtlanır.",
+                    "ornek": "k=2 için k+1=3 doğrulaması.",
+                },
+            ],
+        }
+        anlatim.update(override)
+        spec = dict(TEMEL_SPEC, arac="anlatim", spec=anlatim)
+        return spec
+
+    def test_anlatim_ve_ozet_gorsel_d2_ogrenme_kipi_0_ve_bloklar(self):
+        spec = self._anlatim_spec()
+        spec["ogrenme"] = {
+            "hedef": "Bu görselden sonra tümevarım kanıtının adımlarını açıklayabilmelisin.",
+            "cozulmus_ornek": [
+                "Taban adımı kurulur — başlangıç noktası sağlanır.",
+                "Hipotez varsayılır — adım için zemin oluşur.",
+            ],
+            "kendini_sina": [
+                {"soru": "Taban adımı neden gerekir?", "cevap": "Zinciri başlatır."},
+                {"soru": "Hipotez ne işe yarar?", "cevap": "Sonraki adımda kullanılır."},
+            ],
+            "tuzaklar": ["Taban adımını atlamak"],
+        }
+        spec["ozet_gorsel"] = {"arac": "d2", "spec": "taban -> hipotez -> adim -> sonuc", "baslik": "Kanıt haritası"}
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula", "--json")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        veri = json.loads(r.stdout)
+        self.assertTrue(veri["gecti"])
+        with open(cikti, encoding="utf-8") as fh:
+            html_metin = fh.read()
+        self.assertIn('id="ozet-gorsel"', html_metin)
+        self.assertGreaterEqual(html_metin.count("<section"), 2)
+
+    def test_anlatim_tek_bolum_exit_3(self):
+        spec = self._anlatim_spec(bolumler=[
+            {"baslik": "Tek bölüm", "metin": "Tek bölümlü anlatım geçersizdir."},
+        ])
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
+    def test_anlatim_tablo_satir_uzunlugu_uyumsuz_exit_3(self):
+        spec = self._anlatim_spec()
+        spec["spec"]["bolumler"][0]["tablo"] = {"basliklar": ["adım", "neden"], "satirlar": [["yalnız-bir-sütun"]]}
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
+    def test_ozet_gorsel_bozuk_d2_exit_3(self):
+        spec = self._anlatim_spec()
+        spec["ozet_gorsel"] = {"arac": "d2", "spec": "a -> ; ; ; { bozuk sözdizimi [[["}
         spec_yol = spec_yaz(self.dizin, "spec.json", spec)
         cikti = os.path.join(self.dizin, "cikti.html")
         r = kosum(spec_yol, "--cikti", cikti, "--dogrula")

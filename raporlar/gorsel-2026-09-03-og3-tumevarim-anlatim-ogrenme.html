@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tümevarım kanıtı sıfırdan: doğum günü eşleşme algoritması neden doğru?</title>
+<style>
+:root{--fg:#1a1a1a;--bg:#ffffff;--muted:#555;--border:#ddd;--accent:#0072B2;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--fg);
+background:var(--bg);margin:0;padding:24px;line-height:1.5;}
+h1{font-size:1.5rem;margin:0 0 12px;}
+#kaynak{font-size:.9rem;color:var(--muted);border-left:3px solid var(--accent);
+padding:6px 12px;margin-bottom:20px;background:#f7f7f7;}
+#govde{display:grid;grid-template-columns:1fr;gap:20px;}
+@media(min-width:900px){#govde{grid-template-columns:2fr 1fr;align-items:start;}}
+#gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;overflow:auto;}
+#gorsel svg{max-width:100%;height:auto;}
+#aciklama{border:1px solid var(--border);border-radius:6px;padding:12px 16px;background:#fafafa;}
+#aciklama h2{font-size:1rem;margin:0 0 8px;}
+#aciklama ul{margin:0;padding-left:20px;}
+#aciklama li{margin:4px 0;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid var(--border);padding:6px 10px;text-align:left;font-size:.92rem;}
+th{background:#f0f0f0;}
+#kunye{margin-top:20px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);
+padding-top:8px;}
+#ogrenme{margin-top:12px;font-size:.85rem;color:var(--muted);font-style:italic;}
+#ogrenme-hedef{font-size:1.05rem;font-weight:600;background:#fff3cd;border-left:3px solid var(--accent);
+padding:8px 12px;margin-bottom:12px;}
+#on-bilgi,#cozulmus-ornek,#kendini-sina,#tuzaklar,#sonraki-adim{margin-top:16px;border:1px solid var(--border);
+border-radius:6px;padding:10px 16px;}
+#cozulmus-ornek ol{padding-left:20px;}
+#cozulmus-ornek li{margin:6px 0;}
+#cozulmus-ornek em{color:var(--accent);font-style:normal;}
+#kendini-sina ul{list-style:none;padding-left:0;}
+#kendini-sina li{margin:8px 0;}
+#kendini-sina details{margin-top:4px;}
+#kendini-sina summary{cursor:pointer;color:var(--accent);}
+#tuzaklar{background:#fdecea;}
+#gorsel section{border-bottom:1px dashed var(--border);padding:10px 0;}
+#gorsel section:first-child{padding-top:0;}
+#gorsel section:last-child{border-bottom:none;}
+#gorsel section h3{font-size:1.05rem;margin:0 0 6px;}
+.anlatim-ornek{background:#eef6fc;border-left:3px solid var(--accent);padding:6px 12px;margin:8px 0;}
+.anlatim-not{background:#fdecea;border-left:3px solid #D55E00;padding:6px 12px;margin:8px 0;font-size:.9rem;}
+#ozet-gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;margin-top:16px;overflow:auto;}
+#ozet-gorsel svg{max-width:100%;height:auto;}
+#ozet-gorsel h2{font-size:1rem;margin:0 0 8px;}
+</style>
+</head>
+<body>
+<h1 id="baslik">Tümevarım kanıtı sıfırdan: doğum günü eşleşme algoritması neden doğru?</h1>
+<div id="kaynak"><strong>Kaynak:</strong> 6.006 L1 Blok 3: algoritma sınıfa tek tek sorar, doğum gününü kayıtla karşılaştırır, eşleşme bulunca döndürür. Doğruluğu &#x27;ilk k öğrencide eşleşme varsa döndürülmüştür&#x27; önermesinin her k için tümevarımla kanıtlanmasıyla gösterilir. — <em>ogrenme/mit-6006/dersler/2026-08-29-L01-algoritma-ve-hesaplama.md#blok-3</em></div>
+<div id="ogrenme-hedef">Öğrenme hedefi: Bu anlatımdan sonra bir tümevarım kanıtının üç parçasını (taban, hipotez, adım) kendi sözlerinle açıklayabilmeli ve verilen bir adımda hangi durumun (A / B-evet / B-hayır) işlediğini ayırt edebilmelisin.</div>
+<div id="on-bilgi"><h2>Ön bilgi</h2><ul><li>Koşullu cümle: &#x27;eğer P ise Q&#x27; — P yanlışken cümle doğru sayılır.</li><li>Algoritma: tek tek sor, kayıtla karşılaştır, eşleşince döndür.</li></ul></div>
+<div id="govde">
+<div id="gorsel-kol">
+<div id="gorsel"><section><h3>1. Ne kanıtlıyoruz? (önerme H(k))</h3><p>Kanıtlanacak cümle şu: &#x27;İlk k öğrencinin arasında aynı doğum gününe sahip iki kişi varsa, algoritma bu çifti döndürmüştür.&#x27; Buna H(k) diyoruz. Dikkat: cümle koşullu — &#x27;eşleşme varsa&#x27;. Eşleşme yoksa cümle bize hiçbir şey vaat etmiyor, ama yine de doğru sayılıyor.</p><div class="anlatim-ornek">H(3): &#x27;ilk 3 öğrencide eşleşme varsa döndürülmüştür.&#x27; 3 öğrencinin doğum günleri farklıysa H(3) yine doğru — çünkü &#x27;eşleşme varsa&#x27; kısmı gerçekleşmedi.</div><div class="anlatim-not">Tuzak: H(k) &#x27;eşleşme vardır&#x27; demiyor; &#x27;varsa döndürülmüştür&#x27; diyor. Bu fark kanıtın tamamını taşır.</div></section>
+<section><h3>2. Taban: k = 0 — neden bedavaya doğru?</h3><p>Hiç öğrenci sorulmadıysa eşleşme olamaz. &#x27;Eğer eşleşme varsa&#x27; kısmı hiç gerçekleşmez; öncülü yanlış olan koşullu bir cümle mantıkta doğru sayılır (buna &#x27;boş doğruluk&#x27; / vacuous truth denir). Yani H(0) hiç uğraşmadan doğrudur.</p><table><thead><tr><th>Adım</th><th>Ne yapıyoruz</th><th>Neden geçerli</th></tr></thead><tbody><tr><td>k = 0</td><td>Kayıt boş; kimse sorulmadı</td><td>Eşleşme imkânsız → &#x27;eğer&#x27; kısmı yanlış → koşullu cümle doğru</td></tr><tr><td>Sonuç</td><td>H(0) doğru</td><td>Taban kuruldu: ilk domino düştü</td></tr></tbody></table></section>
+<section><h3>3. Hipotez: H(k&#x27;) doğru KABUL edilir</h3><p>Tümevarım adımı &#x27;bir önceki doğruysa bir sonraki de doğru&#x27; der. Bunun için H(k&#x27;)&#x27;yi kanıtlamayız, kabul ederiz: &#x27;ilk k&#x27; öğrencide eşleşme varsa algoritma zaten döndürmüştü.&#x27; Kanıtlanan şey bu kabulden H(k&#x27;+1)&#x27;e geçiş olacak.</p><div class="anlatim-not">Tuzak: hipotezi &#x27;kanıtlanmış&#x27; sanmak. Adım içinde kabul edilir; kanıt gücünü taban + adım birlikte verir.</div></section>
+<section><h3>4. Adım: k&#x27;+1. öğrenci gelince H(k&#x27;+1) neden sağlanır?</h3><p>Yeni öğrenci geldiğinde yalnızca iki durum olabilir; üçüncüsü yok. Her durumda &#x27;eşleşme varsa döndürülmüştür&#x27; cümlesinin bozulmadığını gösteririz.</p><table><thead><tr><th>Durum</th><th>Ne oluyor</th><th>H(k&#x27;+1) neden sağlanır</th></tr></thead><tbody><tr><td>A — ilk k&#x27; içinde eşleşme ZATEN vardı</td><td>Yeni öğrenciye bakmaya gerek yok</td><td>H(k&#x27;) gereği algoritma o eşleşmeyi zaten döndürmüştü; &#x27;döndürülmüştür&#x27; doğru kalır</td></tr><tr><td>B / EVET — ilk k&#x27; içinde eşleşme yoktu, yeni doğum günü kayıtta VAR</td><td>Algoritma çifti döndürür</td><td>Eşleşme var ve döndürüldü → cümle doğru</td></tr><tr><td>B / HAYIR — ilk k&#x27; içinde eşleşme yoktu, yeni doğum günü kayıtta YOK</td><td>Algoritma doğum gününü kayda ekler</td><td>Hâlâ eşleşme yok → &#x27;eğer&#x27; kısmı yanlış → cümle yine doğru</td></tr></tbody></table><div class="anlatim-not">Tuzak: B/HAYIR dalını unutmak. O dalda da H(k&#x27;+1) sağlanır; kayda ekleme sonraki eşleşmeyi yakalamak için şart.</div></section>
+<section><h3>5. Sonuç: k = n için ne çıkar?</h3><p>Taban H(0)&#x27;ı, adım &#x27;H(k&#x27;) → H(k&#x27;+1)&#x27;i verdi. Domino gibi: 0&#x27;dan 1&#x27;e, 1&#x27;den 2&#x27;ye… n&#x27;e kadar hepsi doğru. k = n koyunca &#x27;tüm sınıfta eşleşme varsa algoritma döndürmüştür&#x27; — yani algoritma doğru çalışır.</p><div class="anlatim-ornek">Sınıf 40 kişi: H(40) doğru → sınıfta aynı doğum günü olan iki kişi varsa algoritma onları mutlaka döndürmüştür.</div></section></div>
+<div id="ozet-gorsel"><h2>Özet haritası (anlatımı okuduktan sonra)</h2><?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-d2-version="v0.8.1-HEAD" preserveAspectRatio="xMinYMin meet" viewBox="0 0 792 641"><svg class="d2-394399895 d2-svg" width="792" height="641" viewBox="-89 -89 792 641"><rect x="-89.000000" y="-89.000000" width="792.000000" height="641.000000" rx="0.000000" fill="#FFFFFF" class=" fill-N7" stroke-width="0" /><style type="text/css"><![CDATA[
+.d2-394399895 .text-bold {
+	font-family: "d2-394399895-font-bold";
+}
+@font-face {
+	font-family: d2-394399895-font-bold;
+	src: url("data:application/font-woff;base64,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");
+}
+.d2-394399895 .text-italic {
+	font-family: "d2-394399895-font-italic";
+}
+@font-face {
+	font-family: d2-394399895-font-italic;
+	src: url("data:application/font-woff;base64,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");
+}]]></style><style type="text/css"><![CDATA[.shape {
+  shape-rendering: geometricPrecision;
+  stroke-linejoin: round;
+}
+.connection {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.blend {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+		.d2-394399895 .fill-N1{fill:#0A0F25;}
+		.d2-394399895 .fill-N2{fill:#676C7E;}
+		.d2-394399895 .fill-N3{fill:#9499AB;}
+		.d2-394399895 .fill-N4{fill:#CFD2DD;}
+		.d2-394399895 .fill-N5{fill:#DEE1EB;}
+		.d2-394399895 .fill-N6{fill:#EEF1F8;}
+		.d2-394399895 .fill-N7{fill:#FFFFFF;}
+		.d2-394399895 .fill-B1{fill:#0D32B2;}
+		.d2-394399895 .fill-B2{fill:#0D32B2;}
+		.d2-394399895 .fill-B3{fill:#E3E9FD;}
+		.d2-394399895 .fill-B4{fill:#E3E9FD;}
+		.d2-394399895 .fill-B5{fill:#EDF0FD;}
+		.d2-394399895 .fill-B6{fill:#F7F8FE;}
+		.d2-394399895 .fill-AA2{fill:#4A6FF3;}
+		.d2-394399895 .fill-AA4{fill:#EDF0FD;}
+		.d2-394399895 .fill-AA5{fill:#F7F8FE;}
+		.d2-394399895 .fill-AB4{fill:#EDF0FD;}
+		.d2-394399895 .fill-AB5{fill:#F7F8FE;}
+		.d2-394399895 .stroke-N1{stroke:#0A0F25;}
+		.d2-394399895 .stroke-N2{stroke:#676C7E;}
+		.d2-394399895 .stroke-N3{stroke:#9499AB;}
+		.d2-394399895 .stroke-N4{stroke:#CFD2DD;}
+		.d2-394399895 .stroke-N5{stroke:#DEE1EB;}
+		.d2-394399895 .stroke-N6{stroke:#EEF1F8;}
+		.d2-394399895 .stroke-N7{stroke:#FFFFFF;}
+		.d2-394399895 .stroke-B1{stroke:#0D32B2;}
+		.d2-394399895 .stroke-B2{stroke:#0D32B2;}
+		.d2-394399895 .stroke-B3{stroke:#E3E9FD;}
+		.d2-394399895 .stroke-B4{stroke:#E3E9FD;}
+		.d2-394399895 .stroke-B5{stroke:#EDF0FD;}
+		.d2-394399895 .stroke-B6{stroke:#F7F8FE;}
+		.d2-394399895 .stroke-AA2{stroke:#4A6FF3;}
+		.d2-394399895 .stroke-AA4{stroke:#EDF0FD;}
+		.d2-394399895 .stroke-AA5{stroke:#F7F8FE;}
+		.d2-394399895 .stroke-AB4{stroke:#EDF0FD;}
+		.d2-394399895 .stroke-AB5{stroke:#F7F8FE;}
+		.d2-394399895 .background-color-N1{background-color:#0A0F25;}
+		.d2-394399895 .background-color-N2{background-color:#676C7E;}
+		.d2-394399895 .background-color-N3{background-color:#9499AB;}
+		.d2-394399895 .background-color-N4{background-color:#CFD2DD;}
+		.d2-394399895 .background-color-N5{background-color:#DEE1EB;}
+		.d2-394399895 .background-color-N6{background-color:#EEF1F8;}
+		.d2-394399895 .background-color-N7{background-color:#FFFFFF;}
+		.d2-394399895 .background-color-B1{background-color:#0D32B2;}
+		.d2-394399895 .background-color-B2{background-color:#0D32B2;}
+		.d2-394399895 .background-color-B3{background-color:#E3E9FD;}
+		.d2-394399895 .background-color-B4{background-color:#E3E9FD;}
+		.d2-394399895 .background-color-B5{background-color:#EDF0FD;}
+		.d2-394399895 .background-color-B6{background-color:#F7F8FE;}
+		.d2-394399895 .background-color-AA2{background-color:#4A6FF3;}
+		.d2-394399895 .background-color-AA4{background-color:#EDF0FD;}
+		.d2-394399895 .background-color-AA5{background-color:#F7F8FE;}
+		.d2-394399895 .background-color-AB4{background-color:#EDF0FD;}
+		.d2-394399895 .background-color-AB5{background-color:#F7F8FE;}
+		.d2-394399895 .color-N1{color:#0A0F25;}
+		.d2-394399895 .color-N2{color:#676C7E;}
+		.d2-394399895 .color-N3{color:#9499AB;}
+		.d2-394399895 .color-N4{color:#CFD2DD;}
+		.d2-394399895 .color-N5{color:#DEE1EB;}
+		.d2-394399895 .color-N6{color:#EEF1F8;}
+		.d2-394399895 .color-N7{color:#FFFFFF;}
+		.d2-394399895 .color-B1{color:#0D32B2;}
+		.d2-394399895 .color-B2{color:#0D32B2;}
+		.d2-394399895 .color-B3{color:#E3E9FD;}
+		.d2-394399895 .color-B4{color:#E3E9FD;}
+		.d2-394399895 .color-B5{color:#EDF0FD;}
+		.d2-394399895 .color-B6{color:#F7F8FE;}
+		.d2-394399895 .color-AA2{color:#4A6FF3;}
+		.d2-394399895 .color-AA4{color:#EDF0FD;}
+		.d2-394399895 .color-AA5{color:#F7F8FE;}
+		.d2-394399895 .color-AB4{color:#EDF0FD;}
+		.d2-394399895 .color-AB5{color:#F7F8FE;}.appendix text.text{fill:#0A0F25}.md{--color-fg-default:#0A0F25;--color-fg-muted:#676C7E;--color-fg-subtle:#9499AB;--color-canvas-default:#FFFFFF;--color-canvas-subtle:#EEF1F8;--color-border-default:#0D32B2;--color-border-muted:#0D32B2;--color-neutral-muted:#EEF1F8;--color-accent-fg:#0D32B2;--color-accent-emphasis:#0D32B2;--color-attention-subtle:#676C7E;--color-danger-fg:red;}.sketch-overlay-B1{fill:url(#streaks-darker-d2-394399895);mix-blend-mode:lighten}.sketch-overlay-B2{fill:url(#streaks-darker-d2-394399895);mix-blend-mode:lighten}.sketch-overlay-B3{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-B4{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-B5{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-B6{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-AA2{fill:url(#streaks-dark-d2-394399895);mix-blend-mode:overlay}.sketch-overlay-AA4{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-AA5{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-AB4{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-AB5{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-N1{fill:url(#streaks-darker-d2-394399895);mix-blend-mode:lighten}.sketch-overlay-N2{fill:url(#streaks-dark-d2-394399895);mix-blend-mode:overlay}.sketch-overlay-N3{fill:url(#streaks-normal-d2-394399895);mix-blend-mode:color-burn}.sketch-overlay-N4{fill:url(#streaks-normal-d2-394399895);mix-blend-mode:color-burn}.sketch-overlay-N5{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-N6{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.sketch-overlay-N7{fill:url(#streaks-bright-d2-394399895);mix-blend-mode:darken}.light-code{display: block}.dark-code{display: none}]]></style><g class="dGFiYW4="><g class="shape" ><rect x="12.000000" y="148.000000" width="247.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="135.500000" y="186.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Taban: H(0) bedavaya doğru</text></g><g class="aGlwb3Rleg=="><g class="shape" ><rect x="347.000000" y="12.000000" width="187.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="440.500000" y="50.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Hipotez: H(k&#39;) kabul</text></g><g class="YWRpbQ=="><g class="shape" ><rect x="279.000000" y="148.000000" width="323.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="440.500000" y="186.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Adım: k&#39;+1 gelince A / B-evet / B-hayır</text></g><g class="c29udWM="><g class="shape" ><rect x="123.000000" y="385.000000" width="330.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="288.000000" y="423.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Sonuç: her k için H(k) → algoritma doğru</text></g><g class="KHRhYmFuIC0mZ3Q7IHNvbnVjKVswXQ=="><marker id="mk-d2-394399895-3488378134" markerWidth="10.000000" markerHeight="12.000000" refX="7.000000" refY="6.000000" viewBox="0.000000 0.000000 10.000000 12.000000" orient="auto" markerUnits="userSpaceOnUse"> <polygon points="0.000000,0.000000 10.000000,6.000000 0.000000,12.000000" fill="#0D32B2" class="connection fill-B1" stroke-width="2" /> </marker><path d="M 233.000000 216.000000 L 233.000000 381.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-394399895-3488378134)" mask="url(#d2-394399895)" /><text x="233.500000" y="305.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">ilk domino</text></g><g class="KGhpcG90ZXogLSZndDsgYWRpbSlbMF0="><path d="M 440.500000 80.000000 L 440.500000 144.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-394399895-3488378134)" mask="url(#d2-394399895)" /></g><g class="KGFkaW0gLSZndDsgc29udWMpWzBd"><path d="M 343.000000 216.000000 L 343.000000 381.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-394399895-3488378134)" mask="url(#d2-394399895)" /><text x="343.000000" y="305.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">her domino sonrakini devirir</text></g><mask id="d2-394399895" maskUnits="userSpaceOnUse" x="-89" y="-89" width="792" height="641">
+<rect x="-89" y="-89" width="792" height="641" fill="white"></rect>
+<rect x="197.000000" y="289.000000" width="73" height="21" fill="black"></rect>
+<rect x="248.000000" y="289.000000" width="190" height="21" fill="black"></rect>
+</mask></svg></svg>
+</div>
+</div>
+<div id="aciklama"><h2>Açıklama</h2><ul><li>Kanıtın üç parçası: taban (ilk domino), hipotez (kabul), adım (her domino sonrakini devirir).</li><li>Her durumda kontrol edilen tek şey aynı cümle: &#x27;eşleşme varsa döndürülmüştür&#x27; bozuldu mu?</li><li>Özet haritası anlatımın yerine geçmez; okuduktan sonra hatırlatıcıdır.</li></ul></div>
+</div>
+<div id="cozulmus-ornek"><h2>Çözülmüş örnek</h2><ol><li>k=0: kayıt boş — <em>H(0) doğru, çünkü &#x27;eşleşme varsa&#x27; kısmı gerçekleşmedi.</em></li><li>k=1: Ali (12 Mart) kayıtta yok → ekle — <em>B/HAYIR: hâlâ eşleşme yok, H(1) doğru.</em></li><li>k=2: Ayşe (5 Ekim) kayıtta yok → ekle — <em>B/HAYIR: H(2) doğru.</em></li><li>k=3: Mert (12 Mart) kayıtta VAR → döndür (Ali, Mert) — <em>B/EVET: eşleşme var ve döndürüldü, H(3) doğru.</em></li><li>Genelleme: her k için aynı üç dal — <em>çünkü başka durum yok; k=n → algoritma doğru.</em></li></ol></div>
+<div id="kendini-sina"><h2>Kendini sına</h2><ul><li>H(0) neden kanıtlanmadan doğru sayılır?<details><summary>cevap</summary>Öncülü (&#x27;eşleşme varsa&#x27;) 0 öğrencide yanlıştır; öncülü yanlış koşullu cümle doğrudur (boş doğruluk).</details></li><li>Durum A&#x27;da algoritmanın yeni öğrenciye bakmaması kanıtı zayıflatır mı?<details><summary>cevap</summary>Hayır — H(k&#x27;) hipotezi gereği eşleşme zaten döndürülmüştü; H(k&#x27;+1) için de &#x27;döndürülmüştür&#x27; doğru.</details></li><li>4. öğrenci Zeynep (5 Ekim) gelseydi hangi dal işlerdi?<details><summary>cevap</summary>B/EVET — kayıtta 5 Ekim var (Ayşe); (Ayşe, Zeynep) döndürülür.</details></li></ul></div>
+<div id="tuzaklar"><h2>Tuzaklar</h2><ul><li>H(k)&#x27;yi &#x27;eşleşme vardır&#x27; diye okumak — cümle koşulludur.</li><li>Hipotezi kanıt sanmak — adım içinde kabul edilir.</li><li>B/HAYIR dalını unutmak — kayda ekleme olmadan sonraki eşleşme kaçar.</li></ul></div>
+<div id="sonraki-adim"><strong>Sonraki adım:</strong> Kendi 5 kişilik örneğini yaz: her öğrenci için hangi dal işliyor, kayıt nasıl değişiyor — tabloya dök.</div>
+
+<div id="kunye">2026-09-03 · içerik sınıfı: surec · görsel türü: adım | neden anlatımı (birincil) + özet akış haritası (ek) · araç: anlatim · kip: öğrenme·cdn · format: birincil: anlatim · özet: d2 · doğrulama: 19/19 PASS</div>
+</body>
+</html>

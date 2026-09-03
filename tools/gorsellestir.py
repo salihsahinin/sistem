@@ -6,8 +6,9 @@ Kullanım:
   python3 tools/gorsellestir.py <spec.json> [--cikti <yol>] [--dogrula] [--json] [--repo <yol>]
 
 Spec JSON alanları (bkz. görev emri): baslik, kaynak_ozet, kaynak_pointer, icerik_sinifi,
-gorsel_turu, arac (d2|dot|mermaid|vegalite|tablo), spec, aciklama (1-5 madde), tarih (ISO,
-künye için — script SAAT OKUMAZ, determinizm buradan gelir), ogrenme_notu (opsiyonel).
+gorsel_turu, arac (d2|dot|mermaid|vegalite|tablo|anlatim), spec, aciklama (1-5 madde), tarih (ISO,
+künye için — script SAAT OKUMAZ, determinizm buradan gelir), ogrenme_notu (opsiyonel),
+ozet_gorsel (opsiyonel, aşağıda).
 
 Öğrenme kipi (Salih 09-03, opsiyonel `ogrenme` nesnesi ∨ --ogrenme bayrağı; İB-77 sentez §4 —
 Mayer signaling/segmenting/coherence, worked-example, Novak concept map, retrieval practice):
@@ -18,6 +19,21 @@ Mayer signaling/segmenting/coherence, worked-example, Novak concept map, retriev
   ogrenme.tuzaklar         list[str], 1-4 yaygın hata
   ogrenme.sonraki_adim     str, opsiyonel
 --ogrenme verilip spec'te `ogrenme` yoksa kapı FAIL verir (uydurulmaz). Künye: "kip: öğrenme·offline/cdn".
+
+`anlatim` aracı (Salih 09-03: öğretme süreci d2/dot/mermaid grafına SABİTLENMEZ — sıfırdan öğrenmek
+için diyagram her zaman optimum format değildir): yapılandırılmış öğrenme anlatımı. `spec`:
+  {"bolumler": [ {"baslik": str, "metin": str (1-4 cümle), "ornek": str (opsiyonel),
+                  "tablo": {"basliklar":[...], "satirlar":[[...]]} (opsiyonel),
+                  "kod": str (opsiyonel, <pre>), "not": str (opsiyonel, uyarı)} ], ...] }
+  2-8 bölüm; her bölümde baslik+metin zorunlu. Render: numaralı <section> — başlık → metin →
+  örnek (vurgulu kutu) → tablo → kod → not (uyarı rengi). `gorsel` bloğunun İÇERİĞİ olur (blok
+  sistemi/kapı 5-blok kuralı değişmez).
+
+Üst-alan `ozet_gorsel` (opsiyonel, HER araçta geçerli — anlatim dahil): {"arac": d2|dot|mermaid,
+"spec": str, "baslik": str (opsiyonel)}. Görsel/anlatım bloğundan SONRA, açıklamadan ÖNCE
+"Özet haritası" (id="ozet-gorsel") olarak render edilir — d2/dot CLI SVG gömülü, mermaid --offline
+kipine göre CDN/gerçek-SVG. Öğrenme kipinde diyagram VARSAYILAN DEĞİL: anlatım birincil, özet ek.
+Künyeye "format: birincil: <arac> · özet: <ozet_arac>" satırı eklenir.
 
 Üretim: tek-dosya self-contained HTML. d2/dot → CLI ile SVG üretilip inline gömülür; mermaid →
 CDN'den mermaid.esm.min.mjs; vegalite → CDN'den vega+vega-lite+vega-embed; tablo → düz <table>.
@@ -58,7 +74,8 @@ ICERIK_SINIFLARI = {
     "mekanizma", "sayisal-dagilim", "sayisal-iliski", "zaman-serisi",
     "sayisal-karsilastirma", "parca-butun", "akis-miktari",
 }
-ARACLAR = {"d2", "dot", "mermaid", "vegalite", "tablo"}
+ARACLAR = {"d2", "dot", "mermaid", "vegalite", "tablo", "anlatim"}
+OZET_ARACLAR = {"d2", "dot", "mermaid"}
 YETENEK_FIILLERI = [
     "yapabil", "açıklayabil", "hesaplayabil", "ayırt edebil", "uygulayabil",
     "çözebil", "kanıtlayabil", "tanımlayabil", "kurabil",
@@ -341,6 +358,96 @@ def tablo_kontrol(spec_nesne):
     return True, "başlık=%d, satır=%d" % (n, len(satirlar))
 
 
+def anlatim_kontrol(spec_nesne):
+    """anlatim spec'ini denetler: 2-8 bölüm, her bölümde baslik+metin dolu, tablo varsa satır
+    uzunlukları eşit (Salih 09-03: `arac:anlatim-yapi` kapısı)."""
+    if not isinstance(spec_nesne, dict):
+        return False, "spec bir JSON nesnesi değil"
+    bolumler = spec_nesne.get("bolumler")
+    if not isinstance(bolumler, list) or not (2 <= len(bolumler) <= 8):
+        return False, "bolumler eksik/sayı sınır dışı (2-8), bulunan=%s" % (
+            len(bolumler) if isinstance(bolumler, list) else "n/a")
+    for i, b in enumerate(bolumler):
+        if not isinstance(b, dict):
+            return False, "bölüm %d nesne değil" % i
+        baslik = b.get("baslik")
+        metin = b.get("metin")
+        if not (isinstance(baslik, str) and baslik.strip()):
+            return False, "bölüm %d: baslik boş" % i
+        if not (isinstance(metin, str) and metin.strip()):
+            return False, "bölüm %d: metin boş" % i
+        tablo = b.get("tablo")
+        if tablo is not None:
+            ok, not_ = tablo_kontrol(tablo)
+            if not ok:
+                return False, "bölüm %d tablo: %s" % (i, not_)
+    return True, "bölüm sayısı=%d" % len(bolumler)
+
+
+def _anlatim_html(spec_nesne):
+    """anlatim spec'ini numaralı <section> bloklarına render eder: başlık → metin → örnek →
+    tablo → kod → not sırasıyla."""
+    bolumler = spec_nesne.get("bolumler", [])
+    parcalar = []
+    for i, b in enumerate(bolumler, start=1):
+        ic = ["<h3>%d. %s</h3>" % (i, html.escape(str(b.get("baslik", ""))))]
+        ic.append("<p>%s</p>" % html.escape(str(b.get("metin", ""))))
+        ornek = b.get("ornek")
+        if isinstance(ornek, str) and ornek.strip():
+            ic.append('<div class="anlatim-ornek">%s</div>' % html.escape(ornek))
+        tablo = b.get("tablo")
+        if isinstance(tablo, dict) and tablo.get("basliklar") and tablo.get("satirlar"):
+            ic.append(_tablo_html(tablo))
+        kod = b.get("kod")
+        if isinstance(kod, str) and kod.strip():
+            ic.append("<pre>%s</pre>" % html.escape(kod))
+        not_ = b.get("not")
+        if isinstance(not_, str) and not_.strip():
+            ic.append('<div class="anlatim-not">%s</div>' % html.escape(not_))
+        parcalar.append("<section>%s</section>" % "".join(ic))
+    return "\n".join(parcalar)
+
+
+def ozet_gorsel_uret(ozet, arac_kontrolleri, offline=False):
+    """Üst-alan `ozet_gorsel` bloğunu üretir (Salih 09-03: her araçta geçerli ek özet-harita).
+    d2/dot → CLI SVG gömülü, mermaid → --offline kipine göre CDN/gerçek-SVG. Şema geçersizse
+    'ozet:sema' FAIL'i arac_kontrolleri'ne eklenir (bütün çıktı FAIL olur)."""
+    baslik = ozet.get("baslik") if isinstance(ozet, dict) else None
+    baslik = baslik if isinstance(baslik, str) and baslik.strip() else "Özet haritası"
+    if not isinstance(ozet, dict) or ozet.get("arac") not in OZET_ARACLAR \
+            or not isinstance(ozet.get("spec"), str) or not ozet.get("spec", "").strip():
+        arac_kontrolleri.append(("ozet:sema", "FAIL",
+                                  "ozet_gorsel şeması geçersiz (arac ∈ {d2,dot,mermaid}, spec dolu str zorunlu)"))
+        return '<div id="ozet-gorsel"><h2>%s</h2><p>özet görsel spec geçersiz</p></div>' % html.escape(baslik)
+
+    arac = ozet["arac"]
+    ic_spec = ozet["spec"]
+    if arac == "d2":
+        svg, not_ = d2_render(ic_spec)
+        arac_kontrolleri.append(("ozet:d2-render", "PASS" if svg else "FAIL", not_))
+        govde = svg or "<p>özet d2 render başarısız</p>"
+    elif arac == "dot":
+        svg, not_ = dot_render(ic_spec)
+        arac_kontrolleri.append(("ozet:dot-render", "PASS" if svg else "FAIL", not_))
+        govde = svg or "<p>özet dot render başarısız</p>"
+    else:  # mermaid
+        ok, not_ = mermaid_kontrol(ic_spec)
+        arac_kontrolleri.append(("ozet:mermaid-yapi", "PASS" if ok else "FAIL", not_))
+        if offline:
+            svg, render_not = mermaid_render_offline(ic_spec)
+            arac_kontrolleri.append(("ozet:mermaid-render-offline", "PASS" if svg else "FAIL", render_not))
+            govde = svg or "<p>özet mermaid offline render başarısız: %s</p>" % html.escape(render_not)
+        else:
+            govde = (
+                '<script type="module">\n'
+                'import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";\n'
+                'mermaid.initialize({startOnLoad:true, theme:"neutral"});\n'
+                "</script>\n"
+                '<pre class="mermaid">\n%s\n</pre>' % html.escape(ic_spec)
+            )
+    return '<div id="ozet-gorsel"><h2>%s</h2>%s</div>' % (html.escape(baslik), govde)
+
+
 # ---------------------------------------------------------------------------
 # HTML ÜRETİM
 # ---------------------------------------------------------------------------
@@ -379,6 +486,15 @@ border-radius:6px;padding:10px 16px;}
 #kendini-sina details{margin-top:4px;}
 #kendini-sina summary{cursor:pointer;color:var(--accent);}
 #tuzaklar{background:#fdecea;}
+#gorsel section{border-bottom:1px dashed var(--border);padding:10px 0;}
+#gorsel section:first-child{padding-top:0;}
+#gorsel section:last-child{border-bottom:none;}
+#gorsel section h3{font-size:1.05rem;margin:0 0 6px;}
+.anlatim-ornek{background:#eef6fc;border-left:3px solid var(--accent);padding:6px 12px;margin:8px 0;}
+.anlatim-not{background:#fdecea;border-left:3px solid #D55E00;padding:6px 12px;margin:8px 0;font-size:.9rem;}
+#ozet-gorsel{border:1px solid var(--border);border-radius:6px;padding:12px;margin-top:16px;overflow:auto;}
+#ozet-gorsel svg{max-width:100%;height:auto;}
+#ozet-gorsel h2{font-size:1rem;margin:0 0 8px;}
 """
 
 
@@ -450,6 +566,14 @@ def gorsel_blogu_uret(spec, arac_kontrolleri, offline=False, repo_kok=None):
             return _tablo_html(ts)
         return "<p>tablo spec geçersiz</p>"
 
+    if arac == "anlatim":
+        as_ = ic_spec if isinstance(ic_spec, dict) else {}
+        ok, not_ = anlatim_kontrol(as_)
+        arac_kontrolleri.append(("arac:anlatim-yapi", "PASS" if ok else "FAIL", not_))
+        if ok:
+            return _anlatim_html(as_)
+        return "<p>anlatım spec geçersiz</p>"
+
     arac_kontrolleri.append(("arac:bilinmeyen", "FAIL", "arac=%r" % arac))
     return "<p>bilinmeyen araç</p>"
 
@@ -514,7 +638,9 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_
     string-replace ile doldurulur) — böylece render (d2/dot/mermaid/vegalite CLI) yalnız BİR kez
     çalışır. offline=True → künyede 'kip: offline' yazar, CDN script'i eklenmez (Salih hükmü 09-03).
     ogrenme_aktif=True → görsel bloğunun önüne hedef+ön bilgi, sonrasına çözülmüş örnek + kendini
-    sına + tuzaklar + sonraki adım eklenir (Salih hükmü 09-03, İB-77 sentez §4)."""
+    sına + tuzaklar + sonraki adım eklenir (Salih hükmü 09-03, İB-77 sentez §4). spec'te
+    `ozet_gorsel` varsa görsel/anlatım bloğundan SONRA, açıklamadan ÖNCE id="ozet-gorsel" olarak
+    eklenir (Salih hükmü 09-03)."""
     baslik = html.escape(spec.get("baslik", ""))
     kaynak_ozet = html.escape(spec.get("kaynak_ozet", ""))
     kaynak_pointer = html.escape(spec.get("kaynak_pointer", ""))
@@ -529,13 +655,21 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_
 
     gorsel_html = gorsel_blogu_uret(spec, arac_kontrolleri, offline=offline, repo_kok=repo_kok)
 
+    ozet_gorsel = spec.get("ozet_gorsel")
+    ozet_html = ozet_gorsel_uret(ozet_gorsel, arac_kontrolleri, offline=offline) if ozet_gorsel is not None else ""
+
     kip_etiket = ("öğrenme·" if ogrenme_aktif else "") + ("offline" if offline else "cdn")
-    kunye = "%s · içerik sınıfı: %s · görsel türü: %s · araç: %s · kip: %s · doğrulama: %s" % (
+    if isinstance(ozet_gorsel, dict) and ozet_gorsel.get("arac") in OZET_ARACLAR:
+        format_satiri = "birincil: %s · özet: %s" % (spec.get("arac", ""), ozet_gorsel.get("arac"))
+    else:
+        format_satiri = "birincil: %s" % spec.get("arac", "")
+    kunye = "%s · içerik sınıfı: %s · görsel türü: %s · araç: %s · kip: %s · format: %s · doğrulama: %s" % (
         html.escape(spec.get("tarih", "")),
         html.escape(spec.get("icerik_sinifi", "")),
         html.escape(spec.get("gorsel_turu", "")),
         html.escape(spec.get("arac", "")),
         html.escape(kip_etiket),
+        html.escape(format_satiri),
         html.escape(dogrulama_ozeti) if dogrulama_ozeti is not None else KUNYE_YER_TUTUCU,
     )
 
@@ -552,7 +686,10 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_
 <div id="kaynak"><strong>Kaynak:</strong> %s — <em>%s</em></div>
 %s
 <div id="govde">
+<div id="gorsel-kol">
 <div id="gorsel">%s</div>
+%s
+</div>
 <div id="aciklama"><h2>Açıklama</h2><ul>%s</ul></div>
 </div>
 %s
@@ -560,7 +697,7 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_
 <div id="kunye">%s</div>
 </body>
 </html>
-""" % (baslik, CSS, baslik, kaynak_ozet, kaynak_pointer, on_html, gorsel_html, aciklama_li,
+""" % (baslik, CSS, baslik, kaynak_ozet, kaynak_pointer, on_html, gorsel_html, ozet_html, aciklama_li,
        sonra_html, ogrenme_notu_html, kunye)
 
 

@@ -1,0 +1,126 @@
+{
+  "_not": "Örnek spec — ÖĞRENME kipi, birincil format ANLATIM (adım|neden tabloları) + ozet_gorsel d2 (Salih 09-03: diyagram öğrenmede varsayılan değil, özet eki). script --ogrenme.",
+  "baslik": "Tümevarım kanıtı sıfırdan: doğum günü eşleşme algoritması neden doğru?",
+  "kaynak_ozet": "6.006 L1 Blok 3: algoritma sınıfa tek tek sorar, doğum gününü kayıtla karşılaştırır, eşleşme bulunca döndürür. Doğruluğu 'ilk k öğrencide eşleşme varsa döndürülmüştür' önermesinin her k için tümevarımla kanıtlanmasıyla gösterilir.",
+  "kaynak_pointer": "ogrenme/mit-6006/dersler/2026-08-29-L01-algoritma-ve-hesaplama.md#blok-3",
+  "icerik_sinifi": "surec",
+  "gorsel_turu": "adım | neden anlatımı (birincil) + özet akış haritası (ek)",
+  "arac": "anlatim",
+  "spec": {
+    "bolumler": [
+      {
+        "baslik": "Ne kanıtlıyoruz? (önerme H(k))",
+        "metin": "Kanıtlanacak cümle şu: 'İlk k öğrencinin arasında aynı doğum gününe sahip iki kişi varsa, algoritma bu çifti döndürmüştür.' Buna H(k) diyoruz. Dikkat: cümle koşullu — 'eşleşme varsa'. Eşleşme yoksa cümle bize hiçbir şey vaat etmiyor, ama yine de doğru sayılıyor.",
+        "ornek": "H(3): 'ilk 3 öğrencide eşleşme varsa döndürülmüştür.' 3 öğrencinin doğum günleri farklıysa H(3) yine doğru — çünkü 'eşleşme varsa' kısmı gerçekleşmedi.",
+        "not": "Tuzak: H(k) 'eşleşme vardır' demiyor; 'varsa döndürülmüştür' diyor. Bu fark kanıtın tamamını taşır."
+      },
+      {
+        "baslik": "Taban: k = 0 — neden bedavaya doğru?",
+        "metin": "Hiç öğrenci sorulmadıysa eşleşme olamaz. 'Eğer eşleşme varsa' kısmı hiç gerçekleşmez; öncülü yanlış olan koşullu bir cümle mantıkta doğru sayılır (buna 'boş doğruluk' / vacuous truth denir). Yani H(0) hiç uğraşmadan doğrudur.",
+        "tablo": {
+          "basliklar": [
+            "Adım",
+            "Ne yapıyoruz",
+            "Neden geçerli"
+          ],
+          "satirlar": [
+            [
+              "k = 0",
+              "Kayıt boş; kimse sorulmadı",
+              "Eşleşme imkânsız → 'eğer' kısmı yanlış → koşullu cümle doğru"
+            ],
+            [
+              "Sonuç",
+              "H(0) doğru",
+              "Taban kuruldu: ilk domino düştü"
+            ]
+          ]
+        }
+      },
+      {
+        "baslik": "Hipotez: H(k') doğru KABUL edilir",
+        "metin": "Tümevarım adımı 'bir önceki doğruysa bir sonraki de doğru' der. Bunun için H(k')'yi kanıtlamayız, kabul ederiz: 'ilk k' öğrencide eşleşme varsa algoritma zaten döndürmüştü.' Kanıtlanan şey bu kabulden H(k'+1)'e geçiş olacak.",
+        "not": "Tuzak: hipotezi 'kanıtlanmış' sanmak. Adım içinde kabul edilir; kanıt gücünü taban + adım birlikte verir."
+      },
+      {
+        "baslik": "Adım: k'+1. öğrenci gelince H(k'+1) neden sağlanır?",
+        "metin": "Yeni öğrenci geldiğinde yalnızca iki durum olabilir; üçüncüsü yok. Her durumda 'eşleşme varsa döndürülmüştür' cümlesinin bozulmadığını gösteririz.",
+        "tablo": {
+          "basliklar": [
+            "Durum",
+            "Ne oluyor",
+            "H(k'+1) neden sağlanır"
+          ],
+          "satirlar": [
+            [
+              "A — ilk k' içinde eşleşme ZATEN vardı",
+              "Yeni öğrenciye bakmaya gerek yok",
+              "H(k') gereği algoritma o eşleşmeyi zaten döndürmüştü; 'döndürülmüştür' doğru kalır"
+            ],
+            [
+              "B / EVET — ilk k' içinde eşleşme yoktu, yeni doğum günü kayıtta VAR",
+              "Algoritma çifti döndürür",
+              "Eşleşme var ve döndürüldü → cümle doğru"
+            ],
+            [
+              "B / HAYIR — ilk k' içinde eşleşme yoktu, yeni doğum günü kayıtta YOK",
+              "Algoritma doğum gününü kayda ekler",
+              "Hâlâ eşleşme yok → 'eğer' kısmı yanlış → cümle yine doğru"
+            ]
+          ]
+        },
+        "not": "Tuzak: B/HAYIR dalını unutmak. O dalda da H(k'+1) sağlanır; kayda ekleme sonraki eşleşmeyi yakalamak için şart."
+      },
+      {
+        "baslik": "Sonuç: k = n için ne çıkar?",
+        "metin": "Taban H(0)'ı, adım 'H(k') → H(k'+1)'i verdi. Domino gibi: 0'dan 1'e, 1'den 2'ye… n'e kadar hepsi doğru. k = n koyunca 'tüm sınıfta eşleşme varsa algoritma döndürmüştür' — yani algoritma doğru çalışır.",
+        "ornek": "Sınıf 40 kişi: H(40) doğru → sınıfta aynı doğum günü olan iki kişi varsa algoritma onları mutlaka döndürmüştür."
+      }
+    ]
+  },
+  "ozet_gorsel": {
+    "arac": "d2",
+    "baslik": "Özet haritası (anlatımı okuduktan sonra)",
+    "spec": "direction: down\ntaban: \"Taban: H(0) bedavaya doğru\"\nhipotez: \"Hipotez: H(k') kabul\"\nadim: \"Adım: k'+1 gelince A / B-evet / B-hayır\"\nsonuc: \"Sonuç: her k için H(k) → algoritma doğru\"\ntaban -> sonuc: ilk domino\nhipotez -> adim\nadim -> sonuc: her domino sonrakini devirir\n"
+  },
+  "aciklama": [
+    "Kanıtın üç parçası: taban (ilk domino), hipotez (kabul), adım (her domino sonrakini devirir).",
+    "Her durumda kontrol edilen tek şey aynı cümle: 'eşleşme varsa döndürülmüştür' bozuldu mu?",
+    "Özet haritası anlatımın yerine geçmez; okuduktan sonra hatırlatıcıdır."
+  ],
+  "tarih": "2026-09-03",
+  "ogrenme": {
+    "hedef": "Bu anlatımdan sonra bir tümevarım kanıtının üç parçasını (taban, hipotez, adım) kendi sözlerinle açıklayabilmeli ve verilen bir adımda hangi durumun (A / B-evet / B-hayır) işlediğini ayırt edebilmelisin.",
+    "on_bilgi": [
+      "Koşullu cümle: 'eğer P ise Q' — P yanlışken cümle doğru sayılır.",
+      "Algoritma: tek tek sor, kayıtla karşılaştır, eşleşince döndür."
+    ],
+    "cozulmus_ornek": [
+      "k=0: kayıt boş — H(0) doğru, çünkü 'eşleşme varsa' kısmı gerçekleşmedi.",
+      "k=1: Ali (12 Mart) kayıtta yok → ekle — B/HAYIR: hâlâ eşleşme yok, H(1) doğru.",
+      "k=2: Ayşe (5 Ekim) kayıtta yok → ekle — B/HAYIR: H(2) doğru.",
+      "k=3: Mert (12 Mart) kayıtta VAR → döndür (Ali, Mert) — B/EVET: eşleşme var ve döndürüldü, H(3) doğru.",
+      "Genelleme: her k için aynı üç dal — çünkü başka durum yok; k=n → algoritma doğru."
+    ],
+    "kendini_sina": [
+      {
+        "soru": "H(0) neden kanıtlanmadan doğru sayılır?",
+        "cevap": "Öncülü ('eşleşme varsa') 0 öğrencide yanlıştır; öncülü yanlış koşullu cümle doğrudur (boş doğruluk)."
+      },
+      {
+        "soru": "Durum A'da algoritmanın yeni öğrenciye bakmaması kanıtı zayıflatır mı?",
+        "cevap": "Hayır — H(k') hipotezi gereği eşleşme zaten döndürülmüştü; H(k'+1) için de 'döndürülmüştür' doğru."
+      },
+      {
+        "soru": "4. öğrenci Zeynep (5 Ekim) gelseydi hangi dal işlerdi?",
+        "cevap": "B/EVET — kayıtta 5 Ekim var (Ayşe); (Ayşe, Zeynep) döndürülür."
+      }
+    ],
+    "tuzaklar": [
+      "H(k)'yi 'eşleşme vardır' diye okumak — cümle koşulludur.",
+      "Hipotezi kanıt sanmak — adım içinde kabul edilir.",
+      "B/HAYIR dalını unutmak — kayda ekleme olmadan sonraki eşleşme kaçar."
+    ],
+    "sonraki_adim": "Kendi 5 kişilik örneğini yaz: her öğrenci için hangi dal işliyor, kayıt nasıl değişiyor — tabloya dök."
+  }
+}
