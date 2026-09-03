@@ -180,6 +180,63 @@ class GorsellestirTest(unittest.TestCase):
         with open(cikti1, "rb") as fh1, open(cikti2, "rb") as fh2:
             self.assertEqual(fh1.read(), fh2.read())
 
+    def _ogrenme_spec(self, **override):
+        ogrenme = {
+            "hedef": "Bu görselden sonra tümevarım kanıtının adımlarını açıklayabilmelisin.",
+            "on_bilgi": ["Doğal sayılar", "Önerme mantığı"],
+            "cozulmus_ornek": [
+                "Taban adımı: n=1 için önerme doğrulanır — başlangıç noktası kurulur.",
+                "Tümevarım hipotezi: n=k için önerme doğru varsayılır — adım için zemin.",
+                "Tümevarım adımı: n=k+1 için önerme kanıtlanır — hipotez kullanılır.",
+                "Sonuç: tüm doğal sayılar için önerme doğrudur — adımlar birleştirilir.",
+            ],
+            "kendini_sina": [
+                {"soru": "Taban adımı neden gereklidir?", "cevap": "Zincirin başlangıç noktasını kurar."},
+                {"soru": "Tümevarım hipotezi ne işe yarar?", "cevap": "n=k+1 adımında kullanılacak varsayımı verir."},
+            ],
+            "tuzaklar": ["Taban adımını atlamak", "Hipotezi kanıtlamadan sonuç çıkarmak"],
+            "sonraki_adim": "Güçlü tümevarımı dene.",
+        }
+        ogrenme.update(override)
+        spec = dict(TEMEL_SPEC, arac="d2", spec="taban -> hipotez -> adim -> sonuc", ogrenme=ogrenme)
+        return spec
+
+    def test_ogrenme_tam_spec_0_ve_bloklar_ve_details(self):
+        spec = self._ogrenme_spec()
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula", "--json")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        veri = json.loads(r.stdout)
+        self.assertTrue(veri["gecti"])
+        self.assertIn("ogrenme", veri["kip"])
+        with open(cikti, encoding="utf-8") as fh:
+            html_metin = fh.read()
+        for parca in ('id="ogrenme-hedef"', 'id="cozulmus-ornek"', 'id="kendini-sina"', 'id="tuzaklar"'):
+            self.assertIn(parca, html_metin)
+        self.assertIn("<details>", html_metin)
+
+    def test_ogrenme_hedefte_yetenek_fiili_yok_exit_3(self):
+        spec = self._ogrenme_spec(hedef="Bu görsel tümevarım hakkındadır.")
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
+    def test_ogrenme_bayragi_ama_alan_yok_exit_3(self):
+        spec = dict(TEMEL_SPEC, arac="d2", spec="a -> b")
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--ogrenme", "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
+    def test_ogrenme_kendini_sina_tek_soru_exit_3(self):
+        spec = self._ogrenme_spec(kendini_sina=[{"soru": "Tek soru?", "cevap": "Tek cevap."}])
+        spec_yol = spec_yaz(self.dizin, "spec.json", spec)
+        cikti = os.path.join(self.dizin, "cikti.html")
+        r = kosum(spec_yol, "--cikti", cikti, "--dogrula")
+        self.assertEqual(r.returncode, 3, r.stdout + r.stderr)
+
     def test_jarvis_disi_dizinde_kutuk_yazilmadi(self):
         # jarvis-dışı bir git deposu simüle edilir: kök adı 'jarvis' DEĞİL.
         disi_repo = os.path.join(self.dizin, "baska-proje")

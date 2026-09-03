@@ -9,6 +9,16 @@ Spec JSON alanları (bkz. görev emri): baslik, kaynak_ozet, kaynak_pointer, ice
 gorsel_turu, arac (d2|dot|mermaid|vegalite|tablo), spec, aciklama (1-5 madde), tarih (ISO,
 künye için — script SAAT OKUMAZ, determinizm buradan gelir), ogrenme_notu (opsiyonel).
 
+Öğrenme kipi (Salih 09-03, opsiyonel `ogrenme` nesnesi ∨ --ogrenme bayrağı; İB-77 sentez §4 —
+Mayer signaling/segmenting/coherence, worked-example, Novak concept map, retrieval practice):
+  ogrenme.hedef            str, tek cümle "…yapabilmelisin" ölçülebilir hedef (yetenek fiili şart)
+  ogrenme.on_bilgi         list[str], 0-4 madde
+  ogrenme.cozulmus_ornek   list[str], 2-6 adım, her adım "adım — neden" biçiminde (worked example)
+  ogrenme.kendini_sina     list[{"soru","cevap"}], 2-4; cevap HTML'de <details> içinde GİZLİ
+  ogrenme.tuzaklar         list[str], 1-4 yaygın hata
+  ogrenme.sonraki_adim     str, opsiyonel
+--ogrenme verilip spec'te `ogrenme` yoksa kapı FAIL verir (uydurulmaz). Künye: "kip: öğrenme·offline/cdn".
+
 Üretim: tek-dosya self-contained HTML. d2/dot → CLI ile SVG üretilip inline gömülür; mermaid →
 CDN'den mermaid.esm.min.mjs; vegalite → CDN'den vega+vega-lite+vega-embed; tablo → düz <table>.
 Renk: Okabe–Ito renk-körü-güvenli palet (vegalite spec'ine config.range.category olarak yazılır).
@@ -49,6 +59,10 @@ ICERIK_SINIFLARI = {
     "sayisal-karsilastirma", "parca-butun", "akis-miktari",
 }
 ARACLAR = {"d2", "dot", "mermaid", "vegalite", "tablo"}
+YETENEK_FIILLERI = [
+    "yapabil", "açıklayabil", "hesaplayabil", "ayırt edebil", "uygulayabil",
+    "çözebil", "kanıtlayabil", "tanımlayabil", "kurabil",
+]
 MERMAID_TURLERI = {
     "flowchart", "graph", "sequenceDiagram", "classDiagram", "stateDiagram",
     "erDiagram", "gantt", "mindmap", "timeline", "pie", "sankey-beta",
@@ -133,6 +147,56 @@ def sema_dogrula(spec):
         deger = spec.get(alan)
         ok = isinstance(deger, str) and deger.strip() != ""
         sonuclar.append(("sema:%s" % alan, "PASS" if ok else "FAIL", "boş/str-değil" if not ok else "tamam"))
+
+    return sonuclar
+
+
+def ogrenme_dogrula(spec, aktif):
+    """Öğrenme kipi EK kontrolleri (LLM'siz, Salih 09-03). aktif=False ise boş liste döner
+    (kip kapalıyken bu kontroller çalışmaz — mevcut görsellere geriye-dönük dayatma yok)."""
+    if not aktif:
+        return []
+    ogrenme = spec.get("ogrenme")
+    if not isinstance(ogrenme, dict):
+        return [("ogrenme:zorunlu", "FAIL", "öğrenme kipinde ogrenme alanı zorunlu")]
+
+    sonuclar = []
+
+    hedef = ogrenme.get("hedef")
+    hedef_str = hedef if isinstance(hedef, str) else ""
+    hedef_ok = (
+        isinstance(hedef, str) and len(hedef.strip()) >= 8
+        and any(fiil in hedef.lower() for fiil in YETENEK_FIILLERI)
+    )
+    sonuclar.append(("ogrenme:hedef", "PASS" if hedef_ok else "FAIL",
+                      hedef_str if hedef_str else "yok/kısa/yetenek-fiili-eksik"))
+
+    cozulmus = ogrenme.get("cozulmus_ornek")
+    cozulmus_ok = (
+        isinstance(cozulmus, list) and len(cozulmus) >= 2
+        and all(isinstance(a, str) and " — " in a for a in cozulmus)
+    )
+    sonuclar.append(("ogrenme:cozulmus-ornek", "PASS" if cozulmus_ok else "FAIL",
+                      "adım sayısı=%s" % (len(cozulmus) if isinstance(cozulmus, list) else "n/a")))
+
+    kendini_sina = ogrenme.get("kendini_sina")
+    ks_ok = (
+        isinstance(kendini_sina, list) and len(kendini_sina) >= 2
+        and all(
+            isinstance(s, dict) and str(s.get("soru", "")).strip() and str(s.get("cevap", "")).strip()
+            for s in kendini_sina
+        )
+    )
+    sonuclar.append(("ogrenme:kendini-sina", "PASS" if ks_ok else "FAIL",
+                      "soru sayısı=%s" % (len(kendini_sina) if isinstance(kendini_sina, list) else "n/a")))
+
+    tuzaklar = ogrenme.get("tuzaklar")
+    tuzaklar_ok = (
+        isinstance(tuzaklar, list) and len(tuzaklar) >= 1
+        and all(isinstance(t, str) and t.strip() for t in tuzaklar)
+    )
+    sonuclar.append(("ogrenme:tuzaklar", "PASS" if tuzaklar_ok else "FAIL",
+                      "madde sayısı=%s" % (len(tuzaklar) if isinstance(tuzaklar, list) else "n/a")))
 
     return sonuclar
 
@@ -303,6 +367,18 @@ th{background:#f0f0f0;}
 #kunye{margin-top:20px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);
 padding-top:8px;}
 #ogrenme{margin-top:12px;font-size:.85rem;color:var(--muted);font-style:italic;}
+#ogrenme-hedef{font-size:1.05rem;font-weight:600;background:#fff3cd;border-left:3px solid var(--accent);
+padding:8px 12px;margin-bottom:12px;}
+#on-bilgi,#cozulmus-ornek,#kendini-sina,#tuzaklar,#sonraki-adim{margin-top:16px;border:1px solid var(--border);
+border-radius:6px;padding:10px 16px;}
+#cozulmus-ornek ol{padding-left:20px;}
+#cozulmus-ornek li{margin:6px 0;}
+#cozulmus-ornek em{color:var(--accent);font-style:normal;}
+#kendini-sina ul{list-style:none;padding-left:0;}
+#kendini-sina li{margin:8px 0;}
+#kendini-sina details{margin-top:4px;}
+#kendini-sina summary{cursor:pointer;color:var(--accent);}
+#tuzaklar{background:#fdecea;}
 """
 
 
@@ -378,29 +454,88 @@ def gorsel_blogu_uret(spec, arac_kontrolleri, offline=False, repo_kok=None):
     return "<p>bilinmeyen araç</p>"
 
 
+def _ogrenme_on_html(ogrenme):
+    """Görsel bloğunun ÖNÜNE giden öğrenme parçaları: hedef (signaling) + ön bilgi."""
+    parcalar = []
+    hedef = ogrenme.get("hedef")
+    if isinstance(hedef, str) and hedef.strip():
+        parcalar.append('<div id="ogrenme-hedef">Öğrenme hedefi: %s</div>' % html.escape(hedef))
+    on_bilgi = ogrenme.get("on_bilgi")
+    if isinstance(on_bilgi, list) and on_bilgi:
+        li = "".join("<li>%s</li>" % html.escape(str(o)) for o in on_bilgi)
+        parcalar.append('<div id="on-bilgi"><h2>Ön bilgi</h2><ul>%s</ul></div>' % li)
+    return "\n".join(parcalar)
+
+
+def _ogrenme_sonra_html(ogrenme):
+    """Görselden SONRA giden öğrenme parçaları: çözülmüş örnek, kendini sına, tuzaklar, sonraki adım."""
+    parcalar = []
+
+    cozulmus = ogrenme.get("cozulmus_ornek")
+    if isinstance(cozulmus, list) and cozulmus:
+        adimlar = []
+        for adim in cozulmus:
+            adim_s = str(adim)
+            if " — " in adim_s:
+                sol, sag = adim_s.split(" — ", 1)
+                adimlar.append("<li>%s — <em>%s</em></li>" % (html.escape(sol), html.escape(sag)))
+            else:
+                adimlar.append("<li>%s</li>" % html.escape(adim_s))
+        parcalar.append('<div id="cozulmus-ornek"><h2>Çözülmüş örnek</h2><ol>%s</ol></div>' % "".join(adimlar))
+
+    kendini_sina = ogrenme.get("kendini_sina")
+    if isinstance(kendini_sina, list) and kendini_sina:
+        sorular = []
+        for s in kendini_sina:
+            if not isinstance(s, dict):
+                continue
+            soru = html.escape(str(s.get("soru", "")))
+            cevap = html.escape(str(s.get("cevap", "")))
+            sorular.append('<li>%s<details><summary>cevap</summary>%s</details></li>' % (soru, cevap))
+        parcalar.append('<div id="kendini-sina"><h2>Kendini sına</h2><ul>%s</ul></div>' % "".join(sorular))
+
+    tuzaklar = ogrenme.get("tuzaklar")
+    if isinstance(tuzaklar, list) and tuzaklar:
+        li = "".join("<li>%s</li>" % html.escape(str(t)) for t in tuzaklar)
+        parcalar.append('<div id="tuzaklar"><h2>Tuzaklar</h2><ul>%s</ul></div>' % li)
+
+    sonraki = ogrenme.get("sonraki_adim")
+    if isinstance(sonraki, str) and sonraki.strip():
+        parcalar.append('<div id="sonraki-adim"><strong>Sonraki adım:</strong> %s</div>' % html.escape(sonraki))
+
+    return "\n".join(parcalar)
+
+
 KUNYE_YER_TUTUCU = "@@DOGRULAMA-OZETI@@"
 
 
-def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_kok=None):
+def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_kok=None, ogrenme_aktif=False):
     """HTML üretir. dogrulama_ozeti None ise künyeye yer-tutucu konur (sonradan tek-geçiş
     string-replace ile doldurulur) — böylece render (d2/dot/mermaid/vegalite CLI) yalnız BİR kez
-    çalışır. offline=True → künyede 'kip: offline' yazar, CDN script'i eklenmez (Salih hükmü 09-03)."""
+    çalışır. offline=True → künyede 'kip: offline' yazar, CDN script'i eklenmez (Salih hükmü 09-03).
+    ogrenme_aktif=True → görsel bloğunun önüne hedef+ön bilgi, sonrasına çözülmüş örnek + kendini
+    sına + tuzaklar + sonraki adım eklenir (Salih hükmü 09-03, İB-77 sentez §4)."""
     baslik = html.escape(spec.get("baslik", ""))
     kaynak_ozet = html.escape(spec.get("kaynak_ozet", ""))
     kaynak_pointer = html.escape(spec.get("kaynak_pointer", ""))
     aciklama = spec.get("aciklama", [])
     aciklama_li = "".join("<li>%s</li>" % html.escape(str(a)) for a in aciklama)
-    ogrenme = spec.get("ogrenme_notu")
-    ogrenme_html = ('<div id="ogrenme">Öğrenme notu: %s</div>' % html.escape(ogrenme)) if ogrenme else ""
+    ogrenme_notu = spec.get("ogrenme_notu")
+    ogrenme_notu_html = ('<div id="ogrenme">Öğrenme notu: %s</div>' % html.escape(ogrenme_notu)) if ogrenme_notu else ""
+
+    ogrenme = spec.get("ogrenme") if isinstance(spec.get("ogrenme"), dict) else {}
+    on_html = _ogrenme_on_html(ogrenme) if ogrenme_aktif else ""
+    sonra_html = _ogrenme_sonra_html(ogrenme) if ogrenme_aktif else ""
 
     gorsel_html = gorsel_blogu_uret(spec, arac_kontrolleri, offline=offline, repo_kok=repo_kok)
 
+    kip_etiket = ("öğrenme·" if ogrenme_aktif else "") + ("offline" if offline else "cdn")
     kunye = "%s · içerik sınıfı: %s · görsel türü: %s · araç: %s · kip: %s · doğrulama: %s" % (
         html.escape(spec.get("tarih", "")),
         html.escape(spec.get("icerik_sinifi", "")),
         html.escape(spec.get("gorsel_turu", "")),
         html.escape(spec.get("arac", "")),
-        "offline" if offline else "cdn",
+        html.escape(kip_etiket),
         html.escape(dogrulama_ozeti) if dogrulama_ozeti is not None else KUNYE_YER_TUTUCU,
     )
 
@@ -415,27 +550,36 @@ def html_uret(spec, arac_kontrolleri, dogrulama_ozeti=None, offline=False, repo_
 <body>
 <h1 id="baslik">%s</h1>
 <div id="kaynak"><strong>Kaynak:</strong> %s — <em>%s</em></div>
+%s
 <div id="govde">
 <div id="gorsel">%s</div>
 <div id="aciklama"><h2>Açıklama</h2><ul>%s</ul></div>
 </div>
 %s
+%s
 <div id="kunye">%s</div>
 </body>
 </html>
-""" % (baslik, CSS, baslik, kaynak_ozet, kaynak_pointer, gorsel_html, aciklama_li, ogrenme_html, kunye)
+""" % (baslik, CSS, baslik, kaynak_ozet, kaynak_pointer, on_html, gorsel_html, aciklama_li,
+       sonra_html, ogrenme_notu_html, kunye)
 
 
 # ---------------------------------------------------------------------------
 # HTML DOĞRULAMA
 # ---------------------------------------------------------------------------
 
-def html_dogrula(html_metin, offline=False):
+def html_dogrula(html_metin, offline=False, ogrenme_aktif=False):
     sonuclar = []
     zorunlu_id = ["baslik", "kaynak", "gorsel", "aciklama", "kunye"]
     eksik = [i for i in zorunlu_id if ('id="%s"' % i) not in html_metin]
     sonuclar.append(("html:zorunlu-bloklar", "PASS" if not eksik else "FAIL",
                       "eksik: %s" % ", ".join(eksik) if eksik else "tümü mevcut"))
+
+    if ogrenme_aktif:
+        ogrenme_id = ["ogrenme-hedef", "cozulmus-ornek", "kendini-sina", "tuzaklar"]
+        eksik_ogrenme = [i for i in ogrenme_id if ('id="%s"' % i) not in html_metin]
+        sonuclar.append(("html:ogrenme-bloklari", "PASS" if not eksik_ogrenme else "FAIL",
+                          "eksik: %s" % ", ".join(eksik_ogrenme) if eksik_ogrenme else "4 blok mevcut"))
 
     boyut = len(html_metin.encode("utf-8"))
     sonuclar.append(("html:boyut", "PASS" if boyut < MAKS_BOYUT else "FAIL",
@@ -502,6 +646,8 @@ def main(argv=None):
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--offline", action="store_true",
                      help="mermaid/vegalite CDN yerine gerçek SVG'ye render edip inline gömer (Salih hükmü 09-03); varsayılan kip cdn")
+    ap.add_argument("--ogrenme", action="store_true",
+                     help="öğrenme kipini zorunlu kılar: spec'te 'ogrenme' nesnesi yoksa kapı FAIL verir (Salih 09-03)")
     ap.add_argument("--repo", default=os.getcwd())
     ns = ap.parse_args(argv)
 
@@ -527,13 +673,18 @@ def main(argv=None):
                               ensure_ascii=False))
         return 2
 
+    ogrenme_aktif = bool(ns.ogrenme or spec.get("ogrenme"))
+
     kok_render = git_kok(ns.repo)
     arac_kontrolleri = []
-    html_metin = html_uret(spec, arac_kontrolleri, offline=ns.offline, repo_kok=kok_render) if sema_gecti else None
+    html_metin = (
+        html_uret(spec, arac_kontrolleri, offline=ns.offline, repo_kok=kok_render, ogrenme_aktif=ogrenme_aktif)
+        if sema_gecti else None
+    )
 
-    tum_kontroller = list(sema_kontrolleri) + arac_kontrolleri
+    tum_kontroller = list(sema_kontrolleri) + ogrenme_dogrula(spec, ogrenme_aktif) + arac_kontrolleri
     if html_metin is not None:
-        tum_kontroller += html_dogrula(html_metin, offline=ns.offline)
+        tum_kontroller += html_dogrula(html_metin, offline=ns.offline, ogrenme_aktif=ogrenme_aktif)
 
     gecti = all(s == "PASS" for _, s, _ in tum_kontroller)
     ozet = "%d/%d PASS" % (sum(1 for _, s, _ in tum_kontroller if s == "PASS"), len(tum_kontroller))
@@ -561,7 +712,7 @@ def main(argv=None):
             "arac": ARAC,
             "surum": SURUM,
             "git_head": git_head(ns.repo),
-            "kip": "offline" if ns.offline else "cdn",
+            "kip": ("ogrenme+" if ogrenme_aktif else "") + ("offline" if ns.offline else "cdn"),
             "cikti": cikti_yolu if yazildi else None,
             "kontroller": [{"ad": a, "sonuc": s, "not": n} for a, s, n in tum_kontroller],
             "gecti": gecti,

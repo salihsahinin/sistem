@@ -33,3 +33,8 @@ Skill: koşum kütüğünde kapı FAIL oranı >%20 ∨ Salih 3 koşumda "yanlı�
 - **Token×zaman (V28):** ölçüm bağlam seyri satırından (bkz. kapanış çıktısı); 11 işçi ≈ 1,0M alt-ajan token (bildirimlerden toplam, [?] kaba).
 - **Uzun-koşum (KB-52):** oturum 443ef247 (09-02→03): 745 tur · ilk-tur bağlam 84,6k · **max bağlam 741k (710 tur 128K üstünde)** · toplam çıktı 681k — Salih D2 notunun (bağlam-devri ekip-lideri, İB-75) ölçülmüş gerekçesi; hasat kontrol listesi yukarıda ✓.
 - **Katman hattı:** exit 0 · 19 adım · OK 18 · uyarı 3 · 34 sn.
+
+## Kapanış-öncesi ek (Salih beyanı): öğrenme oturumunda "görselleştir" öğrenme hedefli değildi
+- Teşhis: 3 görsel (6.006 tümevarım) tür olarak doğru, YAPI olarak eksik (hedef/örnek/sınama/tuzak yok) — Salih beyanı 0/3.
+- Düzeltme v0.2: skill adım 0 kip tespiti + `ogrenme` bloğu zorunlu; `tools/gorsellestir.py --ogrenme` (kapı: 4 blok + yetenek-fiilli hedef + ≥2 "adım — neden" + ≥2 gizli-cevaplı soru + ≥1 tuzak; 14 test yeşil); iki öğrenme sürümü 18/18 PASS: `raporlar/gorsel-2026-09-03-og1-tumevarim-mantik-ogrenme.html`, `…-og2-somut-ornek-ogrenme.html`.
+- Kalibrasyon: karar-tablosu kayıt satırı; ilk 3 öğrenme-kipli koşumda Salih beyanı (gönüllü) beklenir.

@@ -24,3 +24,4 @@ Damga: **D** = birincil kaynaklı, adversarial'dan sağlam · **DENEYSEL** = lit
 
 **Kalibrasyon kaydı (append):**
 - 2026-09-03 · v0 açıldı · koşum 0 · Salih beyanı —
+- 2026-09-03 · öğrenme oturumu (6.006 L1 tümevarım kanıtı) · 3 koşum, hepsi `surec` → d2 akış diyagramı, kapı 13/13 · **Salih beyanı: "öğrenme hedefli değil" (0/3)** · teşhis: TÜR seçimi değil YAPI eksik (hedef · çözülmüş örnek · kendini sına · tuzaklar) → skill adım 0 kip tespiti + `ogrenme` bloğu zorunlu + kapı kontrolleri (v0.2). Tür satırı (surec→akış) bu koşumla düşmedi; öğrenme yapısı ayrı boyut.

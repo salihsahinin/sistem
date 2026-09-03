@@ -44,6 +44,16 @@
       ]
     },
     {
+      "id": "E6-ogrenme-kipi-zorunlu",
+      "prompt": "[ogrenme/mit-6006 dersi anlatılıyor] Tümevarım kanıtının taban durumu ve adımını anlattın. görselleştir",
+      "assertions": [
+        "Adım 0 kip tespiti = öğrenme (kaynak ogrenme/ ders dosyası) → spec'te ogrenme bloğu var, script --ogrenme ile çağrıldı",
+        "hedef tek cümle ve yetenek fiili içeriyor ('… taban durumunun neden bedavaya doğru olduğunu açıklayabilmelisin')",
+        "cozulmus_ornek ≥2 adım, her adım 'adım — neden'; kendini_sina ≥2 soru + gizli cevap; tuzaklar ≥1",
+        "Kapı öğrenme kontrollerini de PASS etti; bloksuz çıktı (09-03 arızası) üretilmedi"
+      ]
+    },
+    {
       "id": "E5-dogrulama-kapisi-gercek",
       "prompt": "[gerçek koşum] tools/gorsellestir.py ile örnek spec'ten HTML üret ve --dogrula çıkış kodunu ver",
       "assertions": [

@@ -1,17 +1,50 @@
 {
-  "_not": "Örnek spec (İB-77 vaka-1, öğrenme partisyonu → concept map, d2). Alan sözleşmesi tools/gorsellestir.py docstring'inde.",
-  "baslik": "CAP teoremi ile ACID'in ilişkisi",
-  "kaynak_ozet": "Öğrenme partisyonu: CAP (tutarlılık, erişilebilirlik, bölünme toleransı) dağıtık sistemin ağ bölünmesinde yaptığı seçimi; ACID (atomiklik, tutarlılık, yalıtım, dayanıklılık) tek bir işlemin garantilerini tanımlar. İki 'tutarlılık' aynı şey değildir.",
-  "kaynak_pointer": "oturum: 2026-09-03 İB-77 vaka-1",
-  "icerik_sinifi": "kavram-iliskisi",
-  "gorsel_turu": "concept map (Novak: genel kavram üstte, etiketli oklar)",
+  "_not": "Örnek spec — ÖĞRENME kipi (09-03 arızasının düzeltilmiş sürümü; 6.006 tümevarım kanıtı). `ogrenme` bloğu zorunlu alanlarıyla; script --ogrenme ile çağrılır.",
+  "baslik": "Tümevarım kanıtının mantığı — adım adım (öğrenme sürümü)",
+  "kaynak_ozet": "6.006 L1 Blok 3: doğum günü eşleşme algoritmasının doğruluğu tümevarımla kanıtlanıyor. Bu görsel kanıtın MANTIK akışını düz dille verir; semboller parantezde.",
+  "kaynak_pointer": "ogrenme/mit-6006/dersler/2026-08-29-L01-algoritma-ve-hesaplama.md#blok-3",
+  "icerik_sinifi": "surec",
+  "gorsel_turu": "akış diyagramı (dallanmalı; ana adımlar sinyalli)",
   "arac": "d2",
-  "spec": "direction: down\nds: Dağıtık veri sistemi\ncap: CAP teoremi {\n  c: C — tutarlılık (doğrusallaştırılabilirlik)\n  a: A — erişilebilirlik\n  p: P — bölünme toleransı\n}\nacid: ACID (tek işlem) {\n  at: A — atomiklik\n  co: C — tutarlılık (kısıt bütünlüğü)\n  iso: I — yalıtım\n  du: D — dayanıklılık\n}\nds -> cap: sistem düzeyinde\nds -> acid: işlem düzeyinde\ncap.p -> cap.c: bölünmede seçim\ncap.p -> cap.a: bölünmede seçim\ncap.c -> acid.co: AYNI ŞEY DEĞİL {style.stroke-dash: 3}\n",
+  "spec": "direction: down\nhedef: Kanıtlanacak önerme H(k) — \"ilk k öğrencide eşleşme varsa algoritma onu döndürmüştür\" {style.bold: true}\ntaban: TABAN (k=0): 0 öğrencide eşleşme olamaz → \"eğer\" kısmı hiç gerçekleşmez → H(0) bedavaya doğru (vacuous truth) {style.fill: \"#fff3cd\"}\nhipotez: HİPOTEZ: H(k') doğru kabul et (ilk k' öğrenci için) {style.fill: \"#e7f1ff\"}\nadim: ADIM: k'+1. öğrenci gelince H(k'+1) de doğru mu? {style.bold: true}\nA: Durum A — ilk k' içinde eşleşme ZATEN vardı\nA2: H(k') gereği algoritma zaten döndürmüş → H(k'+1) sağlandı\nB: Durum B — ilk k' içinde eşleşme YOKTU\nB1: yeni öğrencinin doğum günü kayıtta mı?\nBe: EVET → döndür → H(k'+1) sağlandı\nBh: HAYIR → kayda ekle → hâlâ eşleşme yok, H(k'+1) sağlandı\nsonuc: SONUÇ: taban + adım = her k için H(k); k=n → algoritma tüm girdilerde doğru {style.fill: \"#d4edda\"}\nhedef -> taban\nhedef -> hipotez\nhipotez -> adim\nadim -> A\nadim -> B\nA -> A2\nB -> B1\nB1 -> Be: evet\nB1 -> Bh: hayır\nA2 -> sonuc\nBe -> sonuc\nBh -> sonuc\ntaban -> sonuc: ilk domino\n",
   "aciklama": [
-    "CAP sistem düzeyinde bir seçimdir: ağ bölünmesi (P) olduğunda C ile A aynı anda tutulamaz.",
-    "ACID tek bir işlemin dört garantisidir; dağıtık olup olmamasından bağımsızdır.",
-    "İki 'C' farklı kavramdır — kesikli ok bu tuzağı işaretler."
+    "Tümevarım = domino: taban ilk dominoyu devirir, adım 'her domino bir sonrakini devirir' der; ikisi birlikte hepsini devirir.",
+    "Taban 'bedavaya doğru': önerme 'EĞER eşleşme varsa' biçiminde; 0 öğrencide 'eğer' hiç gerçekleşmez, çürütülemez.",
+    "Adımdaki A/B durumları birbirini dışlar; üçüncü ihtimal yok — kanıt bu yüzden tam."
   ],
   "tarih": "2026-09-03",
-  "ogrenme_notu": "ilk kez öğrenilen konu: önce harita, sonra çözülmüş örnek."
+  "ogrenme": {
+    "hedef": "Bu görselden sonra bir tümevarım kanıtının üç parçasını (taban, hipotez, adım) ayırt edebilmeli ve taban durumunun neden 'bedavaya doğru' olduğunu açıklayabilmelisin.",
+    "on_bilgi": [
+      "Koşullu önerme: 'eğer P ise Q' — P yanlışken önerme doğru sayılır (vacuous truth).",
+      "Algoritmanın ne döndürdüğü: ilk bulunan eşleşme."
+    ],
+    "cozulmus_ornek": [
+      "k=0: kayıt boş — eşleşme olamaz, 'eğer' kısmı gerçekleşmez; H(0) doğru — çünkü öncülü yanlış bir koşullu önerme otomatik doğrudur.",
+      "H(2) doğru kabul et (hipotez) — çünkü tümevarım adımı 'bir önceki doğruysa' diye başlar, baştan kanıtlamaz.",
+      "3. öğrenci gelir, ilk 2'de eşleşme yoktu (Durum B) — çünkü varsa algoritma H(2) gereği zaten döndürmüştü (Durum A).",
+      "3. öğrencinin doğum günü kayıtta var mı? Varsa döndür, yoksa ekle — iki dalda da H(3) sağlanır, çünkü 'eşleşme varsa döndürülmüştür' önermesi bozulmadı.",
+      "k=n koy — çünkü her k için H(k) kanıtlandı; algoritma tüm girdi uzayında doğru."
+    ],
+    "kendini_sina": [
+      {
+        "soru": "Taban durumunda 'eşleşme yok' bulgusu neden kanıtı ZAYIFLATMAZ?",
+        "cevap": "Önerme koşullu ('eğer eşleşme varsa döndürülmüştür'); öncül yanlışken koşullu önerme doğrudur — bedavaya doğru."
+      },
+      {
+        "soru": "Durum A'da yeni öğrenciye hiç bakmadan H(k'+1) neden sağlanır?",
+        "cevap": "H(k') hipotezi gereği algoritma eşleşmeyi zaten döndürmüş; k'+1 için de 'döndürülmüştür' doğru kalır."
+      },
+      {
+        "soru": "Adımda üçüncü bir durum olsaydı kanıt ne olurdu?",
+        "cevap": "Eksik — kanıt tamlığını A/B'nin birbirini dışlayıp bütünü kapsamasından alır."
+      }
+    ],
+    "tuzaklar": [
+      "Hipotezi 'kanıtlanmış' sanmak: H(k') adım içinde KABUL edilir, kanıtlanmaz.",
+      "Tabanı 'önemsiz' diye atlamak: taban olmadan adım hiçbir dominoyu devirmez.",
+      "Durum B'de 'kayıtta yok' dalını unutmak: o dalda da H(k'+1) sağlanır (eşleşme hâlâ yok)."
+    ],
+    "sonraki_adim": "Somut sayı örneği görseli (3 öğrenci) ile Durum B'yi elle işlet."
+  }
 }
