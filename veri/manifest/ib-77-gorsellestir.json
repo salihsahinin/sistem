@@ -1,0 +1,50 @@
+{
+  "birim_id": "ib-77-gorsellestir",
+  "aciklama": "İB-77: 'görselleştir' komutu skill'i — m.40b atlas (A kuram+öğrenme · B araç+LLM emsal · C iç envanter) → sentez → skill-kapisi → implementasyon (skill + tools/gorsellestir-*.py) → 3 vaka + ~/.claude/skills symlink (emir cc/gorev-2026-09-03-ib77-gorsellestir-atlas.md; Salih emri 09-03)",
+  "tur": "pipeline",
+  "pist": "K-016",
+  "durum": "sahada-2026-09-03",
+  "oncelik": 1,
+  "okur": [
+    "cc/gorev-2026-09-03-ib77-gorsellestir-atlas.md",
+    "core/skill-uretim-semasi.md",
+    "core/skill-tetikleme-semasi.md",
+    ".claude/skills/skill-kapisi/SKILL.md",
+    "graf/README.md",
+    "web"
+  ],
+  "yazar": [
+    "cc/rapor-2026-09-03-ib77-gorsel-*.md",
+    "raporlar/2026-09-03-ib77-gorsellestir-atlas.md",
+    ".claude/skills/gorsellestir/*",
+    "tools/gorsellestir-*.py",
+    "raporlar/gorsel-vaka-*.html",
+    "cc/pipeline-2026-09-03-gorsellestir.md",
+    "veri/manifest/ib-77-gorsellestir.json"
+  ],
+  "granul": "dosya",
+  "sira": [],
+  "dislama_grubu": null,
+  "silver": "hayir",
+  "commit_kapsami": [
+    "cc/rapor-2026-09-03-ib77-gorsel-*.md",
+    "raporlar/2026-09-03-ib77-gorsellestir-atlas.md",
+    ".claude/skills/gorsellestir/*",
+    "tools/gorsellestir-*.py",
+    "tools/SCRIPTLER.md",
+    "raporlar/gorsel-vaka-*.html",
+    "cc/pipeline-2026-09-03-gorsellestir.md",
+    "veri/manifest/ib-77-gorsellestir.json"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": ["~/.claude/skills/gorsellestir symlink (kullanıcı-düzeyi kurulum; Salih beyanı 09-03: yan-oturumda çalışmalı)"],
+  "idempotency_anahtari": "manifest kapısı: raporlar/2026-09-03-ib77-gorsellestir-atlas.md VARSA araştırma aşaması KOŞMA; .claude/skills/gorsellestir/SKILL.md VARSA ship KOŞMA",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": "sentez ∧ A+B ≥8 birincil kaynak AS-OF (≥2 fiilen açılmış/ajan) ∧ içerik-sınıfı→görsel-tür karar tablosu tipli ∧ skill-kapisi GEÇTİ ∧ 3 vaka doğrulama kapısı PASS ∧ symlink kurulu ∧ SCRIPTLER.md satırı",
+  "kapsam_beyani": "kanon değişikliği YOK (pointer dışında); Python paket kurulumu Salih beyanı olmadan YOK; hakem üreticilerden ayrı (Karar 86 D3-i); fiyat/oran uydurma yok (m.39)",
+  "belirlenimsiz_girdi": ["model-çıktısı", "web"],
+  "dogrulama_kapisi": "m.40b tez → antitez (CoVe) → V26 (URL'li + URL'siz kota + sayısal) → maskeli hakem (yapan≠ölçen) → skill-kapisi K0-K3 → 3 vaka render/şema testi (LLM'siz)"
+}
