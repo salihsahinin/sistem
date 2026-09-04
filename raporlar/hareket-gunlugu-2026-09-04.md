@@ -1,10 +1,10 @@
-# Hareket günlüğü — 2026-09-04 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `d676f3f`)
+# Hareket günlüğü — 2026-09-04 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `7295892`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 69 çağrı, 4 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 105 çağrı, 5 oturum.*
 
-## Oturum `485ccfaf` — 09:43:45→10:18:13 · 32 çağrı · model fable-5-1 · hata 1
-**Özet:** koştu 18 · düzenledi 9 · yazdı 3 · skill çağırdı 2
-**Yazılan/düzenlenen dosyalar (3):** `core/durum-kapsulu.md` · `core/pano.md` · `raporlar/2026-09-04-damitma-turu-karar87.md`
+## Oturum `485ccfaf` — 09:43:45→10:25:15 · 36 çağrı · model fable-5-1 · hata 1
+**Özet:** koştu 19 · düzenledi 10 · yazdı 4 · skill çağırdı 2 · okudu 1
+**Yazılan/düzenlenen dosyalar (4):** `core/durum-kapsulu.md` · `core/pano.md` · `raporlar/2026-09-04-damitma-turu-karar87.md` · `raporlar/seans-teslim-2026-09-04-karar87-damitma-cowork.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -40,9 +40,13 @@
 | 66 | 10:09:06 | koştu | Push beyanını deftere işle, commit ve push et ⟨cd ~/jarvis && python3 - <<'EOF' p='kuyruk/senaryo-defteri.md'; s=open(p).read() a='- **Masa aracı notu:** Lavish "Add to queue"' s=s.replace(a, '- **…⟩ | tamam |
 | 67 | 10:17:58 | skill çağırdı | seans-kapanis | tamam |
 | 68 | 10:18:13 | koştu | Kapanış araç adımlarını koş: hareket kütüğü, eşikler, sağlık kapısı, hat, testler ⟨cd ~/jarvis && S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/485ccfaf-a547-4792-a26e-9b56d41c5a40/scratchpad; echo '=== hareket-tablo'; pyth…⟩ | yok |
+| 69 | 10:23:48 | okudu | core/durum-kapsulu.md [aralık 5+1] | tamam |
+| 70 | 10:24:10 | düzenledi | core/durum-kapsulu.md | tamam |
+| 71 | 10:25:00 | yazdı | raporlar/seans-teslim-2026-09-04-karar87-damitma-cowork.md | tamam |
+| 72 | 10:25:15 | koştu | Wiki gotcha ekle, kapanış commit'i at ve push et ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib,re w=pathlib.Path('wiki/lavish.md'); s=w.read_text() line='- **"Add to queue" ≠ gönderim (09-03 vakası…⟩ | tamam |
 
-## Oturum `67243832` — 09:47:01→09:55:15 · 6 çağrı · model fable-5-1 · hata 0
-**Özet:** koştu 3 · yazdı 1 · izledi 1 · düzenledi 1
+## Oturum `67243832` — 09:47:01→12:10:08 · 36 çağrı · model fable-5-1 · hata 0
+**Özet:** koştu 11 · okudu 11 · düzenledi 10 · yazdı 1 · izledi 1 · görev listesi 1 · skill çağırdı 1
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -52,6 +56,36 @@
 | 64 | 09:54:46 | koştu | Overfit kontrol log'unun şimdiye kadarki çıktısını oku (YetiRank satırı) ⟨grep -v "invalid params\¦is ignored" /tmp/overfit_kontrol.log⟩ | tamam |
 | 65 | 09:55:08 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/overfit_kontrol.py | tamam |
 | 66 | 09:55:15 | koştu | Düzeltilen script'in sözdizimini kontrol et ve koşan işin canlı olduğunu doğrula ⟨cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring/src && .venv/bin/python3 -c "import ast; ast.parse(open('overfit_kontrol.py').read…⟩ | tamam |
+| 67 | 10:24:00 | görev listesi | {"task_id": "ba21l0nqj"} | tamam |
+| 68 | 10:24:08 | koştu | Overfit sonuç CSV'sini train/test/fark tablosu ve NDCG eğri özeti olarak yazdır ⟨cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring/analiz && python3 - <<'EOF' import pandas as pd t = pd.read_csv("overfit-kontrol.c…⟩ | tamam |
+| 69 | 11:31:31 | koştu | data-etl reposunu ve SQL'i ara; data.csv'nin şemasını kontrol et; api.py'nin feature yolunu bul ⟨echo "=== data-etl arama ==="; mdfind -name "extract_training_data.sql" 2>/dev/null ¦ head; find /Users/HasanSalihSahin -maxdepth 4 -type d -name "dat…⟩ | tamam |
+| 70 | 11:31:58 | koştu | data.csv şemasını pandas ile doğrula; data-etl git durumunu, SQL dosya boyutlarını ve SQL'deki engineered kolon isimlerini bul ⟨cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring/src && .venv/bin/python3 - <<'EOF' import pandas as pd cols = list(pd.read_csv("da…⟩ | tamam |
+| 71 | 11:32:16 | koştu | SQL'in referans verdiği yeni features.py sürümünü ara; karar dokümanı başlıklarını ve tmk tablo şemasını oku ⟨echo "=== pct_rank_in_trim nerede? ==="; grep -rln "pct_rank_in_trim\¦bid_momentum_trim" /Users/HasanSalihSahin/Desktop/repo --include="*.py" --includ…⟩ | tamam |
+| 72 | 11:32:32 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/extract_training_data.sql [aralık 0+130] | tamam |
+| 73 | 11:32:32 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/extract_training_data.sql [aralık 320+140] | tamam |
+| 74 | 11:32:34 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/extract_training_data.sql [aralık 460+160] | tamam |
+| 75 | 11:32:35 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/extract_training_data.sql [aralık 620+140] | tamam |
+| 76 | 11:32:36 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/extract_training_data.sql [aralık 760+100] | tamam |
+| 77 | 11:32:36 | okudu | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py [bütün] | tamam |
+| 78 | 11:32:37 | okudu | ~/Desktop/repo/data-etl/dags/b2b/queries/galeri-arac-tahmin-karar-dokumani.md [aralık 64+100] | tamam |
+| 79 | 11:33:36 | okudu | ~/Desktop/repo/data-company-vehicle-scoring/src/api.py [aralık 60+130] | tamam |
+| 80 | 11:33:41 | koştu | sozluk_kolon fallback davranışını, kaldırılan kolonlara referansları ve train/api'nin features.py kullanımını çıkar ⟨cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring/src && echo "=== sozluk_kolon: tanimla + fallback ===" && grep -n "def tanimla" -A…⟩ | tamam |
+| 81 | 11:34:36 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 82 | 11:34:44 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 83 | 11:35:08 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 84 | 11:35:50 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 85 | 11:36:20 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 86 | 11:36:26 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 87 | 11:36:31 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/features.py | tamam |
+| 88 | 11:36:39 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/train.py | tamam |
+| 89 | 11:36:40 | okudu | ~/Desktop/repo/data-company-vehicle-scoring/src/sozluk_kolon.py [aralık 0+98] | tamam |
+| 90 | 11:37:13 | düzenledi | ~/Desktop/repo/data-company-vehicle-scoring/src/sozluk_kolon.py | tamam |
+| 91 | 11:37:49 | koştu | Sözdizimi + sentetik formül testleri (SQL ile birebir) + eski data.csv uyumu + train.py parity kontrolü ⟨cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring/src && for f in features.py train.py sozluk_kolon.py; do .venv/bin/python3 -c "imp…⟩ | tamam |
+| 92 | 11:38:02 | koştu | Geçici test dosyalarını sil; değişen dosyaların git özetini göster ⟨rm -f /tmp/parity_test.csv /tmp/datacsv_cols.txt; cd /Users/HasanSalihSahin/Desktop/repo/data-company-vehicle-scoring && git status --short ¦ grep -v …⟩ | tamam |
+| 93 | 12:09:40 | skill çağırdı | seans-kapanis | tamam |
+| 94 | 12:10:02 | okudu | core/durum-kapsulu.md [bütün] | tamam |
+| 95 | 12:10:02 | okudu | core/sablonlar/seans-teslim.md [bütün] | tamam |
+| 96 | 12:10:08 | koştu | Kapanış için git durumu, canlı oturum kontrolü, sıcak dosya boyutları ve ingest hedef dosyalarının biçimini topla ⟨echo "=== git ===" && git log --oneline -5 && git status --short && echo "=== canlı jarvis oturumu? ===" && ps -eo pid,etime,command ¦ grep -i "[c]lau…⟩ | tamam |
 
 ## Oturum `3ed3cca0` — 09:57:08→10:00:59 · 14 çağrı · model sonnet-5 · hata 0
 **Özet:** MCP aracı 6 · koştu 5 · düzenledi 2 · yazdı 1
@@ -96,4 +130,12 @@
 | 21 | 10:14:01 | koştu | Check large agac-semasi files for shap/importance keywords ⟨for f in ./kuyruk/galeri-siralama/agac-semasi-model_v2u.html ./kuyruk/galeri-siralama/agac-semasi-model_yogun_d3-veri2u_s77.html; do echo "=== $f ==="…⟩ | tamam |
 | 22 | 10:14:16 | koştu | Search readme and findings doc for shap/hierarchy mentions ⟨grep -n "shap\¦SHAP\¦hiyerar\¦önem\¦onem" kuyruk/galeri-siralama/README.md kuyruk/galeri-siralama/bulgular-model-eksikleri.md 2>/dev/null ¦ head -60⟩ | tamam |
 | 23 | 10:14:36 | sordu | Hangi dosyaya/sekmeye bakıyorsun? Doğru dosyayı bulamazsam yanlış sayılarla açık | tamam |
+
+## Oturum `58c53788` — 10:34:35→10:34:38 · 2 çağrı · model sonnet-5 · hata 0
+**Özet:** koştu 2
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 10:34:35 | koştu | Search repo for pairlogit references ⟨grep -ril "pairlogit\¦pair_logit\¦pairwise.logit" /Users/HasanSalihSahin/jarvis 2>/dev/null ¦ head -20⟩ | tamam |
+| 2 | 10:34:38 | koştu | Check context of pairlogit mention in activity log ⟨grep -i "pairlogit" /Users/HasanSalihSahin/jarvis/raporlar/hareket-gunlugu-2026-09-03.md ¦ head -5⟩ | tamam |
 
