@@ -58,3 +58,4 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - nadir-dil-kapisi — V82 kural adayı; kaynak rapor 08-26-1 S4 + B3-2 (s16 hasadı 08-26); KB-63/64 kararı sonrası yazılır.
 - bakim-kk — skill bakımının kullanım-kanıtı katmanı: skill-doctor entegrasyonu + kanıt-izli öneri kuralı + kapı-uygulama zinciri; kaynak Karar 75/77 + `core/skill-uretim-semasi.md` §BAKIM + ilk çevrim raporu (s20 hasadı 08-29; tempo: sonraki oturum).
 - ~~[kuyruk 09-03] `gorsellestir-skill`~~ (SKİLL SİLİNDİ, Salih 09-03 akşam; arşiv `kuyruk/arsiv/gorsellestir-skill-2026-09-03/`) — içerik sınıfı → görsel tür karar tablosu (DENEYSEL satırlar), LLM'siz kapı, CDN/offline kip; kaynak `raporlar/2026-09-03-ib77-gorsellestir-atlas.md` (İB-04 wiki 1-2/seans kuralı).
+- [kuyruk 09-04] `masa-akisi` — Lavish karar masası akışı: gündem md → `tools/masa-html.py` → `.lavish/` yüzey → poll → defter Karar bloğu; kaynak `raporlar/seans-teslim-2026-09-04-karar87-damitma-cowork.md`

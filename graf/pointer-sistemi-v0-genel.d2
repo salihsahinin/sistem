@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — GENEL BAKIŞ (pano 0/4) — ayrıntı panoları: silver · pointer · ilke · kronoloji (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 06ccffd · HEAD 06ccffd · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver d676f3f · HEAD d676f3f · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: down
 classes: {
@@ -17,22 +17,22 @@ classes: {
   uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
 }
 hat: "VERİ HATTI (lineage)" {
-  bronz: "BRONZ\ngit-izlenen md/json/jsonl · 883 dosya" { class: hat }
-  silver: "SİLVER · veri/baglam.sqlite\n31 tablo · 1.221.519 satır · PK = ADRES (yol#satır#sha8)" { class: hat; link: "pointer-sistemi-v0-silver.svg" }
+  bronz: "BRONZ\ngit-izlenen md/json/jsonl · 913 dosya" { class: hat }
+  silver: "SİLVER · veri/baglam.sqlite\n31 tablo · 1.308.019 satır · PK = ADRES (yol#satır#sha8)" { class: hat; link: "pointer-sistemi-v0-silver.svg" }
   gold: "GOLD · veri/gorunum\n47 CSV görünüm" { class: hat }
   bronz -> silver: "tools/katman-hatti.py\nsıfırdan, idempotent" { class: turetir }
   silver -> gold: "v_* görünümler" { class: turetir }
 }
-pointer: "POINTER'LAR (referans tablosu)\n11 tür · 82.769 referans · 1.830 KIRIK" { class: pointer; link: "pointer-sistemi-v0-pointer.svg" }
+pointer: "POINTER'LAR (referans tablosu)\n11 tür · 84.306 referans · 1.956 KIRIK" { class: pointer; link: "pointer-sistemi-v0-pointer.svg" }
 anahtar: "ANAHTAR KAYDI\n6 tür · 351 anahtar · süpersede zinciri (replaced_by, SCD-2)" { class: anahtar; link: "pointer-sistemi-v0-pointer.svg" }
-dosya: "DOSYALAR · 883\nkatman: ilik 105 · sicak 37 · soguk 614 · yapisal 127" { class: kutu }
-ambar: "AMBAR olgu tabloları · 7 tablo · 1.786 satır" { class: kutu }
+dosya: "DOSYALAR · 913\nkatman: ilik 107 · sicak 36 · soguk 633 · yapisal 137" { class: kutu }
+ambar: "AMBAR olgu tabloları · 7 tablo · 1.837 satır" { class: kutu }
 dis: "REPO DIŞI HEDEFLER\nurl · git sha · zaman · etiket" { class: dis }
 ilke: "POINTER İLKESİ (kanon)\nm.20 özet+adres · m.21 dönüş yolu · m.22 arşiv · m.8 süpersede · adresli erişim" { class: ilke; link: "pointer-sistemi-v0-ilke.svg" }
 kron: "KURULUŞ KRONOLOJİSİ\n2026-07-11 → 2026-08-22 · 8 adım" { class: kron; link: "pointer-sistemi-v0-kronoloji.svg" }
 hat.silver -> pointer: "referans.kayit_id → kayit (FK)" { class: fk }
 pointer -> anahtar: "m.N · V-n · K-NNN · [[wiki]] · skill · terim → çözümleme" { class: fk }
-pointer -> dosya: "dosya_pointer → yol (11.524 çözümlü / 1.830 KIRIK)" { class: kirik }
+pointer -> dosya: "dosya_pointer → yol (11.885 çözümlü / 1.956 KIRIK)" { class: kirik }
 pointer -> dis: "url · sha · tarih · etiket"
 anahtar -> anahtar: "replaced_by = prov:wasRevisionOf (süpersede)" { class: supersede }
 hat.silver -> dosya: "kayit.dosya_id → dosya (FK)" { class: fk }

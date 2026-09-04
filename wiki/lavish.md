@@ -21,6 +21,7 @@ Tasarım önceliği: (1) Salih özel bir görünüm istediyse onu kullan → (2)
 **Jarvis'teki durum notu:** bu görev, `Skill` aracıyla çağrılan `wiki-sayfa-yaz`in yanı sıra, sistem-promptunda ayrı bir `lavish` skill'i (aynı `lavish-axi` CLI'sini tarif eden) mevcuttu — iki kaynak (SKILL.md dosyası + sistem-prompt tanımı) İÇERİK OLARAK ÖRTÜŞÜYOR, çelişki yok.
 
 ## Gotchas
+- **"Add to queue" ≠ gönderim (09-03 vakası):** kuyruğa alınan not tarayıcıda kalır, ajana yalnız "Send to Agent" / "Send & End" ile düşer; poll o ana dek sessizdir. Salih "kararım chat'te yazmıyor" dediğinde arıza değil, henüz gönderilmemiştir.
 - **Share komutu üçüncü-parti servise (ht-ml.app) veri gönderir** — herkese-açık varsayılan; parola korumalı yayın için `--password` şart. Jarvis'in "sır yalnız `.secrets/`" ilkesiyle (CLAUDE.md §2) birlikte okunmalı — paylaşımdan önce içerik gözden geçirilmeli.
 - **Poll asla arka-plana `nohup`/`&`/`disown` ile atılmaz** — SKILL.md sert kural: yalnız harness'in tamamlanma-bilinçli arka-plan mekanizması kabul edilir, yoksa ön planda tutulur.
 - **Kullanıcı tarayıcıdan oturumu bitirirse** (`Send & End`), ajan `--reopen` olmadan yeniden açamaz — davetsiz yeniden-açma yasak.
