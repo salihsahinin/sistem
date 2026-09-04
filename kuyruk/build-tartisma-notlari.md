@@ -158,3 +158,10 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-seans raporu beğenilmedi).
 - **Kanon vaadi ↔ kod:** `core/baglam-anahtar-kaydi.md` §5 bayrakları kodda yok; sınıf olarak "kanon → kod sözleşme testi" (SCRIPTLER satırı ↔ argparse eşitliği) aday.
 - **Loop-dedektörü 2-gram sorusu** ve **İB-57 kural eşikleri** masada (teslim raporu §3).
 
+## 2026-09-04 (galeri şeridi — feature temizliği + ETL senkronu) — karara bağlanmamış bulgular (jarvis-dışı repo; Salih kararı)
+- **group_id ↔ ETL çelişkisi:** data-etl 6b3155e ham `market_trim_*`/`trim_price_*` kolonlarını "(ihale,trim) grubunda sabit" diye kaldırdı (karar-dokümanı §2 `group_id=trim+ihale`); `train.py` bilerek `group_id=trim_id` (ihaleler havuzlu) kullanıyor — orada bu kolonlar değişir, `market_trim_bidder_dealer_cnt` üretim modelinde SHAP ilk-6'daydı. Seçenek (a) `group_key()` §2'ye döner (grup-başına pozitif sorunu geri gelir) · (b) ETL'den kolonlar geri istenir. Kodda yalnız belgelendi (`MARKET_RAW_COLS_REMOVED_IN_ETL`).
+- **pct-rank sızıntı sınıfı:** 6 `*_pct_trim` kolonu trim'in TÜM ihalelerdeki satırları üzerinden sıralanıyor → eğitim satırı sonraki ihalelerin dağılımını görür (etiket değil, dağılım sızar). Yeni extract'ta test kümesi pct'leri yalnız kendi içinde yeniden hesaplanıp fark ölçülmeli.
+- **Kanonik `features.py` kayıp:** SQL'in yorumlarda referans verdiği sürüm (satır 216-374, `pct_rank_in_trim`) yerelde/git'te yok; artık bu repo'daki dosya kanonik — ETL tarafına iletilecek.
+- **Loss seçimi masada:** aynı 190 kolonla PairLogit, YetiRank'ı her metrikte geçiyor (GroupAUC 0.736 vs 0.709). Feature temizliği metrik kazandırmadı (temiz_a −0.026), loss değişimi kazandırıyor gibi — ayrı deneme.
+- **Gösterim kırığı adayı:** `agac_html.py` / `bugunku_ihale_degerlendirme.py` ham `trim_price_p50` okuyor; yeni extract'ta yok.
+
