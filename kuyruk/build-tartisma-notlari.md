@@ -165,3 +165,11 @@ Salih (07-23): karar-adayı bekletildi (kaynak bulut-seans raporu beğenilmedi).
 - **Loss seçimi masada:** aynı 190 kolonla PairLogit, YetiRank'ı her metrikte geçiyor (GroupAUC 0.736 vs 0.709). Feature temizliği metrik kazandırmadı (temiz_a −0.026), loss değişimi kazandırıyor gibi — ayrı deneme.
 - **Gösterim kırığı adayı:** `agac_html.py` / `bugunku_ihale_degerlendirme.py` ham `trim_price_p50` okuyor; yeni extract'ta yok.
 
+
+## 2026-09-08 — galeri şeridi: ekip-lideri tasarım dokümanı incelemesi (karara bağlanmamış bulgular)
+- **Sızıntı bizim sürümde de var:** `data.csv` 09-02 (687k/27 ihale): etiket 2-4'te `days_since_last_bid_trim=0` %99, etiket 4'te `days_since_last_purchase_trim=0` %99, `signal_source` etiketle bire bir. Dokümanın (647k/29, tekilleştirilmiş) bulgusuyla aynı; üretim `models/YetiRank` GroupAUC 0,709 ve 09-04 retrain kıyasları bu sızıntıyla ölçülmüştü → **hepsi geçersiz sayılmalı**, dürüst tavan doküman baseline'ı Recall@30 0,62.
+- **09-04 group_id çelişkisi dokümanla çözüldü:** doküman group_id=(ihale_id, trim_id) diyor, `market_trim_*` kolonları H ailesi olarak `s.id <> target` koşuluyla geri geliyor; bizim `train.py`'nin `trim_id` gruplaması §2.4'te "151 grup × 1.432 satır, P@1 anlamsız" diye reddedildi. Salih hükmü bekliyor (kapsül 0a-2).
+- **Kümeleme profili (bizim ders 6) gün-0 sızıntısı taşıyor:** `bid_cnt_make`, `listing_cnt_window_make` vb. gün-bazlı pencere kolonlarından kuruldu; küme başına test-dönemi alım oranları (0,05-0,30) iyimser. Temiz profil: yalnız önceki-ihale etiketleri + `import_date < cutoff` ilanlar.
+- **Balanced yan model kalibre değil** (doküman §5.2/§6.2 çelişkisi) · **davet listesi iki birleştirme kuralı tanımsız** (§5.4) · **grupsuz AUC 0,99996 mekanizması yazılmamış** (§2.4; `AUC:type=Ranking` ikili-eşik-0 hipotezi doğrulanacak).
+- **Hafta-günü örtüşmesi zayıf-pozitif:** 351 çift Jaccard; 7g aynı gün 0,134 vs 6/8g farklı 0,105; 7-28g aynı 0,121 vs farklı 0,093; 17/27 ihale Salı/Perşembe 10:00 → takvimle karışık.
+- Ayrıntı ve öneriler: repo `analiz/ek-bulgular-galeri-trim-tasarim-2026-09-08.md` (8 madde, Salih okuyacak).
