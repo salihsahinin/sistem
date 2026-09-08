@@ -27,3 +27,4 @@
 - Bu şerit kanon/kural değiştirmez; çıktısı ders kaydı + karar adayıdır.
 - Öğretme akış-modu kuralına tabi: Salih akıştaysa teori ertelenir, iş bitince dönülür.
 - Müfredat güncellemesi (partisyon ekleme/çıkarma) Atlas koşumu ya da Salih emriyle; sıra değişikliği Carvis Katman-2.
+- [problem-cozme/](problem-cozme/seri-tasarimi-v0.md) — problem çözme eğitim serisi, 8 başlık × L0-L3, tasarım v0 (2026-09-08; 6.042J/6.006 şeritlerinin üstüne biner).
