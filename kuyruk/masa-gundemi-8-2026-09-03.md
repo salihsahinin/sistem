@@ -71,6 +71,12 @@ Mac'te gece senkron eşleniği yok; açılış ritüeli adım 2.4 bayat satırı
 - **(b) Lavish HTML bölümleri:** Artı: annotasyon. Eksi: kanon dışı yüzey, tarihçe zayıf.
 - **(c) Beklet (damıtma sonrası).**
 
+### M12 · Prompt-başı dosya seçimi: model yorumu mu, deterministik hook mu (Katman-1; Salih 09-08 "önerini karar masasına taşı")
+Ölçüm 09-08 (HEAD ae36f9d): her promptta sabit yük CLAUDE.md 6,9 KB + skill description 7,4 KB (16 skill) + MEMORY.md indeks 2,5 KB ≈ 19 KB; kapsül/pano/tüzük/hafıza dosyaları yalnız Carvis kararıyla okunur. Prompt-başı dosya basan hook (UserPromptSubmit) YOK; yalnız PreToolUse ×2 + SessionStart var. Sonuç: aynı prompt → farklı seansta farklı dosya seti mümkün; §6 deterministik tasarım ilkesiyle örtüşmez.
+- **(a) ÖNERİLEN — UserPromptSubmit hook + anahtar-kelime→dosya tablosu (`core/prompt-dosya-tablosu.tsv`, ilk sürüm ≤10 satır):** Ne demek: prompt metni tabloyla eşleşirse hook o dosyanın YALNIZ ilk N satırını/pointer'ını bağlama basar ("seans" → kapsül başı; "m.NN" → tüzük o madde; "hafıza/feedback" → ilgili memory dosyası). Yaparım: hook script + tablo + 3 test + hareket kütüğüne olay satırı. Artı: deterministik, kütüğe düşer, tablo Salih'çe okunur/düzenlenir. Eksi: eşleşmeyen konu yine model yorumuna kalır; tablo bakımı (bir satır girer bir satır çıkar); yanlış eşleşme = boşa ~1-3 KB.
+- **(b) Mevcut kalır, seçim kütüğe düşer:** Ne demek: hook yok; Carvis prompt-başı hangi dosyayı neden açtığını `veri/bronz/hareket-olay.jsonl`'e zaten yazıyor, buna "gerekçe" alanı eklenir. Artı: sıfır yeni mekanizma, tekrar-üretim kayıtla (§6 ikinci fıkra). Eksi: determinizm sağlanmaz, yalnız izlenir.
+- **(c) Konu-başı ayrı CLAUDE.md profili (öğrenme / iş / jarvis-geliştirme):** Ne demek: klasör ayrımı gibi (staj örneği) konu başına alt-klasör + kendi CLAUDE.md'si. Artı: konu dışı 19 KB düşer. Eksi: üç kanon kopyası bakımı; jarvis-geliştirme zaten ana klasör, ayrım yalnız öğrenme/iş için anlamlı; m.16 kapsam sorusu (kanon tekliği).
+
 ## El işleri (karar değil, Salih tetiği)
 A3 kalan ayak (uzun-loop sayacı 1/3) · İB-11 (d)(e) 10 dk · Finder md varsayılanı VS Code · bulut skill kopyaları (KB-10) · galeri gerçek 3 matris CSV'si.
 
