@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-09-04,12:09,67243832,11,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,4e64c944-40ed-4d94-8a3c-b43e6e646fff
-2,2026-09-04,11:30,67243832,10,emir,,claude-fable-5-1,5336,""" `data-etl` reposundaki `dags/b2b/galeri_scoring_etl.py` ve `dags/b2b/queries/extract_training_data.sql` dosyalarında, `public.galeri_scori",a2b655db-f60f-4dc9-ad84-943c3b0f9142
-3,2026-09-04,10:54,58c53788,4,diger,,claude-sonnet-5,35,logloss ile querysoftmax farkı nedr,2760d737-d2e9-4b3a-8646-ef3785661377
-4,2026-09-04,10:47,58c53788,3,emir,,claude-sonnet-5,105,logloss nasıl çalışır onu da 0'dan mekanizmasını örnek bir senaryoda anlattığın eğitim seti oluştur başla,2a2ba9f9-0ae6-4f9e-8506-eba0ecf5eeb8
-5,2026-09-04,10:41,58c53788,2,diger,,claude-sonnet-5,104,"yetirank ile mekanizme farkını örnek bir senaryoda anlat(bilgiyi tam olarak ver,temelden başlayarak ver)",eaece793-0d61-455a-a034-0220c500d485
-6,2026-09-04,10:34,58c53788,1,soru,,claude-sonnet-5,52,pairlogit nasıl çalışır en temelden başlayarak anlat,24cf94be-100e-48bf-b3e8-049049566f03
-7,2026-09-04,10:27,67243832,9,soru,,claude-sonnet-5,85,html'de shap hiyerarşisi sekmesi ile feature importance sekmesi arasındaki fark nedir,1c3b309a-7ee9-4dce-b27c-d9d4030862a9
-8,2026-09-04,10:17,485ccfaf,7,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,636a89fd-1cfa-4bce-beea-8e639c044c2f
-9,2026-09-04,10:15,3ed3cca0,10,onay/devam,,claude-sonnet-5,13,evet devam et,f025ce54-48a3-49e6-9d71-e10477e1d446
-10,2026-09-04,10:12,084f221c,3,soru,,claude-sonnet-5,133,agac-semasi html dosyasında feature importance ve shap hiyerarşisi 2 farklı sekme olarak bulunuyor.bunlar ne anlatıyor farkları nedir,2c4d76aa-f7af-48b8-86d2-bcc834fd99e0
-11,2026-09-04,10:08,485ccfaf,6,onay/devam,,claude-fable-5-1,9,push onay,9477cb06-11bf-4edb-9881-ad8719ca190b
-12,2026-09-04,10:08,084f221c,2,soru,,claude-opus-5,51,shap hiyerarşisi ile feature importance farkı nedir,b9c094d6-c040-4750-88bf-b56dbc1ddc1b
-13,2026-09-04,09:58,3ed3cca0,9,diger,,claude-sonnet-5,1,a,d6aafd70-29f0-40c1-9b80-3c9e12a2d4e9
-14,2026-09-04,09:56,3ed3cca0,8,soru,,claude-sonnet-5,123,"blok 5 görselleştirilecek yani machine word,cpu,w bit,adres sığma satırı word-ram nedir bunu anlatan bir görselleştirme yap",c900702f-eefe-4a60-9f89-7c64cb18e10e
-15,2026-09-04,09:55,3ed3cca0,7,diger,,claude-sonnet-5,12,görselleştir,1af9a532-7622-4d26-ac99-2aca89497fe2
-16,2026-09-04,09:46,67243832,8,emir,,claude-fable-5-1,131,"sonuç olarak yetirank_temiz_a'nın overfit olmadığına emin miyiz,modelin başarısının diğer modellerle kıyaslandığı bir tablo oluştur",88525648-6d1c-4020-b65e-98b29aaac9e1
-17,2026-09-03,22:50,485ccfaf,5,soru,damitma,claude-fable-5-1,150,"gönderdim, oturum açıldı,lavish masasında kararımı verip add to queue diyince sağda chat kısmında kararım yazmıyor masa düzgün çalışıyor mu ",a5ccc368-f870-48b7-b904-af5606026c7d
-18,2026-09-03,22:47,dfdc8559,1,seans-acilis,,claude-sonnet-5,6111,"seans başı jarvis geliştirme — İCRA YAN-OTURUMU (Sonnet 5, effort medium). Kurallar önce: 1. **Yetki (m.41):** Sen yan-oturumsun ve İŞÇİ-ORK",e769607c-1908-4239-8abc-0dc07b858084
-19,2026-09-03,22:46,485ccfaf,4,soru,,claude-fable-5-1,38,teyit etmek için soruyorum böyle de mi,d163684c-18be-4191-bbcf-4e98124fef55
-20,2026-09-03,22:31,485ccfaf,3,onay/devam,,claude-fable-5-1,5,devam,06e84274-4b0c-4f84-adbe-d8a063628f95
-21,2026-09-03,22:29,485ccfaf,2,emir,,,324,bi yandan icra oturumunu yapalım paralelde jarvis dosyasında mı başka bir dosyada mı yani hangi dosyada cowork başlatacağımı söyle başlataca,7b0483a7-ad83-4a1e-8145-b4f3ab611697
-22,2026-09-03,22:04,485ccfaf,1,seans-acilis,seans-acilis,claude-fable-5-1,47,"seans başı,görselleştir skillini sil beğenmedim",a9aa26e2-df1f-4288-b355-793c1b568df3
-23,2026-09-03,18:23,67243832,7,diger,,claude-fable-5-1,14,html açılmıyor,04edabc6-a910-48b3-aeef-187e2a197e6e
-24,2026-09-03,18:10,3ed3cca0,6,emir,gorsellestir,claude-sonnet-5,23,öğretici görsel oluştur,eb1b030b-5f92-4871-bbc0-3ceeedf5005b
-25,2026-09-03,18:07,67243832,6,soru,,claude-fable-5-1,18,ne durumda retrain,865e1e08-9a65-4201-bf5b-fb24ad895161
-26,2026-09-03,17:14,67243832,5,diger,,claude-fable-5-1,203,"semantik karar gereken 4 çift için feature bilgisini repodan bakıp emin ol sonra önerdiğin şekilde kararını ver,planda direk (2) seçeneğinde",6ebf94f6-ad6d-48f0-b45e-4621f8895196
-27,2026-09-03,17:02,67243832,4,diger,,claude-sonnet-5,15,exceli açamadım,8c517d4b-d078-4cd6-8ae9-40d560f26e01
-28,2026-09-03,17:00,3ed3cca0,5,onay/devam,,claude-sonnet-5,5,devam,a3ed4531-2503-48bb-b2ea-6068b3375310
-29,2026-09-03,16:59,67243832,3,emir,,claude-sonnet-5,1187,"işe geçmeden önce öncelikle şöyle bir şey yapalım: "" şöyle yapalım,feature sayısı çok fazla olduğu için feature'ları bi temizlememiz lazım,b",01175bc3-84d9-44aa-990c-dd530340a192
-30,2026-09-03,16:39,67243832,2,diger,,claude-fable-5-1,580,düzeltilmesi gereken bir durum var:view featureları etl'e yeni dahil edildiği için eldeki verisi az ve bundan dolayı modelde seçici olmamış.,c7b02582-a033-4d94-9251-818304ce94c4
-31,2026-09-03,16:37,c48521a7,1,diger,,,580,düzeltilmesi gereken bir durum var:view featureları etl'e yeni dahil edildiği için eldeki verisi az ve bundan dolayı modelde seçici olmamış.,b5533381-1ff0-4867-896b-b105b887c865
-32,2026-09-03,16:29,67243832,1,emir,,claude-fable-5-1,641,"A grubu kesin çıkarılacak,eğitime başlamadan ≥0.99 kopyaları için sormak istediğim şeyler: 1-city yerine city id tuttuğumuz zaman id sayısal",eb41d353-634b-4d21-8817-d193d9858938
-33,2026-09-03,16:25,1b40c0b3,4,soru,,,618,"A grubu kesin çıkarılacak, ≥0.99 kopyaları için sormak istediğim şeyler: 1-city yerine city id tuttuğumuz zaman id sayısal bir büyüklük olar",44642992-d4ee-4f80-b403-da0b2238b080
-34,2026-09-03,16:04,cf025135,16,diger,,claude-fable-5-1,250,"öğretme süreci d2 renderı olan bir graf olarak yansıtılmasın,d2 formatı özet niteliğinde yer alabilir ama konuyu 0'dan öğrenmek,anlatılanı 0",1b0403f7-3b66-44e2-9c90-079282bdd6e2
-35,2026-09-03,16:01,1b40c0b3,3,emir,,claude-fable-5-1,751,"şöyle yapalım,feature sayısı çok fazla olduğu için feature'ları bi temizlememiz lazım,bunun için dikkat etmemiz gereken iki iş var: -elde se",09aa99c8-988f-4a38-9280-82dcf56b4bb3
-36,2026-09-03,16:00,bce684ce,26,emir,,,737,"şöyle yapalım,feature sayısı çok fazla olduğu için feature'ları bi temizlememiz lazım,bunun için dikkat etmemiz gereken iki iş var: -elde se",49cf5147-621f-42df-bfb2-f8c9b41e7a5a
-37,2026-09-03,15:51,3ed3cca0,4,diger,,claude-sonnet-5,37,her bir sınıf için senaryo örneği ver,06b3ce2a-af1d-4601-80ce-08b54ccadb57
-38,2026-09-03,15:48,cf025135,15,emir,,claude-fable-5-1,135,öğrenme amaçlı oturumda görselleştir deyince oluşturulan görsel öğrenmem hedefli olması lazım öyle olmadı bunu düzelt seansı öyle bitir,e8d15abd-008c-4109-bb97-69721d877157
-39,2026-09-03,14:24,1b40c0b3,2,diger,,claude-sonnet-5,54,en başarılı modelin ilk eğitilmiş modelden farkı neydi,b1432aeb-bf87-460a-9150-d90e6ec7c749
-40,2026-09-03,13:55,3ed3cca0,3,diger,,claude-sonnet-5,41,semboller düzgün bir şekilde baştan başla,65fd1903-f836-416b-a823-31558fb62d8c
-41,2026-09-03,13:55,3ed3cca0,2,diger,,claude-sonnet-5,23,semboller kırık çıkıyor,1da8609f-f199-4fcd-831e-00d20766c6d3
-42,2026-09-03,13:54,1b40c0b3,1,emir,,claude-sonnet-5,100,sonuç olarak nihai htmli oluşturup aç ve optimize etmeye çalışma sürecindeki findinglerimizi listele,b5065d52-65dc-4e1d-b780-fbb319d8b484
-43,2026-09-03,13:52,3ed3cca0,1,diger,,claude-sonnet-5,79,mit algoritmalara giriş nerede kaldık anlatmaya başla caps lock ile vurgu yapma,45f849e2-70c5-4621-b579-1c338829b5a7
-44,2026-09-03,13:50,e0839c9b,12,diger,,claude-sonnet-5,10,sen açıkla,ba48b873-79bf-4f96-a1c3-65a4788a5732
-45,2026-09-03,13:50,e0839c9b,11,diger,,claude-sonnet-5,26,kontrol sorusu 3'e dönelim,761d8416-dd61-4c77-a404-95a39a7a1e87
-46,2026-09-03,13:47,e0839c9b,10,soru,,claude-sonnet-5,154,ben senden benim için bana öğreten bir görsel oluşturmanı istedim bu görsellere bakınca ne anlatıldığını ne olup bittiğini anlamıyorum d2 fo,436d679d-2d4f-44e0-aed7-fef3b2128526
-47,2026-09-03,13:41,e0839c9b,9,soru,,claude-sonnet-5,134,görselin anlatımı yeterli değil ne oluyor ne anlatıyor aşamalar neyi anlatıyor bunlar görselde açıklanmalı bakınca bir şey anlamıyorum,fc8eec78-6cc0-4aa2-8ea1-52b390973b48
-48,2026-09-03,13:36,e0839c9b,8,diger,gorsellestir,claude-sonnet-5,12,görselleştir,bcb740ed-1942-495a-8ee8-124b2ad63fd1
-49,2026-09-03,13:35,57c9790d,38,onay/devam,,claude-sonnet-5,5,devam,417a91fe-cacb-446b-8706-662971cf5b7f
-50,2026-09-03,13:33,cf025135,14,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,5dd1e09e-73bc-47c2-a403-06a6c4595b9a
+1,2026-09-08,17:11,f0312cc3,37,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,442cd023-1198-4dee-8b2e-9fa537eebdac
+2,2026-09-08,17:07,f0312cc3,36,emir,,claude-fable-5-1,289,"bir de mevcut dökümantasyonda jaccard kullanılarak haftanın aynı günleri için galerilerde bir benzerlik var mı,ya da 1 hafta içerisindeki fa",c3666b69-4abe-4e95-a0dc-621cd873f296
+3,2026-09-08,17:04,f0312cc3,35,soru,,claude-fable-5-1,152,"-son bir soru: 1-2 adet ""nedir"" tarzı sorular sorduğum ve seans başı yazmadığım sonnet oturumları için seans bitimi yazmalı mıyım yoksa yazm",3e8f6de6-fe50-47cc-9b87-ecc9f4aff472
+4,2026-09-08,16:57,f0312cc3,34,emir,,claude-fable-5-1,433,"şimdi benim buraya yüklediğim döküman zaten ekip liderinin güncellediği planın dökümanıydı,o dökümanda bulunmayan ve sadece bu konuşmada far",7ee2980c-8700-4274-a05d-3fbd15b33f75
+5,2026-09-08,16:50,f0312cc3,33,diger,,claude-fable-5-1,641,kutu 4 için:nihai hedefte trimler de kümelenip trim kümeleri ve galeri kümeleri arasında ilişki kurulması hedefleniyor orada bahsedilen yazı,67d99173-21c5-4ec8-81a2-9be4ccc314d2
+6,2026-09-08,16:36,f0312cc3,32,emir,,claude-fable-5-1,77,"kontrol sorularını sen cevapla noevlty precision ne bilmiyorum, ders 11'e geç",60d0c97b-a911-4738-a024-978b90ef1d2f
+7,2026-09-08,16:23,f0312cc3,31,emir,,claude-fable-5-1,50,"anladım, kontrol sorusunu cevapla ve ders 10'a geç",41124e33-e8fc-4a25-90fe-94e29e41013b
+8,2026-09-08,16:20,f0312cc3,30,soru,,claude-fable-5-1,130,"A panelini anlamadım,yani sonuç olarak 3 farklı model mi eğitiliyor,peki bu 3 farklı model nasıl kullanılıyor,fold burada ne demek",936db3cf-6d58-4379-b7dc-1c78b30d3f2f
+9,2026-09-08,16:03,f0312cc3,29,emir,,claude-fable-5-1,44,"kontrol sorularını sen cevapla, ders 9'a geç",d7505b43-7a13-44bc-a9b0-e231012d7630
+10,2026-09-08,15:49,f0312cc3,28,diger,,claude-fable-5-1,18,yeni derse geçelim,667dc8e5-ca73-4a99-b4de-f0df1b71ead2
+11,2026-09-08,14:02,f0312cc3,27,soru,,claude-fable-5-1,252,"kontrol sorularını sen cevapla, peki bu dokümanda araçxgaleri coğrafya hesaplaması gower üzerinden mi yapılıyor,bir önceki anlatılan konular",0f0f0519-26bf-4253-a59f-c79d5c1bb52b
+12,2026-09-08,12:14,f0312cc3,26,emir,,claude-fable-5-1,73,"kontrol sorularını sen cevapla ama detaylı bir açıklamayla, ders 7'ye geç",4a56f8db-e62e-40b4-acf3-a90ae378804a
+13,2026-09-08,12:10,ae134a37,1,soru,,claude-sonnet-5,24,jaccard benzerliği nedir,167a9e86-bb0c-4770-a002-c2eaf762b74f
+14,2026-09-08,11:57,f0312cc3,25,emir,,claude-fable-5-1,45,"kontrol sorularını sen cevapla, ders 6'ya geç",801dcc56-6458-403c-843c-9f3c9a37d7c9
+15,2026-09-08,11:36,2400de35,1,soru,,claude-sonnet-5,14,epoch ne demek,8be17629-e875-4a45-9a33-d85265c90bc3
+16,2026-09-08,11:34,f0312cc3,24,emir,,claude-fable-5-1,44,"kontrol sorularını sen cevapla, ders 5'e geç",f85d9da4-22d6-4805-afb5-0647bde98a9e
+17,2026-09-08,10:56,f0312cc3,23,emir,,claude-fable-5-1,44,"kontrol sorularını sen cevapla, ders 4'e geç",1f2533a9-e714-4b61-be8a-caba24c1cc1c
+18,2026-09-08,10:45,f0312cc3,22,emir,,claude-fable-5-1,148,"kontrol sorularını sen cevapla, sonra ders 3'e geç,ama anlatımı daha detaylı dolayısıyla daha sade bir dille yap(daha fazla okuma fedakarlığ",ddd0140a-1ee5-4682-a4b7-c62c7c100107
+19,2026-09-08,10:12,f0312cc3,21,diger,,claude-fable-5-1,91,-2-0 olur -teklif sayısı çok fazla olursa dağılıma göre de anlamlı sonuç çıkarabilmek için,0ee1318e-f4a6-4f0b-b344-4476dfc8cb6e
+20,2026-09-08,10:00,f0312cc3,20,soru,,claude-fable-5-1,139,"@""/Users/HasanSalihSahin/Downloads/galeri_trim_tasarim.html"" html bu,ama ne yapıldığını baştan detaylıca anlattığın bir seri olarak tasarla",5ed72507-f878-4113-be9a-19c7f5eb966c
+21,2026-09-08,09:47,f0312cc3,19,emir,,claude-fable-5-1,451,"-anladım, ders 7'ye geç ama catboost koşumu yapılmayacak dün akşam bir döküman geldi zaten halihazırda bir şey yapılmış yapılan şeyi anlamay",251b2263-b453-4607-89ac-057b4643396b
+22,2026-09-07,18:08,f0312cc3,18,emir,,claude-fable-5-1,729,""" Düzeltme: rastgele beklenen uyumu çıkar Fikir: ""Bu iki bölme, küme boyutları aynı kalıp galeriler rastgele karılsaydı ne kadar uyuşurdu?"" ",aad70030-b6e5-4695-875a-dfab28510928
+23,2026-09-07,17:25,f0312cc3,17,emir,,claude-fable-5-1,1080,""" Karşılaştırma sayısı. İki bölme galerilere farklı numara vermiş olabilir; A'da ""küme 1"" B'de ""küme 3"" olabilir. Numaraya bakmadan karşılaş",5c677fd9-1f0a-4e06-96f6-c15837279728
+24,2026-09-07,15:23,f0312cc3,16,soru,,claude-fable-5-1,166,"diresek+kararlılık+silhouette kavramlarını daha detaylı 0'dan açıkla,ayrıca bunları tam olarak anlamak lisans seviyesi mi yüksek lisans sevi",c71beb1e-4210-4eeb-b083-18137b588413
+25,2026-09-07,14:54,f0312cc3,15,emir,,claude-fable-5-1,12,ders 5'e geç,e484afa8-bc06-4bee-b89f-339226449a09
+26,2026-09-07,14:30,f0312cc3,14,emir,,claude-fable-5-1,12,ders 4'e geç,86b0141e-2da5-4cea-b3ad-5cb67a5af242
+27,2026-09-07,14:27,f0312cc3,13,diger,,claude-fable-5-1,30,kontrol sorularını sen cevapla,fb3fdab0-cbd3-4d6a-987e-912d3b896307
+28,2026-09-07,14:15,f0312cc3,12,emir,,claude-fable-5-1,21,"anladım, ders 3'e geç",4547af40-f59c-4f7c-a31f-bab09f6a6ef4
+29,2026-09-07,14:10,f0312cc3,11,emir,,claude-fable-5-1,232,"1-hesabı sen yapıp yaz 2- marka açısından çok,yıl açısından az bence 3- bir de gower'da kategorik olan herhangi 2 farklılık hep 1 değeri dön",477e5758-e5fb-4b50-a2d9-e1c2a9159f05
+30,2026-09-07,14:03,f0312cc3,10,onay/devam,,claude-fable-5-1,28,"tamam anladım, ders 2'ye geç",d9bbfad2-4c9d-4b30-a36a-a8cb261892aa
+31,2026-09-07,14:00,f0312cc3,9,diger,,claude-fable-5-1,188,""" d(535, 13051): yıl farkı = 0,34 − 0,63 = −0,29 → karesi 0,084 km farkı = −0,40 − (−0,75) = 0,35 → karesi 0,123 toplam 0,207 → karekök 0,45",7d48a7bf-1326-4b20-b585-47f0d1a87f09
+32,2026-09-07,13:54,f0312cc3,8,soru,,claude-fable-5-1,558,""" Çözüm her boyutu kendi ölçeğine bölmek: z = (değer − boyutun ortalaması) / boyutun standart sapması Bu veride yıl ortalaması 2022, sapması",833b6120-523a-497b-9175-d7cf00a2f3b0
+33,2026-09-07,13:39,f0312cc3,7,diger,,claude-fable-5-1,553,"A ile başlayacağız,fakat birkaç dipnot var: -vektör kurgusunu verdiğim prompta verdiğin cevabı hiç anlamadım,onun bağlamında da bu cevapta c",b734c9a2-8e3e-4a72-ae06-7add2458c4c9
+34,2026-09-07,12:08,f0312cc3,6,soru,,claude-fable-5-1,278,"planların hepsi iptal,farklı bir yöntem denenecek:galeriler üzerinde kümeleme yapıp sahip olduğu kümeyi labellayarak model eğitmeyi düşünüyo",092deac7-0e03-4caa-98c1-cd3000449090
+35,2026-09-04,17:39,f0312cc3,5,soru,,claude-fable-5-1,263,kabaca anlatmak gerekirse sahibinden ve ilan verilerinin her ikjisini de içeren kesişim kümesinden birtakım değerler çıakrıp bu bilgilerin e,f2b96a5e-b81b-4bd6-a91f-541088c0c5bb
+36,2026-09-04,17:28,f0312cc3,4,soru,,claude-fable-5-1,2489,"şimdi tüm görevler iptal,yeni bir görev ve yeni bir bakış açısıyla bu durumu çözeceğiz: şimdi elimizde 2 tane vektör uzayı var,birisi ihale ",2312b04f-d503-42d4-b5e4-e89edbb736b9
+37,2026-09-04,14:09,f0312cc3,3,emir,,claude-fable-5-1,110,önerilerini data ekibine sunmak adına anlatım formatında yazı oluştur (sorun ve çözümü beraber olacak şekilde),aff10cb7-8053-437e-bc93-69ef1c31e69a
+38,2026-09-04,13:51,f0312cc3,2,emir,,claude-fable-5-1,38,önerilerini daha detaylı yaz anlamadım,f6324892-992b-40f3-9e89-4b89f2788344
+39,2026-09-04,13:42,f0312cc3,1,soru,,claude-fable-5-1,2771,bu oturum agac-semasi html ile ilgilendiğim datalarla catboost model eğittiğim oturumun devamı olacak: aklımda şöyle bir fikir var sebebi 2 ,0c1d4ee5-c175-4845-a9bf-1046094c7d9a
+40,2026-09-04,12:09,67243832,11,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,4e64c944-40ed-4d94-8a3c-b43e6e646fff
+41,2026-09-04,11:30,67243832,10,emir,,claude-fable-5-1,5336,""" `data-etl` reposundaki `dags/b2b/galeri_scoring_etl.py` ve `dags/b2b/queries/extract_training_data.sql` dosyalarında, `public.galeri_scori",a2b655db-f60f-4dc9-ad84-943c3b0f9142
+42,2026-09-04,10:54,58c53788,4,diger,,claude-sonnet-5,35,logloss ile querysoftmax farkı nedr,2760d737-d2e9-4b3a-8646-ef3785661377
+43,2026-09-04,10:47,58c53788,3,emir,,claude-sonnet-5,105,logloss nasıl çalışır onu da 0'dan mekanizmasını örnek bir senaryoda anlattığın eğitim seti oluştur başla,2a2ba9f9-0ae6-4f9e-8506-eba0ecf5eeb8
+44,2026-09-04,10:41,58c53788,2,diger,,claude-sonnet-5,104,"yetirank ile mekanizme farkını örnek bir senaryoda anlat(bilgiyi tam olarak ver,temelden başlayarak ver)",eaece793-0d61-455a-a034-0220c500d485
+45,2026-09-04,10:34,58c53788,1,soru,,claude-sonnet-5,52,pairlogit nasıl çalışır en temelden başlayarak anlat,24cf94be-100e-48bf-b3e8-049049566f03
+46,2026-09-04,10:27,67243832,9,soru,,claude-sonnet-5,85,html'de shap hiyerarşisi sekmesi ile feature importance sekmesi arasındaki fark nedir,1c3b309a-7ee9-4dce-b27c-d9d4030862a9
+47,2026-09-04,10:17,485ccfaf,7,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,636a89fd-1cfa-4bce-beea-8e639c044c2f
+48,2026-09-04,10:15,3ed3cca0,10,onay/devam,,claude-sonnet-5,13,evet devam et,f025ce54-48a3-49e6-9d71-e10477e1d446
+49,2026-09-04,10:12,084f221c,3,soru,,claude-sonnet-5,133,agac-semasi html dosyasında feature importance ve shap hiyerarşisi 2 farklı sekme olarak bulunuyor.bunlar ne anlatıyor farkları nedir,2c4d76aa-f7af-48b8-86d2-bcc834fd99e0
+50,2026-09-04,10:08,485ccfaf,6,onay/devam,,claude-fable-5-1,9,push onay,9477cb06-11bf-4edb-9881-ad8719ca190b
