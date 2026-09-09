@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Word-RAM mekanizması — machine word, CPU, w bit, adres sığma</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --ink: #e8eaf0; --muted: #9aa3b2;
+    --line: #2a2f3a; --accent: #56B4E9; --accent2: #E69F00; --accent3: #009E73;
+    --warn: #D55E00; --code: #1b1e26;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family: -apple-system, "Segoe UI", sans-serif; line-height:1.55; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 22px 60px; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .kaynak { color: var(--muted); font-size: 0.82rem; margin-bottom: 22px; border-left: 3px solid var(--line); padding-left: 10px; }
+  .hedef { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin-bottom: 26px; font-size: 0.95rem; }
+  .hedef b { color: var(--accent2); }
+  section { margin-bottom: 30px; }
+  h2 { font-size: 1.05rem; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 14px; }
+  h2 .no { color: var(--muted); font-weight: 400; margin-right: 6px; }
+  p { margin: 6px 0; }
+  .svgbox { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; overflow-x: auto; }
+  svg { display:block; margin: 0 auto; }
+  .not { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.92rem; }
+  th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; }
+  th { background: var(--panel); color: var(--accent2); }
+  code { background: var(--code); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+  ul.tuzak li { margin-bottom: 6px; }
+  .tuzak li::marker { content: "⚠ "; }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
+  summary { cursor: pointer; font-weight: 500; }
+  details p { color: var(--accent3); margin-top: 8px; }
+  .pill { display:inline-block; background:var(--code); border:1px solid var(--line); border-radius:6px; padding:2px 8px; margin:2px; font-size:0.85rem; }
+  .sonraki { color: var(--muted); font-size: 0.85rem; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Word-RAM mekanizması</h1>
+  <div class="kaynak">Kaynak: MIT 6.006 L1, Blok 5 (36:50–42:26) — <code>ogrenme/mit-6006/dersler/2026-08-29-L01-algoritma-ve-hesaplama.md#blok-5</code> · el-yapımı görsel (skill değil, doğrudan yazıldı — 2026-09-04)</div>
+
+  <div class="hedef">
+    <b>Bu görselden sonra yapabilmelisin:</b> CPU'nun bellekten neden tek seferde birden çok bayt (bir "kelime") okuyup O(1) sürede işleyebildiğini, ve adresin neden sonsuz büyüyemeyeceğini (w bite sığma sınırı) açıklayabilmek.
+  </div>
+
+  <section>
+    <h2><span class="no">1.</span>Mekanizma: CPU bellekten bir kelime nasıl okur</h2>
+    <p>Aşağıda bellek, tek tek adreslenmiş bayt hücrelerinden oluşan bir şerit olarak çizildi. CPU bir adres gönderir; bellek o adresten başlayan <b>tek bir kelimeyi</b> (burada w=32 bit = 4 bayt örneği) CPU'ya tek hamlede döndürür — 4 ayrı okuma değil, TEK okuma.</p>
+    <div class="svgbox">
+<svg viewBox="0 0 860 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CPU bellekten adresle bir kelime okur">
+  <!-- CPU box -->
+  <g>
+    <rect x="20" y="90" width="150" height="120" rx="10" fill="#1b1e26" stroke="#56B4E9" stroke-width="2"/>
+    <text x="95" y="120" text-anchor="middle" fill="#e8eaf0" font-size="16" font-weight="600">CPU</text>
+    <text x="95" y="145" text-anchor="middle" fill="#9aa3b2" font-size="11">w = 32 bit</text>
+    <text x="95" y="163" text-anchor="middle" fill="#9aa3b2" font-size="11">kelime = 4 bayt</text>
+    <rect x="35" y="175" width="120" height="22" rx="4" fill="#0f1115" stroke="#2a2f3a"/>
+    <text x="95" y="190" text-anchor="middle" fill="#E69F00" font-size="11">+ − × ÷ % == &lt; &gt;</text>
+  </g>
+
+  <!-- arrow: address out -->
+  <line x1="185" y1="130" x2="260" y2="130" stroke="#E69F00" stroke-width="2" marker-end="url(#arrowY)"/>
+  <text x="222" y="117" text-anchor="middle" fill="#E69F00" font-size="10">adres: 8</text>
+
+  <!-- arrow: word back -->
+  <line x1="260" y1="170" x2="185" y2="170" stroke="#009E73" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="222" y="188" text-anchor="middle" fill="#009E73" font-size="10">kelime (O(1))</text>
+
+  <!-- memory strip -->
+  <g transform="translate(280,60)">
+    <text x="0" y="-10" fill="#9aa3b2" font-size="11">bellek (bayt adresli hücreler)</text>
+    <!-- 16 cells -->
+    <!-- generate 16 rects programmatically inline -->
+    <g id="cells">
+      <!-- cell 0..7 -->
+      <rect x="0"  y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="34" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="68" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="102" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="136" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="170" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="204" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="238" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <!-- highlighted word: addresses 8-11 -->
+      <rect x="272" y="0" width="34" height="40" fill="#0d3b45" stroke="#56B4E9" stroke-width="2"/>
+      <rect x="306" y="0" width="34" height="40" fill="#0d3b45" stroke="#56B4E9" stroke-width="2"/>
+      <rect x="340" y="0" width="34" height="40" fill="#0d3b45" stroke="#56B4E9" stroke-width="2"/>
+      <rect x="374" y="0" width="34" height="40" fill="#0d3b45" stroke="#56B4E9" stroke-width="2"/>
+      <rect x="408" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="442" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="476" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+      <rect x="510" y="0" width="34" height="40" fill="#171a21" stroke="#2a2f3a"/>
+    </g>
+    <!-- address labels -->
+    <g font-size="9" fill="#9aa3b2" text-anchor="middle">
+      <text x="17" y="53">0</text><text x="51" y="53">1</text><text x="85" y="53">2</text><text x="119" y="53">3</text>
+      <text x="153" y="53">4</text><text x="187" y="53">5</text><text x="221" y="53">6</text><text x="255" y="53">7</text>
+      <text x="289" y="53" fill="#56B4E9" font-weight="700">8</text><text x="323" y="53" fill="#56B4E9" font-weight="700">9</text>
+      <text x="357" y="53" fill="#56B4E9" font-weight="700">10</text><text x="391" y="53" fill="#56B4E9" font-weight="700">11</text>
+      <text x="425" y="53">12</text><text x="459" y="53">13</text><text x="493" y="53">14</text><text x="527" y="53">15</text>
+    </g>
+    <!-- bracket over highlighted word -->
+    <path d="M 272 -14 L 272 -22 L 406 -22 L 406 -14" fill="none" stroke="#56B4E9" stroke-width="1.5"/>
+    <text x="339" y="-28" text-anchor="middle" fill="#56B4E9" font-size="11">1 kelime = 4 bayt = 32 bit (tek hamlede okunur/yazılır)</text>
+  </g>
+
+  <defs>
+    <marker id="arrowY" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#E69F00"/></marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#009E73"/></marker>
+  </defs>
+</svg>
+    </div>
+    <p class="not">Mavi çerçeveli 4 hücre tek bir "kelime"dir — CPU bunları tek işlemde okur/yazar, adres tek tek hücrelerin değil, kelimenin başlangıcının adresidir (burada 8).</p>
+  </section>
+
+  <section>
+    <h2><span class="no">2.</span>Adres w bite sığmak zorunda — büyüklük nereden geliyor</h2>
+    <p>w bitlik bir adresle en fazla 2 üzeri w farklı hücre numaralandırılabilir. w arttıkça adreslenebilir bellek <b>üstel</b> büyür:</p>
+    <table>
+      <tr><th>w (bit)</th><th>adres sayısı</th><th>bellek sınırı</th><th>hesap</th></tr>
+      <tr><td>32</td><td>2³²</td><td>4 GiB</td><td>2³² bayt = 4×2³⁰ bayt</td></tr>
+      <tr><td>64</td><td>2⁶⁴</td><td>~16 EiB</td><td>2⁶⁴ bayt = 16×2⁶⁰ bayt</td></tr>
+    </table>
+    <p class="not">32'den 64'e — sadece 2 katı — geçmek adres uzayını 2³² kat büyütüyor. Bugünkü makinelerde w = <span class="pill">64</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">3.</span>CPU'nun O(1) saydığı işlemler</h2>
+    <p>
+      <span class="pill">tamsayı aritmetiği (+ − × ÷ %)</span>
+      <span class="pill">karşılaştırma (== &lt; &gt; ≤ ≥)</span>
+      <span class="pill">mantıksal (∧ ∨ ¬)</span>
+      <span class="pill">adresli oku/yaz</span>
+    </p>
+    <p>Hepsi w bitlik <b>sabit sayıda</b> kelime üzerinde çalışır — bu yüzden girdi boyutundan bağımsız, sabit sürede sayılır.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">4.</span>Karşıt örnek — bu O(1) DEĞİL</h2>
+    <p>n kelimelik bir bloğun <b>tamamını</b> okumak Θ(n)'dir: CPU tek adımda yalnız bir kelimeye dokunabilir; n kelimeye dokunmak en az n ayrı adım gerektirir. Yukarıdaki resimde tek bir mavi blok okumak O(1); şeridin TAMAMINI baştan sona okumak Θ(n).</p>
+  </section>
+
+  <section>
+    <h2><span class="no">5.</span>Kendini sına</h2>
+    <details><summary>1. Neden w=64, w=32'den "iki kat" değil çok daha fazla bellek adresler?</summary><p>Çünkü adres sayısı 2 üzeri w — üstel ilişki. w'yi 2 katına çıkarmak adres uzayını 2³² kat büyütür, doğrusal değil.</p></details>
+    <details><summary>2. Yukarıdaki resimde adres "8" gönderildiğinde CPU'ya kaç bayt döner?</summary><p>4 bayt (1 kelime, w=32 bit) — tek hamlede, mavi çerçeveli 4 hücrenin tamamı.</p></details>
+    <details><summary>3. n kelimelik bir bloğun tamamını taramak neden Θ(n)'dir, O(1) değil?</summary><p>CPU'nun tek adımda dokunabildiği kelime sayısı sabit (O(1)); n kelimeye dokunmak bu sabit-boyutlu adımdan en az n tane gerektirir.</p></details>
+  </section>
+
+  <section>
+    <h2><span class="no">6.</span>Tuzaklar</h2>
+    <ul class="tuzak">
+      <li>"Kelime" (word) günlük dildeki sözcük değil — CPU'nun bir hamlede işlediği sabit bit-genişliğindeki bloktur.</li>
+      <li>"Sabit sürede erişim" = "sınırsız bellek" demek değildir; adres w bite sığmalı (w ≥ log₂ n).</li>
+      <li>Θ(1) "anlık, süre almaz" demek değil — "girdi boyutundan bağımsız sabit süre" demektir.</li>
+    </ul>
+  </section>
+
+  <div class="sonraki">Sonraki adım: Blok 6 — StaticArray (Word-RAM üzerine kurulan ilk somut veri yapısı; <code>get_at</code>/<code>set_at</code> neden Θ(1)).</div>
+
+</div>
+</body>
+</html>
