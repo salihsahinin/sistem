@@ -44,6 +44,6 @@ Kapsam: ZtH Ders 7 + Ders 8 + "Deep Dive into LLMs" içeriğinin kavramsal karş
 ## Açık kararlar
 - ~~P0 durumu~~ KARARA BAĞLANDI (07-15): mini-teşhis açılışı (yukarıda).
 - **Fatebook — BEKLEMEDE (Salih, 07-15):** "önce sistemi anlayayım (en kötü sezgisel), sonra belki hafif revize ederek kullanırız" → sıra: kalibrasyon/Brier kavramı P19'da (ya da erken mini-anlatımla) anlaşılır → SONRA benimseme kararı; muhtemel yol dosya-temelli/revize kullanım. O zamana dek senaryo-defteri tahminleri defterde birikir, skorlanmaz.
-- İlk oturum tarihi ("günaydın, öğrenme") — tetik ÇEKİLEBİLİR; paralel deneme = JARVIS + öğrenme çifti.
+- İlk oturum tarihi (tetik "seans başı" + Salih yüzeyi adlandırır; "günaydın, öğrenme" kalıbı 09-09 KALDIRILDI) — tetik ÇEKİLEBİLİR; paralel deneme = JARVIS + öğrenme çifti.
 - **AÇIK BORÇ — gerçek tokenizer ölçümü (07-15, Opus oturumu):** Türkçe/İngilizce token oranı kendi tokenizer'ımızla ÖLÇÜLEMEDİ (tiktoken openaipublic 403 + HF SOCKS proxy bloklu). Şimdilik proxy rakam: GPT-4o ~1.5x (eski BPE ~2x). P1'de çevrimdışı BPE ya da Claude'un kendi tokenizer'ıyla ölç. Karar: kanon Türkçe kalsın (Salih Katman-1; okunabilirlik > ~1.5x, prototipte bağlayıcı değil) — detay ders kaydında.
 - **P0 durumu KAPANDI (07-15 Opus):** P0-a + P0-b DONE; Yarı-2 (m.37 3-model) P1/P3/P5-P6'ya foldlandı (Katman-2, devir talimatı notu).
