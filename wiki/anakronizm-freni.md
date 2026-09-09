@@ -41,6 +41,9 @@
 - halüsinasyon paketi v2 "tazelik" bayrağı (+1) → **tamamlandı [2026-08-26]:** bayrak derecelendirir, bu sayfa mekanizmayı verir.
 - `cc/gorev-2026-08-26-2.md` KANON bloğu "Carvis kesimi Ocak 2026" → **düzeltildi [2026-08-26]:** doğru ama modelsizdi; model-başına tablo `veri/model-kesim.jsonl`.
 
+## Muafiyet — tarihli dosya (Karar 88 M4, Salih 2026-09-09)
+`raporlar/` ∨ `cc/` altında adında `YYYY-MM-DD` taşıyan dosya D1/D2'den MUAF (`tarihli_muaf()`, `tools/anakronizm-denetim.py`). Gerekçe: rapor o günün kaydıdır, damga zaten dosya adında — içerik bir daha AS-OF taşımak zorunda değil; okuyan dosyanın adındaki tarihi AS-OF sayar. `core/` ve `wiki/` bu muafiyetten HARİÇ (kanon dosyaları kalıcıdır, zaman-bağımlı iddia her koşulda damga ister). `--muafiyet-yok` eski davranışı geri verir.
+
 ## Bağlantılar
 [[dil-secimi]] (tetikleyen vaka) · [[silver-saglik]] (bayatlık adayları T-B) · [[adversarial-hayatta-kalma]] · [[olcum-banki]] (m.39 rakam damgası) · [[paralel-oturum-protokolu]] · [[baglam-veri-ambari]] (bitemporal) · [[pointer-sistemi]] (adres + tarih) · [[stokastik-dusunce]] (Karar 65)
 

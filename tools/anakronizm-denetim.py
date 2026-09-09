@@ -137,6 +137,12 @@ def d3_bayatlik(yol, metin, bugun, esik, cekim=None):
     return [{"denetim": "D3", "dosya": yol, "satir": 0, "kalip": en_yeni.isoformat(), "ornek": "-", "yas_gun": yas, "not": "en yeni damga eşiği aştı → BAYAT-ADAY (yeniden-çekim kuyruğu; silme yok)"}]
 
 
+def tarihli_muaf(yol):
+    """Karar 88 M4 (Salih hükmü 2026-09-09): yol raporlar/ ∨ cc/ ile başlıyor ∧ dosya adı YYYY-MM-DD taşıyor → D1/D2 muaf
+    (dosya adındaki tarih AS-OF damgası sayılır; rapor = o günün kaydı). core/ ve wiki/ bu muafiyetten HARİÇ."""
+    return yol.startswith(("raporlar/", "cc/")) and re.search(r"\d{4}-\d{2}-\d{2}", os.path.basename(yol)) is not None
+
+
 def varsayilan_kapsam(repo, bugun):
     r = sh(["git", "ls-files", "-z"], repo)
     if r.returncode != 0:
@@ -163,6 +169,7 @@ def main():
     ap.add_argument("--bugun", default=None, help="YYYY-MM-DD (varsayılan sistem tarihi)")
     ap.add_argument("--json", action="store_true"); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     ap.add_argument("--kalip-listesi", action="store_true")
+    ap.add_argument("--muafiyet-yok", action="store_true", help="Karar 88 M4 tarihli-dosya muafiyetini kapat (eski davranış)")
     a = ap.parse_args()
     if a.kalip_listesi:
         print("ZAMAN-ÇİVİ:", " | ".join(ZAMAN_CIVI)); print("SÜRÜM/SKOR:", " | ".join(SURUM_SKOR)); print("TARİH (muaf kılar):", " | ".join(TARIH)); return 0
@@ -182,12 +189,18 @@ def main():
     kosum_id = "anakronizm:%s:%s" % (head, bugun.isoformat())
     bulgular = []
     cekim = cekim_olaylari(repo)
+    n_muaf = 0
     for f in dosyalar:
         try:
             metin = open(os.path.join(repo, f), encoding="utf-8", errors="replace").read()
         except OSError:
             continue
-        bulgular += d1_zaman_civi(f, metin) + d2_damga_varligi(f, metin) + d3_bayatlik(f, metin, bugun, a.esik_gun, cekim.get(f))
+        muaf = (not a.muafiyet_yok) and tarihli_muaf(f)
+        if muaf:
+            n_muaf += 1
+            bulgular += d3_bayatlik(f, metin, bugun, a.esik_gun, cekim.get(f))
+        else:
+            bulgular += d1_zaman_civi(f, metin) + d2_damga_varligi(f, metin) + d3_bayatlik(f, metin, bugun, a.esik_gun, cekim.get(f))
     for b in bulgular:
         b.update({"ts": ts, "kod_sha": head, "kosum_id": kosum_id})
     for b in bulgular:
@@ -203,12 +216,12 @@ def main():
             fh.write("dosya,en_yeni_damga,yas_gun,esik_gun,bugun,kod_sha\n")
             for b in sorted((b for b in bulgular if b["denetim"] == "D3"), key=lambda x: -x["yas_gun"]):
                 fh.write("%s,%s,%d,%d,%s,%s\n" % (b["dosya"], b["kalip"], b["yas_gun"], a.esik_gun, bugun.isoformat(), head))
-    sonuc = {"ts": ts, "kod_sha": head, "kosum_id": kosum_id, "bugun": bugun.isoformat(), "dosya_sayisi": len(dosyalar), "D1_ihlal": n1, "D1_uyari": n1u, "D2": n2, "D3": n3,
+    sonuc = {"ts": ts, "kod_sha": head, "kosum_id": kosum_id, "bugun": bugun.isoformat(), "dosya_sayisi": len(dosyalar), "tarihli_muaf": n_muaf, "D1_ihlal": n1, "D1_uyari": n1u, "D2": n2, "D3": n3,
              "bulgular": bulgular, "yazildi": not a.kuru}
     if a.json:
         print(json.dumps(sonuc, ensure_ascii=False, indent=1))
     elif not a.sessiz:
-        print("ANAKRONİZM DENETİMİ · HEAD %s · bugün %s · %d dosya · D1 İHLAL (tarihsiz sürüm/skor) %d · D1 UYARI (zaman-çivi) %d · D2 damgasız-dosya %d · D3 bayat-aday %d (eşik %d gün)" % (head, bugun, len(dosyalar), n1, n1u, n2, n3, a.esik_gun))
+        print("ANAKRONİZM DENETİMİ · HEAD %s · bugün %s · %d dosya · tarihli-muaf %d · D1 İHLAL (tarihsiz sürüm/skor) %d · D1 UYARI (zaman-çivi) %d · D2 damgasız-dosya %d · D3 bayat-aday %d (eşik %d gün)" % (head, bugun, len(dosyalar), n_muaf, n1, n1u, n2, n3, a.esik_gun))
         onem = {"İHLAL": 0, "KUYRUK": 1, "UYARI": 2}
         for b in sorted(bulgular, key=lambda x: onem[x["seviye"]])[:60]:
             print("  [%s %s] %s:%s  %s  ← %s" % (b["denetim"], b["seviye"], b["dosya"], b["satir"], (b["kalip"] if b["denetim"] != "D3" else "yaş %d gün (damga %s)" % (b["yas_gun"], b["kalip"])), b["ornek"][:100]))
