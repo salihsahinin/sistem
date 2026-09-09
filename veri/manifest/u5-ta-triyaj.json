@@ -1,7 +1,7 @@
 {
   "birim_id": "u5-ta-triyaj",
   "aciklama": "Karar 83 B3 (a): T-A katmanlı triyaj scripti — tools/ta-triyaj.py deterministik ön-sınıflandırma + şiddet-sıralı ilk 20 → rapor",
-  "tur": "icra",
+  "tur": "pipeline",
   "pist": "cowork-icra-2026-09-03",
   "durum": "tamam",
   "oncelik": 1,
@@ -34,5 +34,6 @@
   "iterasyon_ayak_izi": "sabit",
   "tetik_turu": "seans",
   "durma_kosulu": null,
-  "kapsam_beyani": "deterministik, LLM YOK; şiddet formülü belirsizse formül raporda yazılır, seçim masaya bırakılır"
+  "kapsam_beyani": "deterministik, LLM YOK; şiddet formülü belirsizse formül raporda yazılır, seçim masaya bırakılır",
+  "tur_not": "eski tur=icra; Karar 88 M3 enum düzeltmesi 2026-09-09"
 }

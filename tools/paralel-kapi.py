@@ -90,6 +90,8 @@ def cakisma(x, y):
 def canli(b): return str(b.get('durum', '')).startswith('canli')
 def tamamlandi(b): return str(b.get('durum', '')).startswith(('tamam', 'kapandi'))
 
+TUR_ENUM = ('pipeline', 'loop', 'hibrit', 'matris', 'belirsiz')
+
 def tur_turet(b):
     """Saf fonksiyon (LLM YOK, deterministik) — manifestin `tur` alanını mevcut alanlardan TÜRETİR.
 
@@ -104,19 +106,29 @@ def tur_turet(b):
       Y2 tekrar-sayısı bilinir? ← dis_tavan alanı dolu (§232: hibrit/loop için dış-tavan zorunlu alanı)
       Y3 iç-sıra sabit?        ← iterasyon_ayak_izi == 'sabit' (PK-10 kuralı zaten 'sabit'/'buyuyen' ayrımı kullanıyor)
     ¬Y1 ∧ Y3 → pipeline · Y1 ∧ ¬Y2 ∧ ¬Y3 → loop · Y1 ∧ Y3 → hibrit · aksi tüm kombinasyonlar → belirsiz (masaya).
+
+    Karar 88 M3 (Salih hükmü 2026-09-09): manifestte `tur_ustyazim` alanı VE dolu bir `tur_ustyazim_gerekce`
+    varsa türetilen değer yerine `tur_ustyazim` döner (yalnız Fable yazar — kapı bunu doğrulamaz, yalnız
+    uygular). `tur_ustyazim` var ama gerekçe boş/eksikse üstyazım YOK SAYILIR, türetilen değer döner
+    (uyarı `birim_uyarilari`'na düşer, bkz. orada).
     """
     if 'matris' in b or any(k.startswith('eksen') or k.startswith('hucre') for k in b):
-        return 'matris'
-    y1 = b.get('tetik_turu') not in (None, 'seans')
-    y3 = b.get('iterasyon_ayak_izi') == 'sabit'
-    y2 = b.get('dis_tavan') is not None
-    if not y1 and y3:
-        return 'pipeline'
-    if y1 and not y2 and not y3:
-        return 'loop'
-    if y1 and y3:
-        return 'hibrit'
-    return 'belirsiz'
+        turetilen = 'matris'
+    else:
+        y1 = b.get('tetik_turu') not in (None, 'seans')
+        y3 = b.get('iterasyon_ayak_izi') == 'sabit'
+        y2 = b.get('dis_tavan') is not None
+        if not y1 and y3:
+            turetilen = 'pipeline'
+        elif y1 and not y2 and not y3:
+            turetilen = 'loop'
+        elif y1 and y3:
+            turetilen = 'hibrit'
+        else:
+            turetilen = 'belirsiz'
+    if b.get('tur_ustyazim') and b.get('tur_ustyazim_gerekce'):
+        return b['tur_ustyazim']
+    return turetilen
 
 def hukum(x, y):
     sira = (y['birim_id'] in x['sira']) or (x['birim_id'] in y['sira'])
@@ -145,6 +157,10 @@ def hukum(x, y):
 
 def birim_uyarilari(b):
     u = []
+    if b.get('tur_ustyazim') and not b.get('tur_ustyazim_gerekce'):
+        u.append('Karar 88 M3: tur_ustyazim var ama tur_ustyazim_gerekce boş — üstyazım yok sayıldı, türetilen tur kullanıldı')
+    if b.get('tur') not in TUR_ENUM:
+        u.append(f"tur enum dışı: {b.get('tur')}")
     if b.get('belirlenimsiz_girdi') and not b.get('dogrulama_kapisi'):
         u.append('PK-2: belirlenimsiz girdi var, dogrulama_kapisi yok')
     if b.get('dis_etki') and not b.get('idempotency_anahtari'):

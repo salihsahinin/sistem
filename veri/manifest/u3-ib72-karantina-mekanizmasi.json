@@ -1,7 +1,7 @@
 {
   "birim_id": "u3-ib72-karantina-mekanizmasi",
   "aciklama": "İB-72 bayat-dosya karantina mekanizması: veri/karantina.jsonl şeması + tools/karantina.py (--ekle/--liste/--denetle) + katman-hatti.py/erisim-fts.py tarama dışlaması + testler",
-  "tur": "icra",
+  "tur": "pipeline",
   "pist": "cowork-icra-2026-09-03",
   "durum": "tamam",
   "oncelik": 1,
@@ -42,5 +42,6 @@
   "iterasyon_ayak_izi": "sabit",
   "tetik_turu": "seans",
   "durma_kosulu": null,
-  "kapsam_beyani": "tescil yetkisi yalnız Salih; bu birim yalnız MEKANİZMAYI kurar, hiçbir dosyayı karantinaya EKLEMEZ; silme YOK (m.8)"
+  "kapsam_beyani": "tescil yetkisi yalnız Salih; bu birim yalnız MEKANİZMAYI kurar, hiçbir dosyayı karantinaya EKLEMEZ; silme YOK (m.8)",
+  "tur_not": "eski tur=icra; Karar 88 M3 enum düzeltmesi 2026-09-09"
 }

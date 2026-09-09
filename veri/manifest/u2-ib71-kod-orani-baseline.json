@@ -1,7 +1,7 @@
 {
   "birim_id": "u2-ib71-kod-orani-baseline",
   "aciklama": "İB-71 baseline: tools/kod-orani-olcum.py (repo envanteri + bağlam-penceresi proxy'si) + veri/kod-orani.jsonl + rapor",
-  "tur": "icra",
+  "tur": "pipeline",
   "pist": "cowork-icra-2026-09-03",
   "durum": "tamam",
   "oncelik": 1,
@@ -36,5 +36,6 @@
   "iterasyon_ayak_izi": "sabit",
   "tetik_turu": "seans",
   "durma_kosulu": null,
-  "kapsam_beyani": "tur önerisi YAZILMAZ (masa/Fable işi); stdlib-only, LLM yok, AXI A1/A2/A7 uyumlu"
+  "kapsam_beyani": "tur önerisi YAZILMAZ (masa/Fable işi); stdlib-only, LLM yok, AXI A1/A2/A7 uyumlu",
+  "tur_not": "eski tur=icra; Karar 88 M3 enum düzeltmesi 2026-09-09"
 }

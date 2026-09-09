@@ -60,6 +60,18 @@ class TurTuretTestleri(unittest.TestCase):
         b = birim(tetik_turu="seans", iterasyon_ayak_izi="sabit", matris={"hucre_tipi": "tek_cagri"})
         self.assertEqual(self.pk.tur_turet(b), "matris")
 
+    def test_ustyazim_gerekceli(self):
+        # Karar 88 M3: tur_ustyazim + dolu tur_ustyazim_gerekce → türetilen yerine üstyazım döner
+        b = birim(tetik_turu="seans", iterasyon_ayak_izi="buyuyen",  # türetilen: belirsiz
+                   tur_ustyazim="loop", tur_ustyazim_gerekce="Fable: iç gözlem — bu birim aslında loop")
+        self.assertEqual(self.pk.tur_turet(b), "loop")
+
+    def test_uyari_enum_disi_tur(self):
+        # Karar 88 M3: manifestteki `tur` alanı enum dışıysa (ör. eski 'icra') uyarı listesine düşer
+        b = birim(tur="icra", tetik_turu="seans", iterasyon_ayak_izi="sabit")
+        u = self.pk.birim_uyarilari(b)
+        self.assertTrue(any("enum dışı" in satir for satir in u))
+
 
 class TamamBirimDusurmeTestleri(unittest.TestCase):
     """Kapı v0.2: durum='tamam*'|'kapandi*' birim dalga planından ve çakışma taramasından düşer."""
