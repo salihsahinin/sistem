@@ -1,5 +1,7 @@
 # Problem Çözme Eğitim Serisi — Tasarım v0 (2026-09-08)
 
+> **v1'e GEÇİLDİ (2026-09-09, Salih kararı):** güncel tasarım `seri-tasarimi-v1.md`; bu dosya arşiv-pointer (m.8). Revizyon gerekçesi `raporlar/2026-09-09-problem-cozme-ai-cagi-atlas.md` §3.
+
 > **Ne bu:** Salih'in problem çözme yeteneğini lisans düzeyinden ileri seviyeye taşımak için 8 temel başlıkta, seviyeli (L0→L3) eğitim serisi listesi. Her seviyenin **kaynağı, pratik biçimi ve ölçülebilir çıkış ölçütü** yazılıdır; "bitti" hissi değil, sayılabilir çıktı ölçülür (m.29/m.39). Bu dosya LİSTE + HARİTA'dır; dersler `ogrenme/problem-cozme/dersler/` altına, ilerleme `ilerleme.md`'ye düşer (mit-6006 deseniyle aynı).
 > **Varsayımlar:** Salih üniversite öğrencisi; veri/ML işi yapıyor (galeri şeridi, SHAP, GBM dersleri); MIT 6.006 + 6.042J kursları zaten açık (`ogrenme/mit-6006`, `ogrenme/mit-6042j`) — bu seri onları YENİDEN başlatmaz, içine yerleştirir (hazırı temel al, Salih 08-17).
 > **Kaynak damgası (Karar 68):** kitap/kurs adları model hafızasından, AS-OF ≤ 2026-01, canlı doğrulanmadı; baskı/yıl iddiası yok. Ders başlarken ilgili kaynağın erişilebilirliği o gün doğrulanır.
