@@ -23,7 +23,7 @@ def _katman_yerel(yol):
     Ek sınıflar (08-29 yeni seans, test listesi): Clippings/ · tools/*.md · veri/sozlesme/*.md · cc/karar-onerisi-* · kök-dışı README.md · .claude-dışı SKILL.md — eski ılık, silver soğuk."""
     if yol == 'CLAUDE.md' or yol.startswith('core/') or (yol.startswith('.claude/skills/') and yol.endswith('/SKILL.md')):
         return 'sicak'
-    if yol.startswith(('raporlar/', 'cc/rapor-', 'cc/gorev-', 'ogrenme/')) or yol.startswith('model de'):
+    if yol.startswith(('raporlar/', 'cc/rapor/', 'cc/gorev/', 'ogrenme/')) or yol.startswith('model de'):
         return 'soguk'
     if yol.startswith(('arsiv/', 'kuyruk/gelen-')):
         return 'soguk'

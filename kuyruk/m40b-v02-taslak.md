@@ -1,6 +1,6 @@
 # m.40b v0.2 — multi-hop diyalektik (İMZALANDI 2026-07-21; tüzüğe İŞLENDİ)
 
-*(İmza masası kalemi. Fable hükmü 2026-07-21 günaydın vardiyası — Salih delegasyonu: CC yan-oturum karar dosyası `raporlar/2026-07-21-cc-yan-oturum-devri.md` §2 K1/K2, "nihai hükmü Fable verir". Salih imzasıyla tüzük m.40 ek fıkrasına işlenir; imzaya dek çift-atlas v0.1 yürürlükte kalır. Kanıt tabanı: `raporlar/2026-07-21-multihop-oneshot-literatur.md` [54 kaynak, D/K/X etiketli].)*
+*(İmza masası kalemi. Fable hükmü 2026-07-21 günaydın vardiyası — Salih delegasyonu: CC yan-oturum karar dosyası `raporlar/2026-07/2026-07-21-cc-yan-oturum-devri.md` §2 K1/K2, "nihai hükmü Fable verir". Salih imzasıyla tüzük m.40 ek fıkrasına işlenir; imzaya dek çift-atlas v0.1 yürürlükte kalır. Kanıt tabanı: `raporlar/2026-07/2026-07-21-multihop-oneshot-literatur.md` [54 kaynak, D/K/X etiketli].)*
 
 ## Amendment metni (tüzüğe girecek hali)
 

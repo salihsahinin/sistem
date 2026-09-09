@@ -5,7 +5,7 @@ Salih emri 2026-09-03 22:10: "görselleştir skillini sil, beğenmedim." Skill a
 - `skill/` — eski `.claude/skills/gorsellestir/` (SKILL.md, karar tablosu, örnek spec'ler, eval)
 - `tools/gorsellestir.py` — eski `tools/gorsellestir.py` (LLM'siz kapı + renderer)
 - `tools/test_gorsellestir.py` — eski `tools/testler/test_gorsellestir.py` (18 test; artık test süitinde koşmaz)
-- Atlas sentezi `raporlar/2026-09-03-ib77-gorsellestir-atlas.md` ve üretilmiş `raporlar/gorsel-*.html` yerinde kaldı; bronz kütük `veri/bronz/gorsel-olay.jsonl` kapandı.
+- Atlas sentezi `raporlar/2026-09/2026-09-03-ib77-gorsellestir-atlas.md` ve üretilmiş `raporlar/gorsel-*.html` yerinde kaldı; bronz kütük `veri/bronz/gorsel-olay.jsonl` kapandı.
 - `~/.claude/skills/gorsellestir` symlink'i kaldırıldı.
 
 Geri alma: dizinleri ters yola taşı + symlink'i yeniden kur.

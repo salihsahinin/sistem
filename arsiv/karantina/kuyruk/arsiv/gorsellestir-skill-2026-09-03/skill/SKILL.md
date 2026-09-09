@@ -1,7 +1,7 @@
 ---
 name: gorsellestir
 description: Salih "görselleştir" dediğinde o anki içeriği (son cevap ∨ belirtilen bölüm) sınıflandırır, literatür-tabanlı karar tablosuyla görsel türünü seçer, spec yazar, tools/gorsellestir.py ile tek-dosya HTML üretip LLM'siz kapıdan geçirir; yan-oturumda da çalışır. KULLANMA: resim üretimi, Lavish review, graf/ yeniden-üretimi, sözdizimi öğretimi.
-metadata: { owner: carvis, version: "0.1.0-deneysel-m29", kaynak: "raporlar/2026-09-03-ib77-gorsellestir-atlas.md" }
+metadata: { owner: carvis, version: "0.1.0-deneysel-m29", kaynak: "raporlar/2026-09/2026-09-03-ib77-gorsellestir-atlas.md" }
 ---
 
 # gorsellestir — o anki içeriği doğru görsele çevir (İB-77, v0.1, 2026-09-03)

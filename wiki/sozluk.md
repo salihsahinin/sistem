@@ -1,4 +1,4 @@
-> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Carvis Sozlugu.md`; tespit raporu: `raporlar/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim YOK, metin olduğu gibi.
+> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Carvis Sozlugu.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim YOK, metin olduğu gibi.
 
 # Carvis Sözlüğü
 
@@ -49,7 +49,7 @@ Akış bölünmeden atılan ham fikirler; tek satır yeter. Sınanmamıştır, k
 
 ---
 
-## Ölçekleme sözlüğü (Salih imzası 2026-08-01, 08-01-5 ingest K1 kararı; kaynak: `cc/rapor-2026-08-01-5.md` — sözlük koşumda test edildi, kaynak-alan terimi sızmadan tam rapor üretildi; iki satır rapor-tespitli revizyonla girdi)
+## Ölçekleme sözlüğü (Salih imzası 2026-08-01, 08-01-5 ingest K1 kararı; kaynak: `cc/rapor/2026-08/rapor-2026-08-01-5.md` — sözlük koşumda test edildi, kaynak-alan terimi sızmadan tam rapor üretildi; iki satır rapor-tespitli revizyonla girdi)
 
 - **ölçek** — bir sistemin büyüklüğünü tek sayıya indirgeyen ölçüt (karşılaştırma ekseni)
 - **uç-birim** — bir katmanda yan yana duran, tekrar eden en küçük işlem birimlerinden biri

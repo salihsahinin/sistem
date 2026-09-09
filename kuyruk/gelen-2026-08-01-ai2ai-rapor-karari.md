@@ -6,7 +6,7 @@
 
 - rapor-üretici-ajan(r) → format(r) = **AI-to-AI** ∧ ¬anlama-kaygısı(r) ∧ lojik-temelli(r) ∧ compile-hedefli(r)
 - anlama-ihtiyacı(r) → AYRI ajan koşumu (oku/yorumla — görev bitince)
-- insan-çıktı-ihtiyacı(r) → AYRI ajan koşumu (İNSAN-çeviri; mevcut emsal: `raporlar/2026-08-01-INSAN-son-10-rapor.md` derlemesi + `cc/gorev-2026-08-01-6.md` INSAN-compiler hattı)
+- insan-çıktı-ihtiyacı(r) → AYRI ajan koşumu (İNSAN-çeviri; mevcut emsal: `raporlar/2026-08/2026-08-01-INSAN-son-10-rapor.md` derlemesi + `cc/gorev/2026-08/gorev-2026-08-01-6.md` INSAN-compiler hattı)
 - Gerekçe (Salih): rapor-üretici ajana "anlaşılır yaz" yükü GÜRÜLTÜDÜR — anlama/çeviri sonraki katmanın işidir.
 
 ## Uygulama (Katman-2, hemen — Carvis emir-derleme pratiği)

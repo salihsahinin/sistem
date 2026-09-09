@@ -1,4 +1,4 @@
-# Karar tablosu v0 — içerik sınıfı → görsel tür → araç (İB-77 sentez §3, 2026-09-03; kaynak `raporlar/2026-09-03-ib77-gorsellestir-atlas.md`)
+# Karar tablosu v0 — içerik sınıfı → görsel tür → araç (İB-77 sentez §3, 2026-09-03; kaynak `raporlar/2026-09/2026-09-03-ib77-gorsellestir-atlas.md`)
 
 Damga: **D** = birincil kaynaklı, adversarial'dan sağlam · **DENEYSEL** = literatürde normatif kaynağı yok (hakem T1 = X), Munzner görev-soyutlamasından türetilmiş; 10 koşumluk kütükle kalibre edilir (m.29). `icerik_sinifi` enum'u `tools/gorsellestir.py` ile birebir aynıdır.
 

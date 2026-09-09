@@ -3,7 +3,7 @@
 
 Ayrım = erişim-tasarımı (Stonebraker&Çetintemel 2005): ambar tabloları yıldız/galaxy grain'li, MATERYALİZE, iki zaman sütunlu (bitemporal —
 system_time = üretim/commit anı, valid_time = olgunun gerçek anı; SQL:2011 ayrımı). Operasyonel taban (V-1) elle dokunulmaz; ambar ondan ve
-bronz kütüklerden DETERMİNİSTİK türer (kod SHA + girdi SHA). Kanıt: cc/rapor-2026-08-16-3.md (AB-YT1/YT2/YT4/YT5/YT6, CD-YT1/YT2/YT8).
+bronz kütüklerden DETERMİNİSTİK türer (kod SHA + girdi SHA). Kanıt: cc/rapor/2026-08/rapor-2026-08-16-3.md (AB-YT1/YT2/YT4/YT5/YT6, CD-YT1/YT2/YT8).
 
 BRONZ (yeni): veri/bronz/kosum-olay.jsonl — işçi-ajan koşum olayları (Workflow + Agent alt-ajan transkriptleri: ~/.claude/projects/<proje>/**/subagents/**/agent-*.jsonl);
   1 satır = 1 ajan koşumu {wf_id, agent_id, agent_type, aile/rol (ilk prompt'tan), model(ler), ts_bas, ts_son, sure_sn, token in/out/cache_read/cache_create, arac_cagrisi, oturum}.

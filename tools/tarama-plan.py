@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """tarama-plan.py — TARAMA-YÖNTEMİ plan-regresyon testi + tarama sözlüğü (SQLite EXPLAIN QUERY PLAN; STDLIB ONLY, Python 3.9).
-Pipeline cc/pipeline-2026-08-18-tarama-yontemleri.md SH-1; kanıt cc/rapor-2026-08-18-3.md (S1 katalog, S2 seçim kuralı, S3 tasarım).
+Pipeline cc/pipeline/pipeline-2026-08-18-tarama-yontemleri.md SH-1; kanıt cc/rapor/2026-08/rapor-2026-08-18-3.md (S1 katalog, S2 seçim kuralı, S3 tasarım).
 KB-53 İB-25 ("noktasal sorgu SCAN olmaz" testi) bu araçla kapsanır. Deneysel m.29.
 
 Ne yapar: tanımlı sorgu setini (noktasal N* · agregasyon A* · skip-scan adayı S* · LIKE önek L* · indekssiz join J* · OR O* · sıralı R*)

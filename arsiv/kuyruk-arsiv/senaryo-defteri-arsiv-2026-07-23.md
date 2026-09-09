@@ -35,7 +35,7 @@
 ### 2026-07-14 · P0-P6 · partisyon planı onayı
 - **Bağlam:** 07-14 kapanışında sunulan kronolojik partisyon planı (P1=15 Tem paralel · P2=16-20 Tem K-015+K-018 · P3=otonomi kapısı ~Ağu başı · P4=ölçüm+deney Ağu · P5=Jarvis v1+demo ≤10 Eki · P6=K-004 Kas) karar masasında.
 - **Seçenekler:** olduğu-gibi onay | onay + P5 minimum-demo sabitlemesi (kayma riskine karşılık) | revizyon | veto → ✅ onay + sabitleme
-- **Seçim:** Salih (07-14 sabah, Katman 1 — yön kararı): "kronolojik partisyon" çerçevesi teyit + önerilen sabitleme kabul. Plan dosyası: `raporlar/partisyon-plani-P0-P6-2026-07-14.md` (ilk sunumda dosyaya inmemişti — kalıcılık dersi orada kayıtlı).
+- **Seçim:** Salih (07-14 sabah, Katman 1 — yön kararı): "kronolojik partisyon" çerçevesi teyit + önerilen sabitleme kabul. Plan dosyası: `raporlar/2026-07/partisyon-plani-P0-P6-2026-07-14.md` (ilk sunumda dosyaya inmemişti — kalıcılık dersi orada kayıtlı).
 - **İlk tahminler (deneysel damga, m.39 — Brier için):** P1 DONE-tanımıyla kapanır: 0.80 · P2 20 Tem'e dek kapanır: 0.65 · P3 kapısı Ağu ilk haftasında açılır: 0.60 · P5 minimum demo ≤10 Eki: 0.60
 - **Gözlem:** her partisyon kapanışında tahmin-vs-gerçek buraya.
 - **Ders:** kritik sunum, sunulduğu vardiyada dosyaya iner (V43 ailesi — kapsül özeti tek başına kalıcılık değildir).
@@ -43,14 +43,14 @@
 ### 2026-07-15 · şerit düzeni · öğrenme şeridi + öncelik revizyonu (P1 yeniden şekillendi)
 - **Bağlam:** Salih günaydın emri: öğrenme oturumları şeridi + PortRisk 3. öncelik + Atlas'la müfredat araştırması. m.16 çelişki raporu sunuldu (P1 B-kanadı boşa düşer + P4 ölçüm girdisi gecikir, kritik yolda tampon yok).
 - **Seçenekler:** PortRisk bugün yine açılır (P1 aynen, ✅ Carvis önerisiydi) | B kanadı öğrenmeye devredilir | Carvis'e devir → Salih üçüncü yolu seçti: "birkaç gün odak sadece öğrenme + Jarvis; ölçüm bankı önemli olmaya başlayınca 3. oturum olarak tasarlanır."
-- **Seçim:** Salih (Katman 1 — yön kararı; 07-15 günaydın oturumu). P1 revize: ilk paralel deneme JARVIS+öğrenme çiftiyle, tetik = müfredat DONE. Plan: `raporlar/paralel-yapilanma-plani-2026-07-15-v2.md`. Kabul edilen risk: P4 itilmesi (kayıtlı).
+- **Seçim:** Salih (Katman 1 — yön kararı; 07-15 günaydın oturumu). P1 revize: ilk paralel deneme JARVIS+öğrenme çiftiyle, tetik = müfredat DONE. Plan: `raporlar/2026-07/paralel-yapilanma-plani-2026-07-15-v2.md`. Kabul edilen risk: P4 itilmesi (kayıtlı).
 - **Gözlem:** bekliyor (ilk JARVIS+öğrenme paralel günü + P4 açılış tarihi).
 - **Ders:** öneri reddi de veridir — Salih odak-bölünmesini P4 riskinden pahalı fiyatladı; Brier notu: P1 "DONE-tanımıyla kapanır: 0.80" tahmini eski DONE-tanımıyla ölçülemez, revize DONE ile ölçülecek.
 
 ### 2026-07-15 · Atlas ilk koşumu · efor seçimi (Salih devri: "effort seçmek sana kalmış, bence yüksek")
 - **Bağlam:** müfredat araştırması Opus'la koşulacak (Salih beyanı: token maliyeti); efor kademesi Carvis'te.
 - **Model A (orta):** ~400-700K token · ~4-5 dk · kalite 6/10 — müfredat iskeletde kalır, kaynak derinliği zayıf | **Model B (yüksek):** ~1-1,5M token · ~6-8 dk · kalite 8/10 — eksen genişletme (Wave) + örneklem-denetim rahat çalışır | **Model C (maks/ultraworkflow):** ~2M+ token · ~8-10 dk · kalite 8,5/10 — K-017'de marjinal getirisi doğrulama katmanındaydı, o da artık örneklemli → ✅ B (maliyet/kalite dizi; Salih sezgisiyle uyumlu)
-- **Seçim:** B — yüksek (Carvis, Katman 2) — görünürlük: 07-15 günaydın oturumu + görev emri `cc/gorev-2026-07-15-1.md`.
+- **Seçim:** B — yüksek (Carvis, Katman 2) — görünürlük: 07-15 günaydın oturumu + görev emri `cc/gorev/2026-07/gorev-2026-07-15-1.md`.
 - **Gözlem (07-15, koşum sonrası):** süre ~25 dk · 13 ajan (K-017'nin 78'ine karşı) · token toplamı raporlanmadı (/usage istenmedi — ders) · kalite [türetilmiş]: yüksek — 0 DOĞRULANAMADI, 9 KISMEN düzeltmesi yakalandı, 19-partisyon müfredat kullanılabilir çıktı; Model B tahmini (8/10) tutarlı görünüyor, token kolonu boş kaldığı için maliyet çifti doğrulanamadı.
 - **Ders:** fan-out'u ucuz modele (sonnet), sentez/denetim kararını pahalıya (Opus) veren iç-routing CC tarafında kendiliğinden doğru kuruldu — m.28/V39 routing ilkesinin dış teyidi; görev emri şablonuna /usage-raporu satırı eklenecek.
 
@@ -80,7 +80,7 @@
 - **Bağlam:** V39 kavram-sözlüğü dar koşumu Salih onayı aldı (07-17); konfig Carvis'te (Katman 2). Kapsam dar: ≈12 terim, hedef = dış-eşleşme haritası.
 - **Model A (düşük, ~200-300K · 4 ajan · kalite ~6/10):** ucuz · atıf-hatası riski yüksek (Atlas koşumlarının ana hata sınıfı) | **Model B (orta-yüksek, ~400-600K · 6 alan-ailesi ajanı + Opus sentez + V26 örneklem doğrulama · kalite ~8/10):** dar kapsama uygun ölçek | **Model C (yüksek, ~1M+ · terim-başına ajan + tam doğrulama · kalite ~8,5/10):** marjinal kazanç dar kapsamda düşük (K-017 dersi: doğrulama katmanı marjinali örneklemle korunuyor) → ✅ B
 - **Karşıt-temel (m.37 ek):** öneri maliyet/kalite-dengesi (beklenen-değer) zemininde; zıt zemin = worst-case bilgi-maliyeti (yanlış iç-terminoloji köklenirse ileride toplu yeniden-adlandırma + yanlış-yöntem ithali maliyeti → C'yi savunur). Kesişim: B + zorunlu V26 denetim + V54 etiketsizlik kuralı (zorlama-eşleştirme birincil aranan hata) — worst-case'in asıl korkusu yanlış-eşleşme, o da denetim şartıyla kapanıyor; canlılık şartı sağlandı.
-- **Seçim:** B (Carvis, Katman 2) — görünürlük: 07-17 Cowork oturumu + görev emri `cc/gorev-2026-07-17-1.md`.
+- **Seçim:** B (Carvis, Katman 2) — görünürlük: 07-17 Cowork oturumu + görev emri `cc/gorev/2026-07/gorev-2026-07-17-1.md`.
 - **Gözlem (07-17, koşum sonrası):** $7.16 · 19,5 dk duvar (38 dk API) · /usage TAM raporlandı (ilk kez emirle) · kalite [türetilmiş]: yüksek — 12/12 satır, TAM=9/KISMİ=3/X=0, örneklem D2/K1/X0, tavan aşılmadı. Model B tahmini (~8/10) tutarlı; sapma: fan-out /usage'da haiku etiketli (emir sonnet dedi) — maliyeti DÜŞÜRDÜ, kaliteyi düşürmedi (örneklem temiz); denetim notu raporda.
 - **Ders:** dar-kapsam + alan-ailesi-bazlı fan-out deseni doğrulandı (K-017 "eşleşmesiz" bulgusunu tersine çevirdi); ucuz-model fan-out + pahalı sentez/denetim routing'i yine kendiliğinden doğru kuruldu — m.28/V39 ikinci dış teyit.
 

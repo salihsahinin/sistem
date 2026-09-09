@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """anakronizm-denetim.py — ANAKRONİZM FRENİ deterministik denetimi (Karar 68, Salih Katman-1 2026-08-26: "sistemde anakronizm YASAK").
-STDLIB ONLY, Python ≥3.9. Kanıt: cc/rapor-2026-08-26-2.md (m.40b wf_9030bba4; yapı-taşları: Google 'timeless documentation' yasak-kelime
+STDLIB ONLY, Python ≥3.9. Kanıt: cc/rapor/2026-08/rapor-2026-08-26-2.md (m.40b wf_9030bba4; yapı-taşları: Google 'timeless documentation' yasak-kelime
 listesi [C-YT3] · Vale `conditional` "kalıp varsa aynı kapsamda tarih olmalı" deseni [C-YT4] · Microsoft Learn zorunlu `ms.date` damga-varlığı kapısı
 [C-YT5] · actions/stale eşik-tabanlı bayatlama [C-YT6] · Wikipedia {{As of}} → makine-listelenebilir kuyruk [C-YT8] · RFC 9111 tazelik aritmetiği
 [B-YT6]). "Hazırı temel al": Vale (Go ikilisi, +1 araç zinciri → KB kalemi) yerine aynı kural stdlib regex'le; Türkçe kalıp listesi hiçbir kaynakta
@@ -26,7 +26,7 @@ append-only. Gold: veri/gorunum/v_bayat_aday.csv (D3 kuyruğu, üzerine yazılı
 
 Kullanım: python3 tools/anakronizm-denetim.py [--repo <yol>] [--dosya <yol> ...] [--kapsam wiki,raporlar,cc,core] [--esik-gun 90]
                                               [--bugun 2026-08-26] [--json] [--kuru] [--sessiz] [--kalip-listesi]
-Varsayılan kapsam: wiki/*.md + core/*.md + son 30 günün raporlar/*.md ve cc/rapor-*.md (git-izlenen). Çıkış: 0 temiz · 3 D1/D2 ihlali var
+Varsayılan kapsam: wiki/*.md + core/*.md + son 30 günün raporlar/**/*.md ve cc/rapor/**/*.md (git-izlenen). Çıkış: 0 temiz · 3 D1/D2 ihlali var
 (D3 yalnız kuyruk) · 2 repo yok. Deneysel m.29 (2026-08-26, Carvis). Additive-only.
 """
 import argparse, json, os, re, subprocess, sys
@@ -153,7 +153,7 @@ def varsayilan_kapsam(repo, bugun):
     for f in files:
         if f.startswith("wiki/") or (f.startswith("core/") and "/sablonlar/" not in f):
             secim.append(f)
-        elif f.startswith(("raporlar/", "cc/rapor-")):
+        elif f.startswith(("raporlar/", "cc/rapor/")):
             m = re.search(r"(\d{4}-\d{2}-\d{2})", f)
             if m and m.group(1) >= sinir:
                 secim.append(f)

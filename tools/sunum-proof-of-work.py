@@ -2,7 +2,7 @@
 """sunum-proof-of-work.py — "JARVIS ne kadar geliştirildi?" sorusuna proof-of-work sunumu (m.9: kanıt = push'lanmış commit; m.39: her rakam kaynaklı).
 Rakamların TAMAMI koşum anında git + dosya sistemi + veri/baglam.sqlite'tan çekilir (elle yazılmış sayı yok; ölçülemeyen [?] damgalı).
 Biçim: son-50 sunumuyla aynı mobil slayt iskeleti (tools/sunum-son50.py) + yazdırma stili (PDF: her slayt bir sayfa).
-Kullanım: python3 tools/sunum-proof-of-work.py [--repo <yol>] [--out raporlar/jarvis-proof-of-work-SUNUM.html]
+Kullanım: python3 tools/sunum-proof-of-work.py [--repo <yol>] [--out raporlar/jarvis/jarvis-proof-of-work-SUNUM.html]
 Sonra: PDF için Chrome headless — bkz. tools/SCRIPTLER.md · teslim: open -R <dosya> + open <dosya>.
 STDLIB ONLY.
 """
@@ -22,7 +22,8 @@ def main():
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ap.add_argument("--out", default=None)
     a = ap.parse_args(); R = os.path.abspath(a.repo)
-    out = a.out or os.path.join(R, "raporlar", "jarvis-proof-of-work-SUNUM.html")
+    out = a.out or os.path.join(R, "raporlar", "jarvis", "jarvis-proof-of-work-SUNUM.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     now = datetime.now(TR); tarih = now.strftime("%Y-%m-%d %H:%M")
     head = sh(["git", "rev-parse", "--short", "HEAD"], R)
     ilk = sh("git log --reverse --format=%ad --date=short | head -1", R)
@@ -47,8 +48,8 @@ def main():
     skills = sorted(d for d in os.listdir(os.path.join(R, ".claude", "skills")) if os.path.isdir(os.path.join(R, ".claude", "skills", d)))
     n_eval = len(glob.glob(os.path.join(R, ".claude", "skills", "*", "eval*", "*.json")))
     n_wiki = len([f for f in tracked if f.startswith("wiki/") and f.endswith(".md") and not f.endswith("README.md")])
-    n_gorev = len([f for f in tracked if f.startswith("cc/gorev-")]); n_rapor = len([f for f in tracked if f.startswith("cc/rapor-")])
-    n_raporlar = len([f for f in tracked if f.startswith("raporlar/") and f.endswith(".md")]); n_teslim = len([f for f in tracked if f.startswith("raporlar/vardiya-teslim-")])
+    n_gorev = len([f for f in tracked if f.startswith("cc/gorev/")]); n_rapor = len([f for f in tracked if f.startswith("cc/rapor/")])
+    n_raporlar = len([f for f in tracked if f.startswith("raporlar/") and f.endswith(".md")]); n_teslim = len([f for f in tracked if f.startswith("raporlar/vardiya/vardiya-teslim-")])
     n_core = len([f for f in tracked if f.startswith("core/") and f.endswith(".md") and f.count("/") == 1])
     n_madde = sum(1 for l in open(os.path.join(R, "core", "tuzuk-v0.md"), errors="ignore") if l[:1].isdigit() and ". **" in l[:6])
     db = {}

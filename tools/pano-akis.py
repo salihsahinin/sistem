@@ -2,7 +2,7 @@
 """pano-akis.py — Kanban 4 akış metriği: WIP · throughput · cycle time · kart yaşı (İB-41 icrası, 2026-08-21).
 
 Kaynak karar: KB-46 A (Salih 08-21, defter Karar 49; pano şablon v3 eki) — akış görünümü `v_pano_akis`,
-deterministik sayım. Metrik kaynağı agile atlası `cc/rapor-2026-08-17-3.md`.
+deterministik sayım. Metrik kaynağı agile atlası `cc/rapor/2026-08/rapor-2026-08-17-3.md`.
 
 Ne yapar (tamamı `core/pano.md`'nin kart satırlarından, deterministik):
   - WIP            = AKTİF bölümündeki kart sayısı

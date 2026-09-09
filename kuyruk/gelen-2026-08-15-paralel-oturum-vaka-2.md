@@ -9,8 +9,8 @@
 ## Olay (çıplak veri)
 - 20:22:22 — seans-2 (oturum `d0e63fae`) Hat-2 commit'i `7e90a30` attı; kapanış ritüeli KOŞMADI (kapsül "seans-2 açık" hâlinde).
 - 20:22:55 — Salih yeni terminal oturumunda "seans başı" dedi → seans-3 açıldı; gunaydin-vardiya ritüeli koştu. Brifte "önceki oturum 33 sn önce commit attı; kapalı varsayıyorum" dendi — **varsayım yanlıştı.**
-- 20:25:22 — seans-2, Hat-3 emrini (`cc/gorev-2026-08-15-3.md`) + manifest güncellemesini commit'ledi (`9f30f20`) ve S-3 workflow'unu sahaya çıkardı (`wf_e9c7f897-923`, 16 işçi, ~1M token sınıfı).
-- 20:26-20:28 — seans-3, aynı standing emirden Hat-3'ü "açtı": gorev-emri-derleme ile `cc/gorev-2026-08-15-3.md` YAZDI (seans-2'nin dosyasının ÜSTÜNE — Write aracı diğer oturumun dosyasını görmedi), manifest güncellemesi denedi (assert ile fark edildi: manifest zaten "S-3 SAHADA" diyordu).
+- 20:25:22 — seans-2, Hat-3 emrini (`cc/gorev/2026-08/gorev-2026-08-15-3.md`) + manifest güncellemesini commit'ledi (`9f30f20`) ve S-3 workflow'unu sahaya çıkardı (`wf_e9c7f897-923`, 16 işçi, ~1M token sınıfı).
+- 20:26-20:28 — seans-3, aynı standing emirden Hat-3'ü "açtı": gorev-emri-derleme ile `cc/gorev/2026-08/gorev-2026-08-15-3.md` YAZDI (seans-2'nin dosyasının ÜSTÜNE — Write aracı diğer oturumun dosyasını görmedi), manifest güncellemesi denedi (assert ile fark edildi: manifest zaten "S-3 SAHADA" diyordu).
 - 20:29 — çakışma teşhis edildi: `git log` 20:25:22 commit'i + `subagents/workflows/wf_e9c7f897` dizini. **Workflow BAŞLATILMADI** (çift-harcama 0). Seans-3'ün dosya taslağı scratchpad'e alındı, dosya `git checkout` ile seans-2'nin HEAD sürümüne döndürüldü. Net hasar: 0 (yalnız ~10 dk + emir-derleme tokeni).
 
 ## Bulgu

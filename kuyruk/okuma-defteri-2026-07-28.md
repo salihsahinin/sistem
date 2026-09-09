@@ -9,9 +9,9 @@
 | # | Aile(ler) | Dosyalar | Hacim | Durum |
 |---|---|---|---|---|
 | O1 | pasif-ogrenme | `pasif-ogrenme-atlas` + `SOZEL-pasif-ogrenme` + `INSAN-pasif-ogrenme` | ~276 KB | **DONE 07-28** (hasat aşağıda) |
-| O2 | onerme-formu + lojik-kod | `LOJIK-onerme-formu` + `SOZEL-onerme-formu` + `lojik-kod-atlas` + `SOZEL-lojik-kod` + `INSAN-lojik-kod` | ~243 KB | **DONE 07-29** (CC koşumu `cc/rapor-2026-07-29-1.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
-| O3 | tech-stack + arac-entegrasyonu | `tech-stack-atlas` + `SOZEL-tech-stack` + `INSAN-tech-stack` + `arac-entegrasyonu` + `SOZEL-arac-entegrasyonu` + `INSAN-arac-entegrasyonu` | ~268 KB | **DONE 07-29** (CC koşumu `cc/rapor-2026-07-29-2.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
-| O4 | ajan-durma + arastirma-promptu + kod-entegrasyonu | `ajan-durma-atlas` + `SOZEL-ajan-durma` + `INSAN-ajan-durma` + `arastirma-promptu-atlas` + `SOZEL-arastirma-promptu` + `INSAN-arastirma-promptu` + `kod-entegrasyonu` + `SOZEL-kod-entegrasyonu` + `INSAN-kod-entegrasyonu` | ~300 KB | **DONE 07-30** (CC koşumu `cc/rapor-2026-07-29-4.md`; hasat aşağıda, ingest ana-sıra 07-30) — **PROGRAM KAPANDI** |
+| O2 | onerme-formu + lojik-kod | `LOJIK-onerme-formu` + `SOZEL-onerme-formu` + `lojik-kod-atlas` + `SOZEL-lojik-kod` + `INSAN-lojik-kod` | ~243 KB | **DONE 07-29** (CC koşumu `cc/rapor/2026-07/rapor-2026-07-29-1.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
+| O3 | tech-stack + arac-entegrasyonu | `tech-stack-atlas` + `SOZEL-tech-stack` + `INSAN-tech-stack` + `arac-entegrasyonu` + `SOZEL-arac-entegrasyonu` + `INSAN-arac-entegrasyonu` | ~268 KB | **DONE 07-29** (CC koşumu `cc/rapor/2026-07/rapor-2026-07-29-2.md`; hasat aşağıda, ingest ana-sıra 07-29 gece) |
+| O4 | ajan-durma + arastirma-promptu + kod-entegrasyonu | `ajan-durma-atlas` + `SOZEL-ajan-durma` + `INSAN-ajan-durma` + `arastirma-promptu-atlas` + `SOZEL-arastirma-promptu` + `INSAN-arastirma-promptu` + `kod-entegrasyonu` + `SOZEL-kod-entegrasyonu` + `INSAN-kod-entegrasyonu` | ~300 KB | **DONE 07-30** (CC koşumu `cc/rapor/2026-07/rapor-2026-07-29-4.md`; hasat aşağıda, ingest ana-sıra 07-30) — **PROGRAM KAPANDI** |
 
 **Çapraz görevler (okuma sırasında toplanır):**
 - Ç1 (r≈0,31 ters-yön): iki ucu O1 (`pasif-ogrenme §7.2`) ve O4 (`arastirma-promptu §4.2`) — her iki seans kendi ucunun kanıtını hasada yazar; uzlaştırma önerisi O4 sonunda derlenir.
@@ -79,7 +79,7 @@
 - **Ç1 (r≈0,31) — bu ucun kanıtı (§7.2 + SOZEL §7.2-3):** hüküm "ÇÜRÜTÜLDÜ": künye iki bağımsız aramada hiçbir çalışmaya bağlanamadı; karşı kanıt [D]: MT-Bench resmî depo ">%80 uyum = insan-insan seviyesi", sağlık derlemesi r 0,40-0,94 medyan 0,69. AMA SOZEL antitez sütunu şerhi: *"bu düzeltme başka bir ailede yeniden açıldı; hüküm kapanmış sayılmaz."* ⇒ Ç1 uzlaştırması O4 (`arastirma-promptu §4.2` "açık") okunmadan derlenemez — plana uygun, O4 sonunda. Muhtemel uzlaşma çizgisi şimdiden görünüyor: §7.3 tablosu — yargıç performansı RUBRİK-BAĞIMLI (kusur-tespiti %94+ ↔ açık-uçlu kalite r=0,13-0,48); "0,31 çürütüldü" ile "yargıç açık-uçlu rubrikte zayıf" aynı anda doğru olabilir; künyesiz 0,31 rakamı her durumda kullanılmaz.
 - **S6:** hukuk pasajları A11 (§14 tamamı: publicity/GDPR/AI Act/CDPA/iftira) + A15 (§A15 tamamı: sözleşme/ToS, lisans, alıntı, kişisel veri) — ikisi de bölüm-geneli K47 şerhli, ülkesiz, Türk hukuku yok. S6 karar girdisi hazır.
 - **K39:** §A15-4 + §A12-4 çapraz okuma kritik: "insan kapısı koşum sonrası" bir garanti değil YAPILANDIRMA; K-009/K-010 tasarımına doğrudan girdi.
-- **K14:** bu ailede yeni dokunuş yok (Cowork-yüzey testi 07-28 kapsülde; CC-yüzey testi cc/gorev-2026-07-28-1.md Görev 2'de).
+- **K14:** bu ailede yeni dokunuş yok (Cowork-yüzey testi 07-28 kapsülde; CC-yüzey testi cc/gorev/2026-07/gorev-2026-07-28-1.md Görev 2'de).
 
 **Salih şerhi:** *(henüz yok — Salih INSAN-pasif-ogrenme'yi kendi temposunda okuyacak)*
 
@@ -87,13 +87,13 @@
 1. **⚠️ TUTARSIZLIK BULUNDU — INSAN dosyası K-düzeltmelerini TAŞIMIYOR:** `INSAN-pasif-ogrenme` §6 hâlâ "bekçi var ama kör noktalı/yalnız async" anlatıyor (H34 öncesi hal), §7 "sayı olarak: eksen başına dört"ü damgasız/askısız sunuyor (K35 ihlali), §11 çürütülen üç oturum-sınırını (K36/K37/K38) hâlâ geçerli sınır diye listeliyor. Kapsüldeki "K1-K47 8 kaynak rapora uygulandı" kaydıyla tutarlı — INSAN dosyaları güncellenmemiş. **Salih bu dosyayı okumadan önce bilmeli; A13/F1 dersinin canlı örneği.** Düzeltme işi: ayrı küçük seans ya da CC görevi (m.8: üstü çizili + [K] gerekçeyle).
 2. Ç1'in bu ucu hasatta; O4'te `arastirma-promptu §4.2` okunurken hangi ailede "yeniden açıldığı" tespit edilmeli (SOZEL şerhi aile adı vermiyor — muhtemelen arastirma-promptu'nun kendisi).
 3. O2'ye özel bağ: A13 compiler bulguları (F1-F9) LOJIK/SOZEL-onerme-formu ailesinin zemininde — O2 okuması bu hasadın 13. maddesini referans alsın.
-4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli. **[DÜZELTME NOTU 2026-08-29, m.8 — İB-11: bu borç 07-30'da KAPANDI — `cc/rapor-2026-07-30-1.md` 7/7 birincil metin (4 teyit · 2 daraldı · 1 rakam hatası: Staab %95,8→%95,2; AAR self-led; Park ham %65,67). Eski satır yeniden yazılmadı.]**
+4. Akademik yeniden-doğrulama borcu (§20.2 liste: Bastani, Kestin, Keiser&Arthur, Sinha&Kapur, Staab, Park, Rocher) hâlâ açık; erişimi açık oturumda öncelikli. **[DÜZELTME NOTU 2026-08-29, m.8 — İB-11: bu borç 07-30'da KAPANDI — `cc/rapor/2026-07/rapor-2026-07-30-1.md` 7/7 birincil metin (4 teyit · 2 daraldı · 1 rakam hatası: Staab %95,8→%95,2; AAR self-led; Park ham %65,67). Eski satır yeniden yazılmadı.]**
 
 ---
 
 ### O2 HASAT — 2026-07-29, CC PC yan-oturum (opus/high) · ingest: ana-sıra (Carvis/Fable) 07-29 gece
 
-**TAM RAPOR: `cc/rapor-2026-07-29-1.md`** — bu blok özettir (m.20); hüküm detayı, tam tablolar ve kanıt adresleri orada.
+**TAM RAPOR: `cc/rapor/2026-07/rapor-2026-07-29-1.md`** — bu blok özettir (m.20); hüküm detayı, tam tablolar ve kanıt adresleri orada.
 
 **Kanıt kısıtı:** önerme-formu ailesi: P70 akademik host 0/10 ⇒ A1/A2/A3/A11 tavan ⊨K; rapor ∈ karar-öncesi-tarama, ∉ kanıt · ⊨S = "aynı-aile hakemi karşısında sağ kaldı" (doküman-kanıtlılar muaf) · lojik-kod antitezi ARAÇLA koştu (tool_uses=21; depo-doğrulamalı ⊨S'ler şerhten muaf) — külliyatın en güçlü antitez turu · AMA §1.3 çeviri-tuzakları tablosu ampirik destek SIFIR (M3, kavramsal argüman).
 
@@ -130,7 +130,7 @@
 
 ### O3 HASAT — 2026-07-29, CC PC yan-oturum (Opus 5 1M/high) · ingest: ana-sıra (Carvis/Fable) 07-29 gece
 
-**TAM RAPOR: `cc/rapor-2026-07-29-2.md`** — bu blok özettir (m.20); detay orada.
+**TAM RAPOR: `cc/rapor/2026-07/rapor-2026-07-29-2.md`** — bu blok özettir (m.20); detay orada.
 
 **⚠️ AD ÇAKIŞMASI sabitlendi:** `tech-stack §7` Model A/B/C ≠ pasif-öğrenme §16 Model A/B/C — yalnız harfte değil YAPIDA da benzer; **iki AYRI Katman-1 imzası**, aynı masada bile aynı oy değil (karşılaştırma tablosu raporun başında).
 
@@ -170,7 +170,7 @@
 
 ### O4 HASAT — 2026-07-29/30, CC PC yan-oturum (Opus 5 1M/high) · ingest: ana-sıra (Carvis/Fable) 07-30
 
-**TAM RAPOR: `cc/rapor-2026-07-29-4.md`** — bu blok özettir (m.20); detay orada. Okunan: 9 dosya ~293 KB (3 aile) + nokta-okumaları.
+**TAM RAPOR: `cc/rapor/2026-07/rapor-2026-07-29-4.md`** — bu blok özettir (m.20); detay orada. Okunan: 9 dosya ~293 KB (3 aile) + nokta-okumaları.
 
 **Kanıt kısıtı (aile başına):** ajan-durma ARAÇLI antitez (külliyatın en güçlü tabanı: kaynak kod + 115 transkript — ve yine 4 gerçek hata) · arastirma-promptu ARAÇSIZ (mantık tam, olgusal karşı-örnek [K-hatırlama]) · kod-entegrasyonu KISMİ — **A18 bloğu HİÇ test edilemedi ⇒ ⊨A** (kapasite itirafı, hüküm değil). Sürüm çatalı: ikili v2.1.42 ↔ doküman ≈v2.1.217.
 
@@ -189,7 +189,7 @@
 
 **Ç1/S6/K39/K14/K35:** Ç1 §4 tam (damga aşağıda) · S6 üçüncü kez NEGATİF ⇒ malzeme tamamen pasif-ogrenme'de, masa hazır · K39 üç eksen: yüzey ∧ worktree ∧ istemci-taraf · K14 açık (5 dk'lık doğrulama: Explore ajanına agent_ID bak) · K35 dokunuş yok.
 
-**Kapanış envanteri:** B-1..B-15 kanıt borçları + D-1..D-21 Katman-1 kalemleri — tek liste `cc/rapor-2026-07-29-4.md` §13 (pointer; buraya kopyalanmadı). Meta-dersler §13.3: mutlak-niceleyici (6 aile) · bulunamadı≠aranamadı (5 gerekçe) · liste-başı kanıt kapısı · niteleyici erimesi formata bağlı · kanıt gücü ≠ hata yokluğu · aynı kanıtın iki geçişi ≠ iki bağımsız kanıt.
+**Kapanış envanteri:** B-1..B-15 kanıt borçları + D-1..D-21 Katman-1 kalemleri — tek liste `cc/rapor/2026-07/rapor-2026-07-29-4.md` §13 (pointer; buraya kopyalanmadı). Meta-dersler §13.3: mutlak-niceleyici (6 aile) · bulunamadı≠aranamadı (5 gerekçe) · liste-başı kanıt kapısı · niteleyici erimesi formata bağlı · kanıt gücü ≠ hata yokluğu · aynı kanıtın iki geçişi ≠ iki bağımsız kanıt.
 
 **Salih şerhi:** henüz yok — üç INSAN dosyası temiz, ön-uyarı gerekmiyor; tek istisna INSAN-pasif-ogrenme çelişkisi (bu seansta [K] bloğuyla işaretlendi).
 

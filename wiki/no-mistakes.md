@@ -1,6 +1,6 @@
 # no-mistakes
 
-**Tanım:** Kod değişikliğini hedefine (push/PR) ulaşmadan önce otomatik kapılardan — kod incelemesi · test · lint · doküman · push · PR · CI — geçiren üçüncü-parti doğrulama pipeline'ı; Jarvis'te ana-sıra push hattının araç-düzeyi doğrulayıcısı. **Durum:** GÜNCEL · **Son teyit:** 2026-08-21 (PR #2 merge + PR #3 süreci bu araçla yürüdü). **Kaynaklar:** `raporlar/vardiya-teslim-2026-08-12-l8-mac.md` §1-3 · pano K-015 L8 kaydı (`core/pano.md`) · L8 araç raporu `cc/rapor-2026-08-03-4.md`. **Güven:** orta — iki platform kurulumu (Win v1.41.2 · Mac v1.48.0) + çok koşum gözlemi; tek-kullanıcı sahası, dış benchmark yok.
+**Tanım:** Kod değişikliğini hedefine (push/PR) ulaşmadan önce otomatik kapılardan — kod incelemesi · test · lint · doküman · push · PR · CI — geçiren üçüncü-parti doğrulama pipeline'ı; Jarvis'te ana-sıra push hattının araç-düzeyi doğrulayıcısı. **Durum:** GÜNCEL · **Son teyit:** 2026-08-21 (PR #2 merge + PR #3 süreci bu araçla yürüdü). **Kaynaklar:** `raporlar/vardiya/vardiya-teslim-2026-08-12-l8-mac.md` §1-3 · pano K-015 L8 kaydı (`core/pano.md`) · L8 araç raporu `cc/rapor/2026-08/rapor-2026-08-03-4.md`. **Güven:** orta — iki platform kurulumu (Win v1.41.2 · Mac v1.48.0) + çok koşum gözlemi; tek-kullanıcı sahası, dış benchmark yok.
 
 ## Çekirdek
 

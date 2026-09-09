@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """pointer-graf.py — Jarvis POINTER SİSTEMİNİN grafını silver'dan DETERMİNİSTİK türetir (P0/P2, pipeline
-cc/pipeline-2026-08-22-pointer-graf-d2.md; Salih emri 08-22 "pointer sistemimizin … graflar için güncel dosya tipinde grafını oluştur").
+cc/pipeline/pipeline-2026-08-22-pointer-graf-d2.md; Salih emri 08-22 "pointer sistemimizin … graflar için güncel dosya tipinde grafını oluştur").
 
 Ne yapar: veri/baglam.sqlite'ı okur → graf MODELİ (düğüm/kenar, tipli) → veri/graf/pointer-sistemi-model.json
           + --d2 ile şema-düzeyi D2 dosyası (graf/pointer-sistemi-v0.d2) üretir. Aynı silver → aynı çıktı
@@ -28,12 +28,12 @@ ILKELER = [
 KRONOLOJI = [
     ("k0711", "2026-07-11", "tüzük m.20-22 imzalandı (pointer ilkesi kanon)", "core/tuzuk-v0.md"),
     ("k0712", "2026-07-12", "PAT kararı: yalnız pointer izlendi — kanonik örnek", "wiki/pointer-sistemi.md"),
-    ("k0718", "2026-07-18", "pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)", "raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md"),
-    ("k0724", "2026-07-24", "graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş", "raporlar/2026-07-24-serit2-graph-engineering.md"),
-    ("k0815", "2026-08-15", "silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)", "cc/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md"),
+    ("k0718", "2026-07-18", "pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)", "raporlar/2026-07/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md"),
+    ("k0724", "2026-07-24", "graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş", "raporlar/2026-07/2026-07-24-serit2-graph-engineering.md"),
+    ("k0815", "2026-08-15", "silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)", "cc/pipeline/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md"),
     ("k0817", "2026-08-17", "hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)", "arsiv/kuyruk-arsiv/senaryo-defteri-arsiv-2026-08-21.md:26"),
     ("k0818", "2026-08-18", "adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)", "kuyruk/senaryo-defteri.md:173-175"),
-    ("k0822", "2026-08-22", "pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği", "cc/pipeline-2026-08-22-pointer-graf-d2.md"),
+    ("k0822", "2026-08-22", "pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği", "cc/pipeline/pipeline-2026-08-22-pointer-graf-d2.md"),
 ]
 # referans türü → hedef sınıfı (pointer'ın NEREYE çözüldüğü)
 REF_HEDEF = {

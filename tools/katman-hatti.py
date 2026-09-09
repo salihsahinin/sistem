@@ -4,14 +4,14 @@ yalnız opsiyonel --parquet adımları `duckdb` ister).
 
 Neden: `baglam-tablo.py` veri/baglam.sqlite'ı tmp→replace ile SIFIRDAN yazar → sonradan eklenen silver tabloları (karar_borcu, prompt…)
 kaybolur. Çözüm: her türetilmiş tablo kendi BRONZ kaynağından deterministik yeniden yüklenir (functional data engineering: saf/idempotent
-görev + iki damga kod SHA + girdi SHA — cc/rapor-2026-08-16-2.md B3-1). Sıra sözleşmedir; yeni yükleyici bu listeye EKLENİR (additive).
+görev + iki damga kod SHA + girdi SHA — cc/rapor/2026-08/rapor-2026-08-16-2.md B3-1). Sıra sözleşmedir; yeni yükleyici bu listeye EKLENİR (additive).
 
 Sıra: 1) baglam-tablo.py (silver çekirdek + gold görünümler) → 2) karar-borcu-tablo.py (silver karar_borcu; bronz veri/karar-borcu.jsonl)
       → 3) prompt-tablo.py (bronz veri/bronz/prompt-olay.jsonl ← transkript; silver prompt; gold v_son_50_prompt)
       → 4) ambar-tablo.py (bronz veri/bronz/kosum-olay.jsonl ← alt-ajan transkriptleri; ambar amb_* tabloları/görünümleri; martlar v_amb_*)
       → 4b) deneyim-tablo.py (ambar koşum olguları → silver deneyim [model-kuşağı zorunlu] + v_deneyim_ozet/cift + deneyim_fts; KB-44 (a) İB-44)
       → 5) hareket-tablo.py (bronz veri/bronz/hareket-olay.jsonl ← transkript araç çağrıları; silver hareket; gold v_hareket_gunluk/v_son_hareketler
-           + raporlar/hareket-gunlugu-*.md)
+           + raporlar/hareket/hareket-gunlugu-*.md)
       → 5b) baglam-seyir.py (transkript usage → bronz baglam-olay.jsonl; silver baglam_olay; gold v_baglam_seyri/v_baglam_gunluk — KB-50/52 (a) İB-22; uyarı kanalı)
       → 6) tarama-plan.py (tarama-yöntemi plan-regresyon testi: EQP sınıfı ↔ beklenti; salt-okur, kaynak DB değişmez → veri/tarama-plan.jsonl; uyarı modu — ihlal hat düşürmez, KB-58;
            uyarıları stderr'e yazar → hat bunları çıkış 0'da da yankılar; olcum'dan ÖNCE koşar ki son adım kanonda kalsın)

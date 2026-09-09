@@ -14,7 +14,7 @@ Aşama tespiti sonuç ANAHTARLARINDAN (deterministik): claims→tez · rebuttals
 Aile tespiti: prompt'taki "aile X" kalıbı; yoksa result.family baştaki büyük harfler.
 
 Koş:
-  python3 tools/atlas-derle.py --wf <wf-dizin> --emir cc/gorev-YYYY-MM-DD-N.md --cikti cc/rapor-YYYY-MM-DD-N.md \
+  python3 tools/atlas-derle.py --wf <wf-dizin> --emir cc/gorev/YYYY-MM/gorev-YYYY-MM-DD-N.md --cikti cc/rapor/YYYY-MM/rapor-YYYY-MM-DD-N.md \
       --baslik "Rapor başlığı" [--tahmin "rol:model:çıktı-token-tahmini" ...] [--sessiz]
 Çıkış: 0 tamam · 2 girdi yok/okunamadı · 3 hiç result satırı yok (FAIL-LOUD).
 stdlib-only, Python 3.9.

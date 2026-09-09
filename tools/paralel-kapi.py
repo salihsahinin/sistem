@@ -8,7 +8,7 @@ ve planlı birimleri deterministik dalgalara (aynı anda koşabilecek kümeler) 
 N'e kısılır (kademeli paralellik artışı: 1 → 2 → 3 …).
 
 Grain: birim çifti (dosya granülü; `#bolum` eki aynı dosyada farklı bölüm = ayrık, PK-3 — belirsizlik dosya granülüne terfi).
-Kaynak adlandırma: düz yol ∨ glob (`cc/rapor-*.md`, `veri/*`) · `git@<sha>:yol` = DEĞİŞMEZ SNAPSHOT (asla çakışmaz, PK-8 sürüm-damgalı okuma)
+Kaynak adlandırma: düz yol ∨ glob (`cc/rapor/*/rapor-*.md`, `veri/*`) · `git@<sha>:yol` = DEĞİŞMEZ SNAPSHOT (asla çakışmaz, PK-8 sürüm-damgalı okuma)
 · `web` = dış girdi (çakışmaz; PK-2 uyarısı üretir).
 Modlar: (yok) insan çıktısı stdout · `--json` tek JSON nesnesi stdout (AXI A1) · `--kademe N` · `--manifest-dizin` · `--repo`.
 Çıkış (AXI A2): 0 RED yok · 1 manifest bütünlük hatası (eksik alan, bilinmeyen `sira`, çevrim) · 2 kullanım · 3 RED var (plan yine üretilir, RED çiftler ayrı dalgaya).
@@ -96,10 +96,10 @@ def tur_turet(b):
     """Saf fonksiyon (LLM YOK, deterministik) — manifestin `tur` alanını mevcut alanlardan TÜRETİR.
 
     Öncelik 1 — MATRİS: `matris` anahtarı ∨ adı 'eksen' veya 'hucre' ile başlayan herhangi bir üst
-    alan varsa (İB-69 a1 şeması, raporlar/2026-08-31-ib69-matris-a1-formalizasyon.md §1/§3 — EKSEN/HUCRE
+    alan varsa (İB-69 a1 şeması, raporlar/2026-08/2026-08-31-ib69-matris-a1-formalizasyon.md §1/§3 — EKSEN/HUCRE
     blokları, alan adları `eksenler`, `hucre_tipi`, `hucre_anahtari` …) → 'matris'.
 
-    Öncelik 2 — Model-1 karar tablosu (raporlar/2026-08-31-ib65-loop-pipeline-secim-atlas.md §5.1),
+    Öncelik 2 — Model-1 karar tablosu (raporlar/2026-08/2026-08-31-ib65-loop-pipeline-secim-atlas.md §5.1),
     üç yüklem manifestin şu alanlarından okunur (kaynak belgede yüklem→alan eşlemesi LİTERAL VERİLMEMİŞ;
     aşağıdaki eşleme bu koşumda seçilen PROXY'dir — AÇIK SORU, Salih onayı gerekir):
       Y1 SÜREKLİ?              ← tetik_turu ∉ {None, 'seans'} (yalnız 'seans' tek-turlu/oturum-tetikli sayılır)

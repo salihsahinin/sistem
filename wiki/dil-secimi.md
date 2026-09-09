@@ -1,7 +1,7 @@
 # Dil seçimi — hangi iş sınıfı hangi dilde (Jarvis sistemi + "Jarvis gibi ürün" ekosistemi)
 
 **Tanım:** Jarvis'te ve Jarvis-benzeri ürünlerde yazılacak kodun dili tek bir "en iyi dil" sorusu değil, **iş-sınıfı × kısıt** eşlemesidir: her iş sınıfının (hook · CLI/veri hattı · ajan döngüsü · MCP sunucusu · dağıtılabilir ikili · konfig/şema · politika · sandbox) kendi belirleyici kısıtı vardır (gecikme, SDK varlığı, tekrar-üretilebilir derleme, LLM'in o dildeki doğruluğu, okunabilirlik). Kural seti ÖNERİ damgalıdır (Katman-2 sayfa; kanon statüsü KB-64 masasında).
-**Durum:** GÜNCEL · **son teyit:** 2026-08-26 (seans-16) · **kaynaklar:** `cc/rapor-2026-08-26-1.md` (m.40b çift-atlas wf_d8cf4f3a-1a8, 3 aile × 12 işçi; hayatta-kalma 8/22/0/0; V26 37/4/4) · `cc/rapor-2026-07-30-10.md` (07-30 icra-katmanı; VERİLİ zemin) · `veri/kod-envanter.jsonl` (yerel ölçüm, `tools/kod-envanter.py`) · **güven:** orta — A ailesi D (V26 temiz), B/C yapı-taşları D ama tez/antitez tarafları K'ya düştü; kişisel-ölçek sayısal eşikler literatürde YOK (kör nokta); sentez tek-şerit, antitez görmedi.
+**Durum:** GÜNCEL · **son teyit:** 2026-08-26 (seans-16) · **kaynaklar:** `cc/rapor/2026-08/rapor-2026-08-26-1.md` (m.40b çift-atlas wf_d8cf4f3a-1a8, 3 aile × 12 işçi; hayatta-kalma 8/22/0/0; V26 37/4/4) · `cc/rapor/2026-07/rapor-2026-07-30-10.md` (07-30 icra-katmanı; VERİLİ zemin) · `veri/kod-envanter.jsonl` (yerel ölçüm, `tools/kod-envanter.py`) · **güven:** orta — A ailesi D (V26 temiz), B/C yapı-taşları D ama tez/antitez tarafları K'ya düştü; kişisel-ölçek sayısal eşikler literatürde YOK (kör nokta); sentez tek-şerit, antitez görmedi.
 
 ## Çekirdek
 
@@ -42,7 +42,7 @@
 - **Workflow script'leri JS** — seçim değil dayatma; envanterde "JS 2.054 satır" görüp "TS'ye geçmişiz" çıkarımı yapma.
 
 ## Süpersede zinciri
-- 07-30 `cc/rapor-2026-07-30-10.md` §4.6 "Rust hiçbir sınıfta" → **yerini aldı: [2026-08-26, "Rust: Messages-API istemcisinde yok (SAĞLAM); MCP sunucusu sınıfında Tier-1 resmî (rmcp v3.1.4)"]**.
+- 07-30 `cc/rapor/2026-07/rapor-2026-07-30-10.md` §4.6 "Rust hiçbir sınıfta" → **yerini aldı: [2026-08-26, "Rust: Messages-API istemcisinde yok (SAĞLAM); MCP sunucusu sınıfında Tier-1 resmî (rmcp v3.1.4)"]**.
 - 07-30 §4.6 "Go'nun tek tetiği = başka makineye tek-ikili (küçük ikili)" → **gerekçe düzeltildi [2026-08-26]:** tetik aynı, gerekçe "çalışma-zamanı kurdurmayan + tekrar-üretilebilir derleme"; boyut argümanı DÜŞTÜ.
 - 07-30 §4.1 "hook 241,5 ms → mimari" → **Mac'te [2026-08-26]:** 30,7 ms; sorun yok; hüküm (dil değil mimari) ayakta.
 

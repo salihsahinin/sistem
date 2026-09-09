@@ -1,8 +1,8 @@
 # Masa Gündemi — ENTEGRASYON (L8 yığını → günlük JARVIS akışı), 2026-08-21
 
-*Künye: KB-22 → B (Karar 35: envanter 11/11 CANLI → masa açılır) + KB-29 → A (Karar 44: L8 BEKLET kalemleri bu dosyanın kapsamına devir) icrası. Derleyen: Carvis (Katman-2; Salih onayı "kararım gerekmeyen borçsa devam", 08-21). Kalem tam metinleri `raporlar/2026-08-03-masa-hazirlik-L8.md` §C.1'de (6-soru bloklu) — burada kalem başına: tek satır ne + **08-03→08-21 DURUM GÜNCELLEMESİ** + beklenen karar biçimi. Masa oturumu Salih tetiğiyle; sunum açıklama-bloklu yapılır. Hiçbir kalemde hüküm verilmedi.*
+*Künye: KB-22 → B (Karar 35: envanter 11/11 CANLI → masa açılır) + KB-29 → A (Karar 44: L8 BEKLET kalemleri bu dosyanın kapsamına devir) icrası. Derleyen: Carvis (Katman-2; Salih onayı "kararım gerekmeyen borçsa devam", 08-21). Kalem tam metinleri `raporlar/2026-08/2026-08-03-masa-hazirlik-L8.md` §C.1'de (6-soru bloklu) — burada kalem başına: tek satır ne + **08-03→08-21 DURUM GÜNCELLEMESİ** + beklenen karar biçimi. Masa oturumu Salih tetiğiyle; sunum açıklama-bloklu yapılır. Hiçbir kalemde hüküm verilmedi.*
 
-**Zemin (neden şimdi):** 08-03'te bu kalemler "firstmate Windows'ta yok, P4 BEKLET" zemininde yazıldı. Bugün zemin değişti: yığın Mac'te 11/11 CANLI (Karar 35; firstmate ilk koşum 08-13) · PR #2 MERGE, PR #3 açık · İB-02 triyajı (08-21) kullanım katmanını CANLI, kurulum katmanını SÜPERSEDE damgaladı. Kaynak kullanım malzemesi: `raporlar/2026-08-05-KILAVUZ-l8-workflow.md` (senaryolar/karar ağacı/kalıplar — şerhli) + `raporlar/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md` §4-6.
+**Zemin (neden şimdi):** 08-03'te bu kalemler "firstmate Windows'ta yok, P4 BEKLET" zemininde yazıldı. Bugün zemin değişti: yığın Mac'te 11/11 CANLI (Karar 35; firstmate ilk koşum 08-13) · PR #2 MERGE, PR #3 açık · İB-02 triyajı (08-21) kullanım katmanını CANLI, kurulum katmanını SÜPERSEDE damgaladı. Kaynak kullanım malzemesi: `raporlar/2026-08/2026-08-05-KILAVUZ-l8-workflow.md` (senaryolar/karar ağacı/kalıplar — şerhli) + `raporlar/2026-08/2026-08-05-KILAVUZ-birebir-kopya-senaryolar.md` §4-6.
 
 ## A. Devreden K1 kalemleri (9; tam metin masa-hazirlik-L8 §C.1)
 

@@ -34,7 +34,7 @@ GEN_REF_TURLERI = ("anahtar_terim", "tuzuk_madde", "kart", "skill_adi", "v_no", 
 KATMAN_ONCELIK = {"sicak": 0, "ilik": 1, "yapisal": 2, "soguk": 3}
 ZAMAN_RX = re.compile(r"(?<!\d)(\d{4}-\d{2}-\d{2}|\d{2}-\d{2})(?!\d)")
 GUNCEL_RX = re.compile(r"\b(güncel|guncel|son|şu an|su an|bugün|bugun|en yeni|şimdi|simdi|yerine|artık|artik|eski adı|eski adi|yeni adı|yeni adi|ne oldu|değişti|degisti|kullanılıyor|kullaniliyor)\b", re.I)
-# 08-29 as-of eval (İB-42): liste 'yerine/artık/eski adı/ne oldu/değişti/kullanılıyor…' ile GENİŞLETİLDİ; aynı indekste (2d3a94d) tüm-kod A/B (raporlar/2026-08-29-ib42-kalan.md §2):
+# 08-29 as-of eval (İB-42): liste 'yerine/artık/eski adı/ne oldu/değişti/kullanılıyor…' ile GENİŞLETİLDİ; aynı indekste (2d3a94d) tüm-kod A/B (raporlar/2026-08/2026-08-29-ib42-kalan.md §2):
 # dar→geniş, 81 cevaplı soru: yüzeysiz recall@5 0,630→0,716 · nDCG@10 0,433→0,490 · bilgi-guncelleme r@5 0,45→0,80; +auto 0,654/0,449→0,728/0,502 (yönlenen 6→16). Etki sorgula() içindeki
 # `guncel` bayrağından (zaman-farkındalı sıralama; satır ~110) gelir, yalnız yüzey-yönlendirmeden değil — bu yüzden 'ham' kolonu da değişir. Karar: geniş liste KALDI (İB-43 seçim kuralı: nDCG→recall).
 TR_FOLD = str.maketrans({"ı": "i", "İ": "i", "ğ": "g", "Ğ": "g", "ü": "u", "Ü": "u", "ş": "s", "Ş": "s", "ö": "o", "Ö": "o", "ç": "c", "Ç": "c"})

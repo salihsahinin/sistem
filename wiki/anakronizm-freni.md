@@ -1,7 +1,7 @@
 # Anakronizm freni — zaman-bağımlı iddia AS-OF damgasız çıkmaz (Karar 68)
 
 **Tanım:** Anakronizm = zaman-bağımlı bir iddianın (sürüm · SDK/ürün durumu · benchmark skoru · fiyat · "en güçlü model" · kanon kaydı · "artık yok/var") geçerli olduğu ZAMAN belirtilmeden ya da yanlış zamana aitken bugünün durumu gibi sunulması. Salih Katman-1 hükmü (2026-08-26, aynen): "bundan sonra sistemde anakronizm yapmayı yasaklıyorum". Üç kanal: **ESKİ KAYIT** (kanon/rapor tarihli ama tarihsiz aktarılır) · **MODEL HAFIZASI** (eğitim kesimi; beyan edilen kesim ≠ fiilî kesim) · **KONUŞMA** (chat cevabında damgasız sayı/durum). Önleme MEKANİKTİR (Karar 65): damga kuralı + kesim tablosu + canlı-çekim tetiği + deterministik lint + bayatlık kuyruğu; "modele dikkat et" mekanizma değildir.
-**Durum:** GÜNCEL · **son teyit:** 2026-08-26 (seans-16) · **kaynaklar:** `cc/rapor-2026-08-26-2.md` (m.40b wf_9030bba4, 3 aile × 12 işçi; hayatta-kalma 1/29/1/0 — as-of kuralı hakemleri daralttı; V26 46/4/7) · `veri/model-kesim.jsonl` (satıcı tablosu, V26 ✓ 2026-08-26) · `tools/anakronizm-denetim.py` · **güven:** orta — mekanizma emsalleri D (Wikipedia/Microsoft/Google/RFC 9111/dbt/Wikidata/PROV), Jarvis ölçeğinde etkisi ÖLÇÜLMEDİ (kör nokta); Türkçe kalıp listesi kaynaksız, deneysel m.29.
+**Durum:** GÜNCEL · **son teyit:** 2026-08-26 (seans-16) · **kaynaklar:** `cc/rapor/2026-08/rapor-2026-08-26-2.md` (m.40b wf_9030bba4, 3 aile × 12 işçi; hayatta-kalma 1/29/1/0 — as-of kuralı hakemleri daralttı; V26 46/4/7) · `veri/model-kesim.jsonl` (satıcı tablosu, V26 ✓ 2026-08-26) · `tools/anakronizm-denetim.py` · **güven:** orta — mekanizma emsalleri D (Wikipedia/Microsoft/Google/RFC 9111/dbt/Wikidata/PROV), Jarvis ölçeğinde etkisi ÖLÇÜLMEDİ (kör nokta); Türkçe kalıp listesi kaynaksız, deneysel m.29.
 
 ## Çekirdek
 
@@ -39,7 +39,7 @@
 ## Süpersede zinciri
 - seans-acilis §0 "zaman-kayması freni" (08-15: selamlama ≠ zaman işareti) → **genişledi [2026-08-26]:** her zaman-bağımlı iddia için damga + kesim tablosu; §0 aynen kalır.
 - halüsinasyon paketi v2 "tazelik" bayrağı (+1) → **tamamlandı [2026-08-26]:** bayrak derecelendirir, bu sayfa mekanizmayı verir.
-- `cc/gorev-2026-08-26-2.md` KANON bloğu "Carvis kesimi Ocak 2026" → **düzeltildi [2026-08-26]:** doğru ama modelsizdi; model-başına tablo `veri/model-kesim.jsonl`.
+- `cc/gorev/2026-08/gorev-2026-08-26-2.md` KANON bloğu "Carvis kesimi Ocak 2026" → **düzeltildi [2026-08-26]:** doğru ama modelsizdi; model-başına tablo `veri/model-kesim.jsonl`.
 
 ## Muafiyet — tarihli dosya (Karar 88 M4, Salih 2026-09-09)
 `raporlar/` ∨ `cc/` altında adında `YYYY-MM-DD` taşıyan dosya D1/D2'den MUAF (`tarihli_muaf()`, `tools/anakronizm-denetim.py`). Gerekçe: rapor o günün kaydıdır, damga zaten dosya adında — içerik bir daha AS-OF taşımak zorunda değil; okuyan dosyanın adındaki tarihi AS-OF sayar. `core/` ve `wiki/` bu muafiyetten HARİÇ (kanon dosyaları kalıcıdır, zaman-bağımlı iddia her koşulda damga ister). `--muafiyet-yok` eski davranışı geri verir.

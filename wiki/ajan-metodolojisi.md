@@ -3,7 +3,7 @@
 *AS-OF 2026-08-30 (yazım: paralel icra oturumu, İB-04 wiki turu; kural kaynağı `core/ajan-metodolojisi.md` — çelişkide kanon kazanır).*
 
 ## Üst blok
-Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sınanmış kural seti. Dört ayak: görev = TİPLİ FONKSİYON (dal-bütçesi ≤5) · hafıza = MANİFEST (eager/lazy) · B1→B4 lojik-kod merdiveni · lider/işçi dörtlü delegasyon + model hiyerarşisi + firstmate rolü. Durum: GÜNCEL · son-teyit 2026-08-30. Kaynak: `core/ajan-metodolojisi.md` v1 (AKTİF 2026-08-14; araştırma dayanağı `cc/rapor-2026-08-14-2.md` — Opus lider + 4 atlas). Kaba güven: ORTA — tek araştırma turu (m.40b antitez şeridi KOŞULMADI, borç §5 madde 4'te açık), ama 2 haftalık kullanım + üç Salih revizyonuyla (KB-18 08-20, Karar 48 08-21, Karar 76 08-29) pekişmiş.
+Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sınanmış kural seti. Dört ayak: görev = TİPLİ FONKSİYON (dal-bütçesi ≤5) · hafıza = MANİFEST (eager/lazy) · B1→B4 lojik-kod merdiveni · lider/işçi dörtlü delegasyon + model hiyerarşisi + firstmate rolü. Durum: GÜNCEL · son-teyit 2026-08-30. Kaynak: `core/ajan-metodolojisi.md` v1 (AKTİF 2026-08-14; araştırma dayanağı `cc/rapor/2026-08/rapor-2026-08-14-2.md` — Opus lider + 4 atlas). Kaba güven: ORTA — tek araştırma turu (m.40b antitez şeridi KOŞULMADI, borç §5 madde 4'te açık), ama 2 haftalık kullanım + üç Salih revizyonuyla (KB-18 08-20, Karar 48 08-21, Karar 76 08-29) pekişmiş.
 
 ## Çekirdek
 **Görev = fonksiyon (§1):** her görev-emri tipli alanlardan kurulu imza taşır — KİMLİK (`gorev_adi·rol·cagri_kosulu·rejim·model·kosum_profili`) + GİRDİLER (tipli) + BAĞLAM-MANİFESTİ + SINIRLAR (`kapsamda/kapsam_disi/araclar/degismezler`) + DALLAR (numaralı, m.38 bağlaçlı) + ÇIKTI SÖZLEŞMESİ (`done_yuklemi` boolean, derece ifadesi YASAK). Dal-bütçesi freni: dal+koşul toplamı ≤5; aşan görev BÖLÜNÜR, zenginleştirilmez (kanıt: o1-preview 3 turda 0,877→0,707 düşüş).
@@ -16,7 +16,7 @@ Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sın
 
 **Firstmate rolü (Karar 76 E4):** ana ajan JARVİS kalır (m.44 baki); firstmate = Jarvis'in VE Salih'in kullandığı YARDIMCI ajan, ikame değil araç. Başarılı olduğu iş sınıfı beyanla değil koşum-ölçümüyle tespit edilir (İB-59 açık borç).
 
-**Damıtılmış örnek** (`cc/gorev-2026-08-29-ib39-idempotens-atlas.md`, şablon `core/sablonlar/gorev-fonksiyonu.md`): `cagri_kosulu`="ledger İB-39 icra-sırada"; `kosum_profili`=işçi Sonnet 5, bütçe 10-15, effort düşük-orta, aile 3; `kapsam_disi`="kod değiştirme·kanon yazımı·LLM ile 'idempotent mi' hükmü"; `done_yuklemi`="sentez yazıldı ∧ A+B'de ≥8 birincil kaynak ∧ C'de N script sınıflandırıldı ∧ 3 seçenek (biri karşıt-temelli)" — dört koşul ayrı ayrı karşılandı/karşılanmadı işaretlenir (DRFR).
+**Damıtılmış örnek** (`cc/gorev/2026-08/gorev-2026-08-29-ib39-idempotens-atlas.md`, şablon `core/sablonlar/gorev-fonksiyonu.md`): `cagri_kosulu`="ledger İB-39 icra-sırada"; `kosum_profili`=işçi Sonnet 5, bütçe 10-15, effort düşük-orta, aile 3; `kapsam_disi`="kod değiştirme·kanon yazımı·LLM ile 'idempotent mi' hükmü"; `done_yuklemi`="sentez yazıldı ∧ A+B'de ≥8 birincil kaynak ∧ C'de N script sınıflandırıldı ∧ 3 seçenek (biri karşıt-temelli)" — dört koşul ayrı ayrı karşılandı/karşılanmadı işaretlenir (DRFR).
 
 ## SOP
 1. `core/sablonlar/gorev-fonksiyonu.md`'yi kopyala; alan adlarını görevin dilinden seç.
@@ -44,8 +44,8 @@ Ajan-tasarım metodolojisi: görev-emri yazımı ve delegasyonun literatür-sın
 ## Kaynaklar
 - `core/ajan-metodolojisi.md` (kural kaynağı, tüm §)
 - `core/sablonlar/gorev-fonksiyonu.md` (şablon)
-- `cc/rapor-2026-08-14-2.md` (araştırma dayanağı)
-- `cc/gorev-2026-08-29-ib39-idempotens-atlas.md` (örnek görev emri)
+- `cc/rapor/2026-08/rapor-2026-08-14-2.md` (araştırma dayanağı)
+- `cc/gorev/2026-08/gorev-2026-08-29-ib39-idempotens-atlas.md` (örnek görev emri)
 - `kuyruk/senaryo-defteri.md` (Karar 48·76, KB-18)
 
 **Bağlantılar:** · [[gnhf]] (karşı-link 09-03)

@@ -1,6 +1,6 @@
 # İngest Şeması — Anlatım
 
-*Bu sayfa ANLATIR, kural koymaz. Sözleşmenin kendisi: `core/ingest-semasi.md` (jarvis v2) + `~/staj başlangıç/ingest-semasi.md` (staj v1). Kanıt tabanı: `cc/rapor-2026-08-14-1.md`. İlgili: [[pointer-sistemi]].*
+*Bu sayfa ANLATIR, kural koymaz. Sözleşmenin kendisi: `core/ingest-semasi.md` (jarvis v2) + `~/staj başlangıç/ingest-semasi.md` (staj v1). Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md`. İlgili: [[pointer-sistemi]].*
 
 ## Sorun neydi?
 
@@ -31,7 +31,7 @@ Sabah stajda üç sekme açtın. Yan sekmede Airflow araştırması yaptırdın 
 ## Matematiksel temel (neden "anlamlı")
 
 - **Append-only log + snapshot + projeksiyon** = event sourcing — durum her an ham kayıtlardan yeniden türetilebilir; snapshot bozulsa bilgi kaybı sıfır.
-- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ kaynakta 0,995/sandbox-saati, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). **[DÜZELTİLDİ 08-21, Karar 59 (KB-42 A): kaynak 0,995/sandbox-SAATİ (α üçlüsü = 1, gerekçesiz); Jarvis'e değer TAŞINMAZ — form tazelik(t)=d^t, t=SEANS, d kalibre edilmemiş [?] (ölçüm gelene dek skorlamada kullanılmaz); T-Ç6 kuralı doğdu: katsayı = kaynaktaki değer+birim, aksi damgalı — `core/ingest-semasi.md:47` + `cc/rapor-2026-08-17-1.md` S4]** v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
+- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ kaynakta 0,995/sandbox-saati, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). **[DÜZELTİLDİ 08-21, Karar 59 (KB-42 A): kaynak 0,995/sandbox-SAATİ (α üçlüsü = 1, gerekçesiz); Jarvis'e değer TAŞINMAZ — form tazelik(t)=d^t, t=SEANS, d kalibre edilmemiş [?] (ölçüm gelene dek skorlamada kullanılmaz); T-Ç6 kuralı doğdu: katsayı = kaynaktaki değer+birim, aksi damgalı — `core/ingest-semasi.md:47` + `cc/rapor/2026-08/rapor-2026-08-17-1.md` S4]** v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
 - **Eşikli toplu compaction** = LSM-tree — write amplification >10: her damıtma pahalıdır, o yüzden seyrek ve toplu yapılır.
 - **Bütçeler** = MemGPT'nin %70-uyarı/%100-tahliye/%50-boşaltma üçlüsü + Claude Code'un 200-satır/25KB indeks limiti (aşan kısım hiç yüklenmez — sıcak bağlam sabit-bütçeli tutulmak zorunda).
 

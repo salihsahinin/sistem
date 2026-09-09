@@ -1,6 +1,6 @@
 # m.44 — rol katmanları: köle ≠ üst-orkestratör ≠ domain-lider (İMZALANDI 2026-07-21)
 
-*(İmza masası kalemi. Kaynak gerilim: Salih tespiti 07-21 günaydın — klasör kuruluşunda "sen orkestra şefisin" yazıldı, tüzükte köle dendi, CC taksonomi çalışması "hem CEO hem şef = görev fazlalığı" notu düştü. Çözüm zemini: `raporlar/2026-07-21-sirket-rolleri-ajan-gorev-baglami-taksonomisi.md` nested-supervisor bölümü. Rol/yetki tanımı = Katman-1, m.31.)*
+*(İmza masası kalemi. Kaynak gerilim: Salih tespiti 07-21 günaydın — klasör kuruluşunda "sen orkestra şefisin" yazıldı, tüzükte köle dendi, CC taksonomi çalışması "hem CEO hem şef = görev fazlalığı" notu düştü. Çözüm zemini: `raporlar/2026-07/2026-07-21-sirket-rolleri-ajan-gorev-baglami-taksonomisi.md` nested-supervisor bölümü. Rol/yetki tanımı = Katman-1, m.31.)*
 
 ## Madde metni (tüzüğe İŞLENDİ 07-21 — m.44; taslakta m.43 yazılmıştı, numara doluydu [skill-doğum kuralı 07-19] → m.44 olarak işlendi, numaralandırma düzeltmesi)
 

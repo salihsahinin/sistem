@@ -5,7 +5,7 @@
 
 ====
 
-Carvis, "compaction inşası" bloğunu açıyoruz. Bu, K-015'in (sıcak katman / bağlam mimarisi) somut inşa fazı. Girdi: Şerit 2'nin P5 (JIT yükleme, `@path` tuzağı) ve P6 (compaction, not-tutma, izolasyon) partisyonları. Devir dosyaları: `raporlar/vardiya-teslim-2026-07-22-ogrenme-P5.md` ve `raporlar/vardiya-teslim-2026-07-22-ogrenme-P6.md`, ders kayıtları `ogrenme/dersler/2026-07-22-P5-*` ve `2026-07-22-P6-*`.
+Carvis, "compaction inşası" bloğunu açıyoruz. Bu, K-015'in (sıcak katman / bağlam mimarisi) somut inşa fazı. Girdi: Şerit 2'nin P5 (JIT yükleme, `@path` tuzağı) ve P6 (compaction, not-tutma, izolasyon) partisyonları. Devir dosyaları: `raporlar/vardiya/vardiya-teslim-2026-07-22-ogrenme-P5.md` ve `raporlar/vardiya/vardiya-teslim-2026-07-22-ogrenme-P6.md`, ders kayıtları `ogrenme/dersler/2026-07-22-P5-*` ve `2026-07-22-P6-*`.
 
 **Bu promptun iddialarına güvenme.** Prompt bir öğrenme oturumunda üretildi, o oturum canon'a yazamaz ve bir bulgusu zaten geri çekildi. Aşağıdaki Faz A senin kendi doğrulaman; Faz A bitmeden Faz C'deki hiçbir hükmü kanona ya da senaryo-defterine geçirme.
 

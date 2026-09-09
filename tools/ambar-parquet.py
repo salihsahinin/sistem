@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ambar-parquet.py — bağlam veri ambarından KOLON-BAZLI YAZIM: silver/ambar tabloları + gold martları → veri/parquet/*.parquet
-(deneysel m.29; pipeline cc/pipeline-2026-08-18-kolon-katmani.md SH-2; kanıt cc/rapor-2026-08-18-2.md S4).
+(deneysel m.29; pipeline cc/pipeline/pipeline-2026-08-18-kolon-katmani.md SH-2; kanıt cc/rapor/2026-08/rapor-2026-08-18-2.md S4).
 
 Desen (rapor S1/S4 — hazırı temel al, kod = tutkal): SQLite = YAZMA deposu (silver, OLTP; değişmez) → parquet = periyodik TOPLU türev
 (kolon dosyası; kolon depolarında yazma birimi topludur, tek-satır yazımı anti-desen: A-YT3) → DuckDB = OLAP okuyucu. Kolon-kolon tablo

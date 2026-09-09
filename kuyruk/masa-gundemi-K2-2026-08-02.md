@@ -1,6 +1,6 @@
 # Masa Gündemi — K2 kalemleri (rapor 08-02-1 ingest'i; Katman-1, hepsi İMZASIZ)
 
-*Kaynak: `cc/rapor-2026-08-02-1.md` §8 (tam gerekçe + karşı-taraf orada; m.20 pointer). Rapor KOŞULLU okunur: hakem 7/7 anlaşmazlıkta hiçbir tarafa SAĞLAM vermedi, 14 tez iddiasından 8'i çürüdü. Hakemin sentez uyarısı bu gündemin okuma kuralıdır: kalemler BAĞIMSIZ karar ister — paket-kabul ve paket-red ikisi de hatadır.*
+*Kaynak: `cc/rapor/2026-08/rapor-2026-08-02-1.md` §8 (tam gerekçe + karşı-taraf orada; m.20 pointer). Rapor KOŞULLU okunur: hakem 7/7 anlaşmazlıkta hiçbir tarafa SAĞLAM vermedi, 14 tez iddiasından 8'i çürüdü. Hakemin sentez uyarısı bu gündemin okuma kuralıdır: kalemler BAĞIMSIZ karar ister — paket-kabul ve paket-red ikisi de hatadır.*
 
 ## Öne çekilenler (rapor işareti ⭐)
 

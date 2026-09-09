@@ -1,6 +1,6 @@
 # Planlanmış Optimize Etme Fikirleri (POP)
 
-*(Ev kararı: Fable süzgeci 07-19, Katman 2. Şema: her madde = tetik-koşulu · C_carry (taşıma maliyeti: >0 = beklerken faiz işler, ≈0 = saf opsiyon/bedava bekler) · Durum {deferred · armed · triggered · dropped}. Tetik = elle beyan (otomatik-eşik ölçüm-altyapısı sonrası). Budama = m.37 yakınsama; drop ≠ sil (m.8). Tam gerekçeler: `raporlar/2026-07-18-planlanmis-optimizasyon-fikirleri.md`.)*
+*(Ev kararı: Fable süzgeci 07-19, Katman 2. Şema: her madde = tetik-koşulu · C_carry (taşıma maliyeti: >0 = beklerken faiz işler, ≈0 = saf opsiyon/bedava bekler) · Durum {deferred · armed · triggered · dropped}. Tetik = elle beyan (otomatik-eşik ölçüm-altyapısı sonrası). Budama = m.37 yakınsama; drop ≠ sil (m.8). Tam gerekçeler: `raporlar/2026-07/2026-07-18-planlanmis-optimizasyon-fikirleri.md`.)*
 
 | # | Optimizasyon | Tetik | C_carry | Durum |
 |---|---|---|---|---|

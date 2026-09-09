@@ -1,6 +1,6 @@
 # 02 — Yerel Bilgi Index'i: Araştırma Sentezi + Karar + Rollout
 
-**Statü:** öneri dosyası (imzasız). **Ham kanıt:** `raporlar/2026-07-10-arastirma-1-index-mimarisi.md` (3 mimari + stat kartları) ve `raporlar/2026-07-10-arastirma-2-ingest-pipeline.md` (fabrika hattı + eşik tablosu + literatür). Bu dosya karar katmanıdır; detaya inen oraya gider.
+**Statü:** öneri dosyası (imzasız). **Ham kanıt:** `raporlar/2026-07/2026-07-10-arastirma-1-index-mimarisi.md` (3 mimari + stat kartları) ve `raporlar/2026-07/2026-07-10-arastirma-2-ingest-pipeline.md` (fabrika hattı + eşik tablosu + literatür). Bu dosya karar katmanıdır; detaya inen oraya gider.
 
 ## 1. Karar özeti (Katman-2 varsayılanları; veto = revert)
 

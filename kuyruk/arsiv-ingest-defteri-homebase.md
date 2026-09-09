@@ -1,4 +1,4 @@
-> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Jarvis Ingest Defteri.md`; tespit raporu: `raporlar/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
+> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Jarvis Ingest Defteri.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
 
 # [C] Jarvis Ingest Defteri
 
@@ -85,7 +85,7 @@
 
 ## 2026-07-13 (günaydın vardiyası)
 
-*(Özütler kural gereği doğrudan JARVIS fikir kutusuna: V51 kaza-seçim dersi; oturumun tam dökümü `raporlar/vardiya-teslim-2026-07-13-gunaydin.md` + JARVIS git log d9c6926→d0737e6)*
+*(Özütler kural gereği doğrudan JARVIS fikir kutusuna: V51 kaza-seçim dersi; oturumun tam dökümü `raporlar/vardiya/vardiya-teslim-2026-07-13-gunaydin.md` + JARVIS git log d9c6926→d0737e6)*
 
 ## 2026-07-14 (JARVIS 2. oturum — ilk CC köprü koşumu)
 1. **[operasyon]** İlk CC koşumunda doğrulama katmanı 70 bulgunun 12'sini düzeltti → araştırma-ajanı çıktısı doğrulamasız kutuya İŞLENMEZ; ama %100 bulgu-başına doğrulayıcı pahalı (~2,4M token) → sonraki koşumlarda V26 örneklem-denetimi + yalnız doğrudan-kullanım-adaylarına tam doğrulama.

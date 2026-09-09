@@ -11,7 +11,7 @@ BRONZ (kaynak-konform, ham + provenans; append-only): `veri/bronz/hareket-olay.j
 SİLVER (1:1 grain, tipli, tekil): `veri/baglam.sqlite` tablosu `hareket` — TR zaman, oturum-içi sıra, Türkçe fiil, hedef dosya (repo-göreli), repo_ici.
   Sözleşme `veri/sozlesme/hareket.json` (additive-only). Testler: unique(hareket_id) · not_null(arac) · accepted_values(fiil).
 GOLD (iş-konform, tek tanım): `v_hareket_gunluk` (gün × oturum × fiil sayımı) · `v_son_hareketler` (son 300) · `v_okuma_orani` (İB-29: aralık↔bütün okuma; KB-53 (a)) → `veri/gorunum/*.csv`
-  + İNSAN-YÜZÜ: `raporlar/hareket-gunlugu-YYYY-MM-DD.md` (o günün her seansı: saat · fiil · hedef · sonuç; ad arama anahtarıyla başlar).
+  + İNSAN-YÜZÜ: `raporlar/hareket/hareket-gunlugu-YYYY-MM-DD.md` (o günün her seansı: saat · fiil · hedef · sonuç; ad arama anahtarıyla başlar).
 Kullanım: python3 tools/hareket-tablo.py [--tarih YYYY-MM-DD] [--tum] [--kuru] [--sessiz] [--proje-dizin <yol>] [--repo <yol>]
   --tum: bronzdaki HER gün için günlük dosyası üretir (geriye dönük). Varsayılan: yalnız bugün (TR).
 Sınır: md.49 — yalnız jarvis transkriptleri; alt-ajan koşumları ambar-tablo.py'de (amb_olgu_kosum), burada ana oturumun kendi çağrıları.
@@ -228,7 +228,7 @@ def main():
         con.close()
         # --- İNSAN-YÜZÜ günlük ---
         hedef_gunler = gunler if a.tum else [bugun]
-        rdir = os.path.join(repo, "raporlar"); os.makedirs(rdir, exist_ok=True)
+        rdir = os.path.join(repo, "raporlar", "hareket"); os.makedirs(rdir, exist_ok=True)
         for gun in hedef_gunler:
             gs = [s for s in satirlar if s["tarih_tr"] == gun]
             if not gs and not a.tum: gs = []
@@ -248,7 +248,7 @@ def main():
             if not gs: L.append("_Bu gün için kayıt yok._")
             open(os.path.join(rdir, f"hareket-gunlugu-{gun}.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     if not a.sessiz:
-        print(f"bronz: {len(olaylar)} çağrı tarandı ({len(yeni)} yeni, {len(mevcut)} mevcut) · silver: {len(satirlar)} satır · gün: {len(gunler)}" + (" (kuru)" if a.kuru else f" → gold CSV + raporlar/hareket-gunlugu-{'*' if a.tum else bugun}.md"))
+        print(f"bronz: {len(olaylar)} çağrı tarandı ({len(yeni)} yeni, {len(mevcut)} mevcut) · silver: {len(satirlar)} satır · gün: {len(gunler)}" + (" (kuru)" if a.kuru else f" → gold CSV + raporlar/hareket/hareket-gunlugu-{'*' if a.tum else bugun}.md"))
         for t in testler: print(f"  [{t[2]}] {t[0]} ihlal {t[1]}")
 
 

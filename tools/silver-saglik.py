@@ -67,9 +67,9 @@ def kurallari_oku(repo):
 
 
 def seans_tarihleri(repo):
-    """SEANS sayacı: raporlar/{seans,vardiya}-teslim-*.md dosya adlarındaki tarihler (1 dosya = 1 seans); sıralı liste."""
+    """SEANS sayacı: raporlar/seans/seans-teslim-*.md + raporlar/vardiya/vardiya-teslim-*.md dosya adlarındaki tarihler (1 dosya = 1 seans); sıralı liste."""
     out = []
-    for p in glob.glob(os.path.join(repo, "raporlar", "seans-teslim-*.md")) + glob.glob(os.path.join(repo, "raporlar", "vardiya-teslim-*.md")):
+    for p in glob.glob(os.path.join(repo, "raporlar", "seans", "seans-teslim-*.md")) + glob.glob(os.path.join(repo, "raporlar", "vardiya", "vardiya-teslim-*.md")):
         m = re.search(r"(\d{4}-\d{2}-\d{2})", os.path.basename(p))
         if m:
             out.append(m.group(1))

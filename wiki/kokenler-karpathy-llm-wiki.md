@@ -1,4 +1,4 @@
-> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/LLM Wiki Starter/00 LLM Wiki — original idea (Karpathy).md`; tespit raporu: `raporlar/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
+> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/LLM Wiki Starter/00 LLM Wiki — original idea (Karpathy).md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
 
 > **Kaynak:** Andrej Karpathy, "LLM Wiki" gist, Nisan 2026 — https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 > Bu, fikrin ORİJİNAL dosyasıdır; şemayı sıfırdan yeniden kurmak istersen taze bir ajana yapıştırılır. **Türkçeleştirme (Salih emri 2026-08-17, açık-kaynak ilkesi):** aşağıda önce Türkçe özet (Carvis, kendi cümleleriyle — üçüncü-şahıs metin, birebir çeviri yerine özet), altında Karpathy'nin İngilizce aslı birebir korunur (kaynak metin, değiştirilmez).

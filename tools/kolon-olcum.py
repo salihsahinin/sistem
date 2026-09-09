@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """kolon-olcum.py — SATIR (SQLite) ↔ KOLON (DuckDB parquet/native) ölçüm aracı: aynı OLAP sorgu seti iki motorda; süre + sorgunun dokunduğu
 byte + plan; append-only ölçüm kütüğü veri/kolon-olcum.jsonl (DE-artefakt; K-023 "her ship ≥1 artefakt"; deneysel m.29).
-Kanıt/kural kaynağı: cc/rapor-2026-08-18-2.md (S2 ölçüm tablosu, S4 ölçüm yöntemi; C-YT6 ClickBench disiplini: soğuk/ılık 1 + sıcak min(2,3)).
+Kanıt/kural kaynağı: cc/rapor/2026-08/rapor-2026-08-18-2.md (S2 ölçüm tablosu, S4 ölçüm yöntemi; C-YT6 ClickBench disiplini: soğuk/ılık 1 + sıcak min(2,3)).
 
 `byte` alanı iki motorda da STATİK "sorgunun dokunduğu depolama" tahminidir (fiziksel okuma değil; m.39 her rakam kaynaklı; tanım her satırda
 `byte_tanimi` alanıyla damgalanır — motorlar arası kıyas aynı sınıfta ama aynı tanımda değildir, asimetri kayıtta okunur):

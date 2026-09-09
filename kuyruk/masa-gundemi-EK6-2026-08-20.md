@@ -2,7 +2,7 @@
 
 
 **MASA KAPANDI 2026-08-29 (4. Lavish masası, Karar 78 — 10/10 hüküm):** F1 vaka-tetikli beklet · F2 birim=GÖREV + m.43 N=3 (Salih notu aynen defterde) · F3 düzeltme+aynı-sayaç N=3 · F4 → İB-60 loop-dedektör · F5 süpersede-kapat (1,73× → İB-54) · F6 m.25 V47 şerhi İMZA · F7 DE-GOLD tek kaynak · F8 → İB-61 teyit turu · T1/T2 süpersede-kapat. ⑨ DONDUR baki (açma tetiği Salih beyanında).
-*Künye: EK-6 külliyatının (~106 K1 kalemi / 9 küme, 08-01 gece ingest'i) triyaj-sonrası CANLI kalanları. Triyaj: `raporlar/2026-08-20-ek6-triyaj-supersede.md` (hükümler §4: S1 süpersede kapanışları · S2 ⑨ DONDUR-tetikli · S3 optimize dağıtım — Salih 08-20, defter Karar 41). Külliyat şerhi baki: F2 denetimi 3/34 TUTMADI + 1 icat-rakam — kalemler denetimli okunur. Bu masa ayrı oturumda açılır; kalem başına açıklama-bloklu sunum.*
+*Künye: EK-6 külliyatının (~106 K1 kalemi / 9 küme, 08-01 gece ingest'i) triyaj-sonrası CANLI kalanları. Triyaj: `raporlar/2026-08/2026-08-20-ek6-triyaj-supersede.md` (hükümler §4: S1 süpersede kapanışları · S2 ⑨ DONDUR-tetikli · S3 optimize dağıtım — Salih 08-20, defter Karar 41). Külliyat şerhi baki: F2 denetimi 3/34 TUTMADI + 1 icat-rakam — kalemler denetimli okunur. Bu masa ayrı oturumda açılır; kalem başına açıklama-bloklu sunum.*
 
 ## Kalemler (9)
 
@@ -14,11 +14,11 @@
 6. **g24 CC-oran çekirdeği** — CC-oran matrisi/hedef-metni 4 seçenek + gerekçe-disiplini (K1-24-b) + `kosum-maliyeti.py` 1,73× şişiklik kalibrasyon bulgusu (`:558-564`). Rejim-etiketi parçası KAPANDI (m.46(d), Karar 39); K1-24-l "K-009'dan önce oku" notu K-009 açılış gündemine pointer.
 7. **⑧ m.25 eşiği V47 formu** — "pipeline sınıfı için m.25 eşiğinin V47 formunda yazılması (K1-K6+kalibrasyon protokolü)"; halefi yok, K0-Y3 yakın ama aynı değil (#8/#105).
 8. **⑤ ölçüm-bankı tekleştirme** — `kuyruk/olcum-banki.md` ↔ DE-katmanı GOLD "ölçüm-bankı satırları" (`core/veri-muhendisligi-katmani.md:17`) çakışıyor; tek kaynak kararı.
-9. **① pipeline/loop kanonu belirsizleri** — ~4 kalem (dar-ajan zinciri, "özetle DENMEZ" yasağı; rapor-20 K1-c, EK-F K1-l/K1-o): ajan-metodolojisi + ingest-şeması kısmen absorbe etmiş görünüyor, kalem-kalem bakış gerekir. **KAPANDI (Karar 83 C3, Salih 08-30):** İB-61 teyit turu (`raporlar/2026-08-29-ib61-absorbe-teyit.md`) — ①absorbe-kapandı ②tek-cümle ajan-metodolojisi §1'e imzalı ③kapat-konusuz ④kapat+İB-06 ölçüm kalemi ⑤~~rapor-13:313-315~~ pointer YANLIŞTI, düşürüldü (rapor-13 borçları kendi kalemi).
+9. **① pipeline/loop kanonu belirsizleri** — ~4 kalem (dar-ajan zinciri, "özetle DENMEZ" yasağı; rapor-20 K1-c, EK-F K1-l/K1-o): ajan-metodolojisi + ingest-şeması kısmen absorbe etmiş görünüyor, kalem-kalem bakış gerekir. **KAPANDI (Karar 83 C3, Salih 08-30):** İB-61 teyit turu (`raporlar/2026-08/2026-08-29-ib61-absorbe-teyit.md`) — ①absorbe-kapandı ②tek-cümle ajan-metodolojisi §1'e imzalı ③kapat-konusuz ④kapat+İB-06 ölçüm kalemi ⑤~~rapor-13:313-315~~ pointer YANLIŞTI, düşürüldü (rapor-13 borçları kendi kalemi).
 
 ## DONDURULMUŞ (S2 hükmü)
 
-- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8). **AÇILDI 2026-08-29 (Salih beyanı, seans-21):** deterministik envanter 64 kalem (~95 F1-tahminiydi) → `kuyruk/masa-gundemi-DONDUR9-2026-08-29.md`; sıra: çapraz-okuma turu → daraltılmış masa. **MASA KAPANDI aynı gün (5. Lavish masası, Karar 79 — 7/7 hüküm):** D1 toplu-onay 9 kapanış · D2 ufuk-sistemi RAF (tetik: K-010 ajan dönemi ∨ Salih beyanı) · D3 yazım İB'si · D4 geç-hakemlik KOŞTUR · D5 toplu devir 16 · D6 ε→KB-26 · D7 tekiller→İB-05. ⑨ kümesi fiilen KAPANDI; kalıntı işler Karar 79 kaydında.
+- **⑨ "diğer" ~95 tekil kalem** — tarih-damgalı DONDUR (08-20). **Açma tetiği (Salih, aynen): "mevcut önemli karar borçları bitince."** Kaynak kod-listesi: `raporlar/2026-08/2026-08-01-ingest-grafhatti.md` §2.3; hiçbir şey silinmedi (m.8). **AÇILDI 2026-08-29 (Salih beyanı, seans-21):** deterministik envanter 64 kalem (~95 F1-tahminiydi) → `kuyruk/masa-gundemi-DONDUR9-2026-08-29.md`; sıra: çapraz-okuma turu → daraltılmış masa. **MASA KAPANDI aynı gün (5. Lavish masası, Karar 79 — 7/7 hüküm):** D1 toplu-onay 9 kapanış · D2 ufuk-sistemi RAF (tetik: K-010 ajan dönemi ∨ Salih beyanı) · D3 yazım İB'si · D4 geç-hakemlik KOŞTUR · D5 toplu devir 16 · D6 ε→KB-26 · D7 tekiller→İB-05. ⑨ kümesi fiilen KAPANDI; kalıntı işler Karar 79 kaydında.
 
 ## KAPANANLAR (S1 hükmü — arşiv damgası)
 

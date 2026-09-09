@@ -2,7 +2,7 @@
 
 **Salih (aynen):** "a1 sayacına bu koşumlar sayılır"
 
-**Bağlam:** Karar 81 EK-2 (08-29): A1 = ardışık 5 başarılı OTOMASYON-KOŞUMU ∧ açık incident 0; birim KOŞUM; "ilk koşumlar İB-63 paralel-kapı pilotundan sayılır". Pilot bugün koştu: `raporlar/2026-08-30-paralel-kademe-pilot.md`.
+**Bağlam:** Karar 81 EK-2 (08-29): A1 = ardışık 5 başarılı OTOMASYON-KOŞUMU ∧ açık incident 0; birim KOŞUM; "ilk koşumlar İB-63 paralel-kapı pilotundan sayılır". Pilot bugün koştu: `raporlar/2026-08/2026-08-30-paralel-kademe-pilot.md`.
 
 **Sayım (Carvis okuması, teyide açık):**
 - Birim = pipeline koşumu (Karar 81 EK-2 "otomasyon-koşumu" lafzı): 5 birim koşumu, 5'i doğrulama geçti → **A1 = 5/5**, açık incident 0 (1 doğrulama-sonrası düzeltme — wiki AS-OF damgası — aynı seansta KAPANDI, 644109d).

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """katman-olcum.py — Jarvis veri-mühendisliği katmanı: ÖLÇÜM + VERİ-TESTİ + FRESHNESS + ŞEKİL-SÖZLEŞMESİ (STDLIB ONLY, Python ≥3.9).
 
-Kanon: core/veri-muhendisligi-katmani.md (deneysel m.29). Kanıt: cc/rapor-2026-08-16-2.md (AB-YT4 oran yerel ölçülür · AB-YT6
+Kanon: core/veri-muhendisligi-katmani.md (deneysel m.29). Kanıt: cc/rapor/2026-08/rapor-2026-08-16-2.md (AB-YT4 oran yerel ölçülür · AB-YT6
 şekil↔içerik sözleşmesi + additive-only + FAIL-LOUD preflight · CD-YT1 freshness sözleşmesi · CD-YT2 test çekirdeği [unique ·
 not_null · accepted_values · relationships] sonuçları APPEND-ONLY kütüğe · CD-YT6 COST tabanı).
 

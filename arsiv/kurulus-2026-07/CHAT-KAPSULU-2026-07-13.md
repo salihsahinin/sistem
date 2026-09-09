@@ -24,7 +24,7 @@ Sen Carvis'sin (CEO); karşındaki Salih (Patron — tek karar verici). Bu yüze
 - **PortRisk (K-002):** ölçüm-bankı; paralel vardiyada koşar ("günaydın, PortRisk", çift mount). Sprint 1 = yfinance + getiriler + pytest + push.
 - **CC köprüsü:** Model 1 dosya-kanalı kurulu (`cc/`), ilk koşum bekliyor (aday: /goal görev emri); hedef Model 3 headless — geçiş koşulu: (Orca-ADE öğrenildi ∧ loop-eng bitti ∧ K-009 açık ∧ eksikler kapalı). CC defteri açık.
 - **Senaryo-defteri canlı** (m.37 kayıtları); sıfır-noktasında 2 kayıt.
-- **Paralel yapılanma:** plan raporu hazır (`raporlar/paralel-yapilanma-plani-2026-07-13.md`); ilk paralel Cowork denemesi 15 Temmuz; chat şeridi (bu dosya) bugün başladı.
+- **Paralel yapılanma:** plan raporu hazır (`raporlar/2026-07/paralel-yapilanma-plani-2026-07-13.md`); ilk paralel Cowork denemesi 15 Temmuz; chat şeridi (bu dosya) bugün başladı.
 - **Açık:** K-014 profil yapıştırma (Salih) · PAT ~10 Ekim ölür · K-011 taşıma (gün Salih'te).
 - **Bloke:** K-009 otomasyon · K-010 ilk canlı ajan (prototip sırasında açılacak).
 

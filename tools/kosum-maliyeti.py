@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """kosum-maliyeti.py — Claude Code transkript-JSONL'inden usage/maliyet tablosu (İB-08 icrası, 2026-08-21).
 
-Yol kararı: AB-3 kısa atlası (cc/rapor-2026-08-21-ab3-usage.md) — yol (i) JSONL-parse SÜRDÜRÜLÜR;
+Yol kararı: AB-3 kısa atlası (cc/rapor/2026-08/rapor-2026-08-21-ab3-usage.md) — yol (i) JSONL-parse SÜRDÜRÜLÜR;
 format resmen "internal, sürümler arası değişir" (code.claude.com/docs/en/sessions) olduğundan bu betik
 SESSİZ yanlış sayı üretmek yerine FAIL-LOUD çalışır (2.1.169 stub-only regresyonu emsali: issue 66486).
 

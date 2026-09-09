@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 baglam-tablo.py — JARVIS bağlamını (git-izlenen .md/.json/.jsonl) veri tablosuna çevirir.
-Şema v0 (deneysel m.29) · emir: cc/gorev-2026-08-15-7.md · sözleşme: veri/README.md
+Şema v0 (deneysel m.29) · emir: cc/gorev/2026-08/gorev-2026-08-15-7.md · sözleşme: veri/README.md
 STDLIB ONLY (Python 3.9). Çıktılar: veri/baglam.sqlite · veri/baglam.jsonl · veri/gorunum/*.csv
 
 Koşum:  python3 tools/baglam-tablo.py            (repo kökü = tools/'un üstü)
@@ -97,12 +97,12 @@ def katman_bul(yol):
         return "sicak"
     if yol.startswith(".claude/skills/") and ad == "SKILL.md":
         return "sicak"
-    if (yol.startswith("raporlar/") or yol.startswith("cc/rapor-") or yol.startswith("cc/gorev-")
+    if (yol.startswith("raporlar/") or yol.startswith("cc/rapor/") or yol.startswith("cc/gorev/")
             or yol.startswith("ogrenme/") or yol.startswith(MODEL_KLASOR_ONEK)
             or "/arsiv/" in ("/" + yol) or ad.startswith("arsiv-") or "-arsiv" in ad):
         return "soguk"
     if (yol.startswith("kuyruk/") or yol.startswith("wiki/") or yol == "fikir-kutusu.md"
-            or yol.startswith("cc/pipeline-") or yol == "cc/defter.md"
+            or yol.startswith("cc/pipeline/") or yol == "cc/defter.md"
             or ("/" not in yol and yol.endswith(".md"))
             or yol.startswith(".claude/") or yol == "cc/README.md"):
         return "ilik"
@@ -142,11 +142,11 @@ def tur_bul(yol):
         return "kuyruk"
     if yol == "cc/defter.md":
         return "defter"
-    if yol.startswith("cc/gorev-"):
+    if yol.startswith("cc/gorev/"):
         return "emir"
-    if yol.startswith("cc/rapor-"):
+    if yol.startswith("cc/rapor/"):
         return "rapor"
-    if yol.startswith("cc/pipeline-"):
+    if yol.startswith("cc/pipeline/"):
         return "pipeline"
     if yol.startswith("raporlar/"):
         if adl.startswith("vardiya-teslim-"):
@@ -697,7 +697,7 @@ WHERE r.ref_turu='anahtar_terim' AND k.zarf_json IS NOT NULL
 GROUP BY r.ref_deger, k.dosya_id
 HAVING bitisli>0 AND bitissiz>0
 ORDER BY anahtar_terim, k.dosya_id"""),
-    # --- v1 galaxy görünümleri (W-1/SH-11, 2026-08-16; kanıt: cc/rapor-2026-08-15-8.md A-YT2/D-YT1/D-YT3, tasarım: core/world-model-tasarimi.md) ---
+    # --- v1 galaxy görünümleri (W-1/SH-11, 2026-08-16; kanıt: cc/rapor/2026-08/rapor-2026-08-15-8.md A-YT2/D-YT1/D-YT3, tasarım: core/world-model-tasarimi.md) ---
     ("v_boyut_anahtar", """
 CREATE VIEW v_boyut_anahtar AS
 SELECT a.anahtar_id, a.tur, a.deger, a.durum, a.replaced_by,

@@ -1,6 +1,6 @@
 # Masa Gündemi — FS (Fable–Sonnet ikilisi) Karar Masası (2026-09-02)
 
-*7. Lavish masası. Tetik: Salih Katman-1 beyanı 09-02 ("Opus saf dışı; işçi = Sonnet, planlayıcı = Fable; sistemi komple revize et; sağlık turu tavsiyelerini, icra-prompt optimumunu ve biriken kararları masaya taşı"). Yüzey: `raporlar/masa-fs-karar-yuzeyi-2026-09-02.html` (Lavish). Üretici: Carvis (Fable 5.1, ana-sıra). AS-OF 2026-09-02 · HEAD 481ddca + lokal commit'ler (push SSH-kimliksiz, m.9 borcu açık). Hükümler bu dosyaya + defter Karar 86 bloğuna işlenir.*
+*7. Lavish masası. Tetik: Salih Katman-1 beyanı 09-02 ("Opus saf dışı; işçi = Sonnet, planlayıcı = Fable; sistemi komple revize et; sağlık turu tavsiyelerini, icra-prompt optimumunu ve biriken kararları masaya taşı"). Yüzey: `raporlar/masa/masa-fs-karar-yuzeyi-2026-09-02.html` (Lavish). Üretici: Carvis (Fable 5.1, ana-sıra). AS-OF 2026-09-02 · HEAD 481ddca + lokal commit'ler (push SSH-kimliksiz, m.9 borcu açık). Hükümler bu dosyaya + defter Karar 86 bloğuna işlenir.*
 
 **Masa öncesi FİİLEN yapılan (Katman-2 icra, Salih beyanına dayanarak — veto = revert):** Karar 85 kanon şerhleri (Opus emekli; tüzük m.30/42/44, ajan-metodolojisi §37, research-agent model pin opus→sonnet + R4, gorev-emri-derleme, pipeline-kosum, 2 wiki) · test regresyonu düzeltmesi (`[ariza]`) · sağlık turu koşumu · defter Karar 85 bloğu.
 
@@ -53,7 +53,7 @@ Envanterin %29'u iki-değerli alana sığmıyor; 17 manifest = 16 pipeline + 1 l
 - **(b) Ayıklı:** hariç kodları nota yaz.
 
 ### D7 · Devir soruları (08-31 Opus + 09-02) — toplu adresleme
-④ İB-66 Model A öncesi `parent_tool_use_id` canlı doğrulaması (öneri: EVET, ucuz; D4 ile aynı sonda) · ⑦ İB-69 aile-1 raporuna 4 şerh (öneri: m.8 üstüne-not olarak aile-1'e işlenir) · ⑨ m.39 ihlalli ham rapor `cc/rapor-2026-08-31-ib68-b3-pazar-dagitim.md` (öneri: mevcut damga + başa 1 satır düzeltme notu) · ⑩ T_hucre M-1 ölçümü (öneri: transkript usage hasadı İB'si — İB-08 usage-otomasyonuyla birleşir) · ⑮ İB-66 tasarım gerekçeleri (öneri: şerhle kalır; Model A doğrulaması sonrası tazelenir) · ⑭ İB-07 bağımsız set: KARAR ALINDI 08-31 (maskeli+nötr-ad türetim, tetik ilk description değişikliği) — bilgi.
+④ İB-66 Model A öncesi `parent_tool_use_id` canlı doğrulaması (öneri: EVET, ucuz; D4 ile aynı sonda) · ⑦ İB-69 aile-1 raporuna 4 şerh (öneri: m.8 üstüne-not olarak aile-1'e işlenir) · ⑨ m.39 ihlalli ham rapor `cc/rapor/2026-08/rapor-2026-08-31-ib68-b3-pazar-dagitim.md` (öneri: mevcut damga + başa 1 satır düzeltme notu) · ⑩ T_hucre M-1 ölçümü (öneri: transkript usage hasadı İB'si — İB-08 usage-otomasyonuyla birleşir) · ⑮ İB-66 tasarım gerekçeleri (öneri: şerhle kalır; Model A doğrulaması sonrası tazelenir) · ⑭ İB-07 bağımsız set: KARAR ALINDI 08-31 (maskeli+nötr-ad türetim, tetik ilk description değişikliği) — bilgi.
 - **(a) ÖNERİLEN — Toplu kabul (önerilerle).** (b) Ayıklı. (c) Beklet.
 **Masa dışı bilgi şeridi (karar istemez):** galeri devri 5 sorusu (09-02) jarvis-dışı staj şeridi — Karar "geçici hafıza" kuralı gereği masaya girmedi; Salih tetiğiyle ayrı.
 

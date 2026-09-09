@@ -1,8 +1,8 @@
 # Masa Gündemi — 8. Lavish Masası (2026-09-03 akşam)
 
-*Tetik: Salih 09-03 akşam ("bu oturumda açılması gereken karar masasını hazırla, lavish ile açacağız"). Yüzey `.lavish/masa-8-2026-09-03.html` → teslim kopyası `raporlar/masa-8-karar-yuzeyi-2026-09-03.html`. Hazırlayan Carvis/Fable, HEAD 7339271. Hüküm Salih'te; her kalemde ÖNERİLEN ilk sırada (m.40 eki: ne demek · ne yaparım · artı · eksi). Deneysel m.29; rakamlar kaynaklı m.39.*
+*Tetik: Salih 09-03 akşam ("bu oturumda açılması gereken karar masasını hazırla, lavish ile açacağız"). Yüzey `.lavish/masa-8-2026-09-03.html` → teslim kopyası `raporlar/masa/masa-8-karar-yuzeyi-2026-09-03.html`. Hazırlayan Carvis/Fable, HEAD 7339271. Hüküm Salih'te; her kalemde ÖNERİLEN ilk sırada (m.40 eki: ne demek · ne yaparım · artı · eksi). Deneysel m.29; rakamlar kaynaklı m.39.*
 
-**Masa öncesi FİİLEN yapılan (Katman-2, veto = revert):** görselleştir skill'i arşive indi (7339271) · Cowork icra promptu derlendi `cc/prompt-2026-09-03-sonnet-icra-cowork.md` (M1 hükmüne kadar VARSAYIM: Sonnet 5 / medium / pipeline / `~/jarvis`).
+**Masa öncesi FİİLEN yapılan (Katman-2, veto = revert):** görselleştir skill'i arşive indi (7339271) · Cowork icra promptu derlendi `cc/prompt/prompt-2026-09-03-sonnet-icra-cowork.md` (M1 hükmüne kadar VARSAYIM: Sonnet 5 / medium / pipeline / `~/jarvis`).
 
 **Bayat satır düzeltmesi:** kapsül "erisim-fts AXI kapı SERBEST" diyordu; manifest `ib-58-erisim-fts-axi` = `tamam` (commit f3240ad). Kapsülden düşer.
 
@@ -38,7 +38,7 @@ Denetim 196 bulgu / 116 ihlal; büyük kısmı tarihli rapor dosyalarındaki dam
 - **(b) Mevcut kapı yeter, vaka tekil:** Eksi: aynı bedel yeniden ödenebilir.
 - **(c) 3-koşum kuralı (mevcut kalibrasyon satırı):** Artı: veri toplar. Eksi: ret 3 koşum sonra gelir, daha pahalı.
 
-### M6 · Galeri devri 5 soru (`cc/devir-2026-09-02-opus-galeri-yaprak-doluluk.md` §6; jarvis-dışı)
+### M6 · Galeri devri 5 soru (`cc/devir/devir-2026-09-02-opus-galeri-yaprak-doluluk.md` §6; jarvis-dışı)
 1. Derinlik 3 kalıcı mı? **(a) ÖNERİLEN** kalıcı (8 yaprak okunur; d4 %91,74 yedek) · (b) d4'e dön.
 2. Derinlik 2 denensin mi? **(a) ÖNERİLEN** hayır (etkileşim öğrenemez) · (b) tek koşum dene.
 3. `zaman-testi-model_v2u.json` silinsin mi? **(a) ÖNERİLEN** arşiv klasörüne taşı (m.8) · (b) sil.

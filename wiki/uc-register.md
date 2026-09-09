@@ -1,6 +1,6 @@
 # Üç Register + Kenar-Başına Biçim
 
-**Üst blok:** Şirkette bilginin üç kayıt-düzeyinde (register: aynı içeriğin hedef-okuyucuya göre biçem katmanı) aktığını ve kenarlar arası TEK ortak ara-biçim (tek-IR) olmadığını söyleyen mimari karar. Durum: **GÜNCEL** · son-teyit: 2026-08-03 (K2 masası) · kaynaklar: `cc/rapor-2026-08-02-1.md` (S1-S6, hakem elemeli) · B3 sayımı (`kuyruk/build-tartisma-notlari.md` 08-02) · K2 kayıtları (`kuyruk/senaryo-defteri.md` K2 bloğu). Güven: **orta** (tek araştırma serisi + iç sayım; birbiriyle tutarlı ama tek dalga).
+**Üst blok:** Şirkette bilginin üç kayıt-düzeyinde (register: aynı içeriğin hedef-okuyucuya göre biçem katmanı) aktığını ve kenarlar arası TEK ortak ara-biçim (tek-IR) olmadığını söyleyen mimari karar. Durum: **GÜNCEL** · son-teyit: 2026-08-03 (K2 masası) · kaynaklar: `cc/rapor/2026-08/rapor-2026-08-02-1.md` (S1-S6, hakem elemeli) · B3 sayımı (`kuyruk/build-tartisma-notlari.md` 08-02) · K2 kayıtları (`kuyruk/senaryo-defteri.md` K2 bloğu). Güven: **orta** (tek araştırma serisi + iç sayım; birbiriyle tutarlı ama tek dalga).
 
 ## Çekirdek
 Kanon adı **"üç REGISTER + kenar-başına biçim"** — eski ad "üç dil" (süpersede: K2-f, 2026-08-03; Salih kendi kelimesini değiştirdi; destek verisi B3). "Dil" değil "register", çünkü ortada üç ayrı gramer değil aynı dilin üç hedef-okuyucu biçimi var: **L1 İNSAN** (Salih-okunabilir; E5/F1-F9 kuralları) · **L2 AI-to-AI** (önerme-yapılı, m.38 bağlaç seti) · **L3 makine/kod**. İkinci yarı: biçim REGISTER'a değil KENAR'a bağlanır — tek-IR yoktur.

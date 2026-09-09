@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """kod-envanter.py — Jarvis'te ÇALIŞAN KODUN dil envanteri + kurulu araç-zinciri + başlangıç-gecikmesi ölçümü (STDLIB ONLY, Python ≥3.9).
 
-Neden var (dil-seçimi pipeline'ı, 2026-08-26 seans-16; emir cc/gorev-2026-08-26-1.md · manifest cc/pipeline-2026-08-26-dil-secimi-ekosistem.md):
+Neden var (dil-seçimi pipeline'ı, 2026-08-26 seans-16; emir cc/gorev/2026-08/gorev-2026-08-26-1.md · manifest cc/pipeline/pipeline-2026-08-26-dil-secimi-ekosistem.md):
 "hangi durumda hangi dil" sorusu ÖLÇÜMSÜZ tartışılmaz (m.35, m.39). 07-30'daki dil raporu elle sayılmış 126 satıra dayanıyordu; 08-26'da
 elle sayım 8.583 satır çıktı. Bu script sayımı DETERMİNİSTİK ve tekrar-üretilebilir yapar: aynı HEAD + aynı makine → aynı envanter (gecikme
 ölçümü hariç; o makine-bağımlıdır ve öyle damgalanır). Karar 65 (determinizm önceliği) + "hazırı temel al" (git ls-files, wc mantığı; sıfırdan

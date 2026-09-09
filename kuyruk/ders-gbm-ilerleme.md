@@ -1,6 +1,6 @@
 # GBM Ders İlerlemesi (gradient boosting, sıfırdan)
 
-Harita: `raporlar/gradient-boosting-sifirdan-ders-2026-08-25.html` · Yöntem: sohbette partisyon partisyon; her partisyon = tanım → mekanizma → elle örnek → kontrol sorusu.
+Harita: `raporlar/2026-08/gradient-boosting-sifirdan-ders-2026-08-25.html` · Yöntem: sohbette partisyon partisyon; her partisyon = tanım → mekanizma → elle örnek → kontrol sorusu.
 
 ## Kalibrasyon (2026-08-25)
 - Türev: biliyor · Ortalama: biliyor · Varyans: unutmuş (P3'te yeniden kurulacak)
