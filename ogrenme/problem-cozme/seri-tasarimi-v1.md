@@ -148,4 +148,4 @@
 ## 8. Açık kalemler
 1. I-L1/L2 kaynakları Atlas raporundan; kitap düzeyi kaynak (doğrulama pedagojisi) ayrı küçük tarama ister — Faz 2 öncesi.
 2. Atlas'ta çözülmeyen 3 çelişkili rakam (Anthropic kurumsal-API oranı, Epoch Tier 4 güncel, BLS OR) I-L1 benchmark-künyesi egzersizinin İLK üç ödevi olsun (öğrenme + kapanış aynı iş).
-3. Faz 1 açılış tetiği: "günaydın, öğrenme" oturumunda I-L0 ilk ders (30 yeniden-türetmenin ilk 5'i).
+3. Faz 1 açılış tetiği: "seans başı" (standart tetik; "günaydın" zaman işareti DEĞİLDİR — Salih 09-09) + Salih hangi öğrenme yüzeyinin/listesinin açılacağını KENDİSİ belirtir (ör. "seans başı, problem-çözme I-L0"); "günaydın, öğrenme" gibi sabit kalıp YOK. İlk ders I-L0 (30 yeniden-türetmenin ilk 5'i).
