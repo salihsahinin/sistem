@@ -1,6 +1,6 @@
 # İngest Şeması v2 — Kayıt Katmanı (AKTİF: Salih emri 2026-08-14)
 
-*v1'in (`kuyruk/oneri-ingest-sema-v1.md`, Salih imzalı 07-12: K3→K0 katmanları + G1/G2/G3 kapıları + V9 önem formülü) ÜZERİNE oturur, onu değiştirmez. v1 katmanları tanımlıyordu; v2 KAYDIN KENDİSİNİ tanımlar: zarf, tip, triyaj, bütçe. Kanıt tabanı: `cc/rapor-2026-08-14-1.md` (Opus lider koşumu, D-ağırlıklı). Tüm eşikler deneysel m.29; veto = revert.*
+*v1'in (`kuyruk/oneri-ingest-sema-v1.md`, Salih imzalı 07-12: K3→K0 katmanları + G1/G2/G3 kapıları + V9 önem formülü) ÜZERİNE oturur, onu değiştirmez. v1 katmanları tanımlıyordu; v2 KAYDIN KENDİSİNİ tanımlar: zarf, tip, triyaj, bütçe. Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md` (Opus lider koşumu, D-ağırlıklı). Tüm eşikler deneysel m.29; veto = revert.*
 
 ## 1. Kayıt zarfı — 5 zorunlu alan, fazlası YOK
 

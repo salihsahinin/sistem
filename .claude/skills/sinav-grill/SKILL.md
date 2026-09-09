@@ -5,7 +5,7 @@ description: Salih'in bir plan/karar/konu anlayışını adversarial Sokratik so
 
 # Sınav/Grill (S-I, v1 — 2026-08-14; Pocock `grilling` deseni madenlendi — V25: kurulum yok, yeniden yazım)
 
-Kaynak desen: `raporlar/2026-07-21-grill-me-skill-arastirma.md` (mattpocock/skills, MIT). Amaç: "okudum" ile "anladım" arasındaki ertelenmiş ölçüm boşluğunu İSTEĞE BAĞLI kapatmak.
+Kaynak desen: `raporlar/2026-07/2026-07-21-grill-me-skill-arastirma.md` (mattpocock/skills, MIT). Amaç: "okudum" ile "anladım" arasındaki ertelenmiş ölçüm boşluğunu İSTEĞE BAĞLI kapatmak.
 
 ## Adımlar
 1. **Kapsamı al:** Salih neyi sınatmak istiyor (plan / karar / öğrenilen konu / yazdığı kod)? Kapsam DAR tutulur — "her şeyi sına" koşulmaz.

@@ -16,8 +16,8 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 - Hat: prototip mi PortRisk mi? Paralel-seans senkron kuralı: yalnız KENDİ şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
 
 ## 2. Teslim raporu (`core/sablonlar/seans-teslim.md` — beş soru)
-`raporlar/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir ADAY kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
-**"İlk plan = bitti değil" yoklaması (Karar 79 D3/KL16-6; kaynak `cc/rapor-2026-08-01-16.md:301`):** kapanışta açılış planı/hedefi FİİLEN yoklanır — planın yazılmış olması bitmiş sayılmaz; sapma tek cümleyle kayda (m.29 seans-hedefi denemesiyle aynı aile).
+`raporlar/seans/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir ADAY kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
+**"İlk plan = bitti değil" yoklaması (Karar 79 D3/KL16-6; kaynak `cc/rapor/2026-08/rapor-2026-08-01-16.md:301`):** kapanışta açılış planı/hedefi FİİLEN yoklanır — planın yazılmış olması bitmiş sayılmaz; sapma tek cümleyle kayda (m.29 seans-hedefi denemesiyle aynı aile).
 
 ## 3. Hasat (`core/sablonlar/hasat.md`)
 Özütler (3-5, birer satır) · **wiki-delta**: güncellenecek/açılacak sayfa → `wiki/README.md` kuyruğuna (yazım sonraki oturumlara yayılır; mevcut sayfaya tuzak çıktıysa Gotchas'a DOĞRUDAN işle) · verilebilir miydi (V20, çift-yönlü kapasite verisi) · token×zaman etiketi (V28 hammaddesi). Damga yalnız gönüllü beyanla; beyansızlık düşürmez (m.33).
@@ -36,7 +36,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil TETİK: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş seansta Salih-imzalı planla.
 
 ## 6b. Hareket kütüğü + workflow kopyası (okunabilirlik ilkesi, Salih Katman-1 08-17; CLAUDE.md §2)
-`python3 tools/hareket-tablo.py` koş (bugünün `raporlar/hareket-gunlugu-YYYY-MM-DD.md` + bronz/silver/gold tazelenir; test PASS beklenir). Bu seansta Workflow koştuysa script kopyası `cc/workflow/YYYY-MM-DD-<ad>-<wf_id>.js` + README satırı (kaynak: oturum dizini `workflows/scripts/`). İkisi de commit'e girer; eksikse kapanış TAMAM sayılmaz.
+`python3 tools/hareket-tablo.py` koş (bugünün `raporlar/hareket/hareket-gunlugu-YYYY-MM-DD.md` + bronz/silver/gold tazelenir; test PASS beklenir). Bu seansta Workflow koştuysa script kopyası `cc/workflow/YYYY-MM-DD-<ad>-<wf_id>.js` + README satırı (kaynak: oturum dizini `workflows/scripts/`). İkisi de commit'e girer; eksikse kapanış TAMAM sayılmaz.
 
 ## 6c. Skill eşik koşumu (Salih imzası 08-21, defter Karar 51)
 `python3 tools/skill-esik.py` koş — `v_skill_kosum` verisinde n≥10 skill×model çiftlerinin medyan token/süre bandı; 2× üstü koşumlar SAPMA satırı olarak teslim raporuna. Ayrıca bu seansın ajan koşum hükümleri (done-yüklemi PASS/FAIL, DRFR'den) `veri/bronz/kosum-sonuc.jsonl`'e düşülür (ÖNERİ-damgalı alan, Karar 52). Otomatik kural değişikliği YOK.

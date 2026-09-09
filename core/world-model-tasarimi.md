@@ -1,6 +1,6 @@
 # World-Model Tasarımı v1 — Jarvis = Galaxy Veri Şeması (deneysel m.29)
 
-*G-W1 sentezi (Carvis/Fable, 2026-08-16; Salih emri 08-15 seans-3: "Jarvis'i galaxy data schema şeklinde world-model tasarımıyla inşa edeceğiz; birim veri = x birim bağlam"). Kanıt tabanı: `cc/rapor-2026-08-15-8.md` (S-8: galaxy/WM/x/OLAP — 95 tez iddiası, hakem 20/33/6/1) + `cc/rapor-2026-08-15-9.md` (S-9: parquet→özütleme — hakem 6/16/2/0). Her ilke rapor yapı-taşı (YT) damgası taşır; damgasız ilke YOK. Emsalsizlik şerhi: "kişisel markdown kanonu = boyutsal şema" aktarımının literatürde emsali ARANDI-BULUNAMADI (S-8 A/D kör) — bu tasarım öncü deneme, tüm sabitler deneysel m.29.*
+*G-W1 sentezi (Carvis/Fable, 2026-08-16; Salih emri 08-15 seans-3: "Jarvis'i galaxy data schema şeklinde world-model tasarımıyla inşa edeceğiz; birim veri = x birim bağlam"). Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-15-8.md` (S-8: galaxy/WM/x/OLAP — 95 tez iddiası, hakem 20/33/6/1) + `cc/rapor/2026-08/rapor-2026-08-15-9.md` (S-9: parquet→özütleme — hakem 6/16/2/0). Her ilke rapor yapı-taşı (YT) damgası taşır; damgasız ilke YOK. Emsalsizlik şerhi: "kişisel markdown kanonu = boyutsal şema" aktarımının literatürde emsali ARANDI-BULUNAMADI (S-8 A/D kör) — bu tasarım öncü deneme, tüm sabitler deneysel m.29.*
 
 ## 1. Çekirdek kararlar (mimari)
 1. **Gerçek kaynak = olay kütüğü, model = türetilmiş görünüm.** Git log + koşum kayıtları Jarvis'in event-store'udur; world-model bunların ÜZERİNE kurulan türetilmiş katmandır, kaynak-doğruluğun yerini almaz (S8-A-YT5; ingest v2 "kapsül=SNAPSHOT" ilkesiyle UYUMLU). Replay/temporal-query yetenek olarak korunur; işletim varsayılanı güncel-durum.
@@ -67,4 +67,4 @@
 - **UYUM:** ingest v2 "kapsül=SNAPSHOT, gerçek kaynak kuyruk+defter+git log" = §1.1 event-store kararı · şema-sıkıştırma v1 "ham'a yükselme" = §5.7 aynı hüküm.
 - **UYUM:** m.20 pointer + m.22 katman + K-019 sabit-önek = projection-pushdown/tiering/prefix-cache karşılıkları (S-9 emri "kanonda bilinenler" bölümünde verili sayılmıştı; rapor bunları daraltmadı).
 
-*Pointer'lar: koşum manifesti `cc/pipeline-2026-08-15-baglam-silver-katmani.md` · görünümler `tools/baglam-tablo.py` (şema v1) · D2 graf `core/world-model-tasarimi.d2`.*
+*Pointer'lar: koşum manifesti `cc/pipeline/pipeline-2026-08-15-baglam-silver-katmani.md` · görünümler `tools/baglam-tablo.py` (şema v1) · D2 graf `core/world-model-tasarimi.d2`.*

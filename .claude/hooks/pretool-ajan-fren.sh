@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # AJAN FAN-OUT FRENİ — PreToolUse hook, matcher: Agent (İB-54 adım 2; Karar 74 M-4 (d) paket A "sınıf-bazlı deterministik çağrı-freni";
 # Karar 39 Salih: "fren tetiklenme koşulu zor olsun, aşırı uç senaryolar için çalışsın; kaliteyi kısmayalım").
-# Kök neden (raporlar/2026-08-29-ib54-delinme-kok-neden.md KN-1/KN-2/KN-4): fren metindeydi, ölçüm harcamadan SONRAYDI, fan-out atomikti.
+# Kök neden (raporlar/2026-08/2026-08-29-ib54-delinme-kok-neden.md KN-1/KN-2/KN-4): fren metindeydi, ölçüm harcamadan SONRAYDI, fan-out atomikti.
 # Bu hook freni KOŞUM KATMANINA taşır: her Agent çağrısı TAAHHÜT ANINDA sayılır (oturum başına sayaç); UYARI eşiğinde bronz olay,
 # DURDUR eşiğinde çağrı engellenir (exit 2 + gerekçe). Workflow ajanları bu hook'tan GEÇMEZ — onlar için cc/workflow/fren-sablonu.js.
 # Eşikler (m.29 deneysel; taban silver amb_olgu_kosum @b16b1a9, 29 wf: ajan/wf p50 12 · max 23; hareket: Agent/oturum max 11):
 #   UYARI  = 36  (p50 × 3 — Öneri A "medyan × ~3")      DURDUR = 72  (UYARI × 2 ≈ max × 3 — aşırı uç)  [tek-katman tabanı, AS-OF 2026-08-29]
-# REVİZYON (Salih B-hükmü 2026-08-31, devir cc/devir-2026-08-31-opus-icra.md soru-1): sayaç oturum-geneli ve alt-ajan çağrılarını da
+# REVİZYON (Salih B-hükmü 2026-08-31, devir cc/devir/devir-2026-08-31-opus-icra.md soru-1): sayaç oturum-geneli ve alt-ajan çağrılarını da
 # sayıyor → lider→işçi (firstmate) iki-katmanlı koşum tek-katman tabanını yapısal aşıyor (ölçüm: 78 çağrı / 4 birim ≈ 20/birim).
 # Yeni varsayılan: UYARI 72 · DURDUR 144 (2× katman çarpanı). Katman-başına ayrı sayaç (seçenek A) masa kalemi olarak kuyrukta.
 # REJİM ETİKETİ (tüzük m.46(d), Karar 39 C): [rejim: manuel-tempo · kota-bol · ekonomi −%30 (Salih 08-15) · AS-OF 2026-08-29] — rejim

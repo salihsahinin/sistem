@@ -8,7 +8,7 @@ description: Kun-Chen formatlı görev pipeline'ını kurar ve uçtan uca yürü
 Desen kaynağı: firstmate (tek irtibat · scout/ship görev şekilleri · intake sözleşmesi · durum diskte) + `core/ajan-metodolojisi.md` §4 (lider/işçi) + ingest şeması (teslim zarfı).
 
 ## Adımlar
-1. **Manifest aç** (`cc/pipeline-YYYY-MM-DD-<konu>.md`): görev tablosu — S-n (scout) · G-n (sentez) · SH-n (ship) · T (teslim); sütunlar: şekil / iş / intake / teslim / durum. Altına olay günlüğü. Oturum düşerse yeni oturum buradan devralır.
+1. **Manifest aç** (`cc/pipeline/pipeline-YYYY-MM-DD-<konu>.md`): görev tablosu — S-n (scout) · G-n (sentez) · SH-n (ship) · T (teslim); sütunlar: şekil / iş / intake / teslim / durum. Altına olay günlüğü. Oturum düşerse yeni oturum buradan devralır.
 2. **Görev emrini derle** → `gorev-emri-derleme` skill'i (görev-fonksiyonu iskeleti + mekanik kapılar + KANONDA-BİLİNENLER bloğu).
 3. **Scout'u sal:** lider deseni (lider modeli: Karar 89 09-09 — Opus 5, effort MEDIUM sabit, Fable'dan Agent aracıyla; paralel araştırmacılar/işçiler Sonnet ∨ doğrudan atlas-kosum; Karar 85 süpersede). Dağıtım öncesi zorunlu: paralellik-uygunluk testi (bağımsız keşif mi, ortak üretim mi?). Rejim etiketi + model kademesi (işçi liderden pahalı olamaz) emirden gelir.
 4. **Teslim al:** raporu DOSYADAN oku (bildirim özetinden değil); gerekiyorsa V26 örneklem denetimi (kritik rakamlara kendin in). Manifest'e S-n DONE + olay satırı.

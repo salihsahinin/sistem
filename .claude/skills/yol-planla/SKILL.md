@@ -5,7 +5,7 @@ description: Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa dö
 
 # yol-planla — senaryo-graf yol-planı üretimi (v0.1-deneysel-m29, 2026-08-16)
 
-Kanıt tabanı: `cc/rapor-2026-08-15-5.md` (Hat-5 m.40b; her kural YT-damgalı — sayısal dayanaklar raporda, gövdeye kopyalanmaz). Tür: T-Ü üretici — çıktı YOL-PLANI bloğudur; dosya yazmaz, koşum başlatmaz, commit yapmaz.
+Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-15-5.md` (Hat-5 m.40b; her kural YT-damgalı — sayısal dayanaklar raporda, gövdeye kopyalanmaz). Tür: T-Ü üretici — çıktı YOL-PLANI bloğudur; dosya yazmaz, koşum başlatmaz, commit yapmaz.
 
 ## Adımlar (sabit sıra)
 1. **Graf kur:** düğüm = (DURUM, ZAMAN) çifti — "kronolojik partisyon = düğüm" DEĞİL [C-YT1]. Açık varsayım beyanı: bekleme-serbest (manifest/durum diskte bekleyebilir; restart-proof ön-şart). Pozitif süreli geçişlerle graf DAG'dır; zaman etiketi topolojik sırayı verir.
