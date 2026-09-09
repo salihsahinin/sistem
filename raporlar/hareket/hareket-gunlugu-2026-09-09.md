@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-09-09 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `9695328`)
+# Hareket günlüğü — 2026-09-09 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `2b9377a`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 373 çağrı, 5 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 385 çağrı, 6 oturum.*
 
 ## Oturum `d547519c` — 09:41:28→11:25:21 · 140 çağrı · model fable-5-1 · hata 2
 **Özet:** koştu 82 · düzenledi 34 · yazdı 17 · ajan gönderdi 4 · skill çağırdı 2 · okudu 1
@@ -345,9 +345,9 @@
 | 72 | 11:56:05 | koştu | Devir notu + manifest commit ⟨cd /Users/HasanSalihSahin/jarvis cat > cc/devir/devir-2026-09-09-opus-parti34.md <<'MD' # Devir notu — Parti 3-4 dosya düzeni + devir-anı loglayıcı (O…⟩ | tamam |
 | 73 | 11:56:09 | araç | {"files": "['/Users/HasanSalihSahin/jarvis/cc/devir/devir-2026-09-09-op", "caption": "Parti 3-4 + devir-anı loglayıcı devir notu. 5 commit, push y", "status": "normal"} | tamam |
 
-## Oturum `2c13ad80` — 13:54:27→15:45:11 · 55 çağrı · model fable-5-1 · hata 1
-**Özet:** yazdı 29 · koştu 22 · düzenledi 3 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (1):** `core/durum-kapsulu.md`
+## Oturum `2c13ad80` — 13:54:27→15:49:11 · 60 çağrı · model fable-5-1 · hata 1
+**Özet:** yazdı 31 · koştu 25 · düzenledi 3 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (2):** `core/durum-kapsulu.md` · `raporlar/seans/seans-teslim-2026-09-09-masa9-karar88-91-friday.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -406,4 +406,22 @@
 | 53 | 15:44:50 | skill çağırdı | seans-kapanis Salih notu (Katman-1, aynen): "yeni reponun doğumunun temel ihtiyaç şartlarından biri de birbirinden bağımsız context olmasının gerektiği bir senaryodur" → lider-doğum kuralına (c) şartı: bağımsız bağlam gereksinimi | tamam |
 | 54 | 15:45:09 | yazdı | /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/2c13ad80-25cf-4aa1-86d2-3acb735498a3/scratchpad/kapanis-hat.sh | tamam |
 | 55 | 15:45:11 | koştu | Kapanış hattı: hareket kütüğü, skill eşik, bayat çekim, katman-hatti, silver kapısı, testler, sayaçlar ⟨bash /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/2c13ad80-25cf-4aa1-86d2-3acb735498a3/scratchpad/kapanis-hat.sh 2>&1 ¦ tail -45⟩ | yok |
+| 56 | 15:47:45 | yazdı | raporlar/seans/seans-teslim-2026-09-09-masa9-karar88-91-friday.md | tamam |
+| 57 | 15:47:59 | yazdı | /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/2c13ad80-25cf-4aa1-86d2-3acb735498a3/scratchpad/kapanis-kayit.py | tamam |
+| 58 | 15:48:07 | koştu | Karar 91 EK-2 + kapsül kapanış satırı; teslim raporu ve türev katman commit'leri; teslim raporunu Finder'da göster ⟨cd ~/jarvis && python3 /private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/2c13ad80-25cf-4aa1-86d2-3acb735498a3/scratchpad/kapanis-kayit.py && git a…⟩ | tamam |
+| 59 | 15:48:52 | koştu | Salih 'push onay' beyanıyla origin/main'e push (m.9) ⟨cd ~/jarvis && git fetch -q origin && git status -sb ¦ head -1 && git push origin main 2>&1 ¦ tail -3 && git log origin/main -1 --oneline ¦ cut -c1-60…⟩ | tamam |
+| 60 | 15:49:11 | koştu | Push beyanını deftere işle ve commit'i de push'la ⟨cd ~/jarvis && printf '%s\n' "- **Push (m.9, Salih beyanı aynen \"push onay\", 09-09 ~16:0x):** 37a0761..0de0990, 35 commit (masa-9 + Karar 88-91 + EK…⟩ | tamam |
+
+## Oturum `2a11c9ee` — 16:35:38→16:35:54 · 7 çağrı · model fable-5-1 · hata 0
+**Özet:** koştu 6 · skill çağırdı 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 16:35:38 | skill çağırdı | seans-acilis | tamam |
+| 2 | 16:35:41 | koştu | Tarih, son commit'ler, durum ve kapsül boyutu ⟨cd ~/jarvis && date && git log -5 --format='%h %ad %s' --date=format:'%H:%M' ¦ cut -c1-140 && echo --- && git status --short ¦ head && echo --- && wc …⟩ | tamam |
+| 3 | 16:35:45 | koştu | Durum kapsülünü oku ⟨cd ~/jarvis && cat core/durum-kapsulu.md⟩ | tamam |
+| 4 | 16:35:45 | koştu | Panoyu oku ⟨cd ~/jarvis && cat core/pano.md⟩ | tamam |
+| 5 | 16:35:48 | koştu | Kirli dosyalar, iz dosyaları ve friday deposu durumu ⟨cd ~/jarvis && git diff --stat && ls -la .lavish/ "Başlıksız.canvas" 2>&1 ¦ head && ls -d ~/friday && cd ~/friday && git log -3 --format='%h %ad %s' -…⟩ | tamam |
+| 6 | 16:35:53 | koştu | Silver/gold katmanını tazele (Karar 62) ⟨cd ~/jarvis && python3 tools/katman-hatti.py 2>&1 ¦ tail -8⟩ | yok |
+| 7 | 16:35:54 | koştu | Push durumu, Friday gelen/giden ve son devir notları ⟨cd ~/jarvis && git fetch -q && git rev-list --left-right --count origin/main...main && ls ~/friday/cc/giden ~/friday/cc/gelen 2>&1 && ls cc/devir ¦ ta…⟩ | yok |
 
