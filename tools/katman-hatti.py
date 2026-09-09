@@ -51,9 +51,10 @@ ADIMLAR = [
     ("obsidian-harita", ["tools/obsidian-harita.py", "--sessiz"]),  # Karar 72 EK (Salih seçimi A): silver referans → graf/obsidian-harita*.md (gitignore'lu türev; backtick pointer kütlesi Obsidian grafiğine, gövdelere dokunmadan)
     ("loop", ["tools/loop-dedektor.py", "--sessiz"]),  # İB-60 (Karar 78 m.43 2. rev): hareket → görev n-gram → k_W ADAY listesi (v_loop_aday; kutu yazımı yalnız --kutu ile, hatta değil)
     ("anakronizm", ["tools/anakronizm-denetim.py", "--sessiz"]),  # anakronizm lint (KB-67 a / Karar 69): UYARI kanalı; İHLAL=çıkış 3 hattı DÜŞÜRMEZ, sayılır — kapı sertleşmesi iterasyonla, Salih masası
+    ("devir-ani", ["tools/devir-ani.py", "--sessiz"]),  # İB-75 devir-anı yüklemi ölçüm aygıtı (ATEŞLEMEZ, yalnız loglar) — v_baglam_seyri → veri/bronz/devir-ani-olay.jsonl; uyarı kanalı, hat düşürmez; olcum'un ÖNÜNE (kanon: olcum SON ADIM kalır)
     ("olcum", ["tools/katman-olcum.py"]),  # SON ADIM kalır (kanon §8 S3: "katman-hatti son adımı katman-olcum.py"); yeni yükleyici bunun ÜSTÜNE eklenir
 ]
-UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm", "graf", "tarama-duckdb"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
+UYARI_KANALI_ADIMLAR = {"tarama", "saglik", "seyir", "anakronizm", "graf", "tarama-duckdb", "devir-ani"}  # çıkış 0'da bile stderr'i uyarı kanalı olan adımlar (UYARI/BEKLENTİ DIŞI/HATA satırları hatta görünür)
 UYARI_KODLARI = {"anakronizm": {3}}  # KB-67 a: bu kodlar 'UYARI' etiketi alır, hat düşmez (İHLAL sayılır-raporlanır; pre-commit yok)
 # Opsiyonel kolon katmanı (pipeline kolon-katmani SH-1/SH-2; Karar 63 KB-55: k=3 soğuk-ölçüme dek varsayılan kapalı)
 PARQUET_ADIMLAR = [
