@@ -21,6 +21,7 @@ f1115411,ADAY,6,2,13,0,0,2026-08-15,2026-08-18,1620e67b,Workflow → Bash:py:inl
 5bcf23b3,ADAY,6,2,7,0,0,2026-08-20,2026-08-30,11b49d44,Bash:py:inline → Bash:git:add+git:commit
 a7196d6e,ADAY,6,2,7,0,0,2026-08-15,2026-08-26,2fc42451,Bash:sed+cut → Bash:py:inline
 58518374,ADAY,6,2,6,0,0,2026-08-17,2026-09-09,25679332,Bash:py:inline → ToolSearch
+6bdcfe66,ADAY,6,2,6,1,0,2026-08-16,2026-09-08,25679332,Read:core/durum-kapsulu.md → Edit:core/durum-kapsulu.md
 31b44ad3,ADAY,5,2,7,0,0,2026-08-20,2026-09-04,1801d9ae,Bash:git:add → Bash:git:commit
 8d21b56d,ADAY,5,2,7,0,0,2026-08-15,2026-08-30,11b49d44,Bash:py:inline → Write:cc
 e0a9f0c5,ADAY,5,2,7,0,0,2026-08-20,2026-09-08,405e80db,Edit:core/tuzuk-v0.md → Edit:core
@@ -29,7 +30,6 @@ d75b1d89,ADAY,5,2,7,0,0,2026-08-15,2026-08-21,1620e67b,Write:cc → Bash:py:teti
 372eef2d,ADAY,5,2,6,0,0,2026-08-17,2026-09-03,07b53fc4,Write:dış → Edit:dış
 a18a2ef7,ADAY,5,2,5,0,0,2026-08-17,2026-08-31,11b49d44,Bash:git:add → Bash:git:add+git:commit
 d7e14c20,ADAY,5,2,5,1,0,2026-08-17,2026-09-03,33beff9d,Bash:py:inline → Skill:seans-kapanis
-6bdcfe66,ADAY,5,2,5,0,0,2026-08-16,2026-09-03,25679332,Read:core/durum-kapsulu.md → Edit:core/durum-kapsulu.md
 27f07d39,ADAY,5,2,5,0,0,2026-08-17,2026-09-09,361bbb9d,ToolSearch → WebFetch
 30ec7336,ADAY,4,3,4,0,0,2026-08-15,2026-08-24,2fc42451,Bash:py:inline → Edit:CLAUDE.md → Bash:py:inline
 e0844c8e,ADAY,4,3,4,0,0,2026-08-15,2026-08-18,25679332,Bash:py:inline → Workflow → Bash:py:inline

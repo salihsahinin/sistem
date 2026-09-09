@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-09-09 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `2b9377a`)
+# Hareket günlüğü — 2026-09-09 (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `938d0ba`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 385 çağrı, 6 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 447 çağrı, 6 oturum.*
 
 ## Oturum `d547519c` — 09:41:28→11:25:21 · 140 çağrı · model fable-5-1 · hata 2
 **Özet:** koştu 82 · düzenledi 34 · yazdı 17 · ajan gönderdi 4 · skill çağırdı 2 · okudu 1
@@ -180,8 +180,9 @@
 | 29 | 10:26:02 | koştu | Hafıza indeksine tek satır pointer ekle ⟨printf -- '- [Açılış tetiği "seans başı", günaydın değil](feedback-seans-basi-tetik-gunaydin-degil.md) — Salih 09-09: "günaydın" zaman yanılgısı üreti…⟩ | tamam |
 | 30 | 10:36:33 | koştu | İki kanon dosyasındaki eski kalıbı düzelt ve commit'le ⟨sed -i '' 's/^## Oturum protokolü ("günaydın, öğrenme") — FORMAT v2/## Oturum protokolü (tetik: "seans başı" + Salih öğrenme yüzeyini adlandırır; "gün…⟩ | tamam |
 
-## Oturum `75ecb346` — 09:48:59→15:43:22 · 80 çağrı · model fable-5-1 · hata 1
-**Özet:** koştu 54 · MCP aracı 21 · izledi 4 · yazdı 1
+## Oturum `75ecb346` — 09:48:59→17:59:28 · 132 çağrı · model fable-5-1 · hata 1
+**Özet:** koştu 90 · MCP aracı 21 · izledi 14 · düzenledi 4 · yazdı 1 · skill çağırdı 1 · okudu 1
+**Yazılan/düzenlenen dosyalar (2):** `core/durum-kapsulu.md` · `wiki/README.md`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -265,6 +266,58 @@
 | 143 | 15:36:55 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 29", "description": "29b: as-of düzeltmeli küme kolonlu CatBoost koşumu", "timeout_ms": "3600000"} | tamam |
 | 144 | 15:37:30 | koştu | Yamayı doğru uygula (as-of kolonlar), doğrula ve 29b koşumunu yeniden başlat ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && pkill -f 29b_catboost_kume_asof; sleep 1; cat > /tmp/yama29.py <<'PYEOF' import pathlib; p=pathlib.Path("2…⟩ | tamam |
 | 145 | 15:43:22 | koştu | 29b as-of koşumunun dilim sonuçları ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 29b_log.txt ¦ sed -n '/ M0$/,$p'⟩ | tamam |
+| 146 | 16:38:16 | koştu | 29b'yi fold parametreli yap; 18 Ağu ve 1 Eyl fold'larını sırayla arka planda koş ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && python3 - <<'EOF' import pathlib; p=pathlib.Path("29b_catboost_kume_asof.py"); s=p.read_text() s=s.replace…⟩ | tamam |
+| 147 | 16:38:18 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n 0 -f 29b", "description": "29b üç fold koşumu (18 Ağu, 1 Eyl)", "timeout_ms": "3600000"} | tamam |
+| 148 | 16:38:33 | koştu | Üç fold özet scriptini hazırla ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cat > 30_3fold_ozet.py <<'EOF' """29b üç fold sonuçlarını birleştir: dilim × model Recall@30 (fold başına …⟩ | tamam |
+| 149 | 16:41:27 | koştu | Küme analizi: galeri küme kartları, küme×küme oran matrisi eğitim/test, tutarlılık ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cat > 31_kume_analiz.py <<'EOF' """Küme analizi (cutoff 25 Ağu): (a) ilan-profili galeri kümeleri kartları…⟩ | tamam |
+| 150 | 16:49:22 | koştu | Üç fold birleşik özet tablosu ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -1 29b_stdout_3fold.txt; ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python 30_3fold_oz…⟩ | tamam |
+| 151 | 16:56:41 | koştu | Ekip galeri kümeleme xlsx dosyasının yapısını oku ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cp "/Users/HasanSalihSahin/Downloads/06_galeri_kumeleme_sonuclari.xlsx" ekip_galeri_kumeleme.xlsx && ~/Des…⟩ | tamam |
+| 152 | 16:57:20 | koştu | Ekip kümelemesinin metodolojisini oku; bizim veriyle örtüşme; küme başına test teklif oranı; küme×trim-kümesi tutarlılığı ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python - <<'EOF' 2>&1 ¦ grep -v Warning import p…⟩ | tamam |
+| 153 | 16:57:55 | koştu | Ekip kümesi ile benim aktivite kümemin örtüşmesi; ekip boyutlarının extract kolonlarıyla ilişkisi ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python - <<'EOF' 2>&1 ¦ grep -v Warning import p…⟩ | tamam |
+| 154 | 16:58:22 | koştu | Ekip kümesini üç varyantla (etiket, as-of kopya, ham boyutlar) modele ekleyip fold 25 Ağu'da koş ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cp 29b_catboost_kume_asof.py 32_catboost_ekip_kume.py && python3 - <<'EOF' import pathlib; p=pathlib.Path(…⟩ | tamam |
+| 155 | 16:58:24 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 32", "description": "32: ekip kümelemesi model testi (fold 25 Ağu)", "timeout_ms": "3600000"} | tamam |
+| 156 | 16:59:05 | koştu | SQL hatasının yerini bul ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -B2 -A6 "ParserException" 32_stdout.txt ¦ grep -v "^ *\^" ¦ tail -8 ¦ cut -c1-300⟩ | tamam |
+| 157 | 16:59:16 | koştu | DuckDB ayrılmış kelime (asof) çakışmasını düzelt, yeniden başlat ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && sed -i '' 's/con.register("asof", asof.reset_index())/con.register("asofk", asof.reset_index())/; s/coales…⟩ | tamam |
+| 158 | 16:59:17 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 32", "description": "32 (2. deneme): ekip kümelemesi model testi", "timeout_ms": "3600000"} | tamam |
+| 159 | 17:06:03 | koştu | Yalnız-sahibinden galerilerde teklif veren/vermeyen ayrımı: extract'in ilan kaynaklı kolonları tek tek (AUC) ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python - <<'EOF' 2>&1 ¦ grep -v Warning import d…⟩ | tamam |
+| 160 | 17:06:59 | koştu | Ekip kümesi testinin dilim sonuçları ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 32_log_2026-08-25.txt ¦ sed -n '/ M0$/,/ek kolon/p' ¦ grep -v "ek kolon"⟩ | tamam |
+| 161 | 17:07:36 | koştu | Sızıntı kontrolü: soğuk galerilerde ekip kolonları test dönemi tekliflerinden mi dolu ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python - <<'EOF' 2>&1 ¦ grep -v Warning import d…⟩ | tamam |
+| 162 | 17:08:56 | koştu | Üç katmanlı galeri kümesi + shrinkage kolonlarıyla M6 koşumunu (fold 25 Ağu) başlat ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cp 29b_catboost_kume_asof.py 33_catboost_uc_katman.py && python3 - <<'PYEOF' import pathlib; p=pathlib.Pat…⟩ | tamam |
+| 163 | 17:08:58 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 33", "description": "33: üç katmanlı galeri kümesi (M6) koşumu, fold 25 Ağu", "timeout_ms": "3600000"} | tamam |
+| 164 | 17:14:57 | koştu | M6 (üç katman) dilim sonuçları ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 33_log_2026-08-25.txt ¦ sed -n '/ M0$/,/ek kolon/p' ¦ grep -v "ek kolon"⟩ | tamam |
+| 165 | 17:15:57 | koştu | Katman ve küme atamasını as-of yap (34), fold 25 Ağu'da koş ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cp 33_catboost_uc_katman.py 34_catboost_uc_katman_asof.py && python3 - <<'PYEOF' import pathlib; p=pathlib…⟩ | tamam |
+| 166 | 17:15:59 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 34", "description": "34: as-of katmanlı galeri kümesi (M6b) koşumu", "timeout_ms": "3600000"} | tamam |
+| 167 | 17:16:35 | koştu | Yamayı doğru uygula (as-of katman), doğrula ve 34'ü yeniden başlat ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && pkill -f 34_catboost_uc_katman_asof; sleep 1; cp 33_catboost_uc_katman.py 34_catboost_uc_katman_asof.py &&…⟩ | tamam |
+| 168 | 17:16:36 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 34", "description": "34 (2. deneme): as-of katmanlı M6b koşumu", "timeout_ms": "3600000"} | tamam |
+| 169 | 17:23:01 | koştu | M6b (as-of katman) dilim sonuçları ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 34_log_2026-08-25.txt ¦ sed -n '/ M0$/,/ek kolon/p' ¦ grep -v "ek kolon"⟩ | tamam |
+| 170 | 17:23:18 | koştu | M6b'yi 18 Ağu ve 1 Eyl fold'larında koş; üç fold özet scriptini hazırla ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && nohup bash -c 'for c in 2026-08-18 2026-09-01; do ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bi…⟩ | tamam |
+| 171 | 17:23:20 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n 0 -f 34_", "description": "34 üç fold koşumu (18 Ağu, 1 Eyl)", "timeout_ms": "3600000"} | tamam |
+| 172 | 17:28:41 | koştu | Fold 18 Ağu M6b sonuçları ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 34_log_2026-08-18.txt ¦ sed -n '/ M0$/,/ek kolon/p' ¦ grep -v "ek kolon" ¦ awk 'NR%9!…⟩ | tamam |
+| 173 | 17:34:03 | koştu | Fold 1 Eyl koşum durumu ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -3 34_stdout_3fold.txt ¦ cut -c1-120; ls 34_sonuc_*.json 2>/dev/null⟩ | tamam |
+| 174 | 17:36:52 | koştu | M6b üç fold birleşik özet ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && ~/Desktop/repo/data-company-vehicle-scoring/src/.venv/bin/python 35_3fold_ozet_m6b.py 2>&1 ¦ grep -v Warni…⟩ | tamam |
+| 175 | 17:37:05 | koştu | Fold 1 Eyl M4b ve M6b sayıları aynı mı ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 34_log_2026-09-01.txt ¦ sed -n '/ M4b$/,/ek kolon/p' ¦ grep -v "ek kolon\¦dilim"⟩ | tamam |
+| 176 | 17:37:47 | koştu | Fold 1 Eyl için teşhis: M4b ve M6b tahminleri gerçekten aynı mı, ek kolonlar test satırlarında dolu mu ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && cp 34_catboost_uc_katman_asof.py 34d_teshis.py && python3 - <<'PYEOF' import pathlib; p=pathlib.Path("34d_…⟩ | tamam |
+| 177 | 17:37:48 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 34", "description": "34d teşhis koşumu (fold 1 Eyl)", "timeout_ms": "2400000"} | tamam |
+| 178 | 17:43:07 | koştu | Test satırlarında ek kolon doluluğunu göster; fold 1 Eyl'i M4b/M6b ile tam yeniden skorla ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -A9 "TEŞHİS ek kolon özeti (test)" 34d_log_2026-09-01.txt ¦ head -10; python3 - <<'PYEOF' import path…⟩ | tamam |
+| 179 | 17:43:09 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 34", "description": "34e: fold 1 Eyl yeniden skorlama", "timeout_ms": "2400000"} | tamam |
+| 180 | 17:48:34 | koştu | Fold 1 Eyl yeniden skorlama sonucu ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale" 34e_log_2026-09-01.txt ¦ sed -n '/ M4b$/,/BİTTİ/p' ¦ grep -v "dilim\¦ek kolon"⟩ | tamam |
+| 181 | 17:49:04 | koştu | Fold 1 Eyl: M4b ve M6b ilk-30 kümeleri grup grup kıyasla ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && python3 - <<'PYEOF' import pathlib; p=pathlib.Path("34e_yeniden_1eyl.py"); s=p.read_text() old=''' say(f" …⟩ | tamam |
+| 182 | 17:49:06 | izledi | {"command": "cd ~/jarvis/kuyruk/galeri-siralama/veri3 && tail -n +1 -f 34", "description": "34f ilk-30 kıyas koşumu", "timeout_ms": "2400000"} | tamam |
+| 183 | 17:54:32 | koştu | Skorlama döngüsünü incele ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && sed -n '/^kayit=/,/^son={}/p' 34f_top30_kiyas.py ¦ cut -c1-220⟩ | tamam |
+| 184 | 17:54:48 | koştu | 34f isabet tabloları (kıyas) ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && grep -v "test ihale\¦TEŞHİS" 34f_log_2026-09-01.txt ¦ sed -n '/ M4b$/,/BİTTİ/p' ¦ grep -E "hepsi¦sicakG_si…⟩ | tamam |
+| 185 | 17:55:59 | skill çağırdı | seans-kapanis | tamam |
+| 186 | 17:56:27 | koştu | Canlı-oturum kapısı: git log/status, rapor dizini, kapsül boyutu ⟨cd ~/jarvis && git log -8 --format='%h %ci %s' ¦ cut -c1-110; echo ---; git status --short ¦ head -20; echo ---; ls raporlar/seans 2>/dev/null ¦ tail …⟩ | tamam |
+| 187 | 17:56:31 | koştu | Kapanış kapıları: hareket kütüğü, skill eşik, silver sağlık, bayat çekim, kural sayacı, bağlam seyri ⟨cd ~/jarvis && (python3 tools/hareket-tablo.py 2>&1 ¦ tail -4; echo "=== skill-esik"; python3 tools/skill-esik.py 2>&1 ¦ tail -3; echo "=== silver-sag…⟩ | yok |
+| 188 | 17:56:54 | koştu | Kapsül, wiki kuyruğu ve fikir kutusunun güncel hâlini oku ⟨cd ~/jarvis && cat core/durum-kapsulu.md ¦ sed -n '1,12p' ¦ cut -c1-400; echo ...; sed -n '/## Sonraki ilk iş/,$p' core/durum-kapsulu.md ¦ cut -c1-300…⟩ | tamam |
+| 189 | 17:56:56 | koştu | Birim-test kapısı ⟨cd ~/jarvis && python3 -m unittest discover -s tools/testler -p 'test_*.py' 2>&1 ¦ tail -3⟩ | tamam |
+| 190 | 17:58:01 | koştu | Seans teslim raporunu yaz ⟨cd ~/jarvis && cat > raporlar/seans-teslim-2026-09-09-galeri-trim-kumeleme-model.md <<'EOF' # Seans Teslim — 2026-09-08/09 — Galeri şeridi: güncel ext…⟩ | tamam |
+| 191 | 17:58:45 | koştu | Raporu doğru dizine taşı; fikir kutusu V95; repo dokümanına §8 ekle ⟨cd ~/jarvis && mv raporlar/seans-teslim-2026-09-09-galeri-trim-kumeleme-model.md raporlar/seans/ && f=raporlar/seans/seans-teslim-2026-09-09-galeri-tr…⟩ | tamam |
+| 192 | 17:58:49 | düzenledi | wiki/README.md | tamam |
+| 193 | 17:58:50 | okudu | core/durum-kapsulu.md [aralık 5+6] | tamam |
+| 194 | 17:59:10 | düzenledi | core/durum-kapsulu.md | tamam |
+| 195 | 17:59:13 | düzenledi | core/durum-kapsulu.md | tamam |
+| 196 | 17:59:15 | düzenledi | core/durum-kapsulu.md | tamam |
+| 197 | 17:59:28 | koştu | Kapsül bütçesi, türev katman tazeleme, değişen dosyalar ⟨cd ~/jarvis && wc -c core/durum-kapsulu.md && grep -c "" core/durum-kapsulu.md && python3 tools/katman-hatti.py 2>&1 ¦ grep -E "PASS¦FAIL¦WARN¦ERROR" …⟩ | yok |
 
 ## Oturum `e1e197b8` — 10:20:15→11:56:09 · 73 çağrı · model opus-5 · hata 3
 **Özet:** koştu 52 · ajan gönderdi 14 · araç 3 · skill çağırdı 2 · araç aradı 1 · web'e baktı 1
@@ -412,8 +465,8 @@
 | 59 | 15:48:52 | koştu | Salih 'push onay' beyanıyla origin/main'e push (m.9) ⟨cd ~/jarvis && git fetch -q origin && git status -sb ¦ head -1 && git push origin main 2>&1 ¦ tail -3 && git log origin/main -1 --oneline ¦ cut -c1-60…⟩ | tamam |
 | 60 | 15:49:11 | koştu | Push beyanını deftere işle ve commit'i de push'la ⟨cd ~/jarvis && printf '%s\n' "- **Push (m.9, Salih beyanı aynen \"push onay\", 09-09 ~16:0x):** 37a0761..0de0990, 35 commit (masa-9 + Karar 88-91 + EK…⟩ | tamam |
 
-## Oturum `2a11c9ee` — 16:35:38→16:35:54 · 7 çağrı · model fable-5-1 · hata 0
-**Özet:** koştu 6 · skill çağırdı 1
+## Oturum `2a11c9ee` — 16:35:38→16:51:19 · 17 çağrı · model fable-5-1 · hata 1
+**Özet:** koştu 15 · skill çağırdı 2
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -424,4 +477,14 @@
 | 5 | 16:35:48 | koştu | Kirli dosyalar, iz dosyaları ve friday deposu durumu ⟨cd ~/jarvis && git diff --stat && ls -la .lavish/ "Başlıksız.canvas" 2>&1 ¦ head && ls -d ~/friday && cd ~/friday && git log -3 --format='%h %ad %s' -…⟩ | tamam |
 | 6 | 16:35:53 | koştu | Silver/gold katmanını tazele (Karar 62) ⟨cd ~/jarvis && python3 tools/katman-hatti.py 2>&1 ¦ tail -8⟩ | yok |
 | 7 | 16:35:54 | koştu | Push durumu, Friday gelen/giden ve son devir notları ⟨cd ~/jarvis && git fetch -q && git rev-list --left-right --count origin/main...main && ls ~/friday/cc/giden ~/friday/cc/gelen 2>&1 && ls cc/devir ¦ ta…⟩ | yok |
+| 8 | 16:36:37 | koştu | Friday dönüş notunu ve Jarvis devir klasörünü karşılaştır ⟨cd ~/jarvis && ls cc/devir/ ¦ grep 09-09; echo ---; python3 -c " import json;d=json.load(open('/Users/HasanSalihSahin/friday/cc/giden/devir-2026-09-09…⟩ | tamam |
+| 9 | 16:37:12 | koştu | Friday depo yapısı, ayarlar, hook ve kütük içeriği ⟨cd ~/friday && ls -la && echo --- && cat .claude/settings.json 2>/dev/null && echo --- && ls -R .claude ¦ head -40 && echo --- && find veri -type f ¦ …⟩ | tamam |
+| 10 | 16:37:22 | koştu | İlk oturum prompt'unu ve Friday CLAUDE.md başını oku ⟨cd ~/friday && cat cc/gelen/prompt-2026-09-09-ilk-oturum.md && echo --- && head -20 CLAUDE.md⟩ | tamam |
+| 11 | 16:42:11 | koştu | Friday açılışında yüklenen bağlam kaynaklarını ölç ⟨cd ~/friday && echo "== friday CLAUDE.md"; wc -c CLAUDE.md; echo "== global CLAUDE.md"; wc -c ~/.claude/CLAUDE.md ~/CLAUDE.md 2>&1; echo "== friday me…⟩ | tamam |
+| 12 | 16:50:27 | koştu | Anakronizm denetimini koş, kalan ihlalleri listele ⟨cd ~/jarvis && python3 tools/anakronizm-denetim.py 2>&1 ¦ tail -15⟩ | tamam |
+| 13 | 16:50:37 | koştu | Değişen dosyaları dizin bazında say, izlenmeyenleri listele ⟨cd ~/jarvis && git status --short ¦ grep -v '^??' ¦ wc -l && git status --short ¦ grep -v '^??' ¦ awk '{print $2}' ¦ sed 's#/[^/]*$##' ¦ sort ¦ uniq -…⟩ | tamam |
+| 14 | 16:50:41 | koştu | Türev katman dosyalarını commit et ⟨cd ~/jarvis && git add veri graf raporlar && git commit -q -m "[icra] Derived layers refresh 2026-09-09 16:40 (session start, Decision 62 silver-stale…⟩ | tamam |
+| 15 | 16:51:07 | skill çağırdı | karar-modeli İB-80: Jarvis sıcak-katman (kapsül · MEMORY · CLAUDE.md pointer · pano) için FIFO/arşive-indirme kuralı — tetik bütçe mi, yaş mı, karma mı? | tamam |
+| 16 | 16:51:13 | koştu | Karar-modeli referanslarını ve İB-80 kayıtlarını oku ⟨cd ~/jarvis/.claude/skills/karar-modeli && cat references/temeller.md && echo ===== && cat references/defter-sablonu.md && echo ===== && grep -n "İB-8…⟩ | hata |
+| 17 | 16:51:19 | koştu | Defter şablonu, İB-80 kayıtları, sıcak katman boyutları ve arşiv desenleri ⟨cd ~/jarvis && cat .claude/skills/karar-modeli/references/defter-sablonu.md; echo "=== IB-80 defter"; grep -n "İB-80" kuyruk/senaryo-defteri.md ¦ head…⟩ | tamam |
 
