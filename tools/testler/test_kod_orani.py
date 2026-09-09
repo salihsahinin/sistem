@@ -71,6 +71,36 @@ class DislamaTest(unittest.TestCase):
             self.assertEqual(okunamayan, 0)
 
 
+class GitignoreDislamaTest(unittest.TestCase):
+    def test_gitignore_dosyasi_envanterden_dislanir(self):
+        """M15 (Karar 88): .venv benzeri gitignore'lu içerik repo_envanteri sayımına girmemeli."""
+        with tempfile.TemporaryDirectory() as tmp:
+            subprocess.run(["git", "init", "-q"], cwd=tmp, check=True)
+            with open(os.path.join(tmp, ".gitignore"), "w") as f:
+                f.write("ignored_dir/\nignored_dosya.txt\n")
+            os.makedirs(os.path.join(tmp, "ignored_dir"))
+            with open(os.path.join(tmp, "ignored_dir", "icinde.py"), "w") as f:
+                f.write("x = 1\n")
+            with open(os.path.join(tmp, "ignored_dosya.txt"), "w") as f:
+                f.write("gizli\n")
+            with open(os.path.join(tmp, "kalir.md"), "w") as f:
+                f.write("# baslik\n")
+
+            oran, okunamayan = kod_orani_olcum.repo_envanteri(tmp)
+
+            toplam_dosya = sum(oran[k + "_dosya"] for k in ("md", "kod", "yapisal", "diger"))
+            # kalir.md + .gitignore'un kendisi (o da git-dışı ama ignore'lu DEĞİL, envantere girmesi doğru);
+            # ignored_dir/icinde.py ve ignored_dosya.txt dışlandı → kod kovasına hiçbir dosya girmemeli
+            self.assertEqual(toplam_dosya, 2)
+            self.assertEqual(oran["md_dosya"], 1)
+            self.assertEqual(oran["kod_dosya"], 0)
+            self.assertEqual(okunamayan, 0)
+
+    def test_git_yoksa_fallback_none_doner(self):
+        with tempfile.TemporaryDirectory() as tmp:  # git init yok → gitignore_disla_kumesi None döner
+            self.assertIsNone(kod_orani_olcum.gitignore_disla_kumesi(tmp))
+
+
 class JsonCiktiTest(unittest.TestCase):
     def test_json_parse_edilir_ve_alanlar_dolu(self):
         r = kos("--json", "--kuru", "--sessiz")

@@ -54,6 +54,30 @@ def git_dosyalar(repo):
     return [f for f in r.stdout.split("\0") if f]
 
 
+def disla_dizinlerini_yukle(repo):
+    """M14 (Karar 88): DISLA_DIZIN tek kaynaktan — tools/kod-orani-olcum.py modülünü importlib ile (dosya adı
+    tire içerdiği için düz import olmaz) yükleyip aynı sabiti kullanır, tekrar tanımlamaz. Modül yüklenemezse
+    (dosya taşındı/bozuldu) yalnız karantina dizinine düşen dar bir yedek kümeyle devam eder (fail-soft)."""
+    yol = os.path.join(repo, "tools", "kod-orani-olcum.py")
+    try:
+        spec = importlib.util.spec_from_file_location("kod_orani_olcum_disla_kaynak", yol)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return set(mod.DISLA_DIZIN)
+    except Exception:
+        return {os.path.join("kuyruk", "arsiv", "karantina")}
+
+
+def disla_uygula(dosyalar, disla_kume):
+    """git-izlenen dosya listesinden DISLA_DIZIN altına düşenleri süzer (kuyruk/arsiv/karantina dahil, İB-72/M14)."""
+    sonuc = []
+    for f in dosyalar:
+        if any(f == d or f.startswith(d + "/") for d in disla_kume):
+            continue
+        sonuc.append(f)
+    return sonuc
+
+
 def satir_say(yol):
     try:
         with open(yol, "rb") as fh:
@@ -187,6 +211,7 @@ def main():
     dosyalar = git_dosyalar(repo)
     if dosyalar is None:
         print("HATA: git repo değil: %s" % repo, file=sys.stderr); return 2
+    dosyalar = disla_uygula(dosyalar, disla_dizinlerini_yukle(repo))
     head = sh(["git", "rev-parse", "--short", "HEAD"], repo).stdout.strip() or "-"
     tz = timezone(timedelta(hours=3))
     ts = datetime.now(tz).replace(microsecond=0).isoformat()

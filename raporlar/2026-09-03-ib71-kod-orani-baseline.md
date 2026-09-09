@@ -1,5 +1,7 @@
 # İB-71 — Kod/İçerik Oranı Baseline Ölçümü
 
+> **ÜSTÜNE-NOT 2026-09-09 (Karar 88 M15):** bu baseline `.venv` dahil ölçüldü — ESKİ ÖLÇÜM; gitignore-süzgeçli yeni sayım: kod 89 / md 784 / diğer 98 (veri/kod-orani.jsonl 2026-09-09 satırı).
+
 **AS-OF: 2026-09-03 · git_head: 96ed98d** — üretici `tools/kod-orani-olcum.py`, tek kütük satırı `veri/kod-orani.jsonl` (append-only, bu koşumun satırı `tarih=2026-09-03`). Test `tools/testler/test_kod_orani.py`: 8/8 yeşil. Tur önerisi yok — bu rapor yalnız ölçümü taşır, karar/öneri masa/Fable işidir.
 
 ## Yöntem (özet)

@@ -86,7 +86,35 @@ def satir_say(tam_yol):
         return 0
 
 
-def repo_envanteri(kok):
+def gitignore_disla_kumesi(kok):
+    """M15 (Karar 88): .gitignore kurallı dışlama kaynağı — `git ls-files --others --ignored --exclude-standard
+    --directory` tek subprocess çağrısıyla HEM bütünüyle ignore'lu dizinleri (örn. '.venv/', sonda '/' ile) HEM
+    tekil ignore'lu dosyaları döner (os.walk'un kendisini süzmek yerine, budama için ucuz bir ön-küme). git
+    yoksa / repo değilse / hata verirse None döner — çağıran taraf mevcut (süzgeçsiz) davranışa düşer + uyarır."""
+    try:
+        r = subprocess.run(
+            ["git", "ls-files", "--others", "--ignored", "--exclude-standard", "--directory", "-z"],
+            cwd=kok, capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            return None
+        return set(p for p in r.stdout.split("\0") if p)
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def _gitignore_disli_mi(goreli_yol, disla_kume, dizin_mi):
+    if disla_kume is None:
+        return False
+    if dizin_mi:
+        return (goreli_yol + "/") in disla_kume
+    return goreli_yol in disla_kume or (goreli_yol + "/") in disla_kume
+
+
+def repo_envanteri(kok, disla_kume=None):
+    """`disla_kume=None` → bu fonksiyon `gitignore_disla_kumesi(kok)`'u kendi hesaplar (geriye-uyum: eski
+    çağıranlar/testler git-dışı geçici dizinde de eskisi gibi çalışır, git yoksa sessizce süzgeçsiz kalır)."""
+    if disla_kume is None:
+        disla_kume = gitignore_disla_kumesi(kok)
     oran = bos_oran()
     okunamayan = 0
     for kok_dizin, alt_dizinler, dosyalar in os.walk(kok):
@@ -97,11 +125,14 @@ def repo_envanteri(kok):
         yeni_alt = []
         for d in alt_dizinler:
             aday = os.path.join(goreli_dizin, d) if goreli_dizin else d
-            if d == ".git" or aday in DISLA_DIZIN:
+            if d == ".git" or aday in DISLA_DIZIN or _gitignore_disli_mi(aday, disla_kume, dizin_mi=True):
                 continue
             yeni_alt.append(d)
         alt_dizinler[:] = yeni_alt
         for ad in dosyalar:
+            goreli_dosya = os.path.join(goreli_dizin, ad) if goreli_dizin else ad
+            if _gitignore_disli_mi(goreli_dosya, disla_kume, dizin_mi=False):
+                continue
             tam_yol = os.path.join(kok_dizin, ad)
             k = kova_ver(ad)
             oran[k + "_dosya"] += 1
@@ -208,7 +239,11 @@ def ana():
     if not os.path.isdir(kok):
         sys.exit("HATA: --repo dizini yok: %s (kod 2)" % kok)
 
-    repo_oran, okunamayan = repo_envanteri(kok)
+    disla_kume = gitignore_disla_kumesi(kok)
+    if disla_kume is None and not a.sessiz:
+        print("  UYARI: git ls-files --ignored çalışmadı (git yok/repo değil) — .gitignore süzgeci UYGULANMADI, "
+              "eski (süzgeçsiz) davranışa düşüldü.", file=insan)
+    repo_oran, okunamayan = repo_envanteri(kok, disla_kume)
     olaylar = hareket_olaylarini_oku(os.path.join(kok, "veri", "bronz", "hareket-olay.jsonl"))
     baglam_oran, olay_n, esik = baglam_penceresi_orani(olaylar, a.pencere_gun, bugun)
 
