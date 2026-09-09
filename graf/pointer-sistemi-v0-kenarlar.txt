@@ -1,24 +1,24 @@
-# Jarvis pointer sistemi — kenar listesi (LLM-okunur görünüm; üretici tools/pointer-graf.py; silver a124cdc; düğüm 79 · kenar 58)
+# Jarvis pointer sistemi — kenar listesi (LLM-okunur görünüm; üretici tools/pointer-graf.py; silver 9695328; düğüm 79 · kenar 58)
 # biçim: KAYNAK --tip[etiket]--> HEDEF ; sıralama sabit (from,type,to,label); sayılar silver'dan
 
 ## DÜĞÜMLER (kind · id · label · sayı)
 anahtar_turu · anahtar:anahtar_terim · anahtar_terim · 27
 anahtar_turu · anahtar:kart · kart · 23
 anahtar_turu · anahtar:skill · skill · 16
-anahtar_turu · anahtar:tuzuk_madde · tuzuk_madde · 137
+anahtar_turu · anahtar:tuzuk_madde · tuzuk_madde · 138
 anahtar_turu · anahtar:v_no · v_no · 94
 anahtar_turu · anahtar:wiki_sayfa · wiki_sayfa · 57
 dis · dis:etiket · etiket
 dis · dis:git · git
 dis · dis:url · url
 dis · dis:zaman · zaman
-dosya_katmani · katman:ilik · ilik · 107
+dosya_katmani · katman:ilik · ilik · 104
 dosya_katmani · katman:sicak · sicak · 36
-dosya_katmani · katman:soguk · soguk · 637
-dosya_katmani · katman:yapisal · yapisal · 137
-hat_katmani · hat:bronz · bronz (git-izlenen md/json/jsonl) · 917
+dosya_katmani · katman:soguk · soguk · 696
+dosya_katmani · katman:yapisal · yapisal · 142
+hat_katmani · hat:bronz · bronz (git-izlenen md/json/jsonl) · 978
 hat_katmani · hat:gold · gold (veri/gorunum/*.csv) · 47
-hat_katmani · hat:silver · silver (veri/baglam.sqlite) · 1.340.904
+hat_katmani · hat:silver · silver (veri/baglam.sqlite) · 1.482.193
 ilke · ilke:adres · adresli-erişim kuralı (08-18)
 ilke · ilke:m20 · m.20 pointer ilkesi
 ilke · ilke:m21 · m.21 dönüş yolu
@@ -32,53 +32,53 @@ kronoloji · kron:k0815 · 2026-08-15 · silver katmanı: kayit_id adres PK, ref
 kronoloji · kron:k0817 · 2026-08-17 · hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)
 kronoloji · kron:k0818 · 2026-08-18 · adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)
 kronoloji · kron:k0822 · 2026-08-22 · pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği
-referans_turu · ref:anahtar_terim · anahtar_terim · 36.348
-referans_turu · ref:dosya_pointer · dosya_pointer · 13.963
-referans_turu · ref:etiket · etiket · 6.004
-referans_turu · ref:kart · kart · 2.261
-referans_turu · ref:sha · sha · 1.616
-referans_turu · ref:skill_adi · skill_adi · 2.032
-referans_turu · ref:tarih · tarih · 4.679
-referans_turu · ref:tuzuk_madde · tuzuk_madde · 8.668
-referans_turu · ref:url · url · 5.031
-referans_turu · ref:v_no · v_no · 3.776
+referans_turu · ref:anahtar_terim · anahtar_terim · 37.464
+referans_turu · ref:dosya_pointer · dosya_pointer · 14.675
+referans_turu · ref:etiket · etiket · 6.103
+referans_turu · ref:kart · kart · 2.266
+referans_turu · ref:sha · sha · 1.763
+referans_turu · ref:skill_adi · skill_adi · 2.190
+referans_turu · ref:tarih · tarih · 5.032
+referans_turu · ref:tuzuk_madde · tuzuk_madde · 8.818
+referans_turu · ref:url · url · 5.163
+referans_turu · ref:v_no · v_no · 3.805
 referans_turu · ref:wiki_link · wiki_link · 343
 tablo · tablo:amb_kopru_not_prompt · amb_kopru_not_prompt · 8
-tablo · tablo:amb_olgu_karar_borcu · amb_olgu_karar_borcu · 140
-tablo · tablo:amb_olgu_kosum · amb_olgu_kosum · 652
+tablo · tablo:amb_olgu_karar_borcu · amb_olgu_karar_borcu · 145
+tablo · tablo:amb_olgu_kosum · amb_olgu_kosum · 679
 tablo · tablo:amb_olgu_kosum_sonuc · amb_olgu_kosum_sonuc · 12
-tablo · tablo:amb_olgu_prompt · amb_olgu_prompt · 994
+tablo · tablo:amb_olgu_prompt · amb_olgu_prompt · 1.041
 tablo · tablo:amb_olgu_tahmin · amb_olgu_tahmin · 75
 tablo · tablo:amb_olgu_tartisma_notu · amb_olgu_tartisma_notu · 2
-tablo · tablo:anahtar · anahtar · 354
+tablo · tablo:anahtar · anahtar · 355
 tablo · tablo:anahtar_kaydi · anahtar_kaydi · 20
-tablo · tablo:bag · bag · 33
-tablo · tablo:baglam_olay · baglam_olay · 13.652
-tablo · tablo:deneyim · deneyim · 652
-tablo · tablo:deneyim_fts · deneyim_fts · 652
+tablo · tablo:bag · bag · 51
+tablo · tablo:baglam_olay · baglam_olay · 14.640
+tablo · tablo:deneyim · deneyim · 679
+tablo · tablo:deneyim_fts · deneyim_fts · 679
 tablo · tablo:deneyim_fts_config · deneyim_fts_config · 1
-tablo · tablo:deneyim_fts_content · deneyim_fts_content · 652
-tablo · tablo:deneyim_fts_data · deneyim_fts_data · 26
-tablo · tablo:deneyim_fts_docsize · deneyim_fts_docsize · 652
-tablo · tablo:deneyim_fts_idx · deneyim_fts_idx · 24
-tablo · tablo:dosya · dosya · 917
-tablo · tablo:erisim_genisletme · erisim_genisletme · 64.827
-tablo · tablo:hareket · hareket · 6.287
-tablo · tablo:json_kayit · json_kayit · 895.456
-tablo · tablo:karar_borcu · karar_borcu · 140
-tablo · tablo:karar_borcu_kaynak · karar_borcu_kaynak · 381
-tablo · tablo:kayit · kayit · 64.827
-tablo · tablo:kayit_fts · kayit_fts · 64.827
+tablo · tablo:deneyim_fts_content · deneyim_fts_content · 679
+tablo · tablo:deneyim_fts_data · deneyim_fts_data · 27
+tablo · tablo:deneyim_fts_docsize · deneyim_fts_docsize · 679
+tablo · tablo:deneyim_fts_idx · deneyim_fts_idx · 25
+tablo · tablo:dosya · dosya · 978
+tablo · tablo:erisim_genisletme · erisim_genisletme · 66.908
+tablo · tablo:hareket · hareket · 6.791
+tablo · tablo:json_kayit · json_kayit · 1.021.734
+tablo · tablo:karar_borcu · karar_borcu · 145
+tablo · tablo:karar_borcu_kaynak · karar_borcu_kaynak · 393
+tablo · tablo:kayit · kayit · 66.908
+tablo · tablo:kayit_fts · kayit_fts · 66.908
 tablo · tablo:kayit_fts_config · kayit_fts_config · 1
-tablo · tablo:kayit_fts_content · kayit_fts_content · 64.827
-tablo · tablo:kayit_fts_data · kayit_fts_data · 5.325
-tablo · tablo:kayit_fts_docsize · kayit_fts_docsize · 64.827
-tablo · tablo:kayit_fts_idx · kayit_fts_idx · 2.945
+tablo · tablo:kayit_fts_content · kayit_fts_content · 66.908
+tablo · tablo:kayit_fts_data · kayit_fts_data · 5.511
+tablo · tablo:kayit_fts_docsize · kayit_fts_docsize · 66.908
+tablo · tablo:kayit_fts_idx · kayit_fts_idx · 2.975
 tablo · tablo:parquet_uretim · parquet_uretim · 0
-tablo · tablo:prompt · prompt · 994
-tablo · tablo:referans · referans · 84.721
+tablo · tablo:prompt · prompt · 1.041
+tablo · tablo:referans · referans · 87.622
 tablo · tablo:silver_karantina_aday · silver_karantina_aday · 500
-tablo · tablo:silver_kuyruk · silver_kuyruk · 485
+tablo · tablo:silver_kuyruk · silver_kuyruk · 149
 tablo · tablo:silver_saglik_son · silver_saglik_son · 15
 tablo · tablo:uretim · uretim · 1
 
@@ -100,7 +100,7 @@ kron:k0815 --kronoloji_sonra--> kron:k0817
 kron:k0817 --kronoloji_sonra--> kron:k0818
 kron:k0818 --kronoloji_sonra--> kron:k0822
 ref:anahtar_terim --pointer_hedef[terim → anahtar kaydı]--> anahtar:anahtar_terim
-ref:dosya_pointer --pointer_hedef[yol → dosya (hedef_var ile çözümlü/kırık) · 11.957 çözümlü / 2.006 KIRIK]--> tablo:dosya
+ref:dosya_pointer --pointer_hedef[yol → dosya (hedef_var ile çözümlü/kırık) · 10.057 çözümlü / 4.618 KIRIK]--> tablo:dosya
 ref:etiket --pointer_hedef[#etiket (serbest sınıflandırma)]--> dis:etiket
 ref:kart --pointer_hedef[K-NNN → pano kartı (anahtar kaydı)]--> anahtar:kart
 ref:sha --pointer_hedef[git commit/blob (provenans)]--> dis:git
@@ -113,31 +113,31 @@ ref:wiki_link --pointer_hedef[[[sayfa]] → wiki sayfası (anahtar kaydı)]--> a
 tablo:anahtar --icerir[27]--> anahtar:anahtar_terim
 tablo:anahtar --icerir[23]--> anahtar:kart
 tablo:anahtar --icerir[16]--> anahtar:skill
-tablo:anahtar --icerir[137]--> anahtar:tuzuk_madde
+tablo:anahtar --icerir[138]--> anahtar:tuzuk_madde
 tablo:anahtar --icerir[94]--> anahtar:v_no
 tablo:anahtar --icerir[57]--> anahtar:wiki_sayfa
 tablo:anahtar --supersede[replaced_by → anahtar_id]--> tablo:anahtar
 tablo:anahtar_kaydi --wasRevisionOf[R1 · 10 bağ (10 açık)]--> tablo:anahtar_kaydi
-tablo:dosya --icerir[107]--> katman:ilik
+tablo:dosya --icerir[104]--> katman:ilik
 tablo:dosya --icerir[36]--> katman:sicak
-tablo:dosya --icerir[637]--> katman:soguk
-tablo:dosya --icerir[137]--> katman:yapisal
+tablo:dosya --icerir[696]--> katman:soguk
+tablo:dosya --icerir[142]--> katman:yapisal
 tablo:json_kayit --fk[dosya_id → dosya_id]--> tablo:dosya
 tablo:karar_borcu_kaynak --fk[dosya_id → dosya_id]--> tablo:dosya
 tablo:karar_borcu_kaynak --fk[borc_id → borc_id]--> tablo:karar_borcu
 tablo:karar_borcu_kaynak --fk[kayit_id → kayit_id]--> tablo:kayit
 tablo:kayit --fk[dosya_id → dosya_id]--> tablo:dosya
-tablo:kayit --wasRevisionOf[R3 · 23 bağ (16 açık)]--> tablo:dosya
+tablo:kayit --wasRevisionOf[R3 · 41 bağ (17 açık)]--> tablo:dosya
 tablo:referans --fk[hedef_yol → dosya_id]--> tablo:dosya
 tablo:referans --fk[kayit_id → kayit_id]--> tablo:kayit
-tablo:referans --icerir[36.348]--> ref:anahtar_terim
-tablo:referans --icerir[13.963]--> ref:dosya_pointer
-tablo:referans --icerir[6.004]--> ref:etiket
-tablo:referans --icerir[2.261]--> ref:kart
-tablo:referans --icerir[1.616]--> ref:sha
-tablo:referans --icerir[2.032]--> ref:skill_adi
-tablo:referans --icerir[4.679]--> ref:tarih
-tablo:referans --icerir[8.668]--> ref:tuzuk_madde
-tablo:referans --icerir[5.031]--> ref:url
-tablo:referans --icerir[3.776]--> ref:v_no
+tablo:referans --icerir[37.464]--> ref:anahtar_terim
+tablo:referans --icerir[14.675]--> ref:dosya_pointer
+tablo:referans --icerir[6.103]--> ref:etiket
+tablo:referans --icerir[2.266]--> ref:kart
+tablo:referans --icerir[1.763]--> ref:sha
+tablo:referans --icerir[2.190]--> ref:skill_adi
+tablo:referans --icerir[5.032]--> ref:tarih
+tablo:referans --icerir[8.818]--> ref:tuzuk_madde
+tablo:referans --icerir[5.163]--> ref:url
+tablo:referans --icerir[3.805]--> ref:v_no
 tablo:referans --icerir[343]--> ref:wiki_link

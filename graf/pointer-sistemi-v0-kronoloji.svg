@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-d2-version="v0.8.1-HEAD" preserveAspectRatio="xMinYMin meet" viewBox="0 0 923 1405"><svg class="d2-3105919583 d2-svg" width="923" height="1405" viewBox="-89 -106 923 1405"><rect x="-89.000000" y="-106.000000" width="923.000000" height="1405.000000" rx="0.000000" fill="#FFFFFF" class=" fill-N7" stroke-width="0" /><style type="text/css"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-d2-version="v0.8.1-HEAD" preserveAspectRatio="xMinYMin meet" viewBox="0 0 923 1405"><svg class="d2-299991285 d2-svg" width="923" height="1405" viewBox="-89 -106 923 1405"><rect x="-89.000000" y="-106.000000" width="923.000000" height="1405.000000" rx="0.000000" fill="#FFFFFF" class=" fill-N7" stroke-width="0" /><style type="text/css"><![CDATA[
 .appendix-icon {
 	filter: drop-shadow(0px 0px 32px rgba(31, 36, 58, 0.1));
 }
-.d2-3105919583 .text-bold {
-	font-family: "d2-3105919583-font-bold";
+.d2-299991285 .text-bold {
+	font-family: "d2-299991285-font-bold";
 }
 @font-face {
-	font-family: d2-3105919583-font-bold;
+	font-family: d2-299991285-font-bold;
 	src: url("data:application/font-woff;base64,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");
 }]]></style><style type="text/css"><![CDATA[.shape {
   shape-rendering: geometricPrecision;
@@ -21,182 +21,182 @@
   opacity: 0.5;
 }
 
-		.d2-3105919583 .fill-N1{fill:#0A0F25;}
-		.d2-3105919583 .fill-N2{fill:#676C7E;}
-		.d2-3105919583 .fill-N3{fill:#9499AB;}
-		.d2-3105919583 .fill-N4{fill:#CFD2DD;}
-		.d2-3105919583 .fill-N5{fill:#DEE1EB;}
-		.d2-3105919583 .fill-N6{fill:#EEF1F8;}
-		.d2-3105919583 .fill-N7{fill:#FFFFFF;}
-		.d2-3105919583 .fill-B1{fill:#0D32B2;}
-		.d2-3105919583 .fill-B2{fill:#0D32B2;}
-		.d2-3105919583 .fill-B3{fill:#E3E9FD;}
-		.d2-3105919583 .fill-B4{fill:#E3E9FD;}
-		.d2-3105919583 .fill-B5{fill:#EDF0FD;}
-		.d2-3105919583 .fill-B6{fill:#F7F8FE;}
-		.d2-3105919583 .fill-AA2{fill:#4A6FF3;}
-		.d2-3105919583 .fill-AA4{fill:#EDF0FD;}
-		.d2-3105919583 .fill-AA5{fill:#F7F8FE;}
-		.d2-3105919583 .fill-AB4{fill:#EDF0FD;}
-		.d2-3105919583 .fill-AB5{fill:#F7F8FE;}
-		.d2-3105919583 .stroke-N1{stroke:#0A0F25;}
-		.d2-3105919583 .stroke-N2{stroke:#676C7E;}
-		.d2-3105919583 .stroke-N3{stroke:#9499AB;}
-		.d2-3105919583 .stroke-N4{stroke:#CFD2DD;}
-		.d2-3105919583 .stroke-N5{stroke:#DEE1EB;}
-		.d2-3105919583 .stroke-N6{stroke:#EEF1F8;}
-		.d2-3105919583 .stroke-N7{stroke:#FFFFFF;}
-		.d2-3105919583 .stroke-B1{stroke:#0D32B2;}
-		.d2-3105919583 .stroke-B2{stroke:#0D32B2;}
-		.d2-3105919583 .stroke-B3{stroke:#E3E9FD;}
-		.d2-3105919583 .stroke-B4{stroke:#E3E9FD;}
-		.d2-3105919583 .stroke-B5{stroke:#EDF0FD;}
-		.d2-3105919583 .stroke-B6{stroke:#F7F8FE;}
-		.d2-3105919583 .stroke-AA2{stroke:#4A6FF3;}
-		.d2-3105919583 .stroke-AA4{stroke:#EDF0FD;}
-		.d2-3105919583 .stroke-AA5{stroke:#F7F8FE;}
-		.d2-3105919583 .stroke-AB4{stroke:#EDF0FD;}
-		.d2-3105919583 .stroke-AB5{stroke:#F7F8FE;}
-		.d2-3105919583 .background-color-N1{background-color:#0A0F25;}
-		.d2-3105919583 .background-color-N2{background-color:#676C7E;}
-		.d2-3105919583 .background-color-N3{background-color:#9499AB;}
-		.d2-3105919583 .background-color-N4{background-color:#CFD2DD;}
-		.d2-3105919583 .background-color-N5{background-color:#DEE1EB;}
-		.d2-3105919583 .background-color-N6{background-color:#EEF1F8;}
-		.d2-3105919583 .background-color-N7{background-color:#FFFFFF;}
-		.d2-3105919583 .background-color-B1{background-color:#0D32B2;}
-		.d2-3105919583 .background-color-B2{background-color:#0D32B2;}
-		.d2-3105919583 .background-color-B3{background-color:#E3E9FD;}
-		.d2-3105919583 .background-color-B4{background-color:#E3E9FD;}
-		.d2-3105919583 .background-color-B5{background-color:#EDF0FD;}
-		.d2-3105919583 .background-color-B6{background-color:#F7F8FE;}
-		.d2-3105919583 .background-color-AA2{background-color:#4A6FF3;}
-		.d2-3105919583 .background-color-AA4{background-color:#EDF0FD;}
-		.d2-3105919583 .background-color-AA5{background-color:#F7F8FE;}
-		.d2-3105919583 .background-color-AB4{background-color:#EDF0FD;}
-		.d2-3105919583 .background-color-AB5{background-color:#F7F8FE;}
-		.d2-3105919583 .color-N1{color:#0A0F25;}
-		.d2-3105919583 .color-N2{color:#676C7E;}
-		.d2-3105919583 .color-N3{color:#9499AB;}
-		.d2-3105919583 .color-N4{color:#CFD2DD;}
-		.d2-3105919583 .color-N5{color:#DEE1EB;}
-		.d2-3105919583 .color-N6{color:#EEF1F8;}
-		.d2-3105919583 .color-N7{color:#FFFFFF;}
-		.d2-3105919583 .color-B1{color:#0D32B2;}
-		.d2-3105919583 .color-B2{color:#0D32B2;}
-		.d2-3105919583 .color-B3{color:#E3E9FD;}
-		.d2-3105919583 .color-B4{color:#E3E9FD;}
-		.d2-3105919583 .color-B5{color:#EDF0FD;}
-		.d2-3105919583 .color-B6{color:#F7F8FE;}
-		.d2-3105919583 .color-AA2{color:#4A6FF3;}
-		.d2-3105919583 .color-AA4{color:#EDF0FD;}
-		.d2-3105919583 .color-AA5{color:#F7F8FE;}
-		.d2-3105919583 .color-AB4{color:#EDF0FD;}
-		.d2-3105919583 .color-AB5{color:#F7F8FE;}.appendix text.text{fill:#0A0F25}.md{--color-fg-default:#0A0F25;--color-fg-muted:#676C7E;--color-fg-subtle:#9499AB;--color-canvas-default:#FFFFFF;--color-canvas-subtle:#EEF1F8;--color-border-default:#0D32B2;--color-border-muted:#0D32B2;--color-neutral-muted:#EEF1F8;--color-accent-fg:#0D32B2;--color-accent-emphasis:#0D32B2;--color-attention-subtle:#676C7E;--color-danger-fg:red;}.sketch-overlay-B1{fill:url(#streaks-darker-d2-3105919583);mix-blend-mode:lighten}.sketch-overlay-B2{fill:url(#streaks-darker-d2-3105919583);mix-blend-mode:lighten}.sketch-overlay-B3{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-B4{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-B5{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-B6{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-AA2{fill:url(#streaks-dark-d2-3105919583);mix-blend-mode:overlay}.sketch-overlay-AA4{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-AA5{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-AB4{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-AB5{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-N1{fill:url(#streaks-darker-d2-3105919583);mix-blend-mode:lighten}.sketch-overlay-N2{fill:url(#streaks-dark-d2-3105919583);mix-blend-mode:overlay}.sketch-overlay-N3{fill:url(#streaks-normal-d2-3105919583);mix-blend-mode:color-burn}.sketch-overlay-N4{fill:url(#streaks-normal-d2-3105919583);mix-blend-mode:color-burn}.sketch-overlay-N5{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-N6{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.sketch-overlay-N7{fill:url(#streaks-bright-d2-3105919583);mix-blend-mode:darken}.light-code{display: block}.dark-code{display: none}]]></style><g class="azA3MTE= kron"><g class="shape" ><path d="M 130 12 H 578 C 579 12 580 12 581 13 L 598 29 C 599 30 599 31 599 32 V 99 C 599 99 599 99 599 99 H 130 C 129 99 129 99 129 99 V 12 C 129 12 129 12 130 12 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 598 99 H 130 C 129 99 129 99 129 98 V 13 C 129 12 129 12 130 12 H 577 C 578 12 578 12 578 13 V 30 C 578 31 579 32 580 32 H 598 C 599 32 599 32 599 33 V 98 C 598 99 599 99 598 99 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="61.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-11 · tüzük m.20-22 imzalandı (pointer ilkesi kanon)</text><title>core/tuzuk-v0.md</title></g><g class="azA3MTI= kron"><g class="shape" ><path d="M 116 169 H 592 C 593 169 594 169 595 170 L 612 186 C 613 187 613 188 613 189 V 256 C 613 256 613 256 613 256 H 116 C 115 256 115 256 115 256 V 170 C 115 169 115 169 116 169 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 612 256 H 116 C 115 256 115 256 115 255 V 170 C 115 169 115 169 116 169 H 591 C 592 169 592 169 592 170 V 187 C 592 188 593 189 594 189 H 612 C 613 189 613 189 613 190 V 255 C 612 256 613 256 612 256 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="218.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-12 · PAT kararı: yalnız pointer izlendi — kanonik örnek</text><title>wiki/pointer-sistemi.md</title></g><g class="azA3MTg= kron"><g class="shape" ><path d="M 28 326 H 679 C 680 326 681 326 682 327 L 699 343 C 700 344 700 345 700 346 V 413 C 700 413 700 413 700 413 H 28 C 27 413 27 413 27 413 V 327 C 27 326 27 326 28 326 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 699 413 H 28 C 27 413 27 413 27 412 V 327 C 27 326 27 326 28 326 H 678 C 679 326 679 326 679 327 V 344 C 679 345 680 346 681 346 H 699 C 700 346 700 346 700 347 V 412 C 699 413 700 413 699 413 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="363.500000" y="375.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-18 · pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)</text><title>raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md</title></g><g class="azA3MjQ= kron"><g class="shape" ><path d="M 27 483 H 680 C 681 483 682 483 683 484 L 700 500 C 701 501 701 502 701 503 V 570 C 701 570 701 570 701 570 H 27 C 26 570 26 570 26 570 V 484 C 26 483 26 483 27 483 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 700 570 H 27 C 26 570 26 570 26 569 V 484 C 26 483 26 483 27 483 H 679 C 680 483 680 483 680 484 V 501 C 680 502 681 503 682 503 H 700 C 701 503 701 503 701 504 V 569 C 700 570 701 570 700 570 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="363.500000" y="532.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-24 · graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş</text><title>raporlar/2026-07-24-serit2-graph-engineering.md</title></g><g class="azA4MTU= kron"><g class="shape" ><path d="M 13 640 H 695 C 696 640 697 640 698 641 L 715 657 C 716 658 716 659 716 660 V 727 C 716 727 716 727 716 727 H 12 C 12 727 12 727 12 727 V 641 C 12 640 12 640 13 640 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 715 727 H 13 C 12 727 12 727 12 726 V 641 C 12 640 12 640 13 640 H 694 C 695 640 695 640 695 641 V 658 C 695 659 696 660 697 660 H 715 C 716 660 716 660 716 661 V 726 C 715 727 716 727 715 727 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="689.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-15 · silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)</text><title>cc/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md</title></g><g class="azA4MTc= kron"><g class="shape" ><path d="M 70 797 H 638 C 639 797 640 797 641 798 L 658 814 C 659 815 659 816 659 817 V 884 C 659 884 659 884 659 884 H 70 C 69 884 69 884 69 884 V 798 C 69 797 69 797 70 797 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 658 884 H 70 C 69 884 69 884 69 883 V 798 C 69 797 69 797 70 797 H 637 C 638 797 638 797 638 798 V 815 C 638 816 639 817 640 817 H 658 C 659 817 659 817 659 818 V 883 C 658 884 659 884 658 884 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="846.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-17 · hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)</text><title>kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-21.md:26</title></g><g class="azA4MTg= kron"><g class="shape" ><path d="M 73 954 H 635 C 636 954 637 954 638 955 L 655 971 C 656 972 656 973 656 974 V 1041 C 656 1041 656 1041 656 1041 H 73 C 72 1041 72 1041 72 1041 V 955 C 72 954 72 954 73 954 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 655 1041 H 73 C 72 1041 72 1041 72 1040 V 955 C 72 954 72 954 73 954 H 634 C 635 954 635 954 635 955 V 972 C 635 973 636 974 637 974 H 655 C 656 974 656 974 656 975 V 1040 C 655 1041 656 1041 655 1041 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="1003.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-18 · adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)</text><title>kuyruk/senaryo-defteri.md:173-175</title></g><g class="azA4MjI= kron"><g class="shape" ><path d="M 36 1111 H 672 C 673 1111 674 1111 675 1112 L 692 1128 C 693 1129 693 1130 693 1131 V 1198 C 693 1198 693 1198 693 1198 H 36 C 35 1198 35 1198 35 1198 V 1112 C 35 1111 35 1111 36 1111 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 692 1198 H 36 C 35 1198 35 1198 35 1197 V 1112 C 35 1111 35 1111 36 1111 H 671 C 672 1111 672 1111 672 1112 V 1129 C 672 1130 673 1131 674 1131 H 692 C 693 1131 693 1131 693 1132 V 1197 C 692 1198 693 1198 692 1198 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="1160.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-22 · pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği</text><title>cc/pipeline-2026-08-22-pointer-graf-d2.md</title></g><g class="KGswNzExIC0mZ3Q7IGswNzEyKVswXQ=="><marker id="mk-d2-3105919583-3488378134" markerWidth="10.000000" markerHeight="12.000000" refX="7.000000" refY="6.000000" viewBox="0.000000 0.000000 10.000000 12.000000" orient="auto" markerUnits="userSpaceOnUse"> <polygon points="0.000000,0.000000 10.000000,6.000000 0.000000,12.000000" fill="#0D32B2" class="connection fill-B1" stroke-width="2" /> </marker><path d="M 364.000000 101.000000 L 364.000000 165.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswNzEyIC0mZ3Q7IGswNzE4KVswXQ=="><path d="M 364.000000 258.000000 L 364.000000 322.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswNzE4IC0mZ3Q7IGswNzI0KVswXQ=="><path d="M 364.000000 415.000000 L 364.000000 479.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswNzI0IC0mZ3Q7IGswODE1KVswXQ=="><path d="M 364.000000 572.000000 L 364.000000 636.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswODE1IC0mZ3Q7IGswODE3KVswXQ=="><path d="M 364.000000 729.000000 L 364.000000 793.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswODE3IC0mZ3Q7IGswODE4KVswXQ=="><path d="M 364.000000 886.000000 L 364.000000 950.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g class="KGswODE4IC0mZ3Q7IGswODIyKVswXQ=="><path d="M 364.000000 1043.000000 L 364.000000 1107.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-3105919583-3488378134)" mask="url(#d2-3105919583)" /></g><g transform="translate(562 -4)" class="appendix-icon"><title>core/tuzuk-v0.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDOMJR)">
+		.d2-299991285 .fill-N1{fill:#0A0F25;}
+		.d2-299991285 .fill-N2{fill:#676C7E;}
+		.d2-299991285 .fill-N3{fill:#9499AB;}
+		.d2-299991285 .fill-N4{fill:#CFD2DD;}
+		.d2-299991285 .fill-N5{fill:#DEE1EB;}
+		.d2-299991285 .fill-N6{fill:#EEF1F8;}
+		.d2-299991285 .fill-N7{fill:#FFFFFF;}
+		.d2-299991285 .fill-B1{fill:#0D32B2;}
+		.d2-299991285 .fill-B2{fill:#0D32B2;}
+		.d2-299991285 .fill-B3{fill:#E3E9FD;}
+		.d2-299991285 .fill-B4{fill:#E3E9FD;}
+		.d2-299991285 .fill-B5{fill:#EDF0FD;}
+		.d2-299991285 .fill-B6{fill:#F7F8FE;}
+		.d2-299991285 .fill-AA2{fill:#4A6FF3;}
+		.d2-299991285 .fill-AA4{fill:#EDF0FD;}
+		.d2-299991285 .fill-AA5{fill:#F7F8FE;}
+		.d2-299991285 .fill-AB4{fill:#EDF0FD;}
+		.d2-299991285 .fill-AB5{fill:#F7F8FE;}
+		.d2-299991285 .stroke-N1{stroke:#0A0F25;}
+		.d2-299991285 .stroke-N2{stroke:#676C7E;}
+		.d2-299991285 .stroke-N3{stroke:#9499AB;}
+		.d2-299991285 .stroke-N4{stroke:#CFD2DD;}
+		.d2-299991285 .stroke-N5{stroke:#DEE1EB;}
+		.d2-299991285 .stroke-N6{stroke:#EEF1F8;}
+		.d2-299991285 .stroke-N7{stroke:#FFFFFF;}
+		.d2-299991285 .stroke-B1{stroke:#0D32B2;}
+		.d2-299991285 .stroke-B2{stroke:#0D32B2;}
+		.d2-299991285 .stroke-B3{stroke:#E3E9FD;}
+		.d2-299991285 .stroke-B4{stroke:#E3E9FD;}
+		.d2-299991285 .stroke-B5{stroke:#EDF0FD;}
+		.d2-299991285 .stroke-B6{stroke:#F7F8FE;}
+		.d2-299991285 .stroke-AA2{stroke:#4A6FF3;}
+		.d2-299991285 .stroke-AA4{stroke:#EDF0FD;}
+		.d2-299991285 .stroke-AA5{stroke:#F7F8FE;}
+		.d2-299991285 .stroke-AB4{stroke:#EDF0FD;}
+		.d2-299991285 .stroke-AB5{stroke:#F7F8FE;}
+		.d2-299991285 .background-color-N1{background-color:#0A0F25;}
+		.d2-299991285 .background-color-N2{background-color:#676C7E;}
+		.d2-299991285 .background-color-N3{background-color:#9499AB;}
+		.d2-299991285 .background-color-N4{background-color:#CFD2DD;}
+		.d2-299991285 .background-color-N5{background-color:#DEE1EB;}
+		.d2-299991285 .background-color-N6{background-color:#EEF1F8;}
+		.d2-299991285 .background-color-N7{background-color:#FFFFFF;}
+		.d2-299991285 .background-color-B1{background-color:#0D32B2;}
+		.d2-299991285 .background-color-B2{background-color:#0D32B2;}
+		.d2-299991285 .background-color-B3{background-color:#E3E9FD;}
+		.d2-299991285 .background-color-B4{background-color:#E3E9FD;}
+		.d2-299991285 .background-color-B5{background-color:#EDF0FD;}
+		.d2-299991285 .background-color-B6{background-color:#F7F8FE;}
+		.d2-299991285 .background-color-AA2{background-color:#4A6FF3;}
+		.d2-299991285 .background-color-AA4{background-color:#EDF0FD;}
+		.d2-299991285 .background-color-AA5{background-color:#F7F8FE;}
+		.d2-299991285 .background-color-AB4{background-color:#EDF0FD;}
+		.d2-299991285 .background-color-AB5{background-color:#F7F8FE;}
+		.d2-299991285 .color-N1{color:#0A0F25;}
+		.d2-299991285 .color-N2{color:#676C7E;}
+		.d2-299991285 .color-N3{color:#9499AB;}
+		.d2-299991285 .color-N4{color:#CFD2DD;}
+		.d2-299991285 .color-N5{color:#DEE1EB;}
+		.d2-299991285 .color-N6{color:#EEF1F8;}
+		.d2-299991285 .color-N7{color:#FFFFFF;}
+		.d2-299991285 .color-B1{color:#0D32B2;}
+		.d2-299991285 .color-B2{color:#0D32B2;}
+		.d2-299991285 .color-B3{color:#E3E9FD;}
+		.d2-299991285 .color-B4{color:#E3E9FD;}
+		.d2-299991285 .color-B5{color:#EDF0FD;}
+		.d2-299991285 .color-B6{color:#F7F8FE;}
+		.d2-299991285 .color-AA2{color:#4A6FF3;}
+		.d2-299991285 .color-AA4{color:#EDF0FD;}
+		.d2-299991285 .color-AA5{color:#F7F8FE;}
+		.d2-299991285 .color-AB4{color:#EDF0FD;}
+		.d2-299991285 .color-AB5{color:#F7F8FE;}.appendix text.text{fill:#0A0F25}.md{--color-fg-default:#0A0F25;--color-fg-muted:#676C7E;--color-fg-subtle:#9499AB;--color-canvas-default:#FFFFFF;--color-canvas-subtle:#EEF1F8;--color-border-default:#0D32B2;--color-border-muted:#0D32B2;--color-neutral-muted:#EEF1F8;--color-accent-fg:#0D32B2;--color-accent-emphasis:#0D32B2;--color-attention-subtle:#676C7E;--color-danger-fg:red;}.sketch-overlay-B1{fill:url(#streaks-darker-d2-299991285);mix-blend-mode:lighten}.sketch-overlay-B2{fill:url(#streaks-darker-d2-299991285);mix-blend-mode:lighten}.sketch-overlay-B3{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-B4{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-B5{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-B6{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-AA2{fill:url(#streaks-dark-d2-299991285);mix-blend-mode:overlay}.sketch-overlay-AA4{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-AA5{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-AB4{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-AB5{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-N1{fill:url(#streaks-darker-d2-299991285);mix-blend-mode:lighten}.sketch-overlay-N2{fill:url(#streaks-dark-d2-299991285);mix-blend-mode:overlay}.sketch-overlay-N3{fill:url(#streaks-normal-d2-299991285);mix-blend-mode:color-burn}.sketch-overlay-N4{fill:url(#streaks-normal-d2-299991285);mix-blend-mode:color-burn}.sketch-overlay-N5{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-N6{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.sketch-overlay-N7{fill:url(#streaks-bright-d2-299991285);mix-blend-mode:darken}.light-code{display: block}.dark-code{display: none}]]></style><g class="azA3MTE= kron"><g class="shape" ><path d="M 130 12 H 578 C 579 12 580 12 581 13 L 598 29 C 599 30 599 31 599 32 V 99 C 599 99 599 99 599 99 H 130 C 129 99 129 99 129 99 V 12 C 129 12 129 12 130 12 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 598 99 H 130 C 129 99 129 99 129 98 V 13 C 129 12 129 12 130 12 H 577 C 578 12 578 12 578 13 V 30 C 578 31 579 32 580 32 H 598 C 599 32 599 32 599 33 V 98 C 598 99 599 99 598 99 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="61.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-11 · tüzük m.20-22 imzalandı (pointer ilkesi kanon)</text><title>core/tuzuk-v0.md</title></g><g class="azA3MTI= kron"><g class="shape" ><path d="M 116 169 H 592 C 593 169 594 169 595 170 L 612 186 C 613 187 613 188 613 189 V 256 C 613 256 613 256 613 256 H 116 C 115 256 115 256 115 256 V 170 C 115 169 115 169 116 169 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 612 256 H 116 C 115 256 115 256 115 255 V 170 C 115 169 115 169 116 169 H 591 C 592 169 592 169 592 170 V 187 C 592 188 593 189 594 189 H 612 C 613 189 613 189 613 190 V 255 C 612 256 613 256 612 256 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="218.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-12 · PAT kararı: yalnız pointer izlendi — kanonik örnek</text><title>wiki/pointer-sistemi.md</title></g><g class="azA3MTg= kron"><g class="shape" ><path d="M 28 326 H 679 C 680 326 681 326 682 327 L 699 343 C 700 344 700 345 700 346 V 413 C 700 413 700 413 700 413 H 28 C 27 413 27 413 27 413 V 327 C 27 326 27 326 28 326 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 699 413 H 28 C 27 413 27 413 27 412 V 327 C 27 326 27 326 28 326 H 678 C 679 326 679 326 679 327 V 344 C 679 345 680 346 681 346 H 699 C 700 346 700 346 700 347 V 412 C 699 413 700 413 699 413 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="363.500000" y="375.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-18 · pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)</text><title>raporlar/2026-07/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md</title></g><g class="azA3MjQ= kron"><g class="shape" ><path d="M 27 483 H 680 C 681 483 682 483 683 484 L 700 500 C 701 501 701 502 701 503 V 570 C 701 570 701 570 701 570 H 27 C 26 570 26 570 26 570 V 484 C 26 483 26 483 27 483 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 700 570 H 27 C 26 570 26 570 26 569 V 484 C 26 483 26 483 27 483 H 679 C 680 483 680 483 680 484 V 501 C 680 502 681 503 682 503 H 700 C 701 503 701 503 701 504 V 569 C 700 570 701 570 700 570 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="363.500000" y="532.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-07-24 · graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş</text><title>raporlar/2026-07/2026-07-24-serit2-graph-engineering.md</title></g><g class="azA4MTU= kron"><g class="shape" ><path d="M 13 640 H 695 C 696 640 697 640 698 641 L 715 657 C 716 658 716 659 716 660 V 727 C 716 727 716 727 716 727 H 12 C 12 727 12 727 12 727 V 641 C 12 640 12 640 13 640 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 715 727 H 13 C 12 727 12 727 12 726 V 641 C 12 640 12 640 13 640 H 694 C 695 640 695 640 695 641 V 658 C 695 659 696 660 697 660 H 715 C 716 660 716 660 716 661 V 726 C 715 727 716 727 715 727 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="689.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-15 · silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)</text><title>cc/pipeline/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md</title></g><g class="azA4MTc= kron"><g class="shape" ><path d="M 70 797 H 638 C 639 797 640 797 641 798 L 658 814 C 659 815 659 816 659 817 V 884 C 659 884 659 884 659 884 H 70 C 69 884 69 884 69 884 V 798 C 69 797 69 797 70 797 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 658 884 H 70 C 69 884 69 884 69 883 V 798 C 69 797 69 797 70 797 H 637 C 638 797 638 797 638 798 V 815 C 638 816 639 817 640 817 H 658 C 659 817 659 817 659 818 V 883 C 658 884 659 884 658 884 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="846.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-17 · hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)</text><title>arsiv/kuyruk-arsiv/senaryo-defteri-arsiv-2026-08-21.md:26</title></g><g class="azA4MTg= kron"><g class="shape" ><path d="M 73 954 H 635 C 636 954 637 954 638 955 L 655 971 C 656 972 656 973 656 974 V 1041 C 656 1041 656 1041 656 1041 H 73 C 72 1041 72 1041 72 1041 V 955 C 72 954 72 954 73 954 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 655 1041 H 73 C 72 1041 72 1041 72 1040 V 955 C 72 954 72 954 73 954 H 634 C 635 954 635 954 635 955 V 972 C 635 973 636 974 637 974 H 655 C 656 974 656 974 656 975 V 1040 C 655 1041 656 1041 655 1041 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="1003.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-18 · adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)</text><title>kuyruk/senaryo-defteri.md:173-175</title></g><g class="azA4MjI= kron"><g class="shape" ><path d="M 36 1111 H 672 C 673 1111 674 1111 675 1112 L 692 1128 C 693 1129 693 1130 693 1131 V 1198 C 693 1198 693 1198 693 1198 H 36 C 35 1198 35 1198 35 1198 V 1112 C 35 1111 35 1111 36 1111 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /><path d="M 692 1198 H 36 C 35 1198 35 1198 35 1197 V 1112 C 35 1111 35 1111 36 1111 H 671 C 672 1111 672 1111 672 1112 V 1129 C 672 1130 673 1131 674 1131 H 692 C 693 1131 693 1131 693 1132 V 1197 C 692 1198 693 1198 692 1198 Z" stroke="#6B7280" fill="#FFFFFF" style="stroke-width:2;" /></g><text x="364.000000" y="1160.000000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">2026-08-22 · pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği</text><title>cc/pipeline/pipeline-2026-08-22-pointer-graf-d2.md</title></g><g class="KGswNzExIC0mZ3Q7IGswNzEyKVswXQ=="><marker id="mk-d2-299991285-3488378134" markerWidth="10.000000" markerHeight="12.000000" refX="7.000000" refY="6.000000" viewBox="0.000000 0.000000 10.000000 12.000000" orient="auto" markerUnits="userSpaceOnUse"> <polygon points="0.000000,0.000000 10.000000,6.000000 0.000000,12.000000" fill="#0D32B2" class="connection fill-B1" stroke-width="2" /> </marker><path d="M 364.000000 101.000000 L 364.000000 165.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswNzEyIC0mZ3Q7IGswNzE4KVswXQ=="><path d="M 364.000000 258.000000 L 364.000000 322.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswNzE4IC0mZ3Q7IGswNzI0KVswXQ=="><path d="M 364.000000 415.000000 L 364.000000 479.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswNzI0IC0mZ3Q7IGswODE1KVswXQ=="><path d="M 364.000000 572.000000 L 364.000000 636.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswODE1IC0mZ3Q7IGswODE3KVswXQ=="><path d="M 364.000000 729.000000 L 364.000000 793.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswODE3IC0mZ3Q7IGswODE4KVswXQ=="><path d="M 364.000000 886.000000 L 364.000000 950.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g class="KGswODE4IC0mZ3Q7IGswODIyKVswXQ=="><path d="M 364.000000 1043.000000 L 364.000000 1107.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-d2-299991285-3488378134)" mask="url(#d2-299991285)" /></g><g transform="translate(562 -4)" class="appendix-icon"><title>core/tuzuk-v0.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDOMJR)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDOMJR">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDOMJR">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
 </g><g transform="translate(576 153)" class="appendix-icon"><title>wiki/pointer-sistemi.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDOMJS)">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDOMJS)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDOMJS">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDOMJS">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><g transform="translate(663 310)" class="appendix-icon"><title>raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDOMJY)">
+</g><g transform="translate(663 310)" class="appendix-icon"><title>raporlar/2026-07/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDOMJY)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDOMJY">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDOMJY">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><g transform="translate(664 467)" class="appendix-icon"><title>raporlar/2026-07-24-serit2-graph-engineering.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDOMRU)">
+</g><g transform="translate(664 467)" class="appendix-icon"><title>raporlar/2026-07/2026-07-24-serit2-graph-engineering.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDOMRU)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDOMRU">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDOMRU">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><g transform="translate(679 624)" class="appendix-icon"><title>cc/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDQMJV)">
+</g><g transform="translate(679 624)" class="appendix-icon"><title>cc/pipeline/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDQMJV)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDQMJV">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDQMJV">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><g transform="translate(622 781)" class="appendix-icon"><title>kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-21.md:26</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDQMJX)">
+</g><g transform="translate(622 781)" class="appendix-icon"><title>arsiv/kuyruk-arsiv/senaryo-defteri-arsiv-2026-08-21.md:26</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDQMJX)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDQMJX">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDQMJX">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
 </g><g transform="translate(619 938)" class="appendix-icon"><title>kuyruk/senaryo-defteri.md:173-175</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDQMJY)">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDQMJY)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDQMJY">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDQMJY">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><g transform="translate(656 1095)" class="appendix-icon"><title>cc/pipeline-2026-08-22-pointer-graf-d2.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_3427_35082111-d2-3105919583-NMYDQMRS)">
+</g><g transform="translate(656 1095)" class="appendix-icon"><title>cc/pipeline/pipeline-2026-08-22-pointer-graf-d2.md</title><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3427_35082111-d2-299991285-NMYDQMRS)">
 <path d="M16 31.1109C24.3456 31.1109 31.1111 24.3454 31.1111 15.9998C31.1111 7.65415 24.3456 0.888672 16 0.888672C7.65436 0.888672 0.888885 7.65415 0.888885 15.9998C0.888885 24.3454 7.65436 31.1109 16 31.1109Z" fill="white" stroke="#DEE1EB"/>
 <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 19.998V15.998" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16 12H16.0098" stroke="#2E3346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<clipPath id="clip0_3427_35082111-d2-3105919583-NMYDQMRS">
+<clipPath id="clip0_3427_35082111-d2-299991285-NMYDQMRS">
 <rect width="32" height="32" fill="white"/>
 </clipPath>
 </defs>
 </svg>
-</g><mask id="d2-3105919583" maskUnits="userSpaceOnUse" x="-89" y="-106" width="923" height="1405">
+</g><mask id="d2-299991285" maskUnits="userSpaceOnUse" x="-89" y="-106" width="923" height="1405">
 <rect x="-89" y="-106" width="923" height="1405" fill="white"></rect>
 
 </mask></svg></svg>
