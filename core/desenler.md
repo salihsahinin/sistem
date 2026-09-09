@@ -1,4 +1,4 @@
-# Çekirdek hafıza — v0 (2026-09-09; TOHUM: Jarvis kuyruk/ekip-lideri-ogrenme-desenleri.md 09-09 kopyası, Karar 91). FIFO YOK; periyodik yeniden-oluşum: 10 koşum ∨ Salih beyanı → arsiv/ + sıfırdan yazım (Jarvis İB-81). Ekleme yalnız giden/ notundaki 'çekirdek adayı' + Salih 'kabul' ile.
+# Desenler (çekirdek hafıza) — Friday v0 (2026-09-09; TOHUM: Jarvis kuyruk/ekip-lideri-ogrenme-desenleri.md 09-09 kopyası, Karar 91). FIFO YOK; periyodik yeniden-oluşum: 10 koşum ∨ Salih beyanı → arsiv/ + sıfırdan yazım (Jarvis İB-81). Ekleme yalnız cc/giden/ notundaki 'çekirdek adayı' + Salih 'kabul' ile.
 
 ## Desenler (tarih · desen · mekanizma · kaynak)
 

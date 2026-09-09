@@ -2,7 +2,7 @@
 # OKUMA-İZİN KİLİDİ — PreToolUse hook (Read · Grep · Glob · Bash). Jarvis Karar 91 (2026-09-09): lider reposu Jarvis'ten YALNIZ
 # `kanon/` bağını (= ~/jarvis/core, salt-okur) okur; başka hiçbir Jarvis yolu (kuyruk/, cc/, raporlar/, veri/, hafıza…) bağlama giremez.
 # Mekanizma: izinli kökler = bu repo + kanon hedefi + geçici dizinler; dışı → exit 2 (çağrı engellenir, gerekçe stderr'e).
-# Bu bir KİLİTTİR (prompt cümlesi değil); kaçırdığı desen olursa hareket/olay.jsonl kanıtıyla sonradan görülür.
+# Bu bir KİLİTTİR (prompt cümlesi değil); kaçırdığı desen olursa veri/bronz/hareket-olay.jsonl kanıtıyla sonradan görülür.
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 [ -z "$PY" ] && exit 0

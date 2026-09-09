@@ -1,5 +1,5 @@
 {
-  "_sema": "devir-birimi v0 — Jarvis İB-75 raporu §3 (2026-09-09); Jarvis manifestinin `devir` bloğu ile aynı; bu repoda gelen/<devir_id>.json dosyasının gövdesi",
+  "_sema": "devir-birimi v0 — Jarvis İB-75 raporu §3 (2026-09-09); Jarvis manifestinin `devir` bloğu ile aynı; bu repoda cc/gelen/<devir_id>.json dosyasının gövdesi",
   "devir": {
     "kimlik":  { "devir_id": "str", "kaynak_yuzey": "fable-ana-sira|opus-lider", "hedef_katman": "lider|isci", "tarih": "YYYY-MM-DD", "emir_yolu": "path (Jarvis cc/gorev/… — lider OKUYAMAZ; içeriği gorev bloğuna kopyalanır)" },
     "gorev":   { "amac": "tek cümle", "done_yuklemi": "boolean ifade", "dallar": ["D1: eğer … → …"], "yeniden_deneme": 3 },
