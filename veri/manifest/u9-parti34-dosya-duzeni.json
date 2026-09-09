@@ -1,0 +1,58 @@
+{
+  "birim_id": "u9-parti34-dosya-duzeni",
+  "aciklama": "Parti 3-4 dosya duzeni (cc/ 338 + raporlar/ 302 git mv) + U1c sabit-yol/pointer/README turu + U2 devir-ani.py loglayici (IB-75 uc modelin ortak ilk adimi)",
+  "tur": "pipeline",
+  "pist": "yan-oturum-opus-lider-2026-09-09",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "cc/gorev/2026-09/gorev-2026-09-09-parti34-dosya-duzeni-devir-ani.md",
+    "kuyruk/dosya-duzeni-plani-2026-09-09.md",
+    "raporlar/2026-09/2026-09-09-ib75-baglam-devri-ekip-lideri.md",
+    "core/ajan-metodolojisi.md",
+    "veri/gorunum/v_baglam_seyri.csv",
+    "veri/bronz/baglam-olay.jsonl"
+  ],
+  "yazar": [
+    "cc/**",
+    "raporlar/**",
+    "tools/*.py",
+    "tools/testler/test_devir_ani.py",
+    "tools/SCRIPTLER.md",
+    "veri/karar-borcu.jsonl",
+    "veri/bronz/devir-ani-olay.jsonl",
+    "kuyruk/*.md",
+    "wiki/*.md",
+    "arsiv/**",
+    "README.md",
+    "KILAVUZ.md",
+    "fikir-kutusu.md",
+    "cc/devir/devir-2026-09-09-opus-parti34.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "U1a: cc/ git mv (Sonnet) + U1b: raporlar/ git mv (Sonnet) — paralel, yazar kumeleri ayrik",
+    "parti-3 commit (cc) · parti-4 commit (raporlar) — lider atar",
+    "U1c-1: tools/*.py + ledger + SCRIPTLER (Sonnet) + U1c-2: md pointer + README (Sonnet) — paralel",
+    "kapilar + U1c commit",
+    "U2: tools/devir-ani.py + 3 test + katman-hatti adimi (Sonnet) + commit"
+  ],
+  "dislama_grubu": null,
+  "silver": "yeniden-turetildi (katman-hatti exit 0)",
+  "commit_kapsami": [
+    "3b0b3d0 parti-3 cc/",
+    "cb5edf6 parti-4 raporlar/",
+    "7a97c2d U1c sabit yol + pointer + README",
+    "990863c U2 devir-ani.py"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [],
+  "idempotency_anahtari": "cc/ ust seviyede yalniz 5 tekil ∧ raporlar/ ust seviyede yalniz README+usage ∧ karar-borcu kirik 0 ∧ pointer-kayma KIRIK 0 ∧ testler yesil ∧ devir-ani-olay.jsonl >=1 satir ise is bitmistir",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "Kanon (core/, CLAUDE.md, .claude/) YAZIMI YOK — m.41 yan-oturum siniri; o dosyalardaki 50 yol satiri devir notunda 'ana-sira uygular' listesi. Push YOK. git add pathspec-only, git mv ile tasima, silme YOK (m.8).",
+  "tur_not": "kosum 2026-09-09: 6 isci cagrisi (1'i arizali tekrar), 114 isci arac cagrisi, ~568.200 alt-ajan token; YETIM 385 -> 40"
+}
