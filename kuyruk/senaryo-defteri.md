@@ -219,3 +219,4 @@
 
 - **m.40b gözlemi (09-09, problem-çözme/AI-çağı atlası, 3 aile, 9 Sonnet ajan):** hakem SAĞLAM 8 · DARALDI 12 · DÜŞTÜ 1 · ÇELİŞKİLİ 1(+3) → hayatta-kalma 8/22 ≈ %36; V26: 6 dosyadan 3 K-kapaklı (tez-A1 "WEF 2026 bulunamadı" yanlış beyan · tez-A3 BLS vintage · antitez-A1 kaynakta olmayan rakam); rapor `raporlar/2026-09/2026-09-09-problem-cozme-ai-cagi-atlas.md`.
 - **Push (m.9, Salih beyanı aynen "push onay", 09-09 ~16:0x):** 37a0761..0de0990, 35 commit (masa-9 + Karar 88-91 + EK/EK-2 · dosya düzeni parti 1-4 · İB-75/İB-79/İB-82 · Friday kuruluş kayıtları · türev katman) origin/main'e gitti; gün sayıldı.
+- **Push (m.9, Salih beyanı aynen "push onay", 09-09 akşam):** 2b9377a..8c2277a, 3 commit (galeri şeridi kapanışı: teslim raporu + kapsül/wiki-kuyruk/V95 · türev katman 16:40 refresh + akşam refresh) origin/main'e gitti; gün sayıldı. Galeri şeridi kararları m.41 EK gereği masaya girmedi (md.49).
