@@ -5,12 +5,14 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
 |---|---|---|---|---|---|
-| devir-2026-09-09-parti5 | Jarvis dosya-düzeni parti 5: KILAVUZ "nerede ne var" bölümü taslağı + 9 ay-README (cc/gorev·cc/rapor·raporlar × 2026-07/08/09) | `cc/giden/devir-2026-09-09-parti5/` 10 dosya + geri-dönüş notu; Jarvis'e yazım 0 | 09-09 | `cc/giden/` | ilk koşum |
 
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
 |---|---|---|---|---|---|
-| tasarim-tur1 | Kendi mimarisi için tasarım diyaloğu tur 1 (eksik/çelişki · hafıza kuralı gözlemi · Fable'a ≤7 soru · araştırma önerileri) | `cc/giden/tasarim-2026-09-09-tur1.md` | 09-09 | `cc/giden/` | parti-5 bitince |
+| tasarim-tur1-cevap | Fable cevabı gelince A1-A10 için düzeltme adaylarını `cc/giden/` notuna yaz (kendin yazma, m.31) | `cc/gelen/tasarim-2026-09-09-tur1-cevap.md` okundu ∧ öneri notu VAR | 09-09 | `cc/giden/` | cevap gelince |
 
 ## BİTEN
-—
+| Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
+|---|---|---|---|---|---|
+| devir-2026-09-09-parti5 | Jarvis dosya-düzeni parti 5: KILAVUZ "nerede ne var" bölümü + 9 ay-README + denetim listesi | ✓ 11 dosya + geri-dönüş notu (10+2 alan); Jarvis'e yazım 0; sapma 1 | 09-09 | `cc/giden/devir-2026-09-09-parti5/` + `-geri-donus.md` | 09-09 bitti |
+| tasarim-tur1 | Tasarım diyaloğu tur 1 (10 eksik/çelişki · hafıza gözlemi · Fable'a 7 soru · 5 araştırma önerisi) | ✓ dosya VAR; kaynak AÇILMADI (onay bekliyor) | 09-09 | `cc/giden/tasarim-2026-09-09-tur1.md` | Salih → Fable |
