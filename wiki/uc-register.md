@@ -11,7 +11,7 @@ Kanon adı **"üç REGISTER + kenar-başına biçim"** — eski ad "üç dil" (s
 
 ## SOP — yeni kenar açarken
 1. Kenarın üretici ve tüketicisini yaz (kim yazıyor → kim okuyor).
-2. Tüketiciye göre register seç: makine → şemalı biçim · Salih → L1/İNSAN (E5, F1-F9) · ajan → L2 önerme-yapılı.
+2. Tüketiciye göre register seç (AS-OF 2026-08-03 K2-f): makine → şemalı biçim · Salih → L1/İNSAN (E5, F1-F9) · ajan → L2 önerme-yapılı.
 3. Kenarı tek etiketle değil ⟨tetik, icra, denetçi⟩ üçlüsüyle sınıfla (S2: skill/loop/kod/ajan tek eksen değildir).
 
 ## Gotchas

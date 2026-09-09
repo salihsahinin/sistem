@@ -38,7 +38,17 @@
         ]
       }
     ],
-    "SessionStart": [
+    "UserPromptSubmit": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "bash .claude/hooks/userprompt-dosya.sh"
+     }
+    ]
+   }
+  ],
+  "SessionStart": [
       {
         "hooks": [
           {

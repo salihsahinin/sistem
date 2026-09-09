@@ -48,7 +48,7 @@
 | v9 | RUNTIME: thinking-on ∧ araç-çağrısı görevi | +1 [?] | Qwen3 +1,3..+20,6; Claude ölçülmemiş |
 | v10 | DİL: Türkçe/az-kaynaklı olgusal çıktı | +1 [?] | KÖR — kanıt yok, işaret pozitif varsayım (kanıtsız-tercih) |
 
-**Eşik (beyan; ima edilen maliyet yazdırılır):**
+**Eşik (beyan; ima edilen maliyet yazdırılır; AS-OF 2026-08-14 v1, deneysel m.29 — ağırlıklar ≥50 olayda yeniden kalibre):**
 - **τ_H = 7** normal görev → `H ≥ 7 ⇒ halusinasyon-engelleyici skill tetiklenir` (gerekçe: iki yüksek-ağırlıklı faktör (3+3) ya da üç orta (2+2+2+1); ima: skill bedeli ≈3-5× çağrı ↔ kaçırma bedeli = geri-alma; kanıtsız-tercih).
 - **τ_H = 4** pahalı-geri-alma sınıfı (m.31: Katman-1 · dışarı çıkacak iş/publish · para · kişisel veri · kanon yazımı) → daha erken tetik (kaçırma yanlış-alarmdan ≥3× kötü beyanı).
 - **Override:** v3a (atıf/künye) = 1 ⇒ skill zorunlu, H'den bağımsız.
