@@ -1,0 +1,58 @@
+{
+  "birim_id": "u8-ib75-baglam-devri-ekip-lideri",
+  "aciklama": "İB-75 + İB-64c birleşik koşum: çift-atlas (tez A/B/C -> antitez A/B -> maskeli hakem) + iç-envanter -> bağlam-devri ekip-lideri v0 tasarım paketi (a)-(f); lider Opus 5 medium (yan-oturum), işçi Sonnet",
+  "tur": "pipeline",
+  "pist": "yan-oturum-opus-lider-2026-09-09",
+  "durum": "tamam",
+  "oncelik": 1,
+  "okur": [
+    "cc/gorev-2026-09-09-ib75-baglam-devri-ekip-lideri.md",
+    "cc/gorev-2026-09-03-ib64c-ekip-lideri-paketi.md",
+    "core/ajan-metodolojisi.md",
+    "kuyruk/ekip-lideri-ogrenme-desenleri.md",
+    "veri/gorunum/v_baglam_seyri.csv",
+    "cc/devir-2026-08-31-opus-icra.md"
+  ],
+  "yazar": [
+    "cc/rapor-2026-09-09-ib75-tez-a.md",
+    "cc/rapor-2026-09-09-ib75-tez-b.md",
+    "cc/rapor-2026-09-09-ib75-tez-c.md",
+    "cc/rapor-2026-09-09-ib75-antitez-a.md",
+    "cc/rapor-2026-09-09-ib75-antitez-b.md",
+    "cc/rapor-2026-09-09-ib75-envanter.md",
+    "cc/rapor-2026-09-09-ib75-hakem.md",
+    "raporlar/2026-09-09-ib75-baglam-devri-ekip-lideri.md",
+    "kuyruk/ekip-lideri-ogrenme-desenleri.md",
+    "cc/devir-2026-09-09-opus-ib75.md"
+  ],
+  "granul": "dosya",
+  "sira": [
+    "asama1: tez A/B/C (Sonnet medium, es zamanli 3)",
+    "asama1b: antitez A/B + ic-envanter (Sonnet, es zamanli 3)",
+    "asama1c: maskeli hakem (Opus medium, AYRI cagri - yapan != olcen)",
+    "asama2: lider sentezi (halusinasyon-engelleyici, H=11)",
+    "asama3: karar-modeli 3 model -> masa-10"
+  ],
+  "dislama_grubu": null,
+  "silver": "yok",
+  "commit_kapsami": [
+    "cc/rapor-2026-09-09-ib75-*.md",
+    "raporlar/2026-09-09-ib75-baglam-devri-ekip-lideri.md",
+    "veri/manifest/u8-ib75-baglam-devri-ekip-lideri.json",
+    "kuyruk/ekip-lideri-ogrenme-desenleri.md",
+    "cc/devir-2026-09-09-opus-ib75.md"
+  ],
+  "kanon_yuzeyi": false,
+  "dis_etki": [
+    "WebSearch",
+    "WebFetch"
+  ],
+  "idempotency_anahtari": "raporlar/2026-09-09-ib75-baglam-devri-ekip-lideri.md var ∧ (a)-(f) alti bolum dolu ∧ hakem raporu ayri cagrida uretildi ∧ tohum dosyasina >=1 satir eklendi ∧ kanon yazimi = 0",
+  "zorlama_modu": "yol-kapisi",
+  "beyan_disi_politikasi": "hata",
+  "iterasyon_ayak_izi": "sabit",
+  "tetik_turu": "seans",
+  "durma_kosulu": null,
+  "kapsam_beyani": "TASARIM PAKETI + 3 karar modeli uretilir; hukum VERILMEZ (masa-10 Salih). Kanon dosyalarina (core/, CLAUDE.md, .claude/, tuzuk) yazim YOK; push YOK; git add yalniz pathspec (H4).",
+  "tur_not": "D1 aksi dali: raporlar/ altinda ib64c raporu YOK (2026-09-09 kontrolu) -> asama 1 cift-atlas KOSULUR | kosum tamamlandi 2026-09-09: 8 ajan, 92 isci arac cagrisi, ~485.700 alt-ajan token; hukum masa-10'da bekliyor"
+}
