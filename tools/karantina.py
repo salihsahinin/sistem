@@ -3,11 +3,11 @@
 silme YOK). Tescil yetkisi YALNIZ Salih'te — bu araç yalnız MEKANİZMAdır, hiçbir dosyayı kendiliğinden
 karantinaya EKLEMEZ (Katman-1 kararı, Carvis çağıramaz).
 
-Ne yapar: `--ekle` bir dosyayı `kuyruk/arsiv/karantina/<yol>` altına `git mv` ile taşır (dizin yapısı korunur;
+Ne yapar: `--ekle` bir dosyayı `arsiv/karantina/<yol>` altına `git mv` ile taşır (dizin yapısı korunur;
 silme yok, arşive iner — m.8) ve `veri/karantina.jsonl`e (APPEND-ONLY) tek satır ekler: {yol, tescil_tarihi,
 salih_beyani, neden, git_head}. `--liste` mevcut tescilleri insan-okur sıralar. `--denetle` iki şeyi
 DOĞRULAR: (a) gerçek repo-genel dosya-tarama noktasının (tools/kod-orani-olcum.py `repo_envanteri`;
-İB-72 keşfi — bkz. docstring altı "Keşif notu") `kuyruk/arsiv/karantina/` dizinini TARAMADIĞINI (DISLA_DIZIN
+İB-72 keşfi — bkz. docstring altı "Keşif notu") `arsiv/karantina/` dizinini TARAMADIĞINI (DISLA_DIZIN
 kümesi üzerinden statik + canlı kontrol) — tarıyorsa FAIL-LOUD; (b) `veri/karantina.jsonl` şemasının geçerli
 olduğunu (her satır 5 zorunlu alanı taşıyor mu).
 
@@ -15,7 +15,7 @@ Keşif notu (İB-72, 09-03): görev metni `katman-hatti.py` ve `erisim-fts.py`'y
 GREP edildi (rglob/os.walk/glob yok) — katman-hatti.py bir ORKESTRATÖRdür (adım adı → alt-script çağırır),
 erisim-fts.py SQLite FTS5 üzerinde çalışır, ikisi de dosya sistemini TARAMAZ. Repo-genelinde gerçek
 os.walk ile tam-ağaç tarayan tek script `tools/kod-orani-olcum.py::repo_envanteri` (İB-71); `DISLA_DIZIN`
-kümesine bu görevde `kuyruk/arsiv/karantina` eklendi (en küçük diff). `tools/kod-envanter.py` `git ls-files`
+kümesine bu görevde `arsiv/karantina` eklendi (en küçük diff). `tools/kod-envanter.py` `git ls-files`
 kullanır — git-tracked karantina dosyalarını YİNE SAYAR (kapsam dışı bırakılmadı; ayrı not, bu görevin
 kapsamı değil).
 
@@ -80,7 +80,7 @@ def cmd_ekle(a, repo, insan):
     kaynak_tam = os.path.join(repo, kaynak_goreli)
     if not os.path.isfile(kaynak_tam):
         hata(f"dosya yok: {kaynak_goreli}")
-    hedef_goreli = os.path.join("kuyruk", "arsiv", "karantina", kaynak_goreli)
+    hedef_goreli = os.path.join("arsiv", "karantina", kaynak_goreli)
     hedef_tam = os.path.join(repo, hedef_goreli)
     if os.path.exists(hedef_tam):
         hata(f"hedefte zaten dosya var: {hedef_goreli}")
@@ -141,7 +141,7 @@ def cmd_denetle(a, repo, insan):
     sorunlar = []
 
     mod, mod_hata = _kod_orani_modulu(repo)
-    hedef_dizin = os.path.join("kuyruk", "arsiv", "karantina")
+    hedef_dizin = os.path.join("arsiv", "karantina")
     if mod_hata:
         sorunlar.append(f"kod-orani-olcum.py incelenemedi: {mod_hata}")
     else:

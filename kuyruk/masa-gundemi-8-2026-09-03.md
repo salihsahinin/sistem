@@ -63,7 +63,7 @@ Mac'te gece senkron eşleniği yok; açılış ritüeli adım 2.4 bayat satırı
 - **(c) Beklet.**
 
 ### M10 · Karantina ilk tescil (İB-72 mekanizması Cowork U3'te kurulur; tescil yetkisi Salih)
-- **(a) ÖNERİLEN — `kuyruk/arsiv/gorsellestir-skill-2026-09-03/` ilk tescil (BAKMA-GEREK-YOK bayrağı):** Artı: mekanizmanın ilk gerçek girdisi; tarama araçları arşivi okumaz. Eksi: yok (git tarihçesi durur).
+- **(a) ÖNERİLEN — `arsiv/kuyruk-arsiv/gorsellestir-skill-2026-09-03/` ilk tescil (BAKMA-GEREK-YOK bayrağı):** Artı: mekanizmanın ilk gerçek girdisi; tarama araçları arşivi okumaz. Eksi: yok (git tarihçesi durur).
 - **(b) Arşivde kalsın, karantinaya girmesin:** Eksi: 8 KB SKILL.md + spec'ler ingest/erişim taramalarına düşmeye devam eder.
 
 ### M11 · İB-73 Jarvis eğitim serisi — format hükmü

@@ -11,11 +11,11 @@
 - **Ağır araç yükleme usulü (Salih imzası 08-17 masa KB-12; ölçüm `raporlar/2026-08-03-model-dusumu-olcum.md`):** çoklu MCP/ToolSearch yüklemesi oturum BAŞINDA ya da AYRI oturumda; uzun oturumun geç evresinde YAPILMAZ (prompt-cache kırılması ~152K token → kota → düşüm).
 
 ## Paralel seans protokolü (Salih kararı 2026-07-12 sabah; m.36 revizyonunun operasyonel devamı — deneysel damga m.29)
-- **Eski iki-chat modeli (Cowork/Windows dönemi) ARŞİVE İNDİ** (damıtma 08-29 → `kuyruk/arsiv/KILAVUZ-arsiv-2026-08-29.md` §1); canlı düzen aşağıdaki Karar 71 satırı + wiki 4-kural.
+- **Eski iki-chat modeli (Cowork/Windows dönemi) ARŞİVE İNDİ** (damıtma 08-29 → `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-29.md` §1); canlı düzen aşağıdaki Karar 71 satırı + wiki 4-kural.
 - **KURAL (Salih imzası 08-17 masa KB-08/09/10):** çoklu oturumun 4 kuralı `wiki/paralel-oturum-protokolu.md` — canlı-oturum kapısı · koşum-önü manifest kapısı · paylaşılan kaynak/motor freni · **`git add -A` yasak, `git add <yol>`** (H4).
 - **ÜÇ-KATMAN ÇOK-OTURUM DÜZENİ (Karar 71, 08-26; PR-per-chat RET; tam gerekçe defterde):** (1) kanon+karar+push TEK ana-sıra oturumda; yan-oturum karar almaz, `kuyruk/devir-*.md` bırakır · (2) kod-sınıfı paralel iş treehouse worktree ∨ no-mistakes PR hattı · (3) commit SOP: hedefli `git add <yol>` + pathspec'li commit (vaka-5) + her resume'da git-log kapısı (Karar 57).
 
-## Arşive inenler (damıtma 08-17) — üçlü sohbet düzeni · CC kanal modeli · CC-geçiş S2 hibrit-matris · Mobil Köprü Protokolü → tam metin `kuyruk/arsiv/KILAVUZ-arsiv-2026-08-17.md`
+## Arşive inenler (damıtma 08-17) — üçlü sohbet düzeni · CC kanal modeli · CC-geçiş S2 hibrit-matris · Mobil Köprü Protokolü → tam metin `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-17.md`
 
 ## Emir ve soru dili
 - Ne dersen emirdir; önceki kararla çelişki varsa önce çelişki raporu gelir (m.16).
@@ -28,7 +28,7 @@
 - **Çürüdü-işareti (Salih onayı 07-12):** fikir kutusunda 30 gün işlenmeyen madde "BAYAT" damgalanır; düşme YALNIZ Salih onayıyla (m.8 otomatik-silme yasağı korunur).
 - **Gürültü listesi (deneysel):** kutuya DOSYALANMAZ → model/sürüm duyuruları (somut yetenek yoksa) · kaynaksız prompt numaraları · araç-haber gürültüsü · kurulum-kopyası. İSTİSNA: Salih 'araştır' emri listeyi ezer. Pozitif karşılık (md.22): takılan kalem tek satır pointer'la teslim-notuna.
 
-## Tasarım ilkeleri (sıkıştırılmış 09-04; tam gerekçeler + Salih aynen-beyanları `kuyruk/arsiv/KILAVUZ-arsiv-2026-09-04.md` §1)
+## Tasarım ilkeleri (sıkıştırılmış 09-04; tam gerekçeler + Salih aynen-beyanları `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-09-04.md` §1)
 - **Yapı-darboğazı yerleşim (Salih imzası 08-29, Karar 79 D3/KL18-13; kaynak `cc/rapor-2026-08-01-18.md:389`):** yerleşim/öncelik talep verisinden değil yapının darboğazlarından ("işler nereden geçiyor"); ölçüm: talep-bazlı greedy 6,7-7,9× çöker, topoloji-bazlı değişmez.
 - **Tarama-yöntemi seçimi (KB-57 A, 08-21, Karar 64):** anahtar varsa SEARCH · küçük tablo tam agregasyon SCAN · çok-kolon agregasyon → parquet/DuckDB · bronz metin → rg · keşif → SAMPLE · silver yenilemesi sonrası ANALYZE · AUTOMATIC INDEX → kalıcı indeks adayı · LIKE önek → aralık; karar değişkeni DOKUNULAN SAYFA (yüzde-eşiği yazılmaz). Tarif `wiki/tarama-yontemleri.md`.
 - **Adresli erişim (KB-53/54 A, 08-21, Karar 62; ölçüm 27-563× token):** adres varsa ARALIK oku; anahtar varsa silver blok (sha8 yeniden hesaplanır, tutmazsa dosyaya düş + bayrak); bütün dosya yalnız adressizken; silver tazeliği açılış kapısında; sayaç İB-29.
@@ -45,7 +45,7 @@
 - ~~**Metafor haritası (V12)**~~ EMEKLİ 08-17: terimler metaforsuz, tek anahtar (`core/baglam-anahtar-kaydi.md`); sözlük DONDU (m.3).
 - **md yüzeyi — insan-yüzü rapor biçimi:** QuickLook İPTAL (Karar 72) → Obsidian → **VS CODE (Karar 80, 08-29; UPDATE 09-04 — eski satır Obsidian diyordu)**; GFM tablo · görev kutusu · ```mermaid · dipnot · `<details>` · `[[wikilink]]` · `$matematik$` serbest; ilk-12-satır damga kuralı baki; HTML teslim etkilenmez. Link biçimi ileri-dönük md-link (Karar 72 EK, seçim A), geçmiş gövde yeniden yazılmaz (m.8); türev harita `tools/obsidian-harita.py`.
 - **Yıldız yasağı (md.33, Salih imzası 08-01):** GitHub yıldızı ölçüt olamaz; adaylar indirme-sırası + son-sürüm + bakımcı üçlüsüyle tablolanır; reddedilen "şu an alınmaz" listesine (md.34).
-## ~~Skill-yazım standardı (K-013)~~ arşive indi (damıtma 08-29 → `kuyruk/arsiv/KILAVUZ-arsiv-2026-08-29.md` §4); canlı standart aşağıdaki 'Skill Standardı' bölümü + oradaki eval kuralı.
+## ~~Skill-yazım standardı (K-013)~~ arşive indi (damıtma 08-29 → `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-29.md` §4); canlı standart aşağıdaki 'Skill Standardı' bölümü + oradaki eval kuralı.
 ## Boyut-izleme — sıcak-dosya bütçesi (İMZALI kural, Salih 07-22; rakamlar deneysel m.29)
 Her oturum açılışında okunan dosyalar sabit boyut-bütçeli yaşar; **aşım hata değil TETİKTİR** — aşan dosya ilk boş seansta Salih-imzalı planla damıtılır (silme yok: tam metin arşive, özüt+pointer; m.8/m.34). Bütçeler: kapsül 8KB ∧ ≤40 satır (hook sert-kapısı) · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB (FLAG: token-bazlı yeniden-bütçe adayı) · CLAUDE.md 8KB · KILAVUZ 16KB. Kapanışta tek bakış; aşan varsa teslim raporuna 'boyut-tetiği' düşer. Revizyon tetiği: context-ekonomisi değişimi; iki turda bir kalibrasyon. Gerekçe + araştırma tarihçesi: `kuyruk/k019-taslak-boyut-izleme.md` + arşiv 08-29 §2. KONUM ekseni: her-tur-okunanlar bağlam tepesinde (lost-in-middle).
 
@@ -59,7 +59,7 @@ Salih'in kendi /usage, /context ve bağlam-doluluk yorumları YORUM statüsünde
 Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü kapsül/pano/şablonlarda yaşar.
 
 ## Model-değişimli oturum protokolü (Salih imzası, 2026-07-13 — kural, deneysel değil)
-Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozulmuş sayılır: ingest'i kanon-yüzeyine değil şerhli klasöre yazılır — `model değişikliği ile orijinalliği bozulmuş olan chat/ingest-YYYY-MM-DD.md`. Buradaki içerik ŞERHLİ KOPYA statüsündedir; çelişki durumunda commit'li kanon (fikir kutusu / kuyruk / kapsül) kazanır. Şerhli içeriğin karar statüsü kazanması için ayık/temiz oturumda taranıp normal kanon yoluna işlenmesi gerekir. Gerekçe: bağlam hijyeni (07-13 vakasının standartlaşması).
+Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozulmuş sayılır: ingest'i kanon-yüzeyine değil şerhli klasöre yazılır — `arsiv/chat-model-degisikligi/ingest-YYYY-MM-DD.md` (eski klasör adı "model değişikliği ile orijinalliği bozulmuş olan chat/", parti 1 taşıması 2026-09-09). Buradaki içerik ŞERHLİ KOPYA statüsündedir; çelişki durumunda commit'li kanon (fikir kutusu / kuyruk / kapsül) kazanır. Şerhli içeriğin karar statüsü kazanması için ayık/temiz oturumda taranıp normal kanon yoluna işlenmesi gerekir. Gerekçe: bağlam hijyeni (07-13 vakasının standartlaşması).
 
 ## Skill Standardı (K-016 açılışı 07-19; el kitabı: `raporlar/2026-07-17-skill-nasil-olusturulur.md` — burası özet, çelişkide rapor + code.claude.com/docs kazanır)
 - **Eval kuralı (Salih onayı 07-12; REVİZYON Salih imzası 07-23 — kaynak `cc/rapor-2026-07-23-1.md`):** her JARVIS skill'i eval setiyle doğar. Küçük-N eval = **SMOKE/regresyon-kanaryası, sertifika DEĞİL** — çıplak "%100 geçti" raporu YASAK; sonuç aralığıyla (Clopper-Pearson: 6/6→[%54,%100]) ya da "smoke-only" ibaresiyle verilir. Yeni setlerde: negatif ~10 (pariteye yaklaş — 3 negatif yanlış-pozitifi bağlamaz) + her vaka ≥3× koşum (non-determinizm ilacı; vaka eklemekten ucuz). 20-sorgu description-eval skill-creator protokolüne TAM hizalı: 8-10 should + 8-10 should-not · her sorgu 3× · 60/40 held-out · ≤5 iterasyon. Mevcut skill'lere geriye dönük eval soğuk kuyrukta. *(md.22 pozitif karşılığı fiilen bu maddede tanımlı — aralıkla ya da smoke-only ibaresiyle ver; imza kaydı 08-20 KB-28.)*
@@ -71,5 +71,5 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 - **Yayın-öncesi:** 20-sorgu description eval (10 tetiklemeli + 10 tetiklemesiz) · çok-modelde test · versiyon damgası (`0.x-deneysel-m29`).
 - **Ev:** `.claude/skills/<ad>/SKILL.md` (repo, git'e commit — dağıtım gece-senkron/pull ile).
 
-## Deneysel notlar — 2026-07-29 (m.29; tam gerekçeler `kuyruk/arsiv/KILAVUZ-arsiv-2026-08-30.md`)
+## Deneysel notlar — 2026-07-29 (m.29; tam gerekçeler `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-30.md`)
 - **D3:** değer üretilir üretilmez diske; teslim taslağı seans ORTASINDA açılır. · **D4:** kanon edit'leri seans sonunda toplu (CC'de settings-deny yapısal). · A.11 iki-yüzey şerhi arşivde.

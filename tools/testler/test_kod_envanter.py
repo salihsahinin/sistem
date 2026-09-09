@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """kod-envanter.py testi (M14, Karar 88, 2026-09-09; AXI-STANDARDI.md A7; stdlib unittest).
 Koş: python3 -m unittest tools/testler/test_kod_envanter.py
-Kapsam: kuyruk/arsiv/karantina/ altına düşen git-izlenen bir dosya envanter sayımına girmiyor mu
+Kapsam: arsiv/karantina/ altına düşen git-izlenen bir dosya envanter sayımına girmiyor mu
 (disla_uygula, tools/kod-orani-olcum.py::DISLA_DIZIN tek-kaynak sabitine göre süzüyor mu)."""
 import importlib.util
 import os
@@ -19,7 +19,7 @@ _spec.loader.exec_module(kod_envanter)
 class KarantinaDislamaTest(unittest.TestCase):
     def test_karantina_dosyasi_envanterden_dislanir(self):
         disla_kume = kod_envanter.disla_dizinlerini_yukle(KOK)
-        karantina_yolu = os.path.join("kuyruk", "arsiv", "karantina")
+        karantina_yolu = os.path.join("arsiv", "karantina")
         self.assertIn(karantina_yolu, disla_kume)  # tek-kaynak: kod-orani-olcum.py::DISLA_DIZIN'den geldi
 
         dosyalar = [

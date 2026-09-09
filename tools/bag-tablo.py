@@ -11,7 +11,7 @@ Kurallar (deterministik; her satır `kural` kolonunda kimliğini taşır):
                                 gecerli_bas = emeklinin gecerli_bitis günü (takas günü). Kaynak: core/baglam-anahtar-kaydi.md §3.
   R2 anahtar.replaced_by      : anahtar(replaced_by hedefi) → anahtar(eski) (SCD-2; bugün 0 satır — alan boş; kural hazır durur).
   R3 damıtma arşiv-pointer'ı  : sıcak/ılık dosyadaki index satırı (kayit; metin 'ARŞİVE İNDİ' | 'arşive indi' | 'tam metin' |
-                                'Arşiv index' | 'arşivi' içerir) → `kuyruk/arsiv/...` hedefi (satır çözülürse kayit, yoksa dosya).
+                                'Arşiv index' | 'arşivi' içerir) → `arsiv/kuyruk-arsiv/...` hedefi (satır çözülürse kayit, yoksa dosya).
                                 gecerli_bas = arşiv dosya adındaki tarih (damıtma günü). Kaynak dosya arşiv/raporlar/cc DEĞİL.
 Bitemporal (M4 / KB-61): gecerli_bas / gecerli_bitis = OLAY zamanı (valid) · kayit_zamani / gecersiz_zamani = KAYIT zamanı (transaction;
   ilk ACILDI ts / KAPANDI ts — kütük `veri/bag-olay.jsonl` append-only yeniden-oynatılır, silver-kuyruk deseni Karar 58).
@@ -74,8 +74,8 @@ def kural_r3(con):
     out, gorulen = [], set()
     sql = """SELECT k.kayit_id, k.dosya_id, r.ref_deger, r.hedef_yol, k.metin, k.cekim_tarihi
              FROM referans r JOIN kayit k ON k.kayit_id=r.kayit_id
-             WHERE r.ref_turu='dosya_pointer' AND r.hedef_var=1 AND r.hedef_yol LIKE 'kuyruk/arsiv/%'
-               AND k.dosya_id NOT LIKE 'kuyruk/arsiv/%' AND k.dosya_id NOT LIKE 'raporlar/%' AND k.dosya_id NOT LIKE 'cc/%'
+             WHERE r.ref_turu='dosya_pointer' AND r.hedef_var=1 AND r.hedef_yol LIKE 'arsiv/kuyruk-arsiv/%'
+               AND k.dosya_id NOT LIKE 'arsiv/kuyruk-arsiv/%' AND k.dosya_id NOT LIKE 'raporlar/%' AND k.dosya_id NOT LIKE 'cc/%'
              ORDER BY k.kayit_id, r.konum"""
     for kid, dosya, ref, hedef, metin, cekim in con.execute(sql).fetchall():
         if not RX_ARSIV.search(metin or ""):

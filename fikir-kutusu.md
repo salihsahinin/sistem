@@ -8,16 +8,16 @@
 
 ---
 
-## V1-V25 kuruluş serisi — damıtıldı (tam tablo + 07-11 öncelik kararları: `kuyruk/arsiv/fikir-kutusu-arsivi-2026-08-29.md` §1; damıtma 08-29, Karar 74 M-3)
+## V1-V25 kuruluş serisi — damıtıldı (tam tablo + 07-11 öncelik kararları: `arsiv/kuyruk-arsiv/fikir-kutusu-arsivi-2026-08-29.md` §1; damıtma 08-29, Karar 74 M-3)
 - **Kanonlaşanlar:** V19 sınırda-öğrenme (Salih teyitli öğrenme modeli) · V21 katmanlı hafıza → ingest şeması · V24 Obsidian vault (Karar 72 hattının kökü) · V25 hazırı-temel-al (08-17 revizyonuyla KILAVUZ) · V38→m.40c · V40a→m.39 · V46→m.38 · V26→atlas-kosum adım 5. **Açık kalan:** V7↔V8↔V14 çelişki üçlüsü (tüzük turu tek sorusu) · V13 ekip-lideri kapsamı (K-010/A5) · V9 önem-formülü (ingest v2'de kısmen yaşıyor). MEZUN-BEKLEMEDE: V38 · V40a (A7 denetimi sonrası iniş).
 
 ## V26-V57 — damıtılmış (tam metin: kuyruk/arsiv-fikir-kutusu-2026-07.md; damıtma 07-22)
 
-*MEZUN inişleri tarihçesi (V36/V43 07-22 · 8 satır 08-01 masa-2) arşivde: `kuyruk/arsiv/fikir-kutusu-arsivi-2026-08-21.md` §1. **CANLI bekleme: V38 · V40a MEZUN-BEKLEMEDE** — tüzükte imzalı (m.40c/m.39), iniş A7 geriye-dönük denetimi sonrası; V57 bilinçli tutuldu (okuma borcu).*
+*MEZUN inişleri tarihçesi (V36/V43 07-22 · 8 satır 08-01 masa-2) arşivde: `arsiv/kuyruk-arsiv/fikir-kutusu-arsivi-2026-08-21.md` §1. **CANLI bekleme: V38 · V40a MEZUN-BEKLEMEDE** — tüzükte imzalı (m.40c/m.39), iniş A7 geriye-dönük denetimi sonrası; V57 bilinçli tutuldu (okuma borcu).*
 
 | # | Etiket | Özüt | Damga | Statü |
 |---|---|---|---|---|
-*(V26-V62 tam metinleri `kuyruk/arsiv/fikir-kutusu-arsivi-2026-09-04.md` §1; burada kısa satır — damga: ayık=Salih beyanlı · mobil · beyansız)*
+*(V26-V62 tam metinleri `arsiv/kuyruk-arsiv/fikir-kutusu-arsivi-2026-09-04.md` §1; burada kısa satır — damga: ayık=Salih beyanlı · mobil · beyansız)*
 | V27 | — | Mobil çıktısının Cowork'e düşük-sürtünmeli kanalı (m.27; havuz #19/20/25) | ayık 07-12 | KARAR YOK — build'de |
 | V28 | — | Token-zaman-gelişim demir üçgeni; gelişim 5'li sınıf + sınıf-başı maliyet tavanı | mobil 07-12 | HİPOTEZ (V23) |
 | V29 | UFUK | Iron Man JARVIS hedefi; sıra dosya zemini → kuyruk → canlı ajan/ses | ayık 07-12 | VİZYON, karar değil |
@@ -40,7 +40,7 @@
 | V61 | K-016 hattı | Record-a-Skill entegrasyonu (ekran kaydı → skill; V25 süzgeci + eval-önce) | beyansız 07-22 | DENENECEK |
 | V63 | ŞERİT ADAYI | CS50 paralel öğrenme hattı (varyant/tempo açık; K-022 örtüşmesi) | ayık 07-25 | ADAY; kart yok |
 | V62 | Dilim 2.1 tetiği | Cowork mobil+web → Mobil Köprü Protokolü revizyon adayı (m.41 mobil-Cowork) | beyansız 07-22 | ARAŞTIRILACAK |
-*(07-29→08-26 aday blokları — numarasız O2+O3 paketi (12 aday) · UFUK üçlüsü (Salih 07-30) · semantik-compiler ajanı (08-01) · dil-sınırı↔loop-sınırı hipotezi · V26 iki revizyon adayı · no-mistakes izin ayarı · veri-erişim tutkalları · skill-bakım sistemi (Salih 08-20 → BAKIM-KK CANLI) · karar-borcu optimize sıralama · V80 tel kalıbı · V81 işçi tavanı (→ m.46 uç-eşik, Karar 83) · V82 nadir-dil kapısı · V83 kısıt-kaynağı sayacı · V84 yerel-LLM dil ölçümü · V85 chat-damga denetimi · V87 feature-triyaj hijyeni — tam metin `kuyruk/arsiv/fikir-kutusu-arsivi-2026-09-09.md`; damıtma 09-09, Karar 88 M16. Açık kalanlar orada; V86/V88-V94 sıcakta.)*
+*(07-29→08-26 aday blokları — numarasız O2+O3 paketi (12 aday) · UFUK üçlüsü (Salih 07-30) · semantik-compiler ajanı (08-01) · dil-sınırı↔loop-sınırı hipotezi · V26 iki revizyon adayı · no-mistakes izin ayarı · veri-erişim tutkalları · skill-bakım sistemi (Salih 08-20 → BAKIM-KK CANLI) · karar-borcu optimize sıralama · V80 tel kalıbı · V81 işçi tavanı (→ m.46 uç-eşik, Karar 83) · V82 nadir-dil kapısı · V83 kısıt-kaynağı sayacı · V84 yerel-LLM dil ölçümü · V85 chat-damga denetimi · V87 feature-triyaj hijyeni — tam metin `arsiv/kuyruk-arsiv/fikir-kutusu-arsivi-2026-09-09.md`; damıtma 09-09, Karar 88 M16. Açık kalanlar orada; V86/V88-V94 sıcakta.)*
 
 
 - **V86 · 3B pointer-graf aracı — kendi çok-katmanlı sistemimizi simüle eden uygulama (Salih fikri, s19 2026-08-28):** aynen beyan — "obsidian pointer sistemi bizim sistemimize yetersiz geldiği için bizimki çok katmanlı olduğu için bizimkini simüle edebilecek 3 boyutlu bir araç uygulaması geliştirebiliriz". Gerekçe-zemini: Obsidian graph view düz (2B, tek bağ-tipi, tek düzlem) — bizim graf çok katmanlı (bronz/silver/gold veri katmanı · kanon/kural/karar/borç/skill düğüm sınıfları · pointer ∧ referans ∧ süpersede ∧ bağımlılık bağ tipleri · zaman ekseni); mevcut yüzeyler: `graf/pointer-sistemi-v0-*` D2 panoları (statik) + `tools/obsidian-harita.py` küme-haritaları (Karar 72 EK, 2812 kenar / 527 düğüm / 13 küme) + `veri/graf/pointer-sistemi-model.json`. Aday yön: silver'dan türeyen deterministik model.json → 3B düğüm-graf render (katman = z ekseni ∨ bağ-tipi = renk/kanal; zaman kaydırıcısı). ARAŞTIRMA-ÖNCE (m.40b + "hazırı temel al"): 3B graf araçları taranır (ör. Cosmograph/3d-force-graph/Gephi sınıfı) — sıfırdan motor yazılmaz; ÖNCE Obsidian'ın gerçekten yetersiz kaldığı ölçülür (eklenti kolu dahil). Akraba: Karar 67 (D2 protokolü) · Karar 72+EK (Obsidian yüzeyi) · İB-49 D2 mini-eval · KB-61 tipli-bağ. | tetik: Salih "araştır" ∨ "kur" emri | ADAY — karar YOK, not **[İB-53 atlas şerhi 08-30 (UPDATE): düz-ekran 3B kanıtsız — kazançlar HMD/stereo koşullarına ait (hakem-B); fikrin 3B ayağı 2B+odak-panosu yönüne revize-ADAY; sentez `raporlar/2026-08-29-ib53-atlas.md`]**

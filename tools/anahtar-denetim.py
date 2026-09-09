@@ -25,7 +25,7 @@ def _katman_yerel(yol):
         return 'sicak'
     if yol.startswith(('raporlar/', 'cc/rapor-', 'cc/gorev-', 'ogrenme/')) or yol.startswith('model de'):
         return 'soguk'
-    if yol.startswith(('kuyruk/arsiv', 'kuyruk/gelen-')):
+    if yol.startswith(('arsiv/', 'kuyruk/gelen-')):
         return 'soguk'
     if re.match(r'^(CEP-KAPSULU-|CHAT-KAPSULU-|secim-turu-|PARALEL-VARDIYA-ILK-DENEME)', yol):
         return 'soguk'

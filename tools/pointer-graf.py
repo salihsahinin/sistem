@@ -31,7 +31,7 @@ KRONOLOJI = [
     ("k0718", "2026-07-18", "pointerlar-arası iletişim raporu: typed-link graf Model A ÖNERİ (karar yok)", "raporlar/2026-07-18-pointer-sistemi-iletisim-kategorizasyon.md"),
     ("k0724", "2026-07-24", "graf-mühendisliği raporu: %92,5 graf-yetim; elle index bayatlar → türetilmiş", "raporlar/2026-07-24-serit2-graph-engineering.md"),
     ("k0815", "2026-08-15", "silver katmanı: kayit_id adres PK, referans/anahtar tabloları (veri katmanı v1)", "cc/pipeline-2026-08-15-baglam-silver-katmani.md · veri/README.md"),
-    ("k0817", "2026-08-17", "hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)", "kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-21.md:26"),
+    ("k0817", "2026-08-17", "hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)", "arsiv/kuyruk-arsiv/senaryo-defteri-arsiv-2026-08-21.md:26"),
     ("k0818", "2026-08-18", "adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)", "kuyruk/senaryo-defteri.md:173-175"),
     ("k0822", "2026-08-22", "pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği", "cc/pipeline-2026-08-22-pointer-graf-d2.md"),
 ]

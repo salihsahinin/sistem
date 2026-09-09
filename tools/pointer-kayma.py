@@ -8,7 +8,7 @@ KB-36 kutu:29 V13→V38 · KB-38 defter:156 Karar 48→Karar 65). Bu script iki 
 Yaptıkları (STDLIB ONLY, deterministik):
   1. `veri/karar-borcu.jsonl` (ya da --girdi) içindeki her `dosya:satır` pointer'ını okur (açıklama-kuyruklu biçim dahil).
   2. Satır metnini ESKİ ref'te (`git show <ref>:<dosya>`) ve ÇALIŞMA AĞACINDA alır; farklıysa KAYMIŞ, yeni dosyada satır yoksa KIRIK.
-  3. Öneri: eski satırın ilk 60 karakterini yeni dosyada ve `kuyruk/arsiv/*.md` içinde arar; TEK eşleşme varsa `→ dosya:satır` yazar
+  3. Öneri: eski satırın ilk 60 karakterini yeni dosyada ve `arsiv/kuyruk-arsiv/*.md` içinde arar; TEK eşleşme varsa `→ dosya:satır` yazar
      (birden çoksa listeler, sıfırsa "ARANAMADI" — karar insana/Carvis'e kalır, script yazmaz).
 Kullanım: python3 tools/pointer-kayma.py --ref <damıtma-öncesi-sha> [--girdi veri/karar-borcu.jsonl] [--dosya a.md,b.md]
   --ref varsayılan HEAD (çalışma ağacı ↔ son commit). Damıtma SOP: tur commit'inden ÖNCE koş (ref=HEAD), ya da sonra ref=önceki sha.
@@ -54,7 +54,7 @@ def oneri_bul(repo, eski_metin, dosya):
     onek = eski_metin.strip()[:ONEK]
     if len(onek) < 20:
         return "ARANAMADI (ön-ek kısa)"
-    adaylar = [dosya] + sorted(glob.glob(os.path.join(repo, "kuyruk", "arsiv", "*.md")))
+    adaylar = [dosya] + sorted(glob.glob(os.path.join(repo, "arsiv", "kuyruk-arsiv", "*.md")))
     bulunan = []
     for a in adaylar:
         rel = os.path.relpath(a, repo) if os.path.isabs(a) else a

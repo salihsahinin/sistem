@@ -42,7 +42,7 @@ KUTUK = os.path.join(KOK, "veri", "kod-orani.jsonl")
 HAREKET_KUTUK = os.path.join(KOK, "veri", "bronz", "hareket-olay.jsonl")
 
 DISLA_DIZIN = {".git", os.path.join("veri", "bronz"), os.path.join("veri", "gorunum"),
-               os.path.join("kuyruk", "arsiv", "karantina")}  # İB-72: karantina dizini tarama-dışı (m.8 arşiv, tekrar-sayılmaz)
+               os.path.join("arsiv", "karantina")}  # İB-72: karantina dizini tarama-dışı (m.8 arşiv, tekrar-sayılmaz)
 
 UZANTI_KOVA = {
     ".md": "md",

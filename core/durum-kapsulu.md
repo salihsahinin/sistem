@@ -14,13 +14,14 @@
 - **Oturum tetikleri:** "seans başı" · "seans bitimi"; jarvis↔staj KLASÖRLE. Eski seans özetleri teslim raporları + git log.
 
 ## Açık borçlar
-- **Salih el işleri:** bulut skill kopyaları (KB-10) · Cowork parmak-izi (KB-34) · Finder md → VS Code (Karar 80) · A3 kalan 2 uzun-loop · İB-11 (d)(e) 10 dk · M11: "AI ile öğrenme başlıkları" kendi araştırması (1. girdi: `raporlar/2026-09-09-ai-ile-ogrenme-transkript-analizi.md`) · `ogren` deneme skill'i ilk canlı koşum (K4).
-- **Boyut:** defter 41,6/48 · kutu 14,2/20 · KILAVUZ 13,5/16 · pano 9,6/12 · kapsül bu sürüm · CLAUDE.md 6,8/7. Arşivler `kuyruk/arsiv/*-2026-09-09.md`.
+- **Salih el işleri:** bulut skill kopyaları (KB-10) · yan-yüzey sekmesi parmak-izi (KB-34) · Finder md → VS Code (Karar 80) · A3 kalan 2 uzun-loop · İB-11 (d)(e) 10 dk · M11: "AI ile öğrenme başlıkları" kendi araştırması (1. girdi: `raporlar/2026-09-09-ai-ile-ogrenme-transkript-analizi.md`) · `ogren` deneme skill'i ilk canlı koşum (K4).
+- **Boyut:** defter 41,6/48 · kutu 14,2/20 · KILAVUZ 13,5/16 · pano 9,6/12 · kapsül bu sürüm · CLAUDE.md 6,8/7. Arşivler `arsiv/kuyruk-arsiv/*-2026-09-09.md`.
 - md.21/② şerhi KB-17b'ye bağlı BEKLET · erteleme kapsamı: find-skills · lease iadeleri · md.49 yazım turu · wiki kuyruğu.
 - **Çalışma ağacı:** 30+ türev dosya (veri/gorunum, bronz, graf/) 09-08 katman koşumundan commit'siz → kapanış ritüelinde `katman-hatti` + commit; izlenmeyen `.lavish/` · `Başlıksız.canvas` · `raporlar/gorsel-2026-09-04-word-ram-mekanizma.html`.
 
 ## Sonraki ilk iş
-0. **İB-75 + İB-64c birleşik emri (Opus-lider profili, Karar 89):** bu seans derlenir (gorev-emri-derleme); koşum ilk boş seansta pipeline (Opus 5 medium lider + Sonnet işçi); tasarım hükmü masa-10.
+0. **MASA-10 (Lavish, elle 7./9. masa biçimi):** İB-75 tasarım paketi geldi (`raporlar/2026-09-09-ib75-baglam-devri-ekip-lideri.md` §8 üç model A/B/C + §9 Q1-Q7) · Karar 90 EK tester-ajan (a/b/c) · İB-80 FIFO · İB-81 çekirdek yeniden-oluşum · İB-79 tablo imzası · Q3 ad çelişkisi `orkestrator` ↔ `ekip-lideri`. Hüküm sonrası: kuruluş İB'si (rol metni hazineye, pilot koşum = A1 1/1 Karar 90).
+0b. **Dosya düzeni parti 3-4** (`cc/` 387 → gorev/rapor/YYYY-MM · `raporlar/` 307 → alt-klasörler; Opus devri geldi, kapı açık; plan `kuyruk/dosya-duzeni-plani-2026-09-09.md`).
 1. **Masa-10 kalemleri (karar-modeli ile):** **İB-80** sıcak-katman FIFO kuralı (kapsül · MEMORY · CLAUDE.md pointer · pano; bütçe + yaş anahtarı) · **İB-81** çekirdek hafıza periyodik yeniden-oluşumu + karar gözden-geçirme (HİÇ YAPILMADI; önerilen ilk hedef tüzük 47 madde) · İB-73 format (Salih araştırması sonrası) · İB-79 hook tasarımı tablosunun ilk 10 satırı (Salih imzası).
 2. **Havuz (karar gerektirmez):** İB-78 bağımsız sorgu seti (Sonnet 1 birim) · İB-79 UserPromptSubmit hook + 3 test + önce/sonra ölçüm · İB-64a/b/c emirleri · İB-53 ilk dilim · İB-13 iskelet · İB-60 kalibrasyon (10 koşum) · İB-04 wiki 1-2/seans · İB-06 eşikler · İB-56 · anakronizm kalan 2 ihlal el düzeltmesi · T-A ilk-20 damıtma turu (§8b sırası) · BAKIM-KK 2. koşum (45 gün ∨ Salih).
 3. **Seans hedefi denemesi:** bu seans hedef "14 kaleme hüküm → Karar 88 + icra" TUTTU (+2 yan görev); sayaç 5'te mini-değerlendirme.

@@ -27,7 +27,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 - Oturumda doğan kalıcı-aday fikirler → `fikir-kutusu.md` (fikir-kutusu-adayı formatı).
 - Ölçek-eşiği üstü kararlar → `kuyruk/senaryo-defteri.md` (m.37 kaydı: modeller+seçim+gözlem alanı).
 - Karara bağlanmamış bulgular → `kuyruk/build-tartisma-notlari.md`. Silme YOK — bayatlayan arşive iner (m.8).
-- Model değişimi yaşandıysa: ingest kanona DEĞİL şerhli klasöre (`model değişikliği ile.../ingest-YYYY-MM-DD.md`) — KILAVUZ protokolü.
+- Model değişimi yaşandıysa: ingest kanona DEĞİL şerhli klasöre (`arsiv/chat-model-degisikligi/ingest-YYYY-MM-DD.md` — eski ad "model değişikliği ile…", parti 1 taşıması 09-09) — KILAVUZ protokolü.
 
 ## 5. Kapsül tazeleme (`core/durum-kapsulu.md`)
 Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (kanon bütçesi; 08-22 İB-24'ten beri SessionStart hook kapsülü DEĞİL ≤2 KB brifi basar — kapsül açılışta ELLE okunur, bu yüzden "Sonraki ilk iş" ilk maddesi ve Güncelleme satırı brife girer: ikisini kısa ve kendini açıklar tut).

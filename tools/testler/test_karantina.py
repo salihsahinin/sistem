@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """karantina.py testleri (İB-72; AXI-STANDARDI.md A1/A2/A7; stdlib unittest).
 Koş: python3 -m unittest tools/testler/test_karantina.py
-Kapsam: (a) --ekle sahte bir git-fixture repo'da dosyayı kuyruk/arsiv/karantina/ altına git mv ile taşıyor +
+Kapsam: (a) --ekle sahte bir git-fixture repo'da dosyayı arsiv/karantina/ altına git mv ile taşıyor +
 veri/karantina.jsonl'e 5-alanlı satır ekliyor · (b) --denetle gerçek repodaki kod-orani-olcum.py karantina
 dizinini TARAMIYORKEN PASS (kod 0) veriyor · (c) --liste boş/dolu durumlarda doğru çalışıyor.
 Gerçek ~/jarvis dosyalarına DOKUNULMAZ — her --ekle testi izole tempdir'de kendi git repo fixture'ını kurar.
@@ -53,7 +53,7 @@ class TestEkle(unittest.TestCase):
             r = kos("--repo", tmp, "--ekle", kaynak, "--beyan", "Salih: bu dosya bayat, karantinaya al")
             self.assertEqual(r.returncode, 0, r.stderr)
             eski = os.path.join(tmp, kaynak)
-            yeni = os.path.join(tmp, "kuyruk", "arsiv", "karantina", kaynak)
+            yeni = os.path.join(tmp, "arsiv", "karantina", kaynak)
             self.assertFalse(os.path.exists(eski), "kaynak hâlâ eski yerde duruyor")
             self.assertTrue(os.path.exists(yeni), "hedefte dosya yok")
             kayitlar = kutuk_oku(tmp)

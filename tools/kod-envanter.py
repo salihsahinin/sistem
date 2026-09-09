@@ -65,11 +65,11 @@ def disla_dizinlerini_yukle(repo):
         spec.loader.exec_module(mod)
         return set(mod.DISLA_DIZIN)
     except Exception:
-        return {os.path.join("kuyruk", "arsiv", "karantina")}
+        return {os.path.join("arsiv", "karantina")}
 
 
 def disla_uygula(dosyalar, disla_kume):
-    """git-izlenen dosya listesinden DISLA_DIZIN altına düşenleri süzer (kuyruk/arsiv/karantina dahil, İB-72/M14)."""
+    """git-izlenen dosya listesinden DISLA_DIZIN altına düşenleri süzer (arsiv/karantina dahil, İB-72/M14)."""
     sonuc = []
     for f in dosyalar:
         if any(f == d or f.startswith(d + "/") for d in disla_kume):

@@ -31,3 +31,14 @@ KILAVUZ.md       kullanım kılavuzu · fikir-kutusu.md fikir havuzu · ogrenme/
 ```
 
 **Kural mirası:** Bu node, Homebase'deki Carvis sözlüğü v1 (DONDU) terimleriyle konuşur (`wiki/sozluk.md`); tüzük `core/tuzuk-v0.md`'de.
+
+## Klasör haritası (dosya-düzeni planı 2026-09-09, Salih onaylı ağaç — `kuyruk/dosya-duzeni-plani-2026-09-09.md`)
+| Klasör | Ne var | İlk açılacak |
+|---|---|---|
+| `core/` | kanon: tüzük, durum kapsülü, pano, şemalar, prompt-dosya tablosu | `core/durum-kapsulu.md` |
+| `kuyruk/` | canlı defter (kararlar), kutular, gelen'ler, masa gündemleri, skill-deneme | `kuyruk/senaryo-defteri.md` |
+| `arsiv/` | TEK ÇATI: `kurulus-2026-07/` · `kuyruk-arsiv/` (damıtma arşivleri) · `karantina/` (BAKMA-GEREK-YOK) · `chat-model-degisikligi/` | `arsiv/README.md` |
+| `cc/` | görev emirleri, ajan ham raporları, devir dosyaları, prompt'lar, pipeline manifest notları (alt-klasörleme parti 3) | `cc/devir-*.md` |
+| `raporlar/` | insan-yüzü teslimler, seans/vardiya raporları, hareket günlükleri, masa yüzeyleri, görseller (alt-klasörleme parti 4) | `raporlar/seans-teslim-*.md` |
+| `ogrenme/` | kurs ders kayıtları + `kaynaklar/` (dış kırpıntılar) | `ogrenme/README.md` |
+| `wiki/` · `veri/` · `tools/` · `graf/` | kavramlar · bronz/silver/gold veri · script'ler (`tools/SCRIPTLER.md`) · d2 grafları (VS Code d2 eklentisiyle açılır) | `wiki/sozluk.md` |

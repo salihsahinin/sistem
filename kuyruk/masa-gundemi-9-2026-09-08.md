@@ -55,8 +55,8 @@ Son satır hâlâ 2026-08-04 FAIL-ff (bugün doğrulandı); Mac'te eşlenik yok;
 - **(b) Mac launchd eşleniği (İB aç):** Artı: sayaç sürer. Eksi: yeni otomat + push freni m.9 ile çelişir.
 - **(c) Beklet.**
 
-### M10 · Karantina ilk tescil (mekanizma Cowork U3'te KURULDU: `kuyruk/arsiv/karantina/` + `kod-orani-olcum.py --denetle`; tescil yetkisi Salih)
-- **(a) ÖNERİLEN — `kuyruk/arsiv/gorsellestir-skill-2026-09-03/` → karantinaya ilk tescil (BAKMA-GEREK-YOK bayrağı):** Artı: mekanizmanın ilk gerçek girdisi; tarama araçları okumaz. Eksi: `kod-envanter.py` git ls-files kullandığı için orada YİNE görünür (M14).
+### M10 · Karantina ilk tescil (mekanizma Cowork U3'te KURULDU: `arsiv/karantina/` + `kod-orani-olcum.py --denetle`; tescil yetkisi Salih)
+- **(a) ÖNERİLEN — `arsiv/kuyruk-arsiv/gorsellestir-skill-2026-09-03/` → karantinaya ilk tescil (BAKMA-GEREK-YOK bayrağı):** Artı: mekanizmanın ilk gerçek girdisi; tarama araçları okumaz. Eksi: `kod-envanter.py` git ls-files kullandığı için orada YİNE görünür (M14).
 - **(b) Arşivde kalsın, karantinaya girmesin:** Eksi: 8 KB SKILL.md + spec'ler ingest/erişim taramalarına düşmeye devam eder.
 
 ### M11 · İB-73 Jarvis eğitim serisi — format hükmü
@@ -79,7 +79,7 @@ Son satır hâlâ 2026-08-04 FAIL-ff (bugün doğrulandı); Mac'te eşlenik yok;
 
 ### M14 · Kod-envanter karantina açığı — `tools/kod-envanter.py` git ls-files kullanıyor (Cowork devri §2)
 Karantinaya taşınan dosya git-tracked kaldıkça envanterde görünür; `kod-orani-olcum.py` (os.walk) dışlıyor, `kod-envanter.py` dışlamıyor → iki sayım tutmaz.
-- **(a) ÖNERİLEN — `kod-envanter.py`'ye aynı `kuyruk/arsiv/karantina/` dışlaması + 1 test (10 dk, Katman-2):** Artı: iki sayım tutar. Eksi: yok.
+- **(a) ÖNERİLEN — `kod-envanter.py`'ye aynı `arsiv/karantina/` dışlaması + 1 test (10 dk, Katman-2):** Artı: iki sayım tutar. Eksi: yok.
 - **(b) `kod-envanter.py` emekli, tek sayım `kod-orani-olcum.py`:** Artı: paylaşılan-yardımcı sorunu (U4: `git_head()` 24 script'te tekrar) bir adım azalır. Eksi: envanterin git-tracked ayrımı kaybolur.
 
 ### M15 · U2 `.venv` dışlama — repo envanteri (Cowork devri §3)

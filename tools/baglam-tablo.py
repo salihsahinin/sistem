@@ -86,7 +86,7 @@ def fold(metin):
 # Katman / tür kuralları (yol + ada göre; belirsizse diger)
 # ---------------------------------------------------------------------------
 
-MODEL_KLASOR_ONEK = "model de"  # "model değişikliği ile orijinalliği bozulmuş olan chat/"
+MODEL_KLASOR_ONEK = "arsiv/chat-model-degisikligi"  # eski: "model değişikliği ile orijinalliği bozulmuş olan chat/" (parti 1 taşıması 2026-09-09)
 
 
 def katman_bul(yol):
