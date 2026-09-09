@@ -1,5 +1,5 @@
 {
-  "_sema": "devir-birimi v0 (semalar/devir-birimi-v0.json) — İLK CANLI DEVİR (Jarvis İB-82, Karar 91; A1 = 1 koşum, Karar 90)",
+  "_sema": "devir-birimi v0 (core/sablonlar/devir-birimi-v0.json) — İLK CANLI DEVİR (Jarvis İB-82, Karar 91; A1 = 1 koşum, Karar 90)",
   "devir": {
     "kimlik": {
       "devir_id": "devir-2026-09-09-parti5",
@@ -9,8 +9,8 @@
       "emir_yolu": "Jarvis kuyruk/dosya-duzeni-plani-2026-09-09.md parti 5 (lider OKUYAMAZ; içerik aşağıda gorev bloğunda TAM)"
     },
     "gorev": {
-      "amac": "Dosya-düzeni parti 5: Jarvis'in gezilebilirliği için (1) KILAVUZ.md'ye 'Nerede ne var — hangi soruya hangi dosya' bölümü TASLAĞI, (2) ay-dizinleri için README metinleri (cc/gorev/YYYY-MM, cc/rapor/YYYY-MM, raporlar/YYYY-MM — her biri 3-6 satır), (3) mevcut README'lerle çelişki/tekrar denetim listesi — hepsi giden/ altına DOSYA olarak; Jarvis'e yerleştirmeyi Fable yapar.",
-      "done_yuklemi": "giden/devir-2026-09-09-parti5/kilavuz-nerede-ne-var.md VAR ∧ ≤1,5 KB ∧ giden/devir-2026-09-09-parti5/readme/<dizin-yolu>/README.md dosyaları envanterdeki her ay-dizini için VAR (cc/gorev 3 · cc/rapor 3 · raporlar YYYY-MM 3 = 9) ∧ her README 3-6 satır + 'AS-OF 2026-09-09' satırı ∧ giden/devir-2026-09-09-parti5-geri-donus.md 10+2 alanla VAR ∧ Jarvis'e (kanon/ dahil) yazım = 0 ∧ hafiza/sicak.md'ye ≤3 madde eklendi",
+      "amac": "Dosya-düzeni parti 5: Jarvis'in gezilebilirliği için (1) KILAVUZ.md'ye 'Nerede ne var — hangi soruya hangi dosya' bölümü TASLAĞI, (2) ay-dizinleri için README metinleri (cc/gorev/YYYY-MM, cc/rapor/YYYY-MM, raporlar/YYYY-MM — her biri 3-6 satır), (3) mevcut README'lerle çelişki/tekrar denetim listesi — hepsi cc/giden/ altına DOSYA olarak; Jarvis'e yerleştirmeyi Fable yapar.",
+      "done_yuklemi": "cc/giden/devir-2026-09-09-parti5/kilavuz-nerede-ne-var.md VAR ∧ ≤1,5 KB ∧ cc/giden/devir-2026-09-09-parti5/readme/<dizin-yolu>/README.md dosyaları envanterdeki her ay-dizini için VAR (cc/gorev 3 · cc/rapor 3 · raporlar YYYY-MM 3 = 9) ∧ her README 3-6 satır + 'AS-OF 2026-09-09' satırı ∧ cc/giden/devir-2026-09-09-parti5-geri-donus.md 10+2 alanla VAR ∧ Jarvis'e (kanon/ dahil) yazım = 0 ∧ kapsül 'Şu an' güncellendi ∧ pano kartı BİTEN",
       "dallar": [
         "D1: eğer envanterde bir dizinin içeriği ad listesinden anlaşılmıyorsa → README'ye 'içerik: <ad deseni>' satırı yaz, iddia üretme; açık soruya düş",
         "D2: eğer KILAVUZ bölümü 1,5 KB'ı aşıyorsa → tabloyu 'soru → dosya' 8 satırla sınırla, kalanı 'ayrıntı: README.md' pointer'ına bırak (m.20)",
@@ -21,19 +21,19 @@
     },
     "baglam": {
       "eager": [
-        "gelen/devir-2026-09-09-parti5-envanter.md",
-        "ROL.md",
-        "semalar/geri-donus-v0.md",
+        "cc/gelen/devir-2026-09-09-parti5-envanter.md",
+        "core/rol.md",
+        "core/sablonlar/geri-donus-v0.md",
         "kanon/tuzuk-v0.md (yalnız m.8, m.20, m.39 satırları — grep ile)"
       ],
       "lazy": [
-        "hafiza/cekirdek.md — işçi kullanacaksan (bu devirde işçi GEREKMEZ, tek lider yeter; işçi açarsan desen 1 SENKRON)",
-        "semalar/devir-birimi-v0.json — şema sorusu çıkarsa"
+        "core/desenler.md — işçi kullanacaksan (bu devirde işçi GEREKMEZ, tek lider yeter; işçi açarsan desen 1 SENKRON)",
+        "core/sablonlar/devir-birimi-v0.json — şema sorusu çıkarsa"
       ],
       "karar_ozeti": [
         "Karar 89: sen Opus 5, effort MEDIUM sabit; high yasak",
         "Karar 90: tek koşumluk ölçüm yeter; fazladan test/doğrulama turu açma",
-        "Karar 91: bu repo ayrı; Jarvis'ten yalnız kanon/ okunur (hook keser); çıktı giden/'e, yerleştirme Fable'ın",
+        "Karar 91: bu repo ayrı; Jarvis'ten yalnız kanon/ okunur (hook keser); çıktı cc/giden/'e, yerleştirme Fable'ın",
         "Karar 88 M4: tarihli dosya adı AS-OF damgasıdır; README'lere 'AS-OF 2026-09-09' satırı",
         "Kök README klasör haritası zaten var (envanterde) — KILAVUZ bölümü 'ne var' değil 'hangi soruya hangi dosya' anlatır"
       ],
@@ -51,7 +51,7 @@
     },
     "yetki": {
       "karar_yetkisi": false,
-      "yazma_izni": ["giden/devir-2026-09-09-parti5/**", "giden/devir-2026-09-09-parti5-geri-donus.md", "hafiza/sicak.md", "hareket/olay.jsonl (hook yazar)"],
+      "yazma_izni": ["cc/giden/devir-2026-09-09-parti5/**", "cc/giden/devir-2026-09-09-parti5-geri-donus.md", "core/durum-kapsulu.md", "veri/bronz/hareket-olay.jsonl (hook yazar)"],
       "git_izni": "pathspec-only",
       "push": false
     }
