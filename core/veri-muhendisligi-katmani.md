@@ -52,5 +52,8 @@
 - **S2** Bus matrix satırları (§7 D2) imza. **S3** KB-01 güncel hükmü (bu tasarım = b + c-ucuz) — **İMZALANDI (Salih A, 08-17 masa): yazım-anı ölçüm kapısı kanon; katman-hatti son adımı katman-olcum.py, veri/katman-olcum.jsonl append-only.** **S4** silver `kayit.metin` kopyası — ölçüm sonrası pointer+hash'e indirilsin mi (COST tabanı). **S5** DuckDB/3.10+ tetiği: ölçüm eşiği sayısı Salih'te mi Carvis'te mi. **S6** DEA-C01 rehberi kalem ithali (PDF; sürüm doğrulaması) — yetkinlik haritasını doldurmak için.
 - **İcra (Katman-2):** yetkinlik haritası tam ithali · seans-kapanis `de-pratik` alanı (skill-kapisi evrim) · 3 koşumda oran-eşiği önerisi · veri/README §Katmanlar · m.40b antitez borcu: her aile 1 antitez + 1 hakem koştu (tek-şerit değil) ama tez ≤12 ekonomi rejimi — TAM şerit koşulmadı, kanon deneysel kalır.
 
+## 8b. T-A triyaj şiddet formülü (Karar 88 M13, Salih imzası 2026-09-09; deneysel m.29)
+`tools/ta-triyaj.py`: **şiddet = (uzunluk_a + uzunluk_b) × tekrar_sayısı(anahtar_terim)** — ÖNELEME aday çiftlerinin damıtma sırası bu değere göre azalan (rapor `raporlar/2026-09-03-ta-triyaj-ilk20.md`; uzunluk-farkı alternatifi eş-boy/tam-kopya çiftleri alta ittiği için ELENDİ). Bilinen sınır: uzun-tekil çift ↔ kısa-çok-tekrar eşitlenebilir (ilk-20'de görülmedi). Damıtma turu ilk-20 tablosunu bu sırayla işler.
+
 ## 9. Kör noktalar (rapor-2 hakem; kanona damga)
 Gold'un ölçülmüş kazancı YOK (S-9 + S-1) · oran heuristiği YOK · DataOps/süreç kazancı ölçümsüz · learning-by-building için DE alanında doğrudan ölçüm yok (PBL/transfer ekstrapolasyonu) · orkestratör/dbt eşiği [ARANAMADI] · lineage asgari seti kaynaksız · spaced-repetition/kata aranmadı · DEA-C01 hands-on etkisi aranmadı · tüm oranlar çok-kiracılı BI'dan; Türkçe/tek-kullanıcı kaynak yok.

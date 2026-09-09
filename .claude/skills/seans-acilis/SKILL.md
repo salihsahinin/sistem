@@ -24,7 +24,7 @@ Selamlama OTURUM-SINIRI işaretidir, ZAMAN işareti DEĞİL: açılış sözünd
 3. `core/pano.md` — AKTİF/BEKLEYEN/BLOKE + "Ekrana gel" filtresi.
 3b. **Silver tazelik kapısı (KB-54 A, Salih imzası 08-21, Karar 62):** `uretim.git_head_sha` ≠ git HEAD → brifte "silver bayat" uyarısı + `tools/katman-hatti.py` koşumu (~5-10 sn, idempotent); atlanırsa adresli erişim yanlış satır getirebilir (08-18 vakası: 25/27 blok uyuşmazlığı). **Tespit otomatik (İB-27, 08-22):** SessionStart hook brifinde `SİLVER: … → TAZE | BAYAT` satırı; BAYAT görülürse koşum bu adımda (hook koşmaz, yalnız söyler).
 3c. **Adresli erişim kuralı (KB-53 A, Karar 62; KILAVUZ tasarım-ilkeleri satırı; İB-28):** kanon okurken adres biliniyorsa ARALIK oku (`Read offset/limit` ∨ `sed -n 'a,bp'`), anahtar biliniyorsa silver'dan blok çek (`sqlite3 veri/baglam.sqlite` — `v_guncel_kayit`; kayit_id sha8'i getirme anında yeniden hesaplanır, tutmuyorsa dosyaya düş + bayrak); dosya BÜTÜNÜ yalnız adres yokken (kapsül/pano gibi tamamı okunması gereken küçük dosyalar hariç). Oran `v_okuma_orani`'nda sayılır (İB-29) — düşük aralık-oranı ince-tutkal (KB-53 b) kararını masaya döndürür.
-4. `raporlar/usage/senkron-log.jsonl` — son satır: senkron sayacı ilerledi mi, arıza var mı (arıza → sayaç sıfırlanmaz ama kök-neden raporlanır).
+4. ~~senkron-log okuma~~ EMEKLİ (Karar 88 M9, Salih 09-09): gece-senkron Karar 81 ile iptal, gece işi gnhf şeridinde (Karar 84); kütük `raporlar/usage/senkron-log.jsonl` arşiv-pointer olarak durur, okunmaz.
 5. Kapsülün işaret ettiği son seans-teslim raporu (devir borçları buradan).
 6. Gerekirse pointer'la in: fikir-kutusu · senaryo-defteri · cc/defter — hepsi kapsül/CLAUDE.md adresliyorsa.
 
