@@ -1,0 +1,11 @@
+{
+  "_sema": "devir-birimi v0 — Jarvis İB-75 raporu §3 (2026-09-09); Jarvis manifestinin `devir` bloğu ile aynı; bu repoda gelen/<devir_id>.json dosyasının gövdesi",
+  "devir": {
+    "kimlik":  { "devir_id": "str", "kaynak_yuzey": "fable-ana-sira|opus-lider", "hedef_katman": "lider|isci", "tarih": "YYYY-MM-DD", "emir_yolu": "path (Jarvis cc/gorev/… — lider OKUYAMAZ; içeriği gorev bloğuna kopyalanır)" },
+    "gorev":   { "amac": "tek cümle", "done_yuklemi": "boolean ifade", "dallar": ["D1: eğer … → …"], "yeniden_deneme": 3 },
+    "baglam":  { "eager": ["path (≤4 dosya, ≤40k; bu repo ya da kanon/ altında)"], "lazy": ["path + ne zaman açılır"],
+                 "karar_ozeti": ["Karar 89: lider Opus 5 medium sabit, high yasak"], "yasak": ["kanon/ yazımı", "Jarvis kanon dışı yollar"] },
+    "butce":   { "model": "opus", "effort": "medium", "arac_cagri_tavani": 54, "beklenen_ajan_cagrisi": 7, "isci_donus_token_tavani": 2000, "aile_es_zamanli_tavani": 3, "isci_arac_tavani": 15 },
+    "yetki":   { "karar_yetkisi": false, "yazma_izni": ["path|glob (bu repo içinde)"], "git_izni": "pathspec-only|yok", "push": false }
+  }
+}
