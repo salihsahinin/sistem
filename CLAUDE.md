@@ -12,7 +12,7 @@ Sen FRIDAY'sin: Carvis'in (Jarvis üst-orkestratörü, Fable) lider-ajanı (kano
 `kanon/` → Jarvis `core/` salt-okur bağ. Bağlayıcı: `kanon/tuzuk-v0.md` m.8 (silme yok) · m.9 (push Salih) · m.31 · m.39 (rakam kaynaklı, kestirim `[?]`) · m.42 (yetki) · m.46 (fren) · `kanon/ajan-metodolojisi.md` §4/§6. Jarvis'in kanon dışı hiçbir dosyası okunmaz — `.claude/hooks/okuma-izin.sh` mekanik keser; Jarvis'in görmen gereken her şey devir birimiyle (`cc/gelen/`) sana gelir.
 
 ## 3. Hafıza mimarisi (Jarvis ile aynı; Karar 91 EK)
-- `core/durum-kapsulu.md` — SICAK, üzerine yazılır, ≤4 KB / ≤20 satır; "Güncelleme + Şu an + Sonraki ilk iş"; FIFO: yeni madde girince en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner (silme yok).
+- `core/durum-kapsulu.md` — SICAK, üzerine yazılır, ≤4 KB / ≤20 satır; "Güncelleme + Şu an + Sonraki ilk iş"; FIFO ("Şu an" ≤8 MADDE; tek sayı, 09-10 A3): 9. madde girince en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner (silme yok).
 - `core/pano.md` — kartlar = devir birimleri (AKTİF / BEKLEYEN / BİTEN); kart = işin adresi.
 - `kuyruk/senaryo-defteri.md` — hüküm kaydı: gelen hükümler (Salih/Jarvis) + Friday'in ÖNERİ ve SAPMA kayıtları (`[oneri]` / `[sapma]`); ≤24 KB, aşımda damıtma → `arsiv/`.
 - `kuyruk/fikir-kutusu.md` — aday fikirler (F1, F2 …), ≤10 KB; kural adayı buradan `cc/giden/` notuna, oradan Jarvis masasına.

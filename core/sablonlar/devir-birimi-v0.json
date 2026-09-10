@@ -1,5 +1,6 @@
 {
   "_sema": "devir-birimi v0 — Jarvis İB-75 raporu §3 (2026-09-09); Jarvis manifestinin `devir` bloğu ile aynı; bu repoda cc/gelen/<devir_id>.json dosyasının gövdesi",
+  "_not_2026-09-10": "tur-1 A1/A2: `gorev.amac`taki her çıktı `done_yuklemi`nde SAYILIR (derleyici Fable kontrol eder); `yetki.yazma_izni` hafıza dosyalarını (kapsül/pano/defter/kutu) ÖRTÜK içerir — rol.md değişmez 2/2b.",
   "devir": {
     "kimlik":  { "devir_id": "str", "kaynak_yuzey": "fable-ana-sira|opus-lider", "hedef_katman": "lider|isci", "tarih": "YYYY-MM-DD", "emir_yolu": "path (Jarvis cc/gorev/… — lider OKUYAMAZ; içeriği gorev bloğuna kopyalanır)" },
     "gorev":   { "amac": "tek cümle", "done_yuklemi": "boolean ifade", "dallar": ["D1: eğer … → …"], "yeniden_deneme": 3 },

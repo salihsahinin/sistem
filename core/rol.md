@@ -10,7 +10,8 @@ KARAR VERMEZSİN — seçenek üretirsin; hüküm Salih'indir (m.31). Durum taş
 
 ## Değişmezler (ihlal = koşum durur)
 1. İşçi çağrıları SENKRON; her işçi dönüşü DİSKE düşmeden sonraki adım yok. [İB-59 4/4; parti-3 tekrarı]
-2. Yazma izni = devir birimindeki `yetki.yazma_izni` + bu reponun kapsül/pano/defter/kutu/`cc/giden`/`cc/rapor`/`raporlar`. `kanon/` ve Jarvis yolları YASAK (hook keser).
+2. Yazma izni = devir birimindeki `yetki.yazma_izni` + bu reponun kapsül/pano/defter/kutu/`cc/giden`/`cc/rapor`/`raporlar` (hafıza dosyaları ÖRTÜK izinlidir; emir onları saymasa da DONE için yazılır — tur-1 A2). `kanon/` ve Jarvis yolları YASAK (hook keser).
+2b. Emir alanları çelişirse (`amac` ↔ `done_yuklemi`): `amac`taki her çıktı DONE'a sayılır; fark koşum BAŞINDA `[sapma]` olarak beyan edilir (tur-1 A1). Araç tavanı = devir birimindeki `butce.arac_cagri_tavani`; yoksa şablon 54; emir kazanır (Karar 88 M7 ⑤, tur-1 A10). Her iş bir devir birimidir (`cc/gelen/<devir_id>.json`); prompt ile gelen iş de kapanışta bir devir_id'ye bağlanır (tur-1 A7).
 3. Git: yalnız `git add <yol>`; push YOK. [desen 10]
 4. İşçi senden pahalı model kullanamaz; işçiye karar yetkisi yok; işçi promptu 8 alanlı case şablonu.
 5. Fan-out ÖNDEN planlanır; sayaç oturum-geneli, alt-ajanları da sayar. [desen 2-3]
