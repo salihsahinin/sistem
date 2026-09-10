@@ -37,7 +37,8 @@ def pano_maddeler(t):
 
 
 def memory_maddeler(t):
-    return [l for l in t.splitlines() if l.startswith("- [")]
+    # kullanıcı-olgusu satırları (user-*.md) FIFO'dan MUAF: gündem değil, kimlik bilgisi (Karar 92 M1 uygulaması 09-10)
+    return [l for l in t.splitlines() if l.startswith("- [") and "](user-" not in l]
 
 
 def claude_maddeler(t):
@@ -67,8 +68,13 @@ def main():
         tasan_madde = max(0, n - K)
         durum = "FLAG" if (tasan_madde > 0 or b > B) else "OK"
         flag |= durum == "FLAG"
-        # FIFO: en eski = listenin SONU (kapsül/pano yeni madde üste yazılır) — kapsül/pano için sondan, MEMORY için sondan
-        arsive = maddeler[-tasan_madde:] if tasan_madde and ad != "claude" else []
+        # FIFO yönü: kapsül/pano yeni maddeyi ÜSTE yazar → en eski = SON; MEMORY.md indeksi sona EKLER → en eski = BAŞ
+        if not tasan_madde or ad == "claude":
+            arsive = []
+        elif ad == "memory":
+            arsive = maddeler[:tasan_madde]
+        else:
+            arsive = maddeler[-tasan_madde:]
         sonuc.append({"ad": ad, "yol": os.path.relpath(yol, a.repo) if yol.startswith(a.repo) else yol,
                       "madde": n, "K": K, "bayt": b, "B": B, "durum": durum,
                       "tetik": ("madde" if tasan_madde else "") + ("+bayt" if b > B else ""),
