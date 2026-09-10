@@ -39,3 +39,5 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 
 ## Okuma sırası önerisi
 1. `CLAUDE.md` (5 dk) → 2. `core/tuzuk-v0.md` başlıklar → 3. bir skill: `.claude/skills/seans-acilis/SKILL.md` → 4. hook'lar → 5. `tools/SCRIPTLER.md` "Beraber okuma" sırası (derece.py en kısa).
+
+| **Lavish çalışma dizini** (Karar 92 M2, 2026-09-10) | `kaynak-kodu/lavish` → `.lavish/` (gitignore; lavish-axi masa yüzeyi çalışma alanı) | Karar masası HTML burada üretilir, her masa sonunda kalıcı kopya `raporlar/masa/masa-N-karar-yuzeyi-YYYY-MM-DD.html` | HTML; Finder çift tık |

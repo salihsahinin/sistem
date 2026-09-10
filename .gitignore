@@ -37,3 +37,6 @@ veri/erisim-vektor-*.npy
 veri/.kira-*.json
 # Salih dosyası — COMMIT'LENMEZ (Karar 73 EK freni, 08-28 GBM şeridi)
 kuyruk/galeri-siralama/
+
+# Lavish calisma dizini (Karar 92 M2, 09-10): masa HTML kopyalari raporlar/masa/ altinda; dizin kapisi kaynak-kodu/lavish
+.lavish/

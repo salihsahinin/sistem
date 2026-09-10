@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 10 — Friday ilk koşum sonrası hükümler (2026-09-10)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 10 — Friday ilk koşum sonrası hükümler <span class="badge badge-primary">8 kalem</span></h1>
+      <p class="text-sm opacity-80">Onuncu Lavish masası. Tetik: 09-10 10:1x beyanın — <em>"bende bekleyen hükümleri lavish ile karar masasına taşı"</em>. Her kalemde: ne demek · seçenek başına ne yaparım / artı / eksi · önerilen ilk sırada (CLAUDE.md §5). Hüküm senin; ben seçenek üretirim (m.31).</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> Friday ilk canlı koşumu doğrulandı → İB-82 KAPANDI, A1 = 1/1 · parti-5 Jarvis'e yerleştirildi (KILAVUZ bölümü + 9 ay-README) · Friday tur-1 bulguları A1-A10 10/10 düzeltildi (hook v0.2, test 9/9) · tur-1 cevabı yazıldı · silver tazelendi.</p>
+      <p class="text-xs opacity-60">AS-OF 2026-09-10 10:15 · Jarvis HEAD e7d08d5 (origin'e 2 commit ileri) · Friday HEAD ad2ab57 · paralel-oturum şüphesi YOK · rakamlar bu seansın sayımı (m.39).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı — Friday ilk koşumu (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Ölçüm</th><th>Değer</th><th>Kaynak</th></tr></thead>
+        <tbody>
+          <tr><td>Koşum</td><td>09-09 16:39 → 16:49, auto-mod, Opus 5 medium</td><td><code>~/friday</code> git log 58776c7</td></tr>
+          <tr><td>Araç çağrısı</td><td><strong>25</strong> (Bash 22 · Write 2 · Skill 1); işçi 0</td><td><code>~/friday/veri/bronz/hareket-olay.jsonl</code></td></tr>
+          <tr><td>Kilit ihlali</td><td><strong>kanon yazma 0 · push 0 · Jarvis kanon-dışı yol 0</strong> → Karar 90 A1 = 1/1</td><td>aynı kütük, tarama scripti bu seans</td></tr>
+          <tr><td>Teslim</td><td>11 dosya (KILAVUZ bölümü 1.185 B · 9 README · denetim listesi 8 kontrol) — denetimden 5 düzeltme çıktı, hepsi işlendi</td><td><code>cc/devir/friday-2026-09-09-parti5/</code></td></tr>
+          <tr><td>Tasarım tur-1</td><td>10 bulgu: 2 gerçek arıza (kilit yanlış-pozitif + yanlış-negatif · kütükte Bash yolu yok), 8 tutarsızlık — 10/10 düzeltildi</td><td><code>~/friday/cc/gelen/tasarim-2026-09-09-tur1-cevap.md</code></td></tr>
+          <tr><td>Boyut tetikleri</td><td>Jarvis kapsül <strong>8,85/8</strong> · defter <strong>55,4/48</strong> · Friday CLAUDE.md <strong>4,19/4</strong> · KILAVUZ 15,3/16 · pano 10,1/12 · CLAUDE.md 7,1/7</td><td><code>wc -c</code></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- M1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M1">
+    <div class="card-body">
+      <h2 class="card-title">M1 · İB-80 sıcak-katman FIFO tetiği <span class="badge badge-outline">KURAL · Katman-1</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> 09-09 beyanın: sıcak katman (kapsül "Şu an", pano, MEMORY, CLAUDE.md pointer) gündemle aynı hızda dönmeli; yeni madde girince eski çıkmalı. İlke verildi, açık olan <em>tetik</em>: madde sayısı mı, bayt bütçesi mi, kapanışta sıfırdan yazım mı. Bugün tetik yok, boyut FLAG'i elle. Friday'e verdiğim kural: "Şu an" ≤8 madde. Karar-modeli koşumu 09-09 (3 taban: frekansçı eşik · kuyruk sabit-K · topyekûn/MDL; karşıt = C, canlılık ✓ CLAUDE.md v2 emsali).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M1','İB-80 FIFO tetiği');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) karma: madde sayısı K (kapsül 'Şu an' 8 · pano AKTİF 5 · MEMORY 16 satır) ∨ bayt bütçesi — hangisi önce dolarsa en eski madde arşive; script tools/sicak-katman-fifo.py sayar + FLAG; taşıma [damıtma] commit"> <strong>(a) Karma: K madde ∨ bayt, önce dolan tetikler</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> <code>tools/sicak-katman-fifo.py</code> (deterministik: sayar, FLAG basar, taşınacak maddeyi listeler; taşıma kapanış ritüelinde <code>[damıtma]</code> commit'iyle, arşiv <code>arsiv/kapsul-YYYY-MM-DD.md</code>) + kapsül başlığına K satırı + KILAVUZ boyut bölümüne 1 satır. <strong>Artı:</strong> beyanın "konu sayısı" cinsinden, bayt yalnız hook'un 40-satır sınırı için sigorta; Friday K=8 ile aynı kural → iki repo karşılaştırılabilir. <strong>Eksi:</strong> K değeri ilk 5 seans deneysel (m.29); yanlış K erken arşiv. <strong>Gerekçe:</strong> üç model "silme yok, arşive in, kapanışta koşar" noktasında kesişiyor; K madde bunu gündem-sayısına bağlar.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) yalnız bayt bütçesi: mevcut FLAG'ler (kapsül 8 KB · pano 12 · MEMORY yok) aşınca en eski madde arşive"> <strong>(b) Yalnız bayt bütçesi</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> bugünkü elle FLAG'i script'e alırım; başka kural yok. <strong>Artı:</strong> mevcut pratiğin kodlanması, sıfır yeni sayı. <strong>Eksi:</strong> bayt gündem saymaz: tek şişkin madde 5 küçük maddeyi kovar.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) yalnız madde sayısı K; bayt bütçesi kalkar"> <strong>(c) Yalnız K madde, bayt bütçesi kalkar</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> tek kural. <strong>Eksi:</strong> hook ilk 40 satırı yükler; 8 uzun madde 40 satırı aşabilir, kapsülün kuyruğu okunmaz.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(d) FIFO yok; her kapanışta sıcak katman sıfırdan yazılır, 'Sonraki ilk iş'e bağlı olmayan madde düşer"> <strong>(d) Karşıt model: her kapanışta sıfırdan yazım</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> kapanış ritüeline "kapsülü yeniden yaz" adımı; düşen maddeler teslim raporuna. <strong>Artı:</strong> en taze gündem fotoğrafı (CLAUDE.md v2 08-17 emsali). <strong>Eksi:</strong> deterministik değil (aynı girdi → aynı kapsül garantisi yok); atlama yoluyla m.8 ihlali riski; her kapanış 3-5k çıktı token <code>[?]</code>.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M2 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M2">
+    <div class="card-body">
+      <h2 class="card-title">M2 · S1 artık dosyalar: <code>.lavish/</code> + <code>Başlıksız.canvas</code> <span class="badge badge-outline">Katman-1 (silme/kapı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> İzlenmeyen iki şey: <code>.lavish/</code> (masa-8, masa-9, şimdi masa-10 HTML'leri; ~120 KB) ve 5 Eylül'den kalma 2 baytlık boş Obsidian tuvali. 08-18 kuralın: gizli klasör yok, her nokta-dizin <code>kaynak-kodu/</code> kapısı + README + Finder'da görünür. m.8: silme yok, arşive iner.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M2','S1 artık dosyalar');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) masa HTML'leri raporlar/masa/ altına (git'te); .lavish/ → .gitignore + kaynak-kodu/ kapı satırı + README; boş canvas → arsiv/karantina/"> <strong>(a) Taşı + kapı</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> 3 masa HTML'i <code>raporlar/masa/</code>'ya kopyalanır (git'e girer, Finder'da görünür); <code>.lavish/</code> Lavish'in çalışma dizini olarak kalır, <code>.gitignore</code> + <code>kaynak-kodu/</code> kapı satırı + tek satır README; boş canvas <code>arsiv/karantina/</code>'ya. <strong>Artı:</strong> masa yüzeyleri kalıcı adreste; ağaç temiz; 08-18 kuralı ve m.8 sağlam. <strong>Eksi:</strong> ~5 dk; her masa sonrası bir kopya adımı (ritüele 1 satır).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) .lavish/ ve canvas olduğu gibi git'e alınır"> <strong>(b) Olduğu gibi git'e al</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> sıfır iş. <strong>Eksi:</strong> Lavish her masada yeni HTML üretir, dizin şişer; boş canvas anlamsız kayıt; nokta-dizin kapısı yine gerekir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) (a) gibi taşı + kapı, ama boş canvas SİLİNİR (Salih Katman-1 imzası bu hükümle verilmiş sayılır)"> <strong>(c) (a) + boş canvas'ı sil (imza gerekir)</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> karantinada 2 baytlık anlamsız kayıt olmaz. <strong>Eksi:</strong> m.8 istisnası; imza bu hükümle düşer, defterde "silme: Salih imzası 09-10" satırı.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M3">
+    <div class="card-body">
+      <h2 class="card-title">M3 · Friday'in dış kaynak isteği R1-R5 <span class="badge badge-outline">Katman-1 (dışarı çıkan iş)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Friday tur-1'de 5 URL önerdi, açmadı (kural). R1 Claude Code hooks dokümanı · R2 settings/permissions · R3 sub-agents (işçi filosu sözleşmesi) · R4 ReasoningBank (arXiv 2509.25140) · R5 Agent Workflow Memory (arXiv 2409.07429). R4/R5 desen 2026-09-02'nin ("hafıza modülleri sade tabanı geçemedi") birincil kaynağı; URL doğruluğu doğrulanmadı <code>[?]</code>. Açma = Sonnet ya da Friday koşumu, token yakar; m.40b araştırma-önce ilkesi işçi/İB-81 kararlarına dokunur.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M3','R1-R5 dış kaynak');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) kademeli: R1+R2 şimdi (tek Sonnet birimi, Friday tur-2 devir birimi), R3 işçi filosu açılmadan önce, R4+R5 İB-81 çekirdek yeniden-oluşum turunda"> <strong>(a) Kademeli: R1+R2 şimdi · R3 işçi öncesi · R4+R5 İB-81 turunda</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> tur-2 devir birimi (<code>.json</code>, A7 gereği) R1+R2 ile; çıktı = "PostToolUse Bash için resmî yol alanı var mı / deny kuralı hook yerine geçer mi" iki cümlelik cevap + kaynak. ~15-25k token <code>[?]</code>. <strong>Artı:</strong> hook v0.2'nin kalıcı mı geçici mi olduğunu kaynağa bağlar; R3-R5 gerektiği anda açılır, boşa yakılmaz. <strong>Eksi:</strong> üç ayrı koşum; R4/R5 gecikir (İB-81 hiç yapılmadı, tarihi yok).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) beşi birden şimdi, tek Friday koşumu (tur-2)"> <strong>(b) Beşi birden, tek koşum</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> tek devir, tek geri-dönüş; Friday ikinci koşumu ölçülür. <strong>Eksi:</strong> ~50-80k token <code>[?]</code>; R3-R5 cevapları kullanılacağı karar (işçi, İB-81) gelmeden bayatlar (Karar 68 anakronizm).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) hiçbiri açılmaz; hook v0.2 testli kabul, R'ler fikir kutusuna"> <strong>(c) Hiçbiri; testli hook yeter</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> sıfır token. <strong>Eksi:</strong> m.40b (araştırma-önce) işçi/İB-81 kararında yeniden gündeme gelir; desen 2026-09-02 birincil kaynaksız kalır (m.39).</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M4 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M4">
+    <div class="card-body">
+      <h2 class="card-title">M4 · Friday çekirdek adayı: "okuyamadığın dosya için iddia değil kontrol listesi" <span class="badge badge-outline">Katman-1 (çekirdek = yalnız Salih kabulü)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Friday <code>core/desenler.md</code>'ye (çekirdek, FIFO'suz) yalnız senin "kabul"ünle yazabilir. Aday: kapalı-göz devirlerinde (Friday hedef dosyayı okuyamıyor) çıktı iddia değil, gören tarafın (Fable) yürüteceği kontrol maddeleri olur. İlk koşumda işledi: 8 kontrol → 5 düzeltme. İkinci aday ("amaç↔done'u başta karşılaştır") rol.md 2b ile kural oldu, desen olarak tekrar gerekmez.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M4','çekirdek adayı');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) KABUL: desen 20 olarak ~/friday/core/desenler.md'ye Fable yazar (Salih kabulü 09-10); aday 2 RET (kural oldu)"> <strong>(a) Kabul (desen 20); aday 2 ret</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> tek satır desen + kaynak (parti-5 denetim listesi, 8/5). <strong>Artı:</strong> kanıtlı ilk koşum; Friday'in her kapalı-göz devrinde tekrar edilebilir. <strong>Eksi:</strong> çekirdek 19→20; İB-81 yeniden-oluşum turunda yeniden sınanır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) BEKLET: 3 koşum daha gözlem, sonra kabul/ret"> <strong>(b) Beklet (3 koşum)</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> tek örnekten desen çıkmaz (m.29). <strong>Eksi:</strong> Friday her koşumda geri-dönüşe aynı adayı yazar; kayıt şişer.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) RET: kontrol listesi zaten geri-dönüş şablonunun 'kalan' alanında; desen gerekmez"> <strong>(c) Ret</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> çekirdek küçük kalır. <strong>Eksi:</strong> davranış yazılı olmaz; bir sonraki Friday koşumu iddia üretebilir (D1 halüsinasyon riski).</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M5">
+    <div class="card-body">
+      <h2 class="card-title">M5 · Boyut aşımları: kapsül 8,85/8 · defter 55,4/48 · Friday CLAUDE.md 4,19/4 <span class="badge badge-outline">Katman-1 (damıtma planı imzalı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> KILAVUZ boyut kuralı: aşım hata değil TETİK; aşan dosya Salih-imzalı planla damıtılır (silme yok, tam metin arşive, özüt + pointer). Üç dosya aşımda. Kapsül aşımının nedeni bugünkü "Güncelleme" satırı (Friday kapanışı); defter 09-09'dan beri aşımda; Friday CLAUDE.md ilk sürümünde de 4,15 idi.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M5','boyut damıtma');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) üçü bu seansta damıtılır: kapsül 'Önceki' kuyruğu + galeri satırı arşive (arsiv/kapsul-2026-09-10.md); defter Karar 80-87 blokları arsiv/kuyruk-arsiv/senaryo-defteri-arsivi-2026-09-10.md'ye özüt+pointer; Friday CLAUDE.md §6 README pointer'ına"> <strong>(a) Üçü bu seansta (arşiv-pointer, m.8)</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> kapsül: "Önceki" kuyruğu ve galeri satırı arşive, hedef ≤7,5 KB; defter: Karar 80-87 blokları (kapanmış) arşive, her biri tek satır özüt + pointer, hedef ≤44 KB; Friday CLAUDE.md §6 → README pointer (~300 B). Üç ayrı <code>[damıtma]</code> commit. <strong>Artı:</strong> hook'un 40-satır kapısı güvene girer; M1 (a) seçilirse ilk FIFO koşumu bu damıtmayla başlar. <strong>Eksi:</strong> ~20 dk; defter arşivinde pointer izlemesi gerekir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) yalnız kapsül + defter bu seansta; Friday CLAUDE.md tur-2'de Friday kendi damıtır (ilk hafıza-bakım koşumu)"> <strong>(b) Kapsül + defter şimdi; Friday'inki Friday'e</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> Friday'in kendi sözleşmesini damıtması hafıza mimarisinin ilk canlı testi olur. <strong>Eksi:</strong> CLAUDE.md Friday'in Katman-1'i sayılırsa Friday yazamaz (rol.md: kanon yazımı yasak; CLAUDE.md kanon mu belirsiz → yeni soru).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) bütçeler revize: kapsül 10 KB / defter 56 KB / Friday CLAUDE.md 5 KB; damıtma ertelenir"> <strong>(c) Bütçeleri yükselt</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> sıfır damıtma işi. <strong>Eksi:</strong> hook 40 satır yükler (kapsül 10 KB ≈ 45 satır → kuyruk okunmaz); CLAUDE.md v1 14 KB şişmesinde davranış bozulmuştu (08-16 dersi); bütçe yükseltme tetik mekanizmasını boşa çıkarır.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M6 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M6">
+    <div class="card-body">
+      <h2 class="card-title">M6 · Friday rol.md 2b kuralı Jarvis tüzüğüne girsin mi <span class="badge badge-outline">KURAL · Katman-1</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Tur-1 A1/A2/A10 için Friday'e yazdığım kural: emir alanları çelişirse (<code>amac</code> ↔ <code>done_yuklemi</code>) amaç kazanır, fark koşum BAŞINDA <code>[sapma]</code>; hafıza dosyaları örtük yazma-izinli; araç tavanı emirden, yoksa şablon. Aynı şema Jarvis manifestinin <code>devir</code> bloğu → çelişki Jarvis işçilerinde de olabilir. Karar 91: "kural değişimi tek kaynakta kalır". m.16 ön-tarama: Karar 88 M7 ⑤ ("emir kazanır") ile uyumlu, onu emrin kendi içine genişletir; çelişki yok.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M6','rol 2b tüzük');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) EVET: tüzük m.42'ye fıkra (emir iç-çelişkisi: amaç kazanır + başta sapma beyanı; hafıza dosyaları örtük izinli; tavan emirden); Friday rol.md 2b → kanon pointer'ına iner"> <strong>(a) Evet, m.42 fıkrası; Friday'de pointer kalır</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> tüzük m.42'ye 2 cümle + ajan-metodolojisi §6'ya 1 satır; Friday rol.md 2b metni "→ kanon m.42" pointer'ına iner (Friday CLAUDE.md'den de 1 satır düşer, M5'e katkı). <strong>Artı:</strong> tek kaynak; Jarvis manifest derleyicisi (gorev-emri-derleme) aynı kontrolü yapar. <strong>Eksi:</strong> tüzük 47 → 47 madde ama +2 cümle; kural sayacı +1.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) HAYIR: Friday-özel kalsın; Jarvis manifestlerinde çelişki görülürse o zaman masaya"> <strong>(b) Hayır, Friday-özel kalsın</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> tüzüğe dokunulmaz; sorun-güdümlü (m.5). <strong>Eksi:</strong> aynı kural iki yerde ayrı yaşar; Karar 91 tek-kaynak ilkesiyle sürtüşür; Jarvis işçisi aynı çelişkiyle karşılaşınca kural yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Hükmü kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M7 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M7">
+    <div class="card-body">
+      <h2 class="card-title">M7 · Masa-10'un kalan kalemleri — hangileri BU seansta işlensin <span class="badge badge-outline">öncelik (çoklu seçim)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> 09-09 kapsülünde masa-10'a bırakılan kalemler. İşaretlediklerin bu seansta karar-modeli/icra ile önüme gelir; işaretlenmeyenler bir sonraki masaya kalır (beklet = varsayılan). Önerim işaretli geliyor; değiştir.</p>
+      <form onsubmit="event.preventDefault(); kuyruklaCoklu(this,'M7','masa-10 kalanlar');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="tek-lider-mi-alan-lider-mi" checked> <strong>Tek genel lider mi, alan-başına lider mi</strong> (senin 09-09 sorun; Carvis önerisi: bugün tek Friday, repo ŞABLON, doğum tetiği a∨b∨c) <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1">Karar-modeli 3 taban ile sunulur; ~10 dk; Friday'in ikinci koşumu öncesi netleşirse tur-2 emri buna göre yazılır.</div></label>
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="ib-81-cekirdek-yeniden-olusum" checked> <strong>İB-81 çekirdek hafıza periyodik yeniden-oluşumu + karar gözden-geçirme</strong> (hiç yapılmadı; önerilen ilk hedef tüzük 47 madde) <span class="badge badge-primary badge-sm">ÖNERİLEN</span>
+          <div class="text-sm opacity-80 mt-1">Bu seansta yalnız PERİYOT + KAPSAM hükmü (karar-modeli); koşumun kendisi ayrı seans (M3 R4/R5 ile bağlı).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="tester-ajan-a-b-c"> <strong>Tester-ajan a/b/c</strong> (Karar 90 EK)</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="ib-79-hook-tablosu-imza"> <strong>İB-79 hook tasarımı tablosu ilk 10 satır</strong> (imza)</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="q2-e2-esigi"> <strong>Q2 E2 eşiği</strong> (600k <code>[?]</code>; devir-ani.py 49/91 oturum null)</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="q4-dal-kosul-5"> <strong>Q4 "dal+koşul ≤5" şerhi</strong></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="q6-skill-kutuk-izin"> <strong>Q6 skill kütük izin kuralı</strong></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="parti-34-s2-s5"> <strong>Parti-34 S2-S5</strong> (ay-README daraltması · işçi tavanı işe göre · parti-5 README/KILAVUZ — S5 bugün büyük ölçüde KAPANDI)</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Seçimi kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M8 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M8">
+    <div class="card-body">
+      <h2 class="card-title">M8 · Push beyanı (m.9) <span class="badge badge-outline">Salih beyanı</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Jarvis origin'e 2 commit ileri (ac2dd62 İB-82 kapanış + parti-5 · e7d08d5 türev katman). Friday reposunun remote'u yok (yerel). Push yalnız senin beyanınla.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M8','push beyanı');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) push onay: şimdi 2 commit; masa hükümleri icra edilince ikinci push için yeniden sor"> <strong>(a) Şimdi push, hükümler sonrası yeniden sor</strong> <span class="badge badge-primary badge-sm">ÖNERİLEN</span></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) push seans kapanışında tek seferde"> <strong>(b) Kapanışta tek push</strong></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: bu HTML <code>.lavish/masa-10-2026-09-10.html</code> (Fable, 2026-09-10) · kanıt: <code>cc/devir/friday-2026-09-09-parti5/</code> · <code>~/friday/veri/bronz/hareket-olay.jsonl</code> · karar-modeli İB-80 koşumu 09-09 (bu oturum) · Hükümler geldiğinde defter kaydı <code>kuyruk/senaryo-defteri.md</code> "Karar 92" bloğu olarak düşer.
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, {
+    tag: 'hukum', text: kalem + ': ' + secim, element: form,
+    queueKey: kalem, data: { kalem: kalem, hukum: secim }
+  });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+function kuyruklaCoklu(form, kalem, ad) {
+  const secim = new FormData(form).getAll('secim');
+  const durum = form.querySelector('.durum');
+  const metin = secim.length ? secim.join(', ') : 'HİÇBİRİ (hepsi sonraki masaya)';
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — seçimi sohbete yaz: ' + kalem + ' ' + metin; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') bu seansta işlenecekler: ' + metin, {
+    tag: 'hukum', text: kalem + ': ' + metin, element: form,
+    queueKey: kalem, data: { kalem: kalem, secim: secim }
+  });
+  durum.textContent = 'Kuyruğa yazıldı: ' + metin + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>

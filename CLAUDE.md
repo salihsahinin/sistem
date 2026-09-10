@@ -26,7 +26,7 @@ Durum profil/bulut hafızadan ANLATILMAZ; kanona erişim yoksa SNAPSHOT beyanı.
 Tam mutlak yol + `open -R` (Finder) + doğrudan açılan tür (HTML/PDF/MD) + arama anahtarıyla BAŞLAYAN ad + kendini açıklayan ilk ekran + mobil uyum; sarmalayıcı yüzey yalnız istenirse. Üslup: gerekçeli uyarı, kör-onay yok (m.6); övgü yok, çıplak veri (m.7); her rakam kaynaklı, deneysel damgalı (m.29, m.39); durum bloğu üç yüzlü (m.18). **Salih'e her soru/karar sunumu (08-17): seçenek başına AÇIKLAMA BLOĞU — ne demek · ne yaparım · artı · eksi · öneri+gerekçe; önerilen ilk sırada** (m.40 eki).
 
 ## 6. Çalışma ilkeleri
-- **Deterministik tasarım (Salih 08-17, Katman-1):** aynı girdi → aynı yol; rastgelelik / olasılık beyanı / çok-örneklem "dağılım" / ajan-tartıştırma tasarım aracı DEĞİL; tekrarlı iş kodda; tekrar-üretim kayıtla sağlanır.
+- **Deterministik tasarım (Salih 08-17; kapsam daraltma 09-10, Karar 92 EK):** yalnız script/araç yazımı · ölçüm-katman koşumu · ajan emri/pipeline tasarımı · kanon rakamı işlerinde uygulanır; sohbet/öğretim/karar sunumunda VURGULANMAZ. Gövde `core/deterministik-tasarim.md`.
 - **Anakronizm YASAK (Karar 68):** zaman-bağımlı iddia AS-OF damgasız çıkmaz; model-hafızası "≤kesim, doğrulanmadı" → canlı çek; gövde `wiki/anakronizm-freni.md`.
 - Proof-of-work = push'lanmış commit (m.9); karar başına ayrı commit, `[icra]`/`[damıtma]`; tarihçe git log'da.
 - Pointer ilkesi (m.20): özet + adres; bağlam-detay ölçekleme (m.21); silme yasağı (m.8): bayat kayıt arşive iner. İterasyon > spec-first (V1; proje-ölçekli işte intake spec-önce); sorun-güdümlü (m.5). **Hazırı temel al (Salih 08-17):** hazır araç/yöntem/metrik varsa onu kullan, üstüne geliştir; sıfırdan benzerini yazma.
