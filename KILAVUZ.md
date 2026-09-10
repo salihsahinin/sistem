@@ -10,6 +10,23 @@
 - Her karar ayrı commit, [damıtma]/[icra] (+[ariza]/[revert], Karar 55); push YALNIZ Salih beyanıyla (m.9; eski 'otomatik push' satırı süpersede — arşiv §3).
 - **Ağır araç yükleme usulü (Salih imzası 08-17 masa KB-12; ölçüm `raporlar/2026-08/2026-08-03-model-dusumu-olcum.md`):** çoklu MCP/ToolSearch yüklemesi oturum BAŞINDA ya da AYRI oturumda; uzun oturumun geç evresinde YAPILMAZ (prompt-cache kırılması ~152K token → kota → düşüm).
 
+## Nerede ne var — hangi soruya hangi dosya (Friday parti-5 devri 09-09, yerleştirme 09-10; CLAUDE.md §7 klasör listesi, burası soru→dosya)
+
+Klasörlerde *ne* olduğu için `README.md` klasör haritasına bak (m.20: burada tekrar edilmez). Bu bölüm *hangi soruyu sorduğunda hangi dosyayı açacağını* söyler: soruyu soldan bul, ilk açılacak dosyayı sağdan al, derine inmen gerekirse o dosyanın pointer'ını izle.
+
+| Soru | İlk açılacak |
+|---|---|
+| Bugün nerede kaldık, sıradaki ilk iş ne? | `core/durum-kapsulu.md` |
+| Hangi iş açık, kim üstünde, DONE ne? | `core/pano.md` |
+| Bu kural nereden geliyor, kim karar verdi? | `core/tuzuk-v0.md` → `kuyruk/senaryo-defteri.md` |
+| Bu seansta ne teslim edildi? | `raporlar/YYYY-MM/` (ay dizini README'si) |
+| Bu ajana ne emredildi, ne cevap verdi? | `cc/gorev/YYYY-MM/` → `cc/rapor/YYYY-MM/` |
+| Bu terim ne demek? | `wiki/sozluk.md` |
+| Bu rakam nereden çıktı? | `veri/` + `tools/SCRIPTLER.md` |
+| Emekli / eski içerik nereye indi? | `arsiv/README.md` |
+
+Ayrıntı her zaman dizinin kendi `README.md`'sindedir; bu tablo yalnız kapıyı gösterir. Dosya adındaki tarih AS-OF damgasıdır (Karar 88 M4). Hiçbir şey silinmez: emekli içerik `arsiv/` altına iner ve yerinde pointer bırakır (m.8).
+
 ## Paralel seans protokolü (Salih kararı 2026-07-12 sabah; m.36 revizyonunun operasyonel devamı — deneysel damga m.29)
 - **Eski iki-chat modeli (Cowork/Windows dönemi) ARŞİVE İNDİ** (damıtma 08-29 → `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-29.md` §1); canlı düzen aşağıdaki Karar 71 satırı + wiki 4-kural.
 - **KURAL (Salih imzası 08-17 masa KB-08/09/10):** çoklu oturumun 4 kuralı `wiki/paralel-oturum-protokolu.md` — canlı-oturum kapısı · koşum-önü manifest kapısı · paylaşılan kaynak/motor freni · **`git add -A` yasak, `git add <yol>`** (H4).
