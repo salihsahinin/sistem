@@ -1,6 +1,6 @@
 # Şablon — Görev Emri
 
-*(Sözlük: bir ajana iş verilirken yazılan sözleşme. Hazırlayan: Carvis; Salih panodan tarar, veto edebilir.)*
+*(Sözlük: bir ajana iş verilirken yazılan sözleşme. Hazırlayan: Jarvis (eski ad Carvis, Karar 93); Salih panodan tarar, veto edebilir.)*
 
 - **Görev / hedef:**
 - **İzinli aksiyonlar:**

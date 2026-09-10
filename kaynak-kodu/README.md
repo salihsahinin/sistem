@@ -41,3 +41,7 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 1. `CLAUDE.md` (5 dk) → 2. `core/tuzuk-v0.md` başlıklar → 3. bir skill: `.claude/skills/seans-acilis/SKILL.md` → 4. hook'lar → 5. `tools/SCRIPTLER.md` "Beraber okuma" sırası (derece.py en kısa).
 
 | **Lavish çalışma dizini** (Karar 92 M2, 2026-09-10) | `kaynak-kodu/lavish` → `.lavish/` (gitignore; lavish-axi masa yüzeyi çalışma alanı) | Karar masası HTML burada üretilir, her masa sonunda kalıcı kopya `raporlar/masa/masa-N-karar-yuzeyi-YYYY-MM-DD.html` | HTML; Finder çift tık |
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.
+
+| Alt-ajan okuma kilidi (İB-83, 2026-09-10) | `.claude/hooks/pretool-altajan-okuma.sh` (+ `-test.sh` 9 vaka) | Alt-ajan (`agent_id` var) transkript · kapsül/pano/defter/kutu/MEMORY · kütükler · Friday · dış projeleri OKUYAMAZ; RED → `veri/bronz/altajan-okuma-olay.jsonl` | bash |

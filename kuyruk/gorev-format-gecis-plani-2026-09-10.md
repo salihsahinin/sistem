@@ -13,6 +13,12 @@ Görev = DOSYA; sohbete bırakılır, kopyalanmaz. Dosyanın türü, alıcı aja
 | **A2 · json tek başına** | `cc/gelen/devir-*.json` sohbete bırakılır; md yok | alan adları = emir; `gorev.dallar[]` lojik dizgeler; `baglam.eager[]` okuma listesi | json'u şemaya karşı doğrular (`sablon` alanı), eksik alan → DUR | ≥3 görev; şema ihlali 0; geri-dönüş `sapma` tablosu boş |
 | **A3 · python görev-fonksiyonu** | `cc/gelen/gorev_*.py`: `def gorev(ctx) -> Sonuc`; `dallar` = `if` zinciri; `done` = `assert`; `butce` = dekoratör | dosyayı ÇALIŞTIRMAZ, OKUR: kod = emir (ajan-metodolojisi §1 "görev = küçük tipli fonksiyon"); test dosyası `test_gorev_*.py` done yüklemini koşar | Salih hükmü; A2'de 3 görev temiz |
 
+## 1b. Revizyon 09-10 ~12:40 (Friday tur-2 (d) + B2 bulgusu)
+- **A0 → A1 hemen:** tur-2'de md emir + json devir birimi çifti senkron çıkmadı (json (d) maddesini kaybetti). Tek kaynak = **md emir + lojik blok**; json ondan TÜRETİLİR (`tools/devir-md2json.py`, icra borcu), elle çift yazılmaz; çelişkide md kazanır.
+- **Lojik blok alanları** (Friday'in 5 eksik alanı + kendi notu): DALLAR · DONE (çıktı başına ayrı yüklem) · YAZMA_İZNİ · YASAK · NİÇİN_ŞİMDİ · BAĞLI_DEVİR · KAPALI_GÖZ_ÖZETİ (envanter pointer'ı, desen 20 ön-koşulu) · ÖLÇEN (yapan ≠ ölçen).
+- **Geçiş ölçüsü:** emir-kaynaklı `[sapma]` sayısı / devir (Friday sayar, Jarvis doğrular); aşama atlama = arka arkaya 2 devirde 0. Sayım: tur-1 = 2, tur-2 = 1.
+- **A3 sınırı:** mekanik done `assert`, normatif done okuyan taraf; fonksiyon Jarvis'te koşar, sonucu devir birimiyle gider; `yeniden_deneme` emri yazanın bütçesinden.
+
 ## 2. Neden bu sıra
 - md → lojik: aynı dosya, tek blok eklenir; ajanın "hangi cümle bağlayıcı" sorusu kalkar (Friday tur-1 A1/A2 sınıfı çelişkiler A1'de yapısal olarak görünür olur).
 - lojik → json: lojik blok zaten json `dallar[]` alanının metnidir; md'nin geri kalanı (gerekçe) `baglam.karar_ozeti[]`'ne iner. Kayıp: anlatı; kazanç: şema doğrulaması makinede.

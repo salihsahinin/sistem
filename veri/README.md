@@ -129,3 +129,5 @@ Desen (rapor `cc/rapor-2026-08-18-2.md` S4): **SQLite = yazma deposu (silver, OL
 
 ## Karantina kütüğü (İB-72, 2026-09-03)
 `veri/karantina.jsonl` (append-only, m.8 — satır asla silinmez): 1 satır = 1 bayat-dosya tescili `{yol, tescil_tarihi, salih_beyani, neden, git_head}`; yazan/okuyan tek araç `tools/karantina.py` (`--ekle` yalnız Salih beyanıyla; tescil yetkisi Katman-1) — dosya `kuyruk/arsiv/karantina/` altına taşınır, gerçek repo-tarama noktası (`kod-orani-olcum.py`) o dizini `--denetle` ile doğrulanmış şekilde atlar.
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.

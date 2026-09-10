@@ -58,3 +58,5 @@ Tek tek 48.957 kayıt ya da 63.062 referans çizilmez (okunmaz; B-YT6: pano ≤2
 - **Ne:** `graf/obsidian-harita.md` (indeks) + `obsidian-harita-<küme>.md` (13 küme) — silver `referans` tablosundaki çözülmüş dosya-pointer kenarlarının md-link listeleri. Amaç: 3.666 backtick pointer'ın Obsidian graf görünümüne girmesi; kanon gövdeleri değişmez (m.8). Kenarlar grafikte harita-notu ÜZERİNDEN görünür (hub deseni; doğrudan A→B çizgisi ileri-dönük md-link kuralıyla zamanla gelir — KILAVUZ Obsidian-uyum satırı).
 - **Üretim:** `tools/obsidian-harita.py`, katman-hatti `obsidian-harita` adımı (graf sonrası); GITIGNORE'LU TÜREV — commit'lenmez, elle düzenlenmez, her koşumda yeniden doğar. İlk koşum: 2.812 kenar · 527 düğüm.
 - **Kanonik ağ hâlâ D2 panelleridir** (Karar 67); Obsidian grafiği gezinme yüzeyidir, kaynak değildir.
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.

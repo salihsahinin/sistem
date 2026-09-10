@@ -36,6 +36,15 @@
             "command": "bash .claude/hooks/pretool-ajan-fren.sh"
           }
         ]
+      },
+      {
+        "matcher": "Read|Grep|Glob|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/pretool-altajan-okuma.sh"
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [

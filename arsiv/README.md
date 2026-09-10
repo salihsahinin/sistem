@@ -8,3 +8,5 @@ Repo-genel arşiv kökü (dosya düzeni planı, parti 2, 2026-09-09). Alt dizinl
 - **chat-model-degisikligi/** — model-değişikliği chat arşivi (parti 1).
 
 Kural: m.8 silme yasağı — hiçbir dosya buradan silinmez, yalnız taşınır/pointer'la işaret edilir. Adres arayan pointer önce bu README'ye, sonra ilgili alt dizine iner.
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.

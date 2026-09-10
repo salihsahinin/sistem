@@ -8,6 +8,7 @@
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
 echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ==="
+echo "AD (Karar 93, 09-10): Salih'le konuşan ajan = JARVİS; tarihli dosyalardaki 'Carvis' = Jarvis (eski ad Carvis, 08-17→09-10) · sistem/repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py"
 echo "YETKİ (m.41 GK-2): Claude Code (giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."
 python3 - <<'PY' 2>/dev/null || echo "BRİF: silver okunamadı (python3 ya da veri/baglam.sqlite yok) → python3 tools/katman-hatti.py"
 import sqlite3, subprocess, re

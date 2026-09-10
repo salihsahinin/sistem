@@ -28,3 +28,5 @@
 - Öğretme akış-modu kuralına tabi: Salih akıştaysa teori ertelenir, iş bitince dönülür.
 - Müfredat güncellemesi (partisyon ekleme/çıkarma) Atlas koşumu ya da Salih emriyle; sıra değişikliği Carvis Katman-2.
 - [problem-cozme/](problem-cozme/seri-tasarimi-v1.md) — problem çözme eğitim serisi v1 (2026-09-09; 9 başlık A-I × L0-L3, AI-çağı öncelikli, §5 AI kuralı: çözümde AI kapalı, tutor/doğrulama modu; v0 arşiv-pointer; gerekçe Atlas 09-09).
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.

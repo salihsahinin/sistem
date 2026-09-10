@@ -31,3 +31,5 @@ C:\JARVIS\cc\rapor-YYYY-MM-DD-N.md (ne yaptın · ne çıktı · ne takıldı ·
 
 ## İsimlendirme
 Aynı günde birden çok görev: N artar (gorev-2026-07-13-1, -2...). Biten görev+rapor çiftleri ayda bir `cc/arsiv/`e iner (m.8 — silinmez).
+
+> **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.
