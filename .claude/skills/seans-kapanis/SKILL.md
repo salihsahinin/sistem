@@ -12,5 +12,5 @@ Kapanış = hafıza yazımıdır: sonraki seans yalnız burada yazılanı devral
 4. **Kapsül tazeleme:** `core/durum-kapsulu.md` üzerine yaz; "Şu an" ≤8 madde — taşan en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye (FIFO, silme yok). Pano kartını BİTEN'e taşı.
 5. **Desenler:** çekirdek adayı varsa geri-dönüş notunun `cekirdek_adayi` alanına; `core/desenler.md`'ye DOĞRUDAN YAZMA (Salih kabulü). Koşum sayacı +1; 10'da yeniden-oluşum tetiği kapsüle.
 6. **Boyut kapısı:** kapsül ≤4 KB/20 satır · defter ≤24 KB · kutu ≤10 KB; aşım = damıtma tetiği (teslim raporuna satır).
-7. **Kütük:** `veri/bronz/hareket-olay.jsonl` bu oturumun satırlarını taşıyor mu (hook); okunan yollar repo + `kanon/` dışına çıkmış mı — tek satır denetim: `python3 -c "import json;print(sorted({json.loads(l)['yol'] for l in open('veri/bronz/hareket-olay.jsonl') if json.loads(l)['yol']}))"`.
+7. **Kütük:** `veri/bronz/hareket-olay.jsonl` bu oturumun satırlarını taşıyor mu (hook); okunan yollar repo + `kanon/` dışına çıkmış mı — `sema` alanı olmayan satırlar (09-10 öncesi v0.1) kapsam DIŞI; tek satır denetim: `python3 -c "import json;print(sorted({json.loads(l)['yol'] for l in open('veri/bronz/hareket-olay.jsonl') if json.loads(l)['yol']}))"`.
 8. **Commit:** `git add <yol>` (asla `-A`), mesaj İngilizce `[icra] …`; push YOK. Son mesaj: teslim raporunun tam yolu + `open -R`.

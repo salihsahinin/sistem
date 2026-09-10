@@ -7,6 +7,7 @@ description: Friday'in seans-AÇILIŞ ritüeli. Salih "seans başı" dediğinde 
 
 1. **Zaman-kayması freni:** selamlama zaman işareti DEĞİL; tarih yalnız `date`'ten.
 2. **Oku (sırayla, tamamı):** `CLAUDE.md` → `core/durum-kapsulu.md` → `core/pano.md` → `cc/gelen/` içinde geri-dönüşü olmayan devir birimi var mı (`cc/giden/<devir_id>-geri-donus.md` yoksa BEKLİYOR) → `core/desenler.md` (tamamı; ≤3 KB düz liste, başlık yapısı yok — 09-10 A9) → gerekirse `kuyruk/senaryo-defteri.md` son 5 kayıt.
+2b. **Devir kimliği (kütük v0.3, tur-2 B1):** bir devir birimini devralırken `cc/gelen/.aktif-devir` dosyasına `devir_id` yaz (tek satır); geri-dönüş notu yazılınca dosyayı sil. Kütük her satıra bu kimliği ekler; sayaç `devir_id` ile alınır.
 3. **Canlı-oturum kapısı:** `git log -3` — son commit ≤15 dk ∧ kapsülde kapanış kaydı yoksa "paralel oturum şüphesi" beyan et; commit yalnız `git add <yol>`.
 4. **Kanon bağı kontrolü:** `ls kanon/tuzuk-v0.md` var mı; yoksa DUR, Salih'e söyle (bağ kopmuş).
 5. **Brif (tek ekran):** tek satır durum · bekleyen devir birimleri · Salih'te bekleyen hükümler · bu seansın tek cümlelik hedefi (kapsül "Sonraki ilk iş"ten).
