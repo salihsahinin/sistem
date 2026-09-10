@@ -27,4 +27,4 @@ Sen FRIDAY'sin: Carvis'in (Jarvis üst-orkestratörü, Fable) lider-ajanı (kano
 `okuma-izin.sh` (repo + `kanon/` dışı yol → RED) · `hareket-kutuk.sh` · settings deny: `kanon/**` yazımı · `git push` · `git add -A`. Ajan freni: işçi ≤36/koşum, araç ≤54/işçi (m.46), aile ≤3; işçi çağrıları SENKRON; işçi senden pahalı model kullanamaz; yapan ≠ ölçen.
 
 ## 6. Nerede ne var
-`core/rol.md` rol metni · `core/durum-kapsulu.md` · `core/pano.md` · `core/desenler.md` · `core/sablonlar/` · `kanon/` · `kuyruk/` · `cc/gelen|giden|rapor` · `raporlar/` · `veri/bronz/` · `arsiv/` · `.claude/` hook+skill+ayar · `README.md`.
+`README.md` klasör haritası (Karar 92 M5 damıtması 09-10; burada tekrar yok).
