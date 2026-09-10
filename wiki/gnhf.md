@@ -12,7 +12,7 @@ gnhf = `wiki/loop-engineering.md`'nin hedef-tabanlı tipiyle birebir eşleşen b
 
 ## SOP (ne zaman/nasıl kullanılır)
 **Karar 84 (2026-08-30, Salih beyanı aynen): "loop kurmamı istediğinde gnhf kullanmanı istiyorum — sen planlayıcısın, kendi kendine atılacak promptu yine sen hazırlaman saçma, planlayıcı olarak ajana devredersin (Kun Chen'in firstmate'i kullandığı gibi)."**
-- Loop yüzeyi İKİ ŞERİT (Karar 84 EK): (1) **gece/uzun/sensiz koşum → gnhf** (`gnhf --agent claude` + İB-55 koşulları otomatik: worktree ∧ yazılı `--max-iterations`/`--max-tokens` ∧ `--stop-when` zorunlu ∧ push kapalı); (2) **izlenen/uyanıkken dönen nöbet → AYRI OTURUM** (Carvis promptu derler, Salih yapıştırır — tetik Salih'te kalır). Orkestratör-aracılığıyla-gnhf üçüncü yolu RET edildi.
+- Loop yüzeyi İKİ ŞERİT (Karar 84 EK): (1) **gece/uzun/sensiz koşum → gnhf** (`gnhf --agent claude` + İB-55 koşulları otomatik: worktree ∧ yazılı `--max-iterations`/`--max-tokens` ∧ `--stop-when` zorunlu ∧ push kapalı); (2) **izlenen/uyanıkken dönen nöbet → AYRI OTURUM** (Jarvis promptu derler, Salih yapıştırır — tetik Salih'te kalır). Orkestratör-aracılığıyla-gnhf üçüncü yolu RET edildi.
 - CC-yerleşik `/loop` yalnız Salih açıkça isterse ya da iş oturum-içi gözetim gerektiriyorsa (gerekçe beyanla).
 - Jarvis-içi araç sınırı (Karar 76, E-1): gnhf **KOŞULLU** — yalnız worktree ∧ yazılı token/iterasyon bütçesi ∧ push kapalı; hiçbir otomat kanon dosyalarına (core/, CLAUDE.md, tüzük, defter) doğrudan yazamaz.
 - Ana-sıra icra formatı (`core/ajan-metodolojisi.md` §6, D2 a): gece/uzun/sensiz iş → gnhf worktree (Sonnet ajan); ikinci Fable yan-oturum yalnız Salih beyanıyla.

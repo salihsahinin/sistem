@@ -24,7 +24,7 @@ Kullanım: python3 tools/kod-envanter.py [--repo <yol>] [--n 10] [--gecikme-yok]
   --json   : stdout'a TEK JSON nesnesi (makine-okur; axi deseni — ilerleme/uyarı stderr'e). İnsan-yüzü tablo yalnız --json yokken.
   --kuru   : bronz satırı yazmaz.
 Çıkış kodu: 0 tamam · 2 git/repo yok. Uyarılar çıkışı değiştirmez.
-Deneysel m.29 (2026-08-26, Carvis). Additive-only: alan silinmez/yeniden adlandırılmaz.
+Deneysel m.29 (2026-08-26, Jarvis). Additive-only: alan silinmez/yeniden adlandırılmaz.
 """
 import argparse, importlib.util, json, os, re, shutil, statistics, subprocess, sys, time
 from datetime import datetime, timezone, timedelta

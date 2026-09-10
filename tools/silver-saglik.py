@@ -19,7 +19,7 @@ Ne yapar (STDLIB ONLY, Python ≥3.9, SQLite ≥3.25; deterministik — aynı HE
   6. --test: canary (bilinen ihlal tohumlu geçici DB → ilgili test FAIL vermeli; dbt unit-test deseni C-YT2).
 Kullanım: python3 tools/silver-saglik.py [--repo <yol>] [--kapi] [--sessiz] [--kuru] [--snapshot YYYY-MM-DD] [--test] [--json]
 Çıkış: 0 tamam (uyarı modu: ihlaller yazılır, hat düşmez — C-EK-3 "önce uyarı aşaması") · 6 = --kapi ile T-Ç error ihlali (seans-kapanis/damitma kapısı)
-       · 2 girdi/şema hatası · 7 canary FAIL. Deneysel m.29 (2026-08-22, seans-14, Carvis). Additive-only.
+       · 2 girdi/şema hatası · 7 canary FAIL. Deneysel m.29 (2026-08-22, seans-14, Jarvis). Additive-only.
 """
 import argparse, csv, glob, hashlib, importlib.util, json, os, re, shutil, sqlite3, subprocess, sys, tempfile
 from datetime import date, datetime, timezone

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """karar-borcu-tablo.py — açık karar-borcu envanterini (veri/karar-borcu.jsonl) makine-okur tabloya yükler.
 
-Grain bildirimi (world-model §2 kuralı): 1 satır = 1 AÇIK KARAR KALEMİ (Salih hükmü ya da Carvis icrası bekleyen);
+Grain bildirimi (world-model §2 kuralı): 1 satır = 1 AÇIK KARAR KALEMİ (Salih hükmü ya da Jarvis icrası bekleyen);
 kapanınca `karar` sürecine (1 satır = 1 hüküm) akar — bu tablo hükmün ÖN-DURUMUdur.
 Boyutlar: zaman (kayit_tarihi/snapshot) · dosya (kaynak pointer → baglam `dosya`/`kayit`) · katman (1/2) · anahtar (kume/tur).
 
@@ -14,7 +14,7 @@ Yaptıkları (STDLIB ONLY, deterministik):
      `v_karar_borcu_ozet` + CSV `veri/gorunum/v_karar_borcu.csv` (izlenen, küçük).
 Kullanım: python3 tools/karar-borcu-tablo.py [--repo <yol>] [--girdi veri/karar-borcu.jsonl] [--sessiz] [--kuru]
 Çıkış kodu: 0 tamam · 2 girdi/şema hatası · 3 kırık pointer var (tablo yine yazılır, kırıklar raporlanır).
-Deneysel m.29 (2026-08-16, Carvis). Additive-only: alan silinmez/yeniden adlandırılmaz.
+Deneysel m.29 (2026-08-16, Jarvis). Additive-only: alan silinmez/yeniden adlandırılmaz.
 """
 import argparse, csv, json, os, sqlite3, subprocess, sys
 from datetime import date
@@ -23,7 +23,7 @@ ZORUNLU = ["borc_id", "baslik", "kume", "tur", "katman", "karar_sahibi", "durum"
 TUR = {"Katman-1-kural", "silme-birlestirme", "yon-degisimi", "serh-damga", "kapanis-hukmu", "para-dis", "rol",
        "deger-tercihi", "olcek-pilot", "icra-borcu", "ingest-borcu", "kalibrasyon-borcu"}
 DURUM = {"İMZASIZ", "BEKLET", "Salih'te", "masaya", "kısmen-kapandı", "kapandı", "belirsiz", "icra-sırada"}
-SAHIP = {"Salih", "Carvis", "Salih+Carvis"}
+SAHIP = {"Salih", "Jarvis", "Salih+Jarvis"}
 
 
 def git_head(repo):

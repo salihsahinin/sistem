@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """atlas-derle.py — m.40b Workflow koşumunun HAM yapısal çıktısını (journal.jsonl + ajan transkriptleri) MEKANİK
-rapor dosyasına derler (Carvis yorumu YOK; sentez ayrı bölümde elle eklenir).
+rapor dosyasına derler (Jarvis yorumu YOK; sentez ayrı bölümde elle eklenir).
 
 Kural kaynağı: .claude/skills/atlas-kosum/SKILL.md (adım 5 V26 KURAL-TABANLI seçim — Salih imzası 08-17; adım 6-7
 hakem + D/K/X etiket) · core/ajan-metodolojisi.md §4 MODEL HİYERARŞİSİ (KB-02: tahmin↔gerçekleşen tablosu) ·
@@ -168,7 +168,7 @@ def derle(wf_dizin, emir, cikti, baslik, tahminler, sessiz):
     L.append(f"# {baslik}\n")
     L.append(f"*Emir: `{emir}` · Koşum: Workflow `{wf_id}` — {len(fam_keys)} aile × (tez → CoVe-Factored antitez [yalnız iddia satırları, kodla] → "
              f"V26 KURAL-TABANLI örneklem [son üçte-bir + tüm sayısal; Salih 08-17] → taraf-maskeli hakem) = {len(kunye)} işçi. "
-             f"Ham yapısal çıktıdan MEKANİK derlendi (`tools/atlas-derle.py`; Carvis yorumu yok; sentez ayrı bölüm). D birincil · K ikincil · X doğrulanamadı.*\n")
+             f"Ham yapısal çıktıdan MEKANİK derlendi (`tools/atlas-derle.py`; Jarvis yorumu yok; sentez ayrı bölüm). D birincil · K ikincil · X doğrulanamadı.*\n")
     # --- koşum künyesi tablosu (KB-02 tahmin↔gerçek)
     L.append("## Koşum künyesi — rol × model (KB-02 model hiyerarşisi: tahmin yalnız alt modeller için; üst model yalnız ölçülür)")
     L.append("| aile | rol | model | araç | asistan mesaj | çıktı-token | yeni-girdi (input+cache_cr) | cache-okuma | süre (sn) | tahmin (emir) |")
@@ -299,7 +299,7 @@ def derle(wf_dizin, emir, cikti, baslik, tahminler, sessiz):
     eksik = [f for f in fam_keys if "hakem" not in aileler[f]]
     L.append(f"- Done-yüklemi (∀ aile: tez∧antitez∧V26∧hakem): {'SAĞLANDI' if not eksik else 'SAĞLANMADI — eksik hakem: ' + ','.join(eksik)}")
     L.extend(fam_L)
-    L.append("\n---\n\n## Sentez (Carvis yorumu — mekanik derlemenin DIŞINDA; elle eklenir)\n\n_(bekliyor)_\n")
+    L.append("\n---\n\n## Sentez (Jarvis yorumu — mekanik derlemenin DIŞINDA; elle eklenir)\n\n_(bekliyor)_\n")
     metin = "\n".join(L) + "\n"
     os.makedirs(os.path.dirname(cikti) or ".", exist_ok=True)
     with open(cikti, "w", encoding="utf-8") as f:

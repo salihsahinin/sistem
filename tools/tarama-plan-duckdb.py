@@ -12,7 +12,7 @@ Sınıf etiketleri: FİLTRE-İTME (Filters PARQUET_SCAN içinde) · FİLTRE-AYRI
 dosya kolonu) · TAM-TARAMA (filtre yok) · GROUP-HASH · JOIN-HASH · TOP-N/ORDER. İhlal: `noktasal` türde FİLTRE-AYRIK ∨ TAM-TARAMA ∨ ¬KOLON-BUDAMA.
 Çıktı: append-only veri/tarama-plan-duckdb.jsonl (grain: 1 satır = sorgu × koşum) + veri/gorunum/v_tarama_plan_duckdb.csv (son koşum) + stdout tablo.
 Kullanım: .venv/bin/python tools/tarama-plan-duckdb.py [--repo <yol>] [--parquet veri/parquet] [--sorgu NP1,A2] [--sert] [--sessiz] [--kuru]
-Çıkış: 0 tamam (uyarılar stderr) · 2 parquet yok/bilinmeyen sorgu · 3 ihlal YALNIZ --sert · 4 duckdb yok. Deneysel m.29 (2026-08-29, Carvis, yan icra P3).
+Çıkış: 0 tamam (uyarılar stderr) · 2 parquet yok/bilinmeyen sorgu · 3 ihlal YALNIZ --sert · 4 duckdb yok. Deneysel m.29 (2026-08-29, Jarvis, yan icra P3).
 """
 import argparse, csv, json, os, subprocess, sys, time
 from datetime import datetime, timezone, timedelta

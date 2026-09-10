@@ -17,7 +17,7 @@ Sıcak bağlam (CLAUDE.md, kapsül, pano) sınırlı ve pahalıdır; her oturum 
 
 ## Gotchas
 - **Pointer'sız kısaltma = dönüş yolu kaybı** — özet kısalırken adres düşerse detay fiilen kaybolur.
-- **Bayat pointer:** dosya taşınır/ad değişirse zincir kırılır → isim disiplini sözleşmesi (V24: Salih ad değiştirmez, değiştirirse bildirir; Carvis zinciri onarır).
+- **Bayat pointer:** dosya taşınır/ad değişirse zincir kırılır → isim disiplini sözleşmesi (V24: Salih ad değiştirmez, değiştirirse bildirir; Jarvis zinciri onarır).
 - **Özetten karar verme eğilimi:** pointer izlemenin maliyetinden kaçınmak yanlış karara mal olur — kural "izle, oku, karar ver"; bu adım atlanmaz.
 - **Mount/senkron tuzağı (07-12 canlı vaka):** aynı dosyanın iki görünümü (Windows/sandbox) farklı olabilir — yazım sonrası doğrulama commit'ten önce yapılır.
 

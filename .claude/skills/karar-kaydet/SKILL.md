@@ -11,7 +11,7 @@ Kural kaynağı: m.37 kayıt şartı + m.10/V5 commit disiplini + ingest şemas�
 ## Adımlar
 1. **Blok yaz** (`kuyruk/senaryo-defteri.md` sonuna, tarih-başlıklı):
    - `[tip: karar | kaynak: <yüzey+hat> | tarih: | hedef: defter | sema: v2]` zarfı
-   - **Durum** (hangi bağlamda doğdu) · **Akıl-yürütme** (seçenekler + gerekçe; m.37 ölçek-eşiği üstündeyse model kıyası) · **Hüküm** (ne kararlaştırıldı) · **Yetki** (Katman-1 Salih-imzalı / Katman-2 Carvis, veto-açık) · **Geri-açma koşulu** · `gecerli-baslangic:`.
+   - **Durum** (hangi bağlamda doğdu) · **Akıl-yürütme** (seçenekler + gerekçe; m.37 ölçek-eşiği üstündeyse model kıyası) · **Hüküm** (ne kararlaştırıldı) · **Yetki** (Katman-1 Salih-imzalı / Katman-2 Jarvis, veto-açık) · **Geri-açma koşulu** · `gecerli-baslangic:`.
 2. **Çelişki denetimi:** karar eski bir kaydı geçersiz kılıyorsa eskiye `gecerli-bitis: <bu kararın tarihi>` damgası (SİLME yok); Katman-1 sınıfı çelişkiyse önce m.16 raporu.
 3. **Boyut kontrolü:** defter FLAG'deyse (48KB) kaydı yine yaz ama teslim raporuna "boyut-tetiği: defter" satırı düş.
 4. **Commit:** karar başına AYRI commit, İngilizce mesaj, `[icra]`/`[damıtma]` etiketi. Push yetki durumuna tabidir (serbest beyanı yoksa sor).

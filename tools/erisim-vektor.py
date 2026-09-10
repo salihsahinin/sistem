@@ -17,7 +17,7 @@ Kullanım: .venv/bin/python tools/erisim-vektor.py --gom [--model e5,bge] [--cih
           .venv/bin/python tools/erisim-vektor.py --eval [--model e5,bge]                                       (100 soru × yöntem)
           .venv/bin/python tools/erisim-vektor.py --determinizm [--model e5] [--sinir 1000]                     (iki koşum bit-eşitliği + sıra eşitliği)
           .venv/bin/python tools/erisim-vektor.py --probe 256                                                     (hız + cihaz bit-eşitliği ön-ölçümü; yazmaz)
-Çıkış: 0 · 2 girdi yok · 4 bağımlılık yok. Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu P2). Kayıt: tools/SCRIPTLER.md.
+Çıkış: 0 · 2 girdi yok · 4 bağımlılık yok. Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu P2). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, hashlib, importlib.util, json, math, os, random, sqlite3, subprocess, sys, time
 from datetime import datetime, timezone, timedelta

@@ -12,7 +12,7 @@ YÜZEY ATAMA KURALI (deterministik, deneysel m.29 [?]):
   ask_oran = 0 ∧ (oturum < 3 ∨ icra_adim < 5)   → BELİRSİZ (veri az ya da icra yok)
   ajan sınıfları                                 → ZATEN-HEADLESS (Agent alt-koşum ∨ Workflow), yüzey = fiilî yüzey
 ÇIKTI: veri/gorunum/v_headless_esleme.csv (sınıf × kaynak × n × oturum × ask_oran × icra_adim × yüzey-önerisi) + stdout özet.
-Kullanım: python3 tools/headless-esleme.py [--repo <yol>] [--pencere 12] [--sessiz]   Çıkış: 0 · 2 girdi yok. Deneysel m.29 (2026-08-29, Carvis).
+Kullanım: python3 tools/headless-esleme.py [--repo <yol>] [--pencere 12] [--sessiz]   Çıkış: 0 · 2 girdi yok. Deneysel m.29 (2026-08-29, Jarvis).
 """
 import argparse, collections, csv, os, sqlite3, sys
 

@@ -3,7 +3,7 @@
 {"id":"p2","type":"pozitif","input":"bitiriyorum, kapat","expect":"tam ritüel"},
 {"id":"p3","type":"pozitif","input":"seansı kapat","expect":"tam ritüel"},
 {"id":"p4","type":"pozitif","input":"PortRisk seansında: seans bitimi","expect":"ritüel yalnız PortRisk şeridinin dosya/satırlarında; pull-önce-push"},
-{"id":"p5","type":"pozitif","input":"(Carvis bağlam şişmesi görür)","expect":"kapanışı kendiliğinden önerir (V11), emri beklemeden kapatmaz"},
+{"id":"p5","type":"pozitif","input":"(Jarvis bağlam şişmesi görür)","expect":"kapanışı kendiliğinden önerir (V11), emri beklemeden kapatmaz"},
 {"id":"p6","type":"pozitif","input":"yazamayan yüzeyde: bitiriyorum","expect":"HAM damgalı kapanış notu + 'gün HENÜZ SAYILMADI' beyanı"},
 {"id":"n1","type":"negatif","input":"seans başı","expect":"tetiklenmez — seans-acilis"},
 {"id":"n2","type":"negatif","input":"neredeyiz, toparla","expect":"tetiklenmez — hizalama"},

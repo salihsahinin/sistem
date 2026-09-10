@@ -1,6 +1,6 @@
 # AI2AI Rapor Formatı (L2 Register)
 
-**Üst blok:** Ajandan-ajana (işçi→lider→Carvis) rapor ve emirlerin biçim standardını TEK yerde toplayan derleyici sayfa. Durum: **GÜNCEL** · yazım: 2026-08-21 (Karar 54e — Salih şartı: "elimizde ai2ai formatın nasıl olduğunu anlatan bir dökümantasyon bulunmalı"; kutu kalemi RET/kapandı çünkü kurallar zaten kanondaydı — bu sayfa YENİ KURAL KOYMAZ, dağınık kuralları adresler). Kaynaklar: tüzük m.38 ek fıkra (rapor-dili paketi md.19-25) · m.46 (koşum-emri bütünlük paketi) · `core/sablonlar/gorev-{emri,raporu,fonksiyonu}.md` · `core/ingest-semasi.md` §5 · [[uc-register]]. Güven: **yüksek** (tümü imzalı kanon; sayfa yalnız derler).
+**Üst blok:** Ajandan-ajana (işçi→lider→Jarvis) rapor ve emirlerin biçim standardını TEK yerde toplayan derleyici sayfa. Durum: **GÜNCEL** · yazım: 2026-08-21 (Karar 54e — Salih şartı: "elimizde ai2ai formatın nasıl olduğunu anlatan bir dökümantasyon bulunmalı"; kutu kalemi RET/kapandı çünkü kurallar zaten kanondaydı — bu sayfa YENİ KURAL KOYMAZ, dağınık kuralları adresler). Kaynaklar: tüzük m.38 ek fıkra (rapor-dili paketi md.19-25) · m.46 (koşum-emri bütünlük paketi) · `core/sablonlar/gorev-{emri,raporu,fonksiyonu}.md` · `core/ingest-semasi.md` §5 · [[uc-register]]. Güven: **yüksek** (tümü imzalı kanon; sayfa yalnız derler).
 
 ## Çekirdek
 AI2AI = üç register'ın L2'si ([[uc-register]]): hedef okuyucu MODEL olduğundan biçim süsleme değil YAPI taşır — önerme-yapılı, m.38 bağlaç setiyle (∧ ∨ ¬ → ↔). Altı bileşen:

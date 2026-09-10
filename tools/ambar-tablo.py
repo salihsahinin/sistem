@@ -150,7 +150,7 @@ def main():
     CREATE VIEW IF NOT EXISTS v_amb_acilis_brifi AS
       SELECT (SELECT kod_sha FROM amb_olgu_kosum LIMIT 1) AS kod_sha,
              (SELECT COUNT(*) FROM amb_olgu_karar_borcu WHERE karar_sahibi LIKE 'Salih%' AND durum NOT IN ('kapandı')) AS acik_salih_karari,
-             (SELECT COUNT(*) FROM amb_olgu_karar_borcu WHERE karar_sahibi='Carvis' AND durum!='kapandı') AS acik_icra_borcu,
+             (SELECT COUNT(*) FROM amb_olgu_karar_borcu WHERE karar_sahibi='Jarvis' AND durum!='kapandı') AS acik_icra_borcu,
              (SELECT metin_kisa FROM amb_olgu_prompt ORDER BY valid_time DESC LIMIT 1) AS son_prompt,
              (SELECT valid_time FROM amb_olgu_prompt ORDER BY valid_time DESC LIMIT 1) AS son_prompt_zamani,
              (SELECT COUNT(*) FROM amb_olgu_prompt WHERE date(valid_time)=date('now')) AS bugun_prompt,

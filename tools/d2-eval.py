@@ -12,7 +12,7 @@ STDLIB ONLY + `d2` ikilisi (derleme). LLM çağırmaz; işçi çıktıları dosy
 Kütük: veri/d2-eval.jsonl (append-only; 1 satır = 1 ölçüm olgusu {kol, kosum, deger…}) · gold veri/gorunum/v_d2_eval.csv (özet).
 Kullanım: python3 tools/d2-eval.py --uretim cc/d2-eval/uretim-1.d2 [--kosum u1] · --sorular · --okuma cc/d2-eval/okuma-1.json --kol b1 · --sql cc/d2-eval/sql-1.json
           · --kaydet '{"kol":"c","a":"uretim-1","b":"uretim-2","tercih":"A","hakem":"sonnet"}' · --ozet
-Çıkış: 0 · 2 girdi yok · 3 d2 derleme hatası (uretim kolunda; kütüğe yine yazılır). Deneysel m.29 (2026-08-29, Carvis, yan icra P4).
+Çıkış: 0 · 2 girdi yok · 3 d2 derleme hatası (uretim kolunda; kütüğe yine yazılır). Deneysel m.29 (2026-08-29, Jarvis, yan icra P4).
 """
 import argparse, csv, json, os, re, sqlite3, subprocess, sys, tempfile
 from datetime import datetime, timezone, timedelta

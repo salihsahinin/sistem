@@ -11,7 +11,7 @@ Kullanım: python3 tools/denetci-kalibrasyon.py --uret            → cc/denetci
           python3 tools/denetci-kalibrasyon.py --puanla cc/denetci-kalibrasyon/kosum-1.json --kosum k1   (işçi hükümleri {"P1":"PASS",...})
           python3 tools/denetci-kalibrasyon.py --ozet             → veri/gorunum/v_denetci_kalibrasyon.csv
 Kütük: veri/denetci-kalibrasyon.jsonl (append-only; 1 satır = 1 koşum × 7 paket: yakalama, yanlış_alarm, paket-başı hüküm).
-Deneysel m.29 (2026-08-29, Carvis, yan icra P5). Kayıt: tools/SCRIPTLER.md.
+Deneysel m.29 (2026-08-29, Jarvis, yan icra P5). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, json, os, subprocess, sys
 from datetime import datetime, timezone, timedelta

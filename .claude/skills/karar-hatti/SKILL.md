@@ -6,7 +6,7 @@ metadata: { owner: carvis, version: "0.1.0-deneysel-m29" }
 
 # karar-hatti — orkestratör koşum talimatı
 
-Kanon zinciri: m.16 · m.37 · m.40 (a-b-c + v0.2) · m.31 (katmanlar) · m.44 (orkestrasyon Carvis'te — bu skill üst-orkestratör şapkasının karar-işleme hattı). İlke: orkestratör İNCE kalır — iş çocuklarda, sıra ve kapılar burada (decomposition kalitesi asıl kaldıraç).
+Kanon zinciri: m.16 · m.37 · m.40 (a-b-c + v0.2) · m.31 (katmanlar) · m.44 (orkestrasyon Jarvis'te — bu skill üst-orkestratör şapkasının karar-işleme hattı). İlke: orkestratör İNCE kalır — iş çocuklarda, sıra ve kapılar burada (decomposition kalitesi asıl kaldıraç).
 
 ## Adımlar
 

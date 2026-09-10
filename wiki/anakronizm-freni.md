@@ -5,7 +5,7 @@
 
 ## Çekirdek
 
-**Kanonik örnek (08-26, üç vaka tek zincirde):** 07-30 raporu "Rust'ın resmî SDK'sı yok" [31 Temmuz 2026 itibarıyla doğru] → 08-26'da damgasız "Rust hiçbir sınıfta" diye taşındı (ESKİ KAYIT) → yeniden çekilince MCP'de Tier-1 çıktı. Aynı gün Carvis 2025-04 tarihli Multi-SWE-bench sayısını "Go'da düşük" diye tarihsiz söyledi (KONUŞMA) ve eğitim-hafızasından SWE-bench skoru anlattı (MODEL HAFIZASI). Tek düzeltme her üçünü kapatır: **iddia + AS-OF + kaynak tarihi**, ve zaman-bağımlı sınıfta cevaptan ÖNCE canlı çekim.
+**Kanonik örnek (08-26, üç vaka tek zincirde):** 07-30 raporu "Rust'ın resmî SDK'sı yok" [31 Temmuz 2026 itibarıyla doğru] → 08-26'da damgasız "Rust hiçbir sınıfta" diye taşındı (ESKİ KAYIT) → yeniden çekilince MCP'de Tier-1 çıktı. Aynı gün Jarvis 2025-04 tarihli Multi-SWE-bench sayısını "Go'da düşük" diye tarihsiz söyledi (KONUŞMA) ve eğitim-hafızasından SWE-bench skoru anlattı (MODEL HAFIZASI). Tek düzeltme her üçünü kapatır: **iddia + AS-OF + kaynak tarihi**, ve zaman-bağımlı sınıfta cevaptan ÖNCE canlı çekim.
 
 **Mekanizma seti (ÖNERİ; kanon statüsü KB-66):**
 
@@ -39,7 +39,7 @@
 ## Süpersede zinciri
 - seans-acilis §0 "zaman-kayması freni" (08-15: selamlama ≠ zaman işareti) → **genişledi [2026-08-26]:** her zaman-bağımlı iddia için damga + kesim tablosu; §0 aynen kalır.
 - halüsinasyon paketi v2 "tazelik" bayrağı (+1) → **tamamlandı [2026-08-26]:** bayrak derecelendirir, bu sayfa mekanizmayı verir.
-- `cc/gorev/2026-08/gorev-2026-08-26-2.md` KANON bloğu "Carvis kesimi Ocak 2026" → **düzeltildi [2026-08-26]:** doğru ama modelsizdi; model-başına tablo `veri/model-kesim.jsonl`.
+- `cc/gorev/2026-08/gorev-2026-08-26-2.md` KANON bloğu "Jarvis kesimi Ocak 2026" → **düzeltildi [2026-08-26]:** doğru ama modelsizdi; model-başına tablo `veri/model-kesim.jsonl`.
 
 ## Muafiyet — tarihli dosya (Karar 88 M4, Salih 2026-09-09)
 `raporlar/` ∨ `cc/` altında adında `YYYY-MM-DD` taşıyan dosya D1/D2'den MUAF (`tarihli_muaf()`, `tools/anakronizm-denetim.py`). Gerekçe: rapor o günün kaydıdır, damga zaten dosya adında — içerik bir daha AS-OF taşımak zorunda değil; okuyan dosyanın adındaki tarihi AS-OF sayar. `core/` ve `wiki/` bu muafiyetten HARİÇ (kanon dosyaları kalıcıdır, zaman-bağımlı iddia her koşulda damga ister). `--muafiyet-yok` eski davranışı geri verir.

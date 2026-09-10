@@ -20,7 +20,7 @@ Bitemporal (M4 / KB-61): gecerli_bas / gecerli_bitis = OLAY zamanı (valid) · k
 Çıktı: silver `bag` (+ `v_bag`, `v_bag_ozet`) · gold veri/gorunum/v_bag.csv, v_bag_ozet.csv · kütük veri/bag-olay.jsonl.
 Graf: tools/pointer-graf.py `bag` satırlarını tablo→tablo kenarı (tip etiketli) olarak panoya ve kenar listesine taşır.
 Kullanım: python3 tools/bag-tablo.py [--repo <yol>] [--sessiz] [--kuru]   (hat adımı `bag`: saglik SONRASI, erisim ÖNCESİ)
-Çıkış: 0 tamam · 2 DB yok/gerekli tablo yok. Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu). Additive-only.
+Çıkış: 0 tamam · 2 DB yok/gerekli tablo yok. Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu). Additive-only.
 """
 import argparse, csv, hashlib, json, os, re, sqlite3, subprocess, sys
 from datetime import datetime, timezone, timedelta

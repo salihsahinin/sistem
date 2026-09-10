@@ -10,7 +10,7 @@ Pipeline, değişikliği hedefe götürmeden önce bulgularını ÜÇ sınıfa a
 - **insana eskalasyon:** davranış/sözleşme KARARI gerektiren bulguyu düzeltmez, insana yükseltir;
 - **bilinçli no-op:** önerinin uygulanmamasını kayıtla geçer.
 
-**Kanonik örnek (08-12 L8, wf-deneme koşumu, no-mistakes v1.48.0):** tek koşumda 4 review bulgusu → pyc/test kalıntıları **auto-fix** · `carpim([])` boş-liste sözleşmesi **İNSANA ESKALE** (dönüş değeri bir davranış kararıdır; hüküm koşumda verildi: `→ None`) · `math.prod` önerisi **bilinçli no-op**. Aynı koşumda hem safe-fix hem eskalasyon sınıfının görülmesi Windows'ta iki koşum gerektirmişti — platform-bağımsız desen doğrulandı. Bu ayrım, Jarvis'in Katman-1/Katman-2 sınırının (mekanik iş Carvis'te, davranış kararı Salih'te — m.16 ailesi) araç-düzeyi karşılığıdır.
+**Kanonik örnek (08-12 L8, wf-deneme koşumu, no-mistakes v1.48.0):** tek koşumda 4 review bulgusu → pyc/test kalıntıları **auto-fix** · `carpim([])` boş-liste sözleşmesi **İNSANA ESKALE** (dönüş değeri bir davranış kararıdır; hüküm koşumda verildi: `→ None`) · `math.prod` önerisi **bilinçli no-op**. Aynı koşumda hem safe-fix hem eskalasyon sınıfının görülmesi Windows'ta iki koşum gerektirmişti — platform-bağımsız desen doğrulandı. Bu ayrım, Jarvis'in Katman-1/Katman-2 sınırının (mekanik iş Jarvis'te, davranış kararı Salih'te — m.16 ailesi) araç-düzeyi karşılığıdır.
 
 ## SOP
 

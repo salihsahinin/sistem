@@ -151,7 +151,7 @@ kbd{{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px
 <section class="slide">
 <div class="kicker">ajan koşumları</div>
 <h2>Araştırma ajanları: m.40b çift-atlas zinciri</h2>
-<p>Her araştırma emri <b>tez → CoVe-Factored antitez</b> (yalnız iddia satırları, gerekçesiz — çıpalama freni) <b>→ V26 örneklem-denetimi</b> (kaynağa inip doğrulama) <b>→ taraf-maskeli hakem</b> (SAĞLAM/DARALDI/DÜŞTÜ/ÇELİŞKİLİ) zincirinden geçer; işçi çıktıları JSON-şemalı, rapor mekanik derlenir, Carvis sentezi ayrı etiketli.</p>
+<p>Her araştırma emri <b>tez → CoVe-Factored antitez</b> (yalnız iddia satırları, gerekçesiz — çıpalama freni) <b>→ V26 örneklem-denetimi</b> (kaynağa inip doğrulama) <b>→ taraf-maskeli hakem</b> (SAĞLAM/DARALDI/DÜŞTÜ/ÇELİŞKİLİ) zincirinden geçer; işçi çıktıları JSON-şemalı, rapor mekanik derlenir, Jarvis sentezi ayrı etiketli.</p>
 <div class="grid">
 <div class="card"><h3>Bu Mac'te ölçülen (08-12 → bugün)</h3><p>{wf_txt}. Örnek son koşum: 3 aile × 4 işçi = 12 ajan · 518.035 token · 36 tez iddiası + 36 itiraz · hayatta-kalma 5/30/1/0 · kaynak-denetimi 3/3.</p></div>
 <div class="card"><h3>Öncesi (Windows/Cowork dönemi, 07-10 → 08-05)</h3><p>İlk CC köprü koşumu 07-14: 78 ajan · 2,4M token (defter kaydı). Dönem toplamı yerel çıktı dosyaları taşınmadığı için <b>ölçülmedi [?]</b>; kanonda anılan benzersiz workflow kimliği: 19.</p></div>

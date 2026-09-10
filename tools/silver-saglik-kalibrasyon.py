@@ -5,7 +5,7 @@ Ne yapar: koşum başına T-B (SUPERSEDED · MISLEADING · YETIM · KAPANDI) ada
 penceresinde (varsayılan 10) medyan / p90 / maks hesaplar; YETİM eşiği ÖNERİSİ = son-pencere medyanı × 1,5 (uç değil, uyarı bandı; m.29 — karar Salih).
 Çıktı: veri/gorunum/v_silver_saglik_kalibrasyon.csv (koşum × test) + stdout özet + veri/silver-saglik-kalibrasyon.jsonl (append-only özet).
 Kullanım: python3 tools/silver-saglik-kalibrasyon.py [--repo <yol>] [--pencere 10]   Çıkış: 0 · 2 kütük yok / koşum <10.
-Deneysel m.29 (2026-08-29, Carvis, yan icra P9). Kayıt: tools/SCRIPTLER.md.
+Deneysel m.29 (2026-08-29, Jarvis, yan icra P9). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, json, os, subprocess, sys
 from datetime import datetime, timezone, timedelta

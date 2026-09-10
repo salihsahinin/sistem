@@ -1,11 +1,11 @@
 > **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/LLM Wiki Starter/00 LLM Wiki — original idea (Karpathy).md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8).
 
 > **Kaynak:** Andrej Karpathy, "LLM Wiki" gist, Nisan 2026 — https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
-> Bu, fikrin ORİJİNAL dosyasıdır; şemayı sıfırdan yeniden kurmak istersen taze bir ajana yapıştırılır. **Türkçeleştirme (Salih emri 2026-08-17, açık-kaynak ilkesi):** aşağıda önce Türkçe özet (Carvis, kendi cümleleriyle — üçüncü-şahıs metin, birebir çeviri yerine özet), altında Karpathy'nin İngilizce aslı birebir korunur (kaynak metin, değiştirilmez).
+> Bu, fikrin ORİJİNAL dosyasıdır; şemayı sıfırdan yeniden kurmak istersen taze bir ajana yapıştırılır. **Türkçeleştirme (Salih emri 2026-08-17, açık-kaynak ilkesi):** aşağıda önce Türkçe özet (Jarvis, kendi cümleleriyle — üçüncü-şahıs metin, birebir çeviri yerine özet), altında Karpathy'nin İngilizce aslı birebir korunur (kaynak metin, değiştirilmez).
 
 ---
 
-## Türkçe özet (Carvis, 2026-08-17)
+## Türkçe özet (Jarvis, 2026-08-17)
 
 **Ana fikir.** Çoğu insanın LLM+doküman deneyimi RAG'dir: dosyalar yüklenir, LLM soru anında ilgili parçaları bulur, cevap üretir. Çalışır ama her soruda bilgi sıfırdan yeniden keşfedilir; birikim yoktur. Karpathy'nin önerisi farklı: LLM, ham kaynaklarla sen arasında duran **kalıcı, birbirine bağlı bir markdown wiki'sini artımlı olarak inşa eder ve bakımını yapar.** Yeni kaynak geldiğinde yalnız indekslemez — okur, özünü çıkarır, mevcut wiki'ye entegre eder: varlık sayfalarını günceller, konu özetlerini yeniler, yeni verinin eski iddiayla çeliştiği yeri not eder. Bilgi bir kez derlenir, sonra *güncel tutulur*. Wiki **kalıcı ve birikimli bir artefakttır**; çapraz referanslar hazırdır, çelişkiler işaretlidir. Wiki'yi sen yazmazsın — LLM yazar; sen kaynak seçer, keşfeder, doğru soruyu sorarsın. Pratikte: bir yanda LLM ajanı, öbür yanda Obsidian. **Obsidian = IDE, LLM = programcı, wiki = kod tabanı.** Uygulama alanları: kişisel takip, uzun araştırma, kitap okuma (fan wiki'si gibi), ekip wiki'si, rakip analizi, ders notları…
 

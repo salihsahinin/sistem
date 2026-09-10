@@ -1,9 +1,9 @@
 ---
 name: seans-acilis
-description: Carvis'in JARVIS seans-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "seansı devral", "seans aç", "oturuma başlayalım" dediğinde HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Selamlama zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR; durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("seans bitimi" → seans-kapanis), JARVIS-dışı sohbette, STAJ oturumlarında ("seans başı staj" — ayrım klasörle; staj kendi CLAUDE.md'sine oturur).
+description: Jarvis'in (ajan; eski ad Carvis) depo seans-AÇILIŞ ritüelini koşar. Salih "seans başı" (standart tetik), "seansı devral", "seans aç", "oturuma başlayalım" dediğinde HER YÜZEYDE çalışır — önsöz/soru eşlik etse bile önce ritüel. Selamlama zaman işareti DEĞİLDİR ve tek başına tetik DEĞİLDİR; durum yalnız JARVIS kanonundan okunur (profil/bulut hafızadan ANLATILMAZ). KULLANILMAZ; oturum-ortası selamlaşmada, kapanışta ("seans bitimi" → seans-kapanis), JARVIS-dışı sohbette, STAJ oturumlarında ("seans başı staj" — ayrım klasörle; staj kendi CLAUDE.md'sine oturur).
 ---
 
-# Seans başı — seans açılışı (Carvis, v0.5-deneysel-m29 — ad: gunaydin-vardiya → seans-acilis [Salih Katman-1 08-15]; v0.4: emekli-tetik temizliği 08-15; v0.3: Mac yolu + staj kapısı 08-12)
+# Seans başı — seans açılışı (Jarvis, v0.5-deneysel-m29 — ad: gunaydin-vardiya → seans-acilis [Salih Katman-1 08-15]; v0.4: emekli-tetik temizliği 08-15; v0.3: Mac yolu + staj kapısı 08-12)
 
 Selamlaşma sohbet değil SEANS DEVRİDİR. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi TAŞIMAZ — çelişkide kanon kazanır.
 

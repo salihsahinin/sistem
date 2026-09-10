@@ -27,7 +27,7 @@ append-only. Gold: veri/gorunum/v_bayat_aday.csv (D3 kuyruğu, üzerine yazılı
 Kullanım: python3 tools/anakronizm-denetim.py [--repo <yol>] [--dosya <yol> ...] [--kapsam wiki,raporlar,cc,core] [--esik-gun 90]
                                               [--bugun 2026-08-26] [--json] [--kuru] [--sessiz] [--kalip-listesi]
 Varsayılan kapsam: wiki/*.md + core/*.md + son 30 günün raporlar/**/*.md ve cc/rapor/**/*.md (git-izlenen). Çıkış: 0 temiz · 3 D1/D2 ihlali var
-(D3 yalnız kuyruk) · 2 repo yok. Deneysel m.29 (2026-08-26, Carvis). Additive-only.
+(D3 yalnız kuyruk) · 2 repo yok. Deneysel m.29 (2026-08-26, Jarvis). Additive-only.
 """
 import argparse, json, os, re, subprocess, sys
 from datetime import date, datetime, timezone, timedelta

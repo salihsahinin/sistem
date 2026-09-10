@@ -1,4 +1,4 @@
-> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Carvis Sozlugu.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim YOK, metin olduğu gibi.
+> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Jarvis Sozlugu.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim YOK, metin olduğu gibi.
 
 # Carvis Sözlüğü
 
@@ -17,7 +17,7 @@ Tek dosya, üzerine yazılır, her zaman "şu an"ı gösterir: aktif konu, son k
 
 ### Görev emri
 *(paket adı: brief)*
-Bir ajana iş verilirken yazılan sözleşme: hedef, izinli aksiyonlar, yasaklar, okunacak dosyalar, yazılabilir yüzeyler, durma koşulu, teslim formatı. Ajanın yetki aşımı ve saçmalama alanını daraltır. Hazırlayan: Carvis (Katman 2); Salih panodan tarar, veto edebilir.
+Bir ajana iş verilirken yazılan sözleşme: hedef, izinli aksiyonlar, yasaklar, okunacak dosyalar, yazılabilir yüzeyler, durma koşulu, teslim formatı. Ajanın yetki aşımı ve saçmalama alanını daraltır. Hazırlayan: Jarvis (Katman 2); Salih panodan tarar, veto edebilir.
 
 ### Görev raporu
 *(paket adı: report)*
@@ -37,7 +37,7 @@ Kart, işin adresidir, kendisi değil: durum, dosya yolu, sorumlu, teslim beklen
 
 ### Şirket tüzüğü ⟨emekli ad 08-17 → Jarvis tüzüğü⟩
 *(paket adı: kanon)*
-Yalnız patron (Salih) imzasıyla değişen kurallar. Her madde kaynak + gerekçe + geri-açma koşulu taşır. Ajanlar ve Carvis dokunamaz; yalnız öneri sunar. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
+Yalnız patron (Salih) imzasıyla değişen kurallar. Her madde kaynak + gerekçe + geri-açma koşulu taşır. Ajanlar ve Jarvis dokunamaz; yalnız öneri sunar. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 
 ### Öneri dosyası
 *(paket adı: taslak)*
@@ -79,12 +79,12 @@ Her ok bir emek ve sınama adımıdır. Aşama atlanmaz.
 ## Roller
 
 - **Patron (Salih):** Katman 1 kararlar — tüzük değişikliği, silme/birleştirme, dışarı çıkan iş, para, değer tercihi. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
-- **CEO (Carvis):** Katman 2 — görev emirlerini yazar, kuyruk ve panoyu yönetir, kaydeder; Salih log'dan tarar, veto = revert. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
+- **CEO (Jarvis):** Katman 2 — görev emirlerini yazar, kuyruk ve panoyu yönetir, kaydeder; Salih log'dan tarar, veto = revert. ⟨emekli sözlük 08-17: şirket→Jarvis · CEO→köle · patron→tek karar verici · vardiya→seans⟩
 - **Ajanlar:** Görev emri sınırları içinde çalışır, rapor yazar; tüzüğe ve kanona dokunamaz.
 
 ## Üslup kuralı (2026-07-10, Salih talimatı)
 
-Carvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçesini belirtir. Bu üslup kuralıdır, içerik kuralı değildir: kör-onay-yok ilkesi aynen yürürlüktedir — dürüst itiraz gerektiğinde yine yapılır, tavsiye formunda ve gerekçeli sunulur.
+Jarvis, Salih'i yönlendirirken kibarca tavsiye eder ve her tavsiyenin gerekçesini belirtir. Bu üslup kuralıdır, içerik kuralı değildir: kör-onay-yok ilkesi aynen yürürlüktedir — dürüst itiraz gerektiğinde yine yapılır, tavsiye formunda ve gerekçeli sunulur.
 
 ## Fikir kutusu — ilk kayıt
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """loop-dedektor.py — KURAL-TABANLI LOOP DEDEKTÖRÜ (İB-60; EK-6 masası F4 → Karar 78 / m.43 2. rev; Karar 65 determinizm). STDLIB ONLY, LLM YOK.
 
-Soru: Carvis'in araç-çağrı dizileri (silver `hareket`) içinde OTURUMLAR ARASI tekrar eden GÖREV dizileri var mı? m.43: "aynı adım kümesi
+Soru: Jarvis'in araç-çağrı dizileri (silver `hareket`) içinde OTURUMLAR ARASI tekrar eden GÖREV dizileri var mı? m.43: "aynı adım kümesi
 oturumlar arası ≥N kez tekrar ettiğinde otomatik skill ADAYI olur" — 2. rev (Karar 78, Salih 08-29): tekrar-BİRİMİ = GÖREV, eşik N=3,
 pencere son 90 gün (m.43 (a) "sayaç son-90-gün pencereli"). Bu araç yalnız SAYAR ve ADAY yazar; skill inşası ayrı karardır (m.13, K-016).
 
@@ -18,7 +18,7 @@ LOOP ADAYI = n-gram (n=2..5) ardışık görev imzası; aynı oturumdaki tekrar 
   oturum sayısı, aday sayısı, ilk 5 aday) · `--kutu`: ADAY ∧ ¬skill_ici ∧ ¬kapsanan satırlarını kuyruk/skill-fikir-kutusu.md
   "## m.43 sayaçları" altına imza_sha8 ile TEK KEZ düşer — yalnız n≥3 diziler (m.43 "adım KÜMESİ"; inşa değil).
 Kullanım: python3 tools/loop-dedektor.py [--repo <yol>] [--db veri/baglam.sqlite] [--n 3] [--pencere-gun 90] [--bugun YYYY-MM-DD] [--kutu] [--sessiz]
-Çıkış: 0 tamam · 2 girdi yok. Deneysel m.29 (2026-08-29, Carvis, icra devam oturumu). Kayıt: tools/SCRIPTLER.md.
+Çıkış: 0 tamam · 2 girdi yok. Deneysel m.29 (2026-08-29, Jarvis, icra devam oturumu). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, hashlib, json, os, re, sqlite3, subprocess, sys
 from datetime import date, datetime, timedelta, timezone

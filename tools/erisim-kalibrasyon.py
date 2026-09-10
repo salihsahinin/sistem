@@ -11,7 +11,7 @@
 Çıktı: veri/gorunum/v_erisim_kalibrasyon.csv (grid) · v_erisim_cekimserlik.csv (eşikler) · veri/erisim-kalibrasyon.jsonl (append-only koşum özeti).
 Kullanım: python3 tools/erisim-kalibrasyon.py [--repo <yol>] [--grid 0,0.5,1,1.5,2,3,4] [--sessiz]   Çıkış: 0 · 2 girdi yok.
 Model-düşümü önlemi (Salih 08-29): bu araç LLM çağırmaz; sonuçlar yalnız SQLite/kütükten türetilir — model değişimi sonucu etkileyemez.
-Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
+Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, importlib.util, json, os, sqlite3, subprocess, sys, time
 from datetime import datetime, timezone, timedelta

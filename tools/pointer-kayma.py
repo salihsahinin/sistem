@@ -9,13 +9,13 @@ Yaptıkları (STDLIB ONLY, deterministik):
   1. `veri/karar-borcu.jsonl` (ya da --girdi) içindeki her `dosya:satır` pointer'ını okur (açıklama-kuyruklu biçim dahil).
   2. Satır metnini ESKİ ref'te (`git show <ref>:<dosya>`) ve ÇALIŞMA AĞACINDA alır; farklıysa KAYMIŞ, yeni dosyada satır yoksa KIRIK.
   3. Öneri: eski satırın ilk 60 karakterini yeni dosyada ve `arsiv/kuyruk-arsiv/*.md` içinde arar; TEK eşleşme varsa `→ dosya:satır` yazar
-     (birden çoksa listeler, sıfırsa "ARANAMADI" — karar insana/Carvis'e kalır, script yazmaz).
+     (birden çoksa listeler, sıfırsa "ARANAMADI" — karar insana/Jarvis'e kalır, script yazmaz).
 Kullanım: python3 tools/pointer-kayma.py --ref <damıtma-öncesi-sha> [--girdi veri/karar-borcu.jsonl] [--dosya a.md,b.md]
   --ref varsayılan HEAD (çalışma ağacı ↔ son commit). Damıtma SOP: tur commit'inden ÖNCE koş (ref=HEAD), ya da sonra ref=önceki sha.
   ŞART: girdi (pointer dosyası) ref'ten YENİ olmamalı — yeniden-pointer'lanmış girdiyi eski ref'le kıyaslamak sahte KAYMIŞ üretir
   (08-29 testi: düzeltilmiş jsonl ↔ 753e3a1 → 4 sahte; aynı jsonl ↔ HEAD → 0). Sonradan kıyas: `--girdi <(git show <sha>:veri/karar-borcu.jsonl)`.
 Çıkış kodu: 0 temiz · 3 kayma/kırık var. Yazmaz; yalnız raporlar (yeniden-pointer kararı ayrı adım, m.8 arşiv-pointer).
-Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
+Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, glob, json, os, subprocess, sys
 

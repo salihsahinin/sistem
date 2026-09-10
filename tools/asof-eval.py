@@ -7,7 +7,7 @@ gerçekten dışarıda bırakıyor mu? İki kol, toplam n=30:
       (a) gecerlilik='emekli-kalinti' kayıt sayısı, (b) metni GÜNCEL değeri (replaced_by) içeren kayıt var mı. Beklenti: yüzeyde (a)=0, (b) artar.
   (2) BİLGİ-GÜNCELLEME soruları (n=20; altın sette yetenek=bilgi-guncelleme): recall@5 ham ↔ yüzey ↔ auto (erisim-kalibrasyon ile aynı metrik).
 Çıktı: veri/gorunum/v_asof_eval.csv (kol × sorgu satırları + özet) · veri/asof-eval.jsonl (append-only koşum özeti).
-Kullanım: python3 tools/asof-eval.py [--repo <yol>] [--sessiz]   Çıkış: 0 · 2 girdi yok. Deneysel m.29 (2026-08-29, Carvis, yan icra P9).
+Kullanım: python3 tools/asof-eval.py [--repo <yol>] [--sessiz]   Çıkış: 0 · 2 girdi yok. Deneysel m.29 (2026-08-29, Jarvis, yan icra P9).
 """
 import argparse, csv, importlib.util, json, os, sqlite3, subprocess, sys
 from datetime import datetime, timezone, timedelta

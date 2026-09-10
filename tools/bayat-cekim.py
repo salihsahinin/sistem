@@ -18,7 +18,7 @@ Modlar:
   --olcum [--n 3]      kapanış ölçüm satırları → veri/katman-olcum.jsonl (katman=bronz · nesne=v_bayat_aday.csv · metrik bayat_kuyruk_n,
                        cekim_bugun_n, cekim_hedef_n) — seans-kapanis adım 6f; kuyruk boşsa 0 yazılır (uydurma yok, m.39).
 Kullanım: python3 tools/bayat-cekim.py (--liste | --kaydet D --sonuc S | --olcum) [--n 3] [--bugun YYYY-MM-DD] [--repo <yol>]
-Çıkış: 0 tamam · 2 girdi hatası. Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
+Çıkış: 0 tamam · 2 girdi hatası. Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, hashlib, json, os, subprocess, sys
 from datetime import date, datetime, timezone, timedelta

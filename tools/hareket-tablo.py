@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""hareket-tablo.py — Carvis'in TÜM HAREKETLERİNİ (araç çağrılarını) transkriptten repoya indirir: BRONZ → SİLVER → GOLD + insan-yüzü günlük (STDLIB ONLY).
+"""hareket-tablo.py — Jarvis'in TÜM HAREKETLERİNİ (araç çağrılarını) transkriptten repoya indirir: BRONZ → SİLVER → GOLD + insan-yüzü günlük (STDLIB ONLY).
 
 Neden: Okunabilirlik ilkesi (Salih Katman-1, 2026-08-17; CLAUDE.md §2): "çalışma şeklini, kaynak kodlarını, yazılarını, TÜM hareketlerini
 anlayıp okuyup analiz edebilmeliyim … hepsi açık kaynak ve bilgisayarımda kolayca herkese ulaşılabilir olmalı." Oturum transkriptleri
@@ -152,7 +152,7 @@ def main():
     if not a.kuru:
         os.makedirs(bdir, exist_ok=True)
         if not os.path.exists(byol):
-            open(byol, "w", encoding="utf-8").write("# veri/bronz/hareket-olay.jsonl — BRONZ: Carvis'in araç çağrısı olay kütüğü (1 satır = 1 çağrı; hedef var, içerik yok; append-only; tekil anahtar hareket_id). Üretici tools/hareket-tablo.py. Okunabilirlik ilkesi 08-17. md.49: yalnız jarvis transkriptleri.\n")
+            open(byol, "w", encoding="utf-8").write("# veri/bronz/hareket-olay.jsonl — BRONZ: Jarvis'in araç çağrısı olay kütüğü (1 satır = 1 çağrı; hedef var, içerik yok; append-only; tekil anahtar hareket_id). Üretici tools/hareket-tablo.py. Okunabilirlik ilkesi 08-17. md.49: yalnız jarvis transkriptleri.\n")
         with open(byol, "a", encoding="utf-8") as fh:
             for o in yeni: fh.write(json.dumps({**o, "yuklendi_head": head}, ensure_ascii=False) + "\n")
 
@@ -213,7 +213,7 @@ def main():
         sdir = os.path.join(repo, "veri", "sozlesme"); os.makedirs(sdir, exist_ok=True); syol = os.path.join(sdir, "hareket.json")
         if not os.path.exists(syol):
             cols = [{"ad": r[1], "tip": r[2] or "ANY", "not_null": bool(r[3]), "pk": bool(r[5])} for r in con.execute("PRAGMA table_info(hareket)")]
-            json.dump({"tablo": "hareket", "surum": "1.0.0-deneysel-m29", "katman": "silver", "grain": "1 satır = 1 Carvis araç çağrısı (jarvis ana-oturum transkriptleri)",
+            json.dump({"tablo": "hareket", "surum": "1.0.0-deneysel-m29", "katman": "silver", "grain": "1 satır = 1 Jarvis araç çağrısı (jarvis ana-oturum transkriptleri)",
                        "kolonlar": cols, "kural": "additive-only; kırıcı = silme/tip/kısıt/yeniden-ad"}, open(syol, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         for ad, sql, prm in [("hareket.hareket_id unique", "SELECT COUNT(*) FROM (SELECT hareket_id FROM hareket GROUP BY hareket_id HAVING COUNT(*)>1)", ()),
                              ("hareket.arac not_null", "SELECT COUNT(*) FROM hareket WHERE arac IS NULL OR arac=''", ()),
@@ -234,8 +234,8 @@ def main():
             if not gs and not a.tum: gs = []
             ot = defaultdict(list)
             for s in gs: ot[s["oturum_id"]].append(s)
-            L = [f"# Hareket günlüğü — {gun} (Carvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `{head}`)\n",
-                 f"*Okunabilirlik ilkesi (Salih 08-17): Carvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: {len(gs)} çağrı, {len(ot)} oturum.*\n"]
+            L = [f"# Hareket günlüğü — {gun} (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `{head}`)\n",
+                 f"*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: {len(gs)} çağrı, {len(ot)} oturum.*\n"]
             for oid, ss in sorted(ot.items(), key=lambda kv: kv[1][0]["ts_utc"] or ""):
                 c = Counter(s["fiil"] for s in ss); yz = sorted({s["dosya"] for s in ss if s["dosya"] and s["fiil"] in ("yazdı", "düzenledi")})
                 hata = sum(1 for s in ss if s["sonuc"] == "hata"); mdl = Counter(s["model"] for s in ss if s["model"]).most_common(1)

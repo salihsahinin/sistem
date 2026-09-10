@@ -17,7 +17,7 @@ Görev sınıfı etiketi (çok-etiketli, anahtar-kelime kuralı; sınıf kimliğ
 Çıktı: veri/gorunum/v_kural_envanter.csv (1 satır = 1 kural birimi; ÜZERİNE yazılır, türev) · veri/gorunum/v_kural_envanter_ozet.csv
        (taşıyıcı × sınıf: birim, byte) · veri/kural-envanter.jsonl (APPEND-ONLY; 1 satır = 1 taşıyıcı × koşum özeti).
 Kullanım: python3 tools/kural-envanter.py [--repo <yol>] [--sessiz] [--kuru]     Çıkış: 0 · 2 kural-sayaci.py yok.
-Deneysel m.29 (2026-08-29, Carvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
+Deneysel m.29 (2026-08-29, Jarvis, yan icra oturumu). Kayıt: tools/SCRIPTLER.md.
 """
 import argparse, csv, glob, hashlib, importlib.util, json, os, re, subprocess, sys
 from datetime import datetime, timezone, timedelta

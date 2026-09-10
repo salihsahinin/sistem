@@ -1,12 +1,12 @@
 # KILAVUZ.md — JARVIS Kullanım Kılavuzu (v1)
 
-> **Açıklama notu:** K-012 build adım 2 çıktısı (2026-07-12; m.26: anlama-kapısı yerine kılavuz — Salih buradan okur, takıldığı yerde Carvis izah eder). Format deneysel-damgalı başlar (m.29), kullanım verisiyle kalibre edilir. Kural kaynağı her zaman tüzük; burası "nasıl kullanılır" yüzeyidir.
+> **Açıklama notu:** K-012 build adım 2 çıktısı (2026-07-12; m.26: anlama-kapısı yerine kılavuz — Salih buradan okur, takıldığı yerde Jarvis izah eder). Format deneysel-damgalı başlar (m.29), kullanım verisiyle kalibre edilir. Kural kaynağı her zaman tüzük; burası "nasıl kullanılır" yüzeyidir.
 
 ## Oturum nasıl işler
 - **"seans başı"** (eski selamlama tetiği emekli 08-15, `core/baglam-anahtar-kaydi.md`) → seans açılışı: kapsül + pano okunur, kısa teslim özeti + tek net sıradaki iş sunulur.
-- İş sırasında ne söylersen görev olarak devralınır (m.25); küçük iş direkt yapılır, proje ölçekli işe kart/ajan — ölçek-tercihi Carvis'te.
-- **Kapanış ("seans bitimi"):** seans teslim + hasat/ingest + kapsül güncellenir + commit; push m.9 gereği Salih beyanıyla. Carvis bağlam-şişmesinde kapanışı kendisi önerir (V11).
-- **Bağlam-şişme çağrısı (Salih emri 07-19):** Carvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu KENDİLİĞİNDEN belirtir; seans kapanışı + yeni seans önerir (kapanış = teslim raporu + kapsül tazeleme; yeni seans kapsülden devralır — m.27 hattı).
+- İş sırasında ne söylersen görev olarak devralınır (m.25); küçük iş direkt yapılır, proje ölçekli işe kart/ajan — ölçek-tercihi Jarvis'te.
+- **Kapanış ("seans bitimi"):** seans teslim + hasat/ingest + kapsül güncellenir + commit; push m.9 gereği Salih beyanıyla. Jarvis bağlam-şişmesinde kapanışı kendisi önerir (V11).
+- **Bağlam-şişme çağrısı (Salih emri 07-19):** Jarvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu KENDİLİĞİNDEN belirtir; seans kapanışı + yeni seans önerir (kapanış = teslim raporu + kapsül tazeleme; yeni seans kapsülden devralır — m.27 hattı).
 - Her karar ayrı commit, [damıtma]/[icra] (+[ariza]/[revert], Karar 55); push YALNIZ Salih beyanıyla (m.9; eski 'otomatik push' satırı süpersede — arşiv §3).
 - **Ağır araç yükleme usulü (Salih imzası 08-17 masa KB-12; ölçüm `raporlar/2026-08/2026-08-03-model-dusumu-olcum.md`):** çoklu MCP/ToolSearch yüklemesi oturum BAŞINDA ya da AYRI oturumda; uzun oturumun geç evresinde YAPILMAZ (prompt-cache kırılması ~152K token → kota → düşüm).
 
@@ -37,7 +37,7 @@ Ayrıntı her zaman dizinin kendi `README.md`'sindedir; bu tablo yalnız kapıy�
 ## Emir ve soru dili
 - Ne dersen emirdir; önceki kararla çelişki varsa önce çelişki raporu gelir (m.16).
 - **Yanılma-yönü dili (Karar 79 D3/KL18-9):** "yanlış-pozitif/yanlış-negatif" terim çifti kullanılmaz (iki alanın konvansiyonu ters çalışır); yerine "hangi yönde yanılır" yazılır.
-- **Çıktı-dili soru formatı + framing koruması (V6):** Carvis sana soru sorarken seçenekleri somut SONUÇ örnekleriyle sunar ("A seçilirse şu olur") ve soru cümlesi yönlendirme içermez — seçenekler yansız yazılır; Carvis kendi önerisini ayrıca, gerekçesiyle işaretler (m.6).
+- **Çıktı-dili soru formatı + framing koruması (V6):** Jarvis sana soru sorarken seçenekleri somut SONUÇ örnekleriyle sunar ("A seçilirse şu olur") ve soru cümlesi yönlendirme içermez — seçenekler yansız yazılır; Jarvis kendi önerisini ayrıca, gerekçesiyle işaretler (m.6).
 - **Kapasite cevabı üç halden biri (#9):** "yaparım" (direkt yapılır) · "yapamam" (neden + ne gerekirdi) · "proje gerekir" (kart açılır, kaba token×zaman tahmini verilir). Belirsiz "bakarız" cevabı yasak.
 
 ## Kart ve kutu kuralları

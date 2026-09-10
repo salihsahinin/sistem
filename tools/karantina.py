@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """karantina.py — İB-72 BAYAT-DOSYA KARANTİNA MEKANİZMASI (STDLIB ONLY; LLM yok; m.8 silme yasağı: taşıma var,
 silme YOK). Tescil yetkisi YALNIZ Salih'te — bu araç yalnız MEKANİZMAdır, hiçbir dosyayı kendiliğinden
-karantinaya EKLEMEZ (Katman-1 kararı, Carvis çağıramaz).
+karantinaya EKLEMEZ (Katman-1 kararı, Jarvis çağıramaz).
 
 Ne yapar: `--ekle` bir dosyayı `arsiv/karantina/<yol>` altına `git mv` ile taşır (dizin yapısı korunur;
 silme yok, arşive iner — m.8) ve `veri/karantina.jsonl`e (APPEND-ONLY) tek satır ekler: {yol, tescil_tarihi,
@@ -30,7 +30,7 @@ beyan boş, bilinmeyen bayrak).
 Yan-etki (A6): `--ekle` YIKICI-DEĞİL taşıma sınıfı (git mv; içerik/kayıt kaybı yok) + `veri/karantina.jsonl`e
 EKLEMELİ satır. `--liste`/`--denetle` salt-okur.
 
-Kayıt: İB-72 (Salih 09-03), Carvis yan-oturum işçi-ajanı. Deneysel m.29.
+Kayıt: İB-72 (Salih 09-03), Jarvis yan-oturum işçi-ajanı. Deneysel m.29.
 """
 import argparse, importlib.util, json, os, subprocess, sys
 from datetime import date, datetime, timezone

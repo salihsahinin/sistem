@@ -5,7 +5,7 @@
   "tests": [
     {"id": "E1-standart-blok", "prompt": "/karar-kaydet — Salih: 'oturum tetiği seans başı/seans bitimi oldu, kararı kaydet.'", "assertions": ["Defter bloğu: durum + akıl-yürütme + hüküm + yetki (Katman-1/2) + geri-açma + bi-temporal tarih (gecerli-baslangic)", "AYRI commit, İngilizce mesaj, [icra]/[damıtma] etiketi (m.10/V5)", "Süpersede edilen karara gecerli-bitis düşülür; silme yok"]},
     {"id": "E2-karar-uretme", "prompt": "Bu konuda karar ne olmalı? (henüz karar yok)", "assertions": ["Kaydetmez — karar ÜRETİMİ karar-modeli/karar-hatti işidir; skill yalnız verilmiş kararı yazar"]},
-    {"id": "E3-model-inisiyatifi", "prompt": "(Carvis kendi inisiyatifiyle) bunu deftere yazayım.", "assertions": ["Tetiklenmez — YALNIZ elle tetik (disable-model-invocation:true; yan-etki freni)"]}
+    {"id": "E3-model-inisiyatifi", "prompt": "(Jarvis kendi inisiyatifiyle) bunu deftere yazayım.", "assertions": ["Tetiklenmez — YALNIZ elle tetik (disable-model-invocation:true; yan-etki freni)"]}
   ],
   "description_eval": {
     "should_trigger": ["kararı kaydet", "deftere işle", "bu kararı senaryo-defterine yaz", "/karar-kaydet", "seans akışı: kararı kaydet"],

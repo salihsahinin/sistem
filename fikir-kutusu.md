@@ -28,7 +28,7 @@
 | V37 | TETİKLİ veri yığını / ingest v2 | Hafızaya konu/kategori ekseni (derinlik × kategori matrisi) | ayık 07-12 | HAM |
 | V38 | KURAL ADAYI | İlk-çıktı-hızlı ilkesi (veri musluğunu ilk gerçek koşum açar) | ayık 07-12 | İMZALI → m.40c; MEZUN-BEKLEMEDE (A7) |
 | V39 | — | Kombinasyon-dizisi deneyi (token×zaman×kalite fitting; X∧Y→Z transfer hipotezi) | ayık 07-13 | HAM; m.37'ye bağlı; K-020 akraba |
-| V40 | — | Sezgi/matematik işbölümü ((a) rakamlar Carvis kontrolünden · (b) Salih sezgi, Carvis matematik) | ayık 07-13 | (a) → m.39 · (b) çalışma düzeni; MEZUN-BEKLEMEDE |
+| V40 | — | Sezgi/matematik işbölümü ((a) rakamlar Jarvis kontrolünden · (b) Salih sezgi, Jarvis matematik) | ayık 07-13 | (a) → m.39 · (b) çalışma düzeni; MEZUN-BEKLEMEDE |
 | V45 | — | Katman-geçiş lojiği (K3→K0 promote/demote formel önerme; pointer taşınır) | ayık 07-13 | ADAY; şema v2 (V37 ile) |
 *(Kanonlaşmış/kapanmış satırlar — V26 [→ Karar 8 kural-tabanlı örneklem, arşiv 08-21 §2] · V46 [→m.38] · **V47 [→m.25 V47-şerhi, Karar 78 F6 İMZALI — satırı aşağıdan düştü, damıtma s22]** · V52 doktrin · V60 araştırma-kapısı · V64 · Karar 54b/c/g kapanışları · KOŞTU/RED dörtlüsü [agile · world-model ×2 · tahmin-defteri] — tam metin arşiv 08-29 §2)*
 | V53 | — | LLM Council (Karpathy deseni); eşik + token tavanı + ucuz-varyant A/B | ayık 07-14 | ADAY; K-009/010 topolojisi |

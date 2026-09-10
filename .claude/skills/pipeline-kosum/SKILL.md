@@ -12,7 +12,7 @@ Desen kaynağı: firstmate (tek irtibat · scout/ship görev şekilleri · intak
 2. **Görev emrini derle** → `gorev-emri-derleme` skill'i (görev-fonksiyonu iskeleti + mekanik kapılar + KANONDA-BİLİNENLER bloğu).
 3. **Scout'u sal:** lider deseni (lider modeli: Karar 89 09-09 — Opus 5, effort MEDIUM sabit, Fable'dan Agent aracıyla; paralel araştırmacılar/işçiler Sonnet ∨ doğrudan atlas-kosum; Karar 85 süpersede). Dağıtım öncesi zorunlu: paralellik-uygunluk testi (bağımsız keşif mi, ortak üretim mi?). Rejim etiketi + model kademesi (işçi liderden pahalı olamaz) emirden gelir.
 4. **Teslim al:** raporu DOSYADAN oku (bildirim özetinden değil); gerekiyorsa V26 örneklem denetimi (kritik rakamlara kendin in). Manifest'e S-n DONE + olay satırı.
-5. **Sentez (G) Carvis'te:** rapor + kanon açık-uçları → tasarım. Kanon-aday üretiliyorsa m.40b antitez borcunu AÇIKÇA kaydet (tek-şerit rapor kanonlaşmaz).
+5. **Sentez (G) Jarvis'te:** rapor + kanon açık-uçları → tasarım. Kanon-aday üretiliyorsa m.40b antitez borcunu AÇIKÇA kaydet (tek-şerit rapor kanonlaşmaz).
 6. **Ship (SH):** implementasyon + wiring (CLAUDE.md/kapsül pointer'ları) + commit (push yetki beyanına tabi). Çıktılar ingest-şeması zarfıyla kayda girer.
 7. **Teslim (T):** manifest'te tüm satırlar DONE → tek-cümle kaptan beyanı: "**<X> hazır ve sisteme gömülü**". Beyan verilmeden pipeline kapanmış sayılmaz.
 

@@ -27,7 +27,7 @@ Kullanım: `python3 tools/kod-orani-olcum.py [--pencere-gun 3] [--bugun 2026-09-
 Yan-etki (A6): EKLEMELİ — yalnız `veri/kod-orani.jsonl`e append-only tek satır yazar (--kuru ile yazmaz);
 başka hiçbir dosyaya dokunmaz, salt-okur tarama.
 
-Kayıt: İB-71 (Salih 09-03), Carvis yan-oturum işçi-ajanı.
+Kayıt: İB-71 (Salih 09-03), Jarvis yan-oturum işçi-ajanı.
 """
 import argparse
 import json
