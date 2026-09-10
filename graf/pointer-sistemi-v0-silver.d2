@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — SİLVER TABLOLARI — PK/FK (pano 1/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver 5a37bd7 · HEAD 5a37bd7 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver fe3f802 · HEAD fe3f802 · d2 v0.8.1-HEAD · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -26,7 +26,7 @@ anahtar: "anahtar · 356 satır" {
   gecerli_bas: TEXT
   gecerli_bitis: TEXT
 }
-baglam_olay: "baglam_olay · 15.301 satır" {
+baglam_olay: "baglam_olay · 15.315 satır" {
   shape: sql_table
   olay_id: TEXT
   ts_utc: TEXT
@@ -35,7 +35,7 @@ baglam_olay: "baglam_olay · 15.301 satır" {
   saat_tr: TEXT
   oturum_id: TEXT
 }
-dosya: "dosya · 1.010 satır" {
+dosya: "dosya · 1.014 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: primary_key }
   dizin: TEXT
@@ -44,7 +44,7 @@ dosya: "dosya · 1.010 satır" {
   blob_sha: TEXT
   son_commit: TEXT
 }
-erisim_genisletme: "erisim_genisletme · 67.810 satır" {
+erisim_genisletme: "erisim_genisletme · 68.251 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -53,7 +53,7 @@ erisim_genisletme: "erisim_genisletme · 67.810 satır" {
   genisletme: TEXT
   ref_sayisi: TEXT
 }
-hareket: "hareket · 7.135 satır" {
+hareket: "hareket · 7.142 satır" {
   shape: sql_table
   hareket_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
@@ -61,13 +61,13 @@ hareket: "hareket · 7.135 satır" {
   dosya: TEXT
   yuklendi_head: TEXT
 }
-json_kayit: "json_kayit · 1.092.784 satır" {
+json_kayit: "json_kayit · 1.102.051 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: foreign_key }
   json_yolu: TEXT
   deger: TEXT
 }
-kayit: "kayit · 67.810 satır" {
+kayit: "kayit · 68.251 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: primary_key }
   dosya_id: TEXT { constraint: foreign_key }
@@ -125,14 +125,14 @@ parquet_uretim: "parquet_uretim · 0 satır" {
   byte: TEXT
   ms: TEXT
 }
-prompt: "prompt · 1.075 satır" {
+prompt: "prompt · 1.078 satır" {
   shape: sql_table
   prompt_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
   sonraki_skill: TEXT
   yuklendi_head: TEXT
 }
-referans: "referans · 89.152 satır" {
+referans: "referans · 89.644 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: foreign_key }
   ref_turu: TEXT

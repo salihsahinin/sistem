@@ -1,10 +1,10 @@
-# Hareket günlüğü — 2026-09-10 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `5a37bd7`)
+# Hareket günlüğü — 2026-09-10 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `fe3f802`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 264 çağrı, 3 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 271 çağrı, 3 oturum.*
 
-## Oturum `72eb3a58` — 09:51:35→15:01:21 · 99 çağrı · model fable-5-1 · hata 13
-**Özet:** koştu 79 · yazdı 10 · MCP aracı 9 · skill çağırdı 1
-**Yazılan/düzenlenen dosyalar (10):** `kuyruk/galeri-siralama/veri3/40_galeri_kume_davranis.py` · `kuyruk/galeri-siralama/veri3/41_faz1_kume_siralama.py` · `kuyruk/galeri-siralama/veri3/42_faz1_3fold_ozet.py` · `kuyruk/galeri-siralama/veri3/44_galeri_kume_kartlar.py` · `kuyruk/galeri-siralama/veri3/46_faz1_lift.py` · `kuyruk/galeri-siralama/veri3/47_yari_bolme_tutarlilik.py` · `kuyruk/galeri-siralama/veri3/51_c_3fold_ozet.py` · `kuyruk/galeri-siralama/veri3/53_kota_tarama.py` · `raporlar/2026-09/galeri-siralama-kumeleme-denemeleri-2026-09-10.md` · `raporlar/gorsel/gorsel-2026-09-10-trim-kume-v2-analiz.html`
+## Oturum `72eb3a58` — 09:51:35→15:23:00 · 101 çağrı · model fable-5-1 · hata 13
+**Özet:** koştu 80 · yazdı 11 · MCP aracı 9 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (11):** `kuyruk/galeri-siralama/veri3/40_galeri_kume_davranis.py` · `kuyruk/galeri-siralama/veri3/41_faz1_kume_siralama.py` · `kuyruk/galeri-siralama/veri3/42_faz1_3fold_ozet.py` · `kuyruk/galeri-siralama/veri3/44_galeri_kume_kartlar.py` · `kuyruk/galeri-siralama/veri3/46_faz1_lift.py` · `kuyruk/galeri-siralama/veri3/47_yari_bolme_tutarlilik.py` · `kuyruk/galeri-siralama/veri3/51_c_3fold_ozet.py` · `kuyruk/galeri-siralama/veri3/53_kota_tarama.py` · `raporlar/2026-09/galeri-siralama-ekip-yazisi-2026-09-10.md` · `raporlar/2026-09/galeri-siralama-kumeleme-denemeleri-2026-09-10.md` · `raporlar/gorsel/gorsel-2026-09-10-trim-kume-v2-analiz.html`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -107,6 +107,8 @@
 | 97 | 15:00:42 | koştu | 54: marjinal takas metnini en_az kuralının sayılarıyla düzelt, görseli yenile ⟨cd ~/jarvis/kuyruk/galeri-siralama/veri3 && python3 - <<'EOF' import pathlib p=pathlib.Path("54_kota_gorsel.py"); s=p.read_text() s=s.replace("<li>Mar…⟩ | tamam |
 | 98 | 15:00:42 | MCP aracı | read_console_messages {"onlyErrors": "True"} | tamam |
 | 99 | 15:01:21 | koştu | Dokümanın kota ve nihai yöntem bölümlerini doldur; Finder'da göster; git durumu ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib p=pathlib.Path("raporlar/2026-09/galeri-siralama-kumeleme-denemeleri-2026-09-10.md"); s=p.read_text() …⟩ | tamam |
+| 100 | 15:22:57 | yazdı | raporlar/2026-09/galeri-siralama-ekip-yazisi-2026-09-10.md | tamam |
+| 101 | 15:23:00 | koştu | Ekip yazısını Finder'da göster ⟨cd ~/jarvis && open -R raporlar/2026-09/galeri-siralama-ekip-yazisi-2026-09-10.md && wc -w raporlar/2026-09/galeri-siralama-ekip-yazisi-2026-09-10.md⟩ | tamam |
 
 ## Oturum `2a11c9ee` — 09:55:37→09:55:39 · 2 çağrı · model fable-5-1 · hata 0
 **Özet:** koştu 2
@@ -116,8 +118,8 @@
 | 18 | 09:55:37 | koştu | Kapsül güncelleme satırı ve Friday koşum durumu ⟨cd ~/jarvis && date && sed -n '5p' core/durum-kapsulu.md ¦ cut -c1-900 && echo "=== friday" && cd ~/friday && git log -3 --format='%h %ci %s' ¦ cut -c…⟩ | tamam |
 | 19 | 09:55:39 | koştu | Silver'ı tazele (bayat) ⟨cd ~/jarvis && python3 tools/katman-hatti.py 2>&1 ¦ grep -E "İHLAL¦FAIL¦ERROR" ¦ head -5; echo "katman-hatti bitti"⟩ | yok |
 
-## Oturum `1268ffa1` — 09:56:26→15:13:20 · 163 çağrı · model fable-5-1 · hata 9
-**Özet:** koştu 77 · düzenledi 57 · yazdı 22 · okudu 6 · skill çağırdı 1
+## Oturum `1268ffa1` — 09:56:26→15:29:25 · 168 çağrı · model fable-5-1 · hata 9
+**Özet:** koştu 81 · düzenledi 57 · yazdı 22 · okudu 6 · skill çağırdı 2
 **Yazılan/düzenlenen dosyalar (20):** `.claude/agents/research-agent.md` · `.claude/hooks/pretool-altajan-okuma-test.sh` · `.claude/hooks/pretool-altajan-okuma.sh` · `.claude/hooks/session-start.sh` · `.claude/settings.json` · `.claude/skills/gorev-emri-derleme/SKILL.md` · `.claude/skills/seans-acilis/SKILL.md` · `.claude/skills/seans-kapanis/SKILL.md` · `.lavish/masa-10-2026-09-10.html` · `CLAUDE.md` · `README.md` · `core/ajan-metodolojisi.md` · `core/deterministik-tasarim.md` · `core/durum-kapsulu.md` · `core/sablonlar/gorev-emri.md` · `core/tuzuk-v0.md` · `kuyruk/gorev-format-gecis-plani-2026-09-10.md` · `tools/ad-esitligi-denetim.py` · `tools/sicak-katman-fifo.py` · `wiki/sozluk.md`
 
 | # | saat | fiil | hedef | sonuç |
@@ -285,4 +287,9 @@
 | 161 | 15:12:54 | düzenledi | core/durum-kapsulu.md | tamam |
 | 162 | 15:13:02 | düzenledi | core/durum-kapsulu.md | tamam |
 | 163 | 15:13:20 | koştu | Defter kaydı, kaynak-kodu README satırı, katman hattı + FIFO + ad-eşitliği son koşum ⟨cd ~/jarvis && cat >> kuyruk/senaryo-defteri.md <<'EOF' - **[icra] 09-10 ~12:00-13:00 · Karar 93 EK + Friday tur-2:** ad-eşitliği üç katman kuruldu (h…⟩ | yok |
+| 164 | 15:16:25 | koştu | Jarvis: Karar 93 EK + İB-83 + tur-2 commit'i ⟨cd ~/jarvis && git add -u && git add .claude/hooks/pretool-altajan-okuma.sh .claude/hooks/pretool-altajan-okuma-test.sh tools/ad-esitligi-denetim.py c…⟩ | tamam |
+| 165 | 15:16:30 | koştu | Friday: tur-2 cevabı + kütük v0.3 + şablon kuralları commit'i ⟨cd ~/friday && git add CLAUDE.md core/sablonlar/devir-birimi-v0.json .claude/hooks/hareket-kutuk.sh .claude/skills/seans-acilis/SKILL.md .claude/skill…⟩ | tamam |
+| 166 | 15:29:11 | skill çağırdı | seans-kapanis | tamam |
+| 167 | 15:29:23 | koştu | Kapanış kapıları: hareket kütüğü, bağlam seyri, skill eşiği, bayat çekim, silver sağlık ⟨cd ~/jarvis && echo "== hareket-tablo"; python3 tools/hareket-tablo.py 2>&1 ¦ tail -3; echo "== baglam-seyir"; python3 tools/baglam-seyir.py 2>&1 ¦ ta…⟩ | tamam |
+| 168 | 15:29:25 | koştu | Birim-test kapısı (6g) ⟨cd ~/jarvis && python3 -m unittest discover -s tools/testler -p 'test_*.py' 2>&1 ¦ tail -3⟩ | tamam |
 

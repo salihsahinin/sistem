@@ -57,6 +57,7 @@ d822db0e,ADAY,4,2,6,0,0,2026-08-24,2026-09-10,1268ffa1,Bash:lavish-axi+1+head �
 1eb08088,ADAY,4,2,5,0,0,2026-08-15,2026-09-08,1620e67b,Bash:py:inline → Bash:sed+cut+echo
 3d5cf5e5,ADAY,4,2,5,0,1,2026-08-15,2026-08-24,2fc42451,Bash:py:inline → Edit:CLAUDE.md
 38614ca8,ADAY,4,2,5,0,0,2026-08-15,2026-08-20,1620e67b,Bash:py:inline → Edit:core
+d1829feb,ADAY,4,2,5,0,0,2026-08-26,2026-09-10,0fa78c95,Bash:py:inline → Write:raporlar
 1f1429f0,ADAY,4,2,5,0,0,2026-08-12,2026-08-30,95cf0efa,Edit:core/durum-kapsulu.md → Bash:git:add
 412f1707,ADAY,4,2,5,0,0,2026-08-17,2026-08-26,25679332,Workflow → Bash:cp
 22409954,ADAY,4,2,5,0,0,2026-08-16,2026-08-26,11b49d44,Write:wiki → Bash:py:inline
@@ -94,7 +95,6 @@ fb49f41b,ADAY,3,2,4,0,0,2026-08-15,2026-08-16,1620e67b,Bash:cat → Workflow
 021cd685,ADAY,3,2,4,0,0,2026-08-20,2026-08-29,11b49d44,Bash:git:add+git:commit → Bash:py:inline
 9e1b6d99,ADAY,3,2,4,0,0,2026-08-15,2026-08-16,77e37b3f,Bash:py:derle → Bash:py:inline
 b5aae6de,ADAY,3,2,4,0,0,2026-08-20,2026-08-31,11b49d44,Bash:py:inline → Read:.claude/skills
-d1829feb,ADAY,3,2,4,0,0,2026-08-26,2026-08-29,0fa78c95,Bash:py:inline → Write:raporlar
 97d86ead,ADAY,3,2,4,0,0,2026-09-02,2026-09-03,1b40c0b3,Bash:python3 → Monitor
 09fa0c9a,ADAY,3,2,4,0,0,2026-08-15,2026-08-22,11b49d44,Edit:.claude/skills → Bash:py:inline
 182aeebd,ADAY,3,2,4,0,0,2026-08-15,2026-08-15,1620e67b,Edit:.claude/skills → Edit:CLAUDE.md
@@ -282,6 +282,7 @@ fb43a796,ESIK-ALTI,2,2,2,0,0,2026-09-02,2026-09-02,443ef247,AskUserQuestion → 
 7d8f53e7,ESIK-ALTI,2,2,2,1,0,2026-08-31,2026-09-09,95fd3d15,Bash:cat → Agent:general-purpose
 a36e981e,ESIK-ALTI,2,2,2,1,0,2026-08-15,2026-08-18,25679332,Bash:cat → Bash:cat+head
 8d93d1fe,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-08-26,405e80db,Bash:cat → Bash:cat+head+echo
+e4a343f3,ESIK-ALTI,2,2,2,0,0,2026-08-18,2026-09-10,1268ffa1,Bash:cat → Bash:git:add
 01283b23,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-08-18,25679332,Bash:cat → Bash:grep+py:inline
 c0de9077,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-08-17,501b9a20,Bash:cat → Bash:grep+sort+uniq
 4f5e2232,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-09-01,084f221c,Bash:cat → Bash:ls+echo+head

@@ -1,4 +1,4 @@
-# Jarvis pointer sistemi — kenar listesi (LLM-okunur görünüm; üretici tools/pointer-graf.py; silver 5a37bd7; düğüm 60 · kenar 53)
+# Jarvis pointer sistemi — kenar listesi (LLM-okunur görünüm; üretici tools/pointer-graf.py; silver fe3f802; düğüm 60 · kenar 53)
 # biçim: KAYNAK --tip[etiket]--> HEDEF ; sıralama sabit (from,type,to,label); sayılar silver'dan
 
 ## DÜĞÜMLER (kind · id · label · sayı)
@@ -14,11 +14,11 @@ dis · dis:url · url
 dis · dis:zaman · zaman
 dosya_katmani · katman:ilik · ilik · 105
 dosya_katmani · katman:sicak · sicak · 37
-dosya_katmani · katman:soguk · soguk · 726
+dosya_katmani · katman:soguk · soguk · 730
 dosya_katmani · katman:yapisal · yapisal · 142
-hat_katmani · hat:bronz · bronz (git-izlenen md/json/jsonl) · 1.010
+hat_katmani · hat:bronz · bronz (git-izlenen md/json/jsonl) · 1.014
 hat_katmani · hat:gold · gold (veri/gorunum/*.csv) · 47
-hat_katmani · hat:silver · silver (veri/baglam.sqlite) · 1.343.512
+hat_katmani · hat:silver · silver (veri/baglam.sqlite) · 1.354.184
 ilke · ilke:adres · adresli-erişim kuralı (08-18)
 ilke · ilke:m20 · m.20 pointer ilkesi
 ilke · ilke:m21 · m.21 dönüş yolu
@@ -32,26 +32,26 @@ kronoloji · kron:k0815 · 2026-08-15 · silver katmanı: kayit_id adres PK, ref
 kronoloji · kron:k0817 · 2026-08-17 · hafıza mimarisi Beyan 9 (wiki + veri teknikleri; vektör ertelendi)
 kronoloji · kron:k0818 · 2026-08-18 · adresli-erişim kuralı + tarama/kolon katmanları (Karar 62-64)
 kronoloji · kron:k0822 · 2026-08-22 · pointer sisteminin grafı (D2) — bu türetim; Karar 65 determinizm-önceliği
-referans_turu · ref:anahtar_terim · anahtar_terim · 37.971
-referans_turu · ref:dosya_pointer · dosya_pointer · 15.292
-referans_turu · ref:etiket · etiket · 6.107
+referans_turu · ref:anahtar_terim · anahtar_terim · 38.076
+referans_turu · ref:dosya_pointer · dosya_pointer · 15.616
+referans_turu · ref:etiket · etiket · 6.112
 referans_turu · ref:kart · kart · 2.268
-referans_turu · ref:sha · sha · 1.837
-referans_turu · ref:skill_adi · skill_adi · 2.267
-referans_turu · ref:tarih · tarih · 5.178
-referans_turu · ref:tuzuk_madde · tuzuk_madde · 8.906
-referans_turu · ref:url · url · 5.173
+referans_turu · ref:sha · sha · 1.838
+referans_turu · ref:skill_adi · skill_adi · 2.277
+referans_turu · ref:tarih · tarih · 5.200
+referans_turu · ref:tuzuk_madde · tuzuk_madde · 8.924
+referans_turu · ref:url · url · 5.180
 referans_turu · ref:v_no · v_no · 3.810
 referans_turu · ref:wiki_link · wiki_link · 343
 tablo · tablo:amb_olgu_kosum · amb_olgu_kosum · 0
-tablo · tablo:amb_olgu_prompt · amb_olgu_prompt · 1.075
+tablo · tablo:amb_olgu_prompt · amb_olgu_prompt · 1.078
 tablo · tablo:anahtar · anahtar · 356
-tablo · tablo:baglam_olay · baglam_olay · 15.301
-tablo · tablo:dosya · dosya · 1.010
-tablo · tablo:erisim_genisletme · erisim_genisletme · 67.810
-tablo · tablo:hareket · hareket · 7.135
-tablo · tablo:json_kayit · json_kayit · 1.092.784
-tablo · tablo:kayit · kayit · 67.810
+tablo · tablo:baglam_olay · baglam_olay · 15.315
+tablo · tablo:dosya · dosya · 1.014
+tablo · tablo:erisim_genisletme · erisim_genisletme · 68.251
+tablo · tablo:hareket · hareket · 7.142
+tablo · tablo:json_kayit · json_kayit · 1.102.051
+tablo · tablo:kayit · kayit · 68.251
 tablo · tablo:kayit_fts · kayit_fts · 0
 tablo · tablo:kayit_fts_config · kayit_fts_config · 1
 tablo · tablo:kayit_fts_content · kayit_fts_content · 0
@@ -59,8 +59,8 @@ tablo · tablo:kayit_fts_data · kayit_fts_data · 2
 tablo · tablo:kayit_fts_docsize · kayit_fts_docsize · 0
 tablo · tablo:kayit_fts_idx · kayit_fts_idx · 0
 tablo · tablo:parquet_uretim · parquet_uretim · 0
-tablo · tablo:prompt · prompt · 1.075
-tablo · tablo:referans · referans · 89.152
+tablo · tablo:prompt · prompt · 1.078
+tablo · tablo:referans · referans · 89.644
 tablo · tablo:uretim · uretim · 1
 
 ## KENARLAR
@@ -81,7 +81,7 @@ kron:k0815 --kronoloji_sonra--> kron:k0817
 kron:k0817 --kronoloji_sonra--> kron:k0818
 kron:k0818 --kronoloji_sonra--> kron:k0822
 ref:anahtar_terim --pointer_hedef[terim → anahtar kaydı]--> anahtar:anahtar_terim
-ref:dosya_pointer --pointer_hedef[yol → dosya (hedef_var ile çözümlü/kırık) · 10.445 çözümlü / 4.847 KIRIK]--> tablo:dosya
+ref:dosya_pointer --pointer_hedef[yol → dosya (hedef_var ile çözümlü/kırık) · 10.627 çözümlü / 4.989 KIRIK]--> tablo:dosya
 ref:etiket --pointer_hedef[#etiket (serbest sınıflandırma)]--> dis:etiket
 ref:kart --pointer_hedef[K-NNN → pano kartı (anahtar kaydı)]--> anahtar:kart
 ref:sha --pointer_hedef[git commit/blob (provenans)]--> dis:git
@@ -100,20 +100,20 @@ tablo:anahtar --icerir[57]--> anahtar:wiki_sayfa
 tablo:anahtar --supersede[replaced_by → anahtar_id]--> tablo:anahtar
 tablo:dosya --icerir[105]--> katman:ilik
 tablo:dosya --icerir[37]--> katman:sicak
-tablo:dosya --icerir[726]--> katman:soguk
+tablo:dosya --icerir[730]--> katman:soguk
 tablo:dosya --icerir[142]--> katman:yapisal
 tablo:json_kayit --fk[dosya_id → dosya_id]--> tablo:dosya
 tablo:kayit --fk[dosya_id → dosya_id]--> tablo:dosya
 tablo:referans --fk[hedef_yol → dosya_id]--> tablo:dosya
 tablo:referans --fk[kayit_id → kayit_id]--> tablo:kayit
-tablo:referans --icerir[37.971]--> ref:anahtar_terim
-tablo:referans --icerir[15.292]--> ref:dosya_pointer
-tablo:referans --icerir[6.107]--> ref:etiket
+tablo:referans --icerir[38.076]--> ref:anahtar_terim
+tablo:referans --icerir[15.616]--> ref:dosya_pointer
+tablo:referans --icerir[6.112]--> ref:etiket
 tablo:referans --icerir[2.268]--> ref:kart
-tablo:referans --icerir[1.837]--> ref:sha
-tablo:referans --icerir[2.267]--> ref:skill_adi
-tablo:referans --icerir[5.178]--> ref:tarih
-tablo:referans --icerir[8.906]--> ref:tuzuk_madde
-tablo:referans --icerir[5.173]--> ref:url
+tablo:referans --icerir[1.838]--> ref:sha
+tablo:referans --icerir[2.277]--> ref:skill_adi
+tablo:referans --icerir[5.200]--> ref:tarih
+tablo:referans --icerir[8.924]--> ref:tuzuk_madde
+tablo:referans --icerir[5.180]--> ref:url
 tablo:referans --icerir[3.810]--> ref:v_no
 tablo:referans --icerir[343]--> ref:wiki_link

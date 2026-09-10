@@ -23,7 +23,7 @@ ZORUNLU = ["borc_id", "baslik", "kume", "tur", "katman", "karar_sahibi", "durum"
 TUR = {"Katman-1-kural", "silme-birlestirme", "yon-degisimi", "serh-damga", "kapanis-hukmu", "para-dis", "rol",
        "deger-tercihi", "olcek-pilot", "icra-borcu", "ingest-borcu", "kalibrasyon-borcu"}
 DURUM = {"İMZASIZ", "BEKLET", "Salih'te", "masaya", "kısmen-kapandı", "kapandı", "belirsiz", "icra-sırada"}
-SAHIP = {"Salih", "Jarvis", "Salih+Jarvis"}
+SAHIP = {"Salih", "Jarvis", "Salih+Jarvis", "Carvis", "Salih+Carvis"}  # Carvis = Jarvis'in 09-10 öncesi adı (Karar 93); tarihli kayıtlar AS-OF, enum ikisini kabul eder
 
 
 def git_head(repo):

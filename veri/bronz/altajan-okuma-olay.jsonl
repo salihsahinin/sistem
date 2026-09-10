@@ -1,0 +1,4 @@
+{"ts": "2026-09-10T15:12:19+03:00", "oturum": "", "agent_id": "a1", "agent_type": "Explore", "arac": "Read", "reddedilen": ["/Users/HasanSalihSahin/jarvis/core/durum-kapsulu.md"], "kaynak": "pretool-altajan-okuma.sh"}
+{"ts": "2026-09-10T15:12:19+03:00", "oturum": "", "agent_id": "a1", "agent_type": "atlas", "arac": "Read", "reddedilen": ["/Users/HasanSalihSahin/.claude/projects/x/y.jsonl"], "kaynak": "pretool-altajan-okuma.sh"}
+{"ts": "2026-09-10T15:12:19+03:00", "oturum": "", "agent_id": "a1", "agent_type": "atlas", "arac": "Bash", "reddedilen": ["kuyruk/senaryo-defteri.md"], "kaynak": "pretool-altajan-okuma.sh"}
+{"ts": "2026-09-10T15:12:19+03:00", "oturum": "", "agent_id": "a1", "agent_type": null, "arac": "Bash", "reddedilen": ["/Users/HasanSalihSahin/friday/cc"], "kaynak": "pretool-altajan-okuma.sh"}
