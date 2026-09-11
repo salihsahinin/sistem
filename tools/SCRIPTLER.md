@@ -73,5 +73,6 @@ Sıra: `derece.py` (en kısa; formül = tek sözlük) → `tetik-denetim.py` (bl
 | **sicak-katman-fifo.py** | `tools/sicak-katman-fifo.py` | İB-80 (Karar 92 M1): sıcak katman madde sayısı (K: kapsül 8 · pano 5 · MEMORY 16 · sözleşme 80 satır) + bayt sigortası; FLAG + arşive inecek en eski maddeleri listeler, TAŞIMAZ | `python3 tools/sicak-katman-fifo.py [--json]`; exit 3 = FLAG | kapanış ritüelinde |
 
 | **ad-esitligi-denetim.py** | `tools/ad-esitligi-denetim.py` | Karar 93 EK: "Carvis = Jarvis" bilgisi her bağlam kombinasyonunda — K1 her-seans katmanı · K2 dizin README blokları · K3 canlı-bağlamda bağlanmamış Carvis | `python3 tools/ad-esitligi-denetim.py [--json]`; exit 4 = eksik | kapanış kapısı |
+| **tuzuk-iz-tarama.py** | `tools/tuzuk-iz-tarama.py` | İB-81 kuru koşum (M7-2, 09-11): tüzükte SÜPERSEDE/REVİZE/EK izli maddeler + deterministik çelişki-adayı çiftler; kanona yazmaz, rapor üretir | `python3 tools/tuzuk-iz-tarama.py --cikti raporlar/2026-09/ib81-kuru-kosum-tuzuk-YYYY-MM-DD.md` | İB-81 tetiği: madde ≥2 iz ∨ tüzük >48 KB ∨ 5 kapanışta bir |
 
 > **Ad eşitliği (Karar 93, 2026-09-10):** araç docstring/yorumlarında ya da tarihli çıktılarında geçen **Carvis = Jarvis** (Salih'le konuşan ajanın eski adı Carvis, 08-17→09-10); sistem/repo = "depo"/"kanon".
