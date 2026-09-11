@@ -84,3 +84,4 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 - Koşum sonucu (Salih'in terminalinde, 2026-09-11): **18/20 PASS (%90)**, 0 hata, 9 sn.
 - Kutu 8 formülüyle çapraz kontrol: pass@1 = c/n = 18/20 = 0,90 — ölçülen oranla birebir tutarlı.
 - Yol boyunca çıkan gerçek hata (halüsinasyon değil, canlı koşumda görüldü): `eval-seti.yaml` içinde fazladan bir `tests:` sarmalayıcısı vardı; `promptfoo`, `tests: file://...` ile referans verilen dosyanın **doğrudan liste** olmasını bekliyor. Düzeltme commit efcc40a.
+- 2 FAIL'in kök-neden analizi (kutu 5 regresyon fikrine gerçek örnek): `h1-eval-seti/basarisizlik-analizi.md`. Kısaca: (a) yüzde artışının hangi tabana uygulandığı belirsizliği, (b) başabaş-sonrası-kâr sınır durumu. İkisi de aritmetik değil çerçeveleme hatası — H3-H4'teki LLM-as-judge ihtiyacının somut gerekçesi.
