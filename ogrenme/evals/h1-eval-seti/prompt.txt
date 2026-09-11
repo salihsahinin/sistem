@@ -1,0 +1,3 @@
+Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.
+
+Soru: {{soru}}

@@ -1,0 +1,13 @@
+# H1 promptfoo koşumu (ogrenme/evals README H1 DONE'u)
+# Koşum: npx promptfoo@latest eval -c promptfooconfig.yaml
+# Ortamda ANTHROPIC_API_KEY yok (2026-09-11 kontrol edildi) — apiKeyRequired:false ile bu
+# makinedeki Claude Code oturumunun OAuth kimliği (macOS keychain) kullanılır (promptfoo docs,
+# canlı doğrulandı 2026-09-11). Ayrı API anahtarı GEREKMEZ; Claude aboneliğine sayılır.
+description: "evals H1 — GSM8K 20 vaka, exact-contains metrik"
+prompts:
+  - file://prompt.txt
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    config:
+      apiKeyRequired: false
+tests: file://eval-seti.yaml
