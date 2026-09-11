@@ -21,7 +21,7 @@
 
 ## Matematik kuralı (Karar 73, Salih Katman-1, 2026-08-29)
 - Her öğrenme dersinde **en az 1 matematik-bağlantılı içerik** bulunur; yeni öğrenme deseni/metrik **formülüyle** yazılır (tanım + sembol tablosu + elle işletilmiş sayısal örnek). Kanon gövdesi: [core/varlik-felsefesi.md](../core/varlik-felsefesi.md) §2.
-- Kurs şeritleri bu klasörün altındadır: [mit-6006/](mit-6006/README.md) (MIT 6.006 birebir kursu; BK-1) · [mit-6042j/](mit-6042j/README.md) (MIT 6.042J ayrık matematik, birebir + "neden" görevi; BK-2 — 6.006'nın ön-koşulu) · [mat-felsefesi/](mat-felsefesi/README.md) (matematik felsefesi serisi).
+- Kurs şeritleri bu klasörün altındadır: [evals/](evals/README.md) (LLM/ajan değerlendirme mühendisliği, 7 hafta, Karar 94 M2 09-11, tetik "seans başı, evals") · [mit-6006/](mit-6006/README.md) (MIT 6.006 birebir kursu; BK-1) · [mit-6042j/](mit-6042j/README.md) (MIT 6.042J ayrık matematik, birebir + "neden" görevi; BK-2 — 6.006'nın ön-koşulu) · [mat-felsefesi/](mat-felsefesi/README.md) (matematik felsefesi serisi).
 
 ## Sınırlar
 - Bu şerit kanon/kural değiştirmez; çıktısı ders kaydı + karar adayıdır.
