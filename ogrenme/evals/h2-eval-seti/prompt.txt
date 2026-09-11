@@ -1,0 +1,3 @@
+Aşağıdaki matematik problemini çöz. Muhakemeni kısaca göster, ardından SON SATIRDA yalnızca şu formatta yaz: "SONUC: <sayı>"
+
+Soru: {{soru}}

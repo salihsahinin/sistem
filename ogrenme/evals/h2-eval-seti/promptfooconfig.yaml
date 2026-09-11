@@ -1,0 +1,12 @@
+# H2 promptfoo koşumu (ogrenme/evals README H2 DONE'u)
+# Koşum: npx promptfoo@latest eval -c promptfooconfig.yaml
+# Aynı ayar: apiKeyRequired:false → Claude Code OAuth kimliği (bkz. h1-eval-seti/promptfooconfig.yaml notu).
+# Beklenen: 20/21 PASS + vaka 21 (bilerek kırmızı) FAIL — bu FAIL, altyapının çalıştığının kanıtı (kutu 8).
+description: "evals H2 — aynı 20 GSM8K vakası + 3 deterministik assert türü + 1 bilerek-kırmızı vaka"
+prompts:
+  - file://prompt.txt
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    config:
+      apiKeyRequired: false
+tests: file://eval-seti.yaml
