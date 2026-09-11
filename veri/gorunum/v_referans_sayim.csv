@@ -1,24 +1,24 @@
 ref_turu,ref_deger,toplam,sicak,ilik,soguk,dosya_sayisi
-anahtar_terim,skill,7378,286,491,6601,543
-anahtar_terim,sema,3586,138,277,3171,419
+anahtar_terim,skill,7380,286,491,6603,544
+anahtar_terim,sema,3589,138,277,3174,420
 anahtar_terim,antitez,3479,39,139,3301,378
 anahtar_terim,hakem,3198,46,168,2984,389
 anahtar_terim,atlas,2475,39,216,2220,471
 etiket,D,2088,2,27,2059,137
-anahtar_terim,celiski,1904,81,136,1687,422
-anahtar_terim,kapsul,1891,73,184,1634,382
+anahtar_terim,celiski,1905,81,136,1688,423
+anahtar_terim,kapsul,1896,73,184,1639,383
 v_no,V26,1519,15,118,1386,290
 etiket,K,1516,5,28,1483,174
 etiket,?,1468,13,28,1427,309
 anahtar_terim,ingest,1424,75,198,1151,317
 anahtar_terim,katman-1,1333,68,164,1101,413
 anahtar_terim,vardiya,1295,87,133,1075,267
-anahtar_terim,pipeline,1189,34,147,1008,255
-anahtar_terim,workflow,1066,16,75,975,231
-anahtar_terim,ana-sira,1021,44,86,891,334
-dosya_pointer,CLAUDE.md,1005,25,113,867,274
-anahtar_terim,pano,952,38,84,830,303
-anahtar_terim,damitma,874,57,119,698,258
+anahtar_terim,pipeline,1190,34,147,1009,256
+anahtar_terim,workflow,1067,16,75,976,232
+anahtar_terim,ana-sira,1022,44,86,892,335
+dosya_pointer,CLAUDE.md,1009,25,114,870,275
+anahtar_terim,pano,955,38,84,833,304
+anahtar_terim,damitma,878,57,120,701,259
 anahtar_terim,tuzuk,849,35,110,704,280
 tuzuk_madde,m.40b,807,26,116,665,323
 tuzuk_madde,m.37,780,18,71,691,236
@@ -33,8 +33,8 @@ etiket,ARANAMADI,526,6,5,515,140
 tuzuk_madde,m.8,519,33,86,400,268
 etiket,X,514,1,4,509,107
 tuzuk_madde,m.16,472,30,69,373,217
-tuzuk_madde,m.29,464,43,71,350,247
-tuzuk_madde,m.39,447,13,55,379,242
+tuzuk_madde,m.29,466,43,71,352,248
+tuzuk_madde,m.39,448,13,55,380,243
 anahtar_terim,gunaydin,434,45,69,320,133
 skill_adi,atlas-kosum,414,11,33,370,178
 anahtar_terim,yan-oturum,393,6,39,348,241
@@ -45,9 +45,9 @@ tuzuk_madde,m.43,346,19,49,278,105
 tuzuk_madde,m.31,344,23,26,295,155
 anahtar_terim,terminal,338,15,41,282,139
 tarih,2026-08-29,307,7,22,278,99
-tarih,2026-09-09,299,6,23,270,79
+tarih,2026-09-09,296,6,23,267,79
 tarih,2026-08-30,287,2,7,278,34
-skill_adi,seans-kapanis,283,13,18,252,90
+skill_adi,seans-kapanis,284,13,18,253,90
 tarih,2026-08-31,272,0,10,262,71
 tuzuk_madde,m.20,261,10,32,219,132
 tuzuk_madde,m.38,254,27,35,192,116
@@ -55,12 +55,12 @@ skill_adi,seans-acilis,253,8,15,230,74
 dosya_pointer,core/tuzuk-v0.md,236,3,9,224,82
 v_no,V39,228,8,12,208,64
 tuzuk_madde,m.30,227,5,22,200,92
-tuzuk_madde,m.42,226,10,21,195,83
+tuzuk_madde,m.42,227,10,21,196,84
 dosya_pointer,veri/karar-borcu.jsonl,219,1,13,205,54
 skill_adi,karar-modeli,218,10,20,188,107
 dosya_pointer,SKILL.md,207,7,24,176,97
+tuzuk_madde,m.9,200,11,26,163,131
 tarih,2026-08-21,199,5,15,179,61
-tuzuk_madde,m.9,199,11,25,163,131
 dosya_pointer,tools/katman-hatti.py,193,1,6,186,55
 kart,K-016,193,5,25,163,83
 dosya_pointer,core/pano.md,190,3,10,177,99
@@ -79,7 +79,7 @@ tuzuk_madde,m.34,142,6,19,117,63
 tuzuk_madde,m.25,141,16,17,108,81
 dosya_pointer,KILAVUZ.md,140,1,10,129,60
 tuzuk_madde,m.44,140,8,23,109,59
-anahtar_terim,seans basi,136,16,15,105,74
+anahtar_terim,seans basi,138,17,15,106,75
 v_no,V25,132,2,11,119,52
 dosya_pointer,AGENTS.md,131,0,10,121,43
 skill_adi,celiski-kapisi,128,5,6,117,61
@@ -98,7 +98,7 @@ dosya_pointer,tools/SCRIPTLER.md,106,1,4,101,31
 tarih,2026-08-01,106,3,15,88,63
 v_no,V55,105,1,8,96,30
 sha,563ea60e,101,0,0,101,7
-dosya_pointer,tools/hareket-tablo.py,98,2,0,96,51
+dosya_pointer,tools/hareket-tablo.py,99,2,0,97,51
 dosya_pointer,cc/defter.md,95,0,3,92,48
 skill_adi,halusinasyon-engelleyici,93,9,5,79,38
 dosya_pointer,core/baglam-anahtar-kaydi.md,92,5,20,67,46
@@ -114,17 +114,17 @@ dosya_pointer,MEMORY.md,82,0,9,73,36
 v_no,V59,82,0,10,72,32
 kart,K-022,80,1,7,72,37
 tuzuk_madde,m.17,80,5,14,61,42
+anahtar_terim,seans bitimi,77,8,5,64,50
 tuzuk_madde,m.5,77,1,4,72,37
-anahtar_terim,seans bitimi,75,8,5,62,49
 dosya_pointer,tools/anahtar-denetim.py,74,6,7,61,22
 v_no,V46,74,1,8,65,28
 tuzuk_madde,m.21,73,7,6,60,46
 v_no,V54,73,0,3,70,37
 v_no,V47,72,2,9,61,33
 kart,K-017,71,7,10,54,38
+tarih,2026-09-10,71,3,8,60,35
 dosya_pointer,wiki/README.md,70,5,5,60,33
 tarih,2026-08-28,67,0,3,64,11
-tarih,2026-09-10,67,3,8,56,34
 dosya_pointer,tools/atlas-derle.py,66,0,3,63,41
 dosya_pointer,kuyruk/build-tartisma-notlari.md,64,3,3,58,37
 dosya_pointer,tools/katman-olcum.py,63,2,5,56,23
@@ -144,8 +144,8 @@ wiki_link,link,57,4,5,48,30
 dosya_pointer,core/skill-uretim-semasi.md,56,6,8,42,26
 tarih,2026-09-01,56,0,0,56,5
 v_no,V23,56,0,3,53,35
+dosya_pointer,settings.json,55,1,5,49,43
 v_no,V8,55,2,1,52,21
-dosya_pointer,settings.json,54,1,5,48,42
 sha,57c9790d,54,0,0,54,9
 v_no,V64,53,0,7,46,25
 anahtar_terim,uyucam,52,5,13,34,23
@@ -281,6 +281,7 @@ dosya_pointer,cc/rapor-2026-08-17-1.md,26,0,1,25,9
 dosya_pointer,cc/rapor/2026-07/rapor-2026-07-29-4.md,26,0,24,2,3
 dosya_pointer,config.json,26,0,0,26,4
 dosya_pointer,tools/AXI-STANDARDI.md,26,1,0,25,12
+dosya_pointer,wiki/paralel-oturum-protokolu.md,26,2,4,20,18
 kart,K-018,26,1,3,22,19
 tarih,2025-06-18,26,0,0,26,2
 tarih,2026-07-20,26,0,11,15,10
@@ -289,7 +290,6 @@ dosya_pointer,a2.md,25,0,0,25,1
 dosya_pointer,raporlar/usage/kosum-maliyeti.py,25,0,1,24,15
 dosya_pointer,tools/kural-sayaci.py,25,3,0,22,15
 dosya_pointer,veri/bronz/prompt-olay.jsonl,25,0,1,24,25
-dosya_pointer,wiki/paralel-oturum-protokolu.md,25,2,4,19,17
 sha,914d8e47,25,0,1,24,8
 tarih,2026-08-13,25,0,1,24,15
 tuzuk_madde,md.27,25,1,2,22,12
@@ -299,6 +299,7 @@ dosya_pointer,atlas-derle.py,24,0,6,18,16
 dosya_pointer,cc/pipeline-2026-08-21-tahmin-gercek-ambar.md,24,0,0,24,5
 dosya_pointer,ogrenme/README.md,24,2,1,21,14
 dosya_pointer,raporlar/2026-08-30-ib07-description-eval.md,24,0,0,24,13
+dosya_pointer,tools/baglam-seyir.py,24,1,0,23,13
 dosya_pointer,tools/tarama-plan.py,24,0,7,17,14
 dosya_pointer,wiki/orca.md,24,0,4,20,13
 kart,K-012,24,3,3,18,14
@@ -311,7 +312,6 @@ dosya_pointer,a1.md,23,0,0,23,1
 dosya_pointer,cc/rapor-2026-07-26-1.md,23,0,0,23,6
 dosya_pointer,kuyruk/masa-gundemi-EK6-2026-08-20.md,23,0,0,23,9
 dosya_pointer,kuyruk/okuma-defteri-2026-07-28.md,23,0,0,23,21
-dosya_pointer,tools/baglam-seyir.py,23,1,0,22,12
 dosya_pointer,tools/pointer-kayma.py,23,1,1,21,10
 sha,c2e5f984,23,0,0,23,4
 skill_adi,lojik-ceviri,23,1,4,18,12
@@ -375,13 +375,13 @@ dosya_pointer,cc/rapor-2026-08-01-20.md,18,0,0,18,10
 dosya_pointer,pano.md,18,0,1,17,15
 dosya_pointer,raporlar/2026-08-31-ib66-gozlemlenebilir-nested-loop-atlas.md,18,0,0,18,11
 dosya_pointer,tools/obsidian-harita.py,18,0,3,15,10
-sha,2c13ad80,18,0,0,18,4
 sha,3ed3cca0,18,0,0,18,4
 sha,e0839c9b,18,0,0,18,5
 tarih,2023-11-22,18,0,0,18,1
 tuzuk_madde,m.1,18,3,0,15,15
 url,https://code.claude.com/docs/en/sub-agents,18,0,1,17,7
 dosya_pointer,cc/README.md,17,0,0,17,11
+dosya_pointer,core/sablonlar/seans-teslim.md,17,3,0,14,16
 dosya_pointer,gece-senkron.ps1,17,0,3,14,11
 dosya_pointer,veri/tarama-plan.jsonl,17,0,2,15,10
 dosya_pointer,wiki/baglam-veri-ambari.md,17,0,1,16,13
@@ -398,11 +398,11 @@ dosya_pointer,.claude/skills/pipeline-kosum/SKILL.md,16,0,0,16,8
 dosya_pointer,.claude/skills/vardiya-kapanis/SKILL.md,16,0,0,16,2
 dosya_pointer,cc/rapor-2026-07-30-13.md,16,0,0,16,13
 dosya_pointer,cc/rapor-2026-08-18-1.md,16,0,0,16,4
-dosya_pointer,core/sablonlar/seans-teslim.md,16,3,0,13,15
 dosya_pointer,erisim-fts.py,16,0,0,16,12
 dosya_pointer,kod-envanter.py,16,0,6,10,11
 dosya_pointer,veri/silver-saglik.jsonl,16,1,3,12,12
 kart,K-014,16,1,1,14,12
+sha,2c13ad80,16,0,0,16,4
 sha,3d12a7ce407f,16,0,0,16,1
 tarih,2026-07-09,16,2,5,9,10
 tarih,2026-08-05,16,0,0,16,6
@@ -422,6 +422,7 @@ dosya_pointer,karar-borcu-tablo.py,15,2,4,9,12
 dosya_pointer,karar-borcu.jsonl,15,0,0,15,7
 dosya_pointer,kuyruk/gelen-2026-08-01-tavan-rejim-karari.md,15,0,1,14,11
 dosya_pointer,kuyruk/masa-gundemi-K2-2026-08-02.md,15,0,1,14,10
+dosya_pointer,tools/sicak-katman-fifo.py,15,2,1,12,5
 dosya_pointer,veri/kolon-olcum.jsonl,15,0,3,12,13
 dosya_pointer,verify-push.py,15,0,0,15,7
 sha,bce684ce,15,0,0,15,3
@@ -447,13 +448,11 @@ dosya_pointer,private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/0fa78c95-8e3c
 dosya_pointer,raporlar/2026-08-02-masa-hazirlik-K2.md,14,0,0,14,10
 dosya_pointer,tools/bag-tablo.py,14,0,0,14,9
 dosya_pointer,tools/deneyim-tablo.py,14,2,0,12,9
-dosya_pointer,tools/sicak-katman-fifo.py,14,2,1,11,4
 dosya_pointer,veri/bronz/tahmin-olay.jsonl,14,1,2,11,9
 dosya_pointer,veri/katman-olcum.jsonl,14,3,2,9,12
 kart,K-004,14,3,0,11,9
 sha,2a11c9ee,14,0,0,14,4
 sha,2fc42451,14,0,0,14,5
-sha,d547519c,14,0,0,14,6
 sha,e289172,14,0,0,14,5
 tuzuk_madde,md.13,14,0,1,13,11
 tuzuk_madde,md.14,14,0,0,14,9
@@ -482,7 +481,9 @@ dosya_pointer,veri/erisim-eval.jsonl,13,0,2,11,7
 dosya_pointer,veri/model-kesim.jsonl,13,0,6,7,9
 dosya_pointer,wiki/dil-secimi.md,13,0,3,10,9
 sha,68d0d8ee,13,0,0,13,4
+sha,72eb3a58,13,0,0,13,2
 sha,be4a4b92,13,0,0,13,5
+sha,d547519c,13,0,0,13,5
 tarih,2025-08-19,13,0,0,13,3
 tarih,2026-09-07,13,0,0,13,1
 tuzuk_madde,m.36c,13,1,0,12,7
@@ -518,9 +519,9 @@ dosya_pointer,prompt-tablo.py,12,0,1,11,9
 dosya_pointer,raporlar/jarvis-genel-bakis-archify-2026-08-29.architecture.json,12,0,0,12,1
 dosya_pointer,routines.md,12,0,1,11,10
 dosya_pointer,session-start.sh,12,0,0,12,10
+dosya_pointer,tools/ad-esitligi-denetim.py,12,1,2,9,5
 dosya_pointer,veri/kod-envanter.jsonl,12,0,2,10,8
 dosya_pointer,wiki/stokastik-dusunce.md,12,0,0,12,8
-sha,72eb3a58,12,0,0,12,2
 sha,aa937b62,12,0,0,12,4
 sha,f685f280,12,0,0,12,3
 tarih,2025-06-06,12,0,0,12,4
@@ -567,7 +568,6 @@ dosya_pointer,raporlar/2026-08-01-ingest-grafhatti.md,11,0,0,11,7
 dosya_pointer,raporlar/2026-08-31-ib69-matris-a1-formalizasyon.md,11,0,0,11,8
 dosya_pointer,raporlar/kaynak-L8-agentic-workflow-transkript.md,11,0,0,11,9
 dosya_pointer,rol.md,11,1,4,6,4
-dosya_pointer,tools/ad-esitligi-denetim.py,11,1,2,8,4
 dosya_pointer,tools/karantina.py,11,0,1,10,9
 dosya_pointer,tools/silver-saglik-kalibrasyon.py,11,0,1,10,8
 dosya_pointer,tools/testler/test_katman_tek_tanim.py,11,0,3,8,5
@@ -729,6 +729,7 @@ v_no,V70,9,0,0,9,7
 v_no,V81,9,0,1,8,5
 wiki_link,token-x-zaman,9,0,7,2,9
 wiki_link,uc-register,9,0,9,0,6
+dosya_pointer,.claude/hooks/pretool-altajan-okuma.sh,8,1,1,6,6
 dosya_pointer,.claude/skills/karar-hatti/SKILL.md,8,0,0,8,3
 dosya_pointer,.claude/skills/karar-modeli/SKILL.md,8,0,0,8,8
 dosya_pointer,.claude/skills/wiki-sayfa-yaz/SKILL.md,8,0,0,8,4
@@ -776,6 +777,7 @@ dosya_pointer,veri/d2-eval.jsonl,8,0,0,8,7
 dosya_pointer,veri/manifest/ib-69-a1.json,8,0,0,8,7
 dosya_pointer,wiki/olcum-banki.md,8,0,0,8,4
 kart,K-021,8,1,0,7,8
+sha,1268ffa1,8,0,0,8,2
 sha,753e3a1,8,0,0,8,2
 sha,77e37b3f,8,0,0,8,4
 sha,95fd3d15,8,0,0,8,5
@@ -808,7 +810,6 @@ v_no,V42,8,0,1,7,6
 v_no,V68,8,0,0,8,6
 v_no,V79,8,0,0,8,4
 wiki_link,ingest-semasi,8,0,8,0,8
-dosya_pointer,.claude/hooks/pretool-altajan-okuma.sh,7,1,1,5,5
 dosya_pointer,.claude/hooks/userprompt-dosya.sh,7,0,0,7,3
 dosya_pointer,.claude/skills/gorsellestir/SKILL.md,7,0,0,7,1
 dosya_pointer,.claude/skills/gorsellestir/evals/evals.json,7,0,0,7,1
@@ -852,6 +853,7 @@ dosya_pointer,cc/rapor-2026-08-26-3.md,7,0,2,5,5
 dosya_pointer,cc/rapor/2026-08/rapor-2026-08-01-5.md,7,0,5,2,3
 dosya_pointer,chat/ingest-2026-08-03.md,7,0,0,7,5
 dosya_pointer,compiler-formulu.md,7,0,0,7,7
+dosya_pointer,core/deterministik-tasarim.md,7,2,1,4,5
 dosya_pointer,costs.md,7,0,0,7,1
 dosya_pointer,friday/core/desenler.md,7,1,2,4,4
 dosya_pointer,graf/pointer-sistemi-v0-tam.d2,7,0,0,7,3
@@ -963,7 +965,6 @@ dosya_pointer,cc/rapor-2026-08-26-2.md,6,0,2,4,5
 dosya_pointer,cc/rapor-2026-08-29-ib53-atlas-tez-a.md,6,0,0,6,2
 dosya_pointer,cc/rapor-2026-08-31-ib69-a2-envanter.md,6,0,0,6,3
 dosya_pointer,commands.md,6,0,0,6,1
-dosya_pointer,core/deterministik-tasarim.md,6,2,1,3,4
 dosya_pointer,gorsellestir.py,6,0,1,5,3
 dosya_pointer,hareket-olay.jsonl,6,0,1,5,6
 dosya_pointer,kapsül/CLAUDE.md,6,1,0,5,6
@@ -1005,7 +1006,6 @@ dosya_pointer,wiki/uc-register.md,6,0,1,5,6
 dosya_pointer,yuzey-parmak-izi.py,6,1,0,5,6
 dosya_pointer,zaman-testi-model_v2u.json,6,0,2,4,4
 sha,084f221c,6,0,0,6,5
-sha,1268ffa1,6,0,0,6,2
 sha,1e6cf688,6,0,0,6,4
 sha,41c3e6c,6,0,0,6,2
 sha,7509b65,6,0,0,6,3
@@ -1144,6 +1144,7 @@ dosya_pointer,kuyruk/arsiv/fikir-kutusu-arsivi-2026-08-29.md,5,0,0,5,2
 dosya_pointer,kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-17.md,5,0,0,5,3
 dosya_pointer,kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-29.md,5,0,0,5,4
 dosya_pointer,kuyruk/gelen-2026-08-01-olcek-yasalari.md,5,0,0,5,5
+dosya_pointer,kuyruk/gorev-format-gecis-plani-2026-09-10.md,5,0,1,4,3
 dosya_pointer,loop-kapanis-bu-oturum.json,5,0,0,5,4
 dosya_pointer,mdbook_test.md,5,0,0,5,3
 dosya_pointer,ogrenme/mat-felsefesi/README.md,5,2,0,3,3
@@ -1356,11 +1357,13 @@ dosya_pointer,core/sema-sikistirma.d2,4,1,0,3,2
 dosya_pointer,core/veri-muhendisligi-katmani.d2,4,1,0,3,2
 dosya_pointer,dersler/2026-07-19-P3-rope-context.md,4,0,0,4,3
 dosya_pointer,devir-ani.py,4,0,0,4,4
+dosya_pointer,devir-md2json.py,4,1,1,2,4
 dosya_pointer,docfx.json,4,0,0,4,1
 dosya_pointer,features-overview.md,4,0,0,4,1
 dosya_pointer,fikir-kutusu-arsivi-2026-09-09.md,4,0,0,4,2
 dosya_pointer,fren-olay.jsonl,4,0,1,3,3
 dosya_pointer,friday/cc/gelen/prompt-2026-09-09-ilk-oturum.md,4,0,1,3,4
+dosya_pointer,friday/cc/gelen/tasarim-2026-09-10-tur2-cevap.md,4,1,1,2,4
 dosya_pointer,friday/core/sablonlar/devir-birimi-v0.json,4,0,0,4,2
 dosya_pointer,graf/obsidian-harita.md,4,0,0,4,4
 dosya_pointer,graf/pointer-sistemi-v0-tam.svg,4,0,0,4,2
@@ -1375,7 +1378,6 @@ dosya_pointer,kuyruk/arsiv-atlas-taban-metni-en-2026-07-13.md,4,0,2,2,3
 dosya_pointer,kuyruk/arsiv-stokastik-dusunce-wiki-2026-08-16.md,4,0,2,2,4
 dosya_pointer,kuyruk/arsiv/senaryo-defteri-arsiv-2026-08-30.md,4,0,0,4,2
 dosya_pointer,kuyruk/gelen-2026-08-16-paralel-oturum-vaka-3.md,4,0,2,2,4
-dosya_pointer,kuyruk/gorev-format-gecis-plani-2026-09-10.md,4,0,1,3,2
 dosya_pointer,kuyruk/masa-gundemi-9-2026-09-08.md,4,0,0,4,4
 dosya_pointer,kuyruk/utopik-havuz.md,4,0,0,4,3
 dosya_pointer,ogrenme/dersler/2026-07-19-P3-rope-context.md,4,0,0,4,4
@@ -1440,6 +1442,7 @@ dosya_pointer,staj/P0-kalibrasyon/P0-tahminlerim.md,4,0,0,4,3
 dosya_pointer,tahmin-olay.jsonl,4,0,1,3,3
 dosya_pointer,tarama-plan-duckdb.py,4,0,0,4,3
 dosya_pointer,tools/adres-getir.py,4,0,0,4,3
+dosya_pointer,tools/devir-md2json.py,4,1,1,2,4
 dosya_pointer,tools/testler/test_devir_ani.py,4,0,0,4,3
 dosya_pointer,tools/testler/test_kod_orani.py,4,0,0,4,3
 dosya_pointer,tools/testler/test_tarama_plan.py,4,0,0,4,2
@@ -1747,14 +1750,12 @@ dosya_pointer,db-version-changes.md,3,0,0,3,3
 dosya_pointer,defter.md,3,0,0,3,2
 dosya_pointer,dersler/2026-07-15-P0-opus-oturumu.md,3,0,0,3,1
 dosya_pointer,description-eval.jsonl,3,0,0,3,2
-dosya_pointer,devir-md2json.py,3,1,1,1,3
 dosya_pointer,docs/install.md,3,0,0,3,1
 dosya_pointer,eksen-esleme.md,3,0,0,3,1
 dosya_pointer,feature_analiz.py,3,0,0,3,2
 dosya_pointer,friday/.claude/hooks/hareket-kutuk.sh,3,0,0,3,2
 dosya_pointer,friday/.claude/skills/seans-acilis/SKILL.md,3,0,0,3,2
 dosya_pointer,friday/cc/gelen/gorev-2026-09-10-tur2.md,3,0,2,1,3
-dosya_pointer,friday/cc/gelen/tasarim-2026-09-10-tur2-cevap.md,3,1,1,1,3
 dosya_pointer,friday/core/rol.md,3,0,0,3,2
 dosya_pointer,grading.json,3,0,0,3,3
 dosya_pointer,guncel-extract-kumeleme-2026-09-08.md,3,0,0,3,2
@@ -1838,7 +1839,6 @@ dosya_pointer,spec.md,3,0,0,3,1
 dosya_pointer,tam.svg,3,0,0,3,3
 dosya_pointer,tasks.md,3,0,0,3,2
 dosya_pointer,tools-reference.md,3,0,0,3,3
-dosya_pointer,tools/devir-md2json.py,3,1,1,1,3
 dosya_pointer,tools/tahmin-tablo.py,3,0,0,3,2
 dosya_pointer,trim_kume_v2_merkez.json,3,0,0,3,2
 dosya_pointer,v6.json,3,0,0,3,2
@@ -2621,6 +2621,7 @@ dosya_pointer,raporlar/seans-teslim-2026-09-04-karar87-damitma-cowork.md,2,0,0,2
 dosya_pointer,raporlar/seans-teslim-2026-09-09-galeri-trim-kumeleme-model.md,2,0,0,2,1
 dosya_pointer,raporlar/seans/seans-teslim-2026-08-30-icra-devam.md,2,0,1,1,2
 dosya_pointer,raporlar/seans/seans-teslim-2026-09-04-galeri-feature-temizlik.md,2,0,2,0,2
+dosya_pointer,raporlar/seans/seans-teslim-2026-09-10-friday-tur1-2-karar92-93.md,2,1,0,1,2
 dosya_pointer,raporlar/usage/iz-hasadi.py,2,0,0,2,1
 dosya_pointer,raporlar/vardiya-teslim-2026-07-19-ogrenme-P3.md,2,0,0,2,2
 dosya_pointer,raporlar/vardiya-teslim-2026-07-30-anasira.md,2,0,0,2,2
@@ -2784,6 +2785,7 @@ sha,f14bd4b6,2,0,0,2,2
 sha,f2653d57,2,0,0,2,2
 sha,f87c65cca4,2,0,0,2,1
 sha,fc963f4,2,0,0,2,2
+sha,fe3f802,2,0,0,2,2
 tarih,2009-08-18,2,0,0,2,1
 tarih,2010-07-21,2,0,0,2,1
 tarih,2013-12-06,2,0,0,2,1
@@ -3488,6 +3490,8 @@ dosya_pointer,Users/HasanSalihSahin/Downloads/6/data.json,1,0,0,1,1
 dosya_pointer,Users/HasanSalihSahin/Downloads/6/video_galleries/lecture-videos/data.json,1,0,0,1,1
 dosya_pointer,Users/HasanSalihSahin/Downloads/galeri-scoring-korelasyon/KOSUM-TALIMATI-ekip-lideri.md,1,0,0,1,1
 dosya_pointer,Users/HasanSalihSahin/dev/wf-deneme/.gnhf/runs/a-txt-dosyasinin-son-20cf87/iteration-1.jsonl,1,0,0,1,1
+dosya_pointer,Users/HasanSalihSahin/friday/cc/gelen/tasarim-2026-09-09-tur1-cevap.md,1,0,0,1,1
+dosya_pointer,Users/HasanSalihSahin/friday/cc/gelen/tasarim-2026-09-10-tur2-cevap.md,1,0,0,1,1
 dosya_pointer,WT3/raporlar/2026-08-30-a3-gnhf-nobet.md,1,0,0,1,1
 dosya_pointer,X.d2,1,0,0,1,1
 dosya_pointer,X.svg,1,0,0,1,1
@@ -4244,7 +4248,9 @@ dosya_pointer,veri/sozlesme/baglam_olay.json,1,0,0,1,1
 dosya_pointer,veri/sozlesme/tarama-plan.jsonl,1,1,0,0,1
 dosya_pointer,veri/teslim-olcum.jsonl,1,0,0,1,1
 dosya_pointer,veri3/trim_kume_v2_kartlar_k15.md,1,0,0,1,1
+dosya_pointer,wiki/ad-esitligi.md,1,0,0,1,1
 dosya_pointer,wiki/adversarial-hayatta-kalma.md,1,0,0,1,1
+dosya_pointer,wiki/gorev-format-gecisi.md,1,0,0,1,1
 dosya_pointer,wiki/gorsel-artefakt-dogrulama.md,1,0,0,1,1
 dosya_pointer,wiki/jarvis-carvis-ayrimi.md,1,0,1,0,1
 dosya_pointer,wiki/tarama-yontemleri.md,1,0,1,0,1
@@ -4272,6 +4278,7 @@ sha,1166c80,1,0,1,0,1
 sha,12df11c,1,0,0,1,1
 sha,1310add,1,0,0,1,1
 sha,132f597,1,0,1,0,1
+sha,1380c7a,1,0,1,0,1
 sha,147bd007,1,0,0,1,1
 sha,17d520f,1,0,0,1,1
 sha,182fab38748df9a4da2ccba9ee8be7d36c8cc54a,1,0,0,1,1
@@ -4330,7 +4337,6 @@ sha,593a932,1,0,1,0,1
 sha,5a045359,1,0,0,1,1
 sha,5a10322,1,0,0,1,1
 sha,5a2b487cba2344309309a9d4fc72b2b9,1,0,0,1,1
-sha,5a37bd7,1,0,0,1,1
 sha,5aeba191,1,0,1,0,1
 sha,5b62ca4,1,0,0,1,1
 sha,5ee0217,1,0,0,1,1
@@ -4385,6 +4391,7 @@ sha,9c1bffe,1,0,0,1,1
 sha,9c808b9,1,0,0,1,1
 sha,9cbaa68,1,0,0,1,1
 sha,9e4edb5b6b850c41,1,0,0,1,1
+sha,9ed0381,1,0,1,0,1
 sha,9f30f20,1,0,1,0,1
 sha,a084de78462a42890,1,0,0,1,1
 sha,a0a54536794d38cb2,1,0,0,1,1
@@ -4453,6 +4460,7 @@ sha,c6887d3,1,0,0,1,1
 sha,c845861,1,0,0,1,1
 sha,ca422a4,1,0,0,1,1
 sha,ca4db36,1,0,0,1,1
+sha,ccadf6e,1,0,1,0,1
 sha,ccd812d8e3,1,0,1,0,1
 sha,cd67fb4ea5,1,0,1,0,1
 sha,cee1600,1,0,0,1,1
@@ -4465,6 +4473,7 @@ sha,d50f5885,1,0,0,1,1
 sha,d6ecbf9,1,0,0,1,1
 sha,d7e9fe7,1,0,0,1,1
 sha,dbef0c35,1,0,0,1,1
+sha,dd44cf4,1,0,1,0,1
 sha,de28ff95,1,0,0,1,1
 sha,dfdc8559,1,0,0,1,1
 sha,e056e27,1,0,0,1,1
@@ -4490,7 +4499,6 @@ sha,edfa194f,1,0,0,1,1
 sha,f03b63c,1,0,1,0,1
 sha,f08209b6,1,0,0,1,1
 sha,fb85440,1,0,0,1,1
-sha,fe3f802,1,0,0,1,1
 sha,ff50827,1,0,0,1,1
 sha,fff44f10,1,0,0,1,1
 tarih,2016-12-20,1,0,0,1,1
@@ -4991,12 +4999,4 @@ url,https://arxiv.org/pdf/2406.14500,1,0,0,1,1
 url,https://arxiv.org/pdf/2406.20015,1,0,0,1,1
 url,https://arxiv.org/pdf/2407.04491,1,0,0,1,1
 url,https://arxiv.org/pdf/2407.11511,1,0,0,1,1
-url,https://arxiv.org/pdf/2408.02442,1,0,0,1,1
-url,https://arxiv.org/pdf/2409.12917,1,0,0,1,1
-url,https://arxiv.org/pdf/2409.20550,1,0,0,1,1
-url,https://arxiv.org/pdf/2410.21136,1,0,0,1,1
-url,https://arxiv.org/pdf/2411.15594,1,0,0,1,1
-url,https://arxiv.org/pdf/2501.13956,1,0,0,1,1
-url,https://arxiv.org/pdf/2502.09054,1,0,0,1,1
-url,https://arxiv.org/pdf/2502.10519,1,0,0,1,1
-# UYARI: 6208 satırın ilk 5000'i yazıldı; tam küme veri/baglam.sqlite v_referans_sayim,,,,,,
+# UYARI: 6216 satırın ilk 5000'i yazıldı; tam küme veri/baglam.sqlite v_referans_sayim,,,,,,
