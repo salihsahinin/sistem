@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 11 — İB-81 sıkıştırma + öğrenme serisi konusu (2026-09-11)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+  .not { border-left: 3px solid var(--color-warning); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 11 — İB-81 sıkıştırma + öğrenme serisi konusu <span class="badge badge-primary">3 kalem</span></h1>
+      <p class="text-sm opacity-80">On birinci Lavish masası. Tetik: 09-11 beyanın — <em>"M7'ye başla; öğrenmek için bir konu belirleyip farklı bir chat üzerinde 0'dan eğitim serisi olarak pratik yapmak istiyorum … staj süreci ve sektörün gidişatı bağlamında"</em> + <em>"kararları lavish ile karar masasına aç"</em>. Her kalemde: ne demek · seçenek başına ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada (m.40 eki).</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> M7-1 (tek/alan-lider) zaten Karar 92'de KAPALI, yeniden modellenmedi (m.16) · İB-81 için karar-modeli koşuldu (A birikimli-delta ✅ · B topyekûn-MDL karşıt · C reel-opsiyon) · Model A'nın ilk adımı kuru koşum <strong>üretildi, kanona yazılmadı</strong>: <code>tools/tuzuk-iz-tarama.py</code> → <code>raporlar/2026-09/ib81-kuru-kosum-tuzuk-2026-09-11.md</code> (commit 186bd96).</p>
+      <p class="text-xs opacity-60">AS-OF 2026-09-11 10:3x · Jarvis HEAD 186bd96 (origin'e 3 commit ileri; push kapanışta, M8 b) · paralel-oturum şüphesi YOK · sektör rakamları alt-ajan canlı taramasından (Sonnet, 09-11), <code>[?]</code> = ikincil kaynak, birincil açılmadı (m.39).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Ölçüm</th><th>Değer</th><th>Kaynak</th></tr></thead>
+        <tbody>
+          <tr><td>Tüzük</td><td><strong>47 madde · 59,0 KB · 9 izli madde · 17 iz</strong> (m.36 5 iz · m.41 3 · m.14 3 · m.40/30/42/43/44/25 1'er); ≈15k token yükü [?]</td><td><code>tools/tuzuk-iz-tarama.py</code>, 09-11</td></tr>
+          <tr><td>Bağlam-izleme (Salih 09-10 ön-koşulu)</td><td><code>v_okuma_orani</code> canlı; tüzük son 9 Read'in 6'sı aralık-okuma; 09-10 seansı aralık oranı 0,91</td><td><code>veri/baglam.sqlite</code></td></tr>
+          <tr><td>Çelişki-aday taraması</td><td>v0 sözcük-örtüşmesi, 23 çift — <strong>gürültülü</strong>, yalnız okuma sırası; çelişki hükmü Salih'in</td><td>aynı rapor</td></tr>
+          <tr><td>Veri-müh. beceri talebi 2026</td><td>SQL + Python temel; ETL/ELT, bulut, veri modelleme teknik; "ortaya çıkan": AI/ML entegrasyonu, vektör DB, <strong>veri gözlemlenebilirliği</strong>, gerçek-zamanlı (AS-OF 2026-01-27). dbt Labs anketi (363 kişi, 2026-04-15): <strong>%72 AI-destekli kodlamayı önceliklendiriyor, yalnız %24 AI-destekli pipeline test/gözlemlenebilirliğini</strong> → açık boşluk</td><td>dataquest.io/blog/data-engineering-skills · getdbt.com/blog/new-dbt-labs-report-finds-ai-driven-acceleration-is-outpacing-trust-and-governance</td></tr>
+          <tr><td>LLM/ajan değerlendirme (evals) 2026</td><td>Pazar 2,69 mlr $ (2026), %36 CAGR [?] · araç ekosistemi ikiye ayrıldı: geliştirme (DeepEval, Promptfoo, Inspect AI/UK AISI, Ragas) + üretim izleme (Braintrust, Arize Phoenix, LangSmith, Langfuse) · <strong>3 katmanlı ajan değerlendirme: uçtan-uca → trajektori (araç çağrıları) → bileşen</strong>; "üretimdeki her hata regresyon setine" pratiği · iş ilanı: "AI Quality Engineer" (Experis, 2026-07-21) eval sistemi + otomatik test akışı istiyor [?]</td><td>marktechpost.com 2026-08-09 · confident-ai.com/blog/llm-agent-evaluation-complete-guide · herohunt.ai (evals mühendisi ilanları)</td></tr>
+          <tr><td>ML/AI müh. talebi</td><td>LLM fine-tuning, derin öğrenme (%28 ilan), NLP, MLOps, PyTorch %37,7 [?]; RAG/LangChain LinkedIn'de üst-3 [?]</td><td>secondtalent.com (erişim 09-11)</td></tr>
+          <tr><td>Staj bağlamı (md.49: yalnız kart düzeyi)</td><td>K-022 rol = <strong>doğrulama katmanı, agentic coding ekibi</strong> · DEA-C01 sınav penceresi Ekim-Kasım · staj reposunda etl-redshift + airflow-docker müfredatı zaten açık · Jarvis müfredatında P18-P19 (eval seti, LLM-as-judge, kalibrasyon) hâlâ BOŞ</td><td><code>core/pano.md</code> K-022 · <code>ogrenme/mufredat.md</code></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- M1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M1">
+    <div class="card-body">
+      <h2 class="card-title">M1 · İB-81 çekirdek yeniden-oluşum: PERİYOT + KAPSAM <span class="badge badge-outline">KURAL · Katman-1</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Tüzük her seans hook'la yüklenir; 17 SÜPERSEDE/REVİZE/EK izi hem bağlam yükü hem çelişki riski. 09-10'da "sıkıştırılmış metinde ne bildiğini yalnız model bilir" diye ertelemiştin. Soru: neyi, ne zaman, nasıl tek hükme indirelim; şeffaflık şartın nasıl karşılansın.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M1','İB-81 periyot+kapsam');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) Model A birikimli-delta: madde-bazlı, olay-tetikli (madde ≥2 iz ∨ tüzük >48 KB ∨ 5 kapanışta bir tarama); kuru koşum → Salih okur → madde başına tek [damıtma] commit; kapsam tur-1 tüzük, tur-2 baglam-anahtar-kaydi; defter dışı"> <strong>(a) Model A — birikimli-delta ✅ ÖNERİ</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> kuru-koşum raporundaki 8 adayı sen okuduktan sonra madde başına tek commit ile tek hükme indiririm; eski metin <code>arsiv/tuzuk-madde-arsivi-2026-09-11.md</code>'ye iner (m.8); her uygulama raporuna "bu madde son 5 seansta hangi oturumda yüklendi" satırı <code>hareket</code> tablosundan eklenir. <strong>Artı:</strong> geri-alınabilir (git revert), ~8-12k token/madde-grubu [?], şeffaflık şartın kütükle karşılanır, model beyanıyla değil. <strong>Eksi:</strong> global çelişkiyi yakalamaz — B'den alınan script taraması v0 gürültülü. <strong>Gerekçe:</strong> tek okunur adımla 17 izi eritir; B'nin maliyeti ve "model bilir" riski 09-10 itirazınla çelişir; C'nin eşiği fiilen sağlanmaya başladı.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) Model B topyekûn-MDL: her 10 seans tüzük tamamı defterden yeniden üretilir"> <strong>(b) Model B — topyekûn-MDL (karşıt-temel)</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> her 10 seansta (≈ay) 47 maddeyi defter zincirinden tek geçişte yeniden yazarım; 60-90k token [?], 1-2 saat + senin 47 maddeyi baştan okuman. <strong>Artı:</strong> global tutarlılık en yüksek; "parça parça sıkıştırma çelişkiyi gizler" savunusu gerçek (canlılık ✓). <strong>Eksi:</strong> tam da itiraz ettiğin risk: tek geçişte yeniden yazılan metnin ne taşıdığını yalnız model bilir; okunmadan onaylanır. <strong>KISMEN YAKINSADI:</strong> global tarama fikri A'ya script olarak alındı.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) Model C reel-opsiyon: erteleme sürer; eşik 5 seans aralık-okuma ≥%80 sonra A"> <strong>(c) Model C — reel-opsiyon (09-10 ertelemenin devamı)</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> hiçbir şey; kuru-koşum raporu durur, 5 seans daha <code>v_okuma_orani</code> birikir, eşik tutunca (a)'ya geçilir. <strong>Artı:</strong> ≈0 token; ön-koşulun tamamen olgunlaşır. <strong>Eksi:</strong> tüzük büyümeye devam eder (ayda ~+5 KB [?]), hook yükü artar; erteleme sınırı yok.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(d) 'M7'ye başla' İB-81 tetiği DEĞİLDİ — erteleme aynen kalır, modeller defterde kayıt"> <strong>(d) Tetik yanlış sayıldı</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> karar-modeli bloğu deftere "sunuldu, hüküm yok" olarak girer; script/rapor havuzda kalır. <strong>Artı:</strong> senin 09-10 beyanın aynen korunur. <strong>Eksi:</strong> bu seansın M7 icrası boşa değil ama askıda.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M2 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M2">
+    <div class="card-body">
+      <h2 class="card-title">M2 · Öğrenme serisi KONUSU (ayrı chat, sıfırdan, pratik) <span class="badge badge-outline">Katman-1 · değer tercihi</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Ayrı bir sohbette 6-8 haftalık, sıfırdan anlatan + her derste elle yapılan pratik seri. Ölçüt: (1) staj rolüne doğrudan hizmet (doğrulama katmanı, agentic coding ekibi), (2) sektörde talep artışı kanıtlı, (3) mevcut hatlarla çakışmasın (etl-redshift/airflow staj reposunda zaten açık; MIT 6.006/6.042J ayrı şerit), (4) md.49: şirket verisi kullanılmaz, kamu verisiyle çalışılır. Seri Jarvis'te <code>ogrenme/&lt;kurs&gt;/</code> altında kayıt tutar; ders protokolü <code>ogrenme/README.md</code> + Karar 73 matematik kuralı.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M2','öğrenme konusu');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) LLM/ajan değerlendirme mühendisliği (evals): eval seti + LLM-as-judge kalibrasyonu + trajektori/araç-çağrısı testi + CI regresyon; araçlar promptfoo/DeepEval/Inspect AI; kamu veri"> <strong>(a) LLM / ajan değerlendirme mühendisliği (evals) ✅ ÖNERİ</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> 7 haftalık seri: eval seti tasarımı (≥50 vaka) → deterministik kontroller (araç adı/parametre) → LLM-as-judge + Salih-yargısına kalibrasyon (Cohen κ, Brier) → trajektori değerlendirme → CI'da regresyon → küçük-N istatistiği (bootstrap CI). Her ders 1 formül + 1 elle örnek (Karar 73). Araç: promptfoo/DeepEval + Inspect AI; hedef bir kamu ajan-görevi (ör. SWE-bench-lite alt-kümesi). <strong>Artı:</strong> staj rolünün ta kendisi ("doğrulama katmanı"); dbt anketindeki %72/%24 boşluğu ve evals iş-ilanı artışı [?] aynı yöne; Jarvis müfredatı P18-P19 boşluğunu kapatır, Jarvis'in kendi skill-koşum ölçümüne (İB-54, v_skill_kosum) doğrudan geri döner. <strong>Eksi:</strong> araç ekosistemi hızlı değişiyor (OpenAI Evals kapanış iddiası [?]); DEA-C01 hazırlığından saat çalar. <strong>Gerekçe:</strong> 4 ölçütün 4'ünü sağlayan tek aday.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) Veri kalitesi + pipeline testi/gözlemlenebilirliği: dbt tests, Great Expectations/Soda, veri sözleşmeleri, freshness/anomali; kamu veri seti"> <strong>(b) Veri kalitesi + pipeline testi / gözlemlenebilirliği</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> 6 hafta: veri sözleşmesi → dbt test/GE → freshness/volume/şema anomali → veri lineage → alarm eşiği istatistiği (Karar 73). Jarvis'te zaten <code>katman-olcum.py</code> (K-023) var, seri onu genişletir. <strong>Artı:</strong> dbt anketinde en açık boşluk (%24); DEA-C01 "veri kalitesi" alanıyla örtüşür; DE pratiği K-023 ile birleşir. <strong>Eksi:</strong> staj rolündeki "agentic doğrulama" kısmına dolaylı; ETL hattıyla kısmen çakışır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) Sıralama modeli değerlendirmesi (learning-to-rank offline eval: NDCG/MAP, interleaving, A/B, kalibrasyon); kamu veri (MSLR/Yahoo LTR)"> <strong>(c) Sıralama modeli değerlendirmesi (offline LTR eval)</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> 6 hafta: NDCG/MAP/MRR formülleri → LambdaMART kamu veriyle → offline↔online uçurumu (interleaving, A/B güç analizi) → kalibrasyon. <strong>Artı:</strong> galeri şeridinde yaptığın işin matematiksel temeli; hemen işe döner. <strong>Eksi:</strong> md.49 gereği şirket verisiyle çalışılamaz, kamu veriyle "oyuncak" kalır; sektör talebi genel değil niş; staj rolü sıralama değil doğrulama.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(d) AWS DEA-C01 sınav hattı yoğunlaştırma: Glue/Kinesis/Redshift/Lake Formation; sınav Ekim-Kasım"> <strong>(d) AWS DEA-C01 sınav hattını yoğunlaştır</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> yeni seri açmam; staj reposundaki etl-redshift müfredatını sınav alanlarına (ingest/dönüşüm/depolama/güvenlik) göre tamamlar, haftalık deneme-sınav sayacı koyarım. <strong>Artı:</strong> takvim baskısı gerçek (Ekim-Kasım); bulut becerisi ilanlarda temel. <strong>Eksi:</strong> "sıfırdan yeni konu" isteğine cevap değil, mevcut hattın devamı; sertifika bilgisi ≠ pratik doğrulama becerisi.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M3">
+    <div class="card-body">
+      <h2 class="card-title">M3 · R4+R5 (ReasoningBank, AWM) tam okuma borcu <span class="badge badge-outline">Katman-2 sıralama · onay</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Karar 92 M3(a) "R4+R5 İB-81 turunda" demişti. Bu turda tam okuma yapılmadı; iç kanıt kullanıldı (AWM: kural-tabanlı dedup ≈ LM-tabanlı, <code>core/ajan-metodolojisi.md:28</code>; ReasoningBank hakem raporu <code>cc/rapor/2026-09/rapor-2026-09-09-ib75-hakem.md</code>). m.40b kısmi.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M3','R4+R5 okuma');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) M1 uygulamasından ÖNCE, tek atlas işçisi (Sonnet, bütçe 10-15 çağrı), yalnız 'periyot/kapsam kararını değiştirir mi' sorusu"> <strong>(a) M1 uygulamasından önce, dar soru ✅ ÖNERİ</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> tek Sonnet işçi, iki kaynak, tek soru: "olay-tetikli madde-bazlı sıkıştırma kararını değiştiren bulgu var mı?" ~15-20k token [?]. <strong>Artı:</strong> m.40b borcu kapanır, uygulama öncesi son fren. <strong>Eksi:</strong> M1 uygulaması bir işçi koşumu kadar gecikir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) havuza; İB-81 uygulaması iç kanıtla ilerler"> <strong>(b) Havuza, uygulama iç kanıtla</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> token 0 şimdi. <strong>Eksi:</strong> m.40b "araştırma-önce" kuralına şerh düşülür.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) Friday tur-3 emrine gömülür (A1 formatı, R4+R5 = tur-3 içeriği)"> <strong>(c) Friday tur-3 emrine gömülür</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> A1 format denemesiyle birleşir, Opus lider okur. <strong>Eksi:</strong> tur-3 aday içeriği (<code>/docs/en/permissions</code>) yer değiştirir; Friday bağımsız-bağlam koşulu (Karar 91 EK-2 c) tartışmalı.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <section class="card bg-base-100 shadow-md not">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Not — sentez ajanı nerede (soruna cevap)</h2>
+      <p class="text-sm opacity-80">Araştırma ajanı bu Claude Code oturumunun <strong>alt-süreci</strong> olarak Mac'te çalıştı (Sonnet, arka plan). Ana ajan iki çocuk (Tez A beceri talebi · Tez B evals) başlattı ve DURDU; çocuklar 10:13'te bitti, ana ajan antitez turuna kendiliğinden dönmedi. Sentezi ben yaptım (yukarıdaki kanıt tabanı). Gözlem yolları: masaüstü uygulamasında sağ panel <strong>Tasks</strong> (bu seans için açıldı) · ham transkriptler <code>~/.claude/projects/-Users-HasanSalihSahin-jarvis/&lt;seans&gt;/subagents/agent-*.jsonl</code> (3 dosya, 190-330 KB) · seans kapanışında hareket kütüğüne iner (<code>raporlar/hareket/</code>).</p>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: bu HTML <code>kaynak-kodu/lavish/masa-11-2026-09-11.html</code> (Fable, 2026-09-11) · kalıcı kopya <code>raporlar/masa/masa-11-karar-yuzeyi-2026-09-11.html</code> · kanıt: <code>raporlar/2026-09/ib81-kuru-kosum-tuzuk-2026-09-11.md</code> · alt-ajan raporları (Tez A/B, 09-11; URL'ler kanıt tablosunda) · karar-modeli İB-81 koşumu bu seans. Hükümler deftere Karar 94 olarak iner.
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, {
+    tag: 'hukum', text: kalem + ': ' + secim, element: form,
+    queueKey: kalem, data: { kalem: kalem, hukum: secim }
+  });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
