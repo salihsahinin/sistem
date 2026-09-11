@@ -1,0 +1,27 @@
+# Kalıcı regresyon seti — H1 kutu 5 (fikir) + H2 koşumu (doğrulama) ile oluştu.
+# İki vaka da İKİ AYRI kurulumda (farklı prompt formatı, farklı assert türü: contains VE regex/equals)
+# aynı yanlış cevabı verdi → tesadüf değil, tekrarlanabilir model hatası (2026-09-11, claude-haiku-4-5-20251001).
+# H6'da (CI regresyon) bu dosya doğrudan koşulacak; model/prompt değiştiğinde bu 2 vakanın
+# hâlâ FAIL verip vermediği izlenir — düzelirse ilerleme, yeni bir yerde bozulursa regresyon.
+#
+# Kök-neden analizi: ogrenme/evals/h1-eval-seti/basarisizlik-analizi.md
+
+- vars:
+    soru: "Josh decides to try flipping a house. He buys a house for $80,000 and then puts in $50,000 in repairs. This increased the value of the house by 150%. How much profit did he make?"
+  assert:
+    - type: contains
+      value: "70000"
+  metadata:
+    kok_neden: "yüzde artışının hangi tabana (alım fiyatı vs toplam maliyet) uygulandığı belirsizliği"
+    ilk_gorulme: "2026-09-11, ogrenme/evals/h1-eval-seti (contains, 'SONUC' etiketsiz prompt)"
+    tekrar: "2026-09-11, ogrenme/evals/h2-eval-seti (regex, 'SONUC:' etiketli prompt) — aynı yanlış cevap (195000/325000)"
+
+- vars:
+    soru: "Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. How many years will it take before he starts earning money on the lemon tree?"
+  assert:
+    - type: contains
+      value: "13"
+  metadata:
+    kok_neden: "break-even (başabaş) ile kâra geçiş sınırını karıştırma — 12. yılda başabaş, 13. yılda kâr"
+    ilk_gorulme: "2026-09-11, ogrenme/evals/h1-eval-seti (contains, 'SONUC' etiketsiz prompt)"
+    tekrar: "2026-09-11, ogrenme/evals/h2-eval-seti (equals+transform, 'SONUC:' etiketli prompt) — aynı yanlış cevap (12)"

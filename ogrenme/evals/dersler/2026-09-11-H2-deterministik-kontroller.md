@@ -87,4 +87,5 @@ Düğüm listesi (≤8):
 - `h2-eval-seti/`: aynı 20 GSM8K vakası (pointer: h1-eval-seti/KAYNAK.md) + 1 bilerek-kırmızı vaka (21 toplam).
 - 3 deterministik assert türü dağıtıldı: `contains`×7 (+1 kırmızı vaka) · `regex`×7 · `equals`+`transform`×6.
 - Prompt güncellendi: model artık "SONUC: <sayı>" ile bitiriyor (regex/equals'ın güvenilir çalışması için).
-- Koşum henüz Salih tarafından çalıştırılmadı — beklenti: 20/21 PASS, vaka 21 (2+2=999 iddiası) FAIL (bu FAIL, assert altyapısının çalıştığının kanıtı).
+- Koşum sonucu (2026-09-11): **18/21 PASS (%85,71)**, 3 FAIL. Beklenenden 1 fazla FAIL: vaka 21 (kırmızı, beklendiği gibi) + **aynı 2 gerçek hata H1'den tekrar çıktı** (Josh ev — yüzde tabanı belirsizliği, Carlos limon ağacı — break-even sonrası kâr). Farklı prompt formatı ("SONUC:" etiketi) ve farklı/daha sıkı assert türleriyle (regex, equals) de aynı yanlış cevaplar geldi.
+- Sonuç: bu 2 hata tesadüf değil, **tekrarlanabilir model davranışı** — kutu 5'teki (H1) regresyon seti fikrinin canlı kanıtı. Kırmızı vakanın FAIL vermesi, `contains`/`regex`/`equals` üçünün de gerçekten çalıştığını doğruladı (kutu 8).
