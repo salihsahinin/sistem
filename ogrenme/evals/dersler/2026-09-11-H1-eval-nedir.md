@@ -77,3 +77,10 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 
 ## Kalan
 (yok — 8/8 düğüm işlendi)
+
+## DONE (haftalık çıktı)
+- `h1-eval-seti/eval-seti.yaml`: 20 vaka, kaynak GSM8K test.jsonl ilk 20 satır (KAYNAK.md, MIT, AS-OF 2026-09-11).
+- `h1-eval-seti/promptfooconfig.yaml`: provider `claude-haiku-4-5-20251001`, `apiKeyRequired:false` (Claude Code OAuth).
+- Koşum sonucu (Salih'in terminalinde, 2026-09-11): **18/20 PASS (%90)**, 0 hata, 9 sn.
+- Kutu 8 formülüyle çapraz kontrol: pass@1 = c/n = 18/20 = 0,90 — ölçülen oranla birebir tutarlı.
+- Yol boyunca çıkan gerçek hata (halüsinasyon değil, canlı koşumda görüldü): `eval-seti.yaml` içinde fazladan bir `tests:` sarmalayıcısı vardı; `promptfoo`, `tests: file://...` ile referans verilen dosyanın **doğrudan liste** olmasını bekliyor. Düzeltme commit efcc40a.
