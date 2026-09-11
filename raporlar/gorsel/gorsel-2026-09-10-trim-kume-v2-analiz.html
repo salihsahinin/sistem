@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trim kümesi v2 — ne yaptık, ne çıktı (2026-09-10)</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1e1e1e;--mut:#6b6b6b;--cizgi:#d9d5cc;--kutu:#ffffff;--a:#2f6f9f;--b:#c8742c;--c:#4f8a4f;--d:#b23b3b;--e:#8a6bb1;--vur:#fff3d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:8px 0 4px}
+h2{font-size:18px;margin:34px 0 8px;padding-top:14px;border-top:2px solid var(--cizgi)}
+p{margin:8px 0}
+.kaynak{color:var(--mut);font-size:12.5px}
+.ozet{background:var(--vur);border:1px solid #e8d9b0;border-radius:8px;padding:10px 14px;margin:12px 0}
+.ozet li{margin:4px 0}
+.gorsel{background:var(--kutu);border:1px solid var(--cizgi);border-radius:8px;padding:10px;margin:10px 0;overflow-x:auto}
+svg{width:100%;height:auto;display:block;font-family:inherit}
+.etiket{font-size:11px;fill:var(--mut)}
+.baslik{font-size:12.5px;font-weight:600;fill:var(--fg)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0}
+th,td{border-bottom:1px solid var(--cizgi);padding:5px 6px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{background:#f1eee6;font-weight:600}
+.art{color:var(--c);font-weight:600}.eksi{color:var(--d);font-weight:600}
+.atif{display:inline-block;background:#eee9dc;border-radius:4px;padding:0 6px;font-size:12.5px;font-weight:600}
+code{background:#f1eee6;padding:1px 4px;border-radius:3px;font-size:13px}
+@media (max-width:600px){body{font-size:14px}h1{font-size:19px}}
+</style>
+</head>
+<body><main>
+<h1>Trim kümesi v2 — mevcut işe yarayan model: ne yaptık, sayılarla ne çıktı</h1>
+<p class="kaynak">AS-OF 2026-09-10 · kaynak: <code>kuyruk/galeri-siralama/veri3/</code> — 25_trim_kume_v2.py (küme), trim_kume_v2_merkez.json (doğrulama özeti), trim_kume_v2_kartlar_k15.md (kartlar), 34_sonuc_*.json + 30_3fold_ozet.csv (model), 26/27 sonuç json'ları (soğuk başlangıç). Tüm sayılar deneysel (m.29); repo dokümanı <code>analiz/guncel-extract-kumeleme-2026-09-08.md</code>.</p>
+
+<div class="ozet"><b>Tek paragraf:</b>
+<ul>
+<li>506 ihale trimi, 8 özellikten (segment, kasa, hacim, yakıt, vites, ticari, fiyat dilimi, güç) <b>15 araç tipi kümesine</b> ayrıldı. Marka küme ölçütü değil.</li>
+<li>Eksik özellik "bilinmiyor" kümesi yaratmaz: trim yalnız bildiği özelliklerle en yakın merkeze atanır. Yakıt ve vites gizlenince trimlerin %69,5'i yine aynı kümeye düşüyor.</li>
+<li>Modele giren şey küme numarasının kendisi değil: <b>galerinin geçmişte bu kümeye verdiği teklif payı</b>. Ranker'da bu kolon 308 kolon içinde 46-80. sırada, küme numarası 162-228. sırada.</li>
+<li>Kazanç sıcak galerilerde: sıcak galeri × sıcak trim <span class="art">+1,7</span>, sıcak galeri × yeni trim <span class="art">+1,9</span> Recall@30 puanı, üç fold'da aynı yön. Soğuk galerilerde <span class="eksi">eksi</span>: geçmişi olmayan galeride pay sıfır, model bunu "asla teklif vermez" diye okuyor.</li>
+</ul></div>
+
+<h2>1. Boru hattı: trimden kümeye, kümeden model kolonuna</h2>
+<div class="gorsel"><svg viewBox="0 0 960 250" id="g1"></svg></div>
+<p>Görseldeki <span class="atif">kutu 1</span> girdiyi gösterir: 506 trim, hepsi ihalelerde geçmiş trimler; katalog taraması iptal edildi (Salih 09-09). <span class="atif">kutu 2</span> sekiz özelliğin 20 sayısal sütuna açılmasıdır: dört sayısal (hacim, fiyat dilimi, ticari, güç) ve dört kategorik bloğun one-hot açılımı (segment 5, kasa 5, yakıt 4, vites 2). Kategorik sütunlar 0,7 ağırlıkla ölçeklenir ki dört sayısal boyut beş blokla dengede kalsın. <span class="atif">kutu 3</span> Ward bağlantılı hiyerarşik kümelemedir; yalnız tüm özellikleri dolu ya da doldurulabilmiş 436 trim ile fit edilir. <span class="atif">kutu 4</span> geri kalan 70 trimin maskeli atamasıdır: trimin bilmediği blok uzaklık hesabından tümüyle çıkar, kalan sütunlarda en yakın merkez seçilir. <span class="atif">kutu 5</span> modele giden üç kolondur; asıl iş yapan "galerinin bu kümeye teklif payı" kolonudur ve her ihale için yalnız o ihaleden önceki olaylardan hesaplanır (as-of).</p>
+
+<h2>2. Eksik özellik ne kadar, nasıl dolduruldu</h2>
+<div class="gorsel"><svg viewBox="0 0 960 230" id="g2"></svg></div>
+<p><span class="atif">sol panel</span> 506 trimde hangi özelliğin kaç trimde boş kaldığını gösterir. Güç en çok boş kalan özellik: 97 trim. Segment neredeyse hep dolu. Doldurma sırası trim adından ayrıştırma, sonra indirilmiş arabam.com facet'i (295 eşleşme), sonra aynı marka-seri çoğunluğu. <span class="atif">sağ panel</span> sonucu gösterir: 436 trim tüm bloklarıyla fit'e girdi, 70 trim en az bir bloğu eksik olduğu için maskeli atamayla küme aldı. Eksik bloklu trimlerin ortalama kullanılan sütun sayısı 20'de 18,9; yalnız elektrikli araç kümesinde 11,5'e düşüyor.</p>
+
+<h2>3. Küme sayısı k neden 15</h2>
+<div class="gorsel"><svg viewBox="0 0 960 300" id="g3"></svg></div>
+<p><span class="atif">mavi çizgi</span> silhouette skorudur: küme içi sıkılık bölü kümeler arası uzaklık, 1'e yakın iyi. k arttıkça sürekli yükseliyor (0,28'den 0,39'a), yani tek başına k seçemez; her zaman "daha çok küme" der. <span class="atif">turuncu çizgi</span> yakıt ve vites gizlenince aynı kümeye düşme oranıdır; bu, eksik özellikli yeni trim geldiğinde atamanın ne kadar tutarlı kalacağını ölçer. k=15'te 0,695 ile yerel tepe. <span class="atif">yeşil çizgi</span> rastgele üç blok gizleme testidir; k büyüdükçe düşer, çünkü küçük kümeler daha kırılgandır. k=15 iki testin de kabul edilebilir olduğu ve en küçük kümenin hâlâ anlamlı (elektrikli, 3 fit + 7 atanan) kaldığı noktadır. Salih'in kuralı: kümeleme ölçütü silhouette değil dilim Recall@30 (bölüm 5); k=15 orada da test edildi.</p>
+
+<h2>4. On beş küme: kim kim</h2>
+<div class="gorsel"><svg viewBox="0 0 960 560" id="g4"></svg></div>
+<p><span class="atif">bar uzunluğu</span> kümedeki trim sayısı, <span class="atif">sağdaki sayı</span> eğitim döneminde o kümeye gelen teklif olayı sayısıdır. Küme 1 (B segment benzinli otomatik hatchback: Clio, Sandero, Polo) hem en kalabalık hem en çok teklif alan kümedir: 55 trim, 921 olay. Küme 6 (C sedan benzinli otomatik: Megane sedan, City, Corolla) 33 trimle 519 olay alır, yani trim başına en yoğun talep buradadır. Kümeler fiyata da ayrışmış: küme 12 (B düz vites) medyan 0,59 M TL, küme 15 (elektrikli) 1,74 M TL. Yapı C mantığı burada görünür: küme araç tipidir, Renault Clio ile Dacia Sandero aynı kümede, Egea dizel-otomatik (küme 4) ile Egea benzin-düz (küme 7) ayrı kümede.</p>
+
+<h2>5. Modelde ne oldu: M4b − M0, dilim × fold</h2>
+<div class="gorsel"><svg viewBox="0 0 960 360" id="g5"></svg></div>
+<p>Her grup bir dilimdir; <span class="atif">üç bar</span> üç zaman kesimi (18 Ağustos, 25 Ağustos, 1 Eylül). Bar, trim kümesi kolonlarını eklemenin Recall@30'a etkisidir; sıfır çizgisinin üstü kazanç. <span class="atif">sıcak galeri × yeni trim</span> dilimi üç fold'da da artıdır (+1,9 / +2,0 / +1,3): galeri daha önce hiç teklif vermediği trime, o trimin kümesine olan geçmiş payı sayesinde eşlenebiliyor. <span class="atif">sıcak × sıcak</span> iki fold artı, 25 Ağustos'ta −0,4 ile nötr. <span class="atif">soğuk galeri</span> dilimlerinin üçü de eksidir: galerinin teklif geçmişi yoksa pay kolonu 0'dır ve model 0'ı "bu galeri teklif vermez" sinyali olarak öğrenir. Bu yüzden M4b kabul adayı "sıcak galeri" dilimi için, soğuk galeri için değil.</p>
+<table><thead><tr><th>Dilim (üç fold birleşik)</th><th>Pozitif</th><th>M0</th><th>M4b</th><th>Fark</th></tr></thead><tbody id="t5"></tbody></table>
+<p class="kaynak">Recall@30 = ihale × trim çiftinde gerçekten teklif veren galerilerin, modelin ilk 30'una girenlerinin payı. Pozitif = o dilimde teklif veren galeri sayısı. Kaynak: 30_3fold_ozet.csv, fold satırları 34_sonuc_*.json.</p>
+
+<h2>6. Ranker kümeyi nasıl kullanıyor: kolon önemi</h2>
+<div class="gorsel"><svg viewBox="0 0 960 200" id="g6"></svg></div>
+<p><span class="atif">her satır</span> M4b'ye eklenen üç kolondan biridir; noktalar üç fold'daki önem sırasını gösterir (308 kolon içinde, sol = önemli). Küme numarasının kendisi (<code>trim_kume</code>) 162-228. sırada, yani neredeyse kullanılmıyor. Galerinin bu kümeye teklif payı (<code>gal_tekpay_tk</code>) 46-80. sırada. Galerinin toplam teklif olayı sayısı (<code>gal_tek_n</code>) 4-7. sırada ama bu kolon kümeyle ilgili değil, galeri aktifliğidir. Sonuç: kümeleme modele "araç tipi etiketi" olarak değil, galeri × araç tipi ilişki oranı olarak giriyor. Küme etiketi tek başına 305 extract kolonunda olmayan bilgi taşımıyor (dünkü özüt 1).</p>
+
+<h2>7. Küme × küme tablosu tek başına sıralayabilir mi</h2>
+<div class="gorsel"><svg viewBox="0 0 960 220" id="g7"></svg></div>
+<p><span class="atif">barlar</span> soğuk trim dilimi için (galeri sıcak, trim yeni; 835 pozitif) farklı basit sıralayıcıların Recall@30'udur; CatBoost dışında, dünkü 26 numaralı soğuk başlangıç ölçümü. Yalnız galeri-kümesi × trim-kümesi oranı ile sıralama 0,067 verir, rastgele 0,004. Galerinin toplam aktifliğiyle sıralama 0,364. İkisini çarpınca 0,362, ilan payı ekleyince 0,380. Okuma: küme × küme oranı aynı kümedeki bütün galerilere aynı puanı verir, tek başına sıra üretemez; galeri düzeyi bir puanla çarpılması ya da modele özellik olarak girmesi gerekir (dünkü özüt 2). Bölüm 5'teki +1,9 tam bu ikinci yoldur.</p>
+
+<h2>8. Bugün açık kalan</h2>
+<ul>
+<li>Galeri kümesi (M6b) m=30 öncül varyantı 10-09 10:16'da bitti: sıcak dilimlerde m=10'a göre +1,3/+1,6 ama M4b'nin hâlâ 1,4-1,7 puan altında, fold yönü tutarsız → galeri kümesi RET, M4b üçlüsü kalır (37_sonuc_m30_ozet.md).</li>
+<li>Soğuk galeri eksisi kümeleme sorunu değil, veri penceresi sorunu: data ekibinden 12 aylık as-of dealer kolonları istendi.</li>
+<li>Katalog geneli trim kümesi: data ekibi trim tablosu verirse aynı 8 boyut + maskeli atama ile genişler (25 numaralı script değişmez).</li>
+</ul>
+
+<script>
+const S=(t,a)=>{const e=document.createElementNS("http://www.w3.org/2000/svg",t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const T=(g,x,y,s,cls,anchor)=>{const t=S("text",{x,y,class:cls||"etiket","text-anchor":anchor||"start"});t.textContent=s;g.appendChild(t);return t};
+const kutu=(g,x,y,w,h,b,acik,renk)=>{g.appendChild(S("rect",{x,y,width:w,height:h,rx:8,fill:"#fff",stroke:renk,"stroke-width":2}));T(g,x+w/2,y+22,b,"baslik","middle");acik.forEach((s,i)=>T(g,x+w/2,y+42+i*15,s,"etiket","middle"));};
+const ok=(g,x1,y1,x2,y2)=>{g.appendChild(S("line",{x1,y1,x2,y2,stroke:"#999","stroke-width":2,"marker-end":"url(#ok)"}));};
+// ---- g1 boru hattı
+{const g=document.getElementById("g1");const d=S("defs",{});d.innerHTML='<marker id="ok" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#999"/></marker>';g.appendChild(d);
+T(g,20,20,"Kutu = bir adım. Altındaki cümle o adımın ne demek olduğudur.","etiket");
+kutu(g,10,40,170,120,"1 · Girdi",["506 ihale trimi","Bu kutu: yalnız ihalede","görülmüş trimler, katalog yok"],"#2f6f9f");
+kutu(g,205,40,170,120,"2 · 8 özellik → 20 sütun",["4 sayısal + 4 kategorik blok","Bu kutu: her trim","20 sayıdan oluşan bir nokta"],"#2f6f9f");
+kutu(g,400,40,170,120,"3 · Ward, k=15",["436 tam trimle fit","Bu kutu: birbirine yakın","noktalar aynı araç tipi"],"#c8742c");
+kutu(g,595,40,170,120,"4 · Maskeli atama",["70 eksik-özellikli trim","Bu kutu: bilinmeyen blok","uzaklığa girmez, küme yine var"],"#c8742c");
+kutu(g,790,40,160,120,"5 · Model kolonu",["galerinin kümeye teklif payı","Bu kutu: as-of, ihale","öncesi olaylardan"],"#4f8a4f");
+ok(g,180,100,205,100);ok(g,375,100,400,100);ok(g,570,100,595,100);ok(g,765,100,790,100);
+T(g,20,200,"Sayılar: 506 = 436 fit + 70 atanan · kümeler 15 · sütun 20 · kategorik ağırlık 0,7 · fiyat dilimi sınırları 790k / 990k / 1,19M / 1,49M TL","etiket");
+T(g,20,222,"Kaynak: 25_trim_kume_v2.py docstring + trim_kume_v2_merkez.json (sutunlar, oh_agirlik, fiyat_sinir).","etiket");}
+// ---- g2 eksik
+{const g=document.getElementById("g2");const bos=[["güç",97],["vites",46],["hacim",37],["yakıt",33],["segment",5]];const mx=100;
+T(g,20,22,"Boş kalan özellik (506 trimde kaç trim)","baslik");
+bos.forEach(([a,n],i)=>{const y=40+i*30;T(g,90,y+14,a,"etiket","end");g.appendChild(S("rect",{x:100,y,width:n/mx*300,height:20,fill:"#2f6f9f",rx:3}));T(g,105+n/mx*300,y+14,n,"etiket");});
+T(g,520,22,"Fit'e giren / maskeli atanan","baslik");
+g.appendChild(S("rect",{x:520,y:40,width:436/506*400,height:36,fill:"#c8742c",rx:3}));g.appendChild(S("rect",{x:520+436/506*400,y:40,width:70/506*400,height:36,fill:"#e8b98a",rx:3}));
+T(g,530,63,"436 tam (fit)","etiket").setAttribute("fill","#fff");T(g,520+436/506*400+4,63,"70","etiket");
+T(g,520,100,"164 trimde en az bir özellik doldurma ile geldi ya da boş kaldı;","etiket");T(g,520,116,"boş kalan blok maskeyle uzaklık hesabından çıkar.","etiket");
+T(g,520,140,"Kullanılan sütun ortalaması: 18,9 / 20 · elektrik kümesi 11,5","etiket");
+T(g,20,205,"Kaynak: trim_kume_v2_k15.parquet (guc/yakit/vites/hacim/segment NULL sayımı, fit_icinde, kullanilan_sutun).","etiket");}
+// ---- g3 k seçimi
+{const g=document.getElementById("g3");const ks=[8,9,10,11,12,13,14,15,16,17,18,19,20];
+const sil=[.283,.285,.294,.304,.318,.326,.332,.349,.362,.373,.376,.384,.388],yv=[.672,.656,.683,.667,.64,.624,.644,.695,.7,.706,.695,.69,.695],r3=[.736,.732,.713,.709,.693,.683,.677,.69,.693,.681,.677,.656,.631];
+const X=k=>60+(k-8)/12*820,Y=v=>250-(v-.2)/.6*210;
+[.2,.3,.4,.5,.6,.7,.8].forEach(v=>{g.appendChild(S("line",{x1:60,y1:Y(v),x2:880,y2:Y(v),stroke:"#eee"}));T(g,52,Y(v)+4,v.toFixed(1),"etiket","end");});
+ks.forEach(k=>T(g,X(k),270,"k="+k,"etiket","middle"));
+const ciz=(arr,renk)=>{g.appendChild(S("polyline",{points:ks.map((k,i)=>X(k)+","+Y(arr[i])).join(" "),fill:"none",stroke:renk,"stroke-width":2.5}));ks.forEach((k,i)=>g.appendChild(S("circle",{cx:X(k),cy:Y(arr[i]),r:3.5,fill:renk})));};
+ciz(sil,"#2f6f9f");ciz(yv,"#c8742c");ciz(r3,"#4f8a4f");
+g.appendChild(S("rect",{x:X(15)-14,y:20,width:28,height:240,fill:"#fff3d6",opacity:.6}));
+T(g,X(15),16,"seçilen k=15","baslik","middle");
+T(g,70,30,"mavi = silhouette (sürekli artar, tek başına seçici değil)","etiket");T(g,70,46,"turuncu = yakıt+vites gizli, aynı küme oranı (0,695 @15)","etiket");T(g,70,62,"yeşil = rastgele 3 blok gizli, aynı küme oranı (0,690 @15)","etiket");
+T(g,60,292,"Kaynak: trim_kume_v2_merkez.json → ozet[k]. En küçük küme k≥11'de 3 trim (elektrikli), en büyük k=15'te 51.","etiket");}
+// ---- g4 kümeler
+{const g=document.getElementById("g4");
+const K=[[1,"B hatchback · benzin · otomatik (Clio, Sandero, Polo)",55,921,"0,89"],[2,"C hatchback · benzin · otomatik (Golf, BMW 1)",46,347,"1,12"],[3,"D sedan/SUV · benzin+dizel (Passat, C180, Tucson)",40,392,"1,44"],[4,"C sedan/HB · dizel · otomatik (Egea dizel, Megane dCi)",41,381,"0,99"],[5,"C SUV · benzin · otomatik (Qashqai, T-Roc)",40,270,"1,68"],[6,"C sedan · benzin · otomatik (Megane sedan, City, Corolla)",33,519,"1,47"],[7,"C · düz vites · ucuz (Egea 1.4 Fire, Astra 1.6)",30,277,"0,76"],[8,"B SUV · benzin · otomatik (Bayon, C3 Aircross, Juke)",36,356,"1,20"],[9,"B SUV/HB · dizel · otomatik (Crossland, Renegade)",32,449,"0,89"],[10,"C SUV · dizel · otomatik (3008, Tiggo)",40,380,"1,44"],[11,"hibrit SUV/sedan (C-HR, Kona)",29,320,"1,67"],[12,"B hatchback · düz vites · en ucuz (Clio, Sandero düz)",30,254,"0,59"],[13,"J segment küçük SUV",22,154,"1,09"],[14,"LCV ticari station (Doblo, Combo)",22,210,"0,82"],[15,"elektrikli (Tesla, Corsa-e) — 3 fit + 7 atanan",10,131,"1,74"]];
+T(g,20,20,"küme · araç tipi (örnek üyeler)","baslik");T(g,560,20,"trim sayısı","baslik");T(g,840,20,"olay","baslik");T(g,910,20,"medyan fiyat","baslik","end");
+K.forEach(([n,ad,t,o,f],i)=>{const y=34+i*34;T(g,20,y+16,n+" · "+ad,"etiket");g.appendChild(S("rect",{x:560,y:y+2,width:t/55*250,height:20,fill:n===15?"#8a6bb1":"#2f6f9f",rx:3}));T(g,565+t/55*250,y+16,t,"etiket");T(g,840,y+16,o,"etiket");T(g,910,y+16,f+" M","etiket","end");});
+T(g,20,548,"Kaynak: trim_kume_v2_kartlar_k15.md (trim, pozitif olay, fiyat medyanı, marka dağılımı). Olay = eğitim dönemi teklif olayı (etkilesim.parquet × küme).","etiket");}
+// ---- g5 M4b-M0
+{const g=document.getElementById("g5");
+const D=[["hepsi",[.009,.007,.014]],["sıcak G × sıcak T",[.03,-.004,.024]],["sıcak G × yeni T",[.019,.02,.013]],["soğuk G × sıcak T",[-.014,.011,0]],["soğuk G × yeni T",[-.025,-.021,-.061]],["soğuk G ilanlı",[-.017,-.013,-.045]]];
+const Y=v=>180-v/.07*130;const renk=["#2f6f9f","#c8742c","#4f8a4f"];
+[-.06,-.04,-.02,0,.02,.04].forEach(v=>{g.appendChild(S("line",{x1:60,y1:Y(v),x2:940,y2:Y(v),stroke:v===0?"#666":"#eee"}));T(g,52,Y(v)+4,(v*100).toFixed(0),"etiket","end");});
+D.forEach(([ad,vs],i)=>{const x0=80+i*145;vs.forEach((v,j)=>{const x=x0+j*38;const h=Math.abs(Y(v)-Y(0));g.appendChild(S("rect",{x,y:Math.min(Y(v),Y(0)),width:30,height:h,fill:renk[j],rx:2}));T(g,x+15,v>=0?Y(v)-4:Y(v)+12,(v*100).toFixed(1),"etiket","middle");});T(g,x0+55,320,ad,"etiket","middle");});
+T(g,60,20,"Recall@30 puan farkı (M4b − M0), yüzde puan","baslik");T(g,60,36,"mavi = 18 Ağu · turuncu = 25 Ağu · yeşil = 1 Eyl","etiket");
+T(g,60,348,"Kaynak: 34_sonuc_{fold}.json (M0, M4b). 1 Eyl soğuk dilimlerinde pozitif 33-46, tek ihale; gürültülü.","etiket");
+const tb=document.getElementById("t5");[["hepsi",5454,.349,.358],["sıcak G × sıcak T",1522,.432,.449],["sıcak G × yeni T",2524,.426,.445],["soğuk G × sıcak T",521,.113,.109],["soğuk G × yeni T",887,.127,.103],["soğuk G ilanlı",653,.046,.028]].forEach(([a,p,m0,m4])=>{const f=((m4-m0)*100).toFixed(1);tb.insertAdjacentHTML("beforeend",`<tr><td>${a}</td><td>${p}</td><td>${(m0*100).toFixed(1)}</td><td>${(m4*100).toFixed(1)}</td><td class="${f>0?'art':'eksi'}">${f>0?'+':''}${f}</td></tr>`);});}
+// ---- g6 önem sırası
+{const g=document.getElementById("g6");const R=[["trim_kume (küme numarası)",[162,215,228]],["gal_tekpay_tk (galerinin kümeye teklif payı)",[80,47,46]],["gal_tek_n (galeri toplam olay, log)",[7,4,4]]];
+const X=s=>340+(s-1)/307*580;const renk=["#2f6f9f","#c8742c","#4f8a4f"];
+T(g,20,20,"Önem sırası, 308 kolon içinde (sol = en önemli)","baslik");
+[1,50,100,150,200,250,308].forEach(s=>{g.appendChild(S("line",{x1:X(s),y1:34,x2:X(s),y2:150,stroke:"#eee"}));T(g,X(s),165,s,"etiket","middle");});
+R.forEach(([ad,ss],i)=>{const y=55+i*38;T(g,330,y+4,ad,"etiket","end");g.appendChild(S("line",{x1:X(1),y1:y,x2:X(308),y2:y,stroke:"#ddd"}));ss.forEach((s,j)=>g.appendChild(S("circle",{cx:X(s),cy:y,r:6,fill:renk[j],opacity:.85})));});
+T(g,20,190,"Kaynak: 34_sonuc_{fold}.json → M4b_ek_sira (PredictionValuesChange). mavi 18 Ağu · turuncu 25 Ağu · yeşil 1 Eyl.","etiket");}
+// ---- g7 soğuk başlangıç
+{const g=document.getElementById("g7");const B=[["rastgele",.004],["yalnız küme×küme tablosu",.067],["galeri aktifliği",.364],["aktiflik × küme lift",.362],["aktiflik × küme lift + ilan payı",.380]];
+T(g,20,20,"Soğuk trim dilimi (sıcak galeri × yeni trim, 835 pozitif): basit sıralayıcıların Recall@30","baslik");
+B.forEach(([a,v],i)=>{const y=36+i*32;T(g,290,y+15,a,"etiket","end");g.appendChild(S("rect",{x:300,y,width:v/.4*560,height:22,fill:i===1?"#b23b3b":"#2f6f9f",rx:3}));T(g,306+v/.4*560,y+15,(v*100).toFixed(1)+"%","etiket");});
+T(g,20,205,"Kaynak: 26_sonuc_T15_G6.json (soguk_trim_*). Tablo = galeri-kümesi(6) × trim-kümesi(15) pozitif oranı; 90 hücrenin %38'i boş.","etiket");}
+</script>
+</main></body></html>

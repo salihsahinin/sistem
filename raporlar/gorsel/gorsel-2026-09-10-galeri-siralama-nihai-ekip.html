@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeri sıralama modeli — nihai sürüm, baştan sona (2026-09-10)</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1e1e1e;--mut:#6b6b6b;--cizgi:#d9d5cc;--a:#2f6f9f;--b:#c8742c;--c:#4f8a4f;--d:#b23b3b;--e:#8a6bb1;--vur:#fff3d6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}h1{font-size:23px;margin:8px 0 4px}h2{font-size:19px;margin:36px 0 8px;padding-top:14px;border-top:2px solid var(--cizgi)}h3{font-size:16px;margin:18px 0 6px}
+p{margin:8px 0}.kaynak{color:var(--mut);font-size:12.5px}.ozet{background:var(--vur);border:1px solid #e8d9b0;border-radius:8px;padding:10px 14px;margin:12px 0}.ozet li{margin:4px 0}
+.gorsel{background:#fff;border:1px solid var(--cizgi);border-radius:8px;padding:10px;margin:10px 0;overflow-x:auto}svg{width:100%;height:auto;display:block;font-family:inherit}
+.etiket{font-size:11px;fill:var(--mut)}.baslik{font-size:12.5px;font-weight:600;fill:var(--fg)}.atif{display:inline-block;background:#eee9dc;border-radius:4px;padding:0 6px;font-size:12.5px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0}th,td{border-bottom:1px solid var(--cizgi);padding:5px 6px;text-align:right}th:first-child,td:first-child,td.s{text-align:left}th{background:#f1eee6;font-weight:600}
+.art{color:var(--c);font-weight:600}.eksi{color:var(--d);font-weight:600}.sec{background:var(--vur)}code{background:#f1eee6;padding:1px 4px;border-radius:3px;font-size:13px}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:14px}dt{font-weight:600}dd{margin:0}
+@media (max-width:600px){body{font-size:14px}h1{font-size:19px}dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<h1>Galeri sıralama modeli — nihai sürüm, baştan sona</h1>
+<p class="kaynak">Ekip için anlatım, 2026-09-10. Tüm rakamlar 14 Temmuz – 4 Eylül extract'i üzerinde üç zaman kesimli geriye dönük testten; canlı sonuç değil. Bölüm sonlarındaki kaynak satırları çalışma dizinindeki script ve dosya adlarıdır.</p>
+
+<div class="ozet"><b>Bir bakışta:</b><ul>
+<li><b>Ne yapıyor:</b> her ihale × trim için 30 galerilik "kime gösterelim" listesi. Model CatBoost sıralayıcı (YetiRank).</li>
+<li><b>Ne değişti:</b> (1) trimler 15 araç tipi kümesine ayrıldı ve modele "galerinin bu araç tipine geçmiş teklif payı" girdi; (2) listeye "en az 3 soğuk galeri" kuralı geldi; (3) galeri kümeleme denendi, katkısı olmadı, modele girmiyor.</li>
+<li><b>Sonuç:</b> aktif galerilerde isabet <span class="art">+1,7 / +1,9</span> puan, soğuk galerilerde <span class="art">+2,3</span> puan, toplam isabet korundu (eski modelin <span class="art">+0,9</span> üstü). Üç zaman kesiminde aynı yön.</li>
+</ul></div>
+
+<h2>1. Yolun tamamı: altı adım</h2>
+<div class="gorsel"><svg viewBox="0 0 960 300" id="g1"></svg></div>
+<p><span class="atif">kutu 1</span> hammadde: extract'ten gelen ihale × trim × galeri satırları ve etiketler. <span class="atif">kutu 2</span> ölçüm düzeneği: önce "neyi iyi sayacağız" sabitlendi, sonra deneme yapıldı. <span class="atif">kutu 3</span> trim tarafı kümeleme: işe yaradı, modele girdi. <span class="atif">kutu 4</span> galeri tarafı kümeleme: yedi biçimde denendi, hiçbiri işe yaramadı, modele girmedi. <span class="atif">kutu 5</span> modelin eğitimi: 305 mevcut kolon + 3 yeni kolon. <span class="atif">kutu 6</span> sıralama kuralı: model listesinin üstüne "en az 3 soğuk galeri" kotası. Her adımın altında kendi bölümü var.</p>
+
+<h2>2. Veri ve ölçüm düzeneği</h2>
+<div class="gorsel"><svg viewBox="0 0 960 230" id="g2"></svg></div>
+<p><span class="atif">zaman çubuğu</span> 33 ihaledir (14 Temmuz – 4 Eylül). Her ihalede tüm 10.868 galeri adaydır; ihalede ortalama 26 trim vardır. Etiket: galeri o trime teklif verdiyse ve üstü pozitif; toplam 5.382 teklif olayı. <span class="atif">üç kesim çizgisi</span> testin özüdür: model kesimden önceki ihalelerle eğitilir, kesimden sonraki ihalelerde ölçülür; 18 Ağustos, 25 Ağustos ve 1 Eylül olmak üzere üç kez. <span class="atif">ölçü</span> Recall@30: gerçekten teklif veren galerilerin, önerilen ilk 30'a girenlerinin payı. Altı dilimde ayrı raporlanır, çünkü kazanç ve kayıp farklı yerlerde olur: galeri sıcak mı (kesim öncesi en az bir teklifi var) soğuk mu, trim bilinen mi yeni mi. <b>Kabul kuralı:</b> bir değişiklik üç kesimde de aynı yönde fark yaratmalı; tek kesimdeki artı karar sayılmaz.</p>
+<p class="kaynak">Kaynak: guncel.parquet (8,95 M satır, 327 kolon), etkilesim.parquet; düzenek 09c/29b/34 script'leri.</p>
+
+<h2>3. Trim kümeleme: trimlerden 15 araç tipine</h2>
+<h3>3a. Nasıl yapıldı</h3>
+<div class="gorsel"><svg viewBox="0 0 960 250" id="g3"></svg></div>
+<p><span class="atif">kutu 1</span> ihalelerde görülmüş 506 trim. Katalog geneli taranmadı. <span class="atif">kutu 2</span> her trim 8 özellikle bir noktaya dönüşür: segment (B/C/D/J/LCV), kasa (hatchback, sedan, station, SUV, van), motor hacmi, yakıt, vites, ticari mi, açılış fiyatı dilimi (sınırlar 790 bin / 990 bin / 1,19 M / 1,49 M TL), motor gücü. Eksik özellik sırayla trim adından, arabam.com katalog eşleşmesinden ve aynı marka-serinin çoğunluğundan doldurulur. <span class="atif">kutu 3</span> Ward kümelemesi: birbirine en yakın trimleri adım adım birleştiren, rastgelelik içermeyen yöntem; özellikleri tam olan 436 trimle kurulur. <span class="atif">kutu 4</span> kalan 70 trim "bilinmiyor" kümesine atılmaz: trim yalnız bildiği özelliklerle en yakın merkeze gider (maskeli atama). Bu yüzden yeni ya da eksik tanımlı bir trim de küme alır; kümeleme yeniden yapılmaz, 15 merkez sabittir.</p>
+<h3>3b. Neden 15 küme</h3>
+<div class="gorsel"><svg viewBox="0 0 960 300" id="g4"></svg></div>
+<p><span class="atif">turuncu çizgi</span> asıl seçim ölçütü: yakıt ve vites bilgisi gizlenince trimlerin yine aynı kümeye düşme oranı. Bu, eksik tanımlı yeni trim geldiğinde atamanın ne kadar tutarlı kalacağını ölçer; k=15'te %69,5 ile yerel tepe. <span class="atif">mavi çizgi</span> silhouette (küme içi sıkılık / kümeler arası uzaklık), k arttıkça hep yükselir, tek başına seçici değildir. <span class="atif">yeşil çizgi</span> rastgele üç özellik gizleme testi; k büyüdükçe düşer. 15, iki gizleme testinin de iyi olduğu ve en küçük kümenin hâlâ anlamlı (elektrikli araçlar) kaldığı noktadır; modeldeki isabet testi de 15'i doğruladı.</p>
+<h3>3c. Hangi küme ne</h3>
+<div class="gorsel"><svg viewBox="0 0 960 560" id="g5"></svg></div>
+<p><span class="atif">bar</span> kümedeki trim sayısı, <span class="atif">sağdaki sayı</span> eğitim döneminde o kümeye gelen teklif olayı, <span class="atif">en sağ</span> açılış fiyatı medyanı. Küme 1 (B segment benzinli otomatik hatchback: Clio, Sandero, Polo) hem en kalabalık hem en çok teklif alan küme. Küme 6 (C sedan benzinli otomatik: Megane sedan, City, Corolla) trim başına en yoğun talep. Kümeler fiyata da ayrışmış: küme 12 (B düz vites) 0,59 M TL, küme 15 (elektrikli) 1,74 M TL. Marka ölçüt değil: Renault Clio ile Dacia Sandero aynı kümede; Fiat Egea dizel-otomatik (küme 4) ile Egea benzin-düz vites (küme 7) ayrı kümede.</p>
+<table><thead><tr><th>küme</th><th class="s">araç tipi</th><th>segment</th><th>kasa</th><th>yakıt</th><th>vites</th><th>hacim ort</th><th>güç ort</th><th>fiyat medyan</th></tr></thead><tbody id="t5"></tbody></table>
+<p class="kaynak">Kaynak: 25_trim_kume_v2.py, trim_kume_v2_kartlar_k15.md, trim_kume_v2_merkez.json.</p>
+
+<h2>4. Galeri kümeleme: denendi, modele girmedi</h2>
+<div class="gorsel"><svg viewBox="0 0 960 300" id="g6"></svg></div>
+<p>Galeriler de kümelendi: <span class="atif">sol panel</span> galeri vektörünün dört bloğu (B2B teklif geçmişi, ilan envanteri, ilan ölçeği, bölge). Bir galeri hangi bloğu biliyorsa o bloklarla en yakın kümeye gider; hiç bloğu olmayan 5.947 galeri bölge adıyla ayrı 7 kümede. 27 davranış kümesi çıktı, galerilerin %88'i ardışık ihalede aynı kümede kalıyor; kümeleme kendisi düzgün. <span class="atif">sağ panel</span> neden işe yaramadığı: kümeler arasında "teklif verir mi" farkı 100 kat (B2B kümeleri %0,7-3,2, ilan kümeleri %0,03-0,2, bölge kümeleri %0,02), ama bir kümenin "hangi araç tipini sever" farkı zayıf ve ihaleden ihaleye tekrar etmiyor (yarı-bölme tutarlılığı 0,25-0,40, sıralama rastgeleden ayırt edilemez). Modelin mevcut 305 kolonu soğuk galeriyi kümeden daha iyi sıralıyor. Yedi farklı biçim denendi (üç katman, öncül ağırlığı, davranış kümesi, aktiflik oranı, lift hedefi, hücre düşürme, soğuk puan kotası); hiçbiri katkı vermedi. Kök sebep veri hacmi: galeri başına medyan 2 teklif olayı. Kümeler kayıtta; 12 aylık galeri geçmişi gelirse yeniden değerlendirilir.</p>
+<p class="kaynak">Kaynak: 40-51 script'leri; ayrıntı gorsel-2026-09-10-galeri-kume-v3-analiz.html.</p>
+
+<h2>5. Model nasıl eğitildi</h2>
+<div class="gorsel"><svg viewBox="0 0 960 330" id="g7"></svg></div>
+<p><span class="atif">sol blok</span> bir eğitim satırı: (ihale, trim, galeri) üçlüsü; etiket galerinin o trime etkileşim düzeyi. <span class="atif">orta blok</span> girdiler: extract'in 305 kolonu (galeri aktivitesi, satın alma, fiyat, bölge, ilan, trimin pazar bilgileri; sızıntılı 34 kolon ve <code>signal_source</code> dışarıda) artı üç yeni kolon: trimin kümesi, galerinin bu kümeye önceki teklif olaylarındaki payı, galerinin önceki olay sayısı. Örnek: galeri geçmişte 10 teklif verdi, 4'ü B hatchback kümesine → o kümenin trimlerinde pay 0,4. <span class="atif">sağ blok</span> CatBoost YetiRank: her ihale × trim grubunda galerileri birbirine göre sıralamayı öğrenir, mutlak olasılık değil; 200 iterasyon, derinlik 6. <span class="atif">alt şerit</span> as-of kuralı: her galeri özelliği yalnız o ihalenin tarihinden ÖNCEKİ veriyle hesaplanır. Eğitim penceresinin tamamından hesaplanan özellik, satırın kendi etiketini taşır ve gerçek olmayan bir isabet gösterir; bu hata çalışma boyunca üç kez yakalanıp düzeltildi. İmzası: önem sırasında aniden 1'e fırlayan kolon.</p>
+<p>Modelin yeni kolonları kullanma biçimi: küme numarası tek başına neredeyse kullanılmıyor (308 kolon içinde 162-228. sıra); iş yapan "galerinin kümeye teklif payı" (46-80. sıra). Yani model araç tipi etiketini değil, "bu galeri bu araç tipine ne kadar gider" oranını kullanıyor. Kazancın en yüksek olduğu dilimin sıcak galeri × yeni trim olması bundan: galeri o trimi hiç görmemiş olsa da trimin kümesine olan geçmişiyle eşleşiyor.</p>
+<p class="kaynak">Kaynak: 34_catboost_uc_katman_asof.py (M0, M4b), 34_sonuc_*.json (kolon önemi).</p>
+
+<h2>6. Sıralama kuralı: en az 3 soğuk galeri</h2>
+<div class="gorsel"><svg viewBox="0 0 960 250" id="g8"></svg></div>
+<p><span class="atif">üst şerit</span> modelin doğal ilk 30'u; mavi kutular sıcak, turuncu kutular soğuk galeri. Model soğuk galeride "geçmiş teklif payı = 0" görüp onu "teklif vermez" diye öğrendiği için listede soğuk galeri çok az kalır. Oysa test döneminde teklif verenlerin %38'i soğuk galeriydi. <span class="atif">alt şerit</span> kural: listedeki soğuk sayısı 3'ün altındaysa en düşük skorlu sıcaklar çıkar, liste dışındaki en yüksek skorlu soğuklar girer; listede zaten 3 ve üstü soğuk varsa hiçbir şey değişmez. Soğukları kendi aralarında yine modelin skoru sıralar.</p>
+<div class="gorsel"><svg viewBox="0 0 960 330" id="g9"></svg></div>
+<p><span class="atif">siyah</span> toplam isabet, <span class="atif">turuncu</span> sıcak galeri isabeti, <span class="atif">mavi</span> soğuk galeri isabeti; yatay eksen kota. Kota 0'dan 20'ye tarandı. Toplam 4 koltuğa kadar düz kalıyor, 5. koltuktan itibaren her koltuk net kayıp. 3 koltuk toplamı korur ve soğuk galeri isabetini göreli %22 artırır; iş önceliği soğuk galeriyse 4 üst sınır. Üç kesimde eğri aynı şekilde.</p>
+<p class="kaynak">Kaynak: 52_skor_kaydi.py, 53_kota_tarama.py (53_kota_ozet.csv); ayrıntı gorsel-2026-09-10-kota-taramasi.html.</p>
+
+<h2>7. Nihai başarı: ne değişti</h2>
+<div class="gorsel"><svg viewBox="0 0 960 360" id="g10"></svg></div>
+<p>Her grup bir dilim; <span class="atif">gri bar</span> eski model (M0), <span class="atif">mavi bar</span> trim kümesi eklenmiş model (M4b), <span class="atif">turuncu bar</span> nihai (M4b + kota 3). Trim kümesi sıcak galeride kazandırır, soğuk galeride kaybettirir; kota soğuk kaybını geri alıp üstüne çıkar, sıcaktan yarım-bir puan verir. Toplam eski modelin bir puan üstünde. Üç kesim birleşik, pozitif = gerçekten teklif veren galeri sayısı.</p>
+<table><thead><tr><th class="s">dilim</th><th>pozitif</th><th>eski model (M0)</th><th>+ trim kümesi (M4b)</th><th>nihai (M4b + kota 3)</th><th>nihai − M0</th></tr></thead><tbody id="t10"></tbody></table>
+<p><b>Canlıda nasıl izlenir:</b> her ihale kapandıktan sonra o ihalenin listeleri için aynı Recall@30 altı dilimde hesaplanır ve kesim listesine yeni fold olarak eklenir; ayrıca "kotayla giren soğuk galerilerden kaçı teklif verdi" ayrı sayılır. A/B gerekmez; kabul kuralı aynı kalır. <b>Şerh:</b> mutlak rakamlar extract'teki bazı kolonlar yüzünden şişkin olabilir (çift-oturum günlerinde sabah satırının akşamı görmesi şüphesi); model kıyasları geçerli. 1 Eylül kesimi az ihale içerir, soğuk dilimlerinde tek tek sayılar gürültülüdür.</p>
+<p class="kaynak">Kaynak: 30_3fold_ozet.csv (M0, M4b), 53_kota_ozet.csv (nihai).</p>
+
+<h2>8. Sözlük</h2>
+<dl>
+<dt>Trim</dt><dd>Aracın model + motor + donanım tanımı (ör. "Clio 1.0 TCe Joy X-Tronic").</dd>
+<dt>Küme / araç tipi</dt><dd>Özellikleri benzer trimlerin grubu; 15 tane. Marka ölçüt değil.</dd>
+<dt>Ward</dt><dd>Hiyerarşik kümeleme yöntemi; en yakın grupları adım adım birleştirir, rastgele başlangıç içermez.</dd>
+<dt>Maskeli atama</dt><dd>Trimin bilmediği özellik uzaklık hesabından çıkarılır; bilinen özelliklerle en yakın küme merkezi seçilir.</dd>
+<dt>Merkez</dt><dd>Kümenin ortalama özellik vektörü; yeni trim 15 merkezden en yakınına gider.</dd>
+<dt>M0 / M4b</dt><dd>M0 eski model (305 kolon). M4b = M0 + üç küme kolonu; nihai model.</dd>
+<dt>YetiRank / ranker</dt><dd>Sıralama modeli ve kaybı; gruptaki adayları birbirine göre sıralar.</dd>
+<dt>As-of</dt><dd>Özelliğin yalnız ihale tarihinden önceki veriden hesaplanması. Sızıntının panzehiri.</dd>
+<dt>Sızıntı</dt><dd>Test döneminde bilinemeyecek bilginin eğitime girmesi; gerçek olmayan isabet üretir.</dd>
+<dt>Fold / kesim</dt><dd>Zaman kesimi; kesim öncesi eğitim, sonrası test. Üç kesim: 18 Ağu, 25 Ağu, 1 Eyl.</dd>
+<dt>Sıcak / soğuk galeri</dt><dd>Kesim öncesi en az bir teklif olayı olan / hiç olmayan galeri. Soğuk galerinin ilanı olabilir.</dd>
+<dt>Bilinen / yeni trim</dt><dd>Kesim öncesi en az bir teklif almış / hiç almamış trim.</dd>
+<dt>Recall@30</dt><dd>Gerçekten teklif veren galerilerin ilk 30 öneriye girme payı.</dd>
+<dt>Dilim</dt><dd>Galeri sıcak/soğuk × trim bilinen/yeni kombinasyonu; her biri ayrı raporlanır.</dd>
+<dt>Kota / koltuk</dt><dd>İlk 30 listesindeki yer; kota = soğuk galeriye ayrılan en az koltuk sayısı (3).</dd>
+<dt>Puan</dt><dd>Yüzde puan farkı; 42,6'dan 44,5'e = +1,9 puan.</dd>
+</dl>
+
+<script>
+const S=(t,a)=>{const e=document.createElementNS("http://www.w3.org/2000/svg",t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const T=(g,x,y,s,cls,an)=>{const t=S("text",{x,y,class:cls||"etiket","text-anchor":an||"start"});t.textContent=s;g.appendChild(t);return t};
+const kutu=(g,x,y,w,h,b,acik,renk)=>{g.appendChild(S("rect",{x,y,width:w,height:h,rx:8,fill:"#fff",stroke:renk,"stroke-width":2}));T(g,x+w/2,y+22,b,"baslik","middle");acik.forEach((s,i)=>T(g,x+w/2,y+42+i*15,s,"etiket","middle"));};
+const defs=g=>{const d=S("defs",{});d.innerHTML='<marker id="ok'+g.id+'" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#999"/></marker>';g.appendChild(d);return "url(#ok"+g.id+")";};
+const ok=(g,x1,y1,x2,y2,m)=>g.appendChild(S("line",{x1,y1,x2,y2,stroke:"#999","stroke-width":2,"marker-end":m}));
+// 1 yol
+{const g=document.getElementById("g1");const m=defs(g);
+kutu(g,10,30,150,110,"1 · Veri",["33 ihale · 10.868 galeri","506 trim · 5.382 olay","Bu kutu: hammadde"],"#6b6b6b");
+kutu(g,170,30,150,110,"2 · Ölçüm düzeneği",["3 kesim · 6 dilim","Recall@30","Bu kutu: neyi iyi","sayacağız, önce bu"],"#6b6b6b");
+kutu(g,330,30,150,110,"3 · Trim kümeleme",["506 trim → 15 tip","Bu kutu: işe yaradı,","modele girdi"],"#4f8a4f");
+kutu(g,490,30,150,110,"4 · Galeri kümeleme",["7 deneme","Bu kutu: işe yaramadı,","modele girmedi"],"#b23b3b");
+kutu(g,650,30,150,110,"5 · Model eğitimi",["305 + 3 kolon","CatBoost YetiRank","Bu kutu: as-of kuralı"],"#2f6f9f");
+kutu(g,810,30,140,110,"6 · Kota kuralı",["en az 3 soğuk galeri","Bu kutu: liste","üstüne kural"],"#c8742c");
+[[160,170],[320,330],[480,490],[640,650],[800,810]].forEach(([a,b])=>ok(g,a,85,b,85,m));
+T(g,10,175,"Sonuç (üç kesim birleşik): toplam 34,9 → 35,8 · sıcak galeri × yeni trim 42,6 → 43,5 · soğuk galeri × bilinen trim 11,3 → 14,4 (Recall@30, yüzde)","baslik");
+T(g,10,200,"Yeşil kutu modele girdi; kırmızı kutu denendi ve girmedi; kural kutusu model dışında, liste üzerinde çalışır.");}
+// 2 zaman + kesimler
+{const g=document.getElementById("g2");const x0=60,x1=900,y=90;const gun=d=>x0+(d-14)/(53)*(x1-x0);   // 14 Tem = gün 14 ... 4 Eyl = gün 66 (Tem 31, Ağu 31)
+g.appendChild(S("rect",{x:x0,y:y-12,width:x1-x0,height:24,fill:"#eee9dc",rx:6}));
+[[14,"14 Tem"],[32,"1 Ağu"],[49,"18 Ağu"],[56,"25 Ağu"],[63,"1 Eyl"],[66,"4 Eyl"]].forEach(([d,s])=>{T(g,gun(d),y+34,s,"etiket","middle");});
+[[49,"#2f6f9f","kesim 1"],[56,"#c8742c","kesim 2"],[63,"#4f8a4f","kesim 3"]].forEach(([d,r,s])=>{g.appendChild(S("line",{x1:gun(d),y1:y-30,x2:gun(d),y2:y+12,stroke:r,"stroke-width":3}));T(g,gun(d),y-36,s,"baslik","middle");});
+T(g,x0,y+2,"eğitim ihaleleri ◀","etiket");T(g,x1-4,y+2,"▶ test","etiket","end");
+T(g,x0,30,"33 ihale, zaman sırasında. Her kesimde: sol taraf eğitim, sağ taraf test.","baslik");
+T(g,x0,150,"Dilimler (test satırları 4 gruba ayrılır): sıcak galeri × bilinen trim · sıcak galeri × yeni trim · soğuk galeri × bilinen trim · soğuk galeri × yeni trim (+ soğuk ilanlı alt dilim, + hepsi)");
+T(g,x0,170,"Sıcak galeri = kesimden önce en az bir teklif olayı var. Yeni trim = kesimden önce hiç teklif almamış.");
+T(g,x0,200,"Ölçü: Recall@30 = (ilk 30'a giren gerçek teklifçi sayısı) / (gerçek teklifçi sayısı), ihale × trim başına, dilim içinde toplanır.","baslik");}
+// 3 trim akışı
+{const g=document.getElementById("g3");const m=defs(g);
+kutu(g,10,40,200,120,"1 · 506 ihale trimi",["katalog taraması yok","Bu kutu: yalnız ihalede","görülmüş trimler"],"#2f6f9f");
+kutu(g,245,40,200,120,"2 · 8 özellik → 20 sütun",["4 sayısal + 4 kategorik blok","eksik: ad → katalog → seri","Bu kutu: her trim bir nokta"],"#2f6f9f");
+kutu(g,480,40,200,120,"3 · Ward, k = 15",["436 tam trimle kuruldu","Bu kutu: yakın noktalar","aynı araç tipi"],"#c8742c");
+kutu(g,715,40,235,120,"4 · Maskeli atama",["70 eksik-özellikli trim + yeni trim","Bu kutu: bilinmeyen özellik","hesaba girmez, küme yine var"],"#c8742c");
+[[210,245],[445,480],[680,715]].forEach(([a,b])=>ok(g,a,100,b,100,m));
+T(g,10,195,"Boş kalan özellik (506 trimde): güç 97 · vites 46 · hacim 37 · yakıt 33 · segment 5. Kategorik sütunlar 0,7 ağırlıkla ölçeklenir ki sayısal ve kategorik bloklar dengede kalsın.");
+T(g,10,215,"Doğrulama: yakıt + vites gizlenince %69,5 aynı küme · rastgele 3 blok gizlenince %69. Kaynak: 25_trim_kume_v2.py.");}
+// 4 k seçimi
+{const g=document.getElementById("g4");const ks=[8,9,10,11,12,13,14,15,16,17,18,19,20];
+const sil=[.283,.285,.294,.304,.318,.326,.332,.349,.362,.373,.376,.384,.388],yv=[.672,.656,.683,.667,.64,.624,.644,.695,.7,.706,.695,.69,.695],r3=[.736,.732,.713,.709,.693,.683,.677,.69,.693,.681,.677,.656,.631];
+const X=k=>60+(k-8)/12*820,Y=v=>250-(v-.2)/.6*210;
+[.2,.3,.4,.5,.6,.7,.8].forEach(v=>{g.appendChild(S("line",{x1:60,y1:Y(v),x2:880,y2:Y(v),stroke:"#eee"}));T(g,52,Y(v)+4,v.toFixed(1),"etiket","end");});
+ks.forEach(k=>T(g,X(k),270,"k="+k,"etiket","middle"));
+const ciz=(arr,renk)=>{g.appendChild(S("polyline",{points:ks.map((k,i)=>X(k)+","+Y(arr[i])).join(" "),fill:"none",stroke:renk,"stroke-width":2.5}));ks.forEach((k,i)=>g.appendChild(S("circle",{cx:X(k),cy:Y(arr[i]),r:3.5,fill:renk})));};
+g.appendChild(S("rect",{x:X(15)-14,y:20,width:28,height:240,fill:"#fff3d6",opacity:.7}));ciz(sil,"#2f6f9f");ciz(yv,"#c8742c");ciz(r3,"#4f8a4f");
+T(g,X(15),16,"seçilen k=15","baslik","middle");T(g,70,30,"turuncu = yakıt+vites gizli, aynı küme oranı (asıl ölçüt)");T(g,70,46,"mavi = silhouette (hep artar, seçici değil)");T(g,70,62,"yeşil = rastgele 3 blok gizli, aynı küme oranı");
+T(g,60,292,"Kaynak: trim_kume_v2_merkez.json → ozet[k]. En küçük küme k≥11'de 3 trim (elektrikli), en büyük k=15'te 51.");}
+// 5 kümeler
+const K=[[1,"B hatchback · benzin · otomatik (Clio, Sandero, Polo)",55,921,"0,89","B","hatchback","benzin","otomatik","1,13","93"],[2,"C hatchback · benzin · otomatik (Golf, BMW 1)",46,347,"1,12","C","hatchback","benzin","otomatik","1,30","149"],[3,"D sedan/SUV · benzin+dizel (Passat, C180, Tucson)",40,392,"1,44","D","sedan/SUV","benzin, dizel","otomatik","1,57","144"],[4,"C sedan/HB · dizel · otomatik (Egea dizel, Megane dCi)",41,381,"0,99","C","sedan/HB","dizel","otomatik","1,54","120"],[5,"C SUV · benzin · otomatik (Qashqai, T-Roc)",40,270,"1,68","C","SUV","benzin","otomatik","1,43","152"],[6,"C sedan · benzin · otomatik (Megane sedan, City, Corolla)",33,519,"1,47","C","sedan","benzin","otomatik","1,43","145"],[7,"C · düz vites · ucuz (Egea 1.4 Fire, Astra 1.6)",30,277,"0,76","C","sedan/HB","benzin, dizel","düz","1,41","113"],[8,"B SUV · benzin · otomatik (Bayon, C3 Aircross, Juke)",36,356,"1,20","B","SUV","benzin","otomatik","1,19","120"],[9,"B SUV/HB · dizel · otomatik (Crossland, Renegade)",32,449,"0,89","B","SUV/HB","dizel","otomatik","1,38","105"],[10,"C SUV · dizel · otomatik (3008, Tiggo)",40,380,"1,44","C","SUV","dizel","otomatik","1,57","129"],[11,"hibrit SUV/sedan (C-HR, Kona)",29,320,"1,67","C/B","SUV","hibrit","otomatik","1,37","144"],[12,"B hatchback · düz vites · en ucuz (Clio, Sandero düz)",30,254,"0,59","B","hatchback","dizel, benzin","düz","1,26","93"],[13,"J segment küçük SUV",22,154,"1,09","J","SUV","benzin","otomatik","1,42","126"],[14,"LCV ticari station (Doblo, Combo)",22,210,"0,82","LCV","kombi/station","dizel","otomatik","1,38","108"],[15,"elektrikli (Tesla, Corsa-e) — 3 fit + 7 atanan",10,131,"1,74","C/B","SUV/HB","elektrik","otomatik","1,20","140"]];
+{const g=document.getElementById("g5");T(g,20,20,"küme · araç tipi (örnek üyeler)","baslik");T(g,560,20,"trim sayısı","baslik");T(g,840,20,"olay","baslik");T(g,910,20,"medyan fiyat","baslik","end");
+K.forEach(([n,ad,t,o,f],i)=>{const y=34+i*34;T(g,20,y+16,n+" · "+ad);g.appendChild(S("rect",{x:560,y:y+2,width:t/55*250,height:20,fill:n===15?"#8a6bb1":"#2f6f9f",rx:3}));T(g,565+t/55*250,y+16,t);T(g,840,y+16,o);T(g,910,y+16,f+" M","etiket","end");});
+T(g,20,548,"Olay = eğitim dönemi teklif olayı sayısı. Kaynak: trim_kume_v2_kartlar_k15.md.");
+document.getElementById("t5").innerHTML=K.map(k=>`<tr><td>${k[0]}</td><td class="s">${k[1]}</td><td>${k[5]}</td><td>${k[6]}</td><td>${k[7]}</td><td>${k[8]}</td><td>${k[9]}</td><td>${k[10]}</td><td>${k[4]} M</td></tr>`).join("");}
+// 6 galeri kümeleme
+{const g=document.getElementById("g6");
+T(g,20,20,"Galeri vektörünün blokları (cutoff ihalesinde kaç galeride var)","baslik");
+[["B2B teklif geçmişi (araç tipi payları)",713,"#1f4e79"],["ilan envanteri (araç tipi payları)",3801,"#7fb3d5"],["ilan ölçeği (sayı, değer, devir)",4581,"#c8c8c8"],["bölge + sayaç (herkeste)",10856,"#c9b8e0"]].forEach(([a,n,r],i)=>{const y=36+i*30;T(g,20,y+14,a);g.appendChild(S("rect",{x:250,y,width:n/10856*200,height:20,fill:r,rx:3}));T(g,255+n/10856*200,y+14,n);});
+T(g,20,175,"27 davranış kümesi (4.909 galeri) + 7 bölge kümesi (5.947 yalnız-bölge galeri) · %88 ardışık ihalede aynı küme");
+T(g,520,20,"Kümeler arası fark: 'teklif verir mi' 100 kat · 'neyi sever' zayıf","baslik");
+[["B2B kümeleri (4 küme, 591 galeri)",3.2,"#c8742c"],["ilan kümeleri (23 küme, 4.318 galeri)",0.23,"#e0a878"],["bölge kümeleri (7 küme, 5.947 galeri)",0.03,"#8a6bb1"]].forEach(([a,v,r],i)=>{const y=36+i*30;T(g,520,y+14,a);const w=Math.max(2,Math.log10(v*100+1)/Math.log10(321)*180);g.appendChild(S("rect",{x:760,y,width:w,height:20,fill:r,rx:3}));T(g,765+w,y+14,"%"+v);});
+T(g,520,140,"genel teklif oranı (üst sınır, log ölçek)");
+T(g,520,175,"'Bu küme hangi araç tipini sever' sıralaması:");T(g,520,192,"yarı-bölme tutarlılığı 0,25-0,40 (eşik 0,5) · lift sıralaması NDCG");T(g,520,209,"0,56 ve rastgele 0,54 → tercih öğrenilemiyor.");
+T(g,20,240,"Sonuç: küme yalnız 'aktif mi' bilgisini taşıyor; bu bilgi modelin 305 kolonunda zaten var. Yedi biçim denendi, hepsi negatif; kümeler kayıtta.","baslik");
+T(g,20,262,"Kaynak: 40_galeri_kume_davranis.py, 41-47, 50-51; gorsel-2026-09-10-galeri-kume-v3-analiz.html.");}
+// 7 model
+{const g=document.getElementById("g7");const m=defs(g);
+kutu(g,10,30,240,150,"Satır = (ihale, trim, galeri)",["etiket: etkileşim düzeyi","2 = teklif ve üstü → pozitif","örneklem: pozitifler tam,","negatiflerin %2-15'i","Bu kutu: model neye bakar"],"#6b6b6b");
+kutu(g,290,30,330,150,"Girdi: 305 + 3 kolon",["305: aktivite, satın alma, fiyat, bölge,","ilan, trim pazar bilgisi (34 sızıntılı kolon dışarıda)","+ trim_kume (1-15, kategorik)","+ gal_tekpay_tk: galerinin bu kümeye önceki teklif payı","+ gal_tek_n: galerinin önceki olay sayısı (log)"],"#2f6f9f");
+kutu(g,660,30,290,150,"CatBoost YetiRank",["grup = ihale × trim","gruptaki galerileri birbirine göre sıralar","200 iterasyon · derinlik 6 · lr 0,1","çıktı: her galeriye skor → ilk 30","Bu kutu: sıralama öğrenir, olasılık değil"],"#4f8a4f");
+ok(g,250,105,290,105,m);ok(g,620,105,660,105,m);
+g.appendChild(S("rect",{x:10,y:205,width:940,height:60,rx:8,fill:"#fff3d6",stroke:"#e8d9b0"}));T(g,20,228,"AS-OF KURALI: her galeri özelliği yalnız o ihalenin tarihinden ÖNCEKİ veriyle hesaplanır.","baslik");
+T(g,20,248,"Pencere-bütününden hesaplanan özellik satırın kendi etiketini taşır → gerçek olmayan isabet. Üç kez yakalandı (galeri payları, katman ataması, ekip etiketi). İmza: önem sırası 1'e fırlayan kolon.");
+T(g,10,300,"Kolon önemi (308 kolonda sıra, üç kesim): gal_tek_n 4-7 · gal_tekpay_tk 46-80 · trim_kume 162-228 → model küme etiketini değil galeri × araç tipi oranını kullanıyor.");}
+// 8 kota mekanizması
+{const g=document.getElementById("g8");
+const serit=(y,b,liste)=>{T(g,10,y-8,b,"baslik");liste.forEach((c,i)=>{g.appendChild(S("rect",{x:10+i*31,y,width:28,height:26,rx:4,fill:c==="s"?"#2f6f9f":(c==="c"?"#c8742c":"#eee"),stroke:c==="x"?"#b23b3b":"none","stroke-width":2,"stroke-dasharray":c==="x"?"4,2":"none"}));T(g,24+i*31,y+17,i+1,"etiket","middle").setAttribute("fill",c==="x"?"#b23b3b":"#fff");});};
+serit(30,"Modelin doğal ilk 30'u: 29 sıcak (mavi), 1 soğuk (turuncu) — soğuk galeri listeye giremiyor",["s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","c","s","s","s","s","s","s","s","s","s","s","s"]);
+serit(110,"Kural 'en az 3 soğuk': en düşük skorlu 2 sıcak çıkar (28, 30), liste dışındaki en yüksek skorlu 2 soğuk girer",["s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","c","s","s","s","s","s","s","s","s","c","s","c"]);
+T(g,10,170,"Listede zaten 3+ soğuk varsa hiçbir şey değişmez. Soğuklar kendi aralarında yine modelin skoruyla sıralanır. Sıralama içi konum M4b skoruna göredir; kota yalnız kimin listede olduğunu değiştirir.");
+T(g,10,192,"Neden gerekli: model soğuk galeride 'geçmiş teklif payı = 0' görüp onu 'teklif vermez' diye öğreniyor; oysa test döneminde teklif verenlerin %38'i soğuk galeri.");
+T(g,10,225,"Kaynak: 53_kota_tarama.py, kural en_az.");}
+// 9 kota eğrisi
+{const g=document.getElementById("g9");const ks=[0,1,2,3,4,5,6,7,8,9,10,11,12];const H=[0.3585,0.3581,0.3572,0.3575,0.3566,0.3531,0.348,0.3462,0.342,0.3385,0.3365,0.3331,0.3282],SI=[0.4466,0.4446,0.4402,0.4375,0.4328,0.4261,0.4152,0.4095,0.4019,0.3937,0.3868,0.3791,0.3712],SO=[0.1051,0.1094,0.1186,0.1278,0.1378,0.1435,0.1548,0.1641,0.1697,0.1797,0.1918,0.201,0.2045];
+const x0=60,x1=860,y0=30,y1=280;const X=i=>x0+i/12*(x1-x0),Y=v=>y1-v/0.5*(y1-y0);
+[0,.1,.2,.3,.4,.5].forEach(v=>{g.appendChild(S("line",{x1:x0,y1:Y(v),x2:x1,y2:Y(v),stroke:"#eee"}));T(g,x0-6,Y(v)+4,(v*100).toFixed(0)+"%","etiket","end");});ks.forEach((k,i)=>T(g,X(i),y1+16,"kota "+k,"etiket","middle"));
+g.appendChild(S("rect",{x:X(3)-8,y:y0,width:16,height:y1-y0,fill:"#fff3d6",opacity:.8}));T(g,X(3),y0-8,"seçim: 3","baslik","middle");
+[[H,"#1e1e1e","toplam"],[SI,"#c8742c","sıcak galeri"],[SO,"#2f6f9f","soğuk galeri"]].forEach(([arr,r,ad])=>{g.appendChild(S("polyline",{points:arr.map((v,i)=>X(i)+","+Y(v)).join(" "),fill:"none",stroke:r,"stroke-width":2.4}));arr.forEach((v,i)=>g.appendChild(S("circle",{cx:X(i),cy:Y(v),r:2.8,fill:r})));T(g,X(12)+6,Y(arr[12])+4,ad);});
+T(g,x0,y1+40,"Recall@30, üç kesim birleşik; kural 'en az k soğuk'. Kaynak: 53_kota_ozet.csv.");}
+// 10 sonuç barları
+{const g=document.getElementById("g10");const D=[["hepsi",5454,34.9,35.9,35.8],["sıcak G × bilinen T",1522,43.2,44.9,44.2],["sıcak G × yeni T",2524,42.6,44.5,43.5],["soğuk G × bilinen T",521,11.3,10.9,14.4],["soğuk G × yeni T",887,12.7,10.3,11.8],["soğuk G ilanlı",657,4.6,2.7,4.7]];
+const y1=300,Y=v=>y1-v/50*250;[0,10,20,30,40,50].forEach(v=>{g.appendChild(S("line",{x1:60,y1:Y(v),x2:940,y2:Y(v),stroke:"#eee"}));T(g,52,Y(v)+4,v+"%","etiket","end");});
+D.forEach(([ad,p,a,b,c],i)=>{const x=80+i*145;[[a,"#b8b8b8"],[b,"#2f6f9f"],[c,"#c8742c"]].forEach(([v,r],j)=>{g.appendChild(S("rect",{x:x+j*38,y:Y(v),width:32,height:Y(0)-Y(v),fill:r,rx:2}));T(g,x+j*38+16,Y(v)-4,v.toFixed(1),"etiket","middle");});T(g,x+55,y1+18,ad,"etiket","middle");T(g,x+55,y1+34,"poz "+p,"etiket","middle");});
+T(g,60,20,"gri = eski model (M0) · mavi = + trim kümesi (M4b) · turuncu = nihai (M4b + kota 3) · Recall@30, üç kesim birleşik","baslik");
+document.getElementById("t10").innerHTML=D.map(([ad,p,a,b,c])=>{const f=(c-a).toFixed(1);return `<tr><td class="s">${ad}</td><td>${p}</td><td>${a.toFixed(1)}</td><td>${b.toFixed(1)}</td><td>${c.toFixed(1)}</td><td class="${f>0?'art':'eksi'}">${f>0?'+':''}${f}</td></tr>`;}).join("");}
+</script>
+</main></body></html>
