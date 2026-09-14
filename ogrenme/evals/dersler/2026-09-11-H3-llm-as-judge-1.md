@@ -78,4 +78,6 @@ Düğüm listesi (≤8):
 - `h3-eval-seti/AKIS.md`: 4 adımlı bağımsız çift-değerlendirme akışı.
 - `h3-eval-seti/eval-seti-plain.yaml` (yargısız, kör çıktı) + `eval-seti-judge.yaml` (llm-rubric, pass=doğru/fail=yanlış).
 - `h3-eval-seti/elle-puanlama.md`: Salih'in dolduracağı worksheet.
-- Sonraki adım: Salih adım 1-4'ü yürütür, sonuçları paylaşır → κ hesaplanır, bu dosyaya ve ilerleme.md'ye işlenir.
+- **Sonuç (2026-09-14):** Salih'in elle puanı: 8 doğru/2 yanlış (Carlos #6, İki tren #8 — trenler yeni bir hata, ilk kez görüldü). Yargıç LLM (`llm-rubric`): 8 pass/2 fail — **aynı 2 vaka**. p_o=1,0, p_e=0,68, **κ=1,0** (10/10 tam uyum).
+- Not: n=10 küçük örneklem; tek koşumluk bu sonuç genel bir "yargıç kusursuz" iddiası değildir, ama H4 hedefi (κ≥0,6) rahatça aşıldı.
+- Ek gözlem: Josh (%150 artış) vakası bu koşumda **doğru** çıktı (70000) — H1/H2'de hep 195000 diyordu; model stokastikliğinin (kutu 2, H1) canlı örneği. Trenler vakası ise yeni bir hata — regresyon setine eklenmeye aday, tek koşumda henüz teyitsiz.

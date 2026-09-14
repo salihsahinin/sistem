@@ -1,0 +1,1902 @@
+{
+  "evalId": "eval-Yg8-2026-09-14T07:47:13",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-14T07:47:13.403Z",
+    "prompts": [
+      {
+        "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+        "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+        "id": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "provider": "anthropic:messages:claude-haiku-4-5-20251001",
+        "metrics": {
+          "score": 8,
+          "testPassCount": 8,
+          "testFailCount": 2,
+          "testErrorCount": 0,
+          "assertPassCount": 8,
+          "assertFailCount": 2,
+          "totalLatencyMs": 18633,
+          "tokenUsage": {
+            "prompt": 1478,
+            "completion": 1315,
+            "cached": 0,
+            "total": 2793,
+            "numRequests": 10,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 5013,
+              "prompt": 4308,
+              "completion": 705,
+              "cached": 0,
+              "numRequests": 10,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0.008053
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0.0008010000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 521,
+            "prompt": 437,
+            "completion": 84,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak (ara adımların yazım biçimini değil). Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "Çıktının nihai sayısal cevabı 18'dir ve rubrikte belirtilen doğru cevap da 18'dir. Nihai cevap eşleşmektedir.",
+              "tokensUsed": {
+                "total": 521,
+                "prompt": 437,
+                "completion": 84,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nGünlük yumurta sayısı: 16\\n\\nGünlük tüketim:\\n- Kahvaltıda: 3 yumurta\\n- Kek için: 4 yumurta\\n- Toplam tüketim: 7 yumurta\\n\\nSatılacak yumurta: 16 - 7 = 9 yumurta\\n\\nGünlük kazanç: 9 × 2 = 18 dolar\\n\\n**18**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak (ara adımların yazım biçimini değil). Doğru cevap: 18. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak (ara adımların yazım biçimini değil). Doğru cevap: 18. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "f1ef584b-1bd7-476c-b197-604ac466b784",
+        "latencyMs": 1921,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Günlük yumurta sayısı: 16\n\nGünlük tüketim:\n- Kahvaltıda: 3 yumurta\n- Kek için: 4 yumurta\n- Toplam tüketim: 7 yumurta\n\nSatılacak yumurta: 16 - 7 = 9 yumurta\n\nGünlük kazanç: 9 × 2 = 18 dolar\n\n**18**",
+          "tokenUsage": {
+            "prompt": 171,
+            "completion": 126,
+            "cached": 0,
+            "total": 297,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0008010000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+            "beklenen": "18"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak (ara adımların yazım biçimini değil). Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 171,
+          "completion": 126,
+          "cached": 0,
+          "total": 297,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 521,
+            "prompt": 437,
+            "completion": 84,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "beklenen": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000391,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 414,
+            "prompt": 356,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 3, which matches the correct answer of 3 specified in the rubric.",
+              "tokensUsed": {
+                "total": 414,
+                "prompt": 356,
+                "completion": 58,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nMavi kumaş: 2 top\\nBeyaz kumaş: 2 ÷ 2 = 1 top\\nToplam: 2 + 1 = 3 top\\n\\n**3**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 3. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 3. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "13c55c35-59bf-47a8-ad1a-3a63e0bdab49",
+        "latencyMs": 1349,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Mavi kumaş: 2 top\nBeyaz kumaş: 2 ÷ 2 = 1 top\nToplam: 2 + 1 = 3 top\n\n**3**",
+          "tokenUsage": {
+            "prompt": 101,
+            "completion": 58,
+            "cached": 0,
+            "total": 159,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000391
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+            "beklenen": "3"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 101,
+          "completion": 58,
+          "cached": 0,
+          "total": 159,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 414,
+            "prompt": 356,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "beklenen": "3"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.0009830000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 538,
+            "prompt": 470,
+            "completion": 68,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 70,000 dollars (shown as **70.000 dolar**), which matches the correct answer of 70000",
+              "tokensUsed": {
+                "total": 538,
+                "prompt": 470,
+                "completion": 68,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHesaplayalım:\\n\\n- Ev satın alma: 80.000 dolar\\n- Tamirat: 50.000 dolar\\n- Toplam harcama: 130.000 dolar\\n\\nTamirat sonrası evin değeri:\\n- Tamirat öncesi değer: 80.000 dolar\\n- %150 artış: 80.000 × 1,50 = 120.000 dolar\\n- Tamirat sonrası değer: 80.000 + 120.000 = 200.000 dolar\\n\\nKâr:\\n200.000 - 130.000 = **70.000 dolar**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 70000. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 70000. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "dc6c870d-c8a3-4cb4-a65a-075ab95f1fc3",
+        "latencyMs": 2362,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Hesaplayalım:\n\n- Ev satın alma: 80.000 dolar\n- Tamirat: 50.000 dolar\n- Toplam harcama: 130.000 dolar\n\nTamirat sonrası evin değeri:\n- Tamirat öncesi değer: 80.000 dolar\n- %150 artış: 80.000 × 1,50 = 120.000 dolar\n- Tamirat sonrası değer: 80.000 + 120.000 = 200.000 dolar\n\nKâr:\n200.000 - 130.000 = **70.000 dolar**",
+          "tokenUsage": {
+            "prompt": 128,
+            "completion": 171,
+            "cached": 0,
+            "total": 299,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0009830000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+            "beklenen": "70000"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 128,
+          "completion": 171,
+          "cached": 0,
+          "total": 299,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 538,
+            "prompt": 470,
+            "completion": 68,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "beklenen": "70000"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.001183,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 589,
+            "prompt": 493,
+            "completion": 96,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 45, which matches the correct answer specified in the rubric (45). The solution shows step-by-step work calculating distance traveled away (180 miles) and distance traveled back (135 miles), resulting in a final distance from home of 45 miles.",
+              "tokensUsed": {
+                "total": 589,
+                "prompt": 493,
+                "completion": 96,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nAdım adım çözelim:\\n\\n**Gidiş:**\\n- 60 mil/saat × 3 saat = 180 mil uzaklaşıyor\\n\\n**Dönüş (4 saat):**\\n- İlk 2 saat: durgun trafik = 0 mil\\n- Sonraki 0,5 saat: 30 mil/saat × 0,5 = 15 mil\\n- Kalan 1,5 saat: 80 mil/saat × 1,5 = 120 mil\\n- Toplam geri gelen mesafe: 0 + 15 + 120 = 135 mil\\n\\n**Eve uzaklığı:**\\n180 - 135 = 45\\n\\n**45**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 45. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 45. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "120c94b0-ec11-441b-8962-24e00f0c824c",
+        "latencyMs": 2848,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Adım adım çözelim:\n\n**Gidiş:**\n- 60 mil/saat × 3 saat = 180 mil uzaklaşıyor\n\n**Dönüş (4 saat):**\n- İlk 2 saat: durgun trafik = 0 mil\n- Sonraki 0,5 saat: 30 mil/saat × 0,5 = 15 mil\n- Kalan 1,5 saat: 80 mil/saat × 1,5 = 120 mil\n- Toplam geri gelen mesafe: 0 + 15 + 120 = 135 mil\n\n**Eve uzaklığı:**\n180 - 135 = 45\n\n**45**",
+          "tokenUsage": {
+            "prompt": 208,
+            "completion": 195,
+            "cached": 0,
+            "total": 403,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.001183
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+            "beklenen": "45"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 208,
+          "completion": 195,
+          "cached": 0,
+          "total": 403,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 589,
+            "prompt": 493,
+            "completion": 96,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "beklenen": "45"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000737,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 475,
+            "prompt": 416,
+            "completion": 59,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The final numerical answer in the output is 460, which matches the correct answer of 460 specified in the rubric.",
+              "tokensUsed": {
+                "total": 475,
+                "prompt": 416,
+                "completion": 59,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nİlk 40 saat: 40 × 10 = 400 dolar\\nMesai saatleri: 45 - 40 = 5 saat\\nMesai ücreti: 10 × 1,2 = 12 dolar/saat\\nMesai kazancı: 5 × 12 = 60 dolar\\nToplam kazanç: 400 + 60 = 460 dolar\\n\\n**460**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 460. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 460. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "39d269c7-a514-4dbe-8c2d-4e06416f742e",
+        "latencyMs": 1709,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "İlk 40 saat: 40 × 10 = 400 dolar\nMesai saatleri: 45 - 40 = 5 saat\nMesai ücreti: 10 × 1,2 = 12 dolar/saat\nMesai kazancı: 5 × 12 = 60 dolar\nToplam kazanç: 400 + 60 = 460 dolar\n\n**460**",
+          "tokenUsage": {
+            "prompt": 147,
+            "completion": 118,
+            "cached": 0,
+            "total": 265,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000737
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+            "beklenen": "460"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 147,
+          "completion": 118,
+          "cached": 0,
+          "total": 265,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 475,
+            "prompt": 416,
+            "completion": 59,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "beklenen": "460"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000851,
+        "error": "The output's final numerical answer is 12, but the correct answer according to the rubric is 13. The final answer does not match the expected correct answer.",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "The output's final numerical answer is 12, but the correct answer according to the rubric is 13. The final answer does not match the expected correct answer.",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 501,
+            "prompt": 434,
+            "completion": 67,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": false,
+              "score": 0,
+              "reason": "The output's final numerical answer is 12, but the correct answer according to the rubric is 13. The final answer does not match the expected correct answer.",
+              "tokensUsed": {
+                "total": 501,
+                "prompt": 434,
+                "completion": 67,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nYıllık net kazancı hesaplayalım:\\n- Yıllık gelir: 7 limon × 1,5 dolar = 10,5 dolar\\n- Yıllık maliyet: 3 dolar\\n- Yıllık net kazanç: 10,5 - 3 = 7,5 dolar\\n\\nBaşlangıç maliyeti geri kazanmak için gereken yıl:\\n90 ÷ 7,5 = 12\\n\\n**12**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 13. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 13. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "ff3881b1-e93d-4bc9-a15f-f88508bec90c",
+        "latencyMs": 1661,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Yıllık net kazancı hesaplayalım:\n- Yıllık gelir: 7 limon × 1,5 dolar = 10,5 dolar\n- Yıllık maliyet: 3 dolar\n- Yıllık net kazanç: 10,5 - 3 = 7,5 dolar\n\nBaşlangıç maliyeti geri kazanmak için gereken yıl:\n90 ÷ 7,5 = 12\n\n**12**",
+          "tokenUsage": {
+            "prompt": 171,
+            "completion": 136,
+            "cached": 0,
+            "total": 307,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000851
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "vars": {
+            "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+            "beklenen": "13"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 5,
+        "tokenUsage": {
+          "prompt": 171,
+          "completion": 136,
+          "cached": 0,
+          "total": 307,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 501,
+            "prompt": 434,
+            "completion": 67,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "beklenen": "13"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0.001124,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 549,
+            "prompt": 491,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 18, which matches the correct answer of 18 specified in the rubric.",
+              "tokensUsed": {
+                "total": 549,
+                "prompt": 491,
+                "completion": 58,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nBaşlangıçta x elektrikli süpürge olsun.\\n\\n- Yeşil eve sattı: x/3\\n- Kırmızı eve sattı: 2\\n- Turuncu eve sattı: (x - x/3 - 2)/2\\n- Kalan: 5\\n\\nDenklem:\\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\\n\\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\\n\\n(x - x/3 - 2)/2 = 5\\n\\nx - x/3 - 2 = 10\\n\\n2x/3 = 12\\n\\nx = 18\\n\\n**18**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 18. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 18. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "2ac65c68-c043-4758-b8bc-75bf24b25d67",
+        "latencyMs": 2245,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Başlangıçta x elektrikli süpürge olsun.\n\n- Yeşil eve sattı: x/3\n- Kırmızı eve sattı: 2\n- Turuncu eve sattı: (x - x/3 - 2)/2\n- Kalan: 5\n\nDenklem:\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\n\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\n\n(x - x/3 - 2)/2 = 5\n\nx - x/3 - 2 = 10\n\n2x/3 = 12\n\nx = 18\n\n**18**",
+          "tokenUsage": {
+            "prompt": 159,
+            "completion": 193,
+            "cached": 0,
+            "total": 352,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.001124
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+            "beklenen": "18"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 6,
+        "tokenUsage": {
+          "prompt": 159,
+          "completion": 193,
+          "cached": 0,
+          "total": 352,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 549,
+            "prompt": 491,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "beklenen": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000624,
+        "error": "The output shows a final numerical answer of 115, but the correct answer according to the rubric is 230. The output calculates the average distance (115 mil) instead of the total distance (230 mil). The rubric specifically asks to check if the final numerical answer equals 230.",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "The output shows a final numerical answer of 115, but the correct answer according to the rubric is 230. The output calculates the average distance (115 mil) instead of the total distance (230 mil). The rubric specifically asks to check if the final numerical answer equals 230.",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 490,
+            "prompt": 395,
+            "completion": 95,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": false,
+              "score": 0,
+              "reason": "The output shows a final numerical answer of 115, but the correct answer according to the rubric is 230. The output calculates the average distance (115 mil) instead of the total distance (230 mil). The rubric specifically asks to check if the final numerical answer equals 230.",
+              "tokensUsed": {
+                "total": 490,
+                "prompt": 395,
+                "completion": 95,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\n# Çözüm\\n\\n**Birinci gün:** 80 mil (batıya)\\n**İkinci gün:** 150 mil (kuzeye)\\n\\n**Toplam mesafe:** 80 + 150 = 230 mil\\n\\n**Ortalama mesafe (2 gün):** 230 ÷ 2 = 115 mil\\n\\n**115**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 230. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 230. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "608a2be2-7eff-4315-8caa-3eb8e7282cd3",
+        "latencyMs": 1508,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "# Çözüm\n\n**Birinci gün:** 80 mil (batıya)\n**İkinci gün:** 150 mil (kuzeye)\n\n**Toplam mesafe:** 80 + 150 = 230 mil\n\n**Ortalama mesafe (2 gün):** 230 ÷ 2 = 115 mil\n\n**115**",
+          "tokenUsage": {
+            "prompt": 139,
+            "completion": 97,
+            "cached": 0,
+            "total": 236,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000624
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "vars": {
+            "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+            "beklenen": "230"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 7,
+        "tokenUsage": {
+          "prompt": 139,
+          "completion": 97,
+          "cached": 0,
+          "total": 236,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 490,
+            "prompt": 395,
+            "completion": 95,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "beklenen": "230"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0.00039600000000000003,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 415,
+            "prompt": 357,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 7, which matches the correct answer of 7 specified in the rubric.",
+              "tokensUsed": {
+                "total": 415,
+                "prompt": 357,
+                "completion": 58,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\n4 hafta = 28 gün\\n28 gün × 3 yumurta = 84 yumurta\\n84 yumurta ÷ 12 = 7 düzine\\n\\n**7**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 7. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 7. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "30184e97-6414-4709-bc50-329ab9e356b2",
+        "latencyMs": 1069,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "4 hafta = 28 gün\n28 gün × 3 yumurta = 84 yumurta\n84 yumurta ÷ 12 = 7 düzine\n\n**7**",
+          "tokenUsage": {
+            "prompt": 96,
+            "completion": 60,
+            "cached": 0,
+            "total": 156,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.00039600000000000003
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+            "beklenen": "7"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 8,
+        "tokenUsage": {
+          "prompt": 96,
+          "completion": 60,
+          "cached": 0,
+          "total": 156,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 415,
+            "prompt": 357,
+            "completion": 58,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "beklenen": "7"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.0009630000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 521,
+            "prompt": 459,
+            "completion": 62,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "The output's final numerical answer is 6 miles per hour, which matches the correct answer of 6 specified in the rubric.",
+              "tokensUsed": {
+                "total": 521,
+                "prompt": 459,
+                "completion": 62,
+                "cached": 0,
+                "numRequests": 0,
+                "completionDetails": {
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nToplam mesafe: 12 mil\\nToplam süre: 12 mil ÷ 4 mil/saat = 3 saat\\n\\nŞimdiye kadar yürüdüğü:\\n- Mesafe: 4 + 2 = 6 mil\\n- Süre: 1 + 1 = 2 saat\\n\\nKalan:\\n- Mesafe: 12 - 6 = 6 mil\\n- Süre: 3 - 2 = 1 saat\\n\\nGerekli hız: 6 mil ÷ 1 saat = **6**\\n</Output>\\n<Rubric>\\nBu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 6. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver.\\n</Rubric>\"}]",
+                "renderedAssertionValue": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: 6. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+              }
+            }
+          ]
+        },
+        "id": "8acb6023-7e56-43fa-a5f9-8b776c216a31",
+        "latencyMs": 1961,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          }
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Toplam mesafe: 12 mil\nToplam süre: 12 mil ÷ 4 mil/saat = 3 saat\n\nŞimdiye kadar yürüdüğü:\n- Mesafe: 4 + 2 = 6 mil\n- Süre: 1 + 1 = 2 saat\n\nKalan:\n- Mesafe: 12 - 6 = 6 mil\n- Süre: 3 - 2 = 1 saat\n\nGerekli hız: 6 mil ÷ 1 saat = **6**",
+          "tokenUsage": {
+            "prompt": 158,
+            "completion": 161,
+            "cached": 0,
+            "total": 319,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0009630000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+            "beklenen": "6"
+          },
+          "assert": [
+            {
+              "type": "llm-rubric",
+              "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+            }
+          ],
+          "options": {
+            "provider": {
+              "id": "anthropic:messages:claude-haiku-4-5-20251001",
+              "config": {
+                "apiKeyRequired": false
+              }
+            }
+          },
+          "metadata": {}
+        },
+        "testIdx": 9,
+        "tokenUsage": {
+          "prompt": 158,
+          "completion": 161,
+          "cached": 0,
+          "total": 319,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 521,
+            "prompt": 459,
+            "completion": 62,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "beklenen": "6"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 8,
+      "failures": 2,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 1478,
+        "completion": 1315,
+        "cached": 0,
+        "total": 2793,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 5013,
+          "prompt": 4308,
+          "completion": 705,
+          "cached": 0,
+          "numRequests": 10,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 11797,
+      "evaluationDurationMs": 11797
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "evals H3 — adım 3: llm-rubric yargıcı",
+    "prompts": [
+      "file:///Users/HasanSalihSahin/jarvis/ogrenme/evals/h1-eval-seti/prompt.txt"
+    ],
+    "providers": [
+      {
+        "id": "anthropic:messages:claude-haiku-4-5-20251001",
+        "config": {
+          "apiKeyRequired": false
+        }
+      }
+    ],
+    "tests": [
+      {
+        "vars": {
+          "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "beklenen": "18"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak (ara adımların yazım biçimini değil). Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "beklenen": "3"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "beklenen": "70000"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "beklenen": "45"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "beklenen": "460"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "beklenen": "13"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "beklenen": "18"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "beklenen": "230"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "beklenen": "7"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      },
+      {
+        "vars": {
+          "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "beklenen": "6"
+        },
+        "assert": [
+          {
+            "type": "llm-rubric",
+            "value": "Bu bir matematik sorusu çözümüdür. Yalnızca çıktının NİHAİ SAYISAL CEVABININ doğru olup olmadığına bak. Doğru cevap: {{beklenen}}. Nihai cevap bu değere eşitse pass=true, değilse pass=false ver."
+          }
+        ]
+      }
+    ],
+    "env": {},
+    "defaultTest": {
+      "options": {
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "config": {
+            "apiKeyRequired": false
+          }
+        }
+      },
+      "vars": {},
+      "assert": [],
+      "metadata": {}
+    },
+    "outputPath": [
+      "yargic-sonuc.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.123.0",
+    "nodeVersion": "v26.7.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-14T07:47:25.553Z",
+    "evaluationCreatedAt": "2026-09-14T07:47:13.403Z"
+  },
+  "vars": [
+    "soru",
+    "beklenen"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": true
+  }
+}

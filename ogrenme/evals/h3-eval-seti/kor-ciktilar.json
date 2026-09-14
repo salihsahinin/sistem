@@ -1,0 +1,1297 @@
+{
+  "evalId": "eval-qln-2026-09-14T07:15:59",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-14T07:15:59.924Z",
+    "prompts": [
+      {
+        "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+        "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+        "id": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "provider": "anthropic:messages:claude-haiku-4-5-20251001",
+        "metrics": {
+          "score": 10,
+          "testPassCount": 10,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 17869,
+          "tokenUsage": {
+            "prompt": 1478,
+            "completion": 1315,
+            "cached": 0,
+            "total": 2793,
+            "numRequests": 10,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0.008053
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0.0008010000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "d972590c-47bf-43e6-a747-6edb9f5ca918",
+        "latencyMs": 1792,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Günlük yumurta sayısı: 16\n\nGünlük tüketim:\n- Kahvaltıda: 3 yumurta\n- Kek için: 4 yumurta\n- Toplam tüketim: 7 yumurta\n\nSatılacak yumurta: 16 - 7 = 9 yumurta\n\nGünlük kazanç: 9 × 2 = 18 dolar\n\n**18**",
+          "tokenUsage": {
+            "prompt": 171,
+            "completion": 126,
+            "cached": 0,
+            "total": 297,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0008010000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+            "beklenen": "18"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 171,
+          "completion": 126,
+          "cached": 0,
+          "total": 297,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "beklenen": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000391,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "4a873591-8adb-43cd-8fd3-b35fec9067b5",
+        "latencyMs": 1207,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Mavi kumaş: 2 top\nBeyaz kumaş: 2 ÷ 2 = 1 top\nToplam: 2 + 1 = 3 top\n\n**3**",
+          "tokenUsage": {
+            "prompt": 101,
+            "completion": 58,
+            "cached": 0,
+            "total": 159,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000391
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+            "beklenen": "3"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 101,
+          "completion": 58,
+          "cached": 0,
+          "total": 159,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "beklenen": "3"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.0009830000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "7577141a-9ca8-4b9b-b132-07b5f712d8a1",
+        "latencyMs": 2209,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Hesaplayalım:\n\n- Ev satın alma: 80.000 dolar\n- Tamirat: 50.000 dolar\n- Toplam harcama: 130.000 dolar\n\nTamirat sonrası evin değeri:\n- Tamirat öncesi değer: 80.000 dolar\n- %150 artış: 80.000 × 1,50 = 120.000 dolar\n- Tamirat sonrası değer: 80.000 + 120.000 = 200.000 dolar\n\nKâr:\n200.000 - 130.000 = **70.000 dolar**",
+          "tokenUsage": {
+            "prompt": 128,
+            "completion": 171,
+            "cached": 0,
+            "total": 299,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0009830000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+            "beklenen": "70000"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 128,
+          "completion": 171,
+          "cached": 0,
+          "total": 299,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "beklenen": "70000"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.001183,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "70f8e7c7-d8d1-463b-9625-40c33ccefca5",
+        "latencyMs": 2536,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Adım adım çözelim:\n\n**Gidiş:**\n- 60 mil/saat × 3 saat = 180 mil uzaklaşıyor\n\n**Dönüş (4 saat):**\n- İlk 2 saat: durgun trafik = 0 mil\n- Sonraki 0,5 saat: 30 mil/saat × 0,5 = 15 mil\n- Kalan 1,5 saat: 80 mil/saat × 1,5 = 120 mil\n- Toplam geri gelen mesafe: 0 + 15 + 120 = 135 mil\n\n**Eve uzaklığı:**\n180 - 135 = 45\n\n**45**",
+          "tokenUsage": {
+            "prompt": 208,
+            "completion": 195,
+            "cached": 0,
+            "total": 403,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.001183
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+            "beklenen": "45"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 208,
+          "completion": 195,
+          "cached": 0,
+          "total": 403,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "beklenen": "45"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000737,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "81c03729-2c75-47ad-84e1-707530f4883f",
+        "latencyMs": 1743,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "İlk 40 saat: 40 × 10 = 400 dolar\nMesai saatleri: 45 - 40 = 5 saat\nMesai ücreti: 10 × 1,2 = 12 dolar/saat\nMesai kazancı: 5 × 12 = 60 dolar\nToplam kazanç: 400 + 60 = 460 dolar\n\n**460**",
+          "tokenUsage": {
+            "prompt": 147,
+            "completion": 118,
+            "cached": 0,
+            "total": 265,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000737
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+            "beklenen": "460"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 147,
+          "completion": 118,
+          "cached": 0,
+          "total": 265,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "beklenen": "460"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000851,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "f29d12f8-bdaa-4392-ad09-514a7454da2d",
+        "latencyMs": 1734,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Yıllık net kazancı hesaplayalım:\n- Yıllık gelir: 7 limon × 1,5 dolar = 10,5 dolar\n- Yıllık maliyet: 3 dolar\n- Yıllık net kazanç: 10,5 - 3 = 7,5 dolar\n\nBaşlangıç maliyeti geri kazanmak için gereken yıl:\n90 ÷ 7,5 = 12\n\n**12**",
+          "tokenUsage": {
+            "prompt": 171,
+            "completion": 136,
+            "cached": 0,
+            "total": 307,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000851
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+            "beklenen": "13"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 5,
+        "tokenUsage": {
+          "prompt": 171,
+          "completion": 136,
+          "cached": 0,
+          "total": 307,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "beklenen": "13"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.001124,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "8c53f090-75d1-4c1f-8030-e8fa0eb27d65",
+        "latencyMs": 2399,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Başlangıçta x elektrikli süpürge olsun.\n\n- Yeşil eve sattı: x/3\n- Kırmızı eve sattı: 2\n- Turuncu eve sattı: (x - x/3 - 2)/2\n- Kalan: 5\n\nDenklem:\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\n\nx - x/3 - 2 - (x - x/3 - 2)/2 = 5\n\n(x - x/3 - 2)/2 = 5\n\nx - x/3 - 2 = 10\n\n2x/3 = 12\n\nx = 18\n\n**18**",
+          "tokenUsage": {
+            "prompt": 159,
+            "completion": 193,
+            "cached": 0,
+            "total": 352,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.001124
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+            "beklenen": "18"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 6,
+        "tokenUsage": {
+          "prompt": 159,
+          "completion": 193,
+          "cached": 0,
+          "total": 352,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "beklenen": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.000624,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "a8f6acdb-6262-4806-94c7-c35f7493ee6f",
+        "latencyMs": 1336,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "# Çözüm\n\n**Birinci gün:** 80 mil (batıya)\n**İkinci gün:** 150 mil (kuzeye)\n\n**Toplam mesafe:** 80 + 150 = 230 mil\n\n**Ortalama mesafe (2 gün):** 230 ÷ 2 = 115 mil\n\n**115**",
+          "tokenUsage": {
+            "prompt": 139,
+            "completion": 97,
+            "cached": 0,
+            "total": 236,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.000624
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+            "beklenen": "230"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 7,
+        "tokenUsage": {
+          "prompt": 139,
+          "completion": 97,
+          "cached": 0,
+          "total": 236,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "beklenen": "230"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.00039600000000000003,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "f82118b4-cddf-4271-a7cb-efaacfadc527",
+        "latencyMs": 1080,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "4 hafta = 28 gün\n28 gün × 3 yumurta = 84 yumurta\n84 yumurta ÷ 12 = 7 düzine\n\n**7**",
+          "tokenUsage": {
+            "prompt": 96,
+            "completion": 60,
+            "cached": 0,
+            "total": 156,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.00039600000000000003
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+            "beklenen": "7"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 8,
+        "tokenUsage": {
+          "prompt": 96,
+          "completion": 60,
+          "cached": 0,
+          "total": 156,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "beklenen": "7"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0.0009630000000000001,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "c49bcff7-17b7-4edb-9f3c-6a4a74859309",
+        "latencyMs": 1833,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "label": "../h1-eval-seti/prompt.txt: Aşağıdaki matematik problemini çöz. Yalnızca son sayısal cevabı ver.\n\nSoru: {{soru}}",
+          "config": {}
+        },
+        "promptId": "439db7e9df83d24d8779a11dc380962546ba495b8cd99583c28a0c65518a6744",
+        "promptIdx": 0,
+        "provider": {
+          "id": "anthropic:messages:claude-haiku-4-5-20251001",
+          "label": ""
+        },
+        "response": {
+          "output": "Toplam mesafe: 12 mil\nToplam süre: 12 mil ÷ 4 mil/saat = 3 saat\n\nŞimdiye kadar yürüdüğü:\n- Mesafe: 4 + 2 = 6 mil\n- Süre: 1 + 1 = 2 saat\n\nKalan:\n- Mesafe: 12 - 6 = 6 mil\n- Süre: 3 - 2 = 1 saat\n\nGerekli hız: 6 mil ÷ 1 saat = **6**",
+          "tokenUsage": {
+            "prompt": 158,
+            "completion": 161,
+            "cached": 0,
+            "total": 319,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "finishReason": "stop",
+          "cost": 0.0009630000000000001
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+            "beklenen": "6"
+          },
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 9,
+        "tokenUsage": {
+          "prompt": 158,
+          "completion": 161,
+          "cached": 0,
+          "total": 319,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "beklenen": "6"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 10,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 1478,
+        "completion": 1315,
+        "cached": 0,
+        "total": 2793,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 5389,
+      "evaluationDurationMs": 5389
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "evals H3 — adım 1: kör çıktı üretimi (yargı yok)",
+    "prompts": [
+      "file:///Users/HasanSalihSahin/jarvis/ogrenme/evals/h1-eval-seti/prompt.txt"
+    ],
+    "providers": [
+      {
+        "id": "anthropic:messages:claude-haiku-4-5-20251001",
+        "config": {
+          "apiKeyRequired": false
+        }
+      }
+    ],
+    "tests": [
+      {
+        "vars": {
+          "soru": "Janet'in ördekleri günde 16 yumurta yumurtluyor. Janet her sabah kahvaltıda üç yumurta yiyor ve her gün arkadaşları için dört yumurtayla kek pişiriyor. Kalanını çiftçi pazarında taze ördek yumurtası başına 2 dolardan satıyor. Çiftçi pazarında her gün kaç dolar kazanıyor?",
+          "beklenen": "18"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Bir cübbe 2 top mavi kumaş ve bunun yarısı kadar beyaz kumaş gerektiriyor. Toplamda kaç top kumaş gerekir?",
+          "beklenen": "3"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Josh bir ev alıp satmayı (flipping) deniyor. Evi 80.000 dolara alıyor, sonra 50.000 dolar tamirat yapıyor. Bu, evin değerini %150 artırıyor. Josh ne kadar kâr etti?",
+          "beklenen": "70000"
+        }
+      },
+      {
+        "vars": {
+          "soru": "John, saatte 60 mil hızla 3 saat araba sürüyor, sonra evde çok önemli bir şeyi unuttuğunu fark edip geri dönüyor. Eve 4 saatte varmaya çalışıyor ama ilk 2 saati durgun trafikte geçiriyor. Sonraki yarım saati saatte 30 mil hızla sürüyor, ardından 4 saatin kalan süresinde saatte 80 mil hızla sürebiliyor. Bu 4 saatin sonunda evine kaç mil uzaklıktadır?",
+          "beklenen": "45"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Eliza'nın haftalık ilk 40 saati için saatlik ücreti 10 dolardır. Ayrıca normal saatlik ücretinin 1,2 katı kadar mesai ücreti alıyor. Eliza bu hafta 45 saat çalıştıysa, bu haftaki kazancı ne kadardır?",
+          "beklenen": "460"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Carlos bir limon ağacı dikiyor. Ağacı dikmek 90 dolara mal oluyor. Ağaç her yıl 7 limon üretiyor, bunları tanesi 1,5 dolardan satabiliyor. Ağacı sulamak ve beslemek yılda 3 dolara mal oluyor. Carlos'un limon ağacından para kazanmaya başlaması kaç yıl sürer?",
+          "beklenen": "13"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Melanie kapı kapı dolaşan bir satış elemanıdır. Elektrikli süpürgelerinin üçte birini yeşil eve, 2 tanesini kırmızı eve sattı ve kalanın yarısını turuncu eve sattı. Melanie'de 5 elektrikli süpürge kaldıysa, başlangıçta kaç tane vardı?",
+          "beklenen": "18"
+        }
+      },
+      {
+        "vars": {
+          "soru": "İki tren aynı anda San Rafael'den yola çıkıyor. Önce batıya doğru 80 mil yol alıyorlar. Ertesi gün kuzeye doğru 150 mil yol alıyorlar. Her trenin iki günde aldığı ortalama mesafe nedir?",
+          "beklenen": "230"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Claire her sabah kahvaltıda 3 yumurtalı omlet yapıyor. 4 haftada kaç düzine yumurta yer?",
+          "beklenen": "7"
+        }
+      },
+      {
+        "vars": {
+          "soru": "Marissa 12 millik bir patikada yürüyüş yapıyor. İlk 4 mili 1 saatte, sonraki 2 mili de 1 saatte yürüdü. Ortalama hızının saatte 4 mil olmasını istiyorsa, kalan mesafeyi hangi hızla (saatte kaç mil) yürümesi gerekir?",
+          "beklenen": "6"
+        }
+      }
+    ],
+    "env": {},
+    "outputPath": [
+      "kor-ciktilar.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.123.0",
+    "nodeVersion": "v26.7.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-14T07:16:05.635Z",
+    "evaluationCreatedAt": "2026-09-14T07:15:59.924Z"
+  },
+  "vars": [
+    "soru",
+    "beklenen"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": true
+  }
+}
