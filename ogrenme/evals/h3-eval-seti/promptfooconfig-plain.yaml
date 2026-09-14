@@ -1,0 +1,10 @@
+# ADIM 1 — kör koşum: yalnız model çıktılarını üretir, hiçbir yargı yok.
+# Koşum: npx promptfoo@latest eval -c promptfooconfig-plain.yaml -o kor-ciktilar.json
+description: "evals H3 — adım 1: kör çıktı üretimi (yargı yok)"
+prompts:
+  - file://../h1-eval-seti/prompt.txt
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    config:
+      apiKeyRequired: false
+tests: file://eval-seti-plain.yaml

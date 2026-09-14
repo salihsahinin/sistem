@@ -1,0 +1,17 @@
+# ADIM 3 — yargıç koşumu: aynı 10 vaka, llm-rubric ile puanlanır.
+# ÖNEMLİ: bunu adım 2'yi (elle-puanlama.md doldurma) BİTİRMEDEN çalıştırma/okuma — kutu 4, bağımsızlık şartı.
+# Koşum: npx promptfoo@latest eval -c promptfooconfig.yaml -o yargic-sonuc.json
+description: "evals H3 — adım 3: llm-rubric yargıcı"
+prompts:
+  - file://../h1-eval-seti/prompt.txt
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    config:
+      apiKeyRequired: false
+defaultTest:
+  options:
+    provider:
+      id: anthropic:messages:claude-haiku-4-5-20251001
+      config:
+        apiKeyRequired: false
+tests: file://eval-seti-judge.yaml
