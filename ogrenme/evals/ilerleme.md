@@ -10,4 +10,4 @@
 | H6 | — | | | |
 | H7 | — | | | |
 
-Sonraki: H1 (ayrı sohbet; önce README §Sınırlar + `ogren` skill'i PROBE ile terim tabanı yoklaması).
+Sonraki: H4. **DURAKLATILDI 09-14 (Salih: başka konuya geçiş); H4-H7 açık, ürün turu H7'de.**
