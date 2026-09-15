@@ -1,40 +1,40 @@
 ---
 name: ogren
-description: DENEME SÜRÜMÜ (tüzük m.47; hazinede DEĞİL, otomatik tetiklenmez — Salih yolu vererek koşar). Bir konuyu dört fazlı deterministik ders akışıyla öğretir; PROBE (dereceli çoktan-seçmeli, iplik başına ikili-arama ile anlayış sınırı) → PLAN (DAG görseli metinden önce + düğüm listesi; olgusal iddiada halüsinasyon freni) → TEACH (düğüm başına tek akıl-adımı + görsele atıflı metin + 1 soru; doğru cevapsız ilerlemez) → CLOSE (ders kaydı ogrenme/<konu>/dersler/ + sınav-grill ÖNERİSİ). Kaynak; "How I Use AI to Learn Things" (Eero Alvar 2026-08-14) analizi raporlar/2026-09/2026-09-09-ai-ile-ogrenme-transkript-analizi.md. KULLANILMAZ; karar üretiminde, jarvis-geliştirme icrasında, staj/galeri içeriğinde (md.49), Salih "sınav" demeden grill koşmak için.
+description: deneme sürümü (tüzük m.47; hazinede değil, otomatik tetiklenmez — Salih yolu vererek koşar). Bir konuyu dört fazlı deterministik ders akışıyla öğretir; PROBE (dereceli çoktan-seçmeli, iplik başına ikili-arama ile anlayış sınırı) → PLAN (DAG görseli metinden önce + düğüm listesi; olgusal iddiada halüsinasyon freni) → TEACH (düğüm başına tek akıl-adımı + görsele atıflı metin + 1 soru; doğru cevapsız ilerlemez) → CLOSE (ders kaydı ogrenme/<konu>/dersler/ + sınav-grill önerisi). Kaynak; "How I Use AI to Learn Things" (Eero Alvar 2026-08-14) analizi raporlar/2026-09/2026-09-09-ai-ile-ogrenme-transkript-analizi.md. kullanilmaz; karar üretiminde, jarvis-geliştirme icrasında, staj/galeri içeriğinde (md.49), Salih "sınav" demeden grill koşmak için.
 argument-hint: "<konu> [ön-bağlam: bildiklerim …]"
 ---
 
 # ogren — dört fazlı ders akışı (v0.1 deneme, 2026-09-09; Karar 88 M5/M11 hattı)
 
-Kural kaynağı: hafıza kuralları (doğrudan anlatım 08-17 · görsel önce + atıflı metin 09-08) · m.39 (her rakam kaynaklı) · Karar 68 (AS-OF) · m.33 (ayıklık/ruh-hâli sorgusu YASAK; sorular yalnız İÇERİK hakkında). İlke (videodan): zorluk MALZEMEDE kalır, lojistik (sıra, kaynak, doğrulama) skill'de.
+Kural kaynağı: hafıza kuralları (doğrudan anlatım 08-17 · görsel önce + atıflı metin 09-08) · m.39 (her rakam kaynaklı) · Karar 68 (AS-OF) · m.33 (ayıklık/ruh-hâli sorgusu yasak; sorular yalnız içerik hakkında). İlke (videodan): zorluk malzemede kalır, lojistik (sıra, kaynak, doğrulama) skill'de.
 
 ## 0. Giriş
 - Konu + varsa ön-bağlam ("bildiklerim: …") alınır. Ön-bağlam verildiyse PROBE o ipliklerde ATLANIR.
-- Ders dosyası açılır: `ogrenme/<konu-slug>/dersler/YYYY-MM-DD-<konu-slug>.md` (şema §5). Yüzey VS Code (Karar 80). Commit YAPILMAZ (T-R; kapanış ritüeli commit'ler).
+- Ders dosyası açılır: `ogrenme/<konu-slug>/dersler/YYYY-MM-DD-<konu-slug>.md` (şema §5). Yüzey VS Code (Karar 80). Commit yapilmaz (T-R; kapanış ritüeli commit'ler).
 
 ## 1. PROBE — anlayış sınırı
 - Dersin bağımlılık iplikleri (≤5) çıkarılır (örn. "diferansiyel formlar" → çizgi integrali · gradyan/rotasyonel · Stokes · lineer fonksiyonel · çok-lineer cebir).
 - İplik başına ikili-arama: en temelden başla; doğru → bir üst seviye, yanlış/"bilmiyorum" → sınır o seviyedir, iplik kapanır. Toplam ≤12 soru.
-- Soru formatı SABİT: tek soru · 4 seçenek (a-d) · **(e) bilmiyorum** · seçenek gövdeleri kısa · cevap gelmeden sonraki soru YOK. Salih serbest not yazabilir ("yap" alanı): ders dosyasına `## Salih notu` altına aynen geçer.
+- Soru formatı sabit: tek soru · 4 seçenek (a-d) · **(e) bilmiyorum** · seçenek gövdeleri kısa · cevap gelmeden sonraki soru YOK. Salih serbest not yazabilir ("yap" alanı): ders dosyasına `## Salih notu` altına aynen geçer.
 - Çıktı: `## Anlayış haritası` tablosu (iplik · ulaşılan seviye · kanıt = soru no).
 
 ## 2. PLAN — yol
 - Haritadan hedefe DAG: düğüm = tek akıl-adımı (bir tanım ya da bir çıkarım), kenar = "önce bunu". Bilinen düğümler DAG'a girmez (sınırın altı anlatılmaz).
-- **Görsel ÖNCE:** DAG `mcp__visualize` ile çizilir (düğüm numaralı), sonra düğüm listesi metinde numaraya atıfla verilir ("kutu 3 → kutu 5").
+- **Görsel önce:** DAG `mcp__visualize` ile çizilir (düğüm numaralı), sonra düğüm listesi metinde numaraya atıfla verilir ("kutu 3 → kutu 5").
 - Olgusal/sayısal/atıf içeren düğüm varsa `halusinasyon-engelleyici` derece hesabı; H ≥ eşik → o düğüm DESTEKLİ/DAYANAKSIZ etiketiyle anlatılır.
 - Salih planı görür; itiraz yoksa TEACH.
 
 ## 3. TEACH — düğüm düğüm
 Düğüm başına sabit üçlü, sıra değişmez:
-1. **Akıl-adımı:** tek tanım/çıkarım, benzetme YOK, terim ilk geçişte tanımlı; gerekiyorsa düğüm görseli (mcp__visualize) METİNDEN ÖNCE, metin görselin parçalarına atıflı.
+1. **Akıl-adımı:** tek tanım/çıkarım, benzetme YOK, terim ilk geçişte tanımlı; gerekiyorsa düğüm görseli (mcp__visualize) metinden önce, metin görselin parçalarına atıflı.
 2. **Somut örnek:** sayılı/elle hesaplı tek örnek (kaynaklı ya da "türetildi" damgalı).
-3. **Soru:** 1 soru (§1 formatı). Doğru → sonraki düğüm. Yanlış → aynı düğüm farklı açıdan (en fazla 2 tekrar), sonra düğüm "AÇIK" işaretlenir, ilerlenir. "Anladın mı?" diye SORULMAZ (video: kendini kandırma; test var, soru yok).
+3. **Soru:** 1 soru (§1 formatı). Doğru → sonraki düğüm. Yanlış → aynı düğüm farklı açıdan (en fazla 2 tekrar), sonra düğüm "açik" işaretlenir, ilerlenir. "Anladın mı?" diye sorulmaz (video: kendini kandırma; test var, soru yok).
 - Salih araya soru sorarsa cevaplanır, DAG'daki yer korunur ("kutu N'deyiz").
 - Bir seansta ≤8 düğüm; kalan düğümler ders dosyasında `## Kalan` listesi.
 
 ## 4. CLOSE
-- Ders dosyası tamamlanır (şema §5): harita · DAG görsel yolu · düğüm/soru/cevap kütüğü · AÇIK düğümler · Kalan.
-- `sinav-grill` ÖNERİLİR tek cümleyle; Salih "sınav" demeden KOŞULMAZ.
+- Ders dosyası tamamlanır (şema §5): harita · DAG görsel yolu · düğüm/soru/cevap kütüğü · açik düğümler · Kalan.
+- `sinav-grill` önerilir tek cümleyle; Salih "sınav" demeden KOŞULMAZ.
 - Kapanış cümlesi: "Sonraki ders: kutu N'den."
 
 ## 5. Ders dosyası şeması
@@ -48,8 +48,11 @@ Düğüm başına sabit üçlü, sıra değişmez:
 ## Kalan            (düğüm numaraları)
 ```
 
+## Üslup
+- **Büyük harf vurgusu yasak (Salih 09-15):** vurgu kalın harfle (`**sözcük**`) ya da cümle yapısıyla verilir; tamamı büyük harfli sözcük yalnız kısaltma (OWASP, YAML, DONE). Kanon/skill dosyalarında gördüğün büyük-harf üslubu taklit edilmez — o dosyaların üslubu ders diline geçmez. Stop hook `.claude/hooks/stop-buyuk-harf.sh` ihlalde cevabı yeniden yazdırır.
+
 ## Gotchas
 - **Acele tuzağı:** düğümü atlayıp özet anlatma — videodaki "ChatGPT hepsini bir anda anlatır" arızası; her düğüm tek adım.
 - **Probe şişmesi:** 12 soru tavanı; ön-bağlam verildiyse iplikler atlanır.
 - **Görsel yüzeyi:** mcp__visualize çıktısı sohbette render olur; kalıcı kopya için HTML dosyası `raporlar/gorsel-…` (09-03/09-08 deseni), ders dosyasından link.
-- **Kapsam:** jarvis-dışı içerik (staj/galeri) bu skill'le işlense de ders kaydı jarvis'e YAZILMAZ (md.49) — o zaman dosya o projenin klasörüne.
+- **Kapsam:** jarvis-dışı içerik (staj/galeri) bu skill'le işlense de ders kaydı jarvis'e yazilmaz (md.49) — o zaman dosya o projenin klasörüne.

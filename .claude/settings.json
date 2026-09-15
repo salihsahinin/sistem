@@ -48,21 +48,31 @@
       }
     ],
     "UserPromptSubmit": [
-   {
-    "hooks": [
-     {
-      "type": "command",
-      "command": "bash .claude/hooks/userprompt-dosya.sh"
-     }
-    ]
-   }
-  ],
-  "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/userprompt-dosya.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
             "command": "bash .claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/stop-buyuk-harf.sh"
           }
         ]
       }
