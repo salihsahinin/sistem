@@ -4,6 +4,9 @@
 # raporlar/2026-09/buyuk-harf-vurgu-analizi-2026-09-15.md).
 # Mekanizma: cevap bitince son asistan mesajı taranır; kısaltma/kod dışı ≥4 harfli tamamı-büyük
 # sözcük varsa Claude durdurulmaz, "kalın harfe çevir" gerekçesiyle devam ettirilir (decision=block).
+# Sınır: hook gösterilmiş çıktıyı GERİ ÇEKEMEZ; yalnız ekleme yaptırır. Bu yüzden düzeltme TEK SATIR
+# (09-15 vakası: "cevabı yeniden yaz" talimatı aynı soruyu iki kez gösterdi → yan oturum transkripti
+# 4ac5ca1c kayıt 449/453). Ölçüm: block sayısı 5 seans sonra (defter 09-15 Salih hükmü).
 # Sonsuz döngü freni: stop_hook_active=true ise (ikinci tur) fren pas geçer.
 # Beyaz liste: teknik kısaltmalar + kanon durum sözcükleri (DONE/PASS/FAIL/AS-OF) + faz adları.
 # Kod blokları (```…```) ve satır-içi kod (`…`) taranmaz; Salih beyanı alıntıları ("aynen: …") taranmaz.
@@ -47,6 +50,7 @@ if not ihlal:
 neden = ("Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: "
          + ", ".join(ihlal[:12]) + (" …" if len(ihlal) > 12 else "")
          + ". Vurguyu kalın harfle (**sözcük**) ya da cümle yapısıyla ver; büyük harf yalnız kısaltma/durum-sözcüğü. "
-           "Cevabı bu sözcükler düzeltilmiş hâlde yeniden yaz (içerik aynı kalsın).")
+           "Cevabı YENİDEN YAZMA (09-15 arızası: tam yeniden yazım Salih'e aynı soruyu iki kez gösterdi); "
+           "yalnız tek satır ekle: 'Düzeltme: <SÖZCÜK> → **sözcük**' ve dur.")
 print(json.dumps({"decision": "block", "reason": neden}, ensure_ascii=False))
 EOF

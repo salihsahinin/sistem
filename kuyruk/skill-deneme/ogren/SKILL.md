@@ -31,6 +31,7 @@ Düğüm başına sabit üçlü, sıra değişmez:
 3. **Soru:** 1 soru (§1 formatı). Doğru → sonraki düğüm. Yanlış → aynı düğüm farklı açıdan (en fazla 2 tekrar), sonra düğüm "açik" işaretlenir, ilerlenir. "Anladın mı?" diye sorulmaz (video: kendini kandırma; test var, soru yok).
 - Salih araya soru sorarsa cevaplanır, DAG'daki yer korunur ("kutu N'deyiz").
 - Bir seansta ≤8 düğüm; kalan düğümler ders dosyasında `## Kalan` listesi.
+- **Pratik düğümü = Salih'in eli (Salih 09-15, G1 arızası):** "şimdi sen dene" adımında komutu/koşumu Salih yapar; Jarvis yalnız iskeleyi hazırlar (config, vaka şablonu, koşum komutu tek kod bloğu) ve Salih'in yapıştırdığı çıktıyı yorumlar. Jarvis'in kendi koşumu **referans koşum**dur, pratik sayılmaz. Pratik DONE yalnız Salih'in "yaptım/koştum" beyanıyla yazılır; ilerleme tablosuna Salih beyanı olmadan DONE girilmez ("kavramsal DONE · pratik KALAN" kalır).
 
 ## 4. CLOSE
 - Ders dosyası tamamlanır (şema §5): harita · DAG görsel yolu · düğüm/soru/cevap kütüğü · açik düğümler · Kalan.
@@ -49,9 +50,10 @@ Düğüm başına sabit üçlü, sıra değişmez:
 ```
 
 ## Üslup
-- **Büyük harf vurgusu yasak (Salih 09-15):** vurgu kalın harfle (`**sözcük**`) ya da cümle yapısıyla verilir; tamamı büyük harfli sözcük yalnız kısaltma (OWASP, YAML, DONE). Kanon/skill dosyalarında gördüğün büyük-harf üslubu taklit edilmez — o dosyaların üslubu ders diline geçmez. Stop hook `.claude/hooks/stop-buyuk-harf.sh` ihlalde cevabı yeniden yazdırır.
+- **Büyük harf vurgusu yasak (Salih 09-15):** vurgu kalın harfle (`**sözcük**`) ya da cümle yapısıyla verilir; tamamı büyük harfli sözcük yalnız kısaltma (OWASP, YAML, DONE). Kanon/skill dosyalarında gördüğün büyük-harf üslubu taklit edilmez — o dosyaların üslubu ders diline geçmez. Stop hook `.claude/hooks/stop-buyuk-harf.sh` ihlalde tek satır düzeltme ekletir (gösterilmiş çıktı geri çekilemez; tam yeniden yazım 09-15'te aynı soruyu iki kez gösterdi).
 
 ## Gotchas
+- **Vekil-pratik tuzağı (G1, 09-15):** "pratiği sürdürelim" emri modelin pratiği Salih adına koşup DONE yazmasına dönüştü (10 vaka + promptfoo + analiz, Salih tek satır yazdı); sonraki turda model kendi yazdığı DONE'a bakıp G2'ye atladı. Pratik = Salih'in eli (§3).
 - **Acele tuzağı:** düğümü atlayıp özet anlatma — videodaki "ChatGPT hepsini bir anda anlatır" arızası; her düğüm tek adım.
 - **Probe şişmesi:** 12 soru tavanı; ön-bağlam verildiyse iplikler atlanır.
 - **Görsel yüzeyi:** mcp__visualize çıktısı sohbette render olur; kalıcı kopya için HTML dosyası `raporlar/gorsel-…` (09-03/09-08 deseni), ders dosyasından link.
