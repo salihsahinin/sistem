@@ -21,8 +21,9 @@
 | `skill-kapisi` | T-O orkestratör | skill üretimi/evrimi | Skill ADAYINI (fikir, kutu satırı, taslak ya da mevcut skill) kapı-ağacından yürütür (K0 GEREK → K1 DEĞER → İNŞA → K2 TOPRAKLAMA → K3 BİÇİM+TÜR); GEÇTİ/BEKLET/O |
 | `wiki-sayfa-yaz` | T-Y yan-etkili | wiki üretimi | Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki  |
 | `yol-planla` | T-Ü üretici | proje planı | Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa döküp topoloji + maliyet-tavanı + onarım kuralını YOL-PLANI bloğu olarak üretir (S-Ü); planı üretir, KO |
+| `ogren` | T-R ritüel | öğrenme yan-oturumu ("seans başı, <şerit>", "öğret", "kutu N'den devam") | dört fazlı ders akışı + oturum protokolü (İB-89 09-15: deneme v0.1 → hazine v0.2; K4 kanıt H1-H3 + G1; P3 = ilk canlı koşum v0.2) |
 
-Toplam 17 skill · deneme: `ogren` (kuyruk/skill-deneme) · üretim sırası (Karar 96 M5): karar-masasi → ogren evrimi → acilis-kapilari → cascade → …
+Toplam 18 skill (deneme alanı boş; `ogren` 09-15 hazineye geçti) · üretim sırası (Karar 96 M5): karar-masasi ✓P2 → ogren evrimi ✓P2 → acilis-kapilari → cascade → …
 
 ## Dış hazineler
 - staj reposu `~/staj başlangıç/.claude/skills/` (staj-acilis, staj-kapanis) — jarvis'e yalnız ad; içerik md.49.

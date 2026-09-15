@@ -6,3 +6,5 @@ Yeni skill hazineye (proje skill dizini) DOĞRUDAN girmez; önce burada `<ad>/SK
 - Hazineye geçiş: Salih ≥1 canlı koşum ∧ "kabul" sözü → `git mv` ile hazine dizinine + defter satırı.
 - Ret: `kuyruk/arsiv/<ad>-skill-<tarih>/` (silme yok, m.8); gerekirse karantina tescili (İB-72).
 Kaynak: İB-77 "görselleştir" dersi (09-03: 8 işçi atlas + v0.1→v0.3 sonra ret).
+
+Geçmiş: `ogren` v0.1 (09-09) → 09-15 hazineye `.claude/skills/ogren/` (İB-89, Karar 96 M2 A2; K4 kanıt H1-H3 + G1). Alan şu an boş.
