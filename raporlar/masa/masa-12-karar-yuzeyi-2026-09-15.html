@@ -23,7 +23,7 @@
 
   <header class="card bg-base-100 shadow-md">
     <div class="card-body">
-      <h1 class="card-title text-2xl">Karar Masası 12 — md hiyerarşisi + bağlamdan skill'e <span class="badge badge-primary">5 kalem</span></h1>
+      <h1 class="card-title text-2xl">Karar Masası 12 — md hiyerarşisi + bağlamdan skill'e <span class="badge badge-primary">7 kalem</span></h1>
       <p class="text-sm opacity-80">On ikinci Lavish masası. Tetik: 09-15 icra emrin — <em>"Kun Chen L8 … global md dosyası için Kun Chen'den ilham alan bir yapıya sahip olalım … md dosyalarını skill'e çevirmek … context uzayından neleri/nasıl skill'e çevirebiliriz araştır, atlasları koş, adayları karar masasına taşı … skill oluşum şemasını ve sürecini güncelle … skiller kalıp prompt olduğu için görev icrası tasarımının parçası"</em>. Her kalemde: ne demek · ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada.</p>
       <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2):</strong> Karar 95 PR kuralı yazıldı · Kun Chen transkripti ham okundu (11:24-18:40, 36:20) · atlas koşumu 3 aile × (tez + antitez) + V26 sondaj + maskeli hakem (Opus) · iç madencilik aracı <code>tools/baglam-skill-aday.py</code> (183 bölüm skorlandı) · şema v1.1 taslağı <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code> (core'a hükümle işlenir).</p>
       <p class="text-xs opacity-60">AS-OF 2026-09-15 · HEAD 5121626+ · birincil belgeler bu seans WebFetch ile açıldı (D); ikincil <code>[?]</code>/K · rakamlar sayım (m.39).</p>
@@ -150,8 +150,49 @@
     </div>
   </section>
 
+  <!-- M6 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M6">
+    <div class="card-body">
+      <h2 class="card-title">M6 · Öğrenmeden skill'e — kural + yerleşim <span class="badge badge-outline">Katman-1 · Karar 94 EK-4 (kaydedildi)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Beyanın (09-15) protokole yazıldı: ürün turunun son alt-adımı "bu öğrenme skill'e döner mi?" sorusudur. Kural: skill = tekrarlanan, koşullu, araç-zincirli prosedür; kavram/teori dersi skill olmaz (ders kaydı yeter). Her aday skill-kapisi K0-K3'ten geçer, eval-önce zorunlu (SkillsBench: kendinden-üretilen skill ≈0 kazanç). Karar gereken tek şey <strong>yerleşim</strong>: staj/işyeri işine dönen skill nerede yaşar?</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M6','skill yerleşimi');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) jarvis işine dönen → jarvis .claude/skills/; staj/işyeri işine dönen (Docker, Airflow, Redshift ETL, ajan-denetim) → staj reposu .claude/skills/; jarvis'te yalnız ad + pointer satırı (md.49)"> <strong>(a) İki hazine, md.49 sınırıyla ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> staj kökenli skill'ler staj reposunda üretilir (staj oturumu; staj-acilis/staj-kapanis zaten orada); jarvis KILAVUZ'a "dış skill hazineleri" satırı: ad + repo + tetik. <strong>Artı:</strong> Kun Chen'in proje-düzeyi skill deseni; jarvis hazine tavanı (7.380 char) staj skill'leriyle dolmaz; md.49 korunur. <strong>Eksi:</strong> iki hazine, iki bakım turu.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) genel teknoloji skill'leri (Docker/Airflow/SQL) jarvis'te, yalnız işyeri-özgü olanlar staj'da"> <strong>(b) Genel teknik jarvis'te, işyeri-özgü staj'da</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> Docker/Airflow gibi genel beceriler jarvis işlerinde de (veri katmanı K-023) kullanılır. <strong>Eksi:</strong> sınır her seferinde yorum ister; hazine tavanı zorlanır (16 → 20+).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) hepsi jarvis'te tek hazine"> <strong>(c) Tek hazine jarvis</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Eksi:</strong> md.49 ile çelişir (staj bağlamı jarvis'e taşınır); hazine tavanı aşılır.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M7 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M7">
+    <div class="card-body">
+      <h2 class="card-title">M7 · Öğrenilen konulardan skill adayları (geriye dönük tur) <span class="badge badge-outline">çoklu seçim · her aday K0-K3</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Envanter: jarvis müfredatı DONE (P0-a/b, P1, P3, P4, P5, P6) · MIT 6.006 L1 · 6.042J L1 · problem-çözme serisi · evals H1-H3 · güvenlik G1 (kavramsal) · staj okumaları (yalnız klasör adı, md.49): P0-kalibrasyon (SQL+Python), docker-alistirma, airflow-docker, etl-redshift, git-alistirma, terminal-alistirma, sql-atolye, prompt-engineering, ajan-denetim-kartlari, veri-ambari, transaction-vs-analytic. K0 süzgeci: prosedür + tekrar + araç zinciri olanlar aday; kavram dersleri (RoPE, halüsinasyon kökü, MIT L1, ayrık matematik) RET-0, skill değil. Hazine bugün 16; her seçim bir emekli-aday ister ya da staj hazinesine gider (M6).</p>
+      <form onsubmit="event.preventDefault(); kuyruklaCoklu(this,'M7','öğrenmeden skill adayları');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö1 eval-seti-kur (evals H1-H2): promptfoo config + vaka YAML + koşum + pass@k/ASR/Wilson script; jarvis hazinesi"> <strong>Ö1 · eval-seti-kur ✅</strong> — H1-H3'te üç kez elle kuruldu (h1/h2/h3-eval-seti); araç zinciri sabit (config → vaka → koşum → metrik). Jarvis'te skill koşumlarına regresyon kapısı olur. Yerleşim jarvis.</label>
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö2 yargic-kalibrasyon (evals H3-H4): rubrik şablonu + kör çift-puanlama formu + Cohen κ / Brier script; atlas hakem raporuna bağlanır"> <strong>Ö2 · yargic-kalibrasyon ✅</strong> — H3'te κ=1,0 ile ilk canlı koşum; jarvis hakem raporlarının Salih yargısına kalibrasyonu yoktu (09-14 tespiti). Yerleşim jarvis; H4 bitince olgunlaşır.</label>
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö3 ajan-denetim-karti (staj, doğrulama katmanı): ajan çıktısı için kontrol listesi + geçti/kaldı kaydı; staj reposunda üretilir, jarvis'te ad+pointer"> <strong>Ö3 · ajan-denetim-karti (staj) ✅</strong> — staj rolünün kendisi (doğrulama katmanı); ajan-denetim-kartlari.md zaten var, skill'e dönmesi = tetiklenebilir kontrol listesi. Yerleşim M6'ya bağlı.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö4 docker-ortam (staj docker-alistirma + airflow-docker): compose kur/kaldır/log/sağlık kontrolü script'li; staj reposu"> <strong>Ö4 · docker-ortam (staj)</strong> — tekrarlanan, araç-zincirli; Kun Chen'in "e2e test talimatı" örneğinin muadili. Yerleşim staj (M6 a) ya da jarvis (M6 b).</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö5 etl-redshift-kontrol (staj etl-redshift): COPY/UNLOAD şablonu + veri-kalitesi sorguları (satır sayısı, null, freshness) + rapor; staj reposu; DEA-C01 hattı"> <strong>Ö5 · etl-redshift-kontrol (staj)</strong> — DEA-C01 sınav hattıyla örtüşür; veri-kalitesi serisi (masa-11 alternatifi) ile birleşebilir.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö6 sql-python-kalibrasyon (staj P0-kalibrasyon + sql-atolye): soru bankası + soğuk sınav + puan kaydı; sinav-grill ile K0 kapsama kontrolü"> <strong>Ö6 · sql-python-kalibrasyon (staj)</strong> — P0 seti (10 SQL + 10 Python) tekrar kullanılır; K0'da sinav-grill ile kısmî kapsama → muhtemelen evrim, yeni skill değil.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö7 baglam-butce-denetim (P1+P5+P6): prompt-cache prefix, @import tuzağı, compaction-öncesi hasat kontrolü script'i; seans-kapanis §6e evrimi"> <strong>Ö7 · baglam-butce-denetim (jarvis)</strong> — P1/P5/P6 dersleri; K0'da seans-kapanis §6e + kural-sayaci ile kısmî kapsama → evrim adayı.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="Ö8 injection-testi (güvenlik G1→G6): oyuncak ajan + promptfoo redteam + ASR; G6 bitince; ürün turu aday 3 ile aynı"> <strong>Ö8 · injection-testi (jarvis, G6 sonrası)</strong> — G1 yalnız kavramsal; skill için G6 pratiği gerekli. Şimdi seçilirse "bekleyen" olarak kaydedilir.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="RET-0 onayı: RoPE/uzun-bağlam (P3), halüsinasyon kökü (P4), MIT 6.006 L1, 6.042J L1, git/terminal sözlükleri, veri-ambarı kavramları → skill değil"> <strong>RET-0 onayı</strong> — kavram dersleri skill olmaz; onaylarsan defterde "değerlendirildi, ret" olarak kapanır, tekrar masaya gelmez.</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Seçimi kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
   <footer class="text-xs opacity-60 px-2">
-    Kaynak: bu HTML <code>kaynak-kodu/lavish/masa-12-2026-09-15.html</code> (Fable, 2026-09-15) · kalıcı kopya <code>raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html</code> · atlas raporları <code>cc/rapor/2026-09/rapor-2026-09-15-md-skill-*.md</code> · madencilik <code>raporlar/2026-09/baglam-skill-adaylari-2026-09-15.md</code> · şema taslağı <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code>. Hükümler deftere Karar 96 olarak iner.
+    Kaynak: bu HTML <code>kaynak-kodu/lavish/masa-12-2026-09-15.html</code> (Fable, 2026-09-15) · kalıcı kopya <code>raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html</code> · atlas raporları <code>cc/rapor/2026-09/rapor-2026-09-15-md-skill-*.md</code> · madencilik <code>raporlar/2026-09/baglam-skill-adaylari-2026-09-15.md</code> · şema taslağı <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code>. Hükümler deftere Karar 96 olarak iner; M6-M7 (öğrenmeden skill'e) Salih beyanı 09-15 ile eklendi.
   </footer>
 </div>
 
