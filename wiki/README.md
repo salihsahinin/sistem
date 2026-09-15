@@ -65,3 +65,4 @@ Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı
 - [kuyruk 09-08] `hedef-sizintisi` — gün-bazlı pencerenin gün-0 sızıntısı, tek-kolon kanıt formülü P(f>0|etiket≥2)−P(f>0|etiket=0), metrik uçurumu (grupsuz AUC vs GroupAUC) ve 7 kanarya; kaynak `raporlar/seans/seans-teslim-2026-09-08-galeri-kumeleme-dersleri-tasarim-inceleme.md` + repo `analiz/ek-bulgular-galeri-trim-tasarim-2026-09-08.md`
 
 > **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.
+- [[skill-hazinesi-secim-isabeti]] — KUYRUK (Karar 96, 09-15): tavan kalktı; yönetim = description standardı + katalog + tetiklenme isabeti; üç yuva (CLAUDE.md / rules paths / skill) — kaynak şema §4b + masa-12.
