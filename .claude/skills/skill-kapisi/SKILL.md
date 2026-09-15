@@ -6,7 +6,7 @@ metadata: { owner: jarvis, version: "1.1.0-deneysel-m29", kural: "core/skill-ure
 
 # skill-kapisi — kapı-ağacı koşum talimatı (v1, 2026-08-15)
 
-Kural kaynağı: `core/skill-uretim-semasi.md` (ağaç + düğüm sözlüğü + formüller) · graf: `core/skill-uretim-semasi.d2` · deterministik denetim: `scripts/kapi-denetim.py`. İlke: kapı prompt'la kurulmaz — her düğüm yapısal sinyale bağlanır (script / bağımsız doğrulayıcı / eval / dış-kayıt); üretici ≠ doğrulayıcı.
+Kural kaynağı: `core/skill-uretim-semasi.md` (ağaç + düğüm sözlüğü + formüller) · graf: `core/skill-uretim-semasi.d2` · deterministik denetim: `scripts/kapi-denetim.py` · referanslar (İB-92, 09-15; KILAVUZ'dan taşındı): `references/skill-standardi.md` (eval kuralı · description · gövde · yan-etki freni · kompozisyon; K3/İNŞA'da okunur) · `references/tasarim-ilkeleri.md` (yerleşim · tarama · adresli erişim · hazırı temel al · araç sınırı; K0/K1'de okunur). İlke: kapı prompt'la kurulmaz — her düğüm yapısal sinyale bağlanır (script / bağımsız doğrulayıcı / eval / dış-kayıt); üretici ≠ doğrulayıcı.
 
 ## Adımlar
 1. **Aday künyesi** (tek blok): `ad · amaç (1 cümle) · tetik-kalıbı · köken (aşağıdan: m.43 sayaç k_W ∨ yukarıdan: Salih emri) · mevcut skill mi (evrim) yeni mi`. Künye yoksa kapı koşmaz — önce künye.
