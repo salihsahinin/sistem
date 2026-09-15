@@ -70,3 +70,10 @@ Düğüm listesi:
 
 ## Kalan
 Yok — 8/8 düğüm bu seansta tamamlandı.
+
+## Ek — sınav sonrası bulgu (interactive simülasyon, 2026-09-15)
+`sinav-grill` turunda kutu 5'in maliyet gerekçesi [O]rta kaldı ("sen açıkla" — kendi türetemedi); Jarvis açıklamayı verip ardından naif-tek-LLM ↔ CaMeL karşılaştırmalı, temiz/zararlı içerik seçenekli interaktif bir simülasyon (mcp__visualize) üretti. Simülasyonun 4 kombinasyonundan biri (**CaMeL + temiz içerik**) TEACH'te değinilmemiş bir sonuç ortaya çıkardı:
+
+**CaMeL'in false-positive maliyeti:** interpreter, içeriğin zararlı olup olmadığını hiç değerlendirmiyor — yalnız "bu değer güvenilmeyen bir kaynaktan geldi mi" (provenance) etiketine bakıyor. Bu yüzden tamamen zararsız bir içerik bile, yüksek riskli bir araca (ör. dışarı iletme) argüman olarak geçmeye çalıştığında **engellenir** — tıpkı zararlı içerik gibi. Yani CaMeL, G1 Vaka 5'teki assertion/davranış ayrımına benzer bir ödünleşim taşıyor: yapısal güvenlik güçlü ama kullanışlılık maliyeti var (meşru "bu özeti ilet" istekleri de bloklanabilir).
+
+**Anlama haritası güncellemesi:** dual-LLM'in maliyet sürücüsü (interpreter mimarisi) → [O]'dan [S]'e (Jarvis açıklaması + simülasyonla derinleşti, Salih "anladım" beyan etti); yeni bulgu (false-positive ödünleşimi) ilk kez bu ekte ortaya çıktı, ayrı bir soru ile sınanmadı — sonraki turda tek soruyla teyit edilebilir.
