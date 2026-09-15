@@ -50,6 +50,6 @@ try:
     if g: print("KAPSÜL: " + re.sub(r"[*`]", "", g.group(1)))
 except Exception: pass
 PY
-echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (TAMAMI) → core/pano.md → ritüel 'seans başı' (seans-acilis: canlı-oturum kapısı = git log -5 + hareket kütüğü)."
+echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (TAMAMI) → core/pano.md → ritüel 'seans başı' (kapılar: python3 tools/acilis-kapilari.py — K1 canlı-oturum · K2 manifest --is · K3 silver; İB-91)."
 echo "=== /SessionStart ==="
 } | head -c 2000
