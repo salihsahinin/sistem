@@ -1,7 +1,7 @@
 ---
 name: halusinasyon-engelleyici
 description: Halüsinasyona müsait görevin ÇIKTISINI doğrulama zinciriyle üretir; her iddia DESTEKLİ/DAYANAKSIZ/ÇELİŞİR etiketli, önce H derecesi hesaplanır (scripts/derece.py). Tetik; emirde `halusinasyon_derecesi ≥ eşik` (7 / pahalı-geri-alma 4) ya da çıktıda atıf/künye/DOI/URL/kaynakça, "halüsinasyon freniyle üret", "doğrulama zinciriyle yaz", olgusal/sayısal/atıf-yoğun raporda. KULLANILMAZ; H<4 rutin işte, sohbette, test/yürütme kapısı zaten doğruluyorsa, skill'i/formülü değiştirmek için. argument-hint: "<görev + kaynaklar | --derece bayrakları>"
-metadata: { owner: carvis, version: "1.0.0-deneysel-m29", kural: "core/halusinasyon-paketi.md" }
+metadata: { owner: jarvis, version: "1.0.0-deneysel-m29", kural: "core/halusinasyon-paketi.md" }
 ---
 
 # halusinasyon-engelleyici — doğrulama-zinciri koşum talimatı (v1, 2026-08-15)

@@ -1,7 +1,7 @@
 ---
 name: atlas-kosum
 description: Araştırma sorusunu dik alan-ailelerine bölüp paralel Atlas ajanları koşturur — m.40b v0.2 diyalektiği: çoklu-bağımsız tez → hedefli antitez (¬) → maskeli hakemlik; sağlamlık = adversarial-hayatta-kalma; D/K/X + URL etiketli rapor üretir. Kullan: "araştır", "atlas koştur", "dış tarama", "saha örneği bul", "dışarıda çözülmüş mü" dendiğinde ya da m.40b gereği yeni mekanizma/araç kararından önce. KULLANMA: bilinen-cevap basit soru, dosya-içi arama, terim açıklama — direkt cevapla. argument-hint: "<araştırma sorusu>"
-metadata: { owner: carvis, version: "0.2.0-deneysel-m29" }
+metadata: { owner: jarvis, version: "0.2.0-deneysel-m29" }
 ---
 
 # atlas-kosum — m.40b v0.2 koşum talimatı

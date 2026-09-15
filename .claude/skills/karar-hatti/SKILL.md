@@ -1,7 +1,7 @@
 ---
 name: karar-hatti
 description: Ölçek-eşiği üstü kararı BAŞTAN SONA işleyen orkestratör — çocuk skill'leri sırayla çağırır, kendisi iş yapmaz: (1) celiski-kapisi (m.16; çelişkide DURUR) → (2) gerekirse atlas-kosum (m.40b araştırma-önce) → (3) karar-modeli (m.37) → (4) sunum + defter-bloğu TASLAĞI. Kullan: "tam karar hattı", "bu kararı hattan geçir", "baştan sona işle" dendiğinde ya da yeni mekanizma/araç sınıfı kararlarda. KULLANMA: su-bardağı işler; tekil ihtiyaçta çocuğu tek çağır ("3 model sun" → karar-modeli, "araştır" → atlas-kosum, "çelişki var mı" → celiski-kapisi). argument-hint: "<karar sorusu tek cümle>"
-metadata: { owner: carvis, version: "0.1.0-deneysel-m29" }
+metadata: { owner: jarvis, version: "0.1.0-deneysel-m29" }
 ---
 
 # karar-hatti — orkestratör koşum talimatı

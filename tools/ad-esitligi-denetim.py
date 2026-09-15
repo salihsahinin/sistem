@@ -44,7 +44,7 @@ def main():
             continue
         var = False
         for dd, ds, fs in os.walk(dp):
-            ds[:] = [x for x in ds if x not in (".git", "node_modules", "__pycache__")]
+            ds[:] = [x for x in ds if x not in (".git", "node_modules", "__pycache__", "worktrees")]
             for f in fs:
                 if f.endswith((".md", ".py", ".sh", ".json", ".html", ".txt", ".d2")) and CARVIS.search(oku(os.path.join(dd, f))):
                     var = True; break
@@ -57,7 +57,7 @@ def main():
     hedef = [os.path.join(J, f) for f in CANLI_DOSYA]
     for d in CANLI_DIZIN:
         for dd, ds, fs in os.walk(os.path.join(J, d)):
-            ds[:] = [x for x in ds if x not in ("__pycache__", "node_modules")]
+            ds[:] = [x for x in ds if x not in ("__pycache__", "node_modules", "worktrees")]
             hedef += [os.path.join(dd, f) for f in fs if f.endswith((".md", ".py", ".sh", ".json"))]
     kendi = os.path.abspath(__file__)
     for p in hedef:

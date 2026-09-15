@@ -22,8 +22,9 @@
 | `wiki-sayfa-yaz` | T-Y yan-etkili | wiki üretimi | Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki  |
 | `yol-planla` | T-Ü üretici | proje planı | Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa döküp topoloji + maliyet-tavanı + onarım kuralını YOL-PLANI bloğu olarak üretir (S-Ü); planı üretir, KO |
 | `ogren` | T-R ritüel | öğrenme yan-oturumu ("seans başı, <şerit>", "öğret", "kutu N'den devam") | dört fazlı ders akışı + oturum protokolü (İB-89 09-15: deneme v0.1 → hazine v0.2; K4 kanıt H1-H3 + G1; P3 = ilk canlı koşum v0.2) |
+| `emekli-anahtar-cascade` | T-Y yan-etkili | ad/tetik/kavram emekliliği ("X'i emekli et", "X yerine Y", "cascade koş") | anahtar kaydı satırı + deterministik yayılım `tools/anahtar-cascade.py` (kaydet · tara · uygula --onay · readme); İB-90 09-15, ilk canlı koşum ajan-adi (Carvis→Jarvis) |
 
-Toplam 18 skill (deneme alanı boş; `ogren` 09-15 hazineye geçti) · üretim sırası (Karar 96 M5): karar-masasi ✓P2 → ogren evrimi ✓P2 → acilis-kapilari → cascade → …
+Toplam 19 skill (deneme alanı boş; `ogren` 09-15 hazineye geçti) · üretim sırası (Karar 96 M5): karar-masasi ✓P2 → ogren evrimi ✓P2 → acilis-kapilari ✓ → cascade ✓P2 → KILAVUZ→skill-kapisi (İB-92) → friday-devir (İB-93) → …
 
 ## Dış hazineler
 - staj reposu `~/staj başlangıç/.claude/skills/` (staj-acilis, staj-kapanis) — jarvis'e yalnız ad; içerik md.49.

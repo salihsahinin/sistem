@@ -1,0 +1,57 @@
+{
+  "skill": "emekli-anahtar-cascade",
+  "version": "0.1.0-deneysel-m29",
+  "note": "İB-90 (Karar 96 M2 A3). Eval-önce (K-016): tetikleme 5+5 + 3 üretim testi; üretim testleri deterministik script üzerinden (tools/anahtar-cascade.py). Skill'siz baseline (Y1): 3 elle cascade — 08-15 günaydın (grep + elle yazım, ılık ihlal 23 kaldı) · 08-17 metafor paketi (5 anahtar, izinli kalıp listeleri elle) · 09-10 Carvis (ad-esitligi-denetim ayrı yazıldı, anahtar kaydına satır GİRMEDİ → kayıt eksik). Y1 boşluk: elle koşumda kayıt satırı atlandı (Carvis) ve ılık katman yarım kaldı (günaydın).",
+  "description_eval": {
+    "should_trigger": [
+      "\"uyucam\" tetiğini emekli et, yerine \"seans bitimi\"",
+      "Carvis adını anahtar kaydına emekli olarak işle ve cascade koş",
+      "vardiya yerine seans — kalıntı var mı, yayılımı yap",
+      "gorsellestir skill adı emekli, halefi mcp__visualize; kaydı ve taramayı yap",
+      "adı değiştirdik, cascade'i koş ve denetle"
+    ],
+    "should_not_trigger": [
+      "anahtar-denetim.py'yi koş, kaç kalıntı var say",
+      "raporlar/ altındaki eski vardiya raporlarını yeni terimle yeniden yaz",
+      "CLAUDE.md'deki yazım hatasını düzelt",
+      "Carvis = Jarvis bloğunu README'ye ekle (ad-eşitliği)",
+      "seans başı"
+    ]
+  },
+  "tests": [
+    {
+      "id": "E1-kaydet-butunluk",
+      "prompt": "kaydet --anahtar oturum-birimi --eski vardiya --yeni oturum (güncel değer 'seans' iken)",
+      "assertions": [
+        "çıkış 2, mesaj 'zincir derinliği >1'",
+        "kaydet --eski X --yeni X → çıkış 2 'çevrim'",
+        "geçerli kaydet → stdout JSON, dosyaya yazmaz"
+      ]
+    },
+    {
+      "id": "E2-tara-onizleme",
+      "prompt": "tara --anahtar oturum-acilis-tetigi --katman sicak",
+      "assertions": [
+        "core/baglam-anahtar-kaydi.md satırları sayılmaz",
+        "her ihlal satırı - / + çiftiyle; izinli kalıplı satırlar ihlal değil",
+        "kod dosyaları (.py/.sh) 'uygula YAZMAZ' etiketli",
+        "sıcak ihlal sayısı anahtar-denetim.py ile aynı"
+      ]
+    },
+    {
+      "id": "E3-uygula-onay",
+      "prompt": "uygula --anahtar <id> --katman ilik (onaysız) → sonra --onay",
+      "assertions": [
+        "onaysız: dosya yazılmaz, çıkış 1, sayım basılır",
+        "--katman hepsi → çıkış 2 (soğuk yazılmaz)",
+        "--onay: yalnız md satırları yeniden yazılır, büyük-küçük harf biçimi korunur, kod dosyaları atlanır",
+        "sonraki komut anahtar-denetim.py ile sıcak ihlal 0"
+      ]
+    }
+  ],
+  "p2_baseline": {
+    "tarih": "2026-09-15",
+    "canli_kosum": "ajan-adi (Carvis→Jarvis, Karar 93) kaydı script'le üretildi, Edit ile kayda girdi; tara sıcak/ılık sonuçları defterde",
+    "acik": "E3 --onay canlı dosyada denenmedi (ılık vardiya kalıntıları anlam bozar: dizin adları, regex) → P3'te ilk gerçek emeklilikte"
+  }
+}

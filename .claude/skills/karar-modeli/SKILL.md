@@ -1,7 +1,7 @@
 ---
 name: karar-modeli
 description: Ölçek-eşiği üstü karar/tasarım sorusu için FARKLI matematiksel temelli 3 karar modeli üretir — en az biri karşıt-temelli, hepsi token×zaman×kalite×risk eksenlerinde sayısal karşılaştırmalı; önerileni işaretler, senaryo-defteri bloğu üretir. Kullan: "3 model", "karar modeli", "karşıt gömülü model", "matematik temelli seçenekler" dendiğinde ya da ölçek-eşiği üstü karar anında. KULLANMA: su-bardağı alt-karar, typo/tek-satır düzeltme, sonucu değiştirmeyecek küçük seçimler (m.25/m.37 muafiyeti). argument-hint: "<karar sorusu>"
-metadata: { owner: carvis, version: "0.1.0-deneysel-m29" }
+metadata: { owner: jarvis, version: "0.1.0-deneysel-m29" }
 ---
 
 # karar-modeli — m.37/m.40 koşum talimatı

@@ -20,7 +20,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
 ```json
 {
   "sema": "anahtar-kaydi-v1",
-  "guncelleme": "2026-08-17 (seans-8: metafor emekliliği paketi — 5 anahtar EMEKLİ, halef sözlük Salih ONAYLI ~10:15; cascade koşuldu)",
+  "guncelleme": "2026-09-15 (İB-90: ajan-adi anahtarı — Carvis→Jarvis, Karar 93, emekli-anahtar-cascade ilk canlı koşum) · önceki 2026-08-17 (seans-8: metafor emekliliği paketi — 5 anahtar EMEKLİ, halef sözlük Salih ONAYLI ~10:15; cascade koşuldu)",
   "anahtarlar": [
     {
       "anahtar_id": "oturum-acilis-tetigi",
@@ -484,6 +484,28 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
       ],
       "aday": [],
       "not": "Tarihli teslim dosyaları (raporlar/vardiya/vardiya-teslim-2026-…) soğuk tarihçe, yeniden adlandırılmaz. Tüzük imza damgaları ('günaydın vardiyası') izinli. | CASCADE 08-17 ~10:30 KOŞTU: sıcak → 0 (31 dosya: tüzük başlık+m.2/15/16/25/28/30/33/35/36/44/45, pano, kapsül, ingest/veri/world-model, şablon seans-teslim.md yeni + vardiya-teslim.md güdük, 15 SKILL.md + 6 evals.json); ılık EYLEM eşiği aşıldı → bakım kartı K-024 (KILAVUZ, wiki/sozluk, fikir-kutusu, kuyruk defterleri, veri/README, 00/01 plan dosyaları); soğuk tarihçe."
+    },
+    {
+      "anahtar_id": "ajan-adi",
+      "tur": "kavram",
+      "guncel": {
+        "deger": "Jarvis",
+        "gecerli_bas": "2026-09-10",
+        "kaynak": "Salih Katman-1 09-10 Karar 93 + EK (ad-eşitliği üç katman, tools/ad-esitligi-denetim.py); kayda giriş 09-15 İB-90 canlı koşumu (emekli-anahtar-cascade kaydet)"
+      },
+      "emekli": [
+        {
+          "deger": "Carvis",
+          "varyantlar": ["CARVİS", "CARVIS", "carvis"],
+          "tarih": "2026-09-10",
+          "gerekce": "Karar 93 (Salih 09-10): konuşan ajan JARVİS; Carvis 08-17→09-10 dönemi adı, tarihli kayıtlarda AS-OF. Ad-eşitliği (Carvis = Jarvis) her bağlam kombinasyonunda bilinir (Karar 93 EK) — bu anahtarda README bağlama ZORUNLU.",
+          "replaced_by": "Jarvis",
+          "izinli_kaliplar": ["emekli", "eski ad", "eski adı", "cascade", "anahtar_terim", "süpersede", "supersede", "→ jarvis", "= jarvis", "carvis\\)", "ad-esitligi", "ad-eşitliği", "karar 93", "carvis emekli", "carvis = jarvis", "carvis → jarvis", "carvis -> jarvis", "gunaydin carvis", "günaydın carvis"],
+          "kaldirma_en_erken": "seans+3"
+        }
+      ],
+      "aday": [],
+      "not": "Denetim asıl aracı tools/ad-esitligi-denetim.py (K1 yüklenen katman · K2 dizin README · K3 canlı sızıntı); bu kayıt anahtar-denetim/cascade ile aynı sayım düzlemine alır."
     }
   ]
 }

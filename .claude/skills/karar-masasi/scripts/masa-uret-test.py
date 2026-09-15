@@ -8,7 +8,7 @@ Kullanım: python3 masa-uret-test.py [--repo ~/jarvis] [--masa raporlar/masa/mas
 import argparse, json, pathlib, re, subprocess, sys, tempfile
 BURASI = pathlib.Path(__file__).resolve().parent
 URET, CIKAR = BURASI / "masa-uret.py", BURASI / "masa-spec-cikar.py"
-IZ = set("DONE PASS FAIL AS-OF PROBE PLAN TEACH CLOSE DAG MCP OWASP YAML JSON HTML CSV PDF SVG CI API SQL URL CLI IDE SDK LLM RAG "
+IZ = set("DONE PASS FAIL AS-OF PROBE PLAN TEACH CLOSE DAG MCP OWASP YAML JSON HTML CSV PDF SVG CI API SQL URL CLI IDE SDK LLM RAG "  # Carvis = Jarvis (eski ad, Karar 93)
          "README HEAD MEMORY CLAUDE JARVIS JARVİS FRIDAY CARVIS ATLAS OPUS SONNET HAIKU FABLE KB MB FIFO SHA İB EK SKILL KILAVUZ "
          "KALAN BEKLET ONAR GEÇTİ RET SCRIPTLER HİÇBİRİ".split())
 
