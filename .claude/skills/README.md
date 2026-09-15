@@ -5,6 +5,7 @@
 | ad | tür | icra türü | description (özet) |
 |---|---|---|---|
 | `atlas-kosum` | T-O orkestratör | araştırma (m.40b) | Araştırma sorusunu dik alan-ailelerine bölüp paralel Atlas ajanları koşturur — m.40b v0.2 diyalektiği: çoklu-bağımsız tez → hedefli antitez (¬) → maskeli hakeml |
+| `karar-masasi` | T-Ü üretici | karar sunumu (Lavish masası; ≥2 hüküm) | bekleyen hükümleri deterministik DaisyUI masası olarak üretir (İB-88 P1, 09-15; script + şablon + 3 eval) |
 | `celiski-kapisi` | T-Ü üretici | karar öncesi m.16 | Yeni karar/kural/kanon-değişikliği önerisinde kanonu tarar; çelişki varsa karar ALINMADAN ÖNCE çelişki + artı/eksi + plan raporu sunar (m.16). Kullan: "çelişki  |
 | `damitma` | T-Y yan-etkili | ingest/damıtma turu | Kanonun damıtma/ingest turunu koşar (S-E); kuyruk/gelen dosyalarını ingest v2 triyajından geçirir, boyut-FLAG'li sıcak dosyaları bütçeye indirir (arşiv-pointer) |
 | `gorev-emri-derleme` | T-Ü üretici | işçi/lider emri derleme | Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-şablonlu ajan emrine derler (S-K). Tetik; "araştırma emri yaz", "görev emri derle", "emri hazırla",  |
@@ -21,7 +22,7 @@
 | `wiki-sayfa-yaz` | T-Y yan-etkili | wiki üretimi | Wiki-delta'dan ya da kuyruk adayından standarda uygun wiki sayfası üretir (W-1); 6-blok şablon + index + [[link]] turu. Tetik; "wiki'ye yaz", "sayfa aç", "wiki  |
 | `yol-planla` | T-Ü üretici | proje planı | Proje-ölçekli görevi (durum,zaman)-düğümlü senaryo-grafa döküp topoloji + maliyet-tavanı + onarım kuralını YOL-PLANI bloğu olarak üretir (S-Ü); planı üretir, KO |
 
-Toplam 16 skill · deneme: `ogren` (kuyruk/skill-deneme) · üretim sırası (Karar 96 M5): karar-masasi → ogren evrimi → acilis-kapilari → cascade → …
+Toplam 17 skill · deneme: `ogren` (kuyruk/skill-deneme) · üretim sırası (Karar 96 M5): karar-masasi → ogren evrimi → acilis-kapilari → cascade → …
 
 ## Dış hazineler
 - staj reposu `~/staj başlangıç/.claude/skills/` (staj-acilis, staj-kapanis) — jarvis'e yalnız ad; içerik md.49.

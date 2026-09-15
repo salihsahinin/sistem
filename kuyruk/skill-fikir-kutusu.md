@@ -55,3 +55,4 @@
 | 2026-08-29 | 12/143 (45 g) | 0,72 | 1,0 (n=6) | 12/12 | 2/2 (imza 08-29, Karar 77; kapı GEÇTİ) | raporlar/2026-08/skill-doctor-rapor-2026-08-29.html |
 
 - **Kapı koşumu 2026-08-29 (Karar 77):** aday = seans-kapanis Gotcha evrimi (BAKIM-KK önerisi) · K0 evrim-kısmî ✓ · K1 Z2 (Salih imzası) · İNŞA: satır eklendi · K2-R script 7/7 ✓ (1 [K] heuristik: katman-hatti script-referansı) · K2-İ: 3 sayısal iddia scores.json'la deterministik doğrulandı (Karar 48 kısıt-dışı sınıf) · K3 T-R uyumlu · HÜKÜM: ÜRET evrim(s) GEÇTİ. İkinci öneri (heredoc-hijyeni) skill değil KANON satırı → kapı dışı, imzayla ajan-metodolojisine yazıldı.
+- 2026-09-15 · karar-masasi · K0 geçti (kapsanmış yok; Y3 araç-zinciri) · K1 Z1 k=11 ≥5 · İNŞA P1 (3 eval + description_eval 5+5, baseline masa-12 elle) · K2-R kapi-denetim geçti (F1e ölçüm) · K3 T-Ü · hüküm ÜRET-Ü×yeni P1 ÜRETİLDİ; P2 gövde+baseline, P3 katalog/description-eval koşumu borç.
