@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-09-15 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `7e322c2`)
+# Hareket günlüğü — 2026-09-15 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `5abcf05`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 138 çağrı, 2 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 330 çağrı, 3 oturum.*
 
 ## Oturum `4ac5ca1c` — 10:17:46→11:19:56 · 42 çağrı · model sonnet-5 · hata 0
 **Özet:** koştu 21 · düzenledi 8 · yazdı 5 · okudu 4 · MCP aracı 3 · sordu 1
@@ -51,8 +51,8 @@
 | 48 | 11:19:35 | koştu | Check gh auth and count commits ahead of origin/main ⟨gh auth status 2>&1; echo "---"; git log --oneline origin/main..claude/2026-09-15-guvenlik ¦ wc -l⟩ | tamam |
 | 49 | 11:19:56 | koştu | Open PR from side-session branch to main, base merge left to Fable ⟨gh pr create --base main --head claude/2026-09-15-guvenlik --title "Guvenlik serisi G1: Prompt Injection I (kavramsal ders + pratik promptfoo koşumu)"…⟩ | tamam |
 
-## Oturum `14da067d` — 10:29:15→11:58:02 · 96 çağrı · model fable-5-1 · hata 2
-**Özet:** koştu 54 · yazdı 15 · düzenledi 11 · ajan gönderdi 8 · web'e baktı 5 · skill çağırdı 2 · araç aradı 1
+## Oturum `14da067d` — 10:29:15→11:59:29 · 101 çağrı · model fable-5-1 · hata 2
+**Özet:** koştu 57 · yazdı 15 · düzenledi 13 · ajan gönderdi 8 · web'e baktı 5 · skill çağırdı 2 · araç aradı 1
 **Yazılan/düzenlenen dosyalar (17):** `.claude/hooks/instructions-loaded.sh` · `.claude/hooks/stop-buyuk-harf-test.sh` · `.claude/hooks/stop-buyuk-harf.sh` · `.claude/rules/cc.md` · `.claude/rules/ogrenme.md` · `.claude/rules/tools.md` · `.claude/skills/karar-masasi/SKILL.md` · `.claude/skills/karar-masasi/evals/evals.json` · `.claude/skills/karar-masasi/sablon.html` · `.claude/skills/karar-masasi/scripts/masa-uret.py` · `.claude/skills/skill-kapisi/scripts/kapi-denetim.py` · `core/durum-kapsulu.md` · `core/skill-uretim-semasi.md` · `kaynak-kodu/lavish/masa-12-2026-09-15.html` · `kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md` · `raporlar/seans/seans-teslim-2026-09-15-masa11-12-karar94-96-skill-hazine.md` · `tools/baglam-skill-aday.py`
 
 | # | saat | fiil | hedef | sonuç |
@@ -153,4 +153,203 @@
 | 155 | 11:57:48 | yazdı | raporlar/seans/seans-teslim-2026-09-15-masa11-12-karar94-96-skill-hazine.md | tamam |
 | 156 | 11:57:59 | koştu | Fikir kutusu + wiki kuyruğu satırları; katman hattı son koşum; FIFO bayrakları ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib f=pathlib.Path('fikir-kutusu.md'); f.write_text(f.read_text().rstrip('\n')+"\n- **V96 · Alt-ajan çocuk…⟩ | yok |
 | 157 | 11:58:02 | düzenledi | core/durum-kapsulu.md | yok |
+| 158 | 11:58:48 | koştu | Kapanış commit'i + türev katman commit'i; origin'e push (m.9, M8 b kapanış push'u) ⟨cd ~/jarvis && python3 tools/sicak-katman-fifo.py 2>&1 ¦ grep kapsul && git add raporlar/seans/seans-teslim-2026-09-15-masa11-12-karar94-96-skill-hazi…⟩ | tamam |
+| 159 | 11:59:09 | düzenledi | core/durum-kapsulu.md | tamam |
+| 160 | 11:59:12 | koştu | Kapsül bayt bütçesini doğrula, düzeltme commit'i, push ⟨cd ~/jarvis && python3 tools/sicak-katman-fifo.py 2>&1 ¦ grep kapsul && git add core/durum-kapsulu.md && git commit -q -m "[icra] Capsule: byte budget…⟩ | tamam |
+| 161 | 11:59:25 | düzenledi | core/durum-kapsulu.md | tamam |
+| 162 | 11:59:29 | koştu | Kapsül bütçesini doğrula, commit, push; izlenen dosyalarda kalan değişiklik sayısı ⟨cd ~/jarvis && python3 tools/sicak-katman-fifo.py 2>&1 ¦ grep kapsul && git add core/durum-kapsulu.md && git commit -q -m "[icra] Capsule: byte budget…⟩ | tamam |
+
+## Oturum `34f8f4dd` — 12:04:18→16:45:47 · 187 çağrı · model fable-5-1 · hata 4
+**Özet:** koştu 82 · düzenledi 71 · yazdı 13 · okudu 10 · MCP aracı 6 · skill çağırdı 2 · web'e baktı 2 · araç aradı 1
+**Yazılan/düzenlenen dosyalar (28):** `.claude/hooks/session-start.sh` · `.claude/hooks/stop-buyuk-harf-test.sh` · `.claude/hooks/stop-buyuk-harf.sh` · `.claude/rules/ogrenme.md` · `.claude/settings.json` · `.claude/skills/README.md` · `.claude/skills/emekli-anahtar-cascade/SKILL.md` · `.claude/skills/emekli-anahtar-cascade/evals/evals.json` · `.claude/skills/karar-masasi/SKILL.md` · `.claude/skills/karar-masasi/evals/evals.json` · `.claude/skills/karar-masasi/sablon.html` · `.claude/skills/karar-masasi/scripts/masa-spec-cikar.py` · `.claude/skills/karar-masasi/scripts/masa-uret-test.py` · `.claude/skills/karar-masasi/scripts/masa-uret.py` · `.claude/skills/ogren/SKILL.md` · `.claude/skills/ogren/evals/evals.json` · `.claude/skills/ogren/references/urun-turu.md` · `.claude/skills/seans-acilis/SKILL.md` · `.claude/skills/skill-kapisi/SKILL.md` · `CLAUDE.md` · `core/baglam-anahtar-kaydi.md` · `core/durum-kapsulu.md` · `raporlar/seans/seans-teslim-2026-09-15-karar97-buyuk-harf-ib88-92-hook-arizasi.md` · `tools/acilis-kapilari.py` · `tools/anahtar-cascade.py` · `tools/buyuk-harf-temizle.py` · `tools/git-hooks/caps-say.py` · `tools/git-hooks/pre-commit`
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 12:04:18 | skill çağırdı | seans-acilis | tamam |
+| 2 | 12:04:22 | koştu | Git günlüğü, dallar, PR listesi ve kapsülün başı ⟨cd ~/jarvis && git log -8 --format='%h %ad %s' --date=format:'%m-%d %H:%M' && echo --- && git status --short && echo --- && git branch -a ¦ head -20 &…⟩ | tamam |
+| 3 | 12:04:42 | koştu | PR durumu, güvenlik dalı commit'leri, Stop hook ayarı, G1 dosyaları ve Karar 95 metni ⟨cd ~/jarvis && echo "== PR ==" && gh-axi pr list --state all 2>/dev/null ¦ head -20; echo "== branch ==" && git log --oneline main..origin/claude/2026…⟩ | tamam |
+| 4 | 12:04:55 | koştu | Uzak dal durumu, Stop hook kaynağı ve yan oturum transkriptini bulma ⟨cd ~/jarvis && git fetch -q origin && git status -sb ¦ head -2 && git log --oneline -3 origin/main && echo "== stop hook ==" && cat .claude/hooks/stop…⟩ | tamam |
+| 5 | 12:05:09 | koştu | Yan oturum transkriptinde PR sonrası kayıtları çıkar ⟨cd ~/jarvis && python3 - <<'EOF' import json p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/4ac5ca1c-6184-48c9-b82f-4b47ee53…⟩ | tamam |
+| 6 | 12:05:38 | koştu | G1 ilerleme kaydı, README'de pratik tanımı, sonuc.json ignore durumu ve PR 4 dosyaları ⟨cd ~/jarvis && echo "== ilerleme ==" && cat ogrenme/guvenlik/ilerleme.md && echo "== README pratik ==" && grep -n -i -B1 -A3 'pratik' ogrenme/guvenlik…⟩ | tamam |
+| 7 | 12:05:53 | koştu | Yan oturumdaki kullanıcı mesajları ve promptfoo koşumları; ogren skill'inde pratik tanımı ⟨cd ~/jarvis && python3 - <<'EOF' import json p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/4ac5ca1c-6184-48c9-b82f-4b47ee53…⟩ | tamam |
+| 8 | 12:06:39 | koştu | G1 setinin takip durumu, ogren skill'inin pratik kuralları, protokol §5 ve hook testi ⟨cd ~/jarvis && echo "== tracked g1 ==" && git ls-files ogrenme/guvenlik/g1-injection-seti && echo "== sqlite tracked? ==" && git ls-files veri/baglam.…⟩ | tamam |
+| 9 | 12:06:43 | koştu | ogren iskeletinin başlıkları ve protokolde Karar 95 bölümü ⟨cd ~/jarvis && wc -l kuyruk/skill-deneme/ogren/SKILL.md && grep -n '^#\¦sen dene\¦CLOSE\¦Kalan' kuyruk/skill-deneme/ogren/SKILL.md ¦ head -40 && echo …⟩ | tamam |
+| 10 | 12:06:47 | koştu | ogren TEACH/CLOSE/Üslup bölümleri ve protokolde PR satırları ⟨cd ~/jarvis && sed -n '27,38p;51,58p' kuyruk/skill-deneme/ogren/SKILL.md && echo "== protokol ==" && grep -n -i 'PR\b\¦branch\¦yan oturum' wiki/parale…⟩ | tamam |
+| 11 | 12:07:03 | okudu | .claude/hooks/stop-buyuk-harf.sh [aralık 50+12] | tamam |
+| 12 | 12:07:08 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 13 | 12:07:16 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 14 | 12:07:55 | koştu | Hook testini koş; ogren iskeleti, G1 ilerleme, hafıza ve defter kayıtlarını yaz ⟨cd ~/jarvis && bash .claude/hooks/stop-buyuk-harf-test.sh && python3 - <<'EOF' import re,pathlib # 1) ogren SKILL.md — pratik kuralı + gotcha + üslup …⟩ | tamam |
+| 15 | 12:08:03 | koştu | Arıza analizi düzeltmelerini commit'le ⟨cd ~/jarvis && git add .claude/hooks/stop-buyuk-harf.sh kuyruk/senaryo-defteri.md kuyruk/skill-deneme/ogren/SKILL.md ogrenme/guvenlik/ilerleme.md && g…⟩ | tamam |
+| 16 | 13:35:44 | koştu | Öğrenme README'lerinde açılış/kapanış satırları ve protokol §5 çevresi ⟨cd ~/jarvis && grep -n -i 'seans başı\¦kapanış\¦seans bitimi\¦branch\¦PR' ogrenme/guvenlik/README.md ¦ head -12; echo "== ogrenme/README ==" && grep -…⟩ | tamam |
+| 17 | 13:36:06 | koştu | Protokol §5 EK, güvenlik README yüzey satırı ve defter Karar 95 EK kaydını yaz ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib,re # 1) protokol §5 EK p=pathlib.Path('wiki/paralel-oturum-protokolu.md'); s=p.read_text() ek=(" **EK …⟩ | tamam |
+| 18 | 13:36:11 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 19 | 13:36:19 | koştu | Hook testini koş, durum sözcüğü örneğini dene ve Karar 95 EK paketini commit'le ⟨cd ~/jarvis && bash .claude/hooks/stop-buyuk-harf-test.sh ¦ tail -1 && printf '{"transcript_path":"/dev/null","stop_hook_active":false,"last_assistant…⟩ | hata |
+| 20 | 13:36:25 | koştu | Commit mesajını İngilizce karakterle yeniden yazıp commit'le ⟨cd ~/jarvis && git commit -q -m "$(cat <<'EOF' [icra] Decision 95 addendum (Salih 2026-09-15): side sessions run in a worktree rebased on origin/main,…⟩ | tamam |
+| 21 | 13:38:10 | koştu | main'i origin'e push'la (Salih beyanı) ⟨cd ~/jarvis && git push origin main 2>&1 ¦ tail -3 && git status -sb ¦ head -1⟩ | tamam |
+| 22 | 13:39:45 | MCP aracı | mark_chapter {"title": "İB-88 karar-masasi P2", "summary": "karar-masasi skill'inin P2 partisyonu: gövde + baseline"} | tamam |
+| 23 | 13:39:49 | koştu | karar-masasi P1 iskeletini, eval dosyasını ve şema §4b partisyon kuralını oku ⟨cd ~/jarvis && ls -R .claude/skills/karar-masasi && echo "=== SKILL ===" && cat .claude/skills/karar-masasi/SKILL.md && echo "=== evals ===" && cat .c…⟩ | tamam |
+| 24 | 13:39:58 | koştu | karar-masasi eval seti, üretici script, şablon, masa-12 referansı ve kapı scriptleri ⟨cd ~/jarvis && echo "=== evals ===" && cat .claude/skills/karar-masasi/evals/evals.json && echo "=== masa-uret.py ===" && cat .claude/skills/karar-mas…⟩ | tamam |
+| 25 | 13:40:07 | koştu | Şablonun kalan kısmı ve masa-12 HTML'inin tamamı (E3 eşdeğerlik için) ⟨cd ~/jarvis && sed -n '60,70p' .claude/skills/karar-masasi/sablon.html && echo "=== masa-12 tam ===" && cat raporlar/masa/masa-12-karar-yuzeyi-2026-09…⟩ | tamam |
+| 26 | 13:40:26 | koştu | Masa-12 HTML'inden spec JSON çıkar (E3 hazırlığı) ve elle-yazım sayımlarını bas ⟨cd ~/jarvis && S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/scratchpad && mkdir -p $S && python3 - "$S…⟩ | tamam |
+| 27 | 13:40:30 | koştu | Masa-12 M2 (çoklu seçim) kaleminin label yapısını incele ⟨cd ~/jarvis && grep -n 'data-lavish-question="M2"' -A14 raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html ¦ cut -c1-260⟩ | tamam |
+| 28 | 13:41:02 | koştu | E1 spec-hata, E2 determinizm, E3 masa-12 eşdeğerlik testlerini koş ve sayımları karşılaştır ⟨cd ~/jarvis && S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/scratchpad && python3 - "$S" <<'EOF' impor…⟩ | tamam |
+| 29 | 13:41:30 | koştu | Spec boyutu, elle masa-12'nin hakem ve başlık bloklarını incele; fixture'ı evals dizinine kopyala ⟨cd ~/jarvis && S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/scratchpad && wc -c $S/masa-12-spec.json &…⟩ | hata |
+| 30 | 13:41:33 | koştu | Spec boyutu ve elle masa-12'nin hakem/başlık bloklarını incele ⟨cd ~/jarvis && S=/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/scratchpad && wc -c $S/masa-12-spec.json &…⟩ | tamam |
+| 31 | 13:41:47 | düzenledi | .claude/skills/karar-masasi/scripts/masa-uret.py | tamam |
+| 32 | 13:41:52 | düzenledi | .claude/skills/karar-masasi/scripts/masa-uret.py | tamam |
+| 33 | 13:41:56 | düzenledi | .claude/skills/karar-masasi/sablon.html | tamam |
+| 34 | 13:42:18 | yazdı | .claude/skills/karar-masasi/scripts/masa-spec-cikar.py | tamam |
+| 35 | 13:42:49 | yazdı | .claude/skills/karar-masasi/scripts/masa-uret-test.py | tamam |
+| 36 | 13:42:53 | koştu | Yeni test scriptini koş, skill kapı denetimini çalıştır, SCRIPTLER ve katalog satırlarını bul ⟨cd ~/jarvis && python3 .claude/skills/karar-masasi/scripts/masa-uret-test.py; echo "exit=$?"; echo "=== kapi-denetim ===" && python3 .claude/skills/sk…⟩ | tamam |
+| 37 | 13:43:12 | düzenledi | .claude/skills/karar-masasi/evals/evals.json | tamam |
+| 38 | 13:43:19 | düzenledi | .claude/skills/karar-masasi/SKILL.md | tamam |
+| 39 | 13:43:22 | düzenledi | .claude/skills/karar-masasi/SKILL.md | tamam |
+| 40 | 13:43:26 | düzenledi | .claude/skills/README.md | tamam |
+| 41 | 13:43:29 | koştu | Kapsülde İB-88 satırını ve SCRIPTLER tablo biçimini bul ⟨cd ~/jarvis && grep -n 'İB-88' core/durum-kapsulu.md ¦ cut -c1-160 && grep -n '^¦ \*\*kapi-denetim' tools/SCRIPTLER.md ¦ head -1 && sed -n '1,8p' tool…⟩ | tamam |
+| 42 | 13:43:40 | koştu | SCRIPTLER indeksine karar-masasi script satırı ve deftere İB-88 P2 icra kaydı ekle ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib p=pathlib.Path('tools/SCRIPTLER.md'); s=p.read_text() satir=("¦ **masa-uret.py** (+ `masa-spec-cikar.p…⟩ | tamam |
+| 43 | 13:43:43 | düzenledi | core/durum-kapsulu.md | tamam |
+| 44 | 13:43:49 | koştu | Kapsül bütçesini denetle, İB-88 P2 paketini commit'le ⟨cd ~/jarvis && wc -c core/durum-kapsulu.md && python3 tools/sicak-katman-fifo.py 2>&1 ¦ tail -3; git add .claude/skills/karar-masasi .claude/skills/RE…⟩ | tamam |
+| 45 | 13:43:59 | koştu | FIFO sayacının tam çıktısı ve arşivleme seçenekleri ⟨cd ~/jarvis && python3 tools/sicak-katman-fifo.py 2>&1 ¦ head -6 && sed -n '1,25p' tools/sicak-katman-fifo.py ¦ grep -n -i 'kullan\¦--\¦arşiv' ¦ head …⟩ | tamam |
+| 46 | 13:47:11 | MCP aracı | mark_chapter {"title": "İB-89 ogren evrimi", "summary": "ogren deneme skill'i hazineye; ogrenme/README protokolü skil"} | tamam |
+| 47 | 13:47:17 | koştu | ogren skill'i, öğrenme README protokolü, masa-12 A2 hükmü ve README'ye işaret eden dosyaları oku ⟨cd ~/jarvis && echo "=== ogren SKILL (tam) ===" && cat kuyruk/skill-deneme/ogren/SKILL.md && echo "=== ogrenme/README satır 1-30 ===" && sed -n '1,30p…⟩ | tamam |
+| 48 | 13:48:01 | koştu | skill-deneme dizini, ogren yol referansları, kapı scriptinin tür tahmini ve README adım 5-6 kuyruğu ⟨cd ~/jarvis && ls -la kuyruk/skill-deneme/ && echo "=== referanslar ===" && grep -rn 'skill-deneme/ogren' --include='*.md' --include='*.json' --includ…⟩ | tamam |
+| 49 | 13:48:16 | okudu | .claude/rules/ogrenme.md [bütün] | tamam |
+| 50 | 13:48:18 | okudu | .claude/skills/seans-acilis/SKILL.md [aralık 12+2] | tamam |
+| 51 | 13:48:23 | koştu | seans-acilis hat beyanı satırı, skill-deneme README, eski pratik hafızası, katalog ve kapsül satırları ⟨cd ~/jarvis && grep -n 'Hat beyanı' .claude/skills/seans-acilis/SKILL.md ¦ cut -c1-120 && echo "=== skill-deneme README ===" && cat kuyruk/skill-denem…⟩ | tamam |
+| 52 | 13:49:56 | yazdı | .claude/skills/ogren/SKILL.md | tamam |
+| 53 | 13:50:24 | yazdı | .claude/skills/ogren/evals/evals.json | tamam |
+| 54 | 13:50:43 | yazdı | .claude/skills/ogren/references/urun-turu.md | tamam |
+| 55 | 13:50:50 | düzenledi | .claude/rules/ogrenme.md | tamam |
+| 56 | 13:50:55 | düzenledi | .claude/rules/ogrenme.md | tamam |
+| 57 | 13:51:00 | düzenledi | .claude/skills/seans-acilis/SKILL.md | tamam |
+| 58 | 13:51:06 | düzenledi | .claude/skills/README.md | tamam |
+| 59 | 13:51:12 | düzenledi | core/durum-kapsulu.md | tamam |
+| 60 | 13:51:45 | koştu | README protokolünü arşivle ve pointer'a indir, kurs README ve hafıza yollarını güncelle, eski deneme dizinini git'ten kaldır, deftere yaz, kapı denetimini koş ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib, re, datetime # 1) ogrenme/README.md: protokol bloğu arşive, yerine pointer p=pathlib.Path(' | tamam |
+| 61 | 13:52:00 | düzenledi | .claude/skills/ogren/SKILL.md | tamam |
+| 62 | 13:52:04 | düzenledi | .claude/skills/ogren/SKILL.md | tamam |
+| 63 | 13:52:07 | düzenledi | .claude/skills/README.md | tamam |
+| 64 | 13:52:13 | koştu | ogren ve seans-acilis kapı denetimini tekrar koş, katalog tablosunu doğrula, İB-89 dosyalarını stage'le ⟨cd ~/jarvis && python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py .claude/skills/ogren --repo ~/jarvis 2>&1 ¦ grep -E '^==¦✗¦△' ; python3 .cl…⟩ | tamam |
+| 65 | 13:52:19 | koştu | İB-89 paketini commit'le ⟨cd ~/jarvis && git commit -q -m "$(cat <<'EOF' [icra] IB-89 ogren evolution P1+P2 (Decision 96 M2 A2 / M5): trial skill v0.1 moved to treasury as .cla…⟩ | tamam |
+| 66 | 13:54:42 | MCP aracı | mark_chapter {"title": "İB-91 acilis-kapilari.py", "summary": "seans-acilis §1-2 deterministik kapıları script'e"} | tamam |
+| 67 | 13:54:52 | koştu | A4 hükmü, SessionStart hook kaynağı, silver üretim kaydı, pipeline manifest listesi, kapsül ve protokol kapı tanımları, SCRIPTLER yapısı ⟨cd ~/jarvis && echo "=== A4 hükmü ===" && grep -o 'value="A4[^"]*"' raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html && grep -o 'A4 · [^<]*</strong>…⟩ | tamam |
+| 68 | 13:55:54 | yazdı | tools/acilis-kapilari.py | tamam |
+| 69 | 13:56:00 | koştu | Açılış kapıları scriptini ana repoda, anahtarla, JSON ile ve worktree'de koş; seans-acilis satırlarını bul ⟨cd ~/jarvis && python3 tools/acilis-kapilari.py; echo "exit=$?"; echo "=== --is ===" && python3 tools/acilis-kapilari.py --is "kolon" ¦ sed -n '8,12p'…⟩ | tamam |
+| 70 | 13:56:29 | koştu | Script düzeltmeleri (worktree transkriptleri, origin sahte dalı) ve SCRIPTLER satırı; tekrar koş ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib p=pathlib.Path('tools/acilis-kapilari.py'); s=p.read_text() s=s.replace(''' proj = pathlib.Path.home()…⟩ | tamam |
+| 71 | 13:56:46 | düzenledi | .claude/skills/seans-acilis/SKILL.md | tamam |
+| 72 | 13:56:55 | düzenledi | .claude/skills/seans-acilis/SKILL.md | tamam |
+| 73 | 13:56:57 | okudu | .claude/hooks/session-start.sh [aralık 41+4] | tamam |
+| 74 | 13:56:59 | okudu | .claude/hooks/session-start.sh [aralık 52+4] | tamam |
+| 75 | 13:57:03 | düzenledi | .claude/hooks/session-start.sh | tamam |
+| 76 | 13:57:07 | düzenledi | core/durum-kapsulu.md | tamam |
+| 77 | 13:57:23 | koştu | Skill boyutu ve kapı denetimi, hook çıktı boyutu, defter kaydı ve İB-91 commit'i ⟨cd ~/jarvis && wc -c .claude/skills/seans-acilis/SKILL.md core/durum-kapsulu.md && python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py .claude…⟩ | tamam |
+| 78 | 13:57:29 | düzenledi | .claude/skills/seans-acilis/SKILL.md | tamam |
+| 79 | 13:57:35 | koştu | Defterdeki boyut rakamını düzelt, kapı denetimini tekrar koş, İB-91 commit'ini amend et ⟨cd ~/jarvis && sed -i '' 's/Skill 8\.175 → 6\.6xx B\./Skill 8.175 → 7.689 B (−486 B; A4 hükmündeki "2 KB kısalır" tutmadı: kural gerekçeleri satırda k…⟩ | tamam |
+| 80 | 14:01:24 | MCP aracı | mark_chapter {"title": "İB-90 emekli-anahtar cascade", "summary": "halef sözlüğü + emekli anahtar cascade skill/script"} | tamam |
+| 81 | 14:01:31 | koştu | A3 hükmü, bağlam-anahtar kaydı ilkeleri, ad-eşitliği denetim scripti ve Karar 93 EK kaydı ⟨cd ~/jarvis && echo "=== A3 hükmü ===" && grep -o 'value="A3[^"]*"' raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html; grep -o 'A3 · [^<]*</strong>[^…⟩ | tamam |
+| 82 | 14:01:44 | koştu | Emeklilik protokolü §3, anahtar-denetim scripti ve koşumu, anahtar kaydındaki kayıtlar, ad-eşitliği K2 README mantığı ⟨cd ~/jarvis && echo "=== §3 protokol ===" && awk '/^## 3\./,/^## 4\./' core/baglam-anahtar-kaydi.md ¦ cut -c1-700 ¦ head -40; echo "=== anahtar-deneti…⟩ | tamam |
+| 83 | 14:02:35 | koştu | Sıcak ihlal ayrıntısı, anahtar-denetim yardımcı fonksiyonları, kayıt JSON bloğunun konumu, ad-eşitliği durumu, T-Y kapı koşulları ⟨cd ~/jarvis && echo "=== sıcak ihlaller ===" && python3 tools/anahtar-denetim.py 2>&1 ¦ grep -B1 -A3 'sıcak: ihlal [1-9]' ¦ cut -c1-220; echo "=== fon…⟩ | tamam |
+| 84 | 14:03:17 | düzenledi | .claude/skills/ogren/SKILL.md | tamam |
+| 85 | 14:03:21 | düzenledi | .claude/skills/karar-masasi/scripts/masa-uret-test.py | tamam |
+| 86 | 14:04:31 | yazdı | tools/anahtar-cascade.py | tamam |
+| 87 | 14:04:42 | koştu | Cascade scriptinin dört alt komutunu mevcut anahtarlar üzerinde dene, Carvis kaydını üret ⟨cd ~/jarvis && echo "=== tara sıcak günaydın ===" && python3 tools/anahtar-cascade.py tara --anahtar oturum-acilis-tetigi --katman sicak; echo "exit=$…⟩ | tamam |
+| 88 | 14:05:23 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 89 | 14:05:30 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 90 | 14:05:36 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 91 | 14:05:43 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 92 | 14:05:48 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 93 | 14:05:52 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 94 | 14:06:32 | yazdı | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 95 | 14:06:58 | yazdı | .claude/skills/emekli-anahtar-cascade/evals/evals.json | tamam |
+| 96 | 14:07:09 | koştu | Cascade scriptinin E1-E3 yollarını koş, kayıt bloğu kuyruğunu ve yeni skill'in kapı denetimini al ⟨cd ~/jarvis && echo "=== E2 tara sıcak günaydın ===" && python3 tools/anahtar-cascade.py tara --anahtar oturum-acilis-tetigi --katman sicak; echo "exi…⟩ | tamam |
+| 97 | 14:07:33 | düzenledi | core/baglam-anahtar-kaydi.md | tamam |
+| 98 | 14:07:38 | düzenledi | core/baglam-anahtar-kaydi.md | tamam |
+| 99 | 14:07:45 | düzenledi | .claude/skills/README.md | tamam |
+| 100 | 14:07:50 | düzenledi | core/durum-kapsulu.md | tamam |
+| 101 | 14:08:14 | koştu | ajan-adi anahtarı için denetim, tarama ve README bağlama koşumu; SCRIPTLER satırı ve defter kaydı ⟨cd ~/jarvis && echo "=== denetim ajan-adi ===" && python3 tools/anahtar-denetim.py --anahtar ajan-adi 2>&1 ¦ grep -E 'EMEKLİ¦sıcak:¦SONUÇ¦bütünlük' ¦ …⟩ | tamam |
+| 102 | 14:08:59 | koştu | anahtar-denetim'in sıcak satırlarını ve izinli-kalıp uygulamasını incele; ad-eşitliği walk satırlarını bul ⟨cd ~/jarvis && echo "=== denetim sıcak satırlar ===" && python3 tools/anahtar-denetim.py --anahtar ajan-adi --goster 30 2>&1 ¦ grep '\[sicak\]' ¦ cut …⟩ | tamam |
+| 103 | 14:09:10 | düzenledi | tools/anahtar-cascade.py | tamam |
+| 104 | 14:09:17 | koştu | ad-eşitliği denetiminde worktree dizinini dışla, ajan-adi cascade'ini onaylı uygula, denetimleri tekrar koş ⟨cd ~/jarvis && sed -i '' 's/ds\[:\] = \[x for x in ds if x not in (".git", "node_modules", "__pycache__")\]/ds[:] = [x for x in ds if x not in (".git"…⟩ | tamam |
+| 105 | 14:09:55 | koştu | Ad-eşitliği eksiklerini listele, İB-90 paketini commit'le, büyük-harf kök-neden raporunu oku ⟨cd ~/jarvis && python3 tools/ad-esitligi-denetim.py ¦ grep -v PASS ¦ head -10; git add tools/anahtar-cascade.py tools/ad-esitligi-denetim.py tools/SCR…⟩ | tamam |
+| 106 | 14:10:35 | MCP aracı | mark_chapter {"title": "Büyük-harf kök neden + radikal çözüm", "summary": "Salih yan görevi: caps vurgusu neden düzelmiyor, kalıcı çözü"} | tamam |
+| 107 | 14:10:57 | koştu | Yüklenen bağlam katmanlarında büyük-harf yoğunluğu sayımı (‰) ve en sık sözcükler; yan oturum worktree transkriptini bul ⟨cd ~/jarvis && python3 - <<'EOF' import re, pathlib, subprocess, collections, json IZ=set("""DONE PASS FAIL WARN ERROR AS-OF PROBE PLAN TEACH CLOSE DA…⟩ | tamam |
+| 108 | 14:11:11 | koştu | Worktree'deki Sonnet oturumunda çıktı büyük-harf oranı, hook block sayısı ve söz konusu cevabı bul ⟨cd ~/jarvis && python3 - <<'EOF' import json,re p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis--claude-worktrees-2026-09-15-…⟩ | tamam |
+| 109 | 14:11:33 | koştu | Hook özet kaydını, hook'un o cevaba tepkisini ve worktree'deki hook/settings sürümünü kontrol et ⟨cd ~/jarvis && python3 - <<'EOF' import json,subprocess p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis--claude-worktrees-202…⟩ | tamam |
+| 110 | 14:11:55 | koştu | Worktree'de hook'u yalnız transkript yoluyla çalıştır, hook ve asistan zaman sırasını karşılaştır, ana oturumdaki başarılı block özetini al ⟨cd ~/jarvis/.claude/worktrees/2026-09-15-guvenlik-2-4bfcd1 && TP=/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis--claude-worktre…⟩ | tamam |
+| 111 | 14:12:13 | koştu | Worktree'deki 10:56 hook özetini ve ana oturumdaki block olaylarının çevresini karşılaştır ⟨cd ~/jarvis && python3 - <<'EOF' import json p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis--claude-worktrees-2026-09-15-guv…⟩ | tamam |
+| 112 | 14:13:16 | koştu | Worktree oturumunun cwd'si ve hook hataları, settings.json hook komut yolları, caps sözcüklerinin durum/vurgu sınıflandırması ⟨cd ~/jarvis && python3 - <<'EOF' import json,collections,re,pathlib p='/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis--claude-w…⟩ | tamam |
+| 113 | 14:13:24 | okudu | .claude/settings.json [aralık 20+10] | tamam |
+| 114 | 14:13:26 | düzenledi | .claude/settings.json | tamam |
+| 115 | 14:14:48 | koştu | settings.json geçerliliği, alt dizinden hook koşum testi (mutlak ve göreli), defter kaydı ve commit ⟨cd ~/jarvis && python3 -c "import json;d=json.load(open('.claude/settings.json'));print('json ok;', d['hooks']['Stop'][0]['hooks'][0]['command'])" && …⟩ | tamam |
+| 116 | 14:34:41 | yazdı | tools/buyuk-harf-temizle.py | tamam |
+| 117 | 14:34:51 | koştu | Temizliği kuru koş, diff'i rapora yaz, rastgele örnek satırlar ve bozulma desenlerini denetle ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --diff raporlar/2026-09/buyuk-harf-temizlik-diff-2026-09-15.patch --goster 10…⟩ | tamam |
+| 118 | 14:35:48 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 119 | 14:36:03 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 120 | 14:36:09 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 121 | 14:36:23 | koştu | Düzeltilmiş temizliği kuru koş; iç içe kalın, bozuk küçültme, Salih alıntısı ve örnek satırları denetle ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --diff raporlar/2026-09/buyuk-harf-temizlik-diff-2026-09-15.patch --goster 0 …⟩ | tamam |
+| 122 | 14:36:34 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 123 | 14:36:44 | koştu | Son kuru koşum: bozuk alıntı çifti, jeton/başlık/kapsül örnekleri, hafıza kapsamı ve caps sözcük arayan scriptler ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --diff raporlar/2026-09/buyuk-harf-temizlik-diff-2026-09-15.patch --goster 0 …⟩ | tamam |
+| 124 | 14:37:00 | koştu | Caps sözcük arayan scriptlerin ilgili satırlarını listele; temizlik scripti ve kuru diff raporunu commit'le ⟨cd ~/jarvis && grep -nE "KULLANILMAZ¦BEKLEYEN¦AKTİF¦KAPANDI¦BLOKE¦DONE¦BAYAT¦AÇIK BORÇ¦Şu an" tools/pano-akis.py tools/sicak-katman-fifo.py tools/prom…⟩ | hata |
+| 125 | 14:37:11 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 126 | 14:37:21 | koştu | Son kuru koşum, pano deseni koruma kontrolü, sıcak katman sayımı, commit ve diff dosyasını Finder'da göster ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --diff raporlar/2026-09/buyuk-harf-temizlik-diff-2026-09-15.patch --goster 0 …⟩ | tamam |
+| 127 | 15:02:02 | araç aradı | {"query": "select:WebFetch", "max_results": "1"} | tamam |
+| 128 | 15:02:07 | web'e baktı | https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices | tamam |
+| 129 | 15:02:12 | web'e baktı | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices | tamam |
+| 130 | 15:02:17 | koştu | Anthropic prompt rehberinde vurgu, büyük harf, güçlü dil ve XML etiketi ile ilgili satırları çıkar ⟨cd ~/jarvis && F=/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/tool-results/toolu_01SYCVD…⟩ | tamam |
+| 131 | 15:02:55 | koştu | Belge alıntısını al, temizliği tüm katmanlara uygula, kalıntı ve bütçe kontrolü, tüm skill kapı denetimleri, anahtar/ad-eşitliği denetimleri ⟨cd ~/jarvis && F=/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/34f8f4dd-3d6b-4852-b508-c0b592ce8816/tool-results/toolu_01SYCVD…⟩ | tamam |
+| 132 | 15:04:02 | koştu | Uygulama sonrası artıkları topla: I harfli sözcükler, damitma kapı hatası, anahtar sıcak ihlalleri, ad-eşitliği eksikleri, nokta/tire bitişik kalan caps ⟨cd ~/jarvis && echo "=== I içeren dönüştürülen sözcükler ===" && grep '^-' raporlar/2026-09/buyuk-harf-temizlik-diff-2026-09-15.patch ¦ grep -v '^ | tamam |
+| 133 | 15:05:08 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 134 | 15:05:14 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 135 | 15:05:42 | koştu | İngilizce sözcüklerdeki ı bozulmasını onar, temizliği yeniden uygula, kalan şüpheli sözcükleri listele, bütçe ve birim testleri koş ⟨cd ~/jarvis && python3 - <<'EOF' import importlib.util, pathlib, re spec=importlib.util.spec_from_file_location("bh", "tools/buyuk-harf-temizle.py"); …⟩ | tamam |
+| 136 | 15:07:07 | düzenledi | tools/buyuk-harf-temizle.py | tamam |
+| 137 | 15:07:11 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 138 | 15:07:21 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 139 | 15:07:24 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 140 | 15:07:27 | okudu | .claude/hooks/stop-buyuk-harf-test.sh [aralık 17+6] | tamam |
+| 141 | 15:07:32 | düzenledi | .claude/hooks/stop-buyuk-harf-test.sh | tamam |
+| 142 | 15:07:48 | koştu | İngilizce artıkları onar, temizliği yeniden uygula, hook testi, bütçe durumu, kırpma adayı satırlar, cascade skill kalıntıları ve ad-eşitliği muafiyet satırı ⟨cd ~/jarvis && python3 - <<'EOF' import importlib.util, pathlib, re spec=importlib.util.spec_from_file_location("bh", "tools/buyuk-harf-temiz | tamam |
+| 143 | 15:08:18 | okudu | core/durum-kapsulu.md [aralık 5+1] | tamam |
+| 144 | 15:08:30 | düzenledi | core/durum-kapsulu.md | tamam |
+| 145 | 15:08:35 | düzenledi | CLAUDE.md | tamam |
+| 146 | 15:09:48 | düzenledi | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 147 | 15:09:51 | düzenledi | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 148 | 15:09:55 | düzenledi | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 149 | 15:10:00 | düzenledi | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 150 | 15:10:03 | düzenledi | .claude/skills/emekli-anahtar-cascade/evals/evals.json | tamam |
+| 151 | 15:10:12 | koştu | Ad-eşitliği denetimine kayıt muafiyeti ekle ve koş, anahtar denetimi, bütçe ölçümü, CLAUDE.md uzun satırlar, git hook kurulumu ve global CLAUDE üslup satırı ⟨cd ~/jarvis && sed -i '' 's/if CARVIS.search(l) and not ESIT.search(l) and "sozluk.md" not in p:/if CARVIS.search(l) and not ESIT.search(l) an | tamam |
+| 152 | 15:10:51 | düzenledi | CLAUDE.md | tamam |
+| 153 | 15:11:47 | düzenledi | CLAUDE.md | tamam |
+| 154 | 15:12:07 | düzenledi | .claude/skills/emekli-anahtar-cascade/evals/evals.json | tamam |
+| 155 | 15:12:09 | okudu | ~/.claude/CLAUDE.md [aralık 4+1] | tamam |
+| 156 | 15:12:13 | düzenledi | ~/.claude/CLAUDE.md | tamam |
+| 157 | 15:12:20 | düzenledi | ~/.claude/CLAUDE.md | tamam |
+| 158 | 15:12:27 | koştu | Kalan sıcak anahtar ihlalleri, ad-eşitliği sonucu, git-hooks dizini, AÇIK jeton kullanımları ve bütçe ölçümü ⟨cd ~/jarvis && echo "=== anahtar sıcak 4 ===" && python3 tools/anahtar-denetim.py 2>&1 ¦ grep '\[sicak\]' ¦ cut -c1-170; echo "=== ad-esitligi ===" &&…⟩ | tamam |
+| 159 | 15:13:22 | yazdı | tools/git-hooks/pre-commit | tamam |
+| 160 | 15:14:08 | koştu | AÇIK jetonlarını vurguya çevir, kalıntı/denetim/kapı/hook testlerini koş, pre-commit süzgecini eski CLAUDE.md üzerinde dene, SCRIPTLER/defter/hafıza kayıtlarını yaz ⟨cd ~/jarvis && chmod +x tools/git-hooks/pre-commit && sed -i '' 's/DURUM = set("""DONE PASS FAIL WARN ERROR TODO RED YOK RET KAPANDI A | tamam |
+| 161 | 15:14:47 | yazdı | tools/git-hooks/caps-say.py | tamam |
+| 162 | 15:14:51 | düzenledi | tools/git-hooks/pre-commit | tamam |
+| 163 | 15:14:59 | koştu | Pre-commit sayacını eski ve yeni CLAUDE.md üzerinde dene, kalan sıcak anahtar ihlallerini bul, damitma referansının geçmişine bak, birim testleri koş ⟨cd ~/jarvis && echo "=== pre-commit sayaç denemesi (HEAD sürümü CLAUDE.md = temizlik öncesi) ===" && git show HEAD:CLAUDE.md ¦ python3 tools/git-hook | tamam |
+| 164 | 15:17:01 | düzenledi | .claude/skills/emekli-anahtar-cascade/SKILL.md | tamam |
+| 165 | 15:17:11 | koştu | Son denetim, tüm temizlik paketini stage'le ve Karar 97 olarak commit'le (pre-commit teli canlı) ⟨cd ~/jarvis && python3 tools/anahtar-denetim.py 2>&1 ¦ tail -1 && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --goster 0 ¦ head -1 && gi…⟩ | tamam |
+| 166 | 15:17:40 | koştu | Kalan 2 vurgu sözcüğünün dosyasını ve ajan-adi sıcak ihlalinin konumunu bul ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --goster 4 ¦ tail -5 && python3 tools/anahtar-denetim.py --anahtar ajan-adi -…⟩ | tamam |
+| 167 | 15:17:47 | düzenledi | core/durum-kapsulu.md | tamam |
+| 168 | 15:17:53 | koştu | Hafıza satırındaki caps örneklerini backtick'le, son kalıntı/anahtar denetimi, kapsül düzeltmesini commit'le ⟨cd ~/jarvis && sed -i '' 's/3 harfli caps (VAR, SANA) da yasak/3 harfli caps (`VAR`, `SANA`) da yasak/' ~/.claude/projects/-Users-HasanSalihSahin-jarv…⟩ | hata |
+| 169 | 15:17:58 | koştu | Hafıza satırındaki caps örneklerini backtick'e al ⟨M=~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/feedback-vurgusuz-anlatim-capslock-yok.md && sed -i '' 's/3 harfli caps (VAR, SANA) da yasak…⟩ | tamam |
+| 170 | 15:18:02 | koştu | Son kalıntı ve anahtar denetimi; kapsül düzeltmesini commit'le ⟨cd ~/jarvis && python3 tools/buyuk-harf-temizle.py --katman hepsi --kuru --goster 0 ¦ head -1 && python3 tools/anahtar-denetim.py 2>&1 ¦ tail -1 && gi…⟩ | tamam |
+| 171 | 15:25:46 | MCP aracı | mark_chapter {"title": "İB-92 KILAVUZ → skill-kapisi", "summary": "KILAVUZ tasarım ilkeleri + skill standardı bölümleri skill-k"} | tamam |
+| 172 | 15:25:53 | koştu | A5 hükmü, KILAVUZ bölüm başlıkları, skill-kapisi dizin yapısı ve KILAVUZ bölümlerine işaret eden dosyalar ⟨cd ~/jarvis && echo "=== A5 hükmü ===" && grep -o 'value="A5[^"]*"' raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html; echo "=== KILAVUZ başlıklar ==…⟩ | tamam |
+| 173 | 15:26:01 | düzenledi | .claude/hooks/stop-buyuk-harf.sh | tamam |
+| 174 | 15:26:06 | koştu | KILAVUZ'un taşınacak iki bölümünü, boyutlarını ve bu bölümlere işaret eden satırları oku ⟨cd ~/jarvis && echo "=== Tasarım ilkeleri (48-64) ===" && sed -n '48,64p' KILAVUZ.md && echo "=== Skill Standardı (81-91) ===" && sed -n '81,91p' KILA…⟩ | tamam |
+| 175 | 15:26:47 | koştu | KILAVUZ'un iki bölümünü skill-kapisi referans dosyalarına taşı, KILAVUZ'da pointer bırak, kalıntı ve kapı denetimi koş ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib, re k=pathlib.Path('KILAVUZ.md'); t=k.read_text(encoding='utf-8'); lines=t.split('\n') def blok(bas_re…⟩ | tamam |
+| 176 | 15:26:53 | okudu | .claude/skills/skill-kapisi/SKILL.md [aralık 8+14] | tamam |
+| 177 | 15:27:00 | düzenledi | .claude/skills/skill-kapisi/SKILL.md | tamam |
+| 178 | 15:27:03 | düzenledi | .claude/skills/README.md | tamam |
+| 179 | 15:27:06 | düzenledi | core/durum-kapsulu.md | tamam |
+| 180 | 15:27:20 | koştu | Defter kaydı, hook testi, bütçe kontrolü ve İB-92 paketinin commit'i ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib d=pathlib.Path('kuyruk/senaryo-defteri.md'); s=d.read_text() blok=("- **[icra] 09-15 · İB-92 KILAVUZ →…⟩ | tamam |
+| 181 | 16:43:53 | skill çağırdı | seans-kapanis | tamam |
+| 182 | 16:44:05 | koştu | Kapanış kapıları: açık PR, hareket kütüğü, bağlam seyri, skill eşiği, bayat çekim listesi, kural sayacı ve teslim şablonu ⟨cd ~/jarvis && echo "=== açık PR ===" && gh-axi pr list 2>/dev/null ¦ head -5; echo "=== hareket-tablo ===" && python3 tools/hareket-tablo.py 2>&1 ¦ t…⟩ | yok |
+| 183 | 16:45:18 | yazdı | raporlar/seans/seans-teslim-2026-09-15-karar97-buyuk-harf-ib88-92-hook-arizasi.md | tamam |
+| 184 | 16:45:27 | düzenledi | core/durum-kapsulu.md | tamam |
+| 185 | 16:45:35 | düzenledi | core/durum-kapsulu.md | tamam |
+| 186 | 16:45:40 | koştu | Hafıza indeksinden en eski maddeyi (Karar 92 FIFO) düşür ⟨M=~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/MEMORY.md && grep -v 'Token kısıntısı %30' "$M" > "$M.tmp" && mv "$M.tmp" "$M" && grep -c . …⟩ | tamam |
+| 187 | 16:45:47 | koştu | Katman hattı, silver-sağlık kapısı, FIFO sayacı, kapsül boyutu, bu oturumun bağlam seyri, birim testler ve caps kalıntı kontrolü ⟨cd ~/jarvis && echo "=== katman-hatti ===" && python3 tools/katman-hatti.py 2>&1 ¦ tail -4; echo "=== silver-saglik kapı ===" && python3 tools/silver-…⟩ | yok |
 

@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-09-15,11:55,14da067d,15,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,98c66408-08dc-4176-a2ab-47644e947d65
-2,2026-09-15,11:26,14da067d,14,emir,,claude-fable-5-1,540,hepsi bitince:hatta şöyle bir şey yapalım konuları öğrenme sürecinde sürecin son aşaması olarak ortaya bir ürün koyma veya sisteme öğrendikl,7775fdb0-14c7-4382-99bc-fb88b20dd4b8
-3,2026-09-15,11:21,4ac5ca1c,18,emir,,claude-sonnet-5,297,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI. Vurguyu kalın har",861abab6-b931-40c4-8b4e-afd21b640f1f
-4,2026-09-15,11:21,4ac5ca1c,17,soru,,claude-sonnet-5,77,tamam şimdi ne yapıyoruz pratik uygulama mı nerede kaldık oradan devam edelim,b609af3e-ec38-4af0-96a3-6ea8678356dd
-5,2026-09-15,11:14,4ac5ca1c,16,diger,,claude-sonnet-5,32,"login yaptım, koşumu tekrar dene",6d52960f-fe08-4c3a-a65e-406421cdc1e8
-6,2026-09-15,11:12,14da067d,13,emir,atlas-kosum,claude-fable-5-1,1713,-bundan sonra her bir oturumumda create pr yapacağım.böylelikle conflictin önüne daha rahat geçebileceğiz tek bir fable oturumda merge yapıl,3bc5330d-1b8c-4008-9977-6903e7f783f2
-7,2026-09-15,10:43,14da067d,12,soru,,claude-fable-5-1,77,"-a seçeneğiyle devam et, 5 seans sonra ölç. -hangi seçeneği seçmem daha doğru",03041b36-1ad4-4416-8655-7c0292e237ff
-8,2026-09-15,10:41,4ac5ca1c,15,diger,,claude-sonnet-5,40,bu oturumda pratik uygulamayı sürdürelim,ab65a00d-c0dd-4602-9186-325f8ea67a1d
-9,2026-09-15,10:38,4ac5ca1c,14,diger,,claude-sonnet-5,1,a,cd02a622-a0c1-4064-9fd4-017aee4b5179
-10,2026-09-15,10:36,4ac5ca1c,13,diger,,claude-sonnet-5,1,c,8254a2e5-187e-4326-9250-5fdcca536212
-11,2026-09-15,10:33,4ac5ca1c,12,diger,,claude-sonnet-5,1,c,a37bd10a-5d8f-401a-a816-42f9c8b2804e
-12,2026-09-15,10:32,14da067d,11,emir,,claude-fable-5-1,339,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: AYIRT, BAYAT, EDEN, KAPANDI, ",19f23913-4757-45ac-8d07-236a7967f52b
-13,2026-09-15,10:31,4ac5ca1c,11,diger,,claude-sonnet-5,1,c,94a2a2ec-0742-4c62-b9d9-a046d32e5e96
-14,2026-09-15,10:30,4ac5ca1c,10,diger,,claude-sonnet-5,1,c,a48d84a4-15ac-47e1-9093-d5da16476c2b
-15,2026-09-15,10:28,14da067d,10,emir,,claude-fable-5-1,534,"tamamdır yan oturumda ilerliyorum,yan görev: -sonnet yan oturumlarımda bir konu öğrenirken bazen kontrolsüzce kelime vurgusu yapmak istediği",c8005fcc-504e-4b5d-9af6-a5bb3042166f
-16,2026-09-15,10:26,4ac5ca1c,9,diger,,claude-sonnet-5,57,"cevap c,caps lock açık bir şekilde kelime vurguları yapma",706001e9-99ab-4dcb-bd53-0c07b7b2c0ed
-17,2026-09-15,10:24,4ac5ca1c,8,diger,,claude-sonnet-5,1,c,7405d355-4bad-4d47-8b36-f9ae5e60e74d
-18,2026-09-15,10:21,4ac5ca1c,7,diger,,claude-sonnet-5,1,c,4b495d8e-2519-45bb-b953-44a46486cafd
-19,2026-09-15,10:17,4ac5ca1c,6,diger,,claude-sonnet-5,1,e,1d4b62e4-e5d3-41f3-83f4-3de1cf41a3a1
-20,2026-09-15,10:16,4ac5ca1c,5,diger,,claude-sonnet-5,1,e,6dfb3d29-bf6b-478d-9c35-b7ee68d34306
-21,2026-09-14,17:55,4ac5ca1c,4,diger,,claude-sonnet-5,1,e,7c1996ba-d8bb-4360-9ff7-a8533234eabd
-22,2026-09-14,17:31,4ac5ca1c,3,diger,,claude-sonnet-5,1,e,180c23b9-302d-468f-8b16-4828859984eb
-23,2026-09-14,17:31,4ac5ca1c,2,diger,,claude-sonnet-5,1,e,2bd3fa5a-8d2f-433e-9281-17b33d0aff67
-24,2026-09-14,17:22,4ac5ca1c,1,seans-acilis,,claude-sonnet-5,666,"seans başı, guvenlik — ogrenme/guvenlik/README.md G1'den başla. Biçim: kuyruk/skill-deneme/ogren/SKILL.md v0.1 iskeleti (önce PROBE bilgi-öl",03a2815e-0faa-49ed-9a46-89b96633c1b1
-25,2026-09-14,17:08,14da067d,9,diger,,claude-fable-5-1,662,"tamam o zaman şöyle yapalım,h1 h2 h3 anlatım/öğretim formatı(kutu kutu ve ilk başta bilgi ölçe turu gibi öğretim şeklinin iskeleti)bana uygu",27690a80-dc73-4358-a28e-9b18dd046cbb
-26,2026-09-14,16:41,76a8d28a,15,soru,,claude-sonnet-5,22,serverı nasıl kapatcam,53b10279-a3d0-4bce-b319-8d9cb3c9aded
-27,2026-09-14,16:41,76a8d28a,14,soru,,<synthetic>,22,serverı nasıl kapatcam,8a791ce5-4bf4-47bd-844e-fa2cf966fb8d
-28,2026-09-14,12:11,76a8d28a,13,soru,,claude-sonnet-5,137,bir noktada hepsini eklemek istiyorum ama bunların ne olduğunu öğrenmem şu anın önceliği olmadığı için şimdilik bir değişiklik yapmayalım,74b419fd-98b6-47e4-87cd-14340c25f8dd
-29,2026-09-14,12:09,76a8d28a,12,diger,,claude-sonnet-5,43,https://github.com/kunchenguid/dotfiles.git,682421f8-e9ae-496e-9c81-6dc8afe60bf6
-30,2026-09-14,12:07,76a8d28a,11,soru,,claude-sonnet-5,116,nvim'de team config ayarlarına nasıl giderim orayı görüntülemek ve kun chenin yaptığı ayarlarla kıyaslamak istiyorum,39372b2f-c41e-4376-bb9f-6f3025e99a4f
-31,2026-09-14,12:05,76a8d28a,10,diger,,claude-sonnet-5,88,şu anda ilk windowda soldaki ekranda nvim yazdım neye basmam gerekiyor ordan çıkmak için,965749bd-a7fa-444e-9d5c-d22edbb19398
-32,2026-09-14,12:01,76a8d28a,9,diger,,claude-sonnet-5,59,amacım kun chenin yaptığı gibi weztermi kullanmayı öğrenmek,afb2f1ad-e616-4c1e-a65d-514603671608
-33,2026-09-14,11:59,76a8d28a,8,soru,,claude-sonnet-5,149,"açıklama yaparken caps lock açık kelimelerle vurgu yapma,şimdi jarvis dosyasında tmux server açmam doğru mu en mantıklı kullanım senaryoları",b2545353-53f6-40be-b418-5430dc7a62e6
-34,2026-09-14,11:57,76a8d28a,7,soru,,claude-sonnet-5,109,"bu kısayollar uygun,farklı tablar ne anlama geliyor ve bir tabi çerisindeki sekmeler ne anlama geliyor açıkla",4edcb3bd-9a7f-41d7-8bb7-68a4cf798ef4
-35,2026-09-14,11:55,76a8d28a,6,soru,,claude-sonnet-5,129,"tamam oluştu,şimdi devam edelim bölünmüş ekranları nasıl kapatırım veya geçiş yaparım ayrıca multiple tab için kısayol tuşu nedir",f8cd244a-2367-4d48-84d5-18e8da351d60
-36,2026-09-14,11:52,76a8d28a,5,diger,,claude-sonnet-5,40,basmak zor tabi başka bi tuşa bağlayalım,e6fa7e84-b90b-4651-b197-c8b6153b9541
-37,2026-09-14,11:51,76a8d28a,4,diger,,claude-sonnet-5,69,bilmiyorum kontrol et kun chen config ayarlarını kopyalamak istiyorum,7239954b-4a35-4489-b360-e2fb85c2fb82
-38,2026-09-14,11:49,76a8d28a,3,diger,,claude-sonnet-5,40,wezterm kullanıyorum shift 5 ile olmuyor,cf68ad54-c17b-48bf-a03c-82a83fc1355d
-39,2026-09-14,11:48,76a8d28a,2,diger,,claude-sonnet-5,56,tamam da ctrl+b yaptıktan sonra yüzde tuşuna basamıyorum,348e231d-e2bc-4ee3-83fb-f15f79b35f67
-40,2026-09-14,11:47,76a8d28a,1,soru,,claude-sonnet-5,66,kun chen gibi tmux terminal ekranını nasıl bölerim klavye kısayolu,75822ea6-871c-410f-a0c1-eca3c8c8b697
-41,2026-09-14,11:34,14da067d,8,soru,,claude-fable-5-1,237,"eğitim bitince llm as a judge konusu güncelde nasıl kullanılıyorsa ve ele alınıyorsa ben de öyle kullanmak istiyorum,bu tüm öğreneceğim konu",a4634347-048f-4d98-bd1d-50c6a4e2770b
-42,2026-09-14,11:31,8e00e0dc,70,seans-acilis,,claude-sonnet-5,17,"seans başı, evals",48f3acd9-cc53-4a3e-bd42-44ebdaca406e
-43,2026-09-14,10:55,14da067d,7,diger,,claude-fable-5-1,283,bundan sonra öğrendiğim konuları öğrenme süreci bitince bir üründe kullanıp/bir ürün oluşturup sisteme eklemek/entegre etmek istiyorum.örneğ,501a4144-b6d6-4459-b5a7-81595d733d51
-44,2026-09-14,10:50,8e00e0dc,69,soru,,claude-sonnet-5,72,"Carlos ve trenler,ama hangi rubrik dosyasında doğru sonuçlar yazıyodu ki",95f09a34-c85d-43d5-8cc3-d93908eddd92
-45,2026-09-14,10:48,8e00e0dc,68,diger,,claude-sonnet-5,99,Results: ✓ 8 passed (80.00%) ✗ 2 failed (20.00%) 0 errors (0%) Duration: 12s (concurrency: 4),99675524-a441-42f6-b902-1c3d35910b95
-46,2026-09-14,10:48,8e00e0dc,67,diger,,claude-sonnet-5,23,sonuca nerden bakacağım,024a9f1d-a853-4697-b1a7-827f5c32f875
-47,2026-09-14,10:42,8e00e0dc,66,soru,,claude-sonnet-5,80,şimdi adım 3 terminal koşumunu yapacağım ama bu komutlar ve dosyalar nedir anlat,539d86a1-78e3-4ad0-adf1-14f037d06722
-48,2026-09-14,10:41,8e00e0dc,65,geri-bildirim,,claude-sonnet-5,65,"diğerlerini de kontrol ettim, 8. soru da yanlış çözmüş düzelttim.",ec289951-bf07-431a-8a98-5be52b7b9117
-49,2026-09-14,10:38,8e00e0dc,64,diger,,claude-sonnet-5,19,70000 ve 12 yazıyor,1ab009a9-4ca9-492b-9877-a7bb84dcbd19
-50,2026-09-14,10:32,8e00e0dc,63,diger,,claude-sonnet-5,76,tamamdır adım biri koştum view'dan cevaplara bakıp elle puanlamayı doldurdum,9380d48a-8b66-4753-abd4-e1193d275646
+1,2026-09-15,16:43,34f8f4dd,16,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,96680ae1-a185-4176-ae10-98e8b1e291c7
+2,2026-09-15,15:27,34f8f4dd,15,emir,,claude-fable-5-1,378,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: İNŞA. Vurguyu kalın harfle (*,afe76a1c-7608-4e72-92a0-2f665df13aca
+3,2026-09-15,15:25,34f8f4dd,14,onay/devam,,claude-fable-5-1,18,İB-92 ile devam et,7671fd9e-ffd6-47fc-a1dc-c0680cac5ee6
+4,2026-09-15,15:18,34f8f4dd,13,emir,,claude-fable-5-1,390,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: SANA, SENİN, XML. Vurguyu kal",5afd0624-22dc-4791-ad38-a4aa7bca2185
+5,2026-09-15,15:01,34f8f4dd,12,diger,,claude-fable-5-1,330,şöyle bi durum var:büyük harf kullanmak hafızada sonuç olarak vurgu yapmayı sağlıyorsa ve biz bu durumu değiştireceksek vurgulamanın başka b,3c06e866-a7f7-4d13-879c-d7ae094d523e
+6,2026-09-15,14:33,34f8f4dd,11,onay/devam,,claude-fable-5-1,24,"onay, önce kuru diff koş",28268abb-924f-4e3d-bdf2-2898bc724948
+7,2026-09-15,14:15,34f8f4dd,10,emir,,claude-fable-5-1,449,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: BAYAT, DEĞİL, KAPANDI, SANA, ",fb2d5b53-49a3-4c29-ab23-fc40071041d5
+8,2026-09-15,14:01,34f8f4dd,9,onay/devam,,claude-fable-5-1,18,İB-90 ile devam et,3775371f-e001-4038-9e2c-2ae5bba9c517
+9,2026-09-15,13:57,34f8f4dd,8,emir,,claude-fable-5-1,379,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ŞÜPHE. Vurguyu kalın harfle (,10cc890c-f91d-488f-9379-47a3a2512c97
+10,2026-09-15,13:54,34f8f4dd,7,onay/devam,,claude-fable-5-1,18,İB-91 ile devam et,972fd7bd-813a-4a4b-b8d6-b430574eee4c
+11,2026-09-15,13:47,34f8f4dd,6,onay/devam,,claude-fable-5-1,18,İB-89 ile devam et,add614a5-fe4f-4b11-b917-89f25355ff48
+12,2026-09-15,13:39,34f8f4dd,5,diger,,claude-fable-5-1,64,"tamam yeni sonnet oturumunu açtım, biz İB-88 P2 ile devam edelim",f1d49f53-fcb5-44ca-9241-c45479e8c75c
+13,2026-09-15,13:38,34f8f4dd,4,soru,,claude-fable-5-1,63,"push et,bir de ilk prompttan sonra mı pr oluşturacağım sonnette",44d4a80a-d11b-46cd-835a-312c78c4dc10
+14,2026-09-15,13:35,34f8f4dd,3,soru,,claude-fable-5-1,302,tamam şimdi önerdiğin şekilde devam edelim ve sorunları önerdiğin versiyonda çöz.yan taraftaki sonnet oturumunda devam etmeyeceğim yeni otur,9fa2b588-5abe-4a8b-b2ad-02c384ee0154
+15,2026-09-15,12:08,34f8f4dd,2,emir,,claude-fable-5-1,391,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI, KALAN. Vurguyu ka",57e8a3e3-6a39-4cc6-8cfe-36f4ac9c8915
+16,2026-09-15,12:04,34f8f4dd,1,seans-acilis,seans-acilis,claude-fable-5-1,2917,"seans başı, -öncelikle fable olmayan oturumlar için worktree seçeneğini açmam artık daha doğru bir karar mı -şöyle bir sorunumuz var:bundan ",56a232d8-c526-4f15-a017-1372c39c0f4f
+17,2026-09-15,11:55,14da067d,15,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,98c66408-08dc-4176-a2ab-47644e947d65
+18,2026-09-15,11:26,14da067d,14,emir,,claude-fable-5-1,540,hepsi bitince:hatta şöyle bir şey yapalım konuları öğrenme sürecinde sürecin son aşaması olarak ortaya bir ürün koyma veya sisteme öğrendikl,7775fdb0-14c7-4382-99bc-fb88b20dd4b8
+19,2026-09-15,11:21,4ac5ca1c,18,emir,,claude-sonnet-5,297,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI. Vurguyu kalın har",861abab6-b931-40c4-8b4e-afd21b640f1f
+20,2026-09-15,11:21,4ac5ca1c,17,soru,,claude-sonnet-5,77,tamam şimdi ne yapıyoruz pratik uygulama mı nerede kaldık oradan devam edelim,b609af3e-ec38-4af0-96a3-6ea8678356dd
+21,2026-09-15,11:14,4ac5ca1c,16,diger,,claude-sonnet-5,32,"login yaptım, koşumu tekrar dene",6d52960f-fe08-4c3a-a65e-406421cdc1e8
+22,2026-09-15,11:12,14da067d,13,emir,atlas-kosum,claude-fable-5-1,1713,-bundan sonra her bir oturumumda create pr yapacağım.böylelikle conflictin önüne daha rahat geçebileceğiz tek bir fable oturumda merge yapıl,3bc5330d-1b8c-4008-9977-6903e7f783f2
+23,2026-09-15,10:43,14da067d,12,soru,,claude-fable-5-1,77,"-a seçeneğiyle devam et, 5 seans sonra ölç. -hangi seçeneği seçmem daha doğru",03041b36-1ad4-4416-8655-7c0292e237ff
+24,2026-09-15,10:41,4ac5ca1c,15,diger,,claude-sonnet-5,40,bu oturumda pratik uygulamayı sürdürelim,ab65a00d-c0dd-4602-9186-325f8ea67a1d
+25,2026-09-15,10:38,4ac5ca1c,14,diger,,claude-sonnet-5,1,a,cd02a622-a0c1-4064-9fd4-017aee4b5179
+26,2026-09-15,10:36,4ac5ca1c,13,diger,,claude-sonnet-5,1,c,8254a2e5-187e-4326-9250-5fdcca536212
+27,2026-09-15,10:33,4ac5ca1c,12,diger,,claude-sonnet-5,1,c,a37bd10a-5d8f-401a-a816-42f9c8b2804e
+28,2026-09-15,10:32,14da067d,11,emir,,claude-fable-5-1,339,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: AYIRT, BAYAT, EDEN, KAPANDI, ",19f23913-4757-45ac-8d07-236a7967f52b
+29,2026-09-15,10:31,4ac5ca1c,11,diger,,claude-sonnet-5,1,c,94a2a2ec-0742-4c62-b9d9-a046d32e5e96
+30,2026-09-15,10:30,4ac5ca1c,10,diger,,claude-sonnet-5,1,c,a48d84a4-15ac-47e1-9093-d5da16476c2b
+31,2026-09-15,10:28,14da067d,10,emir,,claude-fable-5-1,534,"tamamdır yan oturumda ilerliyorum,yan görev: -sonnet yan oturumlarımda bir konu öğrenirken bazen kontrolsüzce kelime vurgusu yapmak istediği",c8005fcc-504e-4b5d-9af6-a5bb3042166f
+32,2026-09-15,10:26,4ac5ca1c,9,diger,,claude-sonnet-5,57,"cevap c,caps lock açık bir şekilde kelime vurguları yapma",706001e9-99ab-4dcb-bd53-0c07b7b2c0ed
+33,2026-09-15,10:24,4ac5ca1c,8,diger,,claude-sonnet-5,1,c,7405d355-4bad-4d47-8b36-f9ae5e60e74d
+34,2026-09-15,10:21,4ac5ca1c,7,diger,,claude-sonnet-5,1,c,4b495d8e-2519-45bb-b953-44a46486cafd
+35,2026-09-15,10:17,4ac5ca1c,6,diger,,claude-sonnet-5,1,e,1d4b62e4-e5d3-41f3-83f4-3de1cf41a3a1
+36,2026-09-15,10:16,4ac5ca1c,5,diger,,claude-sonnet-5,1,e,6dfb3d29-bf6b-478d-9c35-b7ee68d34306
+37,2026-09-14,17:55,4ac5ca1c,4,diger,,claude-sonnet-5,1,e,7c1996ba-d8bb-4360-9ff7-a8533234eabd
+38,2026-09-14,17:31,4ac5ca1c,3,diger,,claude-sonnet-5,1,e,180c23b9-302d-468f-8b16-4828859984eb
+39,2026-09-14,17:31,4ac5ca1c,2,diger,,claude-sonnet-5,1,e,2bd3fa5a-8d2f-433e-9281-17b33d0aff67
+40,2026-09-14,17:22,4ac5ca1c,1,seans-acilis,,claude-sonnet-5,666,"seans başı, guvenlik — ogrenme/guvenlik/README.md G1'den başla. Biçim: kuyruk/skill-deneme/ogren/SKILL.md v0.1 iskeleti (önce PROBE bilgi-öl",03a2815e-0faa-49ed-9a46-89b96633c1b1
+41,2026-09-14,17:08,14da067d,9,diger,,claude-fable-5-1,662,"tamam o zaman şöyle yapalım,h1 h2 h3 anlatım/öğretim formatı(kutu kutu ve ilk başta bilgi ölçe turu gibi öğretim şeklinin iskeleti)bana uygu",27690a80-dc73-4358-a28e-9b18dd046cbb
+42,2026-09-14,16:41,76a8d28a,15,soru,,claude-sonnet-5,22,serverı nasıl kapatcam,53b10279-a3d0-4bce-b319-8d9cb3c9aded
+43,2026-09-14,16:41,76a8d28a,14,soru,,<synthetic>,22,serverı nasıl kapatcam,8a791ce5-4bf4-47bd-844e-fa2cf966fb8d
+44,2026-09-14,12:11,76a8d28a,13,soru,,claude-sonnet-5,137,bir noktada hepsini eklemek istiyorum ama bunların ne olduğunu öğrenmem şu anın önceliği olmadığı için şimdilik bir değişiklik yapmayalım,74b419fd-98b6-47e4-87cd-14340c25f8dd
+45,2026-09-14,12:09,76a8d28a,12,diger,,claude-sonnet-5,43,https://github.com/kunchenguid/dotfiles.git,682421f8-e9ae-496e-9c81-6dc8afe60bf6
+46,2026-09-14,12:07,76a8d28a,11,soru,,claude-sonnet-5,116,nvim'de team config ayarlarına nasıl giderim orayı görüntülemek ve kun chenin yaptığı ayarlarla kıyaslamak istiyorum,39372b2f-c41e-4376-bb9f-6f3025e99a4f
+47,2026-09-14,12:05,76a8d28a,10,diger,,claude-sonnet-5,88,şu anda ilk windowda soldaki ekranda nvim yazdım neye basmam gerekiyor ordan çıkmak için,965749bd-a7fa-444e-9d5c-d22edbb19398
+48,2026-09-14,12:01,76a8d28a,9,diger,,claude-sonnet-5,59,amacım kun chenin yaptığı gibi weztermi kullanmayı öğrenmek,afb2f1ad-e616-4c1e-a65d-514603671608
+49,2026-09-14,11:59,76a8d28a,8,soru,,claude-sonnet-5,149,"açıklama yaparken caps lock açık kelimelerle vurgu yapma,şimdi jarvis dosyasında tmux server açmam doğru mu en mantıklı kullanım senaryoları",b2545353-53f6-40be-b418-5430dc7a62e6
+50,2026-09-14,11:57,76a8d28a,7,soru,,claude-sonnet-5,109,"bu kısayollar uygun,farklı tablar ne anlama geliyor ve bir tabi çerisindeki sekmeler ne anlama geliyor açıkla",4edcb3bd-9a7f-41d7-8bb7-68a4cf798ef4
