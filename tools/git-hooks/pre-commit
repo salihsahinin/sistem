@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# pre-commit teli — "büyük harf = kod" kuralı (Salih 09-15 "onay"; kök neden raporlar/2026-09/buyuk-harf-vurgu-analizi-2026-09-15.md).
+# Kural: sıcak/ılık kanon dosyalarında (CLAUDE.md · core/*.md · .claude/skills/**/*.md · .claude/rules/*.md · wiki/*.md · KILAVUZ.md)
+# tamamı büyük harfli sözcük ya kısaltmadır ya backtick içinde durum jetonudur; çıplak caps vurgu commit'e giremez.
+# Mekanizma: staged içerik (git show :yol) tools/buyuk-harf-temizle.py'nin donustur() süzgecinden geçer; değişiklik üretiyorsa
+# commit reddedilir, düzeltme komutu basılır. Deterministik; ağ yok. Devre dışı: git commit --no-verify (kayda geçer, m.6).
+# Kurulum: git config core.hooksPath tools/git-hooks (commit-msg teliyle aynı dizin).
+set -u
+KOK=$(git rev-parse --show-toplevel)
+PY=$(command -v python3 || command -v python)
+dosyalar=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(CLAUDE\.md|KILAVUZ\.md|core/[^/]+\.md|\.claude/skills/.*\.md|\.claude/rules/[^/]+\.md|wiki/[^/]+\.md)$' || true)
+[ -z "$dosyalar" ] && exit 0
+ihlal=0
+while IFS= read -r yol; do
+  [ -z "$yol" ] && continue
+  n=$(git show ":$yol" | "$PY" "$KOK/tools/git-hooks/caps-say.py" "$KOK")
+  if [ "${n:-0}" != "0" ]; then
+    echo "pre-commit TELİ (büyük harf = kod, Salih 09-15): $yol içinde $n çıplak büyük-harf sözcük → python3 tools/buyuk-harf-temizle.py --katman hepsi --uygula" >&2
+    ihlal=1
+  fi
+done <<< "$dosyalar"
+exit $ihlal

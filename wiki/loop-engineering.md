@@ -15,16 +15,16 @@ date: 2026-07-10
 
 | Tip | Tetikleyen | Durduran | Devrettiğin | Araç |
 |---|---|---|---|---|
-| **Tur-tabanlı** | SEN (her prompt) | Claude'un "bitti" kanaati | Yalnız kontrol adımı | Doğrulama skill'i |
-| **Hedef-tabanlı** | SEN (canlı prompt) | Senin yazdığın koşul (evaluator bakar) VEYA tur limiti | Durma koşulunu | `/goal` |
+| **Tur-tabanlı** | **sen** (her prompt) | Claude'un "bitti" kanaati | Yalnız kontrol adımı | Doğrulama skill'i |
+| **Hedef-tabanlı** | **sen** (canlı prompt) | Senin yazdığın koşul (evaluator bakar) **veya** tur limiti | Durma koşulunu | `/goal` |
 | **Zaman-tabanlı** | Zaman aralığı (kural) | Sen iptal edersin / iş biter | Tetikleyiciyi | `/loop` (lokal) · `/schedule` (bulut) |
 | **Proaktif** | Olay/takvim, insansız | Görev hedefte biter; rutin sen kapatana dek | Promptun kendisini | Hepsi + auto mode + workflows |
 
 Merdiven yukarı çıktıkça döngünün bir parçası daha senden koda geçer: kontrol → durma koşulu → tetikleyici → prompt.
 
-**Kritik ayrım (Faz 0 düzeltmesi):** "Her tipte tetikleyici kuraldır" YANLIŞ — tur ve hedef tabanlıda tetikleyici hâlâ sensin; kurala bağlanan şey hedef-tabanlıda bitiş, zaman-tabanlıda başlangıç, proaktifte ikisi birden.
+**Kritik ayrım (Faz 0 düzeltmesi):** "Her tipte tetikleyici kuraldır" `YANLIŞ` — tur ve hedef tabanlıda tetikleyici hâlâ sensin; kurala bağlanan şey hedef-tabanlıda bitiş, zaman-tabanlıda başlangıç, proaktifte ikisi birden.
 
-**Evaluator ilkesi (düzeltilmiş, 07-07):** `/goal`'daki değerlendirici model koşulu her turda DEĞİL, yalnız **Claude durmayı denediğinde** kontrol eder — sağlanmadıysa işe geri yollar. Tur limiti şart ("5 denemede dur"), yoksa açık çek.
+**Evaluator ilkesi (düzeltilmiş, 07-07):** `/goal`'daki değerlendirici model koşulu her turda **değil**, yalnız **Claude durmayı denediğinde** kontrol eder — sağlanmadıysa işe geri yollar. Tur limiti şart ("5 denemede dur"), yoksa açık çek.
 
 ## 2 · Karar kuralları (Salih formülasyonları, Faz 0)
 

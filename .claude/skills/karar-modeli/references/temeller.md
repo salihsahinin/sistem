@@ -1,6 +1,6 @@
 # Matematiksel Tabanlar Kataloğu (karar-modeli kat-3 referansı)
 
-*Her koşumda 3 FARKLI taban seçilir; ≥1'i önerinin varsayımına zıt kutuptan (karşıt-temel garantisi). Zıt-çiftler tabloda eşleşik verilmiştir.*
+*Her koşumda 3 **farklı** taban seçilir; ≥1'i önerinin varsayımına zıt kutuptan (karşıt-temel garantisi). Zıt-çiftler tabloda eşleşik verilmiştir.*
 
 | Taban | Tek-satır özü | Zıt kutbu |
 |---|---|---|
@@ -11,7 +11,7 @@
 | Keşif (exploration) | bilgi değeri için varyansa yatır (bandit/TS) | Sömürü |
 | Sömürü (exploitation) | bilinen en iyi kola yatır | Keşif |
 | Birikimli-delta | küçük geri-alınabilir adımlar, her adım ölçülür | Topyekûn-optimizasyon |
-| Topyekûn-optimizasyon / MDL | global yeniden-tasarım, sıkıştırma optimumu | Birikimli-delta |
+| Topyekûn-optimizasyon / **mdl** | global yeniden-tasarım, sıkıştırma optimumu | Birikimli-delta |
 | Reel-opsiyon | beklemenin opsiyon değeri var; erken kilitlenme maliyet | Şimdi-kilitle (commitment) |
 | Şimdi-kilitle | erken taahhüt koordinasyon/odak getirisi sağlar | Reel-opsiyon |
 | Kuyruk/darboğaz (queueing) | sistemin hızını darboğaz belirler; oraya yatır | Yerel-verim |

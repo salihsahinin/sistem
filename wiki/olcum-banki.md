@@ -1,6 +1,6 @@
 # Ölçüm Bankı
 
-**Üst blok:** Jarvis'in kalıcı sayısal ölçüm defteri — yalnız GA'lı/örneklemli ölçümler girer, silinmez (çürürse üstü çizilir). · **Durum:** GÜNCEL (deneysel, m.29) · **Son teyit:** 2026-08-01 (açılış günü) · **Kaynaklar:** `kuyruk/olcum-banki.md` (defterin kendisi — kanonik kaynak, bu sayfa damıtılmış özettir) · tüzük m.29 (deneysel statü) · m.39 (giriş kuralı) · m.8 (çürüme kuralı) · `cc/rapor/2026-08/rapor-2026-08-01-5.md` §2-§3 (ilk iki ölçümün kaynağı) · **Güven:** orta (tek açılış günü, iki ölçümlük örneklem; defterin kendisi henüz genç).
+**Üst blok:** Jarvis'in kalıcı sayısal ölçüm defteri — yalnız GA'lı/örneklemli ölçümler girer, silinmez (çürürse üstü çizilir). · **Durum:** **güncel** (deneysel, m.29) · **Son teyit:** 2026-08-01 (açılış günü) · **Kaynaklar:** `kuyruk/olcum-banki.md` (defterin kendisi — kanonik kaynak, bu sayfa damıtılmış özettir) · tüzük m.29 (deneysel statü) · m.39 (giriş kuralı) · m.8 (çürüme kuralı) · `cc/rapor/2026-08/rapor-2026-08-01-5.md` §2-§3 (ilk iki ölçümün kaynağı) · **Güven:** orta (tek açılış günü, iki ölçümlük örneklem; defterin kendisi henüz genç).
 
 ## Çekirdek
 Ölçüm bankı, "biliyoruz sandığımız ama aslında GA'sız kestirim olan" sayılarla gerçek örneklem sonuçlarını aynı yerde tutmamak için açıldı (Salih imzası, 2026-08-01, 08-01-5 ingest K3 kararı). Defter yalnız belirsizlik aralığı ve örneklem büyüklüğü hesaplanabilmiş ölçümleri kabul eder; sezgi, kaba sınıf ya da tek-noktalı kestirim buraya giremez (m.39) — böyle adaylar ayrı bir sınıfta ("bekleyen ölçüm") bekletilir. Bir ölçüm sonradan çürürse satır silinmez; üstü çizilir ve onu çürüten kaynak yanına eklenir (m.8) — banka böylece hem büyüyen hem de kendi hata tarihini taşıyan bir kayıt olur.
@@ -31,7 +31,7 @@ m.39 kapsamı dışında, ölçüm değil nitel güvenilirlik ilkesi taşıyan s
 ## Bekleyen-ölçüm sınıfı
 Ön-koşulu tamamlanmamış adaylar burada beklerken bankaya girmez: θ (kullanım ufku üssü — görev emri sıraya alındı) · γ_taşınan (debi'nin ikinci bileşeni, henüz ölçülmedi) · araştırma-koşumu süresi (GA'sız gözlem, n≥10 hedefi bekliyor) · koşum-maliyeti sınıf-medyanları (ön-koşul: dedup betiği düzeltmesi — mevcut rakamlar heterojen aygıtlardan, karışık örneklem GA'sı anlamsız).
 
-## SOP — yeni ölçüm eklerken
+## Sop — yeni ölçüm eklerken
 1. GA/n hesaplanabiliyor mu kontrol et (m.39) — hesaplanamıyorsa bekleyen-ölçüme ya da başka bir kayda yaz, bankaya girme.
 2. Şemanın tüm alanlarını doldur; kaynağı dosya+bölüm düzeyinde pointer'la (m.20 ailesi — ham veri taşınmaz, adresi taşınır).
 3. Eski bir ölçümü çürütüyorsa: o satırı silme, üstünü çiz + bu satırın kaynağını ekle (m.8).
@@ -53,6 +53,6 @@ m.39 kapsamı dışında, ölçüm değil nitel güvenilirlik ilkesi taşıyan s
 
 ## Bağlantılar
 [[sozluk]] (γ_öz/γ_taşınan ve debi tanımı — ölçeklenme sözlüğü) · [[pointer-sistemi]] (m.20 ailesi — kaynak dosyada, özet burada) · [[token-x-zaman]] (bekleyen "koşum-maliyeti sınıf-medyanları" ölçümü aynı token×zaman çerçevesinde okunur) · aday (henüz wiki sayfası yok, düz metin): `kuyruk/senaryo-defteri.md` — m.37 karar kayıtlarının adresi.
-- [[stokastik-dusunce]] — EMEKLİ/RED (Salih 08-17): olasılık-beyanı/Brier hattı sisteme GİRMEZ; sayfa halef "deterministik tasarım" ilkesini taşır (karşı-link 08-16'da açılmıştı, 08-17 güncellendi).
+- [[stokastik-dusunce]] — EMEKLİ/RED (Salih 08-17): olasılık-beyanı/Brier hattı sisteme **girmez**; sayfa halef "deterministik tasarım" ilkesini taşır (karşı-link 08-16'da açılmıştı, 08-17 güncellendi).
 
 **Bağlantılar:** · [[baglam-veri-ambari]] (karşı-link 08-22) · [[gorsel-artefakt-dogrulama]] (karşı-link 08-22) · [[no-mistakes]] (karşı-link 08-22) · [[dil-secimi]] (karşı-link 08-26) · [[anakronizm-freni]] (karşı-link 08-26) · [[kolon-katmani]] (karşı-link 08-29) · [[ajan-metodolojisi]] (karşı-link 09-03)

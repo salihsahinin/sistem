@@ -34,16 +34,16 @@ for line in (open(tp, errors="ignore") if not son else []):
             son = txt
 if not son:
     sys.exit(0)
-IZ = set("""DONE PASS FAIL WARN ERROR AS-OF PROBE PLAN TEACH CLOSE DAG MCP OWASP YAML JSON YML CSV HTML HTTP HTTPS PDF SVG PNG
+IZ = set("""AS-OF DAG MCP OWASP YAML JSON JSONL YML CSV HTML HTTP HTTPS PDF SVG PNG AXI GNHF OCR USD EUR IAM ASCII FTS BM25 RRF NLI
 CI CD API SQL URL URI CLI GUI IDE SDK LLM RAG HITL ASR NDCG MAP MRR GSM8K SWE UK AISI AWS DEA GCP MIT OCW README HEAD MEMORY CLAUDE
 JARVIS JARVİS FRIDAY CARVIS ATLAS OPUS SONNET HAIKU FABLE GPT KB MB GB TODO FIFO LIFO SHA UTC TR EN ID UID DNS TLS SSH OAUTH
 NEMO NLP ML AI ETL ELT DBT SPARK MLOPS RAG LTR NDCG PR PRS CTR ROC AUC F1 REGEX BPE ROPE KV SFT RLHF CVE CVSS CWE OWASP UTF
-İB KB-08 EK SKILL SCRIPTLER KILAVUZ KALAN BEKLET ONAR GEÇTİ YARIM""".split())
+İB KB-08 EK SKILL SCRIPTLER KILAVUZ""".split())   # durum sözcükleri (DONE, KALAN, BAYAT…) artık `kod` biçiminde yazılır (Salih 09-15 "büyük harf = kod")
 metin = re.sub(r"```.*?```", " ", son, flags=re.S)
 metin = re.sub(r"`[^`\n]*`", " ", metin)
 metin = re.sub(r"aynen:\s*[\"“][^\"”]*[\"”]", " ", metin)
 metin = re.sub(r"https?://\S+", " ", metin)
-adaylar = re.findall(r"(?<![\w./-])[A-ZÇĞİÖŞÜ]{4,}(?![\w./-])", metin)
+adaylar = re.findall(r"(?<![\w./-])[A-ZÇĞİÖŞÜ]{3,}(?![\w./-])", metin)   # ≥3 harf (Salih 09-15: "VAR", "SANA" da vurgu)
 ihlal = sorted({w for w in adaylar if w not in IZ})
 if not ihlal:
     sys.exit(0)

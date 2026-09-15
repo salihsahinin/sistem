@@ -14,7 +14,9 @@ vaka() { # ad · beklenen(block|gec) · asistan metni · stop_hook_active
   if [ "$res" = "$bek" ]; then ok=$((ok+1)); echo "  [PASS] $ad"; else echo "  [FAIL] $ad → çıktı: ${out:-<boş>}"; fi
 }
 vaka "büyük harf vurgu → block"            block "Bu kutu TEMELDE şunu anlatır: injection AYIRT edilemez."
-vaka "yalnız kısaltma → geç"               gec   "OWASP LLM01 listesi, promptfoo YAML dosyası, DONE."
+vaka "yalnız kısaltma → geç"               gec   "OWASP LLM01 listesi, promptfoo YAML dosyası, \`DONE\`."
+vaka "3 harfli vurgu (VAR/SANA) → block"    block "Bu SANA yazıldı, kanal VAR."
+vaka "durum sözcüğü çıplak (DONE) → block"  block "İş DONE, pratik KALAN."
 vaka "kod bloğu içinde caps → geç"         gec   $'Şöyle:\n```\nEXPORT ALL CAPS HERE\n```\nve `INLINE_CAPS` normal.'
 vaka "stop_hook_active ikinci tur → geç"   gec   "TEMELDE yine caps var ama ikinci tur." true
 vaka "Türkçe karakterli caps → block"      block "Bu adım ZORUNLU ve İLGİSİ yok."

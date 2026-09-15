@@ -1,6 +1,6 @@
 # İngest Şeması — Anlatım
 
-*Bu sayfa ANLATIR, kural koymaz. Sözleşmenin kendisi: `core/ingest-semasi.md` (jarvis v2) + `~/staj başlangıç/ingest-semasi.md` (staj v1). Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md`. İlgili: [[pointer-sistemi]].*
+*Bu sayfa **anlatır**, kural koymaz. Sözleşmenin kendisi: `core/ingest-semasi.md` (jarvis v2) + `~/staj başlangıç/ingest-semasi.md` (staj v1). Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md`. İlgili: [[pointer-sistemi]].*
 
 ## Sorun neydi?
 
@@ -22,16 +22,16 @@ Neden sadece 5? Araştırmanın en güçlü bulgusu: **ağır şema ölür.** En
 
 **4. Katman akışı — event sourcing.** `kuyruk/` = append-only olay günlüğü ve **gerçek kaynak**; kapsül = **snapshot** (hız optimizasyonu — kaybolsa sistem kuyruk+defter+git log'dan yeniden kurulur); pano = projeksiyon. Kuyruk kaydı asla silinmez; hata düzeltme = telafi kaydı ekle. Bu, m.8'in (silme yasağı) mühendislik gerekçesidir.
 
-**5. Tetikler ve bütçeler.** Kapsül ≤200 satır (aşınca damıtma, ~%50 boşalt) · damıtma tetiği = kuyruğa girenlerin **önem toplamı ≥150** (40 önemsiz not tetiklemez, 8 kritik not tetikler) · paralel sekmeden dönen devir raporu **≈1.000-2.000 token** tavanlı · damıtma her oturumda değil **eşikte ve toplu** (her damıtma bir maliyettir — LSM dersi).
+**5. Tetikler ve bütçeler.** Kapsül ≤200 satır (aşınca damıtma, ~%50 boşalt) · damıtma tetiği = kuyruğa girenlerin **önem toplamı ≥150** (40 önemsiz not tetiklemez, 8 kritik not tetikler) · paralel sekmeden dönen devir raporu **≈1.000-2.000 token** tavanlı · damıtma her oturumda değil **eşikte ve toplu** (her damıtma bir maliyettir — **lsm** dersi).
 
 ## Bir günün akışı (örnek)
 
-Sabah stajda üç sekme açtın. Yan sekmede Airflow araştırması yaptırdın → kapanışta günlüğe `Gelen: airflow-scheduler` bölümü olarak **özetini** yapıştırdın (ham döküm değil). Öğleden sonra jarvis sekmesinde bir karar çıktı → sekme kapanırken `kuyruk/gelen-2026-08-14-x.md`'ye zarflı tek dosya bıraktı. Akşam ana vardiya triyaj koştu: 2 kayıt NOOP (zaten kanonda), 1 UPDATE (mevcut wiki sayfasına işlendi), 1 çelişki (eski karara geçersiz-damgası + sana çelişki raporu), 3 ADD, 1 kayıt tip alamadı → SINIFLANDIRILAMADI'ya düştü, yarın tekrar denenecek. Hiçbir şey kaybolmadı; kapsül şişmedi.
+Sabah stajda üç sekme açtın. Yan sekmede Airflow araştırması yaptırdın → kapanışta günlüğe `Gelen: airflow-scheduler` bölümü olarak **özetini** yapıştırdın (ham döküm değil). Öğleden sonra jarvis sekmesinde bir karar çıktı → sekme kapanırken `kuyruk/gelen-2026-08-14-x.md`'ye zarflı tek dosya bıraktı. Akşam ana vardiya triyaj koştu: 2 kayıt NOOP (zaten kanonda), 1 **update** (mevcut wiki sayfasına işlendi), 1 çelişki (eski karara geçersiz-damgası + sana çelişki raporu), 3 **add**, 1 kayıt tip alamadı → SINIFLANDIRILAMADI'ya düştü, yarın tekrar denenecek. Hiçbir şey kaybolmadı; kapsül şişmedi.
 
 ## Matematiksel temel (neden "anlamlı")
 
 - **Append-only log + snapshot + projeksiyon** = event sourcing — durum her an ham kayıtlardan yeniden türetilebilir; snapshot bozulsa bilgi kaybı sıfır.
-- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ kaynakta 0,995/sandbox-saati, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). **[DÜZELTİLDİ 08-21, Karar 59 (KB-42 A): kaynak 0,995/sandbox-SAATİ (α üçlüsü = 1, gerekçesiz); Jarvis'e değer TAŞINMAZ — form tazelik(t)=d^t, t=SEANS, d kalibre edilmemiş [?] (ölçüm gelene dek skorlamada kullanılmaz); T-Ç6 kuralı doğdu: katsayı = kaynaktaki değer+birim, aksi damgalı — `core/ingest-semasi.md:47` + `cc/rapor/2026-08/rapor-2026-08-17-1.md` S4]** v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
+- **Önem × üstel çürüme + kümülatif eşik** = Generative Agents getirim modeli (`önem 1-10`, λ kaynakta 0,995/sandbox-saati, tetik Σönem≥150; ablasyon etki büyüklüğü d=8.16). **[düzeltildi 08-21, Karar 59 (KB-42 A): kaynak 0,995/sandbox-SAATİ (α üçlüsü = 1, gerekçesiz); Jarvis'e değer taşınmaz — form tazelik(t)=d^t, t=seans, d kalibre edilmemiş [?] (ölçüm gelene dek skorlamada kullanılmaz); T-Ç6 kuralı doğdu: katsayı = kaynaktaki değer+birim, aksi damgalı — `core/ingest-semasi.md:47` + `cc/rapor/2026-08/rapor-2026-08-17-1.md` S4]** v1 şemasındaki `e^(−λt)` formülünün eksik iki parçası buradan tamamlandı.
 - **Eşikli toplu compaction** = LSM-tree — write amplification >10: her damıtma pahalıdır, o yüzden seyrek ve toplu yapılır.
 - **Bütçeler** = MemGPT'nin %70-uyarı/%100-tahliye/%50-boşaltma üçlüsü + Claude Code'un 200-satır/25KB indeks limiti (aşan kısım hiç yüklenmez — sıcak bağlam sabit-bütçeli tutulmak zorunda).
 

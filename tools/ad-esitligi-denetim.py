@@ -12,7 +12,7 @@ import argparse, json, os, re, sys
 
 J = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = os.path.expanduser("~")
-ESIT = re.compile(r"eski ad[ıi]? Carvis|Carvis\s*=\s*\*{0,2}Jarvis|Carvis\s*→\s*\*{0,2}Jarvis|Carvis emekli|Carvis\)|eski ad Carvis", re.I)
+ESIT = re.compile(r"eski ad[ıi]? Carvis|JARVİS FRIDAY CARVIS|Carvis\s*=\s*\*{0,2}Jarvis|Carvis\s*→\s*\*{0,2}Jarvis|Carvis emekli|Carvis\)|eski ad Carvis", re.I)
 CARVIS = re.compile(r"Carvis|CARVİS|CARVIS")
 K1 = [os.path.join(J, "CLAUDE.md"), os.path.join(J, ".claude", "hooks", "session-start.sh"),
       os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-jarvis", "memory", "MEMORY.md"),
@@ -64,7 +64,7 @@ def main():
         if os.path.abspath(p) == kendi:
             continue  # aracın kendi desen satırları
         for i, l in enumerate(oku(p).split("\n"), 1):
-            if CARVIS.search(l) and not ESIT.search(l) and "sozluk.md" not in p:
+            if CARVIS.search(l) and not ESIT.search(l) and not any(x in p for x in ("sozluk.md", "baglam-anahtar-kaydi.md")):
                 r["K3"].append({"yol": os.path.relpath(p, J), "satir": i, "metin": l.strip()[:100]})
     eksik = sum(1 for x in r["K1"] if x["durum"] != "PASS") + sum(1 for x in r["K2"] if x["durum"] != "PASS") + len(r["K3"])
     if a.json:

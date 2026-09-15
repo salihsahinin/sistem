@@ -20,7 +20,7 @@ HITL ASR NDCG MAP MRR GSM8K SWE UK AISI AWS DEA GCP MIT OCW README HEAD MEMORY C
 FIFO LIFO SHA UTC TR EN ID UID DNS TLS SSH OAUTH NEMO NLP ML AI ETL ELT DBT SPARK MLOPS LTR PR PRS CTR ROC AUC F1 REGEX BPE ROPE KV SFT RLHF CVE CVSS CWE UTF
 İB EK SKILL SCRIPTLER KILAVUZ IAM DRFR NOOP CEO PC MAC VS UTF-8 SCD LUD OWL OBO SKOS SEMVER PEP RIPPLE DDQ DAMA NL GA ASCII OCR NLI RRF BM25 FTS SQLITE
 COVE DAG CI/CD OKR KPI ROI SLA SLO SRE QA UX UI CSS JS TS PY SH MD TXT HTML5 LAVISH DAISYUI""".split())
-DURUM = set("""DONE PASS FAIL WARN ERROR TODO RED YOK RET KAPANDI AÇIK AKTİF BEKLEYEN BLOKE BAYAT TAZE SÜPERSEDE EMEKLİ DÜŞTÜ SAĞLAM DARALDI FLAG SNAPSHOT DONDU KISMİ TUTTU İMZALANDI
+DURUM = set("""DONE PASS FAIL WARN ERROR TODO RED YOK RET KAPANDI AKTİF BEKLEYEN BLOKE BAYAT TAZE SÜPERSEDE EMEKLİ DÜŞTÜ SAĞLAM DARALDI FLAG SNAPSHOT DONDU KISMİ TUTTU İMZALANDI
 DAYANAKSIZ DESTEKLİ ÇELİŞİR TEMİZ İHLAL RET ŞÜPHE YOK HATA ANALYZE KALAN BEKLET ONAR GEÇTİ YARIM PROBE PLAN TEACH CLOSE TODO DOĞRU
 YANLIŞ ERTELENDİ SÜPERSEDE-EDİLDİ KAPALI DEVAM DURDU ONAYLI ONAYSIZ EKSİK PASİF HAZIR TAMAM YARIM-DONE""".split())
 CAPS = re.compile(r"(?<![\w./\-*_])[A-ZÇĞİÖŞÜ]{4,}(?![\w./\-_])")
@@ -57,12 +57,24 @@ OZEL = {"SALİH": "Salih", "TÜRKÇE": "Türkçe", "İNGİLİZCE": "İngilizce",
         "OBSİDİAN": "Obsidian", "COWORK": "Cowork", "KUN": "Kun", "CHEN": "Chen", "PORTRİSK": "PortRisk", "WİNDOWS": "Windows", "DOCKER": "Docker"}
 
 
+EN = set("""INDEX MEDIUM UNIQUE REGISTER LIKE AUTOMATIC JOIN FIRST DESCRIPTION IDK ORIGIN LIMIT INLINE IMPORT INPUT OUTPUT INSERT UPDATE
+DELETE SELECT WHERE DISTINCT PRIMARY STRING INTEGER NULL TRUE FALSE PARTITION FILTER SPLIT HIGH LOW WIP LINK LIST LINE PIPELINE
+SKILL SKILLS BUILD SHIP SCOUT SYNTHESIS REVIEW VERIFY COMMIT PUSH PULL MERGE BRANCH MAIN DIFF PATCH WORKTREE HOOK HOOKS SETTINGS
+ENGINEERING MINING DRIFT RIPPLE EDIT EDITS WRITE READ LOSSLESS LOSSY ENCODING CODEC PRIORITY SURVIVORSHIP RESTRICT CASCADE
+NOTIFICATION ISSUE ISSUES ARTIFACT CONTEXT WINDOW PROMPT PROMPTS SYSTEM ASSISTANT USER TOOL TOOLS AGENT AGENTS TRIGGER
+WORKFLOW GUARDRAIL GUARDRAILS SANDBOX PERMISSION MEMORY THINKING FIRST-CLASS FAIL LOUD INDEXED IMC RUNTIME POINTER ESI
+MISLEADING SUPERSEDED LICENSE DEFAULT PUBLIC PRIVATE ACTIVE DIRTY CLEAN""".split())
+
+
 def sozcuk_cevir(w):
-    """Tek caps sözcük (kesme eki dahil) → küçük/özel-ad biçimi."""
+    """Tek caps sözcük (kesme eki / tire bileşiği dahil) → küçük/özel-ad biçimi; İngilizce sözcükte I→i, Türkçede I→ı."""
     kok, _, ek = w.partition("'")
     if kok in OZEL:
         return OZEL[kok] + (("'" + tr_lower(ek)) if ek else "")
-    return tr_lower(w)
+    parcalar = []
+    for p in kok.split("-"):
+        parcalar.append(p.lower() if (p in EN and not re.search(r"[ÇĞİÖŞÜ]", p)) else tr_lower(p))
+    return "-".join(parcalar) + (("'" + tr_lower(ek)) if ek else "")
 
 
 def donustur(metin, say):
@@ -75,8 +87,9 @@ def donustur(metin, say):
         return any(x <= a and b <= y for x, y in ar)
     out = []; i = 0
     # ardışık caps sözcükleri (tek boşlukla ayrılmış; kesme eki dahil) grupla — ≥3 harf (Salih 09-15: "VAR", "SANA" da şikâyet)
-    W = r"[A-ZÇĞİÖŞÜ]{3,}(?:'[A-ZÇĞİÖŞÜ]{1,4})?"
-    tok = re.compile(r"(?<![\w./\-*_'])" + W + r"(?:[ ]" + W + r")*(?![\w./\-_'])")
+    # tire bileşiği (ZAMAN-KAYMASI) tek sözcük; sonda nokta yalnız dosya-uzantısı ise (README.md) dışlanır, cümle sonu noktası değil
+    W = r"[A-ZÇĞİÖŞÜ]{3,}(?:-[A-ZÇĞİÖŞÜ]{2,})*(?:'[A-ZÇĞİÖŞÜ]{1,4})?"
+    tok = re.compile(r"(?<![\w./\-*_'])" + W + r"(?:[ ]" + W + r")*(?!\w|[/\-_']|\.\w)")
     for m in tok.finditer(metin):
         a, b = m.span()
         if korunur(a, b):

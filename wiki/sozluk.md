@@ -1,4 +1,4 @@
-> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Jarvis Sozlugu.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim YOK, metin olduğu gibi.
+> **TAŞINDI (2026-07-15, Salih icra emri):** Homebase'ten JARVIS'e — köken: `Cowork Homebase/[C] Jarvis Sozlugu.md`; tespit raporu: `raporlar/2026-07/homebase-tasima-tespiti-2026-07-15.md`. Orijinal Homebase'te arşiv-pointer'la durur (m.8). Bağlam-hijyeni süpürmesi tarandı: biyoloji-kökenli terim `YOK`, metin olduğu gibi.
 
 # Carvis Sözlüğü
 
@@ -54,7 +54,7 @@ Akış bölünmeden atılan ham fikirler; tek satır yeter. Sınanmamıştır, k
 - **ölçek** — bir sistemin büyüklüğünü tek sayıya indirgeyen ölçüt (karşılaştırma ekseni)
 - **uç-birim** — bir katmanda yan yana duran, tekrar eden en küçük işlem birimlerinden biri
 - **uç-birim sayısı** — bir katmandaki uç-birim adedi
-- **uç-birim genişliği** *(MLA şerhli — revizyon 1)* — bir uç-birimin iç kapasitesini veren ölçü; çoğu sistemde tek sayıyla ifade edilir, ancak bileşik-kapasiteli bir alt-sınıfta tek sayıya indirgenemez ve bu sınıf ayrı işaretlenip genel ölçümün dışında tutulur
+- **uç-birim genişliği** *(**mla** şerhli — revizyon 1)* — bir uç-birimin iç kapasitesini veren ölçü; çoğu sistemde tek sayıyla ifade edilir, ancak bileşik-kapasiteli bir alt-sınıfta tek sayıya indirgenemez ve bu sınıf ayrı işaretlenip genel ölçümün dışında tutulur
 - **katman sayısı** — sistemi oluşturan ardışık işlem katmanı adedi
 - **debi** *(iki-rejim şerhli — revizyon 2)* — sistemin ölçeğine karşı iş-görme payının üstel ilişkisi; öz-pay bileşeni (γ_öz, ölçülen) ve taşınan-kaynak-payı bileşeni (γ_taşınan, henüz ölçülmemiş) olmak üzere iki ayrı bileşenden oluşur — tek sembolle anılması yalnız birinci bileşeni temsil eder
 - **kullanım ufku** — sistemin tek seferde işleyebildiği taşınan-kaynak uzunluğunun üst sınırı
@@ -115,13 +115,13 @@ Beyanını künyeli görev-emrine çevirir: görev-fonksiyonu iskeleti (tipli al
 Türkçe kural/talimatı m.38 bağlaçlarına (∧ ∨ ¬ → ↔) ve numaralı dallara döker; done-yüklemini boolean'laştırır; geri-çeviri kontrolüyle teslim eder. Tetik: "lojiğe çevir / kurala dök".
 
 ### karar-kaydet *(yeni, 08-14)*
-Verilmiş kararı deftere standart blokla (durum + akıl-yürütme + hüküm + yetki + geri-açma + bi-temporal tarih) yazar, ayrı commit atar. YALNIZ elle tetik: "kararı kaydet".
+Verilmiş kararı deftere standart blokla (durum + akıl-yürütme + hüküm + yetki + geri-açma + bi-temporal tarih) yazar, ayrı commit atar. **yalnız** elle tetik: "kararı kaydet".
 
 ### pipeline-kosum *(yeni, 08-14)*
 Kun-Chen formatlı uçtan-uca hat: manifest + emir → scout araştırması → sentez → ship implementasyonu → "hazır ve sisteme gömülü" beyanı; durum diskte, restart-proof. Tetik: "pipeline kur / pipeline olarak yap".
 
 ### sinav-grill *(yeni, 08-14)*
-Anlayışını adversarial Sokratik sorgulamayla sınar: tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] derinlik haritası + bulanık-blok listesi. YALNIZ senin tetiğinle: "sınav / sınava çek / grill" — ben asla kendiliğimden başlatmam (V55 korunur).
+Anlayışını adversarial Sokratik sorgulamayla sınar: tek-tek sorular, karar-ağacı inişi, [S]/[O]/[T] derinlik haritası + bulanık-blok listesi. **yalnız** senin tetiğinle: "sınav / sınava çek / grill" — ben asla kendiliğimden başlatmam (V55 korunur).
 
 ### skill-kapisi *(yeni, 08-15)*
-Skill-üretim şemasının koşum skill'i: bir skill adayını (fikir/kutu satırı/taslak/mevcut skill) kapı-ağacından yürütür — K0 GEREK → K1 DEĞER (m.43 sayacı τ=0,8 ∨ Salih emri) → İNŞA (eval-önce) → K2 TOPRAKLAMA (referans-varlığı script + bağımsız iddia doğrulayıcı, CoVe-Factored) → K3 BİÇİM+TÜR → yaprak (kabul + tür-demeti). Tetik: "kapıdan geçir / şema testi / skill adayını değerlendir"; her yeni skill/evrim ÖNCESİ zorunlu (Katman-1 08-15). Kural: `core/skill-uretim-semasi.md`; graf: `core/skill-uretim-semasi.d2` (D2).
+Skill-üretim şemasının koşum skill'i: bir skill adayını (fikir/kutu satırı/taslak/mevcut skill) kapı-ağacından yürütür — K0 **gerek** → K1 **değer** (m.43 sayacı τ=0,8 ∨ Salih emri) → **inşa** (eval-önce) → K2 **topraklama** (referans-varlığı script + bağımsız iddia doğrulayıcı, CoVe-Factored) → K3 **biçim**+**tür** → yaprak (kabul + tür-demeti). Tetik: "kapıdan geçir / şema testi / skill adayını değerlendir"; her yeni skill/evrim **öncesi** zorunlu (Katman-1 08-15). Kural: `core/skill-uretim-semasi.md`; graf: `core/skill-uretim-semasi.d2` (D2).

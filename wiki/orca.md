@@ -38,7 +38,7 @@ Somut örnek: normalde Claude Code'u tek bir terminal penceresinde açarsın; ik
 
 Orca'nın "Default Shell" ayarı yalnızca **senin elle açtığın terminal panelerinin** hangi kabukla açılacağını belirler. Claude Code'un kendi çalışması bundan bağımsızdır: ajanı combobox'tan seçtiğinde Orca onu kendi başlatır. Yani bu seçim "Claude Code hangi shell'de koşar" sorusu değil, "ben boş bir terminal açınca ne görürüm" sorusudur.
 
-Üç seçenek: **PowerShell** (modern Windows varsayılanı; her komut çalışır, `dir` de `ls` de anlar), **Command Prompt** (eski cmd.exe; bugün seçmek için sebep yok), **Git Bash** (Git for Windows'un bash'i; Unix-stili komutlar — internetteki çoğu öğretici Unix komutu verdiği için bazıları bunu sever). Docs'a göre WSL kuruluysa o da listeye düşer. Ayar sonradan Settings → Terminal'den her an değiştirilir; ayrıca tab çubuğundaki **+** menüsünden varsayılanı bozmadan tek seferlik başka shell'de tab açabilirsin — yani karar düşük riskli.
+Üç seçenek: **PowerShell** (modern Windows varsayılanı; her komut çalışır, `dir` de `ls` de anlar), **Command Prompt** (eski cmd.exe; bugün seçmek için sebep yok), **Git Bash** (Git for Windows'un bash'i; Unix-stili komutlar — internetteki çoğu öğretici Unix komutu verdiği için bazıları bunu sever). Docs'a göre **wsl** kuruluysa o da listeye düşer. Ayar sonradan Settings → Terminal'den her an değiştirilir; ayrıca tab çubuğundaki **+** menüsünden varsayılanı bozmadan tek seferlik başka shell'de tab açabilirsin — yani karar düşük riskli.
 
 **Right-click davranışı:** "Paste on right-click" = sağ tık panodakini yapıştırır (klasik Windows terminal alışkanlığı; Ctrl+sağ tık menüyü açar). "Open context menu" = sağ tık normal menü açar.
 

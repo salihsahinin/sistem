@@ -1,7 +1,7 @@
 # Görsel Artefakt Doğrulama
 
 **Tanım:** Üretilen görsel artefakt (SVG/HTML/diyagram) "hata vermedi" diye doğrulanmış sayılmaz; okunabilirliği, artefaktı üreten aracın kendi gözüyle değil **bağımsız bir ölçümle** sınanır — tarayıcıda bbox ölçüp taşma / metin-çakışması / kırık referans taranır.
-**Durum:** GÜNCEL · **Son teyit:** 2026-08-12 · **Kaynaklar:** staj oturumu 08-12 canlı vaka (7 şekilli öğrenme HTML'i; Salih yazılı izniyle metot olarak ingest — staj verisi taşınmadı, md.49) · **Güven:** ORTA (tek vaka; mekanizma doğrudan ölçüldü, genelleme henüz sınanmadı)
+**Durum:** **güncel** · **Son teyit:** 2026-08-12 · **Kaynaklar:** staj oturumu 08-12 canlı vaka (7 şekilli öğrenme HTML'i; Salih yazılı izniyle metot olarak ingest — staj verisi taşınmadı, md.49) · **Güven:** **orta** (tek vaka; mekanizma doğrudan ölçüldü, genelleme henüz sınanmadı)
 
 ## Çekirdek
 
@@ -13,7 +13,7 @@ Göz kontrolü bu sınıfı güvenilir biçimde yakalamaz: ekran görüntüsü s
 
 **Kanonik örnek (damıtılmış):** 7 şekilli bir anlatım dosyası üretildi; tarayıcı paneli görüntü vermiyordu, göz kontrolü imkânsızdı. Bbox taraması tek koşumda iki gerçek arıza çıkardı: bir şekilde iki etiket 96 piksel üst üste biniyordu, ve 10 ok başı `fill="context-stroke"` kullanıyordu (bazı tarayıcılarda görünmez kalır). İkisi de düzeltildi, ikinci tur `{badMarkers:[], overlaps:[], overflow:[]}` döndü. Panel hiç açılmadan artefakt doğrulandı.
 
-## SOP — görsel artefakt ürettikten sonra
+## Sop — görsel artefakt ürettikten sonra
 
 1. Artefaktı tarayıcıya yükle (dosya ya da data URL fark etmez).
 2. Denetimi **koştur, gözle bakma** — her `<svg>` için: metin bbox'ları `viewBox` içinde mi · metin-metin kesişimi var mı (birkaç piksel tolerans) · her `marker-end` referansı aynı `<svg>` içinde çözülüyor mu.
