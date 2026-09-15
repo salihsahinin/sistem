@@ -2,12 +2,13 @@
 
 **Üst blok:** Aynı anda açık birden çok Jarvis oturumu (terminal + masaüstü uygulaması + telefon) birbirinin işini bozmasın diye 4 kural. Salih imzası 2026-08-17 masa (KB-08 + KB-09 + KB-10 H4); kaynak vakalar: 08-12 (Docker motoru/kaynak çakışması), 08-15 (vaka-2, mükerrer koşum), 08-16 (vaka-3, 518k mükerrer workflow) · 08-21 (vaka-4, resume-körlüğü: numara çakışması + pointer kırılması). Durum: KURAL (deneysel damga m.29 — eşikler ilk 10 seansta kalibre). Uygulama: `seans-acilis` §1.4-1.5, `seans-kapanis` §7, KILAVUZ "Paralel seans protokolü".
 
-**Çekirdek — 4 kural:**
+**Çekirdek — 5 kural:**
 1. **Canlı-oturum kapısı (açılış + HER RESUME — Salih imzası 08-21, Karar 57):** son commit ≤15 dk ∧ kapsülde o seansın kapanış kaydı yok → "paralel-oturum şüphesi" beyanı; diğer oturumun manifestte SAHADA görünen işi ikinci kez koşulmaz, onun dosyalarına yazılmaz; hat paylaşımı Salih'e tek soru.
    *Resume eki (vaka-4, 08-21):* uzun oturumda özet-yenileme/dönüş sonrası ilk cevaptan önce kapı YENİDEN koşar (`git log -5` + kapsül başı) — vaka-4: resume-körlüğü seans-11↔12 karar-numarası çakışması (51-53 çift kullanım) + damıtma sonrası 14 kırık pointer üretti; onarım [ariza] f60d84e..bc4afd5.
 2. **Koşum-önü manifest kapısı:** Workflow/atlas/pipeline açmadan önce `cc/pipeline-*.md` manifesti + `git log -15` okunur — iş zaten koşmuş/koşuyorsa devralınır, yeniden koşulmaz.
 3. **Paylaşılan kaynak freni:** servis/konteyner/port/DB/soket açmadan önce mevcut durum okunur (`docker ps`, `lsof -i :PORT`); çakışma varsa KURULMAZ, bildirilir; mevcut olan kullanılır. **Motor kapatma freni:** paylaşılan daemon (Docker vb.) yalnız diğer hatta iş kalmadığı doğrulanınca kapatılır.
 4. **Commit freni (H4):** başka jarvis oturumu canlıyken `git add -A` YASAK; her oturum kendi dosyalarını yol vererek commit'ler (`git add <yol>`); ekleme-esaslı yazım (yeniden oku → altına ekle) korunur.
+5. **PR kuralı (Salih Katman-1, 2026-09-15, aynen: "bundan sonra her bir oturumumda create pr yapacağım. böylelikle conflictin önüne daha rahat geçebileceğiz tek bir fable oturumda merge yapılacak"):** her yan oturum (öğrenme şeritleri, Sonnet/Opus yan işleri, gnhf) kendi branch'inde çalışır (`claude/<seans>-<konu>`), işini commit'ler, `origin`'e push eder ve PR açar (gh-axi); **merge yalnız ana-sıra Fable oturumunda** (m.41 GK-2), çatışma çözümü orada. Push beyanı m.9: bu kural yan-oturum push'u için genel beyandır; main'e doğrudan commit yan oturumda yasak. H4 `git add <yol>` kuralı branch içinde de geçerli.
 
 **Neden:** paralel seans Jarvis'in kendi kararı (m.36 rev.); tek çalışma ağacı + iki oturum = birinin yarım işini diğerinin yayımlaması, mükerrer koşum (08-15/16 toplam ~549k token), sessiz kaynak bozulması. Senkron elle yürür (K-009 otomasyonu açılınca otomatikleşmesi beklenir).
 
