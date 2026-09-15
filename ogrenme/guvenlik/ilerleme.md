@@ -2,7 +2,7 @@
 
 | G | Durum | Tarih | Ders kaydı | Sapma / not |
 |---|---|---|---|---|
-| G1 | kavramsal DONE · pratik KALAN (Salih eli) | 2026-09-14/15 | `dersler/2026-09-14-g1-prompt-injection-i.md` + `g1-injection-seti/` | 8/8 kutu doğru. **Pratik düzeltme (Salih 09-15):** Jarvis'in promptfoo koşumu REFERANS koşumdur, Salih uygulaması yapılmadı → pratik KALAN; Salih `g1-injection-seti/` komutunu kendi koşar, sonucu referansla karşılaştırır. Referans: 10 vakalık promptfoo koşumu, assertion-ASR=0,10 ama davranışsal-ASR=0,00 (vaka 5 yanlış-pozitif, bkz. basarisizlik-analizi.md) — G6 regresyon adayı. |
+| G1 | DONE (kavramsal + pratik) | 2026-09-14/15 | `dersler/2026-09-14-g1-prompt-injection-i.md` + `g1-injection-seti/` | 8/8 kutu doğru. **Pratik (Salih eli, 09-15):** Salih `npx promptfoo@latest eval -c promptfooconfig.yaml --output son-kosum.json` komutunu kendi koştu (10 vaka, kendi OAuth kimliği) → 9/10 PASS, tek FAIL = Vaka 5, referans koşumla (assertion-ASR=0,10, davranışsal-ASR=0,00) birebir örtüştü — sapma yok. Salih onayıyla DONE. Vaka 5 G6 regresyon adayı (bkz. basarisizlik-analizi.md). |
 | G2 | — | | | |
 | G3 | — | | | |
 | G4 | — | | | |
@@ -10,4 +10,4 @@
 | G6 | — | | | |
 | G7 | — | | | |
 
-Sonraki: G1 pratik (Salih eli: `cd ogrenme/guvenlik/g1-injection-seti && npx --yes promptfoo@latest eval -c promptfooconfig.yaml`), sonra G2 (Lethal trifecta + en-az-yetki; ayrı sohbet; ogren v0.1 iskeleti: PROBE → PLAN DAG → TEACH kutu → CLOSE; sektör başlıkları ders başında canlı teyit).
+Sonraki: G2 (Lethal trifecta + en-az-yetki; ayrı sohbet; ogren v0.1 iskeleti: PROBE → PLAN DAG → TEACH kutu → CLOSE; sektör başlıkları ders başında canlı teyit).
