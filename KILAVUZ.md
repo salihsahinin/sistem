@@ -87,6 +87,7 @@ Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozu
 - **Kompozisyon:** skill'ler birbirini literal çağırmaz; bileşik iş = `context: fork` orkestratör + küçük çocuk skill'ler + sabit-format handoff + fail-loud.
 - **Yayın-öncesi:** 20-sorgu description eval (10 tetiklemeli + 10 tetiklemesiz) · çok-modelde test · versiyon damgası (`0.x-deneysel-m29`).
 - **Ev:** `.claude/skills/<ad>/SKILL.md` (repo, git'e commit — dağıtım gece-senkron/pull ile).
+- **Hazine tavanı KALKTI (Karar 96, Salih 09-15):** char/adet tavanı ve "yeni skill = emekli-aday" kuralı süpersede; yönetim = seçim-isabeti (description standardı · katalog `.claude/skills/README.md` · tetiklenme isabeti ölçümü). Şema `core/skill-uretim-semasi.md` §4b.
 
 ## Deneysel notlar — 2026-07-29 (m.29; tam gerekçeler `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-30.md`)
 - **D3:** değer üretilir üretilmez diske; teslim taslağı seans ORTASINDA açılır. · **D4:** kanon edit'leri seans sonunda toplu (CC'de settings-deny yapısal). · A.11 iki-yüzey şerhi arşivde.
