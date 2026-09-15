@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 12 — md hiyerarşisi + bağlamdan skill'e (2026-09-15)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+  .hakem { border-left: 3px solid var(--color-warning); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 12 — md hiyerarşisi + bağlamdan skill'e <span class="badge badge-primary">5 kalem</span></h1>
+      <p class="text-sm opacity-80">On ikinci Lavish masası. Tetik: 09-15 icra emrin — <em>"Kun Chen L8 … global md dosyası için Kun Chen'den ilham alan bir yapıya sahip olalım … md dosyalarını skill'e çevirmek … context uzayından neleri/nasıl skill'e çevirebiliriz araştır, atlasları koş, adayları karar masasına taşı … skill oluşum şemasını ve sürecini güncelle … skiller kalıp prompt olduğu için görev icrası tasarımının parçası"</em>. Her kalemde: ne demek · ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada.</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2):</strong> Karar 95 PR kuralı yazıldı · Kun Chen transkripti ham okundu (11:24-18:40, 36:20) · atlas koşumu 3 aile × (tez + antitez) + V26 sondaj + maskeli hakem (Opus) · iç madencilik aracı <code>tools/baglam-skill-aday.py</code> (183 bölüm skorlandı) · şema v1.1 taslağı <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code> (core'a hükümle işlenir).</p>
+      <p class="text-xs opacity-60">AS-OF 2026-09-15 · HEAD 5121626+ · birincil belgeler bu seans WebFetch ile açıldı (D); ikincil <code>[?]</code>/K · rakamlar sayım (m.39).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Bulgu</th><th>Değer</th><th>Kaynak · etiket</th></tr></thead>
+        <tbody>
+          <tr><td>Resmî md→skill kuralı</td><td>"If an entry is a multi-step procedure or only matters for one part of the codebase, move it to a skill or a path-scoped rule." CLAUDE.md'de kalacak: "facts Claude should hold in every session: build commands, conventions, project layout, 'always do X' rules"</td><td>code.claude.com/docs/en/memory · <strong>D</strong></td></tr>
+          <tr><td>Üç yuva</td><td>(1) CLAUDE.md: her seans, hedef &lt;200 satır, 4 MiB üstü atlanır · (2) <code>.claude/rules/*.md</code> + <code>paths:</code> frontmatter: yalnız eşleşen dosya okununca yüklenir · (3) skill: yalnız description eşleşince yüklenir. <code>@import</code> tasarruf sağlamaz (launch'ta yüklenir, ≤4 hop)</td><td>aynı · <strong>D</strong></td></tr>
+          <tr><td>Yükleme sırası</td><td>managed → <code>~/.claude/CLAUDE.md</code> (kullanıcı, tüm projeler) → proje <code>./CLAUDE.md</code> → <code>CLAUDE.local.md</code>; birleştirilir, en yakın en son; alt-dizin md'leri lazy. <strong>Bugün jarvis'te kullanıcı-düzeyi md YOK</strong>; jarvis CLAUDE.md 7,17 KB / 42 satır; Friday 4,2 KB; staj kendi CLAUDE.md</td><td>aynı + `ls ~/.claude` · <strong>D</strong></td></tr>
+          <tr><td>Skill yükü</td><td>metadata ~100 token/skill her seans; gövde &lt;5k token yalnız tetiklenince; script kodu bağlama girmez, yalnız çıktısı. Hazine bugün 16 skill + deneme 1 (7.379/7.380 char tavanı, KB-19)</td><td>platform.claude.com …/agent-skills/overview · <strong>D</strong></td></tr>
+          <tr><td>Determinizm</td><td>"Prefer scripts for deterministic operations"; low/medium/high freedom; plan-validate-execute deseni; SKILL.md gövde &lt;500 satır; ≥3 eval + Haiku/Sonnet/Opus testi; "not currently a built-in way to run these evaluations"</td><td>…/best-practices · <strong>D</strong></td></tr>
+          <tr><td>Kanıtlı kazanç</td><td>SkillsBench (arXiv 2602.12670, 2026-02): 87 görev, 8 alan, kuratörlü skill pass-rate 33,9 → 50,5 (+16,6 pp), "en fazla 3 modül" optimum; ikincil: 4+ skill / monolitik doküman negatif, self-generated ≈0 [?]. Sınırlılık (kendi §5.1): skill-var/yok ölçer, "aynı içerik md'de mi skill'de mi" ölçmez</td><td>arxiv abstract · <strong>D</strong>; ayrıntı emergentmind · K</td></tr>
+          <tr><td>Kun Chen L8 (2026-06-20)</td><td>global md 27 satır ("her oturuma yüklenir, sessizce token yer"); proje md = birikmiş dersler, hata görünce "hatırla" ile büyür; koşullu bilgi skill'e (e2e test talimatı örneği); skill-creator + <code>npx skills</code>; "internetten rastgele skill kurma" — kendi ölçümü (Android Skills, +%5 token, daha kötü sonuç) yayınsız · K. Blogu: md = sabit token bütçesi (~5000), haftalık toplu düzenleme, kanıt transkriptten</td><td>Downloads transkript (ham) + blog.kunchenguid.com · <strong>D</strong> (transkript) / K (ölçüm)</td></tr>
+          <tr><td>Bağlam-izleme aracı</td><td><code>InstructionsLoaded</code> hook: CLAUDE.md / rules dosyası yüklenince tetiklenir; matcher: session_start · nested_traversal · path_glob_match · include · compact → hangi md'nin ne zaman yüklendiği kütüklenir (İB-81 ön-koşulu, S-kaynak okunma ayağı)</td><td>code.claude.com/docs/en/hooks · <strong>D</strong></td></tr>
+          <tr><td>İç madencilik</td><td>183 bölüm skorlandı; sıcak katman toplam 265 KB (CLAUDE.md + kapsül + pano + seans skill'leri + KILAVUZ + core). Tekrar sayımı: karar masası HTML <strong>11</strong> · görev emri 120 · teslim raporu 82 · ders kaydı 18 · emekli-terim cascade 8 · Friday devir 3</td><td><code>raporlar/2026-09/baglam-skill-adaylari-2026-09-15.md</code> · sayım</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="card bg-base-100 shadow-md hakem" id="hakem">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Hakem sonucu (maskeli, Opus 5 medium)</h2>
+      <p class="text-sm opacity-80"><strong>Hayatta-kalan çekirdek (adversarial saldırıyı atlatan):</strong> skill metadata ~100 token her seans, gövde &lt;5k token yalnız tetiklenince, script kodu bağlama girmez · CLAUDE.md statik, skill koşullu · resmî md→skill kuralı var ("multi-step procedure or only matters for one part → skill or path-scoped rule") · yükleme sırası managed→user→project→local, alt-dizin lazy, import tasarruf etmez · 200 satır / 4 MiB / MEMORY.md 200-25 KB · deterministik iş için script, plan-validate-execute, yerleşik eval yok, determinizm hook'ta · SkillsBench: 2-3 modül optimum; kendi itirafı: kazanç "daha fazla bağlam"dan da gelebilir (aynı içerik md'de mi skill'de mi ölçülmedi).</p>
+      <p class="text-sm opacity-80"><strong>Düşen:</strong> "resmî kaynak kural vermiyor" (düştü) · "en son okunan en etkili" (düştü: belge çelişkide rastgele seçimi kabul ediyor) · Kun Chen "Program Bench" atfı (düştü; yayınsız) · SkillsBench 84/+16,2 → güncel sürüm 87/+16,6. <strong>Daralan (K):</strong> Warp skill-doctor, Vercel npx skills, Codex 32 KiB, Gemini önceliği, worktree "1 commit şartı", skill-creator dört-ajan hattı. <strong>Çelişkili:</strong> platform "iki zorunlu alan" ↔ Claude Code "tüm alanlar isteğe bağlı" (iki yüzey) · md güncelleme ritmi olay-tetikli (birincil) ↔ haftalık toplu (Kun Chen blogu) · tek global md'nin çok-proje zararı hiçbir yerde ölçülmemiş. Hayatta-kalma: A1 9 sağlam / 1 daraldı / 2 düştü · A2 8 / 6 / 1 · A3 9 / 3 / 0. Tam rapor <code>cc/rapor/2026-09/rapor-2026-09-15-md-skill-hakem.md</code>.</p>
+    </div>
+  </section>
+
+  <!-- M1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M1">
+    <div class="card-body">
+      <h2 class="card-title">M1 · md hiyerarşisi — Kun Chen esinli üç yuva <span class="badge badge-outline">Katman-1 · kanon yapısı</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Bugün tek katman var: jarvis <code>CLAUDE.md</code> (proje md rolünde, 7 KB kural özeti) + core/ pointer'ları. Kullanıcı-düzeyi global md yok; Friday ve staj kendi md'leriyle ayrı. Kun Chen deseni: global minimal + proje md birikimli + koşullu bilgi skill'e. Resmî belge buna üçüncü yuvayı ekliyor: dosya-kapsamlı <code>.claude/rules/</code>.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M1','md hiyerarşisi');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) üç yuva: ~/.claude/CLAUDE.md global minimal (≤25 satır: Salih kimliği, dil, üslup/büyük-harf yasağı, md.49 sınırı, jarvis↔staj↔friday klasör ayrımı, PR kuralı) + jarvis CLAUDE.md proje (kalır, damıtılır) + .claude/rules/ paths: ile şerit kuralları (ogrenme/**, cc/**, tools/**) + kurs README'leri lazy"> <strong>(a) Üç yuva ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> <code>~/.claude/CLAUDE.md</code> ≤25 satır yazarım (her oturumda, her repoda yüklenir: Salih kimliği + dil + üslup + md.49 + klasör ayrımı + PR kuralı); jarvis CLAUDE.md'den bu satırları çıkarıp bütçeyi açarım; <code>.claude/rules/ogrenme.md</code> (<code>paths: ogrenme/**</code>) gibi 3-4 dosya-kapsamlı kural dosyası açarım (öğrenme protokolü, cc/ emir kuralları, tools/ script standardı) — yalnız o dosyalar okununca yüklenir. <strong>Artı:</strong> resmî üç yuva birebir; yan oturumlar (Sonnet/staj/Friday) global üslubu otomatik alır, büyük-harf sorunu kökten; jarvis CLAUDE.md'de ~1,5 KB açılır. <strong>Eksi:</strong> global md Cowork'ta symlink olamaz; rules/ ilk kez kurulur, yüklenme davranışı 2-3 seansta ölçülmeli (InstructionsLoaded kütüğü, M4). <strong>Gerekçe:</strong> tek belgeli, geri alınabilir, üç mekanizmayı amaçlarına göre ayırır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) yalnız global md: ~/.claude/CLAUDE.md minimal eklenir; rules/ açılmaz; gerisi aynen"> <strong>(b) Yalnız global md</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> en küçük adım, üslup/kimlik her yüzeye taşınır. <strong>Eksi:</strong> koşullu içerik (öğrenme protokolü 6 KB vb.) CLAUDE.md ya da README'lerde kalır; rules mekanizması denenmez.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) hiçbiri: mevcut pointer sistemi + skill hattı yeter; global md yok"> <strong>(c) Değişiklik yok</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> sıfır iş. <strong>Eksi:</strong> yan oturumlar kimlik/üslup kuralını yalnız hafıza dosyasından alır (auto-memory repo bazlı, staj/Friday'e taşmaz); büyük-harf gibi sorunlar yüzey yüzey tekrar eder.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M2 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M2">
+    <div class="card-body">
+      <h2 class="card-title">M2 · Bağlam uzayından skill'e çevrilecek adaylar <span class="badge badge-outline">çoklu seçim · her aday K0-K3 kapısından geçer</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Madencilik + tekrar sayımı + "koşullu bilgi → skill" kuralıyla elenmiş 6 aday. Seçilen her aday <code>skill-kapisi</code> ağacına girer (eval-önce, ≥3 eval, skill'siz baseline); md'deki kaynak bölüm pointer + tek cümleye iner (m.8). Hazine tavanı (16 skill, 7.380 char) korunur: her yeni skill için bir emekli-aday gösterilir.</p>
+      <form onsubmit="event.preventDefault(); kuyruklaCoklu(this,'M2','skill adayları');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A1 karar-masasi (T-Ü üretici; 11 tekrar; HTML şablon + kuyrukla script + kalıcı kopya; Lavish açılış-poll adımları script'e)"> <strong>A1 · karar-masasi ✅</strong> — 11 masa elle yazıldı (~200 satır/masa); şablon + script ile deterministik üretim; en yüksek tekrar, sıfır mevcut skill (gorsellestir silindi). Kaynak: masa biçimi KILAVUZ + kapsül satırı. Emekli-aday: yok gerekmez (hazine 16, tavan char ile ölçülür).</label>
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A2 ogren evrimi: ogrenme/README oturum protokolü (6,2 KB, 12 adım) + adım 5-6 ürün turu → ogren skill'ine taşınır, README pointer olur; ogren deneme→hazine (K4 kanıtı H1-H3 + G1)"> <strong>A2 · ogren skill'i evrimi ✅</strong> — protokol her ders oturumunda yükleniyor ama yalnız öğrenme yüzeyinde gerekli: Kun Chen'in birebir örneği. 4 canlı koşum kanıtı (H1-H3, G1). Deneme → hazine geçişi skill-kapisi ile.</label>
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A3 emekli-anahtar-cascade: core/baglam-anahtar-kaydi §1 ilkeler + Karar 93/08-17 deseni → skill + script (halef sözlük, README blokları, denetim); 8 kayıt"> <strong>A3 · emekli-anahtar-cascade</strong> — terim/rol emekliye ayrılınca üç katmanlı cascade (halef sözlük · README blokları · denetim scripti) iki kez elle yapıldı (metafor 08-17, Carvis 09-10); prosedür 4,5 KB core'da her seans yüklenmiyor ama "yalnız belli iş türünde" tipik. Script'li = deterministik.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A4 seans-acilis §1-2 kapıları script'e: canlı-oturum kapısı + manifest kapısı + silver tazelik → tools/acilis-kapilari.py; skill gövdesi 2 KB kısalır"> <strong>A4 · açılış kapıları script'e</strong> — seans-acilis en yüksek büyük-harf yoğunluklu ve en sık yüklenen skill (21 koşum); §1-2 (4 KB) deterministik kontrollerden oluşuyor (git log, kapsül tarihi, silver HEAD). Script'e inince skill metni yarıya iner, çıktı sorgulanabilir.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A5 KILAVUZ 'Tasarım ilkeleri' + 'Skill Standardı' (5,8 KB, S) → skill-kapisi references/ dosyasına; KILAVUZ'da pointer"> <strong>A5 · KILAVUZ bölümleri skill referansına</strong> — iki bölüm yalnız skill üretirken gerekli; skill-kapisi zaten var → EVRİM (yeni skill değil). Kazanç KILAVUZ 15,3 → ~9,5 KB.</label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="checkbox" name="secim" value="A6 friday-devir: Friday devir birimi (md+lojik → json, tools/devir-md2json.py) → gorev-emri-derleme evrimi; 3 tekrar"> <strong>A6 · Friday devir formatı</strong> — 3 tur elle; İB-84 A1 zaten script borcu. gorev-emri-derleme'ye "devir" dalı olarak evrim. Tekrar sayısı eşik altı (k=3 &lt; 5), Z2 Salih imzasıyla geçer.</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Seçimi kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M3">
+    <div class="card-body">
+      <h2 class="card-title">M3 · Skill-üretim şeması v1.1 <span class="badge badge-outline">KURAL · Katman-1 (core/)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Taslak <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code>: (1) S-kaynak = bağlam-uzayı madenciliği üçüncü aday kapısı (script + 3 soruluk yerleşim kuralı), (2) üç yuva kuralı (CLAUDE.md / rules paths / skill), (3) K0 Y2 koşullu-yük tanımı, (4) "kendinden-üretilen skill" freni (eval-önce zorunlu kalır), (5) F6 hazine-yükü (metadata ~100 token × skill sayısı), (6) determinizm katmanı (script = low freedom, plan-validate-execute; sorgulanabilirlik = script çıktısı + kütük), (7) görev icrası bağı (İB-84 A3 = script'li skill), (8) PR akışı, (9) InstructionsLoaded ölçümü. m.16 taraması taslakta: çelişki yok.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M3','şema v1.1');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) taslağı aynen core/skill-uretim-semasi.md'ye işle (v1.1, deneysel m.29; 10 koşum sonra ölçüm)"> <strong>(a) Aynen işle ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> core dosyasına "v1.1 eki" bölümü (Edit aracı; tel), d2 ağacına S-kaynak girişi, skill-kapisi SKILL.md'ye adım 0 "S-kaynak listesi var mı" satırı, SCRIPTLER satırı. <strong>Artı:</strong> emrin tamamı tek commit'te; hepsi geri alınabilir. <strong>Eksi:</strong> katsayılar kalibresiz (deneysel damga).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) yalnız S-kaynak + üç yuva + Y2 işlensin; F6/determinizm/görev-icrası bağı ilk 3 skill koşumundan sonra"> <strong>(b) Çekirdek şimdi, kalanı ölçümden sonra</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> kural sayısı artışı küçük (kural sayacı 19/100). <strong>Eksi:</strong> determinizm katmanı emrin açık parçasıydı, ertelenir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) taslak kuyrukta beklesin; önce M2 adaylarından biri üretilsin, şema o deneyimle işlensin"> <strong>(c) Önce bir skill üret, sonra şema</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Artı:</strong> şema gerçek koşumla yazılır. <strong>Eksi:</strong> ilk üretim eski şemayla koşar, S-kaynak kapısı kayıtsız kalır.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M4 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M4">
+    <div class="card-body">
+      <h2 class="card-title">M4 · Bağlam-izleme: InstructionsLoaded hook <span class="badge badge-outline">Katman-2 · deterministik ölçüm</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Hangi md dosyasının hangi seansta, hangi nedenle (açılış / alt-dizin / paths eşleşmesi / compaction) yüklendiğini kütükleyen resmî hook. Bugün "okunma" ölçümü yalnız Read çağrılarından (hareket kütüğü) türetiliyor; hook'la CLAUDE.md/rules yüklemeleri de görünür olur. İB-81'in ertelenme gerekçesi ("bağlama neyin girdiğini yalnız model bilir") tam bu kütükle karşılanır; İB-81 tetiği yine senin beyanın.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M4','InstructionsLoaded');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) şimdi kur: .claude/hooks/instructions-loaded.sh → veri/bronz/talimat-yukleme-olay.jsonl; silver tablo + v_talimat_yukleme; baglam-skill-aday.py okunma ayağı bu kütüğe bağlanır"> <strong>(a) Şimdi kur ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> hook (jsonl'e satır ekler, ~10 satır bash) + katman-hatti'ye bronz→silver ekleme + görünüm. <strong>Artı:</strong> ucuz, deterministik; S-kaynak skorunun en zayıf ayağı gerçek veriye oturur; M1 rules/ davranışı ölçülür. <strong>Eksi:</strong> stdin şeması belgede tam yok, ilk seans ham json kaydedilip şema sonra çıkarılır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) İB-81 tetiğiyle birlikte kurulsun"> <strong>(b) İB-81 ile birlikte</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Eksi:</strong> M1 rules/ ve M2 taşımalarının etkisi ölçülemez.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) kurulmasın"> <strong>(c) Kurulmasın</strong></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <!-- M5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M5">
+    <div class="card-body">
+      <h2 class="card-title">M5 · İlk üretim sırası <span class="badge badge-outline">Katman-2 sıralama</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> M2'de birden çok aday seçilirse hangisi önce? Skill-kapisi koşumu başına ~1 seans (eval yazımı + baseline + gövde + topraklama).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M5','ilk üretim');">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) A1 karar-masasi önce (en yüksek tekrar, bu masanın kendisi ilk eval vakası), sonra A2 ogren evrimi, sonra A4"> <strong>(a) karar-masasi → ogren → açılış kapıları ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Gerekçe:</strong> masa-12'nin kendisi ilk eval vakası (üretilen HTML ↔ elle yazılan bu dosya); ogren evrimi öğrenme oturumlarını hemen hafifletir; A4 seans-acilis en sık yüklenen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) A2 ogren önce (öğrenme serileri canlı, her ders etkilenir)"> <strong>(b) ogren önce</strong></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) A4 açılış kapıları önce (her seans yüklenen, determinizm kazancı en yüksek)"> <strong>(c) açılış kapıları önce</strong></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: bu HTML <code>kaynak-kodu/lavish/masa-12-2026-09-15.html</code> (Fable, 2026-09-15) · kalıcı kopya <code>raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html</code> · atlas raporları <code>cc/rapor/2026-09/rapor-2026-09-15-md-skill-*.md</code> · madencilik <code>raporlar/2026-09/baglam-skill-adaylari-2026-09-15.md</code> · şema taslağı <code>kuyruk/skill-uretim-semasi-v1.1-taslak-2026-09-15.md</code>. Hükümler deftere Karar 96 olarak iner.
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, { tag: 'hukum', text: kalem + ': ' + secim, element: form, queueKey: kalem, data: { kalem: kalem, hukum: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+function kuyruklaCoklu(form, kalem, ad) {
+  const secim = new FormData(form).getAll('secim');
+  const durum = form.querySelector('.durum');
+  const metin = secim.length ? secim.join(' | ') : 'HİÇBİRİ';
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — seçimi sohbete yaz: ' + kalem + ' ' + metin; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') seçim: ' + metin, { tag: 'hukum', text: kalem + ': ' + metin, element: form, queueKey: kalem, data: { kalem: kalem, secim: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + metin + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
