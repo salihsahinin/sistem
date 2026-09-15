@@ -54,7 +54,8 @@ def main():
     desc = fm.get('description', '')
     n = len(desc)
     gate('F1a-len', 0 < n <= 1024, f"description {n} char (≤1024; platform kesme 1536)")
-    neg = bool(re.search(r'KULLANILMAZ|KULLANMA|kullanma[:;]|KULLANMAZ|Use when.*(?:not|don\'t)|DO NOT', desc))
+    # 09-15: büyük-harf vurgusu yasak (Stop hook) → negatif tetik büyük/küçük harf duyarsız aranır
+    neg = bool(re.search(r'KULLANILMAZ|KULLANMA|kullanma[:;]|KULLANMAZ|kullanılmaz[:;]|Use when.*(?:not|don\'t)|DO NOT', desc, re.I))
     gate('F1b-negatif-tetik', neg, "negatif tetik (KULLANILMAZ/KULLANMA) " + ("var" if neg else "YOK"))
     third = not re.search(r'\b(ben|beni|bana|I can|I will|I help)\b', desc)
     gate('F1c-3.sahis', third, "3. şahıs " + ("✓" if third else "✗ (1. şahıs ifade)"))
@@ -133,7 +134,7 @@ def main():
     # ---------- şekil tahmini (FIRST: R > O > Y > Ü) + tür-özel bayraklar ----------
     d_all = (desc + ' ' + body)
     # şekil tahmini DESCRIPTION'dan (skill adları çıkarılarak — "vardiya-kapanis kendi yazar" gibi atıflar ritüel sayılmasın)
-    d_pos = re.split(r'KULLANILMAZ|KULLANMA[:;]|KULLANMAZ', desc)[0]   # yalnız pozitif tetik kısmı (negatif-tetik cümlesi şekil belirlemez)
+    d_pos = re.split(r'KULLANILMAZ|KULLANMA[:;]|KULLANMAZ|kullanma[:;]|kullanılmaz[:;]', desc, flags=re.I)[0]   # yalnız pozitif tetik kısmı (negatif-tetik cümlesi şekil belirlemez)
     d_shape = re.sub(r'[a-z]+(?:-[a-z]+)+', ' ', d_pos)
     isR = bool(re.search(r'ritüel|oturum[- ]?sınır|seans başı|seans bitimi|vardiya[- ]?(?:AÇILIŞ|KAPANIŞ|açılış|kapanış)|SessionStart|Stop hook|kadans', d_shape, re.I))
     isO = bool(re.search(r'pipeline|orkestrat|alt-ajan|çocuk skill|zincir(?:le|i)|paralel araştırma|Workflow|uçtan uca', d_shape, re.I))
