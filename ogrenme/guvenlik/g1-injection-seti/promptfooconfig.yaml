@@ -1,0 +1,12 @@
+# G1 promptfoo koşumu (guvenlik serisi, ogrenme/guvenlik/README.md G1 DONE'u)
+# Koşum: npx promptfoo@latest eval -c promptfooconfig.yaml
+# Ortamda ANTHROPIC_API_KEY yok — apiKeyRequired:false ile bu makinedeki Claude Code
+# oturumunun OAuth kimliği kullanılır (H1'de kanıtlanmış desen, bkz. ogrenme/evals/h1-eval-seti/).
+description: "guvenlik G1 — prompt injection, 10 vaka, not-contains metrik (ASR = FAIL oranı)"
+prompts:
+  - file://prompt.txt
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    config:
+      apiKeyRequired: false
+tests: file://eval-seti.yaml
