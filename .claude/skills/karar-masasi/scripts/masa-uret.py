@@ -4,6 +4,8 @@ Girdi: kalem spec'i (JSON, şema SKILL.md'de). Çıktı: DaisyUI karar masası H
 kalıcı kopya. Aynı spec → aynı HTML (rastgelelik yok). Kanona yazmaz.
 
 Kullanım: python3 masa-uret.py <spec.json> [--repo ~/jarvis] [--kuru]   (--kuru: dosya yazmaz, doğrulama basar)
+P2 (İB-88, 09-15): opsiyonel `giris` alanı (tetik öncesi giriş cümlesi); test `masa-uret-test.py` (E1-E3, masa-12 eşdeğerlik);
+eski masayı spec'e döken tersine araç `masa-spec-cikar.py`.
 Çıkış kodları: 0 üretildi · 2 spec hatası (öneri ilk sırada değil, kalem id çift, zorunlu alan eksik) · 3 masa no çakışması
 """
 import argparse, html, json, pathlib, re, sys
@@ -61,7 +63,7 @@ def uret(spec):
     n = len(spec["kalemler"])
     sablon = SABLON.read_text(encoding="utf-8")
     return (sablon.replace("{{NO}}", str(spec["no"])).replace("{{TARIH}}", spec["tarih"]).replace("{{BASLIK}}", e(spec["baslik"]))
-            .replace("{{N}}", str(n)).replace("{{TETIK}}", e(spec["tetik"])).replace("{{ONCE}}", e(spec.get("once_yapildi", "—")))
+            .replace("{{N}}", str(n)).replace("{{GIRIS}}", e(spec.get("giris", ""))).replace("{{TETIK}}", e(spec["tetik"])).replace("{{ONCE}}", e(spec.get("once_yapildi", "—")))
             .replace("{{ASOF}}", e(spec.get("asof", ""))).replace("{{KANIT}}", kanit).replace("{{HAKEM}}", hakem)
             .replace("{{KALEMLER}}", kalemler).replace("{{KARAR_NO}}", e(spec.get("karar_no", "sonraki Karar")))
             .replace("{{KAYNAK_HTML}}", f"kaynak-kodu/lavish/masa-{spec['no']}-{spec['tarih']}.html")

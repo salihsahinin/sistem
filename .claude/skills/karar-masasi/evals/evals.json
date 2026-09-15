@@ -1,7 +1,8 @@
 {
   "skill": "karar-masasi",
   "version": "0.1.0-deneysel-m29",
-  "note": "Eval-önce (K-016, şema §4b P1). Tetikleme eval'i (should_trigger / should_not_trigger) + 3 üretim testi; üretim testleri deterministik script üzerinden (scripts/masa-uret.py --kuru). Baseline (skill'siz elle yazım): masa-12, 12,4 KB, ~200 satır, 1 yazım hatası (python heredoc tırnağı) — P2'de karşılaştırılır.",
+  "note": "Eval-önce (K-016, şema §4b P1). Tetikleme eval'i (should_trigger / should_not_trigger) + 3 üretim testi; koşum scripts/masa-uret-test.py (deterministik, geçici dizin). Baseline (skill'siz elle yazım, Y1): masa-12 elle DaisyUI = 33.817 B / 218 satır / 1 yazım hatası (python heredoc tırnağı; P1 notundaki 12,4 KB yanlış sayımdı, düzeltildi 09-15). Skill'li: spec 22.218 B (masa-spec-cikar ile türetildi) → üretim 32.673 B / 223 satır, yazım hatası 0, iki koşum bayt-eşit.",
+  "p2_sonuc": {"tarih": "2026-09-15", "kosum": "python3 .claude/skills/karar-masasi/scripts/masa-uret-test.py", "gecen": "12/12", "e1": "çıkış 2 + mesaj, dosya yok", "e2": "bayt-eşit, form 7/7, önerilen ilk label", "e3": "form 7/7 · label 30/30 · checkbox 15/15 · kanıt 9/9 · kuyrukla/kuyruklaCoklu birebir · büyük-harf ihlali üretilen = elle (EVRİM, KURAL — spec metninden, üretici eklemiyor)", "baseline_bosluk_Y1": "elle yazımda 1 tırnak hatası + öneri-sırası denetimi yok; skill: hata 0, öneri-sırası kapısı çıkış 2 — Y1 karşılandı (deterministik doğrulama skill'siz koşumda yok)", "acik": "hakem bloğu tek paragraf (elle masalarda zengin blok yoksa yeter); E3 yalnız masa-12 üzerinde, eski masalar (7-11) biçim sapması ölçülmedi"},
   "description_eval": {
     "should_trigger": [
       "kararları lavish ile karar masasına aç",
