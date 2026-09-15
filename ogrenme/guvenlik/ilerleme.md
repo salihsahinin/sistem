@@ -2,7 +2,7 @@
 
 | G | Durum | Tarih | Ders kaydı | Sapma / not |
 |---|---|---|---|---|
-| G1 | — | | | |
+| G1 | kavramsal DONE, pratik KALAN | 2026-09-14 | `dersler/2026-09-14-g1-prompt-injection-i.md` | PROBE: 5 iplik de sıfırdan (H bilgi yoktu). 8/8 kutu doğru. Kalan: oyuncak ajan + 10 vaka promptfoo + gerçek ASR/Wilson GA — henüz koşulmadı. |
 | G2 | — | | | |
 | G3 | — | | | |
 | G4 | — | | | |
