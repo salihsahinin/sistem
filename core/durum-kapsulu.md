@@ -2,16 +2,16 @@
 
 *Her oturumun İLK okuduğu dosya. SICAK katman: üzerine yazılır, arşiv değildir. Bütçe ≤4 KB / ≤20 satır. FIFO: "Şu an" listesi en fazla 8 madde; 9. madde girince en eski `arsiv/kapsul-YYYY-MM-DD.md`'ye iner (silme yok). Tarihçe `raporlar/` + git log.*
 
-**Güncelleme:** 2026-09-10 tur-2 — R1+R2 dış kaynak turu + tasarım tur-2 bitti. İşçi 0, sapma 2 (md↔json amaç, 301 takibi), Jarvis'e yazım 0, R3/R4/R5 açılmadı.
+**Güncelleme:** 2026-09-16 tur-3 — A1 formatının (md + lojik blok) ilk canlı koşumu bitti: S2 kapandı, kilit alt-ajan incelemesi, tasarım tur-3. İşçi 0, emir-kaynaklı sapma 0, Jarvis'e yazım 0.
 
 ## Şu an
-- Kuruluş v0.2: CLAUDE.md · rol · kapsül · pano · defter · kutu · desenler (19 tohum) · şemalar · 2 hook (okuma-izin test 09-09: Jarvis kuyruk RED · kanon GEÇTİ) · ritüel skill'leri.
-- parti-5 devri Jarvis'e YERLEŞTİRİLDİ (Fable 09-10); A1-A10 düzeltmeleri repoda (hook v0.2 ×2, rol.md 2b → m.42(h), desen 20, CLAUDE.md 4.085 B ≤ 4.096).
-- Tur-2 BİTTİ: `cc/giden/devir-2026-09-10-tur2/r1-r2-cevap.md` — S1 **X** (Bash yol alanı belgelenmemiş) · S2 **K** (Read yol-bazlı deny belgeli, Bash yok) · S3 **D** (`agent_id`/`agent_type` + SubagentStart/Stop). Doküman adresleri `code.claude.com/docs/en/*`'e taşınmış (301).
-- Kütük v0.2 + kilit v0.2 CANLI doğrulandı (Bash `yol` dolu; heredoc yanlış-pozitifi kapandı). Kütük iki rejim taşıyor: 09-10 öncesi satırlarda `yol` boş.
-- `cc/giden/tasarim-2026-09-10-tur2.md` Salih'te: B1-B5 + 5 soru + görev formatı geçişi görüşü (md→md+blok kazançlı, md→json bugün NEGATİF).
-- AÇIK: A8 sayaç birimi (oturum ≠ devir) · emrin md/json ikizi çelişebiliyor (B2) · kaynak kapsam kuralı yok (B5).
-- Koşum sayacı 2/10 (desen yeniden-oluşumu 10'da).
+- Tur-3 bitti (`cc/giden/devir-2026-09-16-tur3/`): S2 **D** — Read yol-bazlı deny belgeli; Bash'te Read deny tanınan dosya komutlarını kapsıyor, `Bash(...)` kuralı güvenlik sınırı değil. Tek satır `Read(~/jarvis/**)` symlink yüzünden `kanon/`'u da keser; işleyen biçim alt dizin listesi (kural adayı).
+- C2: `okuma-izin.sh` `agent_id` okumuyor; yol kilidi işçide de tetiklenir (D), işçiye özgü dar alan yok (K). Statik zayıflıklar Z1 (Bash dalı Jarvis inkâr listesi, izin listesi değil) · Z2 (`cd` + göreli) · Z3 (dize kurgusu); öneri Ö1: test vakası, koşumu Jarvis'te.
+- Tur-2 cevabı uygulandı (1380c7a): kütük v0.3 · A1 format · 301 ve 1-derinlik kuralları · FIFO'da madde birincil.
+- Geçiş ölçüsü (emir-kaynaklı sapma/devir): 2 · 1 · 0 → A1 → A2 için 1/2.
+- Açık, Salih/Jarvis'te: `.aktif-devir` oturum-devam hâlinde yazılmıyor (b1) · Friday git akışı Karar 95 ile ayrışıyor (b3) · Ö1–Ö4 · C1 §3b deny listesi.
+- Kütük: v0.1 satırları denetim dışı; v0.3 ayrıştırıcısı komuttaki desen dizesini yol sanabiliyor (`/docs/en/`).
+- Koşum sayacı 3/10 (desen yeniden-oluşumu 10'da).
 
 ## Sonraki ilk iş
-0. `cc/gelen/tasarim-2026-09-09-tur1-cevap.md` gelince oku; cevaba göre şema/CLAUDE.md düzeltme adaylarını `cc/giden/` notuna yaz (kendin yazma, m.31).
+0. `cc/gelen/tasarim-2026-09-16-tur3-cevap.md` gelince oku; hükümlere göre öneri notunu `cc/giden/`e yaz (`.claude/`, `settings.json` ve şemalara dokunma).
