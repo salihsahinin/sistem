@@ -26,12 +26,14 @@ import re
 import sys
 from pathlib import Path
 
-SEMA = "devir-birimi v0.1 (A1 türev; tools/devir-md2json.py; md kazanır)"
+SEMA = "devir-birimi v0.2 (A1 türev; tools/devir-md2json.py; md kazanır; v0.2 09-16: OTURUM · KAPANIŞ · KAYNAKLAR · AÇILIŞ_ADIMLARI, olcen→gorev, kapali_goz_ozeti liste, .aktif-devir yazımı)"
 ZORUNLU = [
     "DEVİR_ID", "KAYNAK_YÜZEY", "HEDEF_KATMAN", "TARİH", "EMİR_YOLU",
     "AMAÇ", "ÇIKTI", "DONE", "DALLAR", "NİÇİN_ŞİMDİ", "BAĞLI_DEVİR", "KAPALI_GÖZ_ÖZETİ", "ÖLÇEN",
     "EAGER", "LAZY", "KARAR_ÖZETİ", "YASAK", "YAZMA_İZNİ", "BÜTÇE", "YENİDEN_DENEME", "GİT_İZNİ",
+    "OTURUM", "KAPANIŞ",  # v0.2 (Friday tur-3 a2, a3)
 ]
+ISTEGE_BAGLI = ["KAYNAKLAR", "AÇILIŞ_ADIMLARI", "PUSH", "KARAR_YETKİSİ"]  # v0.2 a1; URL geçen görevde KAYNAKLAR zorunlu
 DAL_TAVANI = 5  # ajan-metodolojisi: dal+koşul ≤5, aşarsa böl
 CIT = re.compile(r"```lojik[ \t]*\n(.*?)\n```", re.S)
 
@@ -110,6 +112,11 @@ def dogrula(v: dict) -> list[str]:
             hatalar.append(f"dal '→' içermiyor (koşul → eylem): {d[:60]}")
     if not str(v["YENİDEN_DENEME"]).isdigit():
         hatalar.append("YENİDEN_DENEME tam sayı değil")
+    if v["OTURUM"] not in ("devam", "yeni"):
+        hatalar.append("OTURUM 'devam' ya da 'yeni' olmalı")
+    metin_butun = " ".join(str(x) for x in (v["AMAÇ"], v["NİÇİN_ŞİMDİ"], *liste(v["DALLAR"]), *v["DONE"].values()))
+    if re.search(r"https?://|/docs/", metin_butun) and not v.get("KAYNAKLAR"):
+        hatalar.append("blokta URL/doküman anılıyor ama KAYNAKLAR yok (Friday tur-3 a1: kaynak bağlayıcı metinde olmalı)")
     return hatalar
 
 
@@ -131,17 +138,20 @@ def json_uret(v: dict, emir_yolu: str) -> dict:
                 "amac": v["AMAÇ"], "nicin_simdi": v["NİÇİN_ŞİMDİ"],
                 "ciktilar": dict(v["ÇIKTI"]), "done_cikti_basina": dict(v["DONE"]),
                 "done_yuklemi": done_birlesik, "dallar": liste(v["DALLAR"]),
-                "yeniden_deneme": int(v["YENİDEN_DENEME"]),
+                "yeniden_deneme": int(v["YENİDEN_DENEME"]), "olcen": v["ÖLÇEN"],
+                "kapanis": liste(v["KAPANIŞ"]),
             },
+            "oturum": {"durum": v["OTURUM"], "acilis_adimlari": liste(v.get("AÇILIŞ_ADIMLARI") or [])},
+            "kaynaklar": dict(v["KAYNAKLAR"]) if isinstance(v.get("KAYNAKLAR"), dict) else liste(v.get("KAYNAKLAR") or []),
             "baglam": {
                 "eager": liste(v["EAGER"]), "lazy": liste(v["LAZY"]), "karar_ozeti": liste(v["KARAR_ÖZETİ"]),
-                "yasak": liste(v["YASAK"]), "kapali_goz_ozeti": v["KAPALI_GÖZ_ÖZETİ"],
+                "yasak": liste(v["YASAK"]), "kapali_goz_ozeti": liste(v["KAPALI_GÖZ_ÖZETİ"]),
             },
             "butce": butce_ayristir(v["BÜTÇE"]),
             "yetki": {
                 "karar_yetkisi": str(v.get("KARAR_YETKİSİ", "false")).lower() == "true",
                 "yazma_izni": liste(v["YAZMA_İZNİ"]), "git_izni": v["GİT_İZNİ"],
-                "push": str(v.get("PUSH", "false")).lower() == "true", "olcen": v["ÖLÇEN"],
+                "push": str(v.get("PUSH", "false")).lower() == "true",
             },
         },
     }
@@ -182,6 +192,9 @@ def main(argv=None) -> int:
         sys.stdout.write(metin); return 0
     hedef = Path(a.cikti) if a.cikti else yol.parent / f"{v['DEVİR_ID']}.json"
     hedef.write_text(metin, encoding="utf-8")
+    # b1 (Friday tur-3): kütük v0.3 devir_id'yi cc/gelen/.aktif-devir'den okur; "oturum devam" hâlinde seans-acilis koşmaz →
+    # dosyayı emri yazan taraf (bu script) bırakır; Friday geri-dönüşte siler.
+    (yol.parent / ".aktif-devir").write_text(v["DEVİR_ID"] + "\n", encoding="utf-8")
     print(f"TÜRETİLDİ: {hedef} ({len(metin)} B; çıktı {len(v['ÇIKTI'])} · dal {len(liste(v['DALLAR']))})")
     return 0
 

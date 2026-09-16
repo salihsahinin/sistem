@@ -47,6 +47,10 @@ YENİDEN_DENEME: 2
 GİT_İZNİ: pathspec-only
 PUSH: false
 KARAR_YETKİSİ: false
+OTURUM: devam
+KAPANIŞ:
+  - geri-dönüş 10+2 alan
+  - git add <yol> + commit; push yok
 ```
 """
 
@@ -68,7 +72,9 @@ class Test(unittest.TestCase):
         self.assertEqual(len(j["devir"]["gorev"]["ciktilar"]), 2)
         self.assertIn("[C1]", j["devir"]["gorev"]["done_yuklemi"])
         self.assertEqual(j["devir"]["butce"]["arac_cagri_tavani"], 40)
-        self.assertEqual(j["devir"]["yetki"]["olcen"], "Jarvis ana-sıra (yapan ≠ ölçen)")
+        self.assertEqual(j["devir"]["gorev"]["olcen"], "Jarvis ana-sıra (yapan ≠ ölçen)")
+        self.assertEqual(j["devir"]["oturum"]["durum"], "devam")
+        self.assertEqual((d / ".aktif-devir").read_text().strip(), "devir-2026-09-16-test")
         self.assertFalse(j["devir"]["yetki"]["push"])
 
     def test_eksik_alan(self):
@@ -101,6 +107,17 @@ class Test(unittest.TestCase):
         r3 = subprocess.run([sys.executable, str(SCRIPT), str(d / "gorev.md"), "--dogrula", str(j)], capture_output=True, text=True)
         self.assertEqual(r3.returncode, 3)
         self.assertIn("md kazanır", r3.stderr)
+
+    def test_kaynaklar_zorunlu_url_varsa(self):
+        r, _ = kos(TAM.replace("AMAÇ: tek cümle amaç", "AMAÇ: https://code.claude.com/docs/en/permissions sayfasını aç"))
+        self.assertEqual(r.returncode, 2)
+        self.assertIn("KAYNAKLAR", r.stderr)
+        r2, _ = kos(TAM.replace("AMAÇ: tek cümle amaç", "AMAÇ: https://code.claude.com/docs/en/permissions sayfasını aç\nKAYNAKLAR:\n  R1: https://code.claude.com/docs/en/permissions"))
+        self.assertEqual(r2.returncode, 0, r2.stderr)
+
+    def test_oturum_degeri(self):
+        r, _ = kos(TAM.replace("OTURUM: devam", "OTURUM: belki"))
+        self.assertEqual(r.returncode, 2)
 
     def test_cit_yok(self):
         r, _ = kos("# md ama lojik çiti yok\n")
