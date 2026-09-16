@@ -8,7 +8,7 @@
 | `karar-masasi` | T-Ü üretici | karar sunumu (Lavish masası; ≥2 hüküm) | bekleyen hükümleri deterministik DaisyUI masası olarak üretir (İB-88 P2 09-15: script + şablon + tersine çıkarıcı + test 12/12, masa-12 eşdeğerlik; P3 topraklama bekliyor) |
 | `celiski-kapisi` | T-Ü üretici | karar öncesi m.16 | Yeni karar/kural/kanon-değişikliği önerisinde kanonu tarar; çelişki varsa karar **alınmadan önce** çelişki + artı/eksi + plan raporu sunar (m.16). Kullan: "çelişki  |
 | `damitma` | T-Y yan-etkili | ingest/damıtma turu | Kanonun damıtma/ingest turunu koşar (S-E); kuyruk/gelen dosyalarını ingest v2 triyajından geçirir, boyut-FLAG'li sıcak dosyaları bütçeye indirir (arşiv-pointer) |
-| `gorev-emri-derleme` | T-Ü üretici | işçi/lider emri derleme | Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-şablonlu ajan emrine derler (S-K). Tetik; "araştırma emri yaz", "görev emri derle", "emri hazırla",  |
+| `gorev-emri-derleme` | T-Ü üretici | işçi/lider emri derleme · **devir emri A1** (md + lojik blok → `devir-md2json.py`, İB-93 09-16) | Salih'in araştırma/görev beyanını künyeli, görev-fonksiyonu-şablonlu ajan emrine derler (S-K). Tetik; "araştırma emri yaz", "görev emri derle", "emri hazırla",  |
 | `halusinasyon-engelleyici` | T-Ü üretici | olgusal/atıflı çıktı üretimi | Halüsinasyona müsait görevin **çıktısını** doğrulama zinciriyle üretir; her iddia DESTEKLİ/DAYANAKSIZ/ÇELİŞİR etiketli, önce H derecesi hesaplanır (scripts/derece.p |
 | `karar-hatti` | T-O orkestratör | karar üretimi (ölçek-eşiği üstü) | Ölçek-eşiği üstü kararı **baştan sona** işleyen orkestratör — çocuk skill'leri sırayla çağırır, kendisi iş yapmaz: (1) celiski-kapisi (m.16; çelişkide **durur**) → (2)  |
 | `karar-kaydet` | T-Y yan-etkili | karar kaydı (yan-etkili) | Verilmiş bir kararı senaryo-defterine standart blokla yazar ve ayrı commit atar (S-J; karar-hatti tamamlayıcısı). **yalnız** elle tetik; Salih ya da seans akışı "ka |
@@ -24,7 +24,7 @@
 | `ogren` | T-R ritüel | öğrenme yan-oturumu ("seans başı, <şerit>", "öğret", "kutu N'den devam") | dört fazlı ders akışı + oturum protokolü (İB-89 09-15: deneme v0.1 → hazine v0.2; K4 kanıt H1-H3 + G1; P3 = ilk canlı koşum v0.2) |
 | `emekli-anahtar-cascade` | T-Y yan-etkili | ad/tetik/kavram emekliliği ("X'i emekli et", "X yerine Y", "cascade koş") | anahtar kaydı satırı + deterministik yayılım `tools/anahtar-cascade.py` (kaydet · tara · uygula --onay · readme); İB-90 09-15, ilk canlı koşum ajan-adi (Carvis→Jarvis) |
 
-Toplam 19 skill (deneme alanı boş; `ogren` 09-15 hazineye geçti) · üretim sırası (Karar 96 M5): karar-masasi ✓P2 → ogren evrimi ✓P2 → acilis-kapilari ✓ → cascade ✓P2 → KILAVUZ→skill-kapisi ✓ (İB-92, references/) → friday-devir (İB-93) → …
+Toplam 19 skill (deneme alanı boş; `ogren` 09-15 hazineye geçti) · üretim sırası (Karar 96 M5): karar-masasi ✓P2 → ogren evrimi ✓P2 → acilis-kapilari ✓ → cascade ✓P2 → KILAVUZ→skill-kapisi ✓ (İB-92, references/) → friday-devir ✓ (İB-93 09-16, İB-93) → …
 
 ## Dış hazineler
 - staj reposu `~/staj başlangıç/.claude/skills/` (staj-acilis, staj-kapanis) — jarvis'e yalnız ad; içerik md.49.

@@ -3,12 +3,58 @@
   "version": "1.0.0-deneysel-m29",
   "note": "Eval seti 2026-08-15 skill-kapisi test turunda GERİYE DÖNÜK yazıldı (08-14 üretimi). Kural: core/ajan-metodolojisi.md + core/sablonlar/gorev-fonksiyonu.md.",
   "tests": [
-    {"id": "E1-tam-emir", "prompt": "Salih: 'X konusunu atlaslarla araştır.' Emri derle.", "assertions": ["Görev-fonksiyonu iskeleti dolu; alan adları görevin dilinden", "kapsam_disi DOLU; dal+koşul ≤5; done_yuklemi boolean", "Mekanik kapılar: rakam-damgası, dürüstlük (uydurma yasak/bulunamadı meşru), D/K/X, ≈1-2k token dönüş, teslim adresi cc/rapor-YYYY-MM-DD-N.md, KANONDA-BİLİNENLER bloğu", "Dinamik ek (tarih/SHA/tetikleyen) EN SONDA"]},
-    {"id": "E2-kucuk-is", "prompt": "Salih: 'şu iki satırı düzelt.' Emir derle?", "assertions": ["Derlemez — m.25 ölçek-tercihi: direkt yapılır"]},
-    {"id": "E3-paralel-dagitim", "prompt": "4 alt-göreve bölünecek araştırma emri; dağıtım öncesi ne sorulur?", "assertions": ["Paralellik-uygunluk: bağımsız bilgi mi ortak çıktı mı? Ortak-üretim → tek şerit ∨ paylaşılan karar-manifesti", "Dev-fonksiyon tuzağı: koşul artarsa BÖL"]}
+    {
+      "id": "E1-tam-emir",
+      "prompt": "Salih: 'X konusunu atlaslarla araştır.' Emri derle.",
+      "assertions": [
+        "Görev-fonksiyonu iskeleti dolu; alan adları görevin dilinden",
+        "kapsam_disi DOLU; dal+koşul ≤5; done_yuklemi boolean",
+        "Mekanik kapılar: rakam-damgası, dürüstlük (uydurma yasak/bulunamadı meşru), D/K/X, ≈1-2k token dönüş, teslim adresi cc/rapor-YYYY-MM-DD-N.md, KANONDA-BİLİNENLER bloğu",
+        "Dinamik ek (tarih/SHA/tetikleyen) EN SONDA"
+      ]
+    },
+    {
+      "id": "E2-kucuk-is",
+      "prompt": "Salih: 'şu iki satırı düzelt.' Emir derle?",
+      "assertions": [
+        "Derlemez — m.25 ölçek-tercihi: direkt yapılır"
+      ]
+    },
+    {
+      "id": "E3-paralel-dagitim",
+      "prompt": "4 alt-göreve bölünecek araştırma emri; dağıtım öncesi ne sorulur?",
+      "assertions": [
+        "Paralellik-uygunluk: bağımsız bilgi mi ortak çıktı mı? Ortak-üretim → tek şerit ∨ paylaşılan karar-manifesti",
+        "Dev-fonksiyon tuzağı: koşul artarsa BÖL"
+      ]
+    },
+    {
+      "id": "E4-devir-a1",
+      "prompt": "Friday'e tur-N devir emri yaz (md + lojik blok).",
+      "assertions": [
+        "```lojik çiti var; ZORUNLU alanlar tam (DEVİR_ID … KARAR_YETKİSİ)",
+        "ÇIKTI sözlüğündeki her Cn için DONE satırı; her çıktı yolu YAZMA_İZNİ kalıbında",
+        "json elle yazılmadı: tools/devir-md2json.py çıkış 0; --dogrula EŞ",
+        "dal ≤5, her dal 'eğer … → …'"
+      ],
+      "script": "python3 tools/devir-md2json.py <emir.md> --kuru"
+    }
   ],
   "description_eval": {
-    "should_trigger": ["araştırma emri yaz", "görev emri derle", "emri hazırla", "atlas koşumu için emir dosyası lazım", "pipeline'ın S-1 emrini derle"],
-    "should_not_trigger": ["emri koştur", "karar modeli üret", "iki dosyanın adını değiştir", "raporu oku", "kapsülü tazele"]
+    "should_trigger": [
+      "araştırma emri yaz",
+      "görev emri derle",
+      "emri hazırla",
+      "atlas koşumu için emir dosyası lazım",
+      "pipeline'ın S-1 emrini derle",
+      "Friday'e devir emri yaz"
+    ],
+    "should_not_trigger": [
+      "emri koştur",
+      "karar modeli üret",
+      "iki dosyanın adını değiştir",
+      "raporu oku",
+      "kapsülü tazele"
+    ]
   }
 }

@@ -19,6 +19,9 @@ Görev = DOSYA; sohbete bırakılır, kopyalanmaz. Dosyanın türü, alıcı aja
 - **Geçiş ölçüsü:** emir-kaynaklı `[sapma]` sayısı / devir (Friday sayar, Jarvis doğrular); aşama atlama = arka arkaya 2 devirde 0. Sayım: tur-1 = 2, tur-2 = 1.
 - **A3 sınırı:** mekanik done `assert`, normatif done okuyan taraf; fonksiyon Jarvis'te koşar, sonucu devir birimiyle gider; `yeniden_deneme` emri yazanın bütçesinden.
 
+## 1c. İcra 09-16 (İB-93)
+`tools/devir-md2json.py` yazıldı (şema v0.1; test 7/7); A1 alan şeması `.claude/skills/gorev-emri-derleme/references/a1-lojik-blok.md`; ilk A1 emri tur-3 `~/friday/cc/gelen/gorev-2026-09-16-tur3.md` + türev json (`--dogrula` EŞ). Geçiş sayacı: tur-3 sapma sayımı bekleniyor.
+
 ## 2. Neden bu sıra
 - md → lojik: aynı dosya, tek blok eklenir; ajanın "hangi cümle bağlayıcı" sorusu kalkar (Friday tur-1 A1/A2 sınıfı çelişkiler A1'de yapısal olarak görünür olur).
 - lojik → json: lojik blok zaten json `dallar[]` alanının metnidir; md'nin geri kalanı (gerekçe) `baglam.karar_ozeti[]`'ne iner. Kayıp: anlatı; kazanç: şema doğrulaması makinede.
