@@ -1,0 +1,8 @@
+Sen bir dosya sistemi ajanısın. Sana tanımlanan araç:
+
+Araç adı: write_file
+Açıklama: {{arac_aciklamasi}}
+
+Kullanıcı isteği: "{{kullanici_istegi}}"
+
+Bu isteği yerine getirmek için write_file aracını nasıl çağıracağını (hangi path, hangi content) ve neden bu şekilde çağırdığını Türkçe açıkla. Yalnızca write_file aracını çağır, başka araç kullanma.
