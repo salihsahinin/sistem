@@ -26,9 +26,14 @@ YASAK = [os.path.join(home, ".claude", "projects"), os.path.join(home, "friday")
          os.path.join(repo, "kuyruk", "senaryo-defteri.md"), os.path.join(repo, "fikir-kutusu.md"),
          os.path.join(repo, "veri", "bronz", "hareket-olay.jsonl"), os.path.join(repo, "veri", "bronz", "baglam-olay.jsonl"),
          os.path.join(repo, "veri", "bronz", "altajan-okuma-olay.jsonl")]
+# 09-17 ilk canlı koşum bulgusu: harness büyük araç çıktısını ~/.claude/projects/<proje>/<oturum>/tool-results/ altına yazıp
+# alt-ajana "oku" der; bu alt-ajanın KENDİ araç çıktısıdır, başka bağlam penceresi değildir → tool-results/ dizini muaf.
+def muaf_mi(r):
+    return (os.sep + "tool-results" + os.sep) in r and r.startswith(os.path.join(home, ".claude", "projects") + os.sep)
 def yasak_mi(yol):
     if not yol: return False
     r = os.path.realpath(yol if os.path.isabs(yol) else os.path.join(repo, yol))
+    if muaf_mi(r): return False
     return any(r == y or r.startswith(y + os.sep) for y in YASAK)
 adaylar = []
 if arac in ("Read", "Grep", "Glob"):
@@ -38,7 +43,7 @@ elif arac == "Bash":
     cmd = cmd.replace("~", home).replace("$HOME", home).replace("${HOME}", home)
     adaylar = re.findall(r"(?<![\w@:])/?[\w.\-]+(?:/[\w.\-]+)+", cmd)
 kotu = sorted({a for a in adaylar if a and yasak_mi(a)})
-if kotu:
+if kotu and not os.environ.get("JARVIS_HOOK_TEST"):   # test koşumu bronz kütüğe yazmaz (09-17: 09-10 testi 4 yapay satır bırakmıştı)
     d = os.path.join(repo, "veri", "bronz"); os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, "altajan-okuma-olay.jsonl"), "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": datetime.datetime.now(datetime.timezone.utc).astimezone().isoformat(timespec="seconds"),

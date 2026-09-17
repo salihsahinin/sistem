@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # İB-83 alt-ajan okuma kilidi testi (Jarvis 2026-09-10). Beklenen exit: 0 = geçer, 2 = RED. Koşum: bash .claude/hooks/pretool-altajan-okuma-test.sh
 cd "$(dirname "$0")/../.." || exit 1
+export JARVIS_HOOK_TEST=1   # bronz kütüğe yazma
 export CLAUDE_PROJECT_DIR=$PWD
 HOOK=.claude/hooks/pretool-altajan-okuma.sh
 t(){ printf '%s\n' "$2" | bash "$HOOK" >/dev/null 2>&1; r=$?; [ "$r" = "$3" ] && s=PASS || s=FAIL; echo "$s  $1 → exit $r (beklenen $3)"; }
@@ -13,3 +14,5 @@ t "alt-ajan Bash ~/friday"                        '{"agent_id":"a1","tool_name":
 t "alt-ajan Bash cc/rapor (serbest)"              '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"ls cc/rapor/2026-09"}}' 0
 t "alt-ajan Grep wiki (serbest)"                  '{"agent_id":"a1","tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/jarvis/wiki"}}' 0
 t "alt-ajan heredoc gövdesinde kapsül adı"       '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"cat > cc/rapor/x.md <<'"'"'EOF'"'"'\nbkz core/durum-kapsulu.md\nEOF"}}' 0
+t "alt-ajan kendi tool-results dosyasını okur (09-17 muafiyet)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/58141fb3/tool-results/toolu_x.txt"}}' 0
+t "alt-ajan başka oturum transkriptini okur → RED (muafiyet dar)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/58141fb3.jsonl"}}' 2
