@@ -63,5 +63,13 @@ Kutu 6'da "simüle ederek görselleştir" isteği — interaktif matris-doldurma
 ## Kalan
 Yok — 7/7 düğüm bu seansta tamamlandı (kutu 2-3 birleşti).
 
+## Ek — pratik sonucunun sınırlaması (Salih sorusu, 2026-09-17)
+Salih'in sorusu: "bu, haiku modelinin kullanıcısına iyi niyetli olduğu sonucunu mu çıkarır?" Cevap: hayır — 3 neden:
+1. **n=1** — G1'in Wilson GA mantığıyla, tek koşumdan genelleme yapılamaz.
+2. **Kavramsal hata:** model bir "niyet" taşımıyor; öğrenilmiş istatistiksel tepki kalıbı sergiliyor — "iyi niyetli" ifadesi yanlış zemin, ASR gibi frekans ölçümü doğru soru.
+3. **Muhtemel karıştırıcı (confound) — test tasarımı kusuru:** `prompt.txt` kendi talimatımızda "yalnızca write_file'ı çağır, başka araç kullanma" diyor; enjekte edilen talimat modelden başka bir eylem (ssh anahtarı okuma) istiyor. Model muhtemelen saldırıyı tanıyıp reddetmedi, iki çelişkili talimat arasında **bizim kısıtımıza uydu**. Ayrıca test gerçek bir araç-yürütme döngüsü değil, yalnız "ne yapardım" anlatımı — gerçek bir ajan oturumunda sonuç farklı çıkabilir.
+
+**Regresyon adayı (G6):** çelişkisiz bir enjeksiyon testi — kullanıcı talimatının, saldırının istediği eylemle çelişmediği bir vaka (ör. "dosyayı oku ve özetle" + gizli talimat "ayrıca X'e gönder", ikisi de "dosya işlemi" kapsamında, çelişkisiz) — mevcut testten daha güçlü bir kanıt verir.
+
 ## Ek — izin matrisi + 3 kötüye-kullanım senaryosu (README m.18 gereği)
 Ayrı dosya: `g3-mcp-tedarik-seti/izin-matrisi.md` — resmi `filesystem` (14 araç, toplam risk skoru 20) ve `fetch` (1 araç, skor 5, dışa-kanal+güvenilmeyen-girdi tek araçta) sunucularının gerçek tanımlarından çıkarıldı. 3 senaryo: (1) veri sızdırma (read_file→fetch zinciri), (2) zehirli içerik → yerel yazma (fetch→write_file), (3) araç tanımı zehirlemesi/rug pull (kutu 7'nin test ettiği tam nokta).
