@@ -23,7 +23,7 @@ Düğüm listesi (≤8):
 5. Şans payı kavramı — neden ham yüzde uyum yeterli değil
 6. Cohen κ formülü + sembol tablosu + elle örnek (Karar 73)
 7. DeepEval G-Eval tanıtımı (hazırı temel al)
-8. DONE tanıtımı: 10 vakaya rubrikli yargıç, kendi elle puanla karşılaştır
+8. `DONE` tanıtımı: 10 vakaya rubrikli yargıç, kendi elle puanla karşılaştır
 
 ## Düğümler
 ### Kutu 1 — LLM-as-judge nedir
@@ -37,12 +37,12 @@ Düğüm listesi (≤8):
 - Soru: rubrik neden iyi? → Cevap: b. Sonuç: **DOĞRU**.
 
 ### Kutu 3 — Yanlılıkları azaltma pratiği
-- Akıl-adımı: konum yanlılığını TEST etmek için A-B/B-A iki sıralı koşum; uzunluk yanlılığını AZALTMAK için rubrikte "uzunluk kriter değil" ifadesi.
+- Akıl-adımı: konum yanlılığını **test** etmek için A-B/B-A iki sıralı koşum; uzunluk yanlılığını **azaltmak** için rubrikte "uzunluk kriter değil" ifadesi.
 - Örnek: çeviri A/B karşılaştırması iki sırayla, sonuç değişirse yanlılık kanıtı.
 - Soru: konum yanlılığını test etme yolu? → Cevap: d. Sonuç: **DOĞRU**.
 
 ### Kutu 4 — Çift-değerlendirme nasıl yapılır
-- Akıl-adımı: insan + yargıç LLM aynı vakaları BAĞIMSIZ puanlar (birbirini görmeden), sonra karşılaştırılır.
+- Akıl-adımı: insan + yargıç LLM aynı vakaları **bağımsız** puanlar (birbirini görmeden), sonra karşılaştırılır.
 - Örnek: 10 çözüm, Salih ayrı puanlar, yargıç LLM ayrı puanlar, sonra sütunlar karşılaştırılır.
 - Soru: neden bağımsız puanlama önemli? → Cevap: b (çapraz kirlenme riski). Sonuç: **DOĞRU**.
 
@@ -62,11 +62,11 @@ Düğüm listesi (≤8):
 - Soru 1: `criteria` neye karşılık gelir? → Cevap verilen: e (bilmiyorum, yanlış). Düzeltme yapıldı.
 - Soru 2 (tekrar, farklı açıdan): kutu 2'deki rubrik neyi tanımlıyordu? → Cevap: b. Sonuç: **AÇIK** (ilk denemede kaçırıldı, düzeltmeyle geçildi).
 
-### Kutu 8 — DONE tanıtımı: 10 vakaya rubrikli yargıç, elle puanla karşılaştır
+### Kutu 8 — done tanıtımı: 10 vakaya rubrikli yargıç, elle puanla karşılaştır
 - Akıl-adımı: rubrik (kutu2) + yargıç LLM (kutu1,7) + elle bağımsız puan (kutu4) + κ (kutu6) — hepsi tek pratikte birleşiyor. Bu adım (elle puanlama) otomatikleştirilemez, Salih'e ait.
 - Altyapı hazırlandı: `h3-eval-seti/` (AKIS.md 4 adımlı akış, eval-seti-plain.yaml/eval-seti-judge.yaml, elle-puanlama.md worksheet). Koşum ve elle puan Salih'i bekliyor.
 
-## AÇIK düğümler
+## Açık düğümler
 - Kutu 7: `GEval`/`criteria`'nın rubrik karşılığı olduğunu ilk denemede bağlayamadı; düzeltmeyle geçildi.
 
 ## Salih notu
@@ -74,7 +74,7 @@ Düğüm listesi (≤8):
 ## Kalan
 (yok — 8/8 düğüm işlendi)
 
-## DONE (haftalık çıktı — kısmi, Salih'in elle puanı bekleniyor)
+## Done (haftalık çıktı — kısmi, Salih'in elle puanı bekleniyor)
 - `h3-eval-seti/AKIS.md`: 4 adımlı bağımsız çift-değerlendirme akışı.
 - `h3-eval-seti/eval-seti-plain.yaml` (yargısız, kör çıktı) + `eval-seti-judge.yaml` (llm-rubric, pass=doğru/fail=yanlış).
 - `h3-eval-seti/elle-puanlama.md`: Salih'in dolduracağı worksheet.

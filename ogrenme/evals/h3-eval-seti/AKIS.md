@@ -1,4 +1,4 @@
-# H3 DONE — çift-değerlendirme akışı (kutu 4: bağımsızlık şartı)
+# H3 done — çift-değerlendirme akışı (kutu 4: bağımsızlık şartı)
 
 Amaç: aynı 10 vakayı hem sen (insan) hem de yargıç LLM bağımsız puonlasın, sonra Cohen κ (kutu 6) ile karşılaştıralım.
 
@@ -10,7 +10,7 @@ npx promptfoo@latest view
 ```
 Tarayıcıda açılan arayüzde her vakanın **modelin ürettiği tam cevabını** (muhakeme + sonuç) oku. Henüz hiçbir PASS/FAIL/puan yok — sadece ham çıktı var.
 
-## Adım 2 — SEN elle puanla (yargıcı görmeden)
+## Adım 2 — sen elle puanla (yargıcı görmeden)
 `elle-puanlama.md` dosyasını aç, 10 satırın her biri için modelin nihai cevabının doğru olup olmadığına **kendi başına** karar ver (doğru/yanlış), "Senin kararın" sütununu doldur. Bu adımı bitirmeden adım 3'e geçme — geçersen bağımsızlık bozulur (kutu 4).
 
 ## Adım 3 — yargıç LLM koşumu

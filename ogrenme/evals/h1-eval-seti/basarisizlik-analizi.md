@@ -1,6 +1,6 @@
-# H1 koşum hata analizi — 2/20 FAIL (2026-09-11, kutu 5 regresyon seti bağı)
+# H1 koşum hata analizi — 2/20 faıl (2026-09-11, kutu 5 regresyon seti bağı)
 
-Model: `anthropic:messages:claude-haiku-4-5-20251001`. Sonuç: 18/20 PASS (%90).
+Model: `anthropic:messages:claude-haiku-4-5-20251001`. Sonuç: 18/20 `PASS` (%90).
 
 ## Vaka A — yüzde artışının tabanı
 - Soru: Josh $80.000'a ev alıyor, $50.000 tamirat yapıyor, değer %150 artıyor. Kâr?

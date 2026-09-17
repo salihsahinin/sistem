@@ -1,6 +1,6 @@
 # MIT 6.042J İlerleme (resmi OCW takvimi; 25 ders + midterm + final)
 
-Durum değerleri: `—` başlanmadı · `DERS` kayıt üretildi, Salih okuyor · `KAPANDI` Salih beyanıyla · `YARIM(+not)`. Bölüm sütunu = eşlik eden Lehman-Leighton-Meyer kurs-notu bölümü (Kısım I İspatlar 1-4 · II Yapılar 5-8 · III Sayma 9-13 · IV Olasılık 14-20; Bölüm 8 OCW'de yok).
+Durum değerleri: `—` başlanmadı · `DERS` kayıt üretildi, Salih okuyor · `KAPANDI` Salih beyanıyla · `YARIM(+not)`. Bölüm sütunu = eşlik eden Lehman-Leighton-Meyer kurs-notu bölümü (Kısım I İspatlar 1-4 · II Yapılar 5-8 · **ııı** Sayma 9-13 · IV Olasılık 14-20; Bölüm 8 OCW'de yok).
 
 ## Kısım I — İspatlar (L1–L5)
 | L | Konu | Bölüm | Durum | Ders kaydı |
@@ -18,10 +18,10 @@ Durum değerleri: `—` başlanmadı · `DERS` kayıt üretildi, Salih okuyor ·
 | 7 | Matching problems | Ch.5 | — | |
 | 8 | Graph theory II: minimum spanning trees | Ch.5 | — | PS4 teslim |
 | 9 | Communication networks | Ch.6 Directed graphs | — | |
-| 10 | Graph theory III | Ch.6 | — | PS5 teslim |
+| 10 | Graph theory **ııı** | Ch.6 | — | PS5 teslim |
 | 11 | Relations, partial orders, and scheduling | Ch.7 Relations and partial orders | — | |
 
-## Kısım III — Sayma (L12–L17) + Midterm
+## Kısım ııı — Sayma (L12–L17) + Midterm
 | L | Konu | Bölüm | Durum | Ders kaydı |
 |---|---|---|---|---|
 | 12 | Sums | Ch.9 Sums and asymptotics | — | PS6 teslim |

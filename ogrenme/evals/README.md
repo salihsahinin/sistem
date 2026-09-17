@@ -8,11 +8,11 @@
 - **md.49:** şirket/staj verisi kullanilmaz; tüm pratik kamu veri ve kamu görev setleriyle (aşağıda adlandırılmış). Staj bağlantısı yalnız "hangi beceri" düzeyinde kalır.
 - **Karar 73 matematik kuralı:** her derste ≥1 formül: tanım + sembol tablosu + elle işletilmiş sayısal örnek.
 - **Karar 68 anakronizm:** araç sürümleri/pazar iddiaları AS-OF damgalı; ders içinde canlı doğrulanır (araç docs).
-- **Öğretim biçimi (hafıza kuralları 08-17/09-08/09-09):** benzetme değil doğrudan tanım + mekanizma + somut örnek; görsel metinden önce ve atıflı; kutu içi tek cümle açıklama; cevap başına az konu; yeni konuda önce terim tabanı yoklanır (deneme skill'i `ogren`: PROBE → PLAN → TEACH → CLOSE, K4 ilk canlı koşum bu seriyle yapılabilir).
+- **Öğretim biçimi (hafıza kuralları 08-17/09-08/09-09):** benzetme değil doğrudan tanım + mekanizma + somut örnek; görsel metinden önce ve atıflı; kutu içi tek cümle açıklama; cevap başına az konu; yeni konuda önce terim tabanı yoklanır (deneme skill'i `ogren`: `PROBE` → `PLAN` → `TEACH` → `CLOSE`, K4 ilk canlı koşum bu seriyle yapılabilir).
 - **Hazırı temel al:** promptfoo / DeepEval / Inspect AI'ın kendi kavramları ve şemaları öğrenilir; benzeri sıfırdan yazılmaz. Kendi kodu yalnız "mekanizmayı elle görmek" için, ≤50 satır.
 
-## Müfredat — 7 hafta (her hafta 1-2 oturum, oturum 1,5-2,5 sa; DONE yazılı)
-| H | Konu | Sektör başlığı (EN; AS-OF ≤2026-01 model hafızası, ders içinde doğrulanır — Salih 09-14) | Tek-satır DONE (Salih yapar) | Formül (Karar 73) | Kamu veri / araç |
+## Müfredat — 7 hafta (her hafta 1-2 oturum, oturum 1,5-2,5 sa; done yazılı)
+| H | Konu | Sektör başlığı (EN; AS-OF ≤2026-01 model hafızası, ders içinde doğrulanır — Salih 09-14) | Tek-satır `DONE` (Salih yapar) | Formül (Karar 73) | Kamu veri / araç |
 |---|---|---|---|---|---|
 | H1 | **Eval nedir, neden test≠eval:** görev · vaka · metrik · yargıç; 3 katman (uçtan-uca → trajektori → bileşen); regresyon seti fikri | *LLM Evaluation (Evals)* · *Test vs Eval* | 20 vakalık kendi eval seti YAML'da (girdi · beklenen · metrik), promptfoo ile 1 koşum | doğruluk / pass@k tanımı: pass@k = 1 − C(n−c,k)/C(n,k) elle n=5,c=2,k=1 | promptfoo (docs canlı) · vaka kaynağı: GSM8K alt-kümesi 20 soru |
 | H2 | **Deterministik kontroller:** exact/contains/regex/JSON-şema · araç adı + parametre doğrulaması · maliyet-gecikme metrikleri | *Code-based / Deterministic Assertions* · *Rule-based Evals* | 20 vakaya 3 deterministik assert türü; ilk "kırmızı" vakayı bilerek üret | precision/recall/F1 tanımı + 2×2 tablo elle | promptfoo assert türleri · DeepEval `GEval` dışı metrikler |

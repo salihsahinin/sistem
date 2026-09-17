@@ -13,27 +13,27 @@ Dersin ilk cümlesi kursun tanımıdır: bu kurs **hesaplama problemlerini çöz
 
 - Ku bunu tahtada **iki parçalı graf (bipartite graph)** olarak çizer: solda girdiler, sağda çıktılar, kenarlar "bu girdi için bu çıktı doğrudur" der (4:55).
 - **Tek doğru çıktı şart değil:** "dizide 5 değerini içeren bir indeks ver" probleminde birden çok 5 olabilir — hepsi doğru (4:26).
-- **Problemi kenar listesiyle vermeyiz** (girdi 1→çıktı 0, girdi 2→çıktı 3... diye saymak sonsuza dek sürer). Onun yerine **doğrulanabilir yüklem (predicate)** veririz: (girdi, çıktı) çifti verildiğinde çıktının doğru olup olmadığını KONTROL edebilen bir özellik (5:30). Örn.: "verdiğin indekse git, bak — 5 mi?"
+- **Problemi kenar listesiyle vermeyiz** (girdi 1→çıktı 0, girdi 2→çıktı 3... diye saymak sonsuza dek sürer). Onun yerine **doğrulanabilir yüklem (predicate)** veririz: (girdi, çıktı) çifti verildiğinde çıktının doğru olup olmadığını **kontrol** edebilen bir özellik (5:30). Örn.: "verdiğin indekse git, bak — 5 mi?"
 
 **Matematik köşesi — sembollerle:** problem $P \subseteq I \times O$ bir bağıntıdır ($I$ girdi uzayı, $O$ çıktı uzayı); yüklem $v(i,o) \in \{\text{doğru},\text{yanlış}\}$, $(i,o) \in P$ testinin hesaplanabilir halidir.
 
 **Dersin örneği — doğum günü eşleşmesi:** "Bu sınıfta aynı doğum gününe sahip bir çift var mı?"
-- 365'ten fazla öğrenci varsa cevap otomatik EVET — **güvercin yuvası ilkesi (pigeonhole principle)**: $n$ nesne $k$ kutuya konur ve $n > k$ ise en az bir kutuda ≥2 nesne vardır (6:17–6:29).
+- 365'ten fazla öğrenci varsa cevap otomatik **evet** — **güvercin yuvası ilkesi (pigeonhole principle)**: $n$ nesne $k$ kutuya konur ve $n > k$ ise en az bir kutuda ≥2 nesne vardır (6:17–6:29).
 - Soruyu ilginç tutmak için doğum ANI'na inceltilir (yıl + gün + saat): olası-değerler uzayı büyür (6:39).
 - Ku'nun olasılık dipnotu (6:56): değer uzayı öğrenci sayısının **karesinden** büyükse çakışma olasılığı yarının altına düşer (klasik doğum günü problemi) — ama bu kurs olasılıkla uğraşmaz, **deterministik** algoritma ister (7:26).
-- **Asıl mesaj (7:45–8:56):** bu kurs SABİT bir sınıf için değil, **keyfî büyüklükte girdi (arbitrarily sized input)** alan GENEL problemler için algoritma kurar: bu derslik, yan derslik, 1 milyar kullanıcılı veritabanı — aynı algoritma.
+- **Asıl mesaj (7:45–8:56):** bu kurs **sabit** bir sınıf için değil, **keyfî büyüklükte girdi (arbitrarily sized input)** alan **genel** problemler için algoritma kurar: bu derslik, yan derslik, 1 milyar kullanıcılı veritabanı — aynı algoritma.
 
-**Kontrol sorusu 1:** "Bir dizide 5'in İLK geçtiği indeksi döndür" problemi ile "5 içeren HERHANGİ bir indeksi döndür" problemi bağıntı olarak nasıl farklıdır? (cevap en altta)
+**Kontrol sorusu 1:** "Bir dizide 5'in **ilk** geçtiği indeksi döndür" problemi ile "5 içeren **herhangi** bir indeksi döndür" problemi bağıntı olarak nasıl farklıdır? (cevap en altta)
 
 ---
 
 ## Blok 2 — Algoritma nedir? (9:05–15:08) ⭐ Karar 73 dayanağı
 
-**Tanım (dersin tanımı, dk 9:40):** Algoritma, **sabit boyutlu bir makine/prosedürdür**: girdi verilirse bir çıktı üretir — ve ürettiği çıktı, problemin o girdi için doğru saydığı çıktılardan biri OLMALIDIR.
+**Tanım (dersin tanımı, dk 9:40):** Algoritma, **sabit boyutlu bir makine/prosedürdür**: girdi verilirse bir çıktı üretir — ve ürettiği çıktı, problemin o girdi için doğru saydığı çıktılardan biri **olmalıdır**.
 
 - **Algoritma bir fonksiyondur** (10:14): girdileri çıktılara götürür; her girdiye **tek** çıktı (deterministik). Problem çok-doğru-çıktılı bir bağıntı olabilir; algoritma o bağıntının içinden tek-değerli bir fonksiyon seçer.
 - Öğrenci sorusuna netleştirme (14:11): buradaki "fonksiyon", fonksiyonel programlamadaki saf-fonksiyon değil, **matematiksel fonksiyon**: her girdiye tam bir çıktı.
-- **Çözmek (solves)** ne demek (10:35): algoritma, tanım kümesindeki HER problem girdisi için doğru bir çıktı döndürüyorsa problemi çözer.
+- **Çözmek (solves)** ne demek (10:35): algoritma, tanım kümesindeki **her** problem girdisi için doğru bir çıktı döndürüyorsa problemi çözer.
 - Sezgi (14:46): algoritma bir **tarif (recipe)** — sırayla yapılacak işler dizisi; sonunda çıktı döner.
 
 **Matematik köşesi:** problem $P \subseteq I \times O$ iken algoritma $f: I \to O$ fonksiyonudur; "çözer" $\iff \forall i \in I: (i, f(i)) \in P$.
@@ -41,7 +41,7 @@ Dersin ilk cümlesi kursun tanımıdır: bu kurs **hesaplama problemlerini çöz
 **Dersin örneği — doğum günü algoritması** (öğrencinin önerisi, 11:01; dersin kendi sözcükleriyle):
 1. Bir **kayıt (record)** tut (başta boş).
 2. Öğrencileri bir sıraya koy, tek tek görüş (interview):
-   - doğum günü kayıtta VARSA → çifti döndür, dur;
+   - doğum günü kayıtta **varsa** → çifti döndür, dur;
    - yoksa → (ad, doğum günü) kaydına ekle.
 3. Son öğrenci de eşleşmeden biterse → `None` döndür.
 
@@ -49,7 +49,7 @@ Bu sözel betimleme düzeyi, problem setlerindeki teori sorularında beklenen d�
 
 **⌥ Carvis notu (kurs içeriği değil):** dk 9:40–10:21 pasajı Karar 73'ün dayanağıdır — "Jarvis özünde bir makinedir": Jarvis de bu tanımın kapsamında girdi→çıktı dönüşümü yapan sabit boyutlu bir prosedürdür; deterministik tasarım ilkesi (CLAUDE.md §6) bu tanımın işletim halidir. Kanon: [core/varlik-felsefesi.md](../../../core/varlik-felsefesi.md) §1.
 
-**Kontrol sorusu 2:** Doğum günü PROBLEMI ile doğum günü ALGORİTMASI arasındaki fark nedir — hangisi bağıntı, hangisi fonksiyon, "çözer" hükmü hangi niceleyiciyle kurulur?
+**Kontrol sorusu 2:** Doğum günü **problemı** ile doğum günü **algoritması** arasındaki fark nedir — hangisi bağıntı, hangisi fonksiyon, "çözer" hükmü hangi niceleyiciyle kurulur?
 
 ---
 
@@ -59,11 +59,11 @@ Bu sözel betimleme düzeyi, problem setlerindeki teori sorularında beklenen d�
 
 **Dersin kanıtı — doğum günü algoritmasının doğruluğu** (17:16–24:45), dersin kendi kurgusuyla:
 - **Tümevarım değişkeni:** $k$ = görüşülmüş öğrenci sayısı (kayıttaki öğrenci sayısı).
-- **Hipotez (19:16):** "İlk $k$ öğrenci bir eşleşme içeriyorsa, algoritma $k+1$. öğrenciyle görüşmeden ÖNCE bir eşleşme döndürmüştür."
+- **Hipotez (19:16):** "İlk $k$ öğrenci bir eşleşme içeriyorsa, algoritma $k+1$. öğrenciyle görüşmeden **önce** bir eşleşme döndürmüştür."
 - **Taban durumu (21:13):** $k = 0$ — öğrencinin bulduğu gibi 1 ya da 2 değil, **0**: ilk 0 öğrenci eşleşme içeremez; öncül yanlış olduğu için hipotez boş yere (vacuously) doğrudur (21:30).
 - **Tümevarım adımı (21:56):** hipotez $k = k'$ için doğru olsun; $k = k'+1$'e bak. İki durum:
-  1. İlk $k'$ zaten eşleşme içeriyordu → hipotez gereği algoritma ZATEN döndürmüş (22:35).
-  2. İlk $k'$ eşleşme içermiyor → ilk $k'+1$ içinde eşleşme varsa, eşleşme $k'+1$. öğrenciyi İÇERMEK ZORUNDA (yoksa öncekilerde olurdu, 23:01). Algoritma tam da bunu doğrudan kontrol eder: $k'+1$. öğrencinin doğum günü kayıtta mı? Varsa döndürür; yoksa hipotez $k'+1$ için yeniden kurulmuş olur (24:26). ∎
+  1. İlk $k'$ zaten eşleşme içeriyordu → hipotez gereği algoritma **zaten** döndürmüş (22:35).
+  2. İlk $k'$ eşleşme içermiyor → ilk $k'+1$ içinde eşleşme varsa, eşleşme $k'+1$. öğrenciyi **içermek zorunda** (yoksa öncekilerde olurdu, 23:01). Algoritma tam da bunu doğrudan kontrol eder: $k'+1$. öğrencinin doğum günü kayıtta mı? Varsa döndürür; yoksa hipotez $k'+1$ için yeniden kurulmuş olur (24:26). ∎
 - **Kapanış bağlantısı (20:10):** $k = n$ koy: eşleşme varsa son öğrenciden önce dönmüş; yoksa algoritma `None` döndürür — olması gerektiği gibi.
 - Ku'nun tümevarım övgüsü (22:17): tümevarım problemi "her şeyi bir anda düşünmekten" kurtarır, her adımda küçük bir arayüze indirger.
 
@@ -75,9 +75,9 @@ Bu sözel betimleme düzeyi, problem setlerindeki teori sorularında beklenen d�
 
 ## Blok 4 — Verimlilik: zamanı değil, işlemi say (25:34–36:48)
 
-**Verimlilik nedir (25:59):** yalnız "ne kadar hızlı" değil — **başka yaklaşımlara GÖRE ne kadar hızlı**.
+**Verimlilik nedir (25:59):** yalnız "ne kadar hızlı" değil — **başka yaklaşımlara göre ne kadar hızlı**.
 
-**Neden kronometre tutmayız (26:29–27:32):** ölçülen süre makineye bağlıdır (hesap makinesi vs IBM araştırma bilgisayarı — aynı kod, farklı süre). İstenen makineden bağımsız ölçü. **Fikir:** her temel işlemin sabit süre aldığını varsay; algoritmanın kaç **temel işlem (fundamental operation)** yaptığını **say**.
+**Neden kronometre tutmayız (26:29–27:32):** ölçülen süre makineye bağlıdır (hesap makinesi vs **ıbm** araştırma bilgisayarı — aynı kod, farklı süre). İstenen makineden bağımsız ölçü. **Fikir:** her temel işlemin sabit süre aldığını varsay; algoritmanın kaç **temel işlem (fundamental operation)** yaptığını **say**.
 
 **Performans girdi boyutuna bağlıdır (29:10):** boyut genelde $n$ ile gösterilir ama dikkat (30:08): $n \times n$ dizi verdiysem girdinin boyutu $n^2$'dir; graf verdiysem boyut = düğüm sayısı + kenar sayısı (30:28).
 
@@ -118,17 +118,17 @@ Elle doğrulama (formülün işletimi): $\log_2 1000 \approx 9{,}97 \approx 10$ 
 
 **Elle işletme (adres hesabı):** $w=32$: $2^{32}$ bayt $= 4 \times 2^{30}$ bayt $= 4$ GiB ✓ · $w=64$: $2^{64}$ bayt $= 16 \times 2^{60}$ bayt $= 16$ EiB ✓.
 
-**Kontrol sorusu 5:** Word-RAM'de $n$ kelimelik bir bloğun TAMAMINI okumak neden $\Theta(n)$'dir, $O(1)$ değil?
+**Kontrol sorusu 5:** Word-RAM'de $n$ kelimelik bir bloğun **tamamını** okumak neden $\Theta(n)$'dir, $O(1)$ değil?
 
 ---
 
 ## Blok 6 — Veri yapısı + ilk örnek: StaticArray (42:32–44:24)
 
 **Tanım:** veri yapısı (data structure) = sabit-olmayan miktarda veriyi saklayıp üzerinde bir **işlem kümesi** sunan düzen. İşlemler topluluğuna **arayüz (interface)** denir. Kursun iki ana arayüz ailesi:
-- **Dizi/Sequence:** öğelere DIŞSAL sıra (birinci, sonuncu, $n$'inci) — sıra benim dayattığım.
-- **Küme/Set:** öğelere İÇSEL sıra (anahtar/keye göre sorgu) — sıra verinin kendinden.
+- **Dizi/Sequence:** öğelere **dışsal** sıra (birinci, sonuncu, $n$'inci) — sıra benim dayattığım.
+- **Küme/Set:** öğelere **içsel** sıra (anahtar/keye göre sorgu) — sıra verinin kendinden.
 
-Aynı arayüz farklı veri yapılarıyla FARKLI performansta gerçeklenebilir — kursun ana teması bu.
+Aynı arayüz farklı veri yapılarıyla **farklı** performansta gerçeklenebilir — kursun ana teması bu.
 
 **İlk veri yapısı — Static Array** (sabit genişlikte hücreler, sabit uzunluk):
 | İşlem | Maliyet |
@@ -137,7 +137,7 @@ Aynı arayüz farklı veri yapılarıyla FARKLI performansta gerçeklenebilir �
 | `get_at(i)` — $i$. hücredeki kelimeyi oku | $\Theta(1)$ |
 | `set_at(i, x)` — $i$. hücreye $x$ yaz | $\Theta(1)$ |
 
-$\Theta(1)$ erişimin sebebi Word-RAM sözleşmesidir: adres = taban + $i$ (aritmetik $O(1)$) + adresli okuma ($O(1)$). Hücredeki kelime daha büyük bir nesnenin ADRESİNİ tutabilir. Python karşılığı: `tuple` + `set_at` ≈ statik dizi; `list` **dinamik dizidir** (L2'nin konusu).
+$\Theta(1)$ erişimin sebebi Word-RAM sözleşmesidir: adres = taban + $i$ (aritmetik $O(1)$) + adresli okuma ($O(1)$). Hücredeki kelime daha büyük bir nesnenin **adresini** tutabilir. Python karşılığı: `tuple` + `set_at` ≈ statik dizi; `list` **dinamik dizidir** (L2'nin konusu).
 
 ---
 
@@ -190,7 +190,7 @@ Dersin verdiği iki strateji (notların son bölümü — bu tablo kursun omurga
 | Dynamic Array (L02) | Merge Sort (L03) | · Depth-First Search (L10) |
 | Sorted Array (L03) | Counting Sort (L05) | · Topological Sort (L10) |
 | Direct-Access Array (L04) | Radix Sort (L05) | Bellman-Ford (L12) |
-| Hash Table (L04) | AVL Sort (L07) | Dijkstra (L13) |
+| Hash Table (L04) | **avl** Sort (L07) | Dijkstra (L13) |
 | Balanced Binary Tree (L06-07) | Heap Sort (L08) | Johnson (L14) |
 | Binary Heap (L08) | | Floyd-Warshall (L18) |
 
@@ -203,12 +203,12 @@ Dersin verdiği iki strateji (notların son bölümü — bu tablo kursun omurga
 ---
 
 ## Kontrol sorularının cevapları
-1. "İLK indeks" bağıntısında her girdinin TEK doğru çıktısı vardır (bağıntı zaten fonksiyondur); "herhangi bir indeks"te bir girdiye birden çok doğru çıktı düşebilir — algoritma yine tek çıktı seçmek zorundadır.
-2. Problem = $P \subseteq I \times O$ bağıntısı (çok-doğru-çıktı serbest); algoritma = $f: I \to O$ fonksiyonu; çözer $\iff \forall i: (i, f(i)) \in P$ — niceleyici HER girdi üzerinde evrensel.
-3. Hipotez koşullu önermedir: "ilk $k$'de eşleşme VARSA...". $k=0$'da öncül yanlıştır (0 kişide eşleşme olamaz); öncülü yanlış koşullu önerme mantıkça doğrudur (vacuous truth).
+1. "**ilk** indeks" bağıntısında her girdinin **tek** doğru çıktısı vardır (bağıntı zaten fonksiyondur); "herhangi bir indeks"te bir girdiye birden çok doğru çıktı düşebilir — algoritma yine tek çıktı seçmek zorundadır.
+2. Problem = $P \subseteq I \times O$ bağıntısı (çok-doğru-çıktı serbest); algoritma = $f: I \to O$ fonksiyonu; çözer $\iff \forall i: (i, f(i)) \in P$ — niceleyici **her** girdi üzerinde evrensel.
+3. Hipotez koşullu önermedir: "ilk $k$'de eşleşme **varsa**...". $k=0$'da öncül yanlıştır (0 kişide eşleşme olamaz); öncülü yanlış koşullu önerme mantıkça doğrudur (vacuous truth).
 4. Girdi boyutu $n + m$ olduğundan doğrusal zaman $\Theta(n+m)$ demektir — yalnız $\Theta(n)$ değil.
-5. CPU tek adımda yalnız $O(1)$ kelimeye dokunabilir; $n$ kelimeye dokunmak en az $n$ ayrı adım ister.
-6. İç döngü (`for i in range(k)`): $k$. öğrenci için kayıttaki $k$ girişin HEPSİYLE karşılaştırma yapılır; toplam $\sum k = n(n-1)/2$ karşılaştırma → $\Theta(n^2)$. Yapıyı değiştirmeden (lineer taramalı kayıt) bundan kaçış yok.
+5. **cpu** tek adımda yalnız $O(1)$ kelimeye dokunabilir; $n$ kelimeye dokunmak en az $n$ ayrı adım ister.
+6. İç döngü (`for i in range(k)`): $k$. öğrenci için kayıttaki $k$ girişin **hepsiyle** karşılaştırma yapılır; toplam $\sum k = n(n-1)/2$ karşılaştırma → $\Theta(n^2)$. Yapıyı değiştirmeden (lineer taramalı kayıt) bundan kaçış yok.
 
 ## Durum
 - Bulanık blok bildirimi bekleniyor (numarayla). Sonraki adım: R1 (asimptotik gösterimin formal tanımları — dersin kendisi yarınki recitation'a devretti) ∨ L2 (Data Structures, Salih video izleyince).

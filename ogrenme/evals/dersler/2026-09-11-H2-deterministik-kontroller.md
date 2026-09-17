@@ -1,11 +1,11 @@
 # Deterministik kontroller: exact/contains/regex/JSON-şema · araç-parametre doğrulaması · maliyet-gecikme — ders 2 (2026-09-11; ogren v0.1)
 
 ## Ön-bağlam
-H1 dersinden taşınan (aynı oturum, yeniden PROBE edilmedi):
-- assert/unit test kavramı: DOĞRU (kutu 1)
-- eval ≠ test, `contains` metriği: DOĞRU (kutu 2, 6, 7 — fiilen YAML'da yazıp koşturdu)
+H1 dersinden taşınan (aynı oturum, yeniden `PROBE` edilmedi):
+- assert/unit test kavramı: `DOĞRU` (kutu 1)
+- eval ≠ test, `contains` metriği: `DOĞRU` (kutu 2, 6, 7 — fiilen YAML'da yazıp koşturdu)
 - accuracy (temel) biliniyor; **precision/recall sınırı H1'de zaten bulunmuştu: bilinmiyor** (H1 S5) — bu derste sıfırdan işlenecek.
-- Cost/Latency/Tokens rakamlarını H1 promptfoo çıktısında GÖRDÜ ("Cost: $0.00066", "Latency: 1.9s") ama henüz tanımlı değil.
+- Cost/Latency/Tokens rakamlarını H1 promptfoo çıktısında **gördü** ("Cost: $0.00066", "Latency: 1.9s") ama henüz tanımlı değil.
 
 ## Anlayış haritası
 | İplik | Seviye | Kanıt (soru no) |
@@ -27,7 +27,7 @@ Düğüm listesi (≤8):
 5. F1 skoru formülü
 6. Elle 2×2 örnek (Karar 73)
 7. Araç-parametre assert türü (kısa — İplik zaten ileri seviyede, pratik promptfoo söz dizimi eklenir)
-8. İlk "kırmızı" vaka bilerek üretme + haftalık DONE tanıtımı
+8. İlk "kırmızı" vaka bilerek üretme + haftalık `DONE` tanıtımı
 
 ## Düğümler
 ### Kutu 1 — Regex nedir
@@ -42,8 +42,8 @@ Düğüm listesi (≤8):
 
 ### Kutu 3 — JSON şema pratik uygulama (`type: is-json`)
 - Akıl-adımı: `is-json` geçerli JSON mu diye bakar; opsiyonel `value` şema verirse tip/zorunlu-alan kontrolü de yapar. (Canlı doğrulandı.)
-- Örnek: şema `sonuc: number, required` — `{"sonuc":68}` PASS, `{"sonuc":"68"}` FAIL.
-- Soru: `{"sonuc":"68"}` (metin) ne olur? → Cevap: a (FAIL, tip uyuşmazlığı). Sonuç: **DOĞRU**.
+- Örnek: şema `sonuc: number, required` — `{"sonuc":68}` `PASS`, `{"sonuc":"68"}` `FAIL`.
+- Soru: `{"sonuc":"68"}` (metin) ne olur? → Cevap: a (`FAIL`, tip uyuşmazlığı). Sonuç: **DOĞRU**.
 
 ### Kutu 4 — Precision & recall tanımı + 2×2 tablo
 - Akıl-adımı: 2×2 tablo (TP/FP/FN/TN); precision=TP/(TP+FP), recall=TP/(TP+FN).
@@ -65,15 +65,15 @@ Düğüm listesi (≤8):
 ### Kutu 7 — Araç-parametre assert türü (`type: is-valid-function-call`)
 - Akıl-adımı: promptfoo'da araç çağrısının kendi şemasına uyup uymadığını `is-valid-function-call` kontrol eder (kutu 3'teki is-json mantığının araç-çağrısı versiyonu).
 - Örnek: `getWeather(sehir:string)` beklerken `getWeather({"sehir":34})` → tip uyuşmazlığı.
-- Soru: bu durumda sonuç ne? → Cevap: a (FAIL). Sonuç: **DOĞRU**.
+- Soru: bu durumda sonuç ne? → Cevap: a (`FAIL`). Sonuç: **DOĞRU**.
 
 ### Kutu 8 — İlk "kırmızı" vaka bilerek üretme
-- Akıl-adımı: bilerek FAIL vermesi beklenen vaka = eval altyapısının/assert'in gerçekten çalıştığının kanıtı (TDD "red" aşamasının eval karşılığı).
-- Örnek: beklenen değeri kasıtlı yanlış yazmak (23+45=?→"999"), FAIL çıkarsa assert çalışıyor demektir.
+- Akıl-adımı: bilerek `FAIL` vermesi beklenen vaka = eval altyapısının/assert'in gerçekten çalıştığının kanıtı (**tdd** "red" aşamasının eval karşılığı).
+- Örnek: beklenen değeri kasıtlı yanlış yazmak (23+45=?→"999"), `FAIL` çıkarsa assert çalışıyor demektir.
 - Soru: kırmızı vaka eklemenin amacı? → Cevap: a. Sonuç: **DOĞRU**.
 - Salih notu: art arda sorularda doğru cevap hep "a" idi, şık konumu tahmin edilebilir hale geldi → hafızaya kalıcı düzeltme olarak işlendi (feedback-quiz-dogru-cevap-rastgele-konum), bundan sonra rastgele dağıtılacak.
 
-## AÇIK düğümler
+## Açık düğümler
 - Kutu 5: F1 formülünü ilk denemede yanlış uyguladı (pay/payda karıştı), 2. denemede farklı sayılarla düzeltti.
 
 ## Salih notu
@@ -83,9 +83,9 @@ Düğüm listesi (≤8):
 ## Kalan
 (yok — 8/8 düğüm işlendi)
 
-## DONE (haftalık çıktı)
+## Done (haftalık çıktı)
 - `h2-eval-seti/`: aynı 20 GSM8K vakası (pointer: h1-eval-seti/KAYNAK.md) + 1 bilerek-kırmızı vaka (21 toplam).
 - 3 deterministik assert türü dağıtıldı: `contains`×7 (+1 kırmızı vaka) · `regex`×7 · `equals`+`transform`×6.
-- Prompt güncellendi: model artık "SONUC: <sayı>" ile bitiriyor (regex/equals'ın güvenilir çalışması için).
-- Koşum sonucu (2026-09-11): **18/21 PASS (%85,71)**, 3 FAIL. Beklenenden 1 fazla FAIL: vaka 21 (kırmızı, beklendiği gibi) + **aynı 2 gerçek hata H1'den tekrar çıktı** (Josh ev — yüzde tabanı belirsizliği, Carlos limon ağacı — break-even sonrası kâr). Farklı prompt formatı ("SONUC:" etiketi) ve farklı/daha sıkı assert türleriyle (regex, equals) de aynı yanlış cevaplar geldi.
-- Sonuç: bu 2 hata tesadüf değil, **tekrarlanabilir model davranışı** — kutu 5'teki (H1) regresyon seti fikrinin canlı kanıtı. Kırmızı vakanın FAIL vermesi, `contains`/`regex`/`equals` üçünün de gerçekten çalıştığını doğruladı (kutu 8).
+- Prompt güncellendi: model artık "**sonuc**: <sayı>" ile bitiriyor (regex/equals'ın güvenilir çalışması için).
+- Koşum sonucu (2026-09-11): **18/21 `PASS` (%85,71)**, 3 `FAIL`. Beklenenden 1 fazla `FAIL`: vaka 21 (kırmızı, beklendiği gibi) + **aynı 2 gerçek hata H1'den tekrar çıktı** (Josh ev — yüzde tabanı belirsizliği, Carlos limon ağacı — break-even sonrası kâr). Farklı prompt formatı ("**sonuc**:" etiketi) ve farklı/daha sıkı assert türleriyle (regex, equals) de aynı yanlış cevaplar geldi.
+- Sonuç: bu 2 hata tesadüf değil, **tekrarlanabilir model davranışı** — kutu 5'teki (H1) regresyon seti fikrinin canlı kanıtı. Kırmızı vakanın `FAIL` vermesi, `contains`/`regex`/`equals` üçünün de gerçekten çalıştığını doğruladı (kutu 8).

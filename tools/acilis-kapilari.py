@@ -14,7 +14,7 @@ Kullanım: python3 tools/acilis-kapilari.py [--repo ~/jarvis] [--is "<anahtar>"]
 Çıkış: 0 tüm kapılar temiz · 1 en az bir kapı uyarı (ŞÜPHE ∨ koşmuş-aday ∨ BAYAT) · 2 repo/git okunamadı.
 Çıktı ≤ ~1,5 KB (KB-50 bağlam bütçesi); rakamlar sayım, kestirim yok.
 """
-import argparse, datetime as dt, glob, json, os, pathlib, re, sqlite3, subprocess, sys
+import pathlib, argparse, datetime as dt, glob, json, os, pathlib, re, sqlite3, subprocess, sys
 
 
 def sh(cmd, cwd):
@@ -76,6 +76,17 @@ def kapi_canli(repo, dk, simdi):
     r["canli_transkript"] = canli_tr  # bu oturum dahil
     wt = [l for l in sh("git worktree list", repo).splitlines() if l.strip()]
     r["worktree"] = len(wt) - 1 if wt else 0
+    # 09-17: yan oturum worktree'si main'in gerisindeyse eski kanon (Karar 97 öncesi caps) + eski hook yolları yüklenir →
+    # model eski üslubu taklit eder, Stop hook sessiz düşer (guvenlik-2 vakası: 34/36 hook çağrısı "No such file"). Kanıt kapısı.
+    r["worktree_geride"] = []
+    for l in wt[1:]:
+        yol = l.split()[0]
+        geride = sh("git rev-list --count %s..main" % (l.split("[")[-1].rstrip("]") if "[" in l else "HEAD"), repo).strip() or "?"
+        try:
+            hook_eski = "CLAUDE_PROJECT_DIR" not in (pathlib.Path(yol) / ".claude" / "settings.json").read_text(encoding="utf-8")
+        except Exception:
+            hook_eski = None
+        r["worktree_geride"].append((yol.rsplit("/", 1)[-1], geride, hook_eski))
     dallar = sh("git for-each-ref --format='%(refname:short)|%(committerdate:iso-strict)' refs/heads refs/remotes/origin", repo)
     taze_dal = []
     for l in dallar.splitlines():
@@ -90,6 +101,10 @@ def kapi_canli(repo, dk, simdi):
     r["durum"] = "ŞÜPHE" if suphe else "TEMİZ"
     r["not"] = ("son commit %s dk önce, kapsül kapanışı %s; canlı transkript %d (bu oturum dahil); worktree %d — başka oturum açık mı? TEK soru; git add <yol> (H4)"
                 % (son["yas_dk"], "eski" if kapsul_eski else "güncel", canli_tr, r["worktree"])) if suphe else "son commit %s dk önce; canlı transkript %d" % (son["yas_dk"], canli_tr)
+    for ad, geride, hook_eski in r["worktree_geride"]:
+        if geride not in ("0", "?") or hook_eski:
+            r["not"] += " · worktree %s main'in %s commit gerisinde%s → yan oturumu kapat, dalı merge et, main'den yeni worktree (Karar 95 EK)" % (
+                ad, geride, " + hook yolları eski (CLAUDE_PROJECT_DIR yok)" if hook_eski else "")
     return r
 
 

@@ -1,4 +1,4 @@
-# MIT 6.006 İlerleme (resmi OCW takvimi; sıra DEĞİŞMEZ — sadakat sözleşmesi README'de)
+# MIT 6.006 İlerleme (resmi OCW takvimi; sıra değişmez — sadakat sözleşmesi README'de)
 
 Durum değerleri: `—` başlanmadı · `VİDEO` Salih izledi, ders kaydı bekliyor · `DERS` ders kaydı üretildi, Salih okuyor · `KAPANDI` Salih beyanıyla · `YARIM(+not)`.
 
@@ -14,7 +14,7 @@ Durum değerleri: `—` başlanmadı · `VİDEO` Salih izledi, ders kaydı bekli
 | 3 | L5: Linear Sorting | — | |
 | 3 | R5 · PS-oturum 3 · Problem Set 2 teslim | — | |
 | 4 | L6: Binary Trees, Part 1 | — | |
-| 4 | L7: Binary Trees, Part 2: AVL | — | |
+| 4 | L7: Binary Trees, Part 2: **avl** | — | |
 | 4 | R6 · R7 · PS-oturum 4 · Problem Set 3 teslim | — | |
 | 5 | L8: Binary Heaps | — | |
 | 5 | L9: Breadth-First Search | — | |
@@ -38,7 +38,7 @@ Durum değerleri: `—` başlanmadı · `VİDEO` Salih izledi, ders kaydı bekli
 | 9 | L15: Dynamic Programming, Part 1: Recursive Algorithms | — | |
 | 9 | L16: Dynamic Programming, Part 2: Subproblems | — | |
 | 9 | R15 · R16 · PS-oturum 8 | — | |
-| 10 | L17: Dynamic Programming, Part 3: APSP, Parens, Piano | — | |
+| 10 | L17: Dynamic Programming, Part 3: **apsp**, Parens, Piano | — | |
 | 10 | R17 · Problem Set 7 teslim · **Quiz 2** | — | |
 | 11 | L18: Dynamic Programming, Part 4: Pseudopolynomials | — | |
 | 11 | L19: Complexity | — | |

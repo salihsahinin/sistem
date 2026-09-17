@@ -27,13 +27,13 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 
 ## Düğümler
 ### Kutu 1 — Birim testi nedir
-- Akıl-adımı: unit test = sabit girdi için sabit beklenen çıktıyı kontrol eden assert; eşitse PASS, değilse FAIL.
+- Akıl-adımı: unit test = sabit girdi için sabit beklenen çıktıyı kontrol eden assert; eşitse `PASS`, değilse `FAIL`.
 - Örnek: `assert topla(2,3)==5`.
-- Soru: `kare(4)` 15 döndürürse ne olur? → Cevap: FAIL (gerçek≠beklenen). Sonuç: **DOĞRU**.
+- Soru: `kare(4)` 15 döndürürse ne olur? → Cevap: `FAIL` (gerçek≠beklenen). Sonuç: **DOĞRU**.
 
 ### Kutu 2 — Eval nedir, test'ten farkı
 - Akıl-adımı: LLM çıktısı stokastik → tam-eşleşme assert yetersiz; eval = metrik/yargıçla esnek değerlendirme.
-- Örnek: "Paris" vs "Fransa'nın başkenti Paris'tir" — assert FAIL eder, eval doğru sayabilir.
+- Örnek: "Paris" vs "Fransa'nın başkenti Paris'tir" — assert `FAIL` eder, eval doğru sayabilir.
 - Soru: test/eval farkını özetleyen seçenek → Cevap: a (sabit beklenen vs metrik/yargıç). Sonuç: **DOĞRU**.
 
 ### Kutu 3 — Eval bileşenleri: görev · vaka · metrik · yargıç
@@ -61,7 +61,7 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 - Akıl-adımı: promptfoo = YAML'daki vakaları okuyup modeli çağıran, assert'e göre PASS/FAIL hesaplayan CLI aracı.
 - Örnek: config'te prompt şablonu + provider + tests; `promptfoo eval` 20 satırlık sonuç tablosu üretir.
 - Soru: `promptfoo eval` ne yapar? → Cevap: a. Sonuç: **DOĞRU**.
-- Salih notu: sadece okunan örnek yeterli değil, bizzat yapılan bir mini-pratik adımı istendi → kutu 6/7 sonrasına "şimdi sen dene" eklendi; haftalık DONE zaten bunun genişletilmiş hali.
+- Salih notu: sadece okunan örnek yeterli değil, bizzat yapılan bir mini-pratik adımı istendi → kutu 6/7 sonrasına "şimdi sen dene" eklendi; haftalık `DONE` zaten bunun genişletilmiş hali.
 
 ### Kutu 8 — pass@k formülü (Karar 73)
 - Formül: pass@k = 1 − C(n−c,k)/C(n,k); n=deneme sayısı, c=doğru sayısı, k=alt-küme boyutu.
@@ -69,7 +69,7 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 - Soru: n=4,c=1,k=1 → Cevap: a (0,25). Sonuç: **DOĞRU**.
 - Ek vaka (Salih istedi): "17 asal mı?" 4 kez soruldu, 1'i doğru → pass@1=1/4=0,25, formülle tutarlı.
 
-## AÇIK düğümler
+## Açık düğümler
 - Kutu 6: YAML liste-mekanizması (`tests:` altında her `-` bağımsız bir vaka) ilk denemede net değildi; düzeltmeyle geçildi. Sonraki derste hızlı hatırlatma faydalı olabilir.
 
 ## Salih notu
@@ -78,10 +78,10 @@ Düğüm listesi (sınırın üstü, ≤8 düğüm):
 ## Kalan
 (yok — 8/8 düğüm işlendi)
 
-## DONE (haftalık çıktı)
+## Done (haftalık çıktı)
 - `h1-eval-seti/eval-seti.yaml`: 20 vaka, kaynak GSM8K test.jsonl ilk 20 satır (KAYNAK.md, MIT, AS-OF 2026-09-11).
 - `h1-eval-seti/promptfooconfig.yaml`: provider `claude-haiku-4-5-20251001`, `apiKeyRequired:false` (Claude Code OAuth).
-- Koşum sonucu (Salih'in terminalinde, 2026-09-11): **18/20 PASS (%90)**, 0 hata, 9 sn.
+- Koşum sonucu (Salih'in terminalinde, 2026-09-11): **18/20 `PASS` (%90)**, 0 hata, 9 sn.
 - Kutu 8 formülüyle çapraz kontrol: pass@1 = c/n = 18/20 = 0,90 — ölçülen oranla birebir tutarlı.
 - Yol boyunca çıkan gerçek hata (halüsinasyon değil, canlı koşumda görüldü): `eval-seti.yaml` içinde fazladan bir `tests:` sarmalayıcısı vardı; `promptfoo`, `tests: file://...` ile referans verilen dosyanın **doğrudan liste** olmasını bekliyor. Düzeltme commit efcc40a.
 - 2 FAIL'in kök-neden analizi (kutu 5 regresyon fikrine gerçek örnek): `h1-eval-seti/basarisizlik-analizi.md`. Kısaca: (a) yüzde artışının hangi tabana uygulandığı belirsizliği, (b) başabaş-sonrası-kâr sınır durumu. İkisi de aritmetik değil çerçeveleme hatası — H3-H4'teki LLM-as-judge ihtiyacının somut gerekçesi.

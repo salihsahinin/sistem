@@ -9,8 +9,8 @@
 4. Carvis'in eklemeleri yalnız **"⌥ Carvis notu"** bloklarında.
 5. Ölçme: kursun kendi problem setleri/sınavları; önce Salih, sonra kursun çözümü.
 
-## Bu kursa ÖZEL iki kural
-- **"NEDEN" görevi (Salih emri):** her iddianın *neden öyle olduğu* ders kaydında işlenir — birincil yol kursun KENDİ ispatı/gerekçesidir (bu kurs zaten ispat kursudur; readings bölümleri "neden"lerin taşıyıcısı). Kursun ispatsız verdiği bir iddia çıkarsa kayıtta açıkça "**kurs ispat vermiyor**" diye işaretlenir ve gerekçe araştırılıp **⌥-blokta** (kurs içeriğinden ayrılmış) tamamlanır — sadakat bozulmaz, "neden" açığı da kapanır.
+## Bu kursa özel iki kural
+- **"neden" görevi (Salih emri):** her iddianın *neden öyle olduğu* ders kaydında işlenir — birincil yol kursun **kendi** ispatı/gerekçesidir (bu kurs zaten ispat kursudur; readings bölümleri "neden"lerin taşıyıcısı). Kursun ispatsız verdiği bir iddia çıkarsa kayıtta açıkça "**kurs ispat vermiyor**" diye işaretlenir ve gerekçe araştırılıp **⌥-blokta** (kurs içeriğinden ayrılmış) tamamlanır — sadakat bozulmaz, "neden" açığı da kapanır.
 - **Ritim: ders-kaydı-önce ("0'dan anlatım").** 6.006'da video-önce; burada Carvis ders kaydını sıfırdan-anlatım olarak üretir, Salih okur (videoyu isterse destek olarak izler). Sebep: Salih emri "0'dan anlattığın kurs".
 
 ## Adresler

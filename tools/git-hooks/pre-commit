@@ -8,7 +8,7 @@
 set -u
 KOK=$(git rev-parse --show-toplevel)
 PY=$(command -v python3 || command -v python)
-dosyalar=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(CLAUDE\.md|KILAVUZ\.md|core/[^/]+\.md|\.claude/skills/.*\.md|\.claude/rules/[^/]+\.md|wiki/[^/]+\.md)$' || true)
+dosyalar=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(CLAUDE\.md|KILAVUZ\.md|core/[^/]+\.md|\.claude/skills/.*\.md|\.claude/rules/[^/]+\.md|wiki/[^/]+\.md|ogrenme/.*\.md)$' || true)
 [ -z "$dosyalar" ] && exit 0
 ihlal=0
 while IFS= read -r yol; do

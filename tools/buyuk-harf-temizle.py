@@ -9,7 +9,8 @@ Sınıflar:  durum-jetonu (DURUM kümesi: KAPANDI, BAYAT, DONE, PROBE …) → `
            konmaz, yalnız küçültülür (kapi-denetim regex'leri `kullanma[:;]` biçimini arar).
 Korunur:  kod blokları, satır-içi kod, URL, `aynen: "…"` Salih alıntıları, tire/alt-çizgi/nokta bitişik tanımlayıcılar, beyaz liste.
 Kapsam:   --katman sicak (CLAUDE.md · core/*.md · .claude/skills/*/SKILL.md · .claude/rules/*.md · ~/.claude/CLAUDE.md · hafıza *.md)
-          · ilik (+ KILAVUZ.md · wiki/*.md · .claude/skills/*/references/*.md · .claude/skills/README.md) · hepsi. Soğuk katman (raporlar/cc/arşiv/ogrenme dersler) yazılmaz (tarihçe).
+          · ilik (+ KILAVUZ.md · wiki/*.md · .claude/skills/*/references/*.md · .claude/skills/README.md)
+          · ogrenme (09-17: ogrenme/README+mufredat · <şerit>/README · ilerleme · dersler/*.md · *-seti/*.md — yan oturumun canlı bağlamı) · hepsi. Soğuk katman (raporlar/cc/arşiv) yazılmaz (tarihçe).
 Kullanım: python3 tools/buyuk-harf-temizle.py [--katman sicak|ilik|hepsi] [--kuru] [--uygula] [--diff <yol>] [--goster N] [--json]
 Çıkış:    0 (kuru: değişiklik listelendi / uygula: yazıldı) · 2 hata. Türkçe küçültme: İ→i, I→ı (Python lower() 'İ'yi bozar).
 """
@@ -136,7 +137,12 @@ def dosyalar(repo, katman):
         + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-jarvis" / "memory").glob("*.md"))
     ilik = [repo / "KILAVUZ.md", repo / ".claude" / "skills" / "README.md"] + sorted((repo / "wiki").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/references/*.md")) \
         + sorted((repo / ".claude" / "skills").glob("*/*.md"))
-    sec = {"sicak": sicak, "ilik": ilik, "hepsi": sicak + ilik}[katman]
+    # 09-17 (Salih "büyük harf sorunu sürüyor" analizi): öğrenme yan oturumu bu dosyaları her açılışta okur (ogren §0.2) —
+    # kanon temiz ama bunlar kirli kalınca model oradaki üslubu taklit etti. Ders dosyaları tarihçe değil canlı bağlamdır.
+    ogrenme = [repo / "ogrenme" / "README.md", repo / "ogrenme" / "mufredat.md"] + sorted((repo / "ogrenme").glob("*/README.md")) \
+        + sorted((repo / "ogrenme").glob("*/ilerleme.md")) + sorted((repo / "ogrenme").glob("*/dersler/*.md")) \
+        + sorted((repo / "ogrenme").glob("*/*-eval-seti/*.md")) + sorted((repo / "ogrenme").glob("*/*-seti/*.md"))
+    sec = {"sicak": sicak, "ilik": ilik, "ogrenme": ogrenme, "hepsi": sicak + ilik + ogrenme}[katman]
     gor = set(); res = []
     for p in sec:
         if p.exists() and p.name != "SKILL.md" or (p.exists() and p.name == "SKILL.md"):
@@ -147,7 +153,7 @@ def dosyalar(repo, katman):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis")); ap.add_argument("--katman", default="sicak", choices=["sicak", "ilik", "hepsi"])
+    ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis")); ap.add_argument("--katman", default="sicak", choices=["sicak", "ilik", "ogrenme", "hepsi"])
     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--uygula", action="store_true"); ap.add_argument("--diff", default="")
     ap.add_argument("--goster", type=int, default=6); ap.add_argument("--json", action="store_true")
     a = ap.parse_args(); repo = pathlib.Path(a.repo).expanduser().resolve()
