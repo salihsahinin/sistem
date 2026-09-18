@@ -55,7 +55,8 @@ cd ~ && mv jarvis sistem && cd sistem && mkdir jarvis
 ```
 ```bash
 # tracked içerik → jarvis/ (ogrenme ve .gitignore kökte kalır; liste F1 kuru koşumundan üretilir, buraya yapıştırılır)
-git mv CLAUDE.md KILAVUZ.md README.md fikir-kutusu.md core kuyruk cc veri tools raporlar wiki arsiv graf kaynak-kodu paylasim .claude .mcp.json jarvis/ 2>&1 | tail -3
+git mv AGENTS.md CLAUDE.md KILAVUZ.md README.md LICENSE fikir-kutusu.md core kuyruk cc veri tools raporlar wiki arsiv graf kaynak-kodu paylasim .claude .mcp.json jarvis/ 2>&1 | tail -3
+# (izlenen kök girdileri 09-18 `git ls-tree HEAD`: bunlar + ogrenme + .gitignore; ogrenme ve .gitignore kökte kalır; kök README/LICENSE F4'te yeniden yazılır)
 ```
 ```bash
 # untracked büyük veri ve yerel dizinler
