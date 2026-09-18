@@ -34,7 +34,7 @@
 Şablon testi (İB-108) başarı ölçüsü: hakem koşumunda D-oranı ve araç çağrısı bugünkü Opus koşumundan (7 çağrı, 116k token) kötü değil · A/B ontoloji koşumu (İB-109) fark gösterirse M7 · tur-4 sapma > 0 ise A1 v0.2 alanları yeniden.
 
 ## Kapılar (6b-6g)
-- hareket-tablo `PASS` · skill-esik 6 çift, yeni-pencere sapması 0 · bayat-çekim kuyruk 0, çekilen 0/3 · kural-sayacı 19/100 · test-kapısı `OK` · skip 7 (128 test, 09-17 sayımı) · silver-sağlık `--kapi` çıkış 0: `WARN` YETİM aday 500/351 · T-B-KAPANDI aday 107 · T-A ön-eleme 500/9519 (Salih triyajı) · katman-hatti seyir `OK`.
+- hareket-tablo `PASS` · skill-esik 6 çift, yeni-pencere sapması 0 · bayat-çekim kuyruk 0, çekilen 0/3 · kural-sayacı 19/100 · test-kapısı `OK` · skip 7 (128 test, 09-17 sayımı) · silver-sağlık `--kapi` çıkış 0: `WARN` yetim aday 500/351 · T-B-KAPANDI aday 107 · T-A ön-eleme 500/9519 (Salih triyajı) · katman-hatti seyir `OK`.
 - uzun-koşum: bu oturum max bağlam 491.623 (267 tur 128K üstü); statik önek >60k (KB-50 a). Araç-çıktısı aşımı: yok (atlas raporları dosyaya yazıldı, dönüşler ≤200 kelime).
 - Hasat kontrol listesi: (1) karar adayları defterde (Karar 94 EK-5/98/99 + [icra] blokları) · (2) açık pipeline yok; atlas-kosum koşumu sentez raporuyla kapandı; Friday tur-4 sahada · (3) ajan koşumları: 7 atlas ajanı + promptfoo taraması + hakem — token/süre task usage satırlarında, `v_skill_kosum` (atlas-kosum bandı içinde) · (4) paralel oturumlar: güvenlik (PR #5 merge edildi) · evals (PR bekleniyor) · Friday (tur-4 çalışıyor) — çakışma: `ilerleme.md` çözüldü.
 - Boyut-tetiği: kapsül 8.421/8.192 B → bu kapanışta kırpıldı · defter 48 KB üstü (devam) · MEMORY 16/16.
