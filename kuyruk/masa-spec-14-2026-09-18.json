@@ -1,0 +1,264 @@
+{
+ "no": 14,
+ "tarih": "2026-09-18",
+ "baslik": "Friday tur-4 açık soruları · K-010 A2 kanıtı · bayat worktree'ler · Friday oturumu · seans hedefi",
+ "giris": "Friday tur-4 döndü ve Jarvis doğruladı (test 22/0 · deny 20 · desen 21 · emir-kaynaklı sapma 0). Bu masa dönüşün 5 sorusunu, sapma serisinin tetiklediği A2 hükmünü ve bugünkü işletim kalemlerini toplar.",
+ "tetik": "Salih 09-18 ~11:40: \"tamam şimdi vermem gereken kararları lavish ile karar masasına taşı\"",
+ "once_yapildi": "Friday tur-4 dönüşü <code>cc/devir/friday-2026-09-18-tur4/</code> (commit e9cb30d) · Jarvis doğrulaması: <code>okuma-izin-test.sh</code> 22 PASS / 0 FAIL, deny 5→20, desen 21 mevcut · worktree beyanı kuralı yazıldı (protokol §5 EK-2, 50ab978) · bağlam-modelleme şeridi açıldı (7533e30) · bunlar masa kalemi değil.",
+ "asof": "2026-09-18",
+ "kanit": [
+  {
+   "bulgu": "Friday hook v0.3 testi (Jarvis yeniden koştu)",
+   "deger": "22 PASS · 0 FAIL",
+   "kaynak": "~/friday/.claude/hooks/okuma-izin-test.sh",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Deny bloğu",
+   "deger": "5 → 20 satır; canlı ret mesajı izin ayarından geldi; kanon/ okunuyor",
+   "kaynak": "cc/devir/friday-2026-09-18-tur4/uygulama-raporu.md §3",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Friday sapma serisi tur-2·3·4",
+   "deger": "2 · 1 · 0 (emir-kaynaklı)",
+   "kaynak": "geri-dönüş §7; kapsül 'sonraki ilk iş' 1",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "v0.3 yanlış-pozitifi",
+   "deger": "1 kez, Friday'in kendi grep deseninde; çağrı durdu",
+   "kaynak": "uygulama-raporu.md §4d",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Jarvis örnek hook bayrak hatası",
+   "deger": "exit 2 test bayrağı içinde; bayrak export edilince kilit kesmiyor",
+   "kaynak": "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh:48 (Friday tespiti); Jarvis aslı .claude/hooks/pretool-altajan-okuma.sh",
+   "etiket": "K"
+  },
+  {
+   "bulgu": "Bayat worktree'ler",
+   "deger": "guvenlik-2: main'in 29 commit gerisi, hook yolları eski · evals-h4: 22 commit gerisi, PR #6 merge edildi",
+   "kaynak": "tools/acilis-kapilari.py K1 (11:26)",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Friday oturum bağlamı",
+   "deger": "%35 (Salih beyanı 11:4x); devir-anı eşiği E1 = 128k token ≈ %64",
+   "kaynak": "Salih beyanı · tools/devir-ani.py",
+   "etiket": "K"
+  }
+ ],
+ "hakem": "",
+ "karar_no": "Karar 100",
+ "kalemler": [
+  {
+   "id": "M1",
+   "baslik": "Friday soru 1 — grep/sed deseni yol sanılıyor (v0.3 yanlış-pozitifi)",
+   "rozet": "Katman-1 · kural (Friday hook v0.3)",
+   "ne_demek": "Hook, Bash komutunun metnini tarayıp Jarvis yolunu gördüğünde çağrıyı kesiyor; bir <code>grep</code> deseninde yol geçince gerçek erişim olmadan da kesti. Üç seçenek Friday raporu §4d'den.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(c) yalnız dosya-komut argümanlarını tara ✅ öneri",
+     "value": "(c) v0.4: yalnız dosya-komutlarının (cat · sed · head · tail · cp · mv · python3 açık-yol …) argümanları taranır; grep/sed desen dizeleri yol sayılmaz",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday'e tur-5 emri: ayrıştırıcı komut-adı listesi + argüman taraması, test vakası +3 (desen · tırnaklı gerçek yol · değişkenli yol). <strong>Artı:</strong> Yanlış-pozitif düşer, tırnaklı gerçek yol yakalanmaya devam eder. <strong>Eksi:</strong> Ayrıştırıcı karmaşıklığı artar; komut listesi eskiyebilir (desen 20 kontrol listesi riski). <strong>Gerekçe:</strong> İsabet artışı ölçülebilir (test vakalarıyla); bugünkü tek vaka bile bir koşumu durdurdu."
+    },
+    {
+     "etiket": "(a) bırak",
+     "value": "(a) v0.3 aynen kalır: güvenli yönde hata; yasak yolu ananan komut yeniden yazılır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Hiçbir şey; Friday'e 'komutu yeniden yaz' notu. <strong>Artı:</strong> Sıfır iş, sıfır yeni risk. <strong>Eksi:</strong> Her tetiklenme bir tur kaybı; alt-ajan koşumunda sessiz duraklama. <strong>Gerekçe:</strong> Maliyet bugün 1 vaka; büyürse (c)'ye geçilir."
+    },
+    {
+     "etiket": "(b) tırnak içi desenleri atla",
+     "value": "(b) tırnak içindeki grep/sed desenleri taramadan çıkarılır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Ayrıştırıcıya tırnak kuralı; test +1. <strong>Artı:</strong> En küçük kod değişikliği. <strong>Eksi:</strong> <code>cat \"$dosya\"</code> gibi tırnaklı gerçek yollar da atlanır → yanlış-negatif. <strong>Gerekçe:</strong> Güvenlik hook'unda yanlış-negatif, yanlış-pozitiften pahalı."
+    }
+   ]
+  },
+  {
+   "id": "M2",
+   "baslik": "Friday soru 2 — Jarvis örnek hook'unda exit 2 test bayrağının içinde",
+   "rozet": "Katman-2 · onarım (Jarvis .claude/hooks)",
+   "ne_demek": "Jarvis'in kendi alt-ajan okuma kilidinde test bayrağı yalnız kütüğü değil kesme kararını da kapatıyor; bayrak export edilmiş bir kabukta kilit işlevsiz. Friday kopyada düzeltti, aslı duruyor.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) aslı düzelt ✅ öneri",
+     "value": "(a) Jarvis .claude/hooks/pretool-altajan-okuma.sh: exit 2 test bayrağının dışına alınır; test dosyasına 'bayrak açıkken kilit keser' vakası eklenir; İB-83 test 9→10",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Edit aracıyla 1 satır taşıma + 1 test vakası; bu seansta. <strong>Artı:</strong> Test yeşilken kilit işlevsiz kalma riski kapanır; Friday ile aynı davranış. <strong>Eksi:</strong> 10 dk iş; hook değişikliği PreToolUse teli üstünden Edit ile. <strong>Gerekçe:</strong> Friday'in çekirdek adayı da bunu söylüyor: bayrağın hangi kararı kapattığı okunmalı."
+    },
+    {
+     "etiket": "(b) bırak, not düş",
+     "value": "(b) aslı değişmez; fikir-kutusuna not",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Not satırı. <strong>Artı:</strong> Sıfır iş. <strong>Eksi:</strong> Bilinen güvenlik açığı açık kalır. <strong>Gerekçe:</strong> Yalnız Jarvis ana-sırada bayrak export etmiyorsa kabul edilebilir; kanıt yok."
+    }
+   ]
+  },
+  {
+   "id": "M3",
+   "baslik": "Friday soru 3 — alt-ajan yasak listesine cc/gelen/** girsin mi",
+   "rozet": "Katman-1 · kural (İB-83 kapsamı)",
+   "ne_demek": "Bugün Friday'in işçisi başka devirlerin emir dosyalarını (<code>cc/gelen/**</code>) okuyabiliyor; yasak liste kapsül · pano · defter · kutu · bronz · transkript.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) evet, girsin ✅ öneri",
+     "value": "(a) cc/gelen/** alt-ajan yasak listesine girer (Friday + Jarvis eşleniği); işçiye gereken emir parçası liderin görev-fonksiyonuyla verilir",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday tur-5 emrine 1 satır; Jarvis hook'una 1 desen; test +1'er. <strong>Artı:</strong> İşçi yalnız kendi görevini görür (m.42 yetki katmanı); bağlam izolasyonu tam. <strong>Eksi:</strong> Lider her emri parçalayıp aktarmak zorunda; küçük ek yük. <strong>Gerekçe:</strong> Ajan metodolojisi: işçi = küçük tipli fonksiyon; başka emirleri okumak fonksiyon sınırını bozar."
+    },
+    {
+     "etiket": "(b) hayır",
+     "value": "(b) cc/gelen/** açık kalır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> Lider aktarım yükü yok. <strong>Eksi:</strong> İşçi eski emirlerle bağlam kirletebilir; izolasyon delik. <strong>Gerekçe:</strong> Bugün zarar kanıtı yok; ama m.5 'bağlam kirliliği' erken-tespit istisnası."
+    }
+   ]
+  },
+  {
+   "id": "M4",
+   "baslik": "Friday soru 4 — settings.json Edit aracıyla düzenleme kalıcı mı",
+   "rozet": "Katman-2 · usul (Friday)",
+   "ne_demek": "Friday'de Bash ile settings.json yazımı sınıflandırıcıya takıldı ('öz-değişiklik'); Edit aracıyla yapıldı. Jarvis'te aynı fren zaten var (PreToolUse teli: core/ ve .claude/ Bash yazımı engelli → Edit).",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) evet, kalıcı ✅ öneri",
+     "value": "(a) Friday'de de .claude/** ve core/** yazımı yalnız Edit aracıyla; Friday CLAUDE.md'ye 1 satır",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday tur-5 emrine 1 satır. <strong>Artı:</strong> Jarvis ile aynı usul; sınıflandırıcıyla çatışma biter. <strong>Eksi:</strong> Yok. <strong>Gerekçe:</strong> Fiilen çalışan yol; Jarvis'te 08-17'den beri aynı."
+    },
+    {
+     "etiket": "(b) hayır, vaka bazlı",
+     "value": "(b) usul yazılmaz",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Her turda aynı engel yeniden yaşanır. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M5",
+   "baslik": "Friday soru 5 — Z3b için işletim-sistemi sandbox gündeme alınsın mı",
+   "rozet": "Katman-1 · kapsam (K-010 A4 bağı)",
+   "ne_demek": "Z3b: yolun tamamı bir değişkende kurulunca metin taraması kilidi görmüyor; kapatmak için sandbox ya da çalıştırma-sonrası denetim gerekir.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) ertele, K-010 A4'e bağla ✅ öneri",
+     "value": "(a) Z3b K olarak kayıtlı kalır; sandbox K-010 A4 (denetçi bütçe-çatalı) gündemine girer, ayrı atlas koşumu o zaman",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Pano K-010 A4 satırına 1 pointer. <strong>Artı:</strong> Bugün iş yok; belgelenmiş sınır bilinçli risk. <strong>Eksi:</strong> Değişkenli yol saldırısı açık kalır (iç alt-ajan için düşük olasılık). <strong>Gerekçe:</strong> Bugünkü öncelik İB-108 → Ö1; sandbox proje-ölçekli iş (m.25)."
+    },
+    {
+     "etiket": "(b) şimdi gündeme al",
+     "value": "(b) sandbox araştırması İB olarak açılır, atlas koşumu bu hafta",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> İB-113 aç, atlas-kosum emri. <strong>Artı:</strong> Açık kapanır. <strong>Eksi:</strong> ~1 atlas koşumu (100k+ token) + kurulum; İB-108/Ö1 ötelenir. <strong>Gerekçe:</strong> Kanıt: yalnız Friday'in bir denemesi; saldırı senaryosu iç ajan."
+    }
+   ]
+  },
+  {
+   "id": "M6",
+   "baslik": "K-010 A2 kanıt hükmü — sapma serisi 2·1·0 tetiği",
+   "rozet": "Katman-1 · kanıt kapısı (K-010 A2)",
+   "ne_demek": "A2 = guardrail saha-testi: PreToolUse kilit PASS ∧ revert tatbikatı ∧ sert-bütçe. Kapsül kuralı: tur-4 sapması 0 ise A2. Bugün kilit PASS var (22/0 + canlı deny), revert tatbikatı ve sert-bütçe kanıtı yok.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) kısmen: kilit ayağı kapandı ✅ öneri",
+     "value": "(a) A2 'PreToolUse kilit PASS' ayağı DONE (Friday tur-4 + Jarvis doğrulaması); revert tatbikatı ve sert-bütçe ayakları açık, tetik Salih",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> K-010 zincir dosyasında A2 satırı 1/3 → kanıt yolu yazılır. <strong>Artı:</strong> Kanıt-kapısı disiplini (Salih 07-22) korunur; ilerleme görünür. <strong>Eksi:</strong> A2 tam kapanmaz. <strong>Gerekçe:</strong> Üç koşul ∧ ile bağlı; ikisinin kanıtı yok."
+    },
+    {
+     "etiket": "(b) A2 tam kapat",
+     "value": "(b) A2 DONE sayılır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Zincir dosyasında A2 DONE. <strong>Artı:</strong> K-010'a yaklaşır. <strong>Eksi:</strong> Revert ve bütçe kanıtsız; m.39 rakamsız beyan. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) bekle",
+     "value": "(c) A2 satırı değişmez",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Doğrulanmış kanıt kayda girmez; ilerleme görünmez. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "baslik": "Bayat worktree'ler — guvenlik-2 (29 commit geride) ve evals-h4 (PR #6 merge edildi)",
+   "rozet": "Katman-1 · silme sınıfı (m.8 istisnası: türev çalışma ağacı)",
+   "ne_demek": "İki worktree main'in gerisinde; hook yolları eski; bir sonraki yan oturum main'den yeni worktree açar (Karar 95 EK). Kaldırma = <code>git worktree remove</code>; branch'ler ve commit'ler kalır (silinmez).",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) ikisini de kaldır ✅ öneri",
+     "value": "(a) guvenlik-2 ve evals-h4 worktree'leri kaldırılır (git worktree remove; branch'ler durur); Sonnet güvenlik sekmesi Salih'çe kapatılır",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Salih güvenlik sekmesini kapatır → Jarvis iki remove + prune; K1 kapısı temizlenir. <strong>Artı:</strong> K1 şüphe gürültüsü biter; disk ve hook karışıklığı gider; commit kaybı yok. <strong>Eksi:</strong> Güvenlik oturumunda commit'lenmemiş iş varsa gider (kontrol: git status önce). <strong>Gerekçe:</strong> evals-h4 PR merge edilmiş; guvenlik dalı PR #5 ile merge edilmiş."
+    },
+    {
+     "etiket": "(b) yalnız evals-h4",
+     "value": "(b) evals-h4 kaldırılır, guvenlik-2 kalır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Tek remove. <strong>Artı:</strong> Güvenlik oturumu devam edebilir. <strong>Eksi:</strong> 29 commit geride + ölü hook'la devam; G4 dersi bayat ağaçta. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) bırak",
+     "value": "(c) ikisi de kalır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Her açılışta K1 şüphe; yanlış worktree'de ders riski. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M8",
+   "baslik": "Friday oturumu %35 — devam mı, kapanış mı",
+   "rozet": "Katman-2 · işletim (Friday)",
+   "ne_demek": "Friday her devir sonunda geri-dönüş + kapsül + defter + commit yazıyor (tur-4 tamam). 'seans bitimi' ayrıca teslim raporu üretir. Devir-anı eşiği E1 = 128k ≈ %64.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) devam; 'seans bitimi' oturumu bırakırken ✅ öneri",
+     "value": "(a) Friday oturumu açık kalır, tur-5 aynı oturumda; 'seans bitimi' yalnız oturum terk edilirken ya da bağlam ≥ %60 olunca yazılır",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Tur-5 emri hazır olunca aynı sekmeye bırakılır. <strong>Artı:</strong> Bağlam ısınmış (tur 2-4 okumaları içeride); yeniden açılış maliyeti yok. <strong>Eksi:</strong> %60 sonrası devir kalitesi düşer; Salih yüzdeyi izler. <strong>Gerekçe:</strong> Tur-4 kapanışı zaten commit'li; kayıp riski yok."
+    },
+    {
+     "etiket": "(b) şimdi 'seans bitimi'",
+     "value": "(b) Friday oturumu şimdi kapatılır; tur-5 yeni oturumda",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Salih 'seans bitimi' yazar. <strong>Artı:</strong> Temiz başlangıç. <strong>Eksi:</strong> Tur-5'te R-okumaları yeniden; %35 boşa. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M9",
+   "baslik": "Seans hedefi teyidi (Karar 99 M10)",
+   "rozet": "Katman-1 · hedef",
+   "ne_demek": "Brifte türetilen hedef: 'Friday tur-4 dönüşünü doğrulayıp 5 soruya hüküm almak + bağlam-modelleme şeridini commit'lemek + İB-108'e başlamak'. İlk ikisi yapıldı.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) hedef aynen ✅ öneri",
+     "value": "(a) seans hedefi: masa-14 hükümlerinin icrası + İB-108 hakem ajanı şablon v0 ilk vakası",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Masa sonrası İB-108'e geçilir. <strong>Artı:</strong> Kapsül sırasıyla uyumlu. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> Karar 99 sırası."
+    },
+    {
+     "etiket": "(b) hedef: bağlam-modelleme B0 hazırlığı",
+     "value": "(b) seans hedefi: masa-14 icrası + B0 dersi için token dökümü iskelesi",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> B0 iskelesi (tiktoken/count_tokens tablosu) ana-sırada hazırlanır. <strong>Artı:</strong> Yeni şerit hemen başlar. <strong>Eksi:</strong> İB-108 ötelenir; pratik = Salih'in eli, iskele ana-sıra işi değil. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  }
+ ]
+}

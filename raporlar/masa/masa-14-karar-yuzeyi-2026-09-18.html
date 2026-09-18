@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 14 — Friday tur-4 açık soruları · K-010 A2 kanıtı · bayat worktree&#x27;ler · Friday oturumu · seans hedefi (2026-09-18)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+  .hakem { border-left: 3px solid var(--color-warning); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 14 — Friday tur-4 açık soruları · K-010 A2 kanıtı · bayat worktree&#x27;ler · Friday oturumu · seans hedefi <span class="badge badge-primary">9 kalem</span></h1>
+      <p class="text-sm opacity-80">Friday tur-4 döndü ve Jarvis doğruladı (test 22/0 · deny 20 · desen 21 · emir-kaynaklı sapma 0). Bu masa dönüşün 5 sorusunu, sapma serisinin tetiklediği A2 hükmünü ve bugünkü işletim kalemlerini toplar. Tetik: <em>Salih 09-18 ~11:40: &quot;tamam şimdi vermem gereken kararları lavish ile karar masasına taşı&quot;</em>. Her kalemde: ne demek · seçenek başına ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada (m.40 eki).</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> Friday tur-4 dönüşü <code>cc/devir/friday-2026-09-18-tur4/</code> (commit e9cb30d) · Jarvis doğrulaması: <code>okuma-izin-test.sh</code> 22 PASS / 0 FAIL, deny 5→20, desen 21 mevcut · worktree beyanı kuralı yazıldı (protokol §5 EK-2, 50ab978) · bağlam-modelleme şeridi açıldı (7533e30) · bunlar masa kalemi değil.</p>
+      <p class="text-xs opacity-60">AS-OF 2026-09-18 · rakamlar kaynaklı (m.39); <code>[?]</code> kestirim · üreten `karar-masasi` skill'i (deterministik).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Bulgu</th><th>Değer</th><th>Kaynak · etiket</th></tr></thead>
+        <tbody>
+          <tr><td>Friday hook v0.3 testi (Jarvis yeniden koştu)</td><td>22 PASS · 0 FAIL</td><td>~/friday/.claude/hooks/okuma-izin-test.sh · <strong>D</strong></td></tr>
+          <tr><td>Deny bloğu</td><td>5 → 20 satır; canlı ret mesajı izin ayarından geldi; kanon/ okunuyor</td><td>cc/devir/friday-2026-09-18-tur4/uygulama-raporu.md §3 · <strong>D</strong></td></tr>
+          <tr><td>Friday sapma serisi tur-2·3·4</td><td>2 · 1 · 0 (emir-kaynaklı)</td><td>geri-dönüş §7; kapsül &#x27;sonraki ilk iş&#x27; 1 · <strong>sayım</strong></td></tr>
+          <tr><td>v0.3 yanlış-pozitifi</td><td>1 kez, Friday&#x27;in kendi grep deseninde; çağrı durdu</td><td>uygulama-raporu.md §4d · <strong>D</strong></td></tr>
+          <tr><td>Jarvis örnek hook bayrak hatası</td><td>exit 2 test bayrağı içinde; bayrak export edilince kilit kesmiyor</td><td>cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh:48 (Friday tespiti); Jarvis aslı .claude/hooks/pretool-altajan-okuma.sh · <strong>K</strong></td></tr>
+          <tr><td>Bayat worktree&#x27;ler</td><td>guvenlik-2: main&#x27;in 29 commit gerisi, hook yolları eski · evals-h4: 22 commit gerisi, PR #6 merge edildi</td><td>tools/acilis-kapilari.py K1 (11:26) · <strong>D</strong></td></tr>
+          <tr><td>Friday oturum bağlamı</td><td>%35 (Salih beyanı 11:4x); devir-anı eşiği E1 = 128k token ≈ %64</td><td>Salih beyanı · tools/devir-ani.py · <strong>K</strong></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+
+  <!-- M1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M1">
+    <div class="card-body">
+      <h2 class="card-title">M1 · Friday soru 1 — grep/sed deseni yol sanılıyor (v0.3 yanlış-pozitifi) <span class="badge badge-outline">Katman-1 · kural (Friday hook v0.3)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Hook, Bash komutunun metnini tarayıp Jarvis yolunu gördüğünde çağrıyı kesiyor; bir <code>grep</code> deseninde yol geçince gerçek erişim olmadan da kesti. Üç seçenek Friday raporu §4d'den.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M1',&quot;Friday soru 1 — grep/sed deseni yol sanı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) v0.4: yalnız dosya-komutlarının (cat · sed · head · tail · cp · mv · python3 açık-yol …) argümanları taranır; grep/sed desen dizeleri yol sayılmaz"> <strong>(c) yalnız dosya-komut argümanlarını tara ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Friday'e tur-5 emri: ayrıştırıcı komut-adı listesi + argüman taraması, test vakası +3 (desen · tırnaklı gerçek yol · değişkenli yol). <strong>Artı:</strong> Yanlış-pozitif düşer, tırnaklı gerçek yol yakalanmaya devam eder. <strong>Eksi:</strong> Ayrıştırıcı karmaşıklığı artar; komut listesi eskiyebilir (desen 20 kontrol listesi riski). <strong>Gerekçe:</strong> İsabet artışı ölçülebilir (test vakalarıyla); bugünkü tek vaka bile bir koşumu durdurdu.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) v0.3 aynen kalır: güvenli yönde hata; yasak yolu ananan komut yeniden yazılır"> <strong>(a) bırak</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Hiçbir şey; Friday'e 'komutu yeniden yaz' notu. <strong>Artı:</strong> Sıfır iş, sıfır yeni risk. <strong>Eksi:</strong> Her tetiklenme bir tur kaybı; alt-ajan koşumunda sessiz duraklama. <strong>Gerekçe:</strong> Maliyet bugün 1 vaka; büyürse (c)'ye geçilir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) tırnak içindeki grep/sed desenleri taramadan çıkarılır"> <strong>(b) tırnak içi desenleri atla</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Ayrıştırıcıya tırnak kuralı; test +1. <strong>Artı:</strong> En küçük kod değişikliği. <strong>Eksi:</strong> <code>cat "$dosya"</code> gibi tırnaklı gerçek yollar da atlanır → yanlış-negatif. <strong>Gerekçe:</strong> Güvenlik hook'unda yanlış-negatif, yanlış-pozitiften pahalı.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M2 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M2">
+    <div class="card-body">
+      <h2 class="card-title">M2 · Friday soru 2 — Jarvis örnek hook&#x27;unda exit 2 test bayrağının içinde <span class="badge badge-outline">Katman-2 · onarım (Jarvis .claude/hooks)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Jarvis&#x27;in kendi alt-ajan okuma kilidinde test bayrağı yalnız kütüğü değil kesme kararını da kapatıyor; bayrak export edilmiş bir kabukta kilit işlevsiz. Friday kopyada düzeltti, aslı duruyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M2',&quot;Friday soru 2 — Jarvis örnek hook&#x27;unda e&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) Jarvis .claude/hooks/pretool-altajan-okuma.sh: exit 2 test bayrağının dışına alınır; test dosyasına &#x27;bayrak açıkken kilit keser&#x27; vakası eklenir; İB-83 test 9→10"> <strong>(a) aslı düzelt ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Edit aracıyla 1 satır taşıma + 1 test vakası; bu seansta. <strong>Artı:</strong> Test yeşilken kilit işlevsiz kalma riski kapanır; Friday ile aynı davranış. <strong>Eksi:</strong> 10 dk iş; hook değişikliği PreToolUse teli üstünden Edit ile. <strong>Gerekçe:</strong> Friday'in çekirdek adayı da bunu söylüyor: bayrağın hangi kararı kapattığı okunmalı.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) aslı değişmez; fikir-kutusuna not"> <strong>(b) bırak, not düş</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Not satırı. <strong>Artı:</strong> Sıfır iş. <strong>Eksi:</strong> Bilinen güvenlik açığı açık kalır. <strong>Gerekçe:</strong> Yalnız Jarvis ana-sırada bayrak export etmiyorsa kabul edilebilir; kanıt yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M3">
+    <div class="card-body">
+      <h2 class="card-title">M3 · Friday soru 3 — alt-ajan yasak listesine cc/gelen/** girsin mi <span class="badge badge-outline">Katman-1 · kural (İB-83 kapsamı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Bugün Friday'in işçisi başka devirlerin emir dosyalarını (<code>cc/gelen/**</code>) okuyabiliyor; yasak liste kapsül · pano · defter · kutu · bronz · transkript.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M3',&quot;Friday soru 3 — alt-ajan yasak listesine&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) cc/gelen/** alt-ajan yasak listesine girer (Friday + Jarvis eşleniği); işçiye gereken emir parçası liderin görev-fonksiyonuyla verilir"> <strong>(a) evet, girsin ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Friday tur-5 emrine 1 satır; Jarvis hook'una 1 desen; test +1'er. <strong>Artı:</strong> İşçi yalnız kendi görevini görür (m.42 yetki katmanı); bağlam izolasyonu tam. <strong>Eksi:</strong> Lider her emri parçalayıp aktarmak zorunda; küçük ek yük. <strong>Gerekçe:</strong> Ajan metodolojisi: işçi = küçük tipli fonksiyon; başka emirleri okumak fonksiyon sınırını bozar.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) cc/gelen/** açık kalır"> <strong>(b) hayır</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> Lider aktarım yükü yok. <strong>Eksi:</strong> İşçi eski emirlerle bağlam kirletebilir; izolasyon delik. <strong>Gerekçe:</strong> Bugün zarar kanıtı yok; ama m.5 'bağlam kirliliği' erken-tespit istisnası.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M4 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M4">
+    <div class="card-body">
+      <h2 class="card-title">M4 · Friday soru 4 — settings.json Edit aracıyla düzenleme kalıcı mı <span class="badge badge-outline">Katman-2 · usul (Friday)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Friday&#x27;de Bash ile settings.json yazımı sınıflandırıcıya takıldı (&#x27;öz-değişiklik&#x27;); Edit aracıyla yapıldı. Jarvis&#x27;te aynı fren zaten var (PreToolUse teli: core/ ve .claude/ Bash yazımı engelli → Edit).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M4',&quot;Friday soru 4 — settings.json Edit aracı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) Friday&#x27;de de .claude/** ve core/** yazımı yalnız Edit aracıyla; Friday CLAUDE.md&#x27;ye 1 satır"> <strong>(a) evet, kalıcı ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Friday tur-5 emrine 1 satır. <strong>Artı:</strong> Jarvis ile aynı usul; sınıflandırıcıyla çatışma biter. <strong>Eksi:</strong> Yok. <strong>Gerekçe:</strong> Fiilen çalışan yol; Jarvis'te 08-17'den beri aynı.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) usul yazılmaz"> <strong>(b) hayır, vaka bazlı</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Her turda aynı engel yeniden yaşanır. <strong>Gerekçe:</strong> —</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M5">
+    <div class="card-body">
+      <h2 class="card-title">M5 · Friday soru 5 — Z3b için işletim-sistemi sandbox gündeme alınsın mı <span class="badge badge-outline">Katman-1 · kapsam (K-010 A4 bağı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Z3b: yolun tamamı bir değişkende kurulunca metin taraması kilidi görmüyor; kapatmak için sandbox ya da çalıştırma-sonrası denetim gerekir.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M5',&quot;Friday soru 5 — Z3b için işletim-sistemi&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) Z3b K olarak kayıtlı kalır; sandbox K-010 A4 (denetçi bütçe-çatalı) gündemine girer, ayrı atlas koşumu o zaman"> <strong>(a) ertele, K-010 A4&#x27;e bağla ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Pano K-010 A4 satırına 1 pointer. <strong>Artı:</strong> Bugün iş yok; belgelenmiş sınır bilinçli risk. <strong>Eksi:</strong> Değişkenli yol saldırısı açık kalır (iç alt-ajan için düşük olasılık). <strong>Gerekçe:</strong> Bugünkü öncelik İB-108 → Ö1; sandbox proje-ölçekli iş (m.25).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) sandbox araştırması İB olarak açılır, atlas koşumu bu hafta"> <strong>(b) şimdi gündeme al</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> İB-113 aç, atlas-kosum emri. <strong>Artı:</strong> Açık kapanır. <strong>Eksi:</strong> ~1 atlas koşumu (100k+ token) + kurulum; İB-108/Ö1 ötelenir. <strong>Gerekçe:</strong> Kanıt: yalnız Friday'in bir denemesi; saldırı senaryosu iç ajan.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M6 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M6">
+    <div class="card-body">
+      <h2 class="card-title">M6 · K-010 A2 kanıt hükmü — sapma serisi 2·1·0 tetiği <span class="badge badge-outline">Katman-1 · kanıt kapısı (K-010 A2)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> A2 = guardrail saha-testi: PreToolUse kilit PASS ∧ revert tatbikatı ∧ sert-bütçe. Kapsül kuralı: tur-4 sapması 0 ise A2. Bugün kilit PASS var (22/0 + canlı deny), revert tatbikatı ve sert-bütçe kanıtı yok.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M6',&quot;K-010 A2 kanıt hükmü — sapma serisi 2·1·&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) A2 &#x27;PreToolUse kilit PASS&#x27; ayağı DONE (Friday tur-4 + Jarvis doğrulaması); revert tatbikatı ve sert-bütçe ayakları açık, tetik Salih"> <strong>(a) kısmen: kilit ayağı kapandı ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> K-010 zincir dosyasında A2 satırı 1/3 → kanıt yolu yazılır. <strong>Artı:</strong> Kanıt-kapısı disiplini (Salih 07-22) korunur; ilerleme görünür. <strong>Eksi:</strong> A2 tam kapanmaz. <strong>Gerekçe:</strong> Üç koşul ∧ ile bağlı; ikisinin kanıtı yok.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) A2 DONE sayılır"> <strong>(b) A2 tam kapat</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Zincir dosyasında A2 DONE. <strong>Artı:</strong> K-010'a yaklaşır. <strong>Eksi:</strong> Revert ve bütçe kanıtsız; m.39 rakamsız beyan. <strong>Gerekçe:</strong> —</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) A2 satırı değişmez"> <strong>(c) bekle</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Doğrulanmış kanıt kayda girmez; ilerleme görünmez. <strong>Gerekçe:</strong> —</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M7 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M7">
+    <div class="card-body">
+      <h2 class="card-title">M7 · Bayat worktree&#x27;ler — guvenlik-2 (29 commit geride) ve evals-h4 (PR #6 merge edildi) <span class="badge badge-outline">Katman-1 · silme sınıfı (m.8 istisnası: türev çalışma ağacı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> İki worktree main'in gerisinde; hook yolları eski; bir sonraki yan oturum main'den yeni worktree açar (Karar 95 EK). Kaldırma = <code>git worktree remove</code>; branch'ler ve commit'ler kalır (silinmez).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M7',&quot;Bayat worktree&#x27;ler — guvenlik-2 (29 comm&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) guvenlik-2 ve evals-h4 worktree&#x27;leri kaldırılır (git worktree remove; branch&#x27;ler durur); Sonnet güvenlik sekmesi Salih&#x27;çe kapatılır"> <strong>(a) ikisini de kaldır ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Salih güvenlik sekmesini kapatır → Jarvis iki remove + prune; K1 kapısı temizlenir. <strong>Artı:</strong> K1 şüphe gürültüsü biter; disk ve hook karışıklığı gider; commit kaybı yok. <strong>Eksi:</strong> Güvenlik oturumunda commit'lenmemiş iş varsa gider (kontrol: git status önce). <strong>Gerekçe:</strong> evals-h4 PR merge edilmiş; guvenlik dalı PR #5 ile merge edilmiş.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) evals-h4 kaldırılır, guvenlik-2 kalır"> <strong>(b) yalnız evals-h4</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Tek remove. <strong>Artı:</strong> Güvenlik oturumu devam edebilir. <strong>Eksi:</strong> 29 commit geride + ölü hook'la devam; G4 dersi bayat ağaçta. <strong>Gerekçe:</strong> —</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(c) ikisi de kalır"> <strong>(c) bırak</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Hiçbir şey. <strong>Artı:</strong> — <strong>Eksi:</strong> Her açılışta K1 şüphe; yanlış worktree'de ders riski. <strong>Gerekçe:</strong> —</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M8 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M8">
+    <div class="card-body">
+      <h2 class="card-title">M8 · Friday oturumu %35 — devam mı, kapanış mı <span class="badge badge-outline">Katman-2 · işletim (Friday)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Friday her devir sonunda geri-dönüş + kapsül + defter + commit yazıyor (tur-4 tamam). &#x27;seans bitimi&#x27; ayrıca teslim raporu üretir. Devir-anı eşiği E1 = 128k ≈ %64.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M8',&quot;Friday oturumu %35 — devam mı, kapanış m&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) Friday oturumu açık kalır, tur-5 aynı oturumda; &#x27;seans bitimi&#x27; yalnız oturum terk edilirken ya da bağlam ≥ %60 olunca yazılır"> <strong>(a) devam; &#x27;seans bitimi&#x27; oturumu bırakırken ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Tur-5 emri hazır olunca aynı sekmeye bırakılır. <strong>Artı:</strong> Bağlam ısınmış (tur 2-4 okumaları içeride); yeniden açılış maliyeti yok. <strong>Eksi:</strong> %60 sonrası devir kalitesi düşer; Salih yüzdeyi izler. <strong>Gerekçe:</strong> Tur-4 kapanışı zaten commit'li; kayıp riski yok.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) Friday oturumu şimdi kapatılır; tur-5 yeni oturumda"> <strong>(b) şimdi &#x27;seans bitimi&#x27;</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Salih 'seans bitimi' yazar. <strong>Artı:</strong> Temiz başlangıç. <strong>Eksi:</strong> Tur-5'te R-okumaları yeniden; %35 boşa. <strong>Gerekçe:</strong> —</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M9 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M9">
+    <div class="card-body">
+      <h2 class="card-title">M9 · Seans hedefi teyidi (Karar 99 M10) <span class="badge badge-outline">Katman-1 · hedef</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Brifte türetilen hedef: &#x27;Friday tur-4 dönüşünü doğrulayıp 5 soruya hüküm almak + bağlam-modelleme şeridini commit&#x27;lemek + İB-108&#x27;e başlamak&#x27;. İlk ikisi yapıldı.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M9',&quot;Seans hedefi teyidi (Karar 99 M10)&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(a) seans hedefi: masa-14 hükümlerinin icrası + İB-108 hakem ajanı şablon v0 ilk vakası"> <strong>(a) hedef aynen ✅ öneri</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> Masa sonrası İB-108'e geçilir. <strong>Artı:</strong> Kapsül sırasıyla uyumlu. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> Karar 99 sırası.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="(b) seans hedefi: masa-14 icrası + B0 dersi için token dökümü iskelesi"> <strong>(b) hedef: bağlam-modelleme B0 hazırlığı</strong>
+          <div class="text-sm opacity-80 mt-1"><strong>Ne yaparım:</strong> B0 iskelesi (tiktoken/count_tokens tablosu) ana-sırada hazırlanır. <strong>Artı:</strong> Yeni şerit hemen başlar. <strong>Eksi:</strong> İB-108 ötelenir; pratik = Salih'in eli, iskele ana-sıra işi değil. <strong>Gerekçe:</strong> —</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: <code>kaynak-kodu/lavish/masa-14-2026-09-18.html</code> · kalıcı kopya <code>raporlar/masa/masa-14-karar-yuzeyi-2026-09-18.html</code>. Hükümler deftere Karar 100 olarak iner (karar-kaydet).
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, { tag: 'hukum', text: kalem + ': ' + secim, element: form, queueKey: kalem, data: { kalem: kalem, hukum: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+function kuyruklaCoklu(form, kalem, ad) {
+  const secim = new FormData(form).getAll('secim');
+  const durum = form.querySelector('.durum');
+  const metin = secim.length ? secim.join(' | ') : 'HİÇBİRİ';
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — seçimi sohbete yaz: ' + kalem + ' ' + metin; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') seçim: ' + metin, { tag: 'hukum', text: kalem + ': ' + metin, element: form, queueKey: kalem, data: { kalem: kalem, secim: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + metin + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
