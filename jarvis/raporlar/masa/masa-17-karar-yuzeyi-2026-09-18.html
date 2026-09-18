@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Karar Masası 17 — Hafıza mimarisi (Karar 102 zincir 2/2) · harness-hafıza dizini çelişkisi · Friday modeli (2026-09-18)</title>
+<title>Karar Masası 17 — Hafıza mimarisi (Karar 102 zincir 2/2) · harness-hafıza dizini çelişkisi · Friday modeli · Jarvis nihai önerisi (doğum belgesi maliyeti · alan içi perspektif varsayılanı) (2026-09-18)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
@@ -23,7 +23,7 @@
 
   <header class="card bg-base-100 shadow-md">
     <div class="card-body">
-      <h1 class="card-title text-2xl">Karar Masası 17 — Hafıza mimarisi (Karar 102 zincir 2/2) · harness-hafıza dizini çelişkisi · Friday modeli <span class="badge badge-primary">4 kalem</span></h1>
+      <h1 class="card-title text-2xl">Karar Masası 17 — Hafıza mimarisi (Karar 102 zincir 2/2) · harness-hafıza dizini çelişkisi · Friday modeli · Jarvis nihai önerisi (doğum belgesi maliyeti · alan içi perspektif varsayılanı) <span class="badge badge-primary">6 kalem</span></h1>
       <p class="text-sm opacity-80">Zincir 2/2 Atlas koşumu bitti: 36 iddia, 27 sağlam / 7 daralan / 2 düşen. Mevcut düzenin 8 bileşeni literatürle eşlendi: 4 korunmalı · 2 eklenmeli · 1 değişmeli · 1 belirsiz. Bu masa hakemin üç mekanizma kalemini, imza isteyen harness-dizini çelişkisini ve masa-16 M3&#x27;ün açık bıraktığı Friday modeli sorusunu toplar. Teslim: raporlar/2026-09/2026-09-18-ajan-hafiza-mimarisi.md. Tetik: <em>Salih 09-18 ~18:0x: &quot;hükümler karar masasında verilecek, push onay, devam&quot; + masa-16 M3 notu &quot;fridayin opus olması mantıklı mı değerlendirelim&quot;</em>. Her kalemde: ne demek · seçenek başına ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada (m.40 eki).</p>
       <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> Karar 103 (masa-16, 5/5) deftere işlendi (6a8a85d) · hafıza Atlas koşumu + V26 + hakem <code>DONE</code> (dce5abd) · eskalasyon dersi sohbette verildi. Bunlar masa kalemi değil.</p>
       <p class="text-xs opacity-60">AS-OF 2026-09-18 · rakamlar kaynaklı (m.39); <code>[?]</code> kestirim · üreten `karar-masasi` skill'i (deterministik).</p>
@@ -112,6 +112,38 @@
           <div class="text-sm opacity-80 mt-1">Ne yaparım: charter model satırı. Artı: kalite. Eksi: Fable kotası ikiye bölünür, ana-sıra kısılır; &#x27;tek Fable oturumu&#x27; hedefiyle çelişir.</div></label>
         <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Friday lider modeli Sonnet 5; zor düğümde Opus&#x27;a eskalasyon."> <strong>(c) Friday Sonnet, Opus yalnız eskalasyon</strong>
           <div class="text-sm opacity-80 mt-1">Ne yaparım: charter + eskalasyon. Artı: en ucuz. Eksi: sentez/hakem işi Sonnet&#x27;te ölçülmedi; sapma serisi sıfırdan başlar.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M5">
+    <div class="card-body">
+      <h2 class="card-title">M5 · Ajan doğum belgesi — bakım-maliyeti satırı (Jarvis nihai önerisi, Karar 103 EK sonrası) <span class="badge badge-outline">Katman-1 · doğum ölçütü (Karar 91 EK-2 eki)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Ajan = perspektif × alan iki eksende hızlı büyür (3 × 4 = 12 dizin). &#x27;Genelleşme derecesini Salih seçer&#x27; freni seçim anında maliyeti göstermez. Öneri: her yeni ajan masa kalemi olarak doğar ve doğum belgesi bakım maliyetini sayıyla taşır.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M5',&quot;Ajan doğum belgesi — bakım-maliyeti satı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Yeni ajan yalnız masa kalemiyle doğar; kalem bakım-maliyeti satırı taşır: kanon satır sayısı · hook + test sayısı · hafıza dizini · model/kota payı · Jarvis bakım dakikası [?]; charter iskeletine `bakim_maliyeti:` alanı; Karar 91 EK-2&#x27;ye (e) &#x27;maliyet satırı olmadan doğum yok&#x27;."> <strong>(a) Doğum belgesi zorunlu, maliyet satırlı</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: charter iskeletine alan + masa spec şablonuna satır + Karar 91 EK-2 (e). Artı: iki-eksen büyümesi görünür maliyetle frenlenir; genelleşme kararı sayıyla verilir. Eksi: ilk maliyet rakamları kestirim [?], 3 ajan sonra kalibre. Gerekçe: bakım yükü Jarvis&#x27;te lineer artar; tek görünmez maliyet budur.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Charter iskeletine `bakim_maliyeti:` alanı; masa zorunluluğu yok, doğum Karar 91 EK-2 (a-d) ile."> <strong>(b) Yalnız charter alanı</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: iskelet satırı. Artı: hafif. Eksi: maliyet yazılır ama karar noktasına gelmez.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- M6 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M6">
+    <div class="card-body">
+      <h2 class="card-title">M6 · Alan içinde perspektif ayrımı — varsayılan (Jarvis nihai önerisi) <span class="badge badge-outline">Katman-1 · kural (Karar 103 EK (3) uygulaması)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Karar 103 EK: aynı alanda farklı perspektif gerektiren konu ayrı ajanda. Kanıt yalnız hakem perspektifi için D; araştırma alt-ajan olarak zaten ayrı, diğer perspektifler kanıtsız. Öneri: varsayılan dar, ilk sapmada masaya.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M6',&quot;Alan içinde perspektif ayrımı — varsayıl&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Alan ajanı içinde perspektif ayrımı varsayılan olarak yalnız hakem/değerlendirici için ayrı ajan (`&lt;alan&gt;-hakem/` ya da ortak `hakem/`); araştırma/antitez/planlama alan ajanının alt-ajanı; başka perspektif ayrımı yalnız masa kararıyla (kanıt: o alanda bağlam sızıntısı ya da yapan≠ölçen ihlali gözlenince)."> <strong>(a) Varsayılan: alan içinde yalnız hakem ayrı ajan</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: kök AGENTS.md md.1&#x27;e tek cümle + charter iskeletine perspektif alanı için &#x27;varsayılan: icra; hakem ayrı&#x27;. Artı: literatürle birebir (yalnız hakem D); ajan sayısı alan başına ≤2; Karar 103 EK (3) korunur, dar başlar. Eksi: bir alanda gerçekten ayrı perspektif gerekirse bir masa döngüsü gecikme. Gerekçe: kanıtsız ayrım maliyet üretir, kanıtlı ayrım zaten kapsanıyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Aynı alanda her farklı perspektif ayrı ajan dizini; ölçüt Atlas 3/3 sonrası."> <strong>(b) Karar 103 EK (3) geniş: her perspektif ayrı ajan</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: charter&#x27;a perspektif listesi, alan başına N dizin. Artı: Salih beyanının düz uygulaması. Eksi: kanıtsız büyüme; Opus kotası N ajana bölünür; bakım lineer.</div></label>
       </div>
       <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
       </form>
