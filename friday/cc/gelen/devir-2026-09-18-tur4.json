@@ -1,0 +1,124 @@
+{
+  "_kaynak_md": "/Users/HasanSalihSahin/friday/cc/gelen/gorev-2026-09-18-tur4.md",
+  "_sema": "devir-birimi v0.2 (A1 türev; tools/devir-md2json.py; md kazanır; v0.2 09-16: OTURUM · KAPANIŞ · KAYNAKLAR · AÇILIŞ_ADIMLARI, olcen→gorev, kapali_goz_ozeti liste, .aktif-devir yazımı)",
+  "devir": {
+    "baglam": {
+      "eager": [
+        "cc/giden/devir-2026-09-16-tur3/okuma-izin-altajan-inceleme.md",
+        "cc/giden/devir-2026-09-16-tur3/s2-permissions-cevap.md",
+        ".claude/hooks/okuma-izin.sh",
+        "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh"
+      ],
+      "kapali_goz_ozeti": [
+        "cc/gelen/devir-2026-09-09-parti5-envanter.md",
+        "cc/giden/devir-2026-09-16-tur3-geri-donus.md"
+      ],
+      "karar_ozeti": [
+        "Karar 89: Opus 5 effort medium sabit, high yasak",
+        "Karar 92 M6 → m.42(h): amaç ↔ done çelişirse amaç kazanır, fark BAŞTA [sapma]; hafıza dosyaları örtük izinli",
+        "Karar 93 (SABİT satır): Jarvis = Salih'le konuşan ana-sıra ajan; tarihli metinlerdeki 'Carvis' = Jarvis (eski ad Carvis, emekli 09-10); sistem/repo = 'depo'/'kanon'",
+        "Karar 99 M1: Friday yan oturum değildir; kendi §5 (main, push yok, pathspec-only)",
+        "Karar 99 M2/M3/M4: bu emrin hükümleri (uygulama onaylı; bu tur öneri turu değil)",
+        "İB-84 A1 v0.2: lojik blok bağlayıcı; KAYNAKLAR/OTURUM/KAPANIŞ bloktadır; çelişkide md kazanır"
+      ],
+      "lazy": [
+        "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh:46 — test bayrağı yazarken",
+        "core/sablonlar/geri-donus-v0.md — geri-dönüş yazarken",
+        "kanon/tuzuk-v0.md m.42(h) — amaç↔done çelişkisinde"
+      ],
+      "yasak": [
+        "kanon/ yazımı",
+        "Jarvis kanon-dışı yollar (~/jarvis/kuyruk, cc, raporlar, veri, .claude)",
+        "R1-R2 dışı doküman sayfası (1-derinlik kuralı hariç)",
+        "işçi açma",
+        "push",
+        "emir dışı settings anahtarı değiştirme"
+      ]
+    },
+    "butce": {
+      "aile_es_zamanli_tavani": 0,
+      "arac_cagri_tavani": 45,
+      "beklenen_ajan_cagrisi": 0,
+      "effort": "medium",
+      "isci_arac_tavani": 0,
+      "isci_donus_token_tavani": 0,
+      "model": "opus"
+    },
+    "gorev": {
+      "amac": "okuma-izin.sh'a agent_id dalı ekle (işçi çağrısında liderin hafıza dosyaları ve kütükler RED), settings.json'a 3b deny bloğunu core/ hariç ekle, desen 21'i core/desenler.md'ye yaz; her değişikliği testle kanıtla",
+      "ciktilar": {
+        "C1": ".claude/hooks/okuma-izin.sh",
+        "C2": ".claude/hooks/okuma-izin-test.sh",
+        "C3": ".claude/settings.json",
+        "C4": "core/desenler.md",
+        "C5": "cc/giden/devir-2026-09-18-tur4/uygulama-raporu.md",
+        "C6": "cc/giden/devir-2026-09-18-tur4-geri-donus.md"
+      },
+      "dallar": [
+        "D1: eğer hook girdisinde agent_id alanı testte gelmiyorsa (sürüm farkı) → agent_type ile aynı dal; ikisi de yoksa X + soru, koşumu durdurma",
+        "D2: eğer deny bloğu belgeye göre kanon/ symlink hedefini kesiyorsa (canlı denemede kanon okunamıyor) → deny bloğunu geri al, C5'e kanıt, kural adayı",
+        "D3: eğer Z1-Z3 vakalarından biri hook v0.3'te hâlâ geçiyorsa → düzeltmeyi dene; 1 denemede düzelmezse K + neden yaz",
+        "D4: belge yeteneği belgeler, normu savunmaz → \"yeterlidir\" cümlesi kurma",
+        "D-KATMAN1: bu emrin dışında bir kural/settings değişikliği gerekirse → DUR, geri-dönüşe kural adayı"
+      ],
+      "done_cikti_basina": {
+        "C1": "hook v0.3 VAR ∧ agent_id varsa ek yasak liste (core/durum-kapsulu.md · core/pano.md · kuyruk/senaryo-defteri.md · kuyruk/fikir-kutusu.md · veri/bronz/*.jsonl · ~/.claude/projects/** transkriptleri; tool-results/ muaf) ∧ ana-sıra (agent_id yok) davranışı değişmedi ∧ RED olayı veri/bronz/altajan-okuma-olay.jsonl'a düşer",
+        "C2": "test dosyası mevcut 9 vaka + Z1-Z3 (tur-3 C2) + agent_id'li 3 vaka (kapsül RED · wiki serbest · kendi tool-results serbest) ∧ hepsi PASS ∧ test koşumu bronz kütüğe yazmaz (ortam bayrağı)",
+        "C3": "permissions.deny bloğu 3b listesi aynen (core/ ve kanon/ satırı yok) ∧ Read(~/jarvis/**) tek satır biçimi yok ∧ hook satırları yerinde ∧ mevcut deny satırları korunmuş",
+        "C4": "desen 21 tek paragraf: \"güvenlik kuralı önermeden önce symlink ve istisna (!) semantiğini belgeden oku\", kanıt C1 §3a pointer'ı ∧ numara sırası bozulmamış",
+        "C5": "dosya VAR ∧ her çıktı için diff özeti (satır sayısı) ∧ test çıktısı aynen ∧ deny listesinin canlı denemesi: bir yasak yolu Read ile dene, reddedildiğini göster (D/K/X)",
+        "C6": "geri-donus 10+2 alanla VAR ∧ sapmalar tablosu ∧ .aktif-devir silindi ∧ kapsül Şu an güncel ∧ pano kartı açıldı-kapandı"
+      },
+      "done_yuklemi": "[C1] hook v0.3 VAR ∧ agent_id varsa ek yasak liste (core/durum-kapsulu.md · core/pano.md · kuyruk/senaryo-defteri.md · kuyruk/fikir-kutusu.md · veri/bronz/*.jsonl · ~/.claude/projects/** transkriptleri; tool-results/ muaf) ∧ ana-sıra (agent_id yok) davranışı değişmedi ∧ RED olayı veri/bronz/altajan-okuma-olay.jsonl'a düşer ∧ [C2] test dosyası mevcut 9 vaka + Z1-Z3 (tur-3 C2) + agent_id'li 3 vaka (kapsül RED · wiki serbest · kendi tool-results serbest) ∧ hepsi PASS ∧ test koşumu bronz kütüğe yazmaz (ortam bayrağı) ∧ [C3] permissions.deny bloğu 3b listesi aynen (core/ ve kanon/ satırı yok) ∧ Read(~/jarvis/**) tek satır biçimi yok ∧ hook satırları yerinde ∧ mevcut deny satırları korunmuş ∧ [C4] desen 21 tek paragraf: \"güvenlik kuralı önermeden önce symlink ve istisna (!) semantiğini belgeden oku\", kanıt C1 §3a pointer'ı ∧ numara sırası bozulmamış ∧ [C5] dosya VAR ∧ her çıktı için diff özeti (satır sayısı) ∧ test çıktısı aynen ∧ deny listesinin canlı denemesi: bir yasak yolu Read ile dene, reddedildiğini göster (D/K/X) ∧ [C6] geri-donus 10+2 alanla VAR ∧ sapmalar tablosu ∧ .aktif-devir silindi ∧ kapsül Şu an güncel ∧ pano kartı açıldı-kapandı",
+      "kapanis": [
+        "C6 geri-dönüş (10+2 alan) + .aktif-devir sil",
+        "pano kartı aç → BİTEN; kapsül Şu an ≤8 madde (FIFO); defter satırı",
+        "git add <yol> + commit [icra] …; push yok",
+        "son mesaj: yazılan dosyaların tam yolları + sapma sayımı (tur-1 2 · tur-2 1 · tur-3 0 · tur-4 ?)"
+      ],
+      "nicin_simdi": "tur-3 C2 (okuma-izin.sh agent_id okumuyor) ve C1 3b (deny listesi) Salih hükmüne gitti; Karar 99 M2 ve M3 uygulamayı onayladı, M4 çekirdek adayını kabul etti; bu tur uygulama turudur (öneri değil)",
+      "olcen": "Jarvis ana-sıra (test çıktısını ve deny canlı denemesini yeniden koşarak doğrular; sapma sayımı Friday'in); Salih hüküm",
+      "yeniden_deneme": 2
+    },
+    "kaynaklar": {
+      "R1": "https://code.claude.com/docs/en/permissions",
+      "R2": "https://code.claude.com/docs/en/hooks",
+      "R3": "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh (Jarvis İB-83 hook'unun kopyası, uyarlanacak desen)",
+      "R4": "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh satır 46 (JARVIS_HOOK_TEST ortam bayrağı deseni; testte export edilir, kütük yazılmaz)"
+    },
+    "kimlik": {
+      "bagli_devir": "devir-2026-09-16-tur3",
+      "devir_id": "devir-2026-09-18-tur4",
+      "emir_yolu": "cc/gelen/gorev-2026-09-18-tur4.md",
+      "hedef_katman": "lider",
+      "kaynak_yuzey": "fable-ana-sira",
+      "tarih": "2026-09-18"
+    },
+    "oturum": {
+      "acilis_adimlari": [
+        "seans-acilis koşma; kapsülü yeniden okuma",
+        "AMAÇ ↔ DONE karşılaştır (m.42(h)); fark varsa başta [sapma]"
+      ],
+      "durum": "devam"
+    },
+    "yetki": {
+      "git_izni": "pathspec-only",
+      "karar_yetkisi": false,
+      "push": false,
+      "yazma_izni": [
+        ".claude/hooks/okuma-izin.sh",
+        ".claude/hooks/okuma-izin-test.sh",
+        ".claude/settings.json",
+        "core/desenler.md",
+        "cc/giden/devir-2026-09-18-tur4/**",
+        "cc/giden/devir-2026-09-18-tur4-geri-donus.md",
+        "core/durum-kapsulu.md",
+        "core/pano.md",
+        "kuyruk/senaryo-defteri.md",
+        "kuyruk/fikir-kutusu.md",
+        "raporlar/**",
+        "cc/gelen/.aktif-devir"
+      ]
+    }
+  }
+}

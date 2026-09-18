@@ -1,0 +1,56 @@
+{
+  "_sema": "devir-birimi v0 — Jarvis İB-75 raporu §3 (2026-09-09); Jarvis manifestinin `devir` bloğu ile aynı; bu repoda cc/gelen/<devir_id>.json dosyasının gövdesi",
+  "_not_2026-09-10-tur2": "B4: emir URL'si 301/302 yönlendirirse hedef sayfa OKUNUR, raporda 'yönlendirildi: <hedef>' damgası, done SAĞLANIR (aynı belge). B5 kapsam: emirdeki URL = o sayfa + o sayfanın DOĞRUDAN bağlantı verdiği aynı-alan-adlı kanonik alt sayfa (1 derinlik); daha derini AÇMA, soruya düş. Tek kaynak: md emir (A1 blok) → json türev; çelişkide md kazanır (B2). Devir alınınca cc/gelen/.aktif-devir dosyasına devir_id yazılır, geri-dönüşte silinir (kütük v0.3 devir_id).",
+  "_not_2026-09-10": "tur-1 A1/A2: `gorev.amac`taki her çıktı `done_yuklemi`nde SAYILIR (derleyici Fable kontrol eder); `yetki.yazma_izni` hafıza dosyalarını (kapsül/pano/defter/kutu) ÖRTÜK içerir — rol.md değişmez 2/2b.",
+  "devir": {
+    "kimlik": {
+      "devir_id": "str",
+      "kaynak_yuzey": "fable-ana-sira|opus-lider",
+      "hedef_katman": "lider|isci",
+      "tarih": "YYYY-MM-DD",
+      "emir_yolu": "path (Jarvis cc/gorev/… — lider OKUYAMAZ; içeriği gorev bloğuna kopyalanır)"
+    },
+    "gorev": {
+      "amac": "tek cümle",
+      "done_yuklemi": "boolean ifade",
+      "dallar": [
+        "D1: eğer … → …"
+      ],
+      "yeniden_deneme": 3
+    },
+    "baglam": {
+      "eager": [
+        "path (≤4 dosya, ≤40k; bu repo ya da kanon/ altında)"
+      ],
+      "lazy": [
+        "path + ne zaman açılır"
+      ],
+      "karar_ozeti": [
+        "Karar 89: lider Opus 5 medium sabit, high yasak",
+        "Karar 93 (SABİT satır): Jarvis = Salih'le konuşan ana-sıra ajan; tarihli metinlerdeki 'Carvis' = Jarvis (eski ad Carvis, emekli 09-10); sistem/repo = 'depo'/'kanon'"
+      ],
+      "yasak": [
+        "kanon/ yazımı",
+        "Jarvis kanon dışı yollar"
+      ]
+    },
+    "butce": {
+      "model": "opus",
+      "effort": "medium",
+      "arac_cagri_tavani": 54,
+      "beklenen_ajan_cagrisi": 7,
+      "isci_donus_token_tavani": 2000,
+      "aile_es_zamanli_tavani": 3,
+      "isci_arac_tavani": 15
+    },
+    "yetki": {
+      "karar_yetkisi": false,
+      "yazma_izni": [
+        "path|glob (bu repo içinde)"
+      ],
+      "git_izni": "pathspec-only|yok",
+      "push": false
+    }
+  },
+  "_not_2026-09-16-a1": "v0.1 (İB-93): json artık Jarvis tools/devir-md2json.py türevidir; yeni alanlar kimlik.bagli_devir · gorev.nicin_simdi · gorev.ciktilar · gorev.done_cikti_basina (done_yuklemi = ∧ birleşimi) · baglam.kapali_goz_ozeti · yetki.olcen; _kaynak_md alanı emri gösterir; çelişkide md kazanır. İlk örnek cc/gelen/devir-2026-09-16-tur3.json."
+}

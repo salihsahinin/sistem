@@ -1,0 +1,118 @@
+{
+  "_kaynak_md": "cc/gelen/gorev-2026-09-18-tur5.md",
+  "_sema": "devir-birimi v0.2 (A1 türev; tools/devir-md2json.py; md kazanır; v0.2 09-16: OTURUM · KAPANIŞ · KAYNAKLAR · AÇILIŞ_ADIMLARI, olcen→gorev, kapali_goz_ozeti liste, .aktif-devir yazımı)",
+  "devir": {
+    "baglam": {
+      "eager": [
+        ".claude/hooks/okuma-izin.sh",
+        ".claude/hooks/okuma-izin-test.sh",
+        "cc/giden/devir-2026-09-18-tur4/uygulama-raporu.md"
+      ],
+      "kapali_goz_ozeti": [
+        "cc/giden/devir-2026-09-18-tur4-geri-donus.md"
+      ],
+      "karar_ozeti": [
+        "Karar 89: Opus 5 effort medium sabit, high yasak",
+        "Karar 92 M6 → m.42(h): amaç ↔ done çelişirse amaç kazanır, fark BAŞTA [sapma]; hafıza dosyaları örtük izinli",
+        "Karar 93 (SABİT satır): Jarvis = Salih'le konuşan ana-sıra ajan; tarihli metinlerdeki 'Carvis' = Jarvis (eski ad Carvis, emekli 09-10); sistem/repo = 'depo'/'kanon'",
+        "Karar 99 M1: Friday yan oturum değildir; kendi §5 (main, push yok, pathspec-only)",
+        "Karar 100 M1/M3/M4: bu emrin hükümleri (uygulama onaylı) · M5: Z3b K kalır, sandbox K-010 A4 gündeminde (bu turda dokunulmaz) · M8: aynı oturumda devam",
+        "İB-84 A1 v0.2: lojik blok bağlayıcı; çelişkide md kazanır"
+      ],
+      "lazy": [
+        "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh — ayrıştırıcı deseni karşılaştırırken",
+        "core/sablonlar/geri-donus-v0.md — geri-dönüş yazarken",
+        "kanon/tuzuk-v0.md m.42(h) — amaç↔done çelişkisinde"
+      ],
+      "yasak": [
+        "kanon/ yazımı",
+        ".claude/settings.json (bu turda deny bloğu değişmez)",
+        "Jarvis kanon-dışı yollar (~/jarvis/kuyruk, cc, raporlar, veri, .claude)",
+        "R1 dışı doküman sayfası (1-derinlik kuralı hariç)",
+        "işçi açma",
+        "push"
+      ]
+    },
+    "butce": {
+      "aile_es_zamanli_tavani": 0,
+      "arac_cagri_tavani": 45,
+      "beklenen_ajan_cagrisi": 0,
+      "effort": "medium",
+      "isci_arac_tavani": 0,
+      "isci_donus_token_tavani": 0,
+      "model": "opus"
+    },
+    "gorev": {
+      "amac": "okuma-izin.sh v0.4 — Bash taraması yalnız dosya-komutlarının argümanlarını yol sayar (grep/sed desen dizeleri yol değildir); alt-ajan yasak listesine cc/gelen/** girer; CLAUDE.md'ye Edit-usulü satırı; her değişiklik test + canlı kanıtla raporlanır.",
+      "ciktilar": {
+        "C1": ".claude/hooks/okuma-izin.sh",
+        "C2": ".claude/hooks/okuma-izin-test.sh",
+        "C3": "CLAUDE.md",
+        "C4": "cc/giden/devir-2026-09-18-tur5/uygulama-raporu.md",
+        "C5": "cc/giden/devir-2026-09-18-tur5-geri-donus.md"
+      },
+      "dallar": [
+        "D1: eğer komut-listesi yaklaşımı bir mevcut test vakasını (22) bozuyorsa → önce vakayı gerçeğe göre yeniden yaz, kod değişmiyorsa K + neden",
+        "D2: eğer \"yalnız argüman tara\" yanlış-negatif üretiyorsa (tırnaklı açık yol kaçıyor) → tırnak soyma adımı ekle; 1 denemede düzelmezse K",
+        "D3: eğer cc/gelen/** yasağı liderin KENDİ emir dosyasını (bu dosyayı) alt-ajansız okumasını engelliyorsa → agent_id yoksa serbest kalmalı; kontrol et, kanıt yaz",
+        "D4: belge yeteneği belgeler, normu savunmaz → \"yeterlidir\" cümlesi kurma",
+        "D-KATMAN1: bu emrin dışında bir kural/settings değişikliği gerekirse → DUR, geri-dönüşe kural adayı"
+      ],
+      "done_cikti_basina": {
+        "C1": "hook v0.4 VAR ∧ Bash dalında yol adayları yalnız dosya-komutlarının argümanlarından toplanır (komut listesi hook başında tek değişken: cat sed head tail less more cp mv ln rm python3 python bash sh source jq sqlite3 wc sort uniq diff open code, en az bunlar) ∧ grep/rg/egrep/fgrep/sed -n 'desen' gibi desen argümanları yol sayılmaz ∧ tırnaklı gerçek yol (\"$dosya\" değil, açık yol) hâlâ yakalanır ∧ agent_id dalına cc/gelen/** eklenmiş ∧ Read/Grep/Glob dalı değişmemiş",
+        "C2": "mevcut 22 vaka + en az 4 yeni vaka (grep deseninde yasak yol → geçer · cat tırnaklı açık yasak yol → RED · değişkenli yol → geçer, Z3b belgelenmiş sınır · alt-ajan cc/gelen/ okur → RED) ∧ hepsi PASS ∧ test koşumu bronz kütüğe yazmaz ∧ bayrak exit 2 kararını kapatmaz",
+        "C3": "CLAUDE.md'ye tek satır: \".claude/** ve core/** yazımı yalnız Edit aracıyla (Karar 100 M4); Bash ile yazım sınıflandırıcıya takılır\" ∧ CLAUDE.md bütçesi aşılmamış",
+        "C4": "dosya VAR ∧ her çıktı için diff özeti (satır sayısı) ∧ test çıktısı aynen ∧ canlı kanıt: (i) yasak yolu grep deseninde geçiren komut artık geçiyor, (ii) yasak yolu cat ile açan komut RED (D/K/X) ∧ komut listesinin eksik kalabileceği durumlar (desen 20 kontrol listesi riski) tek paragraf",
+        "C5": "geri-donus 10+2 alanla VAR ∧ sapmalar tablosu ∧ .aktif-devir silindi ∧ kapsül Şu an güncel ∧ pano kartı açıldı-kapandı"
+      },
+      "done_yuklemi": "[C1] hook v0.4 VAR ∧ Bash dalında yol adayları yalnız dosya-komutlarının argümanlarından toplanır (komut listesi hook başında tek değişken: cat sed head tail less more cp mv ln rm python3 python bash sh source jq sqlite3 wc sort uniq diff open code, en az bunlar) ∧ grep/rg/egrep/fgrep/sed -n 'desen' gibi desen argümanları yol sayılmaz ∧ tırnaklı gerçek yol (\"$dosya\" değil, açık yol) hâlâ yakalanır ∧ agent_id dalına cc/gelen/** eklenmiş ∧ Read/Grep/Glob dalı değişmemiş ∧ [C2] mevcut 22 vaka + en az 4 yeni vaka (grep deseninde yasak yol → geçer · cat tırnaklı açık yasak yol → RED · değişkenli yol → geçer, Z3b belgelenmiş sınır · alt-ajan cc/gelen/ okur → RED) ∧ hepsi PASS ∧ test koşumu bronz kütüğe yazmaz ∧ bayrak exit 2 kararını kapatmaz ∧ [C3] CLAUDE.md'ye tek satır: \".claude/** ve core/** yazımı yalnız Edit aracıyla (Karar 100 M4); Bash ile yazım sınıflandırıcıya takılır\" ∧ CLAUDE.md bütçesi aşılmamış ∧ [C4] dosya VAR ∧ her çıktı için diff özeti (satır sayısı) ∧ test çıktısı aynen ∧ canlı kanıt: (i) yasak yolu grep deseninde geçiren komut artık geçiyor, (ii) yasak yolu cat ile açan komut RED (D/K/X) ∧ komut listesinin eksik kalabileceği durumlar (desen 20 kontrol listesi riski) tek paragraf ∧ [C5] geri-donus 10+2 alanla VAR ∧ sapmalar tablosu ∧ .aktif-devir silindi ∧ kapsül Şu an güncel ∧ pano kartı açıldı-kapandı",
+      "kapanis": [
+        "C5 geri-dönüş (10+2 alan) + .aktif-devir sil",
+        "pano kartı aç → BİTEN; kapsül Şu an ≤8 madde (FIFO); defter satırı",
+        "git add <yol> + commit [icra] …; push yok",
+        "son mesaj: yazılan dosyaların tam yolları + sapma sayımı (tur-2 2 · tur-3 1 · tur-4 0 · tur-5 ?)"
+      ],
+      "nicin_simdi": "tur-4 §3 soruları Salih hükmüne gitti; Karar 100 M1 (ayrıştırıcı v0.4), M3 (cc/gelen/** yasak) ve M4 (Edit usulü) uygulamayı onayladı; Jarvis eşleniği aynı gün uygulandı (hook: cc/gelen + cc/devir yasak; test 14/14). Bu tur uygulama turudur.",
+      "olcen": "Jarvis ana-sıra (test çıktısını ve iki canlı kanıtı yeniden koşarak doğrular; sapma sayımı Friday'in); Salih hüküm",
+      "yeniden_deneme": 2
+    },
+    "kaynaklar": {
+      "R1": "https://code.claude.com/docs/en/hooks",
+      "R2": "cc/gelen/ornek-jarvis-pretool-altajan-okuma.sh (Jarvis hook'u; 09-18 sürümü: bayrak yalnız kütüğü kapatır, cc/gelen + cc/devir yasak)",
+      "R3": "cc/giden/devir-2026-09-18-tur4/uygulama-raporu.md §4d (üç seçenek; hüküm (c))"
+    },
+    "kimlik": {
+      "bagli_devir": "devir-2026-09-18-tur4",
+      "devir_id": "devir-2026-09-18-tur5",
+      "emir_yolu": "cc/gelen/gorev-2026-09-18-tur5.md",
+      "hedef_katman": "lider",
+      "kaynak_yuzey": "fable-ana-sira",
+      "tarih": "2026-09-18"
+    },
+    "oturum": {
+      "acilis_adimlari": [
+        "seans-acilis koşma; kapsülü yeniden okuma (aynı oturum, Karar 100 M8)",
+        "AMAÇ ↔ DONE karşılaştır (m.42(h)); fark varsa başta [sapma]"
+      ],
+      "durum": "devam"
+    },
+    "yetki": {
+      "git_izni": "pathspec-only",
+      "karar_yetkisi": false,
+      "push": false,
+      "yazma_izni": [
+        ".claude/hooks/okuma-izin.sh",
+        ".claude/hooks/okuma-izin-test.sh",
+        "CLAUDE.md",
+        "cc/giden/devir-2026-09-18-tur5/**",
+        "cc/giden/devir-2026-09-18-tur5-geri-donus.md",
+        "core/durum-kapsulu.md",
+        "core/pano.md",
+        "kuyruk/senaryo-defteri.md",
+        "kuyruk/fikir-kutusu.md",
+        "raporlar/**",
+        "cc/gelen/.aktif-devir"
+      ]
+    }
+  }
+}

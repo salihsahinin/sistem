@@ -1,0 +1,46 @@
+{
+  "_sema": "devir-birimi v0 (core/sablonlar/devir-birimi-v0.json) — TUR-2: R1+R2 dış kaynak araştırması (Jarvis Karar 92 M3 a, Salih 2026-09-10) + tasarım diyaloğu tur-2; her iş devir birimidir (rol.md 2b, tur-1 A7)",
+  "devir": {
+    "kimlik": {
+      "devir_id": "devir-2026-09-10-tur2",
+      "kaynak_yuzey": "fable-ana-sira",
+      "hedef_katman": "lider",
+      "tarih": "2026-09-10",
+      "emir_yolu": "Jarvis kuyruk/senaryo-defteri.md Karar 92 M3 (lider OKUYAMAZ; içerik bu blokta TAM)"
+    },
+    "gorev": {
+      "amac": "R1 (https://docs.claude.com/en/docs/claude-code/hooks) ve R2 (https://docs.claude.com/en/docs/claude-code/settings) resmî dokümanlarını açıp iki soruya kaynaklı cevap ver: (S1) PostToolUse hook girdisi Bash çağrısı için okunan/yazılan yolu veren resmî bir alan taşıyor mu — taşımıyorsa hareket-kutuk.sh v0.2'nin komut-metni ayrıştırması KALICI çözüm sayılır; (S2) permissions.deny kuralları Read/Bash için yol-bazlı kısıt verebiliyor mu — verebiliyorsa okuma-izin.sh hook'unun yerine ya da yanına deny kuralı önerisi (kural metni aynen); (S3, Jarvis İB-83 için) PreToolUse/PostToolUse hook girdisi çağrının bir ALT-AJANDAN (Agent aracıyla açılmış subagent) geldiğini ayırt eden resmî bir alan taşıyor mu (agent id / parent session / SubagentStart olayı) — taşıyorsa alan adı + örnek JSON. Çıktı: cc/giden/devir-2026-09-10-tur2/r1-r2-cevap.md (her iddia D/K/X etiketli + URL + alıntı ≤15 kelime) + cc/giden/devir-2026-09-10-tur2-geri-donus.md + cc/giden/tasarim-2026-09-10-tur2.md (tasarım diyaloğu tur-2: cevap dosyasına tepkilerin, yeni eksik/çelişki, ≤5 soru).",
+      "done_yuklemi": "cc/giden/devir-2026-09-10-tur2/r1-r2-cevap.md VAR ∧ S1, S2 ve S3 için etiketli cevap VAR ∧ her cevap URL + alıntı taşıyor ∧ URL'ler fiilen açıldı (erişilemeyen URL → X etiketi + neden) ∧ cc/giden/devir-2026-09-10-tur2-geri-donus.md 10+2 alanla VAR ∧ cc/giden/tasarim-2026-09-10-tur2.md VAR ∧ Jarvis'e (kanon/ dahil) yazım = 0 ∧ kapsül 'Şu an' güncel ∧ pano kartı BİTEN ∧ R3/R4/R5 AÇILMADI",
+      "dallar": [
+        "D1: eğer URL açılamıyorsa (404/erişim) → X etiketi + hata metni; alternatif adres ARAMA, Salih'e soru olarak bırak",
+        "D2: eğer doküman S1 için alan belgeliyorsa → hook v0.2'nin hangi satırı gereksizleşir yaz (öneri; kendin değiştirme)",
+        "D3: eğer S2 için deny kuralı yol-bazlı çalışıyorsa → settings.json deny satırı ÖNERİSİ yaz; settings.json'a DOKUNMA (Katman-1)",
+        "D4: belge bir yeteneği belgeler, normu savunmaz (desen 09-09 P/Q) — 'yeterlidir' cümlesi kurma, 'belgeler/belgelemez' de",
+        "D-KATMAN1: kural değişikliği gerektiren nokta → DUR, geri-dönüş notuna 'kural adayı'"
+      ],
+      "yeniden_deneme": 2
+    },
+    "baglam": {
+      "eager": [
+        "cc/gelen/tasarim-2026-09-09-tur1-cevap.md",
+        "core/rol.md",
+        "core/desenler.md",
+        ".claude/hooks/hareket-kutuk.sh"
+      ],
+      "lazy": [
+        ".claude/hooks/okuma-izin.sh — S2 karşılaştırması için",
+        "core/sablonlar/geri-donus-v0.md — geri-dönüş yazarken",
+        "kanon/tuzuk-v0.md m.39 ve m.42(h) — grep ile"
+      ],
+      "karar_ozeti": [
+        "Karar 89: Opus 5 effort MEDIUM sabit",
+        "Karar 92 M3: yalnız R1+R2; R3/R4/R5 bu turda YASAK",
+        "Karar 92 M6 → m.42(h): amaç ↔ done çelişirse amaç kazanır, fark BAŞTA [sapma]; hafıza dosyaları örtük izinli",
+        "Karar 92 M4: desen 20 çekirdekte (kontrol listesi ilkesi)"
+      ],
+      "yasak": ["kanon/ yazımı", "Jarvis kanon-dışı yollar", "R3/R4/R5 URL'leri", "settings.json değişikliği", "işçi açma (tek lider yeter)"]
+    },
+    "butce": { "model": "opus", "effort": "medium", "arac_cagri_tavani": 40, "beklenen_ajan_cagrisi": 0, "isci_donus_token_tavani": 0, "aile_es_zamanli_tavani": 0, "isci_arac_tavani": 0 },
+    "yetki": { "karar_yetkisi": false, "yazma_izni": ["cc/giden/devir-2026-09-10-tur2/**", "cc/giden/devir-2026-09-10-tur2-geri-donus.md", "cc/giden/tasarim-2026-09-10-tur2.md", "core/durum-kapsulu.md", "core/pano.md", "kuyruk/senaryo-defteri.md", "kuyruk/fikir-kutusu.md", "raporlar/**"], "git_izni": "pathspec-only", "push": false }
+  }
+}
