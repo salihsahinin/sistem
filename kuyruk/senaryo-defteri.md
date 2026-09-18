@@ -13,7 +13,12 @@
 
 - **2026-09-18 · Jarvis Karar 99 (Salih Katman-1, masa-13):** M1 Friday yan oturum değildir (kendi §5: `main`, push yok, pathspec-only) · M2 alt-ajan dalı uygulanır · M3 deny bloğu `core/` hariç eklenir · M4 çekirdek aday kabul (desen 21). Kaynak: `cc/gelen/gorev-2026-09-18-tur4.md:16,76-77`.
 
+- **2026-09-18 · Jarvis Karar 100 (Salih Katman-1, masa-14):** M1 ayrıştırıcı v0.4 (seçenek c) · M3 alt-ajana `cc/gelen/**` yasak · M4 `.claude/**` ve `core/**` yazımı Edit aracıyla · M5 Z3b açık kalır (sandbox K-010 A4) · M8 aynı oturumda devam. Kaynak: `cc/gelen/gorev-2026-09-18-tur5.md:16,72`.
+
 ## [oneri] / [sapma] kayıtları
+- **2026-09-18 · `[uygulandi]` · Karar 100 M1/M3/M4 → tur-5:** ayrıştırıcı v0.4 (dosya-komutu argümanları; desen dizesi yol değil) · alt-ajan yasağına `cc/gelen/**` · `CLAUDE.md` Edit-usulü satırı (dosya 4.090 B'ye indi). Kanıt: 30 vaka `PASS`, iki canlı kanıt (desen geçti, `cat` ile açık yol kesildi). Pointer: `cc/giden/devir-2026-09-18-tur5/uygulama-raporu.md`.
+- **2026-09-18 · sapma yok · devir-2026-09-18-tur5:** emir-kaynaklı `[sapma]` 0. İki uyarlama (komut kümesine ek komutlar — madde "en az bunlar" diyor; `CLAUDE.md`'de bir satır girip beş yerin kısalması) geri-dönüş §7'de.
+- **2026-09-18 · `[oneri]` · kural adayları (hüküm değil):** komut kümesinin genişletilmesi (`git show`, `xxd`, satır-içi yorumlayıcı) · `bash betik.sh` çağrısında betik içi okumalar · kilidin ilan metni ile tanıma listesi mantığının uyumlanması. Pointer: `cc/giden/devir-2026-09-18-tur5-geri-donus.md` §3.
 - **2026-09-18 · `[uygulandi]` · Karar 99 M2/M3/M4 → tur-4:** hook v0.3 (alt-ajan dalı, Z1/Z2 onarımı) · `settings.json` deny 15 satır (`core/` hariç) · desen 21. Kanıt: 22 vaka `PASS`, üç canlı deneme (yasak yol reddedildi, `kanon/` sağlam, `RED` olayı kütüğe düştü). Pointer: `cc/giden/devir-2026-09-18-tur4/uygulama-raporu.md`.
 - **2026-09-18 · sapma yok · devir-2026-09-18-tur4:** emir-kaynaklı `[sapma]` 0 (Friday sayımı). Üç uyarlama (Z3 vakasının ikiye ayrılması · bayrak adının Friday karşılığı · `exit 2`'nin bayrak dışına alınması) geri-dönüş §7'de açık.
 - **2026-09-18 · `[oneri]` · kural adayları (hüküm değil):** ayrıştırıcının desen dizesini yol sayması (3 seçenek) · Jarvis örnek hook'unda `exit 2`'nin test bayrağı içinde kalması · alt-ajan yasak listesine `cc/gelen/**` · Z3b için işletim sistemi düzeyinde sandbox. Pointer: `cc/giden/devir-2026-09-18-tur4-geri-donus.md` §3.

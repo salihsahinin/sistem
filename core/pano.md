@@ -9,7 +9,7 @@
 ## BEKLEYEN
 | Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
 |---|---|---|---|---|---|
-| tur4-dogrulama | Jarvis testi ve canlı denemeyi yeniden koşup doğrulasın; sonuca göre 5 soru Salih'e | doğrulama sonucu okundu | 09-18 | Jarvis tarafı | doğrulama sonrası |
+| tur5-dogrulama | Jarvis test çıktısını ve iki canlı kanıtı yeniden koşsun; sonra 5 soru Salih'e | doğrulama sonucu okundu | 09-18 | Jarvis tarafı | doğrulama sonrası |
 
 ## BİTEN
 | Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
@@ -21,3 +21,4 @@
 | devir-2026-09-16-tur3 | A1 formatı ilk koşum: S2'yi permissions sayfasıyla kapat · kilidin alt-ajan hâlini incele · tasarım tur-3 | ✓ C1–C4; S2 D; C2 öneri kipinde; emir-kaynaklı sapma 0; Jarvis'e yazım 0 | 09-16 | `cc/giden/devir-2026-09-16-tur3/` · `-geri-donus.md` · `tasarim-2026-09-16-tur3.md` | 09-16 bitti |
 | tur3-cevap | Tur-3 soruları (b1–b5, Ö1–Ö4, C1 §3b) | ✓ Karar 99 ile hükme bağlandı; tur-4 emrine dönüştü | 09-16 | `cc/gelen/gorev-2026-09-18-tur4.md` | kapandı |
 | devir-2026-09-18-tur4 | Uygulama turu: hook v0.3 alt-ajan dalı · deny bloğu · desen 21; her değişiklik testli | ✓ C1–C6; 22 PASS · 0 FAIL; canlı kanıt 3/3; emir-kaynaklı sapma 0 | 09-18 | `cc/giden/devir-2026-09-18-tur4/` · `-geri-donus.md` · `.claude/` · `core/desenler.md` | 09-18 bitti |
+| devir-2026-09-18-tur5 | Ayrıştırıcı v0.4 (desen ≠ argüman) · alt-ajan yasağına `cc/gelen/**` · CLAUDE.md Edit-usulü satırı | ✓ C1–C5; 30 PASS · 0 FAIL; iki canlı kanıt D; CLAUDE.md 4.090 B; emir-kaynaklı sapma 0 | 09-18 | `cc/giden/devir-2026-09-18-tur5/` · `-geri-donus.md` · `.claude/hooks/` · `CLAUDE.md` | 09-18 bitti |

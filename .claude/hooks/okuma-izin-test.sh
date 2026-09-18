@@ -40,6 +40,16 @@ t "agent_id + defter (Bash) → RED"            '{"agent_id":"a1","agent_type":"
 t "agent_id + bronz kütük → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/veri/bronz/hareket-olay.jsonl"}}' 2
 t "ana-sıra + kapsül okuma → geçer (değişmedi)" '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/core/durum-kapsulu.md"}}' 0
 
+echo "-- v0.4 ayrıştırıcı (Karar 100 M1) ve cc/gelen yasağı (M3) --"
+t "grep DESENİNDE yasak yol → geçer"          '{"tool_name":"Bash","tool_input":{"command":"grep -n \"jarvis/kuyruk\" core/pano.md"}}' 0
+t "cat ile tırnaklı açık yasak yol → RED"     '{"tool_name":"Bash","tool_input":{"command":"cat \"/Users/HasanSalihSahin/jarvis/cc/rapor.md\""}}' 2
+t "grep ARGÜMANINDA yasak dizin → RED"        '{"tool_name":"Bash","tool_input":{"command":"grep -r m.8 ~/jarvis/kuyruk"}}' 2
+t "sed betiği desen, dosya serbest → geçer"   '{"tool_name":"Bash","tool_input":{"command":"sed -n /jarvis.kuyruk/p core/pano.md"}}' 0
+t "değişkenli yol (Z3b sınırı) → geçer"       '{"tool_name":"Bash","tool_input":{"command":"cat \"$D/x.md\""}}' 0
+t "alt-ajan cc/gelen okur → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/cc/gelen/gorev-2026-09-18-tur4.md"}}' 2
+t "lider (agent_id yok) kendi emrini okur"    '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/cc/gelen/gorev-2026-09-18-tur5.md"}}' 0
+t "alt-ajan kendi tool-results (Bash) → geçer" '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"sed -n 1,5p ~/.claude/projects/p/s/tool-results/x.txt"}}' 0
+
 echo "--------"
 echo "PASS $GECEN · FAIL $KALAN"
 [ "$KALAN" = 0 ] || exit 1
