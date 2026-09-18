@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-09-18 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `632f172`)
+# Hareket günlüğü — 2026-09-18 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `4b74280`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 190 çağrı, 4 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 229 çağrı, 5 oturum.*
 
 ## Oturum `58141fb3` — 10:42:00→11:24:04 · 73 çağrı · model fable-5-1 · hata 8
 **Özet:** koştu 44 · MCP aracı 14 · düzenledi 6 · skill çağırdı 3 · yazdı 3 · araç aradı 1 · görev listesi 1 · okudu 1
@@ -218,4 +218,50 @@
 | 5 | 14:31:39 | koştu | Kapanış kapıları 1: hareket kütüğü, bağlam seyri, skill eşiği, bayat kuyruğu, kural sayacı ⟨echo "== hareket-tablo"; python3 tools/hareket-tablo.py 2>&1 ¦ tail -3; echo "== baglam-seyir"; python3 tools/baglam-seyir.py 2>&1 ¦ tail -3; echo "==…⟩ | yok |
 | 6 | 14:31:48 | koştu | Kapanış kapıları 2: bu oturumun bağlam seyri, silver sağlık kapısı, katman hattı ⟨grep "7b351190" veri/gorunum/v_baglam_seyri.csv ¦ head -2; echo "== silver-saglik"; python3 tools/silver-saglik.py --kapi 2>&1 ¦ tail -4; echo "exit=$…⟩ | yok |
 | 7 | 14:31:49 | koştu | Birim-test kapısı (6g) ⟨python3 -m unittest discover -s tools/testler -p 'test_*.py' 2>&1 ¦ tail -4⟩ | yok |
+
+## Oturum `6a0bab8a` — 14:44:52→14:51:19 · 39 çağrı · model fable-5-1 · hata 0
+**Özet:** koştu 25 · düzenledi 9 · okudu 4 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (1):** `.claude/hooks/pretool-altajan-okuma.sh`
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 14:44:52 | koştu | Depo kökünde staged/unstaged değişiklik sayımı ve plan §5 adımlarını göster ⟨cd ~/sistem && git status --short ¦ awk '{print $1}' ¦ sort ¦ uniq -c; echo ---; git status --short ¦ grep -v '^R ' ¦ head -20; echo ---; git log --on…⟩ | tamam |
+| 2 | 14:44:58 | koştu | Plan §5 kalan adımları ve unstaged farkları göster ⟨cd ~/sistem && sed -n 61,95p jarvis/kuyruk/*monorepo*plan*.md; echo ---; git diff --stat -- veri/bronz/prompt-dosya-olay.jsonl veri/bronz/talimat-yukl…⟩ | tamam |
+| 3 | 14:46:21 | koştu | Claude proje dizinlerini, hafıza sayılarını ve kirli izlenen dosyaları listele ⟨ls -d ~/.claude/projects/-Users-HasanSalihSahin-* 2>/dev/null; echo ---; for d in ~/.claude/projects/-Users-HasanSalihSahin-jarvis ~/.claude/projects/…⟩ | tamam |
+| 4 | 14:48:34 | skill çağırdı | seans-acilis F3 | tamam |
+| 5 | 14:48:39 | koştu | Açılış kapılarını koştur (canlı oturum, manifest, silver tazelik) ⟨cd ~/sistem/jarvis && python3 tools/acilis-kapilari.py 2>&1 ¦ head -40; echo "=== --is F3 ==="; python3 tools/acilis-kapilari.py --is "monorepo F3 yol…⟩ | tamam |
+| 6 | 14:48:45 | koştu | Durum kapsülünü tamamen oku ⟨cd ~/sistem/jarvis && cat core/durum-kapsulu.md⟩ | tamam |
+| 7 | 14:48:46 | koştu | Panonun ilk 80 satırını oku ⟨cd ~/sistem/jarvis && sed -n 1,80p core/pano.md⟩ | tamam |
+| 8 | 14:48:48 | koştu | yol-tasi.py yardımını ve kuru koşumunu göster ⟨cd ~/sistem/jarvis && python3 tools/yol-tasi.py --help 2>&1 ¦ head -30; echo "=== kuru ==="; python3 tools/yol-tasi.py --kok ~/sistem 2>&1 ¦ tail -25⟩ | tamam |
+| 9 | 14:48:50 | koştu | Depo temizliği ve Friday ayar dosyasındaki yol satırlarını göster ⟨cd ~/sistem && git status --short ¦ grep -v '^??' ¦ head; echo "--- untracked:"; git status --short ¦ grep '^??' ¦ wc -l; echo "--- friday deny:"; gre…⟩ | tamam |
+| 10 | 14:48:53 | koştu | yol-tasi.py kuru koşumunu yeni kökle çalıştır ⟨cd ~/sistem/jarvis && python3 tools/yol-tasi.py --kuru --kok ~/sistem 2>&1 ¦ tail -45⟩ | tamam |
+| 11 | 14:48:56 | koştu | yol-tasi başını, Friday ayarını, tur-5 dönüş dosyasını ve hook testlerini listele ⟨cd ~/sistem/jarvis && sed -n 1,60p tools/yol-tasi.py; echo "=== friday settings deny bloğu:"; sed -n 1,40p ../friday/.claude/settings.json; echo "=== …⟩ | tamam |
+| 12 | 14:49:02 | koştu | yol-tasi.py'yi uygula ve kalan eski yol sayısını ölç ⟨cd ~/sistem/jarvis && python3 tools/yol-tasi.py --uygula --kok ~/sistem 2>&1 ¦ tail -4 && cd ~/sistem && git diff --stat ¦ tail -3 && grep -rn 'HasanS…⟩ | tamam |
+| 13 | 14:49:07 | koştu | Kalan 2 eski yol satırını ve yol-tasi.py'nin kendi değişimini göster ⟨cd ~/sistem && grep -rn 'HasanSalihSahin/jarvis\¦~/jarvis\¦HasanSalihSahin/friday\¦~/friday\¦-Users-HasanSalihSahin-jarvis' jarvis/tools jarvis/.claud…⟩ | tamam |
+| 14 | 14:49:16 | koştu | yol-tasi.py'yi HEAD'e döndür ⟨cd ~/sistem && git checkout jarvis/tools/yol-tasi.py && git diff --stat ¦ tail -1⟩ | tamam |
+| 15 | 14:49:17 | okudu | ~/sistem/friday/.claude/settings.json [aralık 0+30] | tamam |
+| 16 | 14:49:27 | düzenledi | ~/sistem/friday/.claude/settings.json | tamam |
+| 17 | 14:49:30 | koştu | Jarvis ve Friday hook testlerini koştur ⟨cd ~/sistem/jarvis && echo "=== Jarvis altajan test:"; bash .claude/hooks/pretool-altajan-okuma-test.sh 2>&1 ¦ tail -4; echo "=== Jarvis büyük-harf te…⟩ | tamam |
+| 18 | 14:49:31 | koştu | Friday tur-5 geri dönüş dosyasını oku ⟨cd ~/sistem/friday && sed -n 1,80p cc/giden/devir-2026-09-18-tur5-geri-donus.md⟩ | tamam |
+| 19 | 14:49:37 | koştu | Friday testindeki FAIL satırlarını ve Jarvis test sayımını göster ⟨cd ~/sistem/friday && bash .claude/hooks/okuma-izin-test.sh 2>&1 ¦ grep -n 'FAIL'; echo "=== Jarvis altajan toplam:"; cd ~/sistem/jarvis && bash .clau…⟩ | tamam |
+| 20 | 14:49:43 | koştu | Jarvis hook testinin FAIL satırını ve hook/test yol satırlarını göster ⟨cd ~/sistem/jarvis && bash .claude/hooks/pretool-altajan-okuma-test.sh 2>&1 ¦ grep '^FAIL'; echo "=== jarvis test kaynağı (FAIL vakası çevresi):"; gre…⟩ | tamam |
+| 21 | 14:49:46 | koştu | Friday hook'un yol kuralları ve üç FAIL vakasının tanımı ⟨cd ~/sistem/friday && echo "=== friday hook yol/izin satırları:"; grep -n 'jarvis\¦kanon\¦HOME\¦sistem\¦IZIN\¦izinli\¦core' .claude/hooks/okuma-izin.s…⟩ | tamam |
+| 22 | 14:50:15 | okudu | .claude/hooks/pretool-altajan-okuma.sh [aralık 20+8] | tamam |
+| 23 | 14:50:15 | okudu | ~/sistem/friday/.claude/hooks/okuma-izin.sh [aralık 1+60] | tamam |
+| 24 | 14:50:15 | okudu | ~/sistem/friday/.claude/hooks/okuma-izin-test.sh [aralık 1+30] | tamam |
+| 25 | 14:50:17 | koştu | Kök dosyaları ve Friday CLAUDE.md'deki kanon satırlarını listele ⟨cd ~/sistem && ls -la ¦ grep -v '^d' ; echo "=== friday CLAUDE.md kanon satırları:"; grep -n 'kanon' friday/CLAUDE.md ¦ head⟩ | tamam |
+| 26 | 14:50:33 | düzenledi | .claude/hooks/pretool-altajan-okuma.sh | tamam |
+| 27 | 14:50:38 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin.sh | tamam |
+| 28 | 14:50:41 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin.sh | tamam |
+| 29 | 14:50:44 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin.sh | tamam |
+| 30 | 14:50:47 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin.sh | tamam |
+| 31 | 14:50:52 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin-test.sh | tamam |
+| 32 | 14:50:55 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin-test.sh | tamam |
+| 33 | 14:50:58 | düzenledi | ~/sistem/friday/.claude/hooks/okuma-izin-test.sh | tamam |
+| 34 | 14:51:02 | koştu | İki hook testini yeniden koştur ⟨cd ~/sistem/jarvis && echo "=== Jarvis altajan:"; bash .claude/hooks/pretool-altajan-okuma-test.sh 2>&1 ¦ grep -E '^FAIL¦sonuç¦PASS [0-9]' ; echo "PAS…⟩ | tamam |
+| 35 | 14:51:05 | koştu | Friday tur-5 uygulama raporundaki test ve canlı kanıt bölümünü göster ⟨cd ~/sistem/friday && echo "=== tur-5 uygulama raporu §4 test çıktısı + canlı kanıt:"; grep -n -A6 '^## 4\¦^### 4\¦canlı kanıt\¦Canlı kanıt' cc/giden/…⟩ | tamam |
+| 36 | 14:51:14 | koştu | Friday tur-5 canlı kanıtlarını yeni yollarla tekrarla ve CLAUDE.md boyutunu ölç ⟨cd ~/sistem/friday && export CLAUDE_PROJECT_DIR=$PWD FRIDAY_HOOK_TEST=1; echo "(i) desen içinde yasak yol → beklenen exit 0:"; printf '%s\n' '{"tool_n…⟩ | tamam |
+| 37 | 14:51:16 | koştu | Silver/gold katman hattını yeniden türet ⟨cd ~/sistem/jarvis && time python3 tools/katman-hatti.py 2>&1 ¦ tail -8⟩ | yok |
+| 38 | 14:51:17 | koştu | Açılış kapılarını yol düzeltmesi sonrası yeniden koştur ⟨cd ~/sistem/jarvis && python3 tools/acilis-kapilari.py 2>&1 ¦ head -20⟩ | yok |
+| 39 | 14:51:19 | koştu | Değişen dosyaları, untracked girdileri ve .gitignore'u göster ⟨cd ~/sistem && git status --short ¦ grep -v '^??'; echo "--- untracked (ilk 25):"; git status --short ¦ grep '^??'; echo "--- .gitignore:"; cat .gitig…⟩ | yok |
 
