@@ -1,0 +1,397 @@
+{
+ "no": 13,
+ "tarih": "2026-09-18",
+ "baslik": "Friday tur-3 açıkları · ajan-üretim usulü · devreden kalemler",
+ "giris": "Karar 98 çift hat sürüyor; bu masa 09-16/17 koşumlarından biriken Katman-1 hükümleri ve masa-10'dan devreden teknik kalemleri toplar.",
+ "tetik": "Salih 09-18: \"kararları karar masasına taşı\"",
+ "once_yapildi": "Friday tur-3 döndü (S2 D, sapma 0) → A1 şeması v0.2 · atlas-kosum alt-ajan usulü: 60 iddia → 43 sağlam / 14 daraldı / 2 düştü / 1 çelişkili; şablon v0 taslağı <code>raporlar/2026-09/atlas-kosum-altajan-usul/altajan-tanim-sablon-v0.md</code> · promptfoo v0.123.0 canlı doğrulandı · büyük-harf arızası kök neden + hook v0.3 · güvenlik PR #5 main'e merge edildi (cffd851) · tester-ajan sorusu Karar 98 ile fiilen kapandı (ilk alt-ajan = hakem/tester).",
+ "asof": "2026-09-18",
+ "kanit": [
+  {
+   "bulgu": "Friday tur-3 S2",
+   "deger": "Read için yol-bazlı deny belgeli; tek satır <code>Read(~/jarvis/**)</code> symlink yüzünden kanon/ bağını da keser; işleyen biçim alt-dizin listesi (3b)",
+   "kaynak": "cc/devir/friday-2026-09-16-tur3/s2-permissions-cevap.md · code.claude.com/docs/en/permissions",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Friday tur-3 C2",
+   "deger": "okuma-izin.sh agent_id/agent_type okumuyor (:20,:32,:34); yol kilidi işçi çağrısında da tetiklenir (D), işçiye özgü dar alan yok (K)",
+   "kaynak": "cc/devir/friday-2026-09-16-tur3/okuma-izin-altajan-inceleme.md",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Friday git akışı",
+   "deger": "Friday §5 main + push yok; Karar 95 yan oturum = branch + PR; Friday'in hangisi olduğu yazılı değil (b3)",
+   "kaynak": "cc/devir/friday-2026-09-16-tur3/tasarim-2026-09-16-tur3.md",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Atlas koşumu hakem sayımı",
+   "deger": "P1 22/3/0 · P2 12/9/2 · P3 9/2/0/1 çelişkili (sağlam/daraldı/düştü); maskeleme sızdı (beyan)",
+   "kaynak": "raporlar/2026-09/atlas-kosum-altajan-usul/hakem-2026-09-17.md",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "Dalga protokolü",
+   "deger": "F3: <code>MECE</code> sorusu kök hücre, al · 2026-07-24 bağımsız raporu: karşıt; kanıt eşit → çelişkili",
+   "kaynak": "hakem-2026-09-17.md P3",
+   "etiket": "X"
+  },
+  {
+   "bulgu": "Atlas ölü ağırlık",
+   "deger": "<code>FELSEFİ TEMELLER</code> bölümü ontoloji ~900 B hiçbir koşuma geri gelmiyor · docs/research yolu geçersiz · öz-farkındalık bölümü fiilen yanlış (Context7) · Kanıt Hiyerarşisi 9 raporda, V26 onlarca koşumda",
+   "kaynak": "tez-F3 + antitez-A3 + hakem",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Galeri kota",
+   "deger": "nihai = trim kümesi v2 + M4b + \"en az k soğuk\"; öneri k=3; ekip dokümanı hazır",
+   "kaynak": "raporlar/seans/seans-teslim-2026-09-10-galeri-kumeleme-kota.md",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "m.29 seans hedefi",
+   "deger": "5 seans doldu; kayıtlı sonuçlar: 2/5 <code>TUTTU</code> · 5/5 <code>TUTTU</code> (hedef genişledi, sapma değil); 09-16/17 hedefleri kapsülde",
+   "kaynak": "core/durum-kapsulu.md · seans-teslim 09-15",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "Ö3-Ö6 yerleşim çelişkisi",
+   "deger": "Karar 96 M6 (d): staj bilgisi genelleştirilmiş, tek hazine jarvis · Karar 98 satırı: \"Ö3-Ö6 staj reposunda\" (Jarvis yazımı) → m.16 çelişki",
+   "kaynak": "kuyruk/senaryo-defteri.md:266 · :254",
+   "etiket": "D"
+  }
+ ],
+ "hakem": "",
+ "kalemler": [
+  {
+   "id": "M1",
+   "baslik": "Friday bir \"yan oturum\" mu? (S1, b3)",
+   "rozet": "Katman-1 · kural (Karar 95 kapsamı)",
+   "ne_demek": "Karar 95: yan oturum worktree + kendi branch + seans sonu PR, merge ana-sırada. Friday ayrı repo (~/friday), kendi §5'i main'de commit, push yok diyor. Tur-3'te Friday §5'e uydu.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Friday Karar 95 dışı ✅ öneri",
+     "value": "(a) Friday yan oturum değildir: Karar 95 yalnız ~/jarvis worktree oturumları için; Friday kendi §5 kuralında kalır (main, push yok, pathspec-only)",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday CLAUDE.md'ye tek satır açıklık; Karar 95'e kapsam notu. <strong>Artı:</strong> Ayrı repo + remote yok; PR akışı anlamsız; bugünkü fiili durum. <strong>Eksi:</strong> İki farklı git usulü yaşar; yeni okuyucu karıştırabilir (Friday b3 bunu yaşadı). <strong>Gerekçe:</strong> Karar 91: Friday ayrı repo, Jarvis'e pathspec-only; PR merge edecek ana-sıra o repoda yok."
+    },
+    {
+     "etiket": "(b) Karar 95 Friday'e de uygulanır",
+     "value": "(b) Friday de branch + PR akışına geçer; merge Salih/Jarvis'te",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday reposuna remote + PR usulü kurulur. <strong>Artı:</strong> Tek usul. <strong>Eksi:</strong> Remote yok, kurulum işi; Friday commit'leri zaten pathspec-only ve Jarvis'e yazmıyor. <strong>Gerekçe:</strong> Bugün karşılığı olmayan maliyet."
+    }
+   ]
+  },
+  {
+   "id": "M2",
+   "baslik": "İşçi ↔ Friday hafızası (S2, C2 Ö3)",
+   "rozet": "Katman-1 · kilit kapsamı",
+   "ne_demek": "Jarvis İB-83 kilidi alt-ajana kapsül/pano/defter/transkript/Friday yolunu yasaklıyor. Friday'in okuma-izin.sh'ı yalnız yol kökü denetliyor; Friday bir işçi açarsa işçi liderin kapsül ve defterini görür.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) İB-83 eşleniği Friday'e ✅ öneri",
+     "value": "(a) Friday okuma-izin.sh'a agent_id dalı: işçi çağrısında liderin kapsül/pano/defter/kutu + kütükler RED (Jarvis pretool-altajan-okuma deseni); test dosyasına Z1-Z3 vakaları",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday'e tur-4 emri: hook v0.3 önerisi (Ö1-Ö4'ten Ö2), Salih onayıyla Friday .claude/ değişir. <strong>Artı:</strong> Lider hafızası işçiye sızmaz; iki repoda aynı ilke. <strong>Eksi:</strong> Friday henüz işçi açmıyor; bugün sıfır canlı vaka. <strong>Gerekçe:</strong> Karar 89 üç katman işçiyi öngörüyor; kilit vaka çıkmadan kurulur (Karar 91 dersi)."
+    },
+    {
+     "etiket": "(b) İşçi açılınca",
+     "value": "(b) şimdilik değişiklik yok; Friday ilk işçi açtığında kalem yeniden masaya",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Kayıt düşer, tetik = ilk işçi. <strong>Artı:</strong> Sıfır iş. <strong>Eksi:</strong> Tetik kaçarsa kilit yokken işçi koşar. <strong>Gerekçe:</strong> Kanıt-kapılı erteleme (Karar 98 EK-1)."
+    }
+   ]
+  },
+  {
+   "id": "M3",
+   "baslik": "3b deny listesi Friday settings'e ikinci katman mı? (S3)",
+   "rozet": "Katman-1 · settings",
+   "ne_demek": "Belgeye göre <code>permissions.deny</code> alt-dizin listesi (kuyruk/, cc/, raporlar/, veri/ … 15 satır) Read + dosya-okuyan Bash komutlarını hook geçirse bile keser; ama inkâr listesidir (yeni dizin kapsam dışı), python/grep -r'yi görmez. Hook izin listesi; ikisi tamamlayıcı.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Evet, hook'un yanına ✅ öneri",
+     "value": "(a) Friday settings.json deny listesi 3b aynen girer (core/ hariç), okuma-izin.sh kalır; listeyi tazeleyen taraf Jarvis (yeni üst dizin açılınca satır)",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday'e tur-4'te settings deny bloğu; Jarvis README dizin haritası değişince satır eklenir (kapı: ad-esitligi gibi denetim satırı). <strong>Artı:</strong> İki bağımsız katman; belgeli davranış. <strong>Eksi:</strong> Bakım borcu: dizin listesi elle; symlink kanon/ kesilmemeli (tek satır biçimi yasak). <strong>Gerekçe:</strong> Güvenlik G2 dersi: en-az-yetki + katmanlı savunma."
+    },
+    {
+     "etiket": "(b) Hayır, hook yeter",
+     "value": "(b) deny listesi girmez; hook v0.2 tek katman",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Kayıt. <strong>Artı:</strong> Bakım yok. <strong>Eksi:</strong> Hook kaçırırsa ikinci katman yok. <strong>Gerekçe:</strong> Bugüne kadar kilit tetiklenmedi (n=0 ihlal)."
+    }
+   ]
+  },
+  {
+   "id": "M4",
+   "baslik": "Çekirdek adayı: symlink/istisna semantiğini belgeden oku (S4)",
+   "rozet": "Katman-1 · core/desenler.md",
+   "ne_demek": "Friday tur-3: \"bir güvenlik kuralını önermeden önce symlink ve istisna (!) semantiğini belgeden oku\" — tek satır kök reddi sezgisel doğru görünüyordu, belge kanon bağını da keseceğini gösterdi.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Kabul ✅ öneri",
+     "value": "(a) desen core/desenler.md'ye girer (Friday çekirdek + Jarvis kanon), kanıt C1 §3a",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Friday desenler.md + Jarvis wiki satırı. <strong>Artı:</strong> Tekrarlanabilir hata sınıfı kapanır. <strong>Eksi:</strong> Desen sayısı artar (20 → 21). <strong>Gerekçe:</strong> Kanıtlı, tek vakada bile geri dönülmez zarar (kanon bağı kesilir)."
+    },
+    {
+     "etiket": "(b) Ret",
+     "value": "(b) girmez; tur-3 raporunda kalır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Kayıt. <strong>Artı:</strong> — <strong>Eksi:</strong> Aynı hata tekrarlanabilir. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M5",
+   "baslik": "Dalga protokolü (<code>MECE</code> ayrıştırma sorusu) alt-ajan şablonuna girsin mi? (S5)",
+   "rozet": "Katman-1 · şablon içeriği",
+   "ne_demek": "Atlas'taki \"bu tek hattı araştırsam ne bulurdum, hâlâ ne eksik kalırdı\" sorusu atlas-kosum'un dik-aile mantığının kökü. F3 al dedi, 07-24 bağımsız raporu karşıt; hakem çelişkili buldu.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Şablona girmez ✅ öneri",
+     "value": "(a) dalga protokolü yalnız atlas-kosum SKILL'inde yaşar; genel alt-ajan şablonuna girmez (tek yerde tutulur)",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Şablon v0 aynen; atlas damıtılırsa bölüm SKILL'e taşınır. <strong>Artı:</strong> Şablon araştırma-dışı ajanlar (hakem, güvenlik) için sade kalır; tek tanım. <strong>Eksi:</strong> Araştırma-türü yeni ajan yazılırsa ayrıca eklenir. <strong>Gerekçe:</strong> Şablon genel; ayrıştırma sorusu orkestratör işi (atlas-kosum), işçi tanımı değil."
+    },
+    {
+     "etiket": "(b) Şablona girer",
+     "value": "(b) isteğe bağlı \"Ayrıştırma\" bölümü olarak şablonda",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Şablona opsiyonel bölüm. <strong>Artı:</strong> Araştırma ajanları hazır gelir. <strong>Eksi:</strong> İki yerde tanım; sürüklenme riski. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M6",
+   "baslik": "Alt-ajan şablonunun kanon yeri (S6)",
+   "rozet": "Katman-1 · kanon yapısı",
+   "ne_demek": "Şablon v0 taslağı raporlar/ altında. gorev-fonksiyonu.md core/sablonlar/'da; skill referansları .claude/skills/*/references/'ta.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) core/sablonlar/ ✅ öneri",
+     "value": "(a) core/sablonlar/altajan-tanim-v0.md (gorev-fonksiyonu.md ile aynı raf); ajan-metodolojisi §6'ya tek satır pointer",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Taslağı core/'a taşırım (Edit aracı, Katman-1 imza bu hüküm), pointer satırı. <strong>Artı:</strong> Kanon rafı; gorev-fonksiyonu ile yan yana; her oturum bulur. <strong>Eksi:</strong> core/ büyür (~6 KB). <strong>Gerekçe:</strong> Şablon kural taşıyor (katman, yetki); kanon yeri."
+    },
+    {
+     "etiket": "(b) Skill referansı",
+     "value": "(b) .claude/skills/gorev-emri-derleme/references/altajan-tanim-v0.md",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Referansa kopyalarım. <strong>Artı:</strong> core/ şişmez. <strong>Eksi:</strong> Ajan tanımı emir derleme değil; yanlış raf. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) Yeni skill altajan-tanim içinde",
+     "value": "(c) altajan-tanim skill'i açılır, şablon onun references/'ında; K0 kapısı önce",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> skill-kapisi K0 → inşa. <strong>Artı:</strong> Usul + şablon tek pakette. <strong>Eksi:</strong> Skill henüz K0'dan geçmedi; ilk vaka (hakem) gelmeden erken. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "baslik": "Atlas tanımı şablona göre damıtılsın mı? (S7)",
+   "rozet": "Katman-1 · geri-alınması zor (m.8 arşiv)",
+   "ne_demek": "18,6 KB tanımın ölü ağırlığı ölçüldü (ontoloji ~900 B, geçersiz çıktı yolu, yanlış öz-farkındalık, Aşama 1 tekrarı). İşleyen çekirdek: kanıt hiyerarşisi + V26 + erişim kuralı + dalga (M5'e bağlı).",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Damıt, ölç ✅ öneri",
+     "value": "(a) atlas şablona göre damıtılır (hedef ≤9 KB [?]), eski metin arsiv/ pointer; kanıt kapısı: sonraki 3 atlas koşumunda D-oranı ve sapma düşmezse kalır, düşerse revert",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> research-agent.md yeniden yazılır; eski sürüm arşive; 3 koşum ölçümü v_skill_kosum'a. <strong>Artı:</strong> Bağlam ↓ (~10 KB/koşum × 3-7 ajan), model-katman kuralı görünür, geçersiz yol düzelir. <strong>Eksi:</strong> Regresyon riski; ölçüm 3 koşum bekler. <strong>Gerekçe:</strong> Karar 98 EK-1 kanıt kapısı; hazırı temel al (atlas iskeleti korunur)."
+    },
+    {
+     "etiket": "(b) Yalnız ölü bölümleri sil",
+     "value": "(b) ontoloji/öz-farkındalık/docs-research bölümleri çıkar, kalan aynen",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> 3 bölüm kesilir, arşiv. <strong>Artı:</strong> Düşük risk. <strong>Eksi:</strong> Tekrarlar ve gömülü model kuralı kalır. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) Dokunma",
+     "value": "(c) atlas aynen; şablon yalnız yeni ajanlar için",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> — <strong>Artı:</strong> Sıfır risk. <strong>Eksi:</strong> 141+ koşumda taşınan ölü bayt sürer. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M8",
+   "baslik": "Galeri: kota k ve ekip dokümanı",
+   "rozet": "Katman-1 · işyeri (md.49, yalnız hüküm)",
+   "ne_demek": "Nihai yöntem trim kümesi v2 + M4b + \"en az k soğuk\"; k için 3 ya da 4; ekip dokümanı ve 4 görsel hazır, gönderim senin.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) k=3, dokümanı gönder ✅ öneri",
+     "value": "(a) kota k=3; ekip dokümanı gönderilir; sıradaki: yöntem işyeri reposu src/ + analiz §9",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Hüküm kaydı; icra staj oturumunda (md.49). <strong>Artı:</strong> Deneme raporundaki öneri; en az müdahale. <strong>Eksi:</strong> k küçükse soğuk çeşitlilik az. <strong>Gerekçe:</strong> Rapor önerisi k=3."
+    },
+    {
+     "etiket": "(b) k=4",
+     "value": "(b) kota k=4; doküman gönderilir",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Aynı, k=4. <strong>Artı:</strong> Daha fazla soğuk örnek. <strong>Eksi:</strong> Sıcak payı düşer. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) Beklet",
+     "value": "(c) hüküm yok, kalem kalır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> — <strong>Artı:</strong> — <strong>Eksi:</strong> Sıradaki iş bloke. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M9",
+   "baslik": "Matematik felsefesi şeridi onayı",
+   "rozet": "Katman-1 · öğrenme",
+   "ne_demek": "ogrenme/mat-felsefesi/README.md hazır (Karar 73 matematik kuralıyla bağlı); şerit açılışı senin onayını bekliyor (kapsül 'Salih'te').",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Onay, ogren ile ✅ öneri",
+     "value": "(a) mat-felsefesi şeridi açık; tetik \"seans başı, mat-felsefesi\"; ogren v0.2 iskeleti",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> README'ye tetik satırı, katalog. <strong>Artı:</strong> Karar 73 kuralı beslenir. <strong>Eksi:</strong> Dördüncü paralel öğrenme şeridi; saat rekabeti. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(b) Ertele",
+     "value": "(b) evals/güvenlik bitene dek kapalı",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Kayıt. <strong>Artı:</strong> Odak. <strong>Eksi:</strong> README bekler. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M10",
+   "baslik": "m.29 seans-hedefi denemesi: mini-değerlendirme (5/5 doldu)",
+   "rozet": "Katman-1 · deneysel kural kapanışı",
+   "ne_demek": "KB-47: brif sonunda tek cümlelik açık hedef, kapanışta yoklama; 5 seans sonra değerlendirme. Kayıt: hedefler tuttu (2/5, 5/5 genişledi); sapma kaydı 0.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) Kalıcı ✅ öneri",
+     "value": "(a) seans-hedefi kalıcı kural: seans-acilis brif sonu + seans-kapanis yoklama; deneysel damga düşer",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> İki skill'de damga güncellenir; tüzük m.29 satırı. <strong>Artı:</strong> Ölçüm 5/5 olumlu; maliyet tek cümle. <strong>Eksi:</strong> Hedef genişlemesi 'sapma değil' sayıldı, ölçü gevşek. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(b) 5 seans daha deneme",
+     "value": "(b) deneme sürer; sapma tanımı sıkılaştırılır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Sayaç 0/5. <strong>Artı:</strong> Daha sert ölçüm. <strong>Eksi:</strong> Karar ertelenir. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "(c) Bırak",
+     "value": "(c) kaldır",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Satırlar silinir (arşiv). <strong>Artı:</strong> — <strong>Eksi:</strong> Sprint Goal işlevi kaybolur. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M11",
+   "baslik": "Yeni skill adayları (bağlam uzayından, 09-16)",
+   "rozet": "Katman-2 öneri · Katman-1 seçim",
+   "ne_demek": "K0 ölçütü: tekrarlanan ∧ koşullu ∧ araç-zincirli. Seçilenler skill-kapisi K0-K3'e girer; seçilmeyen kutuda sayaçla bekler.",
+   "coklu": true,
+   "secenekler": [
+    {
+     "etiket": "yan-oturum-merge ✅ öneri",
+     "value": "yan-oturum-merge: dal yaşı + PR kontrolü → origin/main tabanı → merge → ana checkout'a sızan izlenmeyen dosya triyajı → silver tazeleme (bugün elle: PR #5 merge + ilerleme.md çakışması)",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> K0 → script + skill. <strong>Artı:</strong> Her ders sonu tekrar; bugün 2. canlı vaka. <strong>Eksi:</strong> Çoğu adım git. <strong>Gerekçe:</strong> 09-15 PR #4 24-commit vakası + bugünkü çakışma."
+    },
+    {
+     "etiket": "ib-kalem ✅ öneri",
+     "value": "ib-kalem: İB açma/kapama tek komut → defter satırı + kapsül sıra + katalog + teslim (bayat-satır arızası M7-1 dersi)",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> K0 → script. <strong>Artı:</strong> 4 yere elle senkron biter. <strong>Eksi:</strong> Kapsül yazımı Katman-1'e yakın; yalnız 'sıradaki' satırı. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "silver-sorgu",
+     "value": "silver-sorgu: anahtar → v_guncel_kayit bloğu + sha8 doğrulama + bayrak tek çağrı (KB-53)",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> K0; önce v_okuma_orani ölçümü. <strong>Artı:</strong> Adresli erişim kolaylaşır. <strong>Eksi:</strong> Gerçek darboğaz bu mu belirsiz. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M12",
+   "baslik": "Ö3-Ö6 staj kaynaklı skill'lerin yerleşimi — çelişki kapısı (m.16)",
+   "rozet": "Katman-1 · çelişki",
+   "ne_demek": "Karar 96 M6 (d) senin beyanın: staj bilgisi genelleştirilmiş formatta, tek hazine jarvis. Karar 98 satırında Jarvis \"Ö3-Ö6 staj reposunda\" yazdı — çelişki Jarvis yazımı.",
+   "coklu": false,
+   "secenekler": [
+    {
+     "etiket": "(a) M6 (d) geçerli ✅ öneri",
+     "value": "(a) Ö3-Ö6 jarvis hazinesinde, genelleştirilmiş formatta (işyeri verisi/adı yok, md.49); üretim ana-sırada, staj okumaları yalnız klasör adı düzeyinde girdi; Karar 98 satırı düzeltilir",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Karar 98 satırına düzeltme notu; Ö3-Ö6 İB'leri jarvis'e bağlanır. <strong>Artı:</strong> Senin beyanınla tutarlı; tek hazine. <strong>Eksi:</strong> Genelleştirme işi her skill'de ek adım. <strong>Gerekçe:</strong> m.16: sonraki karar önceki beyanı sessizce ezemez."
+    },
+    {
+     "etiket": "(b) Karar 98 satırı geçerli",
+     "value": "(b) Ö3-Ö6 staj reposunda; jarvis'te ad + pointer (M6 (d) revize)",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> M6 (d) revize kaydı. <strong>Artı:</strong> md.49 sınırı en dar. <strong>Eksi:</strong> Tek hazine ilkesi bozulur. <strong>Gerekçe:</strong> —"
+    }
+   ]
+  },
+  {
+   "id": "M13",
+   "baslik": "Masa-10'dan devreden teknik kalemler (aynen)",
+   "rozet": "Katman-1 · imza listesi",
+   "ne_demek": "Masa-10 M7 hükmü: bunlar sonraki masaya aynen. Tester-ajan a/b/c Karar 98 ile fiilen kapandı (ilk alt-ajan = hakem/tester, seçenek a). Kalanlar imza bekliyor; işaretlediklerin bu seans icraya girer, işaretlenmeyen kutuda kalır.",
+   "coklu": true,
+   "secenekler": [
+    {
+     "etiket": "İB-79 hook tasarımı ilk 10 satır ✅ öneri",
+     "value": "İB-79 hook tasarımı tablosu ilk 10 satır imzalandı; icra sırası Ö1 sonrası",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> Tabloyu icraya alırım. <strong>Artı:</strong> Hook teli tamamlanır. <strong>Eksi:</strong> Ö1 ile saat rekabeti. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "İB-80 bayt eşiği → kanıt sayacı ✅ öneri",
+     "value": "İB-80 bayt eşiği revizyonu: '5 kapanış sonra' tetiği Karar 98 EK-1 gereği kanıt sayacına (5 kapanış dolduğunda değil, FIFO 2 kez bayt sigortasına takılınca) çevrilir",
+     "oneri": true,
+     "aciklama": "<strong>Ne yaparım:</strong> sicak-katman-fifo.py tetik satırı. <strong>Artı:</strong> Zaman tetiği kalkar. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> Karar 98 EK-1."
+    },
+    {
+     "etiket": "Q2 E2 eşiği",
+     "value": "Q2 E2 bağlam eşiği 600k [?] kabul; devir-ani.py null oturumlar (49/91) için ölçüm borcu İB",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Eşik sabitlenir, ölçüm İB açılır. <strong>Artı:</strong> Devir-anı kuralı çalışır. <strong>Eksi:</strong> [?] rakam. <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "Q4 dal+koşul ≤5 şerhi",
+     "value": "Q4: 'dal+koşul ≤5' şerhi tüzüğe (ajan-metodolojisi §2 zaten uyguluyor, devir-md2json de 5 sayıyor)",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Tüzük satırı. <strong>Artı:</strong> Kanon-araç tutarlılığı. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "Q6 skill kütük izin kuralı",
+     "value": "Q6: skill koşum kütüğü (v_skill_kosum) yazma izni yalnız skill koşucusu satırı; işçi yazamaz",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Kural satırı + hook kontrolü. <strong>Artı:</strong> Kütük bütünlüğü. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> —"
+    },
+    {
+     "etiket": "Parti-34 S2-S4",
+     "value": "Parti-34 S2 ay-README daraltması · S3 işçi tavanı işe göre · S4 parti-5 README/KILAVUZ (S5 kapandı)",
+     "oneri": false,
+     "aciklama": "<strong>Ne yaparım:</strong> Üç küçük düzenleme. <strong>Artı:</strong> Dosya düzeni planı kapanır. <strong>Eksi:</strong> — <strong>Gerekçe:</strong> —"
+    }
+   ]
+  }
+ ],
+ "karar_no": "Karar 99",
+ "ustune_yaz": true
+}

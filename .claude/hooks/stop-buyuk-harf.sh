@@ -55,7 +55,7 @@ IZ = set("""AS-OF DAG MCP OWASP YAML JSON JSONL YML CSV HTML HTTP HTTPS PDF SVG 
 CI CD API SQL URL URI CLI GUI IDE SDK LLM RAG HITL ASR NDCG MAP MRR GSM8K SWE UK AISI AWS DEA GCP MIT OCW README HEAD MEMORY CLAUDE
 JARVIS JARVİS FRIDAY CARVIS ATLAS OPUS SONNET HAIKU FABLE GPT KB MB GB TODO FIFO LIFO SHA UTC TR EN ID UID DNS TLS SSH OAUTH
 NEMO NLP ML AI ETL ELT DBT SPARK MLOPS RAG LTR NDCG PR PRS CTR ROC AUC F1 REGEX BPE ROPE KV SFT RLHF CVE CVSS CWE OWASP UTF
-İB KB-08 EK SKILL SCRIPTLER KILAVUZ""".split())   # durum sözcükleri (DONE, KALAN, BAYAT…) artık `kod` biçiminde yazılır (Salih 09-15 "büyük harf = kod")
+İB KB-08 EK SKILL SCRIPTLER KILAVUZ MECE""".split())   # durum sözcükleri (DONE, KALAN, BAYAT…) artık `kod` biçiminde yazılır (Salih 09-15 "büyük harf = kod")
 metin = re.sub(r"```.*?```", " ", (son or ""), flags=re.S)
 metin = metin + " " + " ".join(arac_metin)   # v0.3: araç girdileri (widget/dosya) metinle birlikte
 metin = re.sub(r"`[^`\n]*`", " ", metin)
