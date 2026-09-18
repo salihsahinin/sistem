@@ -37,7 +37,7 @@ YASAK:
 EAGER:
   - core/rol.md
 LAZY:
-  - core/sablonlar/geri-donus-v0.md — geri-dönüş yazarken
+  - ../sablonlar/geri-donus-v0.md — geri-dönüş yazarken
 KARAR_ÖZETİ:
   - Karar 89: Opus 5 effort medium sabit
 KAPALI_GÖZ_ÖZETİ: cc/gelen/devir-2026-09-09-parti5-envanter.md

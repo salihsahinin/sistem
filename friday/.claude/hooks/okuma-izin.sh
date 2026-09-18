@@ -33,7 +33,7 @@ repo = os.path.realpath(os.environ["REPO"])
 home = os.path.realpath(os.path.expanduser("~"))
 kok = os.path.dirname(repo)  # depo kökü (~/sistem): kök kanon dosyaları buradan okunur (v0.5, Karar 101)
 harness = os.path.join(home, ".claude", "projects")
-izinli = [repo, "/tmp", "/private/tmp", "/private/var/folders", harness]
+izinli = [repo, os.path.join(kok, "sablonlar"), "/tmp", "/private/tmp", "/private/var/folders", harness]  # kök sablonlar/ ortak (F4)
 TEST = bool(os.environ.get("FRIDAY_HOOK_TEST") or os.environ.get("JARVIS_HOOK_TEST"))
 
 # Dosya açan komutlar: argümanları yol sayılır. Liste EKSİK KALABİLİR (desen 20) — yeni bir okuma komutu buraya eklenmeli.

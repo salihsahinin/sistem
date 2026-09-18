@@ -24,6 +24,8 @@ t "Read jarvis/kuyruk/pano.md"                '{"tool_name":"Read","tool_input":
 t "Read friday kendi dosyası"                 '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/rol.md"}}' 0
 t "Grep jarvis/core → RED (Karar 101)"        '{"tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/sistem/jarvis/core"}}' 2
 t "Read kök kanon /Users/…/sistem/CLAUDE.md"  '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/CLAUDE.md"}}' 0
+t "Read kök sablonlar/ (F4 ortak şablon)"     '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/sablonlar/geri-donus-v0.md"}}' 0
+t "Read kök ogrenme/ → RED (Salih'in)"         '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/ogrenme/evals/README.md"}}' 2
 
 echo "-- v0.3 onarımları (tur-3 C2: Z1-Z2) --"
 t "Z1 Bash ile repo dışı ev yolu (staj)"      '{"tool_name":"Bash","tool_input":{"command":"cat ~/staj/rapor.md"}}' 2

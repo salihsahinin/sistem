@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# hook-dispatch.sh — sistem kökü tek hook girişi (Karar 101 F1 taslağı; F4'te ~/sistem/bin/ altına alınır).
+# hook-dispatch.sh — sistem kökü tek hook girişi (Karar 101; F1 taslağı 09-18, F4'te ~/sistem/bin/ altına alındı + çift-koşum freni).
 # Mekanizma: harness hangi ayar dosyasını yüklerse yüklesin, bu script oturum cwd'sinden (stdin JSON "cwd", yoksa $PWD)
 # ajanı bulur (~/sistem/<ajan>/…) ve o ajanın KENDİ .claude/settings.json'ındaki hooks[<olay>] kayıtlarını, matcher'ı
 # tool_name'e uygulayarak, CLAUDE_PROJECT_DIR=<ajan dizini> ile sırayla koşturur (mini hook-koşucu). Ajan hook'ları
@@ -22,6 +22,10 @@ if not cwd.startswith(kok + os.sep):
     sys.exit(0)
 ajan = cwd[len(kok) + 1:].split(os.sep)[0]
 ajan_dir = os.path.join(kok, ajan)
+# Çift-koşum freni (F4): harness ajanın KENDİ settings.json'ını yüklediyse CLAUDE_PROJECT_DIR = ajan dizinidir ve ajan
+# hook'ları zaten doğrudan koşar → dispatcher susar. Kök ayar yüklendiyse CLAUDE_PROJECT_DIR = kök → dispatcher koşturur.
+if os.path.realpath(os.environ.get("CLAUDE_PROJECT_DIR", "")) == os.path.realpath(ajan_dir):
+    sys.exit(0)
 ayar = os.path.join(ajan_dir, ".claude", "settings.json")
 if not os.path.isfile(ayar):
     sys.exit(0)

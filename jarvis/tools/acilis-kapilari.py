@@ -42,7 +42,9 @@ def kapi_canli(repo, dk, simdi):
     commits = []
     for l in log.splitlines():
         h, ci, s = l.strip("'").split("|", 2)
-        commits.append({"sha": h, "yas_dk": yas_dk(ci, simdi), "konu": s[:70]})
+        # Karar 101 F4: monorepo — commit'in dokunduğu üst-dizin(ler) (jarvis · friday · kök) K1'de görünür; friday/ commit'i tanınır
+        alan = sorted({(y.split("/", 1)[0] if "/" in y else "kök") for y in sh("git show --name-only --format= %s" % h, repo).splitlines() if y.strip()})
+        commits.append({"sha": h, "yas_dk": yas_dk(ci, simdi), "konu": s[:70], "alan": "+".join(alan) or "?"})
     r["son5"] = commits
     son = commits[0]
     # kapsül güncelleme zamanı
@@ -163,7 +165,7 @@ def main():
     c = k[0]
     print("  [%s] K1 canlı-oturum — %s" % (c["durum"], c["not"]))
     for s in c["son5"]:
-        print("        %s  %4s dk  %s" % (s["sha"], s["yas_dk"] if s["yas_dk"] is not None else "?", s["konu"]))
+        print("        %s  %4s dk  [%s] %s" % (s["sha"], s["yas_dk"] if s["yas_dk"] is not None else "?", s.get("alan", "?"), s["konu"]))
     if c.get("taze_dal_24s"):
         print("        24 saatte main-dışı dal: " + " · ".join(c["taze_dal_24s"]))
     m = k[1]

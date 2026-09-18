@@ -25,4 +25,4 @@ KARAR VERMEZSİN — seçenek üretirsin; hüküm Salih'indir (m.31). Durum taş
 kimlik (işçi, karar yok) · yazma izni · git yasağı · araç bütçesi · adım adım case · doğrulama komutu · çıktı şeması (≤2k token) · "tahmin yazma, AÇIK SORU bırak"
 
 ## Bitiş
-`cc/giden/<devir_id>-geri-donus.md` (şema `core/sablonlar/geri-donus-v0.md`) → kapsül tazele → defter satırı → `git add <yol>` + commit. Son mesaj: dosya tam yolu + `open -R`.
+`cc/giden/<devir_id>-geri-donus.md` (şema `../sablonlar/geri-donus-v0.md`, kök şablon — Karar 101 F4) → kapsül tazele → defter satırı → `git add <yol>` + commit. Son mesaj: dosya tam yolu + `open -R`.

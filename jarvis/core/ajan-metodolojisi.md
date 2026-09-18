@@ -1,6 +1,6 @@
 # Ajan-Tasarım Metodolojisi v1 (aktif: Salih emri 2026-08-14)
 
-*Salih'in iki-parametre sezgisinin (**görev** = fonksiyon · **hafıza** = import) araştırma-sınanmış hâli. Kanıt: `cc/rapor/2026-08/rapor-2026-08-14-2.md` (Opus lider + 4 atlas; D-ağırlıklı; ⚠️ m.40b antitez şeridi **koşulmadı** — tek-şerit borcu açık). Tüm eşikler deneysel m.29. Doldurulabilir iskelet: `core/sablonlar/gorev-fonksiyonu.md`. Bu belge A5 ekip-lideri tasarım paketinin araştırma-önkoşulunu doldurur ve S-K (görev-emri-derleme) şablon temelini verir.*
+*Salih'in iki-parametre sezgisinin (**görev** = fonksiyon · **hafıza** = import) araştırma-sınanmış hâli. Kanıt: `cc/rapor/2026-08/rapor-2026-08-14-2.md` (Opus lider + 4 atlas; D-ağırlıklı; ⚠️ m.40b antitez şeridi **koşulmadı** — tek-şerit borcu açık). Tüm eşikler deneysel m.29. Doldurulabilir iskelet: `../sablonlar/gorev-fonksiyonu.md` (kök `sablonlar/`, Karar 101 F4; eski yol `core/sablonlar/`). Bu belge A5 ekip-lideri tasarım paketinin araştırma-önkoşulunu doldurur ve S-K (görev-emri-derleme) şablon temelini verir.*
 
 ## 1. Görev = fonksiyon (ama küçük fonksiyon)
 

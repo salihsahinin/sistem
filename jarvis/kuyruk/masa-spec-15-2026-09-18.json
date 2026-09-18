@@ -1,0 +1,39 @@
+{
+ "no": 15,
+ "tarih": "2026-09-18",
+ "baslik": "Karar 101 F4 — kanon paketi (kök AGENTS.md · jarvis/friday AGENTS.md · tüzük EK-2 · protokol EK-4 · şablonlar · hook girişi)",
+ "giris": "Monorepo geçişinde F2 (Salih eli) ve F3 (yol düzeltme + hook'lar) bitti ve push'landı. Bu masa F4 kanon paketini tek kalem olarak imzaya sunar; paket çalışma ağacında taslak duruyor, imzayla commit'lenir. Kalem başına değil paket başına hüküm: parçalar birbirine bağlı (kök md'siz jarvis md'nin pointer'ları boşa düşer).",
+ "tetik": "Salih 09-18 ~15:1x: \"sistem yaptım, push\" → F3 push'landı; kapsül 'sonraki ilk iş' F4 = kanon paketi masa-15 (plan §4).",
+ "once_yapildi": "F2 <code>DONE</code> (2e13dc4 · 5195248 · 4b74280) · F3 <code>DONE</code> (d59211f · 9ce91d9 · 2600872, push) · hook testleri Jarvis 14/14, Friday v0.5 34/34 · kapılar K1/K2/K3 temiz · GitHub <code>salihsahinin/sistem</code> · hafıza dizini iki anahtara kopyalandı. Bunlar masa kalemi değil.",
+ "asof": "2026-09-18",
+ "kanit": [
+  {"bulgu": "Kök AGENTS.md bütçesi", "deger": "16 madde · 18 satır · 3.712 B (tavan 25 satır)", "kaynak": "~/sistem/AGENTS.md (wc)", "etiket": "D"},
+  {"bulgu": "jarvis/AGENTS.md bütçesi", "deger": "40 satır · ≤7 KB · kural sayacı 19 birim (eşik 100)", "kaynak": "tools/kural-sayaci.py --dosya AGENTS.md", "etiket": "D"},
+  {"bulgu": "friday/AGENTS.md bütçesi", "deger": "31 satır · 4.087 B (tavan 4.096)", "kaynak": "~/sistem/friday/AGENTS.md (wc)", "etiket": "D"},
+  {"bulgu": "Friday okuma kilidi v0.5", "deger": "34 PASS · 0 FAIL; jarvis/** RED, kök dosyalar + sablonlar/ GEÇTİ, ogrenme/ RED", "kaynak": "friday/.claude/hooks/okuma-izin-test.sh", "etiket": "D"},
+  {"bulgu": "Jarvis alt-ajan kilidi", "deger": "14 PASS · 0 FAIL", "kaynak": "jarvis/.claude/hooks/pretool-altajan-okuma-test.sh", "etiket": "D"},
+  {"bulgu": "Dispatcher kuru testi", "deger": "kök ayar yüklüyken alt-ajan Read kapsül → exit 2; ajan ayarı yüklüyken → sessiz 0 (çift-koşum freni)", "kaynak": "bin/hook-dispatch.sh (elle stdin)", "etiket": "D"},
+  {"bulgu": "Harness'in alt-dizin cwd'sinde hangi settings.json'ı yüklediği", "deger": "bilinmiyor; dispatcher iki durumda da doğru davranır", "kaynak": "plan §7 risk 1; F5 ölçer", "etiket": "X"},
+  {"bulgu": "Tel (pretool-core-tel) kısıtı", "deger": "git mv core/… ve CLAUDE.md symlink Bash'te kesildi → Salih eli", "kaynak": "jarvis/.claude/hooks/pretool-core-tel.sh", "etiket": "D"},
+  {"bulgu": "Ad-eşitliği denetimi", "deger": "K3 FLAG (tools/devir-md2json.py:18), F3 öncesinden; paket dışı", "kaynak": "tools/ad-esitligi-denetim.py", "etiket": "D"}
+ ],
+ "hakem": "",
+ "karar_no": "Karar 101 EK-2",
+ "kalemler": [
+  {
+   "id": "M1",
+   "baslik": "F4 kanon paketi — imza",
+   "rozet": "Katman-1 · kanon (kök AGENTS.md + iki ajan kanonu + tüzük EK + protokol EK)",
+   "ne_demek": "Paket 8 parça: (1) kök <code>AGENTS.md</code> 16 madde (ortak kural; tüzük m.8·9·10·20·31·39·42h·49 özleri, öncelik kuralı, git/iletişim/hook girişi/bakım/sahiplik) + kök <code>README.md</code> + <code>CLAUDE.md → AGENTS.md</code> symlink'leri · (2) <code>jarvis/AGENTS.md</code> v3: §1 'sistemin ana-sıra ajanı + kanonların bakıcısı, firstmate rolü', ortak 8 madde köke taşındı, eski statik AGENTS.md arşive · (3) <code>friday/AGENTS.md</code> v0.3: <code>kanon/</code> satırları köke, <code>jarvis/**</code> tümüyle kapalı (Jarvis core dahil) · (4) tüzük başına Karar 101 EK-2 paragrafı: 8 madde pointer, m.41/m.44 EK (cwd tanımları), <strong>Karar 91 D gecerli-bitis 09-18</strong>, <strong>Karar 99 M1 yeniden</strong> · (5) protokol §5 EK-4 worktree tablosu · (6) kök <code>sablonlar/</code> (4 taşınan + charter iskeleti) · (7) kök <code>.claude/settings.json</code> + <code>bin/hook-dispatch.sh</code> çift-koşum frenli · (8) K1 kapısı commit alanı. Diff çalışma ağacında; imzayla tek commit + push.",
+   "coklu": false,
+   "secenekler": [
+    {"etiket": "(a) Paket aynen imzalanır", "value": "Karar 101 EK-2 F4 kanon paketi (8 parça) aynen imzalandı; Jarvis tek commit atar, Salih 4 git mv + 3 symlink komutunu koşar, push Salih beyanıyla; F5 kanıt turu açılır.", "oneri": true,
+     "aciklama": "Ne yaparım: defterdeki `[bekliyor]` damgasını imza saatiyle değiştirir, paketi `[icra]` commit'i olarak atarım; Salih'e 7 komutluk liste veririm (şablon taşıma + symlink; tel gereği); sonra F5 kanıt tablosu için iki oturum açma talimatı (worktree beyanıyla). Artı: plan §4 F4 tam kapsam; kök md 18/25 satır, jarvis md bütçe içinde, Friday hook 34/34; Friday'in Jarvis core'unu okuyamaması Karar 101 (3)'ün doğrudan sonucu. Eksi: Friday artık tüzük tam metnini göremez, yalnız kök özleri (16 madde); bir madde özü eksikse Friday'de kural boşluğu — tespit F5/tur-6'da. Gerekçe: Karar 101 hükmü (2)-(3) bunu ister; alternatif (Friday'e jarvis/core istisnası) izolasyon hedefini deler."},
+    {"etiket": "(b) Paket + Friday'e tüzük istisnası", "value": "F4 paketi imzalandı, ek olarak Friday okuma kilidi `jarvis/core/tuzuk-v0.md` tek dosyasını izinli sayar (pointer'ların tam metni okunabilsin).", "oneri": false,
+     "aciklama": "Ne yaparım: Friday hook izinli kümesine tek dosya eklerim + test vakası; friday/AGENTS.md §2'ye pointer. Artı: Friday m.NN pointer'larını açabilir, kök özleri eksikse kural boşluğu kalmaz. Eksi: Karar 101 'Friday deny tek jarvis/**' hükmünden sapma; tüzük 61 KB Friday bağlamına sızabilir (bağlam maliyeti + Jarvis-özel kuralların Friday'e taşması). Gerekçe: yalnız kök özlerinin yetersizliği F5'te kanıtlanırsa; şimdi değil."},
+    {"etiket": "(c) Paket geri, düzeltme listesiyle", "value": "F4 paketi imzalanmadı; Salih'in düzeltme notları alınır, paket revize edilip yeniden masaya gelir.", "oneri": false,
+     "aciklama": "Ne yaparım: çalışma ağacı taslak kalır (commit yok), notları prompt alanından alır, tek turda revize ederim. Artı: kanon metni Salih diliyle çıkar. Eksi: F5 ve Friday tur-6 bir masa döngüsü ertelenir; çalışma ağacı kirli kaldığı sürece paralel iş riskli (H4). Gerekçe: metinde Salih'in kabul etmediği bir hüküm/üslup varsa doğru yol budur."}
+   ]
+  }
+ ]
+}

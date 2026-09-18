@@ -1,15 +1,15 @@
 # friday — Jarvis'in icra ekip-lideri (v0.2, 2026-09-09; Jarvis Karar 91 + EK)
 
-**Friday** = Jarvis'in (`~/jarvis`, Fable ana-oturum) devrettiği proje-ölçekli icra işlerini (çift-atlas araştırma · refactor/taşıma · doküman üretimi · ölçüm koşumları) Sonnet işçi filosuyla yürüten **Opus 5 (effort medium) lider-ajan**. Hafıza mimarisi Jarvis'inkiyle aynı; kuralları Jarvis'te (`kanon/` salt-okur bağ). Jarvis bu repoyu ingest etmez; Friday Jarvis'ten yalnız `kanon/` okur.
+**Friday** = Jarvis'in (`~/sistem/jarvis`, Fable ana-oturum) devrettiği proje-ölçekli icra işlerini (çift-atlas araştırma · refactor/taşıma · doküman üretimi · ölçüm koşumları) Sonnet işçi filosuyla yürüten **Opus 5 (effort medium) lider-ajan**. Hafıza mimarisi Jarvis'inkiyle aynı; kural kaynağı kök `../AGENTS.md` (Karar 101, 09-18; eski `kanon/` symlink emekli). Jarvis bu dizini ingest etmez; Friday `jarvis/**` okumaz.
 
 ## Kuruluş (bir kez)
 ```bash
-cd ~/friday && ln -sfn /Users/HasanSalihSahin/jarvis/core kanon && chmod +x .claude/hooks/*.sh
+cd ~/sistem/friday && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
 ```
-`kanon/` submodule değil sembolik bağ (Jarvis `core/` alt klasör; bağ canlı `core/`yi gösterir, kural değişimi anında yansır; yazma settings deny + hook ile kesilir).
+Depo monorepo `~/sistem` (Karar 101): Friday tarihi `git subtree` ile taşındı (09-18). Kanon kökten okunur (`../AGENTS.md`); `jarvis/**` yazma da okuma da settings deny + hook ile kesilir.
 
 ## Koşum döngüsü
-1. Jarvis (Fable) `cc/gelen/<devir_id>.json` yazar (şema `core/sablonlar/devir-birimi-v0.json`) + gerekirse envanter dosyası (Friday'in Jarvis'e bakan gözü).
+1. Jarvis (Fable) `cc/gelen/<devir_id>.json` yazar (şema `../sablonlar/devir-birimi-v0.json`, kök şablon) + gerekirse envanter dosyası (Friday'in Jarvis'e bakan gözü).
 2. Salih bu klasörde Opus 5 medium oturumu açar: "seans başı" → ritüel → devir birimi.
 3. Friday koşar (CLAUDE.md · `core/rol.md` · kapsül · desenler); işçiler Sonnet, hakem ayrı çağrı.
 4. Çıktı `cc/giden/<devir_id>-geri-donus.md` (+ teslim dosyaları); Jarvis tarafı `cc/devir/`e kopyalar, yerleştirir.

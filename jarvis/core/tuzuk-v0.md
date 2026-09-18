@@ -4,6 +4,8 @@
 
 *Yalnız Salih'in (tek karar verici) imzasıyla değişir. Her madde kaynak + gerekçe + geri-açma taşır. Jarvis ve ajanlar dokunamaz; yalnız öneri sunar.*
 
+*Karar 101 EK-2 (2026-09-18, F4; imza masa-15): depo monorepo `~/sistem` (N ajan + ortak kanon). Ortak sekiz maddenin özü kök `../../AGENTS.md`'de (m.8 · m.9 · m.10 · m.20 · m.31 · m.39 · m.42 h · md.49 → kök md.4-10); tam metin burada, çelişkide tüzük kazanır. m.41/m.44 EK: ana-sıra = `~/sistem/jarvis` cwd'li Claude Code oturumu (worktree kapalı); Friday = `~/sistem/friday` cwd'li oturum (Karar 99 M1 yeniden yazımı, protokol §5 EK-4); Karar 91 D "ayrı repo" `gecerli-bitis: 2026-09-18`, izolasyon gerekçesi cwd + hook + deny düzeyinde korunur.*
+
 **Not:** v0 yalnız Salih'in **fiilen** karara bağladığı kuralları içerir (Homebase kanonundan devralınmış). S1-S8 cevaplanınca dolgu yapılır (tüzük v1). S8 çerçevesi 2026-07-11 turunda `İMZALANDI` (madde 31).
 
 ## Devralınan kurallar (kaynaklı)

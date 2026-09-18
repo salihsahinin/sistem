@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 15 — Karar 101 F4 — kanon paketi (kök AGENTS.md · jarvis/friday AGENTS.md · tüzük EK-2 · protokol EK-4 · şablonlar · hook girişi) (2026-09-18)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+  .hakem { border-left: 3px solid var(--color-warning); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 15 — Karar 101 F4 — kanon paketi (kök AGENTS.md · jarvis/friday AGENTS.md · tüzük EK-2 · protokol EK-4 · şablonlar · hook girişi) <span class="badge badge-primary">1 kalem</span></h1>
+      <p class="text-sm opacity-80">Monorepo geçişinde F2 (Salih eli) ve F3 (yol düzeltme + hook&#x27;lar) bitti ve push&#x27;landı. Bu masa F4 kanon paketini tek kalem olarak imzaya sunar; paket çalışma ağacında taslak duruyor, imzayla commit&#x27;lenir. Kalem başına değil paket başına hüküm: parçalar birbirine bağlı (kök md&#x27;siz jarvis md&#x27;nin pointer&#x27;ları boşa düşer). Tetik: <em>Salih 09-18 ~15:1x: &quot;sistem yaptım, push&quot; → F3 push&#x27;landı; kapsül &#x27;sonraki ilk iş&#x27; F4 = kanon paketi masa-15 (plan §4).</em>. Her kalemde: ne demek · seçenek başına ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada (m.40 eki).</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> F2 <code>DONE</code> (2e13dc4 · 5195248 · 4b74280) · F3 <code>DONE</code> (d59211f · 9ce91d9 · 2600872, push) · hook testleri Jarvis 14/14, Friday v0.5 34/34 · kapılar K1/K2/K3 temiz · GitHub <code>salihsahinin/sistem</code> · hafıza dizini iki anahtara kopyalandı. Bunlar masa kalemi değil.</p>
+      <p class="text-xs opacity-60">AS-OF 2026-09-18 · rakamlar kaynaklı (m.39); <code>[?]</code> kestirim · üreten `karar-masasi` skill'i (deterministik).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Bulgu</th><th>Değer</th><th>Kaynak · etiket</th></tr></thead>
+        <tbody>
+          <tr><td>Kök AGENTS.md bütçesi</td><td>16 madde · 18 satır · 3.712 B (tavan 25 satır)</td><td>~/sistem/AGENTS.md (wc) · <strong>D</strong></td></tr>
+          <tr><td>jarvis/AGENTS.md bütçesi</td><td>40 satır · ≤7 KB · kural sayacı 19 birim (eşik 100)</td><td>tools/kural-sayaci.py --dosya AGENTS.md · <strong>D</strong></td></tr>
+          <tr><td>friday/AGENTS.md bütçesi</td><td>31 satır · 4.087 B (tavan 4.096)</td><td>~/sistem/friday/AGENTS.md (wc) · <strong>D</strong></td></tr>
+          <tr><td>Friday okuma kilidi v0.5</td><td>34 PASS · 0 FAIL; jarvis/** RED, kök dosyalar + sablonlar/ GEÇTİ, ogrenme/ RED</td><td>friday/.claude/hooks/okuma-izin-test.sh · <strong>D</strong></td></tr>
+          <tr><td>Jarvis alt-ajan kilidi</td><td>14 PASS · 0 FAIL</td><td>jarvis/.claude/hooks/pretool-altajan-okuma-test.sh · <strong>D</strong></td></tr>
+          <tr><td>Dispatcher kuru testi</td><td>kök ayar yüklüyken alt-ajan Read kapsül → exit 2; ajan ayarı yüklüyken → sessiz 0 (çift-koşum freni)</td><td>bin/hook-dispatch.sh (elle stdin) · <strong>D</strong></td></tr>
+          <tr><td>Harness&#x27;in alt-dizin cwd&#x27;sinde hangi settings.json&#x27;ı yüklediği</td><td>bilinmiyor; dispatcher iki durumda da doğru davranır</td><td>plan §7 risk 1; F5 ölçer · <strong>X</strong></td></tr>
+          <tr><td>Tel (pretool-core-tel) kısıtı</td><td>git mv core/… ve CLAUDE.md symlink Bash&#x27;te kesildi → Salih eli</td><td>jarvis/.claude/hooks/pretool-core-tel.sh · <strong>D</strong></td></tr>
+          <tr><td>Ad-eşitliği denetimi</td><td>K3 FLAG (tools/devir-md2json.py:18), F3 öncesinden; paket dışı</td><td>tools/ad-esitligi-denetim.py · <strong>D</strong></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+
+  <!-- M1 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="M1">
+    <div class="card-body">
+      <h2 class="card-title">M1 · F4 kanon paketi — imza <span class="badge badge-outline">Katman-1 · kanon (kök AGENTS.md + iki ajan kanonu + tüzük EK + protokol EK)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Paket 8 parça: (1) kök <code>AGENTS.md</code> 16 madde (ortak kural; tüzük m.8·9·10·20·31·39·42h·49 özleri, öncelik kuralı, git/iletişim/hook girişi/bakım/sahiplik) + kök <code>README.md</code> + <code>CLAUDE.md → AGENTS.md</code> symlink'leri · (2) <code>jarvis/AGENTS.md</code> v3: §1 'sistemin ana-sıra ajanı + kanonların bakıcısı, firstmate rolü', ortak 8 madde köke taşındı, eski statik AGENTS.md arşive · (3) <code>friday/AGENTS.md</code> v0.3: <code>kanon/</code> satırları köke, <code>jarvis/**</code> tümüyle kapalı (Jarvis core dahil) · (4) tüzük başına Karar 101 EK-2 paragrafı: 8 madde pointer, m.41/m.44 EK (cwd tanımları), <strong>Karar 91 D gecerli-bitis 09-18</strong>, <strong>Karar 99 M1 yeniden</strong> · (5) protokol §5 EK-4 worktree tablosu · (6) kök <code>sablonlar/</code> (4 taşınan + charter iskeleti) · (7) kök <code>.claude/settings.json</code> + <code>bin/hook-dispatch.sh</code> çift-koşum frenli · (8) K1 kapısı commit alanı. Diff çalışma ağacında; imzayla tek commit + push.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'M1',&quot;F4 kanon paketi — imza&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="Karar 101 EK-2 F4 kanon paketi (8 parça) aynen imzalandı; Jarvis tek commit atar, Salih 4 git mv + 3 symlink komutunu koşar, push Salih beyanıyla; F5 kanıt turu açılır."> <strong>(a) Paket aynen imzalanır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: defterdeki `[bekliyor]` damgasını imza saatiyle değiştirir, paketi `[icra]` commit&#x27;i olarak atarım; Salih&#x27;e 7 komutluk liste veririm (şablon taşıma + symlink; tel gereği); sonra F5 kanıt tablosu için iki oturum açma talimatı (worktree beyanıyla). Artı: plan §4 F4 tam kapsam; kök md 18/25 satır, jarvis md bütçe içinde, Friday hook 34/34; Friday&#x27;in Jarvis core&#x27;unu okuyamaması Karar 101 (3)&#x27;ün doğrudan sonucu. Eksi: Friday artık tüzük tam metnini göremez, yalnız kök özleri (16 madde); bir madde özü eksikse Friday&#x27;de kural boşluğu — tespit F5/tur-6&#x27;da. Gerekçe: Karar 101 hükmü (2)-(3) bunu ister; alternatif (Friday&#x27;e jarvis/core istisnası) izolasyon hedefini deler.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="F4 paketi imzalandı, ek olarak Friday okuma kilidi `jarvis/core/tuzuk-v0.md` tek dosyasını izinli sayar (pointer&#x27;ların tam metni okunabilsin)."> <strong>(b) Paket + Friday&#x27;e tüzük istisnası</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: Friday hook izinli kümesine tek dosya eklerim + test vakası; friday/AGENTS.md §2&#x27;ye pointer. Artı: Friday m.NN pointer&#x27;larını açabilir, kök özleri eksikse kural boşluğu kalmaz. Eksi: Karar 101 &#x27;Friday deny tek jarvis/**&#x27; hükmünden sapma; tüzük 61 KB Friday bağlamına sızabilir (bağlam maliyeti + Jarvis-özel kuralların Friday&#x27;e taşması). Gerekçe: yalnız kök özlerinin yetersizliği F5&#x27;te kanıtlanırsa; şimdi değil.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="F4 paketi imzalanmadı; Salih&#x27;in düzeltme notları alınır, paket revize edilip yeniden masaya gelir."> <strong>(c) Paket geri, düzeltme listesiyle</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: çalışma ağacı taslak kalır (commit yok), notları prompt alanından alır, tek turda revize ederim. Artı: kanon metni Salih diliyle çıkar. Eksi: F5 ve Friday tur-6 bir masa döngüsü ertelenir; çalışma ağacı kirli kaldığı sürece paralel iş riskli (H4). Gerekçe: metinde Salih&#x27;in kabul etmediği bir hüküm/üslup varsa doğru yol budur.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: <code>kaynak-kodu/lavish/masa-15-2026-09-18.html</code> · kalıcı kopya <code>raporlar/masa/masa-15-karar-yuzeyi-2026-09-18.html</code>. Hükümler deftere Karar 101 EK-2 olarak iner (karar-kaydet).
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, { tag: 'hukum', text: kalem + ': ' + secim, element: form, queueKey: kalem, data: { kalem: kalem, hukum: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+function kuyruklaCoklu(form, kalem, ad) {
+  const secim = new FormData(form).getAll('secim');
+  const durum = form.querySelector('.durum');
+  const metin = secim.length ? secim.join(' | ') : 'HİÇBİRİ';
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — seçimi sohbete yaz: ' + kalem + ' ' + metin; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') seçim: ' + metin, { tag: 'hukum', text: kalem + ': ' + metin, element: form, queueKey: kalem, data: { kalem: kalem, secim: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + metin + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
