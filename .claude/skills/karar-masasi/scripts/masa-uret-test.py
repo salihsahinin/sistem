@@ -58,6 +58,11 @@ def main():
         kayit(f"E3 {ad} sayısı elle = üretilen", g.count(desen) == h.count(desen), f"{g.count(desen)}/{h.count(desen)}")
     kayit("E3 kuyrukla birebir", fn(g, "kuyrukla") == fn(h, "kuyrukla"))
     kayit("E3 kuyruklaCoklu birebir", fn(g, "kuyruklaCoklu") == fn(h, "kuyruklaCoklu"))
+    # E4 (09-18 arızası: başlıkta kesme işareti → onsubmit JS bozuluyordu; masa-13 M3/M12/M13 tıklanınca sayfa çöktü)
+    import html as _html
+    onsubmit = [_html.unescape(m) for m in re.findall(r'onsubmit="([^"]*)"', g)]
+    js_ok = all(re.fullmatch(r"event\.preventDefault\(\); kuyrukla(?:Coklu)?\(this,'M\d+',\"(?:[^\"\\\\]|\\\\.)*\"\);", o) for o in onsubmit)
+    kayit("E4 onsubmit JS dizesi kesme işaretine dayanıklı", js_ok and len(onsubmit) == len(spec["kalemler"]), f"{len(onsubmit)} form")
     cu, ce = caps(g), caps(h)
     kayit("E3 büyük-harf ihlali elle-yazımı aşmıyor", set(cu) <= set(ce), f"üretilen {cu} · elle {ce}")
     print(f"sonuç: {sum(sonuc)}/{len(sonuc)} · üretilen {len(cikti[0])} B / elle {len(h.encode())} B · spec {spec_yolu.stat().st_size} B · geçici {T}")

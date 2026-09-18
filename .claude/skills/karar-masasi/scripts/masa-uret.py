@@ -46,7 +46,7 @@ def kalem_html(k):
     <div class="card-body">
       <h2 class="card-title">{k["id"]} · {e(k["baslik"])} <span class="badge badge-outline">{e(k.get("rozet", ""))}</span></h2>
       <p class="text-sm opacity-80"><strong>Ne demek:</strong> {e(k.get("ne_demek", ""))}</p>
-      <form onsubmit="event.preventDefault(); {fn}(this,'{k["id"]}','{html.escape(k["baslik"][:40])}');">
+      <form onsubmit="event.preventDefault(); {fn}(this,'{k["id"]}',{html.escape(json.dumps(k["baslik"][:40], ensure_ascii=False), quote=True)});">
       <div class="space-y-2">
 {chr(10).join(sec)}
       </div>
