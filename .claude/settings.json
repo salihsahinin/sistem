@@ -5,7 +5,22 @@
       "Write(kanon/**)",
       "Bash(git push:*)",
       "Bash(git add -A:*)",
-      "Bash(git add .:*)"
+      "Bash(git add .:*)",
+      "Read(~/jarvis/CLAUDE.md)",
+      "Read(~/jarvis/KILAVUZ.md)",
+      "Read(~/jarvis/README.md)",
+      "Read(~/jarvis/fikir-kutusu.md)",
+      "Read(~/jarvis/kuyruk/**)",
+      "Read(~/jarvis/raporlar/**)",
+      "Read(~/jarvis/cc/**)",
+      "Read(~/jarvis/wiki/**)",
+      "Read(~/jarvis/veri/**)",
+      "Read(~/jarvis/tools/**)",
+      "Read(~/jarvis/.claude/**)",
+      "Read(~/jarvis/kaynak-kodu/**)",
+      "Read(~/jarvis/ogrenme/**)",
+      "Read(~/jarvis/arsiv/**)",
+      "Read(~/jarvis/graf/**)"
     ]
   },
   "hooks": {

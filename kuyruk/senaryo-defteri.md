@@ -11,7 +11,12 @@
 - **2026-09-16 · Jarvis İB-84 A1 (Karar 92 M3 EK):** emir tek md + lojik blok; blok bağlayıcı, düz yazı gerekçe; json türev, çelişkide md kazanır. Kaynak: `cc/gelen/gorev-2026-09-16-tur3.md:3`.
 - **2026-09-16 · Tur-2 B5 kuralı (Jarvis şablonu):** emirdeki URL = o sayfa + doğrudan bağlantı verdiği aynı-alan-adlı kanonik alt sayfa (1 derinlik). Kaynak: aynı dosya `:60`.
 
+- **2026-09-18 · Jarvis Karar 99 (Salih Katman-1, masa-13):** M1 Friday yan oturum değildir (kendi §5: `main`, push yok, pathspec-only) · M2 alt-ajan dalı uygulanır · M3 deny bloğu `core/` hariç eklenir · M4 çekirdek aday kabul (desen 21). Kaynak: `cc/gelen/gorev-2026-09-18-tur4.md:16,76-77`.
+
 ## [oneri] / [sapma] kayıtları
+- **2026-09-18 · `[uygulandi]` · Karar 99 M2/M3/M4 → tur-4:** hook v0.3 (alt-ajan dalı, Z1/Z2 onarımı) · `settings.json` deny 15 satır (`core/` hariç) · desen 21. Kanıt: 22 vaka `PASS`, üç canlı deneme (yasak yol reddedildi, `kanon/` sağlam, `RED` olayı kütüğe düştü). Pointer: `cc/giden/devir-2026-09-18-tur4/uygulama-raporu.md`.
+- **2026-09-18 · sapma yok · devir-2026-09-18-tur4:** emir-kaynaklı `[sapma]` 0 (Friday sayımı). Üç uyarlama (Z3 vakasının ikiye ayrılması · bayrak adının Friday karşılığı · `exit 2`'nin bayrak dışına alınması) geri-dönüş §7'de açık.
+- **2026-09-18 · `[oneri]` · kural adayları (hüküm değil):** ayrıştırıcının desen dizesini yol sayması (3 seçenek) · Jarvis örnek hook'unda `exit 2`'nin test bayrağı içinde kalması · alt-ajan yasak listesine `cc/gelen/**` · Z3b için işletim sistemi düzeyinde sandbox. Pointer: `cc/giden/devir-2026-09-18-tur4-geri-donus.md` §3.
 - **2026-09-16 · `[uygulandi]` · tur-2 cevabı → `1380c7a`:** kütük v0.3 (`sema`, `devir_id`, `agent_id`/`agent_type`) · A1 formatı (md + lojik blok, json türev) · 301 ve 1-derinlik kuralları · FIFO'da madde birincil. Friday tarafı gözlemi: v0.3 satırlarında `sema` dolu, `devir_id` bu devirde boş (b1). Pointer: `cc/giden/tasarim-2026-09-16-tur3.md` (b).
 - **2026-09-16 · sapma yok · devir-2026-09-16-tur3:** emir-kaynaklı `[sapma]` 0 (Friday sayımı; doğrulama Jarvis'in). Sayılmayan üç durum tasarım tur-3 (d)'de açık yazılı.
 - **2026-09-16 · `[oneri]` · kural adayları (hüküm değil):** (i) `permissions.deny`'ye Jarvis alt dizin listesi, hook'un yanına ikinci katman (C1 §3b); (ii) `okuma-izin.sh` için Ö1 test vakaları → Ö2 Bash izin listesi ∨ Ö4 → Ö3 alt-ajan dar alanı (C2 §4); (iii) A1 bloğuna `KAYNAKLAR`, `OTURUM`/`AÇILIŞ_ADIMLARI`, `KAPANIŞ` alanları ve "emir-kaynaklı sapma" tanımı (tasarım tur-3 (a)).
