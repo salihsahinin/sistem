@@ -1,0 +1,519 @@
+--- /Users/HasanSalihSahin/jarvis/tools/SCRIPTLER.md
++++ /Users/HasanSalihSahin/jarvis/tools/SCRIPTLER.md (yeni)
+@@ -1,14 +1,14 @@
+ # Kalıcı Script İndeksi (görünür kapı — `.claude/` gizli klasörü ve Obsidian .md-filtresi yüzünden; kaynak haritası: `kaynak-kodu/README.md`, açık-kaynak ilkesi 08-17)
+ 
+ > **Araç yazım standardı:** `tools/AXI-STANDARDI.md` (İB-58, Karar 76 E-4; A1 iki kanal · A2 çıkış kodu sözlüğü · A3 sabit bayraklar · A4 determinizm/idempotens · A5 docstring=yardım · A6 yan-etki beyanı · A7 FAIL-LOUD · A8 bağlam bütçesi). İlk uygulama: `katman-hatti.py --json`.
+-*Açıklama: Jarvis'in tek-seferlik OLMAYAN (kalıcı, B4 basamağı) script'leri iki yerde yaşar: (1) `tools/` (repo kökü, görünür) · (2) `.claude/skills/<skill>/scripts/` (skill'e bağlı; `.claude` GİZLİ — Finder'da ⌘⇧G ile `~/jarvis/.claude/skills` ya da terminalde `open ~/jarvis/.claude/skills`; Obsidian'da Ayarlar → Files & Links → "Detect all file extensions"). Bu indeks Salih'in "beraber okuma" isteği için açıldı (08-15): her satır yol · ne yapar · nasıl koşulur · okurken bakılacak yer. Kural: yeni kalıcı script buraya satır düşürmeden tamam sayılmaz (deneysel m.29). Tümü stdlib-only Python 3 (ps1 hariç; tek istisna: kolon katmanı `ambar-parquet.py` + `kolon-olcum.py` kolon tarafı — opsiyonel `duckdb` paketi, KB-55 Salih hükmüne dek).*
++*Açıklama: Jarvis'in tek-seferlik OLMAYAN (kalıcı, B4 basamağı) script'leri iki yerde yaşar: (1) `tools/` (repo kökü, görünür) · (2) `.claude/skills/<skill>/scripts/` (skill'e bağlı; `.claude` GİZLİ — Finder'da ⌘⇧G ile `~/sistem/jarvis/.claude/skills` ya da terminalde `open ~/sistem/jarvis/.claude/skills`; Obsidian'da Ayarlar → Files & Links → "Detect all file extensions"). Bu indeks Salih'in "beraber okuma" isteği için açıldı (08-15): her satır yol · ne yapar · nasıl koşulur · okurken bakılacak yer. Kural: yeni kalıcı script buraya satır düşürmeden tamam sayılmaz (deneysel m.29). Tümü stdlib-only Python 3 (ps1 hariç; tek istisna: kolon katmanı `ambar-parquet.py` + `kolon-olcum.py` kolon tarafı — opsiyonel `duckdb` paketi, KB-55 Salih hükmüne dek).*
+ 
+ ## Skill'e bağlı script'ler (08-15, Jarvis — kapı/şema hattı)
+ | script | yol | ne yapar | koş | okurken |
+ |---|---|---|---|---|
+ | **masa-uret.py** (+ `masa-spec-cikar.py`, `masa-uret-test.py`) | `.claude/skills/karar-masasi/scripts/` | karar-masasi skill'i (İB-88 P2, 09-15): spec JSON → DaisyUI karar masası HTML + kalıcı kopya, deterministik; çıkarıcı eski masa HTML'ini spec'e döker; test E1-E3 (spec kapısı · bayt-eşit üretim · masa-12 eşdeğerlik) | `python3 .claude/skills/karar-masasi/scripts/masa-uret.py <spec.json> [--kuru]` → çıkış 0/2 spec hatası/3 no çakışması · test `masa-uret-test.py` → 0/1 | `e()` güvenli-etiket kaçışı heuristik (strong/code/em/br); öneri-ilk-sırada kapısı m.40 eki sözleşmesi |
+-| **kapi-denetim.py** | `.claude/skills/skill-kapisi/scripts/kapi-denetim.py` | Skill-üretim kapı-ağacının DETERMİNİSTİK kapıları: K2-R referans-varlığı (yol · m.NN · skill adı) + K3-F1..F4 biçim (description ≤1024/negatif-tetik/3.şahıs · <500 satır · evals ≥3+5/5 · adımlar+Gotchas) + tür-özel bayraklar (T-Y → `disable-model-invocation`) + hazine desc-bütçesi uyarısı | `python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py <skill-dizini> --repo ~/jarvis [--json]` → çıkış 0 geçti / 1 düştü | `gate()` sert/yumuşak ayrımı; K2-R regex'i (şablon yolları atlar); şekil tahmini FIRST sırası (heuristik, hüküm değil) |
+-| **tetik-denetim.py** | `.claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py` | Skill-tetiklenme şeması Kapı-Ö: emirdeki "SKILL TETİKLERİ" bloğunu okur; skill var mı · 9 alan dolu mu · T-Y skill örtük/alt-ajandan çağrılıyor mu (YASAK) · derece ifadesi · iç içe koşul ≤2 · retry ≤3 · FAIL-LOUD · yan-etki damgası | `python3 .claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py <emir.md> --repo ~/jarvis` → 0 geçti / 1 BLOKE / 3 blok yok | blok ayrıştırma (`- skill:` ile böler); O4 T-Y kuralı frontmatter'dan okunur |
++| **kapi-denetim.py** | `.claude/skills/skill-kapisi/scripts/kapi-denetim.py` | Skill-üretim kapı-ağacının DETERMİNİSTİK kapıları: K2-R referans-varlığı (yol · m.NN · skill adı) + K3-F1..F4 biçim (description ≤1024/negatif-tetik/3.şahıs · <500 satır · evals ≥3+5/5 · adımlar+Gotchas) + tür-özel bayraklar (T-Y → `disable-model-invocation`) + hazine desc-bütçesi uyarısı | `python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py <skill-dizini> --repo ~/sistem/jarvis [--json]` → çıkış 0 geçti / 1 düştü | `gate()` sert/yumuşak ayrımı; K2-R regex'i (şablon yolları atlar); şekil tahmini FIRST sırası (heuristik, hüküm değil) |
++| **tetik-denetim.py** | `.claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py` | Skill-tetiklenme şeması Kapı-Ö: emirdeki "SKILL TETİKLERİ" bloğunu okur; skill var mı · 9 alan dolu mu · T-Y skill örtük/alt-ajandan çağrılıyor mu (YASAK) · derece ifadesi · iç içe koşul ≤2 · retry ≤3 · FAIL-LOUD · yan-etki damgası | `python3 .claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py <emir.md> --repo ~/sistem/jarvis` → 0 geçti / 1 BLOKE / 3 blok yok | blok ayrıştırma (`- skill:` ile böler); O4 T-Y kuralı frontmatter'dan okunur |
+ | **derece.py** | `.claude/skills/halusinasyon-engelleyici/scripts/derece.py` | Görev-müsaitlik derece formülü H = Σ wᵢ·vᵢ (13 boolean bayrak; toplamsal, tamsayı, kanıtsız-tercih); eşik 7 / `--pahali-geri-alma` 4; v3a atıf override; ima edilen maliyet beyanı | `python3 .claude/skills/halusinasyon-engelleyici/scripts/derece.py --v2 --v3d --v4 [--pahali-geri-alma] [--json]` → çıkış 0 gerekmez / 5 F1+F2 / 10 skill TETİK | `W` sözlüğü = ağırlık + kanıt notu (tek bakışta formül); eşik mantığı 8 satır |
+ 
+ ## Kök `tools/` script'leri
+--- /Users/HasanSalihSahin/jarvis/tools/acilis-kapilari.py
++++ /Users/HasanSalihSahin/jarvis/tools/acilis-kapilari.py (yeni)
+@@ -10,7 +10,7 @@
+   K2 manifest     : --is "<anahtar>" verilirse cc/pipeline/pipeline-*.md + git log -15 içinde arar → "zaten koşmuş/koşuyor" adayları;
+                     verilmezse manifestlerde SAHADA/AÇIK durum satırları listelenir.
+   K3 silver       : veri/baglam.sqlite uretim.git_head_sha ≠ HEAD → BAYAT (tarif: python3 tools/katman-hatti.py).
+-Kullanım: python3 tools/acilis-kapilari.py [--repo ~/jarvis] [--is "<anahtar>"] [--dk 15] [--json]
++Kullanım: python3 tools/acilis-kapilari.py [--repo ~/sistem/jarvis] [--is "<anahtar>"] [--dk 15] [--json]
+ Çıkış: 0 tüm kapılar temiz · 1 en az bir kapı uyarı (ŞÜPHE ∨ koşmuş-aday ∨ BAYAT) · 2 repo/git okunamadı.
+ Çıktı ≤ ~1,5 KB (KB-50 bağlam bütçesi); rakamlar sayım, kestirim yok.
+ """
+--- /Users/HasanSalihSahin/jarvis/tools/ad-esitligi-denetim.py
++++ /Users/HasanSalihSahin/jarvis/tools/ad-esitligi-denetim.py (yeni)
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ """Ad-eşitliği denetimi (Karar 93 EK, Salih 2026-09-10): "Carvis = Jarvis (09-10 öncesi ajan adı)" bilgisi HER bağlam
+ kombinasyonunda bulunmalı. Üç katmanı sayar:
+-  K1 her-seans-yüklenen katman: CLAUDE.md · .claude/hooks/session-start.sh · hafıza MEMORY.md · .claude/agents/*.md · ~/friday/CLAUDE.md
++  K1 her-seans-yüklenen katman: CLAUDE.md · .claude/hooks/session-start.sh · hafıza MEMORY.md · .claude/agents/*.md · ~/sistem/friday/CLAUDE.md
+      → her biri "Carvis" adını Jarvis'e bağlayan bir cümle taşımalı (örüntü: 'eski ad Carvis' ∨ 'Carvis = Jarvis' ∨ 'Carvis → Jarvis' ∨ 'Carvis emekli').
+   K2 dizin katmanı: içinde "Carvis" geçen dosya barındıran her kök dizinin README.md'si eşitlik bloğu taşımalı ('Carvis = Jarvis').
+   K3 canlı-bağlam sızıntısı: canlı dosyalarda (CLAUDE.md, core/, .claude/, KILAVUZ, README, wiki/, tools/, fikir-kutusu) bağlanmamış "Carvis"
+@@ -15,7 +15,7 @@
+ ESIT = re.compile(r"eski ad[ıi]? Carvis|JARVİS FRIDAY CARVIS|Carvis\s*=\s*\*{0,2}Jarvis|Carvis\s*→\s*\*{0,2}Jarvis|Carvis emekli|Carvis\)|eski ad Carvis", re.I)
+ CARVIS = re.compile(r"Carvis|CARVİS|CARVIS")
+ K1 = [os.path.join(J, "CLAUDE.md"), os.path.join(J, ".claude", "hooks", "session-start.sh"),
+-      os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-jarvis", "memory", "MEMORY.md"),
++      os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-sistem-jarvis", "memory", "MEMORY.md"),
+       os.path.join(H, "friday", "CLAUDE.md")]
+ ad = os.path.join(J, ".claude", "agents")
+ if os.path.isdir(ad):
+--- /Users/HasanSalihSahin/jarvis/tools/ambar-tablo.py
++++ /Users/HasanSalihSahin/jarvis/tools/ambar-tablo.py (yeni)
+@@ -81,7 +81,7 @@
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
++    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
+     a = ap.parse_args(); repo = os.path.abspath(a.repo); head = sh(["git", "rev-parse", "--short", "HEAD"], repo)
+     simdi = datetime.now(timezone.utc).isoformat()
+--- /Users/HasanSalihSahin/jarvis/tools/anahtar-cascade.py
++++ /Users/HasanSalihSahin/jarvis/tools/anahtar-cascade.py (yeni)
+@@ -14,7 +14,7 @@
+           soğuk katman (tarihçe) hiçbir zaman yazılmaz. --onay yoksa yalnız sayım basar.
+   readme  --anahtar <id> → Karar 93 EK K2 deseni: emekli değeri barındıran her kök dizinin README eşleniğinde
+           "<eski> = <yeni> (eski ad/değer)" bağlama satırı var mı; eksikler listelenir (yazmaz).
+-Kullanım: python3 tools/anahtar-cascade.py <altkomut> … [--repo ~/jarvis] [--json]
++Kullanım: python3 tools/anahtar-cascade.py <altkomut> … [--repo ~/sistem/jarvis] [--json]
+ Çıkış: 0 temiz/üretildi · 1 kalıntı var (tara/readme) ∨ uygula --onay'sız kalıntı · 2 kullanım/kayıt hatası.
+ """
+ import argparse, importlib.util, json, os, pathlib, re, sys
+--- /Users/HasanSalihSahin/jarvis/tools/baglam-seyir.py
++++ /Users/HasanSalihSahin/jarvis/tools/baglam-seyir.py (yeni)
+@@ -60,7 +60,7 @@
+ 
+ def main():
+     ap = argparse.ArgumentParser()
+-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
++    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+     ap.add_argument("--repo", default=os.getcwd())
+     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
+     a = ap.parse_args(); repo = os.path.abspath(a.repo)
+--- /Users/HasanSalihSahin/jarvis/tools/baglam-tablo.py
++++ /Users/HasanSalihSahin/jarvis/tools/baglam-tablo.py (yeni)
+@@ -484,7 +484,7 @@
+ 
+ 
+ def yol_normalize(ham):
+-    """Repo-içi göreli yola indirge: ~/jarvis/, /abs/…/jarvis/, C:/JARVIS/, ./, ../ önekleri düşer."""
++    """Repo-içi göreli yola indirge: ~/sistem/jarvis/, /abs/…/jarvis/, C:/JARVIS/, ./, ../ önekleri düşer."""
+     y = ham
+     low = y.lower()
+     for isaret in ("/jarvis/", "c:/jarvis/"):
+@@ -493,7 +493,7 @@
+             y = y[k + len(isaret):]
+             break
+     else:
+-        for onek in ("~/jarvis/", "jarvis/", "./"):
++        for onek in ("~/sistem/jarvis/", "jarvis/", "./"):
+             if y.startswith(onek):
+                 y = y[len(onek):]
+         while y.startswith("../"):
+--- /Users/HasanSalihSahin/jarvis/tools/buyuk-harf-temizle.py
++++ /Users/HasanSalihSahin/jarvis/tools/buyuk-harf-temizle.py (yeni)
+@@ -134,7 +134,7 @@
+ def dosyalar(repo, katman):
+     H = pathlib.Path.home()
+     sicak = [repo / "CLAUDE.md", H / ".claude" / "CLAUDE.md"] + sorted((repo / "core").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/SKILL.md")) \
+-        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-jarvis" / "memory").glob("*.md"))
++        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-sistem-jarvis" / "memory").glob("*.md"))
+     ilik = [repo / "KILAVUZ.md", repo / ".claude" / "skills" / "README.md"] + sorted((repo / "wiki").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/references/*.md")) \
+         + sorted((repo / ".claude" / "skills").glob("*/*.md"))
+     # 09-17 (Salih "büyük harf sorunu sürüyor" analizi): öğrenme yan oturumu bu dosyaları her açılışta okur (ogren §0.2) —
+--- /Users/HasanSalihSahin/jarvis/tools/gnhf-izle.py
++++ /Users/HasanSalihSahin/jarvis/tools/gnhf-izle.py (yeni)
+@@ -7,14 +7,14 @@
+ araç sonuçları.
+ 
+ Kullanım:
+-  python3 tools/gnhf-izle.py                # en yeni worktree'yi (~/jarvis-gnhf-worktrees/*) bulur, baştan basar, takipte kalır
++  python3 tools/gnhf-izle.py                # en yeni worktree'yi (~/sistem/jarvis-gnhf-worktrees/*) bulur, baştan basar, takipte kalır
+   python3 tools/gnhf-izle.py --worktree <yol>
+   python3 tools/gnhf-izle.py --gecmis       # yalnız mevcut içeriği bas, takip etme (çık)
+ Çıkış: 0 (--gecmis sonu ya da Ctrl-C) · 2 worktree/koşum bulunamadı. LLM YOK, stdlib-only, salt-okur.
+ """
+ import argparse, glob, json, os, sys, time
+ 
+-KOK = os.path.expanduser("~/jarvis-gnhf-worktrees")
++KOK = os.path.expanduser("~/sistem/jarvis-gnhf-worktrees")
+ 
+ 
+ def en_yeni_worktree():
+--- /Users/HasanSalihSahin/jarvis/tools/hareket-tablo.py
++++ /Users/HasanSalihSahin/jarvis/tools/hareket-tablo.py (yeni)
+@@ -58,7 +58,7 @@
+         c = re.sub(r"\s+", " ", (inp.get("command") or "")).strip()
+         h = (inp.get("description") or "").strip() + " ⟨" + c[:150] + ("…" if len(c) > 150 else "") + "⟩"
+         m = re.search(r"(?:>>?|tee|cat >|python3 - <<|git mv|git add|git commit)", c)
+-        repo_ici = "~/jarvis" in c or c.startswith("cd ~/jarvis") or "jarvis" in c
++        repo_ici = "~/sistem/jarvis" in c or c.startswith("cd ~/sistem/jarvis") or "jarvis" in c
+     elif arac in ("Grep", "Glob"):
+         h = f"{inp.get('pattern','')}  ({kisa_yol(inp.get('path'), repo)[0] or '.'})"
+     elif arac in ("Agent", "Task"):
+@@ -133,7 +133,7 @@
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
++    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+     ap.add_argument("--tarih", default=None); ap.add_argument("--tum", action="store_true"); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
+     a = ap.parse_args(); repo = os.path.abspath(a.repo)
+     head = sh(["git", "rev-parse", "--short", "HEAD"], repo)
+--- /Users/HasanSalihSahin/jarvis/tools/kod-orani-olcum.py
++++ /Users/HasanSalihSahin/jarvis/tools/kod-orani-olcum.py (yeni)
+@@ -3,7 +3,7 @@
+ okuduğu dosyalar) oranı arasındaki fark, DÖRT kovaya ayrılarak (md · kod · yapisal · diger).
+ 
+ Ne bu: iki ayrı ölçüm üretir —
+-  (i) REPO ENVANTERİ: ~/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
++  (i) REPO ENVANTERİ: ~/sistem/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
+       kovaya koyar (md=.md · kod=.py/.sh/.sql · yapisal=.json/.jsonl/.csv · diger=geri kalan), kova başına
+       dosya sayısı + toplam satır (\\n bayt sayımı — ikili dosyada da güvenli, exception atmaz) + toplam bayt.
+   (ii) BAĞLAM-PENCERESİ PROXY'Sİ: `veri/bronz/hareket-olay.jsonl` (şema: hareket_id/ts/oturum/arac/girdi_ozet/
+--- /Users/HasanSalihSahin/jarvis/tools/kosum-maliyeti.py
++++ /Users/HasanSalihSahin/jarvis/tools/kosum-maliyeti.py (yeni)
+@@ -19,7 +19,7 @@
+      JSONL toplamıyla kıyaslanır (resmî arayüz ↔ iç format tutarlılık örneklemi).
+ 
+ Koşum:
+-  python3 tools/kosum-maliyeti.py [--proje -Users-HasanSalihSahin-jarvis] [--gun 7]
++  python3 tools/kosum-maliyeti.py [--proje -Users-HasanSalihSahin-sistem-jarvis] [--gun 7]
+                                   [--beklenen claude-fable-5] [--csv veri/gorunum/v_usage_gunluk.csv]
+                                   [--dogrula /yol/claude-p-cikti.json]
+ Çıkış kodları: 0 temiz · 1 şema-freni tetiklendi (sayılar ŞÜPHELİ damgalı basılır) · 2 veri yok.
+@@ -86,7 +86,7 @@
+ 
+ def main():
+     p = argparse.ArgumentParser(description="Transkript-JSONL usage tablosu (FAIL-LOUD; İB-08)")
+-    p.add_argument("--proje", default="-Users-HasanSalihSahin-jarvis",
++    p.add_argument("--proje", default="-Users-HasanSalihSahin-sistem-jarvis",
+                    help="~/.claude/projects altındaki proje dizini adı; 'HEPSI' = tüm projeler")
+     p.add_argument("--gun", type=int, default=7, help="son N gün (0 = tümü)")
+     p.add_argument("--beklenen", default=None, help="ana-zincirde beklenen model (düşüm izi)")
+--- /Users/HasanSalihSahin/jarvis/tools/olcum-dortlu.py
++++ /Users/HasanSalihSahin/jarvis/tools/olcum-dortlu.py (yeni)
+@@ -4,10 +4,10 @@
+ # Çıktı: koşum-başına dörtlü (token · duvar-saati · iterasyon · sonuç), markdown blok.
+ # --append: bloğu senaryo-defterine yazar (mükerrer runId#pid atlanır). m.39: eksik alan [?].
+ # Kullanım:
+-#   python3 ~/jarvis/tools/olcum-dortlu.py                      # önizleme (stdout)  [Mac; Windows: python C:\JARVIS\tools\olcum-dortlu.py]
+-#   python3 ~/jarvis/tools/olcum-dortlu.py --append             # deftere yaz
+-#   python3 ~/jarvis/tools/olcum-dortlu.py --repo ~/dev/firstmate # hedef repo (gnhf koşumlarının olduğu yer)
+-# Mac uyarlaması 2026-08-22 (İB-13, K-022 P6): kanon kökü ~/jarvis (Windows kökü varsa o), --repo varsayılanı ~/dev/wf-deneme → yoksa ~/dev/firstmate → yoksa cwd; mantık değişmedi.
++#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py                      # önizleme (stdout)  [Mac; Windows: python C:\JARVIS\tools\olcum-dortlu.py]
++#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py --append             # deftere yaz
++#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py --repo ~/dev/firstmate # hedef repo (gnhf koşumlarının olduğu yer)
++# Mac uyarlaması 2026-08-22 (İB-13, K-022 P6): kanon kökü ~/sistem/jarvis (Windows kökü varsa o), --repo varsayılanı ~/dev/wf-deneme → yoksa ~/dev/firstmate → yoksa cwd; mantık değişmedi.
+ 
+ import argparse, json, re, sqlite3, sys
+ from datetime import datetime, timezone
+--- /Users/HasanSalihSahin/jarvis/tools/prompt-tablo.py
++++ /Users/HasanSalihSahin/jarvis/tools/prompt-tablo.py (yeni)
+@@ -88,7 +88,7 @@
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
++    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+     ap.add_argument("--n", type=int, default=50); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
+     ap.add_argument("--tarih", default=None, help="rapor dosya adı tarihi (YYYY-MM-DD); varsayılan bugün TR")
+     a = ap.parse_args(); repo = os.path.abspath(a.repo)
+--- /Users/HasanSalihSahin/jarvis/tools/sicak-katman-fifo.py
++++ /Users/HasanSalihSahin/jarvis/tools/sicak-katman-fifo.py (yeni)
+@@ -50,7 +50,7 @@
+     ap.add_argument("--json", action="store_true", help="makine çıktısı")
+     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+     a = ap.parse_args()
+-    mem = os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/MEMORY.md")
++    mem = os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis/memory/MEMORY.md")
+     dosyalar = {
+         "kapsul": (os.path.join(a.repo, "core", "durum-kapsulu.md"), kapsul_maddeler),
+         "pano": (os.path.join(a.repo, "core", "pano.md"), pano_maddeler),
+--- /Users/HasanSalihSahin/jarvis/tools/sunum-proof-of-work.py
++++ /Users/HasanSalihSahin/jarvis/tools/sunum-proof-of-work.py (yeni)
+@@ -62,7 +62,7 @@
+     except Exception: pass
+     # workflow ölçümü — yalnız bu makinede kalan koşum çıktıları (ölçüm anı; taşınmaz)
+     wf_n = wf_tok = wf_ag = 0
+-    for f in glob.glob(os.path.expanduser("/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/*/tasks/*.output")):
++    for f in glob.glob(os.path.expanduser("/private/tmp/claude-501/-Users-HasanSalihSahin-sistem-jarvis/*/tasks/*.output")):
+         try:
+             d = json.load(open(f))
+             if isinstance(d, dict) and "totalTokens" in d: wf_n += 1; wf_tok += int(d["totalTokens"] or 0); wf_ag += int(d.get("agentCount") or 0)
+--- /Users/HasanSalihSahin/jarvis/tools/testler/test_karantina.py
++++ /Users/HasanSalihSahin/jarvis/tools/testler/test_karantina.py (yeni)
+@@ -4,7 +4,7 @@
+ Kapsam: (a) --ekle sahte bir git-fixture repo'da dosyayı arsiv/karantina/ altına git mv ile taşıyor +
+ veri/karantina.jsonl'e 5-alanlı satır ekliyor · (b) --denetle gerçek repodaki kod-orani-olcum.py karantina
+ dizinini TARAMIYORKEN PASS (kod 0) veriyor · (c) --liste boş/dolu durumlarda doğru çalışıyor.
+-Gerçek ~/jarvis dosyalarına DOKUNULMAZ — her --ekle testi izole tempdir'de kendi git repo fixture'ını kurar.
++Gerçek ~/sistem/jarvis dosyalarına DOKUNULMAZ — her --ekle testi izole tempdir'de kendi git repo fixture'ını kurar.
+ """
+ import json
+ import os
+@@ -78,7 +78,7 @@
+ 
+ class TestDenetle(unittest.TestCase):
+     def test_denetle_gercek_repoda_pass(self):
+-        # gerçek ~/jarvis repo, salt-okur: kod-orani-olcum.py karantina dizinini tarıyor mu diye bakar
++        # gerçek ~/sistem/jarvis repo, salt-okur: kod-orani-olcum.py karantina dizinini tarıyor mu diye bakar
+         r = kos("--repo", KOK, "--denetle")
+         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+ 
+--- /Users/HasanSalihSahin/jarvis/tools/testler/test_loop_dedektor.py
++++ /Users/HasanSalihSahin/jarvis/tools/testler/test_loop_dedektor.py (yeni)
+@@ -14,7 +14,7 @@
+ class ImzaTest(unittest.TestCase):
+     def test_bash_zinciri(self):
+         m = modul()
+-        self.assertEqual(m.bash_imza("hat koş ⟨cd ~/jarvis && python3 tools/katman-hatti.py > x.log; git add a b && git commit -q -F -⟩"), "Bash:py:katman-hatti+git:add+git:commit")
++        self.assertEqual(m.bash_imza("hat koş ⟨cd ~/sistem/jarvis && python3 tools/katman-hatti.py > x.log; git add a b && git commit -q -F -⟩"), "Bash:py:katman-hatti+git:add+git:commit")
+         self.assertEqual(m.bash_imza("inline ⟨python3 - <<'EOF'\nprint(1)\nEOF\ngit status⟩"), "Bash:py:inline+git:status")
+         self.assertEqual(m.bash_imza("⟨sqlite3 veri/baglam.sqlite \"select 1\"⟩"), "Bash:sqlite3")
+ 
+--- /Users/HasanSalihSahin/jarvis/tools/yol-tasi.py
++++ /Users/HasanSalihSahin/jarvis/tools/yol-tasi.py (yeni)
+@@ -6,10 +6,10 @@
+   /Users/HasanSalihSahin/friday  → /Users/HasanSalihSahin/sistem/friday     (~/friday, $HOME/friday dahil)
+   -Users-HasanSalihSahin-jarvis  → -Users-HasanSalihSahin-sistem-jarvis     (~/.claude/projects anahtarı)
+ Ne yapmaz: dokümanları (raporlar/ wiki/ kuyruk/ arsiv/ cc/) değiştirmez — tarihli kayıt AS-OF kalır (m.8).
+-Friday deny listesindeki `Read(~/jarvis/…)` satırları yalnız BAYRAKLANIR (semantik değişiklik: 20 satır → tek `jarvis/**`, F3'te Edit ile).
++Friday deny listesindeki `Read(~/sistem/jarvis/…)` satırları yalnız BAYRAKLANIR (semantik değişiklik: 20 satır → tek `jarvis/**`, F3'te Edit ile).
+ 
+ Kullanım:
+-  python3 tools/yol-tasi.py --kuru                       # eski düzen (~/jarvis kökü + ~/friday), rapor + diff dosyası
++  python3 tools/yol-tasi.py --kuru                       # eski düzen (~/sistem/jarvis kökü + ~/sistem/friday), rapor + diff dosyası
+   python3 tools/yol-tasi.py --uygula --kok ~/sistem      # F2 sonrası yeni düzen: ~/sistem/jarvis + ~/sistem/friday
+   --tara <dizin> (tekrarlanabilir) varsayılan listeyi ezer.
+ Deterministik: aynı girdi → aynı diff; idempotent: zaten /sistem/ içeren satır dokunulmaz. Çıktı: rapor stdout + diff raporlar/2026-09/yol-tasi-<kuru|uygula>-<tarih>.diff
+@@ -28,11 +28,11 @@
+     ("-Users-HasanSalihSahin-friday", "-Users-HasanSalihSahin-sistem-friday"),
+ ]
+ UZANTI = {".py", ".sh", ".json", ".md", ".yaml", ".yml", ".toml", ".txt", ".d2", ".tsv"}
+-BAYRAK = re.compile(r'"Read\(~/jarvis/[^"]*\)"')  # Friday deny satırı
++BAYRAK = re.compile(r'"Read\(~/sistem/jarvis/[^"]*\)"')  # Friday deny satırı
+ 
+ 
+ def varsayilan_tara(kok: pathlib.Path, duzen: str):
+-    if duzen == "eski":   # F1: ~/jarvis kökü + ~/friday ayrı
++    if duzen == "eski":   # F1: ~/sistem/jarvis kökü + ~/sistem/friday ayrı
+         j = kok; f = pathlib.Path(HOME) / "friday"
+     else:                 # F3: ~/sistem/jarvis + ~/sistem/friday
+         j = kok / "jarvis"; f = kok / "friday"
+--- /Users/HasanSalihSahin/jarvis/.claude/hooks/pretool-altajan-okuma-test.sh
++++ /Users/HasanSalihSahin/jarvis/.claude/hooks/pretool-altajan-okuma-test.sh (yeni)
+@@ -5,17 +5,17 @@
+ export CLAUDE_PROJECT_DIR=$PWD
+ HOOK=.claude/hooks/pretool-altajan-okuma.sh
+ t(){ printf '%s\n' "$2" | bash "$HOOK" >/dev/null 2>&1; r=$?; [ "$r" = "$3" ] && s=PASS || s=FAIL; echo "$s  $1 → exit $r (beklenen $3)"; }
+-t "ana-sıra (agent_id yok) kapsül okur"          '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/core/durum-kapsulu.md"}}' 0
+-t "alt-ajan kapsül okur"                          '{"agent_id":"a1","agent_type":"Explore","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/core/durum-kapsulu.md"}}' 2
+-t "alt-ajan tüzük okur (serbest)"                 '{"agent_id":"a1","agent_type":"Explore","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/core/tuzuk-v0.md"}}' 0
++t "ana-sıra (agent_id yok) kapsül okur"          '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/core/durum-kapsulu.md"}}' 0
++t "alt-ajan kapsül okur"                          '{"agent_id":"a1","agent_type":"Explore","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/core/durum-kapsulu.md"}}' 2
++t "alt-ajan tüzük okur (serbest)"                 '{"agent_id":"a1","agent_type":"Explore","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/core/tuzuk-v0.md"}}' 0
+ t "alt-ajan transkript okur"                      '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/x/y.jsonl"}}' 2
+ t "alt-ajan Bash cat defter"                      '{"agent_id":"a1","agent_type":"atlas","tool_name":"Bash","tool_input":{"command":"cat kuyruk/senaryo-defteri.md | head"}}' 2
+-t "alt-ajan Bash ~/friday"                        '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"ls ~/friday/cc"}}' 2
++t "alt-ajan Bash ~/sistem/friday"                        '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"ls ~/sistem/friday/cc"}}' 2
+ t "alt-ajan Bash cc/rapor (serbest)"              '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"ls cc/rapor/2026-09"}}' 0
+-t "alt-ajan Grep wiki (serbest)"                  '{"agent_id":"a1","tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/jarvis/wiki"}}' 0
++t "alt-ajan Grep wiki (serbest)"                  '{"agent_id":"a1","tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/sistem/jarvis/wiki"}}' 0
+ t "alt-ajan heredoc gövdesinde kapsül adı"       '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"cat > cc/rapor/x.md <<'"'"'EOF'"'"'\nbkz core/durum-kapsulu.md\nEOF"}}' 0
+-t "alt-ajan kendi tool-results dosyasını okur (09-17 muafiyet)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/58141fb3/tool-results/toolu_x.txt"}}' 0
+-t "bayrak açıkken kilit keser (Karar 100 M2; bayrak yalnız kütüğü kapatır)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/core/pano.md"}}' 2
+-t "alt-ajan cc/devir devir dosyası okur → RED (Karar 100 M3)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/cc/devir/friday-2026-09-18-tur4/gorev-2026-09-18-tur4.md"}}' 2
++t "alt-ajan kendi tool-results dosyasını okur (09-17 muafiyet)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis/58141fb3/tool-results/toolu_x.txt"}}' 0
++t "bayrak açıkken kilit keser (Karar 100 M2; bayrak yalnız kütüğü kapatır)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/core/pano.md"}}' 2
++t "alt-ajan cc/devir devir dosyası okur → RED (Karar 100 M3)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/cc/devir/friday-2026-09-18-tur4/gorev-2026-09-18-tur4.md"}}' 2
+ t "alt-ajan Bash cc/gelen listeler → RED (Karar 100 M3)" '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"ls cc/gelen/"}}' 2
+-t "alt-ajan başka oturum transkriptini okur → RED (muafiyet dar)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-jarvis/58141fb3.jsonl"}}' 2
++t "alt-ajan başka oturum transkriptini okur → RED (muafiyet dar)" '{"agent_id":"a1","agent_type":"atlas","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis/58141fb3.jsonl"}}' 2
+--- /Users/HasanSalihSahin/jarvis/.claude/rules/cc.md
++++ /Users/HasanSalihSahin/jarvis/.claude/rules/cc.md (yeni)
+@@ -10,4 +10,4 @@
+ - Üç katman (Karar 89): Fable ana-sıra → Opus 5 lider (effort medium sabit) → Sonnet işçi; işçi bütçesi 10-15 çağrı, aile ≤3 eşzamanlı; işçi emri = kimlik · yazma-izni listesi · git yasağı · doğrulama komutu · çıktı şeması + "**açık** **soru**:" satırı.
+ - Alt-ajan dönüşü ≤2k token bağlama; büyük çıktı dosyaya, özet + pointer. Alt-ajan okuma kısıtı hook'la (İB-83).
+ - Atlas koşumu: tez → antitez (yalnız iddia listesi) → V26 sondaj → maskeli hakem (yapan ≠ ölçen); her iddia URL + AS-OF; D/K/X etiketi.
+-- Raporlar `cc/rapor/YYYY-MM/`; devir dosyaları `cc/devir/`; Friday dönüşü `~/friday/cc/giden/` → `cc/devir/friday-*`.
++- Raporlar `cc/rapor/YYYY-MM/`; devir dosyaları `cc/devir/`; Friday dönüşü `~/sistem/friday/cc/giden/` → `cc/devir/friday-*`.
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/gorev-emri-derleme/SKILL.md
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/gorev-emri-derleme/SKILL.md (yeni)
+@@ -13,7 +13,7 @@
+ 3. **Mekanik kapılar (her emirde):** rakam-damgası şartı (m.39: rakam kaynaklı, kestirim `[?]`) · dürüstlük şartı (uydurma **yasak**, "bulunamadı" meşru, erişim engeli bayraklanır) · D/K/X etiket disiplini · işçi dönüş bütçesi ≈1-2k token · teslim adresi (`cc/rapor/YYYY-MM/rapor-YYYY-MM-DD-N.md`) · **kanonda-bilinenler** bloğu (mükerrer araştırma freni — ilgili eski rapor bulgularını "verili kabul et, üstüne koy" diye listele).
+ 3b. **Halüsinasyon derecesi (paket v1 — `core/halusinasyon-paketi.md` §2):** **çıktı** SÖZLEŞMESİ'ne `halusinasyon_derecesi` yaz — `python3 .claude/skills/halusinasyon-engelleyici/scripts/derece.py --v… [--pahali-geri-alma]` (v1 nadirlik · v2 tazelik · v3a-d çıktı-türü · v4 uzunluk · v5 bileşiklik · v6 öncül · v7a-c kaynak · v8 doğrulayıcı · v9 runtime · v10 dil). H ≥ eşik (7 / pahalı-geri-alma 4) ∨ atıf/künye çıktısı ⇒ SKILL **tetikleri** bloğuna `halusinasyon-engelleyici` çağrısı (cagri_kipi literal ya da örtük; kaynak-topraklama + bağımsız doğrulayıcı zorunlu); 4 ≤ H < eşik ⇒ emre F1+F2 (yapılandırılmış kaynak + destek-kontrolü) koşulu.
+ 3c. **Deneyim çekme (KB-44 (a) a-kanalı, Karar 60; İB-44 08-22):** **kanonda-bilinenler** bloğuna benzer **geçmiş yörüngeler** eklenir — `python3 tools/deneyim-tablo.py --benzer "<emrin tek cümlelik özeti>" --k 5` (silver `deneyim_fts`; bm25 × model-kuşağı ağırlığı; hüküm/süre/token/kuşak satırlarıyla). Eski-kuşak yörüngesi (`eski_kusak=1`) yalnız "o zaman böyle koştu" notu olarak girer, koşum profili tahminine doğrudan taşınmaz (Salih şerhi). Benzer yörünge yoksa "deneyim: 0" yazılır (uydurma yok).
+-4. **SKILL tetikleri bloğu (tetiklenme şeması v1 — `core/skill-tetikleme-semasi.md`):** emir bir skill çağırıyorsa çağrı başına 9 alan (skill · tetik_kosulu · cagri_kipi · girdi · baglam · yan_etki_damgasi · done_yuklemi · hata_yolu · sira) + kayit satırı; çağrı yoksa "yok" yaz. Sonra deterministik Kapı-Ö: `python3 .claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py <emir> --repo ~/jarvis` — `BLOKE` çıkarsa emir teslim edilmez (yan-etkili skill örtük/alt-ajandan çağrılamaz; derece ifadesi yasak; retry ≤3; **fail-loud**).
++4. **SKILL tetikleri bloğu (tetiklenme şeması v1 — `core/skill-tetikleme-semasi.md`):** emir bir skill çağırıyorsa çağrı başına 9 alan (skill · tetik_kosulu · cagri_kipi · girdi · baglam · yan_etki_damgasi · done_yuklemi · hata_yolu · sira) + kayit satırı; çağrı yoksa "yok" yaz. Sonra deterministik Kapı-Ö: `python3 .claude/skills/gorev-emri-derleme/scripts/tetik-denetim.py <emir> --repo ~/sistem/jarvis` — `BLOKE` çıkarsa emir teslim edilmez (yan-etkili skill örtük/alt-ajandan çağrılamaz; derece ifadesi yasak; retry ≤3; **fail-loud**).
+ 5. **Künye + kayıt:** dosya `cc/gorev/YYYY-MM/gorev-YYYY-MM-DD-N.md`; pipeline'a bağlıysa manifest tablosuna intake satırı. **Sabit sözlük satırı (Karar 93 EK, 09-10):** **kanonda-bilinenler** bloğuna "Jarvis = Salih'le konuşan ana-sıra ajan; tarihli metinlerdeki 'Carvis' = Jarvis (eski ad Carvis); sistem/repo = depo/kanon" — ajan hangi dosyayı açarsa açsın ad-eşitliğini bilir.
+ 5b. **Devir emri (Friday/lider hedefli, İB-84 A1 · İB-93 09-16):** emir md + `lojik` çiti (`references/a1-lojik-blok.md`; alanlar zorunlu, çıktı-başına `DONE`, çıktı yolu `YAZMA_İZNİ` içinde) → `python3 tools/devir-md2json.py <emir.md>` json türetir (çıkış 2 = şema ihlali, emir gönderilmez); json elle yazılmaz, çelişkide md kazanır (`--dogrula`). Kopya `cc/devir/friday-<tarih>-<ad>/`.
+ 6. **Rapor yolu (Karar 88 M7 ⑤, Salih 09-09):** raporun yolu **emir** dosyasında yazar ve **emir kazanır**; oturum/koşum promptu yalnız varsayılan verir (ajan ham raporu `cc/rapor-…`, insan-yüzü teslim `raporlar/…` — KILAVUZ ayrımı). Prompt ile emir çelişirse işçi emri uygular, devir notuna yazar.
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/gorev-emri-derleme/references/a1-lojik-blok.md
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/gorev-emri-derleme/references/a1-lojik-blok.md (yeni)
+@@ -38,4 +38,4 @@
+ ## Geçiş ölçüsü (A1 → A2)
+ Emir-kaynaklı `[sapma]` / devir (Friday sayar, Jarvis doğrular); arka arkaya 2 devirde 0 → A2 (json tek başına). Sayım: tur-1 2 · tur-2 1 · tur-3 (ilk A1) **0** (Jarvis doğruladı; blok-eksiği 3 → v0.2). A2 için 1/2; tur-4 v0.2 blokla 0 çıkarsa A2.
+ 
+-İlk örnek: `~/friday/cc/gelen/gorev-2026-09-16-tur3.md` (kopya `cc/devir/friday-2026-09-16-tur3/`).
++İlk örnek: `~/sistem/friday/cc/gelen/gorev-2026-09-16-tur3.md` (kopya `cc/devir/friday-2026-09-16-tur3/`).
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/karar-masasi/scripts/masa-uret-test.py
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/karar-masasi/scripts/masa-uret-test.py (yeni)
+@@ -2,7 +2,7 @@
+ """karar-masasi · deterministik test (İB-88 P2, 09-15): evals/evals.json E1-E3'ü koşar.
+ E1 spec-doğrulama (öneri ikinci sırada → çıkış 2, dosya yok) · E2 determinizm (aynı spec iki üretim bayt-eşit, form = kalem, önerilen ilk label)
+ · E3 masa-12 eşdeğerlik (elle masa → masa-spec-cikar → masa-uret; form/label/checkbox/kanıt sayımı + kuyrukla fonksiyonları birebir + büyük-harf ihlali elle-yazımdan fazla değil).
+-Kullanım: python3 masa-uret-test.py [--repo ~/jarvis] [--masa raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html]
++Kullanım: python3 masa-uret-test.py [--repo ~/sistem/jarvis] [--masa raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html]
+ Çıkış: 0 hepsi geçti · 1 en az biri düştü. Kanona yazmaz; geçici dizinde üretir.
+ """
+ import argparse, json, pathlib, re, subprocess, sys, tempfile
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/karar-masasi/scripts/masa-uret.py
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/karar-masasi/scripts/masa-uret.py (yeni)
+@@ -3,7 +3,7 @@
+ Girdi: kalem spec'i (JSON, şema SKILL.md'de). Çıktı: DaisyUI karar masası HTML (7.-12. masa biçimi) +
+ kalıcı kopya. Aynı spec → aynı HTML (rastgelelik yok). Kanona yazmaz.
+ 
+-Kullanım: python3 masa-uret.py <spec.json> [--repo ~/jarvis] [--kuru]   (--kuru: dosya yazmaz, doğrulama basar)
++Kullanım: python3 masa-uret.py <spec.json> [--repo ~/sistem/jarvis] [--kuru]   (--kuru: dosya yazmaz, doğrulama basar)
+ P2 (İB-88, 09-15): opsiyonel `giris` alanı (tetik öncesi giriş cümlesi); test `masa-uret-test.py` (E1-E3, masa-12 eşdeğerlik);
+ eski masayı spec'e döken tersine araç `masa-spec-cikar.py`.
+ Çıkış kodları: 0 üretildi · 2 spec hatası (öneri ilk sırada değil, kalem id çift, zorunlu alan eksik) · 3 masa no çakışması
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/seans-acilis/SKILL.md
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/seans-acilis/SKILL.md (yeni)
+@@ -8,11 +8,11 @@
+ Selamlaşma sohbet değil **seans** **devridir**. Kural kaynağı tüzük (`core/tuzuk-v0.md`); bu skill davranışı tetikler, bilgiyi **taşımaz** — çelişkide kanon kazanır.
+ 
+ ## 0. Zaman-kayması freni (Salih Katman-1, 2026-08-15)
+-Selamlama **oturum-sınırı** işaretidir, **zaman** işareti **değil**: açılış sözünden sabah/yeni-gün, kapanış sözünden gece **çıkarımı** **yapılmaz**. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik "seans başı" (eski selamlama tetikleri `EMEKLİ` — `core/baglam-anahtar-kaydi.md` §2; selamlama tek başına ritüeli tetiklemez, Salih emri 08-15); jarvis↔staj ayrımı **cümleyle değil klasörle** yapılır (~/jarvis → bu ritüel · staj klasörü → staj-acilis).
++Selamlama **oturum-sınırı** işaretidir, **zaman** işareti **değil**: açılış sözünden sabah/yeni-gün, kapanış sözünden gece **çıkarımı** **yapılmaz**. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik "seans başı" (eski selamlama tetikleri `EMEKLİ` — `core/baglam-anahtar-kaydi.md` §2; selamlama tek başına ritüeli tetiklemez, Salih emri 08-15); jarvis↔staj ayrımı **cümleyle değil klasörle** yapılır (~/sistem/jarvis → bu ritüel · staj klasörü → staj-acilis).
+ 
+ ## 1. Yüzey + hat tespiti
+ 0. **staj kapısı** (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("seans başı staj") → BU **ritüel** **koşulmaz**. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
+-1. JARVIS kanonuna erişim var mı? (Mac: `~/jarvis` doğrudan [varsayılan yüzey] · Windows PC: `C:\JARVIS` doğrudan · bulut claude.ai: origin klonu üzerinden · köprüsüz mobil: `YOK`.)
++1. JARVIS kanonuna erişim var mı? (Mac: `~/sistem/jarvis` doğrudan [varsayılan yüzey] · Windows PC: `C:\JARVIS` doğrudan · bulut claude.ai: origin klonu üzerinden · köprüsüz mobil: `YOK`.)
+ 2. Erişim **yoksa** → `SNAPSHOT` modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "**ham fikir** / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
+ 3. Hat beyanı (paralel seans, KILAVUZ): "seans başı, PortRisk" → ölçüm-bankı şeridi; "seans başı jarvis geliştirme" → geliştirme hattı (L8/Kun-Chen kopyası dahil); sade "seans başı" → prototip (varsayılan); "seans başı, <öğrenme şeridi>" (evals · guvenlik · mit-6006 · mit-6042j · mat-felsefesi) → BU **ritüel koşulmaz**, `ogren` skill'i (İB-89, 09-15); belirsizse **tek** soru sor.
+ 4. **canlı-oturum** **kapısı** (**kural** — Salih imzası 08-17 KB-08; kaynak `wiki/paralel-oturum-protokolu.md` §1; **resume eki** Karar 57: her resume'da da koşar): **`python3 tools/acilis-kapilari.py`** (İB-91) → K1 satırı `ŞÜPHE` ise brifte "paralel-oturum şüphesi" beyan et, Salih'e **tek** soru ("başka oturum açık mı?"), diğer oturumun işini ikinci kez koşma, dosyalarına yazma, commit'ler `git add <yol>` (H4). Son 5 commit yaşıyla listelenir; tanınmayan commit varsa devir-notu, karar-no/pointer oradan devralınır.
+--- /Users/HasanSalihSahin/jarvis/.claude/skills/skill-kapisi/SKILL.md
++++ /Users/HasanSalihSahin/jarvis/.claude/skills/skill-kapisi/SKILL.md (yeni)
+@@ -13,7 +13,7 @@
+ 2. **K0 gerek:** `¬kapsanmış(a,H) ∧ (Y1 ∨ Y2 ∨ Y3)`. Hazineyi tara (`ls .claude/skills/` + sözlük "Skill Hazinesi"): tam kapsama → **RET-0** (NOOP satırı kutuya, dur). Kısmî kapsama → yaprak "evrim(s)" notu al, devam. Y1 için skill'siz bir koşum yap ya da geçmiş koşumu göster (DRFR'de ≥1 ✗ ∨ tutarsızlık); Y2 kanon-LAZY kuralı; Y3 |adım|≥3 ∧ sabit sıra. Üçü de hayırsa **RET-0** ("tek-adımlı iş, n ne olursa olsun").
+ 3. **K1 değer:** `Z1 ∨ Z2`. Z1: k_W (son 90 gün, özdeş↔varyant ayrı sayılır; **birim** = **görev** — skill-öncesi loop tekrarı da aynı sayaca, Karar 78) ≥ **3** (m.43 zinciri 3→5→3: Karar 30 N=5 "zorlaşsın" → Karar 78 08-29 birim=görev gerekçesiyle N=3; τ≈0,8 Laplace) ∧ (Δ̂ bilinmiyor ∨ k_W·Δ̂ ≥ 1,25·C_inşa). Z2: Salih'in Katman-1 emri (bütçe atlanır; K2/K3 **atlanmaz**). İkisi de hayır → **BEKLET**: `kuyruk/skill-fikir-kutusu.md`'ye satır (m.43 sayaç bölümü) — zayıf-yeni aday yalnız Salih onayıyla (Z2) ilerler.
+ 4. **İNŞA (eval-önce, K-016):** önce `evals/evals.json` (≥3 test + should_trigger ≥5 + should_not_trigger ≥5), sonra skill'siz baseline notu, sonra eval'i geçen **minimal** gövde. Mevcut skill için bu adım "eksik evals'i tamamla"dır.
+-5. **K2 topraklama:** (a) `python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py <skill-dizini> --repo ~/jarvis` → **R** referans-varlığı (yol · m.NN · skill adı) + biçim ön-raporu; (b) **İ** iddia-topraklama: gövdedeki tüm sayısal iddialar + rastgele n_val = min(|iddia|, max(3, ⌈|iddia|/2⌉)) iddia için **bağımsız** doğrulayıcı (alt-ajan ya da ayrı tur) — yalnız **iddia** metni verilir, gerekçe/kaynak **verilmez** (CoVe-Factored); **tutmuyor** → iddia K/X'e ya da çıkar; (c) **¬P**: skill'in kendi kalite-kontrolü yalnız "dikkatli ol/uydurma" talimatı mı? Öyleyse yapısal sinyale bağla. Düşerse **ONAR-2** (script'in eksik listesiyle geri; ≤3 tur, sonra `BEKLET`).
++5. **K2 topraklama:** (a) `python3 .claude/skills/skill-kapisi/scripts/kapi-denetim.py <skill-dizini> --repo ~/sistem/jarvis` → **R** referans-varlığı (yol · m.NN · skill adı) + biçim ön-raporu; (b) **İ** iddia-topraklama: gövdedeki tüm sayısal iddialar + rastgele n_val = min(|iddia|, max(3, ⌈|iddia|/2⌉)) iddia için **bağımsız** doğrulayıcı (alt-ajan ya da ayrı tur) — yalnız **iddia** metni verilir, gerekçe/kaynak **verilmez** (CoVe-Factored); **tutmuyor** → iddia K/X'e ya da çıkar; (c) **¬P**: skill'in kendi kalite-kontrolü yalnız "dikkatli ol/uydurma" talimatı mı? Öyleyse yapısal sinyale bağla. Düşerse **ONAR-2** (script'in eksik listesiyle geri; ≤3 tur, sonra `BEKLET`).
+ 6. **K3 biçim+tür:** şekil **first** (T-R ritüel > T-O orkestratör > T-Y yan-etkili > T-Ü üretici; iki şekil eşit ağırlıkta → **böl**); F1-F4 script'ten, F5 tek-sorumluluk hakem gözüyle; tür-özel: T-Y → `disable-model-invocation: true` + script/plan-validate-execute + m.31 · T-R/T-O ∧ yan-etki → adım Salih-beyanına bağlı · T-O → paralellik-uygunluk + handoff kontratı + her çağrısı tetiklenme şemasına uyar (`core/skill-tetikleme-semasi.md`: 9 alan, T-Y örtük/alt-ajandan çağrılmaz) · T-R → zaman-kayması freni · T-Ü → "commit yapmaz". F1e hazine-bütçesi uyarısı çıkarsa yeni skill sığana dek hazine kısaltılır ya da `/context` ile bütçe ölçülür. **K4 kullanıcı-kabulü (Karar 88 M5, Salih imzası 2026-09-09; tüzük m.47):** K3'ü geçen skill hazineye **doğrudan girmez** → `kuyruk/skill-deneme/<ad>/` altında **deneme** sürümü (`~/.claude/skills`'e symlink yok, description bütçesine sayılmaz, otomatik tetiklenmez; Salih yolu vererek elle çağırır). Hazineye geçiş yüklemi: Salih ≥1 canlı koşum ∧ "kabul" sözü (defterde aynen). Ret → `arsiv/kuyruk-arsiv/` (m.8). Gerekçe: İB-77 dersi — 8 atlas + 3 sürüm bedeli ödendikten sonra ret. **F6 ilk-5k kritik-talimat (KB-50/52 A, Karar 61; İB-46 08-22):** skill gövdesinin **kritik** talimatları (tetik/yasak/kapı/çıkış kodu) ilk ~5k token içinde durur — uzun gövdede arka sayfaya düşen kural "okunmamış" sayılır; gövde >5k ise kritik blok başa, ayrıntı alt başlığa/`references/` dosyasına (pointer). Deterministik kontrol: `python3 tools/kural-sayaci.py --skill <ad>` (kural birimi + byte) — byte >~20k ∨ kural birimi >40 → bölme adayı. Düşerse **ONAR-3**.
+ 7. **Yaprak + kayıt:** hüküm `ÜRET-{R|O|Y|Ü} × {yeni|evrim}` + faset-demeti ⟨tetikleyici · yürütme · yan-etki · basamak · köken⟩; kutu satırı güncelle (ÜRETİLDİ/BEKLET/RET); sözlük Skill Hazinesi girişi (üretim tamamlanınca); **ölçüm satırı**: `kuyruk/skill-fikir-kutusu.md` "kapı-ağacı koşumları" tablosuna aday · katman-başına ✓/✗ · tür · süre (10 koşumda kalibrasyon: τ/W/β/n_val). Hüküm bloğu ≤ yarım sayfa; karar Salih'e sunulur (Katman-2: yapar+kaydeder, veto=revert). Skill kaydetme/commit yapmaz; commit seans akışının işidir.
+ 
+--- /Users/HasanSalihSahin/friday/.claude/hooks/okuma-izin-test.sh
++++ /Users/HasanSalihSahin/friday/.claude/hooks/okuma-izin-test.sh (yeni)
+@@ -12,15 +12,15 @@
+ t(){ printf '%s\n' "$2" | bash "$HOOK" >/dev/null 2>&1; r=$?; if [ "$r" = "$3" ]; then s=PASS; GECEN=$((GECEN+1)); else s=FAIL; KALAN=$((KALAN+1)); fi; echo "$s  $1 → exit $r (beklenen $3)"; }
+ 
+ echo "-- v0.1 vakaları (ana-sıra) --"
+-t "heredoc gövdesinde ~/jarvis dizesi"        '{"tool_name":"Bash","tool_input":{"command":"cat > cc/giden/x.md <<'"'"'EOF'"'"'\nJarvis kökü ~/jarvis/kuyruk burada geçer\nEOF"}}' 0
+-t "\$HOME/jarvis/kuyruk okuma"                 '{"tool_name":"Bash","tool_input":{"command":"cat $HOME/jarvis/kuyruk/senaryo-defteri.md"}}' 2
++t "heredoc gövdesinde ~/sistem/jarvis dizesi"        '{"tool_name":"Bash","tool_input":{"command":"cat > cc/giden/x.md <<'"'"'EOF'"'"'\nJarvis kökü ~/sistem/jarvis/kuyruk burada geçer\nEOF"}}' 0
++t "\$HOME/sistem/jarvis/kuyruk okuma"                 '{"tool_name":"Bash","tool_input":{"command":"cat $HOME/sistem/jarvis/kuyruk/senaryo-defteri.md"}}' 2
+ t "kanon/../kuyruk bağ-üstü çıkış"            '{"tool_name":"Bash","tool_input":{"command":"cat kanon/../kuyruk/pano.md"}}' 2
+ t "kanon/tuzuk-v0.md okuma"                   '{"tool_name":"Bash","tool_input":{"command":"sed -n 1,5p kanon/tuzuk-v0.md"}}' 0
+-t "~/jarvis/core listeleme"                   '{"tool_name":"Bash","tool_input":{"command":"ls ~/jarvis/core"}}' 0
+-t "~/jarvis/cc listeleme"                     '{"tool_name":"Bash","tool_input":{"command":"ls ~/jarvis/cc"}}' 2
+-t "Read jarvis/kuyruk/pano.md"                '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/kuyruk/pano.md"}}' 2
+-t "Read friday kendi dosyası"                 '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/core/rol.md"}}' 0
+-t "Grep jarvis/core (kanon hedefi)"           '{"tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/jarvis/core"}}' 0
++t "~/sistem/jarvis/core listeleme"                   '{"tool_name":"Bash","tool_input":{"command":"ls ~/sistem/jarvis/core"}}' 0
++t "~/sistem/jarvis/cc listeleme"                     '{"tool_name":"Bash","tool_input":{"command":"ls ~/sistem/jarvis/cc"}}' 2
++t "Read jarvis/kuyruk/pano.md"                '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/jarvis/kuyruk/pano.md"}}' 2
++t "Read friday kendi dosyası"                 '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/rol.md"}}' 0
++t "Grep jarvis/core (kanon hedefi)"           '{"tool_name":"Grep","tool_input":{"pattern":"m.8","path":"/Users/HasanSalihSahin/sistem/jarvis/core"}}' 0
+ 
+ echo "-- v0.3 onarımları (tur-3 C2: Z1-Z2) --"
+ t "Z1 Bash ile repo dışı ev yolu (staj)"      '{"tool_name":"Bash","tool_input":{"command":"cat ~/staj/rapor.md"}}' 2
+@@ -33,21 +33,21 @@
+ t "Z3b yolun tamamı değişkende (bilinen sınır)" '{"tool_name":"Bash","tool_input":{"command":"D=$(printf %s /Users/x/jarvis/kuyruk); cat \"$D/x.md\""}}' 0
+ 
+ echo "-- v0.3 alt-ajan dalı (Karar 99 M2) --"
+-t "agent_id + kapsül okuma → RED"             '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/core/durum-kapsulu.md"}}' 2
+-t "agent_id + wiki/serbest dosya → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/core/rol.md"}}' 0
++t "agent_id + kapsül okuma → RED"             '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/durum-kapsulu.md"}}' 2
++t "agent_id + wiki/serbest dosya → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/rol.md"}}' 0
+ t "agent_id + kendi tool-results → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/.claude/projects/p/s/tool-results/x.txt"}}' 0
+ t "agent_id + defter (Bash) → RED"            '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Bash","tool_input":{"command":"cat kuyruk/senaryo-defteri.md"}}' 2
+-t "agent_id + bronz kütük → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/veri/bronz/hareket-olay.jsonl"}}' 2
+-t "ana-sıra + kapsül okuma → geçer (değişmedi)" '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/core/durum-kapsulu.md"}}' 0
++t "agent_id + bronz kütük → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/veri/bronz/hareket-olay.jsonl"}}' 2
++t "ana-sıra + kapsül okuma → geçer (değişmedi)" '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/durum-kapsulu.md"}}' 0
+ 
+ echo "-- v0.4 ayrıştırıcı (Karar 100 M1) ve cc/gelen yasağı (M3) --"
+ t "grep DESENİNDE yasak yol → geçer"          '{"tool_name":"Bash","tool_input":{"command":"grep -n \"jarvis/kuyruk\" core/pano.md"}}' 0
+-t "cat ile tırnaklı açık yasak yol → RED"     '{"tool_name":"Bash","tool_input":{"command":"cat \"/Users/HasanSalihSahin/jarvis/cc/rapor.md\""}}' 2
+-t "grep ARGÜMANINDA yasak dizin → RED"        '{"tool_name":"Bash","tool_input":{"command":"grep -r m.8 ~/jarvis/kuyruk"}}' 2
++t "cat ile tırnaklı açık yasak yol → RED"     '{"tool_name":"Bash","tool_input":{"command":"cat \"/Users/HasanSalihSahin/sistem/jarvis/cc/rapor.md\""}}' 2
++t "grep ARGÜMANINDA yasak dizin → RED"        '{"tool_name":"Bash","tool_input":{"command":"grep -r m.8 ~/sistem/jarvis/kuyruk"}}' 2
+ t "sed betiği desen, dosya serbest → geçer"   '{"tool_name":"Bash","tool_input":{"command":"sed -n /jarvis.kuyruk/p core/pano.md"}}' 0
+ t "değişkenli yol (Z3b sınırı) → geçer"       '{"tool_name":"Bash","tool_input":{"command":"cat \"$D/x.md\""}}' 0
+-t "alt-ajan cc/gelen okur → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/cc/gelen/gorev-2026-09-18-tur4.md"}}' 2
+-t "lider (agent_id yok) kendi emrini okur"    '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/friday/cc/gelen/gorev-2026-09-18-tur5.md"}}' 0
++t "alt-ajan cc/gelen okur → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/cc/gelen/gorev-2026-09-18-tur4.md"}}' 2
++t "lider (agent_id yok) kendi emrini okur"    '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/cc/gelen/gorev-2026-09-18-tur5.md"}}' 0
+ t "alt-ajan kendi tool-results (Bash) → geçer" '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"sed -n 1,5p ~/.claude/projects/p/s/tool-results/x.txt"}}' 0
+ 
+ echo "--------"
+--- /Users/HasanSalihSahin/friday/.claude/hooks/okuma-izin.sh
++++ /Users/HasanSalihSahin/friday/.claude/hooks/okuma-izin.sh (yeni)
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env bash
+ # OKUMA-İZİN KİLİDİ — PreToolUse hook (Read · Grep · Glob · Bash). Jarvis Karar 91 (2026-09-09): lider reposu Jarvis'ten YALNIZ
+-# `kanon/` bağını (= ~/jarvis/core, salt-okur) okur; başka hiçbir Jarvis yolu (kuyruk/, cc/, raporlar/, veri/, hafıza…) bağlama giremez.
++# `kanon/` bağını (= ~/sistem/jarvis/core, salt-okur) okur; başka hiçbir Jarvis yolu (kuyruk/, cc/, raporlar/, veri/, hafıza…) bağlama giremez.
+ # Mekanizma: izinli kökler = bu repo + kanon hedefi + geçici dizinler + harness araç çıktısı; dışı → exit 2 (çağrı engellenir, gerekçe stderr'e).
+ # Bu bir KİLİTTİR (prompt cümlesi değil); kaçırdığı desen olursa veri/bronz/hareket-olay.jsonl kanıtıyla sonradan görülür.
+-# v0.2 (2026-09-10, tur-1 A5): heredoc gövdesi taranmaz (yanlış-pozitif); `$HOME/jarvis`, `${HOME}/jarvis`, `kanon/../x` yakalanır.
++# v0.2 (2026-09-10, tur-1 A5): heredoc gövdesi taranmaz (yanlış-pozitif); `$HOME/sistem/jarvis`, `${HOME}/jarvis`, `kanon/../x` yakalanır.
+ # v0.3 (2026-09-18, Karar 99 M2): alt-ajan dalı (`agent_id`) + Bash dalı izin listesine çevrildi (Z1) + `cd` takibi (Z2).
+ # v0.4 (2026-09-18, Karar 100 M1/M3; tur-4 raporu §4d seçenek (c)):
+ #   (a) AYRIŞTIRICI — Bash'te yol adayları artık yalnız DOSYA KOMUTLARININ argümanlarından toplanır (aşağıdaki DOSYA_KOMUT kümesi),
+--- /Users/HasanSalihSahin/friday/.claude/settings.json
++++ /Users/HasanSalihSahin/friday/.claude/settings.json (yeni)
+@@ -6,21 +6,21 @@
+       "Bash(git push:*)",
+       "Bash(git add -A:*)",
+       "Bash(git add .:*)",
+-      "Read(~/jarvis/CLAUDE.md)",
+-      "Read(~/jarvis/KILAVUZ.md)",
+-      "Read(~/jarvis/README.md)",
+-      "Read(~/jarvis/fikir-kutusu.md)",
+-      "Read(~/jarvis/kuyruk/**)",
+-      "Read(~/jarvis/raporlar/**)",
+-      "Read(~/jarvis/cc/**)",
+-      "Read(~/jarvis/wiki/**)",
+-      "Read(~/jarvis/veri/**)",
+-      "Read(~/jarvis/tools/**)",
+-      "Read(~/jarvis/.claude/**)",
+-      "Read(~/jarvis/kaynak-kodu/**)",
+-      "Read(~/jarvis/ogrenme/**)",
+-      "Read(~/jarvis/arsiv/**)",
+-      "Read(~/jarvis/graf/**)"
++      "Read(~/sistem/jarvis/CLAUDE.md)",
++      "Read(~/sistem/jarvis/KILAVUZ.md)",
++      "Read(~/sistem/jarvis/README.md)",
++      "Read(~/sistem/jarvis/fikir-kutusu.md)",
++      "Read(~/sistem/jarvis/kuyruk/**)",
++      "Read(~/sistem/jarvis/raporlar/**)",
++      "Read(~/sistem/jarvis/cc/**)",
++      "Read(~/sistem/jarvis/wiki/**)",
++      "Read(~/sistem/jarvis/veri/**)",
++      "Read(~/sistem/jarvis/tools/**)",
++      "Read(~/sistem/jarvis/.claude/**)",
++      "Read(~/sistem/jarvis/kaynak-kodu/**)",
++      "Read(~/sistem/jarvis/ogrenme/**)",
++      "Read(~/sistem/jarvis/arsiv/**)",
++      "Read(~/sistem/jarvis/graf/**)"
+     ]
+   },
+   "hooks": {
+--- /Users/HasanSalihSahin/friday/CLAUDE.md
++++ /Users/HasanSalihSahin/friday/CLAUDE.md (yeni)
+@@ -6,7 +6,7 @@
+ Salih tek KARAR VERİCİDİR (kanon m.1-2, m.31). Sen karar vermezsin; seçenek üretirsin, hüküm Salih'in ya da Jarvis (Fable, ana-sıra) aracılığıyla gelir. Her teslim önce Salih'in anlaması içindir. Dil Türkçe, commit İngilizce.
+ 
+ ## 1. Kimlik ve görev alanı
+-Sen Friday'sin: Jarvis'in (Salih'le konuşan ana-sıra ajan, Fable; eski ad Carvis emekli 09-10, Karar 93; "depo" = `~/jarvis`) lider-ajanı (m.44 domain-lider; Karar 89 üç katman: Fable → Friday → Sonnet işçi). **Görev alanın — Jarvis'in devrettiği proje-ölçekli icra:** (1) pipeline koşumları: çift-atlas araştırma (tez → antitez → maskeli hakem), refactor/taşıma, doküman üretimi, ölçüm; (2) Sonnet işçi filosunu böl-delege-sentezle; (3) hakem/doğrulayıcıyı ayrı ajan olarak kur. **Kapsam dışı:** kanon kararı ve kural yazımı · karar masası · ritüeller Jarvis'in · öğretim (`ogren`) · staj/galeri (md.49) · push.
++Sen Friday'sin: Jarvis'in (Salih'le konuşan ana-sıra ajan, Fable; eski ad Carvis emekli 09-10, Karar 93; "depo" = `~/sistem/jarvis`) lider-ajanı (m.44 domain-lider; Karar 89 üç katman: Fable → Friday → Sonnet işçi). **Görev alanın — Jarvis'in devrettiği proje-ölçekli icra:** (1) pipeline koşumları: çift-atlas araştırma (tez → antitez → maskeli hakem), refactor/taşıma, doküman üretimi, ölçüm; (2) Sonnet işçi filosunu böl-delege-sentezle; (3) hakem/doğrulayıcıyı ayrı ajan olarak kur. **Kapsam dışı:** kanon kararı ve kural yazımı · karar masası · ritüeller Jarvis'in · öğretim (`ogren`) · staj/galeri (md.49) · push.
+ 
+ ## 2. Kanon bağı (tek kaynak)
+ `kanon/` → Jarvis `core/` salt-okur bağ. Bağlayıcı: `kanon/tuzuk-v0.md` m.8 (silme yok) · m.9 (push Salih) · m.31 · m.39 (rakam kaynaklı, kestirim `[?]`) · m.42 (yetki) · m.46 (fren) · `kanon/ajan-metodolojisi.md` §4/§6. Jarvis'in kanon dışı hiçbir dosyası okunmaz — `.claude/hooks/okuma-izin.sh` mekanik keser; Jarvis'in görmen gereken her şey devir birimiyle (`cc/gelen/`) sana gelir.

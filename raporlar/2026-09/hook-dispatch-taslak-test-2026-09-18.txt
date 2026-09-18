@@ -1,0 +1,8 @@
+PASS  jarvis ana-sıra Read kapsül geçer → exit 0 (beklenen 0)
+PASS  jarvis alt-ajan Read kapsül RED → exit 2 (beklenen 2)
+PASS  jarvis Bash core yazımı tel RED → exit 2 (beklenen 2)
+PASS  jarvis Write matcher dışı geçer → exit 0 (beklenen 0)
+PASS  friday Read ~/jarvis kapsül RED → exit 2 (beklenen 2)
+PASS  friday Read kendi kapsülü geçer → exit 0 (beklenen 0)
+PASS  kök dışı cwd geçer → exit 0 (beklenen 0)
+PASS  ajan kaydı olmayan olay geçer → exit 0 (beklenen 0)

@@ -1,0 +1,71 @@
+{
+  "_not": "sistem kökü .claude/settings.json taslağı (Karar 101 F1). Tek giriş: bin/hook-dispatch.sh <olay>; ajan hook'ları <ajan>/.claude/hooks/<olay>.sh. permissions.deny burada YOK: ajan-özel deny ajan dizininde (yüklenip yüklenmediği F5'te ölçülür), asıl zorlama ajan hook'unda.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" SessionStart"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PreToolUse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PostToolUse"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" Stop"
+          }
+        ]
+      }
+    ],
+    "InstructionsLoaded": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" InstructionsLoaded"
+          }
+        ]
+      }
+    ]
+  }
+}
