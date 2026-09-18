@@ -61,3 +61,11 @@
 - **V97 · InstructionsLoaded kütüğünden 'yüklendi ama okunmadı' oranı — üç-yuva davranış ölçüsü (fikir-kutusu-adayı, 2026-09-15):** rules `paths:` dosyaları kaç seansta tetiklendi, CLAUDE.md bayt × seans; S-kaynak skorunun okunma ayağı; İB-87 silver tablo sonrası görünüm.
 
 - **[fikir-kutusu-adayı 2026-09-18, seans-2 kapanışı, Karar 101 bağlamı]** (1) Tek-satır durum kanalı `cc/giden/<devir_id>.status` (`working · needs-decision · blocked · done · failed`, keyed açma-kapama; firstmate deseni) — İB adayı, F5 sonrası; bronza akan tek dosya. (2) Spawn soyutlaması: harness-nötr işçi açma script'i — tetik: ikinci harness (Codex vb.) fiilen kurulunca; Salih için ders şeridi adayı (harness/backend öğrenme borcu, Karar 101 EK). (3) A1 v0.3 dizin zarfı (`cc/gelen/<devir_id>/emir.md` + ekler/) — ilk ek-dosyalı emirde. (4) Kök AGENTS.md ↔ tüzük 8-madde eşitlik testi (5 satır, `kural-envanter.py` üstüne) — F4 ile. Kaynak: plan §6-8, teslim raporu 09-18 seans-2.
+
+## 2026-09-18 seans-3 adayları (kapanış hasadı; karar değil)
+- **F-0918-1 · PR ölçütü tek cümle:** "PR açan = yapan ≠ onaylayan olan oturum; worktree açık ⇔ branch ⇔ PR; merge ana-sıra" → protokol §5'e; Salih 09-18: "henüz kalıcı yapmak istemiyorum" (tetik: ikinci PR-açan oturum sınıfı fiilen doğunca).
+- **F-0918-2 · Eskalasyon dersi kaydı:** Karar 103 M2 "bu güncel pratikteki eskalasyonu bana öğret" → sohbette verildi (Cognition 2026-04 deseni, üç parça); `ogrenme/` altında kutu olarak yazımı aday; tek kaynak, ölçüm yok.
+- **F-0918-3 · Hakem ajanının kendi V26 sondajı:** hakem kendi kaynak-eşleşme hatasını yapabilir (perspektif koşumunda antitez raporlarının 5'i `TUTMADI`); hakem tanımına "kendi girdisine ≥3 sondaj" zorunluluğu (İB-108 charter satırı adayı).
+- **F-0918-4 · yol-tasi.py ders:** literal-eşleme aracı `Path.home() / "x"` gibi birleştirilmiş kurguları kaçırır; taşıma araçlarına "birleştirilmiş yol" tarayıcı (AST/regex) eklenmeli; ayrıca aracın kendi belge satırlarını dönüştürmesi (öz-mutasyon) → kendi dosyasını dışla.
+- **F-0918-5 · Antitez etiket normalizasyonu:** antitez ajanları "ÇÜRÜDÜ" jetonunu iki yönde kullandı (tez mi antitez mi); atlas-kosum promptuna "hüküm TEZ hakkındadır" sabit satırı (2/2 koşumunda eklendi, skill'e taşınmalı).
+- **F-0918-6 · Kun Chen 27 satır:** tam metin transkripte geçmedi; Salih'te varsa kök md harmanı 2. tur.
