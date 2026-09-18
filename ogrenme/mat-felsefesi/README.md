@@ -2,6 +2,8 @@
 
 > Salih emri: "bana matematik felsefesini öğrettiğin aşırı detaylı bir eğitim serisi tasarla." Bu dosya **serinin** TASARIMIdır (müfredat + sözleşme); dersler `dersler/` altına oturum oturum üretilir. Yöntem: ogrenme/README v2 pasif-okuma + **gbm** emsali (tanım → mekanizma → **elle işletilmiş örnek** → kontrol sorusu). Karar 73 matematik kuralı gereği her partisyonda ≥1 elle işletilen matematiksel içerik **zorunlu** — sütunda tek tek yazılı.
 
+> **Şerit açık (Karar 99 M9, Salih 2026-09-18):** tetik "seans başı, mat-felsefesi"; akış `ogren` v0.2 (`PROBE` → `PLAN` → `TEACH` → `CLOSE`); yan oturum worktree + origin/main tabanı (Karar 95 EK); ilerleme `ilerleme.md` (ilk derste açılır).
+
 ## Seri sözleşmesi
 1. **Hedef kitle kalibrasyonu:** Salih matematikçidir — matematiksel içerik sulandırılmaz (ε-δ, köşegen argümanı, aksiyomlar tam yazılır); **felsefi** terimler ise ilk geçtiğinde parantez içinde sade Türkçeyle tanımlanır (anlatım-biçimi kuralı: benzetme değil doğrudan — terim + mekanizma + somut örnek).
 2. **Eksen sorusu:** seri boyunca her okul ÜÇ soruya cevabıyla puanlanır — (S1) **Ontoloji:** matematiksel nesneler var mı, neredeler? (S2) **Epistemoloji:** matematiksel bilgiye nasıl erişiyoruz? (S3) **Uygulanabilirlik:** matematik fiziksel dünyada neden işliyor? Her ders sonunda o dersin okulunun S1-S2-S3 satırı karşılaştırma matrisine eklenir (matris MF-P17'de tamamlanır).

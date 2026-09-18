@@ -17,7 +17,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 
 ## 2. Teslim raporu (`core/sablonlar/seans-teslim.md` — beş soru)
 `raporlar/seans/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir **aday** kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
-**"İlk plan = bitti değil" yoklaması (Karar 79 D3/KL16-6; kaynak `cc/rapor/2026-08/rapor-2026-08-01-16.md:301`):** kapanışta açılış planı/hedefi **fiilen** yoklanır — planın yazılmış olması bitmiş sayılmaz; sapma tek cümleyle kayda (m.29 seans-hedefi denemesiyle aynı aile).
+**"İlk plan = bitti değil" yoklaması (Karar 79 D3/KL16-6; kaynak `cc/rapor/2026-08/rapor-2026-08-01-16.md:301`; seans-hedefi yoklaması kalıcı kural — Karar 99 M10, 09-18):** kapanışta açılış planı/hedefi **fiilen** yoklanır — planın yazılmış olması bitmiş sayılmaz; sapma tek cümleyle kayda (m.29 seans-hedefi denemesiyle aynı aile).
 
 ## 3. Hasat (`core/sablonlar/hasat.md`)
 Özütler (3-5, birer satır) · **wiki-delta**: güncellenecek/açılacak sayfa → `wiki/README.md` kuyruğuna (yazım sonraki oturumlara yayılır; mevcut sayfaya tuzak çıktıysa Gotchas'a **doğrudan** işle) · verilebilir miydi (V20, çift-yönlü kapasite verisi) · token×zaman etiketi (V28 hammaddesi). Damga yalnız gönüllü beyanla; beyansızlık düşürmez (m.33).
