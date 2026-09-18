@@ -1,5 +1,5 @@
 model_kusagi,eski_kusak,agent_type,n,pass_n,fail_n,hukumsuz_n,ort_sure_sn,toplam_cikti,ilk,son
-5,0,Explore,9,2,0,7,280.0,212434,2026-08-15,2026-08-31
+5,0,Explore,11,2,0,9,261.0,234816,2026-08-15,2026-09-18
 5,0,atlas,255,1,0,254,527.0,7020321,2026-08-13,2026-09-17
 5,0,general-purpose,205,4,0,201,219.0,2203616,2026-08-13,2026-09-17
 5,0,workflow-subagent,148,0,0,148,191.0,2004154,2026-08-15,2026-08-30

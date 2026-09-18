@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-09-18,11:18,58141fb3,17,diger,seans-kapanis,claude-fable-5-1,77,friday çalışıyor o sırada burada seans bitimi çıktısını diğer oturum okuyacak,c69cb36d-d28e-4da7-957a-d01d8ebab560
-2,2026-09-18,11:17,58141fb3,16,soru,,claude-fable-5-1,49,-fridayde context window %28 görevi bırakayım mı?,45b06021-38a6-45f6-8a61-8f4ff87b29a8
-3,2026-09-18,11:00,58141fb3,15,emir,karar-kaydet,claude-fable-5-1,93,masada 3. soruyu cevaplayınca site çöküyor ilk ikisinde sorubn yok neden böyle ıoluyor düzelt,33852160-5838-452c-b679-7cdebdcc6595
-4,2026-09-18,10:59,58141fb3,14,soru,,claude-fable-5-1,101,lavish düzelmedi şimdi bi tekrar açsana bi de sonnet pr açılmış oturumlara seans bitimi yazmalı mıyım,71983b5e-127d-41ea-8e25-f498d0930d10
-5,2026-09-18,10:56,58141fb3,13,diger,,claude-fable-5-1,90,The previous response failed to produce a valid tool call. Please retry the tool call now.,3cb2e402-4e09-4a80-bab3-c605c53aaebd
-6,2026-09-18,10:56,58141fb3,12,emir,,,227,"-m3 sorusu için a şıkkına bastığımda tekrardan: ""This artifact load is no longer current. Reload Lavish to continue."" diyor neden böyle oldu",8c2f876b-82f7-40fa-a67b-626b553d448a
-7,2026-09-18,10:50,58141fb3,11,emir,,claude-fable-5-1,736,"-masa çalışmıyor düzelt -eval oturumu pr oluştur diyince şöyle cevap verdi: "" Dur — bir şey buldum, PR'a geçmeden önce bildirmem gerekiyor. ",017701f1-1fa8-479e-8952-2ab14aad9add
-8,2026-09-18,10:44,8e00e0dc,72,soru,,claude-sonnet-5,16,pr oluşturdun mu,5682c84d-d4d6-4ee2-940b-882164513a88
-9,2026-09-18,10:43,8e00e0dc,71,emir,,claude-sonnet-5,452,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,d1a1d0f3-93b0-467e-894a-1f28e373deee
-10,2026-09-18,10:41,58141fb3,10,emir,karar-masasi,claude-fable-5-1,150,"kararları karar masasına taşı,sonnet oturumda pr oluşturdum ve bıraktım yani seans bitimi yazmadım,h4 dersinin bulunduğu seans da şu an pr o",a0bbdd43-be7b-4710-afe4-f13402d48c14
-11,2026-09-17,16:56,58141fb3,9,emir,,claude-fable-5-1,451,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,408adec9-2bae-4c5c-80ad-be636222a0ec
-12,2026-09-17,16:32,58141fb3,8,soru,atlas-kosum,claude-fable-5-1,393,-sonnet oturumda mcp serverların zararlı olabilecek bir davranışını simüle edecek şekilde görselleştirmesini istediğim bir promptun cevabı b,482c9215-7e67-4e19-9b4e-2f22e594ed20
-13,2026-09-16,15:13,58141fb3,7,diger,,claude-fable-5-1,305,1. seçenekten gideceğiz: -sistemde kullanılacak bir eval seti kuracaksak eğer güncel bir tool ve güncel yöntemlerle kuruyor olmalıyız prompt,058f2a08-a08f-48a0-afcc-662f7538ce54
-14,2026-09-16,12:03,58141fb3,6,soru,,claude-fable-5-1,157,"bir şeye başlamadan önce bir soru daha:atlas gibi ajanları ürettiğim aşama ne zaman gelecek,hedeflerimizin öncelik sıralaması nasıl şu an bu",19ef8434-dcbf-449f-a7fc-19bc26b0f9f5
-15,2026-09-16,12:01,58141fb3,5,soru,,claude-fable-5-1,125,tamamdır arkada çalışıyor şimdi ne yapıyoruz/yapabiliriz.ya da yapmak için borç olarak öğrenme sürecini mi bitirmem gerekiyor,8306cfb3-da33-4192-adff-db5700b42af0
-16,2026-09-16,12:00,58141fb3,4,soru,,claude-fable-5-1,70,friday'de en sonki oturum hala açık context window 19'da ona mı atayım,3faa5f23-c0bf-431f-8afd-95af1526c942
-17,2026-09-16,11:49,58141fb3,3,onay/devam,,claude-fable-5-1,18,İB-93 ile devam et,28ddbc99-e1f4-4ba9-b8f3-ac2713b0107c
-18,2026-09-16,10:46,58141fb3,2,soru,,claude-fable-5-1,165,"sonnet oturumu açık,ne yapıyoruz neler yapabiliriz.skill oluşturma turu nasıl geçti,elimizde hangi skiller var ve daha neler ekleyebiliriz s",5c46cd94-0fe1-454b-8824-17055cc4b819
-19,2026-09-15,16:57,58141fb3,1,seans-acilis,seans-acilis,claude-fable-5-1,359,"seans başı,yapılacaklara geçmeden önce: -öğrenme oturumlarında öğrenme sürecinden sonra ürün oluşturma veya sisteme öğrendiklerimi implement",eb3d2c2d-e7e6-486b-916b-de25dcfb10b9
-20,2026-09-15,16:43,34f8f4dd,16,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,96680ae1-a185-4176-ae10-98e8b1e291c7
-21,2026-09-15,15:27,34f8f4dd,15,emir,,claude-fable-5-1,378,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: İNŞA. Vurguyu kalın harfle (*,afe76a1c-7608-4e72-92a0-2f665df13aca
-22,2026-09-15,15:25,34f8f4dd,14,onay/devam,,claude-fable-5-1,18,İB-92 ile devam et,7671fd9e-ffd6-47fc-a1dc-c0680cac5ee6
-23,2026-09-15,15:18,34f8f4dd,13,emir,,claude-fable-5-1,390,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: SANA, SENİN, XML. Vurguyu kal",5afd0624-22dc-4791-ad38-a4aa7bca2185
-24,2026-09-15,15:01,34f8f4dd,12,diger,,claude-fable-5-1,330,şöyle bi durum var:büyük harf kullanmak hafızada sonuç olarak vurgu yapmayı sağlıyorsa ve biz bu durumu değiştireceksek vurgulamanın başka b,3c06e866-a7f7-4d13-879c-d7ae094d523e
-25,2026-09-15,14:33,34f8f4dd,11,onay/devam,,claude-fable-5-1,24,"onay, önce kuru diff koş",28268abb-924f-4e3d-bdf2-2898bc724948
-26,2026-09-15,14:15,34f8f4dd,10,emir,,claude-fable-5-1,449,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: BAYAT, DEĞİL, KAPANDI, SANA, ",fb2d5b53-49a3-4c29-ab23-fc40071041d5
-27,2026-09-15,14:01,34f8f4dd,9,onay/devam,,claude-fable-5-1,18,İB-90 ile devam et,3775371f-e001-4038-9e2c-2ae5bba9c517
-28,2026-09-15,13:57,34f8f4dd,8,emir,,claude-fable-5-1,379,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ŞÜPHE. Vurguyu kalın harfle (,10cc890c-f91d-488f-9379-47a3a2512c97
-29,2026-09-15,13:54,34f8f4dd,7,onay/devam,,claude-fable-5-1,18,İB-91 ile devam et,972fd7bd-813a-4a4b-b8d6-b430574eee4c
-30,2026-09-15,13:47,34f8f4dd,6,onay/devam,,claude-fable-5-1,18,İB-89 ile devam et,add614a5-fe4f-4b11-b917-89f25355ff48
-31,2026-09-15,13:39,34f8f4dd,5,diger,,claude-fable-5-1,64,"tamam yeni sonnet oturumunu açtım, biz İB-88 P2 ile devam edelim",f1d49f53-fcb5-44ca-9241-c45479e8c75c
-32,2026-09-15,13:38,34f8f4dd,4,soru,,claude-fable-5-1,63,"push et,bir de ilk prompttan sonra mı pr oluşturacağım sonnette",44d4a80a-d11b-46cd-835a-312c78c4dc10
-33,2026-09-15,13:35,34f8f4dd,3,soru,,claude-fable-5-1,302,tamam şimdi önerdiğin şekilde devam edelim ve sorunları önerdiğin versiyonda çöz.yan taraftaki sonnet oturumunda devam etmeyeceğim yeni otur,9fa2b588-5abe-4a8b-b2ad-02c384ee0154
-34,2026-09-15,12:08,34f8f4dd,2,emir,,claude-fable-5-1,391,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI, KALAN. Vurguyu ka",57e8a3e3-6a39-4cc6-8cfe-36f4ac9c8915
-35,2026-09-15,12:04,34f8f4dd,1,seans-acilis,seans-acilis,claude-fable-5-1,2917,"seans başı, -öncelikle fable olmayan oturumlar için worktree seçeneğini açmam artık daha doğru bir karar mı -şöyle bir sorunumuz var:bundan ",56a232d8-c526-4f15-a017-1372c39c0f4f
-36,2026-09-15,11:55,14da067d,15,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,98c66408-08dc-4176-a2ab-47644e947d65
-37,2026-09-15,11:26,14da067d,14,emir,,claude-fable-5-1,540,hepsi bitince:hatta şöyle bir şey yapalım konuları öğrenme sürecinde sürecin son aşaması olarak ortaya bir ürün koyma veya sisteme öğrendikl,7775fdb0-14c7-4382-99bc-fb88b20dd4b8
-38,2026-09-15,11:21,4ac5ca1c,18,emir,,claude-sonnet-5,297,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI. Vurguyu kalın har",861abab6-b931-40c4-8b4e-afd21b640f1f
-39,2026-09-15,11:21,4ac5ca1c,17,soru,,claude-sonnet-5,77,tamam şimdi ne yapıyoruz pratik uygulama mı nerede kaldık oradan devam edelim,b609af3e-ec38-4af0-96a3-6ea8678356dd
-40,2026-09-15,11:14,4ac5ca1c,16,diger,,claude-sonnet-5,32,"login yaptım, koşumu tekrar dene",6d52960f-fe08-4c3a-a65e-406421cdc1e8
-41,2026-09-15,11:12,14da067d,13,emir,atlas-kosum,claude-fable-5-1,1713,-bundan sonra her bir oturumumda create pr yapacağım.böylelikle conflictin önüne daha rahat geçebileceğiz tek bir fable oturumda merge yapıl,3bc5330d-1b8c-4008-9977-6903e7f783f2
-42,2026-09-15,10:43,14da067d,12,soru,,claude-fable-5-1,77,"-a seçeneğiyle devam et, 5 seans sonra ölç. -hangi seçeneği seçmem daha doğru",03041b36-1ad4-4416-8655-7c0292e237ff
-43,2026-09-15,10:41,4ac5ca1c,15,diger,,claude-sonnet-5,40,bu oturumda pratik uygulamayı sürdürelim,ab65a00d-c0dd-4602-9186-325f8ea67a1d
-44,2026-09-15,10:38,4ac5ca1c,14,diger,,claude-sonnet-5,1,a,cd02a622-a0c1-4064-9fd4-017aee4b5179
-45,2026-09-15,10:36,4ac5ca1c,13,diger,,claude-sonnet-5,1,c,8254a2e5-187e-4326-9250-5fdcca536212
-46,2026-09-15,10:33,4ac5ca1c,12,diger,,claude-sonnet-5,1,c,a37bd10a-5d8f-401a-a816-42f9c8b2804e
-47,2026-09-15,10:32,14da067d,11,emir,,claude-fable-5-1,339,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: AYIRT, BAYAT, EDEN, KAPANDI, ",19f23913-4757-45ac-8d07-236a7967f52b
-48,2026-09-15,10:31,4ac5ca1c,11,diger,,claude-sonnet-5,1,c,94a2a2ec-0742-4c62-b9d9-a046d32e5e96
-49,2026-09-15,10:30,4ac5ca1c,10,diger,,claude-sonnet-5,1,c,a48d84a4-15ac-47e1-9093-d5da16476c2b
-50,2026-09-15,10:28,14da067d,10,emir,,claude-fable-5-1,534,"tamamdır yan oturumda ilerliyorum,yan görev: -sonnet yan oturumlarımda bir konu öğrenirken bazen kontrolsüzce kelime vurgusu yapmak istediği",c8005fcc-504e-4b5d-9af6-a5bb3042166f
+1,2026-09-18,14:31,e0e5e067,3,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,692be102-999e-4aa8-ad88-0420748c9a27
+2,2026-09-18,14:30,e0e5e067,2,seans-kapanis,,claude-fable-5-1,186,"diğer oturumlarda seans bitimi yazmadan buradan seans bitimi yazsam sen halledebilecek misin,zaten bağlam oturumunda hiçbişey konuşmadım say",09c97b59-469f-4cb4-be60-9a9db105d166
+3,2026-09-18,14:21,e0e5e067,1,diger,,claude-fable-5-1,60,devam eden koşum kalmadı f2 için yapmam gerekenleri tarif et,1a990ad4-4fbb-4335-98ef-8be8869b94e7
+4,2026-09-18,14:20,7b351190,13,diger,,,57,açıkta oturum kalmadı f2 için yapmam gerekenleri tarif et,4533db73-22ff-4e8a-bb4f-540f846a39c8
+5,2026-09-18,14:13,7b351190,12,emir,,claude-fable-5-1,361,"tamam plana itirazım yok, F1 artefaktlarına geç,sadece not olarak bilinsin: -bugün tek harness kullanıyor olabilirim ama ileride artacak -bu",6254eefb-122d-42ea-9af3-85d31fc060eb
+6,2026-09-18,14:07,7b351190,11,diger,,claude-fable-5-1,104,peki bu alınmayan özellikler alınsa ve sistemin yapısı değişirse bilmem gereken trade-off'lar neler olur,da5b25a1-751a-4f47-ba60-9472150eb274
+7,2026-09-18,14:03,7b351190,10,soru,,claude-fable-5-1,148,""" Alınmayan: şekil-temelli delegasyon reddi (senin alt-ajanlarını kilitler) · watcher state/ yüzeyi · 65 KB kök dosya. "" bunlar ne ve neden ",9931b3e5-ad24-4ac0-b9a4-476686018d27
+8,2026-09-18,12:53,7b351190,9,diger,,claude-fable-5-1,565,"test fazın gerek yok direk planlama yapmaya gerek var şu an,sistem şu an monorepo çalışacak.kök md/global md kun chenden de ilham alınarak v",238d0ffe-a1f4-4dc0-a226-eb7f66569e7c
+9,2026-09-18,12:43,7b351190,8,soru,,claude-fable-5-1,103,şu anki kanon hem fridayin hem jarvisin okumasına uygun bir kanon değil kanon jarvisin içerisinde olsa?,9e68a980-81e4-4323-a20f-f12385d2c638
+10,2026-09-18,12:42,7b351190,7,soru,,claude-fable-5-1,64,-yani bu senaryoda friday kanon dosyalarını okumayacak değil mi?,5df29049-0c1e-4130-9be1-1bcff5896973
+11,2026-09-18,12:31,7b351190,6,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,83f64e7c-454c-4e24-8ab6-31f33789f217
+12,2026-09-18,12:29,7b351190,5,diger,,claude-fable-5-1,547,-öncelikle friday oturumuna sadece tur 5 md dosyasını sürükledim ve otomatize etme önerini onaylıyorum. -alt dizin yolu için ise önerdiğim s,325f4998-595e-433c-af0a-c2f239252be9
+13,2026-09-18,12:17,7b351190,4,soru,,claude-fable-5-1,596,-kök claude md'yi friday ve jarvisin ortak kullanacağı bir md dosyası yapıp jarvisi de worktree olarak başlatarak ikisinin farklı md okuma y,fb0d00b0-1222-4622-a43b-d32fcf71bc8d
+14,2026-09-18,11:47,7b351190,3,emir,karar-masasi,claude-fable-5-1,266,-en son yaptığım öğrenme oturumlarına devam etmem için sırayla başlangıç komutlarını yaz(bağlam olan dahil) -friday context window %35 devam,7a18b8b0-5ce4-482e-88a7-a6682b37f3e1
+15,2026-09-18,11:32,7b351190,2,emir,,claude-fable-5-1,462,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,84b0e220-afe3-454d-a6bd-046d5d603199
+16,2026-09-18,11:26,7b351190,1,seans-acilis,seans-acilis,claude-fable-5-1,713,"seans başı,ekstra bir yan görev: -matematiksel sistemin context windowu doğru yönetmesini sağlamak ve optimize edilmiş contextte çalışmasını",d45071fb-7a12-437d-9a53-72337ba5da1d
+17,2026-09-18,11:18,58141fb3,17,diger,seans-kapanis,claude-fable-5-1,77,friday çalışıyor o sırada burada seans bitimi çıktısını diğer oturum okuyacak,c69cb36d-d28e-4da7-957a-d01d8ebab560
+18,2026-09-18,11:17,58141fb3,16,soru,,claude-fable-5-1,49,-fridayde context window %28 görevi bırakayım mı?,45b06021-38a6-45f6-8a61-8f4ff87b29a8
+19,2026-09-18,11:00,58141fb3,15,emir,karar-kaydet,claude-fable-5-1,93,masada 3. soruyu cevaplayınca site çöküyor ilk ikisinde sorubn yok neden böyle ıoluyor düzelt,33852160-5838-452c-b679-7cdebdcc6595
+20,2026-09-18,10:59,58141fb3,14,soru,,claude-fable-5-1,101,lavish düzelmedi şimdi bi tekrar açsana bi de sonnet pr açılmış oturumlara seans bitimi yazmalı mıyım,71983b5e-127d-41ea-8e25-f498d0930d10
+21,2026-09-18,10:56,58141fb3,13,diger,,claude-fable-5-1,90,The previous response failed to produce a valid tool call. Please retry the tool call now.,3cb2e402-4e09-4a80-bab3-c605c53aaebd
+22,2026-09-18,10:56,58141fb3,12,emir,,,227,"-m3 sorusu için a şıkkına bastığımda tekrardan: ""This artifact load is no longer current. Reload Lavish to continue."" diyor neden böyle oldu",8c2f876b-82f7-40fa-a67b-626b553d448a
+23,2026-09-18,10:50,58141fb3,11,emir,,claude-fable-5-1,736,"-masa çalışmıyor düzelt -eval oturumu pr oluştur diyince şöyle cevap verdi: "" Dur — bir şey buldum, PR'a geçmeden önce bildirmem gerekiyor. ",017701f1-1fa8-479e-8952-2ab14aad9add
+24,2026-09-18,10:44,8e00e0dc,72,soru,,claude-sonnet-5,16,pr oluşturdun mu,5682c84d-d4d6-4ee2-940b-882164513a88
+25,2026-09-18,10:43,8e00e0dc,71,emir,,claude-sonnet-5,452,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,d1a1d0f3-93b0-467e-894a-1f28e373deee
+26,2026-09-18,10:41,58141fb3,10,emir,karar-masasi,claude-fable-5-1,150,"kararları karar masasına taşı,sonnet oturumda pr oluşturdum ve bıraktım yani seans bitimi yazmadım,h4 dersinin bulunduğu seans da şu an pr o",a0bbdd43-be7b-4710-afe4-f13402d48c14
+27,2026-09-17,16:56,58141fb3,9,emir,,claude-fable-5-1,451,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,408adec9-2bae-4c5c-80ad-be636222a0ec
+28,2026-09-17,16:32,58141fb3,8,soru,atlas-kosum,claude-fable-5-1,393,-sonnet oturumda mcp serverların zararlı olabilecek bir davranışını simüle edecek şekilde görselleştirmesini istediğim bir promptun cevabı b,482c9215-7e67-4e19-9b4e-2f22e594ed20
+29,2026-09-16,15:13,58141fb3,7,diger,,claude-fable-5-1,305,1. seçenekten gideceğiz: -sistemde kullanılacak bir eval seti kuracaksak eğer güncel bir tool ve güncel yöntemlerle kuruyor olmalıyız prompt,058f2a08-a08f-48a0-afcc-662f7538ce54
+30,2026-09-16,12:03,58141fb3,6,soru,,claude-fable-5-1,157,"bir şeye başlamadan önce bir soru daha:atlas gibi ajanları ürettiğim aşama ne zaman gelecek,hedeflerimizin öncelik sıralaması nasıl şu an bu",19ef8434-dcbf-449f-a7fc-19bc26b0f9f5
+31,2026-09-16,12:01,58141fb3,5,soru,,claude-fable-5-1,125,tamamdır arkada çalışıyor şimdi ne yapıyoruz/yapabiliriz.ya da yapmak için borç olarak öğrenme sürecini mi bitirmem gerekiyor,8306cfb3-da33-4192-adff-db5700b42af0
+32,2026-09-16,12:00,58141fb3,4,soru,,claude-fable-5-1,70,friday'de en sonki oturum hala açık context window 19'da ona mı atayım,3faa5f23-c0bf-431f-8afd-95af1526c942
+33,2026-09-16,11:49,58141fb3,3,onay/devam,,claude-fable-5-1,18,İB-93 ile devam et,28ddbc99-e1f4-4ba9-b8f3-ac2713b0107c
+34,2026-09-16,10:46,58141fb3,2,soru,,claude-fable-5-1,165,"sonnet oturumu açık,ne yapıyoruz neler yapabiliriz.skill oluşturma turu nasıl geçti,elimizde hangi skiller var ve daha neler ekleyebiliriz s",5c46cd94-0fe1-454b-8824-17055cc4b819
+35,2026-09-15,16:57,58141fb3,1,seans-acilis,seans-acilis,claude-fable-5-1,359,"seans başı,yapılacaklara geçmeden önce: -öğrenme oturumlarında öğrenme sürecinden sonra ürün oluşturma veya sisteme öğrendiklerimi implement",eb3d2c2d-e7e6-486b-916b-de25dcfb10b9
+36,2026-09-15,16:43,34f8f4dd,16,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,96680ae1-a185-4176-ae10-98e8b1e291c7
+37,2026-09-15,15:27,34f8f4dd,15,emir,,claude-fable-5-1,378,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: İNŞA. Vurguyu kalın harfle (*,afe76a1c-7608-4e72-92a0-2f665df13aca
+38,2026-09-15,15:25,34f8f4dd,14,onay/devam,,claude-fable-5-1,18,İB-92 ile devam et,7671fd9e-ffd6-47fc-a1dc-c0680cac5ee6
+39,2026-09-15,15:18,34f8f4dd,13,emir,,claude-fable-5-1,390,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: SANA, SENİN, XML. Vurguyu kal",5afd0624-22dc-4791-ad38-a4aa7bca2185
+40,2026-09-15,15:01,34f8f4dd,12,diger,,claude-fable-5-1,330,şöyle bi durum var:büyük harf kullanmak hafızada sonuç olarak vurgu yapmayı sağlıyorsa ve biz bu durumu değiştireceksek vurgulamanın başka b,3c06e866-a7f7-4d13-879c-d7ae094d523e
+41,2026-09-15,14:33,34f8f4dd,11,onay/devam,,claude-fable-5-1,24,"onay, önce kuru diff koş",28268abb-924f-4e3d-bdf2-2898bc724948
+42,2026-09-15,14:15,34f8f4dd,10,emir,,claude-fable-5-1,449,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: BAYAT, DEĞİL, KAPANDI, SANA, ",fb2d5b53-49a3-4c29-ab23-fc40071041d5
+43,2026-09-15,14:01,34f8f4dd,9,onay/devam,,claude-fable-5-1,18,İB-90 ile devam et,3775371f-e001-4038-9e2c-2ae5bba9c517
+44,2026-09-15,13:57,34f8f4dd,8,emir,,claude-fable-5-1,379,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ŞÜPHE. Vurguyu kalın harfle (,10cc890c-f91d-488f-9379-47a3a2512c97
+45,2026-09-15,13:54,34f8f4dd,7,onay/devam,,claude-fable-5-1,18,İB-91 ile devam et,972fd7bd-813a-4a4b-b8d6-b430574eee4c
+46,2026-09-15,13:47,34f8f4dd,6,onay/devam,,claude-fable-5-1,18,İB-89 ile devam et,add614a5-fe4f-4b11-b917-89f25355ff48
+47,2026-09-15,13:39,34f8f4dd,5,diger,,claude-fable-5-1,64,"tamam yeni sonnet oturumunu açtım, biz İB-88 P2 ile devam edelim",f1d49f53-fcb5-44ca-9241-c45479e8c75c
+48,2026-09-15,13:38,34f8f4dd,4,soru,,claude-fable-5-1,63,"push et,bir de ilk prompttan sonra mı pr oluşturacağım sonnette",44d4a80a-d11b-46cd-835a-312c78c4dc10
+49,2026-09-15,13:35,34f8f4dd,3,soru,,claude-fable-5-1,302,tamam şimdi önerdiğin şekilde devam edelim ve sorunları önerdiğin versiyonda çöz.yan taraftaki sonnet oturumunda devam etmeyeceğim yeni otur,9fa2b588-5abe-4a8b-b2ad-02c384ee0154
+50,2026-09-15,12:08,34f8f4dd,2,emir,,claude-fable-5-1,391,"Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15): son cevapta tamamı büyük harfle yazılmış sözcük var: ANDA, AYNI, KALAN. Vurguyu ka",57e8a3e3-6a39-4cc6-8cfe-36f4ac9c8915
