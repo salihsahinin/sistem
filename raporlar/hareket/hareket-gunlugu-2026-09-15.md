@@ -1,6 +1,6 @@
-# Hareket günlüğü — 2026-09-15 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `5abcf05`)
+# Hareket günlüğü — 2026-09-15 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `866dee8`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 330 çağrı, 3 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 335 çağrı, 4 oturum.*
 
 ## Oturum `4ac5ca1c` — 10:17:46→11:19:56 · 42 çağrı · model sonnet-5 · hata 0
 **Özet:** koştu 21 · düzenledi 8 · yazdı 5 · okudu 4 · MCP aracı 3 · sordu 1
@@ -159,8 +159,8 @@
 | 161 | 11:59:25 | düzenledi | core/durum-kapsulu.md | tamam |
 | 162 | 11:59:29 | koştu | Kapsül bütçesini doğrula, commit, push; izlenen dosyalarda kalan değişiklik sayısı ⟨cd ~/jarvis && python3 tools/sicak-katman-fifo.py 2>&1 ¦ grep kapsul && git add core/durum-kapsulu.md && git commit -q -m "[icra] Capsule: byte budget…⟩ | tamam |
 
-## Oturum `34f8f4dd` — 12:04:18→16:45:47 · 187 çağrı · model fable-5-1 · hata 4
-**Özet:** koştu 82 · düzenledi 71 · yazdı 13 · okudu 10 · MCP aracı 6 · skill çağırdı 2 · web'e baktı 2 · araç aradı 1
+## Oturum `34f8f4dd` — 12:04:18→16:47:56 · 189 çağrı · model fable-5-1 · hata 4
+**Özet:** koştu 84 · düzenledi 71 · yazdı 13 · okudu 10 · MCP aracı 6 · skill çağırdı 2 · web'e baktı 2 · araç aradı 1
 **Yazılan/düzenlenen dosyalar (28):** `.claude/hooks/session-start.sh` · `.claude/hooks/stop-buyuk-harf-test.sh` · `.claude/hooks/stop-buyuk-harf.sh` · `.claude/rules/ogrenme.md` · `.claude/settings.json` · `.claude/skills/README.md` · `.claude/skills/emekli-anahtar-cascade/SKILL.md` · `.claude/skills/emekli-anahtar-cascade/evals/evals.json` · `.claude/skills/karar-masasi/SKILL.md` · `.claude/skills/karar-masasi/evals/evals.json` · `.claude/skills/karar-masasi/sablon.html` · `.claude/skills/karar-masasi/scripts/masa-spec-cikar.py` · `.claude/skills/karar-masasi/scripts/masa-uret-test.py` · `.claude/skills/karar-masasi/scripts/masa-uret.py` · `.claude/skills/ogren/SKILL.md` · `.claude/skills/ogren/evals/evals.json` · `.claude/skills/ogren/references/urun-turu.md` · `.claude/skills/seans-acilis/SKILL.md` · `.claude/skills/skill-kapisi/SKILL.md` · `CLAUDE.md` · `core/baglam-anahtar-kaydi.md` · `core/durum-kapsulu.md` · `raporlar/seans/seans-teslim-2026-09-15-karar97-buyuk-harf-ib88-92-hook-arizasi.md` · `tools/acilis-kapilari.py` · `tools/anahtar-cascade.py` · `tools/buyuk-harf-temizle.py` · `tools/git-hooks/caps-say.py` · `tools/git-hooks/pre-commit`
 
 | # | saat | fiil | hedef | sonuç |
@@ -352,4 +352,15 @@
 | 185 | 16:45:35 | düzenledi | core/durum-kapsulu.md | tamam |
 | 186 | 16:45:40 | koştu | Hafıza indeksinden en eski maddeyi (Karar 92 FIFO) düşür ⟨M=~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/MEMORY.md && grep -v 'Token kısıntısı %30' "$M" > "$M.tmp" && mv "$M.tmp" "$M" && grep -c . …⟩ | tamam |
 | 187 | 16:45:47 | koştu | Katman hattı, silver-sağlık kapısı, FIFO sayacı, kapsül boyutu, bu oturumun bağlam seyri, birim testler ve caps kalıntı kontrolü ⟨cd ~/jarvis && echo "=== katman-hatti ===" && python3 tools/katman-hatti.py 2>&1 ¦ tail -4; echo "=== silver-saglik kapı ===" && python3 tools/silver-…⟩ | yok |
+| 188 | 16:47:47 | koştu | Teslim raporuna kapı özetlerini ekle; değişen dosyaların dizin dağılımını ve izlenmeyen dosyaları listele ⟨cd ~/jarvis && python3 - <<'EOF' import pathlib p=pathlib.Path('raporlar/seans/seans-teslim-2026-09-15-karar97-buyuk-harf-ib88-92-hook-arizasi.md'); s…⟩ | tamam |
+| 189 | 16:47:56 | koştu | Kapanış commit'i, türev katman commit'i ve origin'e push ⟨cd ~/jarvis && git add raporlar/seans/seans-teslim-2026-09-15-karar97-buyuk-harf-ib88-92-hook-arizasi.md core/durum-kapsulu.md && git commit -q -m "$(…⟩ | tamam |
+
+## Oturum `58141fb3` — 16:57:58→16:58:10 · 3 çağrı · model fable-5-1 · hata 0
+**Özet:** koştu 2 · skill çağırdı 1
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 16:57:58 | skill çağırdı | seans-acilis | tamam |
+| 2 | 16:58:01 | koştu | Açılış kapılarını koş ve durum kapsülünü oku ⟨python3 tools/acilis-kapilari.py 2>&1 ¦ head -40; echo "---KAPSÜL---"; cat core/durum-kapsulu.md⟩ | tamam |
+| 3 | 16:58:10 | koştu | Silver'ı tazele, panoyu ve son teslim raporunu oku, Karar 94 ürün turu satırlarını bul ⟨python3 tools/katman-hatti.py 2>&1 ¦ tail -5; echo "---PANO---"; cat core/pano.md; echo "---TESLİM---"; sed -n '1,60p' raporlar/seans/seans-teslim-202…⟩ | yok |
 
