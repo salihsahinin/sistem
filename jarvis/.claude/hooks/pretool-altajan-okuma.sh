@@ -20,7 +20,7 @@ if not g.get("agent_id"):
     sys.exit(0)  # ana-sıra çağrısı
 arac = g.get("tool_name", ""); ti = g.get("tool_input", {}) or {}
 repo = os.path.realpath(os.environ["REPO"]); home = os.path.expanduser("~")
-YASAK = [os.path.join(home, ".claude", "projects"), os.path.join(home, "friday"), os.path.join(home, "staj başlangıç"),
+YASAK = [os.path.join(home, ".claude", "projects"), os.path.join(home, "sistem", "friday"), os.path.join(home, "staj başlangıç"),
          os.path.join(home, "Desktop", "repo"),
          os.path.join(repo, "core", "durum-kapsulu.md"), os.path.join(repo, "core", "pano.md"),
          os.path.join(repo, "kuyruk", "senaryo-defteri.md"), os.path.join(repo, "fikir-kutusu.md"),

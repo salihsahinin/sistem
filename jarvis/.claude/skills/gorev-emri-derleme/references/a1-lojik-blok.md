@@ -38,4 +38,4 @@ Sabit satırlar `KARAR_ÖZETİ`'nde: Karar 89 (Opus medium) · Karar 93 ad-eşit
 ## Geçiş ölçüsü (A1 → A2)
 Emir-kaynaklı `[sapma]` / devir (Friday sayar, Jarvis doğrular); arka arkaya 2 devirde 0 → A2 (json tek başına). Sayım: tur-1 2 · tur-2 1 · tur-3 (ilk A1) **0** (Jarvis doğruladı; blok-eksiği 3 → v0.2). A2 için 1/2; tur-4 v0.2 blokla 0 çıkarsa A2.
 
-İlk örnek: `~/friday/cc/gelen/gorev-2026-09-16-tur3.md` (kopya `cc/devir/friday-2026-09-16-tur3/`).
+İlk örnek: `~/sistem/friday/cc/gelen/gorev-2026-09-16-tur3.md` (kopya `cc/devir/friday-2026-09-16-tur3/`).

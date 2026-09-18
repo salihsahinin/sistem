@@ -4,17 +4,17 @@
 # Çıktı: koşum-başına dörtlü (token · duvar-saati · iterasyon · sonuç), markdown blok.
 # --append: bloğu senaryo-defterine yazar (mükerrer runId#pid atlanır). m.39: eksik alan [?].
 # Kullanım:
-#   python3 ~/jarvis/tools/olcum-dortlu.py                      # önizleme (stdout)  [Mac; Windows: python C:\JARVIS\tools\olcum-dortlu.py]
-#   python3 ~/jarvis/tools/olcum-dortlu.py --append             # deftere yaz
-#   python3 ~/jarvis/tools/olcum-dortlu.py --repo ~/dev/firstmate # hedef repo (gnhf koşumlarının olduğu yer)
-# Mac uyarlaması 2026-08-22 (İB-13, K-022 P6): kanon kökü ~/jarvis (Windows kökü varsa o), --repo varsayılanı ~/dev/wf-deneme → yoksa ~/dev/firstmate → yoksa cwd; mantık değişmedi.
+#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py                      # önizleme (stdout)  [Mac; Windows: python C:\JARVIS\tools\olcum-dortlu.py]
+#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py --append             # deftere yaz
+#   python3 ~/sistem/jarvis/tools/olcum-dortlu.py --repo ~/dev/firstmate # hedef repo (gnhf koşumlarının olduğu yer)
+# Mac uyarlaması 2026-08-22 (İB-13, K-022 P6): kanon kökü ~/sistem/jarvis (Windows kökü varsa o), --repo varsayılanı ~/dev/wf-deneme → yoksa ~/dev/firstmate → yoksa cwd; mantık değişmedi.
 
 import argparse, json, re, sqlite3, sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 _WIN_KANON = Path(r"C:\JARVIS")
-KANON = _WIN_KANON if _WIN_KANON.exists() else Path.home() / "jarvis"
+KANON = _WIN_KANON if _WIN_KANON.exists() else Path.home() / "sistem" / "jarvis"
 DEFTER = KANON / "kuyruk" / "senaryo-defteri.md"
 NM_DB = Path.home() / ".no-mistakes" / "state.sqlite"
 

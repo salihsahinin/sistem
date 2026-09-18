@@ -484,7 +484,7 @@ def _url_maskele(metin):
 
 
 def yol_normalize(ham):
-    """Repo-içi göreli yola indirge: ~/jarvis/, /abs/…/jarvis/, C:/JARVIS/, ./, ../ önekleri düşer."""
+    """Repo-içi göreli yola indirge: ~/sistem/jarvis/, /abs/…/jarvis/, C:/JARVIS/, ./, ../ önekleri düşer."""
     y = ham
     low = y.lower()
     for isaret in ("/jarvis/", "c:/jarvis/"):
@@ -493,7 +493,7 @@ def yol_normalize(ham):
             y = y[k + len(isaret):]
             break
     else:
-        for onek in ("~/jarvis/", "jarvis/", "./"):
+        for onek in ("~/sistem/jarvis/", "jarvis/", "./"):
             if y.startswith(onek):
                 y = y[len(onek):]
         while y.startswith("../"):

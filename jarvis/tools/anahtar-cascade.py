@@ -14,7 +14,7 @@ Alt komutlar:
           soğuk katman (tarihçe) hiçbir zaman yazılmaz. --onay yoksa yalnız sayım basar.
   readme  --anahtar <id> → Karar 93 EK K2 deseni: emekli değeri barındıran her kök dizinin README eşleniğinde
           "<eski> = <yeni> (eski ad/değer)" bağlama satırı var mı; eksikler listelenir (yazmaz).
-Kullanım: python3 tools/anahtar-cascade.py <altkomut> … [--repo ~/jarvis] [--json]
+Kullanım: python3 tools/anahtar-cascade.py <altkomut> … [--repo ~/sistem/jarvis] [--json]
 Çıkış: 0 temiz/üretildi · 1 kalıntı var (tara/readme) ∨ uygula --onay'sız kalıntı · 2 kullanım/kayıt hatası.
 """
 import argparse, importlib.util, json, os, pathlib, re, sys
@@ -195,7 +195,7 @@ def cmd_readme(a, repo):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("komut", choices=["kaydet", "tara", "uygula", "readme"])
-    ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis")); ap.add_argument("--json", action="store_true")
+    ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis")); ap.add_argument("--json", action="store_true")
     ap.add_argument("--anahtar"); ap.add_argument("--eski"); ap.add_argument("--yeni"); ap.add_argument("--tarih"); ap.add_argument("--gerekce"); ap.add_argument("--kaynak")
     ap.add_argument("--tur", default="kavram", choices=["tetik", "skill_adi", "yuzey", "kavram", "kart", "dosya"])
     ap.add_argument("--varyant", nargs="*"); ap.add_argument("--izinli", nargs="*")

@@ -88,7 +88,7 @@ def bronz_topla(proje_dizin):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
+    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
     ap.add_argument("--n", type=int, default=50); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     ap.add_argument("--tarih", default=None, help="rapor dosya adı tarihi (YYYY-MM-DD); varsayılan bugün TR")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)

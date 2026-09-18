@@ -7,14 +7,14 @@ konuşmayı göremiyorum" sorusunun cevabı — ham JSONL yerine: ajan metni, ar
 araç sonuçları.
 
 Kullanım:
-  python3 tools/gnhf-izle.py                # en yeni worktree'yi (~/jarvis-gnhf-worktrees/*) bulur, baştan basar, takipte kalır
+  python3 tools/gnhf-izle.py                # en yeni worktree'yi (~/sistem/jarvis-gnhf-worktrees/*) bulur, baştan basar, takipte kalır
   python3 tools/gnhf-izle.py --worktree <yol>
   python3 tools/gnhf-izle.py --gecmis       # yalnız mevcut içeriği bas, takip etme (çık)
 Çıkış: 0 (--gecmis sonu ya da Ctrl-C) · 2 worktree/koşum bulunamadı. LLM YOK, stdlib-only, salt-okur.
 """
 import argparse, glob, json, os, sys, time
 
-KOK = os.path.expanduser("~/jarvis-gnhf-worktrees")
+KOK = os.path.expanduser("~/sistem/jarvis-gnhf-worktrees")
 
 
 def en_yeni_worktree():

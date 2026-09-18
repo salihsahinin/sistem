@@ -58,7 +58,7 @@ def girdi_ozet(arac, inp, repo):
         c = re.sub(r"\s+", " ", (inp.get("command") or "")).strip()
         h = (inp.get("description") or "").strip() + " ⟨" + c[:150] + ("…" if len(c) > 150 else "") + "⟩"
         m = re.search(r"(?:>>?|tee|cat >|python3 - <<|git mv|git add|git commit)", c)
-        repo_ici = "~/jarvis" in c or c.startswith("cd ~/jarvis") or "jarvis" in c
+        repo_ici = "~/sistem/jarvis" in c or c.startswith("cd ~/sistem/jarvis") or "jarvis" in c
     elif arac in ("Grep", "Glob"):
         h = f"{inp.get('pattern','')}  ({kisa_yol(inp.get('path'), repo)[0] or '.'})"
     elif arac in ("Agent", "Task"):
@@ -133,7 +133,7 @@ def bronz_topla(proje_dizin, repo):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis"))
+    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
     ap.add_argument("--tarih", default=None); ap.add_argument("--tum", action="store_true"); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
     head = sh(["git", "rev-parse", "--short", "HEAD"], repo)

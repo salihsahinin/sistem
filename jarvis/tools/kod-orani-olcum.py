@@ -3,7 +3,7 @@
 okuduğu dosyalar) oranı arasındaki fark, DÖRT kovaya ayrılarak (md · kod · yapisal · diger).
 
 Ne bu: iki ayrı ölçüm üretir —
-  (i) REPO ENVANTERİ: ~/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
+  (i) REPO ENVANTERİ: ~/sistem/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
       kovaya koyar (md=.md · kod=.py/.sh/.sql · yapisal=.json/.jsonl/.csv · diger=geri kalan), kova başına
       dosya sayısı + toplam satır (\\n bayt sayımı — ikili dosyada da güvenli, exception atmaz) + toplam bayt.
   (ii) BAĞLAM-PENCERESİ PROXY'Sİ: `veri/bronz/hareket-olay.jsonl` (şema: hareket_id/ts/oturum/arac/girdi_ozet/

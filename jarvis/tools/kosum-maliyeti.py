@@ -19,7 +19,7 @@ Ne yapar:
      JSONL toplamıyla kıyaslanır (resmî arayüz ↔ iç format tutarlılık örneklemi).
 
 Koşum:
-  python3 tools/kosum-maliyeti.py [--proje -Users-HasanSalihSahin-jarvis] [--gun 7]
+  python3 tools/kosum-maliyeti.py [--proje -Users-HasanSalihSahin-sistem-jarvis] [--gun 7]
                                   [--beklenen claude-fable-5] [--csv veri/gorunum/v_usage_gunluk.csv]
                                   [--dogrula /yol/claude-p-cikti.json]
 Çıkış kodları: 0 temiz · 1 şema-freni tetiklendi (sayılar ŞÜPHELİ damgalı basılır) · 2 veri yok.
@@ -86,7 +86,7 @@ def tara(dosyalar, gun_sinir):
 
 def main():
     p = argparse.ArgumentParser(description="Transkript-JSONL usage tablosu (FAIL-LOUD; İB-08)")
-    p.add_argument("--proje", default="-Users-HasanSalihSahin-jarvis",
+    p.add_argument("--proje", default="-Users-HasanSalihSahin-sistem-jarvis",
                    help="~/.claude/projects altındaki proje dizini adı; 'HEPSI' = tüm projeler")
     p.add_argument("--gun", type=int, default=7, help="son N gün (0 = tümü)")
     p.add_argument("--beklenen", default=None, help="ana-zincirde beklenen model (düşüm izi)")

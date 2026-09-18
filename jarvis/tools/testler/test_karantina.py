@@ -4,7 +4,7 @@ Koş: python3 -m unittest tools/testler/test_karantina.py
 Kapsam: (a) --ekle sahte bir git-fixture repo'da dosyayı arsiv/karantina/ altına git mv ile taşıyor +
 veri/karantina.jsonl'e 5-alanlı satır ekliyor · (b) --denetle gerçek repodaki kod-orani-olcum.py karantina
 dizinini TARAMIYORKEN PASS (kod 0) veriyor · (c) --liste boş/dolu durumlarda doğru çalışıyor.
-Gerçek ~/jarvis dosyalarına DOKUNULMAZ — her --ekle testi izole tempdir'de kendi git repo fixture'ını kurar.
+Gerçek ~/sistem/jarvis dosyalarına DOKUNULMAZ — her --ekle testi izole tempdir'de kendi git repo fixture'ını kurar.
 """
 import json
 import os
@@ -78,7 +78,7 @@ class TestEkle(unittest.TestCase):
 
 class TestDenetle(unittest.TestCase):
     def test_denetle_gercek_repoda_pass(self):
-        # gerçek ~/jarvis repo, salt-okur: kod-orani-olcum.py karantina dizinini tarıyor mu diye bakar
+        # gerçek ~/sistem/jarvis repo, salt-okur: kod-orani-olcum.py karantina dizinini tarıyor mu diye bakar
         r = kos("--repo", KOK, "--denetle")
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

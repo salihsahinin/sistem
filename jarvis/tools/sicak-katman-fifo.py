@@ -50,7 +50,7 @@ def main():
     ap.add_argument("--json", action="store_true", help="makine çıktısı")
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     a = ap.parse_args()
-    mem = os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-jarvis/memory/MEMORY.md")
+    mem = os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis/memory/MEMORY.md")
     dosyalar = {
         "kapsul": (os.path.join(a.repo, "core", "durum-kapsulu.md"), kapsul_maddeler),
         "pano": (os.path.join(a.repo, "core", "pano.md"), pano_maddeler),

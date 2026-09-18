@@ -3,7 +3,7 @@
 Girdi: kalem spec'i (JSON, şema SKILL.md'de). Çıktı: DaisyUI karar masası HTML (7.-12. masa biçimi) +
 kalıcı kopya. Aynı spec → aynı HTML (rastgelelik yok). Kanona yazmaz.
 
-Kullanım: python3 masa-uret.py <spec.json> [--repo ~/jarvis] [--kuru]   (--kuru: dosya yazmaz, doğrulama basar)
+Kullanım: python3 masa-uret.py <spec.json> [--repo ~/sistem/jarvis] [--kuru]   (--kuru: dosya yazmaz, doğrulama basar)
 P2 (İB-88, 09-15): opsiyonel `giris` alanı (tetik öncesi giriş cümlesi); test `masa-uret-test.py` (E1-E3, masa-12 eşdeğerlik);
 eski masayı spec'e döken tersine araç `masa-spec-cikar.py`.
 Çıkış kodları: 0 üretildi · 2 spec hatası (öneri ilk sırada değil, kalem id çift, zorunlu alan eksik) · 3 masa no çakışması
@@ -70,7 +70,7 @@ def uret(spec):
             .replace("{{KALICI}}", f"raporlar/masa/masa-{spec['no']}-karar-yuzeyi-{spec['tarih']}.html"))
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis")); ap.add_argument("--kuru", action="store_true")
+    ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis")); ap.add_argument("--kuru", action="store_true")
     a = ap.parse_args(); repo = pathlib.Path(a.repo)
     spec = json.load(open(a.spec, encoding="utf-8"))
     hatalar = dogrula(spec)

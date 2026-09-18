@@ -62,7 +62,7 @@ def main():
     except Exception: pass
     # workflow ölçümü — yalnız bu makinede kalan koşum çıktıları (ölçüm anı; taşınmaz)
     wf_n = wf_tok = wf_ag = 0
-    for f in glob.glob(os.path.expanduser("/private/tmp/claude-501/-Users-HasanSalihSahin-jarvis/*/tasks/*.output")):
+    for f in glob.glob(os.path.expanduser("/private/tmp/claude-501/-Users-HasanSalihSahin-sistem-jarvis/*/tasks/*.output")):
         try:
             d = json.load(open(f))
             if isinstance(d, dict) and "totalTokens" in d: wf_n += 1; wf_tok += int(d["totalTokens"] or 0); wf_ag += int(d.get("agentCount") or 0)

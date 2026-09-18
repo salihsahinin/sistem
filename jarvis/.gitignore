@@ -1,0 +1,32 @@
+# Jarvis alt-dizini gitignore (Karar 101 F3, 2026-09-18): kök .gitignore'dan taşındı — yollar jarvis/ köküne göre.
+.secrets/
+arsiv/claude-izler/
+
+# baglam-tablo.py üretilen artefaktlar (veri/gorunum/*.csv İZLENİR — küçük gold görünümler)
+veri/baglam.sqlite
+veri/baglam.sqlite.tmp
+veri/baglam.jsonl
+# büyük/kesilen görünümler: türetilmiş, 5 sn'de yeniden üretilir (Carvis İ-2 kararı 08-15)
+veri/gorunum/v_bolum_yogunluk.csv
+veri/gorunum/v_anahtar_terim_dosya.csv
+veri/gorunum/v_dosya_envanter.csv
+
+# kolon katmanı (pipeline kolon-katmani SH-2, 08-18): parquet türevleri — silver ile aynı sınıf (KB-56 hükmüne dek gitignore)
+veri/parquet/
+
+# Obsidian harita türevleri (Karar 72 EK): silverdan her koşumda yeniden üretilir
+graf/obsidian-harita*.md
+
+# Ajan freni sayaç durumu (İB-54; oturum başına, türev)
+.claude/hooks/state/
+
+# Vektör ölçüm kolu indeksi (İB-47; sqlite-vec türev, ~500 MB)
+veri/erisim-vektor.sqlite
+veri/erisim-vektor-*.npy
+# katman-hatti kirası (Karar 83 A2, PK-7): geçici kilit dosyası, izlenmez
+veri/.kira-*.json
+# Salih dosyası — COMMIT'LENMEZ (Karar 73 EK freni, 08-28 GBM şeridi)
+kuyruk/galeri-siralama/
+.lavish/
+# Harness resume checkpoint (oturum-yerel, türev)
+.claude/RESUME.md

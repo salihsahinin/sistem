@@ -2,7 +2,7 @@
 """karar-masasi · deterministik test (İB-88 P2, 09-15): evals/evals.json E1-E3'ü koşar.
 E1 spec-doğrulama (öneri ikinci sırada → çıkış 2, dosya yok) · E2 determinizm (aynı spec iki üretim bayt-eşit, form = kalem, önerilen ilk label)
 · E3 masa-12 eşdeğerlik (elle masa → masa-spec-cikar → masa-uret; form/label/checkbox/kanıt sayımı + kuyrukla fonksiyonları birebir + büyük-harf ihlali elle-yazımdan fazla değil).
-Kullanım: python3 masa-uret-test.py [--repo ~/jarvis] [--masa raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html]
+Kullanım: python3 masa-uret-test.py [--repo ~/sistem/jarvis] [--masa raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html]
 Çıkış: 0 hepsi geçti · 1 en az biri düştü. Kanona yazmaz; geçici dizinde üretir.
 """
 import argparse, json, pathlib, re, subprocess, sys, tempfile
@@ -24,7 +24,7 @@ def uret(spec_yolu, repo):
     return subprocess.run([sys.executable, str(URET), str(spec_yolu), "--repo", str(repo)], capture_output=True, text=True)
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis"))
+    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis"))
     ap.add_argument("--masa", default="raporlar/masa/masa-12-karar-yuzeyi-2026-09-15.html")
     a = ap.parse_args(); repo = pathlib.Path(a.repo); elle_yol = repo / a.masa
     T = pathlib.Path(tempfile.mkdtemp(prefix="masa-test-")); sonuc = []

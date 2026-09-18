@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Ad-eşitliği denetimi (Karar 93 EK, Salih 2026-09-10): "Carvis = Jarvis (09-10 öncesi ajan adı)" bilgisi HER bağlam
 kombinasyonunda bulunmalı. Üç katmanı sayar:
-  K1 her-seans-yüklenen katman: CLAUDE.md · .claude/hooks/session-start.sh · hafıza MEMORY.md · .claude/agents/*.md · ~/friday/CLAUDE.md
+  K1 her-seans-yüklenen katman: CLAUDE.md · .claude/hooks/session-start.sh · hafıza MEMORY.md · .claude/agents/*.md · ~/sistem/friday/CLAUDE.md
      → her biri "Carvis" adını Jarvis'e bağlayan bir cümle taşımalı (örüntü: 'eski ad Carvis' ∨ 'Carvis = Jarvis' ∨ 'Carvis → Jarvis' ∨ 'Carvis emekli').
   K2 dizin katmanı: içinde "Carvis" geçen dosya barındıran her kök dizinin README.md'si eşitlik bloğu taşımalı ('Carvis = Jarvis').
   K3 canlı-bağlam sızıntısı: canlı dosyalarda (CLAUDE.md, core/, .claude/, KILAVUZ, README, wiki/, tools/, fikir-kutusu) bağlanmamış "Carvis"
@@ -15,7 +15,7 @@ H = os.path.expanduser("~")
 ESIT = re.compile(r"eski ad[ıi]? Carvis|JARVİS FRIDAY CARVIS|Carvis\s*=\s*\*{0,2}Jarvis|Carvis\s*→\s*\*{0,2}Jarvis|Carvis emekli|Carvis\)|eski ad Carvis", re.I)
 CARVIS = re.compile(r"Carvis|CARVİS|CARVIS")
 K1 = [os.path.join(J, "CLAUDE.md"), os.path.join(J, ".claude", "hooks", "session-start.sh"),
-      os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-jarvis", "memory", "MEMORY.md"),
+      os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-sistem-jarvis", "memory", "MEMORY.md"),
       os.path.join(H, "friday", "CLAUDE.md")]
 ad = os.path.join(J, ".claude", "agents")
 if os.path.isdir(ad):

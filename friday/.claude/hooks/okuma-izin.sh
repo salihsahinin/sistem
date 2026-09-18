@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # OKUMA-İZİN KİLİDİ — PreToolUse hook (Read · Grep · Glob · Bash). Jarvis Karar 91 (2026-09-09): lider reposu Jarvis'ten YALNIZ
-# `kanon/` bağını (= ~/jarvis/core, salt-okur) okur; başka hiçbir Jarvis yolu (kuyruk/, cc/, raporlar/, veri/, hafıza…) bağlama giremez.
+# `kanon/` bağını (= ~/sistem/jarvis/core, salt-okur) okur; başka hiçbir Jarvis yolu (kuyruk/, cc/, raporlar/, veri/, hafıza…) bağlama giremez.
 # Mekanizma: izinli kökler = bu repo + kanon hedefi + geçici dizinler + harness araç çıktısı; dışı → exit 2 (çağrı engellenir, gerekçe stderr'e).
 # Bu bir KİLİTTİR (prompt cümlesi değil); kaçırdığı desen olursa veri/bronz/hareket-olay.jsonl kanıtıyla sonradan görülür.
-# v0.2 (2026-09-10, tur-1 A5): heredoc gövdesi taranmaz (yanlış-pozitif); `$HOME/jarvis`, `${HOME}/jarvis`, `kanon/../x` yakalanır.
+# v0.2 (2026-09-10, tur-1 A5): heredoc gövdesi taranmaz (yanlış-pozitif); `$HOME/sistem/jarvis`, `${HOME}/jarvis`, `kanon/../x` yakalanır.
 # v0.3 (2026-09-18, Karar 99 M2): alt-ajan dalı (`agent_id`) + Bash dalı izin listesine çevrildi (Z1) + `cd` takibi (Z2).
 # v0.4 (2026-09-18, Karar 100 M1/M3; tur-4 raporu §4d seçenek (c)):
 #   (a) AYRIŞTIRICI — Bash'te yol adayları artık yalnız DOSYA KOMUTLARININ argümanlarından toplanır (aşağıdaki DOSYA_KOMUT kümesi),
@@ -15,6 +15,9 @@
 #       Liderin kendi emrini okuması etkilenmez: dal yalnız `agent_id` varken çalışır.
 #   Read/Grep/Glob dalı v0.3'teki gibidir; test bayrağı (FRIDAY_HOOK_TEST | JARVIS_HOOK_TEST) yalnız bronz kütük yazımını kapatır,
 #   `exit 2` kararını ETKİLEMEZ.
+# v0.5 (2026-09-18, Karar 101 monorepo `sistem`, F3): `kanon/` bağı emekli. İzinli kökler = bu repo + depo kökünün doğrudan
+#   altındaki dosyalar (`~/sistem/AGENTS.md`, `CLAUDE.md`, `README.md`…; genelleştirilmiş kanon) + geçici + harness. `jarvis/**`
+#   tamamen kapalı (Jarvis `core/` dahil; Friday'in gördüğü kural kökteki kanon). Depo kökü = repo'nun üst dizini.
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 [ -z "$PY" ] && exit 0
@@ -28,9 +31,9 @@ except Exception:
 arac = g.get("tool_name", ""); ti = g.get("tool_input", {}) or {}
 repo = os.path.realpath(os.environ["REPO"])
 home = os.path.realpath(os.path.expanduser("~"))
-kanon_hedef = os.path.realpath(os.path.join(repo, "kanon")) if os.path.exists(os.path.join(repo, "kanon")) else None
+kok = os.path.dirname(repo)  # depo kökü (~/sistem): kök kanon dosyaları buradan okunur (v0.5, Karar 101)
 harness = os.path.join(home, ".claude", "projects")
-izinli = [repo] + ([kanon_hedef] if kanon_hedef else []) + ["/tmp", "/private/tmp", "/private/var/folders", harness]
+izinli = [repo, "/tmp", "/private/tmp", "/private/var/folders", harness]
 TEST = bool(os.environ.get("FRIDAY_HOOK_TEST") or os.environ.get("JARVIS_HOOK_TEST"))
 
 # Dosya açan komutlar: argümanları yol sayılır. Liste EKSİK KALABİLİR (desen 20) — yeni bir okuma komutu buraya eklenmeli.
@@ -47,6 +50,9 @@ def coz(yol, cwd):
 
 def izinli_mi(r):
     if any(r == k or r.startswith(k + os.sep) for k in izinli):
+        return True
+    # kök kanon: depo kökünün kendisi ve doğrudan altındaki dosyalar serbest; alt dizinler (jarvis/**) izin listesine tabi
+    if r == kok or (os.path.dirname(r) == kok and not os.path.isdir(r)):
         return True
     # ev dizini dışındaki sistem yolları serbest (kilidin konusu kullanıcı verisi); ev altındaki her şey izin listesine tabi
     return not (r == home or r.startswith(home + os.sep))
@@ -125,7 +131,7 @@ else:
 # ---- 1. katman: izin listesi (ana-sıra ve alt-ajan için aynı) ----
 kotu = [ham for (r, ham) in adaylar if not izinli_mi(r)]
 if kotu:
-    sys.stderr.write("OKUMA-İZİN KİLİDİ (Karar 91): lider reposu Jarvis'ten yalnız kanon/ (core) okur; repo dışı kullanıcı yolu da kapalıdır. Reddedilen yol: %s\n" % ", ".join(sorted(set(kotu))))
+    sys.stderr.write("OKUMA-İZİN KİLİDİ (Karar 91/101): lider reposu kendi dizini + depo kökündeki kanon dosyalarını okur; jarvis/** ve repo dışı kullanıcı yolu kapalıdır. Reddedilen yol: %s\n" % ", ".join(sorted(set(kotu))))
     sys.exit(2)
 
 # ---- 2. katman: alt-ajan dalı (Karar 99 M2; cc/gelen Karar 100 M3) ----

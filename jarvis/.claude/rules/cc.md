@@ -10,4 +10,4 @@ paths:
 - Üç katman (Karar 89): Fable ana-sıra → Opus 5 lider (effort medium sabit) → Sonnet işçi; işçi bütçesi 10-15 çağrı, aile ≤3 eşzamanlı; işçi emri = kimlik · yazma-izni listesi · git yasağı · doğrulama komutu · çıktı şeması + "**açık** **soru**:" satırı.
 - Alt-ajan dönüşü ≤2k token bağlama; büyük çıktı dosyaya, özet + pointer. Alt-ajan okuma kısıtı hook'la (İB-83).
 - Atlas koşumu: tez → antitez (yalnız iddia listesi) → V26 sondaj → maskeli hakem (yapan ≠ ölçen); her iddia URL + AS-OF; D/K/X etiketi.
-- Raporlar `cc/rapor/YYYY-MM/`; devir dosyaları `cc/devir/`; Friday dönüşü `~/friday/cc/giden/` → `cc/devir/friday-*`.
+- Raporlar `cc/rapor/YYYY-MM/`; devir dosyaları `cc/devir/`; Friday dönüşü `~/sistem/friday/cc/giden/` → `cc/devir/friday-*`.

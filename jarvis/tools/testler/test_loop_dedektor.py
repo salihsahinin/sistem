@@ -14,7 +14,7 @@ def modul():
 class ImzaTest(unittest.TestCase):
     def test_bash_zinciri(self):
         m = modul()
-        self.assertEqual(m.bash_imza("hat koş ⟨cd ~/jarvis && python3 tools/katman-hatti.py > x.log; git add a b && git commit -q -F -⟩"), "Bash:py:katman-hatti+git:add+git:commit")
+        self.assertEqual(m.bash_imza("hat koş ⟨cd ~/sistem/jarvis && python3 tools/katman-hatti.py > x.log; git add a b && git commit -q -F -⟩"), "Bash:py:katman-hatti+git:add+git:commit")
         self.assertEqual(m.bash_imza("inline ⟨python3 - <<'EOF'\nprint(1)\nEOF\ngit status⟩"), "Bash:py:inline+git:status")
         self.assertEqual(m.bash_imza("⟨sqlite3 veri/baglam.sqlite \"select 1\"⟩"), "Bash:sqlite3")
 

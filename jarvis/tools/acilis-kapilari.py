@@ -10,7 +10,7 @@ Kapılar:
   K2 manifest     : --is "<anahtar>" verilirse cc/pipeline/pipeline-*.md + git log -15 içinde arar → "zaten koşmuş/koşuyor" adayları;
                     verilmezse manifestlerde SAHADA/AÇIK durum satırları listelenir.
   K3 silver       : veri/baglam.sqlite uretim.git_head_sha ≠ HEAD → BAYAT (tarif: python3 tools/katman-hatti.py).
-Kullanım: python3 tools/acilis-kapilari.py [--repo ~/jarvis] [--is "<anahtar>"] [--dk 15] [--json]
+Kullanım: python3 tools/acilis-kapilari.py [--repo ~/sistem/jarvis] [--is "<anahtar>"] [--dk 15] [--json]
 Çıkış: 0 tüm kapılar temiz · 1 en az bir kapı uyarı (ŞÜPHE ∨ koşmuş-aday ∨ BAYAT) · 2 repo/git okunamadı.
 Çıktı ≤ ~1,5 KB (KB-50 bağlam bütçesi); rakamlar sayım, kestirim yok.
 """
@@ -148,10 +148,11 @@ def kapi_silver(repo):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis"))
+    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis"))
     ap.add_argument("--is", dest="anahtar", default=""); ap.add_argument("--dk", type=int, default=15); ap.add_argument("--json", action="store_true")
     a = ap.parse_args(); repo = pathlib.Path(a.repo).expanduser().resolve()
-    if not (repo / ".git").exists() and not (repo / ".git").is_file():
+    # Karar 101 (F3): jarvis/ artık monorepo alt-dizini; .git kökte → git rev-parse ile doğrula
+    if subprocess.run(["git", "rev-parse", "--git-dir"], cwd=repo, capture_output=True).returncode != 0:
         print("repo okunamadı: %s" % repo); sys.exit(2)
     simdi = dt.datetime.now().astimezone()
     k = [kapi_canli(repo, a.dk, simdi), kapi_manifest(repo, a.anahtar), kapi_silver(repo)]

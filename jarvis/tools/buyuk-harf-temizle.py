@@ -134,7 +134,7 @@ def donustur(metin, say):
 def dosyalar(repo, katman):
     H = pathlib.Path.home()
     sicak = [repo / "CLAUDE.md", H / ".claude" / "CLAUDE.md"] + sorted((repo / "core").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/SKILL.md")) \
-        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-jarvis" / "memory").glob("*.md"))
+        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-sistem-jarvis" / "memory").glob("*.md"))
     ilik = [repo / "KILAVUZ.md", repo / ".claude" / "skills" / "README.md"] + sorted((repo / "wiki").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/references/*.md")) \
         + sorted((repo / ".claude" / "skills").glob("*/*.md"))
     # 09-17 (Salih "büyük harf sorunu sürüyor" analizi): öğrenme yan oturumu bu dosyaları her açılışta okur (ogren §0.2) —
@@ -153,7 +153,7 @@ def dosyalar(repo, katman):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--repo", default=str(pathlib.Path.home() / "jarvis")); ap.add_argument("--katman", default="sicak", choices=["sicak", "ilik", "ogrenme", "hepsi"])
+    ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis")); ap.add_argument("--katman", default="sicak", choices=["sicak", "ilik", "ogrenme", "hepsi"])
     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--uygula", action="store_true"); ap.add_argument("--diff", default="")
     ap.add_argument("--goster", type=int, default=6); ap.add_argument("--json", action="store_true")
     a = ap.parse_args(); repo = pathlib.Path(a.repo).expanduser().resolve()
