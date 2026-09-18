@@ -1,0 +1,44 @@
+{
+ "no": 17,
+ "tarih": "2026-09-18",
+ "baslik": "Hafıza mimarisi (Karar 102 zincir 2/2) · harness-hafıza dizini çelişkisi · Friday modeli",
+ "giris": "Zincir 2/2 Atlas koşumu bitti: 36 iddia, 27 sağlam / 7 daralan / 2 düşen. Mevcut düzenin 8 bileşeni literatürle eşlendi: 4 korunmalı · 2 eklenmeli · 1 değişmeli · 1 belirsiz. Bu masa hakemin üç mekanizma kalemini, imza isteyen harness-dizini çelişkisini ve masa-16 M3'ün açık bıraktığı Friday modeli sorusunu toplar. Teslim: raporlar/2026-09/2026-09-18-ajan-hafiza-mimarisi.md.",
+ "tetik": "Salih 09-18 ~18:0x: \"hükümler karar masasında verilecek, push onay, devam\" + masa-16 M3 notu \"fridayin opus olması mantıklı mı değerlendirelim\"",
+ "once_yapildi": "Karar 103 (masa-16, 5/5) deftere işlendi (6a8a85d) · hafıza Atlas koşumu + V26 + hakem <code>DONE</code> (dce5abd) · eskalasyon dersi sohbette verildi. Bunlar masa kalemi değil.",
+ "asof": "2026-09-18",
+ "kanit": [
+  {"bulgu": "Kapsül FIFO 8 madde", "deger": "değişmeli · D — literatürde ölçülmüş arıza: indeks limitinde sessiz düşme; geri-çağırma bütçesinde 18 dersten 2'si görünür", "kaynak": "cc/rapor/2026-09/rapor-2026-09-18-hafiza-hakem.md §ii", "etiket": "D"},
+  {"bulgu": "Defter köken alanı", "deger": "eklenmeli · D — yazar kimliği + model sürümü + AS-OF; Karar 102 (3) ile aynı yön", "kaynak": "hakem §ii", "etiket": "D"},
+  {"bulgu": "Bronz sessiz-arıza sayacı", "deger": "eklenmeli · D — format hatası küçük model %30,38 / güçlü %17,91 (Nemori); dedup-önce-çelişki sırası tespit oranı %49", "kaynak": "hakem §ii, tez-B #5/#9", "etiket": "D"},
+  {"bulgu": "İnsan onayı getirisi", "deger": "literatürde ölçülmemiş; 7 üründe zorunlu onay yok; kanon ileride, çürütülmemiş", "kaynak": "hakem §iii", "etiket": "D"},
+  {"bulgu": "LLM-üretilen bağlam dosyası", "deger": "başarı −%0,5 (SWE-bench Lite) / −%2 (AGENTbench), maliyet +%20; zarar depo-özeti bölümlerine özgü (Gloaguen arXiv 2602.11988, 2026-02)", "kaynak": "v26-denetim, hakem §iii", "etiket": "D"},
+  {"bulgu": "Harness oto-hafıza dizini", "deger": "~/.claude/projects/<proje>/memory/ depo dışında, makine-yerel; jarvis AGENTS.md §2 açık-kaynak görünürlük ilkesiyle gerilim", "kaynak": "hakem §vii-3", "etiket": "D"},
+  {"bulgu": "Friday model sorusu", "deger": "'orta model kalıcı lider' dış kanıtsız; ölçülen tek düzen güçlü lider + orta işçi (eski kuşak); Fable en dar kota (Salih)", "kaynak": "perspektif hakem §iii; masa-16 M3 notu", "etiket": "D/X"},
+  {"bulgu": "Koşum maliyeti", "deger": "8 ajan · ≈700k alt-ajan token · ≈40 dk", "kaynak": "bildirim sayaçları", "etiket": "sayım"}
+ ],
+ "hakem": "Maskeli hakem Opus 5 medium; V26 tavanı 3 rapora uygulandı; antitez-B'nin hatalı daraltması geri yükseltildi.",
+ "karar_no": "Karar 104",
+ "kalemler": [
+  {"id": "M1", "baslik": "Kapsül — sessiz-düşme freni", "rozet": "Katman-1 · kanon (İB-80 FIFO, Karar 92 M1)", "ne_demek": "Kapsülün 'Şu an' bölümü bugün 8 madde FIFO ile düşüyor; literatür ölçülmüş arızayı sessiz düşmede buluyor. Kalem: eşik madde sayısı mı ölçüm bütçesi mi; düşen madde nasıl haber verir.", "coklu": false,
+   "secenekler": [
+    {"etiket": "(a) Ölçüm bütçesi + kesilme bildirimi", "value": "Kapsül eşiği satır/KB ölçümüne çevrilir (madde sayısı ikincil sigorta); sıcak yüzeyden düşen her madde arşiv pointer'ı + kapsülde tek satır 'kesildi: <madde> → arsiv/…' bildirimi üretir; `tools/sicak-katman-fifo.py` revize.", "oneri": true, "aciklama": "Ne yaparım: script revizyonu + kapsül şablonuna bildirim satırı + test; İB-80 kaydı güncellenir. Artı: iki ölçülmüş arıza sınıfı (indeks limitinde sessiz düşme, geri-çağırma görünmezliği) kapanır; silme yasağı uygulanabilir olur. Eksi: kapsüle 1-2 satır bildirim yükü; bayt sigortasıyla çakışma yeniden ayarlanır. Gerekçe: D etiketli tek 'değişmeli' hüküm."},
+    {"etiket": "(b) FIFO aynen, yalnız bildirim", "value": "8 madde FIFO korunur; düşen madde için kapsülde tek satır bildirim eklenir.", "oneri": false, "aciklama": "Ne yaparım: script'e bildirim satırı. Artı: en küçük değişiklik. Eksi: eşik madde sayısında kalır, bayt/satır büyümesi ölçülmez."}
+   ]},
+  {"id": "M2", "baslik": "Defter köken alanı + bronz sessiz-arıza sayacı", "rozet": "Katman-1 · şema (defter şeması v2, veri katmanı)", "ne_demek": "İki 'eklenmeli' hüküm tek kalemde: (1) her defter kaydına köken alanı (yazar · model sürümü · AS-OF); (2) bronz→silver hattına sessiz-arıza sayacı (format hatası, dedup/çelişki sırası).", "coklu": false,
+   "secenekler": [
+    {"etiket": "(a) İkisi de girer", "value": "Defter kayıt zarfına `koken: {yazar, model, asof}` alanı (mevcut `[tip|kaynak|tarih]` zarfı genişler); katman-hatti'ye sessiz-arıza sayacı testi (format-hatası satırı + çelişki-tespit oranı) eklenir, `silver-saglik` görünümünde raporlanır.", "oneri": true, "aciklama": "Ne yaparım: ingest-semasi §zarf güncellemesi (Katman-1 metin) + katman-hatti test satırı + görünüm. Artı: Karar 102 (3) damgası deftere de iner; sessiz arıza görünür olur. Eksi: eski kayıtlar geriye dönük damgalanmaz (AS-OF kalır). Gerekçe: ikisi de D."},
+    {"etiket": "(b) Yalnız köken alanı", "value": "Defter köken alanı girer; sessiz-arıza sayacı ertelenir (tetik: ilk gözlenen sessiz arıza).", "oneri": false, "aciklama": "Ne yaparım: yalnız zarf. Artı: veri katmanına dokunulmaz. Eksi: ölçülmüş arıza sınıfı izlenmez kalır."}
+   ]},
+  {"id": "M3", "baslik": "Harness oto-hafıza dizini — açık-kaynak ilkesiyle çelişki", "rozet": "Katman-1 · kanon (jarvis AGENTS.md §2; m.16)", "ne_demek": "Claude Code'un otomatik hafızası `~/.claude/projects/<proje>/memory/` altında, depo dışında ve makine-yerel. Jarvis md §2: 'her hareket bu klasörde görünür düz dosya'. Çelişki gerçek: hafıza kayıtları depoda değil.", "coklu": false,
+   "secenekler": [
+    {"etiket": "(a) Aynalama: memory dizini depoya kopyalanır", "value": "Seans kapanışında `~/.claude/projects/-Users-HasanSalihSahin-sistem/memory/` → `jarvis/veri/hafiza-ayna/` deterministik kopya (script), commit'e girer; kaynak dizin değişmez; §2'ye tek satır.", "oneri": true, "aciklama": "Ne yaparım: `tools/hafiza-ayna.py` + seans-kapanis adımı + §2 satırı. Artı: görünürlük ilkesi korunur, harness davranışı değişmez, tarihçe git'te. Eksi: kopya çift kaynak (kanon = harness dizini, ayna salt-okur). Gerekçe: en ucuz, ilke kaybı yok."},
+    {"etiket": "(b) Beyanla istisna", "value": "§2'ye 'harness oto-hafızası depo dışında, makine-yerel; görünürlük istisnası' satırı; kopya yok.", "oneri": false, "aciklama": "Ne yaparım: tek satır. Artı: sıfır iş. Eksi: hafıza kayıtları git'te görünmez, ikinci makinede kaybolur (F2'de elle kopyalandı)."}
+   ]},
+  {"id": "M4", "baslik": "Friday'in modeli (masa-16 M3 notu)", "rozet": "Katman-1 · rol/model (Karar 89 revize, Karar 103 M2)", "ne_demek": "Fable en dar kota; Friday bugün Opus 5 medium. Karar 103 M2 eskalasyon desenini kabul etti (işçi ucuz, lider talep üzerine). Soru: Friday'in lider modeli ne olsun.", "coklu": false,
+   "secenekler": [
+    {"etiket": "(a) Friday Opus kalır, Fable yalnız Jarvis", "value": "Friday lider modeli Opus 5 medium; işçiler Sonnet varsayılan, eskalasyon Opus'a; Fable yalnız ana-sıra Jarvis (kanon, masa, son hakem onayı); ilk 3 turda eskalasyon sayısı ve sapma ölçülür.", "oneri": true, "aciklama": "Ne yaparım: Friday charter'ına model satırı + eskalasyon koşulları; ölçüm satırı silver'a. Artı: Fable kotası ana-sıraya ayrılır; Friday sapma serisi (2·1·0·0·0) Opus'la alındı, sürekliliği korur. Eksi: 'Opus daha iyi' dış kanıtsız; ölçüm gerekir. Gerekçe: kota kısıtı + mevcut kanıt serisi."},
+    {"etiket": "(b) Friday de Fable", "value": "Friday lider modeli Fable; ölçülen tek düzen (güçlü lider + orta işçi) yönünde.", "oneri": false, "aciklama": "Ne yaparım: charter model satırı. Artı: kalite. Eksi: Fable kotası ikiye bölünür, ana-sıra kısılır; 'tek Fable oturumu' hedefiyle çelişir."},
+    {"etiket": "(c) Friday Sonnet, Opus yalnız eskalasyon", "value": "Friday lider modeli Sonnet 5; zor düğümde Opus'a eskalasyon.", "oneri": false, "aciklama": "Ne yaparım: charter + eskalasyon. Artı: en ucuz. Eksi: sentez/hakem işi Sonnet'te ölçülmedi; sapma serisi sıfırdan başlar."}
+   ]}
+ ]
+}
