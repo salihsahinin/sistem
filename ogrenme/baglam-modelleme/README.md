@@ -1,0 +1,69 @@
+# Bağlam Penceresinin Matematiksel Modellemesi (baglam-modelleme) — Sıfırdan İleri Seviyeye (Salih emri 2026-09-18 seans açılışı)
+
+> **Salih beyanı (09-18, aynen):** "sistemin context windowu doğru yönetmesini sağlamak ve optimize edilmiş contextte çalışmasını sağlamak için, sistemin context windowu için matematiksel modelleme öğrenmek istiyorum … context engineering bağlamında matematiksel modelleme öğrendikten sonra da sisteme öğrendiklerimizi implement edeceğiz."
+> Amaç ikili: (a) bağlam penceresini **sayısal** nesne olarak modellemeyi öğrenmek, (b) seri sonunda öğrenileni Jarvis'in bağlam katmanına (kapsül FIFO · silver adresli erişim · KB-50 bütçe · İB-81 sıkıştırma · İB-87 talimat-yükü kütüğü) uygulamak (ürün turu, Karar 94 EK).
+
+**Yüzey:** ayrı sohbet (öğrenme şeridi kuralı). Açılış tetiği: **"seans başı, baglam"**. O sohbet bu README'yi + `ilerleme.md`'yi okur, `ogren` skill'iyle (`PROBE` → `PLAN` → `TEACH` → `CLOSE`) sıradaki haftayı işler, ders kaydını `dersler/`e yazar. Yan oturum worktree **açık** + kendi branch'i + PR (protokol §5 EK, EK-2).
+
+## Sınırlar
+- **md.49:** yalnız kamu veri/kamu kıyaslama setleri; işyeri verisi girmez. Jarvis'in kendi kütükleri (hareket, prompt, talimat-yükleme) serbest — depo açık kaynak.
+- **Karar 73:** her derste ≥1 formül = tanım + sembol tablosu + elle işletilmiş sayısal örnek.
+- **Karar 68:** araç/model/pencere-boyutu iddiaları AS-OF damgalı; sektör başlıkları ders başında canlı teyit (bu tabloda AS-OF ≤2026-01 model hafızası, doğrulanmadı).
+- **Öğretim biçimi:** doğrudan tanım + mekanizma + somut örnek; görsel yalnız istekle ve mekanizma simülasyonu; cevap başına az konu; pratik = Salih'in eli.
+- **Hazırı temel al:** tiktoken / Anthropic `count_tokens` / promptfoo / RULER-LongBench setleri kullanılır; benzerleri sıfırdan yazılmaz. Kendi kodu yalnız mekanizmayı elle görmek için, ≤50 satır.
+- **Ön-koşul bağı:** B1 ve B7 için 6.042J (sayma, olasılık) yardımcı; B5 için 6.006 (veri yapıları, önbellek) yardımcı — zorunlu değil, ders içinde tanım verilir.
+
+## Müfredat — 11 kutu / 5 seri (kutu = 1-2 oturum, oturum 1,5-2,5 sa; `DONE` yazılı)
+| B | Seviye | Konu | Sektör başlığı (EN; AS-OF ≤2026-01, ders içinde doğrulanır) | Tek-satır `DONE` (Salih yapar) | Formül (Karar 73) | Kamu veri / araç |
+|---|---|---|---|---|---|---|
+| B0 | 0 temel | **Sayım:** token nedir, BPE, bağlam penceresi = sabit bütçe N, giriş/çıkış/önbellek ayrımı, sayım araçları; bir Jarvis açılışının token dökümü | *Tokenization (BPE)* · *Context Window* · *Token Counting* | Kendi CLAUDE.md + kapsül + pano + SKILL'lerin token sayımı tablo hâlinde (tiktoken ya da `count_tokens`) | bütçe kısıtı Σ tᵢ ≤ N; oran r = T/C (token/karakter), elle 3 dosya | tiktoken · Anthropic `count_tokens` · hareket kütüğü |
+| B1 | 1 kombinatorik | **Paketleme:** bağlam kurulumu = 0/1 sırt çantası (değer vᵢ, maliyet tᵢ, kapasite N); açgözlü v/t sırası; öncelik sınıfları (sabit-önek / iş / geçmiş); kutu paketleme | *Context Assembly* · *Budget Allocation (Knapsack)* | 8 parçalık gerçek Jarvis girdisini v/t ile sırala, N=20k altında seçim; Jarvis'in bugünkü sırasıyla karşılaştır | max Σ vᵢxᵢ, Σ tᵢxᵢ ≤ N; açgözlü oran vᵢ/tᵢ, elle 6 parça | kendi kütükleri · 6.042J sayma |
+| B2 | 2 bilgi kuramı | **Bilgi ve sıkıştırma:** entropi, çapraz-entropi, perplexity, KL, karşılıklı bilgi (ilgililik ölçüsü), özetleme = kayıplı sıkıştırma, oran-bozulma eğrisi | *Information Theory for LLMs* · *Perplexity* · *Prompt Compression (LLMLingua)* | Bir kapsül maddesini 3 sıkıştırma oranında yaz, kayıp ölçütü (soru-cevap doğruluğu) tablosu | H = −Σ p log₂ p; **ppl** = 2^{CE}; I(X;Y) = H(X) − H(X|Y); elle 4-sembollü dağılım | LLMLingua (kamu) · GSM8K 10 soru |
+| B3 | 3 mekanizma | **Dikkat ve konum:** softmax dikkat, hesap O(n²), KV önbellek bellek O(n·L·d), RoPE ve uzatma, orta-kayıp U-eğrisi, iğne-samanlık testi | *Attention* · *KV Cache* · *Lost in the Middle* · *Positional Encoding (RoPE)* | 1 iğne-samanlık taraması (3 konum × 3 uzunluk) promptfoo ile; konum-doğruluk tablosu | Attn = softmax(QKᵀ/√d)V; KV bellek = 2·n·L·d·b, elle n=100k, L=32, d=4096, b=2 | Liu et al. 2023 · **ruler** · promptfoo |
+| B4 | 3 mekanizma | **Erişim ve benzerlik:** vektör uzayı, kosinüs, BM25, **mmr** (çeşitlilik), yeniden-sıralama, recall@k; RAG'da k seçimi = bütçe sorusu | *Retrieval-Augmented Generation* · *Embedding Similarity* · *BM25* · *MMR / Reranking* | `veri/baglam.sqlite` FTS'te 10 sorgu için BM25 recall@5 ölçümü; k-bütçe tablosu | cos = a·b/(‖a‖‖b‖); BM25 terim skoru; **mmr** = λ·rel − (1−λ)·maks-benzerlik, elle 3 belge | silver FTS (İB-… erişim) · **beır** küçük alt-küme |
+| B5 | 4 sistem | **Önbellek ve katman ekonomisi:** sabit-önek/oynak-son, önbellek isabet oranı h, LRU/LFU/Belady, **ttl**, Zipf erişim; sıcak/ılık/soğuk (kapsül FIFO K-madde · bronz-silver-gold) maliyet modeli | *Prompt Caching* · *Cache Hit Rate* · *Memory Hierarchy (**lru**)* · *Hot/Warm/Cold Tiers* | Jarvis açılış önekinin sabit/oynak bölümlemesi + 5 oturumluk h tahmini; maliyet farkı tablosu | C = p_in(1−h)T + p_cache·h·T + p_out·O; Belady optimum; elle h∈{0, 0,5, 0,9} | Anthropic prompt caching docs (canlı) · hareket kütüğü · 6.006 |
+| B6 | 4 sistem | **Dinamik:** oturum boyunca doluluk f(t), sıkıştırma (compaction) = kontrol döngüsü, doluluk kovalı Markov zinciri, hafıza bozunması (üstel), kuyruk (Little yasası) | *Context Compaction* · *Session State Machine* · *Exponential Decay* · *Little's Law* | 3 gerçek Jarvis oturumunun f(t) eğrisi (prompt kütüğünden) + sıkıştırma anları işaretli | f(t) = f₀ + λt; L = λW; w(t) = e^{−t/τ}; elle τ seçimi | `veri/bronz/prompt-olay.jsonl` · seans transkript boyları |
+| B7 | 5 optimizasyon | **Optimizasyon ve kontrol:** çok-amaçlı (kalite × maliyet × gecikme), Pareto sınırı, Lagrange gevşetme, bilgi değeri (VoI), bandit (dahil et / çıkar), RL formülasyonu (durum = bağlam) | *Multi-Objective Optimization* · *Pareto Frontier* · *Value of Information* · *Bandits for Context Selection* | 5 bağlam politikası için Pareto tablosu (kalite, token); baskın olmayanlar işaretli | L = Q − λ_c·C − λ_t·T; VoI = E[max] − max E; **ucb** = μ + √(2 ln n / nᵢ); elle 3 kol | kendi ölçümleri · 6.042J olasılık |
+| B8 | 5 ölçüm | **Ölçüm ve deney:** bağlam-boyutu ↔ kalite eğrisi, bağlam kullanım oranı, RULER/LongBench, ablasyon, A/B, bootstrap GA, güç; evals şeridi bağı (H6) | *Long-Context Benchmarks (**ruler**, LongBench)* · *Context Utilization* · *Ablation Study* | promptfoo ile 1 ablasyon (bağlam 4 boyut × 20 vaka) + bootstrap %95 GA | bootstrap GA (1000 örnekleme); etki d = (μ₁−μ₂)/s; elle 20 vaka | **ruler** · LongBench · promptfoo (evals H1 seti) |
+| B9 | 6 çok-ajan | **Çok-ajan bağlam:** alt-ajan bütçesi, özetleme zinciri kaybı (1−ε)^k, devir dosyası = bilgi darboğazı, katman ekonomisi Fable→Opus→Sonnet, ≤2k dönüş kuralı (KB-50) | *Multi-Agent Context Isolation* · *Handoff / Information Bottleneck* · *Summarization Chains* | Friday tur-2→4 devir dosyalarında ε tahmini (kayıp soru sayısı / toplam) + maliyet tablosu | I_k = I₀(1−ε)^k; toplam C = Σ katman(token × fiyat); elle ε=0,1, k=3 | `cc/devir/friday-*` · `v_skill_kosum` |
+| B10 | kapanış | **Sentez + ürün turu (Karar 94 EK):** aday listesi → 3-model (biri zorunlu "hiçbiri") → iyileşme metriği önce → Salih hükmü → ana-sırada icra. Bugünkü adaylar (09-18): (1) kapsül/pano FIFO → v/t skorlu seçim (B1) · (2) sabit-önek/oynak-son bölümleme + isabet ölçümü (B5) · (3) İB-81 soru-üretmeyen sıkıştırma = oran-bozulma eşiği (B2) · (4) KB-50 alt-ajan dönüş ≤2k → (1−ε)^k kayıp ölçümü (B9) · (5) İB-87 talimat-yükü kütüğü → yük ↔ kalite eğrisi (B8) | *Context Engineering* · *Eval-driven Context Optimization* | 1 sayfalık "bağlam bütçesi el kitabı" + ürün turu hükmü (masa) | seçilen adayın iyileşme metriği: Δkalite / Δtoken, ölçüm n ≥ 20 | — |
+
+## Eğitim serisi DAG'ları (kenar = "önce bunu"; düğüm = kutu)
+Topolojik sıra: **B0 → B1 → B2 → B3 → B4 → B5 → B6 → B7 → B8 → B9 → B10**. Seriler ayrı oturum kümesidir; seri içinde sıra, seriler arası bağımlılık kenarlarla.
+
+- **Seri A — Sayım ve bütçe (temel):** `B0 → B1` · `B0 → B2`. Çıkış: bağlam = sayılabilir bütçe; seçim = sırt çantası; kayıp = bilgi ölçüsü.
+- **Seri B — Mekanizma (modelin içi):** `B0 → B3` · `B2 → B3` (perplexity → dikkat) · `B3 → B4` (konum/KV → k seçimi) · `B2 → B4` (karşılıklı bilgi → ilgililik).
+- **Seri C — Sistem (Jarvis katmanları):** `B0 → B5` · `B1 → B5` (öncelik → katman) · `B5 → B6` (önbellek → dinamik).
+- **Seri D — Optimizasyon ve ölçüm:** `B1 → B7` · `B5 → B7` · `B6 → B7` · `B7 → B8` · `B4 → B8` (erişim ölçümü; evals H6 bağı).
+- **Seri E — Çok-ajan ve ürün:** `B2 → B9` · `B6 → B9` · `B7 → B9` · `B8 → B10` · `B9 → B10`.
+
+Kutu-içi DAG (düğüm = tek akıl-adımı) her dersin `PLAN` fazında çizilir (`ogren` §2); bu tablo kutular-arası DAG'dır. Bilinen kutu `PROBE` ile atlanır.
+
+## ⌥ Jarvis notu — kutu başına depodaki karşılık (repo taraması 2026-09-18, Explore alt-ajanı; yol:satır)
+| B | Depoda var (ders içinde okunur, sıfırdan yazılmaz) |
+|---|---|
+| B0 | `tools/baglam-seyir.py` (tur başına bağlam = input+cache_creation+cache_read; eşik 128k, statik önek 60k) · `veri/gorunum/v_baglam_seyri.csv`, `v_baglam_gunluk.csv` · `tools/skill-butce.py` (çevrim sabiti **4,1 char/token** ölçüldü, `core/skill-uretim-semasi.md:64`) · `tools/kosum-maliyeti.py` · bronz kütükler `baglam-olay` · `talimat-yukleme-olay` · `prompt-olay` |
+| B1 | `CLAUDE.md:3` bütçe ≤80 satır/≤7 KB ("v1 14 KB'a şişince bozuldu") · `tools/kural-sayaci.py` (≤100 eşzamanlı kural, KB-50) · `tools/kural-envanter.py` (49 dosya, 1.017 birim, T0-T3) · `tools/prompt-dosya.py` + `core/prompt-dosya-tablosu.tsv` (İB-79 talep-anında aralık paketleme) · tüzük m.20 pointer, m.22 ufka göre yerleşim · `wiki/pointer-sistemi.md` |
+| B2 | `core/sema-sikistirma.md` (tetik = bağlam/pencere oranı; token −%39-61, doğruluk ±2) · `core/world-model-tasarimi.md:46-53` (lossless→lossy sırası; ≈%90 tasarruf ~4-6 puan vergi; kabul kapısı = yerel QA-eval) · `core/ingest-semasi.md:63` eşikler (150/200 satır/2k token) · `wiki/ingest-semasi.md:35` (LSM-tree benzeşimi, write amplification) |
+| B3 | `core/ajan-metodolojisi.md:19` (NoLiMa: 32K'da 11/13 model taban-%50 altı) · `core/halusinasyon-paketi.md:8,45` (>32K → H +1) · `core/baglam-anahtar-kaydi.md:7` (çelişkili iki sürüm yan yana → doğruluk %85→%10-44) |
+| B4 | `tools/erisim-fts.py` (FTS5 bm25 + recall@5/MRR/nDCG@10) · `tools/erisim-kalibrasyon.py` (w grid, 100 altın soru, çekimserlik eşiği) · `tools/erisim-vektor.py` (e5-large + bge-m3, RRF k=60) · `veri/gorunum/v_erisim_*.csv` · `veri/sozlesme/erisim-eval-sorular.jsonl` · `v_okuma_orani` (09-18: aralık oranı 0,969) · `wiki/tarama-yontemleri.md` |
+| B5 | `tools/sicak-katman-fifo.py` (K = 8/5/16/80 madde + bayt sigortası, Karar 92) · `core/world-model-tasarimi.md:51,68` (kararlı-önek + delta = prefix-cache karşılığı) · `v_baglam_seyri.ilk_tur_baglam` (önbelleklenebilir önek kestirimi) · `.claude/hooks/session-start.sh` (KB-51: hook çıktısı ~2 KB'a kırpılır) · `tools/baglam-skill-aday.py` (K×P×B×(1−okunma) skoru) · `wiki/kolon-katmani.md` · `tools/katman-hatti.py` |
+| B6 | `tools/devir-ani.py` (`DEVRET ↔ (token ≥ E1 ∧ görev-sınırı) ∨ token ≥ E2`; E1=128k, E2=600k `[?]`; yalnız loglar) · KB-52 (`veri/karar-borcu.jsonl:68`) · İB-81 (`:146`, hiç koşmadı) + `raporlar/2026-09/ib81-kuru-kosum-tuzuk-2026-09-11.md` · `core/skill-uretim-semasi.md:82,104` (5k/skill, 25k toplam) · `damitma` skill'i · m.8 silme yasağı |
+| B7 | tüzük m.37 (token×zaman×kalite×risk 3-model) + `:55,57` token×zaman dipnotu · `wiki/token-x-zaman.md` (2 paralel ajan ~166k/~7 dk ↔ tek seri) · `CLAUDE.md:34` (−%30 hükmü) · `tools/skill-esik.py` (medyan bandı, 2× sapma) · m.5 "bağlam kirliliği" istisnası |
+| B8 | `tools/katman-olcum.py` · `wiki/olcum-banki.md` (yalnız GA'lı ölçüm girer; γ = 0,7569 ± 0,0588 n=31) · m.29 · `tools/kod-orani-olcum.py` (İB-71 bağlam kompozisyonu, 4 kova) · `.claude/hooks/instructions-loaded.sh` (Karar 96 M4) · `tools/olcum-dortlu.py` · `v_skill_kosum`, `v_amb_kosum_maliyet`, `v_kosum_tahmin_sapma` · fikir-kutusu V97 |
+| B9 | `core/ajan-metodolojisi.md:19` (işçi dönüşü ≈1-2k token) · `core/sablonlar/gorev-fonksiyonu.md:35,58` (zincir) · `.claude/hooks/pretool-altajan-okuma.sh` (İB-83 izolasyon kilidi) · `veri/bronz/altajan-okuma-olay.jsonl` · `tools/devir-md2json.py` + `cc/devir/` · m.42 · `wiki/paralel-oturum-protokolu.md` |
+| B10 | KB-50 (`veri/karar-borcu.jsonl:66`: statik ≤~60k ∧ Jarvis-özel ≤~25k ∧ kural ≤100 — tüm adayların çapası) · `tools/SCRIPTLER.md:39-41,70-81` bağlam ailesi envanteri · pano K-019 |
+
+**Depoda eksik olan (kanonda adı var, ölçümü/scripti yok) → ürün turu adaylarına eşleme:**
+1. Önbellek isabet oranı h = cache_read/(cache_read+cache_creation+input) hiçbir görünümde yok; önek kırılmasının maliyeti sayılmadı → **aday (2)** (B5).
+2. Compaction/devir eşiği ateşlemiyor (`devir-ani.py` yalnız loglar; E2 kalibre edilmedi); sıkıştırma-sonrası kural-hayatta-kalma testi yok → yeni **aday (6)** (B6).
+3. İB-81 çekirdek yeniden-oluşumu hiç koşmadı; periyot, kayıp oranı, "soru-üretmeyen" ölçüsü tanımsız → **aday (3)** (B2/B6).
+4. "Yüklendi ama okunmadı" israf tokenı: `talimat-yukleme-olay` ile `v_okuma_orani` eşlenmiyor (V97 fikir) → **aday (5)** (B8).
+5. Uzun-bağlam kalite eğrisi ve devir kaybı ε ölçülmedi; ≈1-2k işçi dönüşü ölçümsüz sabit → **aday (4)** (B9) + B8 ablasyonu.
+
+## Ders kaydı biçimi
+`dersler/YYYY-MM-DD-BN-konu.md` — blok: tanım → mekanizma → elle örnek → kontrol sorusu; ≤3 kavram/blok; `## Salih notu` serbest; "⌥ Jarvis notu" = düğümün depodaki karşılığı (script/hook/kural), ürün turu aday listesi bu bloklardan toplanır.
+
+## Ölçüm (m.29 deneysel; kapanışta yoklanır)
+- Kutu `DONE`'u yazılı çıktıyla (dosya/koşum adresi), beyanla değil; pratik `DONE` yalnız Salih beyanıyla.
+- Seri sonunda: token dökümü tablosu (B0) · Pareto tablosu (B7) · ablasyon + GA (B8) · ε tahmini (B9) · el kitabı + ürün hükmü (B10). Sapma tek cümle `ilerleme.md`'ye.
