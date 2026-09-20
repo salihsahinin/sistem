@@ -398,6 +398,26 @@ def t_a(con, S, kural, kosum_id):
 
 
 # ---------------------------------------------------------------- kuyruk olay kütüğü + yazım
+def t_sa(con, S):
+    """T-SA sessiz-arıza sayacı (Karar 104 M2, masa-17 2026-09-20): zarf format hatası · köken eksik · çelişki-tespit oranı (bilgi)."""
+    zorunlu = ("tip", "kaynak", "tarih", "hedef", "sema")
+    fmt, kok, of, ok_ = 0, 0, [], []
+    for kid, metin, zj, zt in con.execute("SELECT kayit_id, metin, zarf_json, zarf_tarih FROM kayit WHERE metin LIKE '%[tip:%' ORDER BY dosya_id, sira"):
+        try:
+            z = json.loads(zj) if zj else None
+        except json.JSONDecodeError:
+            z = None
+        alan = (z or {}).get("alanlar", z) or {}
+        if z is None or any(not str(alan.get(k, "")).strip() for k in zorunlu):
+            fmt += 1; of.append(kid); continue
+        if (zt or "") >= "2026-09-20" and not str(alan.get("koken", "")).strip():
+            kok += 1; ok_.append(kid)
+    S.ekle("T-SA-FORMAT", fmt, of); S.ekle("T-SA-KOKEN", kok, ok_)
+    sicak = con.execute("SELECT COUNT(*) FROM kayit k JOIN dosya d ON d.dosya_id=k.dosya_id WHERE d.katman='sicak'").fetchone()[0] or 0
+    tespit = sum(n for t, n, _o, _n in S.liste if t.startswith("T-C") or t.startswith("T-A"))
+    S.ekle("T-SA-TESPIT", 0, [], "tespit %d / sıcak kayıt %d = %.1f‰ (bilgi; taban yok, m.29)" % (tespit, sicak, (1000.0 * tespit / sicak) if sicak else 0.0))
+
+
 def kuyruk_kutugu_oku(yol):
     """Olay kütüğünü yeniden oynat → açık kuyruk {anahtar: tespit_tarihi}."""
     acik = {}
@@ -589,7 +609,7 @@ def main():
     sema_hazirla(con)
     n_kaydi = anahtar_kaydini_yukle(con, reg, ad_mod, KAYIT_YOLU)
     t_c1_c2(con, S); t_c3(con, S, reg, ad_mod, kurallar); t_c4(con, S); t_c5(con, S); t_c6(repo, S, kurallar)
-    t_b(con, S, kurallar, seanslar, a.snapshot); t_a(con, S, kurallar, kosum_id)
+    t_b(con, S, kurallar, seanslar, a.snapshot); t_a(con, S, kurallar, kosum_id); t_sa(con, S)
     if butunluk:
         S.ekle("T-C1", S.liste[0][1] + len(butunluk), S.liste[0][2] + butunluk, "anahtar-denetim bütünlük hataları dahil")
         S.liste.pop(0)

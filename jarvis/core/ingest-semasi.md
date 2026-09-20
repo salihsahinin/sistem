@@ -13,6 +13,7 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 - **Zorunlu 5:** `tip` · `kaynak` (yüzey+hat+tarih — çift-girişi yakalayan dedup anahtarı) · `tarih` · `hedef` (bilinmiyorsa `-`) · `sema`.
 - **syslog kuralı:** alan başlığı hep durur, değer `-` olabilir ("doldurulmadı" ≠ "yok").
 - **Opsiyonel ama yazılırsa katı:** `onem: 1-10` · `gecerli-bitis:` · `baglanti: [[wiki-adı]]` · `dogrulama:` (borçta `DONE` prosedürü).
+- **`koken: <yazar>/<model>/<asof>` (Karar 104 M2, masa-17 2026-09-20):** kaydı kim, hangi model sürümüyle, hangi tarihte üretti (örnek `koken: jarvis/claude-fable-5-1/2026-09-20`; Salih hükmü `salih/masa-17/2026-09-20`). 09-20 sonrası **defter** kayıtlarında zorunlu; eski kayıtta `-` ya da yok (AS-OF, m.8). Sayaç: `silver-saglik` T-SA-KOKEN (uyarı kanalı). Gerekçe: hafıza Atlas 2/2 hakem §ii + Karar 102 (3) model-sürümü damgası.
 - Gerekçe: en olgun standartlar 0-5 zorunlu alanla yaşıyor (ODCS/CloudEvents/Dublin Core); ağır şema = ölü şema (tek zorunlu adım kaldırınca +%45 dönüşüm — rapor D.3).
 
 ## 2. Tip kümesi — kapalı, 8 değer

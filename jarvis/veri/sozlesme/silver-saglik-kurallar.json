@@ -118,6 +118,27 @@
    "sinif": "anlamsal",
    "siddet": "aday",
    "kaynak": "KB-41 (a) ContraDoc %54↔%70-93"
+  },
+  {
+   "id": "T-SA-FORMAT",
+   "ad": "zarf format hatası: metin `[tip:` ile başlar ∧ zarf ayrışmadı ∨ 5 zorunlu alandan biri boş (sessiz-arıza sayacı; uyarı)",
+   "sinif": "sessiz-ariza",
+   "siddet": "warn",
+   "kaynak": "Karar 104 M2 (masa-17, 2026-09-20); hakem §ii Nemori format-hatası %30,38 / %17,91; m.29"
+  },
+  {
+   "id": "T-SA-KOKEN",
+   "ad": "köken eksik: zarf tarihi ≥ 2026-09-20 ∧ `koken:` alanı yok (yazar/model/asof damgası; Karar 102 (3) ile aynı yön)",
+   "sinif": "sessiz-ariza",
+   "siddet": "warn",
+   "kaynak": "Karar 104 M2 (masa-17, 2026-09-20); ingest-semasi §1 koken alanı"
+  },
+  {
+   "id": "T-SA-TESPIT",
+   "ad": "çelişki-tespit oranı: (T-Ç ihlal + T-A aday) / sıcak kayıt ‰ — bilgi satırı, taban yok (hakem §ii dedup-önce-çelişki %49)",
+   "sinif": "sessiz-ariza",
+   "siddet": "aday",
+   "kaynak": "Karar 104 M2 (masa-17, 2026-09-20); deneysel m.29, eşik yok"
   }
  ],
  "muafiyet": {
