@@ -1,29 +1,37 @@
 #!/usr/bin/env python3
-"""Sıcak-katman FIFO sayacı (İB-80, Karar 92 M1 — Salih hükmü 2026-09-10: "konu sayısı asıl öncelik; bayt sonra revize").
+"""Sıcak-katman FIFO sayacı (İB-80; Karar 92 M1 2026-09-10 → Karar 104 M1 2026-09-20 revizyonu).
 
-Ne yapar: sıcak dosyaların MADDE sayısını (birincil tetik) ve bayt boyutunu (ikincil sigorta) sayar; tavanı aşan
-dosya için FLAG basar ve arşive inecek EN ESKİ maddeleri listeler. TAŞIMAZ — taşıma seans kapanışında `[damıtma]`
-commit'iyle elle yapılır (m.8: silme yok, arşiv `arsiv/kapsul-YYYY-MM-DD.md` ∨ ilgili arşiv dosyası).
+Karar 104 M1 (masa-17, Salih): eşik **bayt/satır ölçümüne** çevrildi (birincil); madde sayısı **ikincil sigorta**.
+Gerekçe: madde-FIFO indeks limitinde sessiz düşüyordu (hafıza Atlas 2/2 hakem §ii — literatürde ölçülmüş arıza);
+bayt bütçesi hook'un yüklediği gerçek bağlamı ölçer. Karar 92 M1 "madde birincil" `gecerli-bitis: 2026-09-20`.
 
-Madde tanımı (deterministik):
-  kapsül  → `## Şu an` bölümündeki `- ` satırları                       (K = 8)
-  pano    → `## AKTİF` tablosundaki `| K-` satırları                      (K = 5)
-  MEMORY  → `MEMORY.md` içindeki `- [` indeks satırları                   (K = 16)
-  CLAUDE  → CLAUDE.md satır sayısı                                        (K = 80; "bir satır girer bir çıkar")
-Bayt sigortası: KILAVUZ boyut bölümü (kapsül 8 KB · pano 12 KB · CLAUDE.md 7 KB · MEMORY 4 KB[?]) — Salih 09-10: bayt eşikleri
-"daha sonra bayta uygun revize edilecek"; bu değerler geçici, m.29.
+Ne yapar: sıcak dosyaların bayt (ve kapsül/CLAUDE için satır) boyutunu ölçer; tavanı aşan dosya için FLAG basar,
+arşive inecek EN ESKİ maddeleri (bayt tavanının altına inene dek) listeler ve her biri için kapsüle yapıştırılacak
+**kesilme bildirimi** satırı üretir: `kesildi: <madde başı> → arsiv/kapsul-YYYY-MM-DD.md`. TAŞIMAZ — taşıma seans
+kapanışında `[damıtma]` commit'iyle elle yapılır (m.8: silme yok, arşiv dosyası + pointer + kapsülde bildirim satırı).
 
-Kullanım: python3 tools/sicak-katman-fifo.py [--json] [--repo <yol>]
+Madde tanımı (deterministik; arşive inme birimi):
+  kapsül  → `## Şu an` bölümündeki `- ` satırları          (sigorta K = 8)
+  pano    → `## AKTİF` tablosundaki `| K-` satırları         (sigorta K = 5)
+  MEMORY  → `MEMORY.md` `- [` indeks satırları (user-* muaf) (sigorta K = 16)
+  CLAUDE  → AGENTS.md satırları (madde = satır; kesim yok, "bir satır girer bir çıkar")
+Bayt tavanı (birincil): kapsül 8 KB · pano 12 KB · MEMORY 4 KB[?] · AGENTS.md 7 KB. Satır tavanı: kapsül 40 (hook ilk 40
+satırı yükler) · AGENTS.md 80. Değerler KILAVUZ boyut bölümünden; MEMORY 4 KB deneysel m.29 (İB-80 bayt revizyonu 5 kapanış sonra).
+
+Kullanım: python3 tools/sicak-katman-fifo.py [--json] [--repo <yol>] [--tarih YYYY-MM-DD]
 Çıkış kodu: 0 = aşım yok · 3 = en az bir FLAG (bilgi; engel değil).
 """
-import argparse, json, os, re, sys, unicodedata
+import argparse, datetime, json, os, re, sys, unicodedata
 
-TAVAN = {  # ad: (madde K, bayt)
-    "kapsul": (8, 8 * 1024),
-    "pano": (5, 12 * 1024),
-    "memory": (16, 4 * 1024),
-    "claude": (80, 7 * 1024),
+TAVAN = {  # ad: (bayt B, satır S ∨ None, madde sigortası K ∨ None)
+    "kapsul": (8 * 1024, 40, 8),
+    "pano": (12 * 1024, None, 5),
+    "memory": (4 * 1024, None, 16),
+    "claude": (7 * 1024, 80, None),
 }
+ARSIV = {"kapsul": "arsiv/kapsul-{t}.md", "pano": "arsiv/kuyruk-arsiv/pano-arsivi-{t}.md",
+         "memory": "arsiv/memory-arsivi-{t}.md", "claude": None}
+MEM_ANAHTARLAR = ("-Users-HasanSalihSahin-sistem", "-Users-HasanSalihSahin-sistem-jarvis")  # Karar 101: iki anahtar; ilki canlı (Karar 104 M3)
 
 
 def kapsul_maddeler(t):
@@ -45,17 +53,31 @@ def claude_maddeler(t):
     return t.splitlines()
 
 
+def madde_basi(m):
+    """Bildirim satırı için maddenin tanınır başı: kalın başlık varsa o, yoksa ilk 60 karakter."""
+    k = re.search(r"\*\*(.{3,80}?)\*\*", m)
+    return (k.group(1).strip() if k else m.lstrip("-| ").strip()[:60]).rstrip(" :")
+
+
+def memory_yolu():
+    for a in MEM_ANAHTARLAR:
+        y = os.path.expanduser(f"~/.claude/projects/{a}/memory/MEMORY.md")
+        if os.path.exists(y):
+            return y
+    return os.path.expanduser(f"~/.claude/projects/{MEM_ANAHTARLAR[0]}/memory/MEMORY.md")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--json", action="store_true", help="makine çıktısı")
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    ap.add_argument("--tarih", default=datetime.date.today().isoformat(), help="arşiv dosya adı tarihi (deterministik koşum için sabitle)")
     a = ap.parse_args()
-    mem = os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis/memory/MEMORY.md")
     dosyalar = {
         "kapsul": (os.path.join(a.repo, "core", "durum-kapsulu.md"), kapsul_maddeler),
         "pano": (os.path.join(a.repo, "core", "pano.md"), pano_maddeler),
-        "memory": (mem, memory_maddeler),
-        "claude": (os.path.join(a.repo, "CLAUDE.md"), claude_maddeler),
+        "memory": (memory_yolu(), memory_maddeler),
+        "claude": (os.path.join(a.repo, "AGENTS.md"), claude_maddeler),
     }
     sonuc, flag = [], False
     for ad, (yol, f) in dosyalar.items():
@@ -63,32 +85,42 @@ def main():
             sonuc.append({"ad": ad, "yol": yol, "durum": "YOK"}); continue
         ham = open(yol, encoding="utf-8").read()
         t = unicodedata.normalize("NFC", ham)  # macOS dosyaları NFD gelebilir ("Şu an" başlığı eşleşmez); bayt ham metinden
-        maddeler = f(t); n, b = len(maddeler), len(ham.encode("utf-8"))
-        K, B = TAVAN[ad]
-        tasan_madde = max(0, n - K)
-        durum = "FLAG" if (tasan_madde > 0 or b > B) else "OK"
+        maddeler = f(t); n, b, s = len(maddeler), len(ham.encode("utf-8")), len(ham.splitlines())
+        B, S, K = TAVAN[ad]
+        tetik = []
+        if b > B: tetik.append("bayt")
+        if S and s > S: tetik.append("satır")
+        if K and n > K: tetik.append("madde-sigorta")
+        durum = "FLAG" if tetik else "OK"
         flag |= durum == "FLAG"
         # FIFO yönü: kapsül/pano yeni maddeyi ÜSTE yazar → en eski = SON; MEMORY.md indeksi sona EKLER → en eski = BAŞ
-        if not tasan_madde or ad == "claude":
-            arsive = []
-        elif ad == "memory":
-            arsive = maddeler[:tasan_madde]
-        else:
-            arsive = maddeler[-tasan_madde:]
+        arsive = []
+        if tetik and ad != "claude":
+            sira = maddeler if ad == "memory" else list(reversed(maddeler))  # en eskiden yeniye
+            kalan_b, kalan_n = b, n
+            for m in sira:
+                if kalan_b <= B and (not K or kalan_n <= K):
+                    break
+                arsive.append(m); kalan_b -= len(m.encode("utf-8")) + 1; kalan_n -= 1
+        arsiv_yolu = (ARSIV[ad] or "").format(t=a.tarih)
+        bildirim = [f"kesildi: {madde_basi(m)} → {arsiv_yolu}" for m in arsive]
         sonuc.append({"ad": ad, "yol": os.path.relpath(yol, a.repo) if yol.startswith(a.repo) else yol,
-                      "madde": n, "K": K, "bayt": b, "B": B, "durum": durum,
-                      "tetik": ("madde" if tasan_madde else "") + ("+bayt" if b > B else ""),
-                      "arsive_inecek": [m[:90] for m in arsive]})
+                      "bayt": b, "B": B, "satir": s, "S": S, "madde": n, "K": K, "durum": durum, "tetik": "+".join(tetik),
+                      "arsive_inecek": [m[:90] for m in arsive], "bildirim": bildirim, "arsiv": arsiv_yolu})
     if a.json:
         print(json.dumps(sonuc, ensure_ascii=False, indent=1))
     else:
-        print("SICAK-KATMAN FIFO (İB-80; K madde birincil, bayt sigorta):")
-        for s in sonuc:
-            if s.get("durum") == "YOK":
-                print(f"  [YOK ] {s['ad']} {s['yol']}"); continue
-            print(f"  [{s['durum']:4}] {s['ad']:7} madde {s['madde']}/{s['K']} · bayt {s['bayt']}/{s['B']} {('← ' + s['tetik']) if s['tetik'] else ''}")
-            for m in s["arsive_inecek"]:
+        print("SICAK-KATMAN FIFO (İB-80 · Karar 104 M1: bayt/satır birincil, madde sigorta):")
+        for x in sonuc:
+            if x.get("durum") == "YOK":
+                print(f"  [YOK ] {x['ad']} {x['yol']}"); continue
+            satir = f" · satır {x['satir']}/{x['S']}" if x["S"] else ""
+            madde = f" · madde {x['madde']}/{x['K']}" if x["K"] else ""
+            print(f"  [{x['durum']:4}] {x['ad']:7} bayt {x['bayt']}/{x['B']}{satir}{madde} {('← ' + x['tetik']) if x['tetik'] else ''}")
+            for m in x["arsive_inecek"]:
                 print(f"          ↓ arşive: {m}")
+            for bl in x["bildirim"]:
+                print(f"          ✎ kapsüle: {bl}")
     sys.exit(3 if flag else 0)
 
 
