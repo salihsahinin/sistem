@@ -26,6 +26,7 @@ Tür: T-Ü üretici (yan-etki: dosya yazımı `raporlar/masa/` + `kaynak-kodu/la
    "secenekler": [{"etiket": "(a) …", "value": "hüküm metni", "oneri": true, "aciklama": "Ne yaparım: … Artı: … Eksi: … Gerekçe: …"}]}],
  "karar_no": "Karar 97"}
 ```
+Ajan doğumu kalemi (Karar 104 M5, 2026-09-20): kaleme `"dogum_belgesi": {"perspektif": "…", "alan": "…", "dogum_olcutu": "a|b|c|d", "model": "Sonnet 5 + eskalasyon", "bakim_maliyeti": "kanon KB · hook sayısı · ritüel/seans · devir/ay · bakan"}` satırı **zorunlu**; satır yoksa ajan-doğumu kalemi masaya girmez (charter iskeleti §0b ile aynı alanlar).
 
 ## Gotchas
 - Bu skill commit yapmaz, deftere yazmaz (yan-etki freni): kayıt `karar-kaydet`, commit seans akışı.
