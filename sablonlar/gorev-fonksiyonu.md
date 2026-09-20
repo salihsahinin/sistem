@@ -24,6 +24,7 @@ kapsamda:         <ne yapılacak>
 kapsam_disi:      <sana ait OLMAYAN — iş-tekrarı/boşluk freni>
 araclar:          <pozitif liste + kaynak kılavuzu>
 degismezler:      <koşum boyunca ihlal edilemeyecekler>
+beklenti_maskesi: <hakem/ölçüm koşumunda ZORUNLU (Karar 103 M1): hakeme (`.claude/agents/hakem`) yalnız ölçülecek ham veri + V26 sondaj tablosu gider; emrin yazarı · beklentisi · "ne bulunmalı" · istenen sonuç · önceki masa hükmü VERİLMEZ. Üretici koşumda "yok" yazılır>
 
 ## DALLAR (numaralı; m.38 bağlaçları; dal+koşul toplamı ≤5 — aşarsa BÖL)
 D1: eğer <koşul> → <eylem>
