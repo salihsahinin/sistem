@@ -1,4 +1,4 @@
-# JARVIS — Ajan Sözleşmesi (AGENTS.md v3, 2026-09-18; Karar 101 F4 — eski ad CLAUDE.md v2 08-17; `CLAUDE.md` bu dosyanın symlink'i)
+# JARVIS — Ajan Sözleşmesi (AGENTS.md v3, 2026-09-18; Karar 101 F4; `CLAUDE.md` symlink)
 
 > Bu dosya **davranış** sözleşmesidir; durum defteri değil. Kök kanon `../AGENTS.md` (ortak kurallar; burada tekrar yok). Durum → `core/durum-kapsulu.md`. Kural kaynağı → `core/tuzuk-v0.md` (m.NN). **Bütçe: ≤ 80 satır / ≤ 7 KB** (v1 14 KB'a şişince bozuldu, 08-17 sıfırdan). Bir satır girer, bir satır çıkar. Üslup: vurgu kalın, büyük harf yalnız kısaltma ya da `kod` jetonu (Salih 09-15).
 

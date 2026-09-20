@@ -28,4 +28,4 @@ Kural = `../AGENTS.md` (18 madde). `jarvis/**` (Jarvis `core/` dahil) sana kapal
 `.claude/**` ve `core/**` yazımı yalnız Edit aracıyla (Karar 100 M4); Bash ile yazım sınıflandırıcıya takılır.
 
 ## 6. Nerede ne var
-`README.md` klasör haritası (Karar 92 M5; burada tekrar yok).
+`README.md` klasör haritası.
