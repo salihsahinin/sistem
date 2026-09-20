@@ -1,0 +1,20 @@
+# Memory index
+- [Mac primary](user-mac-primary.md) — Salih Mac'te çalışıyor (08-15'ten itibaren varsayılan); Turkish-QWERTY-PC klavye; Windows alışkanlığı: 'ctrl' ≈ ⌘ (sistem ayarı öncesi teyit)
+- [Dosya teslimi: tam yol + Finder'da göster](feedback-dosya-teslimi-finder.md) — 'raporlar/…' göreli yol yetmez; open -R + tarayıcıda aç; Lavish/sarmalayıcı yüzey yok
+- [Anlatım biçimi: benzetme değil doğrudan](feedback-anlatim-bicimi-dogrudan.md) — Salih 08-17: uzatılmış analoji yok; terimi tanımla + mekanizmayı ver + somut örnek; yeni konuda önce terim tabanını yokla
+- [CLAUDE.md kısa tut + 08-17 Katman-1 paketi](feedback-claude-md-kisa-tut.md) — davranış sözleşmesi ≤80 satır/≤7 KB; açık kaynak+okunabilirlik (hareket kütüğü), kaynak Türkçe, şirket metaforu emekli, rol = köle; determinizm ilkesi 09-10'da 4 iş türüne **daraltıldı**, sohbette vurgulanmaz
+- [Maliyet tahmini yalnız alt-model için](feedback-maliyet-tahmini-alt-model.md) — Salih 08-29: Jarvis kendi koşumuna token/süre tahmini yazmaz; işçi-ajan koşumları için hesapla, çıkarımı oradan
+- [Ses/ekran kaydı onay kapısı](feedback-ses-ekran-kaydi-onay.md) — Salih 08-26: yakalamadan **önce** haber + onay; 'göstermek için' gerekçe değil, teslim usulüne düş
+- [Yüzey tercihi seçenekli sunulur](feedback-yuzey-tercihi-secenekli.md) — Salih 08-30: 'okunabilir değil' hükmü Salih'in; ham yol önce, çevirme/kalıcı araç ancak artı-eksi bloklu seçenekle
+- [İcra listesi onaysız devam + kademeli paralel](feedback-icra-listesi-onaysiz-devam.md) — Salih 08-30: planlı liste bitene dek durma/onay bekleme; borçlar manifest+paralel-kapi ile pipeline, N 1→2→3
+- [Öğretim görselinde mekanizma, metin kutusu değil](feedback-gorsel-mekanizma-degil-metin-kutusu.md) — Salih 09-03: d2 flowchart reddedildi, gorsellestir skill'i akşam **silindi** (arşivde); görsel gerekirse mcp__visualize illustrative/interactive
+- [Görsel anlatım atıflı](feedback-gorsel-anlatim-atifli.md) — Salih 09-08: görsel metinden önce, metin boyunca görselin parçalarına atıf (kutu 3, sağ panel); her derse görsel
+- [VS Code md + d2 görüntüleyici](user-vscode-md-d2-viewer.md) — Salih 09-09: md ve .d2 dosyaları VS Code'da okunur; d2 için SVG zorunlu değil
+- [Açılış tetiği "seans başı", günaydın değil](feedback-seans-basi-tetik-gunaydin-degil.md) — Salih 09-09: "günaydın" zaman yanılgısı üretir; öğrenme yüzeyini Salih adlandırır, "günaydın, öğrenme" kalıbı yok
+- [Görselde kutu içi açıklama cümlesi + tek konu](feedback-gorsel-kutu-ici-aciklama.md) — Salih 09-09: her kutuda sade "bu kutu … demektir" cümlesi; sade dil, uzun açıklama, cevap başına az konu
+- [Ajan adı JARVİS, Carvis emekli](project-ajan-adi-jarvis.md) — Salih 09-10 Karar 93: konuşan ajan = Jarvis; sistem/repo = "depo"/"kanon"; "Carvis" yalnız tarihli kayıtta
+- [Friday monorepo içinde](project-ekip-lideri-ayri-repo.md) — Karar 101 (09-18): Friday `~/sistem/friday/` dizini, ayrı repo değil; kanon kök AGENTS.md + friday/AGENTS.md; jarvis/** kapalı (hook v0.5 + deny); oturum cwd friday, worktree kapalı, push/PR yok
+- [Vurgusuz anlatım, caps lock yok](feedback-vurgusuz-anlatim-capslock-yok.md) — Salih 09-14: büyük harfli kelimelerle vurgu yapma, kalın yazı kullan
+- [Öğretim iskeleti ogren + sektör başlığı](feedback-ogretim-iskeleti-ogren-sektor-basligi.md) — Salih 09-14: tüm şeritlerde `PROBE`→`PLAN` DAG→`TEACH` kutu→`CLOSE`; her kutu güncel İngilizce sektör başlığıyla; görsel yalnız istekle, mekanizma simülasyonu; büyük-harf vurgusu yasak (09-15), vurgu kalın
+- [Pratik = Salih'in eli](feedback-pratik-salih-eli.md) — Salih 09-15: Jarvis'in kendi koşumu pratik sayılmaz (referans koşum); `DONE` yalnız Salih beyanıyla; G1 arızası
+- [Oturum açma talimatında worktree beyanı](feedback-oturum-acma-worktree-beyani.md) — Salih 09-18: her açılış talimatında worktree AÇIK/KAPALI + sebep; Jarvis Fable ana-sıra `KAPALI`, ~/jarvis yan oturum **açık**, Friday/staj `KAPALI` (tek oturum)

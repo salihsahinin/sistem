@@ -53,6 +53,9 @@ Kapanışta **hasat kontrol listesi** (uzun oturumun kaybolmaması için, 4 soru
 ## 6g. Birim-test kapısı (Karar 86 D6-1, Salih hükmü 2026-09-02)
 `python3 -m unittest discover -s tools/testler -p 'test_*.py'` koş (~60 sn). FAIL/ERROR varsa kapanış **durur**: kök-neden `[ariza]` commit'iyle düzeltilir ya da teslim raporuna "test-kapısı: N `FAIL` — <neden>" satırı + İB açılır; yeşil olmadan push beyanı istenmez. Gerekçe: 08-30 kanon değişikliği (parquet varsayılanı) süiti sessizce kırdı, 3 kapanış fark etmedi (09-02 sağlık turu). Sonucu teslim raporuna tek satır: "test-kapısı: N test · `FAIL` 0 · skip K".
 
+## 6h. Harness hafıza aynası (Karar 104 M3, masa-17, Salih hükmü 2026-09-20)
+`python3 tools/hafiza-ayna.py` koş (~1 sn; kaynak `~/.claude/projects/-Users-HasanSalihSahin-sistem/memory/` salt-okur → `veri/hafiza-ayna/<anahtar>/` + `MANIFEST.json`; deterministik, kaynakta silinen dosya aynada kalır `kaynakta-yok` damgalı, m.8). Çıktı `git add veri/hafiza-ayna` ile kapanış commit'ine girer (jarvis AGENTS.md §2 açık-kaynak ilkesi). Özet satırı teslim raporuna: "hafıza-ayna: N dosya · yeni Y · değişen D". Çıkış 2 (kaynak yok) → teslim raporuna yaz, adım geçilir. **Sıcak-katman FIFO (Karar 104 M1):** `python3 tools/sicak-katman-fifo.py` FLAG verirse arşive inecek maddeler `arsiv/kapsul-YYYY-MM-DD.md`'ye taşınır ve script'in ürettiği `kesildi: … → arsiv/…` satırları kapsülün "Güncelleme" satırı altına **tek satır** olarak yapıştırılır (sessiz düşme yasak).
+
 ## 7. Commit + push (m.9 — proof-of-work)
 Karar başına **ayrı** commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` **yasak** — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu **gizleme** — gün sayılmadı de, nedenini yaz.
 
