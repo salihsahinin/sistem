@@ -1,7 +1,5 @@
 # Memory index
 - [Mac primary](user-mac-primary.md) — Salih Mac'te çalışıyor (08-15'ten itibaren varsayılan); Turkish-QWERTY-PC klavye; Windows alışkanlığı: 'ctrl' ≈ ⌘ (sistem ayarı öncesi teyit)
-- [Dosya teslimi: tam yol + Finder'da göster](feedback-dosya-teslimi-finder.md) — 'raporlar/…' göreli yol yetmez; open -R + tarayıcıda aç; Lavish/sarmalayıcı yüzey yok
-- [Anlatım biçimi: benzetme değil doğrudan](feedback-anlatim-bicimi-dogrudan.md) — Salih 08-17: uzatılmış analoji yok; terimi tanımla + mekanizmayı ver + somut örnek; yeni konuda önce terim tabanını yokla
 - [CLAUDE.md kısa tut + 08-17 Katman-1 paketi](feedback-claude-md-kisa-tut.md) — davranış sözleşmesi ≤80 satır/≤7 KB; açık kaynak+okunabilirlik (hareket kütüğü), kaynak Türkçe, şirket metaforu emekli, rol = köle; determinizm ilkesi 09-10'da 4 iş türüne **daraltıldı**, sohbette vurgulanmaz
 - [Maliyet tahmini yalnız alt-model için](feedback-maliyet-tahmini-alt-model.md) — Salih 08-29: Jarvis kendi koşumuna token/süre tahmini yazmaz; işçi-ajan koşumları için hesapla, çıkarımı oradan
 - [Ses/ekran kaydı onay kapısı](feedback-ses-ekran-kaydi-onay.md) — Salih 08-26: yakalamadan **önce** haber + onay; 'göstermek için' gerekçe değil, teslim usulüne düş
@@ -18,3 +16,4 @@
 - [Öğretim iskeleti ogren + sektör başlığı](feedback-ogretim-iskeleti-ogren-sektor-basligi.md) — Salih 09-14: tüm şeritlerde `PROBE`→`PLAN` DAG→`TEACH` kutu→`CLOSE`; her kutu güncel İngilizce sektör başlığıyla; görsel yalnız istekle, mekanizma simülasyonu; büyük-harf vurgusu yasak (09-15), vurgu kalın
 - [Pratik = Salih'in eli](feedback-pratik-salih-eli.md) — Salih 09-15: Jarvis'in kendi koşumu pratik sayılmaz (referans koşum); `DONE` yalnız Salih beyanıyla; G1 arızası
 - [Oturum açma talimatında worktree beyanı](feedback-oturum-acma-worktree-beyani.md) — Salih 09-18: her açılış talimatında worktree AÇIK/KAPALI + sebep; Jarvis Fable ana-sıra `KAPALI`, ~/jarvis yan oturum **açık**, Friday/staj `KAPALI` (tek oturum)
+- [Bitirme tezi: AI×matematik, mat. müh. son sınıf](user-bitirme-tezi-matematik-muhendisligi.md) — Salih 09-21: 2026-27 bitirme; İTÜ [?] ama küresel emsal; ilk atlas raporu raporlar/2026-09/2026-09-21-bitirme-tezi-ai-matematik-atlas.md

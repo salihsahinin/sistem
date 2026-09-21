@@ -3,14 +3,14 @@
  "kaynak": "/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-sistem/memory",
  "uretim": "2026-09-21",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 25,
+ "dosya_sayisi": 26,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "5d6bc488bcc482d14ee5c337d5cd4bfb70e25b41ec72aab49d198221d1dca52c",
-   "bayt": 4158,
-   "kaynak_mtime": "2026-09-18T16:15:41",
+   "sha256": "38f9b8a30d322afd50a0de66e45300e2bcafd79222c9c0498f47a87aaf15a984",
+   "bayt": 4003,
+   "kaynak_mtime": "2026-09-21T15:49:48",
    "durum": "ayna"
   },
   {
@@ -165,6 +165,13 @@
    "sha256": "5c402dec21b66dd6f4171c561ee16f92c120d19e57e84cc1f52136bc8d57f156",
    "bayt": 1422,
    "kaynak_mtime": "2026-09-18T16:15:33",
+   "durum": "ayna"
+  },
+  {
+   "ad": "user-bitirme-tezi-matematik-muhendisligi.md",
+   "sha256": "b819f0f50b791d099e816362da446d6862fb477ee7c9467d10160ef2f5885a6a",
+   "bayt": 1525,
+   "kaynak_mtime": "2026-09-21T15:29:44",
    "durum": "ayna"
   },
   {
