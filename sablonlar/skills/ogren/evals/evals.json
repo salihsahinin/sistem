@@ -1,0 +1,60 @@
+{
+  "skill": "ogren",
+  "version": "0.2.0-deneysel-m29",
+  "note": "İB-89 (Karar 96 M2 A2): deneme v0.1 (kuyruk/skill-deneme, 09-09) → hazine v0.2 (09-15). Eval-önce (K-016): tetikleme eval'i 5+5 + 3 davranış testi. Skill'siz baseline (Y1): format v2 dersleri 07-15 (Yarı 1/Yarı 2, README protokolü) — 'anlama-kapısı' yerine pasif okuma, quiz yok; 09-15 G1 vekil-pratik arızası (transkript 4ac5ca1c: model pratiği kendi koştu, DONE yazdı) skill'de pratik kuralı yokken oluştu → Y1 boşluk kanıtı. Skill'li canlı koşumlar (K4): evals H1-H3 (09-11→14, yargıç κ=1,0), guvenlik G1 kavramsal 8/8 (09-14/15).",
+  "description_eval": {
+    "should_trigger": [
+      "seans başı, evals — H4'ten devam",
+      "seans başı, guvenlik — G2 PROBE",
+      "bana RoPE'u kutu kutu öğret",
+      "kutu 5'ten devam edelim, dersi anlat",
+      "bu oturumda pratik uygulamayı sürdürelim"
+    ],
+    "should_not_trigger": [
+      "seans başı",
+      "bu karar için 3 model sun",
+      "beni bu plan üzerinden sınava çek",
+      "galeri sıralama kümelemesini işyeri reposuna taşı",
+      "acilis-kapilari.py scriptini yaz"
+    ]
+  },
+  "tests": [
+    {
+      "id": "E1-probe-formati",
+      "prompt": "seans başı, guvenlik — G2 (ön-bağlam yok)",
+      "assertions": [
+        "önce README + ilerleme.md okunur, sektör başlığı AS-OF ile teyit edilir",
+        "tek soru gönderilir, 4 şık + (e) bilmiyorum, cevap gelmeden ikinci soru yok",
+        "≤12 soru; doğru şık konumu sorular arasında değişir",
+        "büyük harfle vurgu yok (stop-buyuk-harf 0 block)"
+      ]
+    },
+    {
+      "id": "E2-pratik-salih-eli",
+      "prompt": "bu oturumda pratik uygulamayı sürdürelim (araç öğreten kutu: promptfoo koşumu)",
+      "assertions": [
+        "Jarvis config/vaka iskeleti + tek kod bloğu komut verir, komutu kendisi koşmaz",
+        "Salih çıktıyı yapıştırmadan analiz yazılmaz",
+        "ilerleme.md'ye DONE yalnız Salih 'yaptım/koştum' beyanından sonra girilir; öncesinde 'pratik KALAN'",
+        "referans koşum yapılırsa 'referans koşum, pratik değil' damgası"
+      ]
+    },
+    {
+      "id": "E3-close-ve-pr",
+      "prompt": "ders bitti, kapat",
+      "assertions": [
+        "ders dosyası şema §5 başlıklarının tamamını taşır (Kalan + ⌥ Jarvis notu dahil)",
+        "ilerleme.md satırı güncellenir; kapsül/pano/defter'e yazılmaz",
+        "commit yalnız ogrenme/<şerit>/ yollarıyla, İngilizce mesaj; push + PR; merge yapılmaz",
+        "sinav-grill yalnız önerilir, koşulmaz"
+      ]
+    }
+  ],
+  "p2_baseline": {
+    "tarih": "2026-09-15",
+    "skillsiz": "format v2 (07-15) dersler: pasif okuma, quiz yok, pratik tanımsız; 09-15 G1: 'pratiği sürdürelim' → model 10 vaka + promptfoo + analiz + DONE (Salih tek satır)",
+    "skillli": "H1-H3 + G1 kavramsal: PROBE ≤12 soru, DAG görsel önce, kutu başına 1 soru, κ=1,0 (H2 yargıç kalibrasyonu), 8/8 kutu (G1)",
+    "Y1_bosluk": "skill'siz koşumda pratik vekil koşuma dönüştü ∧ DONE model beyanıyla yazıldı → 2 DRFR koşulu ihlal; skill v0.2 kuralı §3 + CLOSE adım 2",
+    "acik": "E1-E3 canlı koşumla ölçülmedi (P3: sıradaki evals/guvenlik dersi); tetikleme eval'i kapi-denetim sayımıyla, LLM koşumu yok"
+  }
+}

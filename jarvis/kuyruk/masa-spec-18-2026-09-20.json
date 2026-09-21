@@ -1,0 +1,241 @@
+{
+ "no": 18,
+ "tarih": "2026-09-20",
+ "baslik": "Hakem ajanı birlikte bitirme · öğrenme şeritleri → adlı kalıcı alan ajanları (doğum belgeli) · kalan borç sırası",
+ "giris": "Salih 09-20 ~17:4x: hakem ajanını beraber yazalım; mevcut her öğrenme konusu için bir ajan; öğrenme + ürün oluşumu + konuşmalar o ajanda kalsın, o ajanla konuşarak devam; ajanların adı olsun; kalan icra/karar borçları kapanmaya devam. Ajan doğumu Katman-1 (kök md.2) ve Karar 104 M5 gereği doğum belgesi + bakım-maliyeti satırıyla masaya gelir; Karar 103 EK (2) kanon genelleşme derecesini Salih seçer.",
+ "tetik": "Salih 09-20 aynen: \"devam et,hakem ajanını beraber yazalım,ayrıca şimdiki halihazırda sahip olduğum öğrenme serileri için de her bir öğrenme konusu için bi ajan oluşturalım ve artık öğrenme sürecim de ürün oluşumu ve konuşmalarım da o ajanda kalsın(o ajanla konuşarak devam edeceğim).ajanların bir ismi olsun.onun dışında kalan işlerden de icra borcu ve karar borcu olarak borçları kapatmaya devam edelim\" · Salih 09-20 ~17:5x aynen: \"ileride çok fazla ajanım olacağı için ve öğrenme süreçleri de sonnetle yürütüldüğü için ajanlar genelde sonnette çalışan eskalasyon modeline uygun yapıda ajanlar olsun\"",
+ "once_yapildi": "Karar 104 6/6 icra `DONE` (commit 97e7717→1e7f4da) · İB-108 hakem ajanı v0 kuruldu (8f84874: `.claude/agents/hakem.md`, salt-okur, Opus, `memory: project`, V26 zorunlu, beklenti-maskesi satırı emir şablonunda). Bu masa v0'ın açık noktalarını Salih'e getirir; yeniden yazmaz.",
+ "asof": "2026-09-20",
+ "kanit": [
+  {
+   "bulgu": "Öğrenme şeritleri (dosya · KB · ders)",
+   "deger": "evals 25 · 256 · 4 ders (H1-H3 DONE, H4 açık) · guvenlik 18 · 204 · 3 ders (G1 kavramsal DONE) · baglam-modelleme 2 · 20 · 0 ders · mit-6006 3 · 28 · 1 ders · mit-6042j 3 · 28 · 1 ders · mat-felsefesi 1 · 16 · 0 ders (yalnız tasarım) · problem-cozme 2 · 36 (seri tasarımı, ders değil) · dersler/ 24 · 288 (07-15→07-19 P0-P3 LLM-içi dersleri)",
+   "kaynak": "`ls`/`du` 09-20 16:5x",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "ogrenme/kaynaklar",
+   "deger": "1.750 dosya · 161 MB (MIT transkriptleri, kırpıntılar) — tek şeride ait değil",
+   "kaynak": "`du -sk` 09-20",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "Ajan başına bakım-maliyeti tabanı (Friday emsali)",
+   "deger": "charter 4.069 B · core/ 4 dosya 21,5 KB · .claude/ 1 settings + 2 hook + skills · ritüel 2 adım/seans · hook testi 34 vaka",
+   "kaynak": "`wc -c ../friday/AGENTS.md ../friday/core/*.md`, `ls ../friday/.claude`",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "Karar 103 M4 + EK",
+   "deger": "alan ajanı = kalıcı dizin (öğrenme + ürün aynı ajanda; Opus/Sonnet); öğretim tasarımı Fable/Jarvis'te; genelleşme derecesi Salih seçer; ilk aday guvenlik/",
+   "kaynak": "kuyruk/senaryo-defteri.md:290-292",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Karar 104 M5 Salih notu",
+   "deger": "\"kanonlarını küçük tutmak, daha nadir bakımla ilgilenmek, sonnet model olarak oluşturup eskalasyona sistemine geçmek\" → yeni ajan varsayılanı Sonnet 5 + eskalasyon, kanon ≤4 KB",
+   "kaynak": "kuyruk/senaryo-defteri.md Karar 104",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Karar 104 M6",
+   "deger": "alan içinde perspektif ayrımı varsayılan yalnız hakem; ortak `hakem/` ya da `<alan>-hakem/` ikisi de izinli",
+   "kaynak": "kök AGENTS.md md.1",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Açık karar-borcu",
+   "deger": "145 kalem: Katman-1 açık 7 (Salih'te 2 · kısmen 4 · BEKLET 1) · Katman-2 açık 31 (icra-sırada 25 · kısmen 5 · Salih'te 1) · kırık pointer 1 (İB-82 → eski ~/friday/README.md yolu)",
+   "kaynak": "`tools/karar-borcu-tablo.py` @ 8f84874",
+   "etiket": "sayım"
+  },
+  {
+   "bulgu": "Hakem ajanı v0 frontmatter",
+   "deger": "tools Read/Grep/Glob/WebFetch/WebSearch · model opus · memory project (`.claude/agent-memory/hakem/`) · maxTurns 60 · WebFetch bütçesi 8 · rapor dönüşü tam metin, dosyayı çağıran yazar",
+   "kaynak": ".claude/agents/hakem.md; alan listesi code.claude.com/docs/en/sub-agents (rehber ajanı 09-20)",
+   "etiket": "D"
+  },
+  {
+   "bulgu": "Salih beyanı 09-20 ~17:5x (model)",
+   "deger": "ajanlar genelde Sonnet üzerinde, eskalasyon desenine uygun (çok ajan + öğrenme Sonnet'le yürüyor) → M4 (a) sabitlendi; M1'de hakem için 'genelde' istisna sorusu kaldı",
+   "kaynak": "sohbet 09-20",
+   "etiket": "D"
+  }
+ ],
+ "hakem": "Bu masada dış Atlas koşumu yok; kanıt tabanı iç sayım + Karar 103/104 metinleri. Ajan doğumu literatür-önce ilkesi (Karar 102) Atlas 1/2 + 2/2 ile zaten karşılandı (kalıcı dizin = D, hakem ayrı = D).",
+ "kalemler": [
+  {
+   "id": "M1",
+   "baslik": "Hakem ajanı — birlikte bitirme: v0'ın üç açık noktası",
+   "rozet": "Katman-1 · ajan tanımı (Karar 103 M1 · İB-108)",
+   "coklu": false,
+   "ne_demek": "v0 kuruldu (`.claude/agents/hakem.md`, 6,6 KB). Salih'in kararı gereken üç nokta: (1) model — Opus sabit mi, Sonnet + eskalasyon mu (Karar 104 M5 notu Sonnet+eskalasyonu genel varsayılan yaptı; hakem 'ayrılmalı D' tek satır, en riskli perspektif) · (2) tek ortak `hakem` mi, alan başına `<alan>-hakem` mi (Karar 104 M6 ikisine izin verir) · (3) hafıza kapsamı `project` (depo içi, açık-kaynak görünür) mi `user` (makine-yerel) mi. Serbest metin kutusuna v0 gövdesine eklemek/çıkarmak istediğin satırları yaz; Jarvis v0.1'i o notla yazar.",
+   "secenekler": [
+    {
+     "etiket": "(a) Sonnet 5 + eskalasyon · tek ortak hakem · memory project (Salih 17:5x beyanıyla uyumlu)",
+     "value": "Hakem: model Sonnet 5 varsayılan, Opus'a eskalasyon Salih beyanıyla (Karar 104 M5 genel varsayılanı hakeme de uygulanır); tek ortak `hakem`; `memory: project`.",
+     "oneri": true,
+     "aciklama": "Ne yaparım: frontmatter `model: sonnet`; gövdeye eskalasyon satırı ('Opus/Fable hakem yalnız Salih beyanıyla ya da V26 TUTMADI ≥3 olan koşumda çağıranın eskalasyon isteğiyle'); Salih notunu v0.1'e işlerim. Artı: Salih 17:5x beyanı (çok ajan, Sonnet + eskalasyon); kota. Eksi: Sonnet hakem n=0 ölçüm; İB-66'daki düzeltici bağımsız hakem Opus'tu → ilk 3 koşumda D/K/X oranı Opus tabanıyla kıyaslanır, sapma masaya döner (m.39). Gerekçe: genel kural hakeme de uygulanır; istisna ancak ölçümle."
+    },
+    {
+     "etiket": "(b) Opus sabit · tek ortak hakem · memory project (istisna: ölçen üretenden güçlü)",
+     "value": "Hakem: model Opus 5 medium sabit (eskalasyon yok; yapan≠ölçen satırı en güçlü ölçen ister) · tek ortak `hakem` ajanı, alan ajanları onu çağırır (`<alan>-hakem` yalnız masa kararıyla) · `memory: project` (`.claude/agent-memory/hakem/`, depo içi, yalnız usul dersleri). Salih'in serbest-metin notu v0.1'e işlenir.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: v0 aynen (`model: opus`). Artı: yapan≠ölçen satırında ölçen en güçlü; İB-66 kanıtı Opus hakemle. Eksi: Salih 17:5x genel kuralına istisna açar; Opus kotası. Gerekçe: 'genelde' sözcüğü istisnaya yer bırakıyor; hakem en riskli perspektif."
+    },
+    {
+     "etiket": "(c) Sonnet + eskalasyon · alan başına `<alan>-hakem`",
+     "value": "Her alan ajanının kendi `<alan>-hakem` ajanı (Karar 104 M6 ikinci biçim); ortak `hakem` Jarvis/Friday araştırma koşumları için kalır.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: alan charter'ıyla birlikte 4 ek ajan dosyası. Artı: alan bağlamı hakemde. Eksi: bakım 4×; hakem alan bağlamı taşımamalı (bağlam paylaşmama ilkesi zaten). Gerekçe: bugün kanıt yok; ilk sızıntı gözlenince masaya döner."
+    }
+   ]
+  },
+  {
+   "id": "M2",
+   "baslik": "Alan ajanı sayısı — kanon genelleşme derecesi (Karar 103 EK 2)",
+   "rozet": "Katman-1 · ajan doğumu (doğum belgesi zorunlu, Karar 104 M5)",
+   "coklu": false,
+   "ne_demek": "6 öğrenme şeridi + 2 yan dizin var. Kaç ajan? Genelleşme örneği Karar 103 EK: 'backend birçok alt partisyona sahipken backend olarak genelleştirilir'. Doğum belgesi ortak satırı (her ajan için aynı; ayrışan alan M3-M4'te): perspektif = icra+öğrenme (hakem ayrı, M1) · dogum-olcutu = (d) literatür-önce (Atlas 2/2 'kalıcı dizin' D) ∧ (e) bu masa · model = M4 · bakım-maliyeti = charter ≤4 KB + core/ 4 dosya + .claude/ 1 settings + 2 hook (Friday şablonu kopya) + ritüel 2 adım/seans + devir/ay [?] (ilk 3 seans sonra ölçüm) + bakan Jarvis; ajan başına ≈8 yeni dosya [?].",
+   "dogum_belgesi": {
+    "perspektif": "icra + öğrenme (hakem ayrı: ortak hakem, M1)",
+    "alan": "M2 seçeneğine göre",
+    "dogum_olcutu": "d ∧ e",
+    "model": "M4 seçeneğine göre (varsayılan Sonnet 5 + eskalasyon)",
+    "bakim_maliyeti": "charter ≤4 KB · core/ 4 dosya · .claude/ 1 settings + 2 hook · ritüel 2 adım/seans · devir/ay [?] · bakan Jarvis · ≈8 dosya/ajan [?]"
+   },
+   "secenekler": [
+    {
+     "etiket": "(a) 4 ajan: evals · guvenlik · baglam · hesaplama",
+     "value": "4 alan ajanı: `evals/` (LLM/ajan değerlendirme) · `guvenlik/` (ajan güvenliği; Karar 103 M4 ilk aday) · `baglam/` (bağlam-modelleme + 07-15→19 LLM-içi P0-P3 dersleri; ürün = Jarvis bağlam katmanı önerileri) · `hesaplama/` (mit-6006 + mit-6042j + mat-felsefesi; birebir-kurs perspektifi ortak). `problem-cozme/` (seri tasarımı, meta) Jarvis'te kalır (öğretim tasarımı Fable'da, Karar 103 EK 1).",
+     "oneri": true,
+     "aciklama": "Ne yaparım: 4 charter (iskelet §0b doğum belgeli) + 4 dizin. Artı: bakım 4×8 ≈ 32 dosya [?]; MIT iki kurs + mat-felsefesi aynı perspektif (birebir sadakat + 'neden'); baglam ürünü Jarvis'e döner. Eksi: hesaplama içinde 3 alt-şerit, ilerleme dosyaları ayrı tutulur. Gerekçe: Karar 103 EK genelleşme örneği; konu genişliği × Salih yetkinliği: evals/guvenlik ürün-yönlü ve ayrı araç setli, MIT kursları tek araç seti."
+    },
+    {
+     "etiket": "(b) 6 ajan: şerit başına bir",
+     "value": "6 alan ajanı: evals · guvenlik · baglam · mit-6006 · mit-6042j · mat-felsefesi (her şerit kendi dizini).",
+     "oneri": false,
+     "aciklama": "Ne yaparım: 6 charter + 6 dizin. Artı: en ince ayrım, şerit karışmaz. Eksi: bakım 6×8 ≈ 48 dosya [?]; mit-6006/6042j aynı kaynak deposu ve aynı sadakat sözleşmesi; mat-felsefesi 0 ders (yalnız tasarım) için ajan erken. Gerekçe: yalnız MIT kurslarını ayrı sohbetlerde yürütmek istiyorsan."
+    },
+    {
+     "etiket": "(c) 3 ajan: ajan-muhendisligi (evals+guvenlik) · baglam · hesaplama",
+     "value": "3 alan ajanı: `ajan-muhendisligi/` (evals + guvenlik) · `baglam/` · `hesaplama/`.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: 3 charter. Artı: en az bakım. Eksi: evals ve guvenlik farklı araç setleri (promptfoo/DeepEval ↔ injection/MCP setleri) → Karar 91 EK-2 (a) 'kendi araç seti' ölçütü ayrı ajan ister; ürünleri farklı. Gerekçe: ölçüt (a) aleyhine."
+    }
+   ]
+  },
+  {
+   "id": "M3",
+   "baslik": "Ajan adları",
+   "rozet": "Katman-1 · ad (Karar 93 ad-eşitliği sınıfı)",
+   "coklu": false,
+   "ne_demek": "Jarvis ve Friday Marvel yapay-zekâ adları. Tema sürer mi? Ad = dizin adı değil (dizin alan adıdır: `evals/`), ad charter'da `Ad:` satırı + Salih'in sohbette seslendiği isim; `tools/ad-esitligi-denetim.py` kaydına girer. Eşleme M2 (a) 4 ajana göre; (b) seçilirse mit-6006/6042j/mat-felsefesi için yedek adlar kullanılır.",
+   "secenekler": [
+    {
+     "etiket": "(a) Marvel dizisi: Karen · Veronica · Edith · Homer (yedek Jocasta · Plato)",
+     "value": "evals → **Karen** (Spider-Man giysi yapay zekâsı; koçluk + analiz) · guvenlik → **Veronica** (Hulkbuster savunma sistemi) · baglam → **Edith** (küresel veri erişimi/gözlük; bağlam) · hesaplama → **Homer** (Iron Man 2 atölye hesap yapay zekâsı). Yedek: Jocasta · Plato (M2-b için mit-6042j · mat-felsefesi).",
+     "oneri": true,
+     "aciklama": "Ne yaparım: charter `Ad:` satırı + ad-eşitliği kaydı + kök README sahiplik tablosu. Artı: tema tutarlı (Jarvis/Friday), tek heceli-iki heceli çağırması kolay, hepsi Marvel'de yapay zekâ. Eksi: Homer/Karen günlük adlarla karışabilir. Gerekçe: Karar 93 ad disiplini; tema değişimi ayrı karar ister."
+    },
+    {
+     "etiket": "(b) Bilgin dizisi: Biruni · Cezeri · Harezmi · Kuşçu",
+     "value": "evals → Biruni (ölçüm) · guvenlik → Cezeri (mekanik savunma/otomat) · baglam → Harezmi (algoritma/bağlam) · hesaplama → Kuşçu (astronomi/matematik).",
+     "oneri": false,
+     "aciklama": "Ne yaparım: aynı. Artı: alanla anlam bağı. Eksi: Jarvis/Friday temasıyla kopuk; iki tema = iki kural. Gerekçe: tema değişikliği Salih kararı."
+    },
+    {
+     "etiket": "(c) Alan adı = ajan adı (Evals · Güvenlik · Bağlam · Hesaplama)",
+     "value": "Ad yok; dizin adı ajan adıdır.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: charter `Ad:` = dizin adı. Artı: sıfır ezber. Eksi: Salih 'ajanların bir ismi olsun' dedi; bu seçenek talebi karşılamaz. Gerekçe: yalnız tamlık için."
+    }
+   ]
+  },
+  {
+   "id": "M4",
+   "baslik": "Alan ajanı modeli + öğretim iş bölümü",
+   "rozet": "Katman-1 · model/rol (Karar 103 EK 1 · Karar 104 M5)",
+   "coklu": false,
+   "ne_demek": "Salih ajanla doğrudan konuşacak (öğrenme oturumu = ajan oturumu, cwd `~/sistem/<alan>`). Karar 103 EK (1): öğretim tasarımı (ders iskeleti, kutu sırası, sınav) Fable/Jarvis'te; alan ajanı dersi koşar. Karar 104 M5 notu: Sonnet + eskalasyon varsayılan. **Salih 17:5x beyanıyla (a) sabit; (b) yalnız kayıt için duruyor.**",
+   "secenekler": [
+    {
+     "etiket": "(a) Sonnet 5 varsayılan + eskalasyon; ders iskeleti Jarvis'ten devir birimiyle",
+     "value": "Alan ajanı modeli Sonnet 5 (effort medium); Opus/Fable'a eskalasyon yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ders iskeleti (PROBE soruları, PLAN DAG, kutu başlıkları) Jarvis/Fable'da üretilir ve `<alan>/cc/gelen/ders-<hafta>.md` devir birimiyle ajana gider; ajan TEACH/CLOSE'u koşar, `ogren` skill'i ajanda. Ürün işi (eval seti, injection seti, bağlam katmanı önerisi) ajanda; Jarvis'e dönüş `cc/giden/`.",
+     "oneri": true,
+     "aciklama": "Ne yaparım: charter model satırı + `ogren` skill'ini ortak `sablonlar/skills/ogren/` altına taşıyıp ajan settings'e bağlarım (Jarvis'te pointer kalır); ders-iskeleti devir şablonu. Artı: Fable kotası korunur; öğretim kalitesi tasarım katmanında tutulur (Karar 103 EK 1); ölçüm: ilk 3 ders H4/G2 sapma notu. Eksi: her ders için Jarvis'ten iskelet adımı (1 kısa Jarvis oturumu/hafta [?]). Gerekçe: Karar 104 M5 notun aynen."
+    },
+    {
+     "etiket": "(b) Opus 5 medium (Friday sınıfı), iskelet ajanda",
+     "value": "Alan ajanı Opus 5 medium; ders iskeletini de ajan üretir; Jarvis yalnız charter bakımı.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: charter model satırı Opus. Artı: tek oturum, Jarvis adımı yok. Eksi: Karar 103 EK (1) 'öğretim tasarımı Fable' satırıyla çelişir (m.16) — Salih revize etmeli; Opus kotası 4 ajan. Gerekçe: yalnız iskelet adımı yük olursa."
+    }
+   ]
+  },
+  {
+   "id": "M5",
+   "baslik": "Taşıma planı (T1-T5) — tek tur mu, aşamalı mı",
+   "rozet": "Katman-1 · silme-birleştirme/taşıma (kök md.2; Salih eli git mv)",
+   "coklu": false,
+   "ne_demek": "Plan: T1 charter'lar + doğum belgeleri (Jarvis yazar, bu masa imzası) → T2 dizinler `~/sistem/<alan>/` Friday şablonundan (`AGENTS.md`, `core/` kapsül+pano+defter+desenler, `.claude/settings.json` deny `jarvis/**` + diğer ajan dizinleri, `okuma-izin.sh` v0.5 kopyası, `hareket-kutuk.sh`, `cc/gelen|giden`, `README.md`) → T3 `git mv ogrenme/<şerit> <alan>/ogrenme/` (Salih eli; tel `core/`-dışı ama m.8 taşıma Salih beyanı) + `ogrenme/README.md`'de pointer → T4 `ogren` skill'i ortak `sablonlar/skills/ogren/` + her ajan settings'e skill yolu; ilerleme/README aynen → T5 kanıt: her ajan cwd'sinde `talimat-yukleme-olay.jsonl` Jarvis satırı 0 + hook testi + ilk 'seans başı' (Salih). Kök `AGENTS.md` md.1 ajan listesi + README sahiplik tablosu + `bin/hook-dispatch.sh` cwd tablosu güncellenir.",
+   "secenekler": [
+    {
+     "etiket": "(a) Tek tur, 4 ajan bu seans (T1-T2-T4 Jarvis; T3 Salih eli; T5 Salih'in ilk oturumu)",
+     "value": "T1-T5 tek turda; Jarvis T1, T2, T4'ü bu seans icra eder ve commit'ler; T3 `git mv` komut listesi Salih'e; T5 kanıt her ajanın ilk 'seans başı' oturumunda (Salih), sapma Jarvis'e `cc/giden/` ile döner.",
+     "oneri": true,
+     "aciklama": "Ne yaparım: 4 charter + 4 dizin iskeleti + hook/settings kopyası + ortak ogren skill'i + kök tablolar; komut listesi masa altına. Artı: Salih talebi 'her konu için ajan' bir seferde; Friday şablonu kanıtlı (34/34 hook testi). Eksi: T3 öncesi ajanlar boş dizin (ders dosyaları taşınana dek); ~4×8 dosya commit. Gerekçe: F2-F5 monorepo emsali tek turda tuttu (09-18)."
+    },
+    {
+     "etiket": "(b) Aşamalı: önce guvenlik (Karar 103 M4 ilk aday), 3 seans ölçüm, sonra 3 ajan",
+     "value": "İlk yalnız `guvenlik/`; 3 öğrenme oturumu sonra sapma/bakım ölçümüyle diğer üçü.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: 1 charter. Artı: bakım-maliyeti gerçek sayı olur (M2 [?] kapanır). Eksi: evals H4, baglam açılışı 3 seans daha Jarvis'te kalır; Salih 'her biri için' dedi. Gerekçe: risk-önce seçenek."
+    }
+   ]
+  },
+  {
+   "id": "M6",
+   "baslik": "`ogrenme/kaynaklar/` (1.750 dosya, 161 MB) ve `ogrenme/dersler/` eski dersler",
+   "rozet": "Katman-2 öneri, Katman-1 taşıma (m.8)",
+   "coklu": false,
+   "ne_demek": "Kaynaklar tek şeride ait değil (MIT transkriptleri hesaplama'ya, kırpıntılar karışık). Eski `dersler/` (07-15→19 P0-P3 transformer/token/RoPE) baglam alanına yakın.",
+   "secenekler": [
+    {
+     "etiket": "(a) Kaynaklar kökte ortak kalır (salt-okur, hook izinli); eski dersler baglam/'a",
+     "value": "`ogrenme/kaynaklar/` kökte kalır; alan ajanı hook'larının izinli kümesine `../ogrenme/kaynaklar/**` (salt-okur) eklenir; `ogrenme/dersler/` → `baglam/ogrenme/dersler-2026-07/` (git mv, Salih eli); `problem-cozme/` + `mufredat.md` + `anlama-kapisi.md` Jarvis öğretim-tasarımı olarak `ogrenme/` kökte kalır.",
+     "oneri": true,
+     "aciklama": "Ne yaparım: hook izin satırı + test vakası; mv komutu listeye. Artı: 161 MB kopyalanmaz; künye (AS-OF) tek yerde. Eksi: ajan izin kümesi bir dizin genişler. Gerekçe: md.20 pointer ilkesi."
+    },
+    {
+     "etiket": "(b) Kaynaklar şerit başına bölünür",
+     "value": "mit-* kaynakları hesaplama'ya, kırpıntılar ilgili alana `git mv`.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: 1.750 dosyayı sınıflandırıp mv listesi. Artı: tam izolasyon. Eksi: sınıflandırma belirsiz (kırpıntılar çok-alanlı), büyük mv. Gerekçe: gerek yok."
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "baslik": "Kalan borç sırası (icra + karar)",
+   "rozet": "Katman-2 sıra (Jarvis önerisi; Salih değiştirebilir)",
+   "coklu": false,
+   "ne_demek": "Açık: Karar 103 (2) eskalasyon deseni §6 + emir şablonu · (3) tek-yazar kök md.14 + Friday charter · (5) tur-6 emri + yanlış-pozitif sayacı · damıtma tetiği (defter 97/48 KB, kapsül 11,4/8 KB yeni bayt kuralıyla) · İB-82 kırık pointer · Katman-2 icra-sırada 25 kalem (en eski İB-01/03/04/06/07/09) · Katman-1 Salih'te İB-80 (bayt eşiği revizyonu, 5 kapanış sonra) · İB-81 (yeniden-oluşum) · KB-31 BEKLET.",
+   "secenekler": [
+    {
+     "etiket": "(a) Bu seans: M5 icrası → Karar 103 (2)(3) → damıtma (defter+kapsül) → İB-82; sonraki seans: (5) tur-6 + Katman-2 eski→yeni",
+     "value": "Sıra: masa-18 icrası (T1-T2-T4) → Karar 103 (2) eskalasyon §6 + emir şablonu → (3) tek-yazar md.14 + Friday charter → damıtma turu (defter → arşiv, kapsül 7 madde → arsiv/kapsul-2026-09-20.md + kesildi satırları) → İB-82 pointer onarımı → kapanış. Sonraki seans: Karar 103 (5) tur-6 emri + yanlış-pozitif sayacı → Katman-2 icra-sırada en eskiden (İB-01, 03, 04, 06, 07, 09).",
+     "oneri": true,
+     "aciklama": "Ne yaparım: listeyi kapsül 'Sonraki ilk iş'e yazarım, sırayla icra. Artı: ajan doğumu (Salih talebi) önce; damıtma aynı seansta bağlam şişmesini keser. Eksi: tur-6 Friday'e bir seans daha bekler. Gerekçe: Salih 'devam et' + Karar 88 M16 icra-sırası dersi."
+    },
+    {
+     "etiket": "(b) Önce damıtma, sonra ajan doğumu",
+     "value": "Damıtma turu ilk; masa-18 icrası ardından.",
+     "oneri": false,
+     "aciklama": "Ne yaparım: sıra değişir. Artı: bağlam hafifler. Eksi: Salih talebi bekler; damıtma 'ilk boş seans' kuralı. Gerekçe: bağlam sınırı zorlarsa."
+    }
+   ]
+  }
+ ],
+ "karar_no": "Karar 105"
+}
