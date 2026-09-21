@@ -96,6 +96,7 @@ def ogren_ortak_hazirla(uzerine, kuru):
             kaynak = os.path.join(kokdizin, f); rel = os.path.relpath(kaynak, OGREN_KAYNAK)
             t = open(kaynak, encoding="utf-8").read()
             if rel == "SKILL.md":
+                t = re.sub(r"\n> \*\*Karar 105 \(2026-09-21\):\*\* dersi koşan kopya artık alan ajanlarında:.*?\n", "\n", t, count=1, flags=re.S)  # Jarvis kopyasının pointer paragrafı alan sürümüne girmez
                 t = t.replace("# ogren — dört fazlı ders akışı + öğrenme oturum protokolü (v0.2, 2026-09-15; deneme v0.1 09-09 → hazine)",
                               "# ogren — dört fazlı ders akışı + öğrenme oturum protokolü (v0.3 ALAN SÜRÜMÜ, 2026-09-21, Karar 105; v0.2 09-15 Jarvis kopyası `jarvis/.claude/skills/ogren/` öğretim-tasarımı için kalır)\n\n"
                               "**Alan-ajanı farkı (Karar 103 EK 1 · Karar 105 M4):** bu skill alan ajanının dizininde (`~/sistem/<alan>/`) koşar; şerit yolları `ogrenme/<şerit>/` **bu dizine** görelidir; ders iskeleti (`PROBE` soruları · `PLAN` DAG · kutu başlıkları) Jarvis'ten `cc/gelen/ders-<hafta>.md` ile gelir — varsa aynen kullanılır, `PROBE`/`PLAN` üretilmez; yoksa önceki dersin `## Kalan` listesiyle devam edilir, **yeni hafta açılmaz** (Jarvis'e `cc/giden/` ile \"iskelet gerekli: <hafta>\" notu). Oturum: cwd alan dizini, worktree kapalı, main, pathspec-only; PR yok, push yalnız Salih beyanıyla (protokol §5 EK-4 Karar 105 satırı). `mcp__visualize` yoksa DAG `raporlar/gorsel-*.html` olarak elle yazılır.")
