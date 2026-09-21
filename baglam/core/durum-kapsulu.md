@@ -1,0 +1,13 @@
+# Durum Kapsülü — Shannon (baglam)
+
+*Her oturumun ilk okuduğu dosya. Sıcak katman: üzerine yazılır, arşiv değildir. Bütçe ≤4 KB / ≤20 satır (birincil, Karar 104 M1); "Şu an" ≤8 madde sigorta; aşımda en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner ve buraya `kesildi: <madde> → arsiv/…` satırı düşer (silme yok, m.8). Tarihçe `raporlar/` + git log.*
+
+**Güncelleme:** 2026-09-21 doğum (Karar 105 (masa-18, 2026-09-20/21); üretici `jarvis/tools/alan-ajani-dogur.py`). Henüz oturum açılmadı; şerit dosyaları `../ogrenme/`'den `git mv` ile taşınmayı bekliyor (T3, Salih eli).
+
+## Şu an
+- Doğum: charter §0b doğum belgesi + bakım-maliyeti satırı; hook testi kuruluşta koşulacak (README).
+- Şeritler ve durumları: `ogrenme/baglam-modelleme` (B0 sırada (0 ders)) · `ogrenme/dersler-2026-07` (eski P0-P6 LLM-içi dersleri (07-15→08-22), arşiv-okuma).
+
+## Sonraki ilk iş
+0. Kuruluş: `chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh` → hepsi PASS; kütükte jarvis/friday satırı 0 (T5 kanıtı, Jarvis'e `cc/giden/` ile döner).
+1. İlk ders: `cc/gelen/` içinde Jarvis'ten ders iskeleti varsa onunla; yoksa şeridin `ilerleme.md` "Kalan" listesinden.

@@ -1,0 +1,24 @@
+{
+  "_not": "Alan ajanı ayarı (Karar 105, 2026-09-21; jarvis/tools/alan-ajani-dogur.py sablonlar/ajan-iskelet/claude-ayar/ → .claude/ kopyalar). Okuma kilidi hook'ta; deny = yazma ve push frenleri.",
+  "permissions": {
+    "deny": [
+      "Read(~/sistem/jarvis/**)",
+      "Read(~/sistem/friday/**)",
+      "Write(~/sistem/ogrenme/**)",
+      "Edit(~/sistem/ogrenme/**)",
+      "Write(~/sistem/sablonlar/**)",
+      "Edit(~/sistem/sablonlar/**)",
+      "Bash(git push:*)",
+      "Bash(git add -A:*)",
+      "Bash(git add .:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {"matcher": "Read|Grep|Glob|Bash", "hooks": [{"type": "command", "command": "bash .claude/hooks/okuma-izin.sh"}]}
+    ],
+    "PostToolUse": [
+      {"hooks": [{"type": "command", "command": "bash .claude/hooks/hareket-kutuk.sh"}]}
+    ]
+  }
+}
