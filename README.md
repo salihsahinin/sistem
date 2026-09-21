@@ -7,10 +7,10 @@
 |---|---|---|---|---|
 | **Jarvis** | `jarvis/` | ana-sıra ajan + kanonların bakıcısı; Salih'in tek temas noktası; işi domain-lider seviyesine kadar böler (tüzük m.44) | Fable | Claude Code, cwd `~/sistem/jarvis`, worktree **kapalı** |
 | **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5 medium | Claude Code, cwd `~/sistem/friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
-| **Turing** | `evals/` | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/evals`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
-| **Saltzer** | `guvenlik/` | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/guvenlik`, aynı usul |
-| **Shannon** | `baglam/` | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/baglam`, aynı usul |
-| **Euler** | `hesaplama/` | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/hesaplama`, aynı usul |
+| **Solon** | `evals/` | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/evals`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
+| **Aeneas** | `guvenlik/` | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/guvenlik`, aynı usul |
+| **Simonides** | `baglam/` | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/baglam`, aynı usul |
+| **Euclid** | `hesaplama/` | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/hesaplama`, aynı usul |
 | hakem | `jarvis/.claude/agents/hakem` (ortak) · `<alan>/.claude/agents/hakem` (alan perspektifli) | maskeli, bağımsız, salt-okur değerlendirici; V26 zorunlu (Karar 103 M1 · 105 M1) | Sonnet 5 + eskalasyon | `Agent` aracı |
 | işçiler | ajanın alt-çağrısı | tek görev, atılabilir | Sonnet | `Agent` aracı; okuma kilidi hook'la |
 

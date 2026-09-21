@@ -1,4 +1,4 @@
-# Durum Kapsülü — Turing (evals)
+# Durum Kapsülü — Solon (evals)
 
 *Her oturumun ilk okuduğu dosya. Sıcak katman: üzerine yazılır, arşiv değildir. Bütçe ≤4 KB / ≤20 satır (birincil, Karar 104 M1); "Şu an" ≤8 madde sigorta; aşımda en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner ve buraya `kesildi: <madde> → arsiv/…` satırı düşer (silme yok, m.8). Tarihçe `raporlar/` + git log.*
 

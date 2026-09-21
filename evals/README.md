@@ -1,6 +1,6 @@
-# evals — Turing, Salih'in evals alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
+# evals — Solon, Salih'in evals alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
 
-**Turing** = LLM / ajan değerlendirme mühendisliği (evals): eval seti · deterministik kontroller · LLM-as-judge kalibrasyonu · trajektori · CI regresyon. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Alan Turing, 'Computing Machinery and Intelligence' (1950): makinenin zekâsını ölçmek için ilk işlemsel sınav (Turing testi) — LLM/ajan değerlendirme mühendisliğinin tarihsel kökü.
+**Solon** = LLM / ajan değerlendirme mühendisliği (evals): eval seti · deterministik kontroller · LLM-as-judge kalibrasyonu · trajektori · CI regresyon. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Solon (MÖ 6. yy Atina): yasa koyucu ve yargıç — değerlendirme mühendisliği = ölçüt yazmak + yargılamak (rubrik, yargıç kalibrasyonu).
 
 ## Kuruluş (bir kez)
 ```bash
