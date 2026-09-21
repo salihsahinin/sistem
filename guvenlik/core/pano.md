@@ -1,4 +1,4 @@
-# Pano — Kerckhoffs (guvenlik)
+# Pano — Saltzer (guvenlik)
 
 *Kart = şerit haftası ya da ürün işi; kart işin adresidir. Sütunlar: Kart · İş · DONE · Açılış · Çıktı · Ekrana gel. `DONE` alanı boş kart açılamaz; pratik `DONE` yalnız Salih beyanıyla.*
 

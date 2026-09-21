@@ -1,5 +1,5 @@
 {
- "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar M3 (b): alanı temsil eden tarihi ikonik figür; Salih vetosu = revert (charter Ad satırı).",
+ "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar M3 (b): alanı temsil eden tarihi ikonik figür; Salih 09-21: 'kolay yazılıp telaffuz edilebilen isimler' → Kerckhoffs → Saltzer, Knuth → Euler (EK-1).",
  "karar": "Karar 105 (masa-18, 2026-09-20/21)",
  "model": "Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
  "bakim_maliyeti": "charter ≤4 KB · core/ 3 dosya · claude-ayar 1 settings + 3 hook + 2 ritüel skill + 1 hakem · ogren ortak symlink · ritüel 2 adım/seans · devir/ay [?] (3 seans sonra ölçüm) · bakan Jarvis · ≈25 dosya/ajan (üretici kuru koşumu 09-21: 103 dosya / 4 ajan, ortak ogren 3 dahil)",
@@ -9,17 +9,29 @@
    "ad": "Turing",
    "ad_gerekce": "Alan Turing, 'Computing Machinery and Intelligence' (1950): makinenin zekâsını ölçmek için ilk işlemsel sınav (Turing testi) — LLM/ajan değerlendirme mühendisliğinin tarihsel kökü.",
    "alan": "LLM / ajan değerlendirme mühendisliği (evals): eval seti · deterministik kontroller · LLM-as-judge kalibrasyonu · trajektori · CI regresyon",
-   "seritler": [{"kaynak": "ogrenme/evals", "hedef": "ogrenme/evals", "durum": "H1-H3 DONE (09-11→14, κ=1,0), H4 açık"}],
+   "seritler": [
+    {
+     "kaynak": "ogrenme/evals",
+     "hedef": "ogrenme/evals",
+     "durum": "H1-H3 DONE (09-11→14, κ=1,0), H4 açık"
+    }
+   ],
    "urun": "eval setleri (`h*-eval-seti/`), yargıç kalibrasyon kayıtları, Jarvis skill/ajan koşumları için regresyon eval'ı önerileri (`cc/giden/`)",
    "hakem_perspektifi": "eval iddialarında yargıç yanlılığı (konum/uzunluk), κ/Brier sayılarının kaynağı, vaka setinin sızıntısı (test≠eval)",
    "sektor": "LLM Evaluation Engineering · AS-OF 2026-09"
   },
   {
    "dizin": "guvenlik",
-   "ad": "Kerckhoffs",
-   "ad_gerekce": "Auguste Kerckhoffs, 'La cryptographie militaire' (1883): sistem gizli olmasa da güvenli kalmalı, sır yalnız anahtarda — depo açık-kaynak ilkesi + `.secrets/` sınırıyla (md.49) birebir aynı tasarım ilkesi.",
+   "ad": "Saltzer",
+   "ad_gerekce": "Jerome Saltzer (Saltzer & Schroeder, 'The Protection of Information in Computer Systems', 1975): en-az-yetki, tam aracılık, açık tasarım ilkeleri — ajan güvenliği serisinin G2 (lethal trifecta + en-az-yetki) kutusunun birincil kaynağı; kolay yazılır ve söylenir.",
    "alan": "Ajan güvenliği (AI Agent Security): prompt injection · lethal trifecta / en-az-yetki · MCP tedarik zinciri · hafıza zehirleme · guardrail · red teaming",
-   "seritler": [{"kaynak": "ogrenme/guvenlik", "hedef": "ogrenme/guvenlik", "durum": "G1 DONE (kavramsal+pratik), G2 kavramsal DONE, G3 DONE; G4 sırada"}],
+   "seritler": [
+    {
+     "kaynak": "ogrenme/guvenlik",
+     "hedef": "ogrenme/guvenlik",
+     "durum": "G1 DONE (kavramsal+pratik), G2 kavramsal DONE, G3 DONE; G4 sırada"
+    }
+   ],
    "urun": "injection/MCP vaka setleri (`g*-seti/`), Jarvis hook'ları için saldırı-vaka önerileri, yanlış-pozitif sayacı girdisi (`cc/giden/`)",
    "hakem_perspektifi": "saldırı iddiasının yeniden-üretilebilirliği (PoC var mı), savunmanın ölçülmüş bypass oranı, jailbreak↔injection karışımı",
    "sektor": "AI Agent Security · AS-OF 2026-09"
@@ -29,17 +41,44 @@
    "ad": "Shannon",
    "ad_gerekce": "Claude Shannon, 'A Mathematical Theory of Communication' (1948): entropi ve kanal kapasitesi — bağlam penceresini sabit-bütçeli kanal, içeriği bilgi olarak modellemenin matematiksel temeli (seri B2 kutusu).",
    "alan": "Bağlam penceresinin matematiksel modellemesi: sayım · paketleme · bilgi kuramı · dikkat/konum · erişim · önbellek ekonomisi · dinamik · optimizasyon · ölçüm",
-   "seritler": [{"kaynak": "ogrenme/baglam-modelleme", "hedef": "ogrenme/baglam-modelleme", "durum": "B0 sırada (0 ders)"}, {"kaynak": "ogrenme/dersler", "hedef": "ogrenme/dersler-2026-07", "durum": "eski P0-P6 LLM-içi dersleri (07-15→08-22), arşiv-okuma"}],
+   "seritler": [
+    {
+     "kaynak": "ogrenme/baglam-modelleme",
+     "hedef": "ogrenme/baglam-modelleme",
+     "durum": "B0 sırada (0 ders)"
+    },
+    {
+     "kaynak": "ogrenme/dersler",
+     "hedef": "ogrenme/dersler-2026-07",
+     "durum": "eski P0-P6 LLM-içi dersleri (07-15→08-22), arşiv-okuma"
+    }
+   ],
    "urun": "Jarvis bağlam katmanı için sayısal öneriler: kapsül bayt bütçesi, silver adresli erişim, KB-50 bütçe, İB-81 sıkıştırma (`cc/giden/`)",
    "hakem_perspektifi": "formülün türetimi ile ölçümü ayrımı, O(·) iddialarının kaynağı, benchmark (RULER/LongBench) sonuçlarının model-sürümü damgası",
    "sektor": "Context Engineering / Long-Context Modeling · AS-OF 2026-09"
   },
   {
    "dizin": "hesaplama",
-   "ad": "Knuth",
-   "ad_gerekce": "Donald Knuth, 'The Art of Computer Programming' (1968→) + 'Concrete Mathematics': algoritma çözümlemesi ile ayrık matematiği tek disiplinde birleştiren isim — 6.006 (algoritmalar) + 6.042J (ayrık matematik) çiftinin ortak paydası; mat-felsefesi alt-şeridi Gödel etiketiyle.",
+   "ad": "Euler",
+   "ad_gerekce": "Leonhard Euler (1736 Königsberg köprüleri): graf teorisi ve ayrık matematiğin başlangıcı — 6.006 (graf algoritmaları) + 6.042J (ayrık matematik) ortak paydası; mat-felsefesi alt-şeridi Gödel etiketiyle; kolay yazılır ve söylenir.",
    "alan": "Hesaplama temelleri: MIT 6.006 (algoritmalar, birebir) · MIT 6.042J (bilgisayar bilimi için matematik, birebir + 'neden') · matematik felsefesi (17 partisyon)",
-   "seritler": [{"kaynak": "ogrenme/mit-6006", "hedef": "ogrenme/mit-6006", "durum": "Ders-1 kaydı; Salih okuma + bulanık blok"}, {"kaynak": "ogrenme/mit-6042j", "hedef": "ogrenme/mit-6042j", "durum": "Ders-1 kaydı"}, {"kaynak": "ogrenme/mat-felsefesi", "hedef": "ogrenme/mat-felsefesi", "durum": "tasarım v1, 0 ders; Salih onayı bekliyor"}],
+   "seritler": [
+    {
+     "kaynak": "ogrenme/mit-6006",
+     "hedef": "ogrenme/mit-6006",
+     "durum": "Ders-1 kaydı; Salih okuma + bulanık blok"
+    },
+    {
+     "kaynak": "ogrenme/mit-6042j",
+     "hedef": "ogrenme/mit-6042j",
+     "durum": "Ders-1 kaydı"
+    },
+    {
+     "kaynak": "ogrenme/mat-felsefesi",
+     "hedef": "ogrenme/mat-felsefesi",
+     "durum": "tasarım v1, 0 ders; Salih onayı bekliyor"
+    }
+   ],
    "urun": "problem setleri + 'neden' kaynak defteri; Jarvis'e algoritmik araç önerileri (`cc/giden/`)",
    "hakem_perspektifi": "birebir sadakat (kaynak transkriptle satır eşleşmesi), ispat adımlarının eksiksizliği, 'neden' kaynağının birincil olması",
    "sektor": "Algorithms & Discrete Mathematics (MIT OCW) · AS-OF 2026-09"

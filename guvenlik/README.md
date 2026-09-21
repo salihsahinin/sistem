@@ -1,6 +1,6 @@
-# guvenlik — Kerckhoffs, Salih'in guvenlik alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
+# guvenlik — Saltzer, Salih'in guvenlik alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
 
-**Kerckhoffs** = Ajan güvenliği (AI Agent Security): prompt injection · lethal trifecta / en-az-yetki · MCP tedarik zinciri · hafıza zehirleme · guardrail · red teaming. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Auguste Kerckhoffs, 'La cryptographie militaire' (1883): sistem gizli olmasa da güvenli kalmalı, sır yalnız anahtarda — depo açık-kaynak ilkesi + `.secrets/` sınırıyla (md.49) birebir aynı tasarım ilkesi.
+**Saltzer** = Ajan güvenliği (AI Agent Security): prompt injection · lethal trifecta / en-az-yetki · MCP tedarik zinciri · hafıza zehirleme · guardrail · red teaming. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Jerome Saltzer (Saltzer & Schroeder, 'The Protection of Information in Computer Systems', 1975): en-az-yetki, tam aracılık, açık tasarım ilkeleri — ajan güvenliği serisinin G2 (lethal trifecta + en-az-yetki) kutusunun birincil kaynağı; kolay yazılır ve söylenir.
 
 ## Kuruluş (bir kez)
 ```bash
