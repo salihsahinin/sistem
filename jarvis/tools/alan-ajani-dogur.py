@@ -124,7 +124,7 @@ def uret(spec, a):
             "| %s | `../%s` | `%s` | %s |" % (os.path.basename(s["kaynak"]), s["kaynak"], s["hedef"], s["durum"]) for s in aj["seritler"])
         pano = "\n".join("| %s | şerit: %s | sıradaki hafta kavramsal `DONE` + pratik Salih beyanı | %s | `%s/ilerleme.md` | her seans |"
                          % (os.path.basename(s["hedef"]), s["durum"], tarih, s["hedef"]) for s in aj["seritler"])
-        d = {"AD": aj["ad"], "AD_BUYUK": aj["ad"].upper(), "AD_GEREKCE": aj["ad_gerekce"], "DIZIN": dizin, "ALAN": aj["alan"],
+        d = {"AD": aj["ad"], "AD_BUYUK": aj["ad"].upper(), "ALAN_KISA": aj.get("alan_kisa", dizin), "AD_GEREKCE": aj["ad_gerekce"], "DIZIN": dizin, "ALAN": aj["alan"],
              "MODEL": spec["model"], "BAKIM": spec["bakim_maliyeti"], "KARAR": spec["karar"], "TARIH": tarih,
              "SERITLER": seritler, "SERIT_TABLO": serit_tablo, "URUN": aj["urun"], "HAKEM_PERSPEKTIFI": aj["hakem_perspektifi"],
              "PANO_SATIRLARI": pano}

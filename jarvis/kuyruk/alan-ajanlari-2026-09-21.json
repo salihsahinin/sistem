@@ -1,11 +1,11 @@
 {
- "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar Karar 105 EK-2 (Salih 09-21): antik Yunan/Roma düşünürlerinden ilhamla, alan bağlı, kolay yazılır/söylenir (önceki: EK-1 Turing/Saltzer/Shannon/Euler, M3 Turing/Kerckhoffs/Shannon/Knuth — AS-OF).",
+ "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar Karar 105 EK-2 (Salih 09-21): antik Yunan/Roma düşünürlerinden ilhamla, alan bağlı, kolay yazılır/söylenir (önceki: EK-1 Turing/Saltzer/Shannon/Euler, M3 Turing/Kerckhoffs/Shannon/Knuth — AS-OF). Karar 105 EK-3 (Salih 09-21): dizin adı = ajan adı (jarvis/, friday/ gibi); alan_kisa alanı metinlerde alanı söyler.",
  "karar": "Karar 105 (masa-18, 2026-09-20/21)",
  "model": "Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
  "bakim_maliyeti": "charter ≤4 KB · core/ 3 dosya · claude-ayar 1 settings + 3 hook + 2 ritüel skill + 1 hakem · ogren ortak symlink · ritüel 2 adım/seans · devir/ay [?] (3 seans sonra ölçüm) · bakan Jarvis · ≈25 dosya/ajan (üretici kuru koşumu 09-21: 103 dosya / 4 ajan, ortak ogren 3 dahil)",
  "ajanlar": [
   {
-   "dizin": "evals",
+   "dizin": "solon",
    "ad": "Solon",
    "ad_gerekce": "Solon (MÖ 6. yy Atina): yasa koyucu ve yargıç — değerlendirme mühendisliği = ölçüt yazmak + yargılamak (rubrik, yargıç kalibrasyonu).",
    "alan": "LLM / ajan değerlendirme mühendisliği (evals): eval seti · deterministik kontroller · LLM-as-judge kalibrasyonu · trajektori · CI regresyon",
@@ -18,10 +18,11 @@
    ],
    "urun": "eval setleri (`h*-eval-seti/`), yargıç kalibrasyon kayıtları, Jarvis skill/ajan koşumları için regresyon eval'ı önerileri (`cc/giden/`)",
    "hakem_perspektifi": "eval iddialarında yargıç yanlılığı (konum/uzunluk), κ/Brier sayılarının kaynağı, vaka setinin sızıntısı (test≠eval)",
-   "sektor": "LLM Evaluation Engineering · AS-OF 2026-09"
+   "sektor": "LLM Evaluation Engineering · AS-OF 2026-09",
+   "alan_kisa": "evals"
   },
   {
-   "dizin": "guvenlik",
+   "dizin": "aeneas",
    "ad": "Aeneas",
    "ad_gerekce": "Aineias Taktikos (MÖ 4. yy): kuşatma altındaki şehrin savunması üzerine ilk el kitabı (içeriden ihanet, kapı denetimi, haberleşme) — prompt injection ve tedarik-zinciri saldırıları = kuşatma; en-az-yetki = kapı denetimi.",
    "alan": "Ajan güvenliği (AI Agent Security): prompt injection · lethal trifecta / en-az-yetki · MCP tedarik zinciri · hafıza zehirleme · guardrail · red teaming",
@@ -34,10 +35,11 @@
    ],
    "urun": "injection/MCP vaka setleri (`g*-seti/`), Jarvis hook'ları için saldırı-vaka önerileri, yanlış-pozitif sayacı girdisi (`cc/giden/`)",
    "hakem_perspektifi": "saldırı iddiasının yeniden-üretilebilirliği (PoC var mı), savunmanın ölçülmüş bypass oranı, jailbreak↔injection karışımı",
-   "sektor": "AI Agent Security · AS-OF 2026-09"
+   "sektor": "AI Agent Security · AS-OF 2026-09",
+   "alan_kisa": "güvenlik"
   },
   {
-   "dizin": "baglam",
+   "dizin": "simonides",
    "ad": "Simonides",
    "ad_gerekce": "Simonides (MÖ 5. yy, Keos): hafıza sanatının (loci yöntemi) kurucusu — bağlam penceresi = sınırlı hafıza; neyin nereye yerleştirileceği (paketleme, erişim, önbellek) onun sorusudur.",
    "alan": "Bağlam penceresinin matematiksel modellemesi: sayım · paketleme · bilgi kuramı · dikkat/konum · erişim · önbellek ekonomisi · dinamik · optimizasyon · ölçüm",
@@ -55,10 +57,11 @@
    ],
    "urun": "Jarvis bağlam katmanı için sayısal öneriler: kapsül bayt bütçesi, silver adresli erişim, KB-50 bütçe, İB-81 sıkıştırma (`cc/giden/`)",
    "hakem_perspektifi": "formülün türetimi ile ölçümü ayrımı, O(·) iddialarının kaynağı, benchmark (RULER/LongBench) sonuçlarının model-sürümü damgası",
-   "sektor": "Context Engineering / Long-Context Modeling · AS-OF 2026-09"
+   "sektor": "Context Engineering / Long-Context Modeling · AS-OF 2026-09",
+   "alan_kisa": "bağlam"
   },
   {
-   "dizin": "hesaplama",
+   "dizin": "euclid",
    "ad": "Euclid",
    "ad_gerekce": "Euclid / Öklid (MÖ 3. yy): Elementler (aksiyomatik ispat) + ilk kayıtlı algoritma (ebob) — 6.006 algoritma çözümlemesi + 6.042J ispat teknikleri + matematik felsefesi (aksiyom nedir) tek isimde.",
    "alan": "Hesaplama temelleri: MIT 6.006 (algoritmalar, birebir) · MIT 6.042J (bilgisayar bilimi için matematik, birebir + 'neden') · matematik felsefesi (17 partisyon)",
@@ -81,7 +84,8 @@
    ],
    "urun": "problem setleri + 'neden' kaynak defteri; Jarvis'e algoritmik araç önerileri (`cc/giden/`)",
    "hakem_perspektifi": "birebir sadakat (kaynak transkriptle satır eşleşmesi), ispat adımlarının eksiksizliği, 'neden' kaynağının birincil olması",
-   "sektor": "Algorithms & Discrete Mathematics (MIT OCW) · AS-OF 2026-09"
+   "sektor": "Algorithms & Discrete Mathematics (MIT OCW) · AS-OF 2026-09",
+   "alan_kisa": "hesaplama"
   }
  ]
 }
