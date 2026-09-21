@@ -17,7 +17,7 @@
 Yeni alan ajanı: `jarvis/tools/alan-ajani-dogur.py <spec>` (`sablonlar/ajan-iskelet/`, doğum belgesi + bakım-maliyeti satırı zorunlu, Karar 104 M5); şerit taşıma `git mv` Salih eli.
 
 ## Kök
-`AGENTS.md` ortak kanon · `CLAUDE.md → AGENTS.md` · `sablonlar/` ortak şablonlar (görev-fonksiyonu · geri-dönüş v0 · devir-birimi v0 · A1 lojik blok · charter iskeleti) · `bin/hook-dispatch.sh` tek hook girişi (cwd → ajan hook'ları) · `.claude/settings.json` dispatcher kayıtları · `ogrenme/` Salih'in öğrenme şeritleri (ajanlara kapalı) · `.gitignore` kök kuralları (ajan kuralları `<ajan>/.gitignore`).
+`KURULUM.md` yeni makinede kaldığın yerden devam (uygulama/araç/harness envanteri, ev-yolu geçişi, gitignore'daki veriler; 2026-09-21) · `AGENTS.md` ortak kanon · `CLAUDE.md → AGENTS.md` · `sablonlar/` ortak şablonlar (görev-fonksiyonu · geri-dönüş v0 · devir-birimi v0 · A1 lojik blok · charter iskeleti) · `bin/hook-dispatch.sh` tek hook girişi (cwd → ajan hook'ları) · `.claude/settings.json` dispatcher kayıtları · `ogrenme/` Salih'in öğrenme şeritleri (ajanlara kapalı) · `.gitignore` kök kuralları (ajan kuralları `<ajan>/.gitignore`).
 
 ## Sahiplik (kim neyi yazar)
 genel kural → kök `AGENTS.md` (Jarvis yazar, Salih imzalar) · ajan kuralı/kimliği → `<ajan>/AGENTS.md` (Jarvis yazar, Salih imzalar; ajan kural yazamaz) · ajan hafızası → `<ajan>/core/` (ajanın kendisi) · karar defteri → `jarvis/kuyruk/senaryo-defteri.md` (tek defter; diğer ajanlarda kural adayı) · proje kanonu → ileride `projects/<ad>/AGENTS.md`.
