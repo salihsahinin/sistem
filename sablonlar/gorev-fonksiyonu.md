@@ -10,6 +10,7 @@ cagri_kosulu:     <tek cümle: bu görev NE ZAMAN çağrılır — lider yalnız
 rejim:            kalite-öncelikli | maliyet-öncelikli
 model:            <liderden pahalı OLAMAZ>
 kosum_profili:    <model × effort × bağlam-bütçesi × TAHMİNİ token/süre — KB-02 (Salih 08-17): tahmini yalnız ÜST model (ana-sıra, bugün Fable) yazar ve yalnız kendinden DÜŞÜK modeller için; üst model kendi koşumu için tahmin YAZMAZ (yalnız ölçülür); koşum sonrası GERÇEKLEŞEN yanına düşer → sonraki tahmin revize (ambar amb_olgu_kosum)>
+eskalasyon:       <varsayılan Sonnet 5 medium; tetik (a) Salih beyanı · (b) hakem V26 TUTMADI ≥3 · (c) işçi 2 başarısız tur → <üst model>; gerçekleşen eskalasyon koşum sonrası buraya `eskalasyon: <tetik> → <model>` (Karar 103 M2 · 105; ajan-metodolojisi §6b). Sessiz eskalasyon yasak; "yok" yazılabilir>
 
 ## GİRDİLER (tipli; "alan adı talimattır")
 <girdi_adi>: <tip>        # ör. arastirma_sorusu: metin · hedef_dosya: yol
