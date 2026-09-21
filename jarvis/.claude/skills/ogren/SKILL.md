@@ -7,6 +7,8 @@ metadata: { owner: jarvis, version: "0.2.0-deneysel-m29", kural: "core/skill-ure
 
 # ogren — dört fazlı ders akışı + öğrenme oturum protokolü (v0.2, 2026-09-15; deneme v0.1 09-09 → hazine)
 
+> **Karar 105 (2026-09-21):** dersi koşan kopya artık alan ajanlarında: `sablonlar/skills/ogren/` v0.3 (alan sürümü; her alan dizininde `.claude/skills/ogren` symlink). Bu Jarvis kopyası **öğretim-tasarımı** içindir (Karar 103 EK 1): Jarvis `PROBE` sorularını, `PLAN` DAG'ını ve kutu başlıklarını üretip `<alan>/cc/gelen/ders-<hafta>.md` devir birimi olarak bırakır; `TEACH`/`CLOSE` alan ajanında koşar. Jarvis'te "seans başı, <şerit>" tetiği `gecerli-bitis: 2026-09-21`.
+
 Tür: T-R ritüel (öğrenme yan-oturumu; yan-etki: ders dosyası + ilerleme tablosu + branch commit'i; kapsül/pano/defter'e yazmaz). Kural kaynağı: hafıza kuralları (doğrudan anlatım 08-17 · görsel önce + atıflı metin 09-08 · pratik = Salih'in eli 09-15) · m.39 (her rakam kaynaklı) · Karar 68 (AS-OF) · Karar 73 (her derste ≥1 formül) · m.33 (sorular yalnız içerik hakkında). İlke (Eero Alvar 2026-08-14 analizi, `raporlar/2026-09/2026-09-09-ai-ile-ogrenme-transkript-analizi.md`): zorluk malzemede kalır, lojistik (sıra, kaynak, doğrulama) skill'de. Canlı koşum kanıtı (K4): evals H1-H3 (09-11→14, κ=1,0) + guvenlik G1 (09-14/15). Eski protokol metni (format v2, 07-15) `arsiv/ogrenme-oturum-protokolu-v2-2026-09-15.md`.
 
 ## 0. Açılış (oturum protokolü)

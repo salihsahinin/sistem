@@ -20,3 +20,5 @@
 - [problem-cozme/](problem-cozme/seri-tasarimi-v1.md) — problem çözme eğitim serisi v1 (2026-09-09; 9 başlık A-I × L0-L3, AI-çağı öncelikli, §5 AI kuralı: çözümde AI kapalı, tutor/doğrulama modu; v0 arşiv-pointer; gerekçe Atlas 09-09).
 
 > **Ad eşitliği (Karar 93, 2026-09-10):** bu dizindeki tarihli dosyalarda geçen **Carvis = Jarvis** (Salih'le konuşan ajanın 09-10 öncesi adı); sistem/repo kastedilirken "depo"/"kanon". Halef-sözlük: `core/baglam-anahtar-kaydi.md` anahtar `carvis-rol-adi` → `jarvis-ajan-adi`.
+
+> **Karar 105 (2026-09-21):** öğrenme şeritleri alan ajanlarına taşınıyor (T3 Salih eli, `git mv`): `evals/` (Turing) · `guvenlik/` (Kerckhoffs) · `baglam/` (Shannon; eski `dersler/` → `baglam/ogrenme/dersler-2026-07/`) · `hesaplama/` (Knuth; mit-6006 + mit-6042j + mat-felsefesi). Bu kökte kalan: `kaynaklar/` (ortak, alan ajanlarına salt-okur) · `problem-cozme/` · `mufredat.md` · `anlama-kapisi.md` · `loop-eng-yol-haritasi.md` (Jarvis öğretim-tasarımı). Ders iskeleti Jarvis'ten `<alan>/cc/gelen/ders-<hafta>.md` ile gider.
