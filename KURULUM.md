@@ -61,4 +61,6 @@ Global skill'ler (`~/.claude/skills/` ve `~/.agents/skills/`: lavish · gh-axi �
 | **`~/staj başlangıç/`** | 9,6 MB, 29 commit, **remote yok** | md.49: şirket verisi; bilgisayar şirkete dönüyor — kalmasını istiyorsan **bugün** harici diske/özel repoya kopyala, Jarvis deposuna girmez |
 
 ## 6. Kaldığın yer
-Kapsül `jarvis/core/durum-kapsulu.md` (seans-4 kapandı 09-21) · teslim raporu `jarvis/raporlar/seans/seans-teslim-2026-09-21-karar104-105-alan-ajanlari-hakem.md` · ajan tablosu kök `README.md` · her ajanın kuruluş satırı kendi `README.md`'sinde.
+Kapsül `jarvis/core/durum-kapsulu.md` (seans-5 kapandı 09-21 ~16:0x, push'landı) · teslim raporu `jarvis/raporlar/seans/seans-teslim-2026-09-21-bitirme-tezi-atlas.md` (önceki: `…-karar104-105-alan-ajanlari-hakem.md`) · ajan tablosu kök `README.md` · her ajanın kuruluş satırı kendi `README.md`'sinde.
+- **Bitirme tezi (Salih'in tezi, 09-21):** Atlas raporu `jarvis/raporlar/2026-09/2026-09-21-bitirme-tezi-ai-matematik-atlas.md` (Ö1-Ö6 öneriler; karar Salih'te) · ham 16 rapor `jarvis/cc/rapor/2026-09/rapor-2026-09-21-bitirme-*` · harness hafızasında `user-bitirme-tezi-matematik-muhendisligi.md` (ayna §3).
+- **Yeni makinede ilk oturum:** `cd sistem/jarvis` → "seans başı" (kapsül + `tools/acilis-kapilari.py`; K3 silver `BAYAT` çıkar, `tools/katman-hatti.py` ~12 sn tazeler; canlı transkript sayısı 0'dan başlar, K1 `TEMİZ` beklenir).
