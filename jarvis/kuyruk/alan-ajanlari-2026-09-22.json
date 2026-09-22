@@ -1,0 +1,42 @@
+{
+ "_not": "Alan ajanı doğum spec'i — 2. parti (Karar 108 Jev · Karar 109 Vega; Salih 2026-09-22). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Ad ölçütü Karar 107 (09-22): gerçek ünlü kişi adı değil, ≤4 harf, basit, Türkçe eş sesli sözcük değil. Şeritler yeni (kaynak yok): git mv satırları uygulanmaz, şerit dizinini Jarvis üretir (README + ilerleme + cc/gelen/ders-01).",
+ "karar": "Karar 108-109 (Salih beyanı 2026-09-22)",
+ "model": "Sonnet 5, effort medium; eskalasyon (Opus 5.5/Fable; Karar 106) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
+ "bakim_maliyeti": "charter ≤4 KB · core/ 3 dosya · claude-ayar 1 settings + 3 hook + 2 ritüel skill + 1 hakem · ogren symlink · ritüel 2 adım/seans · devir/ay [?] · bakan Jarvis · ≈25 dosya/ajan",
+ "ajanlar": [
+  {
+   "dizin": "deci",
+   "ad": "Deci",
+   "ad_gerekce": "Deci (Karar 108, 09-22): 'decide' kökü; ≤4 harf, gerçek kişi değil, Türkçe eş sesli değil. Ürün adı 'Jev' ajana verilmedi (Salih 09-22: aynı isimde iki ajan olmaz; Jev modeli ileride sisteme ajan olarak girerse ad ona kalır).",
+   "alan": "Yapısal karar modelleri (System One): TypeSafe Jev — typed karar (choice · score · noul) + kalibre olasılık; kaskad/yönlendirme; Jarvis karar noktalarına entegrasyon",
+   "seritler": [
+    {
+     "kaynak": "ogrenme/jev",
+     "hedef": "ogrenme/jev",
+     "durum": "J1 sırada (0 ders; seri 09-22 kuruldu)"
+    }
+   ],
+   "urun": "Jev-tabanlı karar noktaları (hakem D/K/X ön-sınıflama · ingest triyaj · hook RED sayacı · eskalasyon tetiği), eval'lı prototip `urun/`, öneri `cc/giden/`",
+   "hakem_perspektifi": "satıcı iddiası ↔ bağımsız ölçüm ayrımı, kalibrasyon kanıtı (Brier/ECE kendi trafiğinde), eşik seçiminin maliyet gerekçesi",
+   "sektor": "System One Models · Structured Judgment · AS-OF 2026-09",
+   "alan_kisa": "jev"
+  },
+  {
+   "dizin": "vega",
+   "ad": "Vega",
+   "ad_gerekce": "Vega (Karar 109, 09-22): opsiyon Yunanlılarından biri (volatiliteye duyarlılık, ∂V/∂σ) — quant sözlüğünün kendi terimi; gerçek kişi değil, ≤4 harf, Türkçe eş sesli sözcük değil.",
+   "alan": "Quantitative finance: ön-koşul mat/istatistik/kod → finans → stokastik hesap/türev → portföy/risk → zaman serisi → ML/quant araştırma → uygulama (backtest, veri, mikroyapı); DAG `ogrenme/quant/mufredat-dag.md`",
+   "seritler": [
+    {
+     "kaynak": "ogrenme/quant",
+     "hedef": "ogrenme/quant",
+     "durum": "Q1 sırada (0 ders; müfredat DAG'ı 09-22 Atlas)"
+    }
+   ],
+   "urun": "PortRisk devamı (K-002/003): faktör analizi · backtest · risk raporu; DAG düğümü başına elle-hesap + kod çifti `urun/`, CV çıktısı (m.15)",
+   "hakem_perspektifi": "türetme eksiksizliği (Karar 73), look-ahead/veri sızıntısı (backtest), rakam AS-OF, DAG ön-koşul kenarlarına sadakat",
+   "sektor": "Quantitative Finance · AS-OF 2026-09",
+   "alan_kisa": "quant"
+  }
+ ]
+}
