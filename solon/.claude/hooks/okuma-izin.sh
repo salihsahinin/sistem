@@ -64,8 +64,9 @@ def izinli_mi(r):
     # kök kanon: depo kökünün kendisi ve doğrudan altındaki dosyalar serbest; alt dizinler (jarvis/**) izin listesine tabi
     if r == kok or (os.path.dirname(r) == kok and not os.path.isdir(r)):
         return True
-    # ev dizini dışındaki sistem yolları serbest (kilidin konusu kullanıcı verisi); ev altındaki her şey izin listesine tabi
-    return not (r == home or r.startswith(home + os.sep))
+    # ev dizini ve depo kökü dışındaki sistem yolları serbest (kilidin konusu kullanıcı verisi); ev ya da depo kökü altındaki her şey izin listesine tabi
+    # (depo kökü şartı 2026-09-22: Windows'ta depo ev altında değil — C:\sistem — yoksa jarvis/** serbest kalıyordu; Mac'te ~/sistem ev altında, davranış aynı)
+    return not (r == home or r.startswith(home + os.sep) or r.startswith(kok + os.sep))
 
 def soy(tok):
     return tok.strip().strip("'\"")

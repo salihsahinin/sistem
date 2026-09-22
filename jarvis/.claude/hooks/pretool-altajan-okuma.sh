@@ -20,7 +20,8 @@ if not g.get("agent_id"):
     sys.exit(0)  # ana-sıra çağrısı
 arac = g.get("tool_name", ""); ti = g.get("tool_input", {}) or {}
 repo = os.path.realpath(os.environ["REPO"]); home = os.path.expanduser("~")
-YASAK = [os.path.join(home, ".claude", "projects"), os.path.join(home, "sistem", "friday"), os.path.join(home, "staj başlangıç"),
+kok = os.path.dirname(repo)  # monorepo kökü (Karar 101): friday = jarvis'in kardeş dizini; ev yolundan bağımsız (2026-09-22 Windows taşınabilirliği)
+YASAK = [os.path.join(home, ".claude", "projects"), os.path.join(kok, "friday"), os.path.join(home, "staj başlangıç"),
          os.path.join(home, "Desktop", "repo"),
          os.path.join(repo, "core", "durum-kapsulu.md"), os.path.join(repo, "core", "pano.md"),
          os.path.join(repo, "kuyruk", "senaryo-defteri.md"), os.path.join(repo, "fikir-kutusu.md"),
@@ -42,8 +43,9 @@ if arac in ("Read", "Grep", "Glob"):
     adaylar = [ti.get("file_path"), ti.get("path")]
 elif arac == "Bash":
     cmd = re.sub(r"<<-?\s*['\"]?(\w+)['\"]?.*?\n\1\s*$", "<<HEREDOC>>", ti.get("command", ""), flags=re.S | re.M)
-    cmd = cmd.replace("~", home).replace("$HOME", home).replace("${HOME}", home)
-    adaylar = re.findall(r"(?<![\w@:])/?[\w.\-]+(?:/[\w.\-]+)+", cmd)
+    ev = home.replace(os.sep, "/")  # Windows'ta ters bölü desenle çakışır; realpath karışık ayracı çözer
+    cmd = cmd.replace("~", ev).replace("$HOME", ev).replace("${HOME}", ev)
+    adaylar = re.findall(r"(?<![\w@:])(?:[A-Za-z]:)?/?[\w.\-]+(?:/[\w.\-]+)+", cmd)  # `C:/…` sürücü öneki (Windows) da yol adayı
 kotu = sorted({a for a in adaylar if a and yasak_mi(a)})
 if kotu:
     # Karar 100 M2 (09-18, Friday tur-4 tespiti): test bayrağı YALNIZ kütük yazımını kapatır; exit 2 kararı bayraktan bağımsızdır
