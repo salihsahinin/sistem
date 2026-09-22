@@ -18,6 +18,7 @@ Sınır: md.49 — yalnız jarvis transkriptleri; alt-ajan koşumları ambar-tab
 Deneysik m.29 (2026-08-17, seans-8). Katman hattı: tools/katman-hatti.py adım 5.
 """
 import argparse, csv, glob, json, os, re, sqlite3, subprocess
+import harness_anahtar
 from collections import Counter, defaultdict
 from datetime import datetime, timezone, timedelta
 
@@ -133,7 +134,7 @@ def bronz_topla(proje_dizin, repo):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+    ap.add_argument("--proje-dizin", default=harness_anahtar.proje_dizin())  # makineye göre anahtar (2026-09-22)
     ap.add_argument("--tarih", default=None); ap.add_argument("--tum", action="store_true"); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
     head = sh(["git", "rev-parse", "--short", "HEAD"], repo)

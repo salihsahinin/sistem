@@ -22,6 +22,7 @@ Kullanım: python3 tools/sicak-katman-fifo.py [--json] [--repo <yol>] [--tarih Y
 Çıkış kodu: 0 = aşım yok · 3 = en az bir FLAG (bilgi; engel değil).
 """
 import argparse, datetime, json, os, re, sys, unicodedata
+import harness_anahtar
 
 TAVAN = {  # ad: (bayt B, satır S ∨ None, madde sigortası K ∨ None)
     "kapsul": (8 * 1024, 40, 8),
@@ -31,7 +32,7 @@ TAVAN = {  # ad: (bayt B, satır S ∨ None, madde sigortası K ∨ None)
 }
 ARSIV = {"kapsul": "arsiv/kapsul-{t}.md", "pano": "arsiv/kuyruk-arsiv/pano-arsivi-{t}.md",
          "memory": "arsiv/memory-arsivi-{t}.md", "claude": None}
-MEM_ANAHTARLAR = ("-Users-HasanSalihSahin-sistem", "-Users-HasanSalihSahin-sistem-jarvis")  # Karar 101: iki anahtar; ilki canlı (Karar 104 M3)
+MEM_ANAHTARLAR = (harness_anahtar.kok_anahtar(), harness_anahtar.jarvis_anahtar())  # Karar 101: iki anahtar; ilki canlı (Karar 104 M3); makineye göre türetilir (2026-09-22)
 
 
 def kapsul_maddeler(t):

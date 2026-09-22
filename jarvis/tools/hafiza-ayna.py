@@ -12,8 +12,9 @@ Varsayılan anahtar: -Users-HasanSalihSahin-sistem (hükümdeki dizin). Ek anaht
 Çıkış kodu: 0 = ayna güncel/güncellendi · 2 = kaynak dizin yok · 3 = kaynakta-yok dosya var (bilgi; engel değil).
 """
 import argparse, datetime, hashlib, json, os, shutil, sys
+import harness_anahtar
 
-VARSAYILAN = ["-Users-HasanSalihSahin-sistem"]
+VARSAYILAN = [harness_anahtar.kok_anahtar()]  # makineye göre kök anahtarı (Mac: -Users-HasanSalihSahin-sistem · Windows: C--sistem-sistem; 2026-09-22)
 
 
 def sha256(yol):
@@ -24,9 +25,12 @@ def sha256(yol):
     return h.hexdigest()
 
 
-def ayna(anahtar, repo, kuru):
+AYNA_ADI = "-Users-HasanSalihSahin-sistem"  # aynanın KANONİK dizin adı (Karar 104 M3 hükmündeki ad); makine anahtarı değişse de (Windows C--sistem-sistem) tek ayna dizini (2026-09-22)
+
+
+def ayna(anahtar, repo, kuru, hedef_ad=None):
     kaynak = os.path.expanduser(f"~/.claude/projects/{anahtar}/memory")
-    hedef = os.path.join(repo, "veri", "hafiza-ayna", anahtar)
+    hedef = os.path.join(repo, "veri", "hafiza-ayna", hedef_ad or anahtar)
     if not os.path.isdir(kaynak):
         return {"anahtar": anahtar, "durum": "KAYNAK-YOK", "kaynak": kaynak}
     manifest_yolu = os.path.join(hedef, "MANIFEST.json")
@@ -74,7 +78,8 @@ def main():
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     a = ap.parse_args()
-    sonuc = [ayna(k, a.repo, a.kuru) for k in (a.anahtar or VARSAYILAN)]
+    # kök anahtarı hangi makinede olursa olsun kanonik ayna dizinine iner; ek anahtarlar kendi adıyla
+    sonuc = [ayna(k, a.repo, a.kuru, AYNA_ADI if k == harness_anahtar.kok_anahtar() else None) for k in (a.anahtar or VARSAYILAN)]
     if a.json:
         print(json.dumps(sonuc, ensure_ascii=False, indent=1))
     else:

@@ -9,14 +9,15 @@ kombinasyonunda bulunmalı. Üç katmanı sayar:
 Kullanım: python3 tools/ad-esitligi-denetim.py [--json]   · çıkış 0 = PASS · 4 = eksik var (kapanış kapısı: FLAG, engel değil).
 Deterministik: yalnız dosya içeriği; ağ yok."""
 import argparse, json, os, re, sys
+import harness_anahtar
 
 J = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = os.path.expanduser("~")
 ESIT = re.compile(r"eski ad[ıi]? Carvis|JARVİS FRIDAY CARVIS|Carvis\s*=\s*\*{0,2}Jarvis|Carvis\s*→\s*\*{0,2}Jarvis|Carvis emekli|Carvis\)|eski ad Carvis", re.I)
 CARVIS = re.compile(r"Carvis|CARVİS|CARVIS")
 K1 = [os.path.join(J, "CLAUDE.md"), os.path.join(J, ".claude", "hooks", "session-start.sh"),
-      os.path.join(H, ".claude", "projects", "-Users-HasanSalihSahin-sistem-jarvis", "memory", "MEMORY.md"),
-      os.path.join(H, "friday", "CLAUDE.md")]
+      os.path.join(harness_anahtar.memory_dizin(), "MEMORY.md"),  # makineye göre anahtar (2026-09-22)
+      os.path.join(os.path.dirname(J), "friday", "CLAUDE.md")]  # monorepo: friday = jarvis'in kardeşi (Karar 101)
 ad = os.path.join(J, ".claude", "agents")
 if os.path.isdir(ad):
     K1 += [os.path.join(ad, f) for f in sorted(os.listdir(ad)) if f.endswith(".md")]

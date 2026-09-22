@@ -22,6 +22,7 @@ GOLD martları: v_amb_kosum_maliyet (workflow başına ajan/token/süre) · v_am
 Kullanım: python3 tools/ambar-tablo.py [--repo] [--proje-dizin] [--kuru] [--sessiz]   (katman-hatti.py içinde prompt'tan sonra koşar)
 """
 import argparse, csv, glob, json, os, re, sqlite3, subprocess, sys
+import harness_anahtar
 from datetime import datetime, timezone
 
 TOKEN_ALANLAR = ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
@@ -81,7 +82,7 @@ def bronz_kosum(proje_dizin):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+    ap.add_argument("--proje-dizin", default=harness_anahtar.proje_dizin())  # makineye göre anahtar (2026-09-22)
     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args(); repo = os.path.abspath(a.repo); head = sh(["git", "rev-parse", "--short", "HEAD"], repo)
     simdi = datetime.now(timezone.utc).isoformat()

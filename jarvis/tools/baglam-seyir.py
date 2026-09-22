@@ -17,6 +17,7 @@ Kullanım: python3 tools/baglam-seyir.py [--proje-dizin <yol>] [--repo <yol>] [-
 Çıkış: 0 tamam · 2 transkript dizini yok · 3 veri-testi ERROR. Deneysel m.29.
 """
 import argparse, csv, glob, json, os, sqlite3, sys
+import harness_anahtar
 from datetime import datetime, timezone, timedelta
 
 TR = timezone(timedelta(hours=3))
@@ -60,7 +61,7 @@ def bronz_topla(proje_dizin):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+    ap.add_argument("--proje-dizin", default=harness_anahtar.proje_dizin())  # makineye göre anahtar (2026-09-22)
     ap.add_argument("--repo", default=os.getcwd())
     ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)

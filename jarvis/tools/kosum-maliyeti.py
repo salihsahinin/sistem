@@ -26,6 +26,7 @@ Koşum:
 stdlib-only. Rakam damgası (m.39): tüm sayılar bu koşumun transkript dosyalarından; kestirim yok.
 """
 import argparse, csv, glob, json, os, sys
+import harness_anahtar
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
@@ -86,7 +87,7 @@ def tara(dosyalar, gun_sinir):
 
 def main():
     p = argparse.ArgumentParser(description="Transkript-JSONL usage tablosu (FAIL-LOUD; İB-08)")
-    p.add_argument("--proje", default="-Users-HasanSalihSahin-sistem-jarvis",
+    p.add_argument("--proje", default=harness_anahtar.jarvis_anahtar(),  # makineye göre anahtar (2026-09-22)
                    help="~/.claude/projects altındaki proje dizini adı; 'HEPSI' = tüm projeler")
     p.add_argument("--gun", type=int, default=7, help="son N gün (0 = tümü)")
     p.add_argument("--beklenen", default=None, help="ana-zincirde beklenen model (düşüm izi)")

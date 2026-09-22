@@ -15,6 +15,7 @@ Kullanım: python3 tools/buyuk-harf-temizle.py [--katman sicak|ilik|hepsi] [--ku
 Çıkış:    0 (kuru: değişiklik listelendi / uygula: yazıldı) · 2 hata. Türkçe küçültme: İ→i, I→ı (Python lower() 'İ'yi bozar).
 """
 import argparse, difflib, json, pathlib, re, sys, collections
+import harness_anahtar
 
 IZ = set("""AS-OF DAG MCP OWASP YAML JSON JSONL YML CSV HTML HTTP HTTPS PDF SVG PNG CI CD API SQL URL URI CLI GUI IDE SDK LLM RAG AXI GNHF OCR USD EUR TRY CV
 HITL ASR NDCG MAP MRR GSM8K SWE UK AISI AWS DEA GCP MIT OCW README HEAD MEMORY CLAUDE JARVIS JARVİS FRIDAY CARVIS ATLAS OPUS SONNET HAIKU FABLE GPT KB MB GB
@@ -134,7 +135,7 @@ def donustur(metin, say):
 def dosyalar(repo, katman):
     H = pathlib.Path.home()
     sicak = [repo / "CLAUDE.md", H / ".claude" / "CLAUDE.md"] + sorted((repo / "core").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/SKILL.md")) \
-        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted((H / ".claude" / "projects" / "-Users-HasanSalihSahin-sistem-jarvis" / "memory").glob("*.md"))
+        + sorted((repo / ".claude" / "rules").glob("*.md")) + sorted(pathlib.Path(harness_anahtar.memory_dizin()).glob("*.md"))  # makineye göre anahtar (2026-09-22)
     ilik = [repo / "KILAVUZ.md", repo / ".claude" / "skills" / "README.md"] + sorted((repo / "wiki").glob("*.md")) + sorted((repo / ".claude" / "skills").glob("*/references/*.md")) \
         + sorted((repo / ".claude" / "skills").glob("*/*.md"))
     # 09-17 (Salih "büyük harf sorunu sürüyor" analizi): öğrenme yan oturumu bu dosyaları her açılışta okur (ogren §0.2) —

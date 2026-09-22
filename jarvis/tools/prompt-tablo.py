@@ -12,6 +12,7 @@ Kullanım: python3 tools/prompt-tablo.py [--proje-dizin <yol>] [--repo <yol>] [-
 Sınır: md.49 — yalnız BU projenin (jarvis) transkriptleri; staj dizini taranmaz. Deneysel m.29 (2026-08-16, seans-7).
 """
 import argparse, csv, glob, json, os, re, sqlite3, subprocess, sys
+import harness_anahtar
 from datetime import datetime, timezone, timedelta
 
 TR = timezone(timedelta(hours=3))
@@ -88,7 +89,7 @@ def bronz_topla(proje_dizin):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ap.add_argument("--proje-dizin", default=os.path.expanduser("~/.claude/projects/-Users-HasanSalihSahin-sistem-jarvis"))
+    ap.add_argument("--proje-dizin", default=harness_anahtar.proje_dizin())  # makineye göre anahtar (2026-09-22)
     ap.add_argument("--n", type=int, default=50); ap.add_argument("--kuru", action="store_true"); ap.add_argument("--sessiz", action="store_true")
     ap.add_argument("--tarih", default=None, help="rapor dosya adı tarihi (YYYY-MM-DD); varsayılan bugün TR")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)

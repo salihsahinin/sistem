@@ -15,6 +15,7 @@ Kullanım: python3 tools/acilis-kapilari.py [--repo ~/sistem/jarvis] [--is "<ana
 Çıktı ≤ ~1,5 KB (KB-50 bağlam bütçesi); rakamlar sayım, kestirim yok.
 """
 import pathlib, argparse, datetime as dt, glob, json, os, pathlib, re, sqlite3, subprocess, sys
+import harness_anahtar
 
 
 def sh(cmd, cwd):
@@ -66,8 +67,8 @@ def kapi_canli(repo, dk, simdi):
             kapsul_eski = False
     r["kapsul_son_committen_eski"] = kapsul_eski
     # ek sinyaller
-    kok = pathlib.Path.home() / ".claude" / "projects"
-    slug = "-" + str(repo).strip("/").replace("/", "-")
+    kok = pathlib.Path(harness_anahtar.PROJELER)
+    slug = harness_anahtar.anahtar(str(repo))  # makineye göre anahtar (Windows `C--…`, Mac `-Users-…`; 2026-09-22)
     canli_tr = 0  # ana repo + worktree oturumları (proje dizini adı slug ile başlar)
     for f in (ff for d in kok.glob(slug + "*") for ff in d.glob("*.jsonl")) if kok.exists() else []:
         try:

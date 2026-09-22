@@ -77,13 +77,13 @@ def hook_v06(ad):
         assert "okuma-izin-ek" in t, "v0.6 yaması tutmadı (Friday hook'u değişmiş olabilir)"
     elif ad == "okuma-izin-test.sh":
         t = t.replace("# Friday okuma-izin kilidi testi.", "# Alan-ajanı okuma-izin kilidi testi (v0.6; Friday testinin kopyası + Karar 105 vakaları; üretici alan-ajani-dogur.py).")
-        t = t.replace("/Users/HasanSalihSahin/sistem/friday/", "/Users/HasanSalihSahin/sistem/__ajan__/")  # üretimde dizin adıyla değiştirilir (tek tırnaklı JSON'da $ genişlemez)
+        t = t.replace("'\"$SISTEM\"'/friday/", "'\"$SISTEM\"'/__ajan__/")  # üretimde dizin adıyla değiştirilir; yol testte $SISTEM'den kurulur (2026-09-22 taşınabilirlik)
         ek = ('echo "-- v0.6 alan ajanı (Karar 105) --"\n'
-              't "Read ../friday/core → RED (başka ajan)"        \'{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/friday/core/rol.md"}}\' 2\n'
-              't "Read başka alan ajanı core → RED"              \'{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/__baska_ajan__/core/durum-kapsulu.md"}}\' 2\n'
-              't "Read ogrenme/kaynaklar (okuma-izin-ek) → geçer" \'{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/ogrenme/kaynaklar/README.md"}}\' 0\n'
+              't "Read ../friday/core → RED (başka ajan)"        \'{"tool_name":"Read","tool_input":{"file_path":"\'"$SISTEM"\'/friday/core/rol.md"}}\' 2\n'
+              't "Read başka alan ajanı core → RED"              \'{"tool_name":"Read","tool_input":{"file_path":"\'"$SISTEM"\'/__baska_ajan__/core/durum-kapsulu.md"}}\' 2\n'
+              't "Read ogrenme/kaynaklar (okuma-izin-ek) → geçer" \'{"tool_name":"Read","tool_input":{"file_path":"\'"$SISTEM"\'/ogrenme/kaynaklar/README.md"}}\' 0\n'
               't "Bash cat ../ogrenme/kaynaklar/x → geçer"       \'{"tool_name":"Bash","tool_input":{"command":"cat ../ogrenme/kaynaklar/README.md"}}\' 0\n'
-              't "Read ../ogrenme/evals (kaynaklar dışı) → RED"   \'{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/sistem/ogrenme/mufredat.md"}}\' 2\n'
+              't "Read ../ogrenme/evals (kaynaklar dışı) → RED"   \'{"tool_name":"Read","tool_input":{"file_path":"\'"$SISTEM"\'/ogrenme/mufredat.md"}}\' 2\n'
               'echo "--------"')
         t = t.replace('echo "--------"', ek, 1)
     return t
