@@ -34,7 +34,7 @@
 | Python 3.13 + pandas 3.0.5, numpy 2.5.2 | — | `tools/*.py` (katman-hatti, silver-saglik, hareket-tablo, alan-ajani-dogur…) | brew/python.org + pip |
 | sqlite3 CLI | sistem | silver sorguları (`v_guncel_kayit`, `v_okuma_orani`) | sistem paketi |
 | jq, tmux, neovim, treehouse, merve | brew | yardımcı | isteğe bağlı |
-| `promptfoo` | kurulu **değil** (evals H1-H3 npx ile koştu) | Solon eval setleri | `npx promptfoo@latest` |
+| `promptfoo` | kurulu **değil** (evals H1-H3 npx ile koştu) | Tart eval setleri | `npx promptfoo@latest` |
 
 Global skill'ler (`~/.claude/skills/` ve `~/.agents/skills/`: lavish · gh-axi · chrome-devtools-axi · no-mistakes) axi paketleriyle gelir; `no-mistakes` ayrı kurulum (`~/.no-mistakes/`; yeni makinede yeniden kur, remote `no-mistakes` bu yüzden görünür).
 
@@ -55,7 +55,7 @@ Global skill'ler (`~/.claude/skills/` ve `~/.agents/skills/`: lavish · gh-axi �
 |---|---|---|
 | `jarvis/veri/baglam.sqlite` | 379 MB | `python3 tools/katman-hatti.py` yeniden türetir (deterministik, Karar 77) |
 | `jarvis/veri/erisim-vektor.sqlite` + `erisim-vektor-bge.npy` + `erisim-vektor-e5.npy` | ~1 GB | İB-78/erişim hattı; `tools/erisim-*.py` ile yeniden üretim (model indirir); acil değil |
-| `ogrenme/kaynaklar/mit-6006-s20/`, `mit-6042j-f10/` | 81 + 77 MB | MIT OCW arşivleri; künye `ogrenme/kaynaklar/*-KUNYE.md`'deki kaynaktan yeniden indir ya da harici diske kopyala (Euclid'in ders kaynağı) |
+| `ogrenme/kaynaklar/mit-6006-s20/`, `mit-6042j-f10/` | 81 + 77 MB | MIT OCW arşivleri; künye `ogrenme/kaynaklar/*-KUNYE.md`'deki kaynaktan yeniden indir ya da harici diske kopyala (Sayi'in ders kaynağı) |
 | `jarvis/.lavish/` (`kaynak-kodu/lavish`) | 388 KB | masa HTML'leri; kalıcı kopya `jarvis/raporlar/masa/` repoda, kayıp yok |
 | `jarvis/.secrets/` | — | yok; sır dosyası kullanılmıyor (AS-OF) |
 | `**/.venv/` | — | `jarvis/.venv` boş sanal ortam; gereksiz |

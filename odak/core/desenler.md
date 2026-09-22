@@ -1,4 +1,4 @@
-# Desenler (çekirdek hafıza) — Simonides v0 (2026-09-21; tohum boş, Karar 105 (masa-18, 2026-09-20/21)). FIFO yok; yeniden-oluşum: 10 seans ∨ Salih beyanı → `arsiv/desenler-YYYY-MM-DD.md` + sıfırdan yazım. Ekleme yalnız Salih "kabul" ile (aday `cc/giden/` geri-dönüşünün `cekirdek_adayi` alanında).
+# Desenler (çekirdek hafıza) — Odak v0 (2026-09-21; tohum boş, Karar 105 (masa-18, 2026-09-20/21)). FIFO yok; yeniden-oluşum: 10 seans ∨ Salih beyanı → `arsiv/desenler-YYYY-MM-DD.md` + sıfırdan yazım. Ekleme yalnız Salih "kabul" ile (aday `cc/giden/` geri-dönüşünün `cekirdek_adayi` alanında).
 
 ## Desenler (tarih · desen · mekanizma · kaynak)
 

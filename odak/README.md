@@ -1,10 +1,10 @@
-# simonides — Simonides, Salih'in bağlam alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
+# odak — Odak, Salih'in bağlam alan ajanı (v0.1, 2026-09-21; Karar 105 (masa-18, 2026-09-20/21))
 
-**Simonides** = Bağlam penceresinin matematiksel modellemesi: sayım · paketleme · bilgi kuramı · dikkat/konum · erişim · önbellek ekonomisi · dinamik · optimizasyon · ölçüm. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Simonides (MÖ 5. yy, Keos): hafıza sanatının (loci yöntemi) kurucusu — bağlam penceresi = sınırlı hafıza; neyin nereye yerleştirileceği (paketleme, erişim, önbellek) onun sorusudur.
+**Odak** = Bağlam penceresinin matematiksel modellemesi: sayım · paketleme · bilgi kuramı · dikkat/konum · erişim · önbellek ekonomisi · dinamik · optimizasyon · ölçüm. Öğrenme + ürün + Salih'le sohbet bu dizinde yaşar (Karar 103 M4). Model Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Ad gerekçesi: Odak (MÖ 5. yy, Keos): hafıza sanatının (loci yöntemi) kurucusu — bağlam penceresi = sınırlı hafıza; neyin nereye yerleştirileceği (paketleme, erişim, önbellek) onun sorusudur.
 
 ## Kuruluş (bir kez)
 ```bash
-cd ~/sistem/simonides && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
+cd ~/sistem/odak && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
 ```
 Salih bu klasörde Claude Code oturumu açar (worktree kapalı, main): "seans başı" → ritüel; "seans başı, <şerit>" → ders. Ders iskeleti Jarvis'ten `cc/gelen/ders-<hafta>.md` ile gelir.
 
@@ -29,3 +29,5 @@ Salih bu klasörde Claude Code oturumu açar (worktree kapalı, main): "seans ba
 
 ## Denetim (deterministik)
 `bash .claude/hooks/okuma-izin-test.sh` (hepsi PASS) · kütük: `python3 -c "import json;print(sorted({json.loads(l)['yol'] for l in open('veri/bronz/hareket-olay.jsonl') if json.loads(l)['yol']}))"` — jarvis/ ya da friday/ satırı 0 olmalı.
+
+**Ad (Karar 107, 2026-09-22):** eski ad **Simonides** (Karar 105 EK-2, 09-21 → 09-22); tarihli kayıtlarda eski ad = bu ajan (Karar 93 ad-eşitliği usulü).

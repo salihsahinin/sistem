@@ -1,13 +1,13 @@
 {
- "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar Karar 105 EK-2 (Salih 09-21): antik Yunan/Roma düşünürlerinden ilhamla, alan bağlı, kolay yazılır/söylenir (önceki: EK-1 Turing/Saltzer/Shannon/Euler, M3 Turing/Kerckhoffs/Shannon/Knuth — AS-OF). Karar 105 EK-3 (Salih 09-21): dizin adı = ajan adı (jarvis/, friday/ gibi); alan_kisa alanı metinlerde alanı söyler.",
+ "_not": "Alan ajanı doğum spec'i (Karar 105, masa-18 M2/M3/M4, 2026-09-21). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Adlar Karar 105 EK-2 (Salih 09-21): antik Yunan/Roma düşünürlerinden ilhamla, alan bağlı, kolay yazılır/söylenir (önceki: EK-1 Turing/Saltzer/Shannon/Euler, M3 Turing/Kerckhoffs/Shannon/Knuth — AS-OF). Karar 105 EK-3 (Salih 09-21): dizin adı = ajan adı (jarvis/, friday/ gibi); alan_kisa alanı metinlerde alanı söyler. Karar 107 (Salih 09-22): adlar tarihi/ünlü kişi olmaz, ≤4 harf, basit; Solon→Tart · Aeneas→Gard · Simonides→Odak · Euclid→Sayi (dizinler git mv).",
  "karar": "Karar 105 (masa-18, 2026-09-20/21)",
- "model": "Sonnet 5, effort medium; eskalasyon (Opus/Fable) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
+ "model": "Sonnet 5, effort medium; eskalasyon (Opus 5.5/Fable; Karar 106) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
  "bakim_maliyeti": "charter ≤4 KB · core/ 3 dosya · claude-ayar 1 settings + 3 hook + 2 ritüel skill + 1 hakem · ogren ortak symlink · ritüel 2 adım/seans · devir/ay [?] (3 seans sonra ölçüm) · bakan Jarvis · ≈25 dosya/ajan (üretici kuru koşumu 09-21: 103 dosya / 4 ajan, ortak ogren 3 dahil)",
  "ajanlar": [
   {
-   "dizin": "solon",
-   "ad": "Solon",
-   "ad_gerekce": "Solon (MÖ 6. yy Atina): yasa koyucu ve yargıç — değerlendirme mühendisliği = ölçüt yazmak + yargılamak (rubrik, yargıç kalibrasyonu).",
+   "dizin": "tart",
+   "ad": "Tart",
+   "ad_gerekce": "Tart (Karar 107, 09-22): 'tartmak' → ölçme/değerlendirme; eski ad Solon (Karar 105 EK-2). Ölçüt: gerçek ünlü kişi adı değil, ≤4 harf, basit.",
    "alan": "LLM / ajan değerlendirme mühendisliği (evals): eval seti · deterministik kontroller · LLM-as-judge kalibrasyonu · trajektori · CI regresyon",
    "seritler": [
     {
@@ -22,9 +22,9 @@
    "alan_kisa": "evals"
   },
   {
-   "dizin": "aeneas",
-   "ad": "Aeneas",
-   "ad_gerekce": "Aineias Taktikos (MÖ 4. yy): kuşatma altındaki şehrin savunması üzerine ilk el kitabı (içeriden ihanet, kapı denetimi, haberleşme) — prompt injection ve tedarik-zinciri saldırıları = kuşatma; en-az-yetki = kapı denetimi.",
+   "dizin": "gard",
+   "ad": "Gard",
+   "ad_gerekce": "Gard (Karar 107, 09-22): guard/koruma çağrışımı, Türkçe eş sesli sözcük değil (Salih: 'zar' gibi eş sesli olmasın); eski ad Aeneas.",
    "alan": "Ajan güvenliği (AI Agent Security): prompt injection · lethal trifecta / en-az-yetki · MCP tedarik zinciri · hafıza zehirleme · guardrail · red teaming",
    "seritler": [
     {
@@ -39,9 +39,9 @@
    "alan_kisa": "güvenlik"
   },
   {
-   "dizin": "simonides",
-   "ad": "Simonides",
-   "ad_gerekce": "Simonides (MÖ 5. yy, Keos): hafıza sanatının (loci yöntemi) kurucusu — bağlam penceresi = sınırlı hafıza; neyin nereye yerleştirileceği (paketleme, erişim, önbellek) onun sorusudur.",
+   "dizin": "odak",
+   "ad": "Odak",
+   "ad_gerekce": "Odak (Karar 107, 09-22): dikkat/bağlam odağı; eski ad Simonides.",
    "alan": "Bağlam penceresinin matematiksel modellemesi: sayım · paketleme · bilgi kuramı · dikkat/konum · erişim · önbellek ekonomisi · dinamik · optimizasyon · ölçüm",
    "seritler": [
     {
@@ -61,9 +61,9 @@
    "alan_kisa": "bağlam"
   },
   {
-   "dizin": "euclid",
-   "ad": "Euclid",
-   "ad_gerekce": "Euclid / Öklid (MÖ 3. yy): Elementler (aksiyomatik ispat) + ilk kayıtlı algoritma (ebob) — 6.006 algoritma çözümlemesi + 6.042J ispat teknikleri + matematik felsefesi (aksiyom nedir) tek isimde.",
+   "dizin": "sayi",
+   "ad": "Sayi",
+   "ad_gerekce": "Sayi (Karar 107, 09-22): sayı/hesaplama; eski ad Euclid.",
    "alan": "Hesaplama temelleri: MIT 6.006 (algoritmalar, birebir) · MIT 6.042J (bilgisayar bilimi için matematik, birebir + 'neden') · matematik felsefesi (17 partisyon)",
    "seritler": [
     {

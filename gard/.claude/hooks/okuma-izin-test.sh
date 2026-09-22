@@ -23,7 +23,7 @@ t "kök listeleme ~/sistem (v0.5)"             '{"tool_name":"Bash","tool_input"
 t "~/sistem/jarvis/core listeleme → RED (Karar 101)" '{"tool_name":"Bash","tool_input":{"command":"ls '"$SISTEM"'/jarvis/core"}}' 2
 t "~/sistem/jarvis/cc listeleme"                     '{"tool_name":"Bash","tool_input":{"command":"ls '"$SISTEM"'/jarvis/cc"}}' 2
 t "Read jarvis/kuyruk/pano.md"                '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/jarvis/kuyruk/pano.md"}}' 2
-t "Read friday kendi dosyası"                 '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/core/rol.md"}}' 0
+t "Read friday kendi dosyası"                 '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/core/rol.md"}}' 0
 t "Grep jarvis/core → RED (Karar 101)"        '{"tool_name":"Grep","tool_input":{"pattern":"m.8","path":"'"$SISTEM"'/jarvis/core"}}' 2
 t "Read kök kanon /Users/…/sistem/CLAUDE.md"  '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/CLAUDE.md"}}' 0
 t "Read kök sablonlar/ (F4 ortak şablon)"     '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/sablonlar/geri-donus-v0.md"}}' 0
@@ -40,12 +40,12 @@ t "Z3a dize kurgusu, ev kökü metinde"         '{"tool_name":"Bash","tool_input
 t "Z3b yolun tamamı değişkende (bilinen sınır)" '{"tool_name":"Bash","tool_input":{"command":"D=$(printf %s /Users/x/jarvis/kuyruk); cat \"$D/x.md\""}}' 0
 
 echo "-- v0.3 alt-ajan dalı (Karar 99 M2) --"
-t "agent_id + kapsül okuma → RED"             '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/core/durum-kapsulu.md"}}' 2
-t "agent_id + wiki/serbest dosya → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/core/rol.md"}}' 0
+t "agent_id + kapsül okuma → RED"             '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/core/durum-kapsulu.md"}}' 2
+t "agent_id + wiki/serbest dosya → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/core/rol.md"}}' 0
 t "agent_id + kendi tool-results → geçer"     '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$EV"'/.claude/projects/p/s/tool-results/x.txt"}}' 0
 t "agent_id + defter (Bash) → RED"            '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Bash","tool_input":{"command":"cat kuyruk/senaryo-defteri.md"}}' 2
-t "agent_id + bronz kütük → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/veri/bronz/hareket-olay.jsonl"}}' 2
-t "ana-sıra + kapsül okuma → geçer (değişmedi)" '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/core/durum-kapsulu.md"}}' 0
+t "agent_id + bronz kütük → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/veri/bronz/hareket-olay.jsonl"}}' 2
+t "ana-sıra + kapsül okuma → geçer (değişmedi)" '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/core/durum-kapsulu.md"}}' 0
 
 echo "-- v0.4 ayrıştırıcı (Karar 100 M1) ve cc/gelen yasağı (M3) --"
 t "grep DESENİNDE yasak yol → geçer"          '{"tool_name":"Bash","tool_input":{"command":"grep -n \"jarvis/kuyruk\" core/pano.md"}}' 0
@@ -53,13 +53,13 @@ t "cat ile tırnaklı açık yasak yol → RED"     '{"tool_name":"Bash","tool_i
 t "grep ARGÜMANINDA yasak dizin → RED"        '{"tool_name":"Bash","tool_input":{"command":"grep -r m.8 '"$SISTEM"'/jarvis/kuyruk"}}' 2
 t "sed betiği desen, dosya serbest → geçer"   '{"tool_name":"Bash","tool_input":{"command":"sed -n /jarvis.kuyruk/p core/pano.md"}}' 0
 t "değişkenli yol (Z3b sınırı) → geçer"       '{"tool_name":"Bash","tool_input":{"command":"cat \"$D/x.md\""}}' 0
-t "alt-ajan cc/gelen okur → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/cc/gelen/gorev-2026-09-18-tur4.md"}}' 2
-t "lider (agent_id yok) kendi emrini okur"    '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/aeneas/cc/gelen/gorev-2026-09-18-tur5.md"}}' 0
+t "alt-ajan cc/gelen okur → RED"              '{"agent_id":"a1","agent_type":"general-purpose","tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/cc/gelen/gorev-2026-09-18-tur4.md"}}' 2
+t "lider (agent_id yok) kendi emrini okur"    '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/gard/cc/gelen/gorev-2026-09-18-tur5.md"}}' 0
 t "alt-ajan kendi tool-results (Bash) → geçer" '{"agent_id":"a1","tool_name":"Bash","tool_input":{"command":"sed -n 1,5p ~/.claude/projects/p/s/tool-results/x.txt"}}' 0
 
 echo "-- v0.6 alan ajanı (Karar 105) --"
 t "Read ../friday/core → RED (başka ajan)"        '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/friday/core/rol.md"}}' 2
-t "Read başka alan ajanı core → RED"              '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/solon/core/durum-kapsulu.md"}}' 2
+t "Read başka alan ajanı core → RED"              '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/tart/core/durum-kapsulu.md"}}' 2
 t "Read ogrenme/kaynaklar (okuma-izin-ek) → geçer" '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/ogrenme/kaynaklar/README.md"}}' 0
 t "Bash cat ../ogrenme/kaynaklar/x → geçer"       '{"tool_name":"Bash","tool_input":{"command":"cat ../ogrenme/kaynaklar/README.md"}}' 0
 t "Read ../ogrenme/evals (kaynaklar dışı) → RED"   '{"tool_name":"Read","tool_input":{"file_path":"'"$SISTEM"'/ogrenme/mufredat.md"}}' 2

@@ -6,11 +6,13 @@
 | Ajan | Dizin | Rol | Model | Oturum |
 |---|---|---|---|---|
 | **Jarvis** | `jarvis/` | ana-sıra ajan + kanonların bakıcısı; Salih'in tek temas noktası; işi domain-lider seviyesine kadar böler (tüzük m.44) | Fable | Claude Code, cwd `~/sistem/jarvis`, worktree **kapalı** |
-| **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5 medium | Claude Code, cwd `~/sistem/friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
-| **Solon** | `solon/` (evals) | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/solon`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
-| **Aeneas** | `aeneas/` (güvenlik) | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/aeneas`, aynı usul |
-| **Simonides** | `simonides/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/simonides`, aynı usul |
-| **Euclid** | `euclid/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/euclid`, aynı usul |
+| **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5.5 medium (Karar 106) | Claude Code, cwd `~/sistem/friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
+| **Tart** | `tart/` (evals) | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/tart`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
+| **Gard** | `gard/` (güvenlik) | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/gard`, aynı usul |
+| **Odak** | `odak/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/odak`, aynı usul |
+| **Sayi** | `sayi/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/sayi`, aynı usul |
+| **Deci** | `deci/` (jev) | alan ajanı: TypeSafe Jev / System One karar modelleri — öğrenme serisi J1-J6 + Jarvis karar noktalarına entegrasyon (Karar 108) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/deci`, aynı usul; tetik "seans başı, jev" |
+| **Vega** | `vega/` (quant) | alan ajanı: quantitative finance müfredat DAG'ı (Atlas 09-22) + PortRisk ürünü (Karar 109) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/vega`, aynı usul; tetik "seans başı, quant" |
 | hakem | `jarvis/.claude/agents/hakem` (ortak) · `<alan>/.claude/agents/hakem` (alan perspektifli) | maskeli, bağımsız, salt-okur değerlendirici; V26 zorunlu (Karar 103 M1 · 105 M1) | Sonnet 5 + eskalasyon | `Agent` aracı |
 | işçiler | ajanın alt-çağrısı | tek görev, atılabilir | Sonnet | `Agent` aracı; okuma kilidi hook'la |
 
