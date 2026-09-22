@@ -1,5 +1,5 @@
 # Memory index
-- [Mac primary](user-mac-primary.md) — Salih Mac'te çalışıyor (08-15'ten itibaren varsayılan); Turkish-QWERTY-PC klavye; Windows alışkanlığı: 'ctrl' ≈ ⌘ (sistem ayarı öncesi teyit)
+- [Mac primary](user-mac-primary.md) — Salih Mac'te çalışıyor (08-15'ten itibaren varsayılan); **09-22'den itibaren geçici Windows 11** (`C:\sistem\sistem`, Git Bash; symlink/python3/yol borçları); Turkish-QWERTY-PC klavye; Windows alışkanlığı: 'ctrl' ≈ ⌘ (sistem ayarı öncesi teyit)
 - [CLAUDE.md kısa tut + 08-17 Katman-1 paketi](feedback-claude-md-kisa-tut.md) — davranış sözleşmesi ≤80 satır/≤7 KB; açık kaynak+okunabilirlik (hareket kütüğü), kaynak Türkçe, şirket metaforu emekli, rol = köle; determinizm ilkesi 09-10'da 4 iş türüne **daraltıldı**, sohbette vurgulanmaz
 - [Maliyet tahmini yalnız alt-model için](feedback-maliyet-tahmini-alt-model.md) — Salih 08-29: Jarvis kendi koşumuna token/süre tahmini yazmaz; işçi-ajan koşumları için hesapla, çıkarımı oradan
 - [Ses/ekran kaydı onay kapısı](feedback-ses-ekran-kaydi-onay.md) — Salih 08-26: yakalamadan **önce** haber + onay; 'göstermek için' gerekçe değil, teslim usulüne düş

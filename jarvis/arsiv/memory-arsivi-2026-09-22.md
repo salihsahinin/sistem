@@ -1,0 +1,5 @@
+# Harness hafıza indeksi arşivi — 2026-09-22 (Karar 104 M1 bayt-FIFO; `tools/sicak-katman-fifo.py` FLAG: MEMORY.md 4.109/4.096 B · 15/16 madde)
+
+*Bu dosya `~/.claude/projects/C--sistem-sistem/memory/MEMORY.md` (Windows anahtarı; Mac'te `-Users-HasanSalihSahin-sistem`) indeksinden bayt tavanı gereği inen satırı taşır (m.8: silme yok, pointer kalır). Hafıza dosyasının kendisi harness dizininde durur ve `veri/hafiza-ayna/-Users-HasanSalihSahin-sistem/` ile aynalanır; yalnız indeks satırı buraya indi. Madde jarvis `AGENTS.md` §0-§2'de (bütçe, açık kaynak, Türkçe kaynak, köle rolü) ve `core/deterministik-tasarim.md`'de kural olarak yaşıyor; indeksten inmesi bilgi kaybı değildir. Taşma nedeni: 09-22 Windows devri notu `user-mac-primary` indeks satırını büyüttü (+13 B).*
+
+- [CLAUDE.md kısa tut + 08-17 Katman-1 paketi](feedback-claude-md-kisa-tut.md) — davranış sözleşmesi ≤80 satır/≤7 KB; açık kaynak+okunabilirlik (hareket kütüğü), kaynak Türkçe, şirket metaforu emekli, rol = köle; determinizm ilkesi 09-10'da 4 iş türüne **daraltıldı**, sohbette vurgulanmaz

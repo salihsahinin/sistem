@@ -1,191 +1,191 @@
 {
- "anahtar": "-Users-HasanSalihSahin-sistem",
- "kaynak": "/Users/HasanSalihSahin/.claude/projects/-Users-HasanSalihSahin-sistem/memory",
- "uretim": "2026-09-21",
+ "anahtar": "C--sistem-sistem",
+ "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
+ "uretim": "2026-09-22",
  "karar": "Karar 104 M3 (2026-09-20)",
  "dosya_sayisi": 26,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "38f9b8a30d322afd50a0de66e45300e2bcafd79222c9c0498f47a87aaf15a984",
-   "bayt": 4003,
-   "kaynak_mtime": "2026-09-21T15:49:48",
+   "sha256": "2b9e5741d9930b456a8c729555107cd928a9bc526ccd698f2c159ec511bb4ae7",
+   "bayt": 4109,
+   "kaynak_mtime": "2026-09-22T19:14:41",
    "durum": "ayna"
   },
   {
    "ad": "arsiv-index.md",
    "sha256": "077434b6e69365c07353fb56d29afaddbe2c08040c0cbbfca98a3d52d9472ba2",
    "bayt": 349,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-anlatim-bicimi-dogrudan.md",
    "sha256": "02e1fab8f2f7acf0e1794a97475253a44a16a0ae451df1f58b403a146575f368",
    "bayt": 1356,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-claude-md-kisa-tut.md",
    "sha256": "8506eb69977c355d319c682d01e17398dc42fadcf05d25d62f0c5aa7041f2a1e",
    "bayt": 3167,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-ders-elle-pratik-adimi.md",
    "sha256": "951fc4e4127f9006f3d0175c56dc819d0374a5060eb49c9c27189e628e753a50",
    "bayt": 1766,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-dosya-teslimi-finder.md",
    "sha256": "e77e41d2f48625aadde1ae8c84bf9d2aec4bb8ecf50476c9a0a2a1166b289d2a",
    "bayt": 2629,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-gorsel-anlatim-atifli.md",
    "sha256": "4eecf5f8b4ae413a59b8453fb883a37e1e893c68bfe3092e36461db936552943",
    "bayt": 1267,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-gorsel-kutu-ici-aciklama.md",
    "sha256": "413e0adddc7d6f994bc32f3f62cac8efaffc61b0548ff725185a88eb81b0c332",
    "bayt": 1470,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-gorsel-mekanizma-degil-metin-kutusu.md",
    "sha256": "f10490fcfdfbefb5ad859d2b44cc970803950df04c449a7871b9b9698513efdb",
    "bayt": 2464,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-icra-listesi-onaysiz-devam.md",
    "sha256": "c2e31492069cf612c0d2d66f16bd914103f6ab9b0940ac75cf85b1b71a2dbdfb",
    "bayt": 1466,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-maliyet-tahmini-alt-model.md",
    "sha256": "4469854364a86ee3050f59721e8a7eb305c9d9edc2c99d71a9db3677329c6e78",
    "bayt": 1234,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-ogretim-iskeleti-ogren-sektor-basligi.md",
    "sha256": "cec26e23ab5a6abf9fe88df93d336467eb8a7b29fd2d4a151e6a0d4a778997b2",
    "bayt": 2229,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-oturum-acma-worktree-beyani.md",
    "sha256": "bc884eea62d29b90805564fae152e1ac67955b75ceb520d3b8c30c8e85b01c65",
    "bayt": 1883,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-parallel-sessions-keep-talking.md",
    "sha256": "1a861655c62676c110250b15f66c978c9f741c94d6ef2315b7b93ac278a38f95",
    "bayt": 1575,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-pratik-salih-eli.md",
    "sha256": "50c374b3c6f2b3c3b6c02e181f3624be1b92c7670afef16c72a9ccb92d2528b1",
    "bayt": 1083,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-quiz-dogru-cevap-rastgele-konum.md",
    "sha256": "73aeeb67e956366c1a13b250d23768d5773fea564001d2804a9a8ba085bb77df",
    "bayt": 1586,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-seans-basi-tetik-gunaydin-degil.md",
    "sha256": "22fa3204861145424c74ebb281ffa2e687ae48672435f9aaa3554fb88b835de6",
    "bayt": 1487,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-ses-ekran-kaydi-onay.md",
    "sha256": "2225e1bb726cb113ec7f274fa9ab401b145f7c4d41918e3aeb851f35b4cb22fd",
    "bayt": 1857,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-token-kisinti-yuzde30.md",
    "sha256": "6dc2ec4d7d3d57c6be307b7d39197310863b574ca71647fc1a3a9e2fbbcf5a15",
    "bayt": 1629,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-vurgusuz-anlatim-capslock-yok.md",
    "sha256": "0b0efe2a4d14de3441c298a52142567b21c44d3967f4968d2ff08aa2e93351c8",
    "bayt": 1070,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "feedback-yuzey-tercihi-secenekli.md",
    "sha256": "74890db3fc9abff68909e2486ac088ef94a705f278203217a96178f8cb9bbfec",
    "bayt": 1505,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "project-ajan-adi-jarvis.md",
    "sha256": "7483ec9cb14e172210c3304140780b2c56fef9eccc576aa194b5330399626656",
    "bayt": 1452,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "project-ekip-lideri-ayri-repo.md",
    "sha256": "5c402dec21b66dd6f4171c561ee16f92c120d19e57e84cc1f52136bc8d57f156",
    "bayt": 1422,
-   "kaynak_mtime": "2026-09-18T16:15:33",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "user-bitirme-tezi-matematik-muhendisligi.md",
    "sha256": "b819f0f50b791d099e816362da446d6862fb477ee7c9467d10160ef2f5885a6a",
    "bayt": 1525,
-   "kaynak_mtime": "2026-09-21T15:29:44",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   },
   {
    "ad": "user-mac-primary.md",
-   "sha256": "943c5519088f4d5de60b4d159a5e1f052cd738318308215b7bcd8896fc2ac88d",
-   "bayt": 1579,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "sha256": "9d722ebe476a96d0256ecf294b531e03ba797f5baad20314010501d71c3b3888",
+   "bayt": 2392,
+   "kaynak_mtime": "2026-09-22T19:47:21",
    "durum": "ayna"
   },
   {
    "ad": "user-vscode-md-d2-viewer.md",
    "sha256": "a4a0b20543d21208b2c85dfd966a1ec8d2203281c17444ea95a1ac6a449265b7",
    "bayt": 994,
-   "kaynak_mtime": "2026-09-18T14:47:28",
+   "kaynak_mtime": "2026-09-22T18:41:43",
    "durum": "ayna"
   }
  ]
