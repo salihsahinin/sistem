@@ -36,7 +36,7 @@ def yas_dk(ts_iso, simdi):
 
 def kapi_canli(repo, dk, simdi):
     r = {"kapi": "K1-canli-oturum"}
-    log = sh("git log -5 --format='%h|%cI|%s'", repo)
+    log = sh('git log -5 --format="%h|%cI|%s"', repo)  # çift tırnak: Windows cmd.exe tek tırnağı soymaz (2026-09-22)
     if not log:
         r["durum"] = "HATA"; r["not"] = "git log okunamadı"; return r
     commits = []
@@ -89,7 +89,7 @@ def kapi_canli(repo, dk, simdi):
         except Exception:
             hook_eski = None
         r["worktree_geride"].append((yol.rsplit("/", 1)[-1], geride, hook_eski))
-    dallar = sh("git for-each-ref --format='%(refname:short)|%(committerdate:iso-strict)' refs/heads refs/remotes/origin", repo)
+    dallar = sh('git for-each-ref --format="%(refname:short)|%(committerdate:iso-strict)" refs/heads refs/remotes/origin', repo)
     taze_dal = []
     for l in dallar.splitlines():
         ad, ci = l.strip("'").split("|", 1)
@@ -116,7 +116,7 @@ def kapi_manifest(repo, anahtar):
     if anahtar:
         a = anahtar.lower()
         hits = [pathlib.Path(m).name for m in mans if a in pathlib.Path(m).read_text(encoding="utf-8", errors="ignore").lower()]
-        logh = [l for l in sh("git log -15 --format='%h %s'", repo).splitlines() if a in l.lower()]
+        logh = [l for l in sh('git log -15 --format="%h %s"', repo).splitlines() if a in l.lower()]
         r["anahtar"] = anahtar; r["manifest_eslesme"] = hits[:5]; r["gitlog15_eslesme"] = [l.strip("'")[:80] for l in logh[:5]]
         r["durum"] = "KOŞMUŞ-ADAY" if (hits or logh) else "TEMİZ"
         r["not"] = "manifest %d · git log -15 %d eşleşme → varsa devral, koşma (vaka-3: 518k mükerrer)" % (len(hits), len(logh))
@@ -150,7 +150,7 @@ def kapi_silver(repo):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path.home() / "sistem" / "jarvis"))
+    ap = argparse.ArgumentParser(); ap.add_argument("--repo", default=str(pathlib.Path(__file__).resolve().parent.parent))  # varsayılan = bu script'in jarvis kökü (Windows'ta ~/sistem yok, 2026-09-22)
     ap.add_argument("--is", dest="anahtar", default=""); ap.add_argument("--dk", type=int, default=15); ap.add_argument("--json", action="store_true")
     a = ap.parse_args(); repo = pathlib.Path(a.repo).expanduser().resolve()
     # Karar 101 (F3): jarvis/ artık monorepo alt-dizini; .git kökte → git rev-parse ile doğrula
