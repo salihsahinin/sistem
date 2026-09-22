@@ -50,7 +50,7 @@ CEVRIM = 4.1  # char/token — core/skill-uretim-semasi.md:64
 def _frontmatter_satirlari(yol):
     """Dosyanın --- ... --- arası frontmatter satırlarını döndürür (yoksa None)."""
     try:
-        with open(yol, encoding="utf-8") as fh:
+        with open(yol, encoding="utf-8", errors="replace") as fh:  # üçüncü-parti skill dosyası UTF-8 olmayabilir (09-22: lavish SKILL.md cp1252 `—`); sayım bozulmaz, çökmez
             satirlar = fh.read().split("\n")
     except OSError:
         return None

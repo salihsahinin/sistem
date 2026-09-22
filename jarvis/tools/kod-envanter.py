@@ -72,7 +72,8 @@ def disla_uygula(dosyalar, disla_kume):
     """git-izlenen dosya listesinden DISLA_DIZIN altına düşenleri süzer (arsiv/karantina dahil, İB-72/M14)."""
     sonuc = []
     for f in dosyalar:
-        if any(f == d or f.startswith(d + "/") for d in disla_kume):
+        fn = f.replace(os.sep, "/")  # Windows: os.path.join ile kurulmuş yol ters bölü taşır; git ls-files her yerde "/" verir (2026-09-22)
+        if any(fn == dn or fn.startswith(dn + "/") for dn in (d.replace(os.sep, "/") for d in disla_kume)):
             continue
         sonuc.append(f)
     return sonuc

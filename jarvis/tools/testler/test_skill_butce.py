@@ -67,6 +67,7 @@ class SkillButceTest(unittest.TestCase):
 
         self.env = dict(os.environ)
         self.env["HOME"] = self.home
+        self.env["USERPROFILE"] = self.home  # Windows: os.path.expanduser HOME'u değil USERPROFILE'ı okur (09-22); Mac'te etkisiz
 
     def tearDown(self):
         self.tmp.cleanup()
