@@ -1,0 +1,13 @@
+# Durum Kapsülü — Sage (felsefe)
+
+*Her oturumun ilk okuduğu dosya. Sıcak katman: üzerine yazılır, arşiv değildir. Bütçe ≤4 KB / ≤20 satır (birincil, Karar 104 M1); "Şu an" ≤8 madde sigorta; aşımda en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner ve buraya `kesildi: <madde> → arsiv/…` satırı düşer (silme yok, m.8). Tarihçe `raporlar/` + git log.*
+
+**Güncelleme:** 2026-09-28 doğum (Karar 111 (Salih beyanı 2026-09-28); üretici `jarvis/tools/alan-ajani-dogur.py`). Henüz oturum açılmadı; şerit dosyaları `../ogrenme/`'den `git mv` ile taşınmayı bekliyor (T3, Salih eli).
+
+## Şu an
+- Doğum: charter §0b doğum belgesi + bakım-maliyeti satırı; hook testi kuruluşta koşulacak (README).
+- Şeritler ve durumları: `ogrenme/stoa` (S1 sırada (0 ders; seri 09-28 kuruldu: Meditations 12 kitap)).
+
+## Sonraki ilk iş
+0. Kuruluş: `chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh` → hepsi PASS; kütükte jarvis/friday satırı 0 (T5 kanıtı, Jarvis'e `cc/giden/` ile döner).
+1. İlk ders: `cc/gelen/` içinde Jarvis'ten ders iskeleti varsa onunla; yoksa şeridin `ilerleme.md` "Kalan" listesinden.

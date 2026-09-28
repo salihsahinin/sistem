@@ -1,0 +1,25 @@
+{
+ "_not": "Alan ajanı doğum spec'i — 3. parti (Karar 111 Sage; Salih 2026-09-28: 'marcus aurelius kendime düşünceler okuyorum … felsefe ajanı … mevcutta uygun ajan yoksa ajan oluştur'). Üretici: tools/alan-ajani-dogur.py <bu dosya> [--kuru]. Ad ölçütü Karar 107 + 110: gerçek ünlü kişi adı değil, ≤4 harf, İngilizce, Türkçe eş sesli sözcük değil. Şerit yeni: git mv satırı uygulanmaz, şerit dizinini Jarvis üretir.",
+ "karar": "Karar 111 (Salih beyanı 2026-09-28)",
+ "model": "Sonnet 5, effort medium; eskalasyon (Opus 5.5/Fable; Karar 106) yalnız Salih beyanıyla (oturum başında 'bugün Opus')",
+ "bakim_maliyeti": "charter ≤4 KB · core/ 3 dosya · claude-ayar 1 settings + 3 hook + 2 ritüel skill + 1 hakem · ogren symlink · ritüel 2 adım/seans · devir/ay [?] · bakan Jarvis · ≈25 dosya/ajan",
+ "ajanlar": [
+  {
+   "dizin": "sage",
+   "ad": "Sage",
+   "ad_gerekce": "Sage (Karar 111, 09-28): İngilizce 'bilge'; Stoacılıkta 'sophos' idealinin karşılığı; gerçek kişi değil, 4 harf, Türkçe eş sesli değil.",
+   "alan": "Felsefe okuma ve tartışma: Stoacılık (Marcus Aurelius, Meditations / Kendime Düşünceler; Epiktetos, Seneca); kitap-kitap okuma eşliği, kavram sözlüğü, birincil metne sadakat, çağdaş yorumla kıyas; sonraki şeritler Salih seçer",
+   "seritler": [
+    {
+     "kaynak": "ogrenme/stoa",
+     "hedef": "ogrenme/stoa",
+     "durum": "S1 sırada (0 ders; seri 09-28 kuruldu: Meditations 12 kitap)"
+    }
+   ],
+   "urun": "okuma notları (kitap başına), kavram sözlüğü (`ogrenme/stoa/sozluk.md`), Salih'in kendi 'kendime düşünceler' defteri iskeleti (`urun/`); kanona uygulanabilir ilke adayları `cc/giden/` (m.16 kapısından geçer, doğrudan kural olmaz)",
+   "hakem_perspektifi": "alıntının birincil metinle (kitap.paragraf) eşleşmesi, çeviri farkı bayrağı, Stoacı terimin anakronik kullanımı (ör. 'stoic' = duygusuz), yorumun metinden ayrı etiketlenmesi",
+   "sektor": "Stoic Philosophy · Close Reading · AS-OF 2026-09",
+   "alan_kisa": "felsefe"
+  }
+ ]
+}
