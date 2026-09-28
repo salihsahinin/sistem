@@ -105,6 +105,7 @@ def gitignore_disla_kumesi(kok):
 def _gitignore_disli_mi(goreli_yol, disla_kume, dizin_mi):
     if disla_kume is None:
         return False
+    goreli_yol = goreli_yol.replace(os.sep, "/")  # Windows: os.path.join '\' üretir, git ls-files '/' döner (09-28; kod-envanter 09-22 onarımının aynısı)
     if dizin_mi:
         return (goreli_yol + "/") in disla_kume
     return goreli_yol in disla_kume or (goreli_yol + "/") in disla_kume
