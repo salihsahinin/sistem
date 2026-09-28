@@ -55,7 +55,7 @@ Global skill'ler (`~/.claude/skills/` ve `~/.agents/skills/`: lavish · gh-axi �
 |---|---|---|
 | `jarvis/veri/baglam.sqlite` | 379 MB | `python3 tools/katman-hatti.py` yeniden türetir (deterministik, Karar 77) |
 | `jarvis/veri/erisim-vektor.sqlite` + `erisim-vektor-bge.npy` + `erisim-vektor-e5.npy` | ~1 GB | İB-78/erişim hattı; `tools/erisim-*.py` ile yeniden üretim (model indirir); acil değil |
-| `ogrenme/kaynaklar/mit-6006-s20/`, `mit-6042j-f10/` | 81 + 77 MB | MIT OCW arşivleri; künye `ogrenme/kaynaklar/*-KUNYE.md`'deki kaynaktan yeniden indir ya da harici diske kopyala (Sayi'in ders kaynağı) |
+| `ogrenme/kaynaklar/mit-6006-s20/`, `mit-6042j-f10/` | 81 + 77 MB | MIT OCW arşivleri; künye `ogrenme/kaynaklar/*-KUNYE.md`'deki kaynaktan yeniden indir ya da harici diske kopyala (Calc'in ders kaynağı) |
 | `jarvis/.lavish/` (`kaynak-kodu/lavish`) | 388 KB | masa HTML'leri; kalıcı kopya `jarvis/raporlar/masa/` repoda, kayıp yok |
 | `jarvis/.secrets/` | — | yok; sır dosyası kullanılmıyor (AS-OF) |
 | `**/.venv/` | — | `jarvis/.venv` boş sanal ortam; gereksiz |

@@ -9,11 +9,11 @@
 | **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5.5 medium (Karar 106) | Claude Code, cwd `~/sistem/friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
 | **Tart** | `tart/` (evals) | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/tart`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
 | **Gard** | `gard/` (güvenlik) | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/gard`, aynı usul |
-| **Odak** | `odak/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/odak`, aynı usul |
-| **Sayi** | `sayi/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/sayi`, aynı usul |
+| **Span** | `span/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/span`, aynı usul |
+| **Calc** | `calc/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/calc`, aynı usul |
 | **Deci** | `deci/` (jev) | alan ajanı: TypeSafe Jev / System One karar modelleri — öğrenme serisi J1-J6 + Jarvis karar noktalarına entegrasyon (Karar 108) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/deci`, aynı usul; tetik "seans başı, jev" |
 | **Vega** | `vega/` (quant) | alan ajanı: quantitative finance müfredat DAG'ı (Atlas 09-22) + PortRisk ürünü (Karar 109) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/vega`, aynı usul; tetik "seans başı, quant" |
-| **Sage** | `sage/` (felsefe) | alan ajanı: Stoacılık, Marcus Aurelius *Meditations* okuma eşliği S1-S8 + kavram sözlüğü (Karar 111) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/sage`, aynı usul; tetik "seans başı, stoa"; serbest soru ritüelsiz |
+| **Sage** | `sage/` (felsefe) | alan ajanı: felsefe okuma eşliği, planlı seri yok; okunan kitap hakkında serbest soru, metin yeri + çeviri + terim (Karar 111) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/sage`; ritüel yok, chat açıp soru sorulur |
 | hakem | `jarvis/.claude/agents/hakem` (ortak) · `<alan>/.claude/agents/hakem` (alan perspektifli) | maskeli, bağımsız, salt-okur değerlendirici; V26 zorunlu (Karar 103 M1 · 105 M1) | Sonnet 5 + eskalasyon | `Agent` aracı |
 | işçiler | ajanın alt-çağrısı | tek görev, atılabilir | Sonnet | `Agent` aracı; okuma kilidi hook'la |
 
