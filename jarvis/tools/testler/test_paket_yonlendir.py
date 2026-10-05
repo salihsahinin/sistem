@@ -98,7 +98,7 @@ class PaketYonlendirTest(unittest.TestCase):
 
     def test_oncelik_fable(self):
         out = self._kos("veri: yüksek öncelikli, silver bozuk")
-        self.assertIn("model kademesi: Fable 5.1", out); self.assertIn("paket varsayılanı Sonnet 5.5", out)
+        self.assertIn("alt-ajan kademesi: Fable 5.1", out); self.assertIn("Oturum modelini Salih seçer", out); self.assertIn("paket varsayılanı Sonnet 5.5", out)
 
     def test_komutlar(self):
         self._kos("veri: bir"); self._kos("ajan: iki")

@@ -3,7 +3,7 @@
 
 Ne bu: tek ajanda (Jarvis) konuya göre bağlam. UserPromptSubmit hook'undan çağrılır (`.claude/hooks/userprompt-dosya.sh`,
 prompt-dosya.py'den sonra). Mesajı `core/baglam-paketleri.json` ile eşler ve bağlama KISA bir yönerge basar: aktif paket ·
-model kademesi · ayrım düzeyi · okunacak adresler · geçişte kapsül yazımı. Dosya gövdesi BASILMAZ; adresi Jarvis Read ile açar
+alt-ajan kademesi · ayrım düzeyi · okunacak adresler · geçişte kapsül yazımı. Dosya gövdesi BASILMAZ; adresi Jarvis Read ile açar
 (tam metin, kesilme yok). Aynı (mesaj, durum) → aynı çıktı.
 
 Kural sırası (ilk tutan kazanır):
@@ -168,7 +168,7 @@ def uygula(karar, prompt, man, durum, repo):
     yeni["aktif"] = pid
     cekirdek_bayt = 0
     if not degisti:
-        metin = f"### [paket] {pid} (aktif; kural {karar['kural']}) · kademe {kademe_ad}"
+        metin = f"### [paket] {pid} (aktif; kural {karar['kural']}) · alt-ajan kademesi {kademe_ad}"
         if oncelik:
             metin += f" (öncelik beyanı: \"{oncelik.group(0)}\")"
         if agir:
@@ -177,10 +177,10 @@ def uygula(karar, prompt, man, durum, repo):
     else:
         neden = {"a": "açık önek", "b": "tetik: " + ", ".join(karar["tutan"])}.get(karar["kural"], karar["kural"])
         s = [f"### [paket] {pid} · {p.get('ad', '')} (kural {karar['kural']}: {neden})"]
-        km = f"- model kademesi: {kademe_ad}"
+        km = f"- alt-ajan kademesi: {kademe_ad}"
         if oncelik:
             km += f" (öncelik beyanı: \"{oncelik.group(0)}\"; paket varsayılanı {man['kademeler'].get(p['kademe'], p['kademe'])})"
-        km += f". Oturum modeli farklıysa Salih'e tek satırla söyle; alt-ajana giden işte `model: {kademe}`."
+        km += f": yalnız alt-ajana giden işte `model: {kademe}`. Oturum modelini Salih seçer, hatırlatma yapılmaz."
         s.append(km)
         if agir:
             s.append(f"- ayrım: alt-ajan (ağır iş sözcüğü \"{agir.group(0)}\"): paket adreslerini alt-ajan emrine koy, "
