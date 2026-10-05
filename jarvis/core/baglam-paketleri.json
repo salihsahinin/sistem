@@ -1,0 +1,79 @@
+{
+  "sema": "baglam-paketleri-v0",
+  "durum": "deneysel (m.29) · Karar 112 (Salih 2026-10-05: tek ajanda konuya göre bağlam, A seçeneği; diğer ajanlar aynen sürer) · sabitler ilk 10 geçişte kalibre edilir",
+  "aciklama": "Jarvis'in KENDİ konuları için bağlam paketleri. Yönlendirici tools/paket-yonlendir.py (UserPromptSubmit hook'u) bu dosyayı okur: mesaj → paket → okunacak dosyalar + model kademesi + ayrım düzeyi. Alan adı talimattır. Paket yalnız jarvis/ içini ve ortak kökü (../sablonlar, ../AGENTS.md) gösterir; başka ajanın dizini pakete girmez (kök md.1).",
+  "alanlar": {
+    "id": "kalıcı kısa ad; açık önek olarak yazılır (ör. 'veri: ...')",
+    "kademe": "paketin varsayılan modeli: sonnet | opus | fable",
+    "tetik": "küçük harfli regex listesi; mesajda tutan regex sayısı paketin puanıdır",
+    "cekirdek": "pakete ilk girişte Jarvis'in okuduğu adresler: 'yol' ya da 'yol:a-b' (satır aralığı)",
+    "pointer": "yalnız gerekince açılan adresler",
+    "skill": "bu konuda çağrılması olası skill'ler"
+  },
+  "esik_gecis": 3,
+  "butce_bayt": 20000,
+  "kapsul_dizin": "core/paket-kapsul",
+  "kademeler": {
+    "sonnet": "Sonnet 5.5",
+    "opus": "Opus 5.5",
+    "fable": "Fable 5.1"
+  },
+  "agir_is": "\\b(araştır\\w*|atlas|pipeline|tara(ma|yıp|sın)?|ölç(üm|sün)?\\w*|denetle\\w*|envanter\\w*)",
+  "oncelik": "\\b(yüksek öncelik\\w*|acil|kritik)\\b",
+  "paketler": [
+    {
+      "id": "kanon",
+      "ad": "Kanon ve karar",
+      "kademe": "fable",
+      "tetik": ["\\bkanon\\w*", "\\btüzü[kğ]\\w*", "\\b(agents|claude)\\.md\\b", "\\bkatman-1\\b", "\\bçelişki\\w*", "\\bhüküm\\w*", "\\bkarar (masası|defteri|kaydet)\\w*", "\\bkural (adayı|değiş)\\w*"],
+      "cekirdek": [],
+      "pointer": ["core/tuzuk-v0.md", "kuyruk/senaryo-defteri.md", "../AGENTS.md", "AGENTS.md"],
+      "skill": ["celiski-kapisi", "karar-hatti", "karar-masasi"]
+    },
+    {
+      "id": "ajan",
+      "ad": "Ajan işi ve devir",
+      "kademe": "opus",
+      "tetik": ["\\balt-ajan\\w*", "\\bişçi\\w*", "\\blider\\w*", "\\bfriday\\w*", "\\bdevir\\w*", "\\bgörev emri\\w*", "\\bdelegasyon\\w*", "\\beskalasyon\\w*", "\\balan ajan\\w*"],
+      "cekirdek": ["core/ajan-metodolojisi.md"],
+      "pointer": ["core/sablonlar/gorev-emri.md", "../sablonlar/devir-birimi-v0.json", "../sablonlar/gorev-fonksiyonu.md"],
+      "skill": ["gorev-emri-derleme", "pipeline-kosum", "atlas-kosum", "yol-planla"]
+    },
+    {
+      "id": "skill",
+      "ad": "Skill üretimi ve tetikleme",
+      "kademe": "opus",
+      "tetik": ["\\bskill\\w*", "\\btetikle\\w*", "\\bdescription\\b", "\\bhazine\\w*"],
+      "cekirdek": ["core/skill-tetikleme-semasi.md"],
+      "pointer": ["core/skill-uretim-semasi.md", "tools/SCRIPTLER.md"],
+      "skill": ["skill-kapisi"]
+    },
+    {
+      "id": "veri",
+      "ad": "Veri katmanı",
+      "kademe": "sonnet",
+      "tetik": ["\\bsilver\\b", "\\bbronz\\w*", "\\bgold\\b", "\\bkatman-hatti\\b", "\\bsqlite\\b", "\\bparquet\\b", "\\bworld.model\\w*", "\\bveri katman\\w*", "\\bingest\\w*", "\\bdamıt\\w*"],
+      "cekirdek": ["core/veri-muhendisligi-katmani.md"],
+      "pointer": ["core/world-model-tasarimi.md", "core/ingest-semasi.md", "veri/README.md"],
+      "skill": ["damitma"]
+    },
+    {
+      "id": "baglam",
+      "ad": "Bağlam yönetimi",
+      "kademe": "opus",
+      "tetik": ["\\bbağlam (paket|pencere|bütçe|anahtar)\\w*", "\\bpaket\\w*", "\\bkapsül\\w*", "\\bemekli\\w*", "\\bcascade\\b", "\\bsıkıştır\\w*", "\\byönlendirici\\w*", "\\bcontext\\w*"],
+      "cekirdek": ["core/sema-sikistirma.md", "core/baglam-anahtar-kaydi.md:5-15"],
+      "pointer": ["core/baglam-paketleri.json", "core/baglam-anahtar-kaydi.md", "core/prompt-dosya-tablosu.tsv"],
+      "skill": ["damitma"]
+    },
+    {
+      "id": "dogrulama",
+      "ad": "Doğrulama ve hakemlik",
+      "kademe": "sonnet",
+      "tetik": ["\\bhalüsinasyon\\w*", "\\bhakem\\w*", "\\bv26\\b", "\\banakronizm\\w*", "\\bas-of\\b", "\\bsondaj\\w*", "\\bkaynak doğrula\\w*"],
+      "cekirdek": ["core/halusinasyon-paketi.md"],
+      "pointer": ["wiki/anakronizm-freni.md", ".claude/agents/hakem.md"],
+      "skill": ["halusinasyon-engelleyici"]
+    }
+  ]
+}
