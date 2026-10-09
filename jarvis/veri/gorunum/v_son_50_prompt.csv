@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-09-28,10:04,232f3a09,10,seans-kapanis,seans-kapanis,claude-fable-5-1,22,"push onay,seans bitimi",b2d6649b-033c-4312-bb9f-1a70f8df39e0
-2,2026-09-28,09:56,232f3a09,9,emir,,claude-fable-5-1,428,"-cv'den portriski kaldır,quant vurgusu yerine data engineer vurgusu olsun,otonetteki pozisyonumun adı da data engineer'dı düzelt. -şu anda m",fac0e7c2-0660-4af6-8ac6-52d7b873d94d
-3,2026-09-26,22:23,232f3a09,8,emir,,claude-fable-5-1,71,dosyayı sen pdf'e çevir .tex formatında olduğundan vs code'dan açılıyor,3a39bcbb-b48f-45fe-81a7-74a3b72e1723
-4,2026-09-26,22:18,232f3a09,7,emir,,claude-fable-5-1,114,"@""C:\Users\sasah\Downloads\salih_cv (1).pdf"" staj öncesi cv böyleydi aynı latex kodunda staj bilgileriyle güncelle",d158284e-9fa5-4f40-a603-4466680df118
-5,2026-09-26,22:12,232f3a09,6,soru,,claude-fable-5-1,46,yetnekler kısmını soruyor projede ne yazacağım,80a1af29-147c-4f10-b83a-a01c3f14ff0a
-6,2026-09-26,22:11,232f3a09,5,emir,,claude-fable-5-1,29,projeler kısmına yazı oluştur,db972ce2-1d16-49bf-abcf-9480a20a3078
-7,2026-09-26,22:07,232f3a09,4,emir,,claude-fable-5-1,451,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,0ba8d8c3-7be9-4c55-aeb5-cfda273111bb
-8,2026-09-26,22:07,232f3a09,3,diger,,claude-fable-5-1,43,yetenekler kısmına eklemem gerekenler neler,d3870885-1ee5-4f19-8bc2-4edad3245799
-9,2026-09-26,22:06,232f3a09,2,diger,,claude-fable-5-1,88,sadece otonette yaptıklarımdan ve dataya olan ilgimden bahsedelim portriski şu an boşver,6b74885c-d067-47d3-85b3-cba773388d8c
-10,2026-09-26,22:05,232f3a09,1,diger,,claude-fable-5-1,61,quant ilgimden hemen bahsetmeyelim ortada bir çıktı yok çünkü,15bb6fda-6e1c-4d93-8fbb-1f31e15f6a8b
-11,2026-09-26,22:05,0e5df1e6,13,diger,,,57,quant ilgimden hemen bahsetmeyelim ortada bir çıktı yok ç,392832e2-cea9-4a75-af99-1052592e0322
-12,2026-09-26,22:04,0e5df1e6,12,emir,,claude-fable-5-1,29,hakkında kısmına yazı oluştur,20b83005-7bef-4c65-8e65-830ed1c9a55c
-13,2026-09-26,21:57,0e5df1e6,11,soru,,claude-fable-5-1,78,tamamdır 21 eylül olacaktı şimdi düzelttim şu anda napıyoruz cv güncellendi mi,c41ddf83-e941-4a3d-9456-b1b581139041
-14,2026-09-26,21:56,de38ea99,3,diger,,,3,l o,2ad1961b-558d-464c-8825-7bc17e460c52
-15,2026-09-26,21:56,de38ea99,2,diger,,,15,tamamdır 21 eyl,a3f57277-0657-4a12-98e5-e8686597ea94
-16,2026-09-25,15:48,0e5df1e6,9,emir,,,83,"öncelikle stajım 21 ağustosta bitti,context databaseden bakarak buraya yazı oluştur",ff136a44-3e43-459f-a50c-81f2dfad29bf
-17,2026-09-25,15:48,0e5df1e6,10,diger,,claude-fable-5-1,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\de38ea99-ec96-42bc-b05e-8b1252047940\images\1.png],e174399f-1d6d-4c85-bd74-20ad393b251f
-18,2026-09-25,15:46,0e5df1e6,8,soru,,claude-fable-5-1,21,ünvan ne olması lazım,44124fec-cc6b-4a1a-a504-4ddb0433b17e
-19,2026-09-25,15:39,0e5df1e6,7,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,415b12ef-1adb-4f06-934c-96b02c75d130
-20,2026-09-25,15:37,0e5df1e6,6,soru,,claude-fable-5-1,254,"@""C:\Users\sasah\Downloads\salih_cv (1).pdf"" otonet stajım bitti bu bağlamda cv'mi ve linkedin profilimi güncelleyeceğiz linkedinden başlaya",b28aaff1-5670-418e-a6fa-1412059f39e4
-21,2026-09-22,21:43,0e5df1e6,5,onay/devam,,claude-fable-5-1,9,push onay,94ea7aa2-b2a6-4d3c-98de-66ad68259a01
-22,2026-09-22,21:26,0e5df1e6,4,diger,,claude-fable-5-1,6,devamm,c3fb0210-625e-4a7a-bbfc-a30cb60bbe56
-23,2026-09-22,21:25,0e5df1e6,3,diger,,claude-fable-5-1,162,"Your response above was cut off mid-stream. Resume directly from where it stops — no apology, no recap. If none of it survived, answer the r",51952d06-451f-46d2-8c9d-be2ef5a6810b
-24,2026-09-22,21:10,0e5df1e6,2,emir,atlas-kosum,claude-fable-5-1,968,"A1 ve B1 aday1 onay,güvenlik ajanının ismi eş sesli türkçe kelime olmasın yani değişsin ki ileride ajanı mı zar kelimesini mi kast ettiğimi ",99139f47-964c-4fbe-87d2-c4ff3990b24c
-25,2026-09-22,20:58,0e5df1e6,1,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,f8a53c29-5fbb-4434-b4d2-ed4902c3d467
-26,2026-09-22,20:55,de38ea99,1,seans-acilis,"seans-acilis,claude-api",claude-fable-5-1,413,"seans başı,diğer ajanların ismi ve listesi neydi,windowsa geçiş için eksik iş kalmadıysa onları da başlatcam,önce ilk yapılacak iş: -opus 5.",517a9e77-8433-4b2e-b609-ff634dff13a2
-27,2026-09-22,19:50,ea858cf5,10,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,eb940299-1e92-46e6-9212-d2b85a782968
-28,2026-09-22,19:50,ea858cf5,9,soru,,claude-fable-5-1,84,tamamdır bu saatten sonra windowstan kalıcı olarak eksiksiz devam etmeye hazır mıyız,f1521466-58e3-43b5-9cfc-22de9e53767d
-29,2026-09-22,19:45,ea858cf5,7,soru,,,116,mac'e şimdilik geri dönmeyeceğim.bi de hangi vs code md eklentisini kullanıyordum ben hangisi en uygun onu indireyim,15a6b40e-0b8a-449e-8528-fe39462a429e
-30,2026-09-22,19:45,ea858cf5,8,diger,,claude-fable-5-1,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\ea858cf5-19b5-44fe-8247-dee9ff654fd9\images\1.png],3797ed5f-1821-4b4d-9461-648175efc3af
-31,2026-09-22,19:41,ea858cf5,6,emir,,claude-fable-5-1,447,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,816e320b-4a27-4d59-aaba-ee090701b9e9
-32,2026-09-22,19:34,ea858cf5,5,soru,,claude-fable-5-1,141,"devam et, push onay,kalan borçları nasıl kapatırız,artık mac'ten değil windowstan devam edeceğim bir süre.bu bağlamda eksiksiz devam hazır m",913c037d-d04c-48e3-89a7-b3179a0b2779
-33,2026-09-22,19:21,ea858cf5,4,diger,,claude-fable-5-1,160,"devam et, hook yollarını Windows'a eşle,benim tarafımda ise bitirme tezi kararı şu an verilmeyecek,bir de iç içe klasör durumu düzeltilecek ",c2d04e22-1094-4a29-a3bb-c2fe31671463
-34,2026-09-22,19:20,ea858cf5,3,soru,,claude-fable-5-1,55,tamam şimdi ne kaldı terminal konuşumunu yapamadım hala,9eca13b5-52fd-44cf-a5e2-c1d06d73a323
-35,2026-09-22,19:18,ea858cf5,2,diger,,claude-fable-5-1,763,""" PS C:\Users\sasah> cd /c/sistem/sistem && git config core.symlinks true && git ls-files -s | awk '$1==""120000""{print $4}' | xargs git chec",77dd67b6-d52b-42cf-b1ce-de08040827a2
-36,2026-09-22,19:06,ea858cf5,1,seans-acilis,seans-acilis,claude-fable-5-1,532,"seans başı,şu an bu mesaj windowstan yapılıyor,birkaç talep var: -öncelikle sistem.zip dosyasından ayıklanmayan birkaç dosya oldu scripts,th",f1578bb0-d5ea-42ac-bba2-37bf4e690d34
-37,2026-09-21,15:46,9af986ca,3,diger,seans-kapanis,claude-fable-5-1,158,"push onay,bundan sonra diğer bilgisayarda git pull yaparak tüm işlemlere eksiksiz şekilde devam edebilmemi sağlayacak pushları yap,bilgisaya",278f113b-cb7c-49d4-902e-ba4d1d90d38c
-38,2026-09-21,15:44,9af986ca,2,emir,,claude-fable-5-1,468,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,917c6bcf-40b5-4613-baea-0df02d884258
-39,2026-09-21,14:46,9af986ca,1,seans-acilis,seans-acilis,claude-fable-5-1,1188,"seans başı,matematik mühendisliği son sınıfım ve bu yıl bitirme yapacağım.bitirme yapmak için seçeceğim konuda bana yardımcı olmanı istiyoru",9565506f-d46e-4cae-8400-f8e939fa6c9f
-40,2026-09-21,13:47,2f73aa04,23,diger,,claude-fable-5-1,283,"tamamdır,son bir not alma görevi,bugün bilgisayarı şirkete teslim edeceğim.bir sonraki bilgisayarım windows veya mac olabilir,diğer bilgisay",d069aef6-9559-4a20-bc47-23c0f95979c2
-41,2026-09-21,11:05,2f73aa04,21,diger,,,48,totalde 30 iş günü olacak şekilde günleri doldur,64b16f1e-ddaf-48a9-8daa-8df646f09d96
-42,2026-09-21,11:05,2f73aa04,22,diger,,claude-fable-5-1,127,[Image: source: /private/tmp/claude-501/-Users-HasanSalihSahin-sistem-jarvis/2f73aa04-376b-4b50-96c4-cd2e5848a4b5/images/3.png],78e64bd1-c0c2-45f5-ab78-f40274c6c924
-43,2026-09-21,10:59,2f73aa04,20,soru,,claude-fable-5-1,126,"galeri skorlama ve kümeleme sistemi burda hangi maddeye giriyor,bunu da ekleyelim ya da mevcut olanlardan biriyle değiştirelim",801ae7e2-f042-4f38-878a-df8c948793d1
-44,2026-09-21,10:58,2f73aa04,19,emir,,claude-fable-5-1,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,fc413210-cb80-4e76-b2be-c499c881a832
-45,2026-09-21,10:57,2f73aa04,17,soru,,,173,staj için bu formu dolduracağım 11 ağustos tarihinden itibaren yaptıklarımı başlık olarak listelersek öet niteliğinde(hepsini doldurmak zoru,cc653347-af8c-4108-a67d-83b092b1082e
-46,2026-09-21,10:57,2f73aa04,18,diger,,claude-fable-5-1,127,[Image: source: /private/tmp/claude-501/-Users-HasanSalihSahin-sistem-jarvis/2f73aa04-376b-4b50-96c4-cd2e5848a4b5/images/2.png],cba5b123-64aa-45f7-968e-b669b9e891b1
-47,2026-09-21,10:43,2f73aa04,16,seans-kapanis,seans-kapanis,claude-fable-5-1,23,"seans bitimi, push onay",3641fbe3-e691-4233-8582-9e9d53794c72
-48,2026-09-21,10:31,2f73aa04,15,soru,,claude-fable-5-1,239,"3'teki kararı onaylıyorum,bir şeyi değiştirmeye gerek yok,teslim raporları nerede tutuluyor? bir de sistemde aktif olarak kapatılmayı bekley",95764d14-6a00-41c7-987d-ad1958efe5b3
-49,2026-09-21,10:16,2f73aa04,14,emir,,claude-fable-5-1,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,a801a2a4-c9d7-4ae7-9c7e-180e8b231b98
-50,2026-09-21,10:15,2f73aa04,13,soru,,claude-fable-5-1,373,"ajanlarla henüz konuşmayacağım,seansı bitirmeden önce soru: -context database'imiz aktifliğini koruyor mu?sistemde bir sürü pointer varken j",91a0892f-7280-4c98-8052-48ab80022840
+1,2026-10-09,14:07,c6a2e28a,6,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,0bd5b564-eb25-4720-8d20-afd46c52d0fd
+2,2026-10-08,15:34,6ee346a0,6,emir,,claude-opus-5-5,471,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,1d9d50c7-8069-4677-a718-936ba8d35fcf
+3,2026-10-08,15:33,6ee346a0,5,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,66c84c4b-7e55-48ee-b344-8fd9e8aa4c0f
+4,2026-10-08,15:30,6ee346a0,4,diger,,claude-opus-5-5,99,yeterince kanıt bulunmayan günler için de günlerin akışına göre tamamlayıcı olarak bir şeyler uydur,54e39040-e554-47e3-b345-a0ecd11d4549
+5,2026-10-08,15:26,6ee346a0,3,onay/devam,,claude-opus-5-5,32,"tamam devam et, bitince pdf'i aç",b1b1480b-6fd6-4edf-a07a-17154a696b2e
+6,2026-10-08,15:25,6ee346a0,2,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,5f7f56a4-4660-4290-8b9c-7406f6a7e105
+7,2026-10-08,15:18,6ee346a0,1,soru,seans-acilis,claude-opus-5-5,467,"@""C:\Users\sasah\OneDrive\Masaüstü\google indirilenler\staj-raporu-taslak.docx"" seans başı,11 ağustos-21 eylül arası 30 iş günü otonet şirke",5d518110-a028-486a-b5e7-171ffe076148
+8,2026-10-05,16:44,c6a2e28a,5,diger,,claude-fable-5-1,7,push et,f965d18d-8b3e-4c41-ba7a-b0e76ef7af58
+9,2026-10-05,16:44,c6a2e28a,4,diger,,claude-fable-5-1,122,varsayılan diye kısıtlamaya gerek yok 3 modeli de istediğim yanıt hızı ve detay seviyesine göre farklı farklı kullanacağım,cf5117a2-6e39-4301-a52e-5d87d04d8e77
+10,2026-10-05,16:14,c6a2e28a,3,diger,,claude-fable-5-1,249,farklı ajanlarımı da kullanmaya devam etmek istiyorum ama bir yandan da ana prototip ajanım olan jarviste de bu tarz sistemler denemek istiy,fd6e0eba-6fba-4bd1-9402-5351273e3034
+11,2026-10-05,15:55,c6a2e28a,2,diger,,claude-fable-5-1,238,şimdi öncelikle sonnet 5.5 ve opus 5.5 birçok konuda gayet yeterli ve kaliteli cümleler kurabiliyor fable kullanım oranını sadece yüksek önc,3374f05a-0a84-4d98-b69c-f85adbe60ac1
+12,2026-10-05,15:47,c6a2e28a,1,seans-acilis,seans-acilis,claude-fable-5-1,450,"seans başı,yeni bir tasarım moduna geçiyoruz.Bundan sonra farklı contextleri farklı agentlarda sürdürmek yerine aynı agentta(yani jarviste) ",92dee968-3d64-477d-a29b-9c4ddcbd5c7d
+13,2026-09-28,10:04,232f3a09,10,seans-kapanis,seans-kapanis,claude-fable-5-1,22,"push onay,seans bitimi",b2d6649b-033c-4312-bb9f-1a70f8df39e0
+14,2026-09-28,09:56,232f3a09,9,emir,,claude-fable-5-1,428,"-cv'den portriski kaldır,quant vurgusu yerine data engineer vurgusu olsun,otonetteki pozisyonumun adı da data engineer'dı düzelt. -şu anda m",fac0e7c2-0660-4af6-8ac6-52d7b873d94d
+15,2026-09-26,22:23,232f3a09,8,emir,,claude-fable-5-1,71,dosyayı sen pdf'e çevir .tex formatında olduğundan vs code'dan açılıyor,3a39bcbb-b48f-45fe-81a7-74a3b72e1723
+16,2026-09-26,22:18,232f3a09,7,emir,,claude-fable-5-1,114,"@""C:\Users\sasah\Downloads\salih_cv (1).pdf"" staj öncesi cv böyleydi aynı latex kodunda staj bilgileriyle güncelle",d158284e-9fa5-4f40-a603-4466680df118
+17,2026-09-26,22:12,232f3a09,6,soru,,claude-fable-5-1,46,yetnekler kısmını soruyor projede ne yazacağım,80a1af29-147c-4f10-b83a-a01c3f14ff0a
+18,2026-09-26,22:11,232f3a09,5,emir,,claude-fable-5-1,29,projeler kısmına yazı oluştur,db972ce2-1d16-49bf-abcf-9480a20a3078
+19,2026-09-26,22:07,232f3a09,4,emir,,claude-fable-5-1,451,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,0ba8d8c3-7be9-4c55-aeb5-cfda273111bb
+20,2026-09-26,22:07,232f3a09,3,diger,,claude-fable-5-1,43,yetenekler kısmına eklemem gerekenler neler,d3870885-1ee5-4f19-8bc2-4edad3245799
+21,2026-09-26,22:06,232f3a09,2,diger,,claude-fable-5-1,88,sadece otonette yaptıklarımdan ve dataya olan ilgimden bahsedelim portriski şu an boşver,6b74885c-d067-47d3-85b3-cba773388d8c
+22,2026-09-26,22:05,232f3a09,1,diger,,claude-fable-5-1,61,quant ilgimden hemen bahsetmeyelim ortada bir çıktı yok çünkü,15bb6fda-6e1c-4d93-8fbb-1f31e15f6a8b
+23,2026-09-26,22:05,0e5df1e6,13,diger,,,57,quant ilgimden hemen bahsetmeyelim ortada bir çıktı yok ç,392832e2-cea9-4a75-af99-1052592e0322
+24,2026-09-26,22:04,0e5df1e6,12,emir,,claude-fable-5-1,29,hakkında kısmına yazı oluştur,20b83005-7bef-4c65-8e65-830ed1c9a55c
+25,2026-09-26,21:57,0e5df1e6,11,soru,,claude-fable-5-1,78,tamamdır 21 eylül olacaktı şimdi düzelttim şu anda napıyoruz cv güncellendi mi,c41ddf83-e941-4a3d-9456-b1b581139041
+26,2026-09-26,21:56,de38ea99,3,diger,,,3,l o,2ad1961b-558d-464c-8825-7bc17e460c52
+27,2026-09-26,21:56,de38ea99,2,diger,,,15,tamamdır 21 eyl,a3f57277-0657-4a12-98e5-e8686597ea94
+28,2026-09-25,15:48,0e5df1e6,9,emir,,,83,"öncelikle stajım 21 ağustosta bitti,context databaseden bakarak buraya yazı oluştur",ff136a44-3e43-459f-a50c-81f2dfad29bf
+29,2026-09-25,15:48,0e5df1e6,10,diger,,claude-fable-5-1,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\de38ea99-ec96-42bc-b05e-8b1252047940\images\1.png],e174399f-1d6d-4c85-bd74-20ad393b251f
+30,2026-09-25,15:46,0e5df1e6,8,soru,,claude-fable-5-1,21,ünvan ne olması lazım,44124fec-cc6b-4a1a-a504-4ddb0433b17e
+31,2026-09-25,15:39,0e5df1e6,7,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,415b12ef-1adb-4f06-934c-96b02c75d130
+32,2026-09-25,15:37,0e5df1e6,6,soru,,claude-fable-5-1,254,"@""C:\Users\sasah\Downloads\salih_cv (1).pdf"" otonet stajım bitti bu bağlamda cv'mi ve linkedin profilimi güncelleyeceğiz linkedinden başlaya",b28aaff1-5670-418e-a6fa-1412059f39e4
+33,2026-09-22,21:43,0e5df1e6,5,onay/devam,,claude-fable-5-1,9,push onay,94ea7aa2-b2a6-4d3c-98de-66ad68259a01
+34,2026-09-22,21:26,0e5df1e6,4,diger,,claude-fable-5-1,6,devamm,c3fb0210-625e-4a7a-bbfc-a30cb60bbe56
+35,2026-09-22,21:25,0e5df1e6,3,diger,,claude-fable-5-1,162,"Your response above was cut off mid-stream. Resume directly from where it stops — no apology, no recap. If none of it survived, answer the r",51952d06-451f-46d2-8c9d-be2ef5a6810b
+36,2026-09-22,21:10,0e5df1e6,2,emir,atlas-kosum,claude-fable-5-1,968,"A1 ve B1 aday1 onay,güvenlik ajanının ismi eş sesli türkçe kelime olmasın yani değişsin ki ileride ajanı mı zar kelimesini mi kast ettiğimi ",99139f47-964c-4fbe-87d2-c4ff3990b24c
+37,2026-09-22,20:58,0e5df1e6,1,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,f8a53c29-5fbb-4434-b4d2-ed4902c3d467
+38,2026-09-22,20:55,de38ea99,1,seans-acilis,"seans-acilis,claude-api",claude-fable-5-1,413,"seans başı,diğer ajanların ismi ve listesi neydi,windowsa geçiş için eksik iş kalmadıysa onları da başlatcam,önce ilk yapılacak iş: -opus 5.",517a9e77-8433-4b2e-b609-ff634dff13a2
+39,2026-09-22,19:50,ea858cf5,10,seans-kapanis,seans-kapanis,claude-fable-5-1,12,seans bitimi,eb940299-1e92-46e6-9212-d2b85a782968
+40,2026-09-22,19:50,ea858cf5,9,soru,,claude-fable-5-1,84,tamamdır bu saatten sonra windowstan kalıcı olarak eksiksiz devam etmeye hazır mıyız,f1521466-58e3-43b5-9cfc-22de9e53767d
+41,2026-09-22,19:45,ea858cf5,7,soru,,,116,mac'e şimdilik geri dönmeyeceğim.bi de hangi vs code md eklentisini kullanıyordum ben hangisi en uygun onu indireyim,15a6b40e-0b8a-449e-8528-fe39462a429e
+42,2026-09-22,19:45,ea858cf5,8,diger,,claude-fable-5-1,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\ea858cf5-19b5-44fe-8247-dee9ff654fd9\images\1.png],3797ed5f-1821-4b4d-9461-648175efc3af
+43,2026-09-22,19:41,ea858cf5,6,emir,,claude-fable-5-1,447,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,816e320b-4a27-4d59-aaba-ee090701b9e9
+44,2026-09-22,19:34,ea858cf5,5,soru,,claude-fable-5-1,141,"devam et, push onay,kalan borçları nasıl kapatırız,artık mac'ten değil windowstan devam edeceğim bir süre.bu bağlamda eksiksiz devam hazır m",913c037d-d04c-48e3-89a7-b3179a0b2779
+45,2026-09-22,19:21,ea858cf5,4,diger,,claude-fable-5-1,160,"devam et, hook yollarını Windows'a eşle,benim tarafımda ise bitirme tezi kararı şu an verilmeyecek,bir de iç içe klasör durumu düzeltilecek ",c2d04e22-1094-4a29-a3bb-c2fe31671463
+46,2026-09-22,19:20,ea858cf5,3,soru,,claude-fable-5-1,55,tamam şimdi ne kaldı terminal konuşumunu yapamadım hala,9eca13b5-52fd-44cf-a5e2-c1d06d73a323
+47,2026-09-22,19:18,ea858cf5,2,diger,,claude-fable-5-1,763,""" PS C:\Users\sasah> cd /c/sistem/sistem && git config core.symlinks true && git ls-files -s | awk '$1==""120000""{print $4}' | xargs git chec",77dd67b6-d52b-42cf-b1ce-de08040827a2
+48,2026-09-22,19:06,ea858cf5,1,seans-acilis,seans-acilis,claude-fable-5-1,532,"seans başı,şu an bu mesaj windowstan yapılıyor,birkaç talep var: -öncelikle sistem.zip dosyasından ayıklanmayan birkaç dosya oldu scripts,th",f1578bb0-d5ea-42ac-bba2-37bf4e690d34
+49,2026-09-21,15:46,9af986ca,3,diger,seans-kapanis,claude-fable-5-1,158,"push onay,bundan sonra diğer bilgisayarda git pull yaparak tüm işlemlere eksiksiz şekilde devam edebilmemi sağlayacak pushları yap,bilgisaya",278f113b-cb7c-49d4-902e-ba4d1d90d38c
+50,2026-09-21,15:44,9af986ca,2,emir,,claude-fable-5-1,468,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,917c6bcf-40b5-4613-baea-0df02d884258
