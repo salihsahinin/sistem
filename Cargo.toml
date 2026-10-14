@@ -1,0 +1,10 @@
+# sistem kod tabanı — Cargo çalışma alanı (Salih 2026-10-14: "sistem kod tabanlı olmalı, md tabanlı değil · tüm kodu Rust'a taşıyoruz").
+# Her crate sahibi ajanın dizininde durur (tek-yazar, kök md.14); bu dosya yalnız üye listesidir.
+# Lean 4 (`jarvis/lean/`) kuralların spec'i ve kanıtıdır; çalışan kod Rust'tır; ikisi fark testiyle bağlanır.
+[workspace]
+resolver = "3"
+members = ["jarvis/kod/skill-kapi"]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"

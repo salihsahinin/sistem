@@ -1,0 +1,9 @@
+[package]
+name = "skill-kapi"
+description = "Skill-üretim kapı ağacı K0-K3 hükmü (spec: jarvis/lean/Kanon/SkillKapi.lean)"
+edition.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "skill-kapi"
+path = "src/main.rs"

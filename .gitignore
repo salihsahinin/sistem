@@ -8,3 +8,5 @@ catboost_info/
 # MIT arşivleri (Karar 73): ikili kaynak — künye ogrenme/kaynaklar/*-KUNYE.md
 ogrenme/kaynaklar/mit-6006-s20/
 ogrenme/kaynaklar/mit-6042j-f10/
+# Cargo derleme çıktısı (sistem kod tabanı, 2026-10-14)
+/target/
