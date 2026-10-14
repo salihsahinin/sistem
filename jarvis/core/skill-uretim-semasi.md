@@ -26,6 +26,7 @@ YAPRAK: ÜRET-{R|O|Y|Ü} × {yeni|evrim}  →  BAKIM (ağaç-dışı düzeltme k
 Sayım: 4 kapı katmanı · kapı düğümü 1+2+3+4=10 · yaprak 4 · terminal 3 (RET/BEKLET/ONAR) · toplam kalem 17 ≤ 19 · her katman ≤5 düğüm ✓.
 
 ## 2. Düğüm sözlüğü (a = aday; H = hazine; her koşul boolean, m.38 bağlaçları)
+> **Kod (2026-10-14, md → kod pilotu):** §1 ağacı ve bu bölümdeki kapı formülleri `lean/Kanon/SkillKapi.lean`'de kanoniktir (hüküm fonksiyonu + 5 kanıt; ikili `skillkapi`, test `tools/testler/test_lean_skillkapi.py`). Metinle kod ayrışırsa **kod** kazanır; buradaki metin gerekçe ve kaynak içindir.
 
 ### K0 — gerek (kök; eleme kapısı; AND-üstü-OR; ucuz + yüksek-ret)
 `K0 := ¬kapsanmış(a,H) ∧ (Y1 ∨ Y2 ∨ Y3)`

@@ -34,6 +34,7 @@
 | Python 3.13 + pandas 3.0.5, numpy 2.5.2 | — | `tools/*.py` (katman-hatti, silver-saglik, hareket-tablo, alan-ajani-dogur…) | brew/python.org + pip |
 | sqlite3 CLI | sistem | silver sorguları (`v_guncel_kayit`, `v_okuma_orani`) | sistem paketi |
 | jq, tmux, neovim, treehouse, merve | brew | yardımcı | isteğe bağlı |
+| Lean 4 (elan + lake) | elan 4.2.4 · Lean 4.35.0 · Lake 5.0.0 (2026-10-14) | kanon kod tabanı `jarvis/lean/` (md → kod, `lake build` kanıtları denetler) | `elan-init.ps1` (github.com/leanprover/elan) `-NoPrompt $true -DefaultToolchain stable`; PATH `~/.elan/bin` |
 | `promptfoo` | kurulu **değil** (evals H1-H3 npx ile koştu) | Tart eval setleri | `npx promptfoo@latest` |
 
 Global skill'ler (`~/.claude/skills/` ve `~/.agents/skills/`: lavish · gh-axi · chrome-devtools-axi · no-mistakes) axi paketleriyle gelir; `no-mistakes` ayrı kurulum (`~/.no-mistakes/`; yeni makinede yeniden kur, remote `no-mistakes` bu yüzden görünür).

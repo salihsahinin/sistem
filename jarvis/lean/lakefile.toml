@@ -1,0 +1,10 @@
+name = "kanon"
+version = "0.1.0"
+defaultTargets = ["skillkapi"]
+
+[[lean_lib]]
+name = "Kanon"
+
+[[lean_exe]]
+name = "skillkapi"
+root = "Main"
