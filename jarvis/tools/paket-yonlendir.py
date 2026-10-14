@@ -238,6 +238,10 @@ def sec(niyetler, man, durum, repo):
             satirlar.append({"kural": "m", "paket": None, "onceki": aktif, "niyet": n[:160]})
     if not sira:
         metinler.append("### [paket] yok: genel sohbet (yalnız çekirdek); aktif paket değişmedi.")
+    else:
+        # EK-2 görünürlük (Salih 10-14: "yanlış paket seçtiğini nasıl anlayacağım?"): seçim Salih'in ekranına düşer
+        etiket = " · ".join(f"{pid} ← {' | '.join(n[:40] for n, q in niyetler if q == pid)}" for pid in sira)
+        metinler.append(f"- Salih'e görünür etiket: cevabın son satırına aynen yaz → `[paket] {etiket}`")
     return yeni, "\n".join(metinler), satirlar
 
 
@@ -262,6 +266,8 @@ def main():
     ap.add_argument("--niyet", action="append", default=[], help="--sec: niyet parçası (tekrar edilebilir)")
     ap.add_argument("--paket", action="append", default=[], help="--sec: niyetin paketi ya da 'yok' (sırayla eşlenir)")
     ap.add_argument("--oturum", default=None, help="--sec: oturum kimliği (varsayılan state/son-oturum.txt)")
+    ap.add_argument("--duzeltme", action="store_true",
+                    help="--sec: Salih'in 'yanlış paket' düzeltmesi; kütük satırına duzeltme=true (ölçüm sayacı)")
     a = ap.parse_args()
     man_yol = a.manifest or os.path.join(a.repo, "core", "baglam-paketleri.json")
     if a.denetle:
@@ -305,6 +311,8 @@ def main():
             durum = {}
         try:
             yeni, metin, satirlar = sec(list(zip(a.niyet, a.paket)), man, durum, a.repo)
+            if a.duzeltme:
+                satirlar = [dict(r, duzeltme=True) for r in satirlar]
         except ValueError as e:
             print(f"HATA: {e}", file=sys.stderr)
             return 1

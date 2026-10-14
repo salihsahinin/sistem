@@ -107,6 +107,10 @@ class PaketYonlendirTest(unittest.TestCase):
         sec = [r for r in satirlar if r["kural"] == "m"]
         self.assertEqual([r["paket"] for r in sec], ["veri", "ajan", None])
         self.assertEqual([r.get("ek") for r in sec], [False, True, None]); self.assertEqual(sec[2]["niyet"], "hava güzel")
+        self.assertIn("görünür etiket", out); self.assertIn("`[paket] veri ← silver bayat · ajan ← işçi emri`", out)
+        self._sec([("silver bayat", "ajan")], ["--duzeltme"])
+        son = [json.loads(x) for x in open(self.kutuk, encoding="utf-8") if x.strip()][-1]
+        self.assertTrue(son["duzeltme"]); self.assertEqual(son["paket"], "ajan")
 
     def test_agir_is_alt_ajan(self):
         out = self._kos("veri: silver sağlığını araştır")
