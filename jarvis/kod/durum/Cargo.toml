@@ -1,0 +1,13 @@
+[package]
+name = "durum"
+description = "Ortak durum tablosu: ekle-yalnız olay kütüğü (ortak/durum-olay.jsonl) ve katlanmış güncel durum"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[[bin]]
+name = "durum"
+path = "src/main.rs"
