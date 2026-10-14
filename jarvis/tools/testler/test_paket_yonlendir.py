@@ -1,7 +1,8 @@
-"""test_paket_yonlendir.py — bağlam paketi yönlendiricisi testleri (Karar 112).
-Geçici repoda sahte manifest + dosyalarla koşar: (1) açık önek · (2) tetik · (3) yapışkan · (4) sessiz (çıktı/kütük/durum yok) ·
-(5) geçiş sayacı + kapsül yönergesi + eşik · (6) eşitlikte aktif kalır · (7) ağır iş → alt-ajan · (8) öncelik → fable ·
-(9) komutlar · (10) determinizm · (11) kütük şeması · (12) --denetle temiz/ihlal · (13) gerçek manifest temiz.
+"""test_paket_yonlendir.py — bağlam paketi yönlendiricisi testleri (Karar 112; EK-2 10-14 niyet düzeyi).
+Geçici repoda sahte manifest + dosyalarla koşar: (1) açık önek · (2) EK-2 regresyon: tetik sözcüğü ve bildirim gövdesi sessiz ·
+(3) önek yokken aktif pakette yapışma yok · (4) sessiz (çıktı/kütük/durum yok) · (5) geçiş sayacı + kapsül yönergesi + eşik ·
+(6) --sec iki paket: birincil + ek yükleme · (7) ağır iş → alt-ajan · (8) öncelik → fable · (9) komutlar · (10) determinizm ·
+(11) kütük şeması · (12) --denetle temiz/ihlal · (13) gerçek manifest temiz · (14) --sec tavan/bilinmeyen/yok · (15) son-oturum.
 Koşum: python3 -m unittest tools/testler/test_paket_yonlendir.py"""
 import json, os, subprocess, sys, tempfile, unittest
 
@@ -44,6 +45,16 @@ class PaketYonlendirTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         return r.stdout
 
+    def _sec(self, ciftler, ekstra=(), oturum="t", rc=0):
+        arg = []
+        for n, pid in ciftler:
+            arg += ["--niyet", n, "--paket", pid]
+        r = subprocess.run([sys.executable, SCRIPT, "--repo", self.repo, "--durum-dizin", self.durum, "--sec", *arg,
+                            *(["--oturum", oturum] if oturum else []), *ekstra],
+                           capture_output=True, text=True, encoding="utf-8")
+        self.assertEqual(r.returncode, rc, r.stderr)
+        return r.stdout + r.stderr
+
     def _durum(self, oturum="t"):
         with open(os.path.join(self.durum, f"paket-{oturum}.json"), encoding="utf-8") as f:
             return json.load(f)
@@ -54,21 +65,22 @@ class PaketYonlendirTest(unittest.TestCase):
         self.assertIn("Opus 5.5", out); self.assertIn("core/ajan.md:1-2", out); self.assertIn("ilk yükleme", out)
         self.assertEqual(self._durum()["aktif"], "ajan")
 
-    def test_tetik_ve_turkce_katlama(self):
-        out = self._kos("SILVER bayat mı, İNGEST koşalım")
-        self.assertIn("[paket] veri", out); self.assertIn("kural b", out); self.assertIn("ingest", out)
-        self.assertIn("Sonnet 5.5", out); self.assertIn("ilgili skill: damitma", out)
+    def test_ek2_sozcuk_ve_bildirim_sessiz(self):
+        # EK-2 regresyonu (10-14 kütük vakaları): tetik sözcüğü ve alt-ajan bildirim gövdesi paket açmaz
+        self.assertEqual(self._kos("SILVER bayat mı, İNGEST koşalım").strip(), "")
+        self.assertEqual(self._kos("<task-notification>işçi lider silver ingest</task-notification>").strip(), "")
+        self.assertFalse(os.path.exists(self.kutuk))
 
-    def test_yapiskan(self):
+    def test_yapisma_yok(self):
         self._kos("veri: başlayalım")
-        out = self._kos("peki bunu nasıl yaparız")
-        self.assertIn("[paket] veri (aktif; kural c)", out)
-        self.assertEqual(len(out.strip().split("\n")), 1)  # aktif pakette tek satır
+        self.assertEqual(self._kos("peki bunu nasıl yaparız").strip(), "")  # paket seçimi modelde (--sec)
+        self.assertEqual(self._durum()["aktif"], "veri")
 
     def test_sessiz(self):
         out = self._kos("merhaba, bugün hava güzel")
         self.assertEqual(out.strip(), "")
-        self.assertFalse(os.path.exists(self.kutuk)); self.assertFalse(os.path.exists(self.durum))
+        self.assertFalse(os.path.exists(self.kutuk))
+        self.assertEqual(os.listdir(self.durum), ["son-oturum.txt"])  # paket durumu yazılmaz, yalnız oturum işareti (EK-2)
 
     def test_gecis_kapsul_esik(self):
         self._kos("veri: bir")
@@ -83,17 +95,23 @@ class PaketYonlendirTest(unittest.TestCase):
         d = self._durum()
         self.assertEqual(d["gecis"], 2); self.assertEqual(d["yuklu"], ["veri", "ajan"])
 
-    def test_esitlikte_aktif_kalir(self):
+    def test_sec_birincil_ve_ek(self):
         self._kos("ajan: başla")
-        out = self._kos("işçi silver okusun")  # veri 1 · ajan 1 → aktif (ajan) kalır
-        self.assertIn("[paket] ajan (aktif; kural b)", out)
-        out = self._kos("silver ingest koşsun")  # veri 2 · ajan 0 → geçiş
-        self.assertIn("[paket] veri", out); self.assertIn("geçiş 1/2", out)
+        out = self._sec([("silver bayat", "veri"), ("işçi emri", "ajan"), ("hava güzel", "yok")])
+        self.assertIn("[paket] veri · Veri (kural m: niyet: silver bayat)", out); self.assertIn("geçiş 1/2", out)
+        self.assertIn("[paket] ajan · Ajan (ek yükleme · kural m", out)
+        self.assertEqual(out.count("geçiş "), 1)  # ek yükleme geçiş saymaz
+        d = self._durum()
+        self.assertEqual(d["aktif"], "veri"); self.assertEqual(d["gecis"], 1); self.assertEqual(d["yuklu"], ["ajan", "veri"])
+        satirlar = [json.loads(x) for x in open(self.kutuk, encoding="utf-8") if x.strip()]
+        sec = [r for r in satirlar if r["kural"] == "m"]
+        self.assertEqual([r["paket"] for r in sec], ["veri", "ajan", None])
+        self.assertEqual([r.get("ek") for r in sec], [False, True, None]); self.assertEqual(sec[2]["niyet"], "hava güzel")
 
     def test_agir_is_alt_ajan(self):
         out = self._kos("veri: silver sağlığını araştır")
         self.assertIn("ayrım: alt-ajan", out); self.assertIn("`model: sonnet`", out)
-        out = self._kos("bunu da araştır")
+        out = self._sec([("bunu da araştır", "veri")])
         self.assertIn("ağır iş", out); self.assertIn("`model: sonnet`", out)
 
     def test_oncelik_fable(self):
@@ -115,7 +133,7 @@ class PaketYonlendirTest(unittest.TestCase):
         self.assertFalse(os.path.exists(self.kutuk))
 
     def test_kutuk_semasi(self):
-        self._kos("veri: bir"); self._kos("devam"); self._kos("hava güzel", oturum="baska")
+        self._kos("veri: bir"); self._kos("veri: devam"); self._kos("hava güzel", oturum="baska")
         satirlar = [json.loads(s) for s in open(self.kutuk, encoding="utf-8") if s.strip()]
         self.assertEqual(len(satirlar), 2)  # sessiz karar kütüğe düşmez
         for r in satirlar:
@@ -141,6 +159,25 @@ class PaketYonlendirTest(unittest.TestCase):
         r = subprocess.run([sys.executable, SCRIPT, "--repo", self.repo, "--denetle"], capture_output=True, text=True, encoding="utf-8")
         self.assertEqual(r.returncode, 2)
         self.assertEqual(self._kos("veri: bir").strip(), "")  # bozuk manifestte hook susar, prompt engellenmez
+
+    def test_sec_tavan_bilinmeyen_yok(self):
+        out = self._sec([("a", "veri"), ("b", "ajan"), ("c", "kanon")], rc=1)
+        self.assertIn("bilinmeyen paket: kanon", out)
+        m = json.loads(json.dumps(MANIFEST)); m["tavan_paket"] = 1; self._manifest_yaz(m)
+        self.assertIn("en çok 1 farklı paket", self._sec([("a", "veri"), ("b", "ajan")], rc=1))
+        self.assertFalse(os.path.exists(self.kutuk))  # hatada kütük yazılmaz
+        out = self._sec([("selam", "yok")])
+        self.assertIn("[paket] yok", out); self.assertIsNone(self._durum()["aktif"])
+        r = subprocess.run([sys.executable, SCRIPT, "--repo", self.repo, "--sec", "--niyet", "x"], capture_output=True,
+                           text=True, encoding="utf-8")
+        self.assertEqual(r.returncode, 2)  # niyet/paket sayısı eşit değil
+
+    def test_son_oturum(self):
+        self._kos("merhaba", oturum="oturumA")  # sessiz mesaj da son-oturum'u yazar
+        with open(os.path.join(self.durum, "son-oturum.txt"), encoding="utf-8") as f:
+            self.assertEqual(f.read(), "oturumA")
+        self._sec([("silver", "veri")], oturum=None)
+        self.assertEqual(self._durum("oturumA")["aktif"], "veri")
 
     def test_gercek_manifest_temiz(self):
         r = subprocess.run([sys.executable, SCRIPT, "--repo", KOK, "--denetle"], capture_output=True, text=True, encoding="utf-8")

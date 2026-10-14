@@ -8,7 +8,8 @@
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
 echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ==="
-echo "AD (Karar 93, 09-10): Salih'le konuşan ajan = JARVİS; tarihli dosyalardaki 'Carvis' = Jarvis (eski ad Carvis, 08-17→09-10) · sistem/repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py"
+echo "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py"
+echo "PAKET (Karar 112 EK-2): Salih mesajını niyetlere böl, anlamdan paket|yok seç (kanon·ajan·skill·veri·baglam·dogrulama, ≤2); değişince tools/paket-yonlendir.py --sec --niyet … --paket …; bildirim niyet değil."
 echo "YETKİ (m.41 GK-2): Claude Code (giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."
 python3 - <<'PY' 2>/dev/null || echo "BRİF: silver okunamadı (python3 ya da veri/baglam.sqlite yok) → python3 tools/katman-hatti.py"
 import sqlite3, subprocess, re
@@ -45,11 +46,11 @@ except Exception as e:
 try:
     t = open("core/durum-kapsulu.md", encoding="utf-8").read()
     m = re.search(r"## Sonraki ilk iş\s*\n(.*?)\n", t, re.S)
-    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:260])
-    g = re.search(r"\*\*Güncelleme:\*\*\s*(.{0,150})", t)
+    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:190])
+    g = re.search(r"\*\*Güncelleme:\*\*\s*(.{0,90})", t)
     if g: print("KAPSÜL: " + re.sub(r"[*`]", "", g.group(1)))
 except Exception: pass
 PY
-echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (TAMAMI) → core/pano.md → ritüel 'seans başı' (kapılar: python3 tools/acilis-kapilari.py — K1 canlı-oturum · K2 manifest --is · K3 silver; İB-91)."
+echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (tamamı) → core/pano.md → ritüel 'seans başı' (kapılar: python3 tools/acilis-kapilari.py K1-K3; İB-91)."
 echo "=== /SessionStart ==="
 } | head -c 2000

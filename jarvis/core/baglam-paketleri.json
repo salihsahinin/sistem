@@ -1,16 +1,17 @@
 {
   "sema": "baglam-paketleri-v0",
-  "durum": "deneysel (m.29) · Karar 112 (Salih 2026-10-05: tek ajanda konuya göre bağlam, A seçeneği; diğer ajanlar aynen sürer) · sabitler ilk 10 geçişte kalibre edilir",
+  "durum": "deneysel (m.29) · Karar 112 (Salih 2026-10-05: tek ajanda konuya göre bağlam, A seçeneği; diğer ajanlar aynen sürer) · EK-2 (Salih 2026-10-14: 'seçenek 1, niyet düzeyinde'): seçim ana modelde, anlamdan, niyet başına; hook yalnız komut + açık önek · sabitler ilk 10 geçişte kalibre edilir",
   "aciklama": "Jarvis'in KENDİ konuları için bağlam paketleri. Yönlendirici tools/paket-yonlendir.py (UserPromptSubmit hook'u) bu dosyayı okur: mesaj → paket → okunacak dosyalar + model kademesi + ayrım düzeyi. Alan adı talimattır. Paket yalnız jarvis/ içini ve ortak kökü (../sablonlar, ../AGENTS.md) gösterir; başka ajanın dizini pakete girmez (kök md.1).",
   "alanlar": {
     "id": "kalıcı kısa ad; açık önek olarak yazılır (ör. 'veri: ...')",
     "kademe": "paketin varsayılan modeli: sonnet | opus | fable",
-    "tetik": "küçük harfli regex listesi; mesajda tutan regex sayısı paketin puanıdır",
+    "tetik": "küçük harfli regex listesi; EK-2'den beri yönlendirmede KULLANILMAZ, yalnız paketin konusunu modele örnekleyen ipucu",
     "cekirdek": "pakete ilk girişte Jarvis'in okuduğu adresler: 'yol' ya da 'yol:a-b' (satır aralığı)",
     "pointer": "yalnız gerekince açılan adresler",
     "skill": "bu konuda çağrılması olası skill'ler"
   },
   "esik_gecis": 3,
+  "tavan_paket": 2,
   "butce_bayt": 20000,
   "kapsul_dizin": "core/paket-kapsul",
   "kademeler": {
