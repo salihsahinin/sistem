@@ -44,7 +44,7 @@ fn lean_ve_rust_ayni_hukmu_verir() {
         let mut s = String::new();
         for k in BOOL_ANAHTAR {
             // Geçen yolları da örneklemek için çoğu bayrak yüksek olasılıkla açık
-            let acik = if k == "kapsanmisTam" || k == "p" { u.sonraki() % 8 == 0 } else { u.sonraki() % 8 != 0 };
+            let acik = if k == "kapsanmisTam" || k == "p" { u.sonraki().is_multiple_of(8) } else { !u.sonraki().is_multiple_of(8) };
             if acik || u.bit() {
                 s.push_str(&format!("{k}={}\n", if acik { 1 } else { 0 }));
             }

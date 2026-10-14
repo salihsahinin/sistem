@@ -3,6 +3,8 @@
 //! Spec ve kanıtlar: `jarvis/lean/Kanon/SkillKapi.lean`. Bu crate o spec'in çalışan uygulamasıdır; ikisinin aynı
 //! hükmü verdiği `tests/fark.rs` fark testiyle denetlenir. Kaynak metin: `jarvis/core/skill-uretim-semasi.md` §1-§2.
 
+pub mod denetim;
+
 /// Adayın kapı girdileri. Her alan tek bir ölçüm; varsayılanlar Lean `Aday` yapısıyla aynı.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Aday {
