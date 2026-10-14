@@ -16,3 +16,4 @@
 - [Pratik = Salih'in eli](feedback-pratik-salih-eli.md) — Salih 09-15: Jarvis'in kendi koşumu pratik sayılmaz (referans koşum); `DONE` yalnız Salih beyanıyla; G1 arızası
 - [Oturum açma talimatında worktree beyanı](feedback-oturum-acma-worktree-beyani.md) — Salih 09-18: her açılış talimatında worktree AÇIK/KAPALI + sebep; Jarvis Fable ana-sıra `KAPALI`, ~/jarvis yan oturum **açık**, Friday/staj `KAPALI` (tek oturum)
 - [Bitirme tezi: AI×matematik, mat. müh. son sınıf](user-bitirme-tezi-matematik-muhendisligi.md) — Salih 09-21: 2026-27 bitirme; İTÜ [?] ama küresel emsal; ilk atlas raporu raporlar/2026-09/2026-09-21-bitirme-tezi-ai-matematik-atlas.md
+- [İngilizce konuşma pratiği](feedback-ingilizce-konusma-pratigi.md) — Salih 10-12: sohbet sade İngilizce; yeni kavram Türkçe + terim İngilizce + geri-anlatım İngilizce; sonda ≤3 Language note + Words

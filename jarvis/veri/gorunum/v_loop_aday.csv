@@ -1,5 +1,5 @@
 imza_sha8,durum,k_W,n,toplam_tekrar,skill_ici,kapsanan,ilk_tarih,son_tarih,ornek_oturum,imza
-6621a797,ADAY,21,2,36,0,0,2026-08-15,2026-09-20,14da067d,Bash:cat → Bash:py:inline
+6621a797,ADAY,22,2,37,0,0,2026-08-15,2026-10-05,14da067d,Bash:cat → Bash:py:inline
 9ea5a732,ADAY,18,2,33,0,0,2026-08-15,2026-09-18,14da067d,Bash:py:inline → Bash:cat
 565800b2,ADAY,18,2,18,1,0,2026-08-12,2026-10-05,0019c6bb,Read:core/durum-kapsulu.md → Read:core/pano.md
 228c0b3f,ADAY,15,2,26,0,0,2026-08-12,2026-09-21,0fa78c95,Write:raporlar → Bash:py:inline
@@ -18,31 +18,32 @@ a18a2ef7,ADAY,9,2,9,0,0,2026-08-17,2026-09-22,0e5df1e6,Bash:git:add → Bash:git
 b1ce058e,ADAY,8,2,10,0,0,2026-08-16,2026-09-11,0fa78c95,Bash:py:inline → Write:tools
 5bcf23b3,ADAY,8,2,9,0,0,2026-08-20,2026-09-15,11b49d44,Bash:py:inline → Bash:git:add+git:commit
 d79d6eef,ADAY,8,2,8,1,0,2026-08-20,2026-10-05,024f2785,Skill:seans-acilis → Read:core/durum-kapsulu.md
+27f07d39,ADAY,8,2,8,0,0,2026-08-17,2026-10-09,14da067d,ToolSearch → WebFetch
 5be55e49,ADAY,7,3,7,1,0,2026-08-20,2026-10-05,2fc42451,Skill:seans-acilis → Read:core/durum-kapsulu.md → Read:core/pano.md
 e59db077,ADAY,7,2,14,0,0,2026-08-12,2026-09-15,14da067d,Bash:py:inline → Edit:core/durum-kapsulu.md
 4259434b,ADAY,7,2,12,0,0,2026-08-24,2026-09-15,3ed3cca0,mcp__Claude_Browser__navigate → mcp__Claude_Browser__computer
 31b44ad3,ADAY,7,2,9,0,0,2026-08-20,2026-09-14,1801d9ae,Bash:git:add → Bash:git:commit
 a7196d6e,ADAY,7,2,8,0,0,2026-08-15,2026-09-10,2fc42451,Bash:sed+cut → Bash:py:inline
+abfd1117,ADAY,7,2,7,0,0,2026-08-12,2026-10-09,58141fb3,Bash:py:inline → Bash:grep
 1f94b34d,ADAY,7,2,7,0,0,2026-08-15,2026-09-20,2f73aa04,Edit:core → Edit:.claude/skills
 6bdcfe66,ADAY,7,2,7,0,0,2026-08-16,2026-09-15,25679332,Read:core/durum-kapsulu.md → Edit:core/durum-kapsulu.md
 26b853e9,ADAY,7,2,7,1,0,2026-08-18,2026-08-30,11b49d44,Skill:seans-acilis → Bash:date+echo+git:log
-27f07d39,ADAY,7,2,7,0,0,2026-08-17,2026-09-15,14da067d,ToolSearch → WebFetch
+f6608bd8,ADAY,7,2,7,1,0,2026-09-15,2026-10-09,2f73aa04,Skill:seans-acilis → Bash:py:acilis-kapilari+1+head
 f1115411,ADAY,6,2,13,0,0,2026-08-15,2026-08-18,1620e67b,Workflow → Bash:py:inline
 e9e0eb52,ADAY,6,2,10,0,0,2026-08-15,2026-09-18,1268ffa1,Edit:core/durum-kapsulu.md → Bash:cat
 e0a9f0c5,ADAY,6,2,8,0,0,2026-08-20,2026-09-10,1268ffa1,Edit:core/tuzuk-v0.md → Edit:core
 f3dbae9d,ADAY,6,2,7,1,0,2026-08-20,2026-09-20,1268ffa1,Write:raporlar → Edit:core/durum-kapsulu.md
 f7a528f9,ADAY,6,2,6,0,0,2026-08-17,2026-09-22,1268ffa1,Bash:git:add → Bash:git:push+1+tail
 71353c95,ADAY,6,2,6,0,0,2026-08-15,2026-10-08,58141fb3,Bash:grep → Bash:py:inline
-abfd1117,ADAY,6,2,6,0,0,2026-08-12,2026-10-08,58141fb3,Bash:py:inline → Bash:grep
 2afcf8b2,ADAY,6,2,6,0,0,2026-08-26,2026-09-22,0e5df1e6,Bash:py:inline → Edit:dış
 d7e14c20,ADAY,6,2,6,1,0,2026-08-17,2026-09-15,33beff9d,Bash:py:inline → Skill:seans-kapanis
 58518374,ADAY,6,2,6,0,0,2026-08-17,2026-09-09,25679332,Bash:py:inline → ToolSearch
 533001a8,ADAY,6,2,6,0,0,2026-08-17,2026-09-15,0fa78c95,Edit:tools → Bash:py:inline
-f6608bd8,ADAY,6,2,6,1,0,2026-09-15,2026-09-22,2f73aa04,Skill:seans-acilis → Bash:py:acilis-kapilari+1+head
 96b1060c,ADAY,5,3,5,0,0,2026-08-29,2026-10-05,4ac5ca1c,mcp__visualize__read_me → Read:dış → mcp__visualize__show_widget
 f360f4f8,ADAY,5,2,28,0,0,2026-08-17,2026-09-10,1268ffa1,Edit:dış → Read:dış
 1e6a9efd,ADAY,5,2,11,0,0,2026-08-15,2026-10-08,6ee346a0,Bash:py:inline → Read:dış
 4eb6b0b5,ADAY,5,2,10,0,0,2026-08-15,2026-10-08,239c2df3,Read:dış → Bash:py:inline
+c21d77f8,ADAY,5,2,8,0,0,2026-08-21,2026-10-09,11b49d44,Read:.claude/skills → Edit:.claude/skills
 1eb08088,ADAY,5,2,7,0,0,2026-08-15,2026-09-11,14da067d,Bash:py:inline → Bash:sed+cut+echo
 8d21b56d,ADAY,5,2,7,0,0,2026-08-15,2026-08-30,11b49d44,Bash:py:inline → Write:cc
 e6451b46,ADAY,5,2,7,0,0,2026-08-16,2026-08-30,11b49d44,Write:cc → Bash:py:inline
@@ -59,6 +60,7 @@ e204f21f,ADAY,5,2,5,0,0,2026-08-16,2026-09-21,14da067d,Edit:core/durum-kapsulu.m
 e3fbf2f6,ADAY,5,2,5,0,0,2026-08-21,2026-09-26,232f3a09,Edit:kuyruk/senaryo-defteri.md → Edit:core/durum-kapsulu.md
 6321ee5d,ADAY,5,2,5,0,1,2026-08-29,2026-10-05,4ac5ca1c,Read:dış → mcp__visualize__show_widget
 d6d09b4e,ADAY,5,2,5,1,0,2026-08-26,2026-09-10,0fa78c95,Skill:seans-acilis → Bash:git:log+cut+echo
+b3c6a986,ADAY,5,2,5,0,0,2026-08-30,2026-10-09,2c13ad80,Write:dış → Bash:echo
 c37f4e2c,ADAY,5,2,5,0,1,2026-08-29,2026-10-05,4ac5ca1c,mcp__visualize__read_me → Read:dış
 30ec7336,ADAY,4,3,4,0,0,2026-08-15,2026-08-24,2fc42451,Bash:py:inline → Edit:CLAUDE.md → Bash:py:inline
 e0844c8e,ADAY,4,3,4,0,0,2026-08-15,2026-08-18,25679332,Bash:py:inline → Workflow → Bash:py:inline
@@ -70,7 +72,6 @@ cf176c7f,ADAY,4,2,9,0,0,2026-08-25,2026-09-03,443ef247,Bash:grep → Read:dış
 f52ee75c,ADAY,4,2,9,0,0,2026-08-28,2026-09-10,6fbbc390,Bash:py:inline → Bash:python
 d29853aa,ADAY,4,2,8,0,0,2026-08-28,2026-09-10,6fbbc390,Bash:cat → Bash:python
 3110a542,ADAY,4,2,7,0,0,2026-08-12,2026-09-21,1268ffa1,Edit:dış → Edit:core/durum-kapsulu.md
-c21d77f8,ADAY,4,2,7,0,0,2026-08-21,2026-09-15,11b49d44,Read:.claude/skills → Edit:.claude/skills
 b200bf47,ADAY,4,2,7,0,0,2026-08-25,2026-09-02,443ef247,mcp__Claude_Browser__computer → mcp__Claude_Browser__javascript_tool
 8b016b83,ADAY,4,2,6,0,0,2026-08-29,2026-09-18,58141fb3,Agent:atlas → Agent:general-purpose
 c76fa977,ADAY,4,2,6,1,0,2026-08-17,2026-08-29,11b49d44,Bash:echo+sed+cut → Bash:py:inline
@@ -78,6 +79,7 @@ d822db0e,ADAY,4,2,6,0,0,2026-08-24,2026-09-10,1268ffa1,Bash:lavish-axi+1+head �
 06819418,ADAY,4,2,6,0,1,2026-08-15,2026-08-24,2fc42451,Edit:CLAUDE.md → Bash:py:inline
 43f62454,ADAY,4,2,6,0,0,2026-08-20,2026-09-01,3311c08d,Edit:core/durum-kapsulu.md → Bash:wc
 0d666fad,ADAY,4,2,6,0,0,2026-08-21,2026-08-31,0fa78c95,Read:tools → Edit:tools
+e77dc6dc,ADAY,4,2,6,0,0,2026-09-02,2026-10-09,443ef247,mcp__Claude_Browser__navigate → mcp__Claude_Browser__get_page_text
 1e378a14,ADAY,4,2,6,0,0,2026-09-02,2026-09-08,1b40c0b3,mcp__Claude_Browser__tabs_create → mcp__Claude_Browser__navigate
 961faf33,ADAY,4,2,5,0,0,2026-08-17,2026-10-08,34f8f4dd,Bash:- → Bash:py:inline
 3d5cf5e5,ADAY,4,2,5,0,1,2026-08-15,2026-08-24,2fc42451,Bash:py:inline → Edit:CLAUDE.md
@@ -99,7 +101,6 @@ b4b063db,ADAY,4,2,4,0,0,2026-08-20,2026-08-29,0fa78c95,Bash:py:inline → Edit:r
 fcb4d871,ADAY,4,2,4,1,1,2026-08-21,2026-08-30,0019c6bb,Read:core/pano.md → Bash:tail
 79df932a,ADAY,4,2,4,1,0,2026-08-17,2026-09-11,14da067d,Skill:seans-acilis → Bash:date+git:log+cut
 55798c84,ADAY,4,2,4,0,0,2026-08-15,2026-08-30,361bbb9d,Write:cc → Bash:cat
-b3c6a986,ADAY,4,2,4,0,0,2026-08-30,2026-09-09,2c13ad80,Write:dış → Bash:echo
 0e0d9da5,ADAY,4,2,4,0,0,2026-08-15,2026-09-11,14da067d,Write:dış → Bash:printf
 3648fed3,ADAY,4,2,4,0,0,2026-08-29,2026-09-18,6a0bab8a,Write:dış → Read:dış
 71f717d5,ADAY,4,2,4,0,0,2026-08-17,2026-10-05,0fa78c95,Write:tools → Bash:py:inline
@@ -145,7 +146,6 @@ fb49f41b,ADAY,3,2,4,0,0,2026-08-15,2026-08-16,1620e67b,Bash:cat → Workflow
 a6d099b5,ADAY,3,2,4,0,0,2026-08-29,2026-09-14,4ac5ca1c,Edit:ogrenme → Write:ogrenme
 adfa8a5c,ADAY,3,2,4,0,0,2026-08-17,2026-09-15,0fa78c95,WebFetch → Bash:-
 5956b0d8,ADAY,3,2,4,1,0,2026-08-17,2026-09-04,501b9a20,Write:raporlar → Bash:cat
-e77dc6dc,ADAY,3,2,4,0,0,2026-09-02,2026-09-08,443ef247,mcp__Claude_Browser__navigate → mcp__Claude_Browser__get_page_text
 7b6e8545,ADAY,3,2,3,0,0,2026-08-15,2026-10-08,27aa5cbc,Bash:- → Read:dış
 1f1c0ee1,ADAY,3,2,3,0,0,2026-08-26,2026-09-09,361bbb9d,Bash:cat → Agent:atlas
 e4a343f3,ADAY,3,2,3,0,0,2026-08-18,2026-09-21,1268ffa1,Bash:cat → Bash:git:add
@@ -181,6 +181,7 @@ e131bb97,ADAY,3,2,3,0,0,2026-08-29,2026-09-15,0fa78c95,Bash:py:inline → Edit:t
 7820de76,ADAY,3,2,3,0,0,2026-08-20,2026-09-26,232f3a09,Bash:py:inline → SendUserFile
 b17964b7,ADAY,3,2,3,1,0,2026-08-24,2026-09-10,1268ffa1,Bash:py:katman-hatti+1+grep → Write:raporlar
 3bba6318,ADAY,3,2,3,0,1,2026-08-15,2026-08-18,1620e67b,Bash:py:tetik-denetim+echo → Bash:py:inline
+ccd618fd,ADAY,3,2,3,0,0,2026-08-31,2026-10-09,1b40c0b3,Bash:sed → Write:dış
 e92ea7d4,ADAY,3,2,3,0,0,2026-08-15,2026-08-29,1620e67b,Bash:sed+cut+echo → Bash:cat
 27df9612,ADAY,3,2,3,1,0,2026-08-16,2026-09-26,232f3a09,Bash:sed+cut+echo → Bash:sed+cut
 4a9a618b,ADAY,3,2,3,1,0,2026-08-15,2026-09-22,25679332,Bash:sed+cut+echo → Write:raporlar
@@ -372,6 +373,7 @@ ff50ae66,ESIK-ALTI,2,2,2,0,0,2026-09-11,2026-09-22,0e5df1e6,Agent:general-purpos
 2855c27e,ESIK-ALTI,2,2,2,1,0,2026-08-29,2026-08-31,0fa78c95,Agent:general-purpose → ToolSearch
 29c117ba,ESIK-ALTI,2,2,2,0,0,2026-08-26,2026-08-29,0fa78c95,Agent:general-purpose → Write:raporlar
 fb43a796,ESIK-ALTI,2,2,2,0,0,2026-09-02,2026-09-02,443ef247,AskUserQuestion → Read:dış
+cf0a01ee,ESIK-ALTI,2,2,2,0,0,2026-08-15,2026-10-09,1620e67b,AskUserQuestion → Write:dış
 28fe6461,ESIK-ALTI,2,2,2,0,0,2026-08-15,2026-08-15,7bb80b5e,Bash:- → Workflow
 7d8f53e7,ESIK-ALTI,2,2,2,1,0,2026-08-31,2026-09-09,95fd3d15,Bash:cat → Agent:general-purpose
 a36e981e,ESIK-ALTI,2,2,2,1,0,2026-08-15,2026-08-18,25679332,Bash:cat → Bash:cat+head
@@ -453,6 +455,7 @@ b5746107,ESIK-ALTI,2,2,2,1,0,2026-09-18,2026-09-21,6a0bab8a,Bash:py:acilis-kapil
 e52e8f82,ESIK-ALTI,2,2,2,0,0,2026-08-15,2026-08-17,7bb80b5e,Bash:py:anahtar-denetim+1+tail → Bash:py:anahtar-denetim+1+grep
 ff6ee1d8,ESIK-ALTI,2,2,2,1,0,2026-08-15,2026-08-21,27aa5cbc,Bash:py:derece+echo → Write:cc
 8259de9f,ESIK-ALTI,2,2,2,1,0,2026-08-26,2026-08-31,be4a4b92,Bash:py:hareket-tablo+1+tail → Bash:py:silver-saglik+1+tail
+db81ac5c,ESIK-ALTI,2,2,2,0,0,2026-08-28,2026-10-09,6fbbc390,Bash:py:inline → Bash:echo
 7d6c5b36,ESIK-ALTI,2,2,2,0,0,2026-08-22,2026-08-29,0fa78c95,Bash:py:inline → Bash:echo+grep
 849c4d1f,ESIK-ALTI,2,2,2,0,0,2026-08-29,2026-08-31,33beff9d,Bash:py:inline → Bash:echo+sed
 815ac447,ESIK-ALTI,2,2,2,0,0,2026-08-20,2026-09-15,58141fb3,Bash:py:inline → Bash:gh-axi+1+head
@@ -487,7 +490,7 @@ b54f9c33,ESIK-ALTI,2,2,2,0,0,2026-08-25,2026-09-08,1801d9ae,Bash:python → Writ
 1da162ea,ESIK-ALTI,2,2,2,0,0,2026-08-16,2026-08-21,9fdc5615,Bash:sed → Bash:py:derece+echo
 77b4ea5d,ESIK-ALTI,2,2,2,1,0,2026-09-18,2026-09-21,6a0bab8a,Bash:sed → Bash:sed+echo
 98c0458b,ESIK-ALTI,2,2,2,1,0,2026-08-15,2026-08-31,f14bd4b6,Bash:sed → Bash:sed+echo+grep
-ccd618fd,ESIK-ALTI,2,2,2,0,0,2026-08-31,2026-09-03,1b40c0b3,Bash:sed → Write:dış
+c09eaf46,ESIK-ALTI,2,2,2,0,0,2026-09-26,2026-10-09,232f3a09,Bash:sed+cut → Edit:C:
 e51680d1,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-08-17,65b51351,Bash:sed+cut+echo → Bash:grep
 a229eb8c,ESIK-ALTI,2,2,2,0,0,2026-09-08,2026-09-10,1268ffa1,Bash:sed+cut+echo → Bash:mkdir+cat
 45d8fce7,ESIK-ALTI,2,2,2,0,0,2026-08-15,2026-08-15,914d8e47,Bash:sed+echo+grep → Edit:.claude/skills
@@ -526,6 +529,7 @@ bc99f253,ESIK-ALTI,2,2,2,1,0,2026-08-21,2026-08-22,aa937b62,Edit:raporlar → Ed
 c2bb8d7a,ESIK-ALTI,2,2,2,0,0,2026-09-20,2026-09-22,2f73aa04,Edit:tools → Write:dış
 0b4a2568,ESIK-ALTI,2,2,2,0,0,2026-08-17,2026-09-02,501b9a20,Monitor → Bash:py:inline
 4759edf7,ESIK-ALTI,2,2,2,0,0,2026-08-24,2026-09-15,2fc42451,Read:.claude → Edit:.claude
+777d6446,ESIK-ALTI,2,2,2,0,0,2026-09-22,2026-10-09,8d737bf2,Read:C: → Edit:C:
 15461644,ESIK-ALTI,2,2,2,1,0,2026-08-17,2026-08-26,405e80db,Read:core/durum-kapsulu.md → Write:core/durum-kapsulu.md
 1235d07a,ESIK-ALTI,2,2,2,1,0,2026-08-22,2026-08-29,7ae8954e,Read:core/durum-kapsulu.md → Write:raporlar
 f34eab78,ESIK-ALTI,2,2,2,1,0,2026-08-20,2026-08-21,3311c08d,Read:core/pano.md → Bash:git:log+echo+tail
