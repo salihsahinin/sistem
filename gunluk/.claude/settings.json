@@ -1,10 +1,14 @@
 {
-  "_not": "Günlük kısa-soru oturumu (Salih 2026-10-14). Hedef: bağlam sıfıra yakın, kişisel/kariyer bağlamı yok. Kök CLAUDE.md (ortak kanon) üst dizinden yüklenir; hafıza, hook'lar ve kullanıcı CLAUDE.md'si yalnız bu dizinde kapalı.",
+  "_not": "Günlük kısa-soru oturumu (Salih 2026-10-14). Hedef: bağlam sıfıra yakın, kişisel/kariyer bağlamı yok. Hafıza, hook'lar, kullanıcı CLAUDE.md'si ve kök CLAUDE.md (ortak kanon, 6 KB) yalnız bu dizinde kapalı; kökün güvenlik özü gunluk/CLAUDE.md'de 2 satır.",
   "autoMemoryEnabled": false,
   "disableAllHooks": true,
   "claudeMdExcludes": [
     "C:/Users/sasah/.claude/CLAUDE.md",
     "C:\\Users\\sasah\\.claude\\CLAUDE.md",
-    "**/Users/sasah/.claude/CLAUDE.md"
+    "**/Users/sasah/.claude/CLAUDE.md",
+    "C:/sistem/sistem/CLAUDE.md",
+    "C:/sistem/sistem/AGENTS.md",
+    "C:\\sistem\\sistem\\CLAUDE.md",
+    "C:\\sistem\\sistem\\AGENTS.md"
   ]
 }
