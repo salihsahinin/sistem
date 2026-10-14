@@ -1,0 +1,24 @@
+[package]
+name = "jarvis-hook"
+description = "Jarvis hook'ları (Claude Code PreToolUse/UserPromptSubmit/SessionStart/Stop/InstructionsLoaded) + paket-yonlendir + prompt-dosya + kök dispatcher; .sh/.py karşılıklarıyla fark testli"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+regex = "1"
+serde = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[lib]
+name = "jarvis_hook"
+path = "src/lib.rs"
+
+[[bin]]
+name = "jarvis-hook"
+path = "src/main.rs"
+
+[[bin]]
+name = "hook-dispatch"
+path = "src/bin/hook_dispatch.rs"
