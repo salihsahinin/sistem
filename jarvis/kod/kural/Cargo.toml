@@ -1,0 +1,37 @@
+[package]
+name = "jarvis-kural"
+description = "Jarvis kural/denetim araçları (tetik-denetim · derece · skill-esik · paralel-kapi · ad-esitligi-denetim); .py karşılıklarıyla ve Lean spec'iyle (tetik, derece) fark testli"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+jarvis-hook = { path = "../hook" }
+regex = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[lib]
+name = "jarvis_kural"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tetik-denetim"
+path = "src/bin/tetik_denetim.rs"
+
+[[bin]]
+name = "derece"
+path = "src/bin/derece.rs"
+
+[[bin]]
+name = "skill-esik"
+path = "src/bin/skill_esik.rs"
+
+[[bin]]
+name = "paralel-kapi"
+path = "src/bin/paralel_kapi.rs"
+
+[[bin]]
+name = "ad-esitligi-denetim"
+path = "src/bin/ad_esitligi_denetim.rs"

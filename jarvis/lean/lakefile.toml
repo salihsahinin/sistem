@@ -1,6 +1,6 @@
 name = "kanon"
 version = "0.1.0"
-defaultTargets = ["skillkapi", "Gorev"]
+defaultTargets = ["skillkapi", "tetik", "derece", "Gorev"]
 
 [[lean_lib]]
 name = "Kanon"
@@ -13,3 +13,12 @@ globs = ["Gorev.+"]
 [[lean_exe]]
 name = "skillkapi"
 root = "Main"
+
+# Karar 114 parti 3: kural araçlarının Lean spec ikilileri (stdin anahtar=değer → hüküm); Rust/Python ile üç yönlü fark testi jarvis/kod/kural/tests/lean_fark.rs
+[[lean_exe]]
+name = "tetik"
+root = "TetikMain"
+
+[[lean_exe]]
+name = "derece"
+root = "DereceMain"

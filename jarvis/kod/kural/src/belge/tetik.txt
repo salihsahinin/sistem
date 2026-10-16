@@ -1,0 +1,6 @@
+tetik-denetim.py — Skill-TETİKLENME şemasının (core/skill-tetikleme-semasi.md v1) DETERMİNİSTİK Kapı-Ö denetimi.
+Bir görev emri/raporu dosyasındaki "## SKILL TETİKLERİ" bloğunu okur; her çağrı için: (1) skill hazinede VAR mı, (2) 9 alan dolu mu,
+(3) yan-etkili (disable-model-invocation:true) skill → cagri_kipi literal ∧ alt-ajandan çağrılmıyor mu, (4) tetik_kosulu'nda derece ifadesi
+("gerekirse/uygunsa/mümkünse") var mı, iç içe koşul derinliği ≤2 mi, (5) hata_yolu retry ≤3 + FAIL-LOUD mu, (6) done_yuklemi derece değil mi.
+Kullanım: python3 tetik-denetim.py <emir.md> [--repo <kök>] [--json]   Çıkış: 0 geçti · 1 sert kapı düştü · 2 kullanım hatası · 3 blok yok.
+LLM'e kalan: koşulun ANLAMI (K2), bağlam yeterliliği, sıra/handoff kalitesi — script yalnız yapısal sinyal üretir.

@@ -221,6 +221,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "jarvis-kural"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "jarvis-hook",
+ "regex",
+ "rusqlite",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "js-sys"
 version = "0.3.106"
 source = "registry+https://github.com/rust-lang/crates.io-index"
