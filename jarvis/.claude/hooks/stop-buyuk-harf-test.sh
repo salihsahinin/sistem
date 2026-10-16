@@ -3,6 +3,7 @@
 set -u
 H="$(dirname "$0")/stop-buyuk-harf.sh"
 T=$(mktemp -d)
+T=$(cygpath -m "$T" 2>/dev/null || echo "$T")   # Windows: /tmp/... yolunu yerel programlar (Python, Rust) açamaz → C:/... biçimi
 ok=0; n=0
 vaka() { # ad · beklenen(block|gec) · asistan metni · stop_hook_active
   n=$((n+1)); local ad="$1" bek="$2" metin="$3" aktif="${4:-false}"
@@ -15,6 +16,7 @@ vaka() { # ad · beklenen(block|gec) · asistan metni · stop_hook_active
 }
 vaka "büyük harf vurgu → block"            block "Bu kutu TEMELDE şunu anlatır: injection AYIRT edilemez."
 vaka "yalnız kısaltma → geç"               gec   "OWASP LLM01 listesi, promptfoo YAML dosyası, \`DONE\`."
+vaka "durum #6 kısaltmaları → geç"         gec   "WSL yok, OMP worktree'de, PATH düzeldi; CTE, LSP, NYC."
 vaka "3 harfli vurgu (VAR/SANA) → block"    block "Bu SANA yazıldı, kanal VAR."
 vaka "durum sözcüğü çıplak (DONE) → block"  block "İş DONE, pratik KALAN."
 vaka "kod bloğu içinde caps → geç"         gec   $'Şöyle:\n```\nEXPORT ALL CAPS HERE\n```\nve `INLINE_CAPS` normal.'
