@@ -15,3 +15,6 @@
 {"olay":"ac","id":11,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"kök dispatcher Rust'a","sonraki_eylem":"bin/hook-dispatch.sh başına aynı yönlendirici kalıbı → target/release/hook-dispatch.exe; uçtan uca sına","girdi":[1]}
 {"olay":"ac","id":12,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"session-start Rust çıktısında CR","sonraki_eylem":"jarvis-hook session_start: git/dosya çıktısından gelen \\r satır 5-11'de; Python'da yok; kırp + fark testine CR durumu ekle"}
 {"olay":"ac","id":13,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"stop-buyuk-harf-test 4/10","sonraki_eylem":"test hem Python hem Rust yolunda 4/10 (6 block durumu boş çıktı); Windows'a özgü mü teşhis et, testi onar"}
+{"olay":"al","id":4,"ts":"2026-10-16T13:10:21Z"}
+{"olay":"bitir","id":4,"ts":"2026-10-16T13:10:21Z","kanit":["Kanon.SkillTetik lake build OK","4 teorem"]}
+{"olay":"ac","id":14,"ts":"2026-10-16T13:10:21Z","alan":"jarvis","is":"tetik-denetim.py Rust portu","sonraki_eylem":"gorev-emri-derleme/scripts/tetik-denetim.py → Rust; Kanon.SkillTetik.kapiO ile fark testi","girdi":[4]}
