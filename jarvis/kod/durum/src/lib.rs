@@ -313,6 +313,44 @@ pub fn simdi_iso() -> String {
     format!("{y:04}-{m:02}-{d:02}T{:02}:{:02}:{:02}Z", sn / 3600, sn % 3600 / 60, sn % 60)
 }
 
+/// Sistem saatinin yerel takvim günü `YYYY-MM-DD` (durum #7, Karar 68). Windows: `GetLocalTime`; diğerleri: `date +%F`;
+/// ikisi de olmazsa UTC günü (sessiz değil: davranış `simdi_iso` ile aynı kalır).
+pub fn yerel_tarih() -> String {
+    #[cfg(windows)]
+    {
+        #[repr(C)]
+        #[derive(Default)]
+        struct SistemSaati {
+            yil: u16,
+            ay: u16,
+            hafta_gunu: u16,
+            gun: u16,
+            saat: u16,
+            dakika: u16,
+            saniye: u16,
+            ms: u16,
+        }
+        unsafe extern "system" {
+            fn GetLocalTime(s: *mut SistemSaati);
+        }
+        let mut s = SistemSaati::default();
+        // SAFETY: GetLocalTime yalnız verilen SYSTEMTIME yapısını (8 × u16) doldurur.
+        unsafe { GetLocalTime(&mut s) };
+        format!("{:04}-{:02}-{:02}", s.yil, s.ay, s.gun)
+    }
+    #[cfg(not(windows))]
+    {
+        std::process::Command::new("date")
+            .arg("+%F")
+            .output()
+            .ok()
+            .and_then(|o| String::from_utf8(o.stdout).ok())
+            .map(|s| s.trim().to_string())
+            .filter(|s| s.len() == 10)
+            .unwrap_or_else(|| tarih_kismi(&simdi_iso()).to_string())
+    }
+}
+
 #[cfg(test)]
 mod testler {
     use super::*;

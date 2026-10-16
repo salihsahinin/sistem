@@ -92,6 +92,8 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
     let komut = a.konumsal.first().ok_or_else(|| Hata::Kullanim("komut yok".into()))?.as_str();
     let yol = a.al("kutuk").map(PathBuf::from).unwrap_or_else(varsayilan_kutuk);
     let ts = a.al("ts").map(String::from).unwrap_or_else(simdi_iso);
+    // Geçerlilik ve özet tarihi yerel takvim günüdür (Karar 68: tarih sistem saatinden); --ts verilirse onun tarih kısmı (testler).
+    let bugun = a.al("ts").map(|t| tarih_kismi(t).to_string()).unwrap_or_else(yerel_tarih);
     let mut defter = yukle(&yol)?;
     let oturum = a.al("oturum").map(String::from);
 
@@ -123,7 +125,7 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
         };
         o.kanit = a.liste("kanit");
         o.oturum = oturum.clone();
-        defter.uygula(&o, &ts)?;
+        defter.uygula(&o, &bugun)?;
         let id = o.id;
         let alan = o.alan.clone();
         yeni.push(o);
@@ -143,7 +145,7 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
             k.sonraki_eylem = Some(sonraki.trim().to_string());
             k.girdi = vec![id];
             k.oturum = oturum;
-            defter.uygula(&k, &ts)?;
+            defter.uygula(&k, &bugun)?;
             cikti.push_str(&format!("#{} acik {alan}\n", k.id));
             yeni.push(k);
         }
@@ -157,7 +159,7 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
                 Some(s) => Some(Durum::coz(s).ok_or_else(|| Hata::Kullanim(format!("bilinmeyen durum: {s}")))?),
                 None => None,
             };
-            let l = defter.listele(a.al("alan"), durum, &ts);
+            let l = defter.listele(a.al("alan"), durum, &bugun);
             if a.var("json") {
                 let v: Vec<serde_json::Value> = l
                     .iter()
@@ -177,7 +179,7 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
             if !ALANLAR.contains(&alan) {
                 return Err(Hata::Kullanim(format!("bilinmeyen alan: {alan}")));
             }
-            Ok(defter.oturum_basi(alan, &ts))
+            Ok(defter.oturum_basi(alan, &bugun))
         }
         _ => Err(Hata::Kullanim(format!("bilinmeyen komut: {komut}"))),
     }
