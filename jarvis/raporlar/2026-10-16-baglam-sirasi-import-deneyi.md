@@ -19,7 +19,10 @@ md dosyasının bir parçası Lean'e taşındığında Claude Code bağlamı han
 | B5 | `.lean` dosyasına `.lean.md` uzantılı sembolik bağ kurulursa içerik yüklenir, sıra B4'e uyar. | deney 2b: `bas01, lean02, txt03, son04, ic06, orta05` |
 | B6 | `@` satırı ebeveynin en üstünde olsa bile içe aktarılan dosya ebeveynden **sonra** gelir. Resmi belgedeki "`@AGENTS.md` üstteyse önce o okunur" ifadesi 2.1.302'de tutmaz. | deney 3 (`@ust.md` + gövde): ham API isteğinde sıra `govde01, ust02` |
 
-**Ölçüm yöntemi (B3-B6 için birincil):** model beyanına ek olarak, `ANTHROPIC_BASE_URL` yerel bir dinleyiciye yönlendirildi ve `/v1/messages` gövdesi yakalandı (yetki başlıkları kaydedilmedi). Deney 2 ve 3'ün sırası ham istekten okundu; model beyanıyla aynı.
+| B7 | Aynı dosya ikinci kez içe aktarılırsa yok sayılır; ilk görülen konum kazanır. | deney 4 (`@a.md`, `@b.md`; `b.md` içinde `@a.md`): ham istekte `a1` bir kez |
+| B8 | Derinlik kökten sayılır, en çok 4 sıçrama; 5. sıçramadaki dosya sessizce düşer. | deney 4 zinciri `c1 → … → c6`: ham istekte `c1..c4`, `c5` yok |
+
+**Ölçüm yöntemi (B3-B8 için birincil):** model beyanına ek olarak, `ANTHROPIC_BASE_URL` yerel bir dinleyiciye yönlendirildi ve `/v1/messages` gövdesi yakalandı (yetki başlıkları kaydedilmedi). Deney 2 ve 3'ün sırası ham istekten okundu; model beyanıyla aynı.
 
 ## Sonuç (formalizasyonun girdisi)
 Otomatik yükleme rejiminde bağlam `L(f) = metin(f) ++ L(i₁) ++ … ++ L(iₖ)` (i = f'nin içe aktarmaları, yazılış sırasıyla). Satır içi konum korunmaz, bu yüzden "md başı → Lean → md sonu" sırası için md'nin kesim sonrası kısmı da ayrı dosyaya alınıp Lean'den sonra içe aktarılmalı. Okuma rejiminde (skill'in `Read` ile açtığı `core/` dosyaları) `@` hiç açılmaz; orada sıra ancak bir genişletici (Rust) ile korunur.

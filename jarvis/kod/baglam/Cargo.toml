@@ -1,0 +1,15 @@
+[package]
+name = "jarvis-baglam"
+description = "Bağlam yükleme sırası (Karar 117): `@` ağacını Claude Code'un otomatik yükleme sırasıyla genişletir ve sıra değişmezini denetler"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+
+[lib]
+name = "jarvis_baglam"
+path = "src/lib.rs"
+
+[[bin]]
+name = "baglam"
+path = "src/bin/baglam.rs"

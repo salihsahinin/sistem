@@ -16,3 +16,4 @@ import Kanon.AnahtarEmeklilik
 import Kanon.KatmanYuklem
 import Kanon.AlanAjani
 import Kanon.Butce
+import Kanon.BaglamSirasi
