@@ -1,0 +1,14 @@
+paralel-kapi.py — Koşum-önü paralellik kapısı (İB-63 PK-11; v0-deneysel m.29, 2026-08-30). LLM YOK (Karar 65).
+
+Ne bu: `veri/manifest/*.json` birim-manifestlerini (İB-63 PROTOTİP-1 şeması) okur, her çift için Bernstein koşulunu
+(yazar∩yazar=∅ ∧ yazar∩okur=∅ ∧ okur∩yazar=∅) ve PK-1..12 kural listesini uygular; çift başına hüküm verir:
+  PARALEL-SERBEST · SIRALI(neden) · RED(neden) · BEKLE(PK-12: diğer oturumun ayak-izine dokunuyor)
+ve planlı birimleri deterministik dalgalara (aynı anda koşabilecek kümeler) böler; `--kademe N` ile dalga genişliği
+N'e kısılır (kademeli paralellik artışı: 1 → 2 → 3 …).
+
+Grain: birim çifti (dosya granülü; `#bolum` eki aynı dosyada farklı bölüm = ayrık, PK-3 — belirsizlik dosya granülüne terfi).
+Kaynak adlandırma: düz yol ∨ glob (`cc/rapor/*/rapor-*.md`, `veri/*`) · `git@<sha>:yol` = DEĞİŞMEZ SNAPSHOT (asla çakışmaz, PK-8 sürüm-damgalı okuma)
+· `web` = dış girdi (çakışmaz; PK-2 uyarısı üretir).
+Modlar: (yok) insan çıktısı stdout · `--json` tek JSON nesnesi stdout (AXI A1) · `--kademe N` · `--manifest-dizin` · `--repo`.
+Çıkış (AXI A2): 0 RED yok · 1 manifest bütünlük hatası (eksik alan, bilinmeyen `sira`, çevrim) · 2 kullanım · 3 RED var (plan yine üretilir, RED çiftler ayrı dalgaya).
+Kayıt: hüküm listesi çıktıda; kalıcı kayıt çağıranın (rapor/teslim). `durum` alanı `canli-diger-oturum` olan birim PLANLANMAZ, yalnız kısıt üretir (PK-12).

@@ -3,7 +3,7 @@
 # Lean 4 (`jarvis/lean/`) kuralların spec'i ve kanıtıdır; çalışan kod Rust'tır; ikisi fark testiyle bağlanır.
 [workspace]
 resolver = "3"
-members = ["jarvis/kod/skill-kapi", "jarvis/kod/durum", "jarvis/kod/hook", "jarvis/kod/rituel"]
+members = ["jarvis/kod/skill-kapi", "jarvis/kod/durum", "jarvis/kod/hook", "jarvis/kod/rituel", "jarvis/kod/kural"]
 
 [workspace.package]
 edition = "2024"

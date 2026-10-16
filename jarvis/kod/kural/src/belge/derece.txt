@@ -1,0 +1,4 @@
+derece.py — Görev-Müsaitlik Derece Formülü H(görev) (core/halusinasyon-paketi.md §2, v1 deneysel m.29).
+Toplamsal, tamsayı ağırlıklı, işaret-beyanlı; ağırlıklar KANITSIZ-TERCİH damgalı (küçük-veri kilidi: <50 olay → öğrenilmez).
+Kullanım: python3 derece.py [--v1 --v2 --v3a --v3b --v3c --v3d --v4 --v5 --v6 --v7a --v7b --v7c --v8 --v9 --v10] [--pahali-geri-alma] [--json]
+Çıkış: H · eşik · TETİK/OPSİYONEL/GEREKMEZ · ima edilen maliyet beyanı · aktif değişkenler. Çıkış kodu: 0 = tetik gerekmez · 10 = skill TETİKLENİR · 5 = F1+F2 zorunlu (opsiyonel skill).

@@ -269,6 +269,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "jarvis-kural"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "jarvis-hook",
+ "regex",
+ "rusqlite",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "jarvis-rituel"
 version = "0.1.0"
 dependencies = [

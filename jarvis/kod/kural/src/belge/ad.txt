@@ -1,0 +1,9 @@
+Ad-eşitliği denetimi (Karar 93 EK, Salih 2026-09-10): "Carvis = Jarvis (09-10 öncesi ajan adı)" bilgisi HER bağlam
+kombinasyonunda bulunmalı. Üç katmanı sayar:
+  K1 her-seans-yüklenen katman: CLAUDE.md · .claude/hooks/session-start.sh · hafıza MEMORY.md · .claude/agents/*.md · ~/sistem/friday/CLAUDE.md
+     → her biri "Carvis" adını Jarvis'e bağlayan bir cümle taşımalı (örüntü: 'eski ad Carvis' ∨ 'Carvis = Jarvis' ∨ 'Carvis → Jarvis' ∨ 'Carvis emekli').
+  K2 dizin katmanı: içinde "Carvis" geçen dosya barındıran her kök dizinin README.md'si eşitlik bloğu taşımalı ('Carvis = Jarvis').
+  K3 canlı-bağlam sızıntısı: canlı dosyalarda (CLAUDE.md, core/, .claude/, KILAVUZ, README, wiki/, tools/, fikir-kutusu) bağlanmamış "Carvis"
+     (aynı satırda eşitlik işareti yok) → İHLAL (tarihli dizinler kuyruk/ arsiv/ cc/ raporlar/ muaf, Karar 68 EK).
+Kullanım: python3 tools/ad-esitligi-denetim.py [--json]   · çıkış 0 = PASS · 4 = eksik var (kapanış kapısı: FLAG, engel değil).
+Deterministik: yalnız dosya içeriği; ağ yok.
