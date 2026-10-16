@@ -1,0 +1,21 @@
+Sıcak-katman FIFO sayacı (İB-80; Karar 92 M1 2026-09-10 → Karar 104 M1 2026-09-20 revizyonu).
+
+Karar 104 M1 (masa-17, Salih): eşik **bayt/satır ölçümüne** çevrildi (birincil); madde sayısı **ikincil sigorta**.
+Gerekçe: madde-FIFO indeks limitinde sessiz düşüyordu (hafıza Atlas 2/2 hakem §ii — literatürde ölçülmüş arıza);
+bayt bütçesi hook'un yüklediği gerçek bağlamı ölçer. Karar 92 M1 "madde birincil" `gecerli-bitis: 2026-09-20`.
+
+Ne yapar: sıcak dosyaların bayt (ve kapsül/CLAUDE için satır) boyutunu ölçer; tavanı aşan dosya için FLAG basar,
+arşive inecek EN ESKİ maddeleri (bayt tavanının altına inene dek) listeler ve her biri için kapsüle yapıştırılacak
+**kesilme bildirimi** satırı üretir: `kesildi: <madde başı> → arsiv/kapsul-YYYY-MM-DD.md`. TAŞIMAZ — taşıma seans
+kapanışında `[damıtma]` commit'iyle elle yapılır (m.8: silme yok, arşiv dosyası + pointer + kapsülde bildirim satırı).
+
+Madde tanımı (deterministik; arşive inme birimi):
+  kapsül  → `## Şu an` bölümündeki `- ` satırları          (sigorta K = 8)
+  pano    → `## AKTİF` tablosundaki `| K-` satırları         (sigorta K = 5)
+  MEMORY  → `MEMORY.md` `- [` indeks satırları (user-* muaf) (sigorta K = 16)
+  CLAUDE  → AGENTS.md satırları (madde = satır; kesim yok, "bir satır girer bir çıkar")
+Bayt tavanı (birincil): kapsül 8 KB · pano 12 KB · MEMORY 4 KB[?] · AGENTS.md 7 KB. Satır tavanı: kapsül 40 (hook ilk 40
+satırı yükler) · AGENTS.md 80. Değerler KILAVUZ boyut bölümünden; MEMORY 4 KB deneysel m.29 (İB-80 bayt revizyonu 5 kapanış sonra).
+
+Kullanım: python3 tools/sicak-katman-fifo.py [--json] [--repo <yol>] [--tarih YYYY-MM-DD]
+Çıkış kodu: 0 = aşım yok · 3 = en az bir FLAG (bilgi; engel değil).

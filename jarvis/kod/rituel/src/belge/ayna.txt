@@ -1,0 +1,11 @@
+Harness oto-hafıza aynası (Karar 104 M3, masa-17, 2026-09-20 — jarvis AGENTS.md §2 açık-kaynak ilkesi).
+
+Ne yapar: Claude Code'un makine-yerel oto-hafıza dizinini (`~/.claude/projects/<anahtar>/memory/`) depoya
+**deterministik** kopyalar: `veri/hafiza-ayna/<anahtar>/…` + `MANIFEST.json` (dosya adı · sha256 · bayt · kaynak mtime;
+ad sırasına göre). Kaynak dizin **değişmez** (salt-okur). m.8: kaynakta silinen dosya aynada kalır, manifestte
+`durum: kaynakta-yok` damgası alır. Seans kapanışında koşar (seans-kapanis §6h), çıktı commit'e girer.
+
+Kullanım: python3 tools/hafiza-ayna.py [--anahtar=<proje-anahtarı>]... [--kuru] [--json] [--repo <yol>]
+Varsayılan anahtar: -Users-HasanSalihSahin-sistem (hükümdeki dizin). Ek anahtar: --anahtar=-Users-HasanSalihSahin-sistem-jarvis
+(anahtar `-` ile başladığından `=` zorunlu; argparse ayrı argüman sanır).
+Çıkış kodu: 0 = ayna güncel/güncellendi · 2 = kaynak dizin yok · 3 = kaynakta-yok dosya var (bilgi; engel değil).
