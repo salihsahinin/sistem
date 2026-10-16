@@ -28,7 +28,7 @@
 **Ne-zaman-hangisi (kapı türü ↔ artefakt türü; ön-derece + post-hoc kapı birlikte):** kod → test/yürütme (post-hoc) · dış referans/paket/URL/DOI → registry/fetch (post-hoc, F5) · sayısal → hesap-devri (F5) + tümü doğrulama (F7) · olgu/liste → destek-kontrolü (F1) + F3 · sonlu-cevap → N-örnek (F4) · atıf/künye → tekil doğrulama **zorunlu** (F3+F5; oran model-damgalı %18-55 uydurma 2023) · çok-atlamalı → alt-soruya böl + her alt-cevap ayrı doğrulama · yanlış-öncül/cevaplanamaz → adım-0 çekimserlik (F6).
 
 ## 2. Görev-Müsaitlik Derece Formülü — `H(görev)` (toplamsal; tamsayı ağırlık; kanıtsız-tercih damgalı; deneysel m.29)
-`H = Σ w_i · v_i` — her v_i boolean (0/1); ağırlıklar **işaret** + büyüklük beyanı (kaynak: tek-değişkenli kanıt; kalibrasyon: jarvis kaydı ≥50 olay sonrası).
+`H = Σ w_i · v_i` — her v_i boolean (0/1). **Ağırlıklar (w), eşikler (normal 7 · pahalı-geri-alma 4), v3a override ve hüküm bantları (tetik · F1+F2 · gerekmez) kanonik olarak `lean/Kanon/Halusinasyon.lean`** (Karar 114, 2026-10-16; uygulayan `derece.py`; özgün metin git `2cfa2da`). Aşağıdaki tablo bayrağın anlamı ve kanıtıdır. Pahalı-geri-alma sınıfı (m.31): Katman-1 · dışarı çıkacak iş/publish · para · kişisel veri · kanon yazımı.
 
 | v | değişken (boolean) | w | kanıt (kohort-damgalı) |
 |---|---|---|---|
@@ -48,11 +48,7 @@
 | v9 | **runtime**: thinking-on ∧ araç-çağrısı görevi | +1 [?] | Qwen3 +1,3..+20,6; Claude ölçülmemiş |
 | v10 | **dil**: Türkçe/az-kaynaklı olgusal çıktı | +1 [?] | **kör** — kanıt yok, işaret pozitif varsayım (kanıtsız-tercih) |
 
-**Eşik (beyan; ima edilen maliyet yazdırılır; AS-OF 2026-08-14 v1, deneysel m.29 — ağırlıklar ≥50 olayda yeniden kalibre):**
-- **τ_H = 7** normal görev → `H ≥ 7 ⇒ halusinasyon-engelleyici skill tetiklenir` (gerekçe: iki yüksek-ağırlıklı faktör (3+3) ya da üç orta (2+2+2+1); ima: skill bedeli ≈3-5× çağrı ↔ kaçırma bedeli = geri-alma; kanıtsız-tercih).
-- **τ_H = 4** pahalı-geri-alma sınıfı (m.31: Katman-1 · dışarı çıkacak iş/publish · para · kişisel veri · kanon yazımı) → daha erken tetik (kaçırma yanlış-alarmdan ≥3× kötü beyanı).
-- **Override:** v3a (atıf/künye) = 1 ⇒ skill zorunlu, H'den bağımsız.
-- **H ≤ 3:** kanon frenleri (m.39 · D/K/X · bulunamadı) yeter; **4-6:** F1+F2 zorunlu (kaynak + destek-kontrolü), skill opsiyonel.
+**Eşik gerekçesi (AS-OF 2026-08-14 v1, deneysel m.29; değerler Lean'de):** 7 = iki yüksek faktör (3+3) ya da üç orta (2+2+2+1); ima: skill bedeli ≈3-5× çağrı ↔ kaçırma bedeli = geri-alma. 4 = pahalı geri-almada kaçırma yanlış alarmdan ≥3× kötü beyanı. Ağırlıklar kanıtsız tercih, ≥50 olayda yeniden kalibre.
 - **Fizibilite (sıfırıncı kapı):** görev-tipi taban riski μ (küçük-n Wilson) > hedef α ise zorunlu çekimserlik payı ≥ (μ−α)/(1−α); μ ≫ α (ör. açık-alan nadir olgu listesi) → "sertifika vaat edilmez": çıktı çekimserlik-etiketli ∨ insan-onayı kovası (Salih).
 - **İzleme:** her koşum `kuyruk/halusinasyon-kayit.md`'ye satır (görev · v-vektörü · H · tetiklendi mi · yakalanan DAYANAKSIZ/ÇELİŞİR sayısı · n); ≥50 olayda ağırlık/eşik yeniden (10 olay/değişken); görev-karışımı değişince eşik yeniden ölçülür (statik eşik kayma altında %71 ihlal — tek kaynak [K]).
 

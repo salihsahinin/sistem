@@ -5,3 +5,8 @@ import Kanon.Commit
 import Kanon.ParalelOturum
 import Kanon.Izolasyon
 import Kanon.SeansAcilis
+import Kanon.Halusinasyon
+import Kanon.SkillDogum
+import Kanon.Delegasyon
+import Kanon.KosumButunluk
+import Kanon.Sabitler
