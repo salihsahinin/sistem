@@ -1,0 +1,35 @@
+[package]
+name = "jarvis-rituel"
+description = "Jarvis ritüel araçları (acilis-kapilari · sicak-katman-fifo · hafiza-ayna · kural-sayaci + harness_anahtar); tools/*.py karşılıklarıyla fark testli"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+jarvis-hook = { path = "../hook" }
+regex = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
+unicode-normalization = "0.1"
+
+[lib]
+name = "jarvis_rituel"
+path = "src/lib.rs"
+
+[[bin]]
+name = "acilis-kapilari"
+path = "src/bin/acilis_kapilari.rs"
+
+[[bin]]
+name = "sicak-katman-fifo"
+path = "src/bin/sicak_katman_fifo.rs"
+
+[[bin]]
+name = "hafiza-ayna"
+path = "src/bin/hafiza_ayna.rs"
+
+[[bin]]
+name = "kural-sayaci"
+path = "src/bin/kural_sayaci.rs"
