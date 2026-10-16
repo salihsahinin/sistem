@@ -266,6 +266,7 @@ name = "jarvis-hook"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "jarvis-baglam",
  "regex",
  "rusqlite",
  "serde",
