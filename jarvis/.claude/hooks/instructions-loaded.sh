@@ -6,6 +6,7 @@
 # + S-kaynak madenciliğinin okunma ayağı (tools/baglam-skill-aday.py) + üç-yuva davranış ölçümü.
 # Ham girdi olduğu gibi saklanır (alan şeması belgede tam değil; ilk seanslardan sonra şema çıkarılır).
 # Hiçbir şeyi engellemez; çıkış 0. Kütük: veri/bronz/talimat-yukleme-olay.jsonl (ekleme-esaslı).
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" instructions-loaded   # Rust varsa exec; yoksa aşağısı (durum #1)
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 GIRDI=$(mktemp); printf '%s' "$input" > "$GIRDI"; trap 'rm -f "$GIRDI"' EXIT

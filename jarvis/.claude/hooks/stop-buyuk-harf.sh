@@ -10,6 +10,7 @@
 # Sonsuz döngü freni: stop_hook_active=true ise (ikinci tur) fren pas geçer.
 # Beyaz liste: teknik kısaltmalar + kanon durum sözcükleri (DONE/PASS/FAIL/AS-OF) + faz adları.
 # Kod blokları (```…```) ve satır-içi kod (`…`) taranmaz; Salih beyanı alıntıları ("aynen: …") taranmaz.
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" stop-buyuk-harf   # Rust varsa exec; yoksa aşağısı (durum #1)
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 GIRDI=$(mktemp); printf '%s' "$input" > "$GIRDI"; trap 'rm -f "$GIRDI"' EXIT

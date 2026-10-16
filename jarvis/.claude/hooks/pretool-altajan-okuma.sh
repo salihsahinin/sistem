@@ -6,6 +6,7 @@
 # Jarvis'in sıcak hafızası (kapsül · pano · defter · fikir kutusu · MEMORY), hareket/bağlam kütükleri (veri/bronz/*olay.jsonl), Friday reposu,
 # staj/galeri dış projeler (md.49). Ana-sıra (agent_id yok) etkilenmez. Her RED bronz olaya düşer: veri/bronz/altajan-okuma-olay.jsonl.
 # Emrin `baglam` listesi bir gün hook'a ulaşırsa (ortam değişkeni / .aktif-emir dosyası) izin-listesi moduna geçilir; v0 = yasak-listesi.
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" pretool-altajan-okuma   # Rust varsa exec; yoksa aşağısı (durum #1)
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 [ -z "$PY" ] && exit 0

@@ -4,6 +4,7 @@
 # Bash ile core/ + CLAUDE.md + .claude/ yazımı serbestti. Bu bir TÖKEZLEME-TELİ, sınır değil
 # (kabuk-taşıyan ajan zaptedilemez — kapsül güvenlik notu 07-22); kaçırdığı desen olabilir,
 # yanlış-pozitifte mesajı gör ve komutu yeniden ifade et. Gerekçe: raporlar/vardiya/vardiya-teslim-2026-07-22-aksam.md
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" pretool-core-tel   # Rust varsa exec; yoksa aşağısı (durum #1)
 input=$(cat)
 # PY seçimi (macOS portu 2026-08-11, Salih izniyle): macOS'ta yalnız python3 var,
 # Windows Git Bash'te yalnız python olabilir. İkisini de dene; bulunamazsa satır 9

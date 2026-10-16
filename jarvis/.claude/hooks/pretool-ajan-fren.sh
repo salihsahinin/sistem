@@ -12,6 +12,7 @@
 # REJİM ETİKETİ (tüzük m.46(d), Karar 39 C): [rejim: manuel-tempo · kota-bol · ekonomi −%30 (Salih 08-15) · AS-OF 2026-08-29] — rejim
 # değişince (K-009/K-010 otomasyon) eşikler OTOMATİK yeniden açılır, taşınmaz. Salih beyanıyla geçici kapatma: JARVIS_FREN_KAPALI=1 (olay yazılır).
 # Kayıt: bronz veri/bronz/fren-olay.jsonl (append-only; 1 satır = 1 fren olayı) · sayaç durumu .claude/hooks/state/ (gitignore, oturum başına).
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" pretool-ajan-fren   # Rust varsa exec; yoksa aşağısı (durum #1)
 input=$(cat)
 PY=$(command -v python3 || command -v python)
 [ -z "$PY" ] && exit 0   # python yoksa tel bozuk-modda sessiz geçer (tökezleme-teli, sınır değil)

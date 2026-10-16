@@ -5,6 +5,7 @@
 # İB-27 (KB-54 (a) Karar 62): silver tazelik — uretim.git_head_sha ≠ HEAD → "BAYAT" + katman-hatti tarifi (otomasyon: tespit; koşum ritüelde).
 # Karar 68 (08-26): ZAMAN-ZEMİNİ satırı — bugün (sistem saati) + model kesim tablosu; anakronizm freni.
 # Çıktı sert-kapılı: head -c 2000. Her satır tek bakışta; deterministik (yalnız disk + git).
+. "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" session-start   # Rust varsa exec; yoksa aşağısı (durum #1)
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
 echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ==="
