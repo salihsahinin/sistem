@@ -8,6 +8,18 @@
 set -u
 OLAY="${1:?olay adı gerekli}"
 KOK="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+# Rust yönlendirme (durum #11, Karar 113 M7; kalıp jarvis/.claude/hooks/rust-yonlendir.sh): hook-dispatch programı bu kopyada ya da
+# worktree ise ana kopyada varsa stdin'i ona bırakıp exec eder; yoksa aşağıdaki Python gövdesi koşar. JARVIS_HOOK_PYTHON=1 Rust'ı atlar.
+if [ "${JARVIS_HOOK_PYTHON:-}" != 1 ]; then
+  _hd_kok="$(cd "$KOK" && { pwd -W 2>/dev/null || pwd; })"
+  _hd_aday="$_hd_kok"
+  [ -f "$KOK/.git" ] && _hd_gd="$(sed -n 's/^gitdir: //p' "$KOK/.git")" && _hd_aday="$_hd_aday ${_hd_gd%/.git/worktrees/*}"
+  for _hd_k in $_hd_aday; do
+    for _hd_p in "$_hd_k/target/release/hook-dispatch.exe" "$_hd_k/target/release/hook-dispatch"; do
+      [ -x "$_hd_p" ] && exec "$_hd_p" --kok "$_hd_kok" "$OLAY"
+    done
+  done
+fi
 GIRDI="$(cat)"
 exec python3 - "$OLAY" "$KOK" "$GIRDI" <<'PY'
 import json, os, re, subprocess, sys
