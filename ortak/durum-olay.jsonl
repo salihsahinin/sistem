@@ -41,3 +41,4 @@
 {"olay":"al","id":14,"ts":"2026-10-16T13:57:56Z"}
 {"olay":"bitir","id":14,"ts":"2026-10-16T19:16:34Z","kanit":["PR #8 main'e birlesti (yerel merge","push bekliyor); cargo test -p jarvis-kural 8/8; lake build 50/50"]}
 {"olay":"ac","id":18,"ts":"2026-10-16T19:19:14Z","alan":"jarvis","is":"hafıza/kanon md → Lean/Rust geçişi, bağlam yükleme sırası korunarak (Karar 114 genişletmesi, Salih 2026-10-16)","sonraki_eylem":"adım 2 atlas-kosum: sıra korumalı ayrıştırma formalizmi; adım 3 envanter; adım 4 partiler","kanit":["jarvis/raporlar/2026-10-16-baglam-sirasi-import-deneyi.md"]}
+{"olay":"ac","id":19,"ts":"2026-10-16T20:26:20Z","alan":"jarvis","is":"skill revizyonu: Karar 117 geçişi bitince tüm skill'ler yeni sisteme göre güncellenir (Lean modül pointer'ları, parçalı tüzük için baglam genislet okuması, Rust ikilileri; Salih 2026-10-16)","sonraki_eylem":"ön-koşul: #18 kapanışı; sonra skill başına fark listesi + skill-kapisi K3 biçim denetimi","girdi":[18]}
