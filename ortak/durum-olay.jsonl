@@ -25,3 +25,5 @@
 {"olay":"bitir","id":12,"ts":"2026-10-16T13:16:42Z","kanit":["CR Python yolunda (Windows print text-mode)","Rust LF doğru; düzeltme gerekmez"]}
 {"olay":"bitir","id":13,"ts":"2026-10-16T13:16:42Z","kanit":["kök neden: /tmp yolu yerel programlara açılmıyor; cygpath -m; 11/11 iki yolda"]}
 {"olay":"bayatla","id":2,"ts":"2026-10-16T13:16:42Z"}
+{"olay":"al","id":7,"ts":"2026-10-16T13:17:30Z"}
+{"olay":"bitir","id":7,"ts":"2026-10-16T13:17:30Z","kanit":["yerel_tarih(): Windows GetLocalTime; oturum-basi tarihi date +%F ile aynı (2026-10-16)"]}
