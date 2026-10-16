@@ -61,8 +61,8 @@ def sekil (a : Aday) : Sekil :=
   else if a.orkestrator then .orkestrator
   else if a.yanEtkili then .yanEtkili
   else .uretici
-/-- K3 := F1 ∧ … ∧ F5 ∧ tür-özel -/
-def k3 (a : Aday) : Bool := a.f1 && a.f2 && a.f3 && a.f4 && a.f5 && a.turOzel
+/-- K3 := F1 ∧ F2 ∧ F4 ∧ F5 ∧ tür-özel. F3 (skill başına zorunlu eval) Karar 113 M5 (2026-10-16 icra) ile kapı değil, ölçüm alanı. -/
+def k3 (a : Aday) : Bool := a.f1 && a.f2 && a.f4 && a.f5 && a.turOzel
 
 /-- Kapı ağacı: ilk düşen kapı terminali verir; hepsi geçerse yaprak. -/
 def hukum (a : Aday) : Hukum :=

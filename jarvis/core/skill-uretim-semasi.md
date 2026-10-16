@@ -64,7 +64,7 @@ Sayım: 4 kapı katmanı · kapı düğümü 1+2+3+4=10 · yaprak 4 · terminal 
 **Ortak biçim koşulları (and; deterministik script F1-F4, F5 hakem):**
 - `F1 description := NE + NE-ZAMAN + NEGATİF-TETİK ("KULLANILMAZ/KULLANMA") ∧ 3.şahıs ∧ len ≤ 1024 char` (kanon 07-17; platform kesme 1536 char/skill, CC docs 08-2026) **∧ Σ_H len(desc) ≤ 0,9 × liste-bütçesi = 7.380 char** (%1 bağlam @200k = 2.000 token × **4,1 char/token — çevrim ölçüldü**: Salih /context 08-20, 15 yüklü skill 7.837 char ≈ 1,9k token; KB-19 Karar 33; eski 6-8k belirsizlik bandı kapandı. Aşımda platform en az çağrılanın description'ını **sessizce** düşürür = kaçırılan-tetik mekanizması; yeni skill sığmıyorsa hazine kısaltılır ya da çapa değişikliği Salih'e). [D-YT2]
 - `F2 gövde < 500 satır ∧ referans ≤1 seviye derin`
-- `F3 evals/evals.json: tests ≥ 3 ∧ should_trigger ≥ 5 ∧ should_not_trigger ≥ 5` (eval-önce; tam description-eval 20×3 = K-016 borcu, kapı değil)
+- `F3 evals/evals.json: tests ≥ 3 ∧ should_trigger ≥ 5 ∧ should_not_trigger ≥ 5` (eval-önce; tam description-eval 20×3 = K-016 borcu, kapı değil). **Karar 113 M5 (icra 2026-10-16):** F3 artık **ölçüm**, kapı değil: K3'ten çıktı (`Kanon.SkillKapi.k3`), denetleyicide uyarı (`hard=false`); eval yalnız yan-etkili skill'de ya da Salih isterse yazılır.
 - `F4 numaralı adımlar ∧ "Gotchas" bölümü var` (en yüksek-sinyal bölüm)
 - `F5 tek sorumluluk` (şekil UNIQUE'ten türer; description'daki yetenekler tek aileden — hakem)
 

@@ -273,10 +273,10 @@ fn evals_kapilari(ev: &Path, gate: &mut impl FnMut(&str, bool, String, bool)) {
     })();
     match sonuc {
         Ok((nt, st, snt)) => {
-            gate("F3a-eval-sayisi", nt >= 3, format!("evals: {nt} test (≥3)"), true);
-            gate("F3b-description-eval", st >= 5 && snt >= 5, format!("should_trigger {st} / should_not {snt} (≥5+5)"), true);
+            gate("F3a-eval-sayisi", nt >= 3, format!("evals: {nt} test (≥3)"), false);  // Karar 113 M5: F3 ölçüm, kapı değil
+            gate("F3b-description-eval", st >= 5 && snt >= 5, format!("should_trigger {st} / should_not {snt} (≥5+5)"), false);  // Karar 113 M5: F3 ölçüm, kapı değil
         }
-        Err(e) => gate("F3a-eval-sayisi", false, format!("evals.json okunamadı: {e}"), true),
+        Err(e) => gate("F3a-eval-sayisi", false, format!("evals.json okunamadı: {e}"), false),  // Karar 113 M5
     }
 }
 
@@ -386,7 +386,7 @@ pub fn denetle(argv: &[String]) -> (String, i32) {
     if ev.is_file() {
         evals_kapilari(&ev, &mut gate);
     } else {
-        gate("F3a-eval-sayisi", false, "evals/evals.json YOK (eval-önce, K-016)".into(), true);
+        gate("F3a-eval-sayisi", false, "evals/evals.json YOK (eval-önce, K-016)".into(), false);  // Karar 113 M5: F3 ölçüm, kapı değil
     }
 
     // ---------- K3-F4 adımlar + gotchas ----------

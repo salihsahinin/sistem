@@ -92,12 +92,13 @@ def main():
             de = E.get('description_eval', {})
             st = de.get('should_trigger', []) or [c for c in E.get('cases', []) if c.get('type') == 'pozitif']
             snt = de.get('should_not_trigger', []) or [c for c in E.get('cases', []) if c.get('type') == 'negatif']
-            gate('F3a-eval-sayisi', len(tests) >= 3, f"evals: {len(tests)} test (≥3)")
-            gate('F3b-description-eval', len(st) >= 5 and len(snt) >= 5, f"should_trigger {len(st)} / should_not {len(snt)} (≥5+5)")
+            # Karar 113 M5 (icra 2026-10-16): F3 ölçüm, kapı değil (hard=False)
+            gate('F3a-eval-sayisi', len(tests) >= 3, f"evals: {len(tests)} test (≥3)", hard=False)
+            gate('F3b-description-eval', len(st) >= 5 and len(snt) >= 5, f"should_trigger {len(st)} / should_not {len(snt)} (≥5+5)", hard=False)
         except Exception as e:
-            gate('F3a-eval-sayisi', False, f"evals.json okunamadı: {e}")
+            gate('F3a-eval-sayisi', False, f"evals.json okunamadı: {e}", hard=False)
     else:
-        gate('F3a-eval-sayisi', False, "evals/evals.json YOK (eval-önce, K-016)")
+        gate('F3a-eval-sayisi', False, "evals/evals.json YOK (eval-önce, K-016)", hard=False)
 
     # ---------- K3-F4 adımlar + gotchas ----------
     steps = len(re.findall(r'^\s*\d+\.\s', body, re.M))

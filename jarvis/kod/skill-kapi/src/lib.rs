@@ -117,9 +117,9 @@ pub fn sekil(a: &Aday) -> Sekil {
     }
 }
 
-/// K3 := F1 ∧ … ∧ F5 ∧ tür-özel
+/// K3 := F1 ∧ F2 ∧ F4 ∧ F5 ∧ tür-özel (F3 Karar 113 M5 ile kapı değil, ölçüm alanı)
 pub fn k3(a: &Aday) -> bool {
-    a.f1 && a.f2 && a.f3 && a.f4 && a.f5 && a.tur_ozel
+    a.f1 && a.f2 && a.f4 && a.f5 && a.tur_ozel
 }
 
 /// Kapı ağacı: ilk düşen kapı terminali verir; hepsi geçerse yaprak.
