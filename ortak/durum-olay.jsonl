@@ -27,3 +27,5 @@
 {"olay":"bayatla","id":2,"ts":"2026-10-16T13:16:42Z"}
 {"olay":"al","id":7,"ts":"2026-10-16T13:17:30Z"}
 {"olay":"bitir","id":7,"ts":"2026-10-16T13:17:30Z","kanit":["yerel_tarih(): Windows GetLocalTime; oturum-basi tarihi date +%F ile aynı (2026-10-16)"]}
+{"olay":"al","id":11,"ts":"2026-10-16T13:18:12Z"}
+{"olay":"bitir","id":11,"ts":"2026-10-16T13:18:12Z","kanit":["bin/hook-dispatch.sh Rust yönlendirme; 3 senaryo iki yolda aynı"]}
