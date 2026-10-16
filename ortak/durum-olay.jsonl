@@ -29,3 +29,5 @@
 {"olay":"bitir","id":7,"ts":"2026-10-16T13:17:30Z","kanit":["yerel_tarih(): Windows GetLocalTime; oturum-basi tarihi date +%F ile aynı (2026-10-16)"]}
 {"olay":"al","id":11,"ts":"2026-10-16T13:18:12Z"}
 {"olay":"bitir","id":11,"ts":"2026-10-16T13:18:12Z","kanit":["bin/hook-dispatch.sh Rust yönlendirme; 3 senaryo iki yolda aynı"]}
+{"olay":"al","id":5,"ts":"2026-10-16T13:29:23Z"}
+{"olay":"bitir","id":5,"ts":"2026-10-16T13:29:23Z","kanit":["F3 kod+metin; protokol EK-5; kök md.14; acilis 4b; kapanis 6g duman 12 sn"]}
