@@ -18,7 +18,7 @@ Kural = `../AGENTS.md`. `jarvis/**`, `friday/**`, diğer alan dizinleri kapalı 
 `core/durum-kapsulu.md` (4 KB/20 satır birincil, ≤8 madde sigorta; aşımda `arsiv/kapsul-YYYY-MM-DD.md` + `kesildi:` satırı, Karar 104 M1) · `core/pano.md` · `kuyruk/senaryo-defteri.md` (zarf `koken:`; ≤24 KB) · `kuyruk/fikir-kutusu.md` (≤10 KB) · `core/desenler.md` (ekleme Salih kabulüyle; 10 seansta yeniden-oluşum) · `ogrenme/<şerit>/` (README · ilerleme · dersler) · `veri/bronz/hareket-olay.jsonl` · `cc/gelen|giden` · `raporlar/` · `arsiv/`.
 
 ## 4. Ritüeller
-"seans başı" → `seans-acilis` · "seans başı, <şerit>" → `ogren` · "seans bitimi" → `seans-kapanis` (ders · ilerleme · kapsül · defter · commit; push yalnız Salih beyanıyla). Jarvis'e dönüş `cc/giden/<id>-geri-donus.md`. Oturum: cwd `~/sistem/sage`, worktree kapalı, main, `git add <yol>` (protokol §5 EK-4).
+"seans başı" → `seans-acilis` · "seans başı, <şerit>" → `ogren` · "seans bitimi" → `seans-kapanis` (ders · ilerleme · kapsül · defter · commit; seans sonunda dal push + PR, birleştirme Salih beyanıyla). Jarvis'e dönüş `cc/giden/<id>-geri-donus.md`. Oturum: worktree `C:\sistem\wt\sage` + kendi dalı `oturum/<tarih>-sage`, `git add <yol>` (protokol §5 EK-5; hüküm `jarvis/lean/Kanon/ParalelOturum.lean`; sayısal kurallar `Kanon/AlanAjani.lean`).
 
 ## 5. Frenler
 `okuma-izin.sh` v0.6 + `hareket-kutuk.sh` + settings deny (jarvis/friday okuma · `ogrenme/**`, `sablonlar/**` yazma · push · `git add -A`). İşçi ≤36/koşum, araç ≤54/işçi, aile ≤3; işçi senden pahalı model kullanamaz; **yapan ≠ ölçen** → `.claude/agents/hakem` (salt-okur, V26 zorunlu). Pratik = Salih'in eli; `DONE` yalnız Salih beyanıyla. `.claude/**` ve `core/**` yazımı yalnız Edit aracıyla.

@@ -21,7 +21,7 @@ Kural = `../AGENTS.md` (18 madde). `jarvis/**` (Jarvis `core/` dahil) sana kapal
 - `cc/gelen/` devir birimleri (şema `../sablonlar/devir-birimi-v0.json`) · `cc/giden/` geri-dönüş notları (`../sablonlar/geri-donus-v0.md`) · `cc/rapor/` işçi ham raporları · `raporlar/` seans teslim raporları · `arsiv/`.
 
 ## 4. Ritüeller
-"seans başı" → `seans-acilis` (kapsül → pano → bekleyen devir) · "seans bitimi" → `seans-kapanis` (teslim raporu · kapsül · defter · kütük · commit; push yok). Her devir sonunda: `cc/giden/<devir_id>-geri-donus.md` + kapsül + defter satırı. Oturum: cwd `~/sistem/friday`, worktree kapalı, main, pathspec-only (protokol §5 EK-4).
+"seans başı" → `seans-acilis` (kapsül → pano → bekleyen devir) · "seans bitimi" → `seans-kapanis` (teslim raporu · kapsül · defter · kütük · commit; seans sonunda dal push + PR, birleştirme Salih beyanıyla). Her devir sonunda: `cc/giden/<devir_id>-geri-donus.md` + kapsül + defter satırı. Oturum: worktree `C:\sistem\wt\friday` + kendi dalı `oturum/<tarih>-friday`, `git add <yol>` (protokol §5 EK-5; hüküm `jarvis/lean/Kanon/ParalelOturum.lean`; sayısal kurallar `Kanon/AlanAjani.lean`).
 
 ## 5. Frenler (mekanik)
 `okuma-izin.sh` v0.5 (kendi dizin + kök dosyalar + `../sablonlar/` serbest; `jarvis/**`, `ogrenme/**`, ev dizini → RED; `agent_id` varsa işçiye kapsül/pano/defter/kutu/kütük/`cc/gelen` de kapalı) · `hareket-kutuk.sh` · settings deny. Ajan freni: işçi ≤36/koşum, araç ≤54/işçi (m.46), aile ≤3; çağrılar senkron; işçi senden pahalı model kullanamaz; yapan ≠ ölçen.

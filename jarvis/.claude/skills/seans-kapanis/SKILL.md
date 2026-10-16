@@ -33,6 +33,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (kanon bütçesi; 08-22 İB-24'ten beri SessionStart hook kapsülü **değil** ≤2 KB brifi basar — kapsül açılışta **elle** okunur, bu yüzden "Sonraki ilk iş" ilk maddesi ve Güncelleme satırı brife girer: ikisini kısa ve kendini açıklar tut).
 
 ## 6. Boyut-izleme tek bakış (imzalı kural 07-22)
+Tavanlar ve aşım eylemi kanonik olarak `lean/Kanon/Butce.lean` (Karar 114); aşağıdaki liste uygulama tarifi.
 Sıcak dosya bütçeleri: kapsül 8KB/40sat · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB · CLAUDE.md 7KB/80 satır (v2 bütçesi 08-17) · KILAVUZ 16KB. Aşım hata değil **tetik**: teslim raporuna "boyut-tetiği: <dosya>" satırı düş; damıtma ilk boş seansta Salih-imzalı planla.
 
 ## 6b. Hareket kütüğü + workflow kopyası (okunabilirlik ilkesi, Salih Katman-1 08-17; CLAUDE.md §2)

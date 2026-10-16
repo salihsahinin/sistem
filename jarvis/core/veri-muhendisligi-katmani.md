@@ -10,6 +10,7 @@
 5. **Katalog-önce.** Gerçek analitik iş yükünde metadata/katalog sorgusu payı yüksek (%31; okuma:yazma 25:1 — çok-kiracılı BI, ölçek-transferi şerhli): Jarvis'te katman yatırımının ilk getirisi gold agregat değil KATALOG/anahtar-kaydı erişimidir (316 anahtar · 47,4k referans); gold gerekçesi ölçüm gelene dek deneysel (CD-YT7; S-9 C1 boşluğu bu koşumda da kapanmadı).
 
 ## 2. Jarvis katman eşlemesi (yüklemler = done-yüklemi, boolean)
+> **Kod (Karar 114, 2026-10-16):** bronz/silver/gold done-yüklemleri ve §8b şiddet formülü `lean/Kanon/KatmanYuklem.lean`'de kanoniktir; tablo katman eşlemesi ve kaynak için durur.
 | Katman | Jarvis'te ne | Zorunlu yüklem (hepsi ∧) | Yasak | Kaynak |
 |---|---|---|---|---|
 | **BRONZ** (kaynak-konform) | git-izlenen `*.md/*.jsonl/*.json` + koşum kütükleri (`raporlar/usage/*.jsonl`, Workflow journal); provenans = commit SHA | git-izlenen ∧ append/immutable (değişim yalnız commit'le; m.8 silme yok) ∧ ham korunur ∧ provenans SHA | ham gövdeye elle "temizlik" (damıtma = ayrı lossy hat, **mdl** kapılı) | AB-YT1, A2-3 (git=bronz md için ayakta; DVC/Dolt gerekçesiz) |

@@ -13,3 +13,6 @@ import Kanon.Sabitler
 import Kanon.Ingest
 import Kanon.SemaSikistirma
 import Kanon.AnahtarEmeklilik
+import Kanon.KatmanYuklem
+import Kanon.AlanAjani
+import Kanon.Butce
