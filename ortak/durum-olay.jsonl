@@ -10,3 +10,8 @@
 {"olay":"ac","id":10,"ts":"2026-10-14T15:28:02Z","alan":"jarvis","is":"paket niyet ölçümü","sonraki_eylem":"kural m kütük satırları 10 geçiş; altın set tools/testler/veri/paket-niyet-seti.jsonl doğruluk","kanit":["7cf0c93"],"oturum":"jarvis-kapanis-10-14"}
 {"olay":"al","id":8,"ts":"2026-10-16T11:51:31Z"}
 {"olay":"bitir","id":8,"ts":"2026-10-16T11:51:31Z","kanit":["2026-10-16 Herdr 0.9.4: w6 ve w9 pane'lerinde Test-Path APPDATA True; python ve claude çözülüyor; Python hook'ları bu oturumda log yazdı (baglam-olay 13","hareket-olay 8); 10-14 False tekrar üretilemedi"]}
+{"olay":"al","id":1,"ts":"2026-10-16T12:36:36Z"}
+{"olay":"bitir","id":1,"ts":"2026-10-16T12:36:36Z","kanit":["104feac: 7 Jarvis hook'u rust-yonlendir.sh ile Rust'a; fark 13/13"]}
+{"olay":"ac","id":11,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"kök dispatcher Rust'a","sonraki_eylem":"bin/hook-dispatch.sh başına aynı yönlendirici kalıbı → target/release/hook-dispatch.exe; uçtan uca sına","girdi":[1]}
+{"olay":"ac","id":12,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"session-start Rust çıktısında CR","sonraki_eylem":"jarvis-hook session_start: git/dosya çıktısından gelen \\r satır 5-11'de; Python'da yok; kırp + fark testine CR durumu ekle"}
+{"olay":"ac","id":13,"ts":"2026-10-16T12:36:36Z","alan":"jarvis","is":"stop-buyuk-harf-test 4/10","sonraki_eylem":"test hem Python hem Rust yolunda 4/10 (6 block durumu boş çıktı); Windows'a özgü mü teşhis et, testi onar"}
