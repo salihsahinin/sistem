@@ -27,14 +27,15 @@ Tür: T-R ritüel (öğrenme yan-oturumu; yan-etki: ders dosyası + ilerleme tab
 
 ## 2. Plan — yol
 - Haritadan hedefe DAG: düğüm = tek akıl-adımı (bir tanım ya da bir çıkarım), kenar = "önce bunu". Bilinen düğümler DAG'a girmez.
-- **Görsel önce:** DAG `mcp__visualize` ile çizilir (düğüm numaralı), sonra düğüm listesi metinde numaraya atıfla ("kutu 3 → kutu 5"). Her düğüm başlığı sektör başlığı taşır (`### Kutu 3 — Dolaylı injection · Sektör: Indirect Prompt Injection`).
+- **Görsel yüzeyi (Salih 2026-10-16, A):** terminal yüzeyinde (Claude Code, Herdr) görsel = **Artifact** sayfası: `raporlar/gorsel-YYYY-MM-DD-<konu>-<kutu>.html` yazılır, `artifact-design` yüklenir, Artifact aracıyla yayımlanır, bağlantı cevapta verilir; ders boyunca aynı dosya güncellenerek aynı bağlantıda büyür. `mcp__visualize` yalnız Claude uygulaması yüzeyinde (araç listede varsa).
+- **Görsel önce:** DAG görsel yüzeyinde çizilir (düğüm numaralı), sonra düğüm listesi metinde numaraya atıfla ("kutu 3 → kutu 5"). Her düğüm başlığı sektör başlığı taşır (`### Kutu 3 — Dolaylı injection · Sektör: Indirect Prompt Injection`).
 - Derinlik etiketi (format v2 mirası, isteğe bağlı): düğüm [S] sezgisel / [O] orta / [T] tam; varsayılanı Jarvis atar (ölçüt: jarvis kararlarına uzaklık), Salih "bunu [T] yap" der.
 - Olgusal/sayısal/atıf içeren düğüm varsa `halusinasyon-engelleyici` derece hesabı; H ≥ eşik → o düğüm DESTEKLİ/DAYANAKSIZ etiketiyle anlatılır.
 - Salih planı görür; itiraz yoksa `TEACH`.
 
 ## 3. Teach — düğüm düğüm
 Düğüm başına sabit üçlü, sıra değişmez:
-1. **Akıl-adımı:** tek tanım/çıkarım, benzetme yok, terim ilk geçişte tanımlı; gerekiyorsa düğüm görseli (`mcp__visualize`, Salih "kutu N'i görselleştir" derse mekanizmayı adım adım simüle eden etkileşimli görsel) metinden önce, metin görselin parçalarına atıflı; metinde atıf yapılan her görsel gerçekten üretilir.
+1. **Akıl-adımı:** tek tanım/çıkarım, benzetme yok, terim ilk geçişte tanımlı; gerekiyorsa düğüm görseli (görsel yüzeyi §2, Salih "kutu N'i görselleştir" derse mekanizmayı adım adım simüle eden etkileşimli görsel) metinden önce, metin görselin parçalarına atıflı; metinde atıf yapılan her görsel gerçekten üretilir.
 2. **Somut örnek:** sayılı/elle hesaplı tek örnek (kaynaklı ya da "türetildi" damgalı); örnek sonuna kadar işletilir (BPE "the": t·h·e → th·e → the, neyin neden birleştiği gösterilerek). Her derste ≥1 formül: tanım + sembol tablosu + elle işletilmiş sayısal örnek (Karar 73).
 3. **Soru:** 1 soru (§1 formatı). Doğru → sonraki düğüm. Yanlış → aynı düğüm farklı açıdan (en fazla 2 tekrar), sonra düğüm "açik" işaretlenir, ilerlenir. "Anladın mı?" diye sorulmaz.
 - Salih araya soru sorarsa cevaplanır, DAG'daki yer korunur ("kutu N'deyiz"). Tempo: tek teslimde ≤3 kavram.
