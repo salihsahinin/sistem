@@ -34,3 +34,8 @@
 {"olay":"al","id":10,"ts":"2026-10-16T13:42:11Z"}
 {"olay":"bitir","id":10,"ts":"2026-10-16T13:42:11Z","kanit":["51d89cf ölçüm 14/18","canlı uyum 0; Karar 112 EK-3 emekli"]}
 {"olay":"ac","id":15,"ts":"2026-10-16T13:54:51Z","alan":"jarvis","is":"sabit güncellik denetimi (Karar 116)","sonraki_eylem":"Rust: Kanon.Sabitler kaydını oku (Lean'den üretilen JSON ya da Lean exe), model-kesim.jsonl kuşak değişimi ∨ ≥90 gün → seans-acilis brifine 'yeniden bak: N sabit'; ilk liste 12/12 yeni kuşak"}
+{"olay":"ac","id":16,"ts":"2026-10-16T13:57:56Z","alan":"span","is":"claude-mods öğrenme şeridi","sonraki_eylem":"ogren ile şerit aç: Claude Code modları (status line, pane, slash komutu, hook, toast); sistemde mod fikir yapısı; uygulanacak mod → Jarvis devri"}
+{"olay":"al","id":3,"ts":"2026-10-16T13:57:56Z"}
+{"olay":"bitir","id":3,"ts":"2026-10-16T13:57:56Z","kanit":["PR #7: jarvis-rituel crate","638/638 fark","13","67M token","4","28 USD","38 dk"]}
+{"olay":"ac","id":17,"ts":"2026-10-16T13:57:56Z","alan":"jarvis","is":"ritüelleri Rust'a bağla","sonraki_eylem":"seans-acilis/kapanis SKILL.md: acilis-kapilari, sicak-katman-fifo, hafiza-ayna, kural-sayaci → target/release ikilileri (PR #7 birleşince)","girdi":[3]}
+{"olay":"al","id":14,"ts":"2026-10-16T13:57:56Z"}
