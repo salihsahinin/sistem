@@ -1,9 +1,14 @@
 name = "kanon"
 version = "0.1.0"
-defaultTargets = ["skillkapi"]
+defaultTargets = ["skillkapi", "Gorev"]
 
 [[lean_lib]]
 name = "Kanon"
+
+# Görev emri sözleşmeleri (Karar 114, 2026-10-16): lean/Gorev/<tarih>-<ad>.lean; kalıp Gorev/Sablon.lean.
+[[lean_lib]]
+name = "Gorev"
+globs = ["Gorev.+"]
 
 [[lean_exe]]
 name = "skillkapi"
