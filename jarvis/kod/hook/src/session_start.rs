@@ -173,7 +173,6 @@ pub fn kos(o: &Ortam) -> Sonuc {
     let mut satirlar: Vec<String> = vec![
         "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ===".into(),
         "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py".into(),
-        "PAKET (Karar 112 EK-2): Salih mesajını niyetlere böl, anlamdan paket|yok seç (kanon·ajan·skill·veri·baglam·dogrulama, ≤2); değişince tools/paket-yonlendir.py --sec --niyet … --paket …; bildirim niyet değil.".into(),
         format!("YETKİ (m.41 GK-2): Claude Code (giriş: {giris}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."),
     ];
     satirlar.extend(python_kismi(&o.repo));
