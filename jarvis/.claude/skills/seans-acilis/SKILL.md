@@ -11,6 +11,7 @@ Selamlaşma sohbet değil **seans** **devridir**. Kural kaynağı tüzük (`core
 Selamlama **oturum-sınırı** işaretidir, **zaman** işareti **değil**: açılış sözünden sabah/yeni-gün, kapanış sözünden gece **çıkarımı** **yapılmaz**. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik "seans başı" (eski selamlama tetikleri `EMEKLİ` — `core/baglam-anahtar-kaydi.md` §2; selamlama tek başına ritüeli tetiklemez, Salih emri 08-15); jarvis↔staj ayrımı **cümleyle değil klasörle** yapılır (~/sistem/jarvis → bu ritüel · staj klasörü → staj-acilis).
 
 ## 1. Yüzey + hat tespiti
+Hüküm kodu (Karar 114): yol seçimi (staj · SNAPSHOT · ogren · ritüel) ve K1-K3 eylemleri `lean/Kanon/SeansAcilis.lean`; aşağısı uygulama tarifi.
 0. **staj kapısı** (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("seans başı staj") → BU **ritüel** **koşulmaz**. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
 1. JARVIS kanonuna erişim var mı? (Mac: `~/sistem/jarvis` doğrudan [varsayılan yüzey] · Windows PC: `C:\JARVIS` doğrudan · bulut claude.ai: origin klonu üzerinden · köprüsüz mobil: `YOK`.)
 2. Erişim **yoksa** → `SNAPSHOT` modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "**ham fikir** / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
