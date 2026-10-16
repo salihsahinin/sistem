@@ -232,6 +232,8 @@ fn calistir(mut c: Command, girdi: &str) -> Cikti {
 
 fn norm(s: &str, k: &Kum) -> String {
     let mut s = s.replace('\r', "");
+    // Rust-only brif satırı (durum #15, sabit güncellik): Python düşüş yolunda yok
+    s = s.split_inclusive('\n').filter(|l| !l.starts_with("SABİT-GÜNCELLİK")).collect();
     for v in [k.kok.to_string_lossy().into_owned(), ileri(&k.kok), k.kok.to_string_lossy().replace('\\', "\\\\")] {
         s = s.replace(&v, "<K>");
     }

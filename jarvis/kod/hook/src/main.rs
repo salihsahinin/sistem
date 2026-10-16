@@ -1,7 +1,7 @@
 //! `jarvis-hook <olay> [bayraklar]`: stdin JSON -> stdout (bağlama eklenir) / stderr (engel gerekçesi) / çıkış kodu (2 = engel).
 //! Depo kökü: `--repo` > `CLAUDE_PROJECT_DIR` > cwd. Alt komutlar: pretool-core-tel · pretool-ajan-fren · pretool-altajan-okuma ·
-//! stop-buyuk-harf · instructions-loaded · userprompt · session-start · paket-yonlendir · prompt-dosya.
-use jarvis_hook::{Ortam, Sonuc, ajan_fren, altajan_okuma, buyuk_harf, core_tel, paket, prompt_dosya, session_start, talimat};
+//! stop-buyuk-harf · instructions-loaded · userprompt · session-start · sabit-guncellik · paket-yonlendir · prompt-dosya.
+use jarvis_hook::{Ortam, Sonuc, ajan_fren, altajan_okuma, buyuk_harf, core_tel, paket, prompt_dosya, sabit, session_start, talimat};
 use std::io::{Read, Write};
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -39,6 +39,7 @@ fn main() -> ExitCode {
         "stop-buyuk-harf" => buyuk_harf::kos(&o),
         "instructions-loaded" => talimat::kos(&o),
         "session-start" => session_start::kos(&o),
+        "sabit-guncellik" => sabit::kos(&o),
         "prompt-dosya" => {
             let mut b = prompt_dosya::Bayrak::default();
             let mut j = 0;

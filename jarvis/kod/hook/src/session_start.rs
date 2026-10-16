@@ -118,6 +118,7 @@ fn python_kismi(repo: &Path) -> Vec<String> {
     let ilk = durum.lines().next().unwrap_or("").replacen("## ", "", 1);
     o.push(format!("HEAD: {head} ({when}) · {ilk}"));
     o.push(kesim_satiri(repo));
+    o.extend(crate::sabit::brif_satiri(repo));
     let db = repo.join("veri").join("baglam.sqlite");
     let baglan = || Connection::open_with_flags(&db, OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_URI | OpenFlags::SQLITE_OPEN_NO_MUTEX);
     let mut silver = || -> Result<(), rusqlite::Error> {
