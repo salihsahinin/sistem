@@ -33,3 +33,4 @@
 {"olay":"bitir","id":5,"ts":"2026-10-16T13:29:23Z","kanit":["F3 kod+metin; protokol EK-5; kök md.14; acilis 4b; kapanis 6g duman 12 sn"]}
 {"olay":"al","id":10,"ts":"2026-10-16T13:42:11Z"}
 {"olay":"bitir","id":10,"ts":"2026-10-16T13:42:11Z","kanit":["51d89cf ölçüm 14/18","canlı uyum 0; Karar 112 EK-3 emekli"]}
+{"olay":"ac","id":15,"ts":"2026-10-16T13:54:51Z","alan":"jarvis","is":"sabit güncellik denetimi (Karar 116)","sonraki_eylem":"Rust: Kanon.Sabitler kaydını oku (Lean'den üretilen JSON ya da Lean exe), model-kesim.jsonl kuşak değişimi ∨ ≥90 gün → seans-acilis brifine 'yeniden bak: N sabit'; ilk liste 12/12 yeni kuşak"}
