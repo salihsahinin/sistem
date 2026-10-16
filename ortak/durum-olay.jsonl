@@ -39,3 +39,5 @@
 {"olay":"bitir","id":3,"ts":"2026-10-16T13:57:56Z","kanit":["PR #7: jarvis-rituel crate","638/638 fark","13","67M token","4","28 USD","38 dk"]}
 {"olay":"ac","id":17,"ts":"2026-10-16T13:57:56Z","alan":"jarvis","is":"ritüelleri Rust'a bağla","sonraki_eylem":"seans-acilis/kapanis SKILL.md: acilis-kapilari, sicak-katman-fifo, hafiza-ayna, kural-sayaci → target/release ikilileri (PR #7 birleşince)","girdi":[3]}
 {"olay":"al","id":14,"ts":"2026-10-16T13:57:56Z"}
+{"olay":"bitir","id":14,"ts":"2026-10-16T19:16:34Z","kanit":["PR #8 main'e birlesti (yerel merge","push bekliyor); cargo test -p jarvis-kural 8/8; lake build 50/50"]}
+{"olay":"ac","id":18,"ts":"2026-10-16T19:19:14Z","alan":"jarvis","is":"hafıza/kanon md → Lean/Rust geçişi, bağlam yükleme sırası korunarak (Karar 114 genişletmesi, Salih 2026-10-16)","sonraki_eylem":"adım 2 atlas-kosum: sıra korumalı ayrıştırma formalizmi; adım 3 envanter; adım 4 partiler","kanit":["jarvis/raporlar/2026-10-16-baglam-sirasi-import-deneyi.md"]}
