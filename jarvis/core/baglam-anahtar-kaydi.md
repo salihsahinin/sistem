@@ -512,6 +512,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
 ```
 
 ## 3. Emeklilik protokolü (her ad/tetik/kural değişiminde — zorunlu adımlar, sıra backward)
+> **Kod (Karar 114, 2026-10-16):** adım sırası, `KISMİ` damgası (sıcak ihlal ≠ 0), ılık merdiven k1=1 / k2=10, bütünlük sıfırları, denetim çıkış kodu ve 3 vardiya kaldırma kuralı `lean/Kanon/AnahtarEmeklilik.lean`'de kanoniktir; §3-§4 metni uygulama tarifi ve gerekçe.
 1. **Kayıt:** §2'ye `emekli` satırı (tarih + gerekçe + tekil `replaced_by` + izinli kalıplar) — Katman-1 sınıfı değişim Salih emri/imzasıyla; Katman-2 Jarvis yazar, commit'ler, veto = revert.
 2. **Denetim-önce:** `python3 tools/anahtar-denetim.py` → sıcak/ılık/soğuk kırılımlı kalıntı-referans listesi (baseline sayısı kaydedilir).
 3. **Yayılım (sıcak katman → 0):** CLAUDE.md · core/* · `.claude/skills/*/SKILL.md` (description **önce**) · pano · kapsül: her kalıntı ya yeni değere yeniden yazılır ya izinli tarihçe-kalıbına girer (imza damgası) — silme yok; kaldırılan cümle gerekiyorsa `kuyruk/arsiv-*` pointer'ıyla iner (m.8/m.20). Ilık katman (kuyruk/wiki/kutu/pipeline): uyarı → aynı vardiyada ya da bakım kartı. Soğuk katman (raporlar/cc rapor-emir/ogrenme/arşiv): **tarihçe** — sayılır, yeniden yazılmaz.

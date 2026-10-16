@@ -2,6 +2,8 @@
 
 *v1'in (`kuyruk/oneri-ingest-sema-v1.md`, Salih imzalı 07-12: K3→K0 katmanları + G1/G2/G3 kapıları + V9 önem formülü) **üzerine** oturur, onu değiştirmez. v1 katmanları tanımlıyordu; v2 **kaydın kendisini** tanımlar: zarf, tip, triyaj, bütçe. Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md` (Opus lider koşumu, D-ağırlıklı). Tüm eşikler deneysel m.29; veto = revert.*
 
+> **Kod (Karar 114, 2026-10-16):** §1 zarf geçerliliği, §2 tip → hedef yönlendirmesi, §3 triyaj sırası ve emeklilik yayılımı, §5 damıtma tetikleri (140 / 200 satır, Σönem ≥ 150, devir ≤ 2.000 token) ve §6 DLQ kuralı `lean/Kanon/Ingest.lean`'de kanoniktir; metinle ayrışırsa kod kazanır. Aşağısı uygulama tarifi ve gerekçe.
+
 ## 1. Kayıt zarfı — 5 zorunlu alan, fazlası yok
 
 Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
@@ -44,8 +46,8 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 
 ## 5. Tetikler ve bütçeler (deneysel m.29)
 
-- **Kapsül tavanı ≤200 satır** (Claude Code limiti emsal). ~140 satırda (%70) açılış brifinde damıtma uyarısı; tavanda zorunlu damıtma turu, ~%50 boşaltılır (MemGPT üçlüsü).
-- **Kümülatif önem tetiği:** kuyruğa giren kayıtların `onem` toplamı ≥150 → damıtma turu açılır (G3'ün 40-madde eşiğine EK; 40 önemsiz not tetiklemez, 8 kritik not tetikler — Generative Agents). **λ düzeltmesi (KB-42 A, Salih imzası 2026-08-21, Karar 59 — eski metin "0.99/gün": değer VE birim kaynakla çelişiyordu, B2-2 `SAĞLAM`):** birincil kaynakta çürüme **0,995/sandbox-SAATİ** (Park ve ark. 2023, ar5iv 2304.03442; α_tazelik=α_önem=α_ilgililik=1 — gerekçesiz, duyarlılık analizi yok). Jarvis'e **değer taşınmaz** (sandbox-saatinin seans karşılığı tanımsız); yalnız **form** korunur: **tazelik(t) = d^t** — t = geçen **seans** sayısı (Jarvis zaman-atomu), d ∈ (0,1) çürüme tabanı **KALİBRE edilmemiş [?]** (yerel ölçümle doğar; m.29/m.35 — ölçüm gelene dek getirme skorunda tazelik terimi kullanılmaz, tetik yalnız Σönem≥150). Genel kural (T-Ç6, silver-sağlık emsali): kanona giren her katsayı kaynaktaki **değer** ve **birimle** eşleşir; eşleşmeyen "kalibre edilmemiş" damgası taşır. λ bugüne dek hiçbir script/koşumda kullanılmadı (grep doğrulaması 08-21) — geriye dönük etki yok.
+- **Kapsül tavanı** (değerler Lean'de): Claude Code limiti emsal; tavanda ~%50 boşaltılır (MemGPT üçlüsü).
+- **Kümülatif önem tetiği** (değer Lean'de): G3'ün 40-madde eşiğine EK; 40 önemsiz not tetiklemez, 8 kritik not tetikler (Generative Agents). **λ düzeltmesi (KB-42 A, Salih imzası 2026-08-21, Karar 59 — eski metin "0.99/gün": değer VE birim kaynakla çelişiyordu, B2-2 `SAĞLAM`):** birincil kaynakta çürüme **0,995/sandbox-SAATİ** (Park ve ark. 2023, ar5iv 2304.03442; α_tazelik=α_önem=α_ilgililik=1 — gerekçesiz, duyarlılık analizi yok). Jarvis'e **değer taşınmaz** (sandbox-saatinin seans karşılığı tanımsız); yalnız **form** korunur: **tazelik(t) = d^t** — t = geçen **seans** sayısı (Jarvis zaman-atomu), d ∈ (0,1) çürüme tabanı **KALİBRE edilmemiş [?]** (yerel ölçümle doğar; m.29/m.35 — ölçüm gelene dek getirme skorunda tazelik terimi kullanılmaz, tetik yalnız Σönem≥150). Genel kural (T-Ç6, silver-sağlık emsali): kanona giren her katsayı kaynaktaki **değer** ve **birimle** eşleşir; eşleşmeyen "kalibre edilmemiş" damgası taşır. λ bugüne dek hiçbir script/koşumda kullanılmadı (grep doğrulaması 08-21) — geriye dönük etki yok.
 - **Devir raporu bütçesi:** paralel sekmeden ana hatta dönen devir **≈1.000-2.000 token (≈4-8KB)** tavanlı. Korunacak: kararlar + çözülmemiş sorunlar + doğrulama adımları; atılacak: araç çıktıları. Sıra: önce recall, sonra precision (Anthropic).
 - **Damıtma frekansı:** her oturumda değil, **eşikte** ve **toplu** (**lsm**: her damıtma bir maliyettir).
 

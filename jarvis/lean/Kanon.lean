@@ -10,3 +10,6 @@ import Kanon.SkillDogum
 import Kanon.Delegasyon
 import Kanon.KosumButunluk
 import Kanon.Sabitler
+import Kanon.Ingest
+import Kanon.SemaSikistirma
+import Kanon.AnahtarEmeklilik

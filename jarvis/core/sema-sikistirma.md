@@ -16,7 +16,7 @@
 - Kayıt-birleştirme eşiği: s = (c_u + c_v − c_birleşik)/(c_u + c_v) > 0 ise birleştir; tek adım ≤2×, büyük kazanç zincirleme; **geri-alınabilirlik bizim tercihimizle açık** (m.8: silme yok — faydası düşen yapı arşive iner, pointer kalır).
 **Karar tablosu (tek skaler `YOK`; koşullu):** `karar = f(L_bağlam/pencere, sorgu-sınıfı, düzenlilik, güncelleme-yoğunluğu)` — §2.
 **Uygunluk skoru U (kayıt-sınıfı başına; deneysel m.29 — kayıt-seviyesi skor literatürde `YOK`, bu bizim deneyimiz):**
-`U = düzenlilik(+1: sabit-alanlı/şablonlu; komşu-benzerlik yüksek) + tekrar(+1: aynı tip ≥ N kayıt) + entegrasyon-sorgusu(+1: kayıtlar-arası birleştirme soruları geliyor) + güncelleme-yoğunluğu(−1: sık GEÇERSİZ-KIL/UPDATE) + niteleyici-yoğunluğu(−1: şerh/koşul/derece taşıyan metin) + anlatı(−1: akıl-yürütme izi/tek-seferlik)` → U ≥ 2 **şemala** · U ∈ {0,1} **olgu-satırı** + pointer · U < 0 **ham tut** + pointer.
+Bileşenler: düzenlilik (sabit-alanlı/şablonlu) · tekrar (aynı tip ≥ N kayıt) · entegrasyon-sorgusu (kayıtlar-arası sorular) · güncelleme-yoğunluğu (sık GEÇERSİZ-KIL/UPDATE) · niteleyici-yoğunluğu (şerh/koşul/derece) · anlatı (akıl-yürütme izi). **Skor, MDL kabulü, birleştirme eşiği, yol eşikleri (≥2 / 0-1 / <0) ve 3 tur sınırı kanonik olarak `lean/Kanon/SemaSikistirma.lean`** (Karar 114, 2026-10-16; özgün formül git `2cfa2da`).
 
 ## 2. Karar tablosu (bağlam-sınıfı → yol; jarvis eşlemesi)
 | bağlam sınıfı | örnek | karar | gerekçe |
