@@ -18,3 +18,10 @@
 {"olay":"al","id":4,"ts":"2026-10-16T13:10:21Z"}
 {"olay":"bitir","id":4,"ts":"2026-10-16T13:10:21Z","kanit":["Kanon.SkillTetik lake build OK","4 teorem"]}
 {"olay":"ac","id":14,"ts":"2026-10-16T13:10:21Z","alan":"jarvis","is":"tetik-denetim.py Rust portu","sonraki_eylem":"gorev-emri-derleme/scripts/tetik-denetim.py → Rust; Kanon.SkillTetik.kapiO ile fark testi","girdi":[4]}
+{"olay":"al","id":6,"ts":"2026-10-16T13:16:42Z"}
+{"olay":"al","id":12,"ts":"2026-10-16T13:16:42Z"}
+{"olay":"al","id":13,"ts":"2026-10-16T13:16:42Z"}
+{"olay":"bitir","id":6,"ts":"2026-10-16T13:16:42Z","kanit":["6 kısaltma Rust+Python listesinde; test vakası"]}
+{"olay":"bitir","id":12,"ts":"2026-10-16T13:16:42Z","kanit":["CR Python yolunda (Windows print text-mode)","Rust LF doğru; düzeltme gerekmez"]}
+{"olay":"bitir","id":13,"ts":"2026-10-16T13:16:42Z","kanit":["kök neden: /tmp yolu yerel programlara açılmıyor; cygpath -m; 11/11 iki yolda"]}
+{"olay":"bayatla","id":2,"ts":"2026-10-16T13:16:42Z"}
