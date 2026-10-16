@@ -7,6 +7,8 @@ modülde kullanıldığı, ölçüldüğü tarih (AS-OF), ölçüldüğü model 
 (i) yeni bir model kuşağı devreye girince (veri/model-kesim.jsonl değişimi) ya da (ii) AS-OF'tan 90 gün geçince "yeniden bak"
 listesine düşer; seans açılışında listelenir. Yeniden bakmak değeri değiştirmek demek değil: ölçülür, Salih imzasıyla güncellenir
 ya da AS-OF yenilenir. Yön beklentisi: modeller güçlendikçe frenler gevşer, maliyet eşikleri düşer, skill/kod eşiği aşağı iner.
+Çalıştıran: kod/hook/src/sabit.rs (bu dosyayı okur; açılış brifine "yeniden bak: N sabit" satırı, tam liste `jarvis-hook sabit-guncellik`).
+Yeni kuşak ölçütü (kodda): kesim tablosunda devreye giriş tarihi (yayim satırı, yoksa en geç kesim) sabitin AS-OF'undan sonra olan model.
 -/
 namespace Kanon.Sabitler
 
