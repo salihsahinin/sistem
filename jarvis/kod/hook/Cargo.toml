@@ -6,6 +6,7 @@ version.workspace = true
 
 [dependencies]
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+jarvis-baglam = { path = "../baglam" }
 regex = "1"
 serde = "1"
 rusqlite = { version = "0.32", features = ["bundled"] }

@@ -24,7 +24,8 @@ def main():
     ap.add_argument("--tuzuk", default="core/tuzuk-v0.md")
     ap.add_argument("--cikti", default=None)
     a = ap.parse_args()
-    satirlar = pathlib.Path(a.tuzuk).read_text(encoding="utf-8").splitlines()
+    from baglam_oku import satirlar as _bsat  # Karar 117: `@` ağacı yükleme sırasıyla
+    satirlar = [s for _, s in _bsat(".", a.tuzuk)]
     maddeler = []  # (no, baslik, satir_no, metin)
     for i, s in enumerate(satirlar, 1):
         m = MADDE.match(s)

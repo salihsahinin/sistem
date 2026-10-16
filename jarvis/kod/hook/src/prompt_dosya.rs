@@ -173,9 +173,18 @@ fn kaynak_getir(repo: &Path, kaynak: &str) -> Option<(String, String)> {
         return Some(("UYARI".into(), m.into()));
     }
     if let Some(n) = kaynak.strip_prefix("tuzuk:") {
-        let l = satirlar(repo, "core/tuzuk-v0.md").unwrap_or_default();
+        // Karar 117: tüzük `@` ağacına bölünmüş olabilir; maddeyi yükleme sırasıyla genişletilmiş bloklarda ara.
         let on = format!("{n}. **");
-        return l.iter().find(|s| s.starts_with(&on)).map(|s| (format!("core/tuzuk-v0.md m.{n}"), s.clone()));
+        let (bloklar, _) = jarvis_baglam::genislet(&repo.join("core/tuzuk-v0.md")).ok()?;
+        for b in bloklar {
+            let metin = b.metin.replace("\r\n", "\n");
+            if let Some(s) = metin.split('\n').find(|s| s.starts_with(&on)) {
+                let kok = jarvis_baglam::coz(Path::new("."), &repo.to_string_lossy());
+                let goreli = b.yol.strip_prefix(&kok).unwrap_or(&b.yol).to_string_lossy().replace('\\', "/");
+                return Some((format!("{goreli} m.{n}"), s.to_string()));
+            }
+        }
+        return None;
     }
     if let Some(n) = kaynak.strip_prefix("defter:") {
         let l = satirlar(repo, "kuyruk/senaryo-defteri.md").unwrap_or_default();

@@ -51,7 +51,7 @@ def main():
     n_gorev = len([f for f in tracked if f.startswith("cc/gorev/")]); n_rapor = len([f for f in tracked if f.startswith("cc/rapor/")])
     n_raporlar = len([f for f in tracked if f.startswith("raporlar/") and f.endswith(".md")]); n_teslim = len([f for f in tracked if f.startswith("raporlar/vardiya/vardiya-teslim-")])
     n_core = len([f for f in tracked if f.startswith("core/") and f.endswith(".md") and f.count("/") == 1])
-    n_madde = sum(1 for l in open(os.path.join(R, "core", "tuzuk-v0.md"), errors="ignore") if l[:1].isdigit() and ". **" in l[:6])
+    n_madde = sum(1 for _, l in __import__("baglam_oku").satirlar(R, "core/tuzuk-v0.md") if l[:1].isdigit() and ". **" in l[:6])
     db = {}
     try:
         con = sqlite3.connect(os.path.join(R, "veri", "baglam.sqlite"))

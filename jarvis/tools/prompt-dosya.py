@@ -54,10 +54,10 @@ def kaynak_getir(repo, kaynak):
         return ("UYARI", kaynak[6:])
     if kaynak.startswith("tuzuk:"):
         n = kaynak[6:]
-        L = _oku(repo, "core/tuzuk-v0.md") or []
-        for s in L:
+        from baglam_oku import satirlar  # Karar 117: tüzük `@` ağacına bölünmüş olabilir
+        for kaynak_yol, s in satirlar(repo, "core/tuzuk-v0.md"):
             if s.startswith(f"{n}. **"):
-                return (f"core/tuzuk-v0.md m.{n}", s)
+                return (f"{kaynak_yol} m.{n}", s)
         return None
     if kaynak.startswith("defter:"):
         n = kaynak[7:]
