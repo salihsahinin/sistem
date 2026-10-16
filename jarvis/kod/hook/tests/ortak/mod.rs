@@ -70,7 +70,7 @@ pub fn kum(ad: &str, yan: &str) -> Kum {
             kopya(&gj, &jarvis, &format!(".claude/hooks/{n}"));
         }
     }
-    for r in ["tools/prompt-dosya.py", "tools/baglam_oku.py", "core/tuzuk-v0-m47.md", "tools/paket-yonlendir.py", "core/prompt-dosya-tablosu.tsv", "core/baglam-paketleri.json", "core/tuzuk-v0.md", "core/durum-kapsulu.md", "core/pano.md", "core/ajan-metodolojisi.md", "core/ingest-semasi.md", "kuyruk/senaryo-defteri.md", "veri/karar-borcu.jsonl", "veri/model-kesim.jsonl"] {
+    for r in ["tools/prompt-dosya.py", "tools/baglam_oku.py", "core/tuzuk-v0-m44.md", "core/tuzuk-v0-m46.md", "core/tuzuk-v0-m47.md","tools/paket-yonlendir.py", "core/prompt-dosya-tablosu.tsv", "core/baglam-paketleri.json", "core/tuzuk-v0.md", "core/durum-kapsulu.md", "core/pano.md", "core/ajan-metodolojisi.md", "core/ingest-semasi.md", "kuyruk/senaryo-defteri.md", "veri/karar-borcu.jsonl", "veri/model-kesim.jsonl"] {
         kopya(&gj, &jarvis, r);
     }
     if let Ok(rd) = std::fs::read_dir(gj.join("kuyruk")) {
