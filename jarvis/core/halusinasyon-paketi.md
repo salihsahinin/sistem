@@ -59,3 +59,7 @@ Deterministik hesap: `python3 .claude/skills/halusinasyon-engelleyici/scripts/de
 - **V26 revizyonu — `İMZALANDI` (Salih Katman-1, 2026-08-17, seçenek A):** örneklem "rastgele" yerine **kural-tabanlı**: çıktının son üçte biri + tüm sayısal iddialar (FActScore konum bulgusu; deterministik tasarım ilkesi). Uygulama: `.claude/skills/atlas-kosum/SKILL.md` adım 5. Bilinen açık: işçi kuralı öğrenirse son üçlüğe özenip başı gevşetebilir — ölçüm ilerde (deneysel m.29).
 - **md.21 derece-sorma yasağı şerhi:** erken çekimserlik ortalamada kazanç ama taban doğruluk yüksekken net zarar (TriviaQA) → yasak koşulsuz değil; kural: yüksek-taban görevde önce üret, sonra doğrula. **HÜKÜM (Salih 08-20 seans-11, KB-17b): `BEKLET` — "önce ölçümünü yapalım"; imza yerel taban-oranı ölçümüne bağlandı (Türkçe + güncel Claude kuşağı görev seti — paketin kör-nokta listesindeki ilk iki kalem); ölçüm koşulunca kalem yeniden masaya. O güne dek yasak koşulsuz yürürlükte.**
 - **Kör noktalar (ölçüm borcu):** Claude güncel kuşak oranları · Türkçe · ajan/araç-çağrısı görevleri · prompt-düzeyi "bilmiyorum" etkisi · C_hata elicitation · Aile-D omurgasının tek 2026 ön-baskısına yaslanması (Kotte).
+
+**Lean eki (Karar 117, 2026-10-17):** §2 derece formülü ve tetik hükmünün kodu aşağıda yüklenir (`Kanon.Halusinasyon`); md metni yerinde kalır, ayrışırsa kod kazanır.
+
+@../lean/Kanon/Halusinasyon.lean.md

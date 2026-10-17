@@ -36,3 +36,7 @@ FLAG'li dosyada, triyajdan önce: (i) kayıt-sınıflarını ayır (yukarıdaki 
 - Çelişki `YOK` — m.20/m.22/ingest-v2/damitma bu şemanın önceden-var parçaları; kanıt jarvis tasarımını 3 noktada **doğruladı** (pointer-inişi = ölçülmüş "ucuz-önce"; kapsül=`SNAPSHOT` + git-kaynak = compaction-sürüklenmesi sigortası; ingest kapalı-tip = **mdl** düzeltme-terimi yönetimi).
 - **Şerh — `İMZALANDI` (Salih 08-17 masa KB-17c):** "damıtma ~%50 hedefi" orana değil **sorgu-uyumuna** bağlı (F2 bulgusu; damitma skill'i adım 4); kapsül üstüne-yazma turlarına erozyon-sayacı (teslim raporuna). İlk uygulama: 08-17 defter damıtması (kararlar+pointer korundu; oran 180,9→42,7 KB sonuçtu).
 - **Ölçüm borcu:** Jarvis bandı (26-115k) ölçülmemiş · Türkçe BPE etkisi · karar-kanonu sınıfı · U skorunun kalibrasyonu (ilk 5 damıtma koşumunda sınıf-başına önce/sonra + DRFR); Hat-6 jarvis→DB hattı `veri/baglam.sqlite` üstünde sorgu-anı/ingest çift muhasebesini ölçebilir.
+
+**Lean eki (Karar 117, 2026-10-17):** §1 formül, §2 karar tablosu ve §3 damıtma dalının kodu aşağıda yüklenir (`Kanon.SemaSikistirma`); md metni yerinde kalır, ayrışırsa kod kazanır.
+
+@../lean/Kanon/SemaSikistirma.lean.md

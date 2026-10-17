@@ -119,7 +119,8 @@ En ucuz kapı en zayıf kapı değildir burada — çünkü R/K3 deterministik; 
 - **Dağıtım:** yan oturumda üretilen skill branch + PR (Karar 95); merge ana-sıra. **Ölçüm:** `InstructionsLoaded` hook kütüğü (`veri/bronz/talimat-yukleme-olay.jsonl`) S-kaynak okunma ayağı + üç yuva davranışı; 10 koşumdan sonra §5 ile birlikte değerlendirilir.
 - **m.16:** m.43 çelişki yok (ikinci giriş kapısı) · KB-19 tavan → süpersede (Salih 09-15) · m.20/m.8 uyumlu · İB-81 erteleme dokunulmadı.
 
-**Hüküm kodu (Karar 117, 2026-10-17):** §4/§4b'nin kuralları (yan-etki → `disable-model-invocation`, description standardı, S-kaynak tetiği, üç yuva, Y2' koşullu-yük, eval-önce, icra-türü satırı, kavram dersi) hemen ardından gelen `Kanon.SkillUretim` modülündedir; metinle ayrışırsa kod kazanır. §5 `skill-uretim-semasi-s5.md`'de.
+**Hüküm kodu (Karar 117, 2026-10-17):** §4/§4b'nin kuralları (yan-etki → `disable-model-invocation`, description standardı, S-kaynak tetiği, üç yuva, Y2' koşullu-yük, eval-önce, icra-türü satırı, kavram dersi) hemen ardından gelen `Kanon.SkillUretim` modülündedir; metinle ayrışırsa kod kazanır. §1 ağacı ve §2 kapı formülleri `Kanon.SkillKapi`'de (Lean eki, ondan önce yüklenir). §5 `skill-uretim-semasi-s5.md`'de.
 
+@../lean/Kanon/SkillKapi.lean.md
 @../lean/Kanon/SkillUretim.lean.md
 @skill-uretim-semasi-s5.md

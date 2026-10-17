@@ -59,3 +59,7 @@ iç içe koşul ≤2 (ComplexBench nested %14,9) · dal ≤5 (kanon/Multi-IF) ·
 - Hat-1 K3 T-O koşulu genişler: orkestratör skill'in her çağrısı bu şemaya uyar (skill-kapisi'ye işlendi).
 - **Şerh-adayı (Katman-1):** yan-etkili skill'de aşırı-tetiğin maliyeti ölçülmemiş; "literal-yalnız" kuralı resmî tavsiye + kanon tutarlılığı, sayısal dayanak yok — ilk 10 çağrı kaydında ölçülür.
 - **Yüzey şerhi:** Claude Code (when_to_use, /slash, disable-model-invocation, %1 bütçe) ↔ Cowork masaüstü tetik kurallarının birebir aynı olduğu **doğrulanmadı**; Cowork emekli olduğundan (08-12) şema Claude Code yüzeyine yazıldı.
+
+**Lean eki (Karar 117, 2026-10-17):** §2 tetik bloğu, §3 üç kapı ve §4 yasaklarının kodu aşağıda yüklenir (`Kanon.SkillTetik`); md metni yerinde kalır, ayrışırsa kod kazanır.
+
+@../lean/Kanon/SkillTetik.lean.md

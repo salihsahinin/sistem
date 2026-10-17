@@ -64,3 +64,7 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 ## 8. Ölçüm (m.35 — şemanın ilk deneği kendisi)
 
 Seans teslimlerine sayaçlar: `giren / NOOP / UPDATE / GEÇERSİZ-KIL / ADD / DLQ`. ~10 seans sonra eşikler (150, 200 satır, 2k token) ilk kez gerçek veriyle kalibre edilir (v1 §3 sayaçlarıyla aynı havuz).
+
+**Lean eki (Karar 117, 2026-10-17):** §1-§3, §5, §6'nın kodu aşağıda yüklenir (`Kanon.Ingest`); md metni yerinde kalır, ayrışırsa kod kazanır.
+
+@../lean/Kanon/Ingest.lean.md
