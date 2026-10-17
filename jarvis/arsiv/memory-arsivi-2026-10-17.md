@@ -1,0 +1,1 @@
+- 2026-10-17 · `MEMORY.md` satırı (dosya `memory/feedback-maliyet-tahmini-alt-model.md` yerinde): [Maliyet tahmini yalnız alt-model için](feedback-maliyet-tahmini-alt-model.md) — Salih 08-29: Jarvis kendi koşumuna token/süre tahmini yazmaz; işçi-ajan koşumları için hesapla, çıkarımı oradan. Kural kullanıcı düzeyi CLAUDE.md "Rakam" satırında da var.
