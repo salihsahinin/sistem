@@ -1,5 +1,6 @@
 //! Python 3.11 `argparse` davranışının bu araçlarda kullanılan alt kümesi: yalnız isteğe bağlı (`--x`) bayraklar,
-//! önek kısaltması (`--rep` → `--repo`), `--x=değer`, `nargs="*"`, `append`, `type=int`, `-h` yardımı, usage sarması ve hata iletileri.
+//! önek kısaltması (`--rep` → `--repo`), `--x=değer`, `nargs="*"`, `append`, `type=int`, `choices` (`secimli`), karşılıklı dışlayan grup (`dislayan`),
+//! `-h` yardımı, usage sarması ve hata iletileri.
 //! Konumsal argüman yoktur; tanınmayan her dize `unrecognized arguments` olur. Yardım genişliği `COLUMNS` (yoksa 80) - 2.
 use crate::py;
 use std::collections::HashMap;
@@ -24,26 +25,36 @@ pub struct Secenek {
     pub tur: Tur,
     pub tamsayi: bool,
     pub yardim: Option<&'static str>,
+    /// `choices=[...]` (`None`: serbest değer)
+    pub secimler: Option<&'static [&'static str]>,
 }
 
 impl Secenek {
     pub const fn bayrak(adlar: &'static [&'static str], dest: &'static str, yardim: Option<&'static str>) -> Self {
-        Secenek { adlar, dest, tur: Tur::Bayrak, tamsayi: false, yardim }
+        Secenek { adlar, dest, tur: Tur::Bayrak, tamsayi: false, yardim, secimler: None }
     }
     pub const fn deger(adlar: &'static [&'static str], dest: &'static str, yardim: Option<&'static str>) -> Self {
-        Secenek { adlar, dest, tur: Tur::Deger, tamsayi: false, yardim }
+        Secenek { adlar, dest, tur: Tur::Deger, tamsayi: false, yardim, secimler: None }
     }
     pub const fn tam(adlar: &'static [&'static str], dest: &'static str, yardim: Option<&'static str>) -> Self {
-        Secenek { adlar, dest, tur: Tur::Deger, tamsayi: true, yardim }
+        Secenek { adlar, dest, tur: Tur::Deger, tamsayi: true, yardim, secimler: None }
     }
     pub const fn ekle(adlar: &'static [&'static str], dest: &'static str, yardim: Option<&'static str>) -> Self {
-        Secenek { adlar, dest, tur: Tur::Ekle, tamsayi: false, yardim }
+        Secenek { adlar, dest, tur: Tur::Ekle, tamsayi: false, yardim, secimler: None }
     }
     pub const fn liste(adlar: &'static [&'static str], dest: &'static str, yardim: Option<&'static str>) -> Self {
-        Secenek { adlar, dest, tur: Tur::Liste, tamsayi: false, yardim }
+        Secenek { adlar, dest, tur: Tur::Liste, tamsayi: false, yardim, secimler: None }
+    }
+    /// `choices=[...]`: usage/yardımda metavar `{a,b}`; geçersiz değer `invalid choice` hatası verir.
+    pub fn secimli(mut self, secimler: &'static [&'static str]) -> Self {
+        self.secimler = Some(secimler);
+        self
     }
     fn metavar(&self) -> String {
-        self.dest.to_uppercase()
+        match self.secimler {
+            Some(s) => format!("{{{}}}", s.join(",")),
+            None => self.dest.to_uppercase(),
+        }
     }
     fn arguman_metni(&self) -> String {
         match self.tur {
@@ -61,6 +72,10 @@ pub struct Ayrisan {
     pub prog: &'static str,
     pub aciklama: Option<&'static str>,
     secenekler: Vec<Secenek>,
+    /// tek konumsal argüman (`add_argument("spec")`, nargs=None, zorunlu); yok ise `None`
+    konumsal: Option<&'static str>,
+    /// karşılıklı dışlayan gruplar: (üye `dest` adları, zorunlu mu); üyeler seçenek listesinde ardışık olmalıdır
+    dislayanlar: Vec<(&'static [&'static str], bool)>,
 }
 
 #[derive(Default, Debug)]
@@ -69,6 +84,7 @@ pub struct Sonuc {
     metin: HashMap<&'static str, String>,
     tam: HashMap<&'static str, i128>,
     liste: HashMap<&'static str, Vec<String>>,
+    konumsal: Option<String>,
 }
 
 impl Sonuc {
@@ -84,6 +100,10 @@ impl Sonuc {
     /// `nargs="*"` ya da `append` değerleri (verilmediyse `None`).
     pub fn liste(&self, d: &str) -> Option<&Vec<String>> {
         self.liste.get(d)
+    }
+    /// konumsal argümanın değeri (ayrıştırma başarılıysa her zaman dolu)
+    pub fn konumsal(&self) -> Option<&str> {
+        self.konumsal.as_deref()
     }
 }
 
@@ -114,8 +134,20 @@ fn negatif_sayi(s: &str) -> bool {
 
 impl Ayrisan {
     pub fn yeni(prog: &'static str, aciklama: Option<&'static str>, mut secenekler: Vec<Secenek>) -> Self {
-        secenekler.insert(0, Secenek { adlar: &["-h", "--help"], dest: "help", tur: Tur::Yardim, tamsayi: false, yardim: Some("show this help message and exit") });
-        Ayrisan { prog, aciklama, secenekler }
+        secenekler.insert(0, Secenek { adlar: &["-h", "--help"], dest: "help", tur: Tur::Yardim, tamsayi: false, yardim: Some("show this help message and exit"), secimler: None });
+        Ayrisan { prog, aciklama, secenekler, konumsal: None, dislayanlar: vec![] }
+    }
+
+    /// Tek zorunlu konumsal argüman ekler (`ap.add_argument(ad)`); usage'da seçeneklerden sonra gelir.
+    pub fn konumsal(mut self, ad: &'static str) -> Self {
+        self.konumsal = Some(ad);
+        self
+    }
+
+    /// `ap.add_mutually_exclusive_group(required=zorunlu)`: usage'da ilk üyenin yerinde `(a | b)` (zorunlu) ya da `[a | b]` olarak görünür.
+    pub fn dislayan(mut self, uyeler: &'static [&'static str], zorunlu: bool) -> Self {
+        self.dislayanlar.push((uyeler, zorunlu));
+        self
     }
 
     // ------------------------------------------------------------ biçimleme
@@ -125,23 +157,61 @@ impl Ayrisan {
     }
 
     fn usage_parcalari(&self) -> Vec<String> {
-        self.secenekler
-            .iter()
-            .map(|s| {
-                let a = s.adlar[0];
-                match s.tur {
-                    Tur::Bayrak | Tur::Yardim => format!("[{a}]"),
-                    _ => format!("[{a} {}]", s.arguman_metni()),
+        let parca = |s: &Secenek, koseli: bool| -> String {
+            let a = s.adlar[0];
+            let ic = match s.tur {
+                Tur::Bayrak | Tur::Yardim => a.to_string(),
+                _ => format!("{a} {}", s.arguman_metni()),
+            };
+            if koseli { format!("[{ic}]") } else { ic }
+        };
+        let mut parcalar = vec![];
+        let mut i = 0;
+        while i < self.secenekler.len() {
+            let s = &self.secenekler[i];
+            let grup = self.dislayanlar.iter().find(|(u, _)| {
+                u.len() > 0 && i + u.len() <= self.secenekler.len() && u.iter().zip(&self.secenekler[i..]).all(|(d, x)| *d == x.dest)
+            });
+            if let Some((uyeler, zorunlu)) = grup {
+                let ic: Vec<String> = self.secenekler[i..i + uyeler.len()].iter().map(|x| parca(x, false)).collect();
+                let (ac, kapa) = if *zorunlu { ("(", ")") } else { ("[", "]") };
+                parcalar.push(format!("{ac}{}{kapa}", ic.join(" | ")));
+                i += uyeler.len();
+                continue;
+            }
+            parcalar.push(parca(s, true));
+            i += 1;
+        }
+        parcalar
+    }
+
+    /// `take_action`'daki karşılıklı dışlama denetimi: aynı gruptan daha önce görülmüş üye varsa hata; değilse eylemi görülmüş say.
+    fn cakisma(&self, gorulen: &mut Vec<usize>, e: usize) -> Result<(), i32> {
+        let s = &self.secenekler[e];
+        for (uyeler, _) in &self.dislayanlar {
+            if !uyeler.contains(&s.dest) {
+                continue;
+            }
+            for u in uyeler.iter().filter(|u| **u != s.dest) {
+                if let Some(k) = self.secenekler.iter().position(|x| x.dest == *u)
+                    && gorulen.contains(&k)
+                {
+                    return Err(self.arg_hata(s, &format!("not allowed with argument {}", self.secenekler[k].ad())));
                 }
-            })
-            .collect()
+            }
+        }
+        gorulen.push(e);
+        Ok(())
     }
 
     pub fn usage(&self) -> String {
         let genislik = Self::genislik();
         let onek = "usage: ";
         let parcalar = self.usage_parcalari();
-        let kullanim = format!("{} {}", self.prog, parcalar.join(" "));
+        let konum: Vec<String> = self.konumsal.map(|k| vec![k.to_string()]).unwrap_or_default();
+        let mut tum = parcalar.clone();
+        tum.extend(konum.iter().cloned());
+        let kullanim = format!("{} {}", self.prog, tum.join(" "));
         let metin = if onek.chars().count() + kullanim.chars().count() > genislik {
             let mk = |parts: &[String], indent: &str, onek: Option<&str>| -> Vec<String> {
                 let mut satirlar: Vec<String> = vec![];
@@ -170,11 +240,18 @@ impl Ayrisan {
                 let indent = " ".repeat(onek.chars().count() + self.prog.chars().count() + 1);
                 let mut parts = vec![self.prog.to_string()];
                 parts.extend(parcalar.iter().cloned());
-                mk(&parts, &indent, Some(onek))
+                let mut l = mk(&parts, &indent, Some(onek));
+                l.extend(mk(&konum, &indent, None));
+                l
             } else {
                 let indent = " ".repeat(onek.chars().count());
+                let mut satirlar = mk(&tum, &indent, None);
+                if satirlar.len() > 1 {
+                    satirlar = mk(&parcalar, &indent, None);
+                    satirlar.extend(mk(&konum, &indent, None));
+                }
                 let mut l = vec![self.prog.to_string()];
-                l.extend(mk(&parcalar, &indent, None));
+                l.extend(satirlar);
                 l
             };
             satirlar.join("\n")
@@ -188,7 +265,10 @@ impl Ayrisan {
         let genislik = Self::genislik();
         let maks_pozisyon = 24.min(genislik.saturating_sub(20).max(4));
         let girinti = 2usize;
-        let eylem_maks = self.secenekler.iter().map(|s| Self::cagri(s).chars().count() + girinti).max().unwrap_or(0);
+        let mut eylem_maks = self.secenekler.iter().map(|s| Self::cagri(s).chars().count() + girinti).max().unwrap_or(0);
+        if let Some(k) = self.konumsal {
+            eylem_maks = eylem_maks.max(k.chars().count() + girinti);
+        }
         let yardim_pozisyon = (eylem_maks + 2).min(maks_pozisyon);
         let yardim_genislik = genislik.saturating_sub(yardim_pozisyon).max(11);
         let eylem_genislik = yardim_pozisyon - girinti - 2;
@@ -196,6 +276,9 @@ impl Ayrisan {
         if let Some(a) = self.aciklama {
             r.push_str(a);
             r.push_str("\n\n");
+        }
+        if let Some(k) = self.konumsal {
+            r.push_str(&format!("\npositional arguments:\n{}{k}\n", " ".repeat(girinti)));
         }
         r.push_str("\noptions:\n");
         for s in &self.secenekler {
@@ -335,10 +418,20 @@ impl Ayrisan {
             }
         }
         let mut sonuc = Sonuc::default();
+        let mut gorulen: Vec<usize> = vec![];
         let mut ekstra: Vec<String> = vec![];
         let mut i = 0;
         while i < argv.len() {
             let Sinif::O(eylem, secenek, acik) = sinif[i].clone() else {
+                if self.konumsal.is_some() && sonuc.konumsal.is_none() {
+                    // `-*A-*` deseni: konumsal değer bir `--` ile başlayabilir (`--` değerden atılır)
+                    let a = if matches!(sinif[i], Sinif::Cizgi) && i + 1 < argv.len() && matches!(sinif[i + 1], Sinif::A) { i + 1 } else { i };
+                    if matches!(sinif[a], Sinif::A) {
+                        sonuc.konumsal = Some(argv[a].clone());
+                        i = a + 1;
+                        continue;
+                    }
+                }
                 ekstra.push(argv[i].clone());
                 i += 1;
                 continue;
@@ -407,6 +500,7 @@ impl Ayrisan {
                         return Err(0);
                     }
                     Tur::Bayrak => {
+                        self.cakisma(&mut gorulen, e)?;
                         sonuc.bayrak.insert(s.dest, true);
                     }
                     Tur::Deger | Tur::Ekle => {
@@ -414,22 +508,42 @@ impl Ayrisan {
                         if s.tamsayi {
                             match py::int(&v) {
                                 Some(n) => {
+                                    self.cakisma(&mut gorulen, e)?;
                                     sonuc.tam.insert(s.dest, n);
                                 }
                                 None => return Err(self.arg_hata(s, &format!("invalid int value: {}", py::repr(&v)))),
                             }
-                        } else if s.tur == Tur::Ekle {
-                            sonuc.liste.entry(s.dest).or_default().push(v);
                         } else {
-                            sonuc.metin.insert(s.dest, v);
+                            if let Some(secimler) = s.secimler
+                                && !secimler.contains(&v.as_str())
+                            {
+                                let liste = secimler.iter().map(|c| py::repr(c)).collect::<Vec<_>>().join(", ");
+                                return Err(self.arg_hata(s, &format!("invalid choice: {} (choose from {liste})", py::repr(&v))));
+                            }
+                            self.cakisma(&mut gorulen, e)?;
+                            if s.tur == Tur::Ekle {
+                                sonuc.liste.entry(s.dest).or_default().push(v);
+                            } else {
+                                sonuc.metin.insert(s.dest, v);
+                            }
                         }
                     }
                     Tur::Liste => {
+                        self.cakisma(&mut gorulen, e)?;
                         sonuc.liste.insert(s.dest, degerler);
                     }
                 }
             }
             i = bitis;
+        }
+        if self.konumsal.is_some() && sonuc.konumsal.is_none() {
+            return Err(self.hata(&format!("the following arguments are required: {}", self.konumsal.unwrap_or(""))));
+        }
+        for (uyeler, zorunlu) in &self.dislayanlar {
+            if *zorunlu && !uyeler.iter().any(|u| gorulen.iter().any(|&k| self.secenekler[k].dest == *u)) {
+                let adlar: Vec<String> = uyeler.iter().filter_map(|u| self.secenekler.iter().find(|x| x.dest == *u)).map(Secenek::ad).collect();
+                return Err(self.hata(&format!("one of the arguments {} is required", adlar.join(" "))));
+            }
         }
         if !ekstra.is_empty() {
             return Err(self.hata(&format!("unrecognized arguments: {}", ekstra.join(" "))));
@@ -438,7 +552,26 @@ impl Ayrisan {
     }
 }
 
-/// `textwrap.wrap(' '.join(text.split()), genislik)` (Python 3.11 `_wrap_chunks`; yalnız boşluk sınırlı parçalar, tirede bölme yok).
+/// `textwrap.TextWrapper.wordsep_re` tire kuralı: iki harf (ya da `h-h-`) ardından `-`, sonrasında `h` `-`? `h` gelen tireden sonra bölünür.
+fn tire_parcala(s: &str, cikti: &mut Vec<String>) {
+    let c: Vec<char> = s.chars().collect();
+    let harf = |i: usize| c.get(i).is_some_and(|x| x.is_alphabetic() || *x == '_');
+    let mut bas = 0;
+    for i in 1..c.len() {
+        if c[i] != '-' {
+            continue;
+        }
+        let geri = (i >= 2 && harf(i - 2) && harf(i - 1)) || (i >= 3 && harf(i - 3) && c[i - 2] == '-' && harf(i - 1));
+        let ileri = (harf(i + 1) && harf(i + 2)) || (harf(i + 1) && c.get(i + 2) == Some(&'-') && harf(i + 3));
+        if geri && ileri {
+            cikti.push(c[bas..=i].iter().collect());
+            bas = i + 1;
+        }
+    }
+    cikti.push(c[bas..].iter().collect());
+}
+
+/// `textwrap.wrap(' '.join(text.split()), genislik)` (Python 3.11 `_wrap_chunks`; boşlukta ve `break_on_hyphens` kuralıyla tirede bölünür).
 /// Dar genişlikte uzun sözcük bölünürken satır sonunda boşluk kalması (`adı tarihi `) Python'daki gibi korunur.
 fn sar(metin: &str, genislik: usize) -> Vec<String> {
     let norm = metin.split_whitespace().collect::<Vec<_>>().join(" ");
@@ -449,7 +582,7 @@ fn sar(metin: &str, genislik: usize) -> Vec<String> {
             parcalar.push(" ".to_string());
         }
         if !s.is_empty() {
-            parcalar.push(s.to_string());
+            tire_parcala(s, &mut parcalar);
         }
     }
     parcalar.reverse();

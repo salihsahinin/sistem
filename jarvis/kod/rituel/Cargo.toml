@@ -6,6 +6,7 @@ version.workspace = true
 
 [dependencies]
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+fancy-regex = "0.14"
 jarvis-hook = { path = "../hook" }
 regex = "1"
 rusqlite = { version = "0.32", features = ["bundled"] }
@@ -33,3 +34,19 @@ path = "src/bin/hafiza_ayna.rs"
 [[bin]]
 name = "kural-sayaci"
 path = "src/bin/kural_sayaci.rs"
+
+[[bin]]
+name = "katman-hatti"
+path = "src/bin/katman_hatti.rs"
+
+[[bin]]
+name = "hareket-tablo"
+path = "src/bin/hareket_tablo.rs"
+
+[[bin]]
+name = "silver-saglik"
+path = "src/bin/silver_saglik.rs"
+
+[[bin]]
+name = "baglam-seyir"
+path = "src/bin/baglam_seyir.rs"

@@ -8,12 +8,12 @@ metadata: { owner: jarvis, version: "0.2.0-deneysel-m29", kural: "core/skill-ure
 
 Test: `python3 .claude/skills/karar-masasi/scripts/masa-uret-test.py` (E1-E3, 12/12; masa-12 eşdeğerlik). Eski masayı spec'e döken tersine araç: `scripts/masa-spec-cikar.py <masa.html>`. Baseline karşılaştırması `evals/evals.json` → `p2_sonuc`.
 
-Tür: T-Ü üretici (yan-etki: dosya yazımı `raporlar/masa/` + `kaynak-kodu/lavish/`; kanona yazmaz). Kaynak biçim: 7.-12. masalar (elle DaisyUI, Salih 09-08 "fable 5 ile kurulan karar masaları formatı"). Tekrar sayımı 09-15: 11 masa elle (~200 satır/masa). Deterministik gövde `scripts/masa-uret.py`; şablon `sablon.html`.
+Tür: T-Ü üretici (yan-etki: dosya yazımı `raporlar/masa/` + `kaynak-kodu/lavish/`; kanona yazmaz). Kaynak biçim: 7.-12. masalar (elle DaisyUI, Salih 09-08 "fable 5 ile kurulan karar masaları formatı"). Tekrar sayımı 09-15: 11 masa elle (~200 satır/masa). Deterministik gövde `../target/release/masa-uret` (Rust; yedek `scripts/masa-uret.py`); şablon `sablon.html`.
 
 ## Adımlar
 1. **Kalem spec'ini yaz** (`kuyruk/masa-spec-N-YYYY-MM-DD.json`; şema aşağıda). Her kalem: ad · rozet (Katman-1/2 · tür) · "ne demek" · seçenekler (etiket · value · açıklama bloğu: ne yaparım · artı · eksi · gerekçe) · `oneri` bayrağı (önerilen **ilk** sırada, m.40 eki) · `coklu` (checkbox). Kanıt tablosu satırları kaynak + etiket (D/K/X ∨ "sayım") taşır (m.39).
 2. **Bayat-satır çapraz okuması (Karar 74 dersi):** her kalem için kapsül + defter son 30 satır taranır; zaten kapanmış kalem masaya girmez, "masa öncesi fiilen yapıldı" satırına iner (m.16).
-3. **Üret:** `python3 .claude/skills/karar-masasi/scripts/masa-uret.py <spec.json>` → `kaynak-kodu/lavish/masa-N-YYYY-MM-DD.html` + kalıcı kopya `raporlar/masa/masa-N-karar-yuzeyi-YYYY-MM-DD.html`; çıktı yolu + kalem sayısı + doğrulama (form sayısı = kalem sayısı) basılır.
+3. **Üret:** `../target/release/masa-uret <spec.json>` (Rust; yedek `python3 .claude/skills/karar-masasi/scripts/masa-uret.py <spec.json>`) → `kaynak-kodu/lavish/masa-N-YYYY-MM-DD.html` + kalıcı kopya `raporlar/masa/masa-N-karar-yuzeyi-YYYY-MM-DD.html`; çıktı yolu + kalem sayısı + doğrulama (form sayısı = kalem sayısı) basılır.
 4. **Aç + bekle:** `lavish-axi <html>` → URL Salih'e; `lavish-axi poll <html>` harness-izli arka planda (Bash run_in_background); "Send & End" gelince poll çıktısı tam okunur (prompt alanları), hükümler seçenek metniyle aynen deftere `karar-kaydet` ile iner (bu skill yazmaz).
 5. **Sunum cümlesi:** URL + kalıcı yol + kalem listesi (her kalemde önerilen); övgü yok, çıplak veri (m.7).
 
