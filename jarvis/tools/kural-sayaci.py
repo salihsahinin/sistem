@@ -58,7 +58,7 @@ def main():
     hook = os.path.join(repo, ".claude", "hooks", "session-start.sh"); hook_byte = None
     if os.path.exists(hook):
         try:
-            hook_byte = len(subprocess.run(["bash", hook], cwd=repo, capture_output=True, timeout=20).stdout)
+            hook_byte = len(subprocess.run(["bash", hook], cwd=repo, capture_output=True, stdin=subprocess.DEVNULL, timeout=20).stdout)
         except Exception:
             hook_byte = None
     toplam = sum(r["kural_birimi"] for r in sonuc)
