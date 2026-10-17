@@ -7,6 +7,7 @@ yasak. Silver tablo kaynağa 1:1 eşlenir (grain korunur), tipli, tekil anahtarl
 türetilmiş ve iki damgalı (kod SHA + girdi SHA), veri testleri ve şekil sözleşmesi geçmiş olmalı; JOIN/agregasyon yasak (tek istisna
 simetrik kaynak birleşimi). Gold metrik tek yerde tanımlı, iş sorusuna hizalı, silver'a geri eşlenebilir ve şekil sözleşmeli olmalı;
 elle üretilmiş sayı yasak. T-A triyajında çift şiddeti (uzunluk_a + uzunluk_b) × anahtar terim tekrarıdır, sıra azalan.
+§6 (Karar 117, 2026-10-17): bir ship adımı silver/sözleşme, gold metrik, veri-testi/freshness ya da katman-olcum.py koşumundan en az birini üretir; üretmeyen adım "DE-artefaktsız" damgalanır, engellenmez (yalnız sayaç).
 -/
 namespace Kanon.KatmanYuklem
 
@@ -56,5 +57,30 @@ theorem agrege_silver_degil (s : Silver) (h : s.agrege = true) : silverDone s = 
 
 theorem elle_sayi_gold_degil (g : Gold) (h : g.elleSayi = true) : goldDone g = false := by
   simp [goldDone, h]
+
+/-- §6 (core/veri-muhendisligi-katmani.md; Karar 117): her ship adımı DE-artefakt sözleşmesini en az biriyle karşılar:
+    (a) silver tablo/şekil sözleşmesi (b) gold görünüm/metrik (c) veri-testi/freshness kuralı (d) katman-olcum.py koşumu.
+    Karşılamayan adım "DE-artefaktsız" damgalanır (yasak değil, sayaç). -/
+structure ShipAdimi where
+  silverVeyaSozlesme : Bool := false
+  goldMetrik         : Bool := false
+  veriTestiFreshness : Bool := false
+  katmanOlcumKosumu  : Bool := false
+  deriving Repr
+
+def deArtefaktVar (a : ShipAdimi) : Bool :=
+  a.silverVeyaSozlesme || a.goldMetrik || a.veriTestiFreshness || a.katmanOlcumKosumu
+
+inductive ShipDamga | tamam | deArtefaktsiz
+  deriving Repr, DecidableEq
+
+def shipDamga (a : ShipAdimi) : ShipDamga := if deArtefaktVar a then .tamam else .deArtefaktsiz
+
+/-- §6: DE-artefaktsız adım yasak değildir; yalnız sayaca girer (engel değil). -/
+def shipEngellenir (_ : ShipAdimi) : Bool := false
+
+theorem bos_adim_artefaktsiz : shipDamga {} = .deArtefaktsiz := rfl
+theorem olcum_kosumu_yeter : shipDamga { katmanOlcumKosumu := true } = .tamam := rfl
+theorem artefaktsiz_engellenmez (a : ShipAdimi) : shipEngellenir a = false := rfl
 
 end Kanon.KatmanYuklem
