@@ -19,3 +19,12 @@ import Kanon.Butce
 import Kanon.BaglamSirasi
 import Kanon.CeliskiKapisi
 import Kanon.Zorlanabilirlik
+import Kanon.DeneyselRakam
+import Kanon.KararSunum
+import Kanon.YanOturumSinir
+import Kanon.AjanYetki
+import Kanon.RolKatman
+import Kanon.DenetimKapsami
+import Kanon.DosyaAciklama
+import Kanon.KararYetkisi
+import Kanon.AjanKaliciligi
