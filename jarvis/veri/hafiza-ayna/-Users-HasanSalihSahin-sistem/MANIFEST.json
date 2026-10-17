@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-14",
+ "uretim": "2026-10-17",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 27,
+ "dosya_sayisi": 29,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "2a7bc96243dcbb330fd9667cdd12de23b96774242aa6c4c6b48b7285bc65246e",
-   "bayt": 4006,
-   "kaynak_mtime": "2026-10-12T21:38:42",
+   "sha256": "e21dd55b03746c54ad0e70a70271654883d85be8ff9e1b06b80977f191d64c4d",
+   "bayt": 3836,
+   "kaynak_mtime": "2026-10-17T18:14:21",
    "durum": "ayna"
   },
   {
@@ -112,6 +112,13 @@
    "durum": "ayna"
   },
   {
+   "ad": "feedback-pr-ozeti-ste.md",
+   "sha256": "daec77b011e710e19a53badef69bcdf6cdfed75f1b027b955d3f5aa9bbf36317",
+   "bayt": 1237,
+   "kaynak_mtime": "2026-10-16T17:05:46",
+   "durum": "ayna"
+  },
+  {
    "ad": "feedback-pratik-salih-eli.md",
    "sha256": "50c374b3c6f2b3c3b6c02e181f3624be1b92c7670afef16c72a9ccb92d2528b1",
    "bayt": 1083,
@@ -123,6 +130,13 @@
    "sha256": "73aeeb67e956366c1a13b250d23768d5773fea564001d2804a9a8ba085bb77df",
    "bayt": 1586,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-rust-icra-kodu-test-degil.md",
+   "sha256": "f6cf44810974820b8237d00a3a95a78c36e14de74dfb0d7e3ba549a429e2e2f3",
+   "bayt": 937,
+   "kaynak_mtime": "2026-10-16T22:18:54",
    "durum": "ayna"
   },
   {
@@ -183,9 +197,9 @@
   },
   {
    "ad": "user-mac-primary.md",
-   "sha256": "9d722ebe476a96d0256ecf294b531e03ba797f5baad20314010501d71c3b3888",
-   "bayt": 2392,
-   "kaynak_mtime": "2026-09-22T19:47:21",
+   "sha256": "789650facba517e3b1d0b975ed545bacd95f60cf7bfb563bd6ca0a638b0a1d2b",
+   "bayt": 2604,
+   "kaynak_mtime": "2026-10-17T18:13:47",
    "durum": "ayna"
   },
   {

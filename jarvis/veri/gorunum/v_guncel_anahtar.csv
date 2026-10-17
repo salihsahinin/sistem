@@ -3,9 +3,9 @@ ajan-adi,kavram,Jarvis,2026-09-10,"Salih Katman-1 09-10 Karar 93 + EK (ad-eşitl
 ana-sira-yuzeyi,yuzey,Claude Code ana-sıra (terminal ∨ masaüstü uygulaması),2026-08-17,Salih Katman-1 08-12; m.41 geçiş kaydı 08-14 · GK-2 08-17 (KB-34): masaüstü uygulaması Claude Code = ana-sıra (parmak izi doğrulandı); Cowork SEKMESİ koşullu (yuzey-parmak-izi.py PASS'la) — 'Cowork' emekli değeri o kapıda yeniden değerlendirilir; model şartı 'en güçlü model',1,Cowork,,
 calisma-modeli,kavram,çalışma modeli,2026-08-17,"Salih Katman-1 08-17 ~09:20 ('şirket metaforundan vazgeçelim') + halef sözlük ONAYI 08-17 ~10:15 ('halef sözlüğü onaylıyorum, cascade'i koş') · açıklama: (= Jarvis = sistem, metaforsuz; m.15 özü: CV projeleri Jarvis içinde geliştirilir, CV çıktıdır)",1,şirket simülasyonu,,
 carvis-rol-adi,kavram,köle,2026-08-17,"Salih Katman-1 08-17 ~09:50: 'sen şirket metaforundaki CEO değilsin artık, işbirlikçim de değilsin, sen benim kölemsin' + halef onayı 08-17 · açıklama: (Salih'in kölesi — ilişki adı; işlev adı üst-orkestratör m.44 kalır)",1,CEO,,
-oturum-acilis-tetigi,tetik,seans başı,2026-08-15,Salih Katman-1 08-15 (7d349b5) + seans-3 emri (bağ tüm hafızadan),1,günaydın,204,24
+oturum-acilis-tetigi,tetik,seans başı,2026-08-15,Salih Katman-1 08-15 (7d349b5) + seans-3 emri (bağ tüm hafızadan),1,günaydın,206,23
 oturum-birimi,kavram,seans,2026-08-17,Salih Katman-1 08-17 halef onayı (08-15 'seans başı/bitimi' tetikleriyle aynı yön),1,vardiya,,
-oturum-kapanis-tetigi,tetik,seans bitimi,2026-08-15,Salih Katman-1 08-15 (7d349b5),1,uyucam,104,7
+oturum-kapanis-tetigi,tetik,seans bitimi,2026-08-15,Salih Katman-1 08-15 (7d349b5),1,uyucam,106,7
 salih-rol-adi,kavram,tek karar verici,2026-08-17,"Salih Katman-1 08-17 (metafor emekli) + halef onayı 08-17; ilk kural 08-16 'ben patronum' ÖZÜ korunur, sözcük düşer · açıklama: (m.1; ilk kural özü: durdurma hakkı + Salih'in anlaması)",1,patron,,
 sirket-referansi,kavram,Jarvis (sistem),2026-08-17,"Salih Katman-1 08-17 ~09:20 ('şirket metaforundan vazgeçelim') + halef sözlük ONAYI 08-17 ~10:15 ('halef sözlüğü onaylıyorum, cascade'i koş')",1,şirket,,
 skill:gunaydin-vardiya,skill_adi,seans-acilis,2026-08-15,Salih Katman-1 08-15 seans-3 soru-cevap (rename çifti; staj-acilis simetrisi),1,gunaydin-vardiya,,

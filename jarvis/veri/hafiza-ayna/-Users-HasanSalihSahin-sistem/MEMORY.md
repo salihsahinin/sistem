@@ -1,6 +1,5 @@
 # Memory index
-- [Mac primary](user-mac-primary.md) — Salih Mac'te çalışıyor (08-15'ten itibaren varsayılan); **09-22'den itibaren geçici Windows 11** (`C:\sistem\sistem`, Git Bash; symlink/python3/yol borçları); Turkish-QWERTY-PC klavye; Windows alışkanlığı: 'ctrl' ≈ ⌘ (sistem ayarı öncesi teyit)
-- [Maliyet tahmini yalnız alt-model için](feedback-maliyet-tahmini-alt-model.md) — Salih 08-29: Jarvis kendi koşumuna token/süre tahmini yazmaz; işçi-ajan koşumları için hesapla, çıkarımı oradan
+- [Windows 11 birincil](user-mac-primary.md) — 09-22'den beri Windows 11 (`C:\sistem\sistem`, Herdr + Windows Terminal); Mac'e dönüş planı yok (10-16); Turkish-QWERTY-PC; 'ctrl' ≈ ⌘ alışkanlığı
 - [Ses/ekran kaydı onay kapısı](feedback-ses-ekran-kaydi-onay.md) — Salih 08-26: yakalamadan **önce** haber + onay; 'göstermek için' gerekçe değil, teslim usulüne düş
 - [Yüzey tercihi seçenekli sunulur](feedback-yuzey-tercihi-secenekli.md) — Salih 08-30: 'okunabilir değil' hükmü Salih'in; ham yol önce, çevirme/kalıcı araç ancak artı-eksi bloklu seçenekle
 - [İcra listesi onaysız devam + kademeli paralel](feedback-icra-listesi-onaysiz-devam.md) — Salih 08-30: planlı liste bitene dek durma/onay bekleme; borçlar manifest+paralel-kapi ile pipeline, N 1→2→3
@@ -10,10 +9,12 @@
 - [Açılış tetiği "seans başı", günaydın değil](feedback-seans-basi-tetik-gunaydin-degil.md) — Salih 09-09: "günaydın" zaman yanılgısı üretir; öğrenme yüzeyini Salih adlandırır, "günaydın, öğrenme" kalıbı yok
 - [Görselde kutu içi açıklama cümlesi + tek konu](feedback-gorsel-kutu-ici-aciklama.md) — Salih 09-09: her kutuda sade "bu kutu … demektir" cümlesi; sade dil, uzun açıklama, cevap başına az konu
 - [Ajan adı JARVİS, Carvis emekli](project-ajan-adi-jarvis.md) — Salih 09-10 Karar 93: konuşan ajan = Jarvis; sistem/repo = "depo"/"kanon"; "Carvis" yalnız tarihli kayıtta
-- [Friday monorepo içinde](project-ekip-lideri-ayri-repo.md) — Karar 101 (09-18): Friday `~/sistem/friday/` dizini, ayrı repo değil; kanon kök AGENTS.md + friday/AGENTS.md; jarvis/** kapalı (hook v0.5 + deny); oturum cwd friday, worktree kapalı, push/PR yok
+- [Friday monorepo içinde](project-ekip-lideri-ayri-repo.md) — Karar 101 (09-18): Friday `~/sistem/friday/` dizini, ayrı repo değil; kanon kök + friday/AGENTS.md; jarvis/** kapalı
 - [Vurgusuz anlatım, caps lock yok](feedback-vurgusuz-anlatim-capslock-yok.md) — Salih 09-14: büyük harfli kelimelerle vurgu yapma, kalın yazı kullan
-- [Öğretim iskeleti ogren + sektör başlığı](feedback-ogretim-iskeleti-ogren-sektor-basligi.md) — Salih 09-14: tüm şeritlerde `PROBE`→`PLAN` DAG→`TEACH` kutu→`CLOSE`; her kutu güncel İngilizce sektör başlığıyla; görsel yalnız istekle, mekanizma simülasyonu; büyük-harf vurgusu yasak (09-15), vurgu kalın
+- [Öğretim iskeleti ogren + sektör başlığı](feedback-ogretim-iskeleti-ogren-sektor-basligi.md) — Salih 09-14: `PROBE`→`PLAN` DAG→`TEACH`→`CLOSE`; kutu başına İngilizce sektör başlığı; görsel yalnız istekle
 - [Pratik = Salih'in eli](feedback-pratik-salih-eli.md) — Salih 09-15: Jarvis'in kendi koşumu pratik sayılmaz (referans koşum); `DONE` yalnız Salih beyanıyla; G1 arızası
 - [Oturum açma talimatında worktree beyanı](feedback-oturum-acma-worktree-beyani.md) — Salih 09-18: her açılış talimatında worktree AÇIK/KAPALI + sebep; Jarvis Fable ana-sıra `KAPALI`, ~/jarvis yan oturum **açık**, Friday/staj `KAPALI` (tek oturum)
 - [Bitirme tezi: AI×matematik, mat. müh. son sınıf](user-bitirme-tezi-matematik-muhendisligi.md) — Salih 09-21: 2026-27 bitirme; İTÜ [?] ama küresel emsal; ilk atlas raporu raporlar/2026-09/2026-09-21-bitirme-tezi-ai-matematik-atlas.md
 - [İngilizce konuşma pratiği](feedback-ingilizce-konusma-pratigi.md) — Salih 10-12: sohbet sade İngilizce; yeni kavram Türkçe + terim İngilizce + geri-anlatım İngilizce; sonda ≤3 Language note + Words
+- [Rust = icra kodu, test kodu değil](feedback-rust-icra-kodu-test-degil.md) — Salih 10-16: md/Lean görevini yapan Rust kodu; gereksiz test yazılmaz
+- [PR özeti ASD-STE100 Türkçe](feedback-pr-ozeti-ste.md) — Salih 10-16: her PR birleştirme öncesi kısa, etken, tek fikirli cümlelerle Türkçe özetlenir
