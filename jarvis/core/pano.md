@@ -5,7 +5,7 @@
 *Şablon v3 eki (KB-46 A, Salih 08-21, defter Karar 49): +**Started** damgası — karta **ilk icra** commit'inin tarihi; yeni kartlarda zorunlu, mevcut kartlara geriye dönük **uydurulmaz** (bilinmeyen "—", m.39). `DONE` alanı = ürün DoD (teslimin ürün-tanımı; boş kart açılamaz kuralı aynı). Akış görünümü `v_pano_akis` (**wip** · throughput · cycle time · kart yaşı — Kanban 4 metriği, deterministik sayım) İB-41 icra borcunda.*
 
 **Güncelleme:** 2026-08-12 L8-MAC — **Mac geçişi Faz 0-4 `DONE`, envanter 10/11** (11/11 **canlı** beyanı 08-20 Karar 35); gemi + fren çifti + no-mistakes + firstmate kurulu; oturum yapılanması 'seans başı' + klasör ayrımına oturdu (08-15). Tam anlatı + araç dökümü: arşiv 08-29 §1; teslim `raporlar/vardiya/vardiya-teslim-2026-08-12-l8-mac.md`. Tarihçe zinciri (07-30→08-12): `arsiv/kuyruk-arsiv/pano-arsivi-2026-08-21.md`.
-**Arşiv (2026-10-17, Karar 118 M3):** K-002, K-003 (PortRisk sprintleri) ve K-008 (ön-koşulu PortRisk) → `arsiv/kanon/portrisk-emekli-2026-10-17.md`; ürünler öğrenilen konulardan çıkar (Karar 94 EK).
+**Arşiv (2026-10-17, Karar 118 M3):** K-002, K-003 (PortRisk sprintleri) ve K-008 (ön-koşulu PortRisk) → `arsiv/kanon/portrisk-emekli-2026-10-17.md`; K-005 (imc Prosperity, Karar 120) → `arsiv/kanon/m36-k005-emekli-2026-10-17.md`; ürünler öğrenilen konulardan çıkar (Karar 94 EK).
 
 ## AKTİF
 | Kart | İş | `DONE` | Açılış | Bağımlı | Yetki | Ekrana gel |
@@ -18,7 +18,6 @@
 | Kart | İş | `DONE` | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Jarvis | Kasım başı |
-| K-005 | **imc** Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Jarvis | tur duyurusu |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | 07-10 | — | Jarvis | CV çalışması başlarken |
 | K-011 | Claude sistemini OneDrive-dışı köke taşıma (git `7a11abd`) | yeni kök çalışır + mount + scheduled görevler + eski yol arşiv | 07-11 | — | Salih+Jarvis | Salih gün seçince (tam yedekle başlar) |
 | K-018 | Model-A paketi (Salih emri 07-13): remote control ilk kurulum (`claude remote-control`) + fikir-kutusu→CC araştırma akışının standartlaşması + dispatch değerlendirmesinin K-009/K-010 açılış gündemine bağlanması | remote control 1 kez canlı denendi + akış cc/README standardına işlendi + dispatch V-kaydı düşüldü | 07-13 | K-017 | Salih+Jarvis | K-017 `DONE` olunca |
