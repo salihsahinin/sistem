@@ -60,3 +60,4 @@
 {"olay":"bitir","id":23,"ts":"2026-10-17T16:01:08Z","kanit":["PR #22 MERGED (PortRisk emekli) + PR #25 (m.36","K-005)"]}
 {"olay":"bitir","id":24,"ts":"2026-10-17T16:01:08Z","kanit":["PR #24 MERGED (md.12 + skill-kapisi K0); denetim raporu raporlar/2026-10-17-hazir-karsilik-denetimi.md; EK-1 6a"]}
 {"olay":"bitir","id":19,"ts":"2026-10-17T16:01:09Z","kanit":["PR #20 + #21 MERGED (31 bulgu düzeltildi","katalog","kural-sayaci arızası)"]}
+{"olay":"ac","id":25,"ts":"2026-10-17T21:32:51Z","alan":"jarvis","is":"Karar 121: seans teslim raporu JSON/graf kaydı (Rust üretici + şema), seans-kapanis ve teslim şablonu güncellemesi","sonraki_eylem":"hazır karşılık taraması → şema → Rust alt komutu → skill PR"}
