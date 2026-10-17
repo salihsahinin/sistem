@@ -28,3 +28,6 @@ import Kanon.DenetimKapsami
 import Kanon.DosyaAciklama
 import Kanon.KararYetkisi
 import Kanon.AjanKaliciligi
+import Kanon.DeterministikTasarim
+import Kanon.AjanMetodoloji
+import Kanon.SkillUretim
