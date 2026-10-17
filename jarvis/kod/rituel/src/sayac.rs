@@ -103,7 +103,8 @@ pub fn kos(argv: &[String]) -> i32 {
     let mut hook_byte: Option<usize> = None;
     if Path::new(&hook).exists() {
         let mut c = Command::new("bash");
-        c.arg(&hook).current_dir(&repo);
+        // stdin boş: hook stdin okur; miras alırsa açık boru zaman aşımına dek bekletir (2026-10-17 ölçümü).
+        c.arg(&hook).current_dir(&repo).stdin(std::process::Stdio::null());
         hook_byte = py::calistir_zamanli(c, 20).map(|r| r.out.len());
     }
     let toplam: usize = sonuc.iter().map(|r| r.birim).sum();
