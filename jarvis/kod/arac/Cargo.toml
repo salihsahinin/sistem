@@ -1,0 +1,33 @@
+[package]
+name = "jarvis-arac"
+description = "Jarvis genel araçları (alan-ajani-dogur · buyuk-harf-temizle · yol-tasi · masa-uret); tools/*.py karşılıklarıyla fark testli"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+jarvis-hook = { path = "../hook" }
+jarvis-rituel = { path = "../rituel" }
+regex = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+unicode-normalization = "0.1"
+
+[lib]
+name = "jarvis_arac"
+path = "src/lib.rs"
+
+[[bin]]
+name = "alan-ajani-dogur"
+path = "src/bin/alan_ajani_dogur.rs"
+
+[[bin]]
+name = "buyuk-harf-temizle"
+path = "src/bin/buyuk_harf_temizle.rs"
+
+[[bin]]
+name = "yol-tasi"
+path = "src/bin/yol_tasi.rs"
+
+[[bin]]
+name = "masa-uret"
+path = "src/bin/masa_uret.rs"

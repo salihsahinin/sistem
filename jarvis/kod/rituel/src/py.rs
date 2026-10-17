@@ -329,9 +329,9 @@ pub struct AltCikti {
 }
 
 /// `subprocess.run(..., capture_output=True, timeout=sn)`; başlatılamaz ya da zaman aşımı → `None`.
-/// stdin üst sürecinkinden miras alınır (Python gibi).
+/// stdin boş cihazdır (açık stdin borusu alt süreci kilitleyebilir; 2026-10-17 kural-sayaci dersi).
 pub fn calistir_zamanli(mut c: Command, sn: u64) -> Option<AltCikti> {
-    c.stdout(Stdio::piped()).stderr(Stdio::piped());
+    c.stdin(Stdio::null()).stdout(Stdio::piped()).stderr(Stdio::piped());
     let mut ch = c.spawn().ok()?;
     let mut so = ch.stdout.take()?;
     let mut se = ch.stderr.take()?;
