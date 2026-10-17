@@ -47,3 +47,4 @@
 {"olay":"al","id":17,"ts":"2026-10-17T13:52:18Z"}
 {"olay":"bitir","id":17,"ts":"2026-10-17T13:52:18Z","kanit":["PR #20: seans-acilis/kapanis Rust ikilileri birincil (acilis-kapilari","kural-sayaci","skill-esik","hafiza-ayna","sicak-katman-fifo); Python yedek"]}
 {"olay":"al","id":19,"ts":"2026-10-17T13:52:18Z"}
+{"olay":"ac","id":20,"ts":"2026-10-17T14:28:23Z","alan":"jarvis","is":"Python araçlarının Rust'a taşınması (Karar 117 EK-3, 5b): 59 araç, 7 parti","sonraki_eylem":"parti 1 omp'de (worktree omp-rust-p1); sonra parti 2-7 sırayla","kanit":["jarvis/raporlar/2026-10-17-rust-tasima-plani.md"]}
