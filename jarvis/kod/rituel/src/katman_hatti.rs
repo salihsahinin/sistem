@@ -1,7 +1,7 @@
 //! `tools/katman-hatti.py` karşılığı: silver/gold katmanını BRONZ'dan uçtan uca yeniden üreten sabit sıralı hat.
 //! Kira (`veri/.kira-katman-hatti.json`, O_EXCL, TTL 600 sn, bekleme 60 sn/2 sn, çıkış 5), hijyen (ANALYZE + PRAGMA optimize),
 //! `[durum  ] ad  süre  komut` satırları, `--json` tek nesne. Çıkış: ilk FAIL-LOUD adımın kodu · 5 kira alınamadı · 2 bilinmeyen --atla adı.
-//! Taşınmış adımlar (hareket, seyir, saglik) yanındaki ikiliyle koşar (yoksa `<repo>/../target/release/`, o da yoksa Python betiği);
+//! Taşınmış adımlar (baglam, ambar, hareket, seyir, saglik, anakronizm) yanındaki ikiliyle koşar (yoksa `<repo>/../target/release/`, o da yoksa Python betiği);
 //! diğer adımlar Python betiği olarak çağrılmaya devam eder.
 use crate::argparse::{Ayrisan, Secenek};
 use crate::{harness_anahtar, py};
@@ -61,6 +61,9 @@ fn ikili_adi(ad: &str) -> Option<&'static str> {
         "hareket" => Some("hareket-tablo"),
         "seyir" => Some("baglam-seyir"),
         "saglik" => Some("silver-saglik"),
+        "baglam" => Some("baglam-tablo"),
+        "ambar" => Some("ambar-tablo"),
+        "anakronizm" => Some("anakronizm-denetim"),
         _ => None,
     }
 }

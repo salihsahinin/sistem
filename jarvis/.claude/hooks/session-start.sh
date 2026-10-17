@@ -24,7 +24,7 @@ try:  # Karar 68 (08-26) anakronizm freni: BUGÜN sistem saatinden + model kesim
     for l in open("veri/model-kesim.jsonl", encoding="utf-8"):
         d = json.loads(l)
         if d["kesim_turu"] == "reliable": ks[d["model_ad"].replace("Claude ", "")] = d["kesim_tarihi"]
-    print("ZAMAN-ZEMİNİ (Karar 68): BUGÜN %s · kesim(reliable) %s · zaman-bağımlı iddia AS-OF damgasız ÇIKMAZ; model-hafızası = 'AS-OF ≤ kesim, doğrulanmadı' → canlı çek (tools/anakronizm-denetim.py)" % (datetime.date.today().isoformat(), " · ".join("%s %s" % kv for kv in ks.items())))
+    print("ZAMAN-ZEMİNİ (Karar 68): BUGÜN %s · kesim(reliable) %s · zaman-bağımlı iddia AS-OF damgasız ÇIKMAZ; model-hafızası = 'AS-OF ≤ kesim, doğrulanmadı' → canlı çek (../target/release/anakronizm-denetim)" % (datetime.date.today().isoformat(), " · ".join("%s %s" % kv for kv in ks.items())))
 except Exception as e:
     print("ZAMAN-ZEMİNİ: kesim tablosu okunamadı (%s) — veri/model-kesim.jsonl" % e)
 try:

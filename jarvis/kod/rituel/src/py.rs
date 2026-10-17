@@ -385,3 +385,188 @@ pub fn json_girintili(v: &serde_json::Value) -> String {
     v.serialize(&mut ser).expect("json");
     String::from_utf8(buf).expect("utf8")
 }
+
+// ---------------------------------------------------------------- Hash · float · tarih
+use chrono::{Datelike, NaiveDate};
+/// SHA-1 (hashlib.sha1), artımlı.
+pub struct Sha1 {
+    h: [u32; 5],
+    tampon: Vec<u8>,
+    uzunluk: u64,
+}
+
+impl Sha1 {
+    pub fn yeni() -> Self {
+        Sha1 { h: [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0], tampon: Vec::with_capacity(64), uzunluk: 0 }
+    }
+    fn blok(h: &mut [u32; 5], ch: &[u8]) {
+        let mut w = [0u32; 80];
+        for i in 0..16 {
+            w[i] = u32::from_be_bytes([ch[4 * i], ch[4 * i + 1], ch[4 * i + 2], ch[4 * i + 3]]);
+        }
+        for i in 16..80 {
+            w[i] = (w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]).rotate_left(1);
+        }
+        let [mut a, mut b, mut c, mut d, mut e] = *h;
+        for (i, wi) in w.iter().enumerate() {
+            let (f, k) = match i {
+                0..=19 => ((b & c) | (!b & d), 0x5A827999u32),
+                20..=39 => (b ^ c ^ d, 0x6ED9EBA1),
+                40..=59 => ((b & c) | (b & d) | (c & d), 0x8F1BBCDC),
+                _ => (b ^ c ^ d, 0xCA62C1D6),
+            };
+            let t = a.rotate_left(5).wrapping_add(f).wrapping_add(e).wrapping_add(k).wrapping_add(*wi);
+            e = d;
+            d = c;
+            c = b.rotate_left(30);
+            b = a;
+            a = t;
+        }
+        for (x, y) in h.iter_mut().zip([a, b, c, d, e]) {
+            *x = x.wrapping_add(y);
+        }
+    }
+    pub fn ekle(&mut self, mut b: &[u8]) {
+        self.uzunluk += b.len() as u64;
+        if !self.tampon.is_empty() {
+            let eksik = 64 - self.tampon.len();
+            let al = eksik.min(b.len());
+            self.tampon.extend_from_slice(&b[..al]);
+            b = &b[al..];
+            if self.tampon.len() == 64 {
+                let t = std::mem::take(&mut self.tampon);
+                Self::blok(&mut self.h, &t);
+                self.tampon = t;
+                self.tampon.clear();
+            }
+        }
+        while b.len() >= 64 {
+            Self::blok(&mut self.h, &b[..64]);
+            b = &b[64..];
+        }
+        if !b.is_empty() {
+            self.tampon.extend_from_slice(b);
+        }
+    }
+    pub fn bitir(mut self) -> String {
+        let bit = self.uzunluk * 8;
+        let mut son = std::mem::take(&mut self.tampon);
+        son.push(0x80);
+        while son.len() % 64 != 56 {
+            son.push(0);
+        }
+        son.extend(bit.to_be_bytes());
+        for ch in son.chunks(64) {
+            Self::blok(&mut self.h, ch);
+        }
+        self.h.iter().map(|x| format!("{x:08x}")).collect()
+    }
+}
+
+pub fn sha1_hex(b: &[u8]) -> String {
+    let mut s = Sha1::yeni();
+    s.ekle(b);
+    s.bitir()
+}
+
+/// Python `repr(float)` / `str(float)`.
+pub fn float_repr(f: f64) -> String {
+    if f.is_nan() {
+        return "nan".into();
+    }
+    if f.is_infinite() {
+        return if f > 0.0 { "inf".into() } else { "-inf".into() };
+    }
+    if f == 0.0 {
+        return if f.is_sign_negative() { "-0.0".into() } else { "0.0".into() };
+    }
+    let e = format!("{:e}", f.abs());
+    let (mant, us) = e.split_once('e').unwrap();
+    let us: i32 = us.parse().unwrap();
+    let mut rakamlar: String = mant.chars().filter(|c| *c != '.').collect();
+    // Python (dtoa mod 0) eşit uzaklıktaki iki en-kısa adaydan çifte yuvarlar; Rust en kısa üretici yukarı yuvarlayabilir.
+    let n0 = rakamlar.len();
+    let tam = format!("{:.*e}", n0 + 25, f.abs());
+    let tam_rakam: String = tam.split_once('e').unwrap().0.chars().filter(|c| *c != '.').collect();
+    if tam_rakam.len() == n0 + 26 && tam_rakam[n0 + 1..].bytes().all(|b| b == b'0') && tam_rakam.as_bytes()[n0] == b'5' && tam_rakam[..n0 + 1].starts_with(&rakamlar[..n0.saturating_sub(1)]) {
+        let kes = &tam_rakam[..n0];
+        if (kes.as_bytes()[n0 - 1] - b'0') % 2 == 0 {
+            rakamlar = kes.to_string();
+        } else if let Ok(v) = kes.parse::<u128>() {
+            let yukari = (v + 1).to_string();
+            if yukari.len() == n0 {
+                rakamlar = yukari;
+            }
+        }
+    }
+    let nokta = us + 1;
+    let isaret = if f < 0.0 { "-" } else { "" };
+    let n = rakamlar.len() as i32;
+    let govde = if nokta <= -4 || nokta > 16 {
+        let kuyruk = &rakamlar[1..];
+        format!("{}{}e{}{:02}", &rakamlar[..1], if kuyruk.is_empty() { String::new() } else { format!(".{kuyruk}") }, if us < 0 { '-' } else { '+' }, us.abs())
+    } else if nokta <= 0 {
+        format!("0.{}{rakamlar}", "0".repeat((-nokta) as usize))
+    } else if nokta >= n {
+        format!("{rakamlar}{}.0", "0".repeat((nokta - n) as usize))
+    } else {
+        format!("{}.{}", &rakamlar[..nokta as usize], &rakamlar[nokta as usize..])
+    };
+    format!("{isaret}{govde}")
+}
+
+/// `date.fromisoformat` (Python 3.11: `YYYY-MM-DD`, `YYYYMMDD`, ISO hafta biçimleri); geçersizse `None` (ValueError).
+pub fn iso_tarih(s: &str) -> Option<NaiveDate> {
+    let b = s.as_bytes();
+    let n = b.len();
+    if ![7, 8, 10].contains(&n) {
+        return None;
+    }
+    let say = |p: usize, k: usize| -> Option<(i32, usize)> {
+        let kes = b.get(p..p + k)?;
+        if !kes.iter().all(u8::is_ascii_digit) {
+            return None;
+        }
+        Some((std::str::from_utf8(kes).ok()?.parse().ok()?, p + k))
+    };
+    let (yil, mut p) = say(0, 4)?;
+    let ayracli = b.get(p) == Some(&b'-');
+    if ayracli {
+        p += 1;
+    }
+    let t = if b.get(p) == Some(&b'W') {
+        let (hafta, q) = say(p + 1, 2)?;
+        p = q;
+        let mut gun = 1;
+        if p < n {
+            if ayracli {
+                if b.get(p) != Some(&b'-') {
+                    return None;
+                }
+                p += 1;
+            }
+            let (g, q) = say(p, 1)?;
+            gun = g;
+            p = q;
+        }
+        let w = chrono::Weekday::try_from(u8::try_from(gun - 1).ok().filter(|g| *g < 7)?).ok()?;
+        NaiveDate::from_isoywd_opt(yil, u32::try_from(hafta).ok()?, w)?
+    } else {
+        let (ay, q) = say(p, 2)?;
+        p = q;
+        if ayracli {
+            if b.get(p) != Some(&b'-') {
+                return None;
+            }
+            p += 1;
+        }
+        let (gun, q) = say(p, 2)?;
+        p = q;
+        NaiveDate::from_ymd_opt(yil, u32::try_from(ay).ok()?, u32::try_from(gun).ok()?)?
+    };
+    if p != n || t.year() < 1 || t.year() > 9999 {
+        return None;
+    }
+    Some(t)
+}
+

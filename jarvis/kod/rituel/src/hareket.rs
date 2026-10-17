@@ -6,7 +6,8 @@
 //! beklenmedik JSON tipleri (ör. `message` sözlük değil, `timestamp` metin değil, `id` metin değil) çöker;
 //! yazılan dosyalarda satır sonu her zaman LF (Python Windows'ta CRLF yazar; CSV her yerde CRLF'tir ve öyle kalır).
 use crate::argparse::{Ayrisan, Secenek};
-use crate::{harness_anahtar, py};
+use crate::py::{self, float_repr};
+use crate::harness_anahtar;
 use chrono::{Datelike, Duration, NaiveDate, NaiveDateTime, NaiveTime, TimeZone};
 use jarvis_hook::ortak::{py_dumps, py_truthy};
 use regex::Regex;
@@ -110,37 +111,6 @@ impl Rx {
 }
 
 // ---------------------------------------------------------------- Python değer yardımcıları
-/// Python `repr(float)`.
-fn float_repr(f: f64) -> String {
-    if f.is_nan() {
-        return "nan".into();
-    }
-    if f.is_infinite() {
-        return if f > 0.0 { "inf".into() } else { "-inf".into() };
-    }
-    if f == 0.0 {
-        return if f.is_sign_negative() { "-0.0".into() } else { "0.0".into() };
-    }
-    let e = format!("{:e}", f.abs());
-    let (mant, us) = e.split_once('e').unwrap();
-    let us: i32 = us.parse().unwrap();
-    let rakamlar: String = mant.chars().filter(|c| *c != '.').collect();
-    let nokta = us + 1; // 0.d1d2... x 10^nokta
-    let isaret = if f < 0.0 { "-" } else { "" };
-    let n = rakamlar.len() as i32;
-    let govde = if nokta <= -4 || nokta > 16 {
-        let kuyruk = &rakamlar[1..];
-        format!("{}{}e{}{:02}", &rakamlar[..1], if kuyruk.is_empty() { String::new() } else { format!(".{kuyruk}") }, if us < 0 { '-' } else { '+' }, us.abs())
-    } else if nokta <= 0 {
-        format!("0.{}{rakamlar}", "0".repeat((-nokta) as usize))
-    } else if nokta >= n {
-        format!("{rakamlar}{}.0", "0".repeat((nokta - n) as usize))
-    } else {
-        format!("{}.{}", &rakamlar[..nokta as usize], &rakamlar[nokta as usize..])
-    };
-    format!("{isaret}{govde}")
-}
-
 /// Python `repr(v)` (JSON'dan gelen değerler için).
 fn py_repr_v(v: &Value) -> String {
     match v {

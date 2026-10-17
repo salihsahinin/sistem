@@ -50,3 +50,19 @@ path = "src/bin/silver_saglik.rs"
 [[bin]]
 name = "baglam-seyir"
 path = "src/bin/baglam_seyir.rs"
+
+[[bin]]
+name = "baglam-tablo"
+path = "src/bin/baglam_tablo.rs"
+
+[[bin]]
+name = "ambar-tablo"
+path = "src/bin/ambar_tablo.rs"
+
+[[bin]]
+name = "anakronizm-denetim"
+path = "src/bin/anakronizm_denetim.rs"
+
+[[bin]]
+name = "bayat-cekim"
+path = "src/bin/bayat_cekim.rs"
