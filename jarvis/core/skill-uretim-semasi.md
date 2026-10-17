@@ -119,5 +119,7 @@ En ucuz kapı en zayıf kapı değildir burada — çünkü R/K3 deterministik; 
 - **Dağıtım:** yan oturumda üretilen skill branch + PR (Karar 95); merge ana-sıra. **Ölçüm:** `InstructionsLoaded` hook kütüğü (`veri/bronz/talimat-yukleme-olay.jsonl`) S-kaynak okunma ayağı + üç yuva davranışı; 10 koşumdan sonra §5 ile birlikte değerlendirilir.
 - **m.16:** m.43 çelişki yok (ikinci giriş kapısı) · KB-19 tavan → süpersede (Salih 09-15) · m.20/m.8 uyumlu · İB-81 erteleme dokunulmadı.
 
-## 5. Ölçüm planı (deneysel damgayı kaldırmanın yolu)
-Her `skill-kapisi` koşumu `kuyruk/skill-fikir-kutusu.md`'ye tek satır: aday · katman-başına geçti/düştü · tür · süre. 10 koşumdan sonra: (i) hangi kapı en çok eliyor (c/(1−p) sırası doğrulanır), (ii) yanlış-negatif vakaları (sonradan gerekli çıkan RET/BEKLET), (iii) τ/W/β/n_val kalibrasyonu. **BAKIM-KK koşum satırı (Karar 75):** tarih · örneklem n · verim/kalite ham ortalama · skill_coverage · öneri sayısı (kabul/toplam) — aynı dosyaya. Kör noktalar tam listesi: rapor "Kör noktalar" bölümleri (45 kalem).
+**Hüküm kodu (Karar 117, 2026-10-17):** §4/§4b'nin kuralları (yan-etki → `disable-model-invocation`, description standardı, S-kaynak tetiği, üç yuva, Y2' koşullu-yük, eval-önce, icra-türü satırı, kavram dersi) hemen ardından gelen `Kanon.SkillUretim` modülündedir; metinle ayrışırsa kod kazanır. §5 `skill-uretim-semasi-s5.md`'de.
+
+@../lean/Kanon/SkillUretim.lean.md
+@skill-uretim-semasi-s5.md

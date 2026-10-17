@@ -56,5 +56,7 @@
 ## 8b. T-A triyaj şiddet formülü (Karar 88 M13, Salih imzası 2026-09-09; deneysel m.29)
 `tools/ta-triyaj.py`: **şiddet = (uzunluk_a + uzunluk_b) × tekrar_sayısı(anahtar_terim)** — **öneleme** aday çiftlerinin damıtma sırası bu değere göre azalan (rapor `raporlar/2026-09/2026-09-03-ta-triyaj-ilk20.md`; uzunluk-farkı alternatifi eş-boy/tam-kopya çiftleri alta ittiği için **elendi**). Bilinen sınır: uzun-tekil çift ↔ kısa-çok-tekrar eşitlenebilir (ilk-20'de görülmedi). Damıtma turu ilk-20 tablosunu bu sırayla işler.
 
-## 9. Kör noktalar (rapor-2 hakem; kanona damga)
-Gold'un ölçülmüş kazancı `YOK` (S-9 + S-1) · oran heuristiği `YOK` · DataOps/süreç kazancı ölçümsüz · learning-by-building için DE alanında doğrudan ölçüm yok (PBL/transfer ekstrapolasyonu) · orkestratör/dbt eşiği [**aranamadı**] · lineage asgari seti kaynaksız · spaced-repetition/kata aranmadı · DEA-C01 hands-on etkisi aranmadı · tüm oranlar çok-kiracılı BI'dan; Türkçe/tek-kullanıcı kaynak yok.
+**Hüküm kodu (Karar 117, 2026-10-17):** §2 done-yüklemleri, §6 ship adımı sözleşmesi ve §8b şiddet formülü hemen ardından gelen `Kanon.KatmanYuklem` modülündedir (kapsadığı son bölümün ardına yerleşir); metinle ayrışırsa kod kazanır. §9 `veri-muhendisligi-katmani-s9.md`'de.
+
+@../lean/Kanon/KatmanYuklem.lean.md
+@veri-muhendisligi-katmani-s9.md

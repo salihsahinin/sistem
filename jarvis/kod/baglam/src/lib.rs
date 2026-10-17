@@ -140,8 +140,10 @@ fn gez(
     bulgular: &mut Vec<Bulgu>,
 ) -> std::io::Result<()> {
     let metin = fs::read_to_string(dosya)?;
-    let aktarmalar = ice_aktarmalar(&metin);
-    if let Some(ilk) = aktarmalar.first() {
+    // Düz yazıdaki `@200k` gibi yol olmayan jetonlar içe aktarma sayılmaz (harness var olmayan hedefi yok sayar).
+    let aktarmalar: Vec<IceAktarma> =
+        ice_aktarmalar(&metin).into_iter().filter(|a| a.yol.contains(['/', '\\', '.']) || coz(dosya, &a.yol).is_file()).collect();
+    if let Some(ilk) = aktarmalar.iter().find(|a| coz(dosya, &a.yol).is_file()) {
         let aktarma_satirlari: HashSet<usize> = aktarmalar.iter().map(|a| a.satir).collect();
         for (i, satir) in metin.lines().enumerate().skip(ilk.satir) {
             let no = i + 1;

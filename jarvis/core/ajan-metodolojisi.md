@@ -68,3 +68,7 @@ Ana ajan JARVIS'tir (m.44 baki — üst-orkestratörlük devredilmez); firstmate
 
 ## Koşum hijyeni ekleri
 - **Heredoc-python hijyeni (bakım-kk 08-29 kanıtı, Salih imzası Karar 77 — oturum 11b49d44: 18 hata-benzeri çıktı, ≥3 düzeltme turu):** ≥15 satırlık python işi Bash heredoc'a değil scratchpad'de `.py` dosyasına yazılır ve oradan koşulur — "deterministik iş script'e gömülür" kuralının koşum-anı karşılığı; sözdizim hatası yazım katmanında yakalanır.
+
+**Hüküm kodu (Karar 117, 2026-10-17):** §1 (sözleşme üçlüsü, dal bütçesi, DUR dalı), §6/6b (işçi case alanları, fren, aile ≤3, eskalasyon tetiği ve kaydı, aşağı-devir yasağı) ve koşum hijyeni hemen ardından gelen `Kanon.AjanMetodoloji` modülündedir (kapsadığı son bölümün ardına yerleşir; §4'ün hükmü ayrıca `Kanon.Delegasyon`); metinle ayrışırsa kod kazanır.
+
+@../lean/Kanon/AjanMetodoloji.lean.md

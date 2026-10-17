@@ -1,0 +1,2 @@
+## 9. Kör noktalar (rapor-2 hakem; kanona damga)
+Gold'un ölçülmüş kazancı `YOK` (S-9 + S-1) · oran heuristiği `YOK` · DataOps/süreç kazancı ölçümsüz · learning-by-building için DE alanında doğrudan ölçüm yok (PBL/transfer ekstrapolasyonu) · orkestratör/dbt eşiği [**aranamadı**] · lineage asgari seti kaynaksız · spaced-repetition/kata aranmadı · DEA-C01 hands-on etkisi aranmadı · tüm oranlar çok-kiracılı BI'dan; Türkçe/tek-kullanıcı kaynak yok.
