@@ -4,7 +4,7 @@ Kaynak: `tools/*.py` + `.claude/skills/*/scripts/*.py`; Rust karşılığı olan
 Sıra: son 30 günde araç adının geçtiği hareket olayı (2026-09-17 → 2026-10-17, `veri/bronz/hareket-olay.jsonl`) azalan, eşitlikte küçük dosya önce. Parti ≈ 1.800 satır Python.
 Toplam: 59 araç, 12010 satır, 7 parti.
 
-Kural: her aracın Rust karşılığı aynı CLI ve aynı çıktıyı verir; Python yedek kalır; fark testi araç başına bir kez (`.claude/rules/tools.md`); yeni birim testi yok; skill/ritüel çağrısı Rust'a çevrilir.
+Kural: her aracın Rust karşılığı aynı CLI ve aynı çıktıyı verir; fark testi araç başına bir kez (`.claude/rules/tools.md`); yeni birim testi yok; skill/ritüel çağrısı Rust'a çevrilir. **Karar 118 M2 (2026-10-17):** fark testi geçince Python sürümü `arsiv/kod/python/`'a iner (başka bir Python aracı onu kütüphane olarak yüklüyorsa, o araç taşınana dek kalır); Python'a bağlı fark testi de arşive iner; skill'lerde "yedek python3" ifadesi yazılmaz. Parti 1 bu kuraldan önce başladı; onun Python'ları ayrı bir PR'da arşive iner (durum #22).
 
 ## Parti 1 (1868 satır)
 | olay | satır | araç |
