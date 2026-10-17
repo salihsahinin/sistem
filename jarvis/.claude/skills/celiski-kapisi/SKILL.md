@@ -6,13 +6,13 @@ metadata: { owner: jarvis, version: "0.1.0-deneysel-m29" }
 
 # celiski-kapisi — m.16 koşum talimatı
 
-Kanon zinciri: m.16 (çelişki kapısı — **tek** fren) · m.38 (lojik form) · m.31 (karar katmanları) · m.8 (silme yok, arşiv) · 07-19 kuralı (kanon **origin klonundan** okunur).
+Kanon zinciri: m.16 (çelişki kapısı — **tek** fren; dallar `lean/Kanon/CeliskiKapisi.lean`) · m.38 (lojik form) · m.31 (karar katmanları) · m.8 (silme yok, arşiv) · 07-19 kuralı (kanon **origin klonundan** okunur).
 
 ## Adımlar
 
 1. **Ölçek kontrolü.** Öneri ölçek-eşiği altındaysa (su-bardağı) → kapı koşmaz, iş direkt yapılır. Eşik üstü → devam.
 2. **Önerme-formuna indirge (m.38).** Öneriyi tek önermeye çevir: "X koşulunda Y yapılır" formu; bağlaç setiyle (∧ ∨ ¬ → ↔). Belirsizse Salih'e **tek** netleştirme sorusu (m.4 eşiğine takılıyorsa sorma, en makul okumayı yaz ve raporda belirt).
-3. **Kanon taraması (origin klonundan).** Hedefli tara: `core/tuzuk-v0.md` (madde + ek fıkra + şerhler) · `core/durum-kapsulu.md` · `core/pano.md` (kart kuralları) · `kuyruk/senaryo-defteri.md` (son kararlar) · açık taslaklar (`kuyruk/m*-taslak-*.md`). Arama iki katmanlı: anahtar-kelime (literal) + kavram (önerinin değillediği kural hangisi olabilir — ¬ ilişkisi).
+3. **Kanon taraması (origin klonundan).** Hedefli tara: `core/tuzuk-v0.md` (madde + ek fıkra + şerhler; tüzük 15 parça: `Read` ile oku ya da `../target/release/baglam genislet core/tuzuk-v0.md`, Bash `grep`'te `core/tuzuk-v0*.md` + `lean/Kanon/*.lean` birlikte) · `core/durum-kapsulu.md` · `core/pano.md` (kart kuralları) · `kuyruk/senaryo-defteri.md` (son kararlar) · açık taslaklar (`kuyruk/m*-taslak-*.md`). Arama iki katmanlı: anahtar-kelime (literal) + kavram (önerinin değillediği kural hangisi olabilir — ¬ ilişkisi).
 4. **Çelişki testi.** İki tip ayrı işaretlenir: **literal** (metin açıkça tersini söylüyor) · **lojiksel** (öneri ∧ mevcut kural birlikte doğru olamaz, m.38 formunda göster). **çelişki** ile DARALTMA'yı karıştırma: kapsamı küçülten ama birlikte-yaşayabilen öneri çelişki değildir — raporda "daraltma" diye ayrı etiketlenir.
 5. **Çelişki yoksa:** sessiz geçiş — tek satır beyan ("kapı temiz: tarama X madde, çelişki yok") ve iş normal akışta devam. Tören raporu **üretme** (false-positive freni).
 6. **Çelişki varsa — rapor, karar alınmadan önce:** (a) çelişki: madde numarası + birebir alıntı + lojik form (öneri ↔ ¬kural); (b) artı/eksi: önerinin getirisi vs kuralın koruduğu değer, çıplak veriyle; (c) plan seçenekleri — tipik üçlü: mevcut kuralın kendi tetiğini/istisnasını işletmek · amendment (Katman-1 → Salih imzası) · öneriyi geri çekmek/daraltmak. Karar Salih'in/ana-sıranın; skill karar **almaz**, kanonu **değiştirmez**.
