@@ -1,0 +1,2 @@
+## 5. Ölçüm planı (deneysel damgayı kaldırmanın yolu)
+Her `skill-kapisi` koşumu `kuyruk/skill-fikir-kutusu.md`'ye tek satır: aday · katman-başına geçti/düştü · tür · süre. 10 koşumdan sonra: (i) hangi kapı en çok eliyor (c/(1−p) sırası doğrulanır), (ii) yanlış-negatif vakaları (sonradan gerekli çıkan RET/BEKLET), (iii) τ/W/β/n_val kalibrasyonu. **BAKIM-KK koşum satırı (Karar 75):** tarih · örneklem n · verim/kalite ham ortalama · skill_coverage · öneri sayısı (kabul/toplam) — aynı dosyaya. Kör noktalar tam listesi: rapor "Kör noktalar" bölümleri (45 kalem).

@@ -9,6 +9,7 @@ pub mod dispatch;
 pub mod ortak;
 pub mod paket;
 pub mod prompt_dosya;
+pub mod read_genislet;
 pub mod sabit;
 pub mod session_start;
 pub mod talimat;

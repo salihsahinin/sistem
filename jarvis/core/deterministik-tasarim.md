@@ -14,5 +14,7 @@ Aynı girdi → aynı yol. Rastgelelik / olasılık beyanı / çok-örneklem "da
 ## 3. Nerede vurgulanmaz (09-10 daraltması)
 Sohbet, öğretim, karar sunumu, rapor anlatımı, günlük iş planlaması, Salih sorularına cevap. Bu bağlamlarda ilke sessizdir: ne gerekçe cümlesi olarak yazılır ne de her seçeneğe "deterministik mi" süzgeci uygulanır. Bir tasarım kararında stokastik seçenek masaya gelirse §1 yalnız o kalemde, tek cümleyle anılır.
 
-## 4. Bağlı kayıtlar
-CLAUDE.md §6 (pointer satırı) · tüzük Karar 65 (`arsiv/kuyruk-arsiv/` 08-22 arşivi) · `wiki/anakronizm-freni.md` (Karar 68, ayrı kural) · hafıza notu `feedback-claude-md-kisa-tut` (08-17 paketi; 09-10 daraltma işlendi).
+**Hüküm kodu (Karar 117, 2026-10-17):** §1-§3'ün dalları ve done-yüklemleri hemen ardından gelen `Kanon.DeterministikTasarim` modülündedir; metinle ayrışırsa kod kazanır. §4 `deterministik-tasarim-s4.md`'de.
+
+@../lean/Kanon/DeterministikTasarim.lean.md
+@deterministik-tasarim-s4.md
