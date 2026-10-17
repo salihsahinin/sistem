@@ -5,6 +5,7 @@
 *Şablon v3 eki (KB-46 A, Salih 08-21, defter Karar 49): +**Started** damgası — karta **ilk icra** commit'inin tarihi; yeni kartlarda zorunlu, mevcut kartlara geriye dönük **uydurulmaz** (bilinmeyen "—", m.39). `DONE` alanı = ürün DoD (teslimin ürün-tanımı; boş kart açılamaz kuralı aynı). Akış görünümü `v_pano_akis` (**wip** · throughput · cycle time · kart yaşı — Kanban 4 metriği, deterministik sayım) İB-41 icra borcunda.*
 
 **Güncelleme:** 2026-08-12 L8-MAC — **Mac geçişi Faz 0-4 `DONE`, envanter 10/11** (11/11 **canlı** beyanı 08-20 Karar 35); gemi + fren çifti + no-mistakes + firstmate kurulu; oturum yapılanması 'seans başı' + klasör ayrımına oturdu (08-15). Tam anlatı + araç dökümü: arşiv 08-29 §1; teslim `raporlar/vardiya/vardiya-teslim-2026-08-12-l8-mac.md`. Tarihçe zinciri (07-30→08-12): `arsiv/kuyruk-arsiv/pano-arsivi-2026-08-21.md`.
+**Arşiv (2026-10-17, Karar 118 M3):** K-002, K-003 (PortRisk sprintleri) ve K-008 (ön-koşulu PortRisk) → `arsiv/kanon/portrisk-emekli-2026-10-17.md`; ürünler öğrenilen konulardan çıkar (Karar 94 EK).
 
 ## AKTİF
 | Kart | İş | `DONE` | Açılış | Bağımlı | Yetki | Ekrana gel |
@@ -16,8 +17,6 @@
 ## BEKLEYEN
 | Kart | İş | `DONE` | Açılış | Bağımlı | Yetki | Ekrana gel |
 |---|---|---|---|---|---|---|
-| K-002 | PortRisk Sprint 1 (yfinance + getiriler) — ölçüm bankı (m.36c) **BEKLEYEN'e indi (Salih 07-15: "birkaç gün odak öğrenme+Jarvis; önemli olmaya başlayınca 3. oturum olarak tasarlarız"; kabul edilen risk: P4 itilmesi — senaryo-defteri 07-15)** + K-017 eki (07-14): rate-limit sigortası **baştan** · PyPortfolioOpt/Riskfolio/quantstats desenleri okunur **+ 2C ön-seçimi (Salih 07-17, gündem md.2): tetik çekildiğinde ilk dilim = S0 kişisel-portföy faktör-analizi (Fama-French 5F+momentum, kendi midas getirileri) — Sprint 1'in ön-dilimi; havuz o güne dek fikir** | pytest yeşil + push (commit Salih'in) + hasat etiketleri işlendi | 07-10 | tetik: Salih "artık önemli" beyanı | Jarvis | Salih tetiği çekince |
-| K-003 | PortRisk Sprint 2 (SQLite veri katmanı) | şema + örnek sorgu README'de + ≥1 SQL testi | 07-10 | K-002 | Jarvis | — |
 | K-004 | İngilizce paket (CV + LinkedIn + GitHub profil) | 1 sayfa ATS-uyumlu CV + canlı LinkedIn + profil README | 07-10 | — | Jarvis | Kasım başı |
 | K-005 | **imc** Prosperity (ya da eşdeğer) kaydı | leaderboard'da takım adı | 07-10 | — | Jarvis | tur duyurusu |
 | K-007 | GPA/transkript netleştirme | değer kapsüle işlendi | 07-10 | — | Jarvis | CV çalışması başlarken |
@@ -29,7 +28,6 @@
 ## BLOKE
 | Kart | İş | Ön-koşul | Açılış | Yetki |
 |---|---|---|---|---|
-| K-008 | vault-index reposu (Faz 0 "Kanıt Dilimi") | PortRisk canlı-link `DONE` | 07-10 | Jarvis |
 | K-009 | Otomasyon (gecelik senkron Routine, kapanış/açılış kancaları). Açılış gündemi (Karpathy-loop · otonomi merdiveni · tetik adayları Dispatch/Orca/headless · G0-G6 raporu · kararlı-prefix standardı: durağan-blok-önce, oynak-veri-sonda, **ttl** bilinçli) tam metin arşiv `arsiv/kuyruk-arsiv/pano-arsivi-2026-09-04.md` §2. Gece-senkron kütüğü `EMEKLİ` (Karar 88 M9, 09-09: son satır 08-04 FAIL-ff, Mac eşleniği yok; ritüel adımı kaldırıldı); gece işi Karar 84 gnhf şeridinde. | **AÇILIŞ tamamlandı 07-19** (m.30 ek + m.42 imzalı; Dilim 0-2.1 kuruldu; kalan: kilit saha-testi + gece-script ilk koşum → K-010 sicil sayacı A1 5/5 **kesin**, Karar 83 EK-2) | 07-10 | Salih+Jarvis |
 | K-010 | İlk canlı ajan — **MASA `KAPANDI` (Karar 83 + EK-2, 08-30): ADIM-1 6/6 imzalı; A1 = ~~5/5~~ 1/1 (Karar 90, 09-09); A2 `TAMAM`; A3 = 2/3 ayak + uzun-loop 1/3 (kalan 2 uzun-loop, tetik Salih); A4 açık; firstmate pilotu İB-07/09 `ONAYLI`.** **A2 `DONE` teyit (Karar 100 M6, 09-18; zincir dosyası 08-30 kapı tamam). A4 gündemine ek: Z3b işletim-sistemi sandbox (Karar 100 M5; Friday tur-4 uygulama-raporu §4).** Zincir-planı + durum sayacı `kuyruk/k010-zincir-2026-08-29.md` (kapı tanımları esas). | **K-009 ∧ (A1∧A2∧A3∧A4)** — kanıt kapıları, takvim değil (Salih 07-22). A1 = ~~ardışık 5~~ **1 başarılı otomasyon-koşumu ∧ incident 0 (Karar 90, Salih 09-09: "5 çok fazla, 1 olsa yeter")**, birim **koşum** (Karar 81 EK-2 süpersede; c=0 go-gate şerhi Salih 07-23, `cc/rapor/2026-07/rapor-2026-07-23-1.md`) · A2 guardrail saha-testi (PreToolUse kilit `PASS` ∧ revert tatbikatı ∧ sert-bütçe) · A3 /goal 1 ∧ /loop 1 ∧ Salih-tetikli uzun-loop 3 (Karar 82 EK) · A4 defter şeması v1 ∧ D4 kartı ∧ denetçi bütçe-çatalı. Araştırma-kapısı (her aşama çift-atlas önce, Salih 07-22) · A5 ekip-lideri hattı **paralel** (İB-75 ile birleşir) · hız ilkesi (kanıt/koşum-sayısı, takvim değil) — tam metin arşiv `arsiv/kuyruk-arsiv/pano-arsivi-2026-09-04.md` §3. Rakamlar m.29. | 07-10 | Salih+Jarvis |
 
