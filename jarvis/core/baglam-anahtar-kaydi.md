@@ -548,3 +548,7 @@ Yaş/decay/TTL skorları kanon-kuralı sınıfında **girmez** (sabit raf ömrü
 
 ## 7. Bedel defteri + ölçüm planı
 Bedel: her ad değişimi ≈ 1 script koşumu (5 sn) + sıcak katman düzenlemeleri (ilk koşum: 6 dosya) + tetik-eval; risk: aşırı-yeniden-yazım (repair-only ilkesi frenler) · tarihçe damgalarını yanlışlıkla yeniden yazma (izinli kalıplar frenler). Ölçüm: ilk 10 emeklilik koşumunda (kalıntı-önce/sonra · dosya sayısı · süre · yanlış-pozitif izinli-kalıp sayısı) → k1/k2 ve "vardiya+3" kalibrasyonu; tetik-eval sonuçları skill evals'e.
+
+**Lean eki (Karar 117, 2026-10-17):** §3 emeklilik protokolünün ve §4 eşik merdiveninin kodu aşağıda yüklenir (`Kanon.AnahtarEmeklilik`); md metni yerinde kalır, ayrışırsa kod kazanır.
+
+@../lean/Kanon/AnahtarEmeklilik.lean.md
