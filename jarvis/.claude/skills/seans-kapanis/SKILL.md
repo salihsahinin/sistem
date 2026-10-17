@@ -13,7 +13,7 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 ## 1. Yüzey + hat tespiti
 - Kanon-yazım kanalı var mı? (PC: doğrudan · bulut: origin-klon + **pat** ile commit/push; mount'ta git komutu **yasak** — yazım klondan push'lanır, mount'u senkron scripti eşitler.)
 - Kanal **yoksa**: tam ritüel koşulamaz → kapanış notunu "**ham fikir** / PC'de ingest edilecek" damgasıyla üret, Salih'e açıkça söyle: **bu gün m.9 gereği henüz sayılmadı**, ana seans devralınca sayılır.
-- Hat: prototip mi PortRisk mi? Paralel-seans senkron kuralı: yalnız **kendi** şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
+- Hat: hangi şerit (prototip · geliştirme · öğrenme)? Paralel-seans senkron kuralı: yalnız **kendi** şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
 
 ## 2. Teslim raporu (`core/sablonlar/seans-teslim.md` — beş soru)
 `raporlar/seans/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir **aday** kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
