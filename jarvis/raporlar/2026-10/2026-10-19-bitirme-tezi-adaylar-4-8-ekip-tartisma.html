@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitirme tezi adayları 4-8</title>
+<meta name="description" content="Üç kişilik ekip için beş tez adayının sade açıklaması, roller ve karşılaştırma tablosu (2026-10-19).">
+<style>
+  :root{
+    --bg:#f7f7f4; --card:#ffffff; --ink:#1d1d1b; --muted:#5d5d58; --line:#d9d9d2;
+    --accent:#2f5d8a; --accent-soft:#e6eef7; --warn:#8a4b2f; --warn-soft:#f7ebe6;
+    --ok:#2f6f4e; --ok-soft:#e6f2ec; --r:#7a4a9a; --r-soft:#f0e8f6; --e:#2f6f4e; --e-soft:#e6f2ec; --s:#2f5d8a; --s-soft:#e6eef7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15161a; --card:#1e2026; --ink:#ecece8; --muted:#a7a7a0; --line:#34363e;
+      --accent:#8fb4dc; --accent-soft:#222b36; --warn:#dca07f; --warn-soft:#352822;
+      --ok:#8ccba8; --ok-soft:#1f3128; --r:#c9a6e6; --r-soft:#2d2436; --e:#8ccba8; --e-soft:#1f3128; --s:#8fb4dc; --s-soft:#222b36;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15161a; --card:#1e2026; --ink:#ecece8; --muted:#a7a7a0; --line:#34363e;
+    --accent:#8fb4dc; --accent-soft:#222b36; --warn:#dca07f; --warn-soft:#352822;
+    --ok:#8ccba8; --ok-soft:#1f3128; --r:#c9a6e6; --r-soft:#2d2436; --e:#8ccba8; --e-soft:#1f3128; --s:#8fb4dc; --s-soft:#222b36;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:0 16px 48px}
+  .wrap{max-width:1100px;margin:0 auto}
+  header{padding:28px 0 12px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  header h1{font-size:1.6rem;margin:0 0 6px}
+  header p{margin:4px 0;color:var(--muted)}
+  nav{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:18px;z-index:5;display:flex;flex-wrap:wrap;gap:8px}
+  nav a{text-decoration:none;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:999px;font-size:.92rem;white-space:nowrap}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .box h2{margin:0 0 8px;font-size:1.25rem}
+  .box h3{margin:14px 0 6px;font-size:1.02rem}
+  .tag{display:inline-block;font-size:.8rem;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+  .tag.secili{background:var(--ok-soft);color:var(--ok)}
+  .tag.yedek{background:var(--warn-soft);color:var(--warn)}
+  .tag.birlesim{background:var(--accent-soft);color:var(--accent)}
+  .lead{font-size:1.05rem;border-left:4px solid var(--accent);padding:6px 12px;background:var(--accent-soft);border-radius:6px;margin:8px 0 12px}
+  .roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0}
+  .role{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+  .role b{display:block;margin-bottom:4px}
+  .role.r{background:var(--r-soft);border-color:var(--r)} .role.r b{color:var(--r)}
+  .role.e{background:var(--e-soft);border-color:var(--e)} .role.e b{color:var(--e)}
+  .role.s{background:var(--s-soft);border-color:var(--s)} .role.s b{color:var(--s)}
+  .kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 12px;margin:6px 0}
+  .kv div:nth-child(odd){color:var(--muted)}
+  ol,ul{padding-left:22px;margin:6px 0}
+  li{margin:3px 0}
+  .juri{font-style:italic;color:var(--muted);margin-top:8px}
+  .risk{background:var(--warn-soft);border-left:4px solid var(--warn);padding:6px 12px;border-radius:6px;margin-top:10px}
+  .tablo{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:860px;font-size:.92rem}
+  th,td{border:1px solid var(--line);padding:7px 9px;vertical-align:top;text-align:left}
+  th{background:var(--accent-soft)}
+  td:first-child,th:first-child{color:var(--muted);white-space:nowrap}
+  .sira{font-size:1.05rem;padding:10px 14px;background:var(--ok-soft);border-radius:8px;margin-top:10px}
+  .not{font-size:.9rem;color:var(--muted)}
+  code{font-size:.9em;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+  @media (max-width:720px){
+    .roles{grid-template-columns:1fr}
+    .kv{grid-template-columns:1fr}
+    .kv div:nth-child(odd){margin-top:6px}
+    header h1{font-size:1.3rem}
+  }
+  @media print{ nav{display:none} .box{break-inside:avoid} body{padding:0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Bitirme tezi adayları 4-8: ekip tartışma sayfası</h1>
+  <p>Üç kişilik ekip · İTÜ Matematik Mühendisliği bitirme (MAT4901 güz + MAT4902 bahar) · hazırlayan Jarvis, 2026-10-19</p>
+  <p>Her aday aynı düzende: ne · neyi hedefliyor · nasıl yapılacak · üç rol · risk · jüriye tek cümle. Kaynak doğrulaması 2026-10-19 canlı arama (AS-OF). Kestirimler <code>[?]</code> ile işaretli.</p>
+</header>
+
+<nav>
+  <a href="#okuma">Nasıl okunur</a>
+  <a href="#a4">4 Sertifika</a>
+  <a href="#a5">5 Üç aile + sınır</a>
+  <a href="#a6">6 (4 hafif)</a>
+  <a href="#a7">7 (5 hafif)</a>
+  <a href="#a8">8 (4+5)</a>
+  <a href="#tablo">Tablo</a>
+  <a href="#karar">Karar soruları</a>
+</nav>
+
+<section class="box" id="okuma">
+  <h2>Nasıl okunur</h2>
+  <p><b>Ortak zemin:</b> beş adayın hepsi aynı tezgâhı kullanır: bilgisayar simülasyonunda bir robot kol (MuJoCo + Gymnasium-Robotics, Fetch ya da Panda kolu), aynı görevler (hedefe git, yörünge izle), aynı test takımı (kütle değişimi, sürtünme artışı, gecikme). Gerçek robot gerekmez.</p>
+  <p><b>Üç rol:</b></p>
+  <div class="roles">
+    <div class="role r"><b>R · robotik arkadaş</b>Simülasyon, kolun fizik modeli, elle yazılan klasik kontrolcü, test takımı. Her adayda ortak tezgâhı ilk o kurar.</div>
+    <div class="role e"><b>E · alanı belirsiz arkadaş</b>Öğrenen kontrolcülerin eğitimi (hazır pekiştirmeli öğrenme algoritmaları), tohum tekrarları, koşum kayıtları. Tarifi belli, öğretici.</div>
+    <div class="role s"><b>S · Salih</b>Robotik dışı, matematik ve veri ağırlıklı dilim: ispat, sertifika, sınır hesabı ya da istatistik protokolü. Adaya göre değişir.</div>
+  </div>
+  <p><b>Temel kavramlar, iki cümleyle:</b></p>
+  <ul>
+    <li><b>Pekiştirmeli öğrenme (RL):</b> robot önce rastgele hareket eder, her adımda bir sayı (ödül) alır, toplam ödülü artıran hareketleri öğrenir. Üç ailesi var: <b>on-policy</b> (PPO: her denemeden sonra veriyi atar, kararlı ama veri-aç), <b>off-policy</b> (SAC: eski verileri saklar, daha az veriyle öğrenir), <b>model-tabanlı</b> (MBPO: önce fiziği öğrenir, sonra hayalinde deneme yapar, en az veriyle ama öğrendiği fizik yanlışsa yanılır).</li>
+    <li><b>Kararlılık ispatı (Lyapunov):</b> bir "enerji" fonksiyonu bul; hedefte sıfır, her yerde pozitif, kol hareket ettikçe hep azalıyor. Enerji hep azalıyorsa sistem dibe iner, yani hedefe varır, dışarı çıkamaz. Çukura bırakılan top gibi. Elle yazılan kontrolcü için formülle bulunur; öğrenen kontrolcü için formül yoktur.</li>
+    <li><b>Eğitim kararlılığı:</b> aynı algoritma farklı rastgele tohumla başlatılınca ne kadar farklı sonuç verir. RL'nin bilinen yarası; doğru istatistik olmadan kıyas yanıltır.</li>
+  </ul>
+  <p class="not">Adaylar 1-3 (finansal kriz topolojisi, DPO gürültülü etiket, LLM ödül tasarımı) bu sayfada yok; ekip bileşimine oturmadıkları için elendi. Kayıt: <code>raporlar/2026-10/2026-10-19-bitirme-tezi-revize5-danisman-ozeti-ilk-iki-hafta.md</code> ve 09-21 atlas raporu.</p>
+</section>
+
+<section class="box" id="a4">
+  <h2>4 · Öğrenilmiş kontrolcüye kararlılık sertifikası</h2>
+  <div class="lead">Aynı robot kolu iki farklı "beyinle" sürüyoruz: mühendisin fizik denklemleriyle elle yazdığı kontrolcü ve deneme-yanılmayla öğrenen kontrolcü. Elle yazılanın "hedefe gider, sapmaz" ispatı var; öğrenenin yok. Soru: öğrenene böyle bir garanti sonradan verilebilir mi, ne kadar?</div>
+  <h3>Neyi hedefliyor</h3>
+  <ul>
+    <li>İki kontrolcü aynı testlerde kıyaslanmış.</li>
+    <li>Elle yazılanın ispatı yazılmış.</li>
+    <li>Öğrenene <b>sertifika</b> çıkarılmış: "şu bölgedeki her başlangıçtan hedefe güvenle gider" diye doğrulanmış bir bölge, ve bu bölgenin elle yazılanınkine göre büyüklüğü.</li>
+  </ul>
+  <h3>Nasıl yapılacak</h3>
+  <ol>
+    <li>Tezgâh kurulur; klasik kontrolcü yazılır, ispatı yapılır.</li>
+    <li>Öğrenen kontrolcü eğitilir (SAC ya da TD3).</li>
+    <li>Öğrenen kontrolcü bir sinir ağıdır, formülü yok; bu yüzden enerji fonksiyonu da bir sinir ağına öğretilir: "hedefte sıfır, başka yerde pozitif, hareket boyunca azalan" şartlarını sağlayan fonksiyon aranır.</li>
+    <li>Bir doğrulama programı (SMT çözücü) bu şartların bölgenin her noktasında tuttuğunu matematiksel olarak kontrol eder; tutmuyorsa bozulan noktayı gösterir, bölge daraltılır, tekrar denenir.</li>
+    <li>Kalan bölge = öğrenen kontrolcünün garantili çalışma alanı; klasik kontrolcünün analitik bölgesiyle yan yana konur; bozma testleri eklenir.</li>
+  </ol>
+  <div class="roles">
+    <div class="role r"><b>R</b>Simülasyon, kolun fizik modeli, elle yazılan kontrolcü (hesaplanmış tork), Lyapunov ispatı, ortak test takımı.</div>
+    <div class="role e"><b>E</b>Öğrenen kontrolcüyü hazır RL algoritmasıyla eğitir, aynı testlerde koşturur.</div>
+    <div class="role s"><b>S</b>Sertifika: enerji fonksiyonunu öğretme, doğrulama, bölge ölçümü; iki garantiyi yan yana koyma. Önce 2 eklemli küçük kolda prova, sonra 7 eklemli kola.</div>
+  </div>
+  <div class="risk"><b>Risk:</b> doğrulama programı 7 eklemde yavaşlar; küçük kolla başlanır. RL eğitimi için orta seviye GPU <code>[?]</code>. Sertifika hesabı yarı yolda tıkanabilir; o durumda 6'ya inilir.</div>
+  <p class="juri">Jüriye: "Öğrenen kontrolcü iyi çalışıyor ama garantisi yoktu; garantisini matematikle ölçtük ve elle yazılanla kıyasladık."</p>
+</section>
+
+<section class="box" id="a5">
+  <h2>5 · Üç RL ailesi, model-hatası sınırı ve istatistik <span class="tag secili">Salih'in seçimi</span></h2>
+  <div class="lead">Aynı robot kolu üç farklı yöntemle eğitiyoruz (on-policy PPO, off-policy SAC, model-tabanlı MBPO). "Kim kazandı" tablosu yerine iki matematiksel soru: model-tabanlı yöntemde ajanın öğrendiği fizik modelinin hatası performansa ne kadar mal oluyor ve teorideki sınır deneyde tutuyor mu; eğitim tohumdan tohuma ne kadar tutarlı ve bunu doğru nasıl ölçeriz?</div>
+  <h3>Neyi hedefliyor</h3>
+  <ul>
+    <li><b>Örnek verimliliği:</b> her aile kaç deneme adımıyla hangi başarıya ulaşıyor; "%80 başarı için N örnek" güven aralığıyla.</li>
+    <li><b>Model-hatası sınırı:</b> literatürde "gerçek performans ≥ modelde ölçülen performans − C" diye bir sınır var; C, model hatasından ve politikanın kaymasından oluşur. C'yi robot kol için hesaplayıp gözlenen kayıpla kıyaslamak: sınır sıkı mı gevşek mi?</li>
+    <li><b>Eğitim kararlılığı:</b> çok tohum, çeyrekler-arası ortalama, bootstrap güven aralığı, performans profili ile ölçülmüş.</li>
+  </ul>
+  <h3>Nasıl yapılacak</h3>
+  <ol>
+    <li>Tezgâh kurulur; görevler ve koşum kaydı şeması (tohum, algoritma, görev, adım, başarı) kararlaştırılır.</li>
+    <li>Üç algoritma hazır kütüphanelerle aynı bütçeyle, çok tohumla eğitilir.</li>
+    <li>Model-tabanlı yöntemin öğrendiği fizik modelinin hatası gerçek simülatöre karşı ölçülür (1 adım, 2 adım, … ileri tahmin).</li>
+    <li>Sınır formülüne ölçülen hata konur, C hesaplanır, gözlenen performans kaybıyla kıyaslanır.</li>
+    <li>Tüm sonuçlar doğru istatistikle raporlanır; öğrenme eğrilerine parametrik model uydurulur.</li>
+  </ol>
+  <div class="roles">
+    <div class="role r"><b>R</b>Ortam ve görevler; model-tabanlı ailenin fizik tarafı: öğrenilmiş dinamik modeli kurar, gerçek fiziğe karşı hatasını ölçer, fizik-bilgili model varyantı dener.</div>
+    <div class="role e"><b>E</b>PPO ve SAC (Stable-Baselines3), MBPO (hazır kod), ortak hiperparametre protokolü, tohum matrisi.</div>
+    <div class="role s"><b>S</b>Sınır türetmesi ve robot kol için sayısallaştırma; istatistik protokolü (rliable); varyans ayrıştırma; öğrenme eğrisi uydurma; tohum sayısı güç analizi.</div>
+  </div>
+  <div class="risk"><b>Risk:</b> MBPO 7 eklemli kolda ağır (topluluk modeli + çok hayali koşum); önce basit görev. Tohum sayısı yüzünden toplam hesap adayların en yükseği <code>[?]</code>. "Aileler arasında fark yok" çıkabilir; sağlam istatistikle meşru bulgudur. Tıkanırsa 7'ye inilir.</div>
+  <p class="juri">Jüriye: "Üç öğrenme ailesini aynı kolda kıyasladık; model-tabanlı yöntemin hatasının teorik sınırını deneyle sınadık; sonuçları güven aralığıyla verdik."</p>
+  <p class="not">Danışman özeti ve ilk iki hafta planı ayrı dosyada: <code>2026-10-19-bitirme-tezi-revize5-danisman-ozeti-ilk-iki-hafta.md</code>.</p>
+</section>
+
+<section class="box" id="a6">
+  <h2>6 · Deneysel kararlılık kıyası <span class="tag yedek">4'ün hafif sürümü</span></h2>
+  <div class="lead">4 ile aynı kurulum, ama sertifika yok. Öğrenen kontrolcünün kararlılığı ispatla değil ölçümle gösterilir: yerelde doğrusallaştırma, küreselde örnekleme.</div>
+  <h3>Neyi hedefliyor</h3>
+  <ul>
+    <li>Klasik ve öğrenen kontrolcü aynı testlerde kıyaslanmış.</li>
+    <li>Öğrenen kontrolcünün <b>yerel kararlılığı</b>: hedef noktası etrafında sistem doğrusallaştırılır, özdeğerlere bakılır (ders kitabı kontrol teorisi).</li>
+    <li><b>Küresel bölge:</b> binlerce rastgele başlangıç noktasından koşturup hangilerinin hedefe vardığı haritalanır; güven aralığıyla "bu bölgede en az %x başarı" denir.</li>
+  </ul>
+  <h3>Nasıl yapılacak</h3>
+  <ol>
+    <li>Tezgâh + klasik kontrolcü + ispat (4'teki gibi).</li>
+    <li>Öğrenen kontrolcü eğitilir.</li>
+    <li>Sinir ağı politikasının türevi (Jacobian) ve kol dinamiğinin türevi birleştirilir; özdeğerler ve kazanç marjı hesaplanır.</li>
+    <li>Başlangıç durumları örneklenir; hedefe varma oranı haritalanır; binom güven aralığı eklenir; klasik kontrolcünün analitik bölgesiyle üst üste konur.</li>
+    <li>Bozma testleri (kütle, sürtünme, gecikme) altında bozulma eğrileri.</li>
+  </ol>
+  <div class="roles">
+    <div class="role r"><b>R</b>4 ile aynı: simülasyon, fizik modeli, klasik kontrolcü, ispat, test takımı.</div>
+    <div class="role e"><b>E</b>4 ile aynı: öğrenen kontrolcü eğitimi ve koşumlar.</div>
+    <div class="role s"><b>S</b>Doğrusallaştırma ve özdeğer analizi; Monte Carlo çekim bölgesi ve güven aralığı; bozulma eğrileri ve istatistik. Sertifika yok.</div>
+  </div>
+  <div class="risk"><b>Risk:</b> düşük. Hesaplama düşük. Özgünlük düşük-orta: deneysel kararlılık kıyasları literatürde var.</div>
+  <p class="juri">Jüriye: "Öğrenilmiş kontrolcünün kararlılığını yerel (doğrusallaştırma) ve küresel (örnekleme) ölçtük, klasik ispatla karşılaştırdık."</p>
+</section>
+
+<section class="box" id="a7">
+  <h2>7 · İki RL ailesi, istatistik ve hiperparametre duyarlılığı <span class="tag yedek">5'in hafif sürümü</span></h2>
+  <div class="lead">5 ile aynı tezgâh, ama model-tabanlı aile (en ağır hesap) ve teorik sınır yok. PPO ile SAC doğru istatistikle kıyaslanır ve sonucun hangi ayara ne kadar bağlı olduğu ölçülür.</div>
+  <h3>Neyi hedefliyor</h3>
+  <ul>
+    <li>İki ailenin örnek verimliliği ve eğitim kararlılığı güven aralığıyla.</li>
+    <li><b>Hiperparametre duyarlılığı:</b> öğrenme hızı, ağ boyutu, tampon boyutu gibi ayarlardan hangisi sonuç farkının ne kadarını açıklıyor (deney tasarımı: kesirli faktöriyel ya da Sobol indeksleri).</li>
+    <li>Bozma altında dayanıklılık: bir fizik ayarında eğit, başka ayarda test et.</li>
+  </ul>
+  <h3>Nasıl yapılacak</h3>
+  <ol>
+    <li>Tezgâh + bozma takımı + alan rastgeleleştirme tasarımı.</li>
+    <li>PPO ve SAC (ucuz ek: TD3) çok tohumla, ortak protokolle eğitilir.</li>
+    <li>Hiperparametre ızgarası deney tasarımıyla seçilir, koşulur.</li>
+    <li>Sonuçlar rliable protokolüyle raporlanır; eğri uydurma; duyarlılık analizi.</li>
+  </ol>
+  <div class="roles">
+    <div class="role r"><b>R</b>Ortam, bozma takımı, alan rastgeleleştirme tasarımı (eğitim ve test fizik ayarları).</div>
+    <div class="role e"><b>E</b>Eğitim hattı, tohum matrisi, hiperparametre koşumları.</div>
+    <div class="role s"><b>S</b>İstatistik protokolü (çeyrekler-arası ortalama, bootstrap, performans profili); öğrenme eğrisi uydurma; hiperparametre duyarlılık analizi; tohum güç analizi.</div>
+  </div>
+  <div class="risk"><b>Risk:</b> düşük. Hesaplama orta-düşük. Özgünlük düşük: PPO/SAC kıyasları var; fark, doğru istatistik + duyarlılık analizinin robot kolda yapılması.</div>
+  <p class="juri">Jüriye: "İki RL ailesini robot kolda istatistiksel olarak doğru protokolle kıyasladık ve sonucun hangi ayara ne kadar bağlı olduğunu ölçtük."</p>
+</section>
+
+<section class="box" id="a8">
+  <h2>8 · Üç RL ailesine tek sertifika hattı <span class="tag birlesim">4 + 5 birleşimi</span></h2>
+  <div class="lead">Üç farklı yolla eğitilmiş politikaların kararlılığı tek bir sertifika hattından geçirilir. Sertifika SMT yerine örneklemeyle, olasılık sınırıyla verilir. Özgün parça: model-tabanlı ailede ajanın öğrendiği fizik modeli üstünden verilen sertifika gerçek sisteme ne kadar taşınıyor?</div>
+  <h3>Neyi hedefliyor</h3>
+  <ul>
+    <li>Üç ailenin politikaları için <b>sertifikalı bölge</b>: aileye göre değişiyor mu?</li>
+    <li><b>Olasılıksal sertifika:</b> N başlangıç noktası örnekle, hepsi hedefe iniyorsa "1−δ güvenle başarısızlık olasılığı ≤ ε" türünden sınır (senaryo yaklaşımı / PAC). Örnek: N ≈ 460, sıfır başarısızlık → ε ≈ 0,01, δ ≈ 0,01 <code>[?]</code>; formül tezde türetilir.</li>
+    <li><b>Model hatasının sertifikaya etkisi:</b> model-tabanlı politika için sertifika iki kez verilir, öğrenilmiş modelde ve gerçek simülatörde; fark model hatasının bedelidir (dayanıklı Lyapunov: azalma koşulu bozucu sınırıyla yeniden yazılır).</li>
+  </ul>
+  <h3>Nasıl yapılacak</h3>
+  <ol>
+    <li>Tezgâh + klasik kontrolcü yalnız referans çizgi olarak.</li>
+    <li>Üç aile eğitilir (tohum az: sertifika için politika başına 1-3 tohum yeter <code>[?]</code>).</li>
+    <li>Sertifika hattı önce 2 eklemli düzlemsel kolda üç aileye kurulur.</li>
+    <li>7 eklemli kolda yalnız olasılıksal sertifika; biçimsel (SMT) sertifika yok.</li>
+    <li>Model-tabanlı politika için "modelde sertifika" ve "gerçekte sertifika" kıyası.</li>
+  </ol>
+  <div class="roles">
+    <div class="role r"><b>R</b>Ortam; klasik kontrolcü ve analitik Lyapunov (referans); öğrenilmiş dinamik modelin hata ölçümü.</div>
+    <div class="role e"><b>E</b>Üç ailenin eğitimi (5'teki hat, küçük tohum matrisi).</div>
+    <div class="role s"><b>S</b>Olasılıksal sertifika hattı: senaryo/PAC sınırı, binom güven aralığı, dayanıklı Lyapunov koşulu; üç aileye aynı hat; model-tabanlı için iki kez. SMT isteğe bağlı, 2 eklemde, zaman kalırsa.</div>
+  </div>
+  <div class="risk"><b>Risk:</b> yüksek, sebebi kapsam (üç eğitim + sertifika); frenle orta. Üç aile ağır gelirse MBPO düşürülür, tez 4'e yaklaşır. Hesaplama: örnekleme ucuz, üç eğitim pahalı <code>[?]</code>.</div>
+  <p class="juri">Jüriye: "Üç öğrenme ailesinin ürettiği kontrolcülere aynı kararlılık sertifikasını verdik; model-tabanlı olanın sertifikasının gerçeğe ne kadar taşındığını ölçtük."</p>
+</section>
+
+<section class="box" id="tablo">
+  <h2>Karşılaştırma tablosu</h2>
+  <div class="tablo">
+  <table>
+    <thead><tr><th>Eksen</th><th>4 Sertifika</th><th>5 Üç aile + sınır</th><th>6 (4 hafif)</th><th>7 (5 hafif)</th><th>8 (4+5)</th></tr></thead>
+    <tbody>
+      <tr><td>Çekirdek soru</td><td>öğrenilmiş kontrolcüye garanti ne kadar geri kazanılır</td><td>model hatası sınırı deneyde sıkı mı; aileler kaç örnekle nereye varır</td><td>öğrenilmiş kontrolcü deneysel olarak ne kadar kararlı</td><td>iki aile hangi ayara ne kadar duyarlı</td><td>sertifikalı bölge aileye göre değişir mi; modelden gerçeğe taşınır mı</td></tr>
+      <tr><td>Kıyaslanan</td><td>klasik vs bir RL</td><td>üç RL ailesi</td><td>klasik vs bir RL</td><td>iki RL ailesi</td><td>üç RL ailesi; klasik referans</td></tr>
+      <tr><td>Salih'in matematiği</td><td>nöral Lyapunov, çekim bölgesi, SMT doğrulama</td><td>model hatası sınırı, varyans ayrıştırma, eğri uydurma, güç analizi</td><td>doğrusallaştırma, özdeğer, Monte Carlo, binom GA</td><td>bootstrap, eğri uydurma, Sobol / deney tasarımı</td><td>dayanıklı Lyapunov, senaryo/PAC sınırı, binom GA</td></tr>
+      <tr><td>R dilimi</td><td>klasik + ispat + tezgâh</td><td>ortam + öğrenilmiş model fiziği</td><td>klasik + ispat + tezgâh</td><td>ortam + bozma + alan rastgeleleştirme</td><td>ortam + klasik referans + model hatası</td></tr>
+      <tr><td>E dilimi</td><td>bir RL kontrolcü</td><td>üç aile, büyük tohum matrisi</td><td>bir RL kontrolcü</td><td>iki aile + hiperparametre ızgarası</td><td>üç aile, küçük tohum matrisi</td></tr>
+      <tr><td>Gerçek ölçüt</td><td>sertifikalı bölge hacmi</td><td>başarı, örnek sayısı, sınır boşluğu</td><td>örnekleme bölgesi + özdeğer</td><td>başarı, örnek sayısı, duyarlılık indeksi</td><td>sertifikalı bölge, modelde/gerçekte farkı</td></tr>
+      <tr><td>Özgünlük</td><td>orta-yüksek</td><td>orta</td><td>düşük-orta</td><td>düşük</td><td>yüksek</td></tr>
+      <tr><td>Risk</td><td>orta (SMT tıkanabilir)</td><td>orta (MBPO ağır)</td><td>düşük</td><td>düşük</td><td>yüksek, frenle orta (kapsam)</td></tr>
+      <tr><td>Hesaplama <code>[?]</code></td><td>orta GPU + SMT</td><td>orta GPU, en üst</td><td>düşük</td><td>orta-düşük</td><td>orta GPU; örnekleme ucuz, üç eğitim pahalı</td></tr>
+      <tr><td>Geri çekilme yolu</td><td>→ 6</td><td>→ 7</td><td>yok (zemin)</td><td>yok (zemin)</td><td>MBPO düşer → 4'e yakın; SMT düşer → olasılıksal kalır</td></tr>
+      <tr><td>Literatür zemini (canlı, 10-19)</td><td>Herts 2026 kıyas; IET 2024; LyZNet 2024; robot kolda sertifika bulunmadı</td><td>RMBench 2022; Janner 2019; Agarwal 2021; model-tabanlı kolda tek protokolde bulunmadı</td><td>ders kitabı kontrol teorisi</td><td>RMBench 2022; Agarwal 2021</td><td>4 + 5 zemini; olasılıksal çekim bölgesi 2025; aile kıyası aranmadı</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="sira"><b>Jarvis sıralaması, bu ekip için:</b> 5 (yedek 7) &gt; 8 ≈ 4 (yedek 6) &gt; 3 &gt; 2 &gt; 1. Gerekçe: 5'te robotik arkadaş en dolu fizik dilimini, belirsiz arkadaş tarifi belli eğitim dilimini, Salih veri/algoritma dilimini alıyor; tıkanırsa tezgâh korunarak 7'ye inilir. 8 ile 4 arasında seçim ekip kapasitesine bağlı: üç eğitim hattını E tek başına taşıyabiliyorsa 8, taşıyamıyorsa 4.</div>
+</section>
+
+<section class="box" id="karar">
+  <h2>Ekipçe karar için sorular</h2>
+  <ol>
+    <li><b>Hesaplama:</b> orta seviye GPU'ya erişim var mı (bölüm laboratuvarı, kişisel, bulut)? Yoksa 5 ve 8 zorlaşır, 6 ve 7 öne çıkar.</li>
+    <li><b>E'nin kapasitesi:</b> alanı belirsiz arkadaş üç eğitim hattını (PPO, SAC, MBPO) tek başına taşımak istiyor mu? Evetse 5 ya da 8; hayırsa 4, 6 ya da 7.</li>
+    <li><b>R'nin tercihi:</b> robotik arkadaş klasik kontrolcü + ispat (4, 6, 8) mi, öğrenilmiş fizik modeli (5) mi, bozma ve alan rastgeleleştirme (7) mi istiyor?</li>
+    <li><b>Danışman:</b> "stability analysis" için eğitim kararlılığı yeterli mi (5, 7), kontrol kararlılığı (Lyapunov) şart mı (4, 6, 8)? Yazılım bileşenli tez şablonda kabul mü?</li>
+    <li><b>Risk iştahı:</b> özgünlük mü (8, 4), garantili bitiş mi (6, 7)? 5 ortada.</li>
+    <li><b>Geri çekilme anlaşması:</b> hangi haftada hangi parça düşmüyorsa alt sürüme inilecek (5→7, 4→6, 8→4)? Tarih baştan yazılsın.</li>
+  </ol>
+  <p class="not">Hazırlayan: Jarvis (Claude Fable 5.1), 2026-10-19. Kaynaklar danışman özeti dosyasında listeli; tablo hücrelerindeki "bulunmadı" ifadeleri 2026-10-19 canlı aramaya aittir, alanın tamamını kapsamaz.</p>
+</section>
+
+</div>
+</body>
+</html>
