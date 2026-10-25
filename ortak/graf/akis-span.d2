@@ -1,0 +1,22 @@
+# akış grafı · üretici: durum graf · tarih 2026-10-25 · kaynak ortak/durum-olay.jsonl · render: d2 --layout=elk <bu dosya> <çıktı.svg>
+direction: right
+classes: {
+  acik: {style.fill: "#fff3bf"; style.stroke: "#f08c00"}
+  islemde: {style.fill: "#ffd8a8"; style.stroke: "#e8590c"; style.bold: true}
+  tamam: {style.fill: "#d3f9d8"; style.stroke: "#2f9e44"}
+  tuketildi: {style.fill: "#e9ecef"; style.stroke: "#868e96"}
+  bayat: {style.fill: "#f8f9fa"; style.stroke: "#adb5bd"; style.stroke-dash: 3}
+  hedef: {shape: hexagon; style.fill: "#e7f5ff"; style.stroke: "#1971c2"}
+  seans: {shape: page; style.fill: "#f3f0ff"; style.stroke: "#7048e8"}
+  seans_acik: {shape: page; style.fill: "#f3f0ff"; style.stroke: "#7048e8"; style.stroke-width: 3}
+  sirada: {style.stroke-width: 3; style.stroke: "#e03131"}
+}
+aciklama: |md
+  Kutu = iş · altıgen = hedef · sayfa = seans (sohbet) · kırmızı kalın çerçeve = sırada (girdileri tamam)\
+  Renk: sarı açık · turuncu işlemde · yeşil tamam · gri tüketildi · soluk bayat\
+  Ok: girdi (bağımlılık) · hizmet (iş→hedef) · açtı/bitirdi (seans→iş) · sonra (seans→seans)
+|
+span: {
+  label: "span"
+  is16: {label: "#16 claude-mods öğrenme şeridi\nogren ile şerit aç: Claude Code modları (status line, pa…"; class: [acik; sirada]}
+}

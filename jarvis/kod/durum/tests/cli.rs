@@ -95,23 +95,27 @@ fn bayat_hesabi_ve_oturum_basi() {
     k.ok(&["ac", "--alan", "gard", "--is", "baska", "--sonraki", "x"]);
     k.ok(&["al", "1"]);
     let o = k.ok(&["oturum-basi", "--alan", "sage"]);
-    assert_eq!(o, "DURUM sage (2026-10-14): 1 açık/işlemde\n#1 islemde S4 dersi -> Meditations 4. kitap PROBE\n");
-    assert!(o.len() <= 1024);
+    // Karar 122 biçimi: başlıkta sıradaki sayısı, sonda graf pointer satırı.
+    assert_eq!(
+        o,
+        "DURUM sage (2026-10-14): 1 açık/işlemde · sırada 0\n#1 islemde S4 dersi -> Meditations 4. kitap PROBE\nGRAF: ortak/akis-graf.json · d2 ortak/graf/akis-sage.d2\n"
+    );
+    assert!(o.len() <= 2048);
     assert!(k.ok(&["listele", "--durum", "bayat"]).contains("\teski\t"));
     assert_eq!(k.calistir(&["al", "2"]).0, 1);
-    assert_eq!(k.ok(&["oturum-basi", "--alan", "vega"]), "DURUM vega (2026-10-14): açık iş yok\n");
+    assert!(k.ok(&["oturum-basi", "--alan", "vega"]).starts_with("DURUM vega (2026-10-14): açık iş yok\n"));
     k.ok(&["bayatla", "1"]);
-    assert_eq!(k.ok(&["oturum-basi", "--alan", "sage"]), "DURUM sage (2026-10-14): açık iş yok\n");
+    assert!(k.ok(&["oturum-basi", "--alan", "sage"]).starts_with("DURUM sage (2026-10-14): açık iş yok\n"));
 }
 
 #[test]
 fn oturum_basi_boyut_siniri() {
     let k = Kutuk::yeni();
-    for i in 0..60 {
+    for i in 0..120 {
         k.ok(&["ac", "--alan", "sage", "--is", &format!("is numara {i}"), "--sonraki", "uzun bir sonraki eylem metni"]);
     }
     let o = k.ok(&["oturum-basi", "--alan", "sage"]);
-    assert!(o.len() <= 1024, "{}", o.len());
+    assert!(o.len() <= 2048, "{}", o.len());
     assert!(o.contains("... +"));
 }
 

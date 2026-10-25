@@ -15,8 +15,10 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 - Kanal **yoksa**: tam ritüel koşulamaz → kapanış notunu "**ham fikir** / PC'de ingest edilecek" damgasıyla üret, Salih'e açıkça söyle: **bu gün m.9 gereği henüz sayılmadı**, ana seans devralınca sayılır.
 - Hat: hangi şerit (prototip · geliştirme · öğrenme)? Paralel-seans senkron kuralı: yalnız **kendi** şeridinin dosya/satırlarına dokun; iki oturum açıksa push öncesi pull zorunlu.
 
-## 2. Teslim raporu (`core/sablonlar/seans-teslim.md` — beş soru)
-`raporlar/seans/seans-teslim-YYYY-MM-DD-<hat/etiket>.md` dosyasına: bugün gerçekten ne değişti · hangi karar verildi (kaynak+gerekçe+geri-açma) · hangi fikir **aday** kaldı (karar değil) · sonraki ilk iş · yeniden-açma koşulu.
+## 2. Teslim kaydı (JSON; Karar 121 + 122, 2026-10-25 — md rapor süpersede, şablon `core/sablonlar/seans-teslim.md` yalnız alan tanımı)
+2a. **Durum kütüğü (graf düğümleri):** bu seansta ele alınan her iş kütükte doğru durumda mı — `durum al/bitir <id> --oturum <ad> --kanit ".."` · yarım kalan `bitir --kalan "iş|sonraki"` · yeni iş `durum ac --alan jarvis --is ".." --sonraki ".." [--girdi a,b] [--hedef N] --oturum <ad>` (hedef düğümü `--tur hedef`). Kütüğe yazılmayan iş sonraki seansta **yoktur**.
+2b. **Girdi dosyası:** `raporlar/seans/seans-teslim-girdi-YYYY-MM-DD.json` (şablon `../ortak/sablon/seans-teslim-girdi.json`): beş soru (`ne_degisti` · `kararlar` · `adaylar` · `sonraki_ilk_is` · `yeniden_acma`) + `hedef` · `hedef_tutuldu` · `sapma` · `salih_karar` · `baglar` (karar/PR/durum kimlikleri) · `sayaclar`. Cümleler Türkçe, kısa, etken, tek fikirli (ASD-STE100): `ortak/SALIH-OZET.md`'ye aynen girer. Sayı uydurulmaz (m.39).
+2c. **Kapat:** `../target/release/durum.exe seans-kapat --alan jarvis --oturum <ad> --girdi raporlar/seans/seans-teslim-girdi-YYYY-MM-DD.json --etiket <etiket> --render` → Rust `olcum` ekler (git HEAD/dal/commit/dosya, durum sayaçları, süre), kayıt `raporlar/seans/seans-teslim-YYYY-MM-DD-<etiket>.json`, graf (`ortak/akis-graf.json`, `ortak/graf/akis-*.d2/.svg`) ve Salih özeti yenilenir. Hasat (§3) ve kapanış satırları (§6) kayda `hasat` / `kapanis` nesneleri olarak girer (girdi dosyasında serbest alan).
 **"İlk plan = bitti değil" yoklaması (Karar 79 D3/KL16-6; kaynak `cc/rapor/2026-08/rapor-2026-08-01-16.md:301`; seans-hedefi yoklaması kalıcı kural — Karar 99 M10, 09-18):** kapanışta açılış planı/hedefi **fiilen** yoklanır — planın yazılmış olması bitmiş sayılmaz; sapma tek cümleyle kayda (m.29 seans-hedefi denemesiyle aynı aile).
 
 ## 3. Hasat (`core/sablonlar/hasat.md`)
@@ -29,8 +31,8 @@ Kapanış = hafıza yazımıdır: bir sonraki seans yalnız burada yazılanı de
 - Karara bağlanmamış bulgular → `kuyruk/build-tartisma-notlari.md`. Silme `YOK` — bayatlayan arşive iner (m.8).
 - Model değişimi yaşandıysa: ingest kanona **değil** şerhli klasöre (`arsiv/chat-model-degisikligi/ingest-YYYY-MM-DD.md` — eski ad "model değişikliği ile…", parti 1 taşıması 09-09) — KILAVUZ protokolü.
 
-## 5. Kapsül tazeleme (`core/durum-kapsulu.md`)
-Üzerine yazılır, arşiv değildir. Yalnız kendi şeridinin satırları; güncelleme satırı + "şu an" + borçlar + "sonraki ilk iş". Bütçe: **≤8KB VE ≤40 satır** (kanon bütçesi; 08-22 İB-24'ten beri SessionStart hook kapsülü **değil** ≤2 KB brifi basar — kapsül açılışta **elle** okunur, bu yüzden "Sonraki ilk iş" ilk maddesi ve Güncelleme satırı brife girer: ikisini kısa ve kendini açıklar tut).
+## 5. Kapsül/pano — dondu (Karar 122, 2026-10-25)
+`core/durum-kapsulu.md` ve `core/pano.md` yazılmaz; konum = kütük + seans kaydı + graf (§2). SessionStart brifi `durum oturum-basi` çıktısını basar. Eski kapsül/pano arşiv-pointer (m.8).
 
 ## 6. Boyut-izleme tek bakış (imzalı kural 07-22)
 Tavanlar ve aşım eylemi kanonik olarak `lean/Kanon/Butce.lean` (Karar 114); aşağıdaki liste uygulama tarifi.
@@ -58,7 +60,7 @@ Kökte koş (ölçüm 2026-10-16: 12 sn): `cargo build --release` · `(cd jarvis
 `../target/release/hafiza-ayna` koş (Rust; yedek `python3 tools/hafiza-ayna.py`; ~1 sn; kaynak `~/.claude/projects/<proje-anahtarı>/memory/` salt-okur, Windows'ta `C--sistem-sistem`, eski Mac anahtarı `-Users-HasanSalihSahin-sistem` → `veri/hafiza-ayna/<anahtar>/` + `MANIFEST.json`; deterministik, kaynakta silinen dosya aynada kalır `kaynakta-yok` damgalı, m.8). Çıktı `git add veri/hafiza-ayna` ile kapanış commit'ine girer (jarvis AGENTS.md §2 açık-kaynak ilkesi). Özet satırı teslim raporuna: "hafıza-ayna: N dosya · yeni Y · değişen D". Çıkış 2 (kaynak yok) → teslim raporuna yaz, adım geçilir. **Sıcak-katman FIFO (Karar 104 M1):** `../target/release/sicak-katman-fifo` (Rust; yedek `python3 tools/sicak-katman-fifo.py`) FLAG verirse arşive inecek maddeler `arsiv/kapsul-YYYY-MM-DD.md`'ye taşınır ve script'in ürettiği `kesildi: … → arsiv/…` satırları kapsülün "Güncelleme" satırı altına **tek satır** olarak yapıştırılır (sessiz düşme yasak).
 
 ## 7. Commit + push (m.9 — proof-of-work)
-Karar başına **ayrı** commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Başka jarvis oturumu canlıysa `git add -A` **yasak** — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu **gizleme** — gün sayılmadı de, nedenini yaz.
+Karar başına **ayrı** commit · İngilizce mesaj · [damıtma]/[icra] etiketi (V5, m.10). Kapanış commit'ine girer: `raporlar/seans/*.json` · `../ortak/durum-olay.jsonl` · `../ortak/akis-graf.json` · `../ortak/graf/` · `../ortak/SALIH-OZET.md`. Başka jarvis oturumu canlıysa `git add -A` **yasak** — `git add <yol>` (H4, Salih 08-17; `wiki/paralel-oturum-protokolu.md`). Push origin'e; bulut yüzeyde klondan. Push başarılıysa kapanış beyanı: **"gün sayıldı"** + insan-yüzü tek satır (m.18: ▸ Kapandı · Sonraki ilk iş · Açık borç). Push atılamadıysa bunu **gizleme** — gün sayılmadı de, nedenini yaz.
 
 ## Gotchas
 - **Kapsül-şişirme:** kapanış heyecanıyla kapsüle tarih anlatma — tarihçe commit'lerde ve teslim raporlarında yaşar; kapsül yalnız "şu an + sıradaki".

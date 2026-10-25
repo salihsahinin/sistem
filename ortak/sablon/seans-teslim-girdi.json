@@ -1,0 +1,16 @@
+{
+  "_sablon": "seans-teslim girdisi (Karar 121/122). Claude doldurur, `durum seans-kapat --girdi <bu dosya>` ölçümleri ekleyip kaydı yazar. Cümleler Türkçe, kısa, etken, tek fikirli (ASD-STE100): Salih özetine aynen girer. Boş liste serbest (uydurma yok, m.39); sonraki_ilk_is boş olamaz.",
+  "hedef": "Seansın tek cümlelik hedefi (açılışta beyan edilen).",
+  "hedef_tutuldu": true,
+  "sapma": "",
+  "ne_degisti": ["Bugün gerçekten ne değişti. Her satır bir olgu, kanıt yolu/commit ile."],
+  "kararlar": [
+    {"ad": "Karar N", "ozet": "Ne kararlaştırıldı.", "kaynak": "Salih beyanı / defter satırı", "gerekce": "Neden.", "geri_acma": "Hangi koşulda yeniden açılır."}
+  ],
+  "adaylar": ["Karar olmayan fikirler."],
+  "sonraki_ilk_is": ["Sıradaki ilk iş (kütükteki #id ile)."],
+  "yeniden_acma": ["Neyi yeniden açmak için hangi koşul gerekir."],
+  "salih_karar": ["Salih'in kararını bekleyen kalemler."],
+  "baglar": {"karar": ["Karar N"], "pr": ["#N"], "durum": []},
+  "sayaclar": {"model": "Sonnet 5", "kutu": 0, "soru_dogru": 0, "soru_yanlis": 0, "pratik_salih_beyani": "KALAN"}
+}

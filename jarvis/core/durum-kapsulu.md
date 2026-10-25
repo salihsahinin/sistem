@@ -2,6 +2,7 @@
 
 *Her oturumun **ilk** okuduğu dosya. Üzerine yazılır; arşiv değildir. Bütçe ≤8 KB / ≤40 satır. FIFO (İB-80; Karar 104 M1): aşımda en eski madde `arsiv/kapsul-YYYY-MM-DD.md`'ye iner (silme yok) ve buraya tek satır **kesildi:** bildirimi düşer. **Karar 113 M2 (10-14):** açık iş artık burada değil, `ortak/durum-olay.jsonl` kütüğünde; bu dosya geçiş dönemi pointer'ıdır.*
 
+**Dondu (Karar 122, 2026-10-25):** konum artık akış grafında: `target/release/durum.exe oturum-basi --alan jarvis` · `ortak/akis-graf.json` · seans kayıtları `raporlar/seans/*.json` · Salih özeti `ortak/SALIH-OZET.md` · görsel `ortak/graf/akis-jarvis.svg`. Bu dosya ve `core/pano.md` yazılmaz; aşağısı 2026-10-18 hâli, arşiv-pointer (m.8).
 **Güncelleme:** 2026-10-18 seans-11 ikinci kapanış `KAPANDI` (Opus 5.5). Karar 118-120 birleşti (PR #22-#25); sistem revizyonu bitti, yön öğrenme → ürün. Teslim `raporlar/seans/seans-teslim-2026-10-18-karar118-120-ogrenmeye-gecis.md`.
 **kesildi (10-17):** seans-10 Şu an/Açık borçlar → `arsiv/kapsul-2026-10-17.md` · memory "Maliyet tahmini" satırı → `arsiv/memory-arsivi-2026-10-17.md`. Önceki: `arsiv/kapsul-2026-10-14.md`.
 

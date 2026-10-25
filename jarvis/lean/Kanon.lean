@@ -31,3 +31,4 @@ import Kanon.AjanKaliciligi
 import Kanon.DeterministikTasarim
 import Kanon.AjanMetodoloji
 import Kanon.SkillUretim
+import Kanon.AkisGraf

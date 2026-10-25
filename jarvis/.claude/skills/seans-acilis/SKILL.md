@@ -22,19 +22,20 @@ Hüküm kodu (Karar 114): yol seçimi (staj · SNAPSHOT · ogren · ritüel) ve 
 
 ## 2. Kanon okuma (cevaptan önce, sırayla)
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
-2. `core/durum-kapsulu.md` — **origin klonundan** doğrula: `.git/config`teki origin URL ile bulut konteynerde clone at, mount ile diff'le. Mount'ta git komutu **yasak** (okuma dahil); klon bulutta serbest.
-3. `core/pano.md` — AKTİF/BEKLEYEN/BLOKE + "Ekrana gel" filtresi.
+2. **Konum (graf dili, Karar 122):** `../target/release/durum.exe oturum-basi --alan jarvis` → `KONUM` (son seans + hedef yoklaması) · `SIRADA` (girdileri tamam) · `bekler<-#n` · `HEDEF`; ayrıntı `--json` ya da `durum graf --alan jarvis --metin` (kenar listesi; D2 Salih içindir). `core/durum-kapsulu.md` ve `core/pano.md` **dondu** (2026-10-25): okunmaz, yazılmaz; arşiv-pointer.
+3. Bulut yüzeyde kütük origin klonundan okunur; mount'ta git komutu **yasak**.
 3b. **Silver tazelik kapısı (KB-54 A, Karar 62):** tespit otomatik (SessionStart brifi `SİLVER: … TAZE | BAYAT` + `acilis-kapilari` K3); `BAYAT` → `../target/release/katman-hatti` (Rust; yedek `python3 tools/katman-hatti.py`; ~12 sn, idempotent) bu adımda; atlanırsa adresli erişim yanlış satır getirir (08-18 vakası 25/27). Worktree'de K3 `YOK` normaldir (öğrenme oturumu koşmaz).
 3c. **Adresli erişim kuralı (KB-53 A, Karar 62; KILAVUZ tasarım-ilkeleri satırı; İB-28):** kanon okurken adres biliniyorsa **aralık** oku (`Read offset/limit` ∨ `sed -n 'a,bp'`), anahtar biliniyorsa silver'dan blok çek (`sqlite3 veri/baglam.sqlite` — `v_guncel_kayit`; kayit_id sha8'i getirme anında yeniden hesaplanır, tutmuyorsa dosyaya düş + bayrak); dosya **bütünü** yalnız adres yokken (kapsül/pano gibi tamamı okunması gereken küçük dosyalar hariç). Oran `v_okuma_orani`'nda sayılır (İB-29) — düşük aralık-oranı ince-tutkal (KB-53 b) kararını masaya döndürür.
 4. ~~senkron-log okuma~~ `EMEKLİ` (Karar 88 M9, Salih 09-09): gece-senkron Karar 81 ile iptal, gece işi gnhf şeridinde (Karar 84); kütük `raporlar/usage/senkron-log.jsonl` arşiv-pointer olarak durur, okunmaz.
-5. Kapsülün işaret ettiği son seans-teslim raporu (devir borçları buradan).
+5. Konum satırının işaret ettiği son seans kaydı `raporlar/seans/seans-teslim-<tarih>-<etiket>.json` (`sonraki_ilk_is` · `salih_karar` · `yeniden_acma`; devir borçları buradan). md teslim raporları 10-18 öncesi arşivdir.
 6. Gerekirse pointer'la in: fikir-kutusu · senaryo-defteri · cc/defter — hepsi kapsül/CLAUDE.md adresliyorsa.
 
 ## 3. Açılış brifi (çıktı formatı, m.18)
 - İnsan-yüzü **tek satır** durum, sonra kısa brif: sayaç/sicil durumu · kapsülün "sonraki ilk iş" listesi · Salih'te bekleyen kararlar · devir borçları. Çıplak veri; övgü-merci yok (m.7).
 - İlk iş bir Salih kararıysa seçenekli sun: ölçek-eşiği üstüyse 3-model karşılaştırması (m.37: token×zaman×beklenen-kalite, sayısal, önerilen işaretli) + yansız soru dili (V6). Cevap sonucu değiştirmeyecekse soru sorma (m.4).
 - Sonrasında söylenen her şey görev olarak devralınır (m.25); kapasite cevabı üç halden biri: yaparım / yapamam(+neden) / proje gerekir(+kart, kaba token×zaman) — "bakarız" yasak.
-- **Seans hedefi (kalıcı kural — Karar 99 M10, Salih 09-18; deneme KB-47 A 08-21 → 5 seans 5/5 tuttu):** brifin sonunda tek cümlelik **açık** **hedef** yer alır — Salih açılışta beyan ettiyse aynen, etmediyse 'sonraki ilk iş'ten türetilip teyide sunulur; kapanışta hedef yoklanır (tutmadıysa sapma tek cümle kayda). Sprint Goal işlevi, ad Sprint **değil** (KB-49 ailesi).
+- **Seans hedefi (kalıcı kural — Karar 99 M10, Salih 09-18; deneme KB-47 A 08-21 → 5 seans 5/5 tuttu):** brifin sonunda tek cümlelik **açık** **hedef** yer alır — Salih açılışta beyan ettiyse aynen, etmediyse `SIRADA` ilk işten türetilip teyide sunulur; kapanışta hedef yoklanır (tutmadıysa sapma tek cümle kayda). Sprint Goal işlevi, ad Sprint **değil** (KB-49 ailesi).
+- **Seansı aç (Karar 122):** `../target/release/durum.exe seans-ac --alan jarvis --hedef "<hedef cümlesi>"` → seans düğümü kütüğe düşer, oturum adı (`<tarih>-jarvis`) brife yazılır; kapanışta `seans-kapat` bu adı ister. Seansta açılan/alınan/bitirilen işler `--oturum <ad>` ile kaydedilir (graf kenarı).
 
 ## 4. Sabit frenler
 - Ne derse emirdir; tek fren çelişki kapısı (m.16): önce çelişki+artı/eksi+plan raporu, sonra emir.

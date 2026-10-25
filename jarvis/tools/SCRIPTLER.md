@@ -3,6 +3,11 @@
 > **Araç yazım standardı:** `tools/AXI-STANDARDI.md` (İB-58, Karar 76 E-4; A1 iki kanal · A2 çıkış kodu sözlüğü · A3 sabit bayraklar · A4 determinizm/idempotens · A5 docstring=yardım · A6 yan-etki beyanı · A7 FAIL-LOUD · A8 bağlam bütçesi). İlk uygulama: `katman-hatti.py --json`.
 *Açıklama: Jarvis'in tek-seferlik OLMAYAN (kalıcı, B4 basamağı) script'leri iki yerde yaşar: (1) `tools/` (repo kökü, görünür) · (2) `.claude/skills/<skill>/scripts/` (skill'e bağlı; `.claude` GİZLİ — Finder'da ⌘⇧G ile `~/sistem/jarvis/.claude/skills` ya da terminalde `open ~/sistem/jarvis/.claude/skills`; Obsidian'da Ayarlar → Files & Links → "Detect all file extensions"). Bu indeks Salih'in "beraber okuma" isteği için açıldı (08-15): her satır yol · ne yapar · nasıl koşulur · okurken bakılacak yer. Kural: yeni kalıcı script buraya satır düşürmeden tamam sayılmaz (deneysel m.29). Tümü stdlib-only Python 3 (ps1 hariç; tek istisna: kolon katmanı `ambar-parquet.py` + `kolon-olcum.py` kolon tarafı — opsiyonel `duckdb` paketi, KB-55 Salih hükmüne dek).*
 
+## Durum kütüğü + akış grafı (Rust; Karar 113 M2 · 121 · 122)
+| araç | yol | ne yapar | koş | okurken |
+|---|---|---|---|---|
+| **durum** | `kod/durum/` → `../target/release/durum.exe` | ortak durum kütüğü (`ortak/durum-olay.jsonl`, ekle-yalnız) + akış grafı: iş/hedef/seans düğümleri, girdi/hizmet/açtı/bitirdi/sonra kenarları; `oturum-basi` ≤2 KB brif (KONUM · SIRADA · bekler · HEDEF); `seans-ac`/`seans-kapat` seans düğümü + JSON teslim kaydı (ölçümler Rust'tan); `graf` → `ortak/akis-graf.json` + `ortak/graf/akis-<alan>.d2` (+ `--render` SVG, d2 elk); `ozet` → `ortak/SALIH-OZET.md` (ASD-STE100 Türkçe, Salih'in tek md'si); `--metin` kenar listesi (LLM biçimi). Hüküm `lean/Kanon/AkisGraf.lean`; şema `ortak/README.md` | `durum seans-ac --alan jarvis --hedef ".."` · `durum seans-kapat --alan jarvis --oturum <ad> --girdi <girdi.json> --etiket <e> --render` · `durum graf --render` · testler `cargo test --release -p durum` | 10-25; kütük worktree'de kopya, id çakışması durum #27 |
+
 ## Skill'e bağlı script'ler (08-15, Jarvis — kapı/şema hattı)
 | script | yol | ne yapar | koş | okurken |
 |---|---|---|---|---|

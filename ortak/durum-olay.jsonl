@@ -61,3 +61,9 @@
 {"olay":"bitir","id":24,"ts":"2026-10-17T16:01:08Z","kanit":["PR #24 MERGED (md.12 + skill-kapisi K0); denetim raporu raporlar/2026-10-17-hazir-karsilik-denetimi.md; EK-1 6a"]}
 {"olay":"bitir","id":19,"ts":"2026-10-17T16:01:09Z","kanit":["PR #20 + #21 MERGED (31 bulgu düzeltildi","katalog","kural-sayaci arızası)"]}
 {"olay":"ac","id":25,"ts":"2026-10-17T21:32:51Z","alan":"jarvis","is":"Karar 121: seans teslim raporu JSON/graf kaydı (Rust üretici + şema), seans-kapanis ve teslim şablonu güncellemesi","sonraki_eylem":"hazır karşılık taraması → şema → Rust alt komutu → skill PR"}
+{"olay":"seans_ac","ts":"2026-10-25T18:02:22Z","alan":"jarvis","oturum":"2026-10-25-jarvis","hedef_cumle":"CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı"}
+{"olay":"al","id":25,"ts":"2026-10-25T18:02:22Z","oturum":"2026-10-25-jarvis"}
+{"olay":"bitir","id":25,"ts":"2026-10-25T18:02:22Z","kanit":["Karar 122: durum seans-ac/seans-kapat/graf/ozet; Kanon.AkisGraf; skill v0.2 x9"],"oturum":"2026-10-25-jarvis"}
+{"olay":"ac","id":26,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"Karar 122 hedef: seanslar arası iletişim graf + JSON (ortak/akis-graf.json, SALIH-OZET.md)","sonraki_eylem":"3 seans ölçüm: açılışta yanlış konum sayısı","oturum":"2026-10-25-jarvis","tur":"hedef"}
+{"olay":"ac","id":27,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"durum kütüğü worktree kopyası: paralel ac id çakışması","sonraki_eylem":"alan önekli id ya da birleştirme öncesi yeniden numaralama; ParalelOturum.lean'e sınır","oturum":"2026-10-25-jarvis","hedef":26}
+{"olay":"ac","id":28,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"SessionStart hook brifi durum oturum-basi çıktısını bassın (kapsül satırları yerine)","sonraki_eylem":"jarvis-hook session_start: KAPSÜL/SONRAKİ İLK İŞ satırları → durum oturum-basi --alan jarvis","oturum":"2026-10-25-jarvis","hedef":26}

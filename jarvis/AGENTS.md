@@ -14,7 +14,7 @@ Depo **açık kaynak** projedir: Jarvis'in kuralı, kaynağı, yazısı ve **her
 - **Hareket kütüğü:** her seansın araç çağrıları repoya iner — `tools/hareket-tablo.py` → `veri/bronz/hareket-olay.jsonl` → silver → `raporlar/hareket/hareket-gunlugu-*.md`; kapanışta koşar; Bash `description` Türkçe. Workflow script'leri `cc/workflow/`. Teslim = çıktı + üreten kaynağın yolu; kalıcı script → `tools/SCRIPTLER.md`. **Harness hafızası** kapanışta `tools/hafiza-ayna.py` → `veri/hafiza-ayna/`, commit'e girer (Karar 104 M3).
 
 ## 3. Her oturum başı okuma sırası (ilk cevaptan önce)
-1. `core/durum-kapsulu.md` (şu an + sonraki ilk iş) → 2. `core/pano.md` (kartlar) → 3. gerekirse pointer'la: tüzük · `kuyruk/senaryo-defteri.md` · `kuyruk/build-tartisma-notlari.md` · `raporlar/` · `cc/`.
+1. `durum oturum-basi --alan jarvis` (konum + sırada; Karar 122, kapsül/pano dondu) → 2. son seans kaydı `raporlar/seans/*.json` → 3. gerekirse pointer'la: tüzük · `kuyruk/senaryo-defteri.md` · `raporlar/` · `cc/`.
 Durum profil/bulut hafızadan **anlatılmaz**; kanona erişim yoksa `SNAPSHOT` beyanı. Ritüeller: "seans başı" → `seans-acilis` · "seans bitimi" → `seans-kapanis`; jarvis↔staj ayrımı **klasörle**. Kapılar `python3 tools/acilis-kapilari.py` (K1 canlı-oturum · K2 manifest · K3 silver; İB-91); hüküm `SeansAcilis`.
 
 ## 4. Yetki
