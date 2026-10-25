@@ -9,7 +9,7 @@
 ## Sınırlar
 - **Kod yazımı bu şeritte değil, ders:** mod yazma alıştırması Salih'in eli (pratik = Salih'in eli). Uygulanacak mod Jarvis'e `cc/giden/` ile devredilir, Span yazmaz (kök md.14 tek-yazar).
 - **Karar 73:** her derste ≥1 formül ya da somut ölçülebilir ilişki (örn. hook zinciri bileşimi `f₁∘f₂∘…∘motor`).
-- **Karar 68:** API yüzeyi AS-OF damgalı; kaynak = bu yapıdaki `plugin-authoring` skill'i (build 2.1.301, 2026-10-16; M0 dersinde canlı yüklenen sürüm 2.1.299, 2026-10-19; M1'de yeniden teyit) + resmi docs; tahmin değil, canlı tipler (`claude-code.d.ts`).
+- **Karar 68:** API yüzeyi AS-OF damgalı; kaynak = bu yapıdaki `plugin-authoring` skill'i (build 2.1.301, 2026-10-16; M0 dersinde canlı yüklenen sürüm 2.1.299, 2026-10-19; M1 dersinde 2.1.308, 2026-10-25, tip dosyasıyla teyit) + resmi docs; tahmin değil, canlı tipler (`claude-code.d.ts`).
 - **md.49:** işyeri verisi girmez.
 
 ## Müfredat taslağı (kutu = 1 oturum; sektör başlığı EN; AS-OF 2026-10-16)

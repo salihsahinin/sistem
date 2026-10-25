@@ -1,0 +1,185 @@
+<title>Mod Dersi M1 Planı</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Düzen: üstte altı kutuluk DAG, altında kutu tablosu. Palet M0 sayfasıyla aynı. */
+:root{
+  --bg:#f6f7f6; --fg:#1d2321; --muted:#5d6864; --line:#aeb8b4;
+  --node:#ffffff; --node-line:#7d8a85; --accent:#0f6e5e; --accent-bg:#d9efe9;
+  --practice:#8a4b00; --practice-bg:#f8e6cf;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141917; --fg:#e4e9e6; --muted:#97a39e; --line:#46514c;
+  --node:#1d2421; --node-line:#5c6a64; --accent:#5fcdb7; --accent-bg:#17352e;
+  --practice:#f0b56a; --practice-bg:#3a2a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --fg:#e4e9e6; --muted:#97a39e; --line:#46514c;
+  --node:#1d2421; --node-line:#5c6a64; --accent:#5fcdb7; --accent-bg:#17352e;
+  --practice:#f0b56a; --practice-bg:#3a2a12; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;
+  padding-block:24px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+h1{font-size:1.5rem;line-height:1.25;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;margin:0 0 8px}
+p{margin:0}
+.meta{color:var(--muted);font-size:.85rem;font-family:var(--font-mono)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--node)}
+svg{display:block;min-width:560px;width:100%;height:auto}
+svg text{font-family:var(--font-body);fill:var(--fg)}
+.n rect{fill:var(--node);stroke:var(--node-line);stroke-width:1.4}
+.n.p rect{fill:var(--practice-bg);stroke:var(--practice)}
+.n .id{font-family:var(--font-mono);font-weight:600;font-size:12px;fill:var(--accent)}
+.n.p .id{fill:var(--practice)}
+.n .t{font-size:12.5px}
+.e{stroke:var(--line);stroke-width:1.6;fill:none}
+.lab{font-size:13px;fill:var(--accent);font-weight:600}
+.rozet circle{fill:var(--accent-bg);stroke:var(--accent);stroke-width:1.4}
+.rozet text{font-size:12px;font-weight:600;fill:var(--accent)}
+.ar{stroke:var(--accent);stroke-width:1.6;fill:none}
+.tablo{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.k{font-family:var(--font-mono);font-weight:600;color:var(--accent);white-space:nowrap}
+tr.p td.k{color:var(--practice)}
+.en{font-style:italic;color:var(--muted)}
+.not{background:var(--accent-bg);padding:10px 12px;border-radius:6px}
+</style>
+
+<main>
+  <div>
+    <h1>Mod dersi M1: bir araç çağrısını reddetmek</h1>
+    <p class="meta">claude-mods · ders 2 planı · 2026-10-19 · M0 bilgisi üzerine (hook, zincir, <code>e</code>, <code>$</code>, mod klasörü)</p>
+  </div>
+
+  <p class="not">M0'dan hazır gelenler: hook, <code>on(...)</code>, <code>next</code>, mod klasörü, <code>validate</code>. Yeni olan: araç çağrısı olayı, üç yanıt biçimi, koşul (<code>if</code>) ve metin arama. Kutu 4 tip dosyasına bağlı; o kutuda bir okuma adımı senin elinde olacak.</p>
+
+  <section>
+    <h2>Bağımlılık grafiği</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 560 270" role="img" aria-label="Altı kutulu grafik: kutu 1, 2, 4 ve 3, 5 kolları kutu 6'da birleşiyor">
+        <defs><marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--line)"/></marker></defs>
+        <path class="e" d="M140 58 L198 58" marker-end="url(#ok)"/>
+        <path class="e" d="M140 70 L198 124" marker-end="url(#ok)"/>
+        <path class="e" d="M140 218 L198 218" marker-end="url(#ok)"/>
+        <path class="e" d="M330 58 L398 122" marker-end="url(#ok)"/>
+        <path class="e" d="M330 138 L398 138" marker-end="url(#ok)"/>
+        <path class="e" d="M330 218 L398 154" marker-end="url(#ok)"/>
+        <g class="n"><rect x="10" y="30" width="130" height="56" rx="4"/><text class="id" x="20" y="48">Kutu 1</text><text class="t" x="20" y="66">Araç çağrısı olayı</text></g>
+        <g class="n"><rect x="200" y="30" width="130" height="56" rx="4"/><text class="id" x="210" y="48">Kutu 2</text><text class="t" x="210" y="66">Üç yanıt biçimi</text></g>
+        <g class="n"><rect x="10" y="190" width="130" height="56" rx="4"/><text class="id" x="20" y="208">Kutu 3</text><text class="t" x="20" y="226">Koşul: if, ===</text></g>
+        <g class="n"><rect x="200" y="110" width="130" height="56" rx="4"/><text class="id" x="210" y="128">Kutu 4</text><text class="t" x="210" y="146">Aracın girdisini oku</text></g>
+        <g class="n"><rect x="200" y="190" width="130" height="56" rx="4"/><text class="id" x="210" y="208">Kutu 5</text><text class="t" x="210" y="226">Metin arama</text></g>
+        <g class="n p"><rect x="400" y="110" width="150" height="56" rx="4"/><text class="id" x="410" y="128">Kutu 6</text><text class="t" x="410" y="146">Pratik: Bash reddeden mod</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 1: bir araç çağrısının yolu</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 700 220" role="img" aria-label="Claude'un araç isteği, tool.call olayı ve hook zinciri, motorun aracı çalıştırması ve sonucun Claude'a dönmesi" style="min-width:640px">
+        <defs><marker id="ok2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker></defs>
+        <g class="n"><rect x="10" y="60" width="130" height="64" rx="4"/><text class="id" x="20" y="80">1 · Claude</text><text class="t" x="20" y="98">araç ister:</text><text class="t" x="20" y="113" style="font-family:var(--font-mono)">Bash, "ls"</text></g>
+        <g class="n p"><rect x="190" y="60" width="150" height="64" rx="4"/><text class="id" x="200" y="80">2 · tool.call olayı</text><text class="t" x="200" y="98">hook zinciri çalışır</text><text class="t" x="200" y="113" style="font-family:var(--font-mono)">e.tool = "Bash"</text></g>
+        <g class="n"><rect x="390" y="60" width="130" height="64" rx="4"/><text class="id" x="400" y="80">3 · motor</text><text class="t" x="400" y="98">aracı gerçekten</text><text class="t" x="400" y="113">çalıştırır</text></g>
+        <g class="n"><rect x="570" y="60" width="120" height="64" rx="4"/><text class="id" x="580" y="80">4 · sonuç</text><text class="t" x="580" y="98">Claude'a döner</text></g>
+        <path d="M142 92 L188 92" stroke="var(--accent)" stroke-width="1.6" fill="none" marker-end="url(#ok2)"/>
+        <path d="M342 92 L388 92" stroke="var(--accent)" stroke-width="1.6" fill="none" marker-end="url(#ok2)"/>
+        <path d="M522 92 L568 92" stroke="var(--accent)" stroke-width="1.6" fill="none" marker-end="url(#ok2)"/>
+        <path d="M265 126 L265 170 L130 170" stroke="var(--practice)" stroke-width="1.6" fill="none" marker-end="url(#ok2)"/>
+        <text x="140" y="190" style="font-size:13px;fill:var(--practice)">hook reddederse 3 hiç çalışmaz, ret Claude'a gider</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 2: bir hook'un üç yanıtı</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 700 300" role="img" aria-label="Reddet, değiştirip geçir ve sonucu gözle biçimlerinin kodları ve her birinde motorun ne yaptığı" style="min-width:640px">
+        <defs><marker id="ok3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker></defs>
+        <text class="lab" x="20" y="26">A. reddet</text>
+        <text x="20" y="54" style="font-family:var(--font-mono);font-size:16px;white-space:pre">return { deny: 'sebep' };</text>
+        <path class="ar" d="M300 48 L350 48" marker-end="url(#ok3)"/>
+        <text x="360" y="52" style="font-size:13px">motor çalışmaz, sebep Claude'a gider</text>
+        <line x1="20" y1="76" x2="680" y2="76" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text class="lab" x="20" y="102">B. değiştirip geçir</text>
+        <text x="20" y="130" style="font-family:var(--font-mono);font-size:16px;white-space:pre">return next({ ...e, ... });</text>
+        <path class="ar" d="M320 124 L350 124" marker-end="url(#ok3)"/>
+        <text x="360" y="128" style="font-size:13px">motor, değiştirilmiş kopya ile çalışır</text>
+        <line x1="20" y1="152" x2="680" y2="152" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text class="lab" x="20" y="178">C. sonucu gözle</text>
+        <text x="20" y="206" style="font-family:var(--font-mono);font-size:16px;white-space:pre">const s = await next(e);</text>
+        <text x="20" y="230" style="font-family:var(--font-mono);font-size:16px;white-space:pre">return s;</text>
+        <path class="ar" d="M300 200 L350 200" marker-end="url(#ok3)"/>
+        <text x="360" y="204" style="font-size:13px">motor çalışır, hook sonucu görür</text>
+        <text x="20" y="270" style="font-size:12.5px"><tspan class="lab">await</tspan> = "cevap gelene kadar bekle"; cevap gelince alt satıra geçilir</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 3: koşul</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 700 270" role="img" aria-label="if koşulunun üç parçası numaralı rozetlerle açıklanmış" style="min-width:640px">
+        <g style="font-family:var(--font-mono);font-size:17px;white-space:pre">
+          <text x="30" y="100">if (arac === 'Bash') {</text>
+          <text x="30" y="130">  return { deny: 'yasak' };</text>
+          <text x="30" y="160">}</text>
+          <text x="30" y="190">return next(e);</text>
+        </g>
+        <g class="rozet"><circle cx="147" cy="76" r="9"/><text x="147" y="80" text-anchor="middle">1</text></g>
+        <g class="rozet"><circle cx="14" cy="125" r="9"/><text x="14" y="129" text-anchor="middle">2</text></g>
+        <g class="rozet"><circle cx="14" cy="185" r="9"/><text x="14" y="189" text-anchor="middle">3</text></g>
+        <g style="font-size:13px">
+          <text x="340" y="80"><tspan class="lab">1</tspan> koşul: arac, 'Bash' ile aynı mı? true ya da false</text>
+          <text x="340" y="130"><tspan class="lab">2</tspan> koşul true ise bu blok çalışır, hook biter</text>
+          <text x="340" y="190"><tspan class="lab">3</tspan> koşul false ise blok atlanır, buradan devam</text>
+        </g>
+        <line x1="30" y1="226" x2="670" y2="226" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text x="30" y="254" style="font-size:13px"><tspan class="lab">===</tspan> karşılaştırır (aynı mı?). <tspan class="lab">=</tspan> isim verir (const f = ...). İkisi karıştırılmaz.</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 4: aracın argümanını okumak</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 700 310" role="img" aria-label="Örnek bir olay nesnesi ve e.input.command ifadesinin üç parçası numaralı rozetlerle açıklanmış" style="min-width:640px">
+        <g style="font-family:var(--font-mono);font-size:17px;white-space:pre">
+          <text x="30" y="40">const e = {</text>
+          <text x="30" y="66">  tool: 'Bash',</text>
+          <text x="30" y="92">  command: 'ls'</text>
+          <text x="30" y="118">};</text>
+          <text x="30" y="198">e.command</text>
+        </g>
+        <text class="lab" x="30" y="152">sonra okurken:</text>
+        <g class="rozet"><circle cx="35" cy="222" r="9"/><text x="35" y="226" text-anchor="middle">1</text></g>
+        <g class="rozet"><circle cx="81" cy="222" r="9"/><text x="81" y="226" text-anchor="middle">2</text></g>
+        <g style="font-size:13px">
+          <text x="300" y="186"><tspan class="lab">1</tspan> e: olayın kendisi (nesne)</text>
+          <text x="300" y="210"><tspan class="lab">2</tspan> .command: aracın argümanı, değeri 'ls'</text>
+          <text x="300" y="234" style="font-family:var(--font-mono)">sonuç: 'ls'</text>
+        </g>
+        <text x="30" y="276" style="font-size:12.5px;fill:var(--accent)">Doğrulandı (build 2.1.308, examples/tool-call.ts):</text>
+        <text x="30" y="296" style="font-size:12.5px;fill:var(--accent)">Bash için e.command, Edit için e.file_path. Argümanlar e üzerinde doğrudan durur.</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="tablo">
+    <h2>Kutular ve sektör başlıkları</h2>
+    <table>
+      <thead><tr><th>Kutu</th><th>Tek akıl-adımı</th><th>Sektör başlığı (AS-OF 2026-10-19)</th></tr></thead>
+      <tbody>
+        <tr><td class="k">1</td><td>Araç çağrısı: Claude bir aracı (<code>Bash</code>, <code>Write</code>, <code>Read</code>) çalıştırmak ister; motor çalıştırmadan hemen önce <code>tool.call</code> olayı doğar, <code>e.tool</code> aracın adıdır.</td><td class="en">Hooks: PreToolUse</td></tr>
+        <tr><td class="k">2</td><td>Hook üç şey yapabilir: reddeder (<code>{ deny }</code>), girdiyi değiştirip geçirir (<code>next({ ...e, ... })</code>), sonucu gözler (<code>await next(e)</code>).</td><td class="en">Hooks: Decision Control</td></tr>
+        <tr><td class="k">3</td><td>Koşul: <code>if (a === b) { ... }</code> okumak.</td><td class="en">JavaScript Control Flow</td></tr>
+        <tr><td class="k">4</td><td>Aracın girdisi olayın neresinde durur; komut metnine ulaşmak. Alan adı tip dosyasından doğrulanacak (okuma adımı Salih'in elinde).</td><td class="en">Hook Input Schema</td></tr>
+        <tr><td class="k">5</td><td>Metin içinde arama: <code>komut.includes('rm')</code>.</td><td class="en">JavaScript Strings</td></tr>
+        <tr class="p"><td class="k">6</td><td>Pratik: <code>rm</code> içeren <code>Bash</code> komutunu reddeden modu kur, <code>validate</code> ve <code>claude plugin test</code> çalıştır. Komutları sen çalıştırırsın.</td><td class="en">Plugin Testing</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
