@@ -18,3 +18,5 @@
 - [İngilizce konuşma pratiği](feedback-ingilizce-konusma-pratigi.md) — Salih 10-12: sohbet sade İngilizce; yeni kavram Türkçe + terim İngilizce + geri-anlatım İngilizce; sonda ≤3 Language note + Words
 - [Rust = icra kodu, test kodu değil](feedback-rust-icra-kodu-test-degil.md) — Salih 10-16: md/Lean görevini yapan Rust kodu; gereksiz test yazılmaz
 - [PR özeti ASD-STE100 Türkçe](feedback-pr-ozeti-ste.md) — Salih 10-16: her PR birleştirme öncesi kısa, etken, tek fikirli cümlelerle Türkçe özetlenir
+- [Görsel örnek üzerinde oklarla](feedback-gorsel-ornek-uzerinde-oklarla.md) — Salih 10-19: parçalı terimler (fonksiyon anatomisi) tek örnek üzerinde ok+etiketle gösterilir, liste yetmez
+- [Plan değil icra, önce-ölçüm yok](feedback-plan-degil-icra-olcum-yok.md) — Salih 10-25 Karar 123: söylenen değişiklik ölçüm/pilot/plan kapısı beklemeden uygulanır; hata sonradan ayıklanır

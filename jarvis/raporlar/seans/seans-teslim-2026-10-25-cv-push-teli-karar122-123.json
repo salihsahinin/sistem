@@ -1,0 +1,172 @@
+{
+  "adaylar": [
+    "Defter (senaryo-defteri.md, 110 KB, 48 KB tavanı aşık) JSON kayda geçebilir; Karar 121 kapsamı dışıydı.",
+    "Worktree kütük kopyası yerine tek kütük: durum ikilisi ana kopyanın kütüğüne yazabilir.",
+    "Span worktree C:/sistem/wt/span kaldırılacak (Salih clear attıktan sonra)."
+  ],
+  "alan": "jarvis",
+  "baglar": {
+    "durum": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "karar": [
+      "Karar 122",
+      "Karar 123"
+    ],
+    "pr": [
+      "#27"
+    ]
+  },
+  "etiket": "cv-push-teli-karar122-123",
+  "hasat": {
+    "ozutler": [
+      "Kural değişince tel değişmedi: Karar 105 deny listesi EK-5'ten sonra bayat kaldı; kural-tel eşleme denetimi yok.",
+      "Bash heredoc ters bölüleri yedi; LaTeX ve .claude yazımı Edit/Write ile.",
+      "Tripwire .claude/ ve core/ Bash yazımını kesti; 14 skill kopyası Write ile girdi."
+    ],
+    "token_zaman": "v_baglam_seyri satırı: ilk-tur bağlamı 95.967 (KB-50 uyarısı)",
+    "verilebilir_miydi": "evet",
+    "wiki_delta": []
+  },
+  "hedef": "CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı",
+  "hedef_tutuldu": true,
+  "kapanis": {
+    "arac_ciktisi_asimi": "yok",
+    "bayat_cekim": "atlandı",
+    "boyut_tetigi": [
+      "kuyruk/senaryo-defteri.md 110 KB > 48 KB",
+      "memory 4241/4096 → FIFO: 2 satır arsiv/memory-arsivi-2026-10-25.md"
+    ],
+    "hafiza_ayna": "31 dosya · yeni 2 · değişen 2",
+    "ingest": "giren 2 (Karar 122, 123) · ADD 2 · DLQ 0",
+    "kural_esigi": 18,
+    "seans_hedefi_yoklamasi": "tutuldu; sapma satırına bak",
+    "silver_saglik": "kapı çıkış 0; WARN T-SA-FORMAT 4, T-SA-KOKEN 1",
+    "skill_esik": "7 çift, sapma 0",
+    "test_kapisi": "cargo build OK · lake build 82 iş OK · hook testleri 11/11 · durum oturum-basi OK · cargo test durum 8/8 · hook_fark2 session_start 2/2",
+    "uzun_kosum": "ilk-tur bağlamı 95.967 > 60k (KB-50 a)"
+  },
+  "kararlar": [
+    {
+      "ad": "Karar 122",
+      "gerekce": "Okuyucu Claude; md'nin artısı yok; graf dili AI slop'u azaltır.",
+      "geri_acma": "Açılışta yanlış konum devralınırsa kapsül md geri açılır.",
+      "kaynak": "Salih 2026-10-25 sohbet",
+      "ozet": "Seanslar arası iletişim graf ve JSON temeline geçti. Salih tek md özet ve D2/SVG okur."
+    },
+    {
+      "ad": "Karar 123",
+      "gerekce": "Ölçüm kapısı işi geciktirir; hata sonradan ayıklanır.",
+      "geri_acma": "Yalnız Salih'in yeni Katman-1 kararı.",
+      "kaynak": "Salih 2026-10-25 sohbet",
+      "ozet": "Plan değil icra. Değişiklik ölçüm, pilot ya da plan taslağı beklemeden uygulanır."
+    },
+    {
+      "ad": "Push teli seçenek 1",
+      "gerekce": "Protokol EK-5 ile iskelet deny listesi çelişiyordu.",
+      "geri_acma": "Yan oturum main'e push ederse deny genişletilir.",
+      "kaynak": "Salih 2026-10-25 sohbet",
+      "ozet": "Yan oturum kendi PR'ını açar, Jarvis birleştirir."
+    }
+  ],
+  "ne_degisti": [
+    "CV 16 geri bildirim maddesiyle yenilendi. Nihai dosya Downloads/HasanSalihSahin_CV.pdf (depo dışı, md.49).",
+    "Alan ajanı push teli daraldı: main ve force push yasak, kendi dalına push ve PR serbest. Commit 74ff357.",
+    "Span dalı push edildi, PR #27 açıldı ve birleşti. Commit 0a625bc.",
+    "Karar 122 uygulandı: akış grafı, JSON seans kaydı, Salih özeti, kapsül ve pano dondu. Commit 3d2ea62.",
+    "SessionStart brifi grafı okuyor. Commit 36735d4.",
+    "Karar 123 uygulandı: ölçüm kapısı kalktı, kütük id çakışması kodlandı, 9 plan düğümü açıldı. Commit 7c700fd.",
+    "Bu kayıt ilk JSON seans kaydıdır. md teslim raporu yazılmadı."
+  ],
+  "olcum": {
+    "ac_ts": "2026-10-25T18:02:22Z",
+    "durum": {
+      "acik_kalan": 15,
+      "acilan": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ],
+      "alinan": [
+        25,
+        28,
+        27,
+        40,
+        41
+      ],
+      "bitirilen": [
+        25,
+        28,
+        27,
+        40,
+        41
+      ]
+    },
+    "git": {
+      "commit_sayisi": 3,
+      "commitler": [
+        "7c700fd [icra] Decision 123: execute instead of plan, no measurement gate; status log id clash fixed; measurement-gated plans listed as graph nodes (#30-#39)",
+        "36735d4 [icra] SessionStart brief reads the flow graph (durum oturum-basi) instead of the frozen capsule (Decision 122, status #28)",
+        "3d2ea62 [icra] Decision 122: inter-session communication moves to a work-flow graph + JSON session records (Decision 121 implemented)"
+      ],
+      "dal": "main",
+      "degisen_dosya_sayisi": 46,
+      "head": "7c700fd",
+      "since": "2026-10-25T18:02:22Z"
+    },
+    "kapat_ts": "2026-10-25T18:16:28Z"
+  },
+  "oturum": "2026-10-25-jarvis",
+  "salih_karar": [
+    "#9 veri bilimi şeridi: yeni ajan mı, Calc altında mı.",
+    "Hangi öğrenme şeridiyle devam edileceği."
+  ],
+  "sapma": "Hedef açılışta beyan edilmedi (seans CV ile açıldı); Karar 122/123 seans içinde eklendi. Ölçüm kapılı Karar 122 taslağı Salih'in uyarısıyla Karar 123'e çevrildi.",
+  "sayaclar": {
+    "kutu": 0,
+    "model": "Fable 5.1",
+    "pratik_salih_beyani": "-",
+    "soru_dogru": 0,
+    "soru_yanlis": 0
+  },
+  "sema": "seans-teslim v1 (Karar 121/122)",
+  "sonraki_ilk_is": [
+    "#30 hedefi altındaki 9 plan düğümünü sırayla icra et (#31-#39).",
+    "#20 Rust taşıma parti 2-7 ve #22 arşiv PR'ı yan şeritte.",
+    "#9 veri bilimi şeridi Salih kararını bekliyor."
+  ],
+  "tarih": "2026-10-25",
+  "yeniden_acma": [
+    "Kapsül md: açılışta yanlış konum devralınırsa.",
+    "Push deny: bir yan oturum main'e push ederse."
+  ]
+}

@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-18",
+ "uretim": "2026-10-25",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 29,
+ "dosya_sayisi": 31,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "e21dd55b03746c54ad0e70a70271654883d85be8ff9e1b06b80977f191d64c4d",
-   "bayt": 3836,
-   "kaynak_mtime": "2026-10-17T18:14:21",
+   "sha256": "9fc2f03ae95b94247f0aa2fd9f0bf60e4eaf801b9c19b049cad791d9cabfd926",
+   "bayt": 4241,
+   "kaynak_mtime": "2026-10-25T21:10:01",
    "durum": "ayna"
   },
   {
@@ -70,6 +70,13 @@
    "durum": "ayna"
   },
   {
+   "ad": "feedback-gorsel-ornek-uzerinde-oklarla.md",
+   "sha256": "1f5ccc4f49d753c6cfc132b86594eb53828647e11274945528a2b4717fb2ee7b",
+   "bayt": 981,
+   "kaynak_mtime": "2026-10-19T16:27:12",
+   "durum": "ayna"
+  },
+  {
    "ad": "feedback-icra-listesi-onaysiz-devam.md",
    "sha256": "c2e31492069cf612c0d2d66f16bd914103f6ab9b0940ac75cf85b1b71a2dbdfb",
    "bayt": 1466,
@@ -109,6 +116,13 @@
    "sha256": "1a861655c62676c110250b15f66c978c9f741c94d6ef2315b7b93ac278a38f95",
    "bayt": 1575,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-plan-degil-icra-olcum-yok.md",
+   "sha256": "ac813661b01fb43517700fcec355f784a26e1534056e8d4a21c343156454e28f",
+   "bayt": 1167,
+   "kaynak_mtime": "2026-10-25T21:09:58",
    "durum": "ayna"
   },
   {
@@ -190,9 +204,9 @@
   },
   {
    "ad": "user-bitirme-tezi-matematik-muhendisligi.md",
-   "sha256": "b819f0f50b791d099e816362da446d6862fb477ee7c9467d10160ef2f5885a6a",
-   "bayt": 1525,
-   "kaynak_mtime": "2026-09-22T18:41:43",
+   "sha256": "9ce116d6333b3d4ecc0e2f5c5e80551fa7f1f4b2f4a7c34a47d37c1a76f77ee9",
+   "bayt": 6000,
+   "kaynak_mtime": "2026-10-19T22:45:07",
    "durum": "ayna"
   },
   {

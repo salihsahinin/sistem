@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-10-17,18:09,351e6dbd,39,seans-kapanis,seans-kapanis,claude-opus-5-5,12,seans bitimi,571e83ef-4fe0-4cbb-8d1c-12a2fbd09490
-2,2026-10-17,18:08,351e6dbd,38,diger,,claude-opus-5-5,32,"omp açıldı, prompt'u yapıştırdım",000466e3-0887-411d-884c-18d66afd5cec
-3,2026-10-17,18:08,351e6dbd,37,soru,,claude-opus-5-5,110,şimdi mevcut omp chatini exit ile kapatıp bu dediğine mi geçeyim yoksa yeni bi terminalde mi bunu yapıştırayım,38a88728-d371-40da-8033-be8d0f43fc48
-4,2026-10-17,17:12,351e6dbd,36,diger,,claude-opus-5-5,26,"birleştir #21, push et, 5b",bf881007-ca9f-4e17-a5c7-3ca7ff0e2f44
-5,2026-10-17,16:52,351e6dbd,35,onay/devam,,claude-opus-5-5,8,devam et,02a0ba4a-88ac-4956-aa48-b369463da574
-6,2026-10-17,16:39,351e6dbd,34,diger,,claude-opus-5-5,30,"birleştir #18 #19 #20, push et",6a6143be-d87f-47b4-ac0e-5fe11c7df1bc
-7,2026-10-17,16:30,351e6dbd,33,emir,,claude-opus-5-5,3411,"Another Claude session sent a message: <agent-message from=""a7d0756175de48b95""> [Subagent hand-back] The text below is the final report of a",072634e3-cf9b-4be4-975d-ef50d4b3a759
-8,2026-10-17,16:24,351e6dbd,32,onay/devam,,claude-opus-5-5,29,"devam et, 3 → 1 → 2 sırasıyla",e62250b6-a517-4e6f-93e6-836d1026076d
-9,2026-10-17,16:21,351e6dbd,31,diger,,claude-opus-5-5,26,"birleştir #16 #17, push et",3400efe1-20bb-4c7a-b50d-8bcc1335f310
-10,2026-10-17,16:08,351e6dbd,30,diger,,claude-opus-5-5,26,"omp görevi bitti, PR'ı kes",d895bb2f-e940-48da-9422-f3ee00abeb1d
-11,2026-10-17,16:07,351e6dbd,29,diger,,claude-opus-5-5,22,"birleştir #15, push et",b3e8376f-a387-4a2a-aab3-73bc31631b3f
-12,2026-10-17,16:04,351e6dbd,28,emir,,claude-opus-5-5,42,"devam et, AGENTS.md pointer PR'ını hazırla",9d7bd654-6882-43b7-9a7a-d571641b6f52
-13,2026-10-17,16:00,351e6dbd,27,diger,,claude-opus-5-5,55,"birleştir #13 #14, push et,omp görevi bitti yeni prompt",c43a192a-1721-40ae-9764-3c49274b0215
-14,2026-10-17,00:27,351e6dbd,26,soru,,claude-opus-5-5,3232,"Another Claude session sent a message: <agent-message from=""a908e3d0529f47049""> [Subagent hand-back] The text below is the final report of a",b1b0cbc3-73d8-4dd2-9c9b-72dacb5407f2
-15,2026-10-17,00:26,351e6dbd,25,soru,,claude-opus-5-5,3405,"Another Claude session sent a message: <agent-message from=""aecdfb39c06babcce""> [Subagent hand-back] The text below is the final report of a",4586e5d4-4e33-4e40-8e2f-d0e4e8e53fde
-16,2026-10-17,00:26,351e6dbd,24,diger,,claude-opus-5-5,3271,"Another Claude session sent a message: <agent-message from=""ab757f2d9b2f786f7""> [Subagent hand-back] The text below is the final report of a",69ea44a8-2160-4cfd-a0b4-ae439a056bad
-17,2026-10-17,00:25,351e6dbd,23,diger,,claude-opus-5-5,42,"devam et, m.28-33'ü de yap,ompa prompt ver",b9ccc67c-0c58-4c32-95e3-ffcd31083fcd
-18,2026-10-17,00:17,351e6dbd,22,diger,,claude-opus-5-5,30,"birleştir #10 #11 #12, push et",b311f1f0-df90-4c61-b6d0-8e14ddc0ac24
-19,2026-10-16,23:18,351e6dbd,21,diger,,claude-opus-5-5,144,"kopyaya gerek yok,b veya c yapacağız.tüzüğü okumak istediğimde cc kullanarak tek seferlik 6-8 dosyanın birleştirilmesini isteyebilirim b diy",0e098d6b-710b-4477-9915-794477ec8d07
-20,2026-10-16,23:07,351e6dbd,20,emir,,claude-opus-5-5,132,"devam et, sıradaki partiye geç,yan soru:şu an çalıştığım sürecin literatürdeki terimsel ve mesleki karşılığı nedir 3 cümleyle açıkla",b0a4b9da-f221-4c7e-aa1b-81ac6f09c187
-21,2026-10-16,23:06,351e6dbd,19,diger,,claude-opus-5-5,12,birleştir #9,fb04d842-4433-42e3-9fb3-9354ed6f2e48
-22,2026-10-16,22:46,351e6dbd,18,onay/devam,,claude-opus-5-5,31,"devam, tüzük düzenlemesine izin",c3742109-2f78-481b-ade7-0d636277dccc
-23,2026-10-16,22:40,351e6dbd,17,diger,,claude-opus-5-5,1,a,17902a21-0add-4702-be9b-4dd527f02dbb
-24,2026-10-16,22:33,351e6dbd,16,diger,,claude-opus-5-5,14,"1a 2a, push et",47235532-97ef-4623-bfed-7985dcdd862d
-25,2026-10-16,22:33,351e6dbd,15,soru,,claude-opus-5-5,2829,"Another Claude session sent a message: <agent-message from=""a63da7dba1ec50db0""> [Subagent hand-back] The text below is the final report of a",f8e3106c-9e20-4bb1-b6ec-00e3cf8c0076
-26,2026-10-16,22:29,351e6dbd,14,soru,,claude-opus-5-5,12339,"Another Claude session sent a message: <agent-message from=""ac33ae799f130c15d""> [Subagent hand-back] The text below is the final report of a",bbbec3e4-3746-40fe-a78b-ef45c4734fc6
-27,2026-10-16,22:23,351e6dbd,13,soru,,claude-opus-5-5,8142,"Another Claude session sent a message: <agent-message from=""a2dd813c2bd501ad0""> [Subagent hand-back] The text below is the final report of a",e7005573-7445-42b0-a8d8-e36ca559fbf8
-28,2026-10-16,22:23,351e6dbd,12,emir,,claude-opus-5-5,7262,"Another Claude session sent a message: <agent-message from=""ac984bc9f39729d39""> [Subagent hand-back] The text below is the final report of a",aeba768c-d70c-44aa-8170-78e89c979194
-29,2026-10-16,22:21,351e6dbd,11,emir,,claude-opus-5-5,10683,"Another Claude session sent a message: <agent-message from=""ae1c0c7814b242f36""> [Subagent hand-back] The text below is the final report of a",12959752-0973-410f-8d50-cd6bfd579895
-30,2026-10-16,22:21,351e6dbd,10,soru,,claude-opus-5-5,9527,"Another Claude session sent a message: <agent-message from=""a91c5e1c37b6aeb41""> [Subagent hand-back] The text below is the final report of a",ff6525fa-1ca8-4982-98f9-9147f760c9a2
-31,2026-10-16,22:21,351e6dbd,9,soru,,claude-opus-5-5,8270,"Another Claude session sent a message: <agent-message from=""a4a34df7ccd49f0b9""> [Subagent hand-back] The text below is the final report of a",5a1befdc-b6a6-46c7-ad24-ffc351127ab4
-32,2026-10-16,22:15,351e6dbd,8,diger,atlas-kosum,claude-opus-5-5,425,"birleştir #8, sonra 1. adımla başla,rusta geçiş için bir ek not var:kod yazmış olmak için gereksiz test kodları yazarak rust yazmayı kast et",61b1ed3e-c5f1-46f8-bf93-aca56c283778
-33,2026-10-16,22:08,351e6dbd,7,diger,,claude-opus-5-5,871,"PR #8 özetle,bu arada lean geçiş sürecine yan görev: <pasted_content id=""c68f""> ayrıca yeni bi projeye başlıyoruz:bundan sonra jarvisin kano",cb17a0a0-3b13-485d-9292-6cbd978aa22b
-34,2026-10-16,22:05,351e6dbd,6,soru,,claude-opus-5-5,73,tamamdır span açıldı o zaman aynı şekilde ompun da açılması gerekmiyor mu,16335d05-8056-4daa-99fc-96ffd2e0217e
-35,2026-10-16,22:03,351e6dbd,5,diger,,claude-opus-5-5,92,span no conversaion found to continue dedi ompu bahsettiğin iş bitince başlatacağım hatırlat,c840e533-4087-42ca-8693-b8b0ceeae794
-36,2026-10-16,22:02,351e6dbd,4,emir,,claude-opus-5-5,445,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,19a5fc17-04db-4d94-9cff-2102046da84b
-37,2026-10-16,22:02,351e6dbd,3,soru,,claude-opus-5-5,97,tamam şimdi şöyle yapıyoruz diğer chatlere ne yazmam en mantıklısı öncelikle onları da başlatayım,ec917900-3315-4f3d-ac68-6128d1adc43c
-38,2026-10-16,22:00,351e6dbd,2,emir,,claude-opus-5-5,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,427dda59-74e5-409f-913d-1e288e4f50fe
-39,2026-10-16,21:57,351e6dbd,1,seans-acilis,seans-acilis,claude-opus-5-5,237,"seans başı,en son update almak için farkında olmadan omp span ve jarvis chate exit attım aynı anda kaldığımız yerden devam edebilecek şekild",78952a31-6cd2-455c-b341-a918d802f37d
-40,2026-10-16,17:08,c1b02a3c,25,emir,,claude-opus-5-5,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,56620565-e7d7-4bff-afca-1f5859c333fc
-41,2026-10-16,17:04,c1b02a3c,24,soru,,claude-opus-5-5,153,"birleştir #7, parti 3'e devam,ama pr'larda ne yapıldığını ASD-STE100 formatındaki gibi ama türkçe olarak bana özet çıkarmalısın.bu seferlik ",8a5c6010-550a-499e-b2ac-29317bc13d3b
-42,2026-10-16,17:00,c1b02a3c,23,diger,,claude-opus-5-5,109,"a seçeneğiyle devam ettim span oturumuna başladım,omp parti 3 çalışıyor,pr kısmını açıkla yetişemedim o kısma",1bae1951-c256-424b-b10a-012322ba10ed
-43,2026-10-16,16:59,c1b02a3c,22,emir,,,8876,## Context Usage **Model:** claude-opus-5-5 **Tokens:** 434.5k / 1m (43%) ### Estimated usage by category | Category | Tokens | Percentage |,653f7204-6ff9-402c-b108-e506aaf3365c
-44,2026-10-16,16:56,c1b02a3c,21,emir,,claude-opus-5-5,299,"push onay,parti 3 devam.omp yatmasın verilecek görev var mı? bu arada not:omp parti 2 de bitti. yapılacak işlere ekle:claude mod'ları kullan",bbfa0ea6-216a-4247-9716-d4ba8a69d3f2
-45,2026-10-16,16:50,c1b02a3c,20,soru,,claude-opus-5-5,383,"3'te ne demek istediğini anlamadım açıkla,2 için parti 2'ye devam ama sistemde belirtmek istediğim bi durum var:herhangi bir değişikliği yap",760c0386-70ba-4019-a5bd-ac831a426093
-46,2026-10-16,16:38,c1b02a3c,19,soru,,claude-opus-5-5,3872,"Another Claude session sent a message: <agent-message from=""a1fcb65ece364c695""> [Subagent hand-back] The text below is the final report of a",cac7bc22-fba2-4713-a139-d2b8acdef610
-47,2026-10-16,16:38,c1b02a3c,18,soru,,claude-opus-5-5,74,"C ve A arasında kaldım,A seçeneğine gerçekten ihtiyacımız var mı yorum yap",a23f84e7-cc40-486a-b4d9-34d6a5e36ae6
-48,2026-10-16,16:34,c1b02a3c,17,emir,,claude-opus-5-5,3350,"Another Claude session sent a message: <agent-message from=""a80a6b35afc897d4d""> [Subagent hand-back] The text below is the final report of a",bd6e3735-c22f-4304-8331-ad23a19983b5
-49,2026-10-16,16:33,c1b02a3c,16,diger,,claude-opus-5-5,311,1 veya 2 bunu korallaştırmamıza gerek yok.#10'dan devam edeceğiz.ayrıca yan görev:sistemdeki md dosyalarından lean koduna çevrilebilir olan ,c577aca7-82ca-49d3-83f0-25e7083bdba2
-50,2026-10-16,16:26,c1b02a3c,15,onay/devam,,claude-opus-5-5,16,"A, #5'e devam et",5a97db2f-50ee-428f-a1ab-a321fab17757
+1,2026-10-18,03:29,fb543781,1,seans-acilis,seans-acilis,claude-opus-5-5,30,"seans başı,lobi bağlı mı şu an",d3da8ff3-08bd-4e51-b93d-85fc087e3fd2
+2,2026-10-18,00:35,351e6dbd,56,diger,,claude-opus-5-5,34,push et sonra bu chati bitireceğim,07263f03-d385-46be-9a58-f47c01f3a18a
+3,2026-10-18,00:33,351e6dbd,55,soru,,claude-opus-5-5,3780,"Another Claude session sent a message: <agent-message from=""a53b4092cd25b4c9c""> [Subagent hand-back] The text below is the final report of a",07627251-2ecd-40ea-a84e-8fe86d178425
+4,2026-10-18,00:31,351e6dbd,54,soru,,claude-opus-5-5,403,md'leri genelde okumuyorum okuma ihtiyacım olduğu zaman claude'a açıklattırıyorum yani md ile yazılmış olmasının bana bir artısı olmuyor yan,cd307c4c-17f6-41df-91d7-a57e6abcb89f
+5,2026-10-18,00:26,351e6dbd,53,soru,,claude-opus-5-5,334,"teslim raporları md olarak mı yapılmalı lean/graf/rust olarak yapılabilir mi farkları neler,bi de cc uygulamadan spanle öğrenme oturumuna de",8b4d2032-d206-4577-9d21-d9607a93066c
+6,2026-10-18,00:20,351e6dbd,52,diger,,claude-opus-5-5,43,tamamdır o zaman burda duralım seans bitimi,d4354a16-2971-46cd-b8dd-9268b9cbee84
+7,2026-10-17,19:00,351e6dbd,51,soru,,claude-opus-5-5,117,"birleştir #25, push et,definiton of done'a ne kadar kaldı,artık bir şeyler öğrenip ürettiğimiz kısma geçmek istiyorum",e522bd5a-5734-4127-824e-611511a5b8d0
+8,2026-10-17,18:58,351e6dbd,50,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,76d5da9b-7261-4fe7-9d61-38acfb3375e7
+9,2026-10-17,18:53,351e6dbd,49,diger,,claude-opus-5-5,63,"birleştir #23, LF, evet, m.36 emekli, K-005 kalksın vega kalsın",10dc2934-5343-4cb5-a478-3fd115e84472
+10,2026-10-17,18:52,351e6dbd,48,onay/devam,,claude-opus-5-5,37,tamam şimdi ne yapıyoruz omp da bitti,a4196217-a233-4aea-85c5-ab1708df4468
+11,2026-10-17,18:51,351e6dbd,47,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,17a5e336-94d5-48a3-9659-e3d8f211a3ce
+12,2026-10-17,18:47,351e6dbd,46,diger,,claude-opus-5-5,36,"omp görevi bitti, PR'ı kontrol et,6a",b7c12569-b86b-4b14-823b-bad2e6a47536
+13,2026-10-17,18:42,351e6dbd,45,emir,,claude-opus-5-5,3315,"Another Claude session sent a message: <agent-message from=""a301792cbde98b7e4""> [Subagent hand-back] The text below is the final report of a",fcc4538e-2e1b-438b-aba8-8f2d1af4665a
+14,2026-10-17,18:41,351e6dbd,44,diger,,claude-opus-5-5,22,"birleştir #24, push et",29b2500d-4f9b-489e-bf79-87c58ed2f4e5
+15,2026-10-17,18:37,351e6dbd,43,diger,,claude-opus-5-5,218,"birleştir #22, push et,bir de harsh truthlardan birine cevap:claude'un ve zaten halihazırda sağlanan servis ve hizmetlerin benzerini bundan ",37de681c-696b-4fdc-8296-91bd77104ee6
+16,2026-10-17,18:31,351e6dbd,42,diger,,claude-opus-5-5,44,"1 evet, 2 evet, 3 evet, tek-flagship kalksın",144c0f52-dcc4-412c-b79e-3c9c2b49a811
+17,2026-10-17,18:27,351e6dbd,41,emir,,claude-opus-5-5,614,mesela atlasla araştırma görevi icra ederken md dosyasında raporlar ve teslim vermek yerine kod olarak görev verip icrasını kodla yapıp lean,989c9ae0-7694-4949-992b-8d53cd732b6f
+18,2026-10-17,18:18,351e6dbd,40,diger,,claude-opus-5-5,200,"peki son bir soru sistem dosyası ve tüm bu yaptıklarım hakkındaki harsh truthları bana söyle(örneğin stajdayken ekip liderim ""llm'leri başta",a2ce3eb8-6daa-46e8-bba4-e3b30e5a7482
+19,2026-10-17,18:09,351e6dbd,39,seans-kapanis,seans-kapanis,claude-opus-5-5,12,seans bitimi,571e83ef-4fe0-4cbb-8d1c-12a2fbd09490
+20,2026-10-17,18:08,351e6dbd,38,diger,,claude-opus-5-5,32,"omp açıldı, prompt'u yapıştırdım",000466e3-0887-411d-884c-18d66afd5cec
+21,2026-10-17,18:08,351e6dbd,37,soru,,claude-opus-5-5,110,şimdi mevcut omp chatini exit ile kapatıp bu dediğine mi geçeyim yoksa yeni bi terminalde mi bunu yapıştırayım,38a88728-d371-40da-8033-be8d0f43fc48
+22,2026-10-17,17:12,351e6dbd,36,diger,,claude-opus-5-5,26,"birleştir #21, push et, 5b",bf881007-ca9f-4e17-a5c7-3ca7ff0e2f44
+23,2026-10-17,16:52,351e6dbd,35,onay/devam,,claude-opus-5-5,8,devam et,02a0ba4a-88ac-4956-aa48-b369463da574
+24,2026-10-17,16:39,351e6dbd,34,diger,,claude-opus-5-5,30,"birleştir #18 #19 #20, push et",6a6143be-d87f-47b4-ac0e-5fe11c7df1bc
+25,2026-10-17,16:30,351e6dbd,33,emir,,claude-opus-5-5,3411,"Another Claude session sent a message: <agent-message from=""a7d0756175de48b95""> [Subagent hand-back] The text below is the final report of a",072634e3-cf9b-4be4-975d-ef50d4b3a759
+26,2026-10-17,16:24,351e6dbd,32,onay/devam,,claude-opus-5-5,29,"devam et, 3 → 1 → 2 sırasıyla",e62250b6-a517-4e6f-93e6-836d1026076d
+27,2026-10-17,16:21,351e6dbd,31,diger,,claude-opus-5-5,26,"birleştir #16 #17, push et",3400efe1-20bb-4c7a-b50d-8bcc1335f310
+28,2026-10-17,16:08,351e6dbd,30,diger,,claude-opus-5-5,26,"omp görevi bitti, PR'ı kes",d895bb2f-e940-48da-9422-f3ee00abeb1d
+29,2026-10-17,16:07,351e6dbd,29,diger,,claude-opus-5-5,22,"birleştir #15, push et",b3e8376f-a387-4a2a-aab3-73bc31631b3f
+30,2026-10-17,16:04,351e6dbd,28,emir,,claude-opus-5-5,42,"devam et, AGENTS.md pointer PR'ını hazırla",9d7bd654-6882-43b7-9a7a-d571641b6f52
+31,2026-10-17,16:00,351e6dbd,27,diger,,claude-opus-5-5,55,"birleştir #13 #14, push et,omp görevi bitti yeni prompt",c43a192a-1721-40ae-9764-3c49274b0215
+32,2026-10-17,00:27,351e6dbd,26,soru,,claude-opus-5-5,3232,"Another Claude session sent a message: <agent-message from=""a908e3d0529f47049""> [Subagent hand-back] The text below is the final report of a",b1b0cbc3-73d8-4dd2-9c9b-72dacb5407f2
+33,2026-10-17,00:26,351e6dbd,25,soru,,claude-opus-5-5,3405,"Another Claude session sent a message: <agent-message from=""aecdfb39c06babcce""> [Subagent hand-back] The text below is the final report of a",4586e5d4-4e33-4e40-8e2f-d0e4e8e53fde
+34,2026-10-17,00:26,351e6dbd,24,diger,,claude-opus-5-5,3271,"Another Claude session sent a message: <agent-message from=""ab757f2d9b2f786f7""> [Subagent hand-back] The text below is the final report of a",69ea44a8-2160-4cfd-a0b4-ae439a056bad
+35,2026-10-17,00:25,351e6dbd,23,diger,,claude-opus-5-5,42,"devam et, m.28-33'ü de yap,ompa prompt ver",b9ccc67c-0c58-4c32-95e3-ffcd31083fcd
+36,2026-10-17,00:17,351e6dbd,22,diger,,claude-opus-5-5,30,"birleştir #10 #11 #12, push et",b311f1f0-df90-4c61-b6d0-8e14ddc0ac24
+37,2026-10-16,23:18,351e6dbd,21,diger,,claude-opus-5-5,144,"kopyaya gerek yok,b veya c yapacağız.tüzüğü okumak istediğimde cc kullanarak tek seferlik 6-8 dosyanın birleştirilmesini isteyebilirim b diy",0e098d6b-710b-4477-9915-794477ec8d07
+38,2026-10-16,23:07,351e6dbd,20,emir,,claude-opus-5-5,132,"devam et, sıradaki partiye geç,yan soru:şu an çalıştığım sürecin literatürdeki terimsel ve mesleki karşılığı nedir 3 cümleyle açıkla",b0a4b9da-f221-4c7e-aa1b-81ac6f09c187
+39,2026-10-16,23:06,351e6dbd,19,diger,,claude-opus-5-5,12,birleştir #9,fb04d842-4433-42e3-9fb3-9354ed6f2e48
+40,2026-10-16,22:46,351e6dbd,18,onay/devam,,claude-opus-5-5,31,"devam, tüzük düzenlemesine izin",c3742109-2f78-481b-ade7-0d636277dccc
+41,2026-10-16,22:40,351e6dbd,17,diger,,claude-opus-5-5,1,a,17902a21-0add-4702-be9b-4dd527f02dbb
+42,2026-10-16,22:33,351e6dbd,16,diger,,claude-opus-5-5,14,"1a 2a, push et",47235532-97ef-4623-bfed-7985dcdd862d
+43,2026-10-16,22:33,351e6dbd,15,soru,,claude-opus-5-5,2829,"Another Claude session sent a message: <agent-message from=""a63da7dba1ec50db0""> [Subagent hand-back] The text below is the final report of a",f8e3106c-9e20-4bb1-b6ec-00e3cf8c0076
+44,2026-10-16,22:29,351e6dbd,14,soru,,claude-opus-5-5,12339,"Another Claude session sent a message: <agent-message from=""ac33ae799f130c15d""> [Subagent hand-back] The text below is the final report of a",bbbec3e4-3746-40fe-a78b-ef45c4734fc6
+45,2026-10-16,22:23,351e6dbd,13,soru,,claude-opus-5-5,8142,"Another Claude session sent a message: <agent-message from=""a2dd813c2bd501ad0""> [Subagent hand-back] The text below is the final report of a",e7005573-7445-42b0-a8d8-e36ca559fbf8
+46,2026-10-16,22:23,351e6dbd,12,emir,,claude-opus-5-5,7262,"Another Claude session sent a message: <agent-message from=""ac984bc9f39729d39""> [Subagent hand-back] The text below is the final report of a",aeba768c-d70c-44aa-8170-78e89c979194
+47,2026-10-16,22:21,351e6dbd,11,emir,,claude-opus-5-5,10683,"Another Claude session sent a message: <agent-message from=""ae1c0c7814b242f36""> [Subagent hand-back] The text below is the final report of a",12959752-0973-410f-8d50-cd6bfd579895
+48,2026-10-16,22:21,351e6dbd,10,soru,,claude-opus-5-5,9527,"Another Claude session sent a message: <agent-message from=""a91c5e1c37b6aeb41""> [Subagent hand-back] The text below is the final report of a",ff6525fa-1ca8-4982-98f9-9147f760c9a2
+49,2026-10-16,22:21,351e6dbd,9,soru,,claude-opus-5-5,8270,"Another Claude session sent a message: <agent-message from=""a4a34df7ccd49f0b9""> [Subagent hand-back] The text below is the final report of a",5a1befdc-b6a6-46c7-ad24-ffc351127ab4
+50,2026-10-16,22:15,351e6dbd,8,diger,atlas-kosum,claude-opus-5-5,425,"birleştir #8, sonra 1. adımla başla,rusta geçiş için bir ek not var:kod yazmış olmak için gereksiz test kodları yazarak rust yazmayı kast et",61b1ed3e-c5f1-46f8-bf93-aca56c283778

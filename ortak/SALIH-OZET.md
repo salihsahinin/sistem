@@ -4,7 +4,29 @@ Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel:
 
 ## jarvis
 
-**Konum:** seans `2026-10-25-jarvis` (açık). Hedef: CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı.
+**Konum:** seans `2026-10-25-jarvis` (kapandı 2026-10-25). Hedef: CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı. Hedef tutuldu.
+
+**Son seansta ne değişti**
+- CV 16 geri bildirim maddesiyle yenilendi. Nihai dosya Downloads/HasanSalihSahin_CV.pdf (depo dışı, md.49).
+- Alan ajanı push teli daraldı: main ve force push yasak, kendi dalına push ve PR serbest. Commit 74ff357.
+- Span dalı push edildi, PR #27 açıldı ve birleşti. Commit 0a625bc.
+- Karar 122 uygulandı: akış grafı, JSON seans kaydı, Salih özeti, kapsül ve pano dondu. Commit 3d2ea62.
+- SessionStart brifi grafı okuyor. Commit 36735d4.
+- Karar 123 uygulandı: ölçüm kapısı kalktı, kütük id çakışması kodlandı, 9 plan düğümü açıldı. Commit 7c700fd.
+- Bu kayıt ilk JSON seans kaydıdır. md teslim raporu yazılmadı.
+
+**Hangi karar verildi**
+- Karar 122: Seanslar arası iletişim graf ve JSON temeline geçti. Salih tek md özet ve D2/SVG okur.
+- Karar 123: Plan değil icra. Değişiklik ölçüm, pilot ya da plan taslağı beklemeden uygulanır.
+- Push teli seçenek 1: Yan oturum kendi PR'ını açar, Jarvis birleştirir.
+
+**Senin kararını bekleyen**
+- #9 veri bilimi şeridi: yeni ajan mı, Calc altında mı.
+- Hangi öğrenme şeridiyle devam edileceği.
+
+**Sapma:** Hedef açılışta beyan edilmedi (seans CV ile açıldı); Karar 122/123 seans içinde eklendi. Ölçüm kapılı Karar 122 taslağı Salih'in uyarısıyla Karar 123'e çevrildi.
+
+Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-25-cv-push-teli-karar122-123.json`
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.

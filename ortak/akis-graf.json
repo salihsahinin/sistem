@@ -42,14 +42,16 @@
         36,
         37,
         38,
-        39
+        39,
+        40,
+        41
       ],
       "etiket": "2026-10-25-jarvis",
       "hedef": "CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı",
-      "hedef_tutuldu": null,
+      "hedef_tutuldu": true,
       "id": "seans:2026-10-25-jarvis",
-      "kapat_ts": null,
-      "kayit": null,
+      "kapat_ts": "2026-10-25T18:16:28Z",
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-25-cv-push-teli-karar122-123.json",
       "ortuk": false,
       "tur": "seans"
     },
@@ -583,6 +585,36 @@
       "tur": "is"
     },
     {
+      "acilis_ts": "2026-10-25T18:15:32Z",
+      "al_ts": "2026-10-25T18:15:32Z",
+      "alan": "jarvis",
+      "bitir_ts": "2026-10-25T18:15:32Z",
+      "durum": "tamam",
+      "etiket": "CV 2026-10: 16 eleştirel geri bildirim maddesi uygulandı (K-004)",
+      "id": "is:40",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "Downloads/HasanSalihSahin_CV.pdf nihai; sonraki tur Salih yeni geri bildirim getirirse",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:15:32Z",
+      "al_ts": "2026-10-25T18:15:32Z",
+      "alan": "jarvis",
+      "bitir_ts": "2026-10-25T18:15:32Z",
+      "durum": "tamam",
+      "etiket": "alan ajanı push teli: main/force push deny, kendi dalına push + PR serbest (seçenek 1)",
+      "id": "is:41",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "-",
+      "tur": "is"
+    },
+    {
       "acilis_ts": "2026-10-16T13:57:56Z",
       "al_ts": null,
       "alan": "span",
@@ -738,6 +770,16 @@
       "tur": "acti"
     },
     {
+      "h": "is:40",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:41",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
       "h": "is:25",
       "k": "seans:2026-10-25-jarvis",
       "tur": "bitirdi"
@@ -749,6 +791,16 @@
     },
     {
       "h": "is:27",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "bitirdi"
+    },
+    {
+      "h": "is:40",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "bitirdi"
+    },
+    {
+      "h": "is:41",
       "k": "seans:2026-10-25-jarvis",
       "tur": "bitirdi"
     },
@@ -840,8 +892,8 @@
   ],
   "meta": {
     "alan": null,
-    "dugum_sayisi": 41,
-    "kenar_sayisi": 45,
+    "dugum_sayisi": 43,
+    "kenar_sayisi": 49,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik",
     "sema": "akis-graf v1 (Karar 122)",
     "tarih": "2026-10-25",
