@@ -1,25 +1,8 @@
 {
-  "meta": {
-    "sema": "akis-graf v1 (Karar 122)",
-    "uretici": "durum graf",
-    "tarih": "2026-10-25",
-    "alan": null,
-    "dugum_sayisi": 30,
-    "kenar_sayisi": 22,
-    "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
-  },
   "dugumler": [
     {
-      "id": "seans:jarvis-kapanis-10-14",
-      "tur": "seans",
-      "alan": "jarvis",
-      "etiket": "jarvis-kapanis-10-14",
       "ac_ts": "2026-10-14T15:28:02Z",
-      "kapat_ts": null,
-      "hedef": null,
-      "hedef_tutuldu": null,
-      "kayit": null,
-      "ortuk": true,
+      "alan": "jarvis",
       "dokunulan": [
         1,
         2,
@@ -31,529 +14,837 @@
         8,
         9,
         10
-      ]
+      ],
+      "etiket": "jarvis-kapanis-10-14",
+      "hedef": null,
+      "hedef_tutuldu": null,
+      "id": "seans:jarvis-kapanis-10-14",
+      "kapat_ts": null,
+      "kayit": null,
+      "ortuk": true,
+      "tur": "seans"
     },
     {
-      "id": "seans:2026-10-25-jarvis",
-      "tur": "seans",
-      "alan": "jarvis",
-      "etiket": "2026-10-25-jarvis",
       "ac_ts": "2026-10-25T18:02:22Z",
-      "kapat_ts": null,
-      "hedef": "CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı",
-      "hedef_tutuldu": null,
-      "kayit": null,
-      "ortuk": false,
+      "alan": "jarvis",
       "dokunulan": [
         25,
         26,
         27,
-        28
-      ]
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "etiket": "2026-10-25-jarvis",
+      "hedef": "CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı",
+      "hedef_tutuldu": null,
+      "id": "seans:2026-10-25-jarvis",
+      "kapat_ts": null,
+      "kayit": null,
+      "ortuk": false,
+      "tur": "seans"
     },
     {
-      "id": "is:1",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "hook geçişi Rust'a",
-      "sonraki_eylem": "settings.json (kök+jarvis) → target/release/jarvis-hook + hook-dispatch; önce ikili konumu kararı (her makinede cargo build mı, commit'li bin mi)",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T12:36:36Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T12:36:36Z",
+      "durum": "tamam",
+      "etiket": "hook geçişi Rust'a",
+      "id": "is:1",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "settings.json (kök+jarvis) → target/release/jarvis-hook + hook-dispatch; önce ikili konumu kararı (her makinede cargo build mı, commit'li bin mi)",
+      "tur": "is"
     },
     {
-      "id": "is:3",
-      "tur": "is",
+      "acilis_ts": "2026-10-14T15:28:02Z",
+      "al_ts": "2026-10-16T13:57:56Z",
       "alan": "jarvis",
+      "bitir_ts": "2026-10-16T13:57:56Z",
       "durum": "tamam",
       "etiket": "Rust taşıma parti 2 (OMP)",
-      "sonraki_eylem": "ritüel araçlarından bir parti OMP+Herdr worktree'de; parti 1 ile kıyas (281.658 token, ~19 dk, 398/398 fark)",
-      "acilis_ts": "2026-10-14T15:28:02Z",
-      "al_ts": "2026-10-16T13:57:56Z",
-      "bitir_ts": "2026-10-16T13:57:56Z",
+      "id": "is:3",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "ritüel araçlarından bir parti OMP+Herdr worktree'de; parti 1 ile kıyas (281.658 token, ~19 dk, 398/398 fark)",
+      "tur": "is"
     },
     {
-      "id": "is:4",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "md→Lean kalan kural dosyaları",
-      "sonraki_eylem": "core/skill-tetikleme-semasi.md → Lean modül + Rust + pointer (sıra: teslim raporu)",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T13:10:21Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T13:10:21Z",
+      "durum": "tamam",
+      "etiket": "md→Lean kalan kural dosyaları",
+      "id": "is:4",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "core/skill-tetikleme-semasi.md → Lean modül + Rust + pointer (sıra: teslim raporu)",
+      "tur": "is"
     },
     {
-      "id": "is:5",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "test oranını düşür + her sohbet PR kanonu",
-      "sonraki_eylem": "Karar 113 M4/M5 metinlere: F3 eval kapısı, hook test 5/5, seans-kapanis 6g → duman testi; protokol §5 her sohbet dal+PR",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T13:29:23Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T13:29:23Z",
+      "durum": "tamam",
+      "etiket": "test oranını düşür + her sohbet PR kanonu",
+      "id": "is:5",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "Karar 113 M4/M5 metinlere: F3 eval kapısı, hook test 5/5, seans-kapanis 6g → duman testi; protokol §5 her sohbet dal+PR",
+      "tur": "is"
     },
     {
-      "id": "is:6",
-      "tur": "is",
+      "acilis_ts": "2026-10-14T15:28:02Z",
+      "al_ts": "2026-10-16T13:16:42Z",
       "alan": "jarvis",
+      "bitir_ts": "2026-10-16T13:16:42Z",
       "durum": "tamam",
       "etiket": "büyük-harf hook kısaltma listesi",
-      "sonraki_eylem": "Rust buyuk_harf.rs'e kısaltma beyaz listesi (WSL CTE PATH OMP LSP NYC); bu oturum 10+ yanlış pozitif",
-      "acilis_ts": "2026-10-14T15:28:02Z",
-      "al_ts": "2026-10-16T13:16:42Z",
-      "bitir_ts": "2026-10-16T13:16:42Z",
+      "id": "is:6",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "Rust buyuk_harf.rs'e kısaltma beyaz listesi (WSL CTE PATH OMP LSP NYC); bu oturum 10+ yanlış pozitif",
+      "tur": "is"
     },
     {
-      "id": "is:7",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "durum ts yerel tarih",
-      "sonraki_eylem": "son_gecerlilik karşılaştırması sistem saatinin yerel tarihiyle (Karar 68); şu an UTC",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T13:17:30Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T13:17:30Z",
+      "durum": "tamam",
+      "etiket": "durum ts yerel tarih",
+      "id": "is:7",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "son_gecerlilik karşılaştırması sistem saatinin yerel tarihiyle (Karar 68); şu an UTC",
+      "tur": "is"
     },
     {
-      "id": "is:8",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "Herdr AppData görünmezliği",
-      "sonraki_eylem": "Herdr penceresi AppData'yı görmüyor (Test-Path False); Python hook'ları Herdr'da kırılır mı ölç; hook geçişinden önce",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T11:51:31Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T11:51:31Z",
+      "durum": "tamam",
+      "etiket": "Herdr AppData görünmezliği",
+      "id": "is:8",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "Herdr penceresi AppData'yı görmüyor (Test-Path False); Python hook'ları Herdr'da kırılır mı ölç; hook geçişinden önce",
+      "tur": "is"
     },
     {
-      "id": "is:9",
-      "tur": "is",
+      "acilis_ts": "2026-10-14T15:28:02Z",
+      "al_ts": null,
       "alan": "jarvis",
+      "bitir_ts": null,
       "durum": "acik",
       "etiket": "veri bilimi şeridi evi + deney tasarımı PROBE",
-      "sonraki_eylem": "Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor",
-      "acilis_ts": "2026-10-14T15:28:02Z",
-      "al_ts": null,
-      "bitir_ts": null,
+      "id": "is:9",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": true
+      "sirada": true,
+      "sonraki_eylem": "Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor",
+      "tur": "is"
     },
     {
-      "id": "is:10",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "paket niyet ölçümü",
-      "sonraki_eylem": "kural m kütük satırları 10 geçiş; altın set tools/testler/veri/paket-niyet-seti.jsonl doğruluk",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": "2026-10-16T13:42:11Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T13:42:11Z",
+      "durum": "tamam",
+      "etiket": "paket niyet ölçümü",
+      "id": "is:10",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "kural m kütük satırları 10 geçiş; altın set tools/testler/veri/paket-niyet-seti.jsonl doğruluk",
+      "tur": "is"
     },
     {
-      "id": "is:11",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "kök dispatcher Rust'a",
-      "sonraki_eylem": "bin/hook-dispatch.sh başına aynı yönlendirici kalıbı → target/release/hook-dispatch.exe; uçtan uca sına",
       "acilis_ts": "2026-10-16T12:36:36Z",
       "al_ts": "2026-10-16T13:18:12Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T13:18:12Z",
+      "durum": "tamam",
+      "etiket": "kök dispatcher Rust'a",
+      "id": "is:11",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "bin/hook-dispatch.sh başına aynı yönlendirici kalıbı → target/release/hook-dispatch.exe; uçtan uca sına",
+      "tur": "is"
     },
     {
-      "id": "is:12",
-      "tur": "is",
+      "acilis_ts": "2026-10-16T12:36:36Z",
+      "al_ts": "2026-10-16T13:16:42Z",
       "alan": "jarvis",
+      "bitir_ts": "2026-10-16T13:16:42Z",
       "durum": "tamam",
       "etiket": "session-start Rust çıktısında CR",
-      "sonraki_eylem": "jarvis-hook session_start: git/dosya çıktısından gelen \\r satır 5-11'de; Python'da yok; kırp + fark testine CR durumu ekle",
-      "acilis_ts": "2026-10-16T12:36:36Z",
-      "al_ts": "2026-10-16T13:16:42Z",
-      "bitir_ts": "2026-10-16T13:16:42Z",
+      "id": "is:12",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "jarvis-hook session_start: git/dosya çıktısından gelen \\r satır 5-11'de; Python'da yok; kırp + fark testine CR durumu ekle",
+      "tur": "is"
     },
     {
-      "id": "is:13",
-      "tur": "is",
+      "acilis_ts": "2026-10-16T12:36:36Z",
+      "al_ts": "2026-10-16T13:16:42Z",
       "alan": "jarvis",
+      "bitir_ts": "2026-10-16T13:16:42Z",
       "durum": "tamam",
       "etiket": "stop-buyuk-harf-test 4/10",
-      "sonraki_eylem": "test hem Python hem Rust yolunda 4/10 (6 block durumu boş çıktı); Windows'a özgü mü teşhis et, testi onar",
-      "acilis_ts": "2026-10-16T12:36:36Z",
-      "al_ts": "2026-10-16T13:16:42Z",
-      "bitir_ts": "2026-10-16T13:16:42Z",
+      "id": "is:13",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "test hem Python hem Rust yolunda 4/10 (6 block durumu boş çıktı); Windows'a özgü mü teşhis et, testi onar",
+      "tur": "is"
     },
     {
-      "id": "is:14",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "tetik-denetim.py Rust portu",
-      "sonraki_eylem": "gorev-emri-derleme/scripts/tetik-denetim.py → Rust; Kanon.SkillTetik.kapiO ile fark testi",
       "acilis_ts": "2026-10-16T13:10:21Z",
       "al_ts": "2026-10-16T13:57:56Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-16T19:16:34Z",
+      "durum": "tamam",
+      "etiket": "tetik-denetim.py Rust portu",
+      "id": "is:14",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "gorev-emri-derleme/scripts/tetik-denetim.py → Rust; Kanon.SkillTetik.kapiO ile fark testi",
+      "tur": "is"
     },
     {
-      "id": "is:15",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "sabit güncellik denetimi (Karar 116)",
-      "sonraki_eylem": "Rust: Kanon.Sabitler kaydını oku (Lean'den üretilen JSON ya da Lean exe), model-kesim.jsonl kuşak değişimi ∨ ≥90 gün → seans-acilis brifine 'yeniden bak: N sabit'; ilk liste 12/12 yeni kuşak",
       "acilis_ts": "2026-10-16T13:54:51Z",
       "al_ts": "2026-10-17T16:01:08Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-17T16:01:08Z",
+      "durum": "tamam",
+      "etiket": "sabit güncellik denetimi (Karar 116)",
+      "id": "is:15",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "Rust: Kanon.Sabitler kaydını oku (Lean'den üretilen JSON ya da Lean exe), model-kesim.jsonl kuşak değişimi ∨ ≥90 gün → seans-acilis brifine 'yeniden bak: N sabit'; ilk liste 12/12 yeni kuşak",
+      "tur": "is"
     },
     {
-      "id": "is:17",
-      "tur": "is",
+      "acilis_ts": "2026-10-16T13:57:56Z",
+      "al_ts": "2026-10-17T13:52:18Z",
       "alan": "jarvis",
+      "bitir_ts": "2026-10-17T13:52:18Z",
       "durum": "tamam",
       "etiket": "ritüelleri Rust'a bağla",
-      "sonraki_eylem": "seans-acilis/kapanis SKILL.md: acilis-kapilari, sicak-katman-fifo, hafiza-ayna, kural-sayaci → target/release ikilileri (PR #7 birleşince)",
-      "acilis_ts": "2026-10-16T13:57:56Z",
-      "al_ts": "2026-10-17T13:52:18Z",
-      "bitir_ts": "2026-10-17T13:52:18Z",
+      "id": "is:17",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "seans-acilis/kapanis SKILL.md: acilis-kapilari, sicak-katman-fifo, hafiza-ayna, kural-sayaci → target/release ikilileri (PR #7 birleşince)",
+      "tur": "is"
     },
     {
-      "id": "is:18",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "hafıza/kanon md → Lean/Rust geçişi, bağlam yükleme sırası korunarak (Karar 114 genişletmesi, Salih 2026-10-16)",
-      "sonraki_eylem": "adım 2 atlas-kosum: sıra korumalı ayrıştırma formalizmi; adım 3 envanter; adım 4 partiler",
       "acilis_ts": "2026-10-16T19:19:14Z",
       "al_ts": "2026-10-17T13:52:18Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-17T13:52:18Z",
+      "durum": "tamam",
+      "etiket": "hafıza/kanon md → Lean/Rust geçişi, bağlam yükleme sırası korunarak (Karar 114 genişletmesi, Salih 2026-10-16)",
+      "id": "is:18",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "adım 2 atlas-kosum: sıra korumalı ayrıştırma formalizmi; adım 3 envanter; adım 4 partiler",
+      "tur": "is"
     },
     {
-      "id": "is:19",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "skill revizyonu: Karar 117 geçişi bitince tüm skill'ler yeni sisteme göre güncellenir (Lean modül pointer'ları, parçalı tüzük için baglam genislet okuması, Rust ikilileri; Salih 2026-10-16)",
-      "sonraki_eylem": "ön-koşul: #18 kapanışı; sonra skill başına fark listesi + skill-kapisi K3 biçim denetimi",
       "acilis_ts": "2026-10-16T20:26:20Z",
       "al_ts": "2026-10-17T13:52:18Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-17T16:01:09Z",
+      "durum": "tamam",
+      "etiket": "skill revizyonu: Karar 117 geçişi bitince tüm skill'ler yeni sisteme göre güncellenir (Lean modül pointer'ları, parçalı tüzük için baglam genislet okuması, Rust ikilileri; Salih 2026-10-16)",
+      "id": "is:19",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "ön-koşul: #18 kapanışı; sonra skill başına fark listesi + skill-kapisi K3 biçim denetimi",
+      "tur": "is"
     },
     {
-      "id": "is:20",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "acik",
-      "etiket": "Python araçlarının Rust'a taşınması (Karar 117 EK-3, 5b): 59 araç, 7 parti",
-      "sonraki_eylem": "parti 1 omp'de (worktree omp-rust-p1); sonra parti 2-7 sırayla",
       "acilis_ts": "2026-10-17T14:28:23Z",
       "al_ts": null,
+      "alan": "jarvis",
       "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Python araçlarının Rust'a taşınması (Karar 117 EK-3, 5b): 59 araç, 7 parti",
+      "id": "is:20",
       "oturumlar": [],
-      "sirada": true
+      "sirada": true,
+      "sonraki_eylem": "parti 1 omp'de (worktree omp-rust-p1); sonra parti 2-7 sırayla",
+      "tur": "is"
     },
     {
-      "id": "is:21",
-      "tur": "is",
+      "acilis_ts": "2026-10-17T15:32:02Z",
+      "al_ts": null,
       "alan": "jarvis",
+      "bitir_ts": null,
       "durum": "acik",
       "etiket": "Karar 118 M1: atlas kodla pilot (emir şeması + Workflow + Rust V26/done + JSON teslim)",
-      "sonraki_eylem": "sonraki gerçek araştırma görevinde koş",
-      "acilis_ts": "2026-10-17T15:32:02Z",
-      "al_ts": null,
-      "bitir_ts": null,
+      "id": "is:21",
       "oturumlar": [],
-      "sirada": true
+      "sirada": true,
+      "sonraki_eylem": "sonraki gerçek araştırma görevinde koş",
+      "tur": "is"
     },
     {
-      "id": "is:22",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "islemde",
-      "etiket": "Karar 118 M2: son sürüm kuralı; Rust karşılığı olan Python araçları ve hook Python gövdeleri arşive",
-      "sonraki_eylem": "PR: arsiv/kod/python + skill yedek ifadeleri + hook uyarısı",
       "acilis_ts": "2026-10-17T15:32:02Z",
       "al_ts": "2026-10-17T15:35:43Z",
+      "alan": "jarvis",
       "bitir_ts": null,
+      "durum": "islemde",
+      "etiket": "Karar 118 M2: son sürüm kuralı; Rust karşılığı olan Python araçları ve hook Python gövdeleri arşive",
+      "id": "is:22",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "PR: arsiv/kod/python + skill yedek ifadeleri + hook uyarısı",
+      "tur": "is"
     },
     {
-      "id": "is:23",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "Karar 118 M3: PortRisk emekli; tüzük m.13 kalkar, m.15/m.36 şerh, pano K-002/003/008 arşiv, ritüel hattı",
-      "sonraki_eylem": "PR",
       "acilis_ts": "2026-10-17T15:32:02Z",
       "al_ts": "2026-10-17T16:01:08Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-17T16:01:08Z",
+      "durum": "tamam",
+      "etiket": "Karar 118 M3: PortRisk emekli; tüzük m.13 kalkar, m.15/m.36 şerh, pano K-002/003/008 arşiv, ritüel hattı",
+      "id": "is:23",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "PR",
+      "tur": "is"
     },
     {
-      "id": "is:24",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "Karar 119: hazır karşılık kapısı; EK-3 listesi + skill'ler Claude/hazır servis karşılığıyla denetlenir",
-      "sonraki_eylem": "denetim raporu → Salih listesi; md.12 cümlesi + skill-kapisi K0 düğümü PR",
       "acilis_ts": "2026-10-17T15:38:31Z",
       "al_ts": "2026-10-17T16:01:08Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-17T16:01:08Z",
+      "durum": "tamam",
+      "etiket": "Karar 119: hazır karşılık kapısı; EK-3 listesi + skill'ler Claude/hazır servis karşılığıyla denetlenir",
+      "id": "is:24",
       "oturumlar": [],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "denetim raporu → Salih listesi; md.12 cümlesi + skill-kapisi K0 düğümü PR",
+      "tur": "is"
     },
     {
-      "id": "is:25",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "tamam",
-      "etiket": "Karar 121: seans teslim raporu JSON/graf kaydı (Rust üretici + şema), seans-kapanis ve teslim şablonu güncellemesi",
-      "sonraki_eylem": "hazır karşılık taraması → şema → Rust alt komutu → skill PR",
       "acilis_ts": "2026-10-17T21:32:51Z",
       "al_ts": "2026-10-25T18:02:22Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-25T18:02:22Z",
-      "oturumlar": [
-        "2026-10-25-jarvis"
-      ],
-      "sirada": false
-    },
-    {
-      "id": "is:26",
-      "tur": "hedef",
-      "alan": "jarvis",
-      "durum": "acik",
-      "etiket": "Karar 122 hedef: seanslar arası iletişim graf + JSON (ortak/akis-graf.json, SALIH-OZET.md)",
-      "sonraki_eylem": "3 seans ölçüm: açılışta yanlış konum sayısı",
-      "acilis_ts": "2026-10-25T18:02:22Z",
-      "al_ts": null,
-      "bitir_ts": null,
-      "oturumlar": [
-        "2026-10-25-jarvis"
-      ],
-      "sirada": false
-    },
-    {
-      "id": "is:27",
-      "tur": "is",
-      "alan": "jarvis",
-      "durum": "acik",
-      "etiket": "durum kütüğü worktree kopyası: paralel ac id çakışması",
-      "sonraki_eylem": "alan önekli id ya da birleştirme öncesi yeniden numaralama; ParalelOturum.lean'e sınır",
-      "acilis_ts": "2026-10-25T18:02:22Z",
-      "al_ts": null,
-      "bitir_ts": null,
-      "oturumlar": [
-        "2026-10-25-jarvis"
-      ],
-      "sirada": true
-    },
-    {
-      "id": "is:28",
-      "tur": "is",
-      "alan": "jarvis",
       "durum": "tamam",
-      "etiket": "SessionStart hook brifi durum oturum-basi çıktısını bassın (kapsül satırları yerine)",
-      "sonraki_eylem": "jarvis-hook session_start: KAPSÜL/SONRAKİ İLK İŞ satırları → durum oturum-basi --alan jarvis",
+      "etiket": "Karar 121: seans teslim raporu JSON/graf kaydı (Rust üretici + şema), seans-kapanis ve teslim şablonu güncellemesi",
+      "id": "is:25",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "hazır karşılık taraması → şema → Rust alt komutu → skill PR",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:02:22Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "bayat",
+      "etiket": "Karar 122 hedef: seanslar arası iletişim graf + JSON (ortak/akis-graf.json, SALIH-OZET.md)",
+      "id": "is:26",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "3 seans ölçüm: açılışta yanlış konum sayısı",
+      "tur": "hedef"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:02:22Z",
+      "al_ts": "2026-10-25T18:11:36Z",
+      "alan": "jarvis",
+      "bitir_ts": "2026-10-25T18:11:36Z",
+      "durum": "tamam",
+      "etiket": "durum kütüğü worktree kopyası: paralel ac id çakışması",
+      "id": "is:27",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "alan önekli id ya da birleştirme öncesi yeniden numaralama; ParalelOturum.lean'e sınır",
+      "tur": "is"
+    },
+    {
       "acilis_ts": "2026-10-25T18:02:22Z",
       "al_ts": "2026-10-25T18:06:04Z",
+      "alan": "jarvis",
       "bitir_ts": "2026-10-25T18:06:04Z",
+      "durum": "tamam",
+      "etiket": "SessionStart hook brifi durum oturum-basi çıktısını bassın (kapsül satırları yerine)",
+      "id": "is:28",
       "oturumlar": [
         "2026-10-25-jarvis"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "jarvis-hook session_start: KAPSÜL/SONRAKİ İLK İŞ satırları → durum oturum-basi --alan jarvis",
+      "tur": "is"
     },
     {
-      "id": "is:16",
-      "tur": "is",
-      "alan": "span",
+      "acilis_ts": "2026-10-25T18:11:36Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
       "durum": "acik",
-      "etiket": "claude-mods öğrenme şeridi",
-      "sonraki_eylem": "ogren ile şerit aç: Claude Code modları (status line, pane, slash komutu, hook, toast); sistemde mod fikir yapısı; uygulanacak mod → Jarvis devri",
+      "etiket": "Karar 122 hedef: seanslar arası iletişim graf + JSON (ortak/akis-graf.json, SALIH-OZET.md); ölçüm kapısı yok",
+      "id": "is:29",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "kullanım sürer; arıza görülürse [ariza] commit",
+      "tur": "hedef"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:36Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 123 hedef: ölçüm/pilot kapısında bekleyen planların icrası (liste = bu hedefe hizmet eden işler)",
+      "id": "is:30",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "sonraki seanslarda sırayla icra; her iş bitince bitir --kanit",
+      "tur": "hedef"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:36Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 103 M6: hakem şablonu v0 core/'a alınır (canlı test + başarı ölçüsü kapısı kalktı)",
+      "id": "is:31",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "sablonlar/ajan-iskelet/claude-ayar/agents/hakem.md.tmpl + .claude/agents/hakem.md → core/ şablon satırı; defter M6 notu güncelle",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:36Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 102/103 (2): belirsiz perspektifler (doküman · ölçüm · hakem-kurma · antitez · planlama · öğretim) iç ölçüm beklemeden hükme bağlanır",
+      "id": "is:32",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "varsayılan: alan ajanının alt-ajanı, hakem ayrı; Kanon/AlanAjani.lean + AGENTS satırı",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 113 M3: md'siz koşum (oturum başı = kütük özeti, CLAUDE.md asgari) Sage pilotu beklemeden tüm alan ajanlarına",
+      "id": "is:33",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "alan ajanı AGENTS.md'leri asgari + hook brifi durum oturum-basi; Karar 113 M2 'kanon metinleri pilot sonucuna bağlı' notu kapanır",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 114 M5: core/ kural dosyalarının (kalan ~13, 224 KB) Lean modülüne taşınması; sıklık ölçümü yok, sırayla",
+      "id": "is:34",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "envanter: lean/Kanon/*.lean.md karşılığı olmayan core/ dosyaları; parti başına PR",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 118 M1: atlas-kosum doğrudan kodlu akışa geçer (pilot şartı kalktı): emir şeması JSON/Lean + Workflow + Rust V26/done + JSON teslim",
+      "id": "is:35",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "skill metni + Rust alt komutu; ilk gerçek araştırmada koşar",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 119 EK-1: 'kullan' 4 araç çıktı eşitliği ölçülmeden arşive; '?' 11 araç yeniden tarama kararı",
+      "id": "is:36",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": false,
+      "sonraki_eylem": "raporlar/2026-10-17-hazir-karsilik-denetimi.md listesinden 4+11 kalem; arşiv PR'ı (#22 ile birlikte)",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "m.29 eşik kalibrasyonları masa beklemeden sabitlenir: 128K bağlam seyri (KB-52) · skill-eşik n>=10 medyan 2x (Karar 51) · bayat-çekim 90 gün (Karar 69)",
+      "id": "is:37",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "Kanon/Butce.lean + Sabitler.lean sabitleri; 'Salih masasında' notları kapanır",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "Karar 86 D8 / K-020 eval deseni (2 ucuz ön-ölçüm koşulu): koşul kalkar; desen ya uygulanır ya emekli",
+      "id": "is:38",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "ilk V39 koşumu yoksa emekli kaydı; varsa M2 harness genellemesi doğrudan",
+      "tur": "is"
+    },
+    {
+      "acilis_ts": "2026-10-25T18:11:37Z",
+      "al_ts": null,
+      "alan": "jarvis",
+      "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "defterdeki ölçüm şartlı geri-açma cümleleri (Karar 103/104 M1-M2, 112, 113, 114 M5, 115) Karar 123'e göre sadeleştirilir",
+      "id": "is:39",
+      "oturumlar": [
+        "2026-10-25-jarvis"
+      ],
+      "sirada": true,
+      "sonraki_eylem": "her cümle: 'arıza görülürse' biçimine; tek [damıtma] commit",
+      "tur": "is"
+    },
+    {
       "acilis_ts": "2026-10-16T13:57:56Z",
       "al_ts": null,
+      "alan": "span",
       "bitir_ts": null,
+      "durum": "acik",
+      "etiket": "claude-mods öğrenme şeridi",
+      "id": "is:16",
       "oturumlar": [],
-      "sirada": true
+      "sirada": true,
+      "sonraki_eylem": "ogren ile şerit aç: Claude Code modları (status line, pane, slash komutu, hook, toast); sistemde mod fikir yapısı; uygulanacak mod → Jarvis devri",
+      "tur": "is"
     },
     {
-      "id": "is:2",
-      "tur": "is",
-      "alan": "sage",
-      "durum": "bayat",
-      "etiket": "md'siz pilot",
-      "sonraki_eylem": "Sage oturum başı hook'u: durum oturum-basi --alan sage; CLAUDE.md'siz koşum; /context md'li vs md'siz ölç",
       "acilis_ts": "2026-10-14T15:28:02Z",
       "al_ts": null,
+      "alan": "sage",
       "bitir_ts": null,
+      "durum": "bayat",
+      "etiket": "md'siz pilot",
+      "id": "is:2",
       "oturumlar": [
         "jarvis-kapanis-10-14"
       ],
-      "sirada": false
+      "sirada": false,
+      "sonraki_eylem": "Sage oturum başı hook'u: durum oturum-basi --alan sage; CLAUDE.md'siz koşum; /context md'li vs md'siz ölç",
+      "tur": "is"
     }
   ],
   "kenarlar": [
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "seans:2026-10-25-jarvis",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "sonra"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:1",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:2",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:3",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:4",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:5",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:6",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:7",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:8",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:jarvis-kapanis-10-14",
       "h": "is:9",
-      "tur": "acti"
-    },
-    {
       "k": "seans:jarvis-kapanis-10-14",
+      "tur": "acti"
+    },
+    {
       "h": "is:10",
+      "k": "seans:jarvis-kapanis-10-14",
       "tur": "acti"
     },
     {
-      "k": "seans:2026-10-25-jarvis",
       "h": "is:26",
+      "k": "seans:2026-10-25-jarvis",
       "tur": "acti"
     },
     {
-      "k": "seans:2026-10-25-jarvis",
       "h": "is:27",
+      "k": "seans:2026-10-25-jarvis",
       "tur": "acti"
     },
     {
-      "k": "seans:2026-10-25-jarvis",
       "h": "is:28",
+      "k": "seans:2026-10-25-jarvis",
       "tur": "acti"
     },
     {
+      "h": "is:29",
       "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:30",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:31",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:32",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:33",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:34",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:35",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:36",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:37",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:38",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
+      "h": "is:39",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "acti"
+    },
+    {
       "h": "is:25",
-      "tur": "bitirdi"
-    },
-    {
       "k": "seans:2026-10-25-jarvis",
-      "h": "is:28",
       "tur": "bitirdi"
     },
     {
-      "k": "is:1",
+      "h": "is:28",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "bitirdi"
+    },
+    {
+      "h": "is:27",
+      "k": "seans:2026-10-25-jarvis",
+      "tur": "bitirdi"
+    },
+    {
       "h": "is:11",
+      "k": "is:1",
       "tur": "girdi"
     },
     {
-      "k": "is:4",
       "h": "is:14",
+      "k": "is:4",
       "tur": "girdi"
     },
     {
-      "k": "is:3",
       "h": "is:17",
+      "k": "is:3",
       "tur": "girdi"
     },
     {
-      "k": "is:18",
       "h": "is:19",
+      "k": "is:18",
       "tur": "girdi"
     },
     {
-      "k": "is:27",
       "h": "is:26",
+      "k": "is:27",
       "tur": "hizmet"
     },
     {
-      "k": "is:28",
       "h": "is:26",
+      "k": "is:28",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:31",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:32",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:33",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:34",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:35",
+      "k": "is:21",
+      "tur": "girdi"
+    },
+    {
+      "h": "is:30",
+      "k": "is:35",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:36",
+      "k": "is:22",
+      "tur": "girdi"
+    },
+    {
+      "h": "is:30",
+      "k": "is:36",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:37",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:38",
+      "tur": "hizmet"
+    },
+    {
+      "h": "is:30",
+      "k": "is:39",
       "tur": "hizmet"
     }
-  ]
+  ],
+  "meta": {
+    "alan": null,
+    "dugum_sayisi": 41,
+    "kenar_sayisi": 45,
+    "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik",
+    "sema": "akis-graf v1 (Karar 122)",
+    "tarih": "2026-10-25",
+    "uretici": "durum graf"
+  }
 }

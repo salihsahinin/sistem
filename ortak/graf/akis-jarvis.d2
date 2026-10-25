@@ -43,15 +43,37 @@ jarvis: {
   is23: {label: "#23 Karar 118 M3: PortRisk emekli; tüzük m.13 kalkar…"; class: [tamam]}
   is24: {label: "#24 Karar 119: hazır karşılık kapısı; EK-3 listesi +…"; class: [tamam]}
   is25: {label: "#25 Karar 121: seans teslim raporu JSON/graf kaydı (…"; class: [tamam]}
-  is26: {label: "#26 Karar 122 hedef: seanslar arası iletişim graf + …\n3 seans ölçüm: açılışta yanlış konum sayısı"; class: [hedef]}
-  is27: {label: "#27 durum kütüğü worktree kopyası: paralel ac id çak…\nalan önekli id ya da birleştirme öncesi yeniden numarala…"; class: [acik; sirada]}
+  is26: {label: "#26 Karar 122 hedef: seanslar arası iletişim graf + …"; class: [hedef]}
+  is27: {label: "#27 durum kütüğü worktree kopyası: paralel ac id çak…"; class: [tamam]}
   is28: {label: "#28 SessionStart hook brifi durum oturum-basi çıktıs…"; class: [tamam]}
+  is29: {label: "#29 Karar 122 hedef: seanslar arası iletişim graf + …\nkullanım sürer; arıza görülürse [ariza] commit"; class: [hedef]}
+  is30: {label: "#30 Karar 123 hedef: ölçüm/pilot kapısında bekleyen …\nsonraki seanslarda sırayla icra; her iş bitince bitir --…"; class: [hedef]}
+  is31: {label: "#31 Karar 103 M6: hakem şablonu v0 core/'a alınır (c…\nsablonlar/ajan-iskelet/claude-ayar/agents/hakem.md.tmpl …"; class: [acik; sirada]}
+  is32: {label: "#32 Karar 102/103 (2): belirsiz perspektifler (doküm…\nvarsayılan: alan ajanının alt-ajanı, hakem ayrı; Kanon/A…"; class: [acik; sirada]}
+  is33: {label: "#33 Karar 113 M3: md'siz koşum (oturum başı = kütük …\nalan ajanı AGENTS.md'leri asgari + hook brifi durum otur…"; class: [acik; sirada]}
+  is34: {label: "#34 Karar 114 M5: core/ kural dosyalarının (kalan ~1…\nenvanter: lean/Kanon/*.lean.md karşılığı olmayan core/ d…"; class: [acik; sirada]}
+  is35: {label: "#35 Karar 118 M1: atlas-kosum doğrudan kodlu akışa g…\nskill metni + Rust alt komutu; ilk gerçek araştırmada ko…"; class: [acik]}
+  is36: {label: "#36 Karar 119 EK-1: 'kullan' 4 araç çıktı eşitliği ö…\nraporlar/2026-10-17-hazir-karsilik-denetimi.md listesind…"; class: [acik]}
+  is37: {label: "#37 m.29 eşik kalibrasyonları masa beklemeden sabitl…\nKanon/Butce.lean + Sabitler.lean sabitleri; 'Salih masas…"; class: [acik; sirada]}
+  is38: {label: "#38 Karar 86 D8 / K-020 eval deseni (2 ucuz ön-ölçüm…\nilk V39 koşumu yoksa emekli kaydı; varsa M2 harness gene…"; class: [acik; sirada]}
+  is39: {label: "#39 defterdeki ölçüm şartlı geri-açma cümleleri (Kar…\nher cümle: 'arıza görülürse' biçimine; tek [damıtma] com…"; class: [acik; sirada]}
   is1 -> is11: girdi
   is4 -> is14: girdi
   is3 -> is17: girdi
   is18 -> is19: girdi
   is27 -> is26: hizmet {style.stroke-dash: 3}
   is28 -> is26: hizmet {style.stroke-dash: 3}
+  is31 -> is30: hizmet {style.stroke-dash: 3}
+  is32 -> is30: hizmet {style.stroke-dash: 3}
+  is33 -> is30: hizmet {style.stroke-dash: 3}
+  is34 -> is30: hizmet {style.stroke-dash: 3}
+  is21 -> is35: girdi
+  is35 -> is30: hizmet {style.stroke-dash: 3}
+  is22 -> is36: girdi
+  is36 -> is30: hizmet {style.stroke-dash: 3}
+  is37 -> is30: hizmet {style.stroke-dash: 3}
+  is38 -> is30: hizmet {style.stroke-dash: 3}
+  is39 -> is30: hizmet {style.stroke-dash: 3}
   seans_jarvis_kapanis_10_14 -> seans_2026_10_25_jarvis: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_jarvis_kapanis_10_14 -> is1: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_jarvis_kapanis_10_14 -> is3: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
@@ -65,6 +87,18 @@ jarvis: {
   seans_2026_10_25_jarvis -> is26: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is27: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is28: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is29: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is30: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is31: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is32: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is33: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is34: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is35: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is36: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is37: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is38: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is39: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is25: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is28: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
+  seans_2026_10_25_jarvis -> is27: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
 }

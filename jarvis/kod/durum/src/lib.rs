@@ -358,8 +358,10 @@ impl Defter {
             if !ALANLAR.contains(&alan.as_str()) {
                 return gecersiz(format!("bilinmeyen alan: {alan}"));
             }
-            if o.id != self.sonraki_id() {
-                return gecersiz(format!("ac: id {} beklenen {} değil", o.id, self.sonraki_id()));
+            // Karar 123 (durum #27): id tekdüze artar ama boşluk serbesttir — worktree kopyaları arasında çakışmasın diye
+            // CLI, diğer worktree kütüklerinin en büyük id'sini de aşan bir id seçer.
+            if o.id == 0 || o.id < self.sonraki_id() {
+                return gecersiz(format!("ac: id {} en az {} olmalı", o.id, self.sonraki_id()));
             }
             for g in &o.girdi {
                 if !self.kayitlar.contains_key(g) {
@@ -845,7 +847,11 @@ mod testler {
         assert!(Defter::katla(&[ol(OlayTuru::Al, 9)]).is_err());
         assert!(Defter::katla(&[ac(1, "sage"), ol(OlayTuru::Bayatla, 1), ol(OlayTuru::Bayatla, 1)]).is_err());
         assert!(Defter::katla(&[ac(1, "yok")]).is_err());
-        assert!(Defter::katla(&[ac(5, "sage")]).is_err());
+        // boşluk serbest (worktree çakışma koruması), geri/tekrar id yasak
+        assert!(Defter::katla(&[ac(5, "sage")]).is_ok());
+        assert!(Defter::katla(&[ac(5, "sage"), ac(5, "sage")]).is_err());
+        assert!(Defter::katla(&[ac(5, "sage"), ac(3, "sage")]).is_err());
+        assert!(Defter::katla(&[ac(0, "sage")]).is_err());
         let mut g = ac(1, "sage");
         g.girdi = vec![7];
         assert!(Defter::katla(&[g]).is_err());

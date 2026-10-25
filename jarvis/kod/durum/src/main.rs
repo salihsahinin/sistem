@@ -115,6 +115,26 @@ fn dosya_yaz(yol: &Path, icerik: &str) -> Result<(), Hata> {
     std::fs::write(yol, icerik).map_err(|e| Hata::Gecersiz(format!("yazılamadı {}: {e}", yol.display())))
 }
 
+/// Diğer git worktree'lerindeki kütük kopyalarının en büyük kayıt id'si (Karar 123, durum #27): yeni `ac` bu değeri de aşar,
+/// böylece paralel oturumların kütükleri birleşince id çakışmaz. Worktree yoksa ya da git yoksa 0.
+fn diger_worktree_max_id(kok: &Path, kutuk: &Path) -> u64 {
+    let Some(liste) = git(kok, &["worktree", "list", "--porcelain"]) else { return 0 };
+    let mut en_buyuk = 0;
+    for satir in liste.lines() {
+        let Some(yol) = satir.strip_prefix("worktree ") else { continue };
+        let aday = Path::new(yol.trim()).join("ortak").join("durum-olay.jsonl");
+        if aday.canonicalize().ok() == kutuk.canonicalize().ok() {
+            continue;
+        }
+        if let Ok(m) = std::fs::read_to_string(&aday)
+            && let Ok(olaylar) = olaylari_oku(&m)
+        {
+            en_buyuk = en_buyuk.max(olaylar.iter().map(|o| o.id).max().unwrap_or(0));
+        }
+    }
+    en_buyuk
+}
+
 fn git(kok: &Path, args: &[&str]) -> Option<String> {
     let o = std::process::Command::new("git").arg("-C").arg(kok).args(args).output().ok()?;
     if !o.status.success() {
@@ -299,7 +319,8 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
     if let Some(tur) = tur {
         let mut yeni = vec![];
         let mut o = if tur == OlayTuru::Ac {
-            let mut o = Olay::yalin(tur, defter.sonraki_id(), &ts);
+            let id = defter.sonraki_id().max(diger_worktree_max_id(&kok_dizin, &yol) + 1);
+            let mut o = Olay::yalin(tur, id, &ts);
             let gerekli = |ad: &str| a.al(ad).map(String::from).ok_or_else(|| Hata::Kullanim(format!("--{ad} gerekli")));
             o.alan = Some(gerekli("alan")?);
             o.is_ad = Some(gerekli("is")?);
@@ -343,7 +364,8 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
                 let k = &defter.kayitlar[&id];
                 (k.alan.clone(), k.hedef)
             };
-            let mut k = Olay::yalin(OlayTuru::Ac, defter.sonraki_id(), &ts);
+            let kid = defter.sonraki_id().max(diger_worktree_max_id(&kok_dizin, &yol) + 1);
+            let mut k = Olay::yalin(OlayTuru::Ac, kid, &ts);
             k.alan = Some(alan.clone());
             k.is_ad = Some(is_ad.trim().to_string());
             k.sonraki_eylem = Some(sonraki.trim().to_string());
