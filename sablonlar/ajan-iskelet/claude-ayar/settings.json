@@ -1,5 +1,5 @@
 {
-  "_not": "Alan ajanı ayarı (Karar 105, 2026-09-21; jarvis/tools/alan-ajani-dogur.py sablonlar/ajan-iskelet/claude-ayar/ → .claude/ kopyalar). Okuma kilidi hook'ta; deny = yazma ve push frenleri.",
+  "_not": "Alan ajanı ayarı (Karar 105, 2026-09-21; jarvis/tools/alan-ajani-dogur.py sablonlar/ajan-iskelet/claude-ayar/ → .claude/ kopyalar). Okuma kilidi hook'ta; deny = yazma frenleri + main'e push / force push (kendi oturum dalına push serbest: protokol §5 EK-5, Kanon/Commit.lean pushYanDal; Salih 2026-10-25 seçenek 1).",
   "permissions": {
     "deny": [
       "Read(~/sistem/jarvis/**)",
@@ -8,7 +8,10 @@
       "Edit(~/sistem/ogrenme/**)",
       "Write(~/sistem/sablonlar/**)",
       "Edit(~/sistem/sablonlar/**)",
-      "Bash(git push:*)",
+      "Bash(git push origin main:*)",
+      "Bash(git push origin HEAD:main:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
       "Bash(git add -A:*)",
       "Bash(git add .:*)"
     ]

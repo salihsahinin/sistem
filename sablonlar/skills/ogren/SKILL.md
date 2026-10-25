@@ -7,7 +7,7 @@ metadata: { owner: jarvis, version: "0.2.0-deneysel-m29", kural: "core/skill-ure
 
 # ogren — dört fazlı ders akışı + öğrenme oturum protokolü (v0.3 ALAN SÜRÜMÜ, 2026-09-21, Karar 105; v0.2 09-15 Jarvis kopyası `jarvis/.claude/skills/ogren/` öğretim-tasarımı için kalır)
 
-**Alan-ajanı farkı (Karar 103 EK 1 · Karar 105 M4):** bu skill alan ajanının dizininde (`~/sistem/<alan>/`) koşar; şerit yolları `ogrenme/<şerit>/` **bu dizine** görelidir; ders iskeleti (`PROBE` soruları · `PLAN` DAG · kutu başlıkları) Jarvis'ten `cc/gelen/ders-<hafta>.md` ile gelir — varsa aynen kullanılır, `PROBE`/`PLAN` üretilmez; yoksa önceki dersin `## Kalan` listesiyle devam edilir, **yeni hafta açılmaz** (Jarvis'e `cc/giden/` ile "iskelet gerekli: <hafta>" notu). Oturum: cwd alan dizini, worktree kapalı, main, pathspec-only; PR yok, push yalnız Salih beyanıyla (protokol §5 EK-4 Karar 105 satırı). `mcp__visualize` yoksa DAG `raporlar/gorsel-*.html` olarak elle yazılır.
+**Alan-ajanı farkı (Karar 103 EK 1 · Karar 105 M4):** bu skill alan ajanının dizininde (`~/sistem/<alan>/`) koşar; şerit yolları `ogrenme/<şerit>/` **bu dizine** görelidir; ders iskeleti (`PROBE` soruları · `PLAN` DAG · kutu başlıkları) Jarvis'ten `cc/gelen/ders-<hafta>.md` ile gelir — varsa aynen kullanılır, `PROBE`/`PLAN` üretilmez; yoksa önceki dersin `## Kalan` listesiyle devam edilir, **yeni hafta açılmaz** (Jarvis'e `cc/giden/` ile "iskelet gerekli: <hafta>" notu). Oturum: worktree `C:\sistem\wt\<alan>` + kendi dalı `oturum/<tarih>-<alan>`, pathspec-only; seans sonunda dal push + PR, birleştirme Jarvis'te Salih beyanıyla (protokol §5 EK-5; EK-4 süpersede 2026-10-16). `mcp__visualize` yoksa DAG `raporlar/gorsel-*.html` olarak elle yazılır.
 
 
 Tür: T-R ritüel (öğrenme yan-oturumu; yan-etki: ders dosyası + ilerleme tablosu + branch commit'i; kapsül/pano/defter'e yazmaz). Kural kaynağı: hafıza kuralları (doğrudan anlatım 08-17 · görsel önce + atıflı metin 09-08 · pratik = Salih'in eli 09-15) · m.39 (her rakam kaynaklı) · Karar 68 (AS-OF) · Karar 73 (her derste ≥1 formül) · m.33 (sorular yalnız içerik hakkında). İlke (Eero Alvar 2026-08-14 analizi, `raporlar/2026-09/2026-09-09-ai-ile-ogrenme-transkript-analizi.md`): zorluk malzemede kalır, lojistik (sıra, kaynak, doğrulama) skill'de. Canlı koşum kanıtı (K4): evals H1-H3 (09-11→14, κ=1,0) + guvenlik G1 (09-14/15). Eski protokol metni (format v2, 07-15) `arsiv/ogrenme-oturum-protokolu-v2-2026-09-15.md`.
@@ -47,7 +47,7 @@ Düğüm başına sabit üçlü, sıra değişmez:
 1. Ders dosyası tamamlanır (şema §5): harita · DAG görsel yolu · düğüm/soru/cevap kütüğü · açik düğümler · Kalan · "⌥ Jarvis notu" listesi.
 2. İlerleme tablosu (`ogrenme/<şerit>/ilerleme.md`) satırı: hafta · durum (kavramsal `DONE` / pratik `KALAN` ya da `DONE`, yalnız Salih beyanıyla) · ders kaydı yolu · sapma notu. Anlama kapısı geçilmediyse hafta bölünür (m.21).
 3. `sinav-grill` önerilir tek cümleyle; Salih "sınav" demeden koşulmaz.
-4. Kapanış cümlesi: "Sonraki ders: kutu N'den." Sonra `git add ogrenme/<şerit>/…` + commit (İngilizce mesaj, m.10); push yalnız Salih beyanıyla, PR yok. Kapsül/pano/defter alan ajanının kendi `seans-kapanis` ritüelinde yazılır.
+4. Kapanış cümlesi: "Sonraki ders: kutu N'den." Sonra `git add ogrenme/<şerit>/…` + commit (İngilizce mesaj, m.10); dal push + PR `seans-kapanis` son adımıdır (EK-5; main'e push deny'da). Kapsül/pano/defter alan ajanının kendi `seans-kapanis` ritüelinde yazılır.
 
 ## 5. Ders dosyası şeması
 ```

@@ -8,7 +8,10 @@
       "Edit(~/sistem/ogrenme/**)",
       "Write(~/sistem/sablonlar/**)",
       "Edit(~/sistem/sablonlar/**)",
-      "Bash(git push:*)",
+      "Bash(git push origin main:*)",
+      "Bash(git push origin HEAD:main:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
       "Bash(git add -A:*)",
       "Bash(git add .:*)"
     ]
