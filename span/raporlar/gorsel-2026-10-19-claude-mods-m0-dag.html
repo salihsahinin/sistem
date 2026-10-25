@@ -1,0 +1,255 @@
+<title>Mod Dersi M0 Planı</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Düzen: üstte DAG (SVG, yatay kaydırılabilir), altında kutu tablosu. Palet: kağıt-mürekkep, tek vurgu mavi-yeşil. */
+:root{
+  --bg:#f6f7f6; --fg:#1d2321; --muted:#5d6864; --line:#aeb8b4;
+  --node:#ffffff; --node-line:#7d8a85; --accent:#0f6e5e; --accent-bg:#d9efe9;
+  --practice:#8a4b00; --practice-bg:#f8e6cf;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141917; --fg:#e4e9e6; --muted:#97a39e; --line:#46514c;
+  --node:#1d2421; --node-line:#5c6a64; --accent:#5fcdb7; --accent-bg:#17352e;
+  --practice:#f0b56a; --practice-bg:#3a2a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --fg:#e4e9e6; --muted:#97a39e; --line:#46514c;
+  --node:#1d2421; --node-line:#5c6a64; --accent:#5fcdb7; --accent-bg:#17352e;
+  --practice:#f0b56a; --practice-bg:#3a2a12; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;
+  padding-block:24px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+h1{font-size:1.5rem;line-height:1.25;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;margin:0 0 8px}
+p{margin:0}
+.meta{color:var(--muted);font-size:.85rem;font-family:var(--font-mono)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--node)}
+svg{display:block;min-width:700px;width:100%;height:auto}
+svg text{font-family:var(--font-body);fill:var(--fg)}
+.n rect{fill:var(--node);stroke:var(--node-line);stroke-width:1.4}
+.n.p rect{fill:var(--practice-bg);stroke:var(--practice)}
+.n .id{font-family:var(--font-mono);font-weight:600;font-size:12px;fill:var(--accent)}
+.n.p .id{fill:var(--practice)}
+.n .t{font-size:12.5px}
+.e{stroke:var(--line);stroke-width:1.6;fill:none}
+.lab{font-size:13px;fill:var(--accent);font-weight:600}
+.ar{stroke:var(--accent);stroke-width:1.6;fill:none}
+.rozet circle{fill:var(--accent-bg);stroke:var(--accent);stroke-width:1.4}
+.rozet text{font-size:12px;font-weight:600;fill:var(--accent)}
+.tablo{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.k{font-family:var(--font-mono);font-weight:600;color:var(--accent);white-space:nowrap}
+tr.p td.k{color:var(--practice)}
+.en{font-style:italic;color:var(--muted)}
+.not{background:var(--accent-bg);padding:10px 12px;border-radius:6px}
+</style>
+
+<main>
+  <div>
+    <h1>Mod dersi M0: sıfırdan ilk mod</h1>
+    <p class="meta">claude-mods · ders 1 planı · 2026-10-19 · API kaynağı: plugin-authoring skill, build 2.1.299</p>
+  </div>
+
+  <p class="not">Başlangıç noktası (PROBE sonucu): hook kavramı ve JavaScript fonksiyon okuma seviye 0. Plan bu yüzden iki kökten başlar. Oklar "önce bu" demektir.</p>
+
+  <section>
+    <h2>Bağımlılık grafiği</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 760 330" role="img" aria-label="Kutu 1 ve 2 ile başlayan, kutu 8'de biten sekiz düğümlü bağımlılık grafiği">
+        <defs><marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--line)"/></marker></defs>
+        <!-- kenarlar -->
+        <path class="e" d="M140 68 L330 138" marker-end="url(#ok)"/>   <!-- 1→4 -->
+        <path class="e" d="M140 228 L170 228" marker-end="url(#ok)"/>  <!-- 2→3 -->
+        <path class="e" d="M300 228 L330 158" marker-end="url(#ok)"/>  <!-- 3→4 -->
+        <path class="e" d="M460 138 L490 138" marker-end="url(#ok)"/>  <!-- 4→5 -->
+        <path class="e" d="M620 138 L640 100 " marker-end="url(#ok)"/> <!-- 5→6 -->
+        <path class="e" d="M705 96 L705 142" marker-end="url(#ok)"/>   <!-- 6→7 -->
+        <path class="e" d="M705 198 L705 242" marker-end="url(#ok)"/>  <!-- 7→8 -->
+        <!-- düğümler -->
+        <g class="n"><rect x="10" y="40" width="130" height="56" rx="4"/><text class="id" x="20" y="58">Kutu 1</text><text class="t" x="20" y="76">Hook nedir</text></g>
+        <g class="n"><rect x="10" y="200" width="130" height="56" rx="4"/><text class="id" x="20" y="218">Kutu 2</text><text class="t" x="20" y="236">Fonksiyon okumak</text></g>
+        <g class="n"><rect x="170" y="200" width="130" height="56" rx="4"/><text class="id" x="180" y="218">Kutu 3</text><text class="t" x="180" y="236">Fonksiyonu değer</text><text class="t" x="180" y="250">olarak vermek</text></g>
+        <g class="n"><rect x="330" y="110" width="130" height="56" rx="4"/><text class="id" x="340" y="128">Kutu 4</text><text class="t" x="340" y="146">on(olay, hook)</text></g>
+        <g class="n"><rect x="490" y="110" width="130" height="56" rx="4"/><text class="id" x="500" y="128">Kutu 5</text><text class="t" x="500" y="146">Zincir ve next</text></g>
+        <g class="n"><rect x="640" y="40" width="110" height="56" rx="4"/><text class="id" x="650" y="58">Kutu 6</text><text class="t" x="650" y="76">e ve $</text></g>
+        <g class="n"><rect x="640" y="142" width="110" height="56" rx="4"/><text class="id" x="650" y="160">Kutu 7</text><text class="t" x="650" y="178">Mod klasörü</text></g>
+        <g class="n p"><rect x="640" y="244" width="110" height="56" rx="4"/><text class="id" x="650" y="262">Kutu 8</text><text class="t" x="650" y="280">Pratik (sen)</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 2: bir fonksiyonun parçaları</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 640 340" role="img" aria-label="const f eşittir parantez x ok x artı 1 fonksiyonunun parçalarını oklarla gösteren şema" style="min-width:600px">
+        <defs><marker id="ok2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker></defs>
+        <text x="30" y="108" style="font-family:var(--font-mono);font-size:22px;white-space:pre">const f = (x) =&gt; x + 1;</text>
+        <!-- üst etiketler -->
+        <text class="lab" x="116" y="36" text-anchor="middle">ad</text>
+        <path class="ar" d="M116 44 L116 84" marker-end="url(#ok2)"/>
+        <text class="lab" x="190" y="36" text-anchor="middle">parametre (girdi)</text>
+        <path class="ar" d="M182 44 L182 84" marker-end="url(#ok2)"/>
+        <!-- alt etiketler -->
+        <text class="lab" x="300" y="160" text-anchor="middle">gövde (işlem)</text>
+        <path class="ar" d="M290 148 L290 120" marker-end="url(#ok2)"/>
+        <text class="lab" x="200" y="204" text-anchor="middle">=&gt; "şunu döndür"</text>
+        <path class="ar" d="M228 192 L228 120" marker-end="url(#ok2)"/>
+        <!-- çağırma satırı -->
+        <line x1="30" y1="236" x2="610" y2="236" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text x="30" y="276" style="font-family:var(--font-mono);font-size:22px">f(5)</text>
+        <text class="lab" x="30" y="316">çağırma: gerçek değer 5 geliyor</text>
+        <path class="ar" d="M96 268 L150 268" marker-end="url(#ok2)"/>
+        <text x="160" y="276" style="font-family:var(--font-mono);font-size:18px">x = 5</text>
+        <path class="ar" d="M245 268 L290 268" marker-end="url(#ok2)"/>
+        <text x="300" y="276" style="font-family:var(--font-mono);font-size:18px">5 + 1</text>
+        <path class="ar" d="M375 268 L420 268" marker-end="url(#ok2)"/>
+        <text x="430" y="276" style="font-family:var(--font-mono);font-size:18px">6</text>
+        <text class="lab" x="430" y="316">döner (return)</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 4: bir hook'u kaydetmek</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 640 260" role="img" aria-label="on fonksiyonunun üç girdisini oklarla gösteren şema" style="min-width:600px">
+        <text x="30" y="108" style="font-family:var(--font-mono);font-size:20px;white-space:pre">on('tool.call', { tool: 'Bash' }, hook);</text>
+        <text class="lab" x="30" y="36">kaydet</text>
+        <path class="ar" d="M42 44 L42 84" marker-end="url(#ok2)"/>
+        <text class="lab" x="132" y="36" text-anchor="middle">1. olay adı</text>
+        <path class="ar" d="M132 44 L132 84" marker-end="url(#ok2)"/>
+        <text class="lab" x="318" y="36" text-anchor="middle">2. eşleştirici (matcher)</text>
+        <path class="ar" d="M318 44 L318 84" marker-end="url(#ok2)"/>
+        <text class="lab" x="462" y="36" text-anchor="middle">3. hook (callback)</text>
+        <path class="ar" d="M462 44 L462 84" marker-end="url(#ok2)"/>
+        <text x="132" y="150" text-anchor="middle" style="font-size:12.5px">hangi olayda?</text>
+        <text x="318" y="150" text-anchor="middle" style="font-size:12.5px">hangi araç için? (yalnız Bash)</text>
+        <text x="462" y="150" text-anchor="middle" style="font-size:12.5px">ne çalışsın?</text>
+        <line x1="30" y1="178" x2="610" y2="178" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text x="30" y="214" style="font-family:var(--font-mono);font-size:20px;white-space:pre">on('tool.call', hook);</text>
+        <text x="30" y="242" style="font-size:12.5px">eşleştirici yok: her araç çağrısında çalışır</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 5: zincir ve next</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 640 330" role="img" aria-label="Üç aşamalı hook zinciri: e=5 değeri +1, x2, +100 ile 112 olur; ikinci satırda ikinci hook next çağırmayınca motor çalışmaz" style="min-width:600px">
+        <text class="lab" x="20" y="24">A. Her hook next(e') çağırır</text>
+        <text x="20" y="80" style="font-family:var(--font-mono);font-size:16px">e = 5</text>
+        <path class="ar" d="M78 76 L108 76" marker-end="url(#ok2)"/>
+        <g class="n"><rect x="110" y="54" width="100" height="44" rx="4"/><text class="id" x="120" y="72">hook 1</text><text class="t" x="120" y="89">e + 1</text></g>
+        <path class="ar" d="M212 76 L248 76" marker-end="url(#ok2)"/>
+        <text x="222" y="68" style="font-family:var(--font-mono);font-size:13px">6</text>
+        <g class="n"><rect x="250" y="54" width="100" height="44" rx="4"/><text class="id" x="260" y="72">hook 2</text><text class="t" x="260" y="89">e × 2</text></g>
+        <path class="ar" d="M352 76 L388 76" marker-end="url(#ok2)"/>
+        <text x="358" y="68" style="font-family:var(--font-mono);font-size:13px">12</text>
+        <g class="n"><rect x="390" y="54" width="110" height="44" rx="4"/><text class="id" x="400" y="72">motor</text><text class="t" x="400" y="89">e + 100</text></g>
+        <path class="ar" d="M445 100 L445 124 L110 124" marker-end="url(#ok2)"/>
+        <text class="lab" x="130" y="144">sonuç 112 yukarı geri döner</text>
+        <line x1="20" y1="168" x2="620" y2="168" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text class="lab" x="20" y="194">B. Hook 2 next çağırmadan döner</text>
+        <text x="20" y="250" style="font-family:var(--font-mono);font-size:16px">e = 5</text>
+        <path class="ar" d="M78 246 L108 246" marker-end="url(#ok2)"/>
+        <g class="n"><rect x="110" y="224" width="100" height="44" rx="4"/><text class="id" x="120" y="242">hook 1</text><text class="t" x="120" y="259">e + 1</text></g>
+        <path class="ar" d="M212 246 L248 246" marker-end="url(#ok2)"/>
+        <text x="222" y="238" style="font-family:var(--font-mono);font-size:13px">6</text>
+        <g class="n p"><rect x="250" y="224" width="100" height="44" rx="4"/><text class="id" x="260" y="242">hook 2</text><text class="t" x="260" y="259">kendi cevabı</text></g>
+        <g class="n"><rect x="390" y="224" width="110" height="44" rx="4" style="stroke-dasharray:5 4;opacity:.5"/><text class="id" x="400" y="242" style="opacity:.5">motor</text><text class="t" x="400" y="259" style="opacity:.5">çalışmaz</text></g>
+        <path class="ar" d="M300 270 L300 294 L110 294" marker-end="url(#ok2)"/>
+        <text class="lab" x="130" y="316">hook 2'nin cevabı yukarı döner</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 6: e ve $</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 640 380" role="img" aria-label="Bir hook'un üç girdisi ($, e, next) ve $.ui.toast çağrısı numaralı işaretlerle açıklanmış; altta next ile olayın kopyalanıp değiştirilmesi" style="min-width:600px">
+        <g style="font-family:var(--font-mono);font-size:18px;white-space:pre">
+          <text x="30" y="100">on('tool.call', ($, e, next) =&gt; {</text>
+          <text x="30" y="140">  $.ui.toast('merhaba');</text>
+          <text x="30" y="180">  return next(e);</text>
+          <text x="30" y="220">});</text>
+        </g>
+        <g class="rozet"><circle cx="219" cy="76" r="9"/><text x="219" y="80" text-anchor="middle">1</text></g>
+        <g class="rozet"><circle cx="251" cy="76" r="9"/><text x="251" y="80" text-anchor="middle">2</text></g>
+        <g class="rozet"><circle cx="300" cy="76" r="9"/><text x="300" y="80" text-anchor="middle">3</text></g>
+        <g class="rozet"><circle cx="106" cy="118" r="9"/><text x="106" y="122" text-anchor="middle">4</text></g>
+        <g class="rozet"><circle cx="149" cy="158" r="9"/><text x="149" y="162" text-anchor="middle">5</text></g>
+        <g style="font-size:13px">
+          <text x="410" y="80"><tspan class="lab">1</tspan> <tspan style="font-family:var(--font-mono)">$</tspan> motorla konuşan el</text>
+          <text x="410" y="108"><tspan class="lab">2</tspan> <tspan style="font-family:var(--font-mono)">e</tspan> olay verisi (değiştirilemez)</text>
+          <text x="410" y="136"><tspan class="lab">3</tspan> <tspan style="font-family:var(--font-mono)">next</tspan> zincirde sonrakine geç</text>
+          <text x="410" y="164"><tspan class="lab">4</tspan> <tspan style="font-family:var(--font-mono)">$.ui.toast</tspan> isim.yöntem</text>
+          <text x="410" y="192"><tspan class="lab">5</tspan> <tspan style="font-family:var(--font-mono)">next(e)</tspan> olay değişmeden geçer</text>
+        </g>
+        <line x1="30" y1="244" x2="610" y2="244" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text class="lab" x="30" y="268">Olayı değiştirmek: yeni kopya ver</text>
+        <text x="30" y="304" style="font-family:var(--font-mono);font-size:18px;white-space:pre">return next({ ...e, text: 'yeni' });</text>
+        <text class="lab" x="203" y="340" text-anchor="middle">...e : e'nin tüm alanlarını kopyala</text>
+        <path class="ar" d="M203 328 L203 312" marker-end="url(#ok2)"/>
+        <text class="lab" x="440" y="340" text-anchor="middle">text: 'yeni' : bu alanı değiştir</text>
+        <path class="ar" d="M370 328 L330 312" marker-end="url(#ok2)"/>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kutu 7: mod klasörü</h2>
+    <div class="scroll">
+      <svg viewBox="0 0 640 400" role="img" aria-label="Mod klasörünün üç dosyası ve register fonksiyonu, numaralı rozetlerle açıklanmış" style="min-width:600px">
+        <g style="font-family:var(--font-mono);font-size:17px;white-space:pre">
+          <text x="30" y="40">benim-modum/</text>
+          <text x="30" y="70">  .claude-plugin/</text>
+          <text x="30" y="100">    plugin.json</text>
+          <text x="30" y="130">  hooks/</text>
+          <text x="30" y="160">    hooks.json</text>
+          <text x="30" y="190">    register.tsx</text>
+        </g>
+        <g class="rozet"><circle cx="245" cy="95" r="9"/><text x="245" y="99" text-anchor="middle">1</text></g>
+        <g class="rozet"><circle cx="245" cy="155" r="9"/><text x="245" y="159" text-anchor="middle">2</text></g>
+        <g class="rozet"><circle cx="245" cy="185" r="9"/><text x="245" y="189" text-anchor="middle">3</text></g>
+        <g style="font-size:13px">
+          <text x="262" y="99">kimlik: ad, sürüm, açıklama</text>
+          <text x="262" y="159">yüklenecek dosyaların listesi</text>
+          <text x="262" y="189">senin kodun: register fonksiyonu</text>
+          <text x="262" y="219" class="lab">motor bu üçünü 1, 2, 3 sırasıyla okur</text>
+        </g>
+        <line x1="30" y1="244" x2="610" y2="244" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <text class="lab" x="30" y="266">register.tsx içi</text>
+        <g style="font-family:var(--font-mono);font-size:17px;white-space:pre">
+          <text x="30" y="300">export const register = (on, options) =&gt; {</text>
+          <text x="30" y="328">  on('tool.call', ($, e, next) =&gt; { ... });</text>
+          <text x="30" y="356">};</text>
+        </g>
+        <g class="rozet"><circle cx="296" cy="280" r="9"/><text x="296" y="284" text-anchor="middle">a</text></g>
+        <g class="rozet"><circle cx="14" cy="323" r="9"/><text x="14" y="327" text-anchor="middle">a</text></g>
+        <text x="30" y="386" style="font-size:13px"><tspan class="lab">a</tspan> Kutu 4'teki <tspan style="font-family:var(--font-mono)">on</tspan>: motor onu <tspan style="font-family:var(--font-mono)">register</tspan>'a girdi olarak verir</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="tablo">
+    <h2>Kutular ve sektör başlıkları</h2>
+    <table>
+      <thead><tr><th>Kutu</th><th>Tek akıl-adımı</th><th>Sektör başlığı (AS-OF 2026-10-19)</th></tr></thead>
+      <tbody>
+        <tr><td class="k">1</td><td>Hook: bir olay olunca çalışan, senin yazdığın küçük kod parçası.</td><td class="en">Hooks</td></tr>
+        <tr><td class="k">2</td><td>Fonksiyon: ad, girdi (parametre), çıktı. Bir satırı sesli okuyabilmek.</td><td class="en">JavaScript Functions</td></tr>
+        <tr><td class="k">3</td><td>Fonksiyonu başka bir fonksiyona değer olarak vermek (callback). Hook tam olarak budur.</td><td class="en">First-Class Functions and Callbacks</td></tr>
+        <tr><td class="k">4</td><td><code>on(olay, eşleştirici, hook)</code>: hangi olayda, hangi araç için çalışacağını kaydetmek.</td><td class="en">Hook Registration and Matchers</td></tr>
+        <tr><td class="k">5</td><td>Zincir: hook'lar sıraya dizilir, <code>next</code> bir sonrakine geçer. Bileşim: f₁∘f₂∘…∘motor. Formül, sembol tablosu ve elle örnek burada.</td><td class="en">Middleware Chain</td></tr>
+        <tr><td class="k">6</td><td><code>e</code> (olayın girdisi) ve <code>$</code> (motorla konuşma arayüzü).</td><td class="en">Plugin API Surface</td></tr>
+        <tr><td class="k">7</td><td>Mod klasörü: <code>plugin.json</code>, <code>hooks.json</code>, <code>register.tsx</code>.</td><td class="en">Plugin Structure and Manifest</td></tr>
+        <tr class="p"><td class="k">8</td><td>Pratik: boş mod klasörü kur, <code>claude plugin validate</code> yeşil olsun. Komutu sen çalıştırırsın, ben yalnız iskeleyi hazırlarım.</td><td class="en">Plugin Validation</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="meta">Bir seansta en fazla 8 kutu. Sığmayan kutular ders dosyasında "Kalan" olarak kalır. Pratik <code>DONE</code> yalnız senin "yaptım" beyanınla yazılır.</p>
+</main>
