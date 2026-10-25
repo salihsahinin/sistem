@@ -8,7 +8,7 @@
 . "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" session-start   # Rust varsa exec; yoksa aşağısı (durum #1)
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
-echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ==="
+echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: durum oturum-basi --alan jarvis · ortak/akis-graf.json) ==="
 echo "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py"
 echo "YETKİ (m.41 GK-2): Claude Code (giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."
 python3 - <<'PY' 2>/dev/null || echo "BRİF: silver okunamadı (python3 ya da veri/baglam.sqlite yok) → python3 tools/katman-hatti.py"
@@ -43,14 +43,13 @@ try:
     except Exception: pass
 except Exception as e:
     print("SİLVER: okunamadı (%s) → python3 tools/katman-hatti.py" % e)
-try:
-    t = open("core/durum-kapsulu.md", encoding="utf-8").read()
-    m = re.search(r"## Sonraki ilk iş\s*\n(.*?)\n", t, re.S)
-    if m: print("SONRAKİ İLK İŞ: " + re.sub(r"[*`]", "", m.group(1))[:190])
-    g = re.search(r"\*\*Güncelleme:\*\*\s*(.{0,90})", t)
-    if g: print("KAPSÜL: " + re.sub(r"[*`]", "", g.group(1)))
-except Exception: pass
+try:  # Karar 122 (2026-10-25): kapsül dondu; konum akış grafından (durum oturum-basi, ilk 4 satır)
+    r = subprocess.run(["../target/release/durum.exe", "oturum-basi", "--alan", "jarvis"], capture_output=True, text=True, encoding="utf-8")
+    if r.returncode != 0: raise RuntimeError("durum")
+    for l in r.stdout.replace("\r", "").splitlines()[:3]: print(l[:160])
+except Exception:
+    print("DURUM: durum.exe yok ya da hata → cargo build --release -p durum; konum ortak/akis-graf.json")
 PY
-echo "OKU (CLAUDE.md §3): core/durum-kapsulu.md (tamamı) → core/pano.md → ritüel 'seans başı' (kapılar: python3 tools/acilis-kapilari.py K1-K3; İB-91)."
+echo "OKU (CLAUDE.md §3): durum oturum-basi --alan jarvis → raporlar/seans/*.json → ritüel 'seans başı' (K1-K3; İB-91). Kapsül/pano dondu (Karar 122)."
 echo "=== /SessionStart ==="
 } | head -c 2000

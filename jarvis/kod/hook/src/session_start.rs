@@ -1,6 +1,5 @@
 //! `session-start.sh` karşılığı: SessionStart brifi, çıktı sert kapı `head -c 2000` (bayt).
 use crate::ortak::{Ortam, Sonuc, bugun_yerel, ilk_n, oku_py, py_str, py_truthy};
-use regex::Regex;
 use rusqlite::{Connection, OpenFlags, types::Value as SV};
 use serde_json::Value;
 use std::path::Path;
@@ -152,17 +151,20 @@ fn python_kismi(repo: &Path) -> Vec<String> {
     if let Err(e) = silver() {
         o.push(format!("SİLVER: okunamadı ({}) → python3 tools/katman-hatti.py", hata_iletisi(&e)));
     }
-    if let Some(t) = oku_py(&repo.join("core").join("durum-kapsulu.md")) {
-        let temiz = |s: &str| s.replace(['*', '`'], "");
-        let m = Regex::new(r"(?s)## Sonraki ilk iş\s*\n(.*?)\n").unwrap();
-        if let Some(c) = m.captures(&t) {
-            o.push(format!("SONRAKİ İLK İŞ: {}", ilk_n(&temiz(&c[1]), 190)));
+    // Karar 122 (2026-10-25): kapsül dondu; konum akış grafından (`durum oturum-basi`, ilk 4 satır: KONUM · DURUM · sıradakiler).
+    let durum = Command::new(repo.join("..").join("target").join("release").join("durum.exe"))
+        .args(["oturum-basi", "--alan", "jarvis"])
+        .current_dir(repo)
+        .output();
+    match durum {
+        Ok(c) if c.status.success() => {
+            for l in String::from_utf8_lossy(&c.stdout).replace('\r', "").lines().take(3) {
+                o.push(ilk_n(l, 160));
+            }
         }
-        let g = Regex::new(r"\*\*Güncelleme:\*\*\s*(.{0,90})").unwrap();
-        if let Some(c) = g.captures(&t) {
-            o.push(format!("KAPSÜL: {}", temiz(&c[1])));
-        }
+        _ => o.push("DURUM: durum.exe yok ya da hata → cargo build --release -p durum; konum ortak/akis-graf.json".into()),
     }
+    let _ = oku_py;
     o
 }
 
@@ -172,12 +174,12 @@ pub fn kos(o: &Ortam) -> Sonuc {
         _ => "?".into(),
     };
     let mut satirlar: Vec<String> = vec![
-        "=== JARVIS SessionStart (brif ≤2 KB; tam durum: core/durum-kapsulu.md) ===".into(),
+        "=== JARVIS SessionStart (brif ≤2 KB; tam durum: durum oturum-basi --alan jarvis · ortak/akis-graf.json) ===".into(),
         "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py".into(),
         format!("YETKİ (m.41 GK-2): Claude Code (giriş: {giris}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."),
     ];
     satirlar.extend(python_kismi(&o.repo));
-    satirlar.push("OKU (CLAUDE.md §3): core/durum-kapsulu.md (tamamı) → core/pano.md → ritüel 'seans başı' (kapılar: python3 tools/acilis-kapilari.py K1-K3; İB-91).".into());
+    satirlar.push("OKU (CLAUDE.md §3): durum oturum-basi --alan jarvis → raporlar/seans/*.json → ritüel 'seans başı' (K1-K3; İB-91). Kapsül/pano dondu (Karar 122).".into());
     satirlar.push("=== /SessionStart ===".into());
     let mut tam = satirlar.join("\n");
     tam.push('\n');

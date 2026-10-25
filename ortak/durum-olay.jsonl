@@ -67,3 +67,5 @@
 {"olay":"ac","id":26,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"Karar 122 hedef: seanslar arası iletişim graf + JSON (ortak/akis-graf.json, SALIH-OZET.md)","sonraki_eylem":"3 seans ölçüm: açılışta yanlış konum sayısı","oturum":"2026-10-25-jarvis","tur":"hedef"}
 {"olay":"ac","id":27,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"durum kütüğü worktree kopyası: paralel ac id çakışması","sonraki_eylem":"alan önekli id ya da birleştirme öncesi yeniden numaralama; ParalelOturum.lean'e sınır","oturum":"2026-10-25-jarvis","hedef":26}
 {"olay":"ac","id":28,"ts":"2026-10-25T18:02:22Z","alan":"jarvis","is":"SessionStart hook brifi durum oturum-basi çıktısını bassın (kapsül satırları yerine)","sonraki_eylem":"jarvis-hook session_start: KAPSÜL/SONRAKİ İLK İŞ satırları → durum oturum-basi --alan jarvis","oturum":"2026-10-25-jarvis","hedef":26}
+{"olay":"al","id":28,"ts":"2026-10-25T18:06:04Z","oturum":"2026-10-25-jarvis"}
+{"olay":"bitir","id":28,"ts":"2026-10-25T18:06:04Z","kanit":["jarvis-hook session_start + session-start.sh: durum oturum-basi ilk 3 satır; hook_fark2 2/2"],"oturum":"2026-10-25-jarvis"}

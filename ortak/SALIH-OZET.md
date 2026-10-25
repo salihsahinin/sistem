@@ -11,7 +11,6 @@ Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel:
 - #20 Python araçlarının Rust'a taşınması (Karar 117 EK-3, 5b): 59 araç, 7 parti. Sonraki adım: parti 1 omp'de (worktree omp-rust-p1); sonra parti 2-7 sırayla.
 - #21 Karar 118 M1: atlas kodla pilot (emir şeması + Workflow + Rust V26/done + JSON teslim). Sonraki adım: sonraki gerçek araştırma görevinde koş.
 - #27 durum kütüğü worktree kopyası: paralel ac id çakışması. Sonraki adım: alan önekli id ya da birleştirme öncesi yeniden numaralama; ParalelOturum.lean'e sınır.
-- #28 SessionStart hook brifi durum oturum-basi çıktısını bassın (kapsül satırları yerine). Sonraki adım: jarvis-hook session_start: KAPSÜL/SONRAKİ İLK İŞ satırları → durum oturum-basi --alan jarvis.
 
 Görsel: `ortak/graf/akis-jarvis.svg` · kaynak `ortak/graf/akis-jarvis.d2`
 
