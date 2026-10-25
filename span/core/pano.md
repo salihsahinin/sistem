@@ -5,6 +5,7 @@
 ## AKTİF
 | Kart | İş | DONE | Açılış | Çıktı | Ekrana gel |
 |---|---|---|---|---|---|
+| claude-mods | şerit: M0 ve M1 bitti, M2 sırada | sıradaki hafta kavramsal `DONE` + pratik Salih beyanı | 2026-10-16 | `ogrenme/claude-mods/ilerleme.md` | her seans |
 | baglam-modelleme | şerit: B0 sırada (0 ders) | sıradaki hafta kavramsal `DONE` + pratik Salih beyanı | 2026-09-21 | `ogrenme/baglam-modelleme/ilerleme.md` | her seans |
 | dersler-2026-07 | şerit: eski P0-P6 LLM-içi dersleri (07-15→08-22), arşiv-okuma | sıradaki hafta kavramsal `DONE` + pratik Salih beyanı | 2026-09-21 | `ogrenme/dersler-2026-07/ilerleme.md` | her seans |
 
