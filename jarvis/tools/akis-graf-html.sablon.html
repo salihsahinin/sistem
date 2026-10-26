@@ -15,7 +15,7 @@ header{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:16
 header h1{font-size:17px;margin:0}
 header small{color:var(--mut)}
 main{display:flex;flex:1;min-height:0}
-#graf{flex:1;min-width:0;min-height:560px;position:relative}
+#graf{flex:1;min-width:0;min-height:560px;position:relative;overflow:auto;max-height:calc(100vh - 52px)}
 svg{width:100%;height:100%;display:block;cursor:grab}
 #panel{width:460px;max-width:48vw;border-left:1px solid var(--line);background:var(--pan);padding:14px 16px;overflow:auto;max-height:calc(100vh - 52px)}
 #panel h2{font-size:16px;margin:0 0 4px}
@@ -41,6 +41,12 @@ svg{width:100%;height:100%;display:block;cursor:grab}
 .kenar{stroke:var(--mut);stroke-opacity:.45;fill:none}
 .halka{fill:none;stroke:var(--line);stroke-dasharray:3 4}
 .halka-etiket{fill:var(--mut);font-size:11px}
+button.ust.aktif{border-color:var(--seans);color:var(--seans)}
+.serit{fill:none;stroke:var(--line)}
+.serit-etiket{fill:var(--mut);font-size:11.5px}
+.cubuk{stroke-width:6;stroke-linecap:round;opacity:.55}
+.eksen text{fill:var(--mut);font-size:11px}
+.eksen line,.eksen path{stroke:var(--line)}
 button.ust{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;color:var(--fg);cursor:pointer;font:inherit}
 code{font-size:12.5px;word-break:break-all}
 @media (max-width:760px){main{flex-direction:column}#panel{width:100%;max-width:none;border-left:none;border-top:1px solid var(--line);max-height:50vh}}
@@ -48,9 +54,18 @@ code{font-size:12.5px;word-break:break-all}
 </head>
 <body>
 <header>
- <h1>Akış grafı: bu oturumdan genele</h1>
+ <h1>Akış grafı: zaman çizgisi + bu oturumdan genele</h1>
  <small id="asof"></small>
  <button class="ust" id="merkeze">Merkeze dön (bu chat)</button>
+ <span class="gorunum"><button class="ust aktif" id="g-zaman">Zaman çizgisi</button><button class="ust" id="g-halka">Halkalar</button></span>
+ <label id="y-secim" style="font-size:13px;color:var(--mut)">y ekseni:
+  <select id="ymod" style="font:inherit">
+   <option value="oturum">oturum şeridi (öneri)</option>
+   <option value="hedef">hizmet ettiği hedef</option>
+   <option value="durum">durum (tamam · işlemde · açık · bayat)</option>
+  </select>
+  <select id="xmod" style="font:inherit"><option value="sira">x: sıralı zaman (boşluklar sıkışır)</option><option value="gercek">x: gerçek zaman</option></select>
+ </label>
  <div class="lejant">
   <span style="--c:var(--seans)">oturum</span>
   <span style="--c:var(--is-tamam)">iş tamam</span>
@@ -89,12 +104,62 @@ function kisa(n,hop){ const e=n.etiket||n.id; if(hop<=1) return e.length>60?e.sl
 function ts(t){ if(!t) return null; return t.replace("T"," ").replace("Z"," UTC"); }
 function adi(id){ const h=N.get(id); return h.tur==="seans"?"Oturum "+h.etiket:(h.tur==="hedef"?"Hedef #":"İş #")+id.split(":")[1]; }
 
+let gorunum="zaman";
 const svg=d3.select("svg"); const g=svg.append("g");
-svg.call(d3.zoom().scaleExtent([.3,4]).on("zoom",ev=>g.attr("transform",ev.transform)));
+const zoom=d3.zoom().scaleExtent([.3,4]).filter(ev=>!(gorunum==="zaman"&&ev.type==="wheel")).on("zoom",ev=>g.attr("transform",ev.transform));
+svg.call(zoom);
 let secili=MERKEZ;
+function ciz(kok){ if(gorunum==="zaman") cizZaman(kok); else cizHalka(kok); }
 
-function ciz(kok){
+function zamanDeger(n){ return n.tur==="seans"?n.ac_ts:n.acilis_ts; }
+function bitisDeger(n){ return n.tur==="seans"?n.kapat_ts:n.bitir_ts; }
+function hedefSeridi(n){ if(n.tur==="hedef") return "hedef "+n.id.split(":")[1]; const h=G.kenarlar.find(e=>e.tur==="hizmet"&&e.k===n.id); return h?"hedef "+h.h.split(":")[1]:"hedefsiz"; }
+function oturumSeridi(n){ if(n.tur==="seans") return n.etiket; if(n.tur==="hedef") return "hedefler"; const ac=(Z[n.id]||{}).olaylar||[]; const a=ac.find(o=>o.olay==="ac"); return (a&&a.oturum)||(n.oturumlar&&n.oturumlar[0])||"oturumsuz"; }
+function durumSeridi(n){ return n.tur==="seans"?"oturumlar":(n.tur==="hedef"?"hedefler":n.durum); }
+
+function cizZaman(kok){
   secili=kok; const hop=hopHesapla(kok);
+  const ymod=document.getElementById("ymod").value, xmod=document.getElementById("xmod").value;
+  const W=Math.max(900,document.getElementById("graf").clientWidth), H=Math.max(560,document.getElementById("graf").clientHeight);
+  const sol=170, sag=30, ust=30, alt=40;
+  const dugumler=G.dugumler.filter(n=>zamanDeger(n));
+  const t=d=>new Date(d);
+  let x;
+  if(xmod==="gercek"){ x=d3.scaleTime().domain(d3.extent(dugumler.flatMap(n=>[t(zamanDeger(n)),t(bitisDeger(n)||zamanDeger(n))]))).range([sol,W-sag]); }
+  else { const anlar=Array.from(new Set(dugumler.flatMap(n=>[zamanDeger(n),bitisDeger(n)]).filter(Boolean))).sort(); const sp=d3.scalePoint().domain(anlar).range([sol,W-sag]); x=d=>sp(d); x.anlar=anlar; }
+  const X=n=>xmod==="gercek"?x(t(zamanDeger(n))):x(zamanDeger(n));
+  const X2=n=>bitisDeger(n)?(xmod==="gercek"?x(t(bitisDeger(n))):x(bitisDeger(n))):null;
+  const serit=n=>({oturum:oturumSeridi,hedef:hedefSeridi,durum:durumSeridi}[ymod](n));
+  const ilk=new Map(); dugumler.slice().sort((a,b)=>d3.ascending(zamanDeger(a),zamanDeger(b))).forEach(n=>{const s=serit(n); if(!ilk.has(s)) ilk.set(s,zamanDeger(n));});
+  const seritler=Array.from(ilk.keys()).sort((a,b)=>d3.ascending(ilk.get(a),ilk.get(b)));
+  const altSayisi=new Map(); const poz=new Map();
+  seritler.forEach(s=>{ const liste=dugumler.filter(n=>serit(n)===s).sort((a,b)=>d3.ascending(X(a),X(b))); const dolu=[];
+    liste.forEach(n=>{ const x1=X(n)-14, x2=(X2(n)||X(n))+Math.max(14,kisa(n,2).length*3.2); let k=0; while(dolu[k]!==undefined&&dolu[k]>x1) k++; dolu[k]=x2; poz.set(n.id,{alt:k}); });
+    altSayisi.set(s,dolu.length); });
+  const toplam=d3.sum(seritler,s=>altSayisi.get(s)); const satirY=Math.max(26,(H-ust-alt)/Math.max(1,toplam));
+  const y0=new Map(); let acc=ust; seritler.forEach(s=>{ y0.set(s,acc); acc+=satirY*altSayisi.get(s); });
+  dugumler.forEach(n=>{ const p=poz.get(n.id); p.x=X(n); p.x2=X2(n); p.y=y0.get(serit(n))+satirY*(p.alt+0.5); p.h=hop.get(n.id); });
+  g.selectAll("*").remove(); svg.attr("height",Math.max(H,acc+alt)).attr("width",W);
+  seritler.forEach(s=>{ const yy=y0.get(s); g.append("line").attr("class","serit").attr("x1",sol-8).attr("x2",W-sag).attr("y1",yy).attr("y2",yy);
+    g.append("text").attr("class","serit-etiket").attr("x",8).attr("y",yy+satirY*altSayisi.get(s)/2+4).text(s.length>22?s.slice(0,21)+"…":s); });
+  if(xmod==="gercek"){ g.append("g").attr("class","eksen").attr("transform",`translate(0,${acc+6})`).call(d3.axisBottom(x).ticks(8).tickFormat(d3.timeFormat("%m-%d %H:%M"))); }
+  else { const ax=g.append("g").attr("class","eksen"); const gunler=new Map(); x.anlar.forEach(a=>{const gun=a.slice(0,10); if(!gunler.has(gun)) gunler.set(gun,a);}); gunler.forEach((a,gun)=>{ ax.append("line").attr("x1",x(a)).attr("x2",x(a)).attr("y1",ust-10).attr("y2",acc+6).attr("stroke","var(--line)").attr("stroke-dasharray","2 4"); ax.append("text").attr("x",x(a)+3).attr("y",acc+18).text(gun); }); }
+  g.selectAll("path.kenar").data(G.kenarlar.filter(e=>poz.has(e.k)&&poz.has(e.h))).join("path").attr("class","kenar")
+    .attr("stroke-width",e=>Math.max(0.6,2-0.5*Math.min(poz.get(e.k).h,poz.get(e.h).h)))
+    .attr("d",e=>{const a=poz.get(e.k),b=poz.get(e.h); const ax=e.tur==="sonra"&&a.x2?a.x2:a.x; const dx=Math.max(30,Math.abs(b.x-ax)/2); return `M${ax},${a.y}C${ax+dx},${a.y} ${b.x-dx},${b.y} ${b.x},${b.y}`;})
+    .append("title").text(e=>e.k+" → "+e.h+" ("+e.tur+")");
+  g.selectAll("line.cubuk").data(dugumler.filter(n=>poz.get(n.id).x2&&poz.get(n.id).x2>poz.get(n.id).x)).join("line").attr("class","cubuk")
+    .attr("x1",n=>poz.get(n.id).x).attr("x2",n=>poz.get(n.id).x2).attr("y1",n=>poz.get(n.id).y).attr("y2",n=>poz.get(n.id).y).attr("stroke",renk);
+  const d=g.selectAll("g.dugum").data(dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":""))
+    .attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>{ciz(n.id);});
+  d.append("circle").attr("r",n=>n.tur==="seans"?9:(n.id===kok?9:6)).attr("fill",renk);
+  d.append("title").text(n=>n.id+" · "+(n.etiket||"")+" · "+ts(zamanDeger(n))+(bitisDeger(n)?" → "+ts(bitisDeger(n)):""));
+  d.append("text").attr("x",11).attr("dy",4).attr("font-size",n=>poz.get(n.id).h<=1?12:10.5).text(n=>{const h=poz.get(n.id).h; return h<=1?kisa(n,1):(h===2?kisa(n,2):kisa(n,3));});
+  panel(kok,hop);
+}
+
+function cizHalka(kok){
+  secili=kok; const hop=hopHesapla(kok); svg.attr("height",null).attr("width",null);
   const W=Math.max(700,document.getElementById("graf").clientWidth), H=Math.max(560,document.getElementById("graf").clientHeight);
   const cx=W/2, cy=H/2, R=Math.min(W,H)/2-40; const maxHop=Math.max(...hop.values());
   const yaricap=h=>h===0?0:R*(0.28+0.72*(h-1)/Math.max(1,maxHop-1));
@@ -182,6 +247,11 @@ function panel(id,hop){
   el.scrollTop=0;
 }
 document.getElementById("merkeze").onclick=()=>ciz(MERKEZ);
+function gorunumSec(gn){ gorunum=gn; document.getElementById("g-zaman").classList.toggle("aktif",gn==="zaman"); document.getElementById("g-halka").classList.toggle("aktif",gn==="halka"); document.getElementById("y-secim").style.display=gn==="zaman"?"":"none"; svg.call(zoom.transform,d3.zoomIdentity); ciz(secili); }
+document.getElementById("g-zaman").onclick=()=>gorunumSec("zaman");
+document.getElementById("g-halka").onclick=()=>gorunumSec("halka");
+document.getElementById("ymod").onchange=()=>{svg.call(zoom.transform,d3.zoomIdentity); ciz(secili);};
+document.getElementById("xmod").onchange=()=>{svg.call(zoom.transform,d3.zoomIdentity); ciz(secili);};
 window.addEventListener("resize",()=>ciz(secili));
 ciz(MERKEZ);
 </script>
