@@ -63,6 +63,10 @@ var mc_v := Vector3.ZERO
 var mc_hareket := Vector3.ZERO
 var mc_birikim := 0.0
 var mc_senkron_gerek := true
+var mc_yerde_tick := 0
+var bhop_zincir := 0
+var ucus_parkur := false
+var firlat_kare := -10
 var mc_zipla_gecikme := 0
 var mc_sprint := false
 var mc_son_kare := -10
@@ -76,11 +80,20 @@ func _mc_olcek() -> float:
 	return 20.0 * Ayarlar.al("mc_olcek")
 
 
+## blok/tick → m/s (yatay mc_olcek, dikey mc_olcek_y ile)
+func _mc_ms(v: Vector3) -> Vector3:
+	return Vector3(v.x * _mc_olcek(), v.y * 20.0 * Ayarlar.al("mc_olcek_y"), v.z * _mc_olcek())
+
+
+func _mc_bt(v: Vector3) -> Vector3:
+	return Vector3(v.x / _mc_olcek(), v.y / (20.0 * Ayarlar.al("mc_olcek_y")), v.z / _mc_olcek())
+
+
 ## Parkur durumlarından (duvar koşusu vb.) dönüşte Godot hızını tick durumuna aktarır.
 func _mc_senkron() -> void:
 	if mc_senkron_gerek or Engine.get_physics_frames() != mc_son_kare + 1:
 		mc_senkron_gerek = false
-		mc_v = velocity / _mc_olcek()
+		mc_v = _mc_bt(velocity)
 		mc_hareket = mc_v
 		mc_birikim = 0.0
 
@@ -101,29 +114,54 @@ func _mc_tick(yerde: bool) -> bool:
 		ileri_in *= 0.3
 		yan_in *= 0.3
 	mc_sprint = sprint_tut and ileri_in > 0.5 and not cokuk
-	# aiStep: zıplama (Space basılıyken 10 tick aralık)
-	if zipla_tut and yerde and mc_zipla_gecikme == 0:
+	var bhop := Ayarlar.al("bhop") > 0.5
+	# aiStep: zıplama (vanilla: Space basılıyken 10 tick aralık; bhop: gecikmesiz, inişte hemen)
+	if zipla_tut and yerde and (mc_zipla_gecikme == 0 or bhop):
 		mc_v.y = maxf(0.42, mc_v.y)
 		if mc_sprint:
 			mc_v += ileri_yon() * 0.2
+		if bhop:
+			# zincir: inişten ≤2 tick sonra zıplandıysa bonus büyür, yoksa sıfırlanır
+			bhop_zincir = bhop_zincir + 1 if mc_yerde_tick <= 2 else 0
+			var carpan: float = 1.0 + Ayarlar.al("bhop_zincir_bonus") * minf(bhop_zincir, 15.0)
+			var yatay_b := Vector2(mc_v.x, mc_v.z) * (carpan if bhop_zincir > 0 else 1.0)
+			mc_v.x = yatay_b.x
+			mc_v.z = yatay_b.y
 		mc_zipla_gecikme = 10
 		zipladi = true
 	elif not zipla_tut:
 		mc_zipla_gecikme = 0
 	if mc_zipla_gecikme > 0:
 		mc_zipla_gecikme -= 1
-	# travel: moveRelative
-	var hiz: float = (0.13 if mc_sprint else 0.1) if yerde else (0.026 if mc_sprint else 0.02)
+	mc_yerde_tick = mc_yerde_tick + 1 if yerde else 0
+	# travel: moveRelative (yerde Minecraft; havada bhop açıksa Source AirAccelerate)
 	var yerel := Vector3(yan_in, 0.0, -ileri_in)
 	if yerel.length_squared() > 1.0e-7:
 		if yerel.length_squared() > 1.0:
 			yerel = yerel.normalized()
-		mc_v += (global_basis * yerel) * hiz
+		var havada_bhop := bhop and (not yerde or zipladi)
+		if havada_bhop:
+			var olc := _mc_olcek()
+			var wishdir: Vector3 = (global_basis * yerel)
+			wishdir.y = 0.0
+			if wishdir.length() > 0.01:
+				wishdir = wishdir.normalized()
+				var v_ms := Vector3(mc_v.x, 0.0, mc_v.z) * olc
+				var wishspeed: float = (0.13 if mc_sprint else 0.1) / 0.454 * olc
+				var mevcut := v_ms.dot(wishdir)
+				var ekle: float = minf(wishspeed, Ayarlar.al("bhop_tavan") * Ayarlar.al("mc_olcek")) - mevcut
+				if ekle > 0.0:
+					v_ms += wishdir * minf(Ayarlar.al("bhop_hava_ivme") * wishspeed * MC_TICK, ekle)
+				mc_v.x = v_ms.x / olc
+				mc_v.z = v_ms.z / olc
+		else:
+			var hiz: float = (0.13 if mc_sprint else 0.1) if yerde else (0.026 if mc_sprint else 0.02)
+			mc_v += (global_basis * yerel) * hiz
 	# hareket bu (sürtünme öncesi) hızla yapılır; çarpışma move_and_slide ile tick'ler arasında
 	mc_hareket = mc_v
-	# sonra yerçekimi + atalet bir sonraki tick için
+	# sonra yerçekimi + atalet bir sonraki tick için (bhop: havada ve zıplama tick'inde sürtünme yok)
 	mc_v.y -= 0.08
-	var atalet := 0.546 if yerde else 0.91
+	var atalet: float = 0.546 if (yerde and not zipladi) else (1.0 if bhop else 0.91)
 	mc_v.x *= atalet
 	mc_v.z *= atalet
 	mc_v.y *= 0.98
@@ -140,13 +178,13 @@ func _mc_adim(delta: float, yerde: bool) -> bool:
 		if _mc_tick(yerde):
 			zipladi = true
 			yerde = false
-	velocity = mc_hareket * _mc_olcek()
+	velocity = _mc_ms(mc_hareket)
 	return zipladi
 
 
 ## move_and_slide sonrası: kayan hız ve zemin/tavan teması tick durumuna geri yazılır.
 func _mc_geri_oku() -> void:
-	var v := velocity / _mc_olcek()
+	var v := _mc_bt(velocity)
 	# yatay çarpışma: kayan hız hareket hızından saptıysa (duvar) o bileşen tick durumuna yazılır
 	if absf(v.x - mc_hareket.x) > 1.0e-5:
 		mc_v.x = v.x
@@ -422,14 +460,15 @@ func _zipla(carpan: float) -> void:
 
 # ---------------- HAVADA ----------------
 func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
-	if _mc_model():
+	if _mc_model() and not ucus_parkur:
 		_mc_adim(delta, false)
 	else:
 		velocity.y -= yercekimi * delta
+		mc_senkron_gerek = true
 	dusme_hizi = minf(velocity.y, dusme_hizi)
 	coyote = maxf(coyote - delta, 0.0)
 	var yatay := yatay_hiz()
-	if yon != Vector3.ZERO and not _mc_model():
+	if yon != Vector3.ZERO and (not _mc_model() or ucus_parkur):
 		# 1) Bakış takibi (Dying Light): hız vektörü büyüklüğünü koruyarak girdi yönüne döner.
 		var donus_hizi: float = deg_to_rad(Ayarlar.al("hava_donus"))
 		if donus_hizi > 0.0 and yatay.length() > 0.5:
@@ -445,7 +484,7 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 		if eklenecek > 0.0:
 			var ivme: float = minf(Ayarlar.al("bhop_hava_ivme") * wishspeed * delta, eklenecek)
 			yatay += yon * ivme
-	if not _mc_model():
+	if not _mc_model() or ucus_parkur:
 		velocity.x = yatay.x
 		velocity.z = yatay.z
 
@@ -453,7 +492,7 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	if _kay_tiklandi() or (not sanal_girdi_aktif and Input.is_action_pressed("kay")):
 		kayma_istek = 1.0
 
-	if is_on_floor():
+	if is_on_floor() and Engine.get_physics_frames() > firlat_kare + 2:
 		# bunny hop: yere değilen karede zıplama basılıysa sürtünme/iniş kaybı olmadan zıpla
 		if zipla_tampon > 0.0 and Ayarlar.al("bhop") > 0.5 and not _mc_model():
 			zipla_tampon = 0.0
@@ -482,6 +521,7 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 
 
 func _inis() -> void:
+	ucus_parkur = false
 	var siddet: float = clampf(-dusme_hizi / 22.0, 0.0, 1.0)
 	Ses.cal("inis", lerpf(-18.0, 0.0, siddet), randf_range(0.9, 1.1))
 	if siddet > 0.12:
@@ -822,10 +862,10 @@ func on_teleport(portal: Node3D) -> void:
 func firlat(v: Vector3) -> void:
 	kilit = false
 	_ayaga_kalk()
-	if _mc_model():
-		# Minecraft: yerçekimi 0.08 b/t² (32 m/s²) ve havada yatay atalet 0.91/tick güçlü;
-		# aynı yükseklik/menzil için dikey ×1.4, yatay ×3 (hesap: Σ v·0.91^k ≈ 7.9 v)
-		v = Vector3(v.x * 3.0, v.y * 1.4, v.z * 3.0)
+	# fırlatma uçuşu parkur fiziğiyle (Minecraft tick yerçekimi/ataleti plakayı bozar); inişte biter
+	ucus_parkur = true
+	firlat_kare = Engine.get_physics_frames()
+	global_position.y += 0.06
 	velocity = v
 	mc_senkron_gerek = true
 	dusme_hizi = 0.0

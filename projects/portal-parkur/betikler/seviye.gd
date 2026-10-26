@@ -272,24 +272,24 @@ func _bina(merkez_xz: Vector2, boyut_xz: Vector2, ust_y: float, yuk := 30.0) -> 
 	kutu(Vector3(merkez_xz.x, ust_y + 0.05, merkez_xz.y), Vector3(boyut_xz.x, 0.1, boyut_xz.y), cati)
 
 
-func _parapet(merkez_xz: Vector2, boyut_xz: Vector2, ust_y: float, acik_kenar := "") -> void:
+func _parapet(merkez_xz: Vector2, boyut_xz: Vector2, ust_y: float, acik: Array = []) -> void:
 	var hx := boyut_xz.x * 0.5
 	var hz := boyut_xz.y * 0.5
 	var y := ust_y + 0.3
-	if acik_kenar != "kuzey":
+	if not "kuzey" in acik:
 		kutu(Vector3(merkez_xz.x, y, merkez_xz.y - hz + 0.15), Vector3(boyut_xz.x, 0.6, 0.3), cati)
-	if acik_kenar != "guney":
+	if not "guney" in acik:
 		kutu(Vector3(merkez_xz.x, y, merkez_xz.y + hz - 0.15), Vector3(boyut_xz.x, 0.6, 0.3), cati)
-	if acik_kenar != "bati":
+	if not "bati" in acik:
 		kutu(Vector3(merkez_xz.x - hx + 0.15, y, merkez_xz.y), Vector3(0.3, 0.6, boyut_xz.y), cati)
-	if acik_kenar != "dogu":
+	if not "dogu" in acik:
 		kutu(Vector3(merkez_xz.x + hx - 0.15, y, merkez_xz.y), Vector3(0.3, 0.6, boyut_xz.y), cati)
 
 
 func _catilar() -> void:
 	# Çatı A (başlangıç): z -12..12, üst y=0
 	_bina(Vector2(0, 0), Vector2(24, 24), 0.0)
-	_parapet(Vector2(0, 0), Vector2(24, 24), 0.0, "kuzey")
+	_parapet(Vector2(0, 0), Vector2(24, 24), 0.0, ["kuzey"])
 	kutu(Vector3(-6, 0.65, -3), Vector3(1.6, 1.3, 1.6), cati)
 	kutu(Vector3(5.5, 0.65, 2), Vector3(1.6, 1.3, 1.6), cati)
 	kutu(Vector3(-3, 0.5, 6), Vector3(2.2, 1.0, 1.2), kirmizi)
@@ -298,7 +298,7 @@ func _catilar() -> void:
 	kutu(Vector3(-9, 2.0, -11.5), Vector3(4, 4, 0.5), kirmizi)
 	# Çatı B: z -35.5..-15.5, üst y=-1 (3.5 m boşluk; Minecraft sprint-zıplaması ~4 blok)
 	_bina(Vector2(0, -25.5), Vector2(20, 20), -1.0)
-	_parapet(Vector2(0, -25.5), Vector2(20, 20), -1.0, "guney")
+	_parapet(Vector2(0, -25.5), Vector2(20, 20), -1.0, ["guney", "kuzey"])
 	kutu(Vector3(0, -0.45, -23), Vector3(7, 1.1, 0.4), cati)
 	kutu(Vector3(6, -0.35, -30), Vector3(1.6, 1.3, 1.6), cati)
 	kontrol(Vector3(0, -1, -18.5))
@@ -307,7 +307,7 @@ func _catilar() -> void:
 	gorsel(Vector3(-4.28, 1.6, -41), Vector3(0.02, 1.2, 10), kirmizi)
 	# Çatı C: z -65..-45, üst y=-1
 	_bina(Vector2(0, -55), Vector2(20, 20), -1.0)
-	_parapet(Vector2(0, -55), Vector2(20, 20), -1.0, "kuzey")
+	_parapet(Vector2(0, -55), Vector2(20, 20), -1.0, ["kuzey"])
 	kontrol(Vector3(-3, -1, -47))
 	kutu(Vector3(5, 0.5, -52), Vector3(6, 3, 6), cati)
 	kutu(Vector3(-6, -0.3, -54), Vector3(1.6, 1.4, 1.6), cati)

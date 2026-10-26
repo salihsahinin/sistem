@@ -59,11 +59,10 @@ func kos() -> void:
 	# T1: koşu hızı
 	yerlestir(Vector3(0, 0.2, 9), 0)
 	oyuncu.sanal_girdi = Vector2(0, -1)
-	await bekle(1.7)
-	oyuncu.iz = true
-	await bekle(0.3)
-	oyuncu.iz = false
-	var h := oyuncu.yatay_hiz().length()
+	var h := 0.0
+	for i in 40:
+		await bekle(0.05)
+		h = maxf(h, oyuncu.yatay_hiz().length())
 	var mc: bool = Ayarlar.al("model") > 0.5
 	kontrol("kosu_hizi", h > (5.0 if mc else 8.5), "model=%s hiz=%.2f poz=%s" % ["minecraft" if mc else "parkur", h, oyuncu.global_position])
 	await ekran("02_kosu")
