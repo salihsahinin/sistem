@@ -4,7 +4,7 @@ Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel:
 
 ## jarvis
 
-**Konum:** seans `2026-10-26-jarvis-2` (açık). Hedef: Portal Parkur proje olarak kapatılır (Salih 2026-10-26); kayıt arşiv-pointer, kuyruk sonraki işe döner.
+**Konum:** seans `2026-10-26-jarvis-2` (açık).
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
