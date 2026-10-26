@@ -34,10 +34,10 @@
       "assertions": [
         "```lojik çiti var; ZORUNLU alanlar tam (DEVİR_ID … KARAR_YETKİSİ)",
         "ÇIKTI sözlüğündeki her Cn için DONE satırı; her çıktı yolu YAZMA_İZNİ kalıbında",
-        "json elle yazılmadı: tools/devir-md2json.py çıkış 0; --dogrula EŞ",
+        "json elle yazılmadı: devir-md2json çıkış 0; --dogrula EŞ",
         "dal ≤5, her dal 'eğer … → …'"
       ],
-      "script": "python3 tools/devir-md2json.py <emir.md> --kuru"
+      "script": "../target/release/devir-md2json <emir.md> --kuru"
     }
   ],
   "description_eval": {

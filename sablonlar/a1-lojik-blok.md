@@ -4,7 +4,7 @@ Kaynak karar: Karar 92 M3 EK (Salih 09-10: görev = sohbete bırakılan dosya; m
 
 ## Kural
 - Emir md'sinin **bağlayıcı** kısmı ```` ```lojik ```` çitidir; düz yazı yalnız gerekçe. Alıcı ajan bloğu okur, gerekçeyi ister okur.
-- json elle yazılmaz: `python3 tools/devir-md2json.py <emir.md>` → `<DEVİR_ID>.json` (aynı dizin). Çelişkide md kazanır; `--dogrula <json>` farkı çıkış 3 ile bildirir.
+- json elle yazılmaz: `../target/release/devir-md2json <emir.md>` → `<DEVİR_ID>.json` (aynı dizin). Çelişkide md kazanır; `--dogrula <json>` farkı çıkış 3 ile bildirir.
 - Şema ihlali (eksik alan, çıktı-başına done eksik, çıktı yolu `YAZMA_İZNİ` dışında, dal > 5, dalda `→` yok) → çıkış 2, emir **gönderilmez**.
 
 ## Alanlar (hepsi zorunlu; büyük harf = kod jetonu)

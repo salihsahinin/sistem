@@ -4,7 +4,7 @@
 //! Python'da yakalanmamış istisna olurdu (kayıtlarda beklenmedik tür/eksik anahtar) durumlar `py::coker` ile çıkış 1'dir.
 use crate::argparse::{Ayrisan, Secenek};
 use crate::harness_anahtar;
-use crate::py;
+use crate::py::{self, float_repr};
 use chrono::{Datelike, Duration, Local, NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Timelike};
 use jarvis_hook::ortak::{py_dumps, py_truthy};
 use rusqlite::{Connection, params_from_iter, types::Value as Sql, types::ValueRef};
@@ -381,21 +381,6 @@ const SEMA: &str = "
         ";
 
 // ---------------------------------------------------------------- CSV (Python `csv.writer`, excel kipi)
-
-/// `str(float)` (yalnız sonlu değerler; üstel gösterim eşiği Python gibi 1e16).
-fn float_repr(f: f64) -> String {
-    if f.is_finite() && f.abs() < 1e16 && (f == 0.0 || f.abs() >= 1e-4) {
-        return format!("{f:?}");
-    }
-    let s = format!("{f:e}");
-    match s.split_once('e') {
-        Some((m, e)) => {
-            let (isaret, say) = if let Some(x) = e.strip_prefix('-') { ('-', x) } else { ('+', e) };
-            format!("{m}e{isaret}{:0>2}", say)
-        }
-        None => s,
-    }
-}
 
 fn csv_alan(d: ValueRef) -> String {
     let ham = match d {

@@ -3,7 +3,7 @@
 //! burada dört işlev Rust'ta yeniden uygulanır (tek tanım: bu modül). Kural dosyasındaki desenler Python `re` sözdizimi taşıdığından
 //! (ileri bakış `(?!...)` vb.) `fancy_regex` ile derlenir. Çıkış: 0 · 6 (`--kapi` + T-Ç error) · 2 girdi/şema hatası · 7 canary FAIL.
 use crate::argparse::{Ayrisan, Secenek, Sonuc};
-use crate::py;
+use crate::py::{self, iso_tarih, sha1_hex};
 use fancy_regex::Regex as Fr;
 use jarvis_hook::ortak::{py_dumps, py_truthy};
 use regex::Regex;
@@ -453,45 +453,6 @@ fn butunluk(reg: &Value) -> Sn<Vec<String>> {
 }
 
 // ---------------------------------------------------------------- yardımcılar
-/// SHA-1 (hashlib.sha1).
-fn sha1_hex(b: &[u8]) -> String {
-    let mut h: [u32; 5] = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0];
-    let mut m = b.to_vec();
-    m.push(0x80);
-    while m.len() % 64 != 56 {
-        m.push(0);
-    }
-    m.extend(((b.len() as u64) * 8).to_be_bytes());
-    for ch in m.chunks(64) {
-        let mut w = [0u32; 80];
-        for i in 0..16 {
-            w[i] = u32::from_be_bytes([ch[4 * i], ch[4 * i + 1], ch[4 * i + 2], ch[4 * i + 3]]);
-        }
-        for i in 16..80 {
-            w[i] = (w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]).rotate_left(1);
-        }
-        let [mut a, mut b_, mut c, mut d, mut e] = h;
-        for (i, wi) in w.iter().enumerate() {
-            let (f, k) = match i {
-                0..=19 => ((b_ & c) | (!b_ & d), 0x5A827999u32),
-                20..=39 => (b_ ^ c ^ d, 0x6ED9EBA1),
-                40..=59 => ((b_ & c) | (b_ & d) | (c & d), 0x8F1BBCDC),
-                _ => (b_ ^ c ^ d, 0xCA62C1D6),
-            };
-            let t = a.rotate_left(5).wrapping_add(f).wrapping_add(e).wrapping_add(k).wrapping_add(*wi);
-            e = d;
-            d = c;
-            c = b_.rotate_left(30);
-            b_ = a;
-            a = t;
-        }
-        for (x, y) in h.iter_mut().zip([a, b_, c, d, e]) {
-            *x = x.wrapping_add(y);
-        }
-    }
-    h.iter().map(|x| format!("{x:08x}")).collect()
-}
-
 fn git_head(repo: &str) -> String {
     let mut c = Command::new("git");
     c.args(["rev-parse", "--short", "HEAD"]).current_dir(repo).stdin(Stdio::null());
@@ -517,31 +478,6 @@ fn gecici_dizin(onek: &str) -> Sn<String> {
             Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => continue,
             Err(e) => return Err(e.into()),
         }
-    }
-}
-
-/// `datetime.date.fromisoformat` (3.11: YYYY-MM-DD, YYYYMMDD, YYYY-Www[-D], YYYYWww[D]).
-fn iso_tarih(s: &str) -> Option<chrono::NaiveDate> {
-    use chrono::{NaiveDate, Weekday};
-    if !s.is_ascii() {
-        return None;
-    }
-    let sayi = |x: &str| -> Option<u32> { if !x.is_empty() && x.bytes().all(|b| b.is_ascii_digit()) { x.parse().ok() } else { None } };
-    let b = s.as_bytes();
-    let hafta = |y: &str, w: &str, d: Option<&str>| -> Option<NaiveDate> {
-        let (y, w) = (sayi(y)? as i32, sayi(w)?);
-        let d = match d { Some(d) => sayi(d)?, None => 1 };
-        let gun = match d { 1 => Weekday::Mon, 2 => Weekday::Tue, 3 => Weekday::Wed, 4 => Weekday::Thu, 5 => Weekday::Fri, 6 => Weekday::Sat, 7 => Weekday::Sun, _ => return None };
-        NaiveDate::from_isoywd_opt(y, w, gun)
-    };
-    match s.len() {
-        10 if b[4] == b'-' && b[7] == b'-' => NaiveDate::from_ymd_opt(sayi(&s[..4])? as i32, sayi(&s[5..7])?, sayi(&s[8..])?),
-        10 if b[4] == b'-' && b[5] == b'W' && b[8] == b'-' => hafta(&s[..4], &s[6..8], Some(&s[9..])),
-        8 if b[4] == b'W' => hafta(&s[..4], &s[5..7], Some(&s[7..])),
-        8 if b[4] == b'-' && b[5] == b'W' => hafta(&s[..4], &s[6..8], None),
-        8 => NaiveDate::from_ymd_opt(sayi(&s[..4])? as i32, sayi(&s[4..6])?, sayi(&s[6..])?),
-        7 if b[4] == b'W' => hafta(&s[..4], &s[5..7], None),
-        _ => None,
     }
 }
 

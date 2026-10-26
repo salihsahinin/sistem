@@ -624,3 +624,9 @@ fn sar(metin: &str, genislik: usize) -> Vec<String> {
     }
     satirlar
 }
+
+/// argparse varsayılan biçimleyicisinin açıklama sarması (`HelpFormatter._fill_text`): genişlik = COLUMNS (yoksa 80) - 2. `Ayrisan` açıklamayı sarmaz; sarılacak açıklamayı çağıran bununla hazırlar.
+pub fn aciklama_sar(metin: &str) -> String {
+    let kolon = std::env::var("COLUMNS").ok().and_then(|v| crate::py::int(&v)).filter(|&v| v > 0).unwrap_or(80);
+    sar(metin, (kolon as usize).saturating_sub(2).max(11)).join("\n")
+}

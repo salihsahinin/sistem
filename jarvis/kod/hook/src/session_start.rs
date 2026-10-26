@@ -103,7 +103,7 @@ fn kesim_satiri(repo: &Path) -> String {
     }
     let liste: Vec<String> = ks.iter().map(|(a, b)| format!("{a} {b}")).collect();
     format!(
-        "ZAMAN-ZEMİNİ (Karar 68): BUGÜN {} · kesim(reliable) {} · zaman-bağımlı iddia AS-OF damgasız ÇIKMAZ; model-hafızası = 'AS-OF ≤ kesim, doğrulanmadı' → canlı çek (tools/anakronizm-denetim.py)",
+        "ZAMAN-ZEMİNİ (Karar 68): BUGÜN {} · kesim(reliable) {} · zaman-bağımlı iddia AS-OF damgasız ÇIKMAZ; model-hafızası = 'AS-OF ≤ kesim, doğrulanmadı' → canlı çek (../target/release/anakronizm-denetim)",
         bugun_yerel(),
         liste.join(" · ")
     )

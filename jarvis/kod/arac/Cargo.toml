@@ -31,3 +31,11 @@ path = "src/bin/yol_tasi.rs"
 [[bin]]
 name = "masa-uret"
 path = "src/bin/masa_uret.rs"
+
+[[bin]]
+name = "devir-md2json"
+path = "src/bin/devir_md2json.rs"
+
+[[bin]]
+name = "kod-orani-olcum"
+path = "src/bin/kod_orani.rs"
