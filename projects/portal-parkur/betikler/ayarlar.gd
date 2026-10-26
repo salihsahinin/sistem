@@ -8,6 +8,8 @@ const YOL := "user://ayarlar.cfg"
 
 ## ad: [varsayılan, min, max, adım, açıklama]
 const TANIM := {
+	"model": [1.0, 0.0, 1.0, 1.0, "hareket modeli: 1 = Minecraft (20 tick, azalea-physics portu) · 0 = parkur (DL/CS/MW)"],
+	"mc_olcek": [1.0, 0.5, 3.0, 0.1, "Minecraft hız ölçeği (1 = birebir, 1 blok = 1 m)"],
 	"hassasiyet": [0.12, 0.02, 0.60, 0.005, "derece / fare sayımı (yatay)"],
 	"dikey_oran": [1.0, 0.5, 1.5, 0.05, "dikey / yatay hassasiyet oranı"],
 	"yumusatma": [0.0, 0.0, 0.08, 0.005, "fare yumuşatma zaman sabiti (sn); 0 = ham 1:1"],

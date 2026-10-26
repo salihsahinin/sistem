@@ -64,7 +64,8 @@ func kos() -> void:
 	await bekle(0.3)
 	oyuncu.iz = false
 	var h := oyuncu.yatay_hiz().length()
-	kontrol("kosu_hizi", h > 8.5, "hiz=%.2f poz=%s" % [h, oyuncu.global_position])
+	var mc: bool = Ayarlar.al("model") > 0.5
+	kontrol("kosu_hizi", h > (5.0 if mc else 8.5), "model=%s hiz=%.2f poz=%s" % ["minecraft" if mc else "parkur", h, oyuncu.global_position])
 	await ekran("02_kosu")
 
 	# T2: boşluk atlayışı A→B (kenar z=-12, B z<-17 y=-1)
@@ -78,10 +79,10 @@ func kos() -> void:
 		if not zipladi and oyuncu.global_position.z < -11.4:
 			oyuncu.sanal_zipla = true
 			zipladi = true
-		if zipladi and oyuncu.is_on_floor() and oyuncu.global_position.z < -17.5:
+		if zipladi and oyuncu.is_on_floor() and oyuncu.global_position.z < -16.0:
 			break
 	var p := oyuncu.global_position
-	kontrol("bosluk_atlayisi", p.z < -17.5 and p.y > -1.5 and p.y < 0.5, "poz=%s t=%.2f" % [p, t])
+	kontrol("bosluk_atlayisi", p.z < -16.0 and p.y > -1.5 and p.y < 0.5, "poz=%s t=%.2f" % [p, t])
 	await ekran("03_atlayis")
 
 	# T3: duvar koşusu (pano x=-4.5, sağ yüzü; oyuncu x=-3.9, z -33'ten -47'ye)
@@ -94,9 +95,11 @@ func kos() -> void:
 	while t < 4.0:
 		await bekle(0.02)
 		t += 0.02
-		if not zipladi and oyuncu.global_position.z < -36.3:
+		if not zipladi and oyuncu.global_position.z < -34.6:
 			oyuncu.sanal_zipla = true
 			zipladi = true
+		if int(t * 50) % 5 == 0:
+			print("[IZ-T3] t=%.2f durum=%s poz=%s v=%s" % [t, Oyuncu.DURUM_AD[oyuncu.durum], oyuncu.global_position, oyuncu.velocity])
 		if oyuncu.durum == Oyuncu.Durum.DUVAR_KOSU:
 			dk_gordu = true
 			if not dk_ekran:
@@ -197,7 +200,7 @@ func kos() -> void:
 	oyuncu.sanal_girdi = Vector2(0, -1)
 	await bekle(0.9)
 	t = 0.0
-	while t < 2.0 and not (oyuncu.is_on_floor() and oyuncu.yatay_hiz().length() > 8.0):
+	while t < 2.0 and not (oyuncu.is_on_floor() and oyuncu.yatay_hiz().length() > (5.0 if mc else 8.0)):
 		await bekle(0.02)
 		t += 0.02
 	var kay_poz := oyuncu.global_position

@@ -57,6 +57,111 @@ var kayma_istek := 0.0
 var son_shift := -10.0
 var taktik_kalan := 0.0
 
+# ---- Minecraft modeli (azalea-physics / LivingEntity.travel portu; birim blok/tick, 20 tick/sn) ----
+const MC_TICK := 1.0 / 20.0
+var mc_v := Vector3.ZERO
+var mc_hareket := Vector3.ZERO
+var mc_birikim := 0.0
+var mc_senkron_gerek := true
+var mc_zipla_gecikme := 0
+var mc_sprint := false
+var mc_son_kare := -10
+
+
+func _mc_model() -> bool:
+	return Ayarlar.al("model") > 0.5
+
+
+func _mc_olcek() -> float:
+	return 20.0 * Ayarlar.al("mc_olcek")
+
+
+## Parkur durumlarından (duvar koşusu vb.) dönüşte Godot hızını tick durumuna aktarır.
+func _mc_senkron() -> void:
+	if mc_senkron_gerek or Engine.get_physics_frames() != mc_son_kare + 1:
+		mc_senkron_gerek = false
+		mc_v = velocity / _mc_olcek()
+		mc_hareket = mc_v
+		mc_birikim = 0.0
+
+
+## Bir Minecraft tick'i: aiStep (küçük hız sıfırlama, zıplama) + travel (girdi ivmesi, yerçekimi, atalet).
+func _mc_tick(yerde: bool) -> bool:
+	var zipladi := false
+	if Vector2(mc_v.x, mc_v.z).length_squared() < 9.0e-6:
+		mc_v.x = 0.0
+		mc_v.z = 0.0
+	if absf(mc_v.y) < 0.003:
+		mc_v.y = 0.0
+	var zipla_tut := zipla_tampon > 0.0 or (not sanal_girdi_aktif and Input.is_action_pressed("zipla"))
+	var sprint_tut := Input.is_action_pressed("kos") or sanal_girdi_aktif
+	var ileri_in := -girdi.y * 0.98
+	var yan_in := girdi.x * 0.98
+	if cokuk:
+		ileri_in *= 0.3
+		yan_in *= 0.3
+	mc_sprint = sprint_tut and ileri_in > 0.5 and not cokuk
+	# aiStep: zıplama (Space basılıyken 10 tick aralık)
+	if zipla_tut and yerde and mc_zipla_gecikme == 0:
+		mc_v.y = maxf(0.42, mc_v.y)
+		if mc_sprint:
+			mc_v += ileri_yon() * 0.2
+		mc_zipla_gecikme = 10
+		zipladi = true
+	elif not zipla_tut:
+		mc_zipla_gecikme = 0
+	if mc_zipla_gecikme > 0:
+		mc_zipla_gecikme -= 1
+	# travel: moveRelative
+	var hiz: float = (0.13 if mc_sprint else 0.1) if yerde else (0.026 if mc_sprint else 0.02)
+	var yerel := Vector3(yan_in, 0.0, -ileri_in)
+	if yerel.length_squared() > 1.0e-7:
+		if yerel.length_squared() > 1.0:
+			yerel = yerel.normalized()
+		mc_v += (global_basis * yerel) * hiz
+	# hareket bu (sürtünme öncesi) hızla yapılır; çarpışma move_and_slide ile tick'ler arasında
+	mc_hareket = mc_v
+	# sonra yerçekimi + atalet bir sonraki tick için
+	mc_v.y -= 0.08
+	var atalet := 0.546 if yerde else 0.91
+	mc_v.x *= atalet
+	mc_v.z *= atalet
+	mc_v.y *= 0.98
+	return zipladi
+
+
+## Tick birikimini işler, velocity'yi tick hızından kurar. Zıplama olduysa true.
+func _mc_adim(delta: float, yerde: bool) -> bool:
+	_mc_senkron()
+	mc_birikim += delta
+	var zipladi := false
+	while mc_birikim >= MC_TICK:
+		mc_birikim -= MC_TICK
+		if _mc_tick(yerde):
+			zipladi = true
+			yerde = false
+	velocity = mc_hareket * _mc_olcek()
+	return zipladi
+
+
+## move_and_slide sonrası: kayan hız ve zemin/tavan teması tick durumuna geri yazılır.
+func _mc_geri_oku() -> void:
+	var v := velocity / _mc_olcek()
+	# yatay çarpışma: kayan hız hareket hızından saptıysa (duvar) o bileşen tick durumuna yazılır
+	if absf(v.x - mc_hareket.x) > 1.0e-5:
+		mc_v.x = v.x
+		mc_hareket.x = v.x
+	if absf(v.z - mc_hareket.z) > 1.0e-5:
+		mc_v.z = v.z
+		mc_hareket.z = v.z
+	if is_on_floor() and mc_v.y < 0.0:
+		mc_v.y = 0.0
+		mc_hareket.y = minf(mc_hareket.y, 0.0)
+	if is_on_ceiling() and mc_v.y > 0.0:
+		mc_v.y = 0.0
+		mc_hareket.y = 0.0
+	mc_son_kare = Engine.get_physics_frames()
+
 @onready var kafa: Node3D = $Kafa
 @onready var kamera: Camera3D = $Kafa/Kamera
 @onready var govde: CollisionShape3D = $Govde
@@ -176,6 +281,8 @@ func _physics_process(delta: float) -> void:
 
 	if not kilit:
 		move_and_slide()
+		if _mc_model() and (durum == Durum.YERDE or durum == Durum.HAVADA):
+			_mc_geri_oku()
 	_kamera_guncelle(delta)
 
 
@@ -191,6 +298,9 @@ func _yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	if not is_on_floor():
 		coyote = 0.12
 		_durum_degistir(Durum.HAVADA)
+		return
+	if _mc_model():
+		_mc_yerde(delta, yon, ileri)
 		return
 	# MW2019 koşu modeli: W = jog · Shift = sprint (momentumla artar) · çift Shift = taktik sprint (4 sn)
 	var kos := (Input.is_action_pressed("kos") or sanal_girdi_aktif) and girdi.y < -0.3
@@ -265,6 +375,40 @@ func _yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
 		_zipla(1.0)
 
 
+func _mc_yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
+	var yatay := yatay_hiz()
+	# Ctrl tık: sprintteyken kayma · yavaşken çömelme aç/kapa
+	if _kay_tiklandi():
+		if cokuk:
+			if _ayaga_kalkabilir():
+				_ayaga_kalk()
+		elif yatay.length() > 4.5:
+			_kayma_baslat(yatay)
+			return
+		else:
+			_cok()
+	if cokuk and Input.is_action_pressed("kos") and _ayaga_kalkabilir():
+		_ayaga_kalk()
+	# duvara bakıp zıplama → dikey tırmanış (parkur kancası)
+	if zipla_tampon > 0.0 and on_isin.is_colliding() and yon.dot(ileri) > 0.5 and _duvar_dik(on_isin.get_collision_normal()):
+		zipla_tampon = 0.0
+		_duvar_tirmanis_baslat(on_isin.get_collision_normal())
+		return
+	if yon.dot(ileri) > 0.5 and _basamak_dene():
+		return
+	if _mc_adim(delta, true):
+		zipla_tampon = 0.0
+		coyote = 0.0
+		kayma_istek = 0.0
+		if cokuk and _ayaga_kalkabilir():
+			_ayaga_kalk()
+		_durum_degistir(Durum.HAVADA)
+		eller.call("zipla")
+		Ses.cal("zipla", -10.0, randf_range(0.9, 1.1))
+	else:
+		momentum = 1.0 if mc_sprint else 0.0
+
+
 func _zipla(carpan: float) -> void:
 	if cokuk and _ayaga_kalkabilir():
 		_ayaga_kalk()
@@ -278,11 +422,14 @@ func _zipla(carpan: float) -> void:
 
 # ---------------- HAVADA ----------------
 func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
-	velocity.y -= yercekimi * delta
+	if _mc_model():
+		_mc_adim(delta, false)
+	else:
+		velocity.y -= yercekimi * delta
 	dusme_hizi = minf(velocity.y, dusme_hizi)
 	coyote = maxf(coyote - delta, 0.0)
 	var yatay := yatay_hiz()
-	if yon != Vector3.ZERO:
+	if yon != Vector3.ZERO and not _mc_model():
 		# 1) Bakış takibi (Dying Light): hız vektörü büyüklüğünü koruyarak girdi yönüne döner.
 		var donus_hizi: float = deg_to_rad(Ayarlar.al("hava_donus"))
 		if donus_hizi > 0.0 and yatay.length() > 0.5:
@@ -298,8 +445,9 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 		if eklenecek > 0.0:
 			var ivme: float = minf(Ayarlar.al("bhop_hava_ivme") * wishspeed * delta, eklenecek)
 			yatay += yon * ivme
-	velocity.x = yatay.x
-	velocity.z = yatay.z
+	if not _mc_model():
+		velocity.x = yatay.x
+		velocity.z = yatay.z
 
 	# havada herhangi bir anda Ctrl (tık ya da basılı) → iniş anında kayma (MW2019); istek inişe kadar kalır
 	if _kay_tiklandi() or (not sanal_girdi_aktif and Input.is_action_pressed("kay")):
@@ -307,7 +455,7 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 
 	if is_on_floor():
 		# bunny hop: yere değilen karede zıplama basılıysa sürtünme/iniş kaybı olmadan zıpla
-		if zipla_tampon > 0.0 and Ayarlar.al("bhop") > 0.5:
+		if zipla_tampon > 0.0 and Ayarlar.al("bhop") > 0.5 and not _mc_model():
 			zipla_tampon = 0.0
 			dusme_hizi = 0.0
 			son_duvar_id = 0
@@ -328,7 +476,7 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 		zipla_tampon = 0.0
 		_duvar_tirmanis_baslat(on_isin.get_collision_normal())
 		return
-	if zipla_tampon > 0.0 and coyote > 0.0:
+	if zipla_tampon > 0.0 and coyote > 0.0 and not _mc_model():
 		zipla_tampon = 0.0
 		_zipla(1.0)
 
@@ -341,7 +489,7 @@ func _inis() -> void:
 		inis_dip = -0.32 * siddet * Ayarlar.al("inis_dip")
 		tw.tween_property(self, "inis_dip", 0.0, 0.28 + 0.2 * siddet).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		eller.call("inis", siddet)
-	if siddet > 0.55:
+	if siddet > 0.55 and not _mc_model():
 		if Input.is_action_pressed("kay"):
 			eller.call("yuvarlan")
 		else:
@@ -614,6 +762,9 @@ func _kamera_guncelle(delta: float) -> void:
 	var hiz := yatay_hiz().length()
 	temel_fov = Ayarlar.al("fov")
 	var hedef_fov: float = temel_fov + clampf((hiz - 6.0) / 6.5, 0.0, 1.0) * Ayarlar.al("sprint_fov")
+	if _mc_model():
+		# Minecraft: sprintte görüş açısı ×1.15 ((0.13/0.1 + 1) / 2)
+		hedef_fov = temel_fov * (1.15 if mc_sprint and (durum == Durum.YERDE or durum == Durum.HAVADA) else 1.0)
 	if durum == Durum.KAYMA:
 		hedef_fov += 4.0
 	kamera.fov = lerpf(kamera.fov, hedef_fov, 6.0 * delta)
@@ -660,6 +811,7 @@ func on_teleport(portal: Node3D) -> void:
 	son_duvar_id = 0
 	son_teleport_zaman = toplam_sure
 	teleport_sayisi += 1
+	mc_senkron_gerek = true
 	Ses.cal("portal_gecis", -4.0)
 	if durum != Durum.KAYMA:
 		_durum_degistir(Durum.HAVADA)
@@ -670,7 +822,12 @@ func on_teleport(portal: Node3D) -> void:
 func firlat(v: Vector3) -> void:
 	kilit = false
 	_ayaga_kalk()
+	if _mc_model():
+		# Minecraft: yerçekimi 0.08 b/t² (32 m/s²) ve havada yatay atalet 0.91/tick güçlü;
+		# aynı yükseklik/menzil için dikey ×1.4, yatay ×3 (hesap: Σ v·0.91^k ≈ 7.9 v)
+		v = Vector3(v.x * 3.0, v.y * 1.4, v.z * 3.0)
 	velocity = v
+	mc_senkron_gerek = true
 	dusme_hizi = 0.0
 	_durum_degistir(Durum.HAVADA)
 	durum_suresi = 0.0
@@ -683,6 +840,7 @@ func sifirla() -> void:
 		tirman_tw.kill()
 	kilit = false
 	velocity = Vector3.ZERO
+	mc_senkron_gerek = true
 	momentum = 0.0
 	hiz_seridi = false
 	dusme_hizi = 0.0

@@ -34,7 +34,15 @@ Birinci şahıs parkur + portal oyunu: Mirror's Edge tarzı beyaz çatılarda ko
 - `betikler/test_kosum.gd` otomatik test (sanal girdi + ekran görüntüsü).
 - `sahneler/portal.tscn` eklentinin Portal3D düğümü elle kurulmuş (çalışma zamanında yerleştirilir).
 
+## Hareket modelleri (F4 → `model`)
+
+- **1 = Minecraft (varsayılan):** `referans/azalea` içindeki `azalea-physics` (Java istemcinin `LivingEntity.travel` portu) birebir: 20 tick/sn; girdi ±0,98 (çapraz normalize); yerde ivme 0,1 b/t (sprint 0,13), havada 0,02 (0,026); hareket sürtünme öncesi hızla; sonra yerçekimi 0,08, yatay atalet 0,546 yerde / 0,91 havada, dikey 0,98; zıplama 0,42 + sprintte bakış yönüne 0,2; Space basılıyken 10 tick aralıkla otomatik zıplama; sprint görüş açısı ×1,15; çömelmede girdi ×0,3. 1 blok = 1 m (`mc_olcek` ile büyütülür). Sonuç yürüme 4,3 m/s, sprint 5,61 m/s (wiki 5,612).
+- **0 = Parkur:** Dying Light bakış/hava kontrolü (`hava_donus`), Source `AirAccelerate` bunny hop (`bhop_*`), MW2019 koşu/kayma. Duvar koşusu, dikey tırmanış, mantle, kayma, çömelme her iki modelde ortaktır.
+
 ## Kaynaklar ve lisanslar
+
+- Minecraft hareket fiziği: [azalea-rs/azalea](https://github.com/azalea-rs/azalea) `azalea-physics` (MIT), Java istemci kodunun Rust portu; sabitler oradan.
+- Bunny hop: Source SDK 2013 `gamemovement.cpp` (`AirAccelerate`, `Friction`), Valve kaynak lisansı; formül yeniden yazıldı.
 
 - Portal görüntüleme/teleport: `addons/portals` = [VojtaStruhar/godot-portals-plugin](https://github.com/VojtaStruhar/godot-portals-plugin) (MIT, Vojtěch Struhár; lisans metni klasörde). Oval maske shader'ı ve çalışma zamanı yerleştirme bu projede eklendi.
 - Parkur denetleyicisi fikirleri (duvar koşusu ışınları, eğri yerçekimi, mantle ışınları): [DeiranZ/godot-parkour-fps-controller](https://github.com/DeiranZ/godot-parkour-fps-controller) (MIT) ve [Gab-ani/Godot-Parkour-And-Advanced-Movement](https://github.com/Gab-ani/Godot-Parkour-And-Advanced-Movement). Kod yeniden yazıldı.
