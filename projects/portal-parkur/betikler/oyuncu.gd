@@ -239,8 +239,15 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	velocity.y -= yercekimi * delta
 	dusme_hizi = minf(velocity.y, dusme_hizi)
 	coyote = maxf(coyote - delta, 0.0)
+	hava_ivme = Ayarlar.al("hava_ivme")
 	var yatay := yatay_hiz()
 	if yon != Vector3.ZERO:
+		# Hava kontrolü: hız vektörü büyüklüğünü koruyarak girdi/bakış yönüne döner
+		# (fareyle çizilen yay zıplama yayını eş zamanlı büker); ek olarak küçük ivme.
+		var donus_hizi: float = deg_to_rad(Ayarlar.al("hava_donus"))
+		if yatay.length() > 0.5:
+			var aci := yatay.signed_angle_to(yon, Vector3.UP)
+			yatay = yatay.rotated(Vector3.UP, clampf(aci, -donus_hizi * delta, donus_hizi * delta))
 		var hedef := yon * maxf(yatay.length(), kosu_hizi * 0.9)
 		yatay = yatay.move_toward(hedef, hava_ivme * delta)
 	velocity.x = yatay.x
