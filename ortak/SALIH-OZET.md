@@ -4,30 +4,7 @@ Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel:
 
 ## jarvis
 
-**Konum:** seans `2026-10-26-jarvis` (kapandı 2026-10-26). Hedef: Portal x Mirror's Edge tarzı birinci şahıs parkur+portal oyununun Godot ile açık kaynak referanslardan inşası; WhatsApp videosuyla görsel/mekanik eşleşmeye kadar iterasyon. Hedef tutuldu.
-
-**Son seansta ne değişti**
-- projects/portal-parkur doğdu: Godot 4.7.2 oyunu, 11 commit (11888f4 → 9abebce), 9 otomatik mekanik testi geçer (test.bat).
-- Portal görüntüleme ve teleport: VojtaStruhar/godot-portals-plugin (MIT) çalışma zamanı yerleştirmeyle; oval maske, yüzeye sığdırma, duvar istisnası, portal içinden atış.
-- Parkur: duvar koşusu, dikey tırmanış, mantle, vault, kayma, çömelme, iniş; eller, seviye, sesler kodla üretilir.
-- Kamera profili: ham 1:1 fare, F4 canlı ayar paneli (user://ayarlar.cfg).
-- Hareket katmanları: Source AirAccelerate bunny hop; MW2019 tık-kayma, slide cancel, inişte kayma; Shift sprint, çift Shift taktik.
-- Minecraft modeli varsayılan: azalea-rs/azalea azalea-physics portu (20 tick, 0.42 zıplama, 0.546/0.91 atalet, blok kayganlığı); yatay ×3, dikey ×1.5 ölçek; zincir bonusu.
-- Harita: Minecraft bhop sunucu tarzı kurs (seviye_bhop.gd) varsayılan; çatı+portal haritası F4 seviye=1.
-- Dying Light makinede kurulu değil; ayar dosyası okunamadı. Ticari kod decompile edilmedi (EULA).
-- Godot 4.7.2 C:\tools\godot altında; referans klonlar projects/portal-parkur/referans (git dışı).
-- Hafıza: project-portal-parkur.md, feedback-bash-heredoc-tek-tirnak.md (tek tırnaklı heredoc bu Bash aracında çöker).
-
-**Hangi karar verildi**
-- Portal Parkur kaynak kararı: Ticari oyun ikilileri decompile edilmez; mekanikler açık kaynak karşılıklarından kurulur.
-
-**Senin kararını bekleyen**
-- Oyunun hedef tanımı (hangi oyunun hangi mekaniği; tek model mi katmanlı mı).
-- Push beyanı (bugünkü 12 commit origin'e atılmadı).
-
-**Sapma:** Oyun v1 bitti; sonraki promptlar hedefi genişletti (Dying Light bakış, CS bhop, MW2019 kayma, Minecraft fiziği, bhop kursu). Salih bağlamın karıştığını beyan etti; temiz tanım sonraki seansta.
-
-Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-26-portal-parkur-oyunu.json`
+**Konum:** seans `2026-10-26-jarvis-2` (açık). Hedef: Portal Parkur proje olarak kapatılır (Salih 2026-10-26); kayıt arşiv-pointer, kuyruk sonraki işe döner.
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
@@ -40,7 +17,6 @@ Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-26-portal-parkur-oyunu.json`
 - #37 m.29 eşik kalibrasyonları masa beklemeden sabitlenir: 128K bağlam seyri (KB-52) · skill-eşik n>=10 medyan 2x (Karar 51) · bayat-çekim 90 gün (Karar 69). Sonraki adım: Kanon/Butce.lean + Sabitler.lean sabitleri; 'Salih masasında' notları kapanır.
 - #38 Karar 86 D8 / K-020 eval deseni (2 ucuz ön-ölçüm koşulu): koşul kalkar; desen ya uygulanır ya emekli. Sonraki adım: ilk V39 koşumu yoksa emekli kaydı; varsa M2 harness genellemesi doğrudan.
 - #39 defterdeki ölçüm şartlı geri-açma cümleleri (Karar 103/104 M1-M2, 112, 113, 114 M5, 115) Karar 123'e göre sadeleştirilir. Sonraki adım: her cümle: 'arıza görülürse' biçimine; tek [damıtma] commit.
-- #44 oyun tanımı karışık (ME/Portal → DL/CS/MW → Minecraft bhop kursu katmanları üst üste). Sonraki adım: sonraki seans: Salih temiz oyun tanımını verir, Jarvis katmanları o tanıma göre ayıklar (projects/portal-parkur, F4 model/seviye anahtarları).
 
 **Bekler (girdisi açık)**
 - #35 Karar 118 M1: atlas-kosum doğrudan kodlu akışa geçer (pilot şartı kalktı): emir şeması JSON/Lean + Workflow + Rust V26/done + JSON teslim bekler: #21.

@@ -21,6 +21,7 @@ jarvis: {
   seans_jarvis_kapanis_10_14: {label: "seans jarvis-kapanis-10-14\nörtük · 2026-10-14"; class: seans}
   seans_2026_10_25_jarvis: {label: "seans 2026-10-25-jarvis\n2026-10-25\nhedef: CV geri bildirim turu (16 madde) + alan ajanı push teli + Ka… ✓"; class: seans}
   seans_2026_10_26_jarvis: {label: "seans 2026-10-26-jarvis\n2026-10-26\nhedef: Portal x Mirror's Edge tarzı birinci şahıs parkur+portal oyu… ✓"; class: seans}
+  seans_2026_10_26_jarvis_2: {label: "seans 2026-10-26-jarvis-2\nAÇIK\nhedef: Portal Parkur proje olarak kapatılır (Salih 2026-10-26); kay…"; class: seans_acik}
   is1: {label: "#1 hook geçişi Rust'a"; class: [tamam]}
   is3: {label: "#3 Rust taşıma parti 2 (OMP)"; class: [tamam]}
   is4: {label: "#4 md→Lean kalan kural dosyaları"; class: [tamam]}
@@ -62,7 +63,7 @@ jarvis: {
   is41: {label: "#41 alan ajanı push teli: main/force push deny, kend…"; class: [tamam]}
   is42: {label: "#42 Portal Parkur v1: Godot 4.7 birinci şahıs parkur…"; class: [tamam]}
   is43: {label: "#43 Salih oynayıp videoyla fark listesi verir"; class: [tamam]}
-  is44: {label: "#44 oyun tanımı karışık (ME/Portal → DL/CS/MW → Mine…\nsonraki seans: Salih temiz oyun tanımını verir, Jarvis k…"; class: [acik; sirada]}
+  is44: {label: "#44 oyun tanımı karışık (ME/Portal → DL/CS/MW → Mine…"; class: [tamam]}
   is1 -> is11: girdi
   is4 -> is14: girdi
   is3 -> is17: girdi
@@ -114,7 +115,9 @@ jarvis: {
   seans_2026_10_25_jarvis -> is27: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is40: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
   seans_2026_10_25_jarvis -> is41: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
+  seans_2026_10_26_jarvis -> seans_2026_10_26_jarvis_2: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_2026_10_26_jarvis -> is42: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_26_jarvis -> is44: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_26_jarvis -> is43: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
+  seans_2026_10_26_jarvis_2 -> is44: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
 }

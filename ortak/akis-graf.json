@@ -4,8 +4,8 @@
     "uretici": "durum graf",
     "tarih": "2026-10-26",
     "alan": null,
-    "dugum_sayisi": 47,
-    "kenar_sayisi": 55,
+    "dugum_sayisi": 48,
+    "kenar_sayisi": 57,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -78,6 +78,21 @@
       "dokunulan": [
         42,
         43,
+        44
+      ]
+    },
+    {
+      "id": "seans:2026-10-26-jarvis-2",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-10-26-jarvis-2",
+      "ac_ts": "2026-10-26T14:40:39Z",
+      "kapat_ts": null,
+      "hedef": "Portal Parkur proje olarak kapatılır (Salih 2026-10-26); kayıt arşiv-pointer, kuyruk sonraki işe döner",
+      "hedef_tutuldu": null,
+      "kayit": null,
+      "ortuk": false,
+      "dokunulan": [
         44
       ]
     },
@@ -674,16 +689,17 @@
       "id": "is:44",
       "tur": "is",
       "alan": "jarvis",
-      "durum": "acik",
+      "durum": "tamam",
       "etiket": "oyun tanımı karışık (ME/Portal → DL/CS/MW → Minecraft bhop kursu katmanları üst üste)",
       "sonraki_eylem": "sonraki seans: Salih temiz oyun tanımını verir, Jarvis katmanları o tanıma göre ayıklar (projects/portal-parkur, F4 model/seviye anahtarları)",
       "acilis_ts": "2026-10-26T08:25:39Z",
-      "al_ts": null,
-      "bitir_ts": null,
+      "al_ts": "2026-10-26T14:41:11Z",
+      "bitir_ts": "2026-10-26T14:41:11Z",
       "oturumlar": [
-        "2026-10-26-jarvis"
+        "2026-10-26-jarvis",
+        "2026-10-26-jarvis-2"
       ],
-      "sirada": true
+      "sirada": false
     },
     {
       "id": "is:16",
@@ -882,6 +898,11 @@
     },
     {
       "k": "seans:2026-10-26-jarvis",
+      "h": "seans:2026-10-26-jarvis-2",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-10-26-jarvis",
       "h": "is:42",
       "tur": "acti"
     },
@@ -893,6 +914,11 @@
     {
       "k": "seans:2026-10-26-jarvis",
       "h": "is:43",
+      "tur": "bitirdi"
+    },
+    {
+      "k": "seans:2026-10-26-jarvis-2",
+      "h": "is:44",
       "tur": "bitirdi"
     },
     {

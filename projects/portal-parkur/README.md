@@ -1,5 +1,7 @@
 # Portal Parkur
 
+> **Durum: `KAPANDI` (Salih, 2026-10-26).** Proje olarak sonlandırıldı; farklı ürün fikirlerinin üst üste prompt'larla karışması gerekçe. Kod silinmedi, arşiv olarak durur (m.8); yeniden açma: `jarvis/raporlar/seans/seans-teslim-2026-10-26-portal-parkur-oyunu.json` → `yeniden_acma`.
+
 Birinci şahıs parkur + portal oyunu: Mirror's Edge tarzı beyaz çatılarda koşu, duvar koşusu, kenara tutunup çıkma ve kayma; Aperture tarzı test odalarında bilek-tipi portal cihazıyla mavi/turuncu portal, ışık köprüsü, fırlatma plakası ve itki jeli. Godot 4.7.2 ile yazıldı; tüm geometri, eller ve sesler kodla üretilir, dış varlık dosyası yoktur.
 
 ## Çalıştırma
