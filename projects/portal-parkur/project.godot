@@ -1,0 +1,43 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Portal Parkur"
+run/main_scene="res://sahneler/ana.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+run/max_fps=144
+
+[autoload]
+
+GirdiKur="*res://betikler/girdi_kur.gd"
+Ses="*res://betikler/ses.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/portals/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="Dunya"
+3d_physics/layer_2="Oyuncu"
+3d_physics/layer_16="Teleport"
+3d_render/layer_19="Eller"
+3d_render/layer_20="PortalMesh"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+common/physics_ticks_per_second=120
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1
+environment/defaults/default_clear_color=Color(0.3, 0.55, 0.95, 1)

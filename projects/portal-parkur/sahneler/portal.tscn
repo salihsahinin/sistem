@@ -1,0 +1,37 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://addons/portals/scripts/portal_3d.gd" id="1"]
+[ext_resource type="Script" path="res://addons/portals/scripts/portal_boxmesh.gd" id="2"]
+
+[sub_resource type="ArrayMesh" id="pbm"]
+script = ExtResource("2")
+size = Vector3(1.7, 2.5, 1)
+
+[sub_resource type="BoxShape3D" id="alan"]
+size = Vector3(1.3, 2.1, 2.4)
+
+[node name="Portal" type="Node3D"]
+script = ExtResource("1")
+_portal_mesh_path = NodePath("Portal_Mesh")
+_teleport_area_path = NodePath("TeleportArea")
+_teleport_collider_path = NodePath("TeleportArea/Collider")
+portal_size = Vector2(1.7, 2.5)
+view_direction = 1
+teleport_direction = 0
+teleport_interactions = 1
+teleport_collision_mask = 32768
+teleport_tolerance = 0.8
+start_deactivated = true
+
+[node name="Portal_Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, 0, 0)
+layers = 524288
+cast_shadow = 0
+mesh = SubResource("pbm")
+
+[node name="TeleportArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="Collider" type="CollisionShape3D" parent="TeleportArea"]
+shape = SubResource("alan")
