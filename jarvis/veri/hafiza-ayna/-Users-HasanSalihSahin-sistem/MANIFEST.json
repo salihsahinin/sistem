@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-25",
+ "uretim": "2026-10-26",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 31,
+ "dosya_sayisi": 33,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "9fc2f03ae95b94247f0aa2fd9f0bf60e4eaf801b9c19b049cad791d9cabfd926",
-   "bayt": 4241,
-   "kaynak_mtime": "2026-10-25T21:10:01",
+   "sha256": "45bafb6f3426fa904322d1ca91498745479a6a99554977a45d7c77cf21b00e7e",
+   "bayt": 4206,
+   "kaynak_mtime": "2026-10-26T02:58:56",
    "durum": "ayna"
   },
   {
@@ -25,6 +25,13 @@
    "sha256": "02e1fab8f2f7acf0e1794a97475253a44a16a0ae451df1f58b403a146575f368",
    "bayt": 1356,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-bash-heredoc-tek-tirnak.md",
+   "sha256": "d9f1fe7eff0b8bba44f7344392bd8bcb1786fe597bebe672cda366b399121604",
+   "bayt": 891,
+   "kaynak_mtime": "2026-10-26T02:58:53",
    "durum": "ayna"
   },
   {
@@ -200,6 +207,13 @@
    "sha256": "5c402dec21b66dd6f4171c561ee16f92c120d19e57e84cc1f52136bc8d57f156",
    "bayt": 1422,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "project-portal-parkur.md",
+   "sha256": "6c45cc700e32a34287c5b874f69bba572db80d94f787401c9f9ba2d9bf3e257e",
+   "bayt": 1620,
+   "kaynak_mtime": "2026-10-26T03:28:32",
    "durum": "ayna"
   },
   {

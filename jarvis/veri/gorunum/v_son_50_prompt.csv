@@ -1,51 +1,51 @@
 n,tarih_tr,saat_tr,oturum_kisa,sira,tur,sonraki_skill,sonraki_model,uzunluk_kar,metin_kisa,prompt_id
-1,2026-10-18,03:29,fb543781,1,seans-acilis,seans-acilis,claude-opus-5-5,30,"seans başı,lobi bağlı mı şu an",d3da8ff3-08bd-4e51-b93d-85fc087e3fd2
-2,2026-10-18,00:35,351e6dbd,56,diger,,claude-opus-5-5,34,push et sonra bu chati bitireceğim,07263f03-d385-46be-9a58-f47c01f3a18a
-3,2026-10-18,00:33,351e6dbd,55,soru,,claude-opus-5-5,3780,"Another Claude session sent a message: <agent-message from=""a53b4092cd25b4c9c""> [Subagent hand-back] The text below is the final report of a",07627251-2ecd-40ea-a84e-8fe86d178425
-4,2026-10-18,00:31,351e6dbd,54,soru,,claude-opus-5-5,403,md'leri genelde okumuyorum okuma ihtiyacım olduğu zaman claude'a açıklattırıyorum yani md ile yazılmış olmasının bana bir artısı olmuyor yan,cd307c4c-17f6-41df-91d7-a57e6abcb89f
-5,2026-10-18,00:26,351e6dbd,53,soru,,claude-opus-5-5,334,"teslim raporları md olarak mı yapılmalı lean/graf/rust olarak yapılabilir mi farkları neler,bi de cc uygulamadan spanle öğrenme oturumuna de",8b4d2032-d206-4577-9d21-d9607a93066c
-6,2026-10-18,00:20,351e6dbd,52,diger,,claude-opus-5-5,43,tamamdır o zaman burda duralım seans bitimi,d4354a16-2971-46cd-b8dd-9268b9cbee84
-7,2026-10-17,19:00,351e6dbd,51,soru,,claude-opus-5-5,117,"birleştir #25, push et,definiton of done'a ne kadar kaldı,artık bir şeyler öğrenip ürettiğimiz kısma geçmek istiyorum",e522bd5a-5734-4127-824e-611511a5b8d0
-8,2026-10-17,18:58,351e6dbd,50,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,76d5da9b-7261-4fe7-9d61-38acfb3375e7
-9,2026-10-17,18:53,351e6dbd,49,diger,,claude-opus-5-5,63,"birleştir #23, LF, evet, m.36 emekli, K-005 kalksın vega kalsın",10dc2934-5343-4cb5-a478-3fd115e84472
-10,2026-10-17,18:52,351e6dbd,48,onay/devam,,claude-opus-5-5,37,tamam şimdi ne yapıyoruz omp da bitti,a4196217-a233-4aea-85c5-ab1708df4468
-11,2026-10-17,18:51,351e6dbd,47,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,17a5e336-94d5-48a3-9659-e3d8f211a3ce
-12,2026-10-17,18:47,351e6dbd,46,diger,,claude-opus-5-5,36,"omp görevi bitti, PR'ı kontrol et,6a",b7c12569-b86b-4b14-823b-bad2e6a47536
-13,2026-10-17,18:42,351e6dbd,45,emir,,claude-opus-5-5,3315,"Another Claude session sent a message: <agent-message from=""a301792cbde98b7e4""> [Subagent hand-back] The text below is the final report of a",fcc4538e-2e1b-438b-aba8-8f2d1af4665a
-14,2026-10-17,18:41,351e6dbd,44,diger,,claude-opus-5-5,22,"birleştir #24, push et",29b2500d-4f9b-489e-bf79-87c58ed2f4e5
-15,2026-10-17,18:37,351e6dbd,43,diger,,claude-opus-5-5,218,"birleştir #22, push et,bir de harsh truthlardan birine cevap:claude'un ve zaten halihazırda sağlanan servis ve hizmetlerin benzerini bundan ",37de681c-696b-4fdc-8296-91bd77104ee6
-16,2026-10-17,18:31,351e6dbd,42,diger,,claude-opus-5-5,44,"1 evet, 2 evet, 3 evet, tek-flagship kalksın",144c0f52-dcc4-412c-b79e-3c9c2b49a811
-17,2026-10-17,18:27,351e6dbd,41,emir,,claude-opus-5-5,614,mesela atlasla araştırma görevi icra ederken md dosyasında raporlar ve teslim vermek yerine kod olarak görev verip icrasını kodla yapıp lean,989c9ae0-7694-4949-992b-8d53cd732b6f
-18,2026-10-17,18:18,351e6dbd,40,diger,,claude-opus-5-5,200,"peki son bir soru sistem dosyası ve tüm bu yaptıklarım hakkındaki harsh truthları bana söyle(örneğin stajdayken ekip liderim ""llm'leri başta",a2ce3eb8-6daa-46e8-bba4-e3b30e5a7482
-19,2026-10-17,18:09,351e6dbd,39,seans-kapanis,seans-kapanis,claude-opus-5-5,12,seans bitimi,571e83ef-4fe0-4cbb-8d1c-12a2fbd09490
-20,2026-10-17,18:08,351e6dbd,38,diger,,claude-opus-5-5,32,"omp açıldı, prompt'u yapıştırdım",000466e3-0887-411d-884c-18d66afd5cec
-21,2026-10-17,18:08,351e6dbd,37,soru,,claude-opus-5-5,110,şimdi mevcut omp chatini exit ile kapatıp bu dediğine mi geçeyim yoksa yeni bi terminalde mi bunu yapıştırayım,38a88728-d371-40da-8033-be8d0f43fc48
-22,2026-10-17,17:12,351e6dbd,36,diger,,claude-opus-5-5,26,"birleştir #21, push et, 5b",bf881007-ca9f-4e17-a5c7-3ca7ff0e2f44
-23,2026-10-17,16:52,351e6dbd,35,onay/devam,,claude-opus-5-5,8,devam et,02a0ba4a-88ac-4956-aa48-b369463da574
-24,2026-10-17,16:39,351e6dbd,34,diger,,claude-opus-5-5,30,"birleştir #18 #19 #20, push et",6a6143be-d87f-47b4-ac0e-5fe11c7df1bc
-25,2026-10-17,16:30,351e6dbd,33,emir,,claude-opus-5-5,3411,"Another Claude session sent a message: <agent-message from=""a7d0756175de48b95""> [Subagent hand-back] The text below is the final report of a",072634e3-cf9b-4be4-975d-ef50d4b3a759
-26,2026-10-17,16:24,351e6dbd,32,onay/devam,,claude-opus-5-5,29,"devam et, 3 → 1 → 2 sırasıyla",e62250b6-a517-4e6f-93e6-836d1026076d
-27,2026-10-17,16:21,351e6dbd,31,diger,,claude-opus-5-5,26,"birleştir #16 #17, push et",3400efe1-20bb-4c7a-b50d-8bcc1335f310
-28,2026-10-17,16:08,351e6dbd,30,diger,,claude-opus-5-5,26,"omp görevi bitti, PR'ı kes",d895bb2f-e940-48da-9422-f3ee00abeb1d
-29,2026-10-17,16:07,351e6dbd,29,diger,,claude-opus-5-5,22,"birleştir #15, push et",b3e8376f-a387-4a2a-aab3-73bc31631b3f
-30,2026-10-17,16:04,351e6dbd,28,emir,,claude-opus-5-5,42,"devam et, AGENTS.md pointer PR'ını hazırla",9d7bd654-6882-43b7-9a7a-d571641b6f52
-31,2026-10-17,16:00,351e6dbd,27,diger,,claude-opus-5-5,55,"birleştir #13 #14, push et,omp görevi bitti yeni prompt",c43a192a-1721-40ae-9764-3c49274b0215
-32,2026-10-17,00:27,351e6dbd,26,soru,,claude-opus-5-5,3232,"Another Claude session sent a message: <agent-message from=""a908e3d0529f47049""> [Subagent hand-back] The text below is the final report of a",b1b0cbc3-73d8-4dd2-9c9b-72dacb5407f2
-33,2026-10-17,00:26,351e6dbd,25,soru,,claude-opus-5-5,3405,"Another Claude session sent a message: <agent-message from=""aecdfb39c06babcce""> [Subagent hand-back] The text below is the final report of a",4586e5d4-4e33-4e40-8e2f-d0e4e8e53fde
-34,2026-10-17,00:26,351e6dbd,24,diger,,claude-opus-5-5,3271,"Another Claude session sent a message: <agent-message from=""ab757f2d9b2f786f7""> [Subagent hand-back] The text below is the final report of a",69ea44a8-2160-4cfd-a0b4-ae439a056bad
-35,2026-10-17,00:25,351e6dbd,23,diger,,claude-opus-5-5,42,"devam et, m.28-33'ü de yap,ompa prompt ver",b9ccc67c-0c58-4c32-95e3-ffcd31083fcd
-36,2026-10-17,00:17,351e6dbd,22,diger,,claude-opus-5-5,30,"birleştir #10 #11 #12, push et",b311f1f0-df90-4c61-b6d0-8e14ddc0ac24
-37,2026-10-16,23:18,351e6dbd,21,diger,,claude-opus-5-5,144,"kopyaya gerek yok,b veya c yapacağız.tüzüğü okumak istediğimde cc kullanarak tek seferlik 6-8 dosyanın birleştirilmesini isteyebilirim b diy",0e098d6b-710b-4477-9915-794477ec8d07
-38,2026-10-16,23:07,351e6dbd,20,emir,,claude-opus-5-5,132,"devam et, sıradaki partiye geç,yan soru:şu an çalıştığım sürecin literatürdeki terimsel ve mesleki karşılığı nedir 3 cümleyle açıkla",b0a4b9da-f221-4c7e-aa1b-81ac6f09c187
-39,2026-10-16,23:06,351e6dbd,19,diger,,claude-opus-5-5,12,birleştir #9,fb04d842-4433-42e3-9fb3-9354ed6f2e48
-40,2026-10-16,22:46,351e6dbd,18,onay/devam,,claude-opus-5-5,31,"devam, tüzük düzenlemesine izin",c3742109-2f78-481b-ade7-0d636277dccc
-41,2026-10-16,22:40,351e6dbd,17,diger,,claude-opus-5-5,1,a,17902a21-0add-4702-be9b-4dd527f02dbb
-42,2026-10-16,22:33,351e6dbd,16,diger,,claude-opus-5-5,14,"1a 2a, push et",47235532-97ef-4623-bfed-7985dcdd862d
-43,2026-10-16,22:33,351e6dbd,15,soru,,claude-opus-5-5,2829,"Another Claude session sent a message: <agent-message from=""a63da7dba1ec50db0""> [Subagent hand-back] The text below is the final report of a",f8e3106c-9e20-4bb1-b6ec-00e3cf8c0076
-44,2026-10-16,22:29,351e6dbd,14,soru,,claude-opus-5-5,12339,"Another Claude session sent a message: <agent-message from=""ac33ae799f130c15d""> [Subagent hand-back] The text below is the final report of a",bbbec3e4-3746-40fe-a78b-ef45c4734fc6
-45,2026-10-16,22:23,351e6dbd,13,soru,,claude-opus-5-5,8142,"Another Claude session sent a message: <agent-message from=""a2dd813c2bd501ad0""> [Subagent hand-back] The text below is the final report of a",e7005573-7445-42b0-a8d8-e36ca559fbf8
-46,2026-10-16,22:23,351e6dbd,12,emir,,claude-opus-5-5,7262,"Another Claude session sent a message: <agent-message from=""ac984bc9f39729d39""> [Subagent hand-back] The text below is the final report of a",aeba768c-d70c-44aa-8170-78e89c979194
-47,2026-10-16,22:21,351e6dbd,11,emir,,claude-opus-5-5,10683,"Another Claude session sent a message: <agent-message from=""ae1c0c7814b242f36""> [Subagent hand-back] The text below is the final report of a",12959752-0973-410f-8d50-cd6bfd579895
-48,2026-10-16,22:21,351e6dbd,10,soru,,claude-opus-5-5,9527,"Another Claude session sent a message: <agent-message from=""a91c5e1c37b6aeb41""> [Subagent hand-back] The text below is the final report of a",ff6525fa-1ca8-4982-98f9-9147f760c9a2
-49,2026-10-16,22:21,351e6dbd,9,soru,,claude-opus-5-5,8270,"Another Claude session sent a message: <agent-message from=""a4a34df7ccd49f0b9""> [Subagent hand-back] The text below is the final report of a",5a1befdc-b6a6-46c7-ad24-ffc351127ab4
-50,2026-10-16,22:15,351e6dbd,8,diger,atlas-kosum,claude-opus-5-5,425,"birleştir #8, sonra 1. adımla başla,rusta geçiş için bir ek not var:kod yazmış olmak için gereksiz test kodları yazarak rust yazmayı kast et",61b1ed3e-c5f1-46f8-bf93-aca56c283778
+1,2026-10-26,02:07,3e1fa2e3,1,seans-acilis,seans-acilis,claude-fable-5-1,106,"seans başı,https://www.instagram.com/reel/De5pTRUtsvO/?srtk=MXlkd2IycDFrMnBi bu videoyu izleyebiliyo musun",99de786d-2080-409d-80f9-ba5cf7001694
+2,2026-10-25,21:14,8899f41a,15,soru,,claude-fable-5-1,66,"tamamdır span oturumu clear atmaya uygun mu,seans bitimi push onay",28a2e6e7-9cfb-4f94-a3b5-39b459e3da5a
+3,2026-10-25,21:08,8899f41a,14,geri-bildirim,,claude-fable-5-1,494,3 seans ölçüm yapmaya gerek yok sana plan taslak yapmanı söylemedim direk söylediğimi sisteme implement etmeni istedim yaptıktan sonra zaten,bb461b0f-ac8c-4116-bb59-e6d3c5eec156
+4,2026-10-25,21:06,8899f41a,13,emir,,claude-fable-5-1,446,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,8bd8703c-9ae5-4800-a17d-29ea698c4484
+5,2026-10-25,20:51,8899f41a,12,diger,,claude-fable-5-1,107,"[Image: original 2400x2004, displayed at 2000x1670. Multiply coordinates by 1.20 to map to original image.]",d831d845-0888-4bbe-a829-847c07244b4e
+6,2026-10-25,20:50,8899f41a,11,diger,,claude-fable-5-1,107,"[Image: original 2400x1748, displayed at 2000x1457. Multiply coordinates by 1.20 to map to original image.]",1ec48c89-75e2-417d-9a1b-1f4d75945438
+7,2026-10-25,20:28,8899f41a,10,emir,,claude-fable-5-1,2667,"-1 diyelim çünkü hedef:""yan oturum kendi PR’ını kendisi açar, Jarvis birleştirir"" -ayrıca eklemek istediğim bir konu var:şimdi biz önceden d",8172fd30-4fc9-4c10-88ac-eb082e7da488
+8,2026-10-25,20:03,8899f41a,9,soru,,claude-fable-5-1,137,şimdi claude mods oturumunda m0 m1 bitti seans bitimi yaptım commit atıyor ama pr açamıyor çünkü push izni yok bunu neden böyle planladık,80f83ccc-b541-46c6-b0c4-3a047f9e458e
+9,2026-10-24,18:10,8899f41a,8,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,e2180277-839a-4f67-a07c-9d9865d85a3c
+10,2026-10-24,18:10,8899f41a,7,emir,,claude-fable-5-1,33,bu hali yeterli nihai pdf oluştur,42a20867-f177-4735-b1f4-16d31e367aa3
+11,2026-10-24,18:06,8899f41a,6,emir,,claude-fable-5-1,39,"java projesinin reposu yok, o kısmı sil",302fabdd-7dd8-4d43-b0e1-020ec2ebf7da
+12,2026-10-24,18:03,8899f41a,5,emir,,claude-fable-5-1,129,"sistem reposunu public yaptım,n sayısı neyi açıklıyor bakmadım ama staj günlüklerimden bakarak ortalama bir sayı gir,docker'ı sil",6838cf72-cab9-4847-96cc-172d44ca38fc
+13,2026-10-24,17:57,8899f41a,4,diger,,claude-fable-5-1,8026,"kalan feedback numaraları sırayla 6,9,10,11,12,13,14,15,16 olmak üzere: -_ "" <pasted_content id=""807c""> Important Your strongest experience ",049d279a-59fe-4372-80aa-db4683957d9d
+14,2026-10-24,17:53,8899f41a,3,emir,,claude-fable-5-1,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,82215797-2258-4ba8-b542-d470cf17ba5c
+15,2026-10-24,17:50,8899f41a,1,emir,,,6563,"@""C:\Users\sasah\Downloads\salih_cv_2026-09.pdf"" seans başı,en son hazırladığımız cv buydu.Eleştirel bakış açısıyla cv ye baktırdığım zaman ",ae6477e5-9225-4faf-84dd-400371b7ea4c
+16,2026-10-24,17:50,8899f41a,2,diger,seans-acilis,claude-fable-5-1,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\8899f41a-eb35-41bf-9949-0d3afed800f9\images\1.png],20e1f4ee-4a67-483c-87a4-43d3049ae593
+17,2026-10-20,15:43,9a89f06f,11,emir,,claude-opus-5-5,453,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,83c3ec56-b53b-49b9-94da-1512155029b3
+18,2026-10-20,15:43,9a89f06f,10,diger,,claude-opus-5-5,28,kod hatalı eminim baştan yap,a4424d2d-6824-443c-abda-789e1ebd5c22
+19,2026-10-20,15:34,9a89f06f,9,emir,,claude-sonnet-5-5,454,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,0d9f1ceb-70f8-471d-9bd5-04a58798c776
+20,2026-10-20,15:33,9a89f06f,7,diger,,,138,ayrıca sitede de böyle dönüş alıyorum yani site açılmıyor serverda(dosyadaki diğer html dosyaları açılıyor yani php dosyasında sıkıntı var,efe10c27-2d9f-44b6-bd3c-e57401978a48
+21,2026-10-20,15:33,9a89f06f,8,diger,,claude-sonnet-5-5,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\9a89f06f-adcc-422b-a8b1-04827c4d4f2a\images\2.png],1fab8bf2-8ea0-45d4-8c7c-431d3fde11c0
+22,2026-10-20,15:33,9a89f06f,6,emir,,claude-sonnet-5-5,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,9a85b99a-c582-40e2-86f3-304009dfb12d
+23,2026-10-20,15:32,9a89f06f,5,diger,,claude-sonnet-5-5,18,php kurulumunu yap,0081ab8f-20c0-4cb1-a1d2-c1d17243ad83
+24,2026-10-20,15:27,9a89f06f,4,emir,,claude-sonnet-5-5,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,e27f3d27-c622-41ac-b0dd-ecdb692fd70f
+25,2026-10-20,15:26,9a89f06f,3,diger,,claude-sonnet-5-5,79,php vs code a kurdum web programming klasörünün içerisinde olacak masaüstündeki,0afcb126-8107-4840-ac7c-17a95caeaf8a
+26,2026-10-20,15:25,9a89f06f,2,emir,,claude-sonnet-5-5,466,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,fe3fa0e6-977e-43c0-9a3c-f8723b6ac979
+27,2026-10-20,15:23,9a89f06f,1,diger,,claude-sonnet-5-5,131,[Image: source: C:\Users\sasah\AppData\Local\Temp\claude\C--sistem-sistem-jarvis\9a89f06f-adcc-422b-a8b1-04827c4d4f2a\images\1.png],da595012-f385-4f30-bcf9-af32e139bc67
+28,2026-10-18,20:05,fb543781,14,emir,,claude-opus-5-5,24,odadaki mesajları göster,9c2eb66e-7a29-46c9-959c-cdd1896cf87b
+29,2026-10-18,03:57,fb543781,13,soru,,claude-opus-5-5,96,ben şu an repoda collaborator olmama rağmen github profilimde repolar kısmında göremiyorum neden,fb852660-90ab-48dd-ba82-ffd347270a46
+30,2026-10-18,03:54,fb543781,12,emir,,claude-opus-5-5,443,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,c6d094d9-9387-4ce5-b3ee-6d0ff6fa7ffa
+31,2026-10-18,03:53,fb543781,11,diger,,claude-opus-5-5,22,son mesaja bak odadaki,b41dc915-96ee-4fd9-b3ae-5bd30316aaea
+32,2026-10-18,03:49,fb543781,10,soru,,claude-opus-5-5,46,lobiyi kendi sistemimizde nasıl kullanabiliriz,e756473a-30d6-4fce-b4f0-d05f263e3928
+33,2026-10-18,03:47,1fd056d1,1,diger,,claude-opus-5-5,23,lobi sistem odasına bak,a621c8ae-0c8b-4c3c-afbe-7faa43813729
+34,2026-10-18,03:46,fb543781,9,soru,,claude-opus-5-5,116,peki claude uygulamasından chat açsam burdan seans bitimi yapıp ordan seans başı yapıp ordan da bağlanabilecek miyim,2af686fb-5078-4cdf-9b49-8d327488341e
+35,2026-10-18,03:45,fb543781,8,soru,,claude-opus-5-5,102,pc'yi kapatıp açınca terminalden herdr yazıp bu chate girince direk odaya mesaj atabilecek miyim yarın,656c2149-2b9f-47a8-9628-f07e0eba0aee
+36,2026-10-18,03:44,fb543781,7,diger,,claude-opus-5-5,8,kabul et,57d47841-4983-47d7-ab36-e8e7f154cc30
+37,2026-10-18,03:43,fb543781,6,diger,,claude-opus-5-5,11,davet geldi,3623fb5a-1154-482b-96b8-3eff5e661ad5
+38,2026-10-18,03:40,fb543781,5,emir,,claude-opus-5-5,35,GitHub kullanıcı adımı odaya gönder,ada1d977-79bf-4fe1-9c73-773c22bbb83f
+39,2026-10-18,03:37,fb543781,4,soru,,claude-opus-5-5,82,bundan sonra bu chatte sistem odasında konuşacağız sistem odasında ne olmuş açıkla,e15ea5d8-2e6b-4f5f-9f54-28991ef89400
+40,2026-10-18,03:33,fb543781,3,diger,,claude-opus-5-5,62,yok şu an benim istediğim şey burdan odaya mesaj gönderebilmek,f6274c5c-86ca-4ac2-8fd5-999f0c95d26c
+41,2026-10-18,03:32,fb543781,2,diger,,claude-opus-5-5,52,C:\sistem\lobi burda dosya mcp listesinde gözükmüyor,795eee60-0224-4436-85c4-ea53c9990db7
+42,2026-10-18,03:29,fb543781,1,seans-acilis,seans-acilis,claude-opus-5-5,30,"seans başı,lobi bağlı mı şu an",d3da8ff3-08bd-4e51-b93d-85fc087e3fd2
+43,2026-10-18,00:35,351e6dbd,56,diger,,claude-opus-5-5,34,push et sonra bu chati bitireceğim,07263f03-d385-46be-9a58-f47c01f3a18a
+44,2026-10-18,00:33,351e6dbd,55,soru,,claude-opus-5-5,3780,"Another Claude session sent a message: <agent-message from=""a53b4092cd25b4c9c""> [Subagent hand-back] The text below is the final report of a",07627251-2ecd-40ea-a84e-8fe86d178425
+45,2026-10-18,00:31,351e6dbd,54,soru,,claude-opus-5-5,403,md'leri genelde okumuyorum okuma ihtiyacım olduğu zaman claude'a açıklattırıyorum yani md ile yazılmış olmasının bana bir artısı olmuyor yan,cd307c4c-17f6-41df-91d7-a57e6abcb89f
+46,2026-10-18,00:26,351e6dbd,53,soru,,claude-opus-5-5,334,"teslim raporları md olarak mı yapılmalı lean/graf/rust olarak yapılabilir mi farkları neler,bi de cc uygulamadan spanle öğrenme oturumuna de",8b4d2032-d206-4577-9d21-d9607a93066c
+47,2026-10-18,00:20,351e6dbd,52,diger,,claude-opus-5-5,43,tamamdır o zaman burda duralım seans bitimi,d4354a16-2971-46cd-b8dd-9268b9cbee84
+48,2026-10-17,19:00,351e6dbd,51,soru,,claude-opus-5-5,117,"birleştir #25, push et,definiton of done'a ne kadar kaldı,artık bir şeyler öğrenip ürettiğimiz kısma geçmek istiyorum",e522bd5a-5734-4127-824e-611511a5b8d0
+49,2026-10-17,18:58,351e6dbd,50,emir,,claude-opus-5-5,444,Stop hook feedback: Büyük-harf vurgu freni (Salih 09-15; v0.3 09-17 araç girdileri dahil): son turda (cevap ya da widget/dosya içeriği) tama,76d5da9b-7261-4fe7-9d61-38acfb3375e7
+50,2026-10-17,18:53,351e6dbd,49,diger,,claude-opus-5-5,63,"birleştir #23, LF, evet, m.36 emekli, K-005 kalksın vega kalsın",10dc2934-5343-4cb5-a478-3fd115e84472

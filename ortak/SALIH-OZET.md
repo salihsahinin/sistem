@@ -1,32 +1,33 @@
-# Sistem özeti (Salih için) · AS-OF 2026-10-25 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
+# Sistem özeti (Salih için) · AS-OF 2026-10-26 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
 
 Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel: `ortak/graf/akis-<alan>.svg`.
 
 ## jarvis
 
-**Konum:** seans `2026-10-25-jarvis` (kapandı 2026-10-25). Hedef: CV geri bildirim turu (16 madde) + alan ajanı push teli + Karar 122 akış grafı ve JSON seans kaydı. Hedef tutuldu.
+**Konum:** seans `2026-10-26-jarvis` (kapandı 2026-10-26). Hedef: Portal x Mirror's Edge tarzı birinci şahıs parkur+portal oyununun Godot ile açık kaynak referanslardan inşası; WhatsApp videosuyla görsel/mekanik eşleşmeye kadar iterasyon. Hedef tutuldu.
 
 **Son seansta ne değişti**
-- CV 16 geri bildirim maddesiyle yenilendi. Nihai dosya Downloads/HasanSalihSahin_CV.pdf (depo dışı, md.49).
-- Alan ajanı push teli daraldı: main ve force push yasak, kendi dalına push ve PR serbest. Commit 74ff357.
-- Span dalı push edildi, PR #27 açıldı ve birleşti. Commit 0a625bc.
-- Karar 122 uygulandı: akış grafı, JSON seans kaydı, Salih özeti, kapsül ve pano dondu. Commit 3d2ea62.
-- SessionStart brifi grafı okuyor. Commit 36735d4.
-- Karar 123 uygulandı: ölçüm kapısı kalktı, kütük id çakışması kodlandı, 9 plan düğümü açıldı. Commit 7c700fd.
-- Bu kayıt ilk JSON seans kaydıdır. md teslim raporu yazılmadı.
+- projects/portal-parkur doğdu: Godot 4.7.2 oyunu, 11 commit (11888f4 → 9abebce), 9 otomatik mekanik testi geçer (test.bat).
+- Portal görüntüleme ve teleport: VojtaStruhar/godot-portals-plugin (MIT) çalışma zamanı yerleştirmeyle; oval maske, yüzeye sığdırma, duvar istisnası, portal içinden atış.
+- Parkur: duvar koşusu, dikey tırmanış, mantle, vault, kayma, çömelme, iniş; eller, seviye, sesler kodla üretilir.
+- Kamera profili: ham 1:1 fare, F4 canlı ayar paneli (user://ayarlar.cfg).
+- Hareket katmanları: Source AirAccelerate bunny hop; MW2019 tık-kayma, slide cancel, inişte kayma; Shift sprint, çift Shift taktik.
+- Minecraft modeli varsayılan: azalea-rs/azalea azalea-physics portu (20 tick, 0.42 zıplama, 0.546/0.91 atalet, blok kayganlığı); yatay ×3, dikey ×1.5 ölçek; zincir bonusu.
+- Harita: Minecraft bhop sunucu tarzı kurs (seviye_bhop.gd) varsayılan; çatı+portal haritası F4 seviye=1.
+- Dying Light makinede kurulu değil; ayar dosyası okunamadı. Ticari kod decompile edilmedi (EULA).
+- Godot 4.7.2 C:\tools\godot altında; referans klonlar projects/portal-parkur/referans (git dışı).
+- Hafıza: project-portal-parkur.md, feedback-bash-heredoc-tek-tirnak.md (tek tırnaklı heredoc bu Bash aracında çöker).
 
 **Hangi karar verildi**
-- Karar 122: Seanslar arası iletişim graf ve JSON temeline geçti. Salih tek md özet ve D2/SVG okur.
-- Karar 123: Plan değil icra. Değişiklik ölçüm, pilot ya da plan taslağı beklemeden uygulanır.
-- Push teli seçenek 1: Yan oturum kendi PR'ını açar, Jarvis birleştirir.
+- Portal Parkur kaynak kararı: Ticari oyun ikilileri decompile edilmez; mekanikler açık kaynak karşılıklarından kurulur.
 
 **Senin kararını bekleyen**
-- #9 veri bilimi şeridi: yeni ajan mı, Calc altında mı.
-- Hangi öğrenme şeridiyle devam edileceği.
+- Oyunun hedef tanımı (hangi oyunun hangi mekaniği; tek model mi katmanlı mı).
+- Push beyanı (bugünkü 12 commit origin'e atılmadı).
 
-**Sapma:** Hedef açılışta beyan edilmedi (seans CV ile açıldı); Karar 122/123 seans içinde eklendi. Ölçüm kapılı Karar 122 taslağı Salih'in uyarısıyla Karar 123'e çevrildi.
+**Sapma:** Oyun v1 bitti; sonraki promptlar hedefi genişletti (Dying Light bakış, CS bhop, MW2019 kayma, Minecraft fiziği, bhop kursu). Salih bağlamın karıştığını beyan etti; temiz tanım sonraki seansta.
 
-Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-25-cv-push-teli-karar122-123.json`
+Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-26-portal-parkur-oyunu.json`
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
@@ -39,6 +40,7 @@ Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-25-cv-push-teli-karar122-123
 - #37 m.29 eşik kalibrasyonları masa beklemeden sabitlenir: 128K bağlam seyri (KB-52) · skill-eşik n>=10 medyan 2x (Karar 51) · bayat-çekim 90 gün (Karar 69). Sonraki adım: Kanon/Butce.lean + Sabitler.lean sabitleri; 'Salih masasında' notları kapanır.
 - #38 Karar 86 D8 / K-020 eval deseni (2 ucuz ön-ölçüm koşulu): koşul kalkar; desen ya uygulanır ya emekli. Sonraki adım: ilk V39 koşumu yoksa emekli kaydı; varsa M2 harness genellemesi doğrudan.
 - #39 defterdeki ölçüm şartlı geri-açma cümleleri (Karar 103/104 M1-M2, 112, 113, 114 M5, 115) Karar 123'e göre sadeleştirilir. Sonraki adım: her cümle: 'arıza görülürse' biçimine; tek [damıtma] commit.
+- #44 oyun tanımı karışık (ME/Portal → DL/CS/MW → Minecraft bhop kursu katmanları üst üste). Sonraki adım: sonraki seans: Salih temiz oyun tanımını verir, Jarvis katmanları o tanıma göre ayıklar (projects/portal-parkur, F4 model/seviye anahtarları).
 
 **Bekler (girdisi açık)**
 - #35 Karar 118 M1: atlas-kosum doğrudan kodlu akışa geçer (pilot şartı kalktı): emir şeması JSON/Lean + Workflow + Rust V26/done + JSON teslim bekler: #21.

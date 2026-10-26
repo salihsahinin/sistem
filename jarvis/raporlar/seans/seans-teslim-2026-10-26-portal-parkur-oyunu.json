@@ -1,0 +1,126 @@
+{
+  "hedef": "Portal x Mirror's Edge tarzı birinci şahıs parkur+portal oyununun Godot ile açık kaynak referanslardan inşası; WhatsApp videosuyla görsel/mekanik eşleşmeye kadar iterasyon",
+  "hedef_tutuldu": true,
+  "sapma": "Oyun v1 bitti; sonraki promptlar hedefi genişletti (Dying Light bakış, CS bhop, MW2019 kayma, Minecraft fiziği, bhop kursu). Salih bağlamın karıştığını beyan etti; temiz tanım sonraki seansta.",
+  "ne_degisti": [
+    "projects/portal-parkur doğdu: Godot 4.7.2 oyunu, 11 commit (11888f4 → 9abebce), 9 otomatik mekanik testi geçer (test.bat).",
+    "Portal görüntüleme ve teleport: VojtaStruhar/godot-portals-plugin (MIT) çalışma zamanı yerleştirmeyle; oval maske, yüzeye sığdırma, duvar istisnası, portal içinden atış.",
+    "Parkur: duvar koşusu, dikey tırmanış, mantle, vault, kayma, çömelme, iniş; eller, seviye, sesler kodla üretilir.",
+    "Kamera profili: ham 1:1 fare, F4 canlı ayar paneli (user://ayarlar.cfg).",
+    "Hareket katmanları: Source AirAccelerate bunny hop; MW2019 tık-kayma, slide cancel, inişte kayma; Shift sprint, çift Shift taktik.",
+    "Minecraft modeli varsayılan: azalea-rs/azalea azalea-physics portu (20 tick, 0.42 zıplama, 0.546/0.91 atalet, blok kayganlığı); yatay ×3, dikey ×1.5 ölçek; zincir bonusu.",
+    "Harita: Minecraft bhop sunucu tarzı kurs (seviye_bhop.gd) varsayılan; çatı+portal haritası F4 seviye=1.",
+    "Dying Light makinede kurulu değil; ayar dosyası okunamadı. Ticari kod decompile edilmedi (EULA).",
+    "Godot 4.7.2 C:\\tools\\godot altında; referans klonlar projects/portal-parkur/referans (git dışı).",
+    "Hafıza: project-portal-parkur.md, feedback-bash-heredoc-tek-tirnak.md (tek tırnaklı heredoc bu Bash aracında çöker)."
+  ],
+  "kararlar": [
+    {
+      "ad": "Portal Parkur kaynak kararı",
+      "ozet": "Ticari oyun ikilileri decompile edilmez; mekanikler açık kaynak karşılıklarından kurulur.",
+      "kaynak": "Jarvis önerisi, Salih itiraz etmedi",
+      "gerekce": "EULA/telif; açık karşılıklar (portals-plugin, azalea-physics, Source SDK) yeterli.",
+      "geri_acma": "Salih aksini açıkça isterse masaya gelir."
+    }
+  ],
+  "adaylar": [
+    "Hareket katmanlarını tek profil dosyasında birleştirip Salih'in temiz tanımına göre budamak.",
+    "Dying Light kurulursa Belgeler/DyingLight/out/settings değerlerini kamera profiline aktarmak."
+  ],
+  "sonraki_ilk_is": [
+    "#44 (#43 kalanı): Salih temiz oyun tanımını verir; Jarvis projects/portal-parkur katmanlarını o tanıma göre ayıklar.",
+    "#9 veri bilimi şeridi PROBE cevabı; #20 Rust taşıma parti 2+; PR #26 Türkçe özet + birleştir beyanı."
+  ],
+  "yeniden_acma": [
+    "Oyun yeniden tanımlanınca: F4 model/seviye anahtarları ve README hareket modelleri bölümü başlangıç noktası."
+  ],
+  "salih_karar": [
+    "Oyunun hedef tanımı (hangi oyunun hangi mekaniği; tek model mi katmanlı mı).",
+    "Push beyanı (bugünkü 12 commit origin'e atılmadı)."
+  ],
+  "baglar": {
+    "karar": [
+      "Karar 119 hazır karşılık kapısı",
+      "Karar 123 plan değil icra"
+    ],
+    "pr": [
+      "#26"
+    ],
+    "durum": [
+      42,
+      43,
+      44
+    ]
+  },
+  "sayaclar": {
+    "model": "Fable 5.1",
+    "kutu": 0,
+    "soru_dogru": 0,
+    "soru_yanlis": 0,
+    "pratik_salih_beyani": "KALAN"
+  },
+  "hasat": {
+    "ozutler": [
+      "Godot portal eklentisi düzenleyici-zamanı düğüm kurar; çalışma zamanı için tscn elle kuruldu, Area3D sensörü gövde merkezine kondu.",
+      "Minecraft hareketi sürtünme öncesi hızla yapılır; sonrası hızla yapılınca %45 yavaş çıkar.",
+      "Tek tırnaklı heredoc bu Bash sarmalayıcısında çöker; dosya yazımı Write ile.",
+      "Portal ekranında görüntü doğrulaması: SubViewport dokusunu PNG'ye dök."
+    ],
+    "wiki_delta": [
+      "godot-portal-notlari (aday)"
+    ],
+    "verilebilir_miydi": "Evet: açık kaynak referanslar + otomatik görsel test döngüsü; en pahalı adım hareket modelinin art arda yeniden yazılması.",
+    "token_zaman": "ilk-tur bağlamı 91.9k (KB-50 üstü); ~5 saat; ~12 commit"
+  },
+  "kapanis": {
+    "boyut_tetigi": "yok",
+    "hareket_kutugu": "PASS (279 yeni çağrı, gün 52)",
+    "silver_saglik": "çıkış 0; WARN 3 (T-B-YETIM 715, T-SA-FORMAT 4, T-SA-KOKEN 1)",
+    "skill_esik": "7 çift, sapma 0",
+    "baglam_seyri": "UYARI statik-önek 91872 > 60000",
+    "bayat_cekim": "kuyruk 1 (wiki/loop-engineering.md) · çekilen 0/3 (atlandı, oyun seansı)",
+    "hafiza_ayna": "33 dosya · yeni 2 · değişen 1",
+    "sicak_katman_fifo": "kesildi: silindi → arsiv/memory-arsivi-2026-10-26.md (kapsül dondu, satır buraya)",
+    "kural_sayaci": "18 OK",
+    "arac_ciktisi_asimi": "yok",
+    "test_kapisi": "bkz. commit mesajı; oyun testi 9/9"
+  },
+  "sema": "seans-teslim v1 (Karar 121/122)",
+  "alan": "jarvis",
+  "oturum": "2026-10-26-jarvis",
+  "tarih": "2026-10-26",
+  "etiket": "portal-parkur-oyunu",
+  "olcum": {
+    "ac_ts": "2026-10-25T23:11:01Z",
+    "kapat_ts": "2026-10-26T08:26:32Z",
+    "git": {
+      "head": "9abebce",
+      "dal": "main",
+      "since": "2026-10-25T23:11:01Z",
+      "commit_sayisi": 9,
+      "commitler": [
+        "9abebce [icra] Portal Parkur: Minecraft bunny-hop server style course (floating block stages, ice friction 0.98, slime bounce, gold checkpoints, final long jump) as default map; level selectable; per-block friction in Minecraft ticks",
+        "9e3c08b [icra] Portal Parkur: 3x base speed (horizontal scale 3, vertical 1.5), CS-style air accelerate inside Minecraft ticks, no air friction, instant landing re-jump, chain speed bonus; faith plate flight in parkour physics; roof B parapets opened",
+        "6c95c5d [icra] Portal Parkur: Minecraft movement model (azalea-physics port: 20-tick travel, pre-friction move, 0.42 jump + sprint boost, auto-jump delay, sprint fov) as default; parkour model kept switchable; level gap 3.5 m",
+        "36bf98d [icra] Portal Parkur: crouch pressed at any point while airborne arms a slide on landing (MW2019)",
+        "d2d1e15 [icra] Portal Parkur: MW2019 movement layer (tap-crouch slide, slide cancel, land-slide, crouch toggle; Shift sprint, double-Shift tactical sprint, jog without Shift)",
+        "10faa2c [icra] Portal Parkur: Source-style bunny hop (AirAccelerate cap, friction, no-friction jump on landing, auto-bhop while holding jump), tunables in F4 panel",
+        "36b09a8 [icra] Portal Parkur: look-steered air control (velocity turns toward input/look while airborne), camera inertia default off",
+        "525d0d9 [icra] Portal Parkur: Dying Light style camera profile (raw 1:1 mouse, optional smoothing, inertia, fov, lean) with F4 live tuning panel saved to user://ayarlar.cfg",
+        "11888f4 [icra] Portal Parkur v1: first-person parkour + portal game in Godot 4.7 (projects/portal-parkur), 9/9 automated mechanic tests"
+      ],
+      "degisen_dosya_sayisi": 61
+    },
+    "durum": {
+      "acilan": [
+        42,
+        44
+      ],
+      "alinan": [],
+      "bitirilen": [
+        43
+      ],
+      "acik_kalan": 16
+    }
+  }
+}

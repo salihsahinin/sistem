@@ -1,7 +1,5 @@
 # Memory index
 - [Windows 11 birincil](user-mac-primary.md) — 09-22'den beri Windows 11 (`C:\sistem\sistem`, Herdr + Windows Terminal); Mac'e dönüş planı yok (10-16); Turkish-QWERTY-PC; 'ctrl' ≈ ⌘ alışkanlığı
-- [Ses/ekran kaydı onay kapısı](feedback-ses-ekran-kaydi-onay.md) — Salih 08-26: yakalamadan **önce** haber + onay; 'göstermek için' gerekçe değil, teslim usulüne düş
-- [Yüzey tercihi seçenekli sunulur](feedback-yuzey-tercihi-secenekli.md) — Salih 08-30: 'okunabilir değil' hükmü Salih'in; ham yol önce, çevirme/kalıcı araç ancak artı-eksi bloklu seçenekle
 - [İcra listesi onaysız devam + kademeli paralel](feedback-icra-listesi-onaysiz-devam.md) — Salih 08-30: planlı liste bitene dek durma/onay bekleme; borçlar manifest+paralel-kapi ile pipeline, N 1→2→3
 - [Öğretim görselinde mekanizma, metin kutusu değil](feedback-gorsel-mekanizma-degil-metin-kutusu.md) — Salih 09-03: d2 flowchart reddedildi, gorsellestir skill'i akşam **silindi** (arşivde); görsel gerekirse mcp__visualize illustrative/interactive
 - [Görsel anlatım atıflı](feedback-gorsel-anlatim-atifli.md) — Salih 09-08: görsel metinden önce, metin boyunca görselin parçalarına atıf (kutu 3, sağ panel); her derse görsel
@@ -20,3 +18,5 @@
 - [PR özeti ASD-STE100 Türkçe](feedback-pr-ozeti-ste.md) — Salih 10-16: her PR birleştirme öncesi kısa, etken, tek fikirli cümlelerle Türkçe özetlenir
 - [Görsel örnek üzerinde oklarla](feedback-gorsel-ornek-uzerinde-oklarla.md) — Salih 10-19: parçalı terimler (fonksiyon anatomisi) tek örnek üzerinde ok+etiketle gösterilir, liste yetmez
 - [Plan değil icra, önce-ölçüm yok](feedback-plan-degil-icra-olcum-yok.md) — Salih 10-25 Karar 123: söylenen değişiklik ölçüm/pilot/plan kapısı beklemeden uygulanır; hata sonradan ayıklanır
+- [Portal Parkur oyunu](project-portal-parkur.md) — 10-26: projects/portal-parkur, Godot 4.7.2 C:\tools\godot, test.bat 9 test; referans Instagram/WhatsApp video; sonraki iterasyon Salih fark listesiyle
+- [Bash heredoc tek tırnakla çöker](feedback-bash-heredoc-tek-tirnak.md) — 10-26: gövdede ' olan heredoc exit 2; dosyaları Write ile yaz
