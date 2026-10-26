@@ -18,5 +18,9 @@
 - [PR özeti ASD-STE100 Türkçe](feedback-pr-ozeti-ste.md) — Salih 10-16: her PR birleştirme öncesi kısa, etken, tek fikirli cümlelerle Türkçe özetlenir
 - [Görsel örnek üzerinde oklarla](feedback-gorsel-ornek-uzerinde-oklarla.md) — Salih 10-19: parçalı terimler (fonksiyon anatomisi) tek örnek üzerinde ok+etiketle gösterilir, liste yetmez
 - [Plan değil icra, önce-ölçüm yok](feedback-plan-degil-icra-olcum-yok.md) — Salih 10-25 Karar 123: söylenen değişiklik ölçüm/pilot/plan kapısı beklemeden uygulanır; hata sonradan ayıklanır
-- [Portal Parkur oyunu](project-portal-parkur.md) — 10-26: projects/portal-parkur, Godot 4.7.2 C:\tools\godot, test.bat 9 test; referans Instagram/WhatsApp video; sonraki iterasyon Salih fark listesiyle
+- [Portal Parkur oyunu KAPANDI](project-portal-parkur.md) — 10-26 kapatıldı (Salih, bağlam karıştı); kod arşiv; projects/portal-parkur, Godot 4.7.2 C:\tools\godot, test.bat 9 test; referans Instagram/WhatsApp video; sonraki iterasyon Salih fark listesiyle
 - [Bash heredoc tek tırnakla çöker](feedback-bash-heredoc-tek-tirnak.md) — 10-26: gövdede ' olan heredoc exit 2; dosyaları Write ile yaz
+- [Oturum hedefini Salih koyar](feedback-oturum-hedefini-salih-koyar.md) — Salih 10-26: Salih'le oturumda seans düğümüne Jarvis hedef yazmaz; hedef Salih beyanıyla
+- [Ürün = ayrı klasör + ayrı açık kaynak repo](feedback-urun-ayri-repo.md) — Salih 10-26: sistem reposu ürün inşa aracı; ürünler C:\sistem\<ad> + GitHub public repo; ilk örnek portal-parkur
+- [Graf içinde graf, Karar 125](project-graf-icinde-graf-karar-125.md) — 10-26: hedef = alt grafın kapağı, özyinelemeli; durum ac --tur hedef --hedef <üst>; HTML üretici tools/akis-graf-html.py
+- [Graf HTML açıklama yüzeyi değil](feedback-graf-html-aciklama-yuzeyi-degil.md) — Salih 10-26: graf tasarımı tam olmadı, Salih ileride optimize edecek; brif/karar md ile, graf yalnız istekle üretilir

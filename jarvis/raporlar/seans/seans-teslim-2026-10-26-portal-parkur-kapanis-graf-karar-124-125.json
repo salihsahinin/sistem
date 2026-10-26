@@ -1,0 +1,129 @@
+{
+  "hedef": "Salih açılışta hedef vermedi; seans boyunca verilen emirler: Portal Parkur'u proje olarak kapat, ürünü ayrı repoya taşı, akış grafını HTML'de göster, PR #26'yı birleştir.",
+  "hedef_tutuldu": true,
+  "sapma": "Jarvis seans düğümüne önceden hedef yazdı; Salih bunu yanlış buldu, hedef kaldırıldı. Graf HTML tasarımı Salih'in beklediğinin tamamını karşılamadı; Salih ileride optimize edecek, şimdilik açıklama yüzeyi değil.",
+  "ne_degisti": [
+    "Portal Parkur oyun demosu proje olarak kapandı. İş #44 Salih beyanıyla tamam. Commit 3112d1e.",
+    "Ürün ayrı depoya taşındı: C:\\sistem\\portal-parkur + https://github.com/salihsahinin/portal-parkur (public, MIT). Tarihçe git subtree split ile 10 commit. Sistemde pointer README. Commit b96c673.",
+    "Karar 124 deftere yazıldı: ürün = ayrı klasör + ayrı açık kaynak repo; sistem deposu ürün inşa aracı. Commit e1c6786.",
+    "Seans düğümünden Jarvis'in önceden yazdığı hedef kaldırıldı (durum-olay.jsonl satırı duzeltme alanıyla). Salih'le oturumda hedefi Salih koyar.",
+    "Akış grafı HTML üreticisi doğdu: tools/akis-graf-html.py + sablon. Bantlar (oturum · hedef · kategori), x = icra sırası, tek sıra yay görünümü, geri/ileri bağ grupları, ASD-STE100 panel, file:// ayrıntı bağlantıları. Commit 3f05cae.",
+    "Karar 125 deftere yazıldı: graf içinde graf, hedef = alt grafın kapağı, özyinelemeli; kırıntı yolu + katlı hedef rozeti; 3 seviyeli deneme kütüğüyle doğrulandı. Commit 2c0d3b9.",
+    "Arıza düzeltildi: durum graf --json <yol> yolu yok sayıp ortak/akis-graf.json üzerine yazıyordu; ayrıştırıcı .json uzantılı değeri yol kabul eder. Gerçek graf kütükten geri üretildi. Commit 2c0d3b9.",
+    "PR #26 (Karar 117 EK-3 parti 2, 6 Python aracı Rust'a) main'e birleşti; tek çakışma tools/SCRIPTLER.md iki taraf korunarak çözüldü; cargo build --release yeşil. Commit d946dd7.",
+    "Hafıza: feedback-oturum-hedefini-salih-koyar, feedback-urun-ayri-repo, project-graf-icinde-graf-karar-125, feedback-graf-html-aciklama-yuzeyi-degil; project-portal-parkur KAPANDI."
+  ],
+  "kararlar": [
+    {
+      "ad": "Karar 124",
+      "ozet": "Jarvis'in uzun vadede kullanmayacağı ürünler ayrı klasör + ayrı açık kaynak repoda yaşar; sistem deposu ürün inşa aracıdır.",
+      "kaynak": "Salih beyanı 2026-10-26, defter Karar 124",
+      "gerekce": "Ürün kodu sistem deposunu şişirir, bağlam karışır, açık kaynak paylaşımı zorlaşır.",
+      "geri_acma": "Salih'in yeni kararı."
+    },
+    {
+      "ad": "Karar 125",
+      "ozet": "Graf içinde graf: hedef = alt grafın kapağı, özyinelemeli; büyük resimde düğüm sayısı sınırsız.",
+      "kaynak": "Salih beyanı 2026-10-26, defter Karar 125",
+      "gerekce": "Tek bağlam penceresine sığmayan projeler kademeli alt graflarla planlanır.",
+      "geri_acma": "Salih'in yeni kararı."
+    },
+    {
+      "ad": "Oturum hedefi",
+      "ozet": "Salih'le oturumda seans hedefini Salih koyar; Jarvis önceden yazmaz.",
+      "kaynak": "Salih geri bildirimi 2026-10-26",
+      "gerekce": "Oturum planı Salih'indir; graf düğümü Jarvis varsayımı taşımamalı.",
+      "geri_acma": "Sistem-içi otomasyon oturumlarında önceden hedef serbest."
+    }
+  ],
+  "adaylar": [
+    "Kural adayı (kök md.17 ya da Karar 122 EK): proje-ölçekli iş kütükte hedef hiyerarşisi olarak açılır; yol-planla bu hiyerarşiyi üretir.",
+    "durum ac --kategori alanı; bugün kategori etiketten kural tablosuyla türetiliyor.",
+    "durum graf --html bayrağı (Rust): akis-graf-html.py'nin Rust karşılığı."
+  ],
+  "sonraki_ilk_is": [
+    "Salih bugün başka konu konuşacağını söyledi; konu açılışta Salih'ten.",
+    "#45 graf HTML optimizasyonu Salih kararıyla; şimdilik açıklama yüzeyi değil.",
+    "#9 veri bilimi şeridi PROBE cevabı; #20 Rust taşıma parti 3+ (parti 2 PR #26 birleşti); #22 Python arşiv PR."
+  ],
+  "yeniden_acma": [
+    "Portal Parkur: yalnız Salih açıkça isterse; kod github.com/salihsahinin/portal-parkur, sistemde pointer.",
+    "Graf HTML: Salih optimize isteği gelince Karar 125 kaydı + tools/akis-graf-html.py başlangıç."
+  ],
+  "salih_karar": [
+    "Karar 124 ve 125 kök kanon satırları (imza).",
+    "21 bayat worktree'nin kapatılması (Karar 95 EK).",
+    "ac --kategori alanı ve durum graf --html Rust işi açılsın mı."
+  ],
+  "baglar": {
+    "karar": [
+      "Karar 124",
+      "Karar 125"
+    ],
+    "pr": [
+      "#26"
+    ],
+    "durum": [
+      44,
+      45
+    ]
+  },
+  "sayaclar": {
+    "model": "Fable 5.1",
+    "kutu": 0,
+    "soru_dogru": 0,
+    "soru_yanlis": 0,
+    "pratik_salih_beyani": "KALAN"
+  },
+  "hasat": {
+    "ozutler": [
+      "durum ayrıştırıcısında bir bayrak iki anlam taşıyorsa (--json bayrak/yol) sessizce yanlış dosyaya yazar; iki yüzlü bayrak uzantıyla ayrılır.",
+      "git subtree split alt dizini kendi tarihçesiyle yeni repoya taşır; sistemde pointer README yeter.",
+      "Kütük modeli hedef→hedef hizmet kenarını zaten taşıyor; iç içe graf için Rust değişikliği gerekmedi.",
+      "Salih'in oturumunda hedef önceden yazılmaz; büyük-harf freni araç çıktılarında yer tutucuları (NNN) da yakalar."
+    ],
+    "wiki_delta": [
+      "graf-icinde-graf (aday, Karar 125)"
+    ],
+    "verilebilir_miydi": "Evet: kütük, seans kayıtları ve defter paragrafından HTML üretimi deterministik script işi; tasarım kararları Salih'in.",
+    "token_zaman": "[?] uzun seans; ölçüm Rust olcum alanında"
+  },
+  "sema": "seans-teslim v1 (Karar 121/122)",
+  "alan": "jarvis",
+  "oturum": "2026-10-26-jarvis-2",
+  "tarih": "2026-10-26",
+  "etiket": "portal-parkur-kapanis-graf-karar-124-125",
+  "olcum": {
+    "ac_ts": "2026-10-26T14:40:39Z",
+    "kapat_ts": "2026-10-26T20:33:09Z",
+    "git": {
+      "head": "d946dd7",
+      "dal": "main",
+      "since": "2026-10-26T14:40:39Z",
+      "commit_sayisi": 10,
+      "commitler": [
+        "9e8737c [icra] Decision 125 note: big picture has no node-count limit, the two-node wording was an example",
+        "2c0d3b9 [icra] Decision 125: nested goal subgraphs (goal = cover of a subgraph, recursive) in flow graph HTML with breadcrumb, folded goal badges and recursive progress; durum graf --json path parsing fixed (was overwriting ortak/akis-graf.json)",
+        "3f05cae [icra] Flow graph HTML redesigned per Salih: type x category bands with x = execution order, done/undone node fill, single-row arc view replaces rings, goal click opens goal subgraph with goal at far right, back/forward link groups, work categories",
+        "585e752 [icra] Flow graph HTML: timeline view (x = time, y = lane: session / goal / status; parallel work stacked on same x), ordinal or real time axis, duration bars; ring view kept as toggle",
+        "22d768f [icra] SCRIPTLER index row for akis-graf-html in table format",
+        "1aaf49f [icra] Flow graph HTML generator: session summaries from seans records and live summary, work-node evidence, decision-ledger paragraph and file links in node panel",
+        "e1c6786 [icra] Decision 124: products live in their own public repos, system repo is the build tool; interactive flow graph HTML centered on current session with STE Turkish node explanations",
+        "b96c673 [icra] Portal Parkur moved to its own public repository salihsahinin/portal-parkur; pointer README kept; session node goal cleared (Salih sets session goals)",
+        "20411a6 [icra] Flow graph node report: this session and Portal Parkur nodes 42-44 as markdown",
+        "3112d1e [icra] Portal Parkur closed as a project (Salih 2026-10-26): README status stamp, state log #44 done, flow graph refreshed"
+      ],
+      "degisen_dosya_sayisi": 72
+    },
+    "durum": {
+      "acilan": [
+        45
+      ],
+      "alinan": [],
+      "bitirilen": [
+        44
+      ],
+      "acik_kalan": 16
+    }
+  }
+}

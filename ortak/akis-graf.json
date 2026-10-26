@@ -4,8 +4,8 @@
     "uretici": "durum graf",
     "tarih": "2026-10-26",
     "alan": null,
-    "dugum_sayisi": 48,
-    "kenar_sayisi": 57,
+    "dugum_sayisi": 49,
+    "kenar_sayisi": 58,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -87,13 +87,14 @@
       "alan": "jarvis",
       "etiket": "2026-10-26-jarvis-2",
       "ac_ts": "2026-10-26T14:40:39Z",
-      "kapat_ts": null,
-      "hedef": null,
-      "hedef_tutuldu": null,
-      "kayit": null,
+      "kapat_ts": "2026-10-26T20:33:09Z",
+      "hedef": "Salih açılışta hedef vermedi; seans boyunca verilen emirler: Portal Parkur'u proje olarak kapat, ürünü ayrı repoya taşı, akış grafını HTML'de göster, PR #26'yı birleştir.",
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-26-portal-parkur-kapanis-graf-karar-124-125.json",
       "ortuk": false,
       "dokunulan": [
-        44
+        44,
+        45
       ]
     },
     {
@@ -702,6 +703,21 @@
       "sirada": false
     },
     {
+      "id": "is:45",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "akış grafı HTML tasarımı optimizasyonu (Salih: istediğim tam olmadı, ileride optimize edeceğim; şimdilik açıklama yüzeyi değil)",
+      "sonraki_eylem": "Salih tasarım kararını verir; başlangıç Karar 125 kaydı + tools/akis-graf-html.py",
+      "acilis_ts": "2026-10-26T20:32:30Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [
+        "2026-10-26-jarvis-2"
+      ],
+      "sirada": true
+    },
+    {
       "id": "is:16",
       "tur": "is",
       "alan": "span",
@@ -915,6 +931,11 @@
       "k": "seans:2026-10-26-jarvis",
       "h": "is:43",
       "tur": "bitirdi"
+    },
+    {
+      "k": "seans:2026-10-26-jarvis-2",
+      "h": "is:45",
+      "tur": "acti"
     },
     {
       "k": "seans:2026-10-26-jarvis-2",

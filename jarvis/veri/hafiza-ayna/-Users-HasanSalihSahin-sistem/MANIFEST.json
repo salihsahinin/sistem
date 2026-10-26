@@ -3,14 +3,14 @@
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
  "uretim": "2026-10-26",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 33,
+ "dosya_sayisi": 37,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "45bafb6f3426fa904322d1ca91498745479a6a99554977a45d7c77cf21b00e7e",
-   "bayt": 4206,
-   "kaynak_mtime": "2026-10-26T02:58:56",
+   "sha256": "6cf17e0d6737606c590a38b50c8bc034cf4c3d2c918470a13cc477da3d154e2b",
+   "bayt": 5082,
+   "kaynak_mtime": "2026-10-26T23:32:15",
    "durum": "ayna"
   },
   {
@@ -84,6 +84,13 @@
    "durum": "ayna"
   },
   {
+   "ad": "feedback-graf-html-aciklama-yuzeyi-degil.md",
+   "sha256": "7f764d000ade3e943b18b0cf0694394b2620a3f9b059ede4f1f45c403bde3d95",
+   "bayt": 1167,
+   "kaynak_mtime": "2026-10-26T23:32:11",
+   "durum": "ayna"
+  },
+  {
    "ad": "feedback-icra-listesi-onaysiz-devam.md",
    "sha256": "c2e31492069cf612c0d2d66f16bd914103f6ab9b0940ac75cf85b1b71a2dbdfb",
    "bayt": 1466,
@@ -116,6 +123,13 @@
    "sha256": "bc884eea62d29b90805564fae152e1ac67955b75ceb520d3b8c30c8e85b01c65",
    "bayt": 1883,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-oturum-hedefini-salih-koyar.md",
+   "sha256": "ece619360ec36e1ddbd9f01ab9355c0eedaf56861791c908b5214a4b1219228a",
+   "bayt": 1373,
+   "kaynak_mtime": "2026-10-26T17:59:52",
    "durum": "ayna"
   },
   {
@@ -182,6 +196,13 @@
    "durum": "ayna"
   },
   {
+   "ad": "feedback-urun-ayri-repo.md",
+   "sha256": "1175d64cfd5f21087ff1d9984667bd57270963e0cf5dc88ba87d0d33f14a74f2",
+   "bayt": 1615,
+   "kaynak_mtime": "2026-10-26T18:00:18",
+   "durum": "ayna"
+  },
+  {
    "ad": "feedback-vurgusuz-anlatim-capslock-yok.md",
    "sha256": "0b0efe2a4d14de3441c298a52142567b21c44d3967f4968d2ff08aa2e93351c8",
    "bayt": 1070,
@@ -210,10 +231,17 @@
    "durum": "ayna"
   },
   {
+   "ad": "project-graf-icinde-graf-karar-125.md",
+   "sha256": "a1a3bcfe7237a15066b51ee259d31cd3a6f73f0437c82a2120ab5e10eb5f2049",
+   "bayt": 1919,
+   "kaynak_mtime": "2026-10-26T23:06:04",
+   "durum": "ayna"
+  },
+  {
    "ad": "project-portal-parkur.md",
-   "sha256": "6c45cc700e32a34287c5b874f69bba572db80d94f787401c9f9ba2d9bf3e257e",
-   "bayt": 1620,
-   "kaynak_mtime": "2026-10-26T03:28:32",
+   "sha256": "f2c301dc97d6545e6fd6783ece20e486fede97628f595e4242518ebf315a9836",
+   "bayt": 1875,
+   "kaynak_mtime": "2026-10-26T17:41:11",
    "durum": "ayna"
   },
   {
