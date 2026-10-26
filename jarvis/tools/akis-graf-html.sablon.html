@@ -38,6 +38,10 @@ svg{display:block}
 .lejant span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle;background:var(--c)}
 .lejant span.bos::before{background:none;border:2px solid var(--mut);width:7px;height:7px}
 .lejant span.cizgi::before{border-radius:0;height:2px;width:14px}
+#kirinti button{background:none;border:none;color:var(--seans);cursor:pointer;font:inherit;padding:0 2px}
+#kirinti b{color:var(--fg)}
+.rozet{fill:var(--mut);font-size:9.5px}
+.dugum.katli circle{stroke-width:3px}
 .dugum circle{cursor:pointer}
 .dugum text{pointer-events:none;fill:var(--fg)}
 .dugum.secili circle{stroke:var(--merkez)!important;stroke-width:3px!important}
@@ -58,7 +62,7 @@ code{font-size:12.5px;word-break:break-all}
 <header>
  <h1>Akış grafı</h1>
  <span><button class="ust aktif" id="g-bant">Bantlar (tür × kategori)</button><button class="ust" id="g-sira">Tek sıra (tüm düğümler)</button></span>
- <button class="ust" id="tumu" style="display:none">Alt graftan çık</button>
+ <span id="kirinti" style="font-size:13px"></span>
  <button class="ust" id="merkeze">Bu chat</button>
  <div class="lejant">
   <span style="--c:var(--seans)">oturum</span>
@@ -90,7 +94,7 @@ const bitti=n=>n.tur==="seans"?!!n.kapat_ts:(n.durum==="tamam"||n.durum==="bayat
 const acilis=n=>n.tur==="seans"?n.ac_ts:n.acilis_ts;
 const bitis=n=>n.tur==="seans"?n.kapat_ts:n.bitir_ts;
 // icra anı: bitmişse bitiş; bitmemişse sağ tarafa (ileri) itilir, kendi aralarında açılış sırası
-const icraZaman=n=>n.tur==="seans"?acilis(n):(bitti(n)?(bitis(n)||acilis(n)):("9999-"+(acilis(n)||"")));
+const icraZaman=n=>n.tur==="seans"?acilis(n):(bitti(n)?(bitis(n)||acilis(n)):((n.tur==="hedef"?"9999-z-":"9999-")+(acilis(n)||"")));
 const kategori=n=>(Z[n.id]&&Z[n.id].kategori)||"genel";
 function renk(n){ if(n.tur==="seans")return"var(--seans)"; if(n.tur==="hedef")return"var(--hedef)"; return n.durum==="bayat"?"var(--is-bayat)":"var(--is-tamam)"; }
 function kisa(n,uz){ const e=n.etiket||n.id; return e.length>uz?e.slice(0,uz-2)+"…":e; }
@@ -98,15 +102,33 @@ function ts(t){ if(!t) return null; return t.replace("T"," ").replace("Z"," UTC"
 function adi(id){ const h=N.get(id); return h.tur==="seans"?"Oturum "+h.etiket:(h.tur==="hedef"?"Hedef #":"İş #")+id.split(":")[1]; }
 function hopHesapla(kok){ const h=new Map([[kok,0]]); const q=[kok]; while(q.length){const u=q.shift(); for(const k of komsular.get(u)){ if(!h.has(k.id)){h.set(k.id,h.get(u)+1); q.push(k.id);} }} return h; }
 
-// hedef alt grafı: hedefe hizmet edenler + girdi zinciri geriye + onları açan/bitiren oturumlar
-function hedefAltGraf(hid){
-  const S=new Set([hid]); const q=[hid];
-  while(q.length){ const u=q.shift(); for(const k of komsular.get(u)){ if(k.yon==="ic"&&(k.tur==="hizmet"||k.tur==="girdi")&&!S.has(k.id)){S.add(k.id); q.push(k.id);} } }
-  Array.from(S).forEach(id=>{ for(const k of komsular.get(id)){ if(k.yon==="ic"&&(k.tur==="acti"||k.tur==="bitirdi")) S.add(k.id); } });
-  return S;
-}
+// ---- graf içinde graf (Karar 125): hedef = alt grafın kapağı; hedef başka hedefe hizmet edebilir ----
+const ust=new Map();                         // düğüm → hizmet ettiği hedef (iş ya da alt hedef için)
+G.kenarlar.forEach(e=>{ if(e.tur==="hizmet"&&N.has(e.k)&&N.has(e.h)) ust.set(e.k,e.h); });
+const cocuklar=id=>G.dugumler.filter(n=>ust.get(n.id)===id);
+const altHedefler=id=>cocuklar(id).filter(n=>n.tur==="hedef");
+const dogrudanIsler=id=>cocuklar(id).filter(n=>n.tur==="is");
+function tumIsler(id){ let L=dogrudanIsler(id); altHedefler(id).forEach(h=>{ L=L.concat(tumIsler(h.id)); }); return L; }
+function ilerleme(id){ const L=tumIsler(id); const b=L.filter(bitti).length; return {toplam:L.length,bitti:b,oran:L.length?b/L.length:0,alt:altHedefler(id).length}; }
+function hedefYolu(id){ const y=[]; let u=ust.get(id); while(u){ y.unshift(u); u=ust.get(u); } return y; }
 
-let gorunum="bant", altGraf=null, secili=MERKEZ;
+let yol=[];                                   // kırıntı: açık hedef zinciri (boş = büyük resim)
+const kapsam=()=>yol.length?yol[yol.length-1]:null;
+// bu seviyede görünen düğümler
+function gorunenler(){
+  const k=kapsam();
+  if(!k){ // büyük resim: oturumlar + üst hedefler (katlı) + hedefsiz işler
+    return G.dugumler.filter(n=>acilis(n)&&(n.tur==="seans"||(n.tur==="hedef"&&!ust.has(n.id))||(n.tur==="is"&&!ust.has(n.id))));
+  }
+  const S=new Set([k]); dogrudanIsler(k).forEach(n=>S.add(n.id)); altHedefler(k).forEach(n=>S.add(n.id));
+  // girdi zinciri (aynı seviyedeki bağımlılıklar) + bu işleri açan/bitiren oturumlar
+  Array.from(S).forEach(id=>{ for(const kk of komsular.get(id)){ if(kk.yon==="ic"&&kk.tur==="girdi"&&N.get(kk.id).tur==="is") S.add(kk.id); } });
+  Array.from(S).forEach(id=>{ for(const kk of komsular.get(id)){ if(kk.yon==="ic"&&(kk.tur==="acti"||kk.tur==="bitirdi")) S.add(kk.id); } });
+  return G.dugumler.filter(n=>acilis(n)&&S.has(n.id));
+}
+const katli=n=>n.tur==="hedef"&&n.id!==kapsam();   // bu seviyede kapak olarak duran hedef
+
+let gorunum="bant", secili=MERKEZ;
 const svg=d3.select("svg"); const g=svg.append("g");
 function ciz(kok){ secili=kok; if(gorunum==="bant") cizBant(kok); else cizSira(kok); }
 function genislik(){ return Math.max(900,document.getElementById("graf").clientWidth); }
@@ -116,6 +138,8 @@ function dugumCiz(sel){
     .attr("fill",n=>bitti(n)?renk(n):"var(--bg)").attr("stroke",renk).attr("stroke-width",n=>bitti(n)?1.5:2.5)
     .attr("stroke-dasharray",n=>n.durum==="islemde"?"3 2":null);
   sel.append("title").text(n=>n.id+" · "+(n.etiket||"")+" · açıldı "+ts(acilis(n))+(bitis(n)?" · bitti "+ts(bitis(n)):" · bitmedi")+" · kategori: "+kategori(n));
+  sel.filter(n=>katli(n)).classed("katli",true).append("text").attr("class","rozet").attr("y",22).attr("text-anchor","middle")
+    .text(n=>{const i=ilerleme(n.id); return i.bitti+"/"+i.toplam+" iş"+(i.alt?" · "+i.alt+" alt":"")+" · %"+Math.round(i.oran*100);});
 }
 function kenarCiz(poz,kok){
   g.selectAll("path.kenar").data(G.kenarlar.filter(e=>poz.has(e.k)&&poz.has(e.h))).join("path")
@@ -130,7 +154,7 @@ function gunCizgileri(anlar,x,adim,y1,y2){
 
 function cizBant(kok){
   const hop=hopHesapla(kok);
-  const dugumler=G.dugumler.filter(n=>acilis(n)&&(!altGraf||altGraf.has(n.id)));
+  const dugumler=gorunenler();
   const anlar=Array.from(new Set(dugumler.map(icraZaman))).sort();
   const sol=200, sag=40, ust=26, adim=Math.max(34,Math.min(70,(genislik()-sol-sag)/Math.max(1,anlar.length-1)));
   const x=d3.scalePoint().domain(anlar).range([sol,sol+adim*(anlar.length-1)]);
@@ -156,7 +180,7 @@ function cizBant(kok){
 
 function cizSira(kok){
   const hop=hopHesapla(kok);
-  const dugumler=G.dugumler.filter(n=>acilis(n)&&(!altGraf||altGraf.has(n.id))).sort((a,b)=>d3.ascending(icraZaman(a),icraZaman(b))||d3.ascending(a.tur,b.tur)||d3.ascending(a.id,b.id));
+  const dugumler=gorunenler().sort((a,b)=>d3.ascending(icraZaman(a),icraZaman(b))||d3.ascending(a.tur,b.tur)||d3.ascending(a.id,b.id));
   const sol=40, adim=46, yy=300; const W=sol+adim*dugumler.length+40;
   const poz=new Map(); dugumler.forEach((n,i)=>poz.set(n.id,{x:sol+i*adim,y:yy}));
   g.selectAll("*").remove(); svg.attr("width",Math.max(W,document.getElementById("graf").clientWidth)).attr("height",560);
@@ -170,8 +194,14 @@ function cizSira(kok){
   panel(kok,hop);
 }
 
-function sec(id){ const n=N.get(id); if(n.tur==="hedef"&&altGraf===null){ altGraf=hedefAltGraf(id); document.getElementById("tumu").style.display=""; } ciz(id); }
-function altGrafKapat(){ altGraf=null; document.getElementById("tumu").style.display="none"; ciz(secili); }
+function sec(id){ const n=N.get(id);
+  if(n.tur==="hedef"){ yol=hedefYolu(id).concat([id]); }            // hedefe tıkla → alt grafına in (kırıntı = üst zincir)
+  else if(ust.has(id)){ const y=hedefYolu(id); if(y.join()!==yol.join()) yol=y; } // başka seviyedeki işe git → onun seviyesi
+  kirintiYaz(); ciz(id); }
+function seviyeyeGit(i){ yol=yol.slice(0,i); kirintiYaz(); ciz(kapsam()||secili); }
+function kirintiYaz(){ const el=document.getElementById("kirinti"); const parca=["<button data-i='0'>Büyük resim</button>"];
+  yol.forEach((h,i)=>parca.push(" › "+(i===yol.length-1?"<b>H"+h.split(":")[1]+"</b>":"<button data-i='"+(i+1)+"'>H"+h.split(":")[1]+"</button>")));
+  el.innerHTML=parca.join(""); el.querySelectorAll("button").forEach(b=>b.onclick=()=>seviyeyeGit(+b.dataset.i)); }
 
 function durumAcikla(d){ return {tamam:"İş bitti.",acik:"İş açık. Kimse bu işi şu anda yapmıyor.",islemde:"İş işlemde. Bir oturum bu işi yapıyor.",bayat:"İş bayat. Bu iş artık geçerli değil, kayıt durur."}[d]||("Durum: "+d+"."); }
 function kenarCumle(k){
@@ -205,9 +235,13 @@ function panel(id,hop){
   } else {
     const ad=n.tur==="hedef"?"Hedef #"+num:"İş #"+num;
     c.push("<h2>"+ad+"</h2><div class='tur'>düğüm türü: "+n.tur+" · durum: "+n.durum+" · kategori: "+esc(kategori(n))+"</div>");
-    if(n.tur==="hedef") c.push(altGraf?"<button class='hedefe' id='altcik'>Alt graftan çık, tümüne dön</button>":"<button class='hedefe' id='altgir'>Bu hedefin alt grafını aç</button>");
+    if(n.tur==="hedef"){ const i=ilerleme(id); const u=ust.get(id);
+      c.push("<p><b>İlerleme:</b> "+i.bitti+"/"+i.toplam+" iş bitti (%"+Math.round(i.oran*100)+")"+(i.alt?" · "+i.alt+" alt hedef":"")+(u?" · üst hedef: <button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='"+u+"'>H"+u.split(":")[1]+"</button>":" · üst hedef yok (büyük resim)")+"</p>");
+      if(yol.length>1) c.push("<button class='hedefe' id='ustcik'>Bir üst seviyeye çık</button>"); else if(yol.length===1) c.push("<button class='hedefe' id='ustcik'>Büyük resme dön</button>");
+      const ah=altHedefler(id); if(ah.length) c.push("<h3>Alt hedefler (tıkla, içine in)</h3>"+ah.map(h=>{const j=ilerleme(h.id); return "<button class='komsu' data-id='"+h.id+"'>H"+h.id.split(":")[1]+" "+esc(kisa(h,60))+" · "+j.bitti+"/"+j.toplam+"</button>";}).join(""));
+    } else if(ust.has(id)) c.push("<p>Bu iş <button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='"+ust.get(id)+"'>H"+ust.get(id).split(":")[1]+"</button> hedefinin alt grafındadır.</p>");
     c.push("<div class='kutu ozet'><h3>Ne oldu (ASD-STE100)</h3>");
-    c.push("<p>Bu düğüm bir "+(n.tur==="hedef"?"hedeftir. Hedef, birden çok işi toplar. Hedef, alt grafının en sağındadır. Alt graf bitince hedef biter.":"iştir.")+" "+durumAcikla(n.durum)+"</p>");
+    c.push("<p>Bu düğüm bir "+(n.tur==="hedef"?"hedeftir. Hedef bir alt grafın kapağıdır. Alt grafta işler ve alt hedefler vardır. Hedef, alt grafının en sağındadır. Alt graf bitince hedef biter.":"iştir.")+" "+durumAcikla(n.durum)+"</p>");
     c.push("<p><b>Konu:</b> "+esc(n.etiket)+"</p>");
     if(n.sonraki_eylem) c.push("<p><b>Sonraki adım:</b> "+esc(n.sonraki_eylem)+"</p>");
     const bitir=(z.olaylar||[]).filter(o=>o.olay==="bitir"&&o.kanit&&o.kanit.length);
@@ -229,17 +263,15 @@ function panel(id,hop){
   c.push("</table></details></div>");
   el.innerHTML=c.join("");
   el.querySelectorAll("button.komsu").forEach(b=>b.onclick=()=>sec(b.dataset.id));
-  const gi=document.getElementById("altgir"); if(gi) gi.onclick=()=>{altGraf=hedefAltGraf(id); document.getElementById("tumu").style.display=""; ciz(id);};
-  const ci=document.getElementById("altcik"); if(ci) ci.onclick=altGrafKapat;
+  const uc=document.getElementById("ustcik"); if(uc) uc.onclick=()=>seviyeyeGit(yol.length-1);
   el.scrollTop=0;
 }
 function gorunumSec(gn){ gorunum=gn; document.getElementById("g-bant").classList.toggle("aktif",gn==="bant"); document.getElementById("g-sira").classList.toggle("aktif",gn==="sira"); ciz(secili); }
 document.getElementById("g-bant").onclick=()=>gorunumSec("bant");
 document.getElementById("g-sira").onclick=()=>gorunumSec("sira");
-document.getElementById("tumu").onclick=altGrafKapat;
-document.getElementById("merkeze").onclick=()=>{altGraf=null; document.getElementById("tumu").style.display="none"; ciz(MERKEZ);};
+document.getElementById("merkeze").onclick=()=>{yol=[]; kirintiYaz(); ciz(MERKEZ);};
 window.addEventListener("resize",()=>ciz(secili));
-ciz(MERKEZ);
+kirintiYaz(); ciz(MERKEZ);
 </script>
 </body>
 </html>

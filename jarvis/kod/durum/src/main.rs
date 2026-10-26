@@ -30,7 +30,10 @@ impl Arg {
         let mut i = 0;
         while i < args.len() {
             if let Some(ad) = args[i].strip_prefix("--") {
-                if BAYRAKSIZ.contains(&ad) {
+                // `--json` iki yüzlü: `listele --json` bayrak, `graf --json <yol.json>` değer alır (arıza 2026-10-26:
+                // yol konumsal sayılıp ortak/akis-graf.json'un üzerine yazıldı).
+                let json_yol = ad == "json" && args.get(i + 1).is_some_and(|v| !v.starts_with("--") && v.ends_with(".json"));
+                if BAYRAKSIZ.contains(&ad) && !json_yol {
                     bayrak.push((ad.to_string(), None));
                 } else {
                     i += 1;

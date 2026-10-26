@@ -1,7 +1,7 @@
 {
   "sema": "seans-canli v0 (açık oturumun ara özeti; kapanışta seans-teslim JSON'u bunun yerine geçer)",
   "oturum": "2026-10-26-jarvis-2",
-  "as_of": "2026-10-26T15:05:00Z",
+  "as_of": "2026-10-26T20:10:00Z",
   "ne_yapildi": [
     "Seans açılış ritüeli koştu: K1 paralel-oturum şüphesi (21 bayat worktree), K3 silver bayattı ve tazelendi, PR #26 açık.",
     "Salih dünkü Portal Parkur oyun demosunu proje olarak sonlandırdı; iş #44 Salih beyanı kanıtıyla kapatıldı.",
@@ -9,11 +9,15 @@
     "Karar 124: Jarvis'in uzun vadede kullanmayacağı ürünler ayrı klasör + ayrı açık kaynak repoda yaşar; sistem deposu ürün inşa aracıdır.",
     "Portal Parkur git subtree split ile 10 commit tarihçesiyle C:\\sistem\\portal-parkur klasörüne ve github.com/salihsahinin/portal-parkur public reposuna (MIT) taşındı; sistemde pointer README kaldı.",
     "Sistem main push'landı (Salih 'push onay'): 3112d1e, 20411a6, b96c673, e1c6786.",
-    "Akış grafı için tıklanabilir HTML üretildi (bu dosya); Salih özet ve ayrıntı bağlantısı istedi, düğüm açıklamaları zenginleştirildi."
+    "Akış grafı için tıklanabilir HTML üretildi (bu dosya); Salih özet ve ayrıntı bağlantısı istedi, düğüm açıklamaları zenginleştirildi.",
+    "Graf HTML Salih'in tasarımına göre yeniden yazıldı: bantlar (oturum · hedef · kategori satırları), x = icra sırası, dolu/boş düğüm, tek sıra yay görünümü, geri/ileri bağ grupları, hedef alt grafı.",
+    "Karar 125: graf içinde graf; hedef = alt grafın kapağı, kırıntı yolu + özyinelemeli ilerleme; 3 seviyeli deneme kütüğüyle doğrulandı.",
+    "Arıza düzeltildi: durum graf --json <yol> gerçek ortak/akis-graf.json'u eziyordu; ayrıştırıcı .json değeri yol kabul eder; release derlendi."
   ],
   "salih_karar_bekleyen": [
     "PR #26 birleştirme beyanı",
     "Karar 124 kök kanon satırı imzası",
-    "21 bayat worktree'nin kapatılması (Karar 95 EK)"
+    "21 bayat worktree'nin kapatılması (Karar 95 EK)",
+    "Karar 125 kural adayı: proje-ölçekli iş kütükte hedef hiyerarşisi olarak açılır; ac --kategori alanı"
   ]
 }
