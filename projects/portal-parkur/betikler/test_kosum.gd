@@ -118,6 +118,8 @@ func kos() -> void:
 		if not zipladi and oyuncu.global_position.z < -47.6:
 			oyuncu.sanal_zipla = true
 			zipladi = true
+		if int(t * 50) % 10 == 0:
+			print("[IZ-T4] t=%.2f durum=%s poz=%s v=%s" % [t, Oyuncu.DURUM_AD[oyuncu.durum], oyuncu.global_position, oyuncu.velocity])
 		if oyuncu.global_position.y > 1.9 and oyuncu.is_on_floor():
 			break
 	p = oyuncu.global_position

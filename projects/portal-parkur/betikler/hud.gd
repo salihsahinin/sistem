@@ -121,7 +121,7 @@ func _ready() -> void:
 	mesaj_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mesaj_lbl.modulate.a = 0.0
 	ipucu_lbl = _etiket(Vector2(0, 0), 15, Control.PRESET_BOTTOM_WIDE)
-	ipucu_lbl.text = "Sol tık mavi portal · Sağ tık turuncu · Boşluk zıpla/duvar · Shift koş · Ctrl kay · R yeniden · F3 durum · F4 kamera ayarı"
+	ipucu_lbl.text = "Sol/Sağ tık portal · Boşluk zıpla (basılı: bhop) · Shift sprint, çift Shift taktik · Ctrl tık kay / iptal / çömel · R yeniden · F3 durum · F4 ayar"
 	_panel_kur()
 	ipucu_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	ipucu_lbl.offset_left = 200

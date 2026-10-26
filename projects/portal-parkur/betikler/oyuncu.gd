@@ -53,6 +53,9 @@ var tirman_tw: Tween
 var hiz_seridi := false
 var cokuk := false
 var son_adim_sayac := 0
+var kayma_istek := 0.0
+var son_shift := -10.0
+var taktik_kalan := 0.0
 
 @onready var kafa: Node3D = $Kafa
 @onready var kamera: Camera3D = $Kafa/Kamera
@@ -129,6 +132,14 @@ func ileri_yon() -> Vector3:
 	return f.normalized() if f.length() > 0.001 else Vector3.FORWARD
 
 
+func _kay_tiklandi() -> bool:
+	if sanal_girdi_aktif:
+		var k := sanal_kay
+		sanal_kay = false
+		return k
+	return Input.is_action_just_pressed("kay")
+
+
 func _zipla_basildi() -> bool:
 	if sanal_girdi_aktif:
 		var z := sanal_zipla
@@ -181,23 +192,43 @@ func _yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
 		coyote = 0.12
 		_durum_degistir(Durum.HAVADA)
 		return
-	var kos := Input.is_action_pressed("kos") or sanal_girdi_aktif
-	if yon == Vector3.ZERO:
+	# MW2019 koşu modeli: W = jog · Shift = sprint (momentumla artar) · çift Shift = taktik sprint (4 sn)
+	var kos := (Input.is_action_pressed("kos") or sanal_girdi_aktif) and girdi.y < -0.3
+	if Input.is_action_just_pressed("kos") and not sanal_girdi_aktif:
+		if toplam_sure - son_shift < 0.35:
+			taktik_kalan = 4.0
+		son_shift = toplam_sure
+	if not kos:
+		taktik_kalan = 0.0
+	else:
+		taktik_kalan = maxf(taktik_kalan - delta, 0.0)
+	if yon == Vector3.ZERO or not kos:
 		momentum = maxf(momentum - delta * 2.0, 0.0)
 	else:
-		momentum = clampf(momentum + delta * (0.7 if kos else 0.3), 0.0, 1.0)
-	var hedef_hiz: float = lerpf(kosu_hizi, sprint_hizi, momentum)
+		momentum = clampf(momentum + delta * 0.6, 0.0, 1.0)
+	var hedef_hiz: float = yurume_hizi
+	if kos:
+		hedef_hiz = lerpf(kosu_hizi, sprint_hizi * 0.9, momentum)
+	if taktik_kalan > 0.0:
+		hedef_hiz = sprint_hizi
 	if girdi.y > 0.3:
-		hedef_hiz = yurume_hizi
+		hedef_hiz = yurume_hizi * 0.8
 	if hiz_seridi and yon != Vector3.ZERO:
 		momentum = 1.0
 		hedef_hiz = sprint_hizi * 1.5
 	var yatay := yatay_hiz()
-	# çömelme (yavaşken Ctrl basılı)
-	var kay_tut := Input.is_action_pressed("kay") and not sanal_girdi_aktif
-	if kay_tut and not cokuk and yatay.length() <= 6.0:
-		_cok()
-	elif not kay_tut and cokuk and _ayaga_kalkabilir():
+	# Ctrl tık (MW2019): hızlıyken kayma · yavaşken çömelme aç/kapa; Shift çömelmeyi bozar
+	var kay_tik := _kay_tiklandi()
+	if kay_tik:
+		if cokuk:
+			if _ayaga_kalkabilir():
+				_ayaga_kalk()
+		elif yatay.length() > 6.0:
+			_kayma_baslat(yatay)
+			return
+		else:
+			_cok()
+	if cokuk and Input.is_action_pressed("kos") and _ayaga_kalkabilir():
 		_ayaga_kalk()
 	if cokuk:
 		hedef_hiz = 3.5
@@ -225,11 +256,6 @@ func _yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	velocity.y = -2.0
 
 	if yon.dot(ileri) > 0.5 and _basamak_dene():
-		return
-	var kay_basildi := sanal_kay if sanal_girdi_aktif else Input.is_action_just_pressed("kay")
-	sanal_kay = false
-	if kay_basildi and yatay.length() > 6.0:
-		_kayma_baslat(yatay)
 		return
 	if zipla_tampon > 0.0:
 		zipla_tampon = 0.0
@@ -273,6 +299,11 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 			yatay += yon * ivme
 	velocity.x = yatay.x
 	velocity.z = yatay.z
+
+	# havada Ctrl tık: inişte kayma isteği (0.6 sn geçerli)
+	if _kay_tiklandi():
+		kayma_istek = 0.6
+	kayma_istek = maxf(kayma_istek - delta, 0.0)
 
 	if is_on_floor():
 		# bunny hop: yere değilen karede zıplama basılıysa sürtünme/iniş kaybı olmadan zıpla
@@ -320,6 +351,10 @@ func _inis() -> void:
 	dusme_hizi = 0.0
 	son_duvar_id = 0
 	_durum_degistir(Durum.YERDE)
+	# inişte kayma (havada Ctrl tıklandıysa)
+	if kayma_istek > 0.0 and yatay_hiz().length() > 6.0:
+		kayma_istek = 0.0
+		_kayma_baslat(yatay_hiz())
 
 
 # ---------------- DUVAR KOŞUSU ----------------
@@ -559,14 +594,18 @@ func _kayma(delta: float, _yon: Vector3, _ileri: Vector3) -> void:
 		_ayaga_kalk()
 		_zipla(1.0)
 		return
-	var basili := Input.is_action_pressed("kay") or sanal_girdi_aktif
-	var birak := durum_suresi > kayma_sure and not basili
-	if yatay.length() < 3.0 or birak or (not sanal_girdi_aktif and Input.is_action_just_released("kay") and durum_suresi > 0.3) \
-			or (not is_on_floor() and durum_suresi > 0.35):
-		if _ayaga_kalkabilir():
-			_ayaga_kalk()
-			_durum_degistir(Durum.HAVADA if not is_on_floor() else Durum.YERDE)
-			eller.call("serbest")
+	# slide cancel (MW2019): kayarken Ctrl tık → hız korunarak hemen ayağa
+	if _kay_tiklandi() and durum_suresi > 0.12 and _ayaga_kalkabilir():
+		_ayaga_kalk()
+		_durum_degistir(Durum.HAVADA if not is_on_floor() else Durum.YERDE)
+		eller.call("serbest")
+		return
+	# kayma biter → çömük kalır (Shift/Space/Ctrl tık kaldırır)
+	if yatay.length() < 3.0 or durum_suresi > kayma_sure or (not is_on_floor() and durum_suresi > 0.35):
+		cokuk = true
+		kafa_hedef_y = 0.95
+		_durum_degistir(Durum.HAVADA if not is_on_floor() else Durum.YERDE)
+		eller.call("serbest")
 
 
 # ---------------- KAMERA ----------------
