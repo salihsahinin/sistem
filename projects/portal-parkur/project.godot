@@ -12,6 +12,7 @@ run/max_fps=144
 
 GirdiKur="*res://betikler/girdi_kur.gd"
 Ses="*res://betikler/ses.gd"
+Ayarlar="*res://betikler/ayarlar.gd"
 
 [display]
 

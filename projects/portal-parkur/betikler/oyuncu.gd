@@ -78,14 +78,45 @@ func _ready() -> void:
 	kamera.fov = temel_fov
 
 
+## Fare: ham sayım birikir; _process içinde (yumuşatma 0 ise) 1:1 uygulanır.
+var fare_birikim := Vector2.ZERO
+var fare_hiz := Vector2.ZERO
+var kamera_yaw_ofset := 0.0
+var hedef_pitch := 0.0
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * fare_hassasiyet)
-		kamera.rotation.x = clamp(kamera.rotation.x - event.relative.y * fare_hassasiyet, deg_to_rad(-88), deg_to_rad(88))
+		fare_birikim += event.relative
 	elif event.is_action_pressed("cikis"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _process(delta: float) -> void:
+	var d := fare_birikim
+	fare_birikim = Vector2.ZERO
+	var tau: float = Ayarlar.al("yumusatma")
+	if tau > 0.0005:
+		# üstel yumuşatma: bu karede uygulanan = birikenin bir kısmı (kare hızından bağımsız)
+		fare_hiz += d
+		var k: float = 1.0 - exp(-delta / tau)
+		d = fare_hiz * k
+		fare_hiz -= d
+	var derece: float = Ayarlar.al("hassasiyet")
+	var yaw_d := deg_to_rad(d.x * derece)
+	var pitch_d := deg_to_rad(d.y * derece * Ayarlar.al("dikey_oran")) * (-1.0 if Ayarlar.al("ters_y") > 0.5 else 1.0)
+	if yaw_d != 0.0:
+		rotate_y(-yaw_d)
+	kamera.rotation.x = clampf(kamera.rotation.x - pitch_d, deg_to_rad(-85), deg_to_rad(85))
+	# kamera ataleti: hızlı dönüşte görüş gövdeyi kısa süre geriden izler
+	var atalet: float = Ayarlar.al("kamera_atalet")
+	if atalet > 0.0005:
+		kamera_yaw_ofset = lerpf(kamera_yaw_ofset + yaw_d * 0.5, 0.0, clampf(delta / atalet, 0.0, 1.0))
+	else:
+		kamera_yaw_ofset = 0.0
+	kamera.rotation.y = kamera_yaw_ofset
 
 
 func yatay_hiz() -> Vector3:
@@ -240,7 +271,7 @@ func _inis() -> void:
 	Ses.cal("inis", lerpf(-18.0, 0.0, siddet), randf_range(0.9, 1.1))
 	if siddet > 0.12:
 		var tw := create_tween()
-		inis_dip = -0.32 * siddet
+		inis_dip = -0.32 * siddet * Ayarlar.al("inis_dip")
 		tw.tween_property(self, "inis_dip", 0.0, 0.28 + 0.2 * siddet).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		eller.call("inis", siddet)
 	if siddet > 0.55:
@@ -505,21 +536,22 @@ func _kayma(delta: float, _yon: Vector3, _ileri: Vector3) -> void:
 # ---------------- KAMERA ----------------
 func _kamera_guncelle(delta: float) -> void:
 	var hiz := yatay_hiz().length()
-	var hedef_fov: float = temel_fov + clampf((hiz - 6.0) * 1.5, 0.0, 20.0)
+	temel_fov = Ayarlar.al("fov")
+	var hedef_fov: float = temel_fov + clampf((hiz - 6.0) / 6.5, 0.0, 1.0) * Ayarlar.al("sprint_fov")
 	if durum == Durum.KAYMA:
 		hedef_fov += 4.0
 	kamera.fov = lerpf(kamera.fov, hedef_fov, 6.0 * delta)
 	var hedef_roll := 0.0
 	if durum == Durum.DUVAR_KOSU:
-		hedef_roll = deg_to_rad(14.0) * duvar_taraf
+		hedef_roll = deg_to_rad(Ayarlar.al("egilme")) * duvar_taraf
 	else:
-		hedef_roll = -girdi.x * deg_to_rad(1.8)
+		hedef_roll = -girdi.x * deg_to_rad(Ayarlar.al("yan_egilme"))
 	kamera.rotation.z = lerp_angle(kamera.rotation.z, hedef_roll, 9.0 * delta)
 	var bob_y := 0.0
 	var bob_x := 0.0
 	if durum == Durum.YERDE and hiz > 1.0:
 		bob_faz += delta * hiz * 1.55
-		var genlik: float = 0.028 * clampf(hiz / 9.0, 0.3, 1.5)
+		var genlik: float = 0.028 * clampf(hiz / 9.0, 0.3, 1.5) * Ayarlar.al("bob")
 		bob_y = absf(sin(bob_faz)) * genlik - genlik * 0.5
 		bob_x = cos(bob_faz) * genlik * 0.55
 		var adim := int(floor(bob_faz / PI))
@@ -540,7 +572,8 @@ func on_teleport(portal: Node3D) -> void:
 	if yatay.length() > 0.05:
 		yaw = atan2(-yatay.x, -yatay.z)
 	rotation = Vector3(0.0, yaw, 0.0)
-	kamera.rotation = Vector3(clampf(asin(clampf(ileri.y, -1.0, 1.0)), deg_to_rad(-88), deg_to_rad(88)), 0.0, kamera.rotation.z)
+	kamera.rotation = Vector3(clampf(asin(clampf(ileri.y, -1.0, 1.0)), deg_to_rad(-85), deg_to_rad(85)), 0.0, kamera.rotation.z)
+	kamera_yaw_ofset = 0.0
 	velocity = portal.call("to_exit_direction", velocity)
 	var cikis: Node3D = portal.get("exit_portal")
 	var cikis_normal: Vector3 = cikis.global_basis.z

@@ -26,6 +26,77 @@ var ipucu_lbl: Label
 var mesaj_sure := 0.0
 var hata_ayik := false
 var bulanik_guc := 0.0
+var panel: PanelContainer
+var panel_degerler := {}
+
+
+## F4 paneli: kamera/fare profil kaydırıcıları (Ayarlar autoload).
+func _panel_kur() -> void:
+	panel = PanelContainer.new()
+	panel.set_anchors_preset(Control.PRESET_CENTER_LEFT)
+	panel.position = Vector2(24, -260)
+	panel.visible = false
+	add_child(panel)
+	var kutu := VBoxContainer.new()
+	kutu.custom_minimum_size = Vector2(520, 0)
+	panel.add_child(kutu)
+	var baslik := Label.new()
+	baslik.text = "Kamera / fare profili (F4 kapat · değişiklik anında uygulanır ve kaydedilir)"
+	baslik.add_theme_font_size_override("font_size", 15)
+	kutu.add_child(baslik)
+	for k in Ayarlar.TANIM:
+		var t: Array = Ayarlar.TANIM[k]
+		var satir := HBoxContainer.new()
+		kutu.add_child(satir)
+		var ad := Label.new()
+		ad.custom_minimum_size = Vector2(120, 0)
+		ad.text = k
+		satir.add_child(ad)
+		var s := HSlider.new()
+		s.min_value = t[1]
+		s.max_value = t[2]
+		s.step = t[3]
+		s.value = Ayarlar.al(k)
+		s.custom_minimum_size = Vector2(220, 0)
+		satir.add_child(s)
+		var v := Label.new()
+		v.custom_minimum_size = Vector2(60, 0)
+		v.text = "%.3f" % Ayarlar.al(k)
+		satir.add_child(v)
+		var acik := Label.new()
+		acik.text = t[4]
+		acik.add_theme_font_size_override("font_size", 12)
+		acik.modulate.a = 0.75
+		satir.add_child(acik)
+		panel_degerler[k] = v
+		s.value_changed.connect(func(val: float) -> void:
+			Ayarlar.ayarla(k, val)
+			v.text = "%.3f" % val
+		)
+	var sifir := Button.new()
+	sifir.text = "Varsayılanlara dön"
+	sifir.pressed.connect(func() -> void:
+		Ayarlar.sifirla()
+		_panel_yenile()
+	)
+	kutu.add_child(sifir)
+
+
+func _panel_yenile() -> void:
+	var i := 0
+	var kutu: VBoxContainer = panel.get_child(0)
+	for k in Ayarlar.TANIM:
+		var satir: HBoxContainer = kutu.get_child(1 + i)
+		var s: HSlider = satir.get_child(1)
+		s.set_value_no_signal(Ayarlar.al(k))
+		panel_degerler[k].text = "%.3f" % Ayarlar.al(k)
+		i += 1
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F4:
+		panel.visible = not panel.visible
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if panel.visible else Input.MOUSE_MODE_CAPTURED
 
 
 func _ready() -> void:
@@ -50,7 +121,8 @@ func _ready() -> void:
 	mesaj_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mesaj_lbl.modulate.a = 0.0
 	ipucu_lbl = _etiket(Vector2(0, 0), 15, Control.PRESET_BOTTOM_WIDE)
-	ipucu_lbl.text = "Sol tık mavi portal · Sağ tık turuncu · Boşluk zıpla/duvar · Shift koş · Ctrl kay · R yeniden · F3 durum"
+	ipucu_lbl.text = "Sol tık mavi portal · Sağ tık turuncu · Boşluk zıpla/duvar · Shift koş · Ctrl kay · R yeniden · F3 durum · F4 kamera ayarı"
+	_panel_kur()
 	ipucu_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	ipucu_lbl.offset_left = 200
 	ipucu_lbl.offset_right = -24
