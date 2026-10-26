@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akış Grafı</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1a1a1a;--mut:#6b6b6b;--line:#d9d9d4;--pan:#ffffff;--vurgu:#eef3fa;
+ --seans:#2b6cb0;--is-tamam:#2f855a;--is-acik:#b7791f;--is-islemde:#c05621;--is-bayat:#9b9b9b;--hedef:#805ad5;--merkez:#c53030;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#333;--pan:#1e1e1e;--vurgu:#1d2733;}}
+:root[data-theme="dark"]{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#333;--pan:#1e1e1e;--vurgu:#1d2733;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+header{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+header h1{font-size:17px;margin:0}
+header small{color:var(--mut)}
+main{display:flex;flex:1;min-height:0}
+#graf{flex:1;min-width:0;min-height:560px;position:relative}
+svg{width:100%;height:100%;display:block;cursor:grab}
+#panel{width:460px;max-width:48vw;border-left:1px solid var(--line);background:var(--pan);padding:14px 16px;overflow:auto;max-height:calc(100vh - 52px)}
+#panel h2{font-size:16px;margin:0 0 4px}
+#panel .tur{color:var(--mut);font-size:13px;margin-bottom:10px}
+#panel p{margin:0 0 8px}
+#panel ul{margin:0 0 8px 18px;padding:0}
+#panel li{margin:0 0 6px}
+#panel .kutu{border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:10px 0}
+#panel .kutu.ozet{background:var(--vurgu)}
+#panel .kutu h3{font-size:13px;margin:0 0 6px;color:var(--mut)}
+#panel a{color:var(--seans)}
+#panel button.komsu{display:block;width:100%;text-align:left;background:none;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:4px 0;color:var(--fg);cursor:pointer;font:inherit}
+#panel button.komsu:hover{border-color:var(--seans)}
+#panel table{border-collapse:collapse;width:100%;font-size:12.5px}
+#panel td{border-top:1px solid var(--line);padding:3px 4px;vertical-align:top;word-break:break-word}
+#panel td:first-child{color:var(--mut);white-space:nowrap}
+#panel details summary{cursor:pointer;color:var(--mut);font-size:13px}
+.lejant{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+.lejant span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;background:var(--c)}
+.dugum circle{stroke:var(--bg);stroke-width:1.5px;cursor:pointer}
+.dugum text{pointer-events:none;fill:var(--fg)}
+.dugum.secili circle{stroke:var(--merkez);stroke-width:3px}
+.kenar{stroke:var(--mut);stroke-opacity:.45;fill:none}
+.halka{fill:none;stroke:var(--line);stroke-dasharray:3 4}
+.halka-etiket{fill:var(--mut);font-size:11px}
+button.ust{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;color:var(--fg);cursor:pointer;font:inherit}
+code{font-size:12.5px;word-break:break-all}
+@media (max-width:760px){main{flex-direction:column}#panel{width:100%;max-width:none;border-left:none;border-top:1px solid var(--line);max-height:50vh}}
+</style>
+</head>
+<body>
+<header>
+ <h1>Akış grafı: bu oturumdan genele</h1>
+ <small id="asof"></small>
+ <button class="ust" id="merkeze">Merkeze dön (bu chat)</button>
+ <div class="lejant">
+  <span style="--c:var(--seans)">oturum</span>
+  <span style="--c:var(--is-tamam)">iş tamam</span>
+  <span style="--c:var(--is-acik)">iş açık</span>
+  <span style="--c:var(--is-islemde)">iş işlemde</span>
+  <span style="--c:var(--is-bayat)">iş bayat</span>
+  <span style="--c:var(--hedef)">hedef</span>
+ </div>
+</header>
+<main>
+ <div id="graf"><svg></svg></div>
+ <aside id="panel"></aside>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const G = /*VERI*/;
+const Z = /*ZENGIN*/;
+const MERKEZ = /*MERKEZ*/;
+const ASOF = /*ASOF*/;
+const N = new Map(G.dugumler.map(n=>[n.id,n]));
+const komsular = new Map(); G.dugumler.forEach(n=>komsular.set(n.id,[]));
+G.kenarlar.forEach(e=>{ if(N.has(e.k)&&N.has(e.h)){komsular.get(e.k).push({id:e.h,tur:e.tur,yon:"dis"}); komsular.get(e.h).push({id:e.k,tur:e.tur,yon:"ic"});} });
+document.getElementById("asof").textContent = "AS-OF "+ASOF+" · kaynak ortak/akis-graf.json ("+G.meta.dugum_sayisi+" düğüm, "+G.meta.kenar_sayisi+" kenar) + ortak/durum-olay.jsonl + raporlar/seans · merkez = "+MERKEZ;
+
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function hopHesapla(kok){
+  const h=new Map([[kok,0]]); const q=[kok];
+  while(q.length){const u=q.shift(); for(const k of komsular.get(u)){ if(!h.has(k.id)){h.set(k.id,h.get(u)+1); q.push(k.id);} }}
+  let max=0; h.forEach(v=>max=Math.max(max,v));
+  G.dugumler.forEach(n=>{ if(!h.has(n.id)) h.set(n.id,max+1); });
+  return h;
+}
+function renk(n){ if(n.tur==="seans")return"var(--seans)"; if(n.tur==="hedef")return"var(--hedef)";
+  return {tamam:"var(--is-tamam)",acik:"var(--is-acik)",islemde:"var(--is-islemde)",bayat:"var(--is-bayat)"}[n.durum]||"var(--mut)"; }
+function kisa(n,hop){ const e=n.etiket||n.id; if(hop<=1) return e.length>60?e.slice(0,58)+"…":e; if(hop===2) return e.length>26?e.slice(0,24)+"…":e; return n.id.replace("seans:","").replace("is:","#"); }
+function ts(t){ if(!t) return null; return t.replace("T"," ").replace("Z"," UTC"); }
+function adi(id){ const h=N.get(id); return h.tur==="seans"?"Oturum "+h.etiket:(h.tur==="hedef"?"Hedef #":"İş #")+id.split(":")[1]; }
+
+const svg=d3.select("svg"); const g=svg.append("g");
+svg.call(d3.zoom().scaleExtent([.3,4]).on("zoom",ev=>g.attr("transform",ev.transform)));
+let secili=MERKEZ;
+
+function ciz(kok){
+  secili=kok; const hop=hopHesapla(kok);
+  const W=Math.max(700,document.getElementById("graf").clientWidth), H=Math.max(560,document.getElementById("graf").clientHeight);
+  const cx=W/2, cy=H/2, R=Math.min(W,H)/2-40; const maxHop=Math.max(...hop.values());
+  const yaricap=h=>h===0?0:R*(0.28+0.72*(h-1)/Math.max(1,maxHop-1));
+  const gruplar=d3.group(G.dugumler,n=>hop.get(n.id));
+  const poz=new Map();
+  gruplar.forEach((liste,h)=>{ liste.sort((a,b)=>d3.ascending(a.tur+a.id,b.tur+b.id)); const r=yaricap(h);
+    liste.forEach((n,i)=>{ const a=(i/liste.length)*2*Math.PI-Math.PI/2+(h%2)*0.15; poz.set(n.id,{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a),h}); }); });
+  g.selectAll("*").remove();
+  for(let h=1;h<=maxHop;h++){ g.append("circle").attr("class","halka").attr("cx",cx).attr("cy",cy).attr("r",yaricap(h));
+    g.append("text").attr("class","halka-etiket").attr("x",cx+4).attr("y",cy-yaricap(h)-4).text(h+" adım"); }
+  g.selectAll("path.kenar").data(G.kenarlar.filter(e=>poz.has(e.k)&&poz.has(e.h))).join("path").attr("class","kenar")
+    .attr("stroke-width",e=>Math.max(0.6,2.2-0.6*Math.min(poz.get(e.k).h,poz.get(e.h).h)))
+    .attr("d",e=>{const a=poz.get(e.k),b=poz.get(e.h); const mx=(a.x+b.x)/2+(cy-(a.y+b.y)/2)*0.15, my=(a.y+b.y)/2+((a.x+b.x)/2-cx)*0.15; return `M${a.x},${a.y}Q${mx},${my} ${b.x},${b.y}`;})
+    .append("title").text(e=>e.k+" → "+e.h+" ("+e.tur+")");
+  const d=g.selectAll("g.dugum").data(G.dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":""))
+    .attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>{ciz(n.id);});
+  d.append("circle").attr("r",n=>[18,12,8,5.5,4.5][Math.min(poz.get(n.id).h,4)]).attr("fill",renk);
+  d.append("title").text(n=>n.id+" · "+(n.etiket||""));
+  d.append("text").attr("dy",n=>[32,24,18,14,13][Math.min(poz.get(n.id).h,4)]).attr("text-anchor","middle")
+    .attr("font-size",n=>[14,12.5,11,9.5,9][Math.min(poz.get(n.id).h,4)]).text(n=>kisa(n,poz.get(n.id).h));
+  panel(kok,hop);
+}
+
+function durumAcikla(d){ return {tamam:"İş bitti.",acik:"İş açık. Kimse bu işi şu anda yapmıyor.",islemde:"İş işlemde. Bir oturum bu işi yapıyor.",bayat:"İş bayat. Bu iş artık geçerli değil, kayıt durur."}[d]||("Durum: "+d+"."); }
+function kenarCumle(k){
+  const ad=adi(k.id);
+  const m={acti:k.yon==="dis"?"Bu oturum "+ad+" düğümünü açtı.":ad+" bu düğümü açtı.",
+    bitirdi:k.yon==="dis"?"Bu oturum "+ad+" düğümünü bitirdi.":ad+" bu düğümü bitirdi.",
+    girdi:k.yon==="dis"?"Bu düğüm "+ad+" düğümüne girdi verir.":ad+" bu düğüme girdi verir.",
+    hizmet:k.yon==="dis"?"Bu düğüm "+ad+" düğümüne hizmet eder.":ad+" bu düğüme hizmet eder.",
+    sonra:k.yon==="dis"?ad+" bu oturumdan sonra gelir.":ad+" bu oturumdan önce gelir."};
+  return m[k.tur]||(ad+" ile bağ: "+k.tur+".");
+}
+function liste(baslik,arr){ if(!arr||!arr.length) return ""; return "<h3>"+baslik+"</h3><ul>"+arr.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>"; }
+function olayCumle(o){
+  const t=ts(o.ts); const k=(o.kanit||[]).length?" Kanıt: "+o.kanit.map(esc).join("; ")+".":"";
+  const ot=o.oturum?" Oturum: "+esc(o.oturum)+".":"";
+  if(o.olay==="ac") return "<li>"+t+": düğüm açıldı."+ot+k+"</li>";
+  if(o.olay==="al") return "<li>"+t+": bir oturum işi aldı."+ot+"</li>";
+  if(o.olay==="bitir") return "<li>"+t+": iş bitti."+ot+k+"</li>";
+  if(o.olay==="bayatla") return "<li>"+t+": iş bayatladı."+ot+k+"</li>";
+  return "<li>"+t+": "+esc(o.olay)+"</li>";
+}
+function panel(id,hop){
+  const n=N.get(id); const z=Z[id]||{}; const el=document.getElementById("panel"); const c=[];
+  const num=id.split(":")[1];
+  if(n.tur==="seans"){
+    c.push("<h2>Oturum "+esc(n.etiket)+"</h2><div class='tur'>düğüm türü: oturum"+(id===MERKEZ?" · bu chat":"")+"</div>");
+    c.push("<div class='kutu ozet'><h3>Ne oldu (ASD-STE100)</h3>");
+    c.push("<p>Bu düğüm bir oturumdur. Oturum "+ts(n.ac_ts)+" başladı. "+(n.kapat_ts?"Oturum "+ts(n.kapat_ts)+" kapandı.":"Oturum şu anda açıktır.")+"</p>");
+    c.push(n.hedef?"<p>Hedef: "+esc(n.hedef)+"</p>":"<p>Salih bu oturumun hedefini henüz vermedi. Jarvis hedef yazmaz.</p>");
+    if(n.hedef_tutuldu!==null&&n.hedef_tutuldu!==undefined) c.push("<p>Hedef "+(n.hedef_tutuldu?"tutuldu.":"tutulmadı.")+"</p>");
+    if(z.canli){ c.push("<p style='color:var(--mut);font-size:12.5px'>Canlı özet, AS-OF "+esc(z.canli.as_of||"")+". Kapanışta teslim kaydı bunun yerine geçer.</p>"); c.push(liste("Bu oturumda yapılanlar",z.canli.ne_yapildi)); c.push(liste("Salih kararı bekleyenler",z.canli.salih_karar_bekleyen)); }
+    if(z.ozet&&!z.ozet.hata){ c.push(liste("Bu oturumda ne değişti",z.ozet.ne_degisti)); if(z.ozet.sapma) c.push("<h3>Sapma</h3><p>"+esc(z.ozet.sapma)+"</p>"); c.push(liste("Alınan kararlar",z.ozet.kararlar)); c.push(liste("Salih'e kalan kararlar",z.ozet.salih_karar)); c.push(liste("Sonraki ilk iş",z.ozet.sonraki_ilk_is)); c.push(liste("Öğrenilen özütler",z.ozet.ozutler)); }
+    if(!z.canli&&!z.ozet){ const ac=z.olaylar.filter(o=>o.olay==="ac").map(o=>"#"+o.id+" "+(o.is||"")); const bt=z.olaylar.filter(o=>o.olay==="bitir").map(o=>"#"+o.id+(o.kanit&&o.kanit.length?" · kanıt: "+o.kanit.join("; "):"")); c.push("<p>Bu oturumun kayıt dosyası yoktur. Kütük olayları özeti aşağıdadır.</p>"); c.push(liste("Açılan işler",ac)); c.push(liste("Bitirilen işler",bt)); }
+    if(n.ortuk) c.push("<p>Bu oturum örtük kayıttır. Kütük onu sonradan türetti.</p>");
+    c.push("</div>");
+  } else {
+    const ad=n.tur==="hedef"?"Hedef #"+num:"İş #"+num;
+    c.push("<h2>"+ad+"</h2><div class='tur'>düğüm türü: "+n.tur+" · durum: "+n.durum+"</div>");
+    c.push("<div class='kutu ozet'><h3>Ne oldu (ASD-STE100)</h3>");
+    c.push("<p>Bu düğüm bir "+(n.tur==="hedef"?"hedeftir. Hedef, birden çok işi toplar.":"iştir.")+" "+durumAcikla(n.durum)+"</p>");
+    c.push("<p><b>Konu:</b> "+esc(n.etiket)+"</p>");
+    if(n.sonraki_eylem) c.push("<p><b>Sonraki adım:</b> "+esc(n.sonraki_eylem)+"</p>");
+    const bitir=z.olaylar.filter(o=>o.olay==="bitir"&&o.kanit&&o.kanit.length);
+    if(bitir.length) c.push("<p><b>Bitiş kanıtı:</b> "+bitir.map(o=>o.kanit.map(esc).join("; ")).join(" · ")+"</p>");
+    const acK=z.olaylar.filter(o=>o.olay==="ac"&&o.kanit&&o.kanit.length);
+    if(acK.length) c.push("<p><b>Açılış kanıtı:</b> "+acK.map(o=>o.kanit.map(esc).join("; ")).join(" · ")+"</p>");
+    if(z.defter) c.push("<h3>Karar defteri paragrafı</h3><p style='font-size:13px'>"+esc(z.defter)+"</p>");
+    if(n.oturumlar&&n.oturumlar.length) c.push("<p>Bu işe dokunan oturumlar: "+n.oturumlar.map(o=>"<button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='seans:"+esc(o)+"'>"+esc(o)+"</button>").join(" ")+"</p>");
+    c.push("</div>");
+  }
+  if(z.baglantilar&&z.baglantilar.length){ c.push("<div class='kutu'><h3>Ayrıntı metni · tıkla, dosyayı aç</h3><ul>"+z.baglantilar.map(b=>"<li><a href='"+b.url+"' target='_blank'>"+esc(b.ad)+"</a></li>").join("")+"</ul></div>"); }
+  if(z.olaylar&&z.olaylar.length){ c.push("<div class='kutu'><details><summary>Kütük olayları ("+z.olaylar.length+")</summary><ul>"+z.olaylar.map(olayCumle).join("")+"</ul></details></div>"); }
+  const ks=komsular.get(id)||[];
+  c.push("<div class='kutu'><h3>Bağlar ("+ks.length+") · tıkla, oraya git</h3>");
+  ks.sort((a,b)=>hop.get(a.id)-hop.get(b.id)).forEach(k=>{ c.push("<button class='komsu' data-id='"+k.id+"'>"+kenarCumle(k)+"</button>"); });
+  c.push("</div>");
+  c.push("<div class='kutu'><details><summary>Ham alanlar</summary><table>");
+  Object.entries(n).forEach(([k,v])=>{ c.push("<tr><td>"+k+"</td><td>"+(v===null?"—":esc(Array.isArray(v)?v.join(", "):String(v)))+"</td></tr>"); });
+  c.push("</table></details></div>");
+  c.push("<p style='color:var(--mut);font-size:12px'>Merkezden uzaklık: "+hop.get(id)+" adım. Halka arttıkça etiket kısalır, düğüm küçülür.</p>");
+  el.innerHTML=c.join("");
+  el.querySelectorAll("button.komsu").forEach(b=>b.onclick=()=>ciz(b.dataset.id));
+  el.scrollTop=0;
+}
+document.getElementById("merkeze").onclick=()=>ciz(MERKEZ);
+window.addEventListener("resize",()=>ciz(secili));
+ciz(MERKEZ);
+</script>
+</body>
+</html>
