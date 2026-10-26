@@ -151,6 +151,9 @@ func _physics_process(delta: float) -> void:
 	zipla_tampon = maxf(zipla_tampon - delta, 0.0)
 	if _zipla_basildi():
 		zipla_tampon = 0.15
+	# auto-bhop (bunny sunucuları): Space basılı tutulunca her inişte zıpla
+	if Ayarlar.al("bhop") > 0.5 and not sanal_girdi_aktif and Input.is_action_pressed("zipla"):
+		zipla_tampon = maxf(zipla_tampon, 0.05)
 
 	match durum:
 		Durum.YERDE: _yerde(delta, yon, ileri)
@@ -204,7 +207,19 @@ func _yerde(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	if yon != Vector3.ZERO and yatay.length() > hedef_hiz:
 		hedef = yon * yatay.length()
 		ivme = zemin_fren * 0.5
-	yatay = yatay.move_toward(hedef, ivme * delta)
+	if Ayarlar.al("bhop") > 0.5 and yatay.length() > hedef_hiz:
+		# Source Friction: control = max(hız, stopspeed); düşüş = control * sürtünme * dt
+		var hiz0 := yatay.length()
+		var kontrol: float = maxf(hiz0, 3.0)
+		var yeni: float = maxf(hiz0 - kontrol * Ayarlar.al("bhop_surtunme") * delta, hedef_hiz)
+		yatay = yatay * (yeni / hiz0)
+		if yon != Vector3.ZERO:
+			var mevcut := yatay.dot(yon)
+			var eklenecek := hedef_hiz - mevcut
+			if eklenecek > 0.0:
+				yatay += yon * minf(zemin_ivme * delta, eklenecek)
+	else:
+		yatay = yatay.move_toward(hedef, ivme * delta)
 	velocity.x = yatay.x
 	velocity.z = yatay.z
 	velocity.y = -2.0
@@ -239,21 +254,35 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	velocity.y -= yercekimi * delta
 	dusme_hizi = minf(velocity.y, dusme_hizi)
 	coyote = maxf(coyote - delta, 0.0)
-	hava_ivme = Ayarlar.al("hava_ivme")
 	var yatay := yatay_hiz()
 	if yon != Vector3.ZERO:
-		# Hava kontrolü: hız vektörü büyüklüğünü koruyarak girdi/bakış yönüne döner
-		# (fareyle çizilen yay zıplama yayını eş zamanlı büker); ek olarak küçük ivme.
+		# 1) Bakış takibi (Dying Light): hız vektörü büyüklüğünü koruyarak girdi yönüne döner.
 		var donus_hizi: float = deg_to_rad(Ayarlar.al("hava_donus"))
-		if yatay.length() > 0.5:
+		if donus_hizi > 0.0 and yatay.length() > 0.5:
 			var aci := yatay.signed_angle_to(yon, Vector3.UP)
 			yatay = yatay.rotated(Vector3.UP, clampf(aci, -donus_hizi * delta, donus_hizi * delta))
-		var hedef := yon * maxf(yatay.length(), kosu_hizi * 0.9)
-		yatay = yatay.move_toward(hedef, hava_ivme * delta)
+		# 2) Source AirAccelerate (CS bunny hop): istenen yöndeki hız bileşeni tavanı aşamaz,
+		#    eklenen ivme = min(airaccel * wishspeed * dt, tavan - v·wishdir). Yan tuş + fare
+		#    dönüşüyle her karede tavan kadar yeni bileşen eklenir → hız birikir.
+		var wishspeed: float = lerpf(kosu_hizi, sprint_hizi, momentum)
+		var tavan: float = Ayarlar.al("bhop_tavan")
+		var mevcut := yatay.dot(yon)
+		var eklenecek := minf(wishspeed, tavan) - mevcut
+		if eklenecek > 0.0:
+			var ivme: float = minf(Ayarlar.al("bhop_hava_ivme") * wishspeed * delta, eklenecek)
+			yatay += yon * ivme
 	velocity.x = yatay.x
 	velocity.z = yatay.z
 
 	if is_on_floor():
+		# bunny hop: yere değilen karede zıplama basılıysa sürtünme/iniş kaybı olmadan zıpla
+		if zipla_tampon > 0.0 and Ayarlar.al("bhop") > 0.5:
+			zipla_tampon = 0.0
+			dusme_hizi = 0.0
+			son_duvar_id = 0
+			Ses.cal("adim", -8.0, 1.1)
+			_zipla(1.0)
+			return
 		_inis()
 		return
 	if yon.dot(ileri) > 0.3 and velocity.y < 7.0 and _tirmanma_dene():
