@@ -270,6 +270,7 @@ func _zipla(carpan: float) -> void:
 		_ayaga_kalk()
 	velocity.y = ziplama_hizi * carpan
 	coyote = 0.0
+	kayma_istek = 0.0
 	_durum_degistir(Durum.HAVADA)
 	eller.call("zipla")
 	Ses.cal("zipla", -10.0, randf_range(0.9, 1.1))
@@ -300,10 +301,9 @@ func _havada(delta: float, yon: Vector3, ileri: Vector3) -> void:
 	velocity.x = yatay.x
 	velocity.z = yatay.z
 
-	# havada Ctrl tık: inişte kayma isteği (0.6 sn geçerli)
-	if _kay_tiklandi():
-		kayma_istek = 0.6
-	kayma_istek = maxf(kayma_istek - delta, 0.0)
+	# havada herhangi bir anda Ctrl (tık ya da basılı) → iniş anında kayma (MW2019); istek inişe kadar kalır
+	if _kay_tiklandi() or (not sanal_girdi_aktif and Input.is_action_pressed("kay")):
+		kayma_istek = 1.0
 
 	if is_on_floor():
 		# bunny hop: yere değilen karede zıplama basılıysa sürtünme/iniş kaybı olmadan zıpla
@@ -351,10 +351,11 @@ func _inis() -> void:
 	dusme_hizi = 0.0
 	son_duvar_id = 0
 	_durum_degistir(Durum.YERDE)
-	# inişte kayma (havada Ctrl tıklandıysa)
-	if kayma_istek > 0.0 and yatay_hiz().length() > 6.0:
+	# inişte kayma (havadayken Ctrl basıldıysa)
+	if kayma_istek > 0.0:
 		kayma_istek = 0.0
-		_kayma_baslat(yatay_hiz())
+		if yatay_hiz().length() > 6.0:
+			_kayma_baslat(yatay_hiz())
 
 
 # ---------------- DUVAR KOŞUSU ----------------
