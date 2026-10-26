@@ -25,6 +25,31 @@ def dosya_url(yol):
         if p.exists(): return p.as_uri()
     return None
 
+KATEGORI_KURALI = [  # (regex etikette, kategori) — sıra önemli, ilk eşleşen kazanır
+    (r"Portal Parkur|oyun|oynayıp", "Portal Parkur (oyun demosu)"),
+    (r"\bCV\b", "CV"),
+    (r"veri bilimi|claude-mods|öğrenme şeridi", "öğrenme şeritleri"),
+    (r"md'siz", "Karar 113 md'siz koşum"),
+    (r"Rust|Lean|hook|dispatcher|session-start|stop-buyuk|durum ts|test oranı|paket niyet|Herdr|skill revizyonu|ritüel|tetik-denetim|sabit güncellik", "Rust/Lean geçişi (Karar 117)"),
+    (r"Karar (\d{2,3})", None),  # None → "Karar NNN" olarak üretilir
+    (r"durum kütüğü|SessionStart hook brifi|seans teslim", "durum kütüğü / seans kaydı"),
+    (r"push teli|alan ajanı", "alan ajanı altyapısı"),
+]
+
+def kategori_bul(n, G):
+    """İş düğümünün üst başlığı: hizmet ettiği hedef; yoksa etiket anahtar sözcüğü; yoksa 'genel'."""
+    if n["tur"] == "hedef":
+        m = re.search(r"Karar (\d{2,3})", n.get("etiket") or ""); return ("Karar %s hedefi" % m.group(1)) if m else "hedef"
+    for e in G["kenarlar"]:
+        if e["tur"] == "hizmet" and e["k"] == n["id"]:
+            h = next((d for d in G["dugumler"] if d["id"] == e["h"]), None)
+            if h: return kategori_bul(h, G)
+    et = n.get("etiket") or ""
+    for rx, kat in KATEGORI_KURALI:
+        m = re.search(rx, et)
+        if m: return kat if kat else "Karar %s" % m.group(1)
+    return "genel"
+
 def defter_paragraf(metin, karar_no):
     m = re.search(r"\*\*Karar %s\b[^\n]*" % re.escape(karar_no), metin)
     if not m: return None
@@ -44,7 +69,7 @@ def main():
 
     Z = {}
     for n in G["dugumler"]:
-        z = {"olaylar": [], "baglantilar": [], "ozet": None, "defter": None, "canli": None}
+        z = {"olaylar": [], "baglantilar": [], "ozet": None, "defter": None, "canli": None, "kategori": None if n["tur"] == "seans" else kategori_bul(n, G)}
         if n["tur"] == "seans":
             ad = n["etiket"]
             for o in olaylar:
