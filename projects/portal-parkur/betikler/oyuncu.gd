@@ -64,6 +64,7 @@ var mc_hareket := Vector3.ZERO
 var mc_birikim := 0.0
 var mc_senkron_gerek := true
 var mc_yerde_tick := 0
+var mc_kayganlik := 0.6
 var bhop_zincir := 0
 var ucus_parkur := false
 var firlat_kare := -10
@@ -155,13 +156,15 @@ func _mc_tick(yerde: bool) -> bool:
 				mc_v.x = v_ms.x / olc
 				mc_v.z = v_ms.z / olc
 		else:
-			var hiz: float = (0.13 if mc_sprint else 0.1) if yerde else (0.026 if mc_sprint else 0.02)
+			# getFrictionInfluencedSpeed: yerde speed * 0.216 / f³ (f = blok kayganlığı; 0.6 → 1.0, buz 0.98 → 0.23)
+			var f := mc_kayganlik
+			var hiz: float = (0.13 if mc_sprint else 0.1) * (0.21600002 / (f * f * f)) if yerde else (0.026 if mc_sprint else 0.02)
 			mc_v += (global_basis * yerel) * hiz
 	# hareket bu (sürtünme öncesi) hızla yapılır; çarpışma move_and_slide ile tick'ler arasında
 	mc_hareket = mc_v
 	# sonra yerçekimi + atalet bir sonraki tick için (bhop: havada ve zıplama tick'inde sürtünme yok)
 	mc_v.y -= 0.08
-	var atalet: float = 0.546 if (yerde and not zipladi) else (1.0 if bhop else 0.91)
+	var atalet: float = (mc_kayganlik * 0.91) if (yerde and not zipladi) else (1.0 if bhop else 0.91)
 	mc_v.x *= atalet
 	mc_v.z *= atalet
 	mc_v.y *= 0.98
@@ -185,6 +188,21 @@ func _mc_adim(delta: float, yerde: bool) -> bool:
 ## move_and_slide sonrası: kayan hız ve zemin/tavan teması tick durumuna geri yazılır.
 func _mc_geri_oku() -> void:
 	var v := _mc_bt(velocity)
+	# zemin bloğu: kayganlık (buz 0.98) ve zıplatıcı (slime) meta verisi
+	if is_on_floor():
+		for i in get_slide_collision_count():
+			var c := get_slide_collision(i)
+			if c.get_normal().y > 0.7:
+				var g: Object = c.get_collider()
+				if g:
+					mc_kayganlik = float(g.get_meta("kayganlik", 0.6))
+					if g.get_meta("ziplatici", false) and mc_hareket.y < -0.15:
+						mc_v.y = -mc_hareket.y * 0.95
+						mc_hareket.y = mc_v.y
+						Ses.cal("zipla", -6.0, 0.7)
+						mc_son_kare = Engine.get_physics_frames()
+						return
+				break
 	# yatay çarpışma: kayan hız hareket hızından saptıysa (duvar) o bileşen tick durumuna yazılır
 	if absf(v.x - mc_hareket.x) > 1.0e-5:
 		mc_v.x = v.x

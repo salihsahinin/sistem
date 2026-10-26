@@ -34,6 +34,11 @@ Birinci şahıs parkur + portal oyunu: Mirror's Edge tarzı beyaz çatılarda ko
 - `betikler/test_kosum.gd` otomatik test (sanal girdi + ekran görüntüsü).
 - `sahneler/portal.tscn` eklentinin Portal3D düğümü elle kurulmuş (çalışma zamanında yerleştirilir).
 
+## Haritalar (F4 → `seviye`, yeniden başlatınca)
+
+- **0 = Bunny hop kursu (varsayılan):** Minecraft bhop sunucu haritası düzeni, `betikler/seviye_bhop.gd`. Sıra: başlangıç → düz boşluklar 3→5 blok → KN → yılan (strafe) → KN → aşağı merdiven (hız) + 9 blok atlayış → KN → buz pisti (kayganlık 0,98, Minecraft formülü) + 8 blok → KN → 1x1 sütunlar → KN → yana kayan platformlar → KN → slime zıplatıcı + yukarı merdiven → KN → 20 blok pist + 11 blok final (zincir hızı) → bitiş. Altın plaka = kontrol noktası; düşünce son noktaya dönüş; HUD'da zincir sayacı.
+- **1 = Çatı + portal odaları:** ilk harita (Mirror's Edge çatıları, Aperture odaları); otomatik testler bunu kullanır.
+
 ## Hareket modelleri (F4 → `model`)
 
 - **1 = Minecraft (varsayılan):** `referans/azalea` içindeki `azalea-physics` (Java istemcinin `LivingEntity.travel` portu) birebir: 20 tick/sn; girdi ±0,98 (çapraz normalize); yerde ivme 0,1 b/t (sprint 0,13), havada 0,02 (0,026); hareket sürtünme öncesi hızla; sonra yerçekimi 0,08, yatay atalet 0,546 yerde / 0,91 havada, dikey 0,98; zıplama 0,42 + sprintte bakış yönüne 0,2; Space basılıyken 10 tick aralıkla otomatik zıplama; sprint görüş açısı ×1,15; çömelmede girdi ×0,3. 1 blok = 1 m (`mc_olcek` ile büyütülür). Sonuç yürüme 4,3 m/s, sprint 5,61 m/s (wiki 5,612).

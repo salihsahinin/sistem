@@ -8,6 +8,7 @@ const YOL := "user://ayarlar.cfg"
 
 ## ad: [varsayılan, min, max, adım, açıklama]
 const TANIM := {
+	"seviye": [0.0, 0.0, 1.0, 1.0, "harita (yeniden başlatınca): 0 = bunny hop kursu · 1 = çatı + portal odaları"],
 	"model": [1.0, 0.0, 1.0, 1.0, "hareket modeli: 1 = Minecraft (20 tick, azalea-physics portu) · 0 = parkur (DL/CS/MW)"],
 	"mc_olcek": [3.0, 0.5, 6.0, 0.1, "Minecraft yatay hız ölçeği (1 = birebir; 3 = başlangıç 3 kat)"],
 	"mc_olcek_y": [1.5, 0.5, 4.0, 0.1, "Minecraft dikey ölçek (zıplama yüksekliği 1.25 blok × bu; yerçekimi de ölçeklenir)"],

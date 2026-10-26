@@ -4,6 +4,7 @@ extends Node3D
 signal kontrol_noktasi(poz: Vector3, yaw: float)
 signal bitis
 signal firlat(v: Vector3)
+signal bilgi(metin: String)
 
 const PANEL := preload("res://shaderlar/panel.gdshader")
 

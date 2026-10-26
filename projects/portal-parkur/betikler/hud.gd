@@ -152,7 +152,8 @@ func mesaj(m: String, sure := 2.0) -> void:
 func guncelle(oyuncu: Node, sure: float, delta: float) -> void:
 	var v: Vector3 = oyuncu.velocity
 	var hiz := Vector3(v.x, 0, v.z).length()
-	hiz_lbl.text = "%4.1f m/s" % hiz
+	var zincir: int = oyuncu.get("bhop_zincir")
+	hiz_lbl.text = "%4.1f m/s" % hiz + ("   zincir %d  ×%.2f" % [zincir, 1.0 + Ayarlar.al("bhop_zincir_bonus") * minf(zincir, 15.0)] if zincir > 0 else "")
 	sure_lbl.text = "%02d:%05.2f" % [int(sure / 60.0), fmod(sure, 60.0)]
 	if Input.is_action_just_pressed("hata_ayik"):
 		hata_ayik = not hata_ayik

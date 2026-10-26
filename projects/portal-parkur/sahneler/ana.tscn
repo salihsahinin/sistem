@@ -1,15 +1,11 @@
 [gd_scene format=4]
 
 [ext_resource type="Script" path="res://betikler/ana.gd" id="1"]
-[ext_resource type="Script" path="res://betikler/seviye.gd" id="2"]
 [ext_resource type="PackedScene" path="res://sahneler/oyuncu.tscn" id="3"]
 [ext_resource type="Script" path="res://betikler/hud.gd" id="4"]
 
 [node name="Ana" type="Node3D"]
 script = ExtResource("1")
-
-[node name="Seviye" type="Node3D" parent="."]
-script = ExtResource("2")
 
 [node name="Oyuncu" parent="." instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 9)
