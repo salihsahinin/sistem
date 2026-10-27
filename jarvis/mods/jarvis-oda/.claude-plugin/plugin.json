@@ -1,0 +1,15 @@
+{
+  "name": "jarvis-oda",
+  "version": "0.1.0",
+  "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano, öneri-karar kapısı, çok-ajanlı senkron (lobi eşgörevi).",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "otoUyandir": {
+      "type": "boolean",
+      "default": true,
+      "description": "İşçi görevi bittiğinde oturum boşsa Jarvis'i uyandır (prompt kuyruğuna rapor düşer).",
+      "title": "Jarvis'i uyandır"
+    }
+  },
+  "license": "MIT"
+}

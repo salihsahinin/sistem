@@ -1,0 +1,3 @@
+# jarvis-graf
+
+Akış grafı paneli: `ortak/akis-graf.json` (Karar 122 kütük görünümü, Karar 124/125 HTML tasarımının pane karşılığı) Claude Code içinde canlı bir pane olarak çizilir. Masaüstünde SVG: üç bant (hedef · iş · seans), x ekseni açılış sırası, dolgu rengi durum (açık kırmızı, işlemde sarı, tamam yeşil, bayat gri). Alan ve "yalnız açık" filtreleri, iş listesinden düğüm seçimi ve kenar listesiyle detay. "HTML aç" düğmesi `tools/akis-graf-html.py` üreticisini koşturup çıktıyı açar; "durum graf" düğmesi Rust `durum graf` ile JSON ve D2'yi tazeler. Dosya değişince (10 sn) pane kendiliğinden yenilenir. Komut: `/graf`.

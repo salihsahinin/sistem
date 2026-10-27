@@ -1,0 +1,7 @@
+{
+  "name": "jarvis-graf",
+  "version": "0.1.0",
+  "description": "Akış grafı paneli: ortak/akis-graf.json (Karar 122/125) Claude Code içinde canlı pane; tür×kategori bantları, durum renkleri, düğüm detayı, HTML/D2 yenileme.",
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}
