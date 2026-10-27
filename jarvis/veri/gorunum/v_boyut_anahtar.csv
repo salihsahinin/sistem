@@ -1,30 +1,30 @@
 anahtar_id,tur,deger,durum,replaced_by,gecerli_bas,gecerli_bitis,referans_sayisi,sicak_referans_sayisi,ilk_gorulme,son_gorulme
-anahtar_terim:ana-sira,anahtar_terim,ana-sira,gozlenen,,,,1181,42,2026-07-19T16:54:21Z,2026-10-25T21:12:28+03:00
+anahtar_terim:ana-sira,anahtar_terim,ana-sira,gozlenen,,,,1183,42,2026-07-19T16:54:21Z,2026-10-25T21:12:28+03:00
 anahtar_terim:antitez,anahtar_terim,antitez,gozlenen,,,,3938,29,2026-07-19T16:54:21Z,2026-09-18T14:36:35+03:00
 anahtar_terim:atlas,anahtar_terim,atlas,gozlenen,,,,2854,34,2026-07-19T16:54:21Z,2026-09-18T14:36:35+03:00
 anahtar_terim:celiski,anahtar_terim,celiski,gozlenen,,,,2164,82,2026-07-19T16:54:21Z,2026-10-25T21:12:28+03:00
 anahtar_terim:cowork,anahtar_terim,cowork,gozlenen,,,,749,37,2026-08-17T10:58:24+03:00,2026-09-18T14:36:35+03:00
 anahtar_terim:damitma,anahtar_terim,damitma,gozlenen,,,,953,52,2026-08-15T21:51:01+03:00,2026-09-28T10:02:34+03:00
-anahtar_terim:gunaydin,anahtar_terim,gunaydin,gozlenen,,,,455,48,2026-08-17T10:58:24+03:00,2026-09-18T14:17:11+03:00
+anahtar_terim:gunaydin,anahtar_terim,gunaydin,gozlenen,,,,456,48,2026-08-17T10:58:24+03:00,2026-09-18T14:17:11+03:00
 anahtar_terim:hakem,anahtar_terim,hakem,gozlenen,,,,3663,58,2026-08-17T10:58:24+03:00,2026-09-18T14:36:35+03:00
 anahtar_terim:halusinasyon,anahtar_terim,halusinasyon,gozlenen,,,,843,42,2026-09-09T11:33:22+03:00,2026-10-25T21:12:28+03:00
 anahtar_terim:ingest,anahtar_terim,ingest,gozlenen,,,,1495,76,2026-07-22T18:54:23Z,2026-10-25T21:12:28+03:00
 anahtar_terim:kapsul,anahtar_terim,kapsul,gozlenen,,,,2283,72,2026-08-17T10:32:58+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:katman-1,anahtar_terim,katman-1,gozlenen,,,,1469,72,2026-08-17T10:32:58+03:00,2026-10-25T21:12:28+03:00
+anahtar_terim:katman-1,anahtar_terim,katman-1,gozlenen,,,,1470,72,2026-08-17T10:32:58+03:00,2026-10-25T21:12:28+03:00
 anahtar_terim:katman-2,anahtar_terim,katman-2,gozlenen,,,,402,12,2026-07-22T18:54:23Z,2026-10-25T21:12:28+03:00
-anahtar_terim:pano,anahtar_terim,pano,gozlenen,,,,1070,40,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
+anahtar_terim:pano,anahtar_terim,pano,gozlenen,,,,1078,40,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
 anahtar_terim:pipeline,anahtar_terim,pipeline,gozlenen,,,,1252,31,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:seans basi,anahtar_terim,seans basi,gozlenen,,,,224,23,2026-08-20T13:21:06+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:seans bitimi,anahtar_terim,seans bitimi,gozlenen,,,,124,7,2026-08-20T13:21:06+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:sema,anahtar_terim,sema,gozlenen,,,,3859,135,2026-07-19T09:29:26Z,2026-10-25T21:12:28+03:00
+anahtar_terim:seans basi,anahtar_terim,seans basi,gozlenen,,,,223,23,2026-08-20T13:21:06+03:00,2026-10-25T21:12:28+03:00
+anahtar_terim:seans bitimi,anahtar_terim,seans bitimi,gozlenen,,,,123,7,2026-08-20T13:21:06+03:00,2026-10-25T21:12:28+03:00
+anahtar_terim:sema,anahtar_terim,sema,gozlenen,,,,3860,135,2026-07-19T09:29:26Z,2026-10-25T21:12:28+03:00
 anahtar_terim:skill,anahtar_terim,skill,gozlenen,,,,9367,309,2026-08-15T21:51:01+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:staj,anahtar_terim,staj,gozlenen,,,,777,57,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:terminal,anahtar_terim,terminal,gozlenen,,,,404,15,2026-08-17T10:58:24+03:00,2026-09-18T14:17:11+03:00
+anahtar_terim:staj,anahtar_terim,staj,gozlenen,,,,776,57,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
+anahtar_terim:terminal,anahtar_terim,terminal,gozlenen,,,,405,15,2026-08-17T10:58:24+03:00,2026-09-18T14:17:11+03:00
 anahtar_terim:tuzuk,anahtar_terim,tuzuk,gozlenen,,,,1128,66,2026-07-19T09:16:16Z,2026-10-25T21:12:28+03:00
 anahtar_terim:uyucam,anahtar_terim,uyucam,gozlenen,,,,52,5,2026-09-09T10:45:37+03:00,2026-09-18T11:11:14+03:00
 anahtar_terim:vardiya,anahtar_terim,vardiya,gozlenen,,,,1302,88,2026-08-15T21:51:01+03:00,2026-09-28T10:02:34+03:00
 anahtar_terim:workflow,anahtar_terim,workflow,gozlenen,,,,1144,15,2026-08-17T21:55:24+03:00,2026-10-25T21:12:28+03:00
-anahtar_terim:yan-oturum,anahtar_terim,yan-oturum,gozlenen,,,,505,10,2026-07-19T16:54:21Z,2026-10-25T21:12:28+03:00
+anahtar_terim:yan-oturum,anahtar_terim,yan-oturum,gozlenen,,,,504,10,2026-07-19T16:54:21Z,2026-10-25T21:12:28+03:00
 anahtar_terim:zarf,anahtar_terim,zarf,gozlenen,,,,184,18,2026-08-17T21:55:24+03:00,2026-09-18T14:36:35+03:00
 kart:K-002,kart,K-002,gozlenen,,,,61,1,2026-08-17T10:58:24+03:00,2026-09-18T14:17:11+03:00
 kart:K-003,kart,K-003,gozlenen,,,,6,1,2026-09-09T10:45:37+03:00,2026-09-18T14:17:11+03:00
@@ -62,8 +62,8 @@ skill:karar-modeli,skill,karar-modeli,gozlenen,,,,229,10,2026-07-22T18:54:23Z,20
 skill:lojik-ceviri,skill,lojik-ceviri,gozlenen,,,,34,2,2026-09-09T11:33:22+03:00,2026-09-18T14:17:11+03:00
 skill:ogren,skill,ogren,gozlenen,,,,183,7,2026-09-09T11:33:22+03:00,2026-09-18T14:36:35+03:00
 skill:pipeline-kosum,skill,pipeline-kosum,gozlenen,,,,94,3,2026-08-30T10:15:17+03:00,2026-09-18T14:17:11+03:00
-skill:seans-acilis,skill,seans-acilis,gozlenen,,,,474,10,2026-08-17T21:55:24+03:00,2026-10-25T21:12:28+03:00
-skill:seans-kapanis,skill,seans-kapanis,gozlenen,,,,459,14,2026-08-30T10:15:17+03:00,2026-10-25T21:12:28+03:00
+skill:seans-acilis,skill,seans-acilis,gozlenen,,,,473,10,2026-08-17T21:55:24+03:00,2026-10-25T21:12:28+03:00
+skill:seans-kapanis,skill,seans-kapanis,gozlenen,,,,462,14,2026-08-30T10:15:17+03:00,2026-10-25T21:12:28+03:00
 skill:sinav-grill,skill,sinav-grill,gozlenen,,,,30,2,2026-09-09T11:33:22+03:00,2026-09-18T11:35:38+03:00
 skill:skill-kapisi,skill,skill-kapisi,gozlenen,,,,196,10,2026-08-15T21:51:01+03:00,2026-09-18T14:17:11+03:00
 skill:wiki-sayfa-yaz,skill,wiki-sayfa-yaz,gozlenen,,,,57,1,2026-09-09T11:33:22+03:00,2026-09-16T15:17:13+03:00
@@ -141,7 +141,7 @@ tuzuk_madde:m.5,tuzuk_madde,m.5,gozlenen,,,,78,1,2026-08-17T10:58:24+03:00,2026-
 tuzuk_madde:m.53,tuzuk_madde,m.53,gozlenen,,,,1,0,2026-09-09T11:33:22+03:00,2026-09-09T11:33:22+03:00
 tuzuk_madde:m.6,tuzuk_madde,m.6,gozlenen,,,,120,1,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
 tuzuk_madde:m.7,tuzuk_madde,m.7,gozlenen,,,,48,7,2026-08-20T23:46:02+03:00,2026-10-25T21:12:28+03:00
-tuzuk_madde:m.8,tuzuk_madde,m.8,gozlenen,,,,574,41,2026-07-12T14:09:44+03:00,2026-10-25T21:12:28+03:00
+tuzuk_madde:m.8,tuzuk_madde,m.8,gozlenen,,,,576,41,2026-07-12T14:09:44+03:00,2026-10-25T21:12:28+03:00
 tuzuk_madde:m.84,tuzuk_madde,m.84,gozlenen,,,,3,0,2026-09-09T11:33:22+03:00,2026-09-09T11:45:58+03:00
 tuzuk_madde:m.9,tuzuk_madde,m.9,gozlenen,,,,229,11,2026-08-17T10:58:24+03:00,2026-10-25T21:12:28+03:00
 tuzuk_madde:md.0,tuzuk_madde,md.0,gozlenen,,,,21,0,2026-08-17T10:58:24+03:00,2026-09-09T11:45:58+03:00
@@ -149,7 +149,7 @@ tuzuk_madde:md.1,tuzuk_madde,md.1,gozlenen,,,,83,0,2026-09-09T11:33:22+03:00,202
 tuzuk_madde:md.10,tuzuk_madde,md.10,gozlenen,,,,10,0,2026-09-09T11:33:22+03:00,2026-09-09T11:45:58+03:00
 tuzuk_madde:md.11,tuzuk_madde,md.11,gozlenen,,,,26,1,2026-09-09T11:33:22+03:00,2026-10-25T21:12:28+03:00
 tuzuk_madde:md.12,tuzuk_madde,md.12,gozlenen,,,,12,1,2026-09-09T11:33:22+03:00,2026-09-18T14:36:35+03:00
-tuzuk_madde:md.13,tuzuk_madde,md.13,gozlenen,,,,20,0,2026-09-09T11:33:22+03:00,2026-09-18T14:17:11+03:00
+tuzuk_madde:md.13,tuzuk_madde,md.13,gozlenen,,,,21,0,2026-09-09T11:33:22+03:00,2026-09-18T14:17:11+03:00
 tuzuk_madde:md.14,tuzuk_madde,md.14,gozlenen,,,,24,0,2026-09-09T11:33:22+03:00,2026-09-18T14:17:11+03:00
 tuzuk_madde:md.15,tuzuk_madde,md.15,gozlenen,,,,18,0,2026-09-09T11:33:22+03:00,2026-09-18T14:36:35+03:00
 tuzuk_madde:md.159,tuzuk_madde,md.159,gozlenen,,,,1,0,2026-09-09T11:33:22+03:00,2026-09-09T11:33:22+03:00
@@ -339,9 +339,12 @@ wiki_sayfa:feedback-gorsel-mekanizma-degil-metin-kutusu,wiki_sayfa,feedback-gors
 wiki_sayfa:feedback-icra-listesi-onaysiz-devam,wiki_sayfa,feedback-icra-listesi-onaysiz-devam,gozlenen,,,,2,0,,
 wiki_sayfa:feedback-ogretim-iskeleti-ogren-sektor-basligi,wiki_sayfa,feedback-ogretim-iskeleti-ogren-sektor-basligi,gozlenen,,,,1,0,,
 wiki_sayfa:feedback-oturum-acma-worktree-beyani,wiki_sayfa,feedback-oturum-acma-worktree-beyani,gozlenen,,,,1,0,,
+wiki_sayfa:feedback-oturum-hedefini-salih-koyar,wiki_sayfa,feedback-oturum-hedefini-salih-koyar,gozlenen,,,,2,0,,
 wiki_sayfa:feedback-parallel-sessions-keep-talking,wiki_sayfa,feedback-parallel-sessions-keep-talking,gozlenen,,,,3,0,,
 wiki_sayfa:feedback-quiz-dogru-cevap-rastgele-konum,wiki_sayfa,feedback-quiz-dogru-cevap-rastgele-konum,gozlenen,,,,1,0,,
+wiki_sayfa:feedback-seans-basi-tetik-gunaydin-degil,wiki_sayfa,feedback-seans-basi-tetik-gunaydin-degil,gozlenen,,,,1,0,,
 wiki_sayfa:feedback-token-kisinti-yuzde30,wiki_sayfa,feedback-token-kisinti-yuzde30,gozlenen,,,,3,0,,
+wiki_sayfa:feedback-urun-ayri-repo,wiki_sayfa,feedback-urun-ayri-repo,gozlenen,,,,2,0,,
 wiki_sayfa:feedback-vurgusuz-anlatim-capslock-yok,wiki_sayfa,feedback-vurgusuz-anlatim-capslock-yok,gozlenen,,,,1,0,,
 wiki_sayfa:feedback-yuzey-tercihi-secenekli,wiki_sayfa,feedback-yuzey-tercihi-secenekli,gozlenen,,,,1,0,,
 wiki_sayfa:fetch-ozetleyici-kurgu-bayragi,wiki_sayfa,fetch-ozetleyici-kurgu-bayragi,gozlenen,,,,1,0,,
@@ -368,6 +371,8 @@ wiki_sayfa:pointer-sistemi,wiki_sayfa,pointer-sistemi,gozlenen,,,,24,0,2026-08-2
 wiki_sayfa:pratik-salih-eli,wiki_sayfa,pratik-salih-eli,gozlenen,,,,1,0,,
 wiki_sayfa:project-ekip-lideri-ayri-repo,wiki_sayfa,project-ekip-lideri-ayri-repo,gozlenen,,,,2,0,,
 wiki_sayfa:project-evals-ogrenme-serisi,wiki_sayfa,project-evals-ogrenme-serisi,gozlenen,,,,1,0,,
+wiki_sayfa:project-graf-icinde-graf-karar-125,wiki_sayfa,project-graf-icinde-graf-karar-125,gozlenen,,,,1,0,,
+wiki_sayfa:project-portal-parkur,wiki_sayfa,project-portal-parkur,gozlenen,,,,1,0,,
 wiki_sayfa:rol-katmanlari,wiki_sayfa,rol-katmanlari,gozlenen,,,,1,0,2026-09-15T15:17:32+03:00,2026-09-15T15:17:32+03:00
 wiki_sayfa:silver-saglik,wiki_sayfa,silver-saglik,gozlenen,,,,11,0,2026-09-15T15:17:32+03:00,2026-09-18T12:30:49+03:00
 wiki_sayfa:skill-hazinesi-secim-isabeti,wiki_sayfa,skill-hazinesi-secim-isabeti,gozlenen,,,,1,0,2026-09-15T15:17:32+03:00,2026-09-15T15:17:32+03:00

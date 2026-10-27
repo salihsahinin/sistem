@@ -1,0 +1,123 @@
+{
+  "hedef": "Salih: video (Claude mods, 3 fikir) analizi; iki mod kurulur: jarvis-oda (lobi eşgörevi, Fable planlar / Haiku-Sonnet-Opus uygular, çok-ajanlı) + jarvis-graf (akış grafı paneli); plansız icra + siber güvenlik dışı + otomasyon odağı kaydı",
+  "hedef_tutuldu": true,
+  "sapma": "Modlar kuruldu ve çalıştı; Salih 'istediğim seviyede değil, itere edilmeli' dedi. İterasyon fark listesi Salih'ten bekler.",
+  "ne_degisti": [
+    "Video (Instagram, 45 sn) karelerden çözüldü: oturumlar arası mesajlaşma, Claude Code içi ajan panosu, zorluğa göre model yönlendirme.",
+    "Karar 126 deftere yazıldı: fikir = plansız icra, siber güvenlik konusu ve örneği yok, odak otomasyon + human-in-the-loop (commit 4c6cdf4).",
+    "jarvis-oda modu yazıldı ve çalıştı: oda, plan, görev dağıtımı (kolay→Haiku, orta→Sonnet, zor→Opus), işçi raporu, öneri-karar kapısı, pano (mods/jarvis-oda).",
+    "jarvis-oda v0.2: anlık paralel işçi sayısı değişken (maksParalel, kuyruk, panoda −/+) ve ortak sohbet (Salih/Jarvis/tüm işçiler, #N adresleme) (commit 0bce6f4).",
+    "jarvis-graf modu yazıldı: akış grafı pane (SVG bantlar hedef/iş/seans, filtre, düğüm detayı, HTML aç, durum graf) (mods/jarvis-graf).",
+    "Duman testi geçti: Haiku işçisi görevi bitirdi, sohbete cevap verdi, öneri bıraktı, Jarvis [oda] mesajıyla uyandı.",
+    "Kurulum: ~/.claude/settings.json CLAUDE_CODE_PLUGIN_DIRS iki mod yolu; README kurulum bölümü (commit a0a950f).",
+    "Modlar lobi MCP kullanmaz; durum $.store/$.state içinde yerel.",
+    "Kanon kopyası jarvis/mods/ (görünür klasör); kaynak-kodu/README.md satırı eklendi."
+  ],
+  "kararlar": [
+    {
+      "ad": "Karar 126",
+      "ozet": "Fikir plan taslağı değil doğrudan icra; siber güvenlik konusu ve örneği kullanılmaz; odak otomasyon ve human-in-the-loop; Jarvis üç mod fikrini kendi önerisi olarak üretebilir.",
+      "kaynak": "Salih beyanı 2026-10-27, defter Karar 126",
+      "gerekce": "Plan birikimi icrayı geciktirdi; önceki örnekler güvenlik temalıydı.",
+      "geri_acma": "Salih kararı."
+    }
+  ],
+  "adaylar": [
+    "Oda panosunda tam rapor görünümü (aç/kapa) ve oda geçmişi seçici.",
+    "Graf panelinde tıklanabilir SVG, kenar lejantı, kırıntı yolu ve hedef alt-grafı.",
+    "Kural adayı kök md.13 ek: fikir = icra; siber güvenlik örneği yok; odak otomasyon (Salih imzası)."
+  ],
+  "sonraki_ilk_is": [
+    "#46: Salih iki modu kullanır ve fark listesi verir; Jarvis mods/ üzerinde itere eder, canlı klasöre kopyalar.",
+    "Yeni oturumda modların CLAUDE_CODE_PLUGIN_DIRS ile yüklendiği doğrulanır; çift yükleme uyarısı varsa dev-mods kopyası kapatılır.",
+    "#9 veri bilimi PROBE cevabı; #20 Rust parti 3+; #22 Python arşiv PR."
+  ],
+  "yeniden_acma": [
+    "Siber güvenlik şeridi (guvenlik, gard/): yalnız Salih açıkça isterse; silinmedi, arşiv-pointer.",
+    "Oda modu iterasyonu: Salih fark listesiyle."
+  ],
+  "salih_karar": [
+    "Karar 126 kural adayının kök md.13'e imzası.",
+    "21 bayat worktree'nin kapatılması (Karar 95 EK).",
+    "Mod iterasyon fark listesi (oda: rapor görünümü, sohbet balonu, oda geçmişi; graf: tıklanabilir SVG, lejant, kırıntı yolu)."
+  ],
+  "baglar": {
+    "karar": [
+      "Karar 126"
+    ],
+    "pr": [],
+    "durum": [
+      46,
+      47
+    ]
+  },
+  "sayaclar": {
+    "model": "Fable 5.1",
+    "kutu": 0,
+    "soru_dogru": 0,
+    "soru_yanlis": 0,
+    "pratik_salih_beyani": "KALAN"
+  },
+  "hasat": {
+    "ozutler": [
+      "Claude Code modu: tek hooks modülü + $.tool.register + Pane; validate ve tsc ile 1 saatte çalışır ürün.",
+      "Mod tur ortasında sıcak-yüklenince eski state yeni şemayı taşımaz; yükleyici varsayılanı tamamlamalı.",
+      "$.prompt.submit ile işçi raporu Jarvis'i uyandırır: human-in-the-loop döngüsü ek altyapı istemez.",
+      ".claude/ altına Bash yazımı PreToolUse teliyle kesilir; görünür mods/ klasörü hem teli hem gizli-klasör-yok ilkesini çözer.",
+      "tsc Git Bash yollarını (/c/...) çözmez; tsconfig include C:/ biçimi ister."
+    ],
+    "wiki_delta": [
+      "wiki: claude-code-modlari sayfası (hooks modülü, $, Pane, validate, hot reload)"
+    ],
+    "verilebilir_miydi": "Evet: video analizi ve iki mod aynı seansta; iterasyon seviyesi Salih'in fark listesine bağlı.",
+    "token_zaman": "[?] tek oturum, 15:18-15:40 + kapanış; işçi: 1 Haiku koşumu"
+  },
+  "kapanis": {
+    "push": "Salih 'push onay' (2026-10-28)",
+    "mod_canli": "~/.claude/dev-mods/5fcbb2ab-34fa-448c-8233-031f1fab19f3 (bu oturum) · sonraki oturumlar settings.json env",
+    "test_kapisi": "cargo build OK · lake build OK (82 iş) · hook testleri 2/2 PASS · FAIL 0",
+    "hareket": "bronz 68 yeni çağrı · silver 10802 · gün 54 · PASS 3/3",
+    "silver_saglik": "rc 0 · WARN T-C6 1, T-B-YETIM 724, T-SA-FORMAT 4, T-SA-KOKEN 1 · kuyruk aday 839",
+    "skill_esik": "7 çift · yeni sapma 0",
+    "bayat_cekim": "kuyruk 3 aday (token-x-zaman, loop-engineering, +1) · çekilen 0/3 (yalnız damga tazeleme; seans dışı)",
+    "kural_sayaci": "18 birim → OK",
+    "baglam_seyri": "uzun-koşum: max bağlam 299181 (102 tur 128K üstte) · ilk-tur 93241 > 60k",
+    "hafiza_ayna": "39 dosya · yeni 2 · değişen 1",
+    "fifo": "kesildi: feedback-vurgusuz-anlatim → arsiv/memory-arsivi-2026-10-28.md (kapsül dondu, bu kayıtta)",
+    "hasat_kontrol": "1 karar adayı ingest edildi (Karar 126) · 2 açık pipeline yok · 3 ajan koşumu: 1 Haiku işçi, tahmin yok · 4 paralel oturum şüphesi K1, devir notu yok"
+  },
+  "sema": "seans-teslim v1 (Karar 121/122)",
+  "alan": "jarvis",
+  "oturum": "2026-10-27-jarvis",
+  "tarih": "2026-10-28",
+  "etiket": "claude-modlari-oda-graf-karar-126",
+  "olcum": {
+    "ac_ts": "2026-10-27T12:27:17Z",
+    "kapat_ts": "2026-10-27T21:13:06Z",
+    "git": {
+      "head": "a0a950f",
+      "dal": "main",
+      "since": "2026-10-27T12:27:17Z",
+      "commit_sayisi": 3,
+      "commitler": [
+        "a0a950f [icra] mods README: install section (CLAUDE_CODE_PLUGIN_DIRS in user settings.json, --plugin-dir alternative); proposal O1 accepted by Salih",
+        "0bce6f4 [icra] jarvis-oda v0.2: variable concurrent worker limit (maksParalel, queue, pane -/+), shared chat (Salih/Jarvis/all workers, #N addressing), hot-reload fix for rooms opened under v0.1",
+        "4c6cdf4 [icra] Decision 126: no-plan execution, no cybersecurity examples, automation focus; two Claude Code mods written and validated: jarvis-oda (lobi-equivalent room: Fable plans, Haiku/Sonnet/Opus workers, live pane, proposal gate) and jarvis-graf (flow graph pane); canon copy under jarvis/mods, source map row"
+      ],
+      "degisen_dosya_sayisi": 16
+    },
+    "durum": {
+      "acilan": [
+        46,
+        47
+      ],
+      "alinan": [
+        46
+      ],
+      "bitirilen": [
+        46
+      ],
+      "acik_kalan": 17
+    }
+  }
+}

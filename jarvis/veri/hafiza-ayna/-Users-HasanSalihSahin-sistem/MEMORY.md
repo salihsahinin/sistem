@@ -24,3 +24,5 @@
 - [Ürün = ayrı klasör + ayrı açık kaynak repo](feedback-urun-ayri-repo.md) — Salih 10-26: sistem reposu ürün inşa aracı; ürünler C:\sistem\<ad> + GitHub public repo; ilk örnek portal-parkur
 - [Graf içinde graf, Karar 125](project-graf-icinde-graf-karar-125.md) — 10-26: hedef = alt grafın kapağı, özyinelemeli; durum ac --tur hedef --hedef <üst>; HTML üretici tools/akis-graf-html.py
 - [Graf HTML açıklama yüzeyi değil](feedback-graf-html-aciklama-yuzeyi-degil.md) — Salih 10-26: graf tasarımı tam olmadı, Salih ileride optimize edecek; brif/karar md ile, graf yalnız istekle üretilir
+- [Siber güvenlik yok, odak otomasyon, fikir = icra](feedback-siber-guvenlik-yok-otomasyon-odagi.md) — Salih 10-27 Karar 126: güvenlik örneği/konusu kullanılmaz; öğrenme+ürün odağı otomasyon + human-in-the-loop; plan taslağı yerine doğrudan icra
+- [Claude modları: jarvis-oda + jarvis-graf](project-claude-modlari-oda-graf.md) — 10-27: lobi eşgörevi oda modu (Fable planlar, Haiku/Sonnet/Opus uygular) + graf paneli; kanon jarvis/mods, canlı ~/.claude/dev-mods; iterasyon Salih kullanımıyla

@@ -2,10 +2,10 @@
   "meta": {
     "sema": "akis-graf v1 (Karar 122)",
     "uretici": "durum graf",
-    "tarih": "2026-10-26",
+    "tarih": "2026-10-28",
     "alan": null,
-    "dugum_sayisi": 49,
-    "kenar_sayisi": 58,
+    "dugum_sayisi": 52,
+    "kenar_sayisi": 63,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -95,6 +95,22 @@
       "dokunulan": [
         44,
         45
+      ]
+    },
+    {
+      "id": "seans:2026-10-27-jarvis",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-10-27-jarvis",
+      "ac_ts": "2026-10-27T12:27:17Z",
+      "kapat_ts": "2026-10-27T21:13:06Z",
+      "hedef": "Salih: video (Claude mods, 3 fikir) analizi; iki mod kurulur: jarvis-oda (lobi eşgörevi, Fable planlar / Haiku-Sonnet-Opus uygular, çok-ajanlı) + jarvis-graf (akış grafı paneli); plansız icra + siber güvenlik dışı + otomasyon odağı kaydı",
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-28-claude-modlari-oda-graf-karar-126.json",
+      "ortuk": false,
+      "dokunulan": [
+        46,
+        47
       ]
     },
     {
@@ -718,6 +734,36 @@
       "sirada": true
     },
     {
+      "id": "is:46",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "Karar 126 icrası: jarvis-oda + jarvis-graf modları Salih kullanımıyla itere edilir",
+      "sonraki_eylem": "Salih iki modu açar (/oda, /graf), eksikleri söyler; Jarvis mods/ kanon kopyasında düzeltir, canlı klasöre kopyalar",
+      "acilis_ts": "2026-10-27T12:28:56Z",
+      "al_ts": "2026-10-27T21:11:48Z",
+      "bitir_ts": "2026-10-27T21:11:48Z",
+      "oturumlar": [
+        "2026-10-27-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:47",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "jarvis-oda v0.2 + jarvis-graf v0.1 kuruldu, duman testi geçti; Salih: istenen seviyede değil",
+      "sonraki_eylem": "Salih fark listesi verir, Jarvis mods/ üzerinde itere eder",
+      "acilis_ts": "2026-10-27T21:11:48Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [
+        "2026-10-27-jarvis"
+      ],
+      "sirada": true
+    },
+    {
       "id": "is:16",
       "tur": "is",
       "alan": "span",
@@ -934,12 +980,32 @@
     },
     {
       "k": "seans:2026-10-26-jarvis-2",
+      "h": "seans:2026-10-27-jarvis",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-10-26-jarvis-2",
       "h": "is:45",
       "tur": "acti"
     },
     {
       "k": "seans:2026-10-26-jarvis-2",
       "h": "is:44",
+      "tur": "bitirdi"
+    },
+    {
+      "k": "seans:2026-10-27-jarvis",
+      "h": "is:46",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-27-jarvis",
+      "h": "is:47",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-27-jarvis",
+      "h": "is:46",
       "tur": "bitirdi"
     },
     {
@@ -1035,6 +1101,11 @@
     {
       "k": "is:43",
       "h": "is:44",
+      "tur": "girdi"
+    },
+    {
+      "k": "is:46",
+      "h": "is:47",
       "tur": "girdi"
     }
   ]

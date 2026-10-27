@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-26",
+ "uretim": "2026-10-28",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 37,
+ "dosya_sayisi": 39,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "6cf17e0d6737606c590a38b50c8bc034cf4c3d2c918470a13cc477da3d154e2b",
-   "bayt": 5082,
-   "kaynak_mtime": "2026-10-26T23:32:15",
+   "sha256": "b3fb31c1b242ba61a5aeab7bd29ea4b0cc35b1fd7a55ac1d3c837809d3bda60c",
+   "bayt": 5601,
+   "kaynak_mtime": "2026-10-27T15:28:45",
    "durum": "ayna"
   },
   {
@@ -189,6 +189,13 @@
    "durum": "ayna"
   },
   {
+   "ad": "feedback-siber-guvenlik-yok-otomasyon-odagi.md",
+   "sha256": "ba516a36f1b36d27ea530bf4bc2afc96e20248661d7c27b41ea1f27aede316d6",
+   "bayt": 1446,
+   "kaynak_mtime": "2026-10-27T15:28:01",
+   "durum": "ayna"
+  },
+  {
    "ad": "feedback-token-kisinti-yuzde30.md",
    "sha256": "6dc2ec4d7d3d57c6be307b7d39197310863b574ca71647fc1a3a9e2fbbcf5a15",
    "bayt": 1629,
@@ -221,6 +228,13 @@
    "sha256": "7483ec9cb14e172210c3304140780b2c56fef9eccc576aa194b5330399626656",
    "bayt": 1452,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "project-claude-modlari-oda-graf.md",
+   "sha256": "3137faf6a0da7e354185cbe3a42988c07c54ef1f46a9d8e06b6f64bb5a17d9e8",
+   "bayt": 1733,
+   "kaynak_mtime": "2026-10-27T15:28:50",
    "durum": "ayna"
   },
   {

@@ -1,5 +1,6 @@
 model_kusagi,eski_kusak,agent_type,n,pass_n,fail_n,hukumsuz_n,ort_sure_sn,toplam_cikti,ilk,son
 ?,1,claude-code-guide,2,0,0,2,56.0,1395,2026-10-16,2026-10-17
+?,1,general-purpose,1,0,0,1,11.0,1819,2026-10-27,2026-10-27
 5,0,Explore,11,2,0,9,261.0,234816,2026-08-15,2026-09-18
 5,0,atlas,298,1,0,297,485.0,7817152,2026-08-13,2026-10-16
 5,0,claude-code-guide,4,0,0,4,84.0,21732,2026-10-09,2026-10-14
