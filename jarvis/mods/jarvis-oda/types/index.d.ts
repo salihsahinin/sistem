@@ -1,6 +1,6 @@
 export type OdaZorluk = 'kolay' | 'orta' | 'zor'
 export type OdaGorevDurum = 'bekliyor' | 'kosuyor' | 'bitti' | 'hata'
-export type OdaTurTuru = 'plan' | 'gorev' | 'rapor' | 'oneri' | 'karar' | 'not'
+export type OdaTurTuru = 'plan' | 'gorev' | 'rapor' | 'oneri' | 'karar' | 'not' | 'sohbet'
 
 export type OdaTur = {
   ts: string
@@ -37,6 +37,7 @@ export type Oda = {
   id: string
   baslik: string
   acilis: string
+  maksParalel: number
   turlar: OdaTur[]
   gorevler: OdaGorev[]
   oneriler: OdaOneri[]

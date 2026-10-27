@@ -1,6 +1,6 @@
 {
   "name": "jarvis-oda",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano, öneri-karar kapısı, çok-ajanlı senkron (lobi eşgörevi).",
   "types": "./types/index.d.ts",
   "userConfig": {
@@ -9,6 +9,12 @@
       "default": true,
       "description": "İşçi görevi bittiğinde oturum boşsa Jarvis'i uyandır (prompt kuyruğuna rapor düşer).",
       "title": "Jarvis'i uyandır"
+    },
+    "maksParalel": {
+      "type": "number",
+      "default": 3,
+      "title": "Paralel işçi sınırı",
+      "description": "Yeni oda açılırken varsayılan anlık paralel işçi üst sınırı (1-12); oda içinde oda_ayar ya da panodaki −/+ ile değişir."
     }
   },
   "license": "MIT"

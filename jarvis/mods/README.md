@@ -4,5 +4,5 @@ Canlı kopya `~/.claude/dev-mods/<oturum-id>/<mod>/` (motor orayı izler, oturum
 
 | Mod | Ne | Araçlar / komut |
 |---|---|---|
-| `jarvis-oda` | Lobi eşgörevi: Jarvis (Fable) planlar, görevler zorluğa göre Haiku/Sonnet/Opus işçi ajanlarına; raporlar ve öneriler aynı odaya; pano (pane) canlı; öneri kararı Salih'in (Kabul/Ret düğmesi). İşçi bitince Jarvis `[oda]` mesajıyla uyanır. | `oda_ac · oda_plan · oda_gorev_ver · oda_oku · oda_oneri_karar · oda_oneri · oda_rapor` · `/oda` · ayar `otoUyandir` |
+| `jarvis-oda` (v0.2) | Lobi eşgörevi, lobi MCP kullanmaz: Jarvis (Fable) planlar, görevler zorluğa göre Haiku/Sonnet/Opus işçilerine; **anlık paralel işçi sayısı değişken** (`maksParalel`, panoda −/+, kuyruk); **ortak sohbet** (panodaki giriş alanı: Salih herkese ya da `#N` ile tek işçiye; mesaj işçi bağlamına ve Jarvis'e düşer, işçi `oda_rapor` ile cevaplar); öneri kararı Salih'in (Kabul/Ret). İşçi bitince Jarvis `[oda]` mesajıyla uyanır. | `oda_ac · oda_plan · oda_gorev_ver · oda_ayar · oda_sohbet · oda_oku · oda_oneri_karar · oda_oneri · oda_rapor` · `/oda` · ayar `otoUyandir`, `maksParalel` |
 | `jarvis-graf` | Akış grafı paneli: `ortak/akis-graf.json` pane'de SVG (hedef · iş · seans bantları, x = açılış sırası, renk = durum), filtre, düğüm detayı, `HTML aç` (`tools/akis-graf-html.py`), `durum graf` (Rust). 10 sn'de bir dosya değişimini izler. | `/graf` |
