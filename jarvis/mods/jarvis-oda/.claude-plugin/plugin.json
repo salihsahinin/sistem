@@ -1,6 +1,6 @@
 {
   "name": "jarvis-oda",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano + işçi akışı izleme (v0.3), rol ajanı görevleri (ajan alanı, v0.4), öneri-karar kapısı, çok-ajanlı senkron (lobi eşgörevi).",
   "types": "./types/index.d.ts",
   "userConfig": {

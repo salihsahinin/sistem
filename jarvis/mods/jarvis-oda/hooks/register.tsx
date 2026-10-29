@@ -13,6 +13,7 @@
 // .claude/agents/<ad>.md ajan tipi (hakem, sokrates…), subagentType olarak geçer,
 // rol metnini/araç kısıtını/modelini Claude Code yükler; plan turları emre eklenmez
 // (bağlam paylaşmayan rol, yapan ≠ ölçen); panoda [ajan] etiketi.
+// v0.4.1: tur/hareket saatleri görünümde yerel saat (kayıt UTC kalır; Salih: 13:54 ≠ 16:54).
 import { atom, read, update } from 'claude-code'
 import type { Register, EngineInterface } from 'claude-code'
 
@@ -53,6 +54,13 @@ const MODEL_HARITASI: Record<OdaZorluk, string> = { kolay: 'haiku', orta: 'sonne
 
 function simdi(): string {
   return new Date().toISOString()
+}
+
+/** v0.4.1: kayıt UTC (ISO) kalır, görünüm yerel saat (tr-TR, 24 saat); saniye isteğe bağlı. */
+function saat(ts: string, saniye = true): string {
+  const d = new Date(ts)
+  if (Number.isNaN(d.getTime())) return ts.slice(11, saniye ? 19 : 16)
+  return d.toLocaleTimeString('tr-TR', { hour12: false, hour: '2-digit', minute: '2-digit', ...(saniye ? { second: '2-digit' } : {}) })
 }
 
 function kisa(metin: string, n = 160): string {
@@ -97,13 +105,13 @@ function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): string {
   for (const g of oda.gorevler) {
     satirlar.push(`- #${g.id} [${g.durum}] ${g.ajan ? '[' + g.ajan + '] ' : ''}${g.baslik} · ${g.zorluk}→${g.ajan && !g.modelAcik ? 'ajan tanımı' : g.model}${g.agentId ? ' · ajan ' + g.agentId : ''}`)
     if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400))
-    for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${h.ts.slice(11, 19)} [${h.tur}] ${kisa(h.ozet, 160)}`)
+    for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${saat(h.ts)} [${h.tur}] ${kisa(h.ozet, 160)}`)
   }
   const bekleyen = oda.oneriler.filter(o => o.durum === 'bekliyor')
   satirlar.push(`## Öneriler (bekleyen ${bekleyen.length})`)
   for (const o of oda.oneriler.slice(-10)) satirlar.push(`- Ö${o.id} [${o.durum}] ${o.kim}: ${kisa(o.metin, 200)} · gerekçe: ${kisa(o.gerekce, 120)}${o.not ? ' · not: ' + o.not : ''}`)
   satirlar.push(`## Son ${son} tur`)
-  for (const t of oda.turlar.slice(-son)) satirlar.push(`- ${t.ts.slice(11, 19)} ${t.kim} [${t.tur}]${t.gorevId ? ' #' + t.gorevId : ''}: ${kisa(t.metin, 300)}`)
+  for (const t of oda.turlar.slice(-son)) satirlar.push(`- ${saat(t.ts)} ${t.kim} [${t.tur}]${t.gorevId ? ' #' + t.gorevId : ''}: ${kisa(t.metin, 300)}`)
   return satirlar.join('\n')
 }
 
@@ -628,7 +636,7 @@ export const register: Register = (on, options) => {
           {sohbet.length === 0 && <Text dimColor>Henüz mesaj yok.</Text>}
           {sohbet.map(t => (
             <Text>
-              <Text dimColor>{t.ts.slice(11, 16)}</Text> <Text bold color={t.kim === 'salih' ? 'cyan' : t.kim === 'jarvis' ? 'magenta' : 'green'}>{t.kim}</Text>
+              <Text dimColor>{saat(t.ts, false)}</Text> <Text bold color={t.kim === 'salih' ? 'cyan' : t.kim === 'jarvis' ? 'magenta' : 'green'}>{t.kim}</Text>
               {t.tur === 'rapor' ? <Text dimColor> [rapor]</Text> : null} {kisa(t.metin, 140)}
             </Text>
           ))}
@@ -641,7 +649,7 @@ export const register: Register = (on, options) => {
           {hareketler.length === 0 && <Text dimColor>Henüz hareket yok.</Text>}
           {hareketler.slice(-12).map(h => (
             <Text>
-              <Text dimColor>{h.ts.slice(11, 19)}</Text> <Text bold color="green">#{h.gorevId}</Text>{' '}
+              <Text dimColor>{saat(h.ts)}</Text> <Text bold color="green">#{h.gorevId}</Text>{' '}
               <Text color={h.tur === 'arac' ? 'blue' : undefined}>{h.tur === 'arac' ? '⚙' : '…'}</Text> {kisa(h.ozet, 120)}
             </Text>
           ))}
@@ -655,7 +663,7 @@ export const register: Register = (on, options) => {
             .slice(-6)
             .map(t => (
               <Text dimColor>
-                <Text dimColor>{t.ts.slice(11, 16)}</Text> {t.kim} [{t.tur}] {kisa(t.metin, 90)}
+                <Text dimColor>{saat(t.ts, false)}</Text> {t.kim} [{t.tur}] {kisa(t.metin, 90)}
               </Text>
             ))}
         </Box>
