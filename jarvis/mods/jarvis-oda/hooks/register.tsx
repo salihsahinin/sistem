@@ -5,15 +5,45 @@
 // mesajlaşma); pano canlı durumu gösterir (fikir 2: ajan panosu). Öneri kararı
 // Salih'in elindedir (human in the loop). v0.2: anlık paralel işçi sayısı
 // değişken (maksParalel, kuyruk) + ortak sohbet (Salih ↔ Jarvis ↔ tüm işçiler).
+// v0.3 (Salih 2026-10-29, "tanrısal bakış"): işçi akışı canlı izlenir; tool.call +
+// turn.step kancaları işçi başına hareket kaydı tutar, pano her işçinin son
+// hareketlerini ve ortak canlı akışı gösterir, 'izle' düğmesi transkript görünümünü
+// o işçiye çevirir ($.ui.view), 'ana sohbete dön' geri alır.
 import { atom, read, update } from 'claude-code'
 import type { Register, EngineInterface } from 'claude-code'
 
-import type { Oda, OdaGorev, OdaOneri, OdaTur, OdaTurTuru, OdaZorluk, AjanDurum } from '../types'
+import type { Oda, OdaGorev, OdaOneri, OdaTur, OdaTurTuru, OdaZorluk, AjanDurum, OdaHareket } from '../types'
 
 const PANE = 'jarvis-oda'
 const STORE_AKTIF = 'oda:aktif'
 const odaAtom = atom({ plugin: 'jarvis-oda', key: 'oda' } as const, null as Oda | null)
 const ajanAtom = atom({ plugin: 'jarvis-oda', key: 'ajanlar' } as const, [] as AjanDurum[])
+const hareketAtom = atom({ plugin: 'jarvis-oda', key: 'hareket' } as const, [] as OdaHareket[])
+const HAREKET_TAVAN = 300
+
+/** İşçi akışına parça ekler (yalnız oda görevine bağlı ajanlar). */
+async function hareketEkle($: EngineInterface, agentId: string, tur: OdaHareket['tur'], ozet: string): Promise<void> {
+  const oda = await read($, odaAtom)
+  const g = oda?.gorevler.find(x => x.agentId === agentId)
+  if (!g) return
+  const h: OdaHareket = { ts: simdi(), gorevId: g.id, agentId, tur, ozet: kisa(ozet, 220) }
+  await update($, hareketAtom, eski => [...eski, h].slice(-HAREKET_TAVAN))
+}
+
+/** tool.call girdisinden tek satırlık Türkçe özet. */
+function aracOzeti(e: Record<string, unknown>): string {
+  const ad = String(e.tool ?? '?')
+  const al = (k: string) => (typeof e[k] === 'string' ? (e[k] as string) : undefined)
+  if (ad === 'Bash') return `Bash: ${al('description') ?? al('command') ?? ''}`
+  if (ad === 'Read' || ad === 'Write' || ad === 'Edit' || ad === 'NotebookEdit') return `${ad}: ${al('file_path') ?? ''}`
+  if (ad === 'Grep' || ad === 'Glob') return `${ad}: ${al('pattern') ?? ''}${al('path') ? ' @ ' + al('path') : ''}`
+  if (ad === 'WebFetch') return `WebFetch: ${al('url') ?? ''}`
+  if (ad === 'WebSearch') return `WebSearch: ${al('query') ?? ''}`
+  if (ad === 'Agent') return `Agent: ${al('description') ?? ''}`
+  if (ad.startsWith('mcp__jarvis-oda__')) return `${ad.replace('mcp__jarvis-oda__', '')}: ${al('metin') ?? ''}`
+  const ilk = Object.entries(e).find(([k, v]) => typeof v === 'string' && !['tool', 'tool_use_id', 'agentId'].includes(k))
+  return ilk ? `${ad}: ${ilk[1] as string}` : ad
+}
 
 const MODEL_HARITASI: Record<OdaZorluk, string> = { kolay: 'haiku', orta: 'sonnet', zor: 'opus' }
 
@@ -56,13 +86,14 @@ function turEkle(oda: Oda, kim: string, tur: OdaTurTuru, metin: string, gorevId?
   return { ...oda, turlar: [...oda.turlar, yeni].slice(-400) }
 }
 
-function odaMetni(oda: Oda, son = 12): string {
+function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): string {
   const satirlar: string[] = [`# Oda: ${oda.baslik} (${oda.id}) · açılış ${oda.acilis} · paralel ${kosan(oda)}/${oda.maksParalel}`]
   satirlar.push('## Görevler')
   if (oda.gorevler.length === 0) satirlar.push('(yok)')
   for (const g of oda.gorevler) {
     satirlar.push(`- #${g.id} [${g.durum}] ${g.baslik} · ${g.zorluk}→${g.model}${g.agentId ? ' · ajan ' + g.agentId : ''}`)
     if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400))
+    for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${h.ts.slice(11, 19)} [${h.tur}] ${kisa(h.ozet, 160)}`)
   }
   const bekleyen = oda.oneriler.filter(o => o.durum === 'bekliyor')
   satirlar.push(`## Öneriler (bekleyen ${bekleyen.length})`)
@@ -191,7 +222,7 @@ export const register: Register = (on, options) => {
     await $.tool.register({
       ...ortak,
       name: 'oda_oku',
-      description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler + durumları, bekleyen öneriler, son turlar (sohbet dahil).',
+      description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler + durumları + her işçinin son 3 hareketi (araç çağrısı / metin), bekleyen öneriler, son turlar (sohbet dahil).',
       inputSchema: { type: 'object', properties: { son: { type: 'integer', description: 'Kaç tur (varsayılan 12)' } } },
     })
     await $.tool.register({
@@ -258,11 +289,41 @@ export const register: Register = (on, options) => {
     return next(e)
   })
 
+  // v0.3: işçi akışı; her araç çağrısı hareket olarak düşer (hata/ret işaretli).
+  on('tool.call', async ($, e, next) => {
+    if (!e.agentId) return next(e)
+    const agentId = e.agentId
+    const ozet = aracOzeti(e as unknown as Record<string, unknown>)
+    await hareketEkle($, agentId, 'arac', ozet).catch(() => undefined)
+    const r = await next(e)
+    if ('deny' in r && r.deny) await hareketEkle($, agentId, 'arac', `✗ ${ozet} → reddedildi: ${r.deny}`).catch(() => undefined)
+    else if ('isError' in r && r.isError) await hareketEkle($, agentId, 'arac', `✗ ${ozet} → hata`).catch(() => undefined)
+    return r
+  })
+
+  // v0.3: işçi akışı; model metni blok bitiminde hareket olarak düşer.
+  on('turn.step', async function* ($, e, next) {
+    if (!e.agentId) return yield* next(e)
+    const agentId = e.agentId
+    let metin = ''
+    const bosalt = async () => {
+      const t = metin.trim()
+      metin = ''
+      if (t) await hareketEkle($, agentId, 'metin', t).catch(() => undefined)
+    }
+    for await (const c of next(e)) {
+      if (c.kind === 'text') metin += c.text
+      else if (c.kind === 'tool' || c.kind === 'stop') await bosalt()
+      yield c
+    }
+    await bosalt()
+  })
+
   on('prompt.compose', async ($, e, next) => {
     const r = await next(e)
     const text = [
       '# jarvis-oda (mod)',
-      'Oda = Jarvis planlar, işçi ajanlar uygular, ortak sohbet herkesi bağlar. Araçlar: oda_ac(baslik, maksParalel?) · oda_plan(metin) · oda_gorev_ver(baslik, emir, zorluk: kolay|orta|zor → haiku|sonnet|opus; sınır doluysa kuyruk) · oda_ayar(maksParalel) · oda_sohbet(metin, hedef "#N"?) · oda_oku · oda_oneri_karar(oneriId, kabul|ret). Çok-ajanlı iş: planı oda_plan ile yaz, görevleri paralel oda_gorev_ver ile aç, raporları oda_oku ile topla. "[oda]" ile başlayan kuyruk mesajı = görev raporu; "[oda sohbet] salih:" = Salih\'in panodan yazdığı ortak sohbet mesajı, Jarvis ona cevap verir ve gerekirse oda_sohbet ile işçilere iletir. Öneri kararı Salih\'indir: bekleyen öneriyi tek satırda sun.',
+      'Oda = Jarvis planlar, işçi ajanlar uygular, ortak sohbet herkesi bağlar. Araçlar: oda_ac(baslik, maksParalel?) · oda_plan(metin) · oda_gorev_ver(baslik, emir, zorluk: kolay|orta|zor → haiku|sonnet|opus; sınır doluysa kuyruk) · oda_ayar(maksParalel) · oda_sohbet(metin, hedef "#N"?) · oda_oku · oda_oneri_karar(oneriId, kabul|ret). Çok-ajanlı iş: planı oda_plan ile yaz, görevleri paralel oda_gorev_ver ile aç, raporları oda_oku ile topla (oda_oku her işçinin son 3 hareketini de verir; Salih panodaki izle düğmesiyle işçi transkriptini canlı görür). "[oda]" ile başlayan kuyruk mesajı = görev raporu; "[oda sohbet] salih:" = Salih\'in panodan yazdığı ortak sohbet mesajı, Jarvis ona cevap verir ve gerekirse oda_sohbet ile işçilere iletir. Öneri kararı Salih\'indir: bekleyen öneriyi tek satırda sun.',
     ].join('\n')
     return { sections: [...r.sections, { id: 'jarvis-oda', text, scope: 'session' as const }] }
   })
@@ -270,7 +331,7 @@ export const register: Register = (on, options) => {
   on('command.run', { command: 'oda' }, async $ => {
     await $.ui.open({ id: PANE, title: 'Oda', focus: true })
     const oda = await odaYukle($)
-    return { text: oda ? odaMetni(oda, 6) : 'Oda yok. Jarvis oda_ac ile açar.' }
+    return { text: oda ? odaMetni(oda, 6, await read($, hareketAtom)) : 'Oda yok. Jarvis oda_ac ile açar.' }
   })
 
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_ac' }, async ($, e) => {
@@ -326,7 +387,7 @@ export const register: Register = (on, options) => {
     const oda = await odaYukle($)
     if (!oda) return { result: 'Oda yok; önce oda_ac.' }
     const son = Number((e as { son?: number }).son ?? 12)
-    return { result: odaMetni(oda, Number.isFinite(son) && son > 0 ? son : 12) }
+    return { result: odaMetni(oda, Number.isFinite(son) && son > 0 ? son : 12, await read($, hareketAtom)) }
   })
 
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri_karar' }, async ($, e) => {
@@ -402,6 +463,8 @@ export const register: Register = (on, options) => {
     const { Box, Text, Button } = $.ui.resolve(e)
     const oda = await read($, odaAtom)
     const ajanlar = await read($, ajanAtom)
+    const hareketler = await read($, hareketAtom)
+    const izlenen = (e.props as { view?: { agentId?: string } } | undefined)?.view?.agentId
     if (!oda) {
       return (
         <Box flexDirection="column" padding={1}>
@@ -491,6 +554,29 @@ export const register: Register = (on, options) => {
                     {kisa(g.sonuc, 110)}
                   </Text>
                 )}
+                {g.durum === 'kosuyor' && g.agentId && (
+                  <Box flexDirection="row" gap={1}>
+                    <Text dimColor>{'   '}</Text>
+                    <Button key={'izle-' + g.id} plain onPress={() => $.ui.view({ agentId: g.agentId! })}>
+                      {izlenen === g.agentId ? '▶ izleniyor' : 'izle'}
+                    </Button>
+                    {izlenen === g.agentId && (
+                      <Button key={'ana-' + g.id} plain onPress={() => $.ui.view({})}>
+                        ana sohbete dön
+                      </Button>
+                    )}
+                  </Box>
+                )}
+                {g.durum === 'kosuyor' &&
+                  hareketler
+                    .filter(h => h.gorevId === g.id)
+                    .slice(-2)
+                    .map(h => (
+                      <Text dimColor>
+                        {'   '}
+                        <Text color={h.tur === 'arac' ? 'blue' : undefined}>{h.tur === 'arac' ? '⚙' : '…'}</Text> {kisa(h.ozet, 100)}
+                      </Text>
+                    ))}
               </Box>
             )
           })}
@@ -533,6 +619,18 @@ export const register: Register = (on, options) => {
             </Text>
           ))}
           {sohbetElemani}
+        </Box>
+        <Box flexDirection="column">
+          <Text bold dimColor>
+            Canlı akış (tüm işçiler, son 12)
+          </Text>
+          {hareketler.length === 0 && <Text dimColor>Henüz hareket yok.</Text>}
+          {hareketler.slice(-12).map(h => (
+            <Text>
+              <Text dimColor>{h.ts.slice(11, 19)}</Text> <Text bold color="green">#{h.gorevId}</Text>{' '}
+              <Text color={h.tur === 'arac' ? 'blue' : undefined}>{h.tur === 'arac' ? '⚙' : '…'}</Text> {kisa(h.ozet, 120)}
+            </Text>
+          ))}
         </Box>
         <Box flexDirection="column">
           <Text bold dimColor>

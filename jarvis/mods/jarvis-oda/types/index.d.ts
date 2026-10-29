@@ -45,8 +45,17 @@ export type Oda = {
 
 export type AjanDurum = { agentId: string; status: string; gorevId: number }
 
+/** Bir işçinin canlı akışından tek parça: araç çağrısı ya da model metni (v0.3). */
+export type OdaHareket = {
+  ts: string
+  gorevId: number
+  agentId: string
+  tur: 'arac' | 'metin'
+  ozet: string
+}
+
 declare module 'claude-code' {
   interface PluginState {
-    'jarvis-oda': { oda: Oda | null; ajanlar: AjanDurum[] }
+    'jarvis-oda': { oda: Oda | null; ajanlar: AjanDurum[]; hareket: OdaHareket[] }
   }
 }
