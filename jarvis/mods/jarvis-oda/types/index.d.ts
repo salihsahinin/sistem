@@ -16,6 +16,10 @@ export type OdaGorev = {
   emir: string
   zorluk: OdaZorluk
   model: string
+  /** v0.4: .claude/agents/<ad>.md ajan tipi; verilirse subagentType olur, plan bağlamı emre eklenmez. */
+  ajan?: string
+  /** v0.4: model alanı açıkça verildi mi (ajan tanımının modelini ezmek için). */
+  modelAcik?: boolean
   durum: OdaGorevDurum
   agentId?: string
   acilis: string

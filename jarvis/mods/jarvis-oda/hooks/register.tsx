@@ -9,6 +9,10 @@
 // turn.step kancaları işçi başına hareket kaydı tutar, pano her işçinin son
 // hareketlerini ve ortak canlı akışı gösterir, 'izle' düğmesi transkript görünümünü
 // o işçiye çevirir ($.ui.view), 'ana sohbete dön' geri alır.
+// v0.4 (Salih 2026-10-29, Sokrates odası): oda_gorev_ver `ajan` alanı; değer
+// .claude/agents/<ad>.md ajan tipi (hakem, sokrates…), subagentType olarak geçer,
+// rol metnini/araç kısıtını/modelini Claude Code yükler; plan turları emre eklenmez
+// (bağlam paylaşmayan rol, yapan ≠ ölçen); panoda [ajan] etiketi.
 import { atom, read, update } from 'claude-code'
 import type { Register, EngineInterface } from 'claude-code'
 
@@ -91,7 +95,7 @@ function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): string {
   satirlar.push('## Görevler')
   if (oda.gorevler.length === 0) satirlar.push('(yok)')
   for (const g of oda.gorevler) {
-    satirlar.push(`- #${g.id} [${g.durum}] ${g.baslik} · ${g.zorluk}→${g.model}${g.agentId ? ' · ajan ' + g.agentId : ''}`)
+    satirlar.push(`- #${g.id} [${g.durum}] ${g.ajan ? '[' + g.ajan + '] ' : ''}${g.baslik} · ${g.zorluk}→${g.ajan && !g.modelAcik ? 'ajan tanımı' : g.model}${g.agentId ? ' · ajan ' + g.agentId : ''}`)
     if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400))
     for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${h.ts.slice(11, 19)} [${h.tur}] ${kisa(h.ozet, 160)}`)
   }
@@ -104,6 +108,13 @@ function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): string {
 }
 
 function isciEmri(oda: Oda, g: OdaGorev): string {
+  if (g.ajan) {
+    return [
+      `Bu görev "${oda.baslik}" odasında #${g.id} numarasıyla açıldı; rolün ${g.ajan} ajan tanımındaki gibidir, ona aynen uy. Dil: Türkçe.`,
+      'Oda planı, diğer işçilerin raporları ve sohbet sana verilmez (bağlam paylaşmayan rol). Ara not için mcp__jarvis-oda__oda_rapor kullanabilirsin; son cevabın rapordur.',
+      '\n## Görev\n' + g.emir,
+    ].join('\n')
+  }
   const plan = oda.turlar.filter(t => t.tur === 'plan').slice(-3).map(t => '- ' + t.metin).join('\n')
   return [
     `Sen "${oda.baslik}" odasının işçi ajanısın (görev #${g.id}, model ${g.model}). Dil: Türkçe; kod tanımlayıcıları aslıyla.`,
@@ -122,8 +133,8 @@ async function gorevBaslat($: EngineInterface, oda: Oda, id: number): Promise<Od
   const spawn = await $.agent.spawn({
     prompt: isciEmri(oda, gorev),
     description: `oda #${id} ${kisa(gorev.baslik, 40)}`,
-    subagentType: 'general-purpose',
-    model: gorev.model,
+    subagentType: gorev.ajan ?? 'general-purpose',
+    ...(gorev.ajan && !gorev.modelAcik ? {} : { model: gorev.model }),
     name: `oda-${id}`,
   })
   const taze = (await odaYukle($)) ?? oda
@@ -207,7 +218,7 @@ export const register: Register = (on, options) => {
       ...ortak,
       name: 'oda_gorev_ver',
       description:
-        'Aktif odada görev açar; maksParalel sınırı altındaysa işçi ajanı hemen arka planda başlatır, değilse kuyruğa alır (biri bitince sıradaki başlar). Model zorluğa göre: kolay→haiku, orta→sonnet, zor→opus (model alanı verilirse o kazanır). Görev bitince rapor odaya düşer ve Jarvis uyandırılır.',
+        'Aktif odada görev açar; maksParalel sınırı altındaysa işçi ajanı hemen arka planda başlatır, değilse kuyruğa alır (biri bitince sıradaki başlar). Model zorluğa göre: kolay→haiku, orta→sonnet, zor→opus (model alanı verilirse o kazanır). ajan alanı verilirse (.claude/agents/<ad>.md, ör. hakem) işçi o rolle, kendi model/araç kısıtıyla ve plan bağlamı olmadan başlar (yapan ≠ ölçen). Görev bitince rapor odaya düşer ve Jarvis uyandırılır.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -215,6 +226,7 @@ export const register: Register = (on, options) => {
           emir: { type: 'string', description: 'İşçinin tam emri: amaç, dosyalar, done koşulu, doğrulama' },
           zorluk: { type: 'string', enum: ['kolay', 'orta', 'zor'] },
           model: { type: 'string', description: 'İsteğe bağlı: haiku | sonnet | opus' },
+          ajan: { type: 'string', description: 'İsteğe bağlı: .claude/agents/<ad>.md ajan tipi (ör. hakem, sokrates). Verilirse işçi o rolle başlar (model/araç kısıtı tanımdan; model alanı verilmedikçe), plan turları emre eklenmez.' },
         },
         required: ['baslik', 'emir', 'zorluk'],
       },
@@ -367,14 +379,16 @@ export const register: Register = (on, options) => {
   })
 
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_gorev_ver' }, async ($, e) => {
-    const g0 = e as { baslik?: string; emir?: string; zorluk?: OdaZorluk; model?: string }
+    const g0 = e as { baslik?: string; emir?: string; zorluk?: OdaZorluk; model?: string; ajan?: string }
     let oda = await odaYukle($)
     if (!oda) return { result: 'Oda yok; önce oda_ac.' }
     const zorluk: OdaZorluk = g0.zorluk === 'kolay' || g0.zorluk === 'zor' ? g0.zorluk : 'orta'
     const model = g0.model && g0.model.trim() ? g0.model.trim() : MODEL_HARITASI[zorluk]
     const id = oda.gorevler.length + 1
-    const gorev: OdaGorev = { id, baslik: String(g0.baslik ?? 'görev ' + id), emir: String(g0.emir ?? ''), zorluk, model, durum: 'bekliyor', acilis: simdi() }
-    oda = turEkle({ ...oda, gorevler: [...oda.gorevler, gorev] }, 'jarvis', 'gorev', `#${id} ${gorev.baslik} → ${model}`, id)
+    const ajan = g0.ajan && /^[a-z0-9_-]+$/i.test(g0.ajan.trim()) ? g0.ajan.trim() : undefined
+    const modelAcik = Boolean(g0.model && g0.model.trim())
+    const gorev: OdaGorev = { id, baslik: String(g0.baslik ?? 'görev ' + id), emir: String(g0.emir ?? ''), zorluk, model, durum: 'bekliyor', acilis: simdi(), ...(ajan ? { ajan, modelAcik } : {}) }
+    oda = turEkle({ ...oda, gorevler: [...oda.gorevler, gorev] }, 'jarvis', 'gorev', `#${id} ${ajan ? '[' + ajan + '] ' : ''}${gorev.baslik} → ${!ajan || modelAcik ? model : 'model: ajan tanımı'}`, id)
     await odaKaydet($, oda)
     const son = (await kuyrukIsle($)) ?? oda
     const g = son.gorevler.find(x => x.id === id)
@@ -542,9 +556,9 @@ export const register: Register = (on, options) => {
             return (
               <Box flexDirection="column">
                 <Text>
-                  <Text color={renk(g.durum)}>{g.durum === 'kosuyor' ? '●' : g.durum === 'bitti' ? '✓' : g.durum === 'hata' ? '✗' : '○'}</Text> #{g.id} {g.baslik}{' '}
+                  <Text color={renk(g.durum)}>{g.durum === 'kosuyor' ? '●' : g.durum === 'bitti' ? '✓' : g.durum === 'hata' ? '✗' : '○'}</Text> #{g.id} {g.ajan ? <Text color="magenta">[{g.ajan}] </Text> : null}{g.baslik}{' '}
                   <Text dimColor>
-                    · {g.zorluk}→{g.model}
+                    · {g.zorluk}→{g.ajan && !g.modelAcik ? 'ajan tanımı' : g.model}
                     {g.durum === 'bekliyor' ? ' · kuyrukta' : a ? ' · ' + a.status : ''}
                   </Text>
                 </Text>
