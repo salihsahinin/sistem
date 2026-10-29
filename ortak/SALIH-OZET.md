@@ -1,33 +1,35 @@
-# Sistem özeti (Salih için) · AS-OF 2026-10-28 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
+# Sistem özeti (Salih için) · AS-OF 2026-10-30 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
 
 Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel: `ortak/graf/akis-<alan>.svg`.
 
 ## jarvis
 
-**Konum:** seans `2026-10-27-jarvis` (kapandı 2026-10-27). Hedef: Salih: video (Claude mods, 3 fikir) analizi; iki mod kurulur: jarvis-oda (lobi eşgörevi, Fable planlar / Haiku-Sonnet-Opus uygular, çok-ajanlı) + jarvis-graf (akış grafı paneli); plansız icra + siber güvenlik dışı + otomasyon odağı kaydı. Hedef tutuldu.
+**Konum:** seans `2026-10-29-jarvis` (kapandı 2026-10-29). Hedef: Salih: Sokrates ajanı tasarımı; atlas ile Sokrates bağlamları toplanır, ajan kişiliği yazılır, Salih ajanla konuşur. Hedef tutuldu.
 
 **Son seansta ne değişti**
-- Video (Instagram, 45 sn) karelerden çözüldü: oturumlar arası mesajlaşma, Claude Code içi ajan panosu, zorluğa göre model yönlendirme.
-- Karar 126 deftere yazıldı: fikir = plansız icra, siber güvenlik konusu ve örneği yok, odak otomasyon + human-in-the-loop (commit 4c6cdf4).
-- jarvis-oda modu yazıldı ve çalıştı: oda, plan, görev dağıtımı (kolay→Haiku, orta→Sonnet, zor→Opus), işçi raporu, öneri-karar kapısı, pano (mods/jarvis-oda).
-- jarvis-oda v0.2: anlık paralel işçi sayısı değişken (maksParalel, kuyruk, panoda −/+) ve ortak sohbet (Salih/Jarvis/tüm işçiler, #N adresleme) (commit 0bce6f4).
-- jarvis-graf modu yazıldı: akış grafı pane (SVG bantlar hedef/iş/seans, filtre, düğüm detayı, HTML aç, durum graf) (mods/jarvis-graf).
-- Duman testi geçti: Haiku işçisi görevi bitirdi, sohbete cevap verdi, öneri bıraktı, Jarvis [oda] mesajıyla uyandı.
-- Kurulum: ~/.claude/settings.json CLAUDE_CODE_PLUGIN_DIRS iki mod yolu; README kurulum bölümü (commit a0a950f).
-- Modlar lobi MCP kullanmaz; durum $.store/$.state içinde yerel.
-- Kanon kopyası jarvis/mods/ (görünür klasör); kaynak-kodu/README.md satırı eklendi.
+- Sokrates ajanı kuruldu: kişilik kanonu jarvis/core/sokrates-ajani.md (§7 tek kaynak), üç yüzey (output style, agent, skill), ürün klasörü C:\sistem\sokrates.
+- Ürün açık kaynak repo oldu: https://github.com/salihsahinin/sokrates (MIT, 4 commit, son 2c2615f).
+- Araştırma 9 rapor: 01 depo içi, 02 birincil kaynaklar (D/K/X), 03 modern tasarımlar, 04 Claude Code mekanizmaları, 05 test planı, 07a-c vizyon taraması (spec biçimleri, eval çerçeveleri, repo yapıları), 08a-b bugüne taşıma (değişmezler, görüş kartları, tasarım kuralları); sentez 06, 07, 09.
+- Altı maskeli hakem turu odada koştu: donmuş model v0.1-v0.3 KALDI, KALDI, GEÇTİ; taşınmış model v1.0-v1.2 KALDI, KALDI, GEÇTİ. Raporlar cc/rapor/2026-10/rapor-2026-10-29-sokrates-v*-hakem.md.
+- Bağlam verisi: C:\sistem\sokrates\kartlar\ 10 kaynak kartı (tutum + bugünkü veri + etiketli tahmin + sınır); CLAUDE.md içe alır.
+- Hileli soru seti (20, üç kova) + deterministik koşum test/tuzak-kosum.py (claude -p --agent); v1.x koşumu 15/20 (2 yanlış pozitif, fiilî 17/20).
+- jarvis-oda v0.4 (ajan alanı: hakem odada rolüyle koşar) ve v0.4.1 (yerel saat) yan oturumda commit'lendi (7e78afb, 814d986); yeniden başlatmada etkin.
+- Graf: hedef #49 (Sokrates), #72 (vizyon taraması), #77 (v1.0) ve 30 alt düğüm kapandı.
 
 **Hangi karar verildi**
-- Karar 126: Fikir plan taslağı değil doğrudan icra; siber güvenlik konusu ve örneği kullanılmaz; odak otomasyon ve human-in-the-loop; Jarvis üç mod fikrini kendi önerisi olarak üretebilir.
+- Sokrates yalnız Sokrates'i bilir: Ajan Salih adını, Jarvis'i, Claude'u, dosya yolunu, rol kavramını bilmez; samimi soruda bile karakterde.
+- Bugüne taşınmış Sokrates: Ajan bugünün dünyasını bilir; kimlik ve yöntem Atina'dan; bilinmeyen 'bugün ne derdi' verisini LLM kaynak kartlarıyla tamamlar.
+- Ürün ayrı açık kaynak repo: C:\sistem\sokrates public GitHub reposu (MIT).
 
 **Senin kararını bekleyen**
-- Karar 126 kural adayının kök md.13'e imzası.
-- 21 bayat worktree'nin kapatılması (Karar 95 EK).
-- Mod iterasyon fark listesi (oda: rapor görünümü, sohbet balonu, oda geçmişi; graf: tıklanabilir SVG, lejant, kırıntı yolu).
+- Tek-turlu 'yapay zekâ mısın' sorusunda davranış (kabul / [Jarvis] dürüst cümle).
+- Kural adayı: 'ajan yap' → önce vizyon taraması (core/ajan-metodolojisi.md).
+- Kimlik dürüstlüğü ve din tutumu hükümleri (v1.0 kart 1) onayı.
+- 21 bayat worktree'nin kapatılması (Karar 95 EK; önceki seanstan).
 
-**Sapma:** Modlar kuruldu ve çalıştı; Salih 'istediğim seviyede değil, itere edilmeli' dedi. İterasyon fark listesi Salih'ten bekler.
+**Sapma:** Hedef akşam genişledi (Salih): donmuş Sokrates (MÖ 399 sınırı) yerine bugüne taşınmış Sokrates; ürün ayrı açık kaynak repo oldu. Salih ajanla henüz konuşmadı; canlı kullanım sonraki seans.
 
-Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-28-claude-modlari-oda-graf-karar-126.json`
+Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-30-sokrates-ajani-v1-acik-kaynak.json`
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
@@ -42,6 +44,8 @@ Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-28-claude-modlari-oda-graf-k
 - #39 defterdeki ölçüm şartlı geri-açma cümleleri (Karar 103/104 M1-M2, 112, 113, 114 M5, 115) Karar 123'e göre sadeleştirilir. Sonraki adım: her cümle: 'arıza görülürse' biçimine; tek [damıtma] commit.
 - #45 akış grafı HTML tasarımı optimizasyonu (Salih: istediğim tam olmadı, ileride optimize edeceğim; şimdilik açıklama yüzeyi değil). Sonraki adım: Salih tasarım kararını verir; başlangıç Karar 125 kaydı + tools/akis-graf-html.py.
 - #47 jarvis-oda v0.2 + jarvis-graf v0.1 kuruldu, duman testi geçti; Salih: istenen seviyede değil. Sonraki adım: Salih fark listesi verir, Jarvis mods/ üzerinde itere eder.
+- #48 Öğrenme kutusu: ispat-arama algoritmaları (best-first/A*, MCTS+policy/value, HTPS, expert iteration, PRM+test-time compute, FunSearch/AlphaEvolve) ve search-then-distill döngüsü; kaynak Lex #503 dk 10-30 (Moitra 14:20, 18:54). Sonraki adım: Salih istediğinde ogren şeridinde kutu kutu; önce canlı doğrulama (AS-OF).
+- #71 jarvis-oda v0.4: oda_gorev_ver ajan alanı (rol ajanı işçi, yapan≠ölçen odada görünür); yan oturum yazdı, commit 7e78afb. Sonraki adım: ana oturum yeniden başlatılınca hakem turunu ajan:hakem ile odada koş; canlı doğrulama.
 
 **Bekler (girdisi açık)**
 - #35 Karar 118 M1: atlas-kosum doğrudan kodlu akışa geçer (pilot şartı kalktı): emir şeması JSON/Lean + Workflow + Rust V26/done + JSON teslim bekler: #21.

@@ -2,10 +2,10 @@
   "meta": {
     "sema": "akis-graf v1 (Karar 122)",
     "uretici": "durum graf",
-    "tarih": "2026-10-28",
+    "tarih": "2026-10-30",
     "alan": null,
-    "dugum_sayisi": 52,
-    "kenar_sayisi": 63,
+    "dugum_sayisi": 89,
+    "kenar_sayisi": 131,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -111,6 +111,69 @@
       "dokunulan": [
         46,
         47
+      ]
+    },
+    {
+      "id": "seans:2026-10-28-jarvis",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-10-28-jarvis",
+      "ac_ts": "2026-10-27T21:18:56Z",
+      "kapat_ts": null,
+      "hedef": "Salih: Lex #503 transkripti dk 10-30; insan-AI potansiyel farkı ve LLM gelişim yönü (matematik konjektürü sınırı) sorusu; ilgili algoritma adı",
+      "hedef_tutuldu": null,
+      "kayit": null,
+      "ortuk": false,
+      "dokunulan": [
+        48
+      ]
+    },
+    {
+      "id": "seans:2026-10-29-jarvis",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-10-29-jarvis",
+      "ac_ts": "2026-10-29T13:29:51Z",
+      "kapat_ts": "2026-10-29T23:26:11Z",
+      "hedef": "Salih: Sokrates ajanı tasarımı; atlas ile Sokrates bağlamları toplanır, ajan kişiliği yazılır, Salih ajanla konuşur",
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-30-sokrates-ajani-v1-acik-kaynak.json",
+      "ortuk": false,
+      "dokunulan": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
       ]
     },
     {
@@ -764,6 +827,531 @@
       "sirada": true
     },
     {
+      "id": "is:48",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "Öğrenme kutusu: ispat-arama algoritmaları (best-first/A*, MCTS+policy/value, HTPS, expert iteration, PRM+test-time compute, FunSearch/AlphaEvolve) ve search-then-distill döngüsü; kaynak Lex #503 dk 10-30 (Moitra 14:20, 18:54)",
+      "sonraki_eylem": "Salih istediğinde ogren şeridinde kutu kutu; önce canlı doğrulama (AS-OF)",
+      "acilis_ts": "2026-10-28T16:46:06Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [
+        "2026-10-28-jarvis"
+      ],
+      "sirada": true
+    },
+    {
+      "id": "is:49",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "Sokrates ajanı: Salih'in doğrudan konuşabileceği, kaynak-temelli, anakronizmsiz Sokrates",
+      "sonraki_eylem": "alt graf: araştırma → kişilik kanonu → teknik yüzey → test döngüsü → teslim",
+      "acilis_ts": "2026-10-29T13:33:00Z",
+      "al_ts": "2026-10-29T14:05:01Z",
+      "bitir_ts": "2026-10-29T14:05:01Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:50",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "A araştırma: depo içi + birincil kaynaklar + modern tasarımlar + Claude Code mekanizması (4 rapor)",
+      "sonraki_eylem": "raporlar/2026-10-29-sokrates-ajani/01-04",
+      "acilis_ts": "2026-10-29T13:33:01Z",
+      "al_ts": "2026-10-29T13:33:04Z",
+      "bitir_ts": "2026-10-29T13:35:41Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:51",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1 kişilik kanonu core/sokrates-ajani.md (elenchus algoritması, dil kalıpları, bilgi sınırı, çıkış kuralı)",
+      "sonraki_eylem": "oda işçisi yazar, Jarvis hakemler",
+      "acilis_ts": "2026-10-29T13:33:01Z",
+      "al_ts": "2026-10-29T14:04:00Z",
+      "bitir_ts": "2026-10-29T14:04:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:52",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B2 teknik yüzey: output style + agent + skill; ürün klasörü C:/sistem/sokrates",
+      "sonraki_eylem": "oda işçisi yazar",
+      "acilis_ts": "2026-10-29T13:33:01Z",
+      "al_ts": "2026-10-29T14:04:00Z",
+      "bitir_ts": "2026-10-29T14:04:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:53",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3 test döngüsü: 3 deneme diyaloğu + puanlama + geri besleme (≤3 tur)",
+      "sonraki_eylem": "oda işçileri, hakem puanı",
+      "acilis_ts": "2026-10-29T13:33:01Z",
+      "al_ts": "2026-10-29T14:04:00Z",
+      "bitir_ts": "2026-10-29T14:04:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:54",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "C teslim: rapor + commit (git add <yol>) + Salih'e açılış yolu",
+      "sonraki_eylem": "Jarvis",
+      "acilis_ts": "2026-10-29T13:33:01Z",
+      "al_ts": "2026-10-29T14:04:00Z",
+      "bitir_ts": "2026-10-29T14:04:55Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:55",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1 kişilik kanonu (alt graf): core/sokrates-ajani.md tek kaynak",
+      "sonraki_eylem": "6 alt iş",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:35:42Z",
+      "bitir_ts": "2026-10-29T13:40:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:56",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.1 kimlik çekirdeği: biyografi, Atina MÖ 470-399 bağlamı, kişiler, ölüm",
+      "sonraki_eylem": "§1",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:57",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.2 yöntem motoru: elenchus adımları (tanım→örnek→karşı-örnek→çelişki→aporia), maieutik, ironi, analoji havuzu (ayakkabıcı/hekim/at terbiyecisi)",
+      "sonraki_eylem": "§2",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:58",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.3 dil kalıpları: Türkçe soru şablonları (≥12), hitap, kısa cevap kuralı, Protagoras 'kısa konuş' ısrarı",
+      "sonraki_eylem": "§3",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:59",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.4 bilgi sınırı + anakronizm freni: MÖ 399 sonrası bilinmez; modern kavram gelince 'anlat bana' → sorgu; kelime listesi yasak (bilgisayar, Hristiyan, kilometre…)",
+      "sonraki_eylem": "§4",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:60",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.5 etkileşim kuralları: tur bütçesi, aporia sonrası toparlama, 'cevabı söyle' iki kademe, bıkkın kullanıcı, görüş beyanı (erdem=bilgi, kimse bilerek kötülük yapmaz)",
+      "sonraki_eylem": "§5",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:61",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B1.6 Salih kanonu uyumu: m.23/m.33 ruh hâli sorgusu yok, övgü yok, em-dash yok, Türkçe, karakter dışına çıkma protokolü ([Jarvis] köşeli etiket)",
+      "sonraki_eylem": "§6",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T14:05:16Z",
+      "bitir_ts": "2026-10-29T14:05:16Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:62",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B2 teknik yüzey (alt graf): ürün klasörü C:/sistem/sokrates + jarvis içi fallback",
+      "sonraki_eylem": "3 alt iş",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:40:52Z",
+      "bitir_ts": "2026-10-29T13:40:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:63",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B2.1 türetme: core/sokrates-ajani.md → output-style (keep-coding-instructions:false) · agents/sokrates.md · skills/sokrates/SKILL.md; her dosya başında kaynak pointer",
+      "sonraki_eylem": "3 dosya",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:40:52Z",
+      "bitir_ts": "2026-10-29T13:40:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:64",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B2.2 ürün klasörü: C:/sistem/sokrates/{CLAUDE.md, README.md, .claude/settings.local.json outputStyle, .claude/output-styles, .claude/agents, .claude/skills, sokrates.bat, diyaloglar/}",
+      "sonraki_eylem": "klasör",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:36:40Z",
+      "bitir_ts": "2026-10-29T13:37:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:65",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B2.3 jarvis içi fallback: jarvis/.claude/agents/sokrates.md + jarvis/.claude/skills/sokrates/SKILL.md (bu oturumda /sokrates)",
+      "sonraki_eylem": "2 dosya",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:40:52Z",
+      "bitir_ts": "2026-10-29T13:40:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:66",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3 test döngüsü (alt graf): yapan≠ölçen; ≤3 tur",
+      "sonraki_eylem": "4 alt iş",
+      "acilis_ts": "2026-10-29T13:34:52Z",
+      "al_ts": "2026-10-29T13:40:47Z",
+      "bitir_ts": "2026-10-29T14:04:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:67",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3.1 diyalog senaryoları: (a) matematik 'ispat nedir' (b) etik 'adalet nedir' (c) modern 'yapay zekâ düşünür mü' — her biri 6-8 tur simülasyon",
+      "sonraki_eylem": "diyaloglar/",
+      "acilis_ts": "2026-10-29T13:34:53Z",
+      "al_ts": "2026-10-29T13:40:52Z",
+      "bitir_ts": "2026-10-29T13:42:49Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:68",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3.2 adversarial testler: karakter kırma ('sen bir yapay zekâsın'), anakronizm tuzağı, 'cevabı söyle' ısrarı x3, bıkkın kullanıcı, övgü avı",
+      "sonraki_eylem": "diyaloglar/adversarial",
+      "acilis_ts": "2026-10-29T13:34:53Z",
+      "al_ts": "2026-10-29T13:40:52Z",
+      "bitir_ts": "2026-10-29T13:42:49Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:69",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3.3 hakem rubriği (5 ölçüt: soru/cevap oranı · tanım-netleşme · anakronizm · karakter kırılması · bıktırma) → hakem ajanı puanı",
+      "sonraki_eylem": "cc/rapor hakem",
+      "acilis_ts": "2026-10-29T13:34:53Z",
+      "al_ts": "2026-10-29T13:36:40Z",
+      "bitir_ts": "2026-10-29T13:37:48Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:70",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "B3.4 geri besleme → B1 revizyonu; eşik: 5 ölçütte ≥4/5, aksi yeni tur (≤3)",
+      "sonraki_eylem": "core revizyon",
+      "acilis_ts": "2026-10-29T13:34:53Z",
+      "al_ts": "2026-10-29T13:42:49Z",
+      "bitir_ts": "2026-10-29T14:04:00Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:71",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "jarvis-oda v0.4: oda_gorev_ver ajan alanı (rol ajanı işçi, yapan≠ölçen odada görünür); yan oturum yazdı, commit 7e78afb",
+      "sonraki_eylem": "ana oturum yeniden başlatılınca hakem turunu ajan:hakem ile odada koş; canlı doğrulama",
+      "acilis_ts": "2026-10-29T13:54:50Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": true
+    },
+    {
+      "id": "is:72",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "Vizyon taraması (geriye dönük): persona ajanı için sektör/literatür/GitHub araç-metrik-repo kombinasyon analizi; Sokrates yapısı standarda göre fark listesi",
+      "sonraki_eylem": "3 atlas ekseni → 07 rapor → fark listesi → ajan-metodolojisi kural adayı",
+      "acilis_ts": "2026-10-29T14:33:15Z",
+      "al_ts": "2026-10-29T14:49:52Z",
+      "bitir_ts": "2026-10-29T14:49:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:73",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "V1 persona spec biçimleri (karakter kartı standartları, persona/örnek diyalog/bilgi sınırı ayrımı)",
+      "sonraki_eylem": "raporlar/2026-10-29-sokrates-ajani/07-vizyon-taramasi.md",
+      "acilis_ts": "2026-10-29T14:33:15Z",
+      "al_ts": "2026-10-29T14:49:52Z",
+      "bitir_ts": "2026-10-29T14:49:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:74",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "V2 eval çerçeveleri + persona benchmark'ları + metrikler + simüle kullanıcı araçları",
+      "sonraki_eylem": "raporlar/2026-10-29-sokrates-ajani/07-vizyon-taramasi.md",
+      "acilis_ts": "2026-10-29T14:33:15Z",
+      "al_ts": "2026-10-29T14:49:52Z",
+      "bitir_ts": "2026-10-29T14:49:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:75",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "V3 örnek persona-ajan repo yapıları, prompt sürümleme, regresyon seti, araç kombinasyonları",
+      "sonraki_eylem": "raporlar/2026-10-29-sokrates-ajani/07-vizyon-taramasi.md",
+      "acilis_ts": "2026-10-29T14:33:15Z",
+      "al_ts": "2026-10-29T14:49:52Z",
+      "bitir_ts": "2026-10-29T14:49:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:76",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "V4 sentez: seçilen kombinasyon + Sokrates fark listesi + kural adayı",
+      "sonraki_eylem": "raporlar/2026-10-29-sokrates-ajani/07-vizyon-taramasi.md",
+      "acilis_ts": "2026-10-29T14:33:15Z",
+      "al_ts": "2026-10-29T14:49:52Z",
+      "bitir_ts": "2026-10-29T14:49:52Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:77",
+      "tur": "hedef",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "Sokrates v1.0: bugüne taşınmış Sokrates (Salih 2026-10-29: günümüz şartlarını bilir; 'bugün yaşasaydı ne derdi' verisini LLM bağlam verisiyle tamamlar; Zeus'a inanmaz örneği)",
+      "sonraki_eylem": "araştırma (değişmezler + tahmini görüş kartları + literatür) → persona v1.0 → ters tuzak seti → hakem → repo",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T16:11:26Z",
+      "bitir_ts": "2026-10-29T16:11:26Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:78",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "T1 araştırma: Sokratik değişmezler vs bugüne taşınan görüşler; 'Socrates today' literatürü; din/bilim/demokrasi/AI/para görüş kartları kaynaklı",
+      "sonraki_eylem": "v1.0",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T14:55:29Z",
+      "bitir_ts": "2026-10-29T15:05:23Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:79",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "T2 bağlam verisi: modern karşılık haritası (sofist→, agora→, zanaat→) + kaynaklı görüş kartları dosyası (kaynak/ dizini)",
+      "sonraki_eylem": "v1.0",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T14:55:29Z",
+      "bitir_ts": "2026-10-29T15:05:24Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:80",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "T3 persona v1.0: bilgi sınırı ters, kimlik Atina'dan, bugünü bilir; yasak liste yerine 'kaynaklı tahmin' kuralı",
+      "sonraki_eylem": "v1.0",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T15:05:24Z",
+      "bitir_ts": "2026-10-29T15:05:24Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:81",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "T4 test: ters tuzak seti (Zeus, AI, aşı, demokrasi) + karakter testleri + hakem turu",
+      "sonraki_eylem": "v1.0",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T15:05:24Z",
+      "bitir_ts": "2026-10-29T16:11:26Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:82",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "T5 repo güncelleme + sürüm kaydı",
+      "sonraki_eylem": "v1.0",
+      "acilis_ts": "2026-10-29T14:54:46Z",
+      "al_ts": "2026-10-29T16:11:26Z",
+      "bitir_ts": "2026-10-29T16:11:26Z",
+      "oturumlar": [
+        "2026-10-29-jarvis"
+      ],
+      "sirada": false
+    },
+    {
       "id": "is:16",
       "tur": "is",
       "alan": "span",
@@ -995,6 +1583,11 @@
     },
     {
       "k": "seans:2026-10-27-jarvis",
+      "h": "seans:2026-10-28-jarvis",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-10-27-jarvis",
       "h": "is:46",
       "tur": "acti"
     },
@@ -1007,6 +1600,186 @@
       "k": "seans:2026-10-27-jarvis",
       "h": "is:46",
       "tur": "bitirdi"
+    },
+    {
+      "k": "seans:2026-10-28-jarvis",
+      "h": "seans:2026-10-29-jarvis",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-10-28-jarvis",
+      "h": "is:48",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:49",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:50",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:51",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:52",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:53",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:54",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:55",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:56",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:57",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:58",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:59",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:60",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:61",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:62",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:63",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:64",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:65",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:66",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:67",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:68",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:69",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:70",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:71",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:72",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:73",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:74",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:75",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:76",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:77",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:78",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:79",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:80",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:81",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "is:82",
+      "tur": "acti"
     },
     {
       "k": "is:1",
@@ -1107,6 +1880,161 @@
       "k": "is:46",
       "h": "is:47",
       "tur": "girdi"
+    },
+    {
+      "k": "is:50",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:51",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:52",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:53",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:54",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:55",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:56",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:57",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:58",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:59",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:60",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:61",
+      "h": "is:55",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:62",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:63",
+      "h": "is:62",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:64",
+      "h": "is:62",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:65",
+      "h": "is:62",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:66",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:67",
+      "h": "is:66",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:68",
+      "h": "is:66",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:69",
+      "h": "is:66",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:70",
+      "h": "is:66",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:71",
+      "h": "is:49",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:73",
+      "h": "is:72",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:74",
+      "h": "is:72",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:75",
+      "h": "is:72",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:76",
+      "h": "is:72",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:78",
+      "h": "is:77",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:79",
+      "h": "is:77",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:80",
+      "h": "is:77",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:81",
+      "h": "is:77",
+      "tur": "hizmet"
+    },
+    {
+      "k": "is:82",
+      "h": "is:77",
+      "tur": "hizmet"
     }
   ]
 }

@@ -2,15 +2,15 @@
  "d2_surum": "v0.9.0",
  "layout": "elk",
  "n_kosum": 2,
- "silver_git_head": "a0a950fbac1463cee7ab11013b0df908bc01aec6",
- "git_head": "a0a950f",
- "olcum_zamani": "2026-10-28T00:12:41+03:00",
+ "silver_git_head": "768620f658af6f278d937d17dae1f1375c57ca27",
+ "git_head": "768620f",
+ "olcum_zamani": "2026-10-30T02:26:03+03:00",
  "not": "aynı .d2 × aynı d2 sürümü × aynı motor → SVG sha256 eşitliği; sürümler-arası eşitlik BEKLENMEZ (A-YT2)",
  "panolar": [
   {
    "d2": "graf/pointer-sistemi-v0-genel.d2",
    "svg": "graf/pointer-sistemi-v0-genel.svg",
-   "sha256": "4fbc3c7c403431198619ad65c424fe56b8f4ed93ff047d3cc7b74ac9f872b5c1",
+   "sha256": "7f405dc5e53a443febc6b89e8f52aa1801d83d2de4a82ddce8f9f8f24125fc7b",
    "determinizm": "BİREBİR",
    "genislik": 2113,
    "yukseklik": 2073
@@ -18,7 +18,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-silver.d2",
    "svg": "graf/pointer-sistemi-v0-silver.svg",
-   "sha256": "195cc3b8afa36ee52592052ab4ce2a7983a16da7d3f7861738b49ffdbba0c0a3",
+   "sha256": "a708aae0f9ce472427f21fd68999c2846054523507d72d840594b43da4cb2312",
    "determinizm": "BİREBİR",
    "genislik": 1959,
    "yukseklik": 6538
@@ -26,7 +26,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-pointer.d2",
    "svg": "graf/pointer-sistemi-v0-pointer.svg",
-   "sha256": "3342743742a31eeacf8fe96044205633a9d04b8758e3610237e8577e4ac8061c",
+   "sha256": "d82e93d7a47f5c86c92e514e8771b2f36dcdad4041cde991fda10a6be9980da5",
    "determinizm": "BİREBİR",
    "genislik": 1863,
    "yukseklik": 1470
@@ -34,7 +34,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-ilke.d2",
    "svg": "graf/pointer-sistemi-v0-ilke.svg",
-   "sha256": "0b8516eae67ace0218262f41ed6108ee266139a038664028acace251d4f17cde",
+   "sha256": "c271ffebf3f10639d34d4af1af0293e8f88795d433820c76a05885d2b7e1dc1b",
    "determinizm": "BİREBİR",
    "genislik": 1704,
    "yukseklik": 764
@@ -50,7 +50,7 @@
   {
    "d2": "graf/pointer-sistemi-v0-kirik.d2",
    "svg": "graf/pointer-sistemi-v0-kirik.svg",
-   "sha256": "76d881f1a1ab0ab937e3c7ce001a11ae45254ff37af39fe69a7f5e911929ad2f",
+   "sha256": "545b18682327361dea5dc399eabdae7a424df27134f2b8f0f6c874ca584abdd8",
    "determinizm": "BİREBİR",
    "genislik": 4742,
    "yukseklik": 2922

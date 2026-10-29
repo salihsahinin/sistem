@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-28",
+ "uretim": "2026-10-30",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 39,
+ "dosya_sayisi": 40,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "b3fb31c1b242ba61a5aeab7bd29ea4b0cc35b1fd7a55ac1d3c837809d3bda60c",
-   "bayt": 5601,
-   "kaynak_mtime": "2026-10-27T15:28:45",
+   "sha256": "de5f17e036416c188073743f9af077655710ff78c7aafd040fb2aa9666d87421",
+   "bayt": 5869,
+   "kaynak_mtime": "2026-10-29T17:50:06",
    "durum": "ayna"
   },
   {
@@ -256,6 +256,13 @@
    "sha256": "f2c301dc97d6545e6fd6783ece20e486fede97628f595e4242518ebf315a9836",
    "bayt": 1875,
    "kaynak_mtime": "2026-10-26T17:41:11",
+   "durum": "ayna"
+  },
+  {
+   "ad": "project-sokrates-ajani.md",
+   "sha256": "7c38f25bbf2ff4036eaa94877318caa8a3deca8c320e100fa4bb9b5e896a9d45",
+   "bayt": 2326,
+   "kaynak_mtime": "2026-10-29T19:11:26",
    "durum": "ayna"
   },
   {

@@ -26,3 +26,4 @@
 - [Graf HTML açıklama yüzeyi değil](feedback-graf-html-aciklama-yuzeyi-degil.md) — Salih 10-26: graf tasarımı tam olmadı, Salih ileride optimize edecek; brif/karar md ile, graf yalnız istekle üretilir
 - [Siber güvenlik yok, odak otomasyon, fikir = icra](feedback-siber-guvenlik-yok-otomasyon-odagi.md) — Salih 10-27 Karar 126: güvenlik örneği/konusu kullanılmaz; öğrenme+ürün odağı otomasyon + human-in-the-loop; plan taslağı yerine doğrudan icra
 - [Claude modları: jarvis-oda + jarvis-graf](project-claude-modlari-oda-graf.md) — 10-27: lobi eşgörevi oda modu (Fable planlar, Haiku/Sonnet/Opus uygular) + graf paneli; kanon jarvis/mods, canlı ~/.claude/dev-mods; iterasyon Salih kullanımıyla
+- [Sokrates ajanı ürünü](project-sokrates-ajani.md) — 10-29: C:\sistem\sokrates + public repo salihsahinin/sokrates; kanon jarvis/core/sokrates-ajani.md §7 tek kaynak; ajan yalnız Sokrates'i bilir; hakem odada görünür; 'ajan yap' → önce vizyon taraması
