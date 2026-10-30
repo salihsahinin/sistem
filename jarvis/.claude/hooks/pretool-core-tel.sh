@@ -5,23 +5,8 @@
 # (kabuk-taşıyan ajan zaptedilemez — kapsül güvenlik notu 07-22); kaçırdığı desen olabilir,
 # yanlış-pozitifte mesajı gör ve komutu yeniden ifade et. Gerekçe: raporlar/vardiya/vardiya-teslim-2026-07-22-aksam.md
 . "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" pretool-core-tel   # Rust varsa exec; yoksa aşağısı (durum #1)
-input=$(cat)
-# PY seçimi (macOS portu 2026-08-11, Salih izniyle): macOS'ta yalnız python3 var,
-# Windows Git Bash'te yalnız python olabilir. İkisini de dene; bulunamazsa satır 9
-# ham girdiye düşer ve tel bozuk-modda da olsa ayakta kalır.
-PY=$(command -v python3 || command -v python)
-cmd=$(printf '%s' "$input" | "${PY:-python3}" -c "import sys,json;print(json.load(sys.stdin).get('tool_input',{}).get('command',''))" 2>/dev/null)
-[ -z "$cmd" ] && cmd="$input"
-PROT='(core/|CLAUDE\.md|\.claude/)'
-block=0
-printf '%s' "$cmd" | grep -qE ">{1,2}[[:space:]]*\"?\.?/?(core/|CLAUDE\.md|\.claude/)" && block=1
-printf '%s' "$cmd" | grep -qE "\b(mv|cp|rm|touch|truncate|tee|dd|install)\b.*${PROT}" && block=1
-# sed/perl -i yalnız AYNI boru segmentinde (| ; && || ile ayrılmamış) ve korunan yolla birlikteyse yazımdır; 'sed -n … | grep -i core/' salt-okurdur
-# (09-02 sağlık turu yanlış-pozitifi, Karar 86 D6-2: -i başka komuta aitken tel tetikleniyordu)
-printf '%s' "$cmd" | grep -qE "\b(sed|perl)\b[^|;&]*[[:space:]]-[[:alpha:]]*i[^|;&]*${PROT}" && block=1   # -i · -pi · -ni (bayrak grubu)
-printf '%s' "$cmd" | grep -qE "\bgit[[:space:]]+(checkout|restore|reset|clean|rm|mv)\b.*${PROT}" && block=1
-if [ "$block" = "1" ]; then
-  echo "TEL (m.41 kilit): Bash ile core/ · CLAUDE.md · .claude/ yazımı bu yüzeyde engellidir. Bu bir tökezleme-telidir; iş meşruysa ana-sıra(Cowork/Fable) ya da Salih eliyle yapılır. Komut: $cmd" >&2
-  exit 2
-fi
+# Karar 118 M2 (Salih 2026-10-17; icra 2026-10-30): Python gövdesi arsiv/kod/python/hooks/pretool-core-tel.sh'a indi (m.8: taşındı, silinmedi).
+# Buraya düşüldüyse jarvis-hook ikilisi yok (ya da JARVIS_HOOK_PYTHON=1): uyarı ver, hiçbir şeyi engelleme, sessiz çık.
+cat > /dev/null
+echo "jarvis-hook yok (pretool-core-tel): önce cargo build --release -p jarvis-hook (Karar 118 M2; eski Python gövdesi arsiv/kod/python/hooks/pretool-core-tel.sh)" >&2
 exit 0

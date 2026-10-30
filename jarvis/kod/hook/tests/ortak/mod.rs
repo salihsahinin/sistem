@@ -70,6 +70,17 @@ pub fn kum(ad: &str, yan: &str) -> Kum {
             kopya(&gj, &jarvis, &format!(".claude/hooks/{n}"));
         }
     }
+    // Karar 118 M2 (2026-10-30): canlı hook betikleri yalnız Rust yönlendirme + ikili-yok uyarısı taşır; eski Python gövdeleri
+    // arsiv/kod/python/hooks/ altındadır. Fark testinin "eski" tarafı o gövdeleri koşar → kum havuzundaki kopyaların üstüne yazılır.
+    let arsiv_hooks = gk.join("arsiv").join("kod").join("python").join("hooks");
+    if let Ok(rd) = std::fs::read_dir(&arsiv_hooks) {
+        for e in rd.flatten() {
+            let n = e.file_name().to_string_lossy().into_owned();
+            if n.ends_with(".sh") && n != "hook-dispatch.sh" {
+                std::fs::copy(e.path(), jarvis.join(".claude").join("hooks").join(&n)).unwrap();
+            }
+        }
+    }
     for r in ["tools/prompt-dosya.py", "tools/baglam_oku.py", "core/tuzuk-v0-m11.md", "core/tuzuk-v0-m17.md", "core/tuzuk-v0-m29.md", "core/tuzuk-v0-m30.md", "core/tuzuk-v0-m31.md", "core/tuzuk-v0-m32.md", "core/tuzuk-v0-m40.md", "core/tuzuk-v0-m41.md", "core/tuzuk-v0-m42.md", "core/tuzuk-v0-m43.md", "core/tuzuk-v0-m44.md", "core/tuzuk-v0-m45.md","core/tuzuk-v0-m46.md", "core/tuzuk-v0-m47.md","tools/paket-yonlendir.py", "core/prompt-dosya-tablosu.tsv", "core/baglam-paketleri.json", "core/tuzuk-v0.md", "core/durum-kapsulu.md", "core/pano.md", "core/ajan-metodolojisi.md", "core/ingest-semasi.md", "kuyruk/senaryo-defteri.md", "veri/karar-borcu.jsonl", "veri/model-kesim.jsonl"] {
         kopya(&gj, &jarvis, r);
     }
