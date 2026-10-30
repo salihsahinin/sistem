@@ -100,8 +100,12 @@ pub fn kum(ad: &str, yan: &str) -> Kum {
     std::fs::create_dir_all(&ev).unwrap();
     let k = Kum { kok, jarvis, ev };
     let gj = gercek_kok().join("jarvis");
+    // Eski betik kaynağı: canlı `jarvis/<yol>` yoksa Python arşivi `arsiv/kod/python/<yol>` (Karar 118 M2, 2026-10-30).
+    let arsiv = gercek_kok().join("arsiv").join("kod").join("python");
     for arac in [Arac::Tetik, Arac::Derece, Arac::SkillEsik, Arac::Paralel, Arac::Ad] {
-        yaz(&k.jarvis.join(arac.py()), &std::fs::read(gj.join(arac.py())).unwrap());
+        let canli = gj.join(arac.py());
+        let kaynak = if canli.is_file() { canli } else { arsiv.join(arac.py()) };
+        yaz(&k.jarvis.join(arac.py()), &std::fs::read(&kaynak).unwrap_or_else(|e| panic!("{}: {e}", kaynak.display())));
     }
     yaz(&k.jarvis.join("tools/harness_anahtar.py"), &std::fs::read(gj.join("tools/harness_anahtar.py")).unwrap());
     git(&k.kok, &["init", "-q", "-b", "main"]);
