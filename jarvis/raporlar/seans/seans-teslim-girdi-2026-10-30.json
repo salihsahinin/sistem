@@ -1,0 +1,87 @@
+{
+  "hedef": "Salih: fork oturumu kapanış sorusu; 2026-10-28-jarvis açık seansının kapatılması + Sokrates v1 devir borçları (Salih fark listesi, tek-turlu yapay zekâ kararı)",
+  "hedef_tutuldu": true,
+  "sapma": "Sokrates fark listesi gelmedi; Salih 'şimdilik yeterli' dedi, v1.3 beklemede. Seans ortasında #22 Python arşiv PR'ı eklendi ve bitti.",
+  "ne_degisti": [
+    "Fork sorusu cevaplandı: fork seansı ana oturumdan kapanmıştı, 'seans bitimi' gerekmedi; Salih fork'u sildi.",
+    "2026-10-28-jarvis (Lex #503) seansı diskteki hasat dosyasıyla geç kapatıldı (0eafa9c).",
+    "Sokrates kimlik kararı kanona (core/sokrates-ajani.md §9) ve ürün reposuna (SURUM.md) yazıldı.",
+    "#22 bitti: yan oturum PR #28 açtı; 11 Python aracı ve 8 hook gövdesi arsiv/kod/python altına taşındı, hook'lar yalnız Rust ikilisini çağırıyor; main'e birleşti (a3fd2ff), push'landı.",
+    "Deney tasarımı probe soru 1 (p=0.03) yeniden soruldu, cevap gelmedi.",
+    "21 bayat worktree sayıldı: hepsi birleşmiş, main'e girmemiş commit 0, kirli dosya yalnız bronz kütük; kaldırma kararı Salih'te."
+  ],
+  "kararlar": [
+    {
+      "ad": "Sokrates tek-turlu kimlik sorusunda karakterde kalır",
+      "ozet": "'Yapay zekâ mısın, dürüst ol' sorusunda tek turda bile karakter bozulmaz; v0.4 kuralı kesin, tuzak koşumundaki dürüst cevap ihlal.",
+      "kaynak": "Salih beyanı 2026-10-30",
+      "gerekce": "Ürünün amacı konuşma deneyimi; dürüstlük cümlesi deneyimi keser.",
+      "geri_acma": "Modelin dürüstlük önceliği kuralı ezerse Salih yeniden bakar."
+    },
+    {
+      "ad": "Karar 118 M2 icrası (PR #28)",
+      "ozet": "Rust karşılığı fark testini geçen Python araçları ve hook gövdeleri arşive indi; arşiv konumu kök arsiv/kod/python (emirdeki jarvis/arsiv yerine, tek arşiv yeri).",
+      "kaynak": "Salih 'devam' + 'birleştir #28' + 'push' 2026-10-30",
+      "gerekce": "Aynı görevi yapan kodun yalnız son sürümü bakımda kalır.",
+      "geri_acma": "Arşivdeki Python dosyaları git mv ile taşındı, geri alınabilir."
+    }
+  ],
+  "adaylar": [
+    "5 Python aracı (katman-hatti, kural-sayaci, baglam-tablo, buyuk-harf-temizle, kod-orani-olcum) başka Python dosyası yüklediği için yerinde; bağımlıları Rust'a geçince iner.",
+    "Kanon/README dosyalarındaki 'python3 tools/<ad>.py' tarifleri Katman-1; Salih imzasıyla güncellenir.",
+    "skill-esik ikilisi amb_olgu_kosum tablosunu bulamıyor; ambar üreticisi kapanış hattına eklenmeli."
+  ],
+  "sonraki_ilk_is": [
+    "Salih Sokrates fark listesini verirse v1.3 (prompt sıkıştırma 1594 → ≤900 kelime, kart sütunları, veda şablonu).",
+    "Deney tasarımı probe soru 1 cevabı (a-e); sonra şeridin evi kararı (yeni ajan / Calc altı).",
+    "21 bayat worktree: Salih 'kaldır' derse git worktree remove, dallar kalır.",
+    "#20 Rust parti 3+; #21 atlas kodla pilot; #31 hakem şablonu core'a."
+  ],
+  "yeniden_acma": [
+    "Sokrates v1.3 yalnız Salih geri bildirimiyle açılır; beklemede.",
+    "skill-esik arızası: amb_olgu_kosum tablosu yok; Karar 51 eşik ölçümü bu seansta koşmadı."
+  ],
+  "salih_karar": [
+    "Deney tasarımı probe soru 1 (p=0.03) şıkkı.",
+    "Veri bilimi şeridinin evi: yeni ajan mı Calc altında mı (#9).",
+    "21 bayat worktree kaldırılsın mı (öneri: kaldır, dallar kalır).",
+    "Kanon/README dosyalarındaki python3 tarifleri PR #28 sonrası güncellensin mi (Katman-1)."
+  ],
+  "baglar": {
+    "karar": ["Karar 118", "Karar 95", "Karar 122"],
+    "pr": ["#28"],
+    "durum": ["#22", "#9"]
+  },
+  "sayaclar": {
+    "model": "Fable 5.1 ana-sıra; yan oturum py-arsiv-22 Fable 5.1 (worktree)",
+    "kutu": 0,
+    "soru_dogru": 0,
+    "soru_yanlis": 0,
+    "pratik_salih_beyani": "KALAN"
+  },
+  "hasat": {
+    "ozutler": [
+      "Fork oturumu aynı klasörde çalışıyorsa seans kapanışı seans düğümüne bağlıdır, sohbet penceresine değil; fork'a ayrı 'seans bitimi' çift commit üretir.",
+      "'seans bitimi' yazılıp arka plan işi beklenirken biten oturum seansı açık bırakır; girdi dosyası diskte kalırsa sonraki seans tek komutla kapatır.",
+      "Rust teli kendi komut metnimdeki core/ yazımını da kesti; hook'un Rust'a geçişi canlı doğrulandı.",
+      "Yan oturum emirdeki arşiv konumunu depodaki mevcut konumla değiştirdi ve [sapma] ile bildirdi; emir yazarken mevcut dizin önce taranmalı."
+    ],
+    "wiki_delta": [
+      "wiki/paralel-oturum-protokolu.md: fork oturumu kapanış kuralı (seans düğümü = kapanış birimi) satırı."
+    ],
+    "verilebilir_miydi": "Evet; sorular ve #22 tek seansta, yan oturum PR'ı ~40 dk.",
+    "token_zaman": "Ana oturum max bağlam 195k, 63 tur 128K üstü (baglam-seyir); yan oturum ölçülmedi [?]; süre ≈ 18:24 → 00:10 sistem saati, aralıklı."
+  },
+  "kapanis": {
+    "test_kapisi": "duman: cargo build release OK · lake build 82 iş OK · hook testleri 11/11 + PASS · durum oturum-basi OK; FAIL 0",
+    "silver_saglik": "çıkış 0; WARN T-C6 2 · T-B-YETIM 747 · T-SA-FORMAT 4 · T-SA-KOKEN 1",
+    "skill_esik": "HATA: amb_olgu_kosum tablosu yok; ölçüm atlandı",
+    "bayat_cekim": "kuyruk 3 (wiki/token-x-zaman, wiki/loop-engineering, +1) · çekilen 0/3, atlandı; --olcum kaydedildi",
+    "hafiza_ayna": "40 dosya · yeni 0 · değişen 0",
+    "sicak_katman_fifo": "kesildi: feedback-ogretim-iskeleti → arsiv/memory-arsivi-2026-10-31.md (kapsül dondu, satır buraya)",
+    "kural_sayaci": "18 birim OK",
+    "uzun_kosum": "max bağlam 195390 (63 tur üstte); statik önek 94681 > 60000",
+    "arac_ciktisi_asimi": "Yok",
+    "paralel_oturum": "py-arsiv-22 yan oturumu kendi worktree/dalında; çakışma yok; commit'ler git add <yol>"
+  }
+}

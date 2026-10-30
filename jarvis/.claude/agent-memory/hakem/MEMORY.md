@@ -6,3 +6,4 @@
 - [Özetleyici "kurgusal" bayrağı kanıt değil](feedback-fetch-ozetleyici-kurgu-bayragi.md) — kesim-sonrası sayfada "bu makale yok" diyen çekim, içeriği alıntılıyorsa çürütme sayılmaz (07-17 dersinin aynası).
 - [Doğrulama bütçesi hedefleme](feedback-dogrulama-butcesi-hedefleme.md) — 8 çekim yalnız aile-içi çelişkili + taşıyıcı iddiaya; çift-`TUTTU` olgu yeniden çekilmez.
 - [Antitez çürütmesi: kaynak ve birim](feedback-antitez-curutmesi-kaynak-ve-birim.md) — sondajlanmamış ÇÜRÜDÜ'de tezin URL'sini kendin çek; etki büyüklüğü ≠ hız çarpanı.
+- [Belirsiz rubrik: birincil okuma + duyarlılık](feedback-belirsiz-rubrik-birincil-okuma-duyarlilik.md) — iki okumaya açık maddede tek okumayla puanlama; ikinci okumayı ayrı sütunda ver.

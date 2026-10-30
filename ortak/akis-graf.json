@@ -2,10 +2,10 @@
   "meta": {
     "sema": "akis-graf v1 (Karar 122)",
     "uretici": "durum graf",
-    "tarih": "2026-10-30",
+    "tarih": "2026-10-31",
     "alan": null,
     "dugum_sayisi": 91,
-    "kenar_sayisi": 132,
+    "kenar_sayisi": 133,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -182,12 +182,14 @@
       "alan": "jarvis",
       "etiket": "2026-10-30-jarvis",
       "ac_ts": "2026-10-30T15:28:15Z",
-      "kapat_ts": null,
+      "kapat_ts": "2026-10-30T23:11:57Z",
       "hedef": "Salih: fork oturumu kapanış sorusu; 2026-10-28-jarvis açık seansının kapatılması + Sokrates v1 devir borçları (Salih fark listesi, tek-turlu yapay zekâ kararı)",
-      "hedef_tutuldu": null,
-      "kayit": null,
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-31-fork-kapanis-py-arsiv-pr28.json",
       "ortuk": false,
-      "dokunulan": []
+      "dokunulan": [
+        22
+      ]
     },
     {
       "id": "is:1",
@@ -458,13 +460,15 @@
       "id": "is:22",
       "tur": "is",
       "alan": "jarvis",
-      "durum": "islemde",
+      "durum": "tamam",
       "etiket": "Karar 118 M2: son sürüm kuralı; Rust karşılığı olan Python araçları ve hook Python gövdeleri arşive",
       "sonraki_eylem": "PR: arsiv/kod/python + skill yedek ifadeleri + hook uyarısı",
       "acilis_ts": "2026-10-17T15:32:02Z",
       "al_ts": "2026-10-17T15:35:43Z",
-      "bitir_ts": null,
-      "oturumlar": [],
+      "bitir_ts": "2026-10-30T17:57:24Z",
+      "oturumlar": [
+        "2026-10-30-jarvis"
+      ],
       "sirada": false
     },
     {
@@ -671,7 +675,7 @@
       "oturumlar": [
         "2026-10-25-jarvis"
       ],
-      "sirada": false
+      "sirada": true
     },
     {
       "id": "is:37",
@@ -1811,6 +1815,11 @@
       "k": "seans:2026-10-29-jarvis",
       "h": "is:82",
       "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-30-jarvis",
+      "h": "is:22",
+      "tur": "bitirdi"
     },
     {
       "k": "is:1",
