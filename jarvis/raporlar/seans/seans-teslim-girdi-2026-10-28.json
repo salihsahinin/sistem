@@ -1,0 +1,57 @@
+{
+  "hedef": "Salih: Lex #503 transkripti dk 10-30; insan-AI potansiyel farkı ve LLM gelişim yönü (matematik konjektürü sınırı) sorusu; ilgili algoritma adı",
+  "hedef_tutuldu": true,
+  "sapma": "Yok. Salih cevabı anladı, ileride öğrenmek üzere not istedi; kanona ders yazılmadı.",
+  "ne_degisti": [
+    "Transkriptin 10:13-30:13 aralığı okundu (Will AI solve mathematics? + Can AI create new math? başı).",
+    "Üç tez ayrıştırıldı: Kontorovich solved axiom (11:53), Moitra sıkıştırma ve ispat ağacı (14:20, 18:54), Brunton soru seçimi (23:48, 27:26).",
+    "Salih'in sorusuna algoritma ailesi tablosu verildi: best-first/A*, MCTS+policy/value, HTPS, expert iteration, PRM+test-time compute, FunSearch/AlphaEvolve.",
+    "İkinci soru: eğitim-zamanı ve çıkarım-zamanı compute ayrımı; search-then-distill döngüsü.",
+    "Öğrenme notu kütüğe iş olarak açıldı (#48) ve wiki/README.md kuyruğuna satır eklendi.",
+    "Stop hook büyük-harf freni bir kez tetiklendi; HTPS/IMO/MCTS kısaltma olarak beyan edildi."
+  ],
+  "kararlar": [],
+  "adaylar": [
+    "Büyük-harf freni kısaltma listesi: HTPS, MCTS, IMO, PRM gibi alan kısaltmaları izinli listeye eklenebilir (hook yanlış pozitif)."
+  ],
+  "sonraki_ilk_is": [
+    "#48: Salih isterse ispat-arama algoritmaları ogren şeridinde kutu kutu; önce canlı doğrulama.",
+    "#46: mod iterasyonu Salih fark listesiyle.",
+    "#9 veri bilimi PROBE cevabı; #20 Rust parti 3+; #22 Python arşiv PR."
+  ],
+  "yeniden_acma": [
+    "Lex #503 transkriptinin kalan bölümleri (Riemann, Navier-Stokes, P vs NP) yalnız Salih isterse."
+  ],
+  "salih_karar": [
+    "21 bayat worktree'nin kapatılması (Karar 95 EK).",
+    "Karar 126 kural adayının kök md.13'e imzası."
+  ],
+  "baglar": {
+    "karar": [],
+    "pr": [],
+    "durum": ["#48"]
+  },
+  "sayaclar": {
+    "model": "Fable 5.1",
+    "kutu": 0,
+    "soru_dogru": 0,
+    "soru_yanlis": 0,
+    "pratik_salih_beyani": "KALAN"
+  },
+  "hasat": {
+    "ozutler": [
+      "İnsan farkı bilgi miktarı değil sıkıştırma: az bellekle çok problemi kapsayan soyutlama (Moitra 14:20).",
+      "Aramayı konjektür sınırına yönlendirme = exploration/exploitation; value network hedef mesafesini kestirir, expert iteration yelpazeyi daraltır.",
+      "Tüm arama algoritmaları verili hedef ister; hedef/konjektür seçimi (goal generation) açık boşluk.",
+      "Salih: bağlama gereksiz metafor ekleme; not yeter."
+    ],
+    "wiki_delta": [
+      "wiki kuyruğu: ispat-arama-algoritmalari (eklendi bu seans)"
+    ],
+    "verilebilir_miydi": "Evet: tek oturumda okuma + cevap + not.",
+    "token_zaman": "[?] tek oturum, 00:16-00:30 civarı; alt-ajan yok"
+  },
+  "kapanis": {
+    "push": "Salih 'push onay' (2026-10-28; paralel oturumlar açık, konuşulmuyor → git add <yol>)"
+  }
+}

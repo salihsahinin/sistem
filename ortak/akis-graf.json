@@ -4,8 +4,8 @@
     "uretici": "durum graf",
     "tarih": "2026-10-30",
     "alan": null,
-    "dugum_sayisi": 89,
-    "kenar_sayisi": 131,
+    "dugum_sayisi": 91,
+    "kenar_sayisi": 132,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -119,10 +119,10 @@
       "alan": "jarvis",
       "etiket": "2026-10-28-jarvis",
       "ac_ts": "2026-10-27T21:18:56Z",
-      "kapat_ts": null,
+      "kapat_ts": "2026-10-30T16:33:34Z",
       "hedef": "Salih: Lex #503 transkripti dk 10-30; insan-AI potansiyel farkı ve LLM gelişim yönü (matematik konjektürü sınırı) sorusu; ilgili algoritma adı",
-      "hedef_tutuldu": null,
-      "kayit": null,
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-10-30-lex-503-ispat-arama.json",
       "ortuk": false,
       "dokunulan": [
         48
@@ -175,6 +175,19 @@
         81,
         82
       ]
+    },
+    {
+      "id": "seans:2026-10-30-jarvis",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-10-30-jarvis",
+      "ac_ts": "2026-10-30T15:28:15Z",
+      "kapat_ts": null,
+      "hedef": "Salih: fork oturumu kapanış sorusu; 2026-10-28-jarvis açık seansının kapatılması + Sokrates v1 devir borçları (Salih fark listesi, tek-turlu yapay zekâ kararı)",
+      "hedef_tutuldu": null,
+      "kayit": null,
+      "ortuk": false,
+      "dokunulan": []
     },
     {
       "id": "is:1",
@@ -1365,6 +1378,19 @@
       "sirada": true
     },
     {
+      "id": "seans:2026-10-30-sage",
+      "tur": "seans",
+      "alan": "sage",
+      "etiket": "2026-10-30-sage",
+      "ac_ts": "2026-10-30T15:25:41Z",
+      "kapat_ts": null,
+      "hedef": "Aksiyom ve postülat kavramlarını açıklamak (Salih sorusu)",
+      "hedef_tutuldu": null,
+      "kayit": null,
+      "ortuk": false,
+      "dokunulan": []
+    },
+    {
       "id": "is:2",
       "tur": "is",
       "alan": "sage",
@@ -1610,6 +1636,11 @@
       "k": "seans:2026-10-28-jarvis",
       "h": "is:48",
       "tur": "acti"
+    },
+    {
+      "k": "seans:2026-10-29-jarvis",
+      "h": "seans:2026-10-30-jarvis",
+      "tur": "sonra"
     },
     {
       "k": "seans:2026-10-29-jarvis",

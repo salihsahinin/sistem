@@ -4,32 +4,7 @@ Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel:
 
 ## jarvis
 
-**Konum:** seans `2026-10-29-jarvis` (kapandı 2026-10-29). Hedef: Salih: Sokrates ajanı tasarımı; atlas ile Sokrates bağlamları toplanır, ajan kişiliği yazılır, Salih ajanla konuşur. Hedef tutuldu.
-
-**Son seansta ne değişti**
-- Sokrates ajanı kuruldu: kişilik kanonu jarvis/core/sokrates-ajani.md (§7 tek kaynak), üç yüzey (output style, agent, skill), ürün klasörü C:\sistem\sokrates.
-- Ürün açık kaynak repo oldu: https://github.com/salihsahinin/sokrates (MIT, 4 commit, son 2c2615f).
-- Araştırma 9 rapor: 01 depo içi, 02 birincil kaynaklar (D/K/X), 03 modern tasarımlar, 04 Claude Code mekanizmaları, 05 test planı, 07a-c vizyon taraması (spec biçimleri, eval çerçeveleri, repo yapıları), 08a-b bugüne taşıma (değişmezler, görüş kartları, tasarım kuralları); sentez 06, 07, 09.
-- Altı maskeli hakem turu odada koştu: donmuş model v0.1-v0.3 KALDI, KALDI, GEÇTİ; taşınmış model v1.0-v1.2 KALDI, KALDI, GEÇTİ. Raporlar cc/rapor/2026-10/rapor-2026-10-29-sokrates-v*-hakem.md.
-- Bağlam verisi: C:\sistem\sokrates\kartlar\ 10 kaynak kartı (tutum + bugünkü veri + etiketli tahmin + sınır); CLAUDE.md içe alır.
-- Hileli soru seti (20, üç kova) + deterministik koşum test/tuzak-kosum.py (claude -p --agent); v1.x koşumu 15/20 (2 yanlış pozitif, fiilî 17/20).
-- jarvis-oda v0.4 (ajan alanı: hakem odada rolüyle koşar) ve v0.4.1 (yerel saat) yan oturumda commit'lendi (7e78afb, 814d986); yeniden başlatmada etkin.
-- Graf: hedef #49 (Sokrates), #72 (vizyon taraması), #77 (v1.0) ve 30 alt düğüm kapandı.
-
-**Hangi karar verildi**
-- Sokrates yalnız Sokrates'i bilir: Ajan Salih adını, Jarvis'i, Claude'u, dosya yolunu, rol kavramını bilmez; samimi soruda bile karakterde.
-- Bugüne taşınmış Sokrates: Ajan bugünün dünyasını bilir; kimlik ve yöntem Atina'dan; bilinmeyen 'bugün ne derdi' verisini LLM kaynak kartlarıyla tamamlar.
-- Ürün ayrı açık kaynak repo: C:\sistem\sokrates public GitHub reposu (MIT).
-
-**Senin kararını bekleyen**
-- Tek-turlu 'yapay zekâ mısın' sorusunda davranış (kabul / [Jarvis] dürüst cümle).
-- Kural adayı: 'ajan yap' → önce vizyon taraması (core/ajan-metodolojisi.md).
-- Kimlik dürüstlüğü ve din tutumu hükümleri (v1.0 kart 1) onayı.
-- 21 bayat worktree'nin kapatılması (Karar 95 EK; önceki seanstan).
-
-**Sapma:** Hedef akşam genişledi (Salih): donmuş Sokrates (MÖ 399 sınırı) yerine bugüne taşınmış Sokrates; ürün ayrı açık kaynak repo oldu. Salih ajanla henüz konuşmadı; canlı kullanım sonraki seans.
-
-Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-10-30-sokrates-ajani-v1-acik-kaynak.json`
+**Konum:** seans `2026-10-30-jarvis` (açık). Hedef: Salih: fork oturumu kapanış sorusu; 2026-10-28-jarvis açık seansının kapatılması + Sokrates v1 devir borçları (Salih fark listesi, tek-turlu yapay zekâ kararı).
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
@@ -59,4 +34,10 @@ Görsel: `ortak/graf/akis-jarvis.svg` · kaynak `ortak/graf/akis-jarvis.d2`
 - #16 claude-mods öğrenme şeridi. Sonraki adım: ogren ile şerit aç: Claude Code modları (status line, pane, slash komutu, hook, toast); sistemde mod fikir yapısı; uygulanacak mod → Jarvis devri.
 
 Görsel: `ortak/graf/akis-span.svg` · kaynak `ortak/graf/akis-span.d2`
+
+## sage
+
+**Konum:** seans `2026-10-30-sage` (açık). Hedef: Aksiyom ve postülat kavramlarını açıklamak (Salih sorusu).
+
+Görsel: `ortak/graf/akis-sage.svg` · kaynak `ortak/graf/akis-sage.d2`
 
