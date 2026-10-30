@@ -154,7 +154,8 @@ fn session_start_gercek_depo() {
 fn dispatcher() {
     let hazirla = |k: &Kum| {
         std::fs::create_dir_all(k.kok.join("bin")).unwrap();
-        std::fs::copy(gercek_kok().join("bin").join("hook-dispatch.sh"), k.kok.join("bin").join("hook-dispatch.sh")).unwrap();
+        // Karar 118 M2 (2026-10-30): canlı bin/hook-dispatch.sh Python gövdesiz; eski gövde arsiv/kod/python/hooks/hook-dispatch.sh.
+        std::fs::copy(gercek_kok().join("arsiv").join("kod").join("python").join("hooks").join("hook-dispatch.sh"), k.kok.join("bin").join("hook-dispatch.sh")).unwrap();
         let ayar = |hooks: serde_json::Value| json!({ "hooks": hooks });
         std::fs::write(
             k.jarvis.join(".claude").join("settings.json"),
