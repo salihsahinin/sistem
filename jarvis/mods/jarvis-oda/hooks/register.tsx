@@ -1,4 +1,4 @@
-// jarvis-oda — lobi eşgörevi mod (Salih 2026-10-27, Karar 126).
+// jarvis-oda — oda modu (Salih 2026-10-27, Karar 126).
 // Jarvis (Fable, ana-sıra) plan ve görev yazar; görevler zorluğa göre
 // Haiku / Sonnet / Opus işçi ajanlarına dağılır (video fikir 3: otomatik model
 // yönlendirme); işçi raporları ve önerileri odaya düşer (fikir 1: oturumlar arası
