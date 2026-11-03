@@ -1,7 +1,7 @@
 {
   "name": "jarvis-graf",
-  "version": "0.1.0",
-  "description": "Akış grafı paneli: ortak/akis-graf.json (Karar 122/125) Claude Code içinde canlı pane; tür×kategori bantları, durum renkleri, düğüm detayı, HTML/D2 yenileme.",
+  "version": "0.2.0",
+  "description": "Akış grafı paneli: ortak/akis-graf.json (Karar 122/125) canlı pane; seans şeritli zaman ekseni, tıklanabilir seans ızgarası, kütük olayları ve karar paragrafıyla detay, HTML aç bağlantısı, oda köprüsü.",
   "license": "MIT",
   "types": "./types/index.d.ts"
 }
