@@ -1,7 +1,7 @@
 {
   "name": "jarvis-oda",
-  "version": "0.4.1",
-  "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano + işçi akışı izleme (v0.3), rol ajanı görevleri (ajan alanı, v0.4), öneri-karar kapısı, çok-ajanlı senkron.",
+  "version": "0.5.0",
+  "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano, işçiye tıkla → işçi transkripti, kaydırılabilir sohbet, iş nodu sınıfı (izole/planli/dosyali/rol) + bütçe + kapsam kapısı, durum kütüğü ve akış grafı köprüsü.",
   "types": "./types/index.d.ts",
   "userConfig": {
     "otoUyandir": {
@@ -15,6 +15,18 @@
       "default": 3,
       "title": "Paralel işçi sınırı",
       "description": "Yeni oda açılırken varsayılan anlık paralel işçi üst sınırı (1-12); oda içinde oda_ayar ya da panodaki −/+ ile değişir."
+    },
+    "durumKaydi": {
+      "type": "boolean",
+      "default": true,
+      "title": "Görevi kütüğe yaz",
+      "description": "oda_gorev_ver her görevi durum kütüğüne iş olarak açar (durum.exe ac), bitince kapatır; akış grafında iş nodu görünür."
+    },
+    "alan": {
+      "type": "string",
+      "default": "jarvis",
+      "title": "Kütük alanı",
+      "description": "Görevlerin durum kütüğünde açılacağı alan (jarvis, sage …)."
     }
   },
   "license": "MIT"

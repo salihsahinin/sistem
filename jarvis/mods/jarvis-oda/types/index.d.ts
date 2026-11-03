@@ -2,6 +2,12 @@ export type OdaZorluk = 'kolay' | 'orta' | 'zor'
 export type OdaGorevDurum = 'bekliyor' | 'kosuyor' | 'bitti' | 'hata'
 export type OdaTurTuru = 'plan' | 'gorev' | 'rapor' | 'oneri' | 'karar' | 'not' | 'sohbet'
 
+/**
+ * v0.5 (A5): iş nodu sınıfı; işçinin göreceği bağlamı sınırlar (bağlam karışması freni).
+ * izole = yalnız emir · planli = emir + son 3 plan turu · dosyali = emir + yazma izni listesi · rol = .claude/agents/<ad>.md
+ */
+export type OdaSinif = 'izole' | 'planli' | 'dosyali' | 'rol'
+
 export type OdaTur = {
   ts: string
   kim: string
@@ -20,6 +26,18 @@ export type OdaGorev = {
   ajan?: string
   /** v0.4: model alanı açıkça verildi mi (ajan tanımının modelini ezmek için). */
   modelAcik?: boolean
+  /** v0.5: iş nodu sınıfı (eski kayıtta yok: planli sayılır). */
+  sinif?: OdaSinif
+  /** v0.5: dosyali sınıfında yazma izni olan dosyalar (mutlak, / ayraçlı). */
+  dosyalar?: string[]
+  /** v0.5: tek cümle done koşulu. */
+  done?: string
+  /** v0.5: araç çağrısı tavanı. */
+  butce?: number
+  /** v0.5: şimdiye dek araç çağrısı sayısı. */
+  cagri?: number
+  /** v0.5 (A4): bağlı durum kütüğü iş numarası (ortak/durum-olay.jsonl). */
+  isId?: number
   durum: OdaGorevDurum
   agentId?: string
   acilis: string
@@ -58,8 +76,24 @@ export type OdaHareket = {
   ozet: string
 }
 
+/** v0.5: panonun bölümleri (A3, katlanır). */
+export type OdaBolum = 'gorevler' | 'oneriler' | 'sohbet' | 'akis' | 'olaylar'
+
+/** v0.5: kaydırma penceresi olan listeler (A2). */
+export type OdaListe = 'sohbet' | 'akis' | 'olaylar'
+
+/** v0.5: panonun görünüm durumu; veri değil, yalnız ekran. */
+export type OdaPano = {
+  /** Açık bölümler. */
+  acik: OdaBolum[]
+  /** Pencere başlangıcı; null = en son (yeni satır gelince sonda kalır). */
+  ofset: Record<OdaListe, number | null>
+  /** Tam metni açılmış satırların anahtarı (ts + kim). */
+  genis: string[]
+}
+
 declare module 'claude-code' {
   interface PluginState {
-    'jarvis-oda': { oda: Oda | null; ajanlar: AjanDurum[]; hareket: OdaHareket[] }
+    'jarvis-oda': { oda: Oda | null; ajanlar: AjanDurum[]; hareket: OdaHareket[]; pano: OdaPano }
   }
 }
