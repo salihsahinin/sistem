@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-10-31",
+ "uretim": "2026-11-03",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 40,
+ "dosya_sayisi": 41,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "de5f17e036416c188073743f9af077655710ff78c7aafd040fb2aa9666d87421",
-   "bayt": 5869,
-   "kaynak_mtime": "2026-10-29T17:50:06",
+   "sha256": "0cbea66579ba3d0eccc5d7d6278c1fe12e4a7eabaf1220a8d87be8b93459defd",
+   "bayt": 6082,
+   "kaynak_mtime": "2026-11-03T15:08:07",
    "durum": "ayna"
   },
   {
@@ -102,6 +102,13 @@
    "sha256": "bc673c02ce8a66b85af64490c99fa336a6cb4cf0588e64a52d638084be110768",
    "bayt": 1802,
    "kaynak_mtime": "2026-10-13T01:14:06",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-lobi-cli-repo-dokunulmaz.md",
+   "sha256": "23bd3a5c3fa32b4c44e5ce1e8c5e4697944fd924c2d14bb064f8b03dd638c6ed",
+   "bayt": 999,
+   "kaynak_mtime": "2026-11-03T15:08:04",
    "durum": "ayna"
   },
   {
@@ -232,9 +239,9 @@
   },
   {
    "ad": "project-claude-modlari-oda-graf.md",
-   "sha256": "3137faf6a0da7e354185cbe3a42988c07c54ef1f46a9d8e06b6f64bb5a17d9e8",
-   "bayt": 1733,
-   "kaynak_mtime": "2026-10-27T15:28:50",
+   "sha256": "6b7102a0f85ce77628c01f0a3d677625d35453221c5544b944d5ffba752f2324",
+   "bayt": 1815,
+   "kaynak_mtime": "2026-11-03T15:00:59",
    "durum": "ayna"
   },
   {

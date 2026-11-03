@@ -1,0 +1,49 @@
+{
+  "hedef": "Salih: dosya sistemi mimarisi (filesystem file architecture) nasıl kurulur dersi; sistemdeki düzeltmeler üzerinde gösterilerek; önce atlas taraması ile güncel anlatım yöntemi",
+  "hedef_tutuldu": false,
+  "sapma": "Üç tarama (dış kaynak, öğretim yöntemi, depo kusur envanteri) bitti ve raporlar/2026-11/2026-11-03-dosya-mimarisi-ders-hazirlik.md'ye damıtıldı; ders anlatımı bu oturumda yapılmadı, Salih fork oturumunda ogrenme/dosya-mimarisi altında başlattı. Oturumun geri kalanı yan görevlere gitti (oda modu private repo, üçüncü-şahıs araç temizliği).",
+  "ne_degisti": [
+    "Ders hazırlık dosyası yazıldı: 8 kutu başlığı, kaynaklı öğretim ilkeleri, depodaki 8 düzeltme nesnesi.",
+    "jarvis-oda modu için private repo açıldı: C:\\sistem\\oda, github salihsahinin/oda (d9943e1).",
+    "jarvis-oda README, plugin.json ve kaynak başlığı metni sadeleştirildi (e67fdd2).",
+    "Üçüncü-şahıs oda MCP aracı makineden kaldırıldı (kurulum, önbellek, Claude ayar kaydı); konu kapandı.",
+    "Hafızaya kural: yagizkaterli/lobi-cli ve fork salihsahinin/lobi-cli üzerinde git işlemi yapılmaz."
+  ],
+  "kararlar": [
+    {
+      "ad": "Oda modu geliştirme yeri",
+      "ozet": "jarvis-oda private salihsahinin/oda reposunda geliştirilir; kanon kopyası jarvis/mods/jarvis-oda ile eşlenir.",
+      "kaynak": "Salih beyanı 2026-11-03",
+      "gerekce": "Ürün = ayrı klasör + ayrı repo kuralı; dış depoyla bağ kesildi.",
+      "geri_acma": "Salih public yapmaya karar verirse repo görünürlüğü değişir."
+    },
+    {
+      "ad": "lobi-cli depolarına işlem yok",
+      "ozet": "Üst depo ve fork üzerinde commit, push, dal, PR yapılmaz; mevcut dal olduğu gibi kalır.",
+      "kaynak": "Salih beyanı 2026-11-03",
+      "gerekce": "Ortak çalışma bitti.",
+      "geri_acma": "Yalnız Salih açar."
+    }
+  ],
+  "adaylar": [
+    "hareket-tablo 10-27 oturumunda yalnız 11 çağrı tutmuş; uzun oturumlarda kütük eksik kalıyor, arıza kaydı.",
+    "Kök veri/hafiza-ayna boş manifest: hafiza-ayna ikilisi kök anahtarıyla yanlış dizine yazıyor.",
+    "Ders düzeltme listesi 1-3 ve 6 Katman-2, tek commit'lik; ders sırasında Salih eliyle yapılacak."
+  ],
+  "sonraki_ilk_is": [
+    "Ders: ogrenme/dosya-mimarisi fork oturumunda kutu akışı; hazırlık dosyası raporlar/2026-11/2026-11-03-dosya-mimarisi-ders-hazirlik.md.",
+    "Oda modu iterasyonu C:\\sistem\\oda reposunda; değişiklik sonra jarvis/mods kopyasına.",
+    "Deney tasarımı probe soru 1 cevabı; 21 bayat worktree kararı; #20 Rust parti 3+; #21 atlas kodla pilot; #31 hakem şablonu."
+  ],
+  "yeniden_acma": [
+    "Ders düzeltme 4 ve 8 Katman-1 (CLAUDE.md, kök AGENTS.md); Salih imzasıyla açılır.",
+    "skill-esik: amb_olgu_kosum tablosu yok, ölçüm bu seansta da koşmadı."
+  ],
+  "salih_karar": [
+    "Deney tasarımı probe soru 1 şıkkı.",
+    "21 bayat worktree kaldırılsın mı.",
+    "Ders düzeltme 4 ve 8 için kanon imzası."
+  ],
+  "baglar": {"commit": ["e67fdd2", "d9943e1"], "durum": [], "pr": []},
+  "sayaclar": {"alt_ajan": 3, "alt_ajan_token": 242691}
+}
