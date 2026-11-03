@@ -55,6 +55,33 @@ export type OdaOneri = {
   not?: string
 }
 
+/**
+ * C1: odaya dosya üzerinden katılan kalıcı dış oturum (fork, öğrenme sekmesi, alan ajanı).
+ * Tek görevlik işçi değildir; kapanınca silinmez, durum 'ayrildi' olur.
+ */
+export type OdaOturum = {
+  oturum: string
+  rol: string
+  dosyalar: string[]
+  acilis: string
+  durum: 'katildi' | 'ayrildi'
+  son?: string
+}
+
+/** C1: dış kanal satırı (ortak/oda/<odaId>/gelen-<oturum>.jsonl ve giden.jsonl). */
+export type OdaDisSatir = {
+  ts: string
+  kim: string
+  tur: 'katil' | 'ayril' | 'sohbet' | 'rapor' | 'oneri'
+  metin: string
+  gerekce?: string
+  gorevId?: number
+  rol?: string
+  dosyalar?: string[]
+  /** giden.jsonl: hedef oturum adı ya da '*' (herkes). */
+  hedef?: string
+}
+
 export type Oda = {
   id: string
   baslik: string
@@ -63,6 +90,8 @@ export type Oda = {
   turlar: OdaTur[]
   gorevler: OdaGorev[]
   oneriler: OdaOneri[]
+  /** C1: kalıcı dış oturumlar. */
+  oturumlar?: OdaOturum[]
 }
 
 export type AjanDurum = { agentId: string; status: string; gorevId: number }
@@ -77,7 +106,7 @@ export type OdaHareket = {
 }
 
 /** v0.5: panonun bölümleri (A3, katlanır). */
-export type OdaBolum = 'gorevler' | 'oneriler' | 'sohbet' | 'akis' | 'olaylar'
+export type OdaBolum = 'gorevler' | 'oturumlar' | 'oneriler' | 'sohbet' | 'akis' | 'olaylar'
 
 /** v0.5: kaydırma penceresi olan listeler (A2). */
 export type OdaListe = 'sohbet' | 'akis' | 'olaylar'

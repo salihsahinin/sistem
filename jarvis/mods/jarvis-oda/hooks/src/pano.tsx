@@ -32,7 +32,8 @@ type Baglam = {
 
 const DURUM_IMI: Record<string, string> = { kosuyor: '●', bitti: '✓', hata: '✗', bekliyor: '○' }
 const DURUM_RENGI: Record<string, string | undefined> = { kosuyor: 'yellow', bitti: 'green', hata: 'red' }
-const BOLUM_ADI: Record<OdaBolum, string> = { gorevler: 'Görevler', oneriler: 'Karar bekleyen öneriler', sohbet: 'Ortak sohbet (Salih · Jarvis · işçiler)', akis: 'Canlı akış (tüm işçiler)', olaylar: 'Son olaylar' }
+const OTURUM_RENGI = '#5b7fa6' // dış oturumlar: gri-mavi sabit (C1)
+const BOLUM_ADI: Record<OdaBolum, string> = { gorevler: 'Görevler', oturumlar: 'Oturumlar (kalıcı)', oneriler: 'Karar bekleyen öneriler', sohbet: 'Ortak sohbet (Salih · Jarvis · işçiler)', akis: 'Canlı akış (tüm işçiler)', olaylar: 'Son olaylar' }
 
 /** Bölüm başlığı: ▾/▸ düğmesi (A3). */
 function Baslik($: EngineInterface, b: Baglam, bolum: OdaBolum, sayi: string, renk?: string): RenderElement {
@@ -170,6 +171,8 @@ function SohbetSatiri($: EngineInterface, b: Baglam, t: OdaTur, i: number): Rend
       <Text key={'kim-' + i} bold color="cyan">salih</Text>
     ) : t.kim === 'jarvis' ? (
       <Text key={'kim-' + i} bold color="magenta">jarvis</Text>
+    ) : t.kim.startsWith('oturum ') ? (
+      <Text key={'kim-' + i} bold color={OTURUM_RENGI}>◆ {t.kim}</Text>
     ) : (
       IsciDugmesi($, b, kimGorev, t.kim, 'kim-' + i)
     )
@@ -275,6 +278,23 @@ export async function panoCiz($: EngineInterface, e: { surface: string; props?: 
         {acik('gorevler') && oda.gorevler.length === 0 && <Text dimColor>Henüz görev yok.</Text>}
         {acik('gorevler') && oda.gorevler.map(g => GorevSatiri($, b, g, ajanlar.find(x => x.gorevId === g.id), hareketler))}
       </Box>
+
+      {(oda.oturumlar?.length ?? 0) > 0 && (
+        <Box key="b-oturumlar" flexDirection="column">
+          {Baslik($, b, 'oturumlar', `${oda.oturumlar!.filter(o => o.durum === 'katildi').length} katılmış`)}
+          {acik('oturumlar') &&
+            oda.oturumlar!.map(o => (
+              <Box key={'oturum-' + o.oturum} flexDirection="row" gap={1} flexWrap="wrap">
+                <Text color={o.durum === 'katildi' ? OTURUM_RENGI : 'gray'}>◆</Text>
+                <Text bold color={o.durum === 'katildi' ? OTURUM_RENGI : 'gray'}>oturum {o.oturum}</Text>
+                <Text dimColor>[{o.durum === 'katildi' ? 'katıldı' : 'ayrıldı'}]</Text>
+                {o.rol ? <Text dimColor>· {kisa(o.rol, 60)}</Text> : null}
+                {o.dosyalar.length ? <Text dimColor>· {o.dosyalar.map(d => d.replace(/\\/g, '/').split('/').pop()).join(', ')}</Text> : null}
+                {o.son ? <Text dimColor>· son {saat(o.son, false)}</Text> : null}
+              </Box>
+            ))}
+        </Box>
+      )}
 
       {bekleyen.length > 0 && (
         <Box key="b-oneriler" flexDirection="column">

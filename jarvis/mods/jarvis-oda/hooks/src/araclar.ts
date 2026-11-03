@@ -21,6 +21,7 @@ import {
 } from './durum'
 import { isciEmri, odaMetni, aracOzeti } from './metin'
 import { kisa, simdi, yolMutlak, yolNormal } from './ortak'
+import { aktifIsaretle, gidenYaz, oturumAdi } from './dis'
 
 const MODEL_HARITASI: Record<OdaZorluk, string> = { kolay: 'haiku', orta: 'sonnet', zor: 'opus' }
 const SINIFLAR: readonly OdaSinif[] = ['izole', 'planli', 'dosyali', 'rol']
@@ -81,8 +82,8 @@ export const ARACLAR: ToolSpec[] = [
   {
     ...ortak,
     name: 'oda_sohbet',
-    description: 'Ortak sohbete mesaj yazar: koşan tüm işçilere (ya da "#N" ile tek işçiye) iletilir; işçiler oda_rapor ile cevaplar. Jarvis\'in işçilerle anlık konuşma kanalı.',
-    inputSchema: { type: 'object', properties: { metin: { type: 'string' }, hedef: { type: 'string', description: 'İsteğe bağlı "#N" (tek işçi); boşsa herkes' } }, required: ['metin'] },
+    description: 'Ortak sohbete mesaj yazar: koşan tüm işçilere (ya da "#N" ile tek işçiye) iletilir; işçiler oda_rapor ile cevaplar. hedef "@<oturum>" dış oturuma yazar (ortak/oda/<id>/giden.jsonl); sonuç SendMessage ile de iletmeni ister.',
+    inputSchema: { type: 'object', properties: { metin: { type: 'string' }, hedef: { type: 'string', description: 'İsteğe bağlı "#N" (tek işçi) ya da "@<oturum>" (dış oturum); boşsa herkes' } }, required: ['metin'] },
   } as ToolSpec,
   {
     ...ortak,
@@ -101,6 +102,30 @@ export const ARACLAR: ToolSpec[] = [
     name: 'oda_rapor',
     description: 'İşçi ajan ara durum raporu ya da sohbet cevabı düşer (kısa). Final cevap otomatik kaydedilir.',
     inputSchema: { type: 'object', properties: { metin: { type: 'string' } }, required: ['metin'] },
+  } as ToolSpec,
+  {
+    ...ortak,
+    name: 'oda_katil',
+    description: 'Dış oturum (fork, öğrenme sekmesi, alan ajanı) kendini aktif odaya kalıcı oturum olarak kaydeder; kanal dosyadır (ortak/oda/<odaId>/gelen-<oturum>.jsonl). Odadan gelen mesajlar bu oturumun sohbetine "[oda]" ile düşer. ayril: true odadan ayrılır (kayıt silinmez).',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        oturum: { type: 'string', description: 'Oturum adı (ör. claude-mods); odada "oturum <ad>" görünür' },
+        rol: { type: 'string', description: 'Bu oturumun odadaki rolü (tek cümle)' },
+        dosyalar: { type: 'array', items: { type: 'string' }, description: 'Bu oturumun yazdığı dosyalar' },
+        ayril: { type: 'boolean', description: 'true: odadan ayrıl' },
+      },
+    },
+  } as ToolSpec,
+  {
+    ...ortak,
+    name: 'oda_mesaj',
+    description: "Katılmış dış oturum odaya yazar: sohbet, rapor ya da öneri (öneri için gerekce). Ev sahibi oda 3 sn içinde okur; rapor ve öneri Jarvis'i uyandırır.",
+    inputSchema: {
+      type: 'object',
+      properties: { tur: { type: 'string', enum: ['sohbet', 'rapor', 'oneri'] }, metin: { type: 'string' }, gerekce: { type: 'string' }, gorevId: { type: 'integer' } },
+      required: ['tur', 'metin'],
+    },
   } as ToolSpec,
 ]
 
@@ -226,9 +251,20 @@ export async function sohbetGonder($: EngineInterface, kim: string, metin: strin
   const m = metin.trim()
   if (!m) return 'Boş mesaj.'
   const hedefNo = /^#(\d+)/.exec(hedef ?? m)?.[1]
+  const disHedef = /^@([\w-]+)/.exec(hedef ?? m)?.[1]
   oda = turEkle(oda, kim, 'sohbet', m, hedefNo ? Number(hedefNo) : undefined)
   await kaydet($, oda)
-  const alicilar = oda.gorevler.filter(g => g.durum === 'kosuyor' && g.agentId && (!hedefNo || g.id === Number(hedefNo)))
+  // C1: dış oturumlar dosyadan okur; @ad tek oturuma, hedefsiz mesaj katılmış herkese.
+  const katilmis = (oda.oturumlar ?? []).filter(o => o.durum === 'katildi')
+  let disNot = ''
+  if (disHedef) {
+    const ad = oturumAdi(disHedef)
+    const yazildi = await gidenYaz($, oda, kim, ad, m.replace(/^@[\w-]+\s*/, ''))
+    disNot = yazildi ? ` Dış oturum "${ad}": giden.jsonl'a yazıldı; anında görmesi için SendMessage ile de ilet (to: "${ad}").` : ' Dış oturum: giden.jsonl yazılamadı.'
+  } else if (!hedefNo && katilmis.length) {
+    if (await gidenYaz($, oda, kim, '*', m)) disNot = ` Dış oturumlara (${katilmis.map(o => o.oturum).join(', ')}) giden.jsonl ile düştü.`
+  }
+  const alicilar = disHedef ? [] : oda.gorevler.filter(g => g.durum === 'kosuyor' && g.agentId && (!hedefNo || g.id === Number(hedefNo)))
   let ulasan = 0
   for (const g of alicilar) {
     try {
@@ -239,9 +275,9 @@ export async function sohbetGonder($: EngineInterface, kim: string, metin: strin
     }
   }
   if (kim !== 'jarvis') {
-    await $.session.append({ message: { type: 'user', content: [{ type: 'text', text: `[oda sohbet] ${kim}: ${m} (işçilere ulaştı: ${ulasan}/${alicilar.length})` }] } }).catch(() => undefined)
+    await $.session.append({ message: { type: 'user', content: [{ type: 'text', text: `[oda sohbet] ${kim}: ${m} (işçilere ulaştı: ${ulasan}/${alicilar.length})${disNot}` }] } }).catch(() => undefined)
   }
-  return `Sohbet düştü; işçilere ulaştı: ${ulasan}/${alicilar.length}${hedefNo ? ' (hedef #' + hedefNo + ')' : ''}.`
+  return `Sohbet düştü; işçilere ulaştı: ${ulasan}/${alicilar.length}${hedefNo ? ' (hedef #' + hedefNo + ')' : ''}.${disNot}`
 }
 
 // ---------- araç işleyicileri ----------
@@ -251,7 +287,9 @@ export async function odaAc($: EngineInterface, a: { baslik?: string; maksParale
   const id = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '') + '-' + baslik.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 24)
   const maks = Math.max(1, Math.min(12, Number(a.maksParalel ?? ayar.varsayilanMaks) || ayar.varsayilanMaks))
   const oda: Oda = { id, baslik, acilis: simdi(), maksParalel: maks, turlar: [], gorevler: [], oneriler: [] }
-  await kaydet($, turEkle(oda, 'jarvis', 'not', `Oda açıldı: ${baslik} (paralel sınır ${maks})`))
+  const acilan = turEkle(oda, 'jarvis', 'not', `Oda açıldı: ${baslik} (paralel sınır ${maks})`)
+  await kaydet($, acilan)
+  await aktifIsaretle($, acilan)
   await panoGuncelle($, p => ({ ...p, ofset: { sohbet: null, akis: null, olaylar: null }, genis: [] }))
   void $.ui.open({ id: PANE, title: 'Oda' }).catch(() => undefined)
   return `Oda açıldı: ${baslik} (id ${id}, paralel sınır ${maks}). Şimdi oda_plan ile planı yaz, oda_gorev_ver ile görevleri sınıflı dağıt.`

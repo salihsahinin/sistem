@@ -23,6 +23,7 @@ import {
   ajanYokla,
   isciAracOncesi,
 } from './src/araclar'
+import { gelenleriIsle, gidenleriOku, odayaKatil, disMesaj, aktifIsaretle } from './src/dis'
 
 export const register: Register = (on, options) => {
   const o = (options ?? {}) as { otoUyandir?: boolean; maksParalel?: number; durumKaydi?: boolean; alan?: string }
@@ -37,9 +38,16 @@ export const register: Register = (on, options) => {
     await $.command.register({ name: 'oda', description: 'Oda panosunu açar (Jarvis planlar, işçiler uygular, ortak sohbet).' })
     for (const a of ARACLAR) await $.tool.register(a)
     const oda = await odaYukle($)
-    if (oda) $.ui.status(`oda ${oda.baslik}: ${kosan(oda)}/${oda.maksParalel} koşuyor`)
+    if (oda) {
+      $.ui.status(`oda ${oda.baslik}: ${kosan(oda)}/${oda.maksParalel} koşuyor`)
+      await aktifIsaretle($, oda)
+    }
     void $.ui.open({ id: PANE, title: 'Oda', rows: 40 }).catch(() => undefined)
-    $.clock.every(3000, () => ajanYokla($))
+    $.clock.every(3000, async () => {
+      await ajanYokla($).catch(() => undefined)
+      await gelenleriIsle($, ayar.otoUyandir).catch(() => undefined)
+      await gidenleriOku($).catch(() => undefined)
+    })
     return next(e)
   })
 
@@ -100,6 +108,8 @@ export const register: Register = (on, options) => {
     return { result: await oneriKarar($, 'jarvis', Number(k.oneriId), k.karar === 'ret' ? 'ret' : 'kabul', k.not) }
   })
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri' }, async ($, e) => ({ result: await oneriBirak($, e as { metin?: string; gerekce?: string; agentId?: string }) }))
+  on('tool.call', { tool: 'mcp__jarvis-oda__oda_katil' }, async ($, e) => ({ result: await odayaKatil($, e as Parameters<typeof odayaKatil>[1]) }))
+  on('tool.call', { tool: 'mcp__jarvis-oda__oda_mesaj' }, async ($, e) => ({ result: await disMesaj($, e as Parameters<typeof disMesaj>[1]) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_rapor' }, async ($, e) => ({ result: await raporDus($, e as { metin?: string; agentId?: string }) }))
 
   on('turn.complete', async ($, e, next) => {

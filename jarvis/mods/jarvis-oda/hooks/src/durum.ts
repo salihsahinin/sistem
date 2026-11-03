@@ -15,7 +15,7 @@ export const odaAtom = atom({ plugin: 'jarvis-oda', key: 'oda' } as const, null 
 export const ajanAtom = atom({ plugin: 'jarvis-oda', key: 'ajanlar' } as const, [] as AjanDurum[])
 export const hareketAtom = atom({ plugin: 'jarvis-oda', key: 'hareket' } as const, [] as OdaHareket[])
 export const panoAtom = atom({ plugin: 'jarvis-oda', key: 'pano' } as const, {
-  acik: ['gorevler', 'sohbet'],
+  acik: ['gorevler', 'oturumlar', 'sohbet'],
   ofset: { sohbet: null, akis: null, olaylar: null },
   genis: [],
 } as OdaPano)

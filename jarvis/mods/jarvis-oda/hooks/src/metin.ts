@@ -38,6 +38,10 @@ export function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): str
     if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400))
     for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${saat(h.ts)} [${h.tur}] ${kisa(h.ozet, 160)}`)
   }
+  if (oda.oturumlar?.length) {
+    satirlar.push('## Oturumlar (kalıcı)')
+    for (const o of oda.oturumlar) satirlar.push(`- ◆ oturum ${o.oturum} [${o.durum === 'katildi' ? 'katıldı' : 'ayrıldı'}]${o.rol ? ' · rol: ' + o.rol : ''}${o.dosyalar.length ? ' · dosyalar: ' + o.dosyalar.join(', ') : ''}${o.son ? ' · son ' + saat(o.son) : ''}`)
+  }
   const bekleyen = oda.oneriler.filter(o => o.durum === 'bekliyor')
   satirlar.push(`## Öneriler (bekleyen ${bekleyen.length})`)
   for (const o of oda.oneriler.slice(-10)) satirlar.push(`- Ö${o.id} [${o.durum}] ${o.kim}: ${kisa(o.metin, 200)} · gerekçe: ${kisa(o.gerekce, 120)}${o.not ? ' · not: ' + o.not : ''}`)
@@ -102,5 +106,6 @@ export const PROMPT_BOLUMU = [
   '# jarvis-oda (mod)',
   'Oda = Jarvis planlar, işçi ajanlar uygular, ortak sohbet herkesi bağlar. Araçlar: oda_ac(baslik, maksParalel?) · oda_plan(metin) · oda_gorev_ver(baslik, emir, zorluk: kolay|orta|zor → haiku|sonnet|opus, sinif, done, dosyalar?, butce?, isId?, ajan?; sınır doluysa kuyruk) · oda_ayar(maksParalel) · oda_sohbet(metin, hedef "#N"?) · oda_oku · oda_oneri_karar(oneriId, kabul|ret).',
   'İş nodu sınıfı (bağlam karışması freni): görevi, işçinin sınıf dışı bağlama ihtiyaç duymayacağı kadar küçük böl. izole = emir tek başına yeter (varsayılan tercih) · dosyali = dosya listesi ≤ 4, liste dışı yazım reddedilir · planli = son 3 plan turu gerekir · rol = .claude/agents ajanı (yapan ≠ ölçen). Her görevde tek cümle done yaz.',
+  'Dış oturumlar (fork, öğrenme sekmeleri, alan ajanları) kalıcıdır ve dosyayla katılır: kendi oturumlarında oda_katil(oturum, rol, dosyalar) ve oda_mesaj(tur, metin); odada "oturum <ad>" görünür, rapor/öneri "[oda dış]" ile seni uyandırır. Onlara oda_sohbet hedef "@<ad>" ile yaz ve SendMessage ile de ilet.',
   'Çok-ajanlı iş: planı oda_plan ile yaz, görevleri paralel oda_gorev_ver ile aç, raporları oda_oku ile topla. "[oda]" ile başlayan kuyruk mesajı = görev raporu; "[oda sohbet] salih:" = Salih\'in panodan yazdığı ortak sohbet mesajı, Jarvis ona cevap verir ve gerekirse oda_sohbet ile işçilere iletir. Öneri kararı Salih\'indir: bekleyen öneriyi tek satırda sun.',
 ].join('\n')
