@@ -1,7 +1,7 @@
 {
   "name": "jarvis-oda",
-  "version": "0.5.0",
-  "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano, işçiye tıkla → işçi transkripti, kaydırılabilir sohbet, iş nodu sınıfı (izole/planli/dosyali/rol) + bütçe + kapsam kapısı, durum kütüğü ve akış grafı köprüsü.",
+  "version": "0.6.0",
+  "description": "Oda: Jarvis (Fable) planlar, Haiku/Sonnet/Opus işçileri uygular; canlı pano, işçiye tıkla → işçi transkripti, kaydırılabilir sohbet, iş nodu sınıfı (izole/planli/dosyali/rol) + bütçe + kapsam kapısı, durum kütüğü ve akış grafı köprüsü, kalıcı dış oturumların dosya kanalı (oda_katil, oda_mesaj).",
   "types": "./types/index.d.ts",
   "userConfig": {
     "otoUyandir": {
