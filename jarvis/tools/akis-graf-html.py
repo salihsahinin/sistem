@@ -8,7 +8,9 @@ oturum özeti (raporlar/seans/seans-canli-<oturum>.json) ve karar defteri paragr
 Türkçe: kısa, etken, tek fikirli cümleler; ayrıntı dosyalarına file:// bağlantı.
 
 Kullanım (jarvis/ kökünden):
-  python3 tools/akis-graf-html.py [--merkez seans:<ad>] [--cikti raporlar/.../x.html]
+  python3 tools/akis-graf-html.py [--merkez seans:<ad>] [--cikti raporlar/.../x.html] [--oda-dizin <dizin>]
+B8 (2026-11-03): üst görev şeridi (tıklanır, hedef bağı H<no>), ortak/oda/<odaId>.json varsa
+her oda için "Oda" sekmesi (görevler, işçi raporları, tam sohbet akışı); dosya yoksa sekme çıkmaz.
 Varsayılan merkez: kütükteki son seans_ac oturumu. Karar 124 / Salih 2026-10-26.
 """
 import json, re, sys, datetime, pathlib, argparse
@@ -56,9 +58,30 @@ def defter_paragraf(metin, karar_no):
     par = m.group(0)
     return par if len(par) <= 900 else par[:880] + "…"
 
+def js_veri(x):
+    """JSON'u <script> içine güvenli gömer: '</' → '<\\/', U+2028/9 kaçışlı."""
+    return (json.dumps(x, ensure_ascii=False).replace("</", "<\\/")
+            .replace("\u2028", "\\u2028").replace("\u2029", "\\u2029"))
+
+def oda_kayitlari(dizin):
+    """ortak/oda/<odaId>.json (jarvis-oda Oda tipi) dosyalarını okur; dizin yoksa []. Bozuk dosya atlanır, stderr'e not düşer."""
+    if not dizin.is_dir(): return []
+    L = []
+    for p in sorted(dizin.glob("*.json")):
+        try:
+            o = oku_json(p)
+            if not isinstance(o, dict) or not isinstance(o.get("gorevler", []), list) or not isinstance(o.get("turlar", []), list):
+                raise ValueError("Oda şeması değil (gorevler/turlar listesi yok)")
+            o.setdefault("id", p.stem); o["_dosya"] = str(p)
+            L.append(o)
+        except Exception as e:
+            print("uyarı: oda dosyası atlandı: %s (%s)" % (p, e), file=sys.stderr)
+    return L
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--merkez"); ap.add_argument("--cikti")
+    ap.add_argument("--oda-dizin", help="oda kayıt dizini (varsayılan ortak/oda; deneme için)")
     a = ap.parse_args()
 
     G = oku_json(KOK.parent / "ortak" / "akis-graf.json")
@@ -106,11 +129,15 @@ def main():
                     if u: z["baglantilar"].append({"ad": "Oturum kaydı: " + ot, "url": u})
         Z[n["id"]] = z
 
+    odalar = oda_kayitlari(pathlib.Path(a.oda_dizin) if a.oda_dizin else DEPO / "ortak" / "oda")
+
     sablon = (KOK / "tools" / "akis-graf-html.sablon.html").read_text(encoding="utf-8")
-    html = (sablon.replace("/*VERI*/", json.dumps(G, ensure_ascii=False))
-                  .replace("/*ZENGIN*/", json.dumps(Z, ensure_ascii=False))
-                  .replace("/*MERKEZ*/", json.dumps(merkez))
-                  .replace("/*ASOF*/", json.dumps(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))))
+    yer = {"VERI": G, "ZENGIN": Z, "MERKEZ": merkez, "ODALAR": odalar,
+           "ASOF": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
+    # Tek geçişli yerleştirme: veri içindeki "/*VERI*/" gibi metin ikinci kez yerleştirilmez.
+    # "</" kaçışı: veri metnindeki "</script>" script bloğunu kapatmaz.
+    html = re.sub(r"/\*(VERI|ZENGIN|MERKEZ|ODALAR|ASOF)\*/",
+                  lambda m: js_veri(yer[m.group(1)]), sablon)
     cikti = pathlib.Path(a.cikti) if a.cikti else KOK / "raporlar" / datetime.date.today().strftime("%Y-%m") / (datetime.date.today().isoformat() + "-akis-graf-interaktif.html")
     cikti.parent.mkdir(parents=True, exist_ok=True)
     cikti.write_text(html, encoding="utf-8")

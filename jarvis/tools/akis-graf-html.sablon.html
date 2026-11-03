@@ -55,12 +55,44 @@ svg{display:block}
 button.ust{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;color:var(--fg);cursor:pointer;font:inherit}
 button.ust.aktif{border-color:var(--seans);color:var(--seans)}
 code{font-size:12.5px;word-break:break-all}
+/* B8: üst görev şeridi + hedef bağı + oda sekmesi */
+#sekmeler{display:flex;gap:6px;flex-wrap:wrap}
+#serit{border-bottom:1px solid var(--line);padding:6px 16px 8px}
+#serit .serit-bas{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--mut);margin-bottom:4px;flex-wrap:wrap}
+#serit .kutular{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+#serit.acik .kutular{flex-wrap:wrap;overflow-x:visible;max-height:40vh;overflow-y:auto}
+.iskutu{flex:0 0 210px;border:1px solid var(--line);border-left:4px solid var(--is-tamam);border-radius:6px;padding:4px 7px;background:var(--pan);cursor:pointer;font-size:12px;line-height:1.35;text-align:left;color:var(--fg)}
+.iskutu.acik{border-left-color:var(--is-acik)} .iskutu.islemde{border-left-color:var(--is-islemde)} .iskutu.bayat{border-left-color:var(--is-bayat)}
+.iskutu:hover{border-color:var(--seans)}
+.iskutu.secili{outline:2px solid var(--merkez)}
+.iskutu.hizmetci{background:var(--vurgu);border-color:var(--hedef)}
+.iskutu .ust-satir{color:var(--mut);font-size:11px}
+.iskutu .et{display:block;margin:1px 0 2px}
+.hedefbag{display:inline-block;color:var(--hedef);background:none;border:none;padding:0;font:inherit;font-size:11px;cursor:pointer;text-align:left}
+.hedefbag:hover{text-decoration:underline}
+.hedefbag.yok{color:var(--mut);cursor:default;text-decoration:none!important}
+.dugum.hizmetci circle{stroke:var(--hedef)!important;stroke-width:3.5px!important}
+#oda{flex:1;padding:14px 16px;overflow:auto;max-height:calc(100vh - 52px);display:none}
+#oda h2{font-size:16px;margin:0 0 4px}
+#oda h3{font-size:13.5px;margin:14px 0 6px;color:var(--mut)}
+#oda table{border-collapse:collapse;width:100%;font-size:13px}
+#oda th,#oda td{border-top:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+#oda th{color:var(--mut);font-weight:600}
+#oda details summary{cursor:pointer}
+#oda pre{white-space:pre-wrap;word-break:break-word;font:12.5px/1.45 ui-monospace,Consolas,monospace;background:var(--vurgu);border-radius:6px;padding:8px;margin:6px 0}
+#oda .akis div.tur-satir{border-top:1px solid var(--line);padding:5px 0;font-size:13px}
+#oda .akis .meta{color:var(--mut);font-size:11.5px}
+#oda .akis .etiket{color:var(--hedef);font-size:11.5px}
+#oda .akis .metin{white-space:pre-wrap;word-break:break-word}
+#oda button.git{background:none;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--seans);cursor:pointer;font:inherit;font-size:12px}
+.rozet-d{display:inline-block;border-radius:4px;padding:0 5px;font-size:11.5px;background:var(--vurgu)}
 @media (max-width:760px){main{flex-direction:column}#panel{width:100%;max-width:none;border-left:none;border-top:1px solid var(--line);max-height:50vh}}
 </style>
 </head>
 <body>
 <header>
  <h1>Akış grafı</h1>
+ <span id="sekmeler"></span>
  <span><button class="ust aktif" id="g-bant">Bantlar (tür × kategori)</button><button class="ust" id="g-sira">Tek sıra (tüm düğümler)</button></span>
  <span id="kirinti" style="font-size:13px"></span>
  <button class="ust" id="merkeze">Bu chat</button>
@@ -74,8 +106,10 @@ code{font-size:12.5px;word-break:break-all}
  </div>
  <small id="asof"></small>
 </header>
+<section id="serit"></section>
 <main>
  <div id="graf"><svg></svg></div>
+ <div id="oda"></div>
  <aside id="panel"></aside>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
@@ -84,6 +118,7 @@ const G = /*VERI*/;
 const Z = /*ZENGIN*/;
 const MERKEZ = /*MERKEZ*/;
 const ASOF = /*ASOF*/;
+const ODALAR = /*ODALAR*/;   // B8: ortak/oda/<odaId>.json kayıtları (Oda tipi); yoksa []
 const N = new Map(G.dugumler.map(n=>[n.id,n]));
 const komsular = new Map(); G.dugumler.forEach(n=>komsular.set(n.id,[]));
 G.kenarlar.forEach(e=>{ if(N.has(e.k)&&N.has(e.h)){komsular.get(e.k).push({id:e.h,tur:e.tur,yon:"dis"}); komsular.get(e.h).push({id:e.k,tur:e.tur,yon:"ic"});} });
@@ -130,7 +165,7 @@ const katli=n=>n.tur==="hedef"&&n.id!==kapsam();   // bu seviyede kapak olarak d
 
 let gorunum="bant", secili=MERKEZ;
 const svg=d3.select("svg"); const g=svg.append("g");
-function ciz(kok){ secili=kok; if(gorunum==="bant") cizBant(kok); else cizSira(kok); }
+function ciz(kok){ secili=kok; hizmetSet=hizmetcileri(kok); if(gorunum==="bant") cizBant(kok); else cizSira(kok); seritCiz(); }
 function genislik(){ return Math.max(900,document.getElementById("graf").clientWidth); }
 
 function dugumCiz(sel){
@@ -172,7 +207,7 @@ function cizBant(kok){
   bantY.forEach(b=>{ g.append("line").attr("class","bant").attr("x1",0).attr("x2",W).attr("y1",b.y0).attr("y2",b.y0); g.append("text").attr("class","bant-etiket").attr("x",8).attr("y",b.y0+22).text(b.ad.length>28?b.ad.slice(0,27)+"…":b.ad).append("title").text(b.ad); });
   gunCizgileri(anlar,x,adim,ust-8,H-18);
   kenarCiz(poz,kok);
-  const d=g.selectAll("g.dugum").data(dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":"")).attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>sec(n.id));
+  const d=g.selectAll("g.dugum").data(dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":"")+(hizmetSet.has(n.id)?" hizmetci":"")).attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>sec(n.id));
   dugumCiz(d);
   d.append("text").attr("y",-12).attr("text-anchor","middle").attr("font-size",10.5).text(n=>n.tur==="seans"?n.etiket.replace("2026-",""):(n.tur==="hedef"?"H"+n.id.split(":")[1]:"#"+n.id.split(":")[1]));
   panel(kok,hop);
@@ -188,7 +223,7 @@ function cizSira(kok){
   const anlar=[]; const x=new Map(); dugumler.forEach(n=>{ const z=icraZaman(n); if(!x.has(z)){x.set(z,poz.get(n.id).x); anlar.push(z);} });
   gunCizgileri(anlar,z=>x.get(z),adim,40,528);
   kenarCiz(poz,kok);
-  const d=g.selectAll("g.dugum").data(dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":"")).attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>sec(n.id));
+  const d=g.selectAll("g.dugum").data(dugumler).join("g").attr("class",n=>"dugum"+(n.id===kok?" secili":"")+(hizmetSet.has(n.id)?" hizmetci":"")).attr("transform",n=>`translate(${poz.get(n.id).x},${poz.get(n.id).y})`).on("click",(ev,n)=>sec(n.id));
   dugumCiz(d);
   d.append("text").attr("transform","rotate(-60) translate(14,-4)").attr("font-size",10).text(n=>(n.tur==="seans"?n.etiket.replace("2026-",""):(n.tur==="hedef"?"H":"#")+n.id.split(":")[1]+" "+kisa(n,22)));
   panel(kok,hop);
@@ -239,7 +274,9 @@ function panel(id,hop){
       c.push("<p><b>İlerleme:</b> "+i.bitti+"/"+i.toplam+" iş bitti (%"+Math.round(i.oran*100)+")"+(i.alt?" · "+i.alt+" alt hedef":"")+(u?" · üst hedef: <button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='"+u+"'>H"+u.split(":")[1]+"</button>":" · üst hedef yok (büyük resim)")+"</p>");
       if(yol.length>1) c.push("<button class='hedefe' id='ustcik'>Bir üst seviyeye çık</button>"); else if(yol.length===1) c.push("<button class='hedefe' id='ustcik'>Büyük resme dön</button>");
       const ah=altHedefler(id); if(ah.length) c.push("<h3>Alt hedefler (tıkla, içine in)</h3>"+ah.map(h=>{const j=ilerleme(h.id); return "<button class='komsu' data-id='"+h.id+"'>H"+h.id.split(":")[1]+" "+esc(kisa(h,60))+" · "+j.bitti+"/"+j.toplam+"</button>";}).join(""));
-    } else if(ust.has(id)) c.push("<p>Bu iş <button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='"+ust.get(id)+"'>H"+ust.get(id).split(":")[1]+"</button> hedefinin alt grafındadır.</p>");
+    } else if(ust.has(id)){ const h=N.get(ust.get(id)); const hy=hedefYolu(id);
+      c.push("<p><b>Hizmet ettiği hedef:</b> <button class='komsu' style='display:inline;width:auto;padding:1px 6px' data-id='"+h.id+"'>H"+h.id.split(":")[1]+" · "+esc(kisa(h,60))+"</button>"+(hy.length>1?" <span style='color:var(--mut);font-size:12.5px'>(zincir: "+hy.map(x=>"H"+x.split(":")[1]).join(" › ")+")</span>":"")+"</p>"); }
+    else c.push("<p><b>Hizmet ettiği hedef:</b> <span style='color:var(--mut)'>hedef yok</span></p>");
     c.push("<div class='kutu ozet'><h3>Ne oldu (ASD-STE100)</h3>");
     c.push("<p>Bu düğüm bir "+(n.tur==="hedef"?"hedeftir. Hedef bir alt grafın kapağıdır. Alt grafta işler ve alt hedefler vardır. Hedef, alt grafının en sağındadır. Alt graf bitince hedef biter.":"iştir.")+" "+durumAcikla(n.durum)+"</p>");
     c.push("<p><b>Konu:</b> "+esc(n.etiket)+"</p>");
@@ -266,12 +303,83 @@ function panel(id,hop){
   const uc=document.getElementById("ustcik"); if(uc) uc.onclick=()=>seviyeyeGit(yol.length-1);
   el.scrollTop=0;
 }
+// ---- B8: üst görev şeridi (bitmiş + sıradaki işler), hedef bağı, hizmet vurgusu ----
+let hizmetSet=new Set(), seritAcik=false;
+const SERIT_VARSAYILAN=12;
+function hizmetcileri(id){ const n=N.get(id); if(!n||n.tur!=="hedef") return new Set(); const S=new Set(tumIsler(id).map(x=>x.id)); (function alt(h){ altHedefler(h).forEach(a=>{S.add(a.id); alt(a.id);}); })(id); return S; }
+function hedefBag(id){ // iş kutusunda görünen hedef bağı: H<no> · <hedef etiketi ilk 30>
+  const h=ust.get(id); if(!h) return "<span class='hedefbag yok'>hedef yok</span>";
+  const e=N.get(h).etiket||h; return "<button class='hedefbag' data-hedef='"+h+"' title='"+esc(e)+"'>H"+h.split(":")[1]+" · "+esc(e.length>30?e.slice(0,30)+"…":e)+"</button>"; }
+function seritListesi(){
+  const isler=G.dugumler.filter(n=>n.tur==="is");
+  const biten=isler.filter(bitti).sort((a,b)=>d3.ascending(bitis(a)||acilis(a),bitis(b)||acilis(b))||d3.ascending(a.id,b.id));
+  const acik=isler.filter(n=>!bitti(n)).sort((a,b)=>d3.descending(!!a.sirada,!!b.sirada)||d3.ascending(acilis(a),acilis(b))||d3.ascending(a.id,b.id));
+  return {biten,acik};
+}
+function seritCiz(){
+  const el=document.getElementById("serit"); const {biten,acik}=seritListesi();
+  const bitG=seritAcik?biten:biten.slice(-SERIT_VARSAYILAN);
+  const sira=acik.filter(n=>n.sirada), acikG=seritAcik?acik:sira;
+  const kutu=n=>{ const no=n.id.split(":")[1]; const zaman=bitti(n)?(bitis(n)||acilis(n)||"").slice(5,16).replace("T"," "):"açıldı "+(acilis(n)||"").slice(5,10);
+    return "<div class='iskutu "+n.durum+(n.id===secili?" secili":"")+(hizmetSet.has(n.id)?" hizmetci":"")+"' data-id='"+n.id+"' role='button' tabindex='0' title='"+esc(n.etiket||"")+"'>"
+      +"<span class='ust-satir'>#"+no+" · "+esc(n.durum)+(n.sirada?" · sırada":"")+" · "+esc(zaman)+"</span>"
+      +"<span class='et'>"+esc(kisa(n,58))+"</span>"+hedefBag(n.id)+"</div>"; };
+  el.className=seritAcik?"acik":"";
+  el.innerHTML="<div class='serit-bas'><b style='color:var(--fg)'>Görev sırası</b><span>bitti: "+bitG.length+"/"+biten.length+" gösteriliyor · "+(seritAcik?"açık iş: "+acik.length:"sıradaki: "+sira.length+" (açık toplam "+acik.length+")")+"</span>"
+    +"<button class='ust' id='serit-dugme'>"+(seritAcik?"Daralt (son "+SERIT_VARSAYILAN+")":"Tümünü göster")+"</button>"
+    +(hizmetSet.size?"<span style='color:var(--hedef)'>vurgulu: "+esc(adi(secili))+" hedefine hizmet eden işler</span>":"")+"</div>"
+    +"<div class='kutular'>"+bitG.map(kutu).join("")+(acikG.length?"<span style='flex:0 0 auto;align-self:center;color:var(--mut);font-size:12px'>▶ sırada / açık</span>"+acikG.map(kutu).join(""):"")+"</div>";
+  document.getElementById("serit-dugme").onclick=()=>{ seritAcik=!seritAcik; seritCiz(); };
+  el.querySelectorAll(".iskutu").forEach(k=>{ const ac=ev=>{ if(ev.target.closest(".hedefbag")) return; grafaDon(); sec(k.dataset.id); }; k.onclick=ac; k.onkeydown=ev=>{ if(ev.key==="Enter") ac(ev); }; });
+  el.querySelectorAll(".hedefbag[data-hedef]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); grafaDon(); sec(b.dataset.hedef); });
+  const s=el.querySelector(".iskutu.secili"); if(s&&!seritAcik) s.scrollIntoView({block:"nearest",inline:"nearest"});
+}
+
+// ---- B8: oda sekmesi (ortak/oda/<odaId>.json; şema jarvis-oda types Oda) ----
+let sekme="graf";
+function grafaDon(){ if(sekme!=="graf") sekmeSec("graf"); }
+function sekmeSec(s){ sekme=s;
+  document.getElementById("graf").style.display=s==="graf"?"":"none";
+  document.getElementById("panel").style.display=s==="graf"?"":"none";
+  document.getElementById("oda").style.display=s==="graf"?"none":"block";
+  document.querySelectorAll("#sekmeler button").forEach(b=>b.classList.toggle("aktif",b.dataset.sekme===s));
+  if(s!=="graf") odaCiz(ODALAR[+s.split(":")[1]]);
+}
+function sekmeleriKur(){ const el=document.getElementById("sekmeler"); if(!ODALAR.length){ el.innerHTML=""; return; }
+  el.innerHTML="<button class='ust aktif' data-sekme='graf'>Graf</button>"+ODALAR.map((o,i)=>"<button class='ust' data-sekme='oda:"+i+"' title='"+esc(o.id||"")+"'>Oda · "+esc(String(o.baslik||o.id||"oda").slice(0,40))+"</button>").join("");
+  el.querySelectorAll("button").forEach(b=>b.onclick=()=>sekmeSec(b.dataset.sekme)); }
+function ilkSatir(m,uz){ const t=String(m||"").split(/\r?\n/).find(x=>x.trim())||""; return t.length>uz?t.slice(0,uz)+"…":t; }
+function odaCiz(o){
+  const el=document.getElementById("oda"); const c=[]; const gorevler=o.gorevler||[], oneriler=o.oneriler||[];
+  const turlar=(o.turlar||[]).slice().sort((a,b)=>d3.ascending(a.ts,b.ts));
+  const gAd=new Map(gorevler.map(g=>[g.id,g.baslik]));
+  const etiket=id=>(id===undefined||id===null)?"":"<span class='etiket'>[#"+id+" · "+esc(gAd.get(id)||"?")+"]</span> ";
+  c.push("<h2>Oda · "+esc(o.baslik||"")+"</h2><div style='color:var(--mut);font-size:12.5px'>"+esc(o.id||"")+" · açılış "+esc(ts(o.acilis)||"?")+" · maksParalel "+esc(o.maksParalel)+" · "+gorevler.length+" görev · "+turlar.length+" tur · kaynak <code>"+esc(o._dosya||"")+"</code></div>");
+  c.push("<h3>Görevler ("+gorevler.length+") · başlığa tıkla, emir ve sonuç açılır</h3><table><tr><th>#</th><th>başlık</th><th>durum</th><th>sınıf</th><th>model</th><th>zorluk</th><th>iş</th></tr>");
+  gorevler.forEach(g=>{ const isId=(g.isId!==undefined&&g.isId!==null)?"is:"+g.isId:null;
+    c.push("<tr><td>#"+g.id+"</td><td><details><summary>"+esc(g.baslik)+"</summary>"+(g.done?"<p><b>Done:</b> "+esc(g.done)+"</p>":"")+(g.dosyalar&&g.dosyalar.length?"<p><b>Dosyalar:</b> "+g.dosyalar.map(esc).join(", ")+"</p>":"")
+      +"<p style='color:var(--mut);font-size:12px'>açılış "+esc(ts(g.acilis)||"?")+(g.kapanis?" · kapanış "+esc(ts(g.kapanis)):"")+(g.cagri!==undefined?" · çağrı "+g.cagri+(g.butce?"/"+g.butce:""):"")+(g.ajan?" · ajan "+esc(g.ajan):"")+"</p>"
+      +"<b>Emir</b><pre>"+esc(g.emir||"")+"</pre>"+(g.sonuc?"<b>Sonuç</b><pre>"+esc(g.sonuc)+"</pre>":"")+"</details></td>"
+      +"<td><span class='rozet-d'>"+esc(g.durum)+"</span></td><td>"+esc(g.sinif||"planli")+"</td><td>"+esc(g.model||"")+"</td><td>"+esc(g.zorluk||"")+"</td>"
+      +"<td>"+(isId?(N.has(isId)?"<button class='git' data-id='"+isId+"'>#"+g.isId+" grafta</button>":"#"+esc(g.isId)+" (grafta yok)"):"—")+"</td></tr>"); });
+  c.push("</table>");
+  const raporlar=turlar.filter(t=>t.tur==="rapor");
+  c.push("<h3>İşçi raporları ("+raporlar.length+") · satıra tıkla, tam metin</h3>");
+  c.push(raporlar.length?raporlar.map(t=>"<details style='border-top:1px solid var(--line);padding:4px 0'><summary><span style='color:var(--mut);font-size:11.5px'>"+esc(ts(t.ts))+" · "+esc(t.kim)+"</span> "+etiket(t.gorevId)+esc(ilkSatir(t.metin,140))+"</summary><pre>"+esc(t.metin)+"</pre></details>").join(""):"<p style='color:var(--mut)'>Rapor yok.</p>");
+  if(oneriler.length) c.push("<h3>Öneriler ("+oneriler.length+")</h3><table><tr><th>#</th><th>öneri</th><th>durum</th></tr>"+oneriler.map(r=>"<tr><td>"+r.id+"</td><td>"+etiket(r.gorevId)+esc(r.metin)+"<div style='color:var(--mut);font-size:12px'>gerekçe: "+esc(r.gerekce||"")+(r.not?" · not: "+esc(r.not):"")+"</div></td><td><span class='rozet-d'>"+esc(r.durum)+"</span></td></tr>").join("")+"</table>");
+  c.push("<h3>Sohbet akışı (tam, "+turlar.length+" tur)</h3><div class='akis'>");
+  turlar.forEach(t=>c.push("<div class='tur-satir'><div class='meta'>"+esc(ts(t.ts))+" · "+esc(t.kim)+" · "+esc(t.tur)+"</div>"+etiket(t.gorevId)+"<span class='metin'>"+esc(t.metin)+"</span></div>"));
+  c.push("</div>");
+  el.innerHTML=c.join(""); el.scrollTop=0;
+  el.querySelectorAll("button.git").forEach(b=>b.onclick=()=>{ sekmeSec("graf"); sec(b.dataset.id); });
+}
+
 function gorunumSec(gn){ gorunum=gn; document.getElementById("g-bant").classList.toggle("aktif",gn==="bant"); document.getElementById("g-sira").classList.toggle("aktif",gn==="sira"); ciz(secili); }
 document.getElementById("g-bant").onclick=()=>gorunumSec("bant");
 document.getElementById("g-sira").onclick=()=>gorunumSec("sira");
 document.getElementById("merkeze").onclick=()=>{yol=[]; kirintiYaz(); ciz(MERKEZ);};
 window.addEventListener("resize",()=>ciz(secili));
-kirintiYaz(); ciz(MERKEZ);
+sekmeleriKur(); kirintiYaz(); ciz(MERKEZ);
 </script>
 </body>
 </html>
