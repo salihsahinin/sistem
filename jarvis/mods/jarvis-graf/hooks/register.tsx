@@ -29,15 +29,20 @@ function zaman(n: GrafDugum): number {
   return Number.isFinite(ms) ? ms : 0
 }
 
+/** B7: cwd'den köke kadar her üst dizinde ortak/akis-graf.json arar; bulunan yol önbelleğe girer. */
 async function yolBul($: EngineInterface): Promise<{ graf: string; jarvis: string; depo: string } | null> {
-  const cwd = (await $.session.cwd()).replace(/\\/g, '/')
-  const adaylar = [
-    { depo: cwd, jarvis: cwd + '/jarvis' },
-    { depo: cwd.replace(/\/[^/]+$/, ''), jarvis: cwd },
-  ]
-  for (const a of adaylar) {
-    const graf = a.depo + '/ortak/akis-graf.json'
-    if (await $.fs.exists(graf)) return { graf, jarvis: a.jarvis, depo: a.depo }
+  const onceki = (await read($, gorunumAtom)).yol
+  if (onceki && (await $.fs.exists(onceki))) {
+    const depo = onceki.replace(/\/ortak\/akis-graf\.json$/, '')
+    return { graf: onceki, jarvis: depo + '/jarvis', depo }
+  }
+  let dizin = (await $.session.cwd()).replace(/\\/g, '/').replace(/\/+$/, '')
+  for (let i = 0; i < 32 && dizin; i++) {
+    const graf = dizin + '/ortak/akis-graf.json'
+    if (await $.fs.exists(graf)) return { graf, jarvis: dizin + '/jarvis', depo: dizin }
+    const ust = dizin.replace(/\/[^/]*$/, '')
+    if (ust === dizin || !ust.includes('/')) break
+    dizin = ust
   }
   return null
 }
@@ -45,7 +50,8 @@ async function yolBul($: EngineInterface): Promise<{ graf: string; jarvis: strin
 async function grafYukle($: EngineInterface, zorla = false): Promise<void> {
   const yol = await yolBul($)
   if (!yol) {
-    await update($, gorunumAtom, g => ({ ...g, hata: 'ortak/akis-graf.json bulunamadı (cwd depo ya da jarvis/ olmalı)' }))
+    // B7: graf bir kez yüklendiyse geçici arama başarısızlığı hata satırı yazmaz.
+    if (!(await read($, grafAtom))) await update($, gorunumAtom, g => ({ ...g, hata: "ortak/akis-graf.json bulunamadı (cwd'den köke kadar arandı)" }))
     return
   }
   const st = await $.fs.stat(yol.graf)
