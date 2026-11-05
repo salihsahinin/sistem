@@ -49,3 +49,9 @@ Kavram=tip eşlemesinin 2020+ kaynağı yok · 2607/2608 arXiv kimlikleri doğru
 - Katman-1 kalemler (kutu 3 Lean, 4, 5 sözlük başlığı, 6 md, 7) fork'ta yazılmaz; Salih imzasıyla ana oturumda ya da devir dosyasıyla Jarvis'e gelir. `veri/baglam.sqlite` 348 MB: fork yalnız okur, yazım ana oturumda.
 - Commit `git add <yol>`, karar başına ayrı commit, önek `[icra]`. Kaynak URL'leri tarama çıktılarında; bu dosyadaki adlarla aranır.
 - Komşu ders: `kuyruk/ders-dosya-mimarisi-2026-10-31.md` (kutu 4 pointer disiplini bu dersin kutu 5'iyle aynı ilke).
+
+## EK (Salih 2026-11-05): kutu 9 adayı, Music Feature Encoding for Steerable Recommendation
+- Amaç: bir parçayı "davul iyi, vokal uymuyor" türü eleştirinin adresleyebileceği biçimde kodlamak (proje fikri: prompt ile sonraki şarkıyı yönlendirme).
+- Üç katman: (1) sembolik şema, Music Ontology sınıfları (Track, Signal, Performance) + kapalı tipli nitelikler (tempo, ton, enstrümantasyon, vokal türü); (2) kanal-ayrık gömme, kaynak ayrıştırma (davul, bas, vokal, diğer) sonrası her kanal için ayrı vektör; (3) eleştiri şeması, serbest metin -> {koru: [...], değiştir: [...]} kapalı tipli yapı.
+- Yetkinlik sorusu (kırmızı/yeşil): "davulu A parçasına yakın, vokali A parçasından uzak 5 parça getir" sorgusu şemadan cevaplanabiliyor mu.
+- Durum: aday; derse girişi Salih beyanıyla.
