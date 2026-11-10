@@ -40,7 +40,7 @@ import os
 import sqlite3
 import sys
 
-VARSAYILAN_IGNORE = ["veri/bronz/", "veri/gorunum/", "veri/parquet/", "arsiv/claude-izler/"]
+VARSAYILAN_IGNORE = ["veri/bronz/", "veri/gorunum/", "veri/parquet/"]
 HARITA_ONEK = "obsidian-harita"
 
 

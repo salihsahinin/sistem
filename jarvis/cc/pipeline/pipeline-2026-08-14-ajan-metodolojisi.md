@@ -6,10 +6,10 @@
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-1 | **scout** | 4-aile araştırması: görev-as-fonksiyon · hafıza-as-import · lojik→kod merdiveni · lider/işçi prensipleri | `cc/gorev-2026-08-14-2.md` | `cc/rapor-2026-08-14-2.md` (D/K/X + 12 yapı-taşı) | **SAHADA** (Opus lider) |
-| G-1 | — | Sentez (Carvis): rapor + kanon açık-uçları → metodoloji | S-1 | metodoloji metni | BEKLİYOR |
-| SH-1 | **ship** | Jarvis implementasyonu: metodoloji dosyası + görev-fonksiyonu şablonu + hafıza-manifest kuralı + wiring (CLAUDE.md/kapsül) — hedef açık borçlar: A5 lider-tasarımı · S-K şablonu · m.38/m.46 merdiveni | G-1 | commit + push | BEKLİYOR |
-| T | teslim | Kaptan beyanı: metodoloji hazır ve sisteme gömülü | SH-1 | DONE damgası | BEKLİYOR |
+| S-1 | **scout** | 4-aile araştırması: görev-as-fonksiyon · hafıza-as-import · lojik→kod merdiveni · lider/işçi prensipleri | `cc/gorev-2026-08-14-2.md` | `cc/rapor-2026-08-14-2.md` (D/K/X + 12 yapı-taşı) | DONE (08-14) |
+| G-1 | — | Sentez (Carvis): rapor + kanon açık-uçları → metodoloji | S-1 | metodoloji metni | DONE (08-14) |
+| SH-1 | **ship** | Jarvis implementasyonu: metodoloji dosyası + görev-fonksiyonu şablonu + hafıza-manifest kuralı + wiring (CLAUDE.md/kapsül) — hedef açık borçlar: A5 lider-tasarımı · S-K şablonu · m.38/m.46 merdiveni | G-1 | commit + push | DONE (08-14) |
+| T | teslim | Kaptan beyanı: metodoloji hazır ve sisteme gömülü | SH-1 | DONE damgası | DONE (08-14) |
 
 ## Olay günlüğü
 - 08-14 — Görev emri yazıldı; Opus lider sahaya çıktı (S-1 SAHADA). Kanonda-bilinenler listesi emre gömüldü (08-02 üç-dil + spec-kit + ingest-şeması bulguları) — mükerrer araştırma freni.

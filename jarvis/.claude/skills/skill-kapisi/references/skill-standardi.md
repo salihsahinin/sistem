@@ -10,5 +10,5 @@
 - **Yan-etki freni (★):** kayıt/commit/deploy adımı **ayrı** `disable-model-invocation: true` skill'e — muhakeme skill'i blok **üretir**, dosyaya **yazmaz** (m.31/m.9 koda gömülü).
 - **Kompozisyon:** skill'ler birbirini literal çağırmaz; bileşik iş = `context: fork` orkestratör + küçük çocuk skill'ler + sabit-format handoff + fail-loud.
 - **Yayın-öncesi:** 20-sorgu description eval (10 tetiklemeli + 10 tetiklemesiz) · çok-modelde test · versiyon damgası (`0.x-deneysel-m29`).
-- **Ev:** `.claude/skills/<ad>/SKILL.md` (repo, git'e commit — dağıtım gece-senkron/pull ile).
+- **Ev:** `.claude/skills/<ad>/SKILL.md` (repo, git'e commit — dağıtım git pull ile).
 - **Hazine tavanı kalktı (Karar 96, Salih 09-15):** char/adet tavanı ve "yeni skill = emekli-aday" kuralı süpersede; yönetim = seçim-isabeti (description standardı · katalog `.claude/skills/README.md` · tetiklenme isabeti ölçümü). Şema `core/skill-uretim-semasi.md` §4b.

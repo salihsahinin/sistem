@@ -5,19 +5,19 @@
 ## Ajanlar
 | Ajan | Dizin | Rol | Model | Oturum |
 |---|---|---|---|---|
-| **Jarvis** | `jarvis/` | ana-sıra ajan + kanonların bakıcısı; Salih'in tek temas noktası; işi domain-lider seviyesine kadar böler (tüzük m.44) | Fable | Claude Code, cwd `~/sistem/jarvis`, worktree **kapalı** |
-| **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5.5 medium (Karar 106) | Claude Code, cwd `~/sistem/friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
-| **Tart** | `tart/` (evals) | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `~/sistem/tart`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
-| **Gard** | `gard/` (güvenlik) | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/gard`, aynı usul |
-| **Span** | `span/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/span`, aynı usul |
-| **Calc** | `calc/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/calc`, aynı usul |
-| **Deci** | `deci/` (jev) | alan ajanı: TypeSafe Jev / System One karar modelleri — öğrenme serisi J1-J6 + Jarvis karar noktalarına entegrasyon (Karar 108) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/deci`, aynı usul; tetik "seans başı, jev" |
-| **Vega** | `vega/` (quant) | alan ajanı: quantitative finance müfredat DAG'ı (Atlas 09-22) + PortRisk ürünü (Karar 109) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/vega`, aynı usul; tetik "seans başı, quant" |
-| **Sage** | `sage/` (felsefe) | alan ajanı: felsefe okuma eşliği, planlı seri yok; okunan kitap hakkında serbest soru, metin yeri + çeviri + terim (Karar 111) | Sonnet 5 medium + eskalasyon | cwd `~/sistem/sage`; ritüel yok, chat açıp soru sorulur |
+| **Jarvis** | `jarvis/` | ana-sıra ajan + kanonların bakıcısı; Salih'in tek temas noktası; işi domain-lider seviyesine kadar böler (tüzük m.44) | Fable | Claude Code, cwd `C:\sistem\sistem\jarvis`, worktree **kapalı** |
+| **Friday** | `friday/` | domain-lider (proje-ölçekli icra: araştırma, refactor, doküman, ölçüm; Sonnet işçi filosu) | Opus 5.5 medium (Karar 106) | Claude Code, cwd `C:\sistem\sistem\friday`, worktree **kapalı**; emir `cc/gelen/`, dönüş `cc/giden/` |
+| **Tart** | `tart/` (evals) | alan ajanı: LLM/ajan değerlendirme mühendisliği — öğrenme + ürün + Salih'le sohbet (Karar 105) | Sonnet 5 medium + eskalasyon (Salih beyanı) | Claude Code, cwd `C:\sistem\sistem\tart`, worktree **kapalı**; ders iskeleti `cc/gelen/`, dönüş `cc/giden/` |
+| **Gard** | `gard/` (güvenlik) | alan ajanı: ajan güvenliği (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\gard`, aynı usul |
+| **Span** | `span/` (bağlam) | alan ajanı: bağlam penceresinin matematiksel modellemesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\span`, aynı usul |
+| **Calc** | `calc/` (hesaplama) | alan ajanı: MIT 6.006 + 6.042J + matematik felsefesi (Karar 105) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\calc`, aynı usul |
+| **Deci** | `deci/` (jev) | alan ajanı: TypeSafe Jev / System One karar modelleri — öğrenme serisi J1-J6 + Jarvis karar noktalarına entegrasyon (Karar 108) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\deci`, aynı usul; tetik "seans başı, jev" |
+| **Vega** | `vega/` (quant) | alan ajanı: quantitative finance müfredat DAG'ı (Atlas 09-22) + PortRisk ürünü (Karar 109) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\vega`, aynı usul; tetik "seans başı, quant" |
+| **Sage** | `sage/` (felsefe) | alan ajanı: felsefe okuma eşliği, planlı seri yok; okunan kitap hakkında serbest soru, metin yeri + çeviri + terim (Karar 111) | Sonnet 5 medium + eskalasyon | cwd `C:\sistem\sistem\sage`; ritüel yok, chat açıp soru sorulur |
 | hakem | `jarvis/.claude/agents/hakem` (ortak) · `<alan>/.claude/agents/hakem` (alan perspektifli) | maskeli, bağımsız, salt-okur değerlendirici; V26 zorunlu (Karar 103 M1 · 105 M1) | Sonnet 5 + eskalasyon | `Agent` aracı |
 | işçiler | ajanın alt-çağrısı | tek görev, atılabilir | Sonnet | `Agent` aracı; okuma kilidi hook'la |
 
-Yeni alan ajanı: `jarvis/tools/alan-ajani-dogur.py <spec>` (`sablonlar/ajan-iskelet/`, doğum belgesi + bakım-maliyeti satırı zorunlu, Karar 104 M5); şerit taşıma `git mv` Salih eli.
+Yeni alan ajanı: `target/release/alan-ajani-dogur <spec>` (Rust ikilisi) (`sablonlar/ajan-iskelet/`, doğum belgesi + bakım-maliyeti satırı zorunlu, Karar 104 M5); şerit taşıma `git mv` Salih eli.
 
 ## Kök
 `KURULUM.md` yeni makinede kaldığın yerden devam (uygulama/araç/harness envanteri, ev-yolu geçişi, gitignore'daki veriler; 2026-09-21) · `AGENTS.md` ortak kanon · `CLAUDE.md → AGENTS.md` · `sablonlar/` ortak şablonlar (görev-fonksiyonu · geri-dönüş v0 · devir-birimi v0 · A1 lojik blok · charter iskeleti) · `bin/hook-dispatch.sh` tek hook girişi (cwd → ajan hook'ları) · `.claude/settings.json` dispatcher kayıtları · `ogrenme/` Salih'in öğrenme şeritleri (ajanlara kapalı) · `.gitignore` kök kuralları (ajan kuralları `<ajan>/.gitignore`).
@@ -29,6 +29,6 @@ genel kural → kök `AGENTS.md` (Jarvis yazar, Salih imzalar) · ajan kuralı/k
 Friday `.claude/hooks/okuma-izin.sh`: kendi dizini + kök kanon dosyaları + `sablonlar/` serbest, `jarvis/**` ve ev dizini kapalı (test `okuma-izin-test.sh`). Jarvis `.claude/hooks/pretool-altajan-okuma.sh`: alt-ajan kapsül/pano/defter/kütük/`friday/` okuyamaz. Kanıt: her ajanın `veri/bronz/hareket-olay.jsonl` kütüğü + `talimat-yukleme-olay.jsonl` (Friday bağlamında Jarvis satırı 0 = izolasyon geçerli, Karar 101 geri-açma koşulu).
 
 ## Okuma sırası (ajan isen)
-1. kök `AGENTS.md` → 2. kendi `<ajan>/AGENTS.md` → 3. kendi `core/durum-kapsulu.md` → `core/pano.md`. Jarvis için ayrıca `jarvis/README.md` + `jarvis/KILAVUZ.md`.
+1. kök `AGENTS.md` → 2. kendi `<ajan>/AGENTS.md` → 3. durum: `../target/release/durum.exe oturum-basi --alan <ajan>` (kendi dizininden); Jarvis için ayrıca son seans kaydı `jarvis/raporlar/seans/*.json` (kapsül/pano 10-25'te dondu, Karar 122). Jarvis için ayrıca `jarvis/README.md` + `jarvis/KILAVUZ.md`.
 
 Lisans MIT (`jarvis/LICENSE`). Remote private (Salih).

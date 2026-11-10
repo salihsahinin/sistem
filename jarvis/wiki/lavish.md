@@ -31,7 +31,7 @@ Tasarım önceliği: (1) Salih özel bir görünüm istediyse onu kullan → (2)
 ## Süpersede zinciri
 Yok (ilk yazım).
 
-## [[link]]'ler
+## `[[link]]`'ler
 [[gnhf]] — L8 üçlüsünün diğer üyesi, durma-koşullu koşum tarafı · [[paralel-oturum-protokolu]] — çoklu-oturum/paylaşılan-kaynak disiplini, share-yasağı bağlamı için ilgili · [[gorsel-artefakt-dogrulama]] — SVG/HTML artefaktın okunabilirliğinin bbox-ölçümüyle sınanması ilkesi, lavish'in layout-gate mekanizmasıyla aynı sorunu (sessiz görsel hata) farklı katmanda ele alır.
 
 ## Kaynak/pointer

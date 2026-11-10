@@ -1,4 +1,4 @@
-// oda.test.tsx: jarvis-oda v0.5 pano ve araç testleri (claude plugin test jarvis/mods/jarvis-oda).
+// oda.test.tsx: jarvis-oda v0.6 pano ve araç testleri (claude plugin test jarvis/mods/jarvis-oda).
 // Bellek-içi motor: fs/process yok; kütük köprüsü sessizce atlanır, pano ve araç akışı sınanır.
 import { test, expect, mock } from 'claude-code/testing'
 

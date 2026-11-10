@@ -1,4 +1,4 @@
-// jarvis-oda v0.5: oda modu (Salih 2026-10-27, Karar 126; v0.5 2026-11-03 tanrısal bakış + iş nodu sınıfı).
+// jarvis-oda v0.6: oda modu (Salih 2026-10-27, Karar 126; v0.5 2026-11-03 tanrısal bakış + iş nodu sınıfı).
 // Bu dosya yalnız kayıt yapar; mantık hooks/src/ altında: durum (veri) · araclar (yazan taraf) · metin (model metni) · pano (çizim) · ortak.
 // Sürüm tarihçesi README.md'de; v0.5: işçiye tıkla → işçi transkripti, kaydırılabilir sohbet/akış, katlanır bölümler,
 // [#N · başlık · sınıf] etiketleri, iş nodu sınıfı (izole/planli/dosyali/rol) + bütçe + kapsam kapısı, kütük/graf köprüsü.

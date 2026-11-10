@@ -1,6 +1,6 @@
 # Claude Code modları (kanon kopyası; Salih 2026-10-27, Karar 126; video "Claude Mods" 3 fikir)
 
-Canlı kopya `~/.claude/dev-mods/<oturum-id>/<mod>/` (motor orayı izler, oturum sonunda yükler); bu dizin **kaynak kanonu** ve proof-of-work'tür (görünür klasör, gizli-klasör-yok ilkesi 08-18). Değişiklik: önce burada, sonra canlı klasöre kopya ya da `CLAUDE_CODE_PLUGIN_DIRS=C:\sistem\sistem\jarvis\mods\<mod>` ile doğrudan buradan yükleme. Doğrulama: `claude plugin validate mods/<mod>` (manifest + modül taraması) ve `claude plugin test mods/<mod>` (bellek-içi motorda `tests/*.test.tsx`). Her modun kaynağı katmanlıdır: `hooks/register.tsx` yalnız kayıt, mantık `hooks/src/`; mimari tablosu modun README'sinde.
+Modlar doğrudan bu dizinden yüklenir: `~/.claude/settings.json` içinde `CLAUDE_CODE_PLUGIN_DIRS=C:\sistem\sistem\jarvis\mods\jarvis-oda;C:\sistem\sistem\jarvis\mods\jarvis-graf` (AS-OF 2026-11-10). Bu dizin **kaynak kanonu** ve proof-of-work'tür (görünür klasör, gizli-klasör-yok ilkesi 08-18); değişiklik yalnız burada yapılır. `~/.claude/dev-mods/<oturum-id>/<mod>/` altındaki kopya eski sürümdür (oda 0.4.1, graf 0.1.0) ve yüklenmez. Doğrulama: `claude plugin validate mods/<mod>` (manifest + modül taraması) ve `claude plugin test mods/<mod>` (bellek-içi motorda `tests/*.test.tsx`). Her modun kaynağı katmanlıdır: `hooks/register.tsx` yalnız kayıt, mantık `hooks/src/`; mimari tablosu modun README'sinde.
 
 | Mod | Ne | Araçlar / komut |
 |---|---|---|

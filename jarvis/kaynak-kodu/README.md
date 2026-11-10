@@ -2,10 +2,10 @@
 
 *Açık kaynak ilkesi (Salih 2026-08-17, Katman-1): Jarvis'in davranışını belirleyen her şey bu klasörde okunur metin olarak yaşar; Salih kaynak kodunu istediği an okuyabilir. Bu klasör bir HARİTA + KAPIDIR: kodun kendisi burada değil, adresi burada. `claude` = gizli `.claude/` klasörünün kendisi (bağ/alias; Finder gizli klasörleri göstermediği ve Obsidian nokta-klasörleri saymadığı için açıldı). Kural: bu harita KONUM listeler, dosya değil — yeni konum açılırsa buraya satır düşer. **Gizli klasör YOK (Salih Katman-1, 2026-08-18):** Jarvis'in kullandığı her nokta-dizin için (1) burada görünür kapı (bağ) + (2) README satırı + (3) dizinin kendisi Finder'da görünür — `defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder` (08-18'de uygulandı; değer 1). Bugünkü nokta-dizinler: `~/jarvis/.claude` (skill/hook/ayar) · `~/.claude` (Claude Code kullanıcı düzeyi: skill'ler, projeler/transkriptler) · `~/.no-mistakes` (kapı aracı) · `~/jarvis/.secrets` (sır; içerik gizli KALIR, klasör görünür) · `~/jarvis/.obsidian` (Obsidian ayarı) · `.git` (git; araç dizini, kapı gerekmez).*
 
-## Nasıl açarım (Finder)
-- Bu klasör: `open ~/jarvis/kaynak-kodu` — içindeki `claude` bağına çift tıkla → skill'ler, hook'lar, ayarlar.
-- Doğrudan skill'ler: `open ~/jarvis/.claude/skills`
-- Gizli dosyaları Finder'da KALICI görmek istersen (senin tercihin, sistem ayarı): Finder'dayken **⌘ ⇧ .** (Command-Shift-Nokta) — bir kez basınca açık kalır, tekrar basınca kapanır.
+## Nasıl açarım (Windows Explorer)
+- Bu klasör: `explorer C:\sistem\sistem\jarvis\kaynak-kodu` — içindeki `claude` bağına çift tıkla → skill'ler, hook'lar, ayarlar.
+- Doğrudan skill'ler: `explorer C:\sistem\sistem\jarvis\.claude\skills`
+- Gizli öğeleri Explorer'da görmek istersen (senin tercihin, sistem ayarı): Explorer Görünüm menüsü → Göster → Gizli öğeler.
 - Obsidian'da `.py`/`.sh` görmek için: Ayarlar → Files & Links → "Detect all file extensions".
 
 ## Dil kuralı (Salih 2026-08-17)
@@ -16,7 +16,7 @@ Kaynak dosyalar **Türkçe**: SKILL.md'ler, ajan tanımı (`research-agent.md` =
 |---|---|---|---|
 | Oturum sözleşmesi | `CLAUDE.md` | Her oturumun otomatik okuduğu davranış sözleşmesi (v2, ≤80 satır) | düz metin; kural numaraları (m.NN) tüzüğe işaret eder |
 | Kanon (kurallar) | `core/tuzuk-v0.md` + `core/*.md` | Tüzük 46+ madde; şema/kural dosyaları (ajan-metodolojisi, skill-üretim, skill-tetikleme, halüsinasyon-paketi, şema-sıkıştırma, anahtar-kaydı, ingest, veri-katmanı, world-model) | her kural dosyası kendi başlığıyla; `.d2` dosyaları grafiklerin kaynağı |
-| Durum | `core/durum-kapsulu.md` · `core/pano.md` | Şu an neredeyiz + kartlar (üzerine yazılır) | ilk 40 satır yeter |
+| Durum | `durum oturum-basi --alan jarvis` (`target/release/durum.exe`) + `raporlar/seans/*.json` | Şu an neredeyiz + sırada (durum kütüğü; `core/durum-kapsulu.md` ve `core/pano.md` 10-25'te dondu, Karar 122) | komut çıktısı yeter |
 | Modlar (Claude Code function hooks) | `mods/<mod>/` (`jarvis-oda`, `jarvis-graf`) | Claude Code arayüzüne pane/araç/komut ekleyen hooks modülleri (Karar 126, 2026-10-27); canlı kopya `~/.claude/dev-mods/` | `mods/README.md` tablo → `hooks/register.tsx` (tek dosya), `types/index.d.ts` durum sözleşmesi |
 | Skill'ler (16) | `.claude/skills/<ad>/SKILL.md` (+ `scripts/` `evals/` `references/`) | Jarvis'in tetiklenebilir davranış paketleri: seans-acilis, seans-kapanis, damitma, gorev-emri-derleme, atlas-kosum, pipeline-kosum, karar-hatti, karar-modeli, karar-kaydet, celiski-kapisi, lojik-ceviri, yol-planla, sinav-grill, skill-kapisi, halusinasyon-engelleyici, wiki-sayfa-yaz | önce frontmatter `description` (tetik yüzeyi), sonra adımlar; `scripts/` Python (stdlib) |
 | **no-mistakes** (üçüncü-parti kapı aracı; 08-18 ilk kullanım) | `kaynak-kodu/no-mistakes` → `~/.no-mistakes/` (gizli nokta-klasör; aracın kendi ev dizini — bizim seçimimiz değil): `config.yaml` (ajan/izin/auto_fix ayarları) · `repos/c674481304c5.git` (jarvis'in yerel bare gate'i; `git remote no-mistakes`) · `worktrees/c674481304c5/` (pipeline ajanının çalıştığı kopya — izin istemleri buradan gelir) · `logs/<run-id>/*.log` (adım logları) · `state.sqlite` (koşum durumu) · `bin/no-mistakes` (ikili v1.48.0); skill: `~/.claude/skills/no-mistakes/SKILL.md` | Her adım (review/test/document/lint/pr) ayrı `claude` CLI ajanı açar; PR merge Salih'te | önce `config.yaml`, sonra ilgili koşumun `review.log` |

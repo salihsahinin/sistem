@@ -6,11 +6,11 @@
 
 | # | Şekil | İş | Intake | Teslim | Durum |
 |---|---|---|---|---|---|
-| S-1 | **scout** | İngest şeması literatür+sektör araştırması (4 aile: ajan-hafıza mimarileri · veri-müh. desen transferi · çok-oturum pratiği · şema tasarım ilkeleri) | `cc/gorev-2026-08-14-1.md` | `cc/rapor-2026-08-14-1.md` (D/K/X etiketli + "en güçlü 10 yapı-taşı") | **SAHADA** (Opus lider, paralel araştırmacılı; ~30-45 dk bandı) |
-| G-1 | — | Şema sentezi (Carvis): S-1 raporu + jarvis kanon bilgisi → nihai ingest şeması | S-1 teslimi | şema metni | BEKLİYOR (S-1) |
-| SH-1 | **ship** | Jarvis implementasyonu: `core/ingest-semasi.md` + CLAUDE.md okuma-sırası pointer'ı + kapsül notu | G-1 | commit + push (Salih 08-14: "commit push serbest") | BEKLİYOR (G-1) |
-| SH-2 | **ship** | Staj implementasyonu: `~/staj başlangıç/ingest-semasi.md` (gunluk/ formatını genişletir) + staj CLAUDE.md pointer'ı | G-1 | yerel commit (remote yok — md.49) | BEKLİYOR (G-1) |
-| T | teslim | Kaptan beyanı: **"şema hazır ve sisteme gömülü"** → Salih açık sekmelerini "seans bitimi" ile kapatabilir | SH-1 ∧ SH-2 | bu dosyada DONE damgası | BEKLİYOR |
+| S-1 | **scout** | İngest şeması literatür+sektör araştırması (4 aile: ajan-hafıza mimarileri · veri-müh. desen transferi · çok-oturum pratiği · şema tasarım ilkeleri) | `cc/gorev-2026-08-14-1.md` | `cc/rapor-2026-08-14-1.md` (D/K/X etiketli + "en güçlü 10 yapı-taşı") | DONE (08-14) |
+| G-1 | — | Şema sentezi (Carvis): S-1 raporu + jarvis kanon bilgisi → nihai ingest şeması | S-1 teslimi | şema metni | DONE (08-14) |
+| SH-1 | **ship** | Jarvis implementasyonu: `core/ingest-semasi.md` + CLAUDE.md okuma-sırası pointer'ı + kapsül notu | G-1 | commit + push (Salih 08-14: "commit push serbest") | DONE (08-14) |
+| SH-2 | **ship** | Staj implementasyonu: `~/staj başlangıç/ingest-semasi.md` (gunluk/ formatını genişletir) + staj CLAUDE.md pointer'ı | G-1 | yerel commit (remote yok — md.49) | DONE (08-14) |
+| T | teslim | Kaptan beyanı: **"şema hazır ve sisteme gömülü"** → Salih açık sekmelerini "seans bitimi" ile kapatabilir | SH-1 ∧ SH-2 | bu dosyada DONE damgası | DONE (08-14) |
 
 ## Keşif notları (implementasyona girdi)
 

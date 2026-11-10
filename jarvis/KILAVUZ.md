@@ -3,10 +3,10 @@
 > **Açıklama notu:** K-012 build adım 2 çıktısı (2026-07-12; m.26: anlama-kapısı yerine kılavuz — Salih buradan okur, takıldığı yerde Jarvis izah eder). Format deneysel-damgalı başlar (m.29), kullanım verisiyle kalibre edilir. Kural kaynağı her zaman tüzük; burası "nasıl kullanılır" yüzeyidir.
 
 ## Oturum nasıl işler
-- **"seans başı"** (eski selamlama tetiği emekli 08-15, `core/baglam-anahtar-kaydi.md`) → seans açılışı: kapsül + pano okunur, kısa teslim özeti + tek net sıradaki iş sunulur.
+- **"seans başı"** (eski selamlama tetiği emekli 08-15, `core/baglam-anahtar-kaydi.md`) → seans açılışı: `durum oturum-basi --alan jarvis` + son seans kaydı (`raporlar/seans/*.json`) okunur (Karar 122; kapsül/pano dondu), kısa teslim özeti + tek net sıradaki iş sunulur.
 - İş sırasında ne söylersen görev olarak devralınır (m.25); küçük iş direkt yapılır, proje ölçekli işe kart/ajan — ölçek-tercihi Jarvis'te.
-- **Kapanış ("seans bitimi"):** seans teslim + hasat/ingest + kapsül güncellenir + commit; push m.9 gereği Salih beyanıyla. Jarvis bağlam-şişmesinde kapanışı kendisi önerir (V11).
-- **Bağlam-şişme çağrısı (Salih emri 07-19):** Jarvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu **kendiliğinden** belirtir; seans kapanışı + yeni seans önerir (kapanış = teslim raporu + kapsül tazeleme; yeni seans kapsülden devralır — m.27 hattı).
+- **Kapanış ("seans bitimi"):** seans teslim + hasat/ingest + durum kütüğü (`durum`) güncellenir + commit; push m.9 gereği Salih beyanıyla. Jarvis bağlam-şişmesinde kapanışı kendisi önerir (V11).
+- **Bağlam-şişme çağrısı (Salih emri 07-19):** Jarvis, oturum bağlamının şiştiğini ve kalite riskini gördüğünde bunu **kendiliğinden** belirtir; seans kapanışı + yeni seans önerir (kapanış = teslim raporu + durum kütüğü güncelleme; yeni seans `durum oturum-basi` ile devralır, Karar 122).
 - Her karar ayrı commit, [damıtma]/[icra] (+[ariza]/[revert], Karar 55); push **yalnız** Salih beyanıyla (m.9; eski 'otomatik push' satırı süpersede — arşiv §3).
 - **Ağır araç yükleme usulü (Salih imzası 08-17 masa KB-12; ölçüm `raporlar/2026-08/2026-08-03-model-dusumu-olcum.md`):** çoklu MCP/ToolSearch yüklemesi oturum **başında** ya da **ayrı** oturumda; uzun oturumun geç evresinde **yapılmaz** (prompt-cache kırılması ~152K token → kota → düşüm).
 
@@ -16,8 +16,8 @@ Klasörlerde *ne* olduğu için `README.md` klasör haritasına bak (m.20: burad
 
 | Soru | İlk açılacak |
 |---|---|
-| Bugün nerede kaldık, sıradaki ilk iş ne? | `core/durum-kapsulu.md` |
-| Hangi iş açık, kim üstünde, `DONE` ne? | `core/pano.md` |
+| Bugün nerede kaldık, sıradaki ilk iş ne? | `../target/release/durum.exe oturum-basi --alan jarvis` |
+| Hangi iş açık, kim üstünde, `DONE` ne? | `durum` kütüğü (`durum oturum-basi`; `core/pano.md` dondu) |
 | Bu kural nereden geliyor, kim karar verdi? | `core/tuzuk-v0.md` → `kuyruk/senaryo-defteri.md` |
 | Bu seansta ne teslim edildi? | `raporlar/YYYY-MM/` (ay dizini README'si) |
 | Bu ajana ne emredildi, ne cevap verdi? | `cc/gorev/YYYY-MM/` → `cc/rapor/YYYY-MM/` |
@@ -50,7 +50,7 @@ Yapı-darboğazı yerleşim · tarama-yöntemi seçimi · adresli erişim · gra
 
 ## ~~Skill-yazım standardı (K-013)~~ arşive indi (damıtma 08-29 → `arsiv/kuyruk-arsiv/KILAVUZ-arsiv-2026-08-29.md` §4); canlı standart aşağıdaki 'Skill Standardı' bölümü + oradaki eval kuralı.
 ## Boyut-izleme — sıcak-dosya bütçesi (imzalı kural, Salih 07-22; rakamlar deneysel m.29)
-Her oturum açılışında okunan dosyalar sabit boyut-bütçeli yaşar; **aşım hata değil tetiktir** — aşan dosya ilk boş seansta Salih-imzalı planla damıtılır (silme yok: tam metin arşive, özüt+pointer; m.8/m.34). Bütçeler: kapsül 8KB ∧ ≤40 satır (hook sert-kapısı) · pano 12KB · fikir-kutusu 20KB · senaryo-defteri 48KB (`FLAG`: token-bazlı yeniden-bütçe adayı) · CLAUDE.md 8KB · KILAVUZ 16KB. Kapanışta tek bakış; aşan varsa teslim raporuna 'boyut-tetiği' düşer. Revizyon tetiği: context-ekonomisi değişimi; iki turda bir kalibrasyon. Gerekçe + araştırma tarihçesi: `kuyruk/k019-taslak-boyut-izleme.md` + arşiv 08-29 §2. **konum** ekseni: her-tur-okunanlar bağlam tepesinde (lost-in-middle).
+Her oturum açılışında okunan dosyalar sabit boyut-bütçeli yaşar; **aşım hata değil tetiktir** — aşan dosya ilk boş seansta Salih-imzalı planla damıtılır (silme yok: tam metin arşive, özüt+pointer; m.8/m.34). Bütçeler: kapsül 8KB ∧ ≤40 satır · pano 12KB (ikisi 10-25'te dondu, Karar 122: artık güncellenmez, bütçe uygulanmaz) · fikir-kutusu 20KB · senaryo-defteri 48KB (`FLAG`: token-bazlı yeniden-bütçe adayı) · CLAUDE.md 7KB (`lean/Kanon/Butce.lean`) · KILAVUZ 16KB. Kapanışta tek bakış; aşan varsa teslim raporuna 'boyut-tetiği' düşer. Revizyon tetiği: context-ekonomisi değişimi; iki turda bir kalibrasyon. Gerekçe + araştırma tarihçesi: `kuyruk/k019-taslak-boyut-izleme.md` + arşiv 08-29 §2. **konum** ekseni: her-tur-okunanlar bağlam tepesinde (lost-in-middle).
 
 ## Sayı-araştırma kapısı (Salih emri 07-23 — kural)
 Sistem parametresi olacak her deneysel sayı (eşik, bütçe, sayaç, örneklem) CC araştırması koşulmuş-ve-okunmuş bağlamda seçilir (m.40'ın sayılara genişletilmesi). Araştırmasız mevcut sayılar **geçici** damgayla yürürlükte; rapor gelince yeniden türetilir/onaylanır, fark deftere. Envanter: `raporlar/2026-07/2026-07-23-deneysel-sayi-denetimi.md` · ilk tur: `cc/rapor/2026-07/rapor-2026-07-23-1.md` (4 hüküm uygulandı). Kalite-proxy'ler (m.39) kapının konusu değil — onların yolu ölçüm.
@@ -59,7 +59,7 @@ Sistem parametresi olacak her deneysel sayı (eşik, bütçe, sayaç, örneklem)
 Salih'in kendi /usage, /context ve bağlam-doluluk yorumları **yorum** statüsündedir, karar/ölçüm değil ("bağlam şişti" beyanı tek başına eşik tetiklemez — 08-01-2: doz-cevap yok). İterasyon yönünü üst model verir; Salih veto her zaman açık (m.31). Ölçüm hattı: Yol-1 bağlam-sayacı kurulunca beyanlar veriyle kalibre edilir.
 
 ## Durum görünürlüğü (m.18)
-Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü kapsül/pano/şablonlarda yaşar.
+Her iş cevabının sonunda insan-yüzü tek satır (`▸ Şu an · Sıra · Açık`); "şu an ne yapıyoruz" dersen anlaşılır dilde detaylı durum raporu dosyası üretilir; makine-yüzü `durum` kütüğünde ve şablonlarda yaşar (kapsül/pano dondu).
 
 ## Model-değişimli oturum protokolü (Salih imzası, 2026-07-13 — kural, deneysel değil)
 Oturum ortasında model değişikliği yaşanırsa o oturumun orijinalliği bozulmuş sayılır: ingest'i kanon-yüzeyine değil şerhli klasöre yazılır — `arsiv/chat-model-degisikligi/ingest-YYYY-MM-DD.md` (eski klasör adı "model değişikliği ile orijinalliği bozulmuş olan chat/", parti 1 taşıması 2026-09-09). Buradaki içerik **şerhli kopya** statüsündedir; çelişki durumunda commit'li kanon (fikir kutusu / kuyruk / kapsül) kazanır. Şerhli içeriğin karar statüsü kazanması için ayık/temiz oturumda taranıp normal kanon yoluna işlenmesi gerekir. Gerekçe: bağlam hijyeni (07-13 vakasının standartlaşması).

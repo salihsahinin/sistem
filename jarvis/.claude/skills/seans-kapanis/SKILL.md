@@ -1,6 +1,6 @@
 ---
 name: seans-kapanis
-description: Jarvis'in (ajan; eski ad Carvis) depo seans-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasörü oturumunda BU ritüel), "kapat", "bitiriyorum", "seansı kapat" dediğinde her yüzeyde çalışır; bağlam-şişmesinde Jarvis kendisi de önerir. Kapanış selamı zaman işareti / tek başına tetik değildir. Teslim raporu + hasat + ingest + kapsül + commit/push üretir; push'suz gün sayılmaz (m.9). kullanılmaz; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada, staj oturumlarında (ayrım klasörle; staj-kapanis jarvis kanonuna yazmaz).
+description: Jarvis'in (ajan; eski ad Carvis) depo seans-KAPANIŞ ritüelini koşar. Salih "seans bitimi" (standart tetik; jarvis klasörü oturumunda BU ritüel), "kapat", "bitiriyorum", "seansı kapat" dediğinde her yüzeyde çalışır; bağlam-şişmesinde Jarvis kendisi de önerir. Kapanış selamı zaman işareti / tek başına tetik değildir. Teslim raporu + hasat + ingest + durum kütüğü kaydı + commit/push üretir; push'suz gün sayılmaz (m.9). kullanılmaz; açılışta ("seans başı" → seans-acilis), ara özette ("hizala"), JARVIS-dışı vedalaşmada, staj oturumlarında (ayrım klasörle; staj-kapanis jarvis kanonuna yazmaz).
 ---
 
 # Seans bitimi — seans kapanışı (Jarvis, v0.3-deneysel-m29 — ad: vardiya-kapanis → seans-kapanis + uyucam-sınıfı tetik emekliliği [Salih Katman-1 08-15]; v0.2: staj kapısı 08-12)

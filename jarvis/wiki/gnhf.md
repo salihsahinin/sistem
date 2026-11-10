@@ -27,7 +27,7 @@ gnhf = `wiki/loop-engineering.md`'nin hedef-tabanlı tipiyle birebir eşleşen b
 ## Süpersede zinciri
 Yok (ilk yazım).
 
-## [[link]]'ler
+## `[[link]]`'ler
 [[loop-engineering]] — hedef-tabanlı loop tipinin kural kaynağı · [[no-mistakes]] — L8 üçlüsünün diğer üyesi, isim çakışması notuyla · [[ajan-metodolojisi]] — icra formatı D2(a), gnhf'in yerleştiği katman · [[paralel-oturum-protokolu]] — worktree izolasyonu bağlamı.
 
 ## Kaynak/pointer

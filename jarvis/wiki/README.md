@@ -8,7 +8,7 @@
 3. **SOP:** "okuyucu pazartesi sabahı ne **yapar**" — adım adım prosedür (uygunsa). İleride hedef-model parametresi taşıyabilir (#17 ufku: Fable prosedür yazar, alt model uygular); **ilk partide** model parametresi `YOK`.
 4. **Gotchas:** o kavramda fiilen yapılan hatalardan biriken tuzak listesi (yaşayan bölüm).
 5. **Süpersede zinciri:** çelişen/güncellenen iddia silinmez — "yerini aldı: [tarih, yeni iddia]" damgasıyla işaretli durur (m.8 + çelişki kapısının wiki hali).
-6. **[[wiki-link]]'ler + index kaydı** (V24 standardı; index = bu dosyanın alt bölümü, ~100 sayfaya dek yeterli).
+6. **`[[wiki-link]]`'ler + index kaydı** (V24 standardı; index = bu dosyanın alt bölümü, ~100 sayfaya dek yeterli).
 
 Tempo kuralı: oturum başına 1-2 sayfa, toplu üretim yok (07-10 Salih kararı).
 

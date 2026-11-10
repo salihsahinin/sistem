@@ -10,3 +10,7 @@ ogrenme/kaynaklar/mit-6006-s20/
 ogrenme/kaynaklar/mit-6042j-f10/
 # Cargo derleme çıktısı (sistem kod tabanı, 2026-10-14)
 /target/
+# Ayrı repoya taşınan ürünlerin (Salih 2026-10-26) burada kalan yerel artıkları
+projects/*/.godot/
+projects/*/test_cikti/
+projects/*/referans/
