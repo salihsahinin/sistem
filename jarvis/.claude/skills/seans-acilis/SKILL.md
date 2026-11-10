@@ -11,7 +11,7 @@ Selamlaşma sohbet değil **seans** **devridir**. Kural kaynağı tüzük (`core
 Selamlama **oturum-sınırı** işaretidir, **zaman** işareti **değil**: açılış sözünden sabah/yeni-gün, kapanış sözünden gece **çıkarımı** **yapılmaz**. Tarih/saat yalnız sistem kaynağından (env tarihi, `date`) okunur. Standart tetik "seans başı" (eski selamlama tetikleri `EMEKLİ` — `core/baglam-anahtar-kaydi.md` §2; selamlama tek başına ritüeli tetiklemez, Salih emri 08-15); jarvis↔staj ayrımı **cümleyle değil klasörle** yapılır (`C:\sistem\sistem\jarvis` → bu ritüel · staj klasörü → staj-acilis).
 
 ## 1. Yüzey + hat tespiti
-Hüküm kodu (Karar 114): yol seçimi (staj · SNAPSHOT · ogren · ritüel) ve K1-K3 eylemleri `lean/Kanon/SeansAcilis.lean`; aşağısı uygulama tarifi.
+Hüküm kodu (Karar 114): yol seçimi (staj · `SNAPSHOT` · ogren · ritüel) ve K1-K3 eylemleri `lean/Kanon/SeansAcilis.lean`; aşağısı uygulama tarifi.
 0. **staj kapısı** (önce bu): oturum staj klasöründen açıldıysa ya da beyan "staj" içeriyorsa ("seans başı staj") → BU **ritüel** **koşulmaz**. Staj oturumu jarvis kanonunu okumaz; staj klasörünün CLAUDE.md'si geçerlidir (Salih kararı 2026-08-12; md.49 sınırı). Tek cümleyle beyan et, staj akışına geç.
 1. JARVIS kanonuna erişim var mı? (Windows 11: `C:\sistem\sistem\jarvis` doğrudan [varsayılan yüzey; 09-22'den beri] · bulut claude.ai: origin klonu üzerinden · köprüsüz mobil: `YOK`; eski Mac `~/sistem/jarvis` ve `C:\JARVIS` yolları emekli.)
 2. Erişim **yoksa** → `SNAPSHOT` modu: ilk cümlede beyan et, kalıcı karar alma, her çıktıyı "**ham fikir** / kanonlu cihazda ingest edilecek" damgala; varsa en güncel `CHAT-KAPSULU-*.md` / `CEP-KAPSULU-*.md` zemin olur. Kalan adımları atla.
@@ -24,7 +24,7 @@ Hüküm kodu (Karar 114): yol seçimi (staj · SNAPSHOT · ogren · ritüel) ve 
 1. `CLAUDE.md` — oturum kuralları + güncel okuma-sırası (otomatik gelmediyse dosyadan oku; skill'deki liste eskirse CLAUDE.md kazanır).
 2. **Konum (graf dili, Karar 122):** `../target/release/durum.exe oturum-basi --alan jarvis` → `KONUM` (son seans + hedef yoklaması) · `SIRADA` (girdileri tamam) · `bekler<-#n` · `HEDEF`; ayrıntı `--json` ya da `durum graf --alan jarvis --metin` (kenar listesi; D2 Salih içindir). `core/durum-kapsulu.md` ve `core/pano.md` **dondu** (2026-10-25): okunmaz, yazılmaz; arşiv-pointer.
 3. Bulut yüzeyde kütük origin klonundan okunur; mount'ta git komutu **yasak**.
-3b. **Silver tazelik kapısı (KB-54 A, Karar 62):** tespit otomatik (SessionStart brifi `SİLVER: … TAZE | BAYAT` + `acilis-kapilari` K3); `BAYAT` → `../target/release/katman-hatti` (Rust; yedek `python3 tools/katman-hatti.py`; ~12 sn, idempotent) bu adımda; atlanırsa adresli erişim yanlış satır getirir (08-18 vakası 25/27). Worktree'de K3 `YOK` normaldir (öğrenme oturumu koşmaz).
+3b. **Silver tazelik kapısı (KB-54 A, Karar 62):** tespit otomatik (SessionStart brifi `SİLVER: … TAZE | BAYAT` + `acilis-kapilari` K3); `BAYAT` → `../target/release/katman-hatti` (Rust; idempotent; Windows'ta 1-2 dk sürebilir, arka planda koş) bu adımda; atlanırsa adresli erişim yanlış satır getirir (08-18 vakası 25/27). Worktree'de K3 `YOK` normaldir (öğrenme oturumu koşmaz).
 3c. **Adresli erişim kuralı (KB-53 A, Karar 62; KILAVUZ tasarım-ilkeleri satırı; İB-28):** kanon okurken adres biliniyorsa **aralık** oku (`Read offset/limit` ∨ `sed -n 'a,bp'`), anahtar biliniyorsa silver'dan blok çek (`sqlite3 veri/baglam.sqlite` — `v_guncel_kayit`; kayit_id sha8'i getirme anında yeniden hesaplanır, tutmuyorsa dosyaya düş + bayrak); dosya **bütünü** yalnız adres yokken (kapsül/pano gibi tamamı okunması gereken küçük dosyalar hariç). Oran `v_okuma_orani`'nda sayılır (İB-29) — düşük aralık-oranı ince-tutkal (KB-53 b) kararını masaya döndürür.
 4. ~~senkron-log okuma~~ `EMEKLİ` (Karar 88 M9, Salih 09-09): gece-senkron Karar 81 ile iptal, gece işi gnhf şeridinde (Karar 84); kütük `raporlar/usage/senkron-log.jsonl` arşiv-pointer olarak durur, okunmaz.
 5. Konum satırının işaret ettiği son seans kaydı `raporlar/seans/seans-teslim-<tarih>-<etiket>.json` (`sonraki_ilk_is` · `salih_karar` · `yeniden_acma`; devir borçları buradan). md teslim raporları 10-18 öncesi arşivdir.
@@ -41,7 +41,7 @@ Hüküm kodu (Karar 114): yol seçimi (staj · SNAPSHOT · ogren · ritüel) ve 
 - Ne derse emirdir; tek fren çelişki kapısı (m.16): önce çelişki+artı/eksi+plan raporu, sonra emir.
 - Yasaklar: günlük-özüt/ruh-hali/psikolog (m.23) · ayıklık sorgusu (m.33) · otomatik silme (m.8).
 - Yazamayan yüzeyde karar kaydı üretme; damgalı not bırak, ana seans ingest eder.
-- **Bağlam bütçesi (KB-50 A, Karar 61; İB-46):** tek araç çıktısı >~10k token bağlama dökülmez — dosyaya yaz, özet + pointer ver (ör. büyük `cat`/workflow çıktısı); alt-ajan dönüşü ≤2k; eşzamanlı kural sayısı ≤100 (`../target/release/kural-sayaci`; yedek `tools/kural-sayaci.py`). Uzun koşumda (Workflow/atlas) hasat kontrol listesi seans-kapanis §6e'dedir.
+- **Bağlam bütçesi (KB-50 A, Karar 61; İB-46):** tek araç çıktısı >~10k token bağlama dökülmez — dosyaya yaz, özet + pointer ver (ör. büyük `cat`/workflow çıktısı); alt-ajan dönüşü ≤2k; eşzamanlı kural sayısı ≤100 (`../target/release/kural-sayaci`). Uzun koşumda (Workflow/atlas) hasat kontrol listesi seans-kapanis §6e'dedir.
 
 ## Gotchas
 - **Önsöz tuzağı:** Salih selamla birlikte soru/önsöz yazarsa modelin içeriğe atlaması — ritüel **her zaman** önce (2026-07-23 arızasının kökü).
