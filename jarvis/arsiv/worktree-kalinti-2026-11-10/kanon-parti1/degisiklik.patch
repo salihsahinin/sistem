@@ -1,0 +1,11 @@
+diff --git a/jarvis/veri/bronz/prompt-dosya-olay.jsonl b/jarvis/veri/bronz/prompt-dosya-olay.jsonl
+index 733ced5e..4297cf4d 100644
+--- a/jarvis/veri/bronz/prompt-dosya-olay.jsonl
++++ b/jarvis/veri/bronz/prompt-dosya-olay.jsonl
+@@ -190,3 +190,6 @@
+ {"ts": "2026-10-14T16:40:01+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(damıt|ingest)", "kaynak": "core/ingest-semasi.md:1-10", "etiket": "core/ingest-semasi.md:1-10", "bayt": 703, "prompt_uzunluk": 3970}
+ {"ts": "2026-10-14T16:41:21+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(sonraki|sıradaki|ne yap|öncelik)", "kaynak": "bolum:core/durum-kapsulu.md:## Sonraki ilk iş:8", "etiket": "core/durum-kapsulu.md '## Sonraki ilk iş'", "bayt": 1513, "prompt_uzunluk": 156}
+ {"ts": "2026-10-14T17:23:28+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(sonraki|sıradaki|ne yap|öncelik)", "kaynak": "bolum:core/durum-kapsulu.md:## Sonraki ilk iş:8", "etiket": "core/durum-kapsulu.md '## Sonraki ilk iş'", "bayt": 1513, "prompt_uzunluk": 208}
++{"ts": "2026-10-16T22:47:35+03:00", "oturum": "deneme", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:46", "etiket": "core/tuzuk-v0.md m.46", "bayt": 1160, "prompt_uzunluk": 21}
++{"ts": "2026-10-16T22:47:35+03:00", "oturum": "deneme", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:47", "etiket": "core/tuzuk-v0-m47.md m.47", "bayt": 963, "prompt_uzunluk": 21}
++{"ts": "2026-10-16T22:47:36+03:00", "oturum": "deneme", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:45", "etiket": "core/tuzuk-v0.md m.45", "bayt": 894, "prompt_uzunluk": 21}

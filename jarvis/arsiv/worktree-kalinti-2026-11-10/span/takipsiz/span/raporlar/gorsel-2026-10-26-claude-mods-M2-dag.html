@@ -1,0 +1,90 @@
+<title>Claude Mods M2 Planı</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* düzen: üstte kavram haritası (SVG DAG), altta numaralı düğüm listesi; tek sütun, dar ekranda SVG kendi kutusunda kayar */
+:root{
+  --bg:#f6f7f9; --fg:#1b2430; --muted:#5b6675; --line:#aab3c0;
+  --node:#ffffff; --node-b:#c7ced8; --accent:#1f6f6b; --practice:#b4541a; --practice-bg:#fbeee4;
+  --accent-bg:#e3f1f0;
+  --font-d:"IBM Plex Sans",system-ui,sans-serif; --font-m:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12171e; --fg:#e4e9ef; --muted:#9aa5b4; --line:#4a5666;
+  --node:#1b232d; --node-b:#3a4553; --accent:#5cc3bd; --practice:#f0a06b; --practice-bg:#33261c; --accent-bg:#17302f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171e; --fg:#e4e9ef; --muted:#9aa5b4; --line:#4a5666;
+  --node:#1b232d; --node-b:#3a4553; --accent:#5cc3bd; --practice:#f0a06b; --practice-bg:#33261c; --accent-bg:#17302f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-d);font-size:15px;line-height:1.55;
+  padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:20px}
+main{max-width:760px;margin:0 auto;display:grid;gap:20px;min-width:0}
+link{display:none}
+h1{font-size:22px;margin:0;text-wrap:balance}
+h2{font-size:16px;margin:0 0 8px}
+.sub{color:var(--muted);margin:4px 0 0;font-size:13px}
+.dag{overflow-x:auto;border:1px solid var(--node-b);background:var(--node);border-radius:6px;padding:8px}
+svg{display:block;min-width:620px;width:100%;height:auto}
+.n rect{fill:var(--node);stroke:var(--node-b);stroke-width:1.5}
+.n.p rect{fill:var(--practice-bg);stroke:var(--practice)}
+.n.h rect{fill:var(--accent-bg);stroke:var(--accent)}
+.n text{fill:var(--fg);font-family:var(--font-d);font-size:13px}
+.n .no{font-family:var(--font-m);font-weight:600;fill:var(--accent)}
+.n.p .no{fill:var(--practice)}
+.e{stroke:var(--line);stroke-width:1.5;fill:none}
+ol{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+li{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:8px}
+li b.no{font-family:var(--font-m);color:var(--accent)}
+li.p b.no{color:var(--practice)}
+li .t{font-weight:600}
+li .s{color:var(--muted);font-size:13px}
+code{font-family:var(--font-m);font-size:13px}
+.f{border-left:3px solid var(--accent);padding:6px 12px;background:var(--accent-bg)}
+</style>
+<main>
+<header>
+<h1>Claude Mods M2: üç arayüz yüzeyi</h1>
+<p class="sub">Status line · toast · prompt üstü band. Sektör: Status Line, UI Surfaces. AS-OF 2026-10-26, plugin-authoring build 2.1.308.</p>
+</header>
+
+<section>
+<h2>Bağımlılık haritası (ok = "önce bunu")</h2>
+<div class="dag">
+<svg viewBox="0 0 720 470" role="img" aria-label="M2 düğüm bağımlılık grafiği, 8 düğüm">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--line)"/></marker></defs>
+<path class="e" d="M330,64 L150,106" marker-end="url(#a)"/>
+<path class="e" d="M360,64 L360,106" marker-end="url(#a)"/>
+<path class="e" d="M390,64 L570,106" marker-end="url(#a)"/>
+<path class="e" d="M150,152 L230,206" marker-end="url(#a)"/>
+<path class="e" d="M360,152 L280,206" marker-end="url(#a)"/>
+<path class="e" d="M570,152 L570,206" marker-end="url(#a)"/>
+<path class="e" d="M255,252 L255,306" marker-end="url(#a)"/>
+<path class="e" d="M255,352 L255,406" marker-end="url(#a)"/>
+<g class="n h"><rect x="270" y="20" width="180" height="44" rx="5"/><text class="no" x="282" y="38">1</text><text x="298" y="38">Arayüz yüzeyleri</text><text x="282" y="55" font-size="11">status · toast · band haritası</text></g>
+<g class="n"><rect x="60" y="108" width="180" height="44" rx="5"/><text class="no" x="72" y="126">2</text><text x="88" y="126">Status line çağrısı</text><text x="72" y="143" font-size="11">$.ui.status(text)</text></g>
+<g class="n"><rect x="270" y="108" width="180" height="44" rx="5"/><text class="no" x="282" y="126">3</text><text x="298" y="126">Toast çağrısı</text><text x="282" y="143" font-size="11">$.ui.toast(text)</text></g>
+<g class="n"><rect x="480" y="108" width="180" height="44" rx="5"/><text class="no" x="492" y="126">6</text><text x="508" y="126">Band: AbovePrompt</text><text x="492" y="143" font-size="11">ui.render hook'u</text></g>
+<g class="n"><rect x="165" y="208" width="180" height="44" rx="5"/><text class="no" x="177" y="226">4</text><text x="193" y="226">Olaydan yüzeye</text><text x="177" y="243" font-size="11">tool.call → status</text></g>
+<g class="n"><rect x="480" y="208" width="180" height="44" rx="5"/><text class="no" x="492" y="226">7</text><text x="508" y="226">Elemanlar</text><text x="492" y="243" font-size="11">$.ui.resolve(e): Box, Text</text></g>
+<g class="n"><rect x="165" y="308" width="180" height="44" rx="5"/><text class="no" x="177" y="326">5</text><text x="193" y="326">Sayaç durumu</text><text x="177" y="343" font-size="11">c(n)=c(n-1)+1, $.state</text></g>
+<g class="n p"><rect x="165" y="408" width="180" height="44" rx="5"/><text class="no" x="177" y="426">8</text><text x="193" y="426">Pratik: canlı sayaç</text><text x="177" y="443" font-size="11">Salih'in eli</text></g>
+</svg>
+</div>
+</section>
+
+<section>
+<h2>Düğümler</h2>
+<ol>
+<li><b class="no">1</b><div><span class="t">Arayüz yüzeyleri</span><div class="s">Status line nedir, toast nedir, band nedir; üçü de nerede görünür. Sektör: <i>Status Line</i>.</div></div></li>
+<li><b class="no">2</b><div><span class="t">Status line çağrısı</span><div class="s"><code>$.ui.status(text)</code> tek satır yazar, <code>undefined</code> temizler. Sektör: <i>Status Line</i>.</div></div></li>
+<li><b class="no">3</b><div><span class="t">Toast çağrısı</span><div class="s"><code>$.ui.toast(text)</code> geçici bildirim; status ile farkı. Sektör: <i>UI Surfaces</i>.</div></div></li>
+<li><b class="no">4</b><div><span class="t">Olaydan yüzeye</span><div class="s">Bir hook'un içinden yüzey çağrısı (M1'deki <code>tool.call</code> ile birleşir).</div></div></li>
+<li><b class="no">5</b><div><span class="t">Sayaç durumu</span><div class="s">Modül değişkeni reload'da sıfırlanır, <code>$.state</code> kalır. Formül c(n) = c(n-1) + 1.</div></div></li>
+<li><b class="no">6</b><div><span class="t">Band: AbovePrompt</span><div class="s"><code>ui.render</code> hook'u ağaç döndürür ya da <code>next(e)</code> ile geçer. Sektör: <i>UI Surfaces</i>.</div></div></li>
+<li><b class="no">7</b><div><span class="t">Elemanlar</span><div class="s"><code>$.ui.resolve(e)</code> yüzeyin kendi tablosundan <code>Box</code>, <code>Text</code> verir.</div></div></li>
+<li class="p"><b class="no">8</b><div><span class="t">Pratik: status line'da canlı sayaç</span><div class="s">Komutu ve koşumu Salih yapar; <code>DONE</code> yalnız Salih beyanıyla.</div></div></li>
+</ol>
+</section>
+
+<section class="f">
+Bu seansta 1-5 işlenir. 6-7 ve pratik 8 sığmazsa ders dosyasında <code>## Kalan</code> olur.
+</section>
+</main>

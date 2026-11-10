@@ -1,0 +1,16 @@
+diff --git a/jarvis/veri/bronz/prompt-dosya-olay.jsonl b/jarvis/veri/bronz/prompt-dosya-olay.jsonl
+index 733ced5e..32d558c9 100644
+--- a/jarvis/veri/bronz/prompt-dosya-olay.jsonl
++++ b/jarvis/veri/bronz/prompt-dosya-olay.jsonl
+@@ -190,3 +190,11 @@
+ {"ts": "2026-10-14T16:40:01+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(damıt|ingest)", "kaynak": "core/ingest-semasi.md:1-10", "etiket": "core/ingest-semasi.md:1-10", "bayt": 703, "prompt_uzunluk": 3970}
+ {"ts": "2026-10-14T16:41:21+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(sonraki|sıradaki|ne yap|öncelik)", "kaynak": "bolum:core/durum-kapsulu.md:## Sonraki ilk iş:8", "etiket": "core/durum-kapsulu.md '## Sonraki ilk iş'", "bayt": 1513, "prompt_uzunluk": 156}
+ {"ts": "2026-10-14T17:23:28+03:00", "oturum": "8d737bf2-6746-42d1-b98e-347058acb4b2", "anahtar": "\\b(sonraki|sıradaki|ne yap|öncelik)", "kaynak": "bolum:core/durum-kapsulu.md:## Sonraki ilk iş:8", "etiket": "core/durum-kapsulu.md '## Sonraki ilk iş'", "bayt": 1513, "prompt_uzunluk": 208}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:7", "etiket": "core/tuzuk-v0.md m.7", "bayt": 340, "prompt_uzunluk": 3}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:8", "etiket": "core/tuzuk-v0.md m.8", "bayt": 477, "prompt_uzunluk": 3}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:10", "etiket": "core/tuzuk-v0.md m.10", "bayt": 504, "prompt_uzunluk": 4}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:11", "etiket": "core/tuzuk-v0-m11.md m.11", "bayt": 532, "prompt_uzunluk": 4}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:16", "etiket": "core/tuzuk-v0-m11.md m.16", "bayt": 885, "prompt_uzunluk": 4}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:17", "etiket": "core/tuzuk-v0-m17.md m.17", "bayt": 794, "prompt_uzunluk": 4}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:43", "etiket": "core/tuzuk-v0-m17.md m.43", "bayt": 1315, "prompt_uzunluk": 4}
++{"ts": "2026-10-16T23:23:26+03:00", "oturum": "d", "anahtar": "\\bm\\.(\\d{1,2})\\b", "kaynak": "tuzuk:47", "etiket": "core/tuzuk-v0-m47.md m.47", "bayt": 1075, "prompt_uzunluk": 4}
