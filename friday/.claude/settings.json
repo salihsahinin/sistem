@@ -1,27 +1,26 @@
 {
   "permissions": {
     "deny": [
-      "Edit(kanon/**)",
-      "Write(kanon/**)",
       "Bash(git push origin main:*)",
       "Bash(git push origin HEAD:main:*)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git add -A:*)",
       "Bash(git add .:*)",
-      "Read(~/sistem/jarvis/**)"
+      "Read(//c/sistem/sistem/jarvis/**)",
+      "Edit(//c/sistem/sistem/ogrenme/**)"
     ]
   },
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Read|Grep|Glob|Bash",
-        "hooks": [{"type": "command", "command": "bash .claude/hooks/okuma-izin.sh"}]
+        "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/okuma-izin.sh\""}]
       }
     ],
     "PostToolUse": [
       {
-        "hooks": [{"type": "command", "command": "bash .claude/hooks/hareket-kutuk.sh"}]
+        "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/hareket-kutuk.sh\""}]
       }
     ]
   }

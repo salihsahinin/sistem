@@ -1,13 +1,11 @@
 {
-  "_not": "Alan ajanı ayarı (Karar 105, 2026-09-21; jarvis/tools/alan-ajani-dogur.py sablonlar/ajan-iskelet/claude-ayar/ → .claude/ kopyalar). Okuma kilidi hook'ta; deny = yazma frenleri + main'e push / force push (kendi oturum dalına push serbest: protokol §5 EK-5, Kanon/Commit.lean pushYanDal; Salih 2026-10-25 seçenek 1).",
+  "_not": "Alan ajanı ayarı (Karar 105, 2026-09-21; target/release/alan-ajani-dogur sablonlar/ajan-iskelet/claude-ayar/ → .claude/ kopyalar). Okuma kilidi hook'ta; deny = yazma frenleri + main'e push / force push (kendi oturum dalına push serbest: protokol §5 EK-5, Kanon/Commit.lean pushYanDal; Salih 2026-10-25 seçenek 1).",
   "permissions": {
     "deny": [
-      "Read(~/sistem/jarvis/**)",
-      "Read(~/sistem/friday/**)",
-      "Write(~/sistem/ogrenme/**)",
-      "Edit(~/sistem/ogrenme/**)",
-      "Write(~/sistem/sablonlar/**)",
-      "Edit(~/sistem/sablonlar/**)",
+      "Read(//c/sistem/sistem/jarvis/**)",
+      "Read(//c/sistem/sistem/friday/**)",
+      "Edit(//c/sistem/sistem/ogrenme/**)",
+      "Edit(//c/sistem/sistem/sablonlar/**)",
       "Bash(git push origin main:*)",
       "Bash(git push origin HEAD:main:*)",
       "Bash(git push --force:*)",
@@ -18,10 +16,10 @@
   },
   "hooks": {
     "PreToolUse": [
-      {"matcher": "Read|Grep|Glob|Bash", "hooks": [{"type": "command", "command": "bash .claude/hooks/okuma-izin.sh"}]}
+      {"matcher": "Read|Grep|Glob|Bash", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/okuma-izin.sh\""}]}
     ],
     "PostToolUse": [
-      {"hooks": [{"type": "command", "command": "bash .claude/hooks/hareket-kutuk.sh"}]}
+      {"hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/hareket-kutuk.sh\""}]}
     ]
   }
 }

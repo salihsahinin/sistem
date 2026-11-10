@@ -212,47 +212,10 @@ fn degistir(t: &str, a: &str, b: &str) -> String {
 fn hook_v06(y: &Yollar, ad: &str) -> Result<String, String> {
     let mut t = oku(&py::join(&y.friday_hooks, ad))?;
     if ad == "okuma-izin.sh" {
-        t = t.replacen(
-            "input=$(cat)\n",
-            concat!(
-                "# v0.6 (2026-09-21, Karar 105 M6 alan ajanları): `.claude/okuma-izin-ek` dosyası (satır başına depo köküne göreli yol, ör.\n",
-                "#   `ogrenme/kaynaklar`) izinli köklere eklenir — salt-okur ortak kaynaklar; yazma yasağı settings deny'de. Dosya yoksa v0.5 ile aynı.\n",
-                "#   Tek kaynak `friday/.claude/hooks/okuma-izin.sh`; bu kopya `target/release/alan-ajani-dogur` yamasıyla üretilir, elle düzenlenmez.\n",
-                "input=$(cat)\n"
-            ),
-            1,
-        );
-        let a = concat!(
-            r#"izinli = [repo, os.path.join(kok, "sablonlar"), "/tmp", "/private/tmp", "/private/var/folders", harness]  # kök sablonlar/ ortak (F4)"#,
-            "\n"
-        );
-        let b = concat!(
-            r#"izinli = [repo, os.path.join(kok, "sablonlar"), "/tmp", "/private/tmp", "/private/var/folders", harness]  # kök sablonlar/ ortak (F4)"#,
-            "\n",
-            "try:  # v0.6: ek salt-okur kökler (depo köküne göreli; ör. ogrenme/kaynaklar)\n",
-            r#"    for satir in open(os.path.join(repo, ".claude", "okuma-izin-ek"), encoding="utf-8"):"#,
-            "\n",
-            "        satir = satir.strip()\n",
-            r##"        if satir and not satir.startswith("#"):"##,
-            "\n",
-            "            izinli.append(os.path.realpath(os.path.join(kok, satir)))\n",
-            "except OSError:\n",
-            "    pass\n"
-        );
-        t = t.replacen(a, b, 1);
-        t = degistir(
-            &t,
-            r#"os.environ.get("FRIDAY_HOOK_TEST") or os.environ.get("JARVIS_HOOK_TEST")"#,
-            r#"os.environ.get("FRIDAY_HOOK_TEST") or os.environ.get("JARVIS_HOOK_TEST") or os.environ.get("AJAN_HOOK_TEST")"#,
-        );
-        t = degistir(&t, r#""kaynak": "okuma-izin.sh v0.4""#, r#""kaynak": "okuma-izin.sh v0.6""#);
-        t = degistir(
-            &t,
-            "OKUMA-İZİN KİLİDİ (Karar 91/101): lider reposu kendi dizini + depo kökündeki kanon dosyalarını okur; jarvis/** ve repo dışı kullanıcı yolu kapalıdır.",
-            "OKUMA-İZİN KİLİDİ (Karar 91/101/105): ajan kendi dizini + depo kökündeki kanon dosyaları + sablonlar/ + okuma-izin-ek kökleri okur; diğer ajan dizinleri (jarvis/**, friday/**, alan ajanları) ve repo dışı kullanıcı yolu kapalıdır.",
-        );
-        if !t.contains("okuma-izin-ek") {
-            return Err("AssertionError: v0.6 yaması tutmadı (Friday hook'u değişmiş olabilir)".into());
+        // v0.7 (2026-11-10): Friday kaynağı ince sarmaldır (gövde Rust `jarvis-hook okuma-izin`), ajan adına bağlı satır içermez;
+        // okuma-izin-ek desteği gövdededir. Kopya birebir alınır, yama yok.
+        if !t.contains("jarvis-hook") {
+            return Err("AssertionError: Friday okuma-izin sarmalı değil (v0.7 bekleniyor)".into());
         }
     } else if ad == "okuma-izin-test.sh" {
         t = degistir(

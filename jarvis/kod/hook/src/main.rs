@@ -1,7 +1,7 @@
 //! `jarvis-hook <olay> [bayraklar]`: stdin JSON -> stdout (bağlama eklenir) / stderr (engel gerekçesi) / çıkış kodu (2 = engel).
 //! Depo kökü: `--repo` > `CLAUDE_PROJECT_DIR` > cwd. Alt komutlar: pretool-core-tel · pretool-ajan-fren · pretool-altajan-okuma ·
-//! stop-buyuk-harf · instructions-loaded · userprompt · session-start · sabit-guncellik · paket-yonlendir · prompt-dosya.
-use jarvis_hook::{Ortam, Sonuc, ajan_fren, altajan_okuma, buyuk_harf, core_tel, paket, prompt_dosya, read_genislet, sabit, session_start, talimat};
+//! okuma-izin (alan ajanları) · stop-buyuk-harf · instructions-loaded · userprompt · session-start · sabit-guncellik · paket-yonlendir · prompt-dosya.
+use jarvis_hook::{Ortam, Sonuc, ajan_fren, altajan_okuma, buyuk_harf, core_tel, okuma_izin, paket, prompt_dosya, read_genislet, sabit, session_start, talimat};
 use std::io::{Read, Write};
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -36,6 +36,7 @@ fn main() -> ExitCode {
         "pretool-core-tel" => core_tel::kos(&o),
         "pretool-ajan-fren" => ajan_fren::kos(&o),
         "pretool-altajan-okuma" => altajan_okuma::kos(&o),
+        "okuma-izin" => okuma_izin::kos(&o),
         "stop-buyuk-harf" => buyuk_harf::kos(&o),
         "instructions-loaded" => talimat::kos(&o),
         "posttool-read-genislet" => read_genislet::kos(&o),
