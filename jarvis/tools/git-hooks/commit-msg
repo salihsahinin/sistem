@@ -2,8 +2,8 @@
 # commit-msg teli — m.10 (commit İngilizce) makine-zorlaması (Karar 83 B4, Salih imzası 2026-08-30; İB-10 "en ucuz koda-taşıma" adayı 1/2).
 # Kural: commit KONU SATIRI (ilk satır) Türkçe aksanlı karakter içeremez (m.10: commit mesajı İngilizce; gövde serbest bırakıldı —
 # dar kapsam, yanlış-pozitif riski düşük tutuldu). İhlalde commit reddedilir; mesaj yeniden yazılır.
-# KURULUM (bilinçli ertelenmiş — canlı paralel oturum varken hook devreye ALINMADI, H4 ihtiyatı; aktivasyon tek komut):
-#   git config core.hooksPath tools/git-hooks
+# KURULUM (devrede: 2026-11-10, depo denetimi, Salih onayı; önceki `tools/git-hooks` değeri var olmayan dizine bakıyordu):
+#   git config core.hooksPath jarvis/tools/git-hooks
 # Devre dışı bırakma: git config --unset core.hooksPath
 konu=$(head -1 "$1")
 if printf '%s' "$konu" | grep -q '[çğıöşüÇĞİÖŞÜ]'; then

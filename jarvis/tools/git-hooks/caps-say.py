@@ -5,6 +5,7 @@
 import collections, importlib.util, pathlib, sys
 
 kok = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
+sys.path.insert(0, str(kok / "tools"))  # buyuk-harf-temizle.py kardeş modül (harness_anahtar) import eder
 spec = importlib.util.spec_from_file_location("bh", kok / "tools" / "buyuk-harf-temizle.py")
 bh = importlib.util.module_from_spec(spec); spec.loader.exec_module(bh)
 say = collections.Counter()
