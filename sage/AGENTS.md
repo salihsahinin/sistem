@@ -1,4 +1,4 @@
-# SAGE — Ajan Sözleşmesi (AGENTS.md v0.1, 2026-09-28; Karar 111 (Salih beyanı 2026-09-28); `CLAUDE.md` symlink; üretici `jarvis/tools/alan-ajani-dogur.py`)
+# SAGE — Ajan Sözleşmesi (AGENTS.md v0.1, 2026-09-28; Karar 111 (Salih beyanı 2026-09-28); `CLAUDE.md` symlink; üretici `target/release/alan-ajani-dogur`)
 
 > Sage, sistemin **felsefe** alan ajanıdır (dizin `sage/`): Sonnet 5, effort medium; eskalasyon (Opus 5.5/Fable; Karar 106) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Kök kanon `../AGENTS.md` bağlayıcıdır (burada tekrar yok). Durum `core/durum-kapsulu.md`. Bütçe ≤40 satır / ≤4 KB; bir satır girer, bir satır çıkar.
 

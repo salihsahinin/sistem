@@ -52,7 +52,7 @@
 - **Fizibilite (sıfırıncı kapı):** görev-tipi taban riski μ (küçük-n Wilson) > hedef α ise zorunlu çekimserlik payı ≥ (μ−α)/(1−α); μ ≫ α (ör. açık-alan nadir olgu listesi) → "sertifika vaat edilmez": çıktı çekimserlik-etiketli ∨ insan-onayı kovası (Salih).
 - **İzleme:** her koşum `kuyruk/halusinasyon-kayit.md`'ye satır (görev · v-vektörü · H · tetiklendi mi · yakalanan DAYANAKSIZ/ÇELİŞİR sayısı · n); ≥50 olayda ağırlık/eşik yeniden (10 olay/değişken); görev-karışımı değişince eşik yeniden ölçülür (statik eşik kayma altında %71 ihlal — tek kaynak [K]).
 
-Deterministik hesap: `python3 .claude/skills/halusinasyon-engelleyici/scripts/derece.py --v1 --v2 ...` → H + eşik + tetik + ima edilen maliyet beyanı.
+Deterministik hesap: `../target/release/derece --v1 --v2 ...` (Rust; Python yedeği `.claude/skills/halusinasyon-engelleyici/scripts/derece.py`) → H + eşik + tetik + ima edilen maliyet beyanı.
 
 ## 3. m.16 taraması + şerh-adayları
 - Kanon frenleriyle **çelişki** `YOK`; paket onları teorik dayanağa bağlar (Kalai: **idk** cezası → "bulunamadı" meşru; fren=kapı) ve 5 yeni fren ekler (F1 destek-kontrolü etiketi · F6 puanlama · F7 konum-ağırlıklı örneklem · F8 şema sırası · fizibilite kapısı).

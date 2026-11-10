@@ -2,7 +2,7 @@
 
 *v1'in (`kuyruk/oneri-ingest-sema-v1.md`, Salih imzalı 07-12: K3→K0 katmanları + G1/G2/G3 kapıları + V9 önem formülü) **üzerine** oturur, onu değiştirmez. v1 katmanları tanımlıyordu; v2 **kaydın kendisini** tanımlar: zarf, tip, triyaj, bütçe. Kanıt tabanı: `cc/rapor/2026-08/rapor-2026-08-14-1.md` (Opus lider koşumu, D-ağırlıklı). Tüm eşikler deneysel m.29; veto = revert.*
 
-> **Kod (Karar 114, 2026-10-16):** §1 zarf geçerliliği, §2 tip → hedef yönlendirmesi, §3 triyaj sırası ve emeklilik yayılımı, §5 damıtma tetikleri (140 / 200 satır, Σönem ≥ 150, devir ≤ 2.000 token) ve §6 DLQ kuralı `lean/Kanon/Ingest.lean`'de kanoniktir; metinle ayrışırsa kod kazanır. Aşağısı uygulama tarifi ve gerekçe.
+> **Kod (Karar 114, 2026-10-16):** §1 zarf geçerliliği, §2 tip → hedef yönlendirmesi, §3 triyaj sırası ve emeklilik yayılımı, §5 damıtma tetikleri (140 / 200 satır, Σönem ≥ 150, devir ≤ 2.000 token) ve §6 `DLQ` kuralı `lean/Kanon/Ingest.lean`'de kanoniktir; metinle ayrışırsa kod kazanır. Aşağısı uygulama tarifi ve gerekçe.
 
 ## 1. Kayıt zarfı — 5 zorunlu alan, fazlası yok
 
@@ -24,7 +24,7 @@ Her ingest kaydı (devir dosyasındaki her madde) tek satır zarf taşır:
 |---|---|
 | `karar` | senaryo-defteri (LangMem formatı: durum + akıl-yürütme + sonuç + geri-açma) |
 | `kural-adayı` | kuyruk → G2 kapısı (yalnız Salih imzasıyla kanonlaşır) |
-| `borç` | kapsül "Açık borçlar" / pano — **`dogrulama:` alanı zorunlu; `DONE` = prosedür koştu, "yapıldı yazıldı" değil** |
+| `borç` | durum kütüğü (`durum ac`; eski hedef kapsül "Açık borçlar" / pano 10-25'te dondu, Karar 122) — **`dogrulama:` alanı zorunlu; `DONE` = prosedür koştu, "yapıldı yazıldı" değil** |
 | `bulgu` | rapor / wiki-delta |
 | `ders` | KILAVUZ (gotcha/tuzak) |
 | `kavram` | wiki (A-MEM alan seti: içerik+etiket+bağlam-açıklaması+`[[bağlantı]]`) |

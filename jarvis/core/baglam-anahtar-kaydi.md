@@ -505,7 +505,7 @@ Alanlar: `anahtar_id` (slug, kalıcı) · `tur` ∈ {tetik, skill_adi, yuzey, ka
         }
       ],
       "aday": [],
-      "not": "Denetim asıl aracı tools/ad-esitligi-denetim.py (K1 yüklenen katman · K2 dizin README · K3 canlı sızıntı); bu kayıt anahtar-denetim/cascade ile aynı sayım düzlemine alır."
+      "not": "Denetim asıl aracı ../target/release/ad-esitligi-denetim (Rust; K1 yüklenen katman · K2 dizin README · K3 canlı sızıntı); bu kayıt anahtar-denetim/cascade ile aynı sayım düzlemine alır."
     }
   ]
 }

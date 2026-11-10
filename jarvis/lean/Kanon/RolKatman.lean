@@ -3,7 +3,7 @@ Kanon.RolKatman — rol katmanları: köle ≠ üst-orkestratör ≠ domain-lide
 Lean 4 kod tabanı. Karar 117, 2026-10-17. Model kademesi ve işçi ≤ lider tavanı için bkz. Kanon.Delegasyon (kopyalanmadı).
 Türkçe özet (geri-çeviri): görev çok-domain ise ∨ alanında lider yoksa orkestrasyon Jarvis'tedir (domain-lider seviyesine kadar böler; işçiye yalnız lider yokken iner).
 Görev tek-domain ∧ alanda lider varsa orkestrasyon domain-liderdedir. Her iki dalda CEO rolü (karar hazırlama, köprü, kanon bakımı, Salih muhataplığı)
-Jarvis'te sabittir, devredilemez. Domain-lider modeli Opus 5 (effort medium), işçi ondan pahalı olmaz.
+Jarvis'te sabittir, devredilemez. Domain-lider modeli Opus 5.5 (Karar 106; effort medium), işçi ondan pahalı olmaz.
 -/
 import Kanon.Delegasyon
 namespace Kanon.RolKatman

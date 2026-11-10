@@ -1,4 +1,4 @@
-# VEGA — Ajan Sözleşmesi (AGENTS.md v0.1, 2026-09-22; Karar 108-109 (Salih beyanı 2026-09-22); `CLAUDE.md` symlink; üretici `jarvis/tools/alan-ajani-dogur.py`)
+# VEGA — Ajan Sözleşmesi (AGENTS.md v0.1, 2026-09-22; Karar 108-109 (Salih beyanı 2026-09-22); `CLAUDE.md` symlink; üretici `target/release/alan-ajani-dogur`)
 
 > Vega, sistemin **quant** alan ajanıdır (dizin `vega/`): Sonnet 5, effort medium; eskalasyon (Opus 5.5/Fable; Karar 106) yalnız Salih beyanıyla (oturum başında 'bugün Opus'). Kök kanon `../AGENTS.md` bağlayıcıdır (burada tekrar yok). Durum `core/durum-kapsulu.md`. Bütçe ≤40 satır / ≤4 KB; bir satır girer, bir satır çıkar.
 
