@@ -1,0 +1,57 @@
+{
+  "hedef": "Salih: bitirme tezi konusunu (iki eklemli kol modelleme ve yörünge takibi) kitaptan sırayla öğrenmek; yan iş: müzik projeleri atlas taraması.",
+  "hedef_tutuldu": true,
+  "sapma": "Oturum 2026-11-04'te günlük sohbet olarak başladı; seans düğümü kapanışta açıldı. Tez dersi 12 kutunun 8'i tamamlandı, 9-12 sonraki derse kaldı.",
+  "ne_degisti": [
+    "Tez dersi kutu 1-8 işlendi; 10 soru, 10 doğru (2 ve 7 ikinci turda). Kayıt jarvis/kuyruk/ders-bitirme-tezi-kol-2026-11-08.md (1f0bfb9d).",
+    "Yedi etkileşimli HTML ders sayfası, plan README ve soru-cevap kütüğü ekip deposuna gitti: Mustafata2/robot_arm_control, dal salih, commit aa21007, push edildi.",
+    "Üç müzik atlası koştu ve tek brifte birleşti: raporlar/2026-11/muzik-projeleri-en-olabilir-surum-2026-11-05.md (e9533da2).",
+    "Ontolojik kodlama ders brifine müzik kutusu adayı eklendi (84e86c6d).",
+    "Hafızaya kural: ders cevabı tek fikir, her sembol tanımlı (feedback-ders-tempo-tek-fikir)."
+  ],
+  "kararlar": [
+    {"ad": "Müzik projeleri: melez mimari", "ozet": "Şarkı yönlendirmede dil modeli yalnız çevirmen, seçim deterministik; koru boyutları öngörülebilir, serbest boyutlarda kontrollü rastgelelik; yerel dosyalar, Spotify çekirdek dışı.", "kaynak": "Salih beyanı 2026-11-05", "gerekce": "Spotify analiz uç noktaları yeni uygulamalara kapalı; keşif için rastgelelik, güven için öngörülebilirlik.", "geri_acma": "Spotify analiz erişimi yeniden açılırsa."},
+    {"ad": "Müzik üretimi: sembolik + kalite bariyeri", "ozet": "Üretim sembolik düzeyde, üret-ve-ele mimarisi, yalnız ölçülebilir eşikten geçen ses kayıtları.", "kaynak": "Salih beyanı 2026-11-05", "gerekce": "CatBoost üretemez, puanlar; ses kalitesi örnek kalitesinden gelir.", "geri_acma": "Uçtan uca ses modeli kontrol edilebilir hâle gelirse."},
+    {"ad": "İlk sürüm ölçütü yalnız yapılabilirlik", "ozet": "Açık kaynak ya da ürün kararı ertelendi; lisans not, filtre değil.", "kaynak": "Salih beyanı 2026-11-05", "gerekce": "En olabilir sürüm önce.", "geri_acma": "Ürünleşme kararında lisans zinciri yeniden kurulur."}
+  ],
+  "adaylar": [
+    "Lean kanıt canlandırma: önce Paperproof denemesi, 3Blue1Brown tarzı video sürümü park.",
+    "Kutu 8 HTML simülasyon kodu tez simülatörünün iskeleti olabilir."
+  ],
+  "sonraki_ilk_is": [
+    "#85 tez dersi kutu 9 (Neural Network Dynamics Learning), alt adımlı; yeni sayfa robot_arm_control salih dalına.",
+    "#86 müzik projeleri Salih başlama beyanı bekliyor.",
+    "22 worktree temizliği Salih kaldır beyanı bekliyor."
+  ],
+  "yeniden_acma": [
+    "Tez pratik: kutu 2-8 formülleri Python'da Salih eliyle kurulunca pratik DONE yazılır."
+  ],
+  "salih_karar": [
+    "Müzik projelerine başlama beyanı.",
+    "robot_arm_control salih dalı için PR açılsın mı.",
+    "22 worktree kaldır beyanı."
+  ],
+  "baglar": {"karar": ["Karar 127"], "pr": [], "durum": ["#85", "#86"]},
+  "sayaclar": {"model": "Fable 5.1", "kutu": 8, "soru_dogru": 10, "soru_yanlis": 2, "pratik_salih_beyani": "KALAN"},
+  "hasat": {
+    "ozutler": [
+      "Etkileşimli çizim olmadan geometri anlatımı anlaşılmadı; her kutuya çizim gerekti.",
+      "Tek cevapta üç denetleyici anlaşılmadı; kutu alt adımlara bölününce geçti.",
+      "Tarayıcı paneli yerel dosyayı açmıyor; yerel http sunucusuyla doğrulama yapıldı.",
+      "Spotify Web API analiz uç noktaları 2024-11-27 sonrası uygulamalara kapalı (atlas 1)."
+    ],
+    "wiki_delta": ["ders-tempo kuralı ogren skill'ine satır adayı"],
+    "verilebilir_miydi": "Tez dersi 4 güne yayıldı; 8 kutu + 7 sayfa + 3 atlas tek oturumda.",
+    "token_zaman": "max bağlam 270902 (1 tur 128K üstü), statik önek kestirimi 277287 (ilk mesaj dahil)"
+  },
+  "kapanis": {
+    "test_kapisi": "cargo build PASS · lake build PASS (82 iş) · hook testleri 2/2 PASS · tam takım atlandı (tools/ Python değişmedi)",
+    "silver_saglik": "çıkış 0 · WARN 3 (YETİM 750, SA-FORMAT 5, SA-KOKEN 1)",
+    "hafiza_ayna": "42 dosya · yeni 1 · değişen 1",
+    "skill_esik": "HATA: amb_olgu_kosum tablosu yok (İB adayı)",
+    "bayat_cekim": "kuyruk 2 listelendi · çekilen 0/3 (çekim yapılmadı)",
+    "kural_esigi": "18, OK",
+    "uzun_kosum": "max bağlam 270902 (1 tur üstte); hasat listesi: (1) kararlar ingest edildi (2) açık pipeline yok (3) atlas koşumları rapor dosyalarında (4) fork devir notu yok, bu oturum fork",
+    "arac_ciktisi_asimi": "yok"
+  }
+}

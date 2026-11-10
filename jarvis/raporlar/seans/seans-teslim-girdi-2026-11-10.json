@@ -1,0 +1,43 @@
+{
+  "hedef": "Salih: oda ve akış modlarını geliştirmek; iki mod için ayrı iterasyon, kod tabanlı ve mimarili; kodu Opus yazar.",
+  "hedef_tutuldu": true,
+  "sapma": "Kod yazıldı ve bellek-içi motor testinden geçti; canlı yeni-oturum testi yapılmadı, Salih'in elinde (#87). Seans 2026-11-03'te başladı, kapanış 2026-11-10'da koştu.",
+  "ne_degisti": [
+    "Jarvis iterasyon planını yazdı: jarvis/mods/ITERASYON-2026-11-03.md (commit b27f9493).",
+    "Fork oturumu (Opus) jarvis-oda v0.5'i yazdı: katmanlı kaynak hooks/src, işçiye tıklama, kaydırılan sohbet, katlanır bölümler, iş nodu sınıfları izole/planli/dosyali/rol, yazma kapısı, bütçe (commit a9db6bd0).",
+    "Fork oturumu jarvis-graf v0.2'yi yazdı: satır = seans, tıklanır düğme ızgarası, zengin detay, HTML aç onarımı, oda köprüsü (commit c914d5a8; yol bulma onarımı 241e551b).",
+    "Fork oturumu jarvis-oda v0.6'yı yazdı: kalıcı dış oturumlar odaya dosya üzerinden katılır, oda_katil ve oda_mesaj araçları (commit 599a043e).",
+    "Oda işçisi (Opus) akış grafı HTML üreticisini yeniledi: tıklanır görev şeridi, hedef bağı, Oda sekmesi (commit 650762fa).",
+    "Fork oturumu README ve sürümleri güncelledi (commit de338b59).",
+    "Doğrulama fork beyanı: plugin test oda 8/8, graf 4/4; tsc 0; validate geçti."
+  ],
+  "kararlar": [],
+  "adaylar": [
+    "Tek görevlik, dosyası belli iş oda işçisinde daha görünür bitti; çok dosyalı yeniden yapılandırma fork oturumunda rahat gitti (tek blokluk karşılaştırma, deneysel).",
+    "dis.ts ile araclar.ts birbirini import ediyor; kaydet ve turEkle durum.ts'ye inerse katman yönü düzelir.",
+    "ortak/oda/ dizini depoya girer mi: oda kaydı hareket kütüğü gibi kanıttır, öneri commit."
+  ],
+  "sonraki_ilk_is": [
+    "#87: Salih yeni oturumda /oda ve /graf dener, fark listesi verir; Jarvis ikinci turu açar."
+  ],
+  "yeniden_acma": [
+    "Masaüstü yüzeyi file:// bağlantı çizmeye başlarsa aç/kopyala/Explorer düğmeleri Link ile değişir."
+  ],
+  "salih_karar": [
+    "ortak/oda/ dizini commit mi, .gitignore mi."
+  ],
+  "baglar": {"karar": ["Karar 126"], "pr": [], "durum": ["#47", "#87"]},
+  "sayaclar": {"model": "Fable 5.1 (plan) + Opus 5.5 (kod: fork oturumu ve oda işçisi)", "kutu": 0, "soru_dogru": 0, "soru_yanlis": 0, "pratik_salih_beyani": "KALAN"},
+  "hasat": {
+    "ozutler": [
+      "Motor: Svg tıklama olayı almaz; tıklama Button ile olur.",
+      "Motor: kabuksuz process.run'da python3 Windows Store yönlendiricisine düşer; py -3 önce denenir.",
+      "Motor: masaüstü yüzeyi file:// Link çizmez; yalnız https ve localhost.",
+      "Motor: src yalnız hooks/ altında derlenir; $ nesneye konmaz; atom tanımlandığı modülde okunur.",
+      "v0.3 panosunda h değişkeni jsx fabrikasını gölgeliyordu; koşan işçi satırları çizilmiyordu."
+    ],
+    "wiki_delta": [],
+    "verilebilir_miydi": "Kodun tamamı Opus'a verildi; Jarvis yalnız plan, köprü ve doğrulama yaptı."
+  },
+  "kapanis": {}
+}

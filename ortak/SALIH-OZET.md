@@ -1,30 +1,26 @@
-# Sistem özeti (Salih için) · AS-OF 2026-11-03 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
+# Sistem özeti (Salih için) · AS-OF 2026-11-10 · üretici `durum ozet` (Karar 122; kaynak `ortak/durum-olay.jsonl` + seans kayıtları)
 
 Bu dosya her seans kapanışında yeniden üretilir. Elle düzenlenmez. Görsel: `ortak/graf/akis-<alan>.svg`.
 
 ## jarvis
 
-**Konum:** seans `2026-10-31-jarvis` (kapandı 2026-11-03). Hedef: Salih: dosya sistemi mimarisi (filesystem file architecture) nasıl kurulur dersi; sistemdeki düzeltmeler üzerinde gösterilerek; önce atlas taraması ile güncel anlatım yöntemi. Hedef tutmadı.
+**Konum:** seans `2026-11-10-jarvis-mod` (kapandı 2026-11-10). Hedef: Salih: oda ve akış modlarını geliştirmek; iki mod için ayrı iterasyon, kod tabanlı ve mimarili; kodu Opus yazar.. Hedef tutuldu.
 
 **Son seansta ne değişti**
-- Ders hazırlık dosyası yazıldı: 8 kutu başlığı, kaynaklı öğretim ilkeleri, depodaki 8 düzeltme nesnesi.
-- jarvis-oda modu için private repo açıldı: C:\sistem\oda, github salihsahinin/oda (d9943e1).
-- jarvis-oda README, plugin.json ve kaynak başlığı metni sadeleştirildi (e67fdd2).
-- Üçüncü-şahıs oda MCP aracı makineden kaldırıldı (kurulum, önbellek, Claude ayar kaydı); konu kapandı.
-- Hafızaya kural: yagizkaterli/lobi-cli ve fork salihsahinin/lobi-cli üzerinde git işlemi yapılmaz.
-
-**Hangi karar verildi**
-- Oda modu geliştirme yeri: jarvis-oda private salihsahinin/oda reposunda geliştirilir; kanon kopyası jarvis/mods/jarvis-oda ile eşlenir.
-- lobi-cli depolarına işlem yok: Üst depo ve fork üzerinde commit, push, dal, PR yapılmaz; mevcut dal olduğu gibi kalır.
+- Jarvis iterasyon planını yazdı: jarvis/mods/ITERASYON-2026-11-03.md (commit b27f9493).
+- Fork oturumu (Opus) jarvis-oda v0.5'i yazdı: katmanlı kaynak hooks/src, işçiye tıklama, kaydırılan sohbet, katlanır bölümler, iş nodu sınıfları izole/planli/dosyali/rol, yazma kapısı, bütçe (commit a9db6bd0).
+- Fork oturumu jarvis-graf v0.2'yi yazdı: satır = seans, tıklanır düğme ızgarası, zengin detay, HTML aç onarımı, oda köprüsü (commit c914d5a8; yol bulma onarımı 241e551b).
+- Fork oturumu jarvis-oda v0.6'yı yazdı: kalıcı dış oturumlar odaya dosya üzerinden katılır, oda_katil ve oda_mesaj araçları (commit 599a043e).
+- Oda işçisi (Opus) akış grafı HTML üreticisini yeniledi: tıklanır görev şeridi, hedef bağı, Oda sekmesi (commit 650762fa).
+- Fork oturumu README ve sürümleri güncelledi (commit de338b59).
+- Doğrulama fork beyanı: plugin test oda 8/8, graf 4/4; tsc 0; validate geçti.
 
 **Senin kararını bekleyen**
-- Deney tasarımı probe soru 1 şıkkı.
-- 21 bayat worktree kaldırılsın mı.
-- Ders düzeltme 4 ve 8 için kanon imzası.
+- ortak/oda/ dizini commit mi, .gitignore mi.
 
-**Sapma:** Üç tarama (dış kaynak, öğretim yöntemi, depo kusur envanteri) bitti ve raporlar/2026-11/2026-11-03-dosya-mimarisi-ders-hazirlik.md'ye damıtıldı; ders anlatımı bu oturumda yapılmadı, Salih fork oturumunda ogrenme/dosya-mimarisi altında başlattı. Oturumun geri kalanı yan görevlere gitti (oda modu private repo, üçüncü-şahıs araç temizliği).
+**Sapma:** Kod yazıldı ve bellek-içi motor testinden geçti; canlı yeni-oturum testi yapılmadı, Salih'in elinde (#87). Seans 2026-11-03'te başladı, kapanış 2026-11-10'da koştu.
 
-Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-11-03-dosya-mimarisi-hazirlik-oda-repo.json`
+Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-11-10-mod-iterasyon.json`
 
 **Sırada (girdileri tamam)**
 - #9 veri bilimi şeridi evi + deney tasarımı PROBE. Sonraki adım: Salih kararı: yeni ajan mı Calc altında mı; PROBE soru 1 (p=0.03) cevap bekliyor.
@@ -39,11 +35,13 @@ Kayıt: `jarvis/raporlar/seans/seans-teslim-2026-11-03-dosya-mimarisi-hazirlik-o
 - #38 Karar 86 D8 / K-020 eval deseni (2 ucuz ön-ölçüm koşulu): koşul kalkar; desen ya uygulanır ya emekli. Sonraki adım: ilk V39 koşumu yoksa emekli kaydı; varsa M2 harness genellemesi doğrudan.
 - #39 defterdeki ölçüm şartlı geri-açma cümleleri (Karar 103/104 M1-M2, 112, 113, 114 M5, 115) Karar 123'e göre sadeleştirilir. Sonraki adım: her cümle: 'arıza görülürse' biçimine; tek [damıtma] commit.
 - #45 akış grafı HTML tasarımı optimizasyonu (Salih: istediğim tam olmadı, ileride optimize edeceğim; şimdilik açıklama yüzeyi değil). Sonraki adım: Salih tasarım kararını verir; başlangıç Karar 125 kaydı + tools/akis-graf-html.py.
-- #47 jarvis-oda v0.2 + jarvis-graf v0.1 kuruldu, duman testi geçti; Salih: istenen seviyede değil. Sonraki adım: Salih fark listesi verir, Jarvis mods/ üzerinde itere eder.
 - #48 Öğrenme kutusu: ispat-arama algoritmaları (best-first/A*, MCTS+policy/value, HTPS, expert iteration, PRM+test-time compute, FunSearch/AlphaEvolve) ve search-then-distill döngüsü; kaynak Lex #503 dk 10-30 (Moitra 14:20, 18:54). Sonraki adım: Salih istediğinde ogren şeridinde kutu kutu; önce canlı doğrulama (AS-OF).
 - #71 jarvis-oda v0.4: oda_gorev_ver ajan alanı (rol ajanı işçi, yapan≠ölçen odada görünür); yan oturum yazdı, commit 7e78afb. Sonraki adım: ana oturum yeniden başlatılınca hakem turunu ajan:hakem ile odada koş; canlı doğrulama.
 - #83 Ders: depo dosya mimarisi, 8 kutu, düzeltme üzerinde öğretim (brif kuyruk/ders-dosya-mimarisi-2026-10-31.md). Sonraki adım: fork oturumunda 'seans başı, dosya-mimarisi' → ogren; kutu 4/5/8 kanon satırları Salih imzasıyla ana oturumda.
 - #84 Ders: ontolojik encode, 8 kutu, düzeltme üzerinde öğretim (brif kuyruk/ders-ontolojik-encode-2026-11-01.md). Sonraki adım: fork oturumunda 'seans başı, ontolojik-encode' → ogren; Katman-1 kalemler (Lean üst tip, sözlük tanımları) Salih imzasıyla ana oturumda.
+- #85 Bitirme tezi dersi: iki eklemli kol, 12 kutu (Mihelj Robotics B5/9/10 + NN/MPC/RL); kutu 1-8 kavramsal tamam, HTML sayfalar Mustafata2/robot_arm_control salih dalında. Sonraki adım: kutu 9 (Neural Network Dynamics Learning) alt adımlı; sonra 10-12; pratik: formülleri Python'da kurmak (Salih eli).
+- #86 Müzik projeleri (şarkı yönlendirme melez + sembolik üretim + kalite bariyeri): 3 atlas + en olabilir sürüm brifi raporlar/2026-11/muzik-projeleri-en-olabilir-surum-2026-11-05.md. Sonraki adım: Salih başlama beyanı; ilk adım müzik kodlama şeması, sonra yerel analiz hattı (200-500 parça).
+- #87 jarvis-oda v0.6 + jarvis-graf v0.2 canlı test ve ikinci iterasyon turu. Sonraki adım: Salih yeni oturumda /oda ve /graf dener (görev sınıfı, işçiye tıklama, sohbet kaydırma, düğüm detayı, HTML aç, oda_katil) ve fark listesi verir; Jarvis dis.ts-araclar.ts döngüsünü durum.ts'ye indirir; ortak/oda/ commit kararı Salih'te.
 
 **Bekler (girdisi açık)**
 - #35 Karar 118 M1: atlas-kosum doğrudan kodlu akışa geçer (pilot şartı kalktı): emir şeması JSON/Lean + Workflow + Rust V26/done + JSON teslim bekler: #21.

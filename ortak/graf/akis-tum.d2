@@ -1,4 +1,4 @@
-# akış grafı · üretici: durum graf · tarih 2026-11-03 · kaynak ortak/durum-olay.jsonl · render: d2 --layout=elk <bu dosya> <çıktı.svg>
+# akış grafı · üretici: durum graf · tarih 2026-11-10 · kaynak ortak/durum-olay.jsonl · render: d2 --layout=elk <bu dosya> <çıktı.svg>
 direction: right
 classes: {
   acik: {style.fill: "#fff3bf"; style.stroke: "#f08c00"}
@@ -27,6 +27,8 @@ jarvis: {
   seans_2026_10_29_jarvis: {label: "seans 2026-10-29-jarvis\n2026-10-29\nhedef: Salih: Sokrates ajanı tasarımı; atlas ile Sokrates bağlamlar… ✓"; class: seans}
   seans_2026_10_30_jarvis: {label: "seans 2026-10-30-jarvis\n2026-10-30\nhedef: Salih: fork oturumu kapanış sorusu; 2026-10-28-jarvis açık s… ✓"; class: seans}
   seans_2026_10_31_jarvis: {label: "seans 2026-10-31-jarvis\n2026-11-03\nhedef: Salih: dosya sistemi mimarisi (filesystem file architecture)… ✗"; class: seans}
+  seans_2026_11_08_jarvis: {label: "seans 2026-11-08-jarvis\n2026-11-08\nhedef: Salih: bitirme tezi konusunu (iki eklemli kol modelleme ve y… ✓"; class: seans}
+  seans_2026_11_10_jarvis_mod: {label: "seans 2026-11-10-jarvis-mod\n2026-11-10\nhedef: Salih: oda ve akış modlarını geliştirmek; iki mod için ayrı … ✓"; class: seans}
   is1: {label: "#1 hook geçişi Rust'a"; class: [tamam]}
   is3: {label: "#3 Rust taşıma parti 2 (OMP)"; class: [tamam]}
   is4: {label: "#4 md→Lean kalan kural dosyaları"; class: [tamam]}
@@ -71,7 +73,7 @@ jarvis: {
   is44: {label: "#44 oyun tanımı karışık (ME/Portal → DL/CS/MW → Mine…"; class: [tamam]}
   is45: {label: "#45 akış grafı HTML tasarımı optimizasyonu (Salih: i…\nSalih tasarım kararını verir; başlangıç Karar 125 kaydı …"; class: [acik; sirada]}
   is46: {label: "#46 Karar 126 icrası: jarvis-oda + jarvis-graf modla…"; class: [tamam]}
-  is47: {label: "#47 jarvis-oda v0.2 + jarvis-graf v0.1 kuruldu, duma…\nSalih fark listesi verir, Jarvis mods/ üzerinde itere ed…"; class: [acik; sirada]}
+  is47: {label: "#47 jarvis-oda v0.2 + jarvis-graf v0.1 kuruldu, duma…"; class: [tamam]}
   is48: {label: "#48 Öğrenme kutusu: ispat-arama algoritmaları (best-…\nSalih istediğinde ogren şeridinde kutu kutu; önce canlı …"; class: [acik; sirada]}
   is49: {label: "#49 Sokrates ajanı: Salih'in doğrudan konuşabileceği…"; class: [hedef]}
   is50: {label: "#50 A araştırma: depo içi + birincil kaynaklar + mod…"; class: [tamam]}
@@ -109,6 +111,9 @@ jarvis: {
   is82: {label: "#82 T5 repo güncelleme + sürüm kaydı"; class: [tamam]}
   is83: {label: "#83 Ders: depo dosya mimarisi, 8 kutu, düzeltme üzer…\nfork oturumunda 'seans başı, dosya-mimarisi' → ogren; ku…"; class: [acik; sirada]}
   is84: {label: "#84 Ders: ontolojik encode, 8 kutu, düzeltme üzerind…\nfork oturumunda 'seans başı, ontolojik-encode' → ogren; …"; class: [acik; sirada]}
+  is85: {label: "#85 Bitirme tezi dersi: iki eklemli kol, 12 kutu (Mi…\nkutu 9 (Neural Network Dynamics Learning) alt adımlı; so…"; class: [acik; sirada]}
+  is86: {label: "#86 Müzik projeleri (şarkı yönlendirme melez + sembo…\nSalih başlama beyanı; ilk adım müzik kodlama şeması, son…"; class: [acik; sirada]}
+  is87: {label: "#87 jarvis-oda v0.6 + jarvis-graf v0.2 canlı test ve…\nSalih yeni oturumda /oda ve /graf dener (görev sınıfı, i…"; class: [acik; sirada]}
   is1 -> is11: girdi
   is4 -> is14: girdi
   is3 -> is17: girdi
@@ -160,6 +165,7 @@ jarvis: {
   is80 -> is77: hizmet {style.stroke-dash: 3}
   is81 -> is77: hizmet {style.stroke-dash: 3}
   is82 -> is77: hizmet {style.stroke-dash: 3}
+  is46 -> is87: girdi
   seans_jarvis_kapanis_10_14 -> seans_2026_10_25_jarvis: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_jarvis_kapanis_10_14 -> is1: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_jarvis_kapanis_10_14 -> is3: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
@@ -242,8 +248,14 @@ jarvis: {
   seans_2026_10_29_jarvis -> is82: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_30_jarvis -> seans_2026_10_31_jarvis: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_2026_10_30_jarvis -> is22: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
+  seans_2026_10_31_jarvis -> seans_2026_11_08_jarvis: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_2026_10_31_jarvis -> is83: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_10_31_jarvis -> is84: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_11_08_jarvis -> seans_2026_11_10_jarvis_mod: sonra {style.stroke: "#7048e8"; style.bold: true}
+  seans_2026_11_08_jarvis -> is85: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_11_08_jarvis -> is86: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_11_10_jarvis_mod -> is87: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_11_10_jarvis_mod -> is47: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
 }
 span: {
   label: "span"
