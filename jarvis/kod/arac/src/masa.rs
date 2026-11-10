@@ -270,6 +270,11 @@ fn mevcut_say(repo: &str) -> usize {
     }
 }
 
+/// `--repo` verilmezse `<depo kökü>/jarvis` (kök: `kok_coz`; eski `~/sistem/jarvis` bu makinede yoktu).
+fn varsayilan_repo() -> String {
+    yol_ekle(&pathlib_str(&kok_coz()), "jarvis")
+}
+
 pub fn kos(argv: &[String]) -> i32 {
     let ap = Ayrisan::yeni(
         "masa-uret.py",
@@ -283,7 +288,7 @@ pub fn kos(argv: &[String]) -> i32 {
     };
     let repo = match a.metin("repo") {
         Some(r) => pathlib_str(r),
-        None => yol_ekle(&yol_ekle(&pathlib_str(&py::expanduser("~")), "sistem"), "jarvis"),
+        None => varsayilan_repo(),
     };
     let kuru = a.bayrak("kuru");
     let yol = a.konumsal().unwrap_or_default();
@@ -342,4 +347,19 @@ pub fn kos(argv: &[String]) -> i32 {
     }
     py::print(&format!("üretildi: {calisma}\nkalıcı: {kalici}\nkalem {kalem} · form {form_n} · {uzunluk} B"));
     0
+}
+
+#[cfg(test)]
+mod testler {
+    use super::*;
+
+    #[test]
+    fn varsayilan_repo_depo_kokundeki_jarvis() {
+        let r = varsayilan_repo();
+        let p = Path::new(&r);
+        assert_eq!(p.file_name().and_then(|s| s.to_str()), Some("jarvis"), "{r}");
+        let kok = p.parent().expect("üst dizin");
+        assert!(kok.join("Cargo.toml").is_file() && kok.join("sablonlar").is_dir(), "depo kökü değil: {}", kok.display());
+        assert!(p.is_dir(), "var olmayan yol: {r}");
+    }
 }

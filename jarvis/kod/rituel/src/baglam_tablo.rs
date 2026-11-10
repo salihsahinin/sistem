@@ -285,6 +285,21 @@ fn tur_bul(yol: &str) -> &'static str {
 type Zaman = (i64, String);
 
 fn git_meta(repo: &str, yollar: &[String]) -> Sn<HashMap<String, (String, String)>> {
+    // Log tam depo için pathspec'siz alınır (monorepo taşıma commit'inin `R core/x -> jarvis/core/x`
+    // satırları kaybolmasın). Yol anahtarı: cwd öneki (`git rev-parse --show-prefix`, ör. `jarvis/`)
+    // ile başlayan yolun öneki soyulur → `git ls-files` yoluyla aynı anahtar; önek dışı yol `\0` ile
+    // ayrı ad alanına düşer, yalnız rename zincirinin parçası olarak izlenir (son_commit'e girmez).
+    let onek_p = git(repo, &["rev-parse", "--show-prefix"], true)?;
+    let onek = String::from_utf8_lossy(&onek_p.out).trim().to_string();
+    let anahtar = |y: &str| -> (String, bool) {
+        if onek.is_empty() {
+            (y.to_string(), true)
+        } else if let Some(s) = y.strip_prefix(onek.as_str()) {
+            (s.to_string(), true)
+        } else {
+            (format!("\u{0}{y}"), false)
+        }
+    };
     let p = git(repo, &["log", "--format=%x01%H %ct %cI", "--name-status", "-M", "-c", "--no-color"], true)?;
     let metin = String::from_utf8_lossy(&p.out).into_owned();
     let mut ilk_ct: HashMap<String, Zaman> = HashMap::new();
@@ -306,21 +321,21 @@ fn git_meta(repo: &str, yollar: &[String]) -> Sn<HashMap<String, (String, String
         }
         let alan: Vec<&str> = satir.split('\t').collect();
         let durum = alan[0];
-        let hedefler: Vec<String> = if durum.starts_with('R') && alan.len() >= 3 {
-            rename_eski.entry(alan[2].to_string()).or_default().push((cur.0, alan[1].to_string()));
-            vec![alan[2].to_string()]
+        let (y, kapsam) = if durum.starts_with('R') && alan.len() >= 3 {
+            let (yeni, k) = anahtar(alan[2]);
+            let (eski, _) = anahtar(alan[1]);
+            rename_eski.entry(yeni.clone()).or_default().push((cur.0, eski));
+            (yeni, k)
         } else if alan.len() >= 2 {
-            vec![alan[alan.len() - 1].to_string()]
+            anahtar(alan[alan.len() - 1])
         } else {
             continue;
         };
-        for y in hedefler {
-            if ilk_ct.get(&y).is_none_or(|e| cur.0 < e.0) {
-                ilk_ct.insert(y.clone(), cur.clone());
-            }
-            if son_ct.get(&y).is_none_or(|e| cur.0 > e.0) {
-                son_ct.insert(y, cur.clone());
-            }
+        if ilk_ct.get(&y).is_none_or(|e| cur.0 < e.0) {
+            ilk_ct.insert(y.clone(), cur.clone());
+        }
+        if kapsam && son_ct.get(&y).is_none_or(|e| cur.0 > e.0) {
+            son_ct.insert(y, cur.clone());
         }
     }
     fn ilk_zincir(y: &str, gorulen: &mut HashSet<String>, ilk_ct: &HashMap<String, Zaman>, rename_eski: &HashMap<String, Vec<(i64, String)>>) -> Option<Zaman> {
@@ -1824,6 +1839,8 @@ struct Notlar {
     kayit_id_cakisma: i64,
     csv_kesildi: Vec<String>,
     cekim_olay_dosya: i64,
+    /// İzlenen ama çalışma ağacında okunamayan (silinmiş) dosyalar; boşsa JSON'a yazılmaz (Python setdefault eşi).
+    okunamadi: Vec<String>,
 }
 
 fn notlar_json(n: &Notlar) -> String {
@@ -1834,6 +1851,9 @@ fn notlar_json(n: &Notlar) -> String {
     o.insert("csv_kesildi".into(), dz(&n.csv_kesildi));
     o.insert("json_hatasi".into(), dz(&n.json_hatasi));
     o.insert("kayit_id_cakisma".into(), Value::from(n.kayit_id_cakisma));
+    if !n.okunamadi.is_empty() {
+        o.insert("okunamadi".into(), dz(&n.okunamadi));
+    }
     o.insert("utf8_hatasi".into(), dz(&n.utf8_hatasi));
     py_dumps(&Value::Object(o))
 }
@@ -1981,7 +2001,7 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
     let terimler: Vec<(String, Vec<Option<char>>)> = ANAHTAR_TERIMLER.iter().map(|(d, g)| (d.to_string(), terim_belirtec(g))).collect();
     let baglam = Baglam { skill: &skill, repo_yollar: &repo_yollar, repo_adlar: &repo_adlar, repo_kok: &repo, terimler: &terimler };
 
-    let mut notlar = Notlar { utf8_hatasi: vec![], json_hatasi: vec![], kayit_id_cakisma: 0, csv_kesildi: vec![], cekim_olay_dosya: 0 };
+    let mut notlar = Notlar { utf8_hatasi: vec![], json_hatasi: vec![], kayit_id_cakisma: 0, csv_kesildi: vec![], cekim_olay_dosya: 0, okunamadi: vec![] };
     let mut dosya_rows: Vec<DosyaSatir> = vec![];
     let mut kayit_rows: Vec<Kayit> = vec![];
     let mut ref_rows: Vec<(usize, Ref)> = vec![];
@@ -1990,7 +2010,14 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
 
     for yol in &hedef_yollar {
         let tam = py::join(&repo, yol);
-        let ham = std::fs::read(&tam).map_err(|e| format!("FileNotFoundError: {tam}: {e}"))?;
+        // izlenen ama çalışma ağacında silinmiş/okunamayan dosya adımı düşürmez; nota yazılır, atlanır
+        let ham = match std::fs::read(&tam) {
+            Ok(h) => h,
+            Err(_) => {
+                notlar.okunamadi.push(yol.clone());
+                continue;
+            }
+        };
         let boyut = ham.len();
         let blob = git_blob_sha(&ham);
         let (ilk_c, son_c) = meta.get(yol).cloned().unwrap_or(("-".into(), "-".into()));

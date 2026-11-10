@@ -174,6 +174,19 @@ def tur_bul(yol):
 def git_meta(repo, yollar):
     """--name-status -M -c tek geçiş (-c: merge'de çözülen dosyalar da görünür): yol → (ilk_iso, son_iso).
     Rename zinciri geriye izlenir."""
+    # Log tam depo için pathspec'siz alınır (monorepo taşıma commit'inin `R core/x -> jarvis/core/x`
+    # satırları kaybolmasın). Yol anahtarı: cwd öneki (`git rev-parse --show-prefix`, ör. `jarvis/`)
+    # ile başlayan yolun öneki soyulur → `git ls-files` yoluyla aynı anahtar; önek dışı yol `\0` ile
+    # ayrı ad alanına düşer, yalnız rename zincirinin parçası olarak izlenir (son_commit'e girmez).
+    onek = git(repo, "rev-parse", "--show-prefix").stdout.decode("utf-8", "replace").strip()
+
+    def anahtar(y):
+        if not onek:
+            return y, True
+        if y.startswith(onek):
+            return y[len(onek):], True
+        return "\0" + y, False
+
     p = git(repo, "log", "--format=%x01%H %ct %cI", "--name-status", "-M", "-c", "--no-color")
     ilk_ct = {}   # yol -> (ct, iso)
     son_ct = {}
@@ -190,18 +203,16 @@ def git_meta(repo, yollar):
         alan = satir.split("\t")
         durum = alan[0]
         if durum.startswith("R") and len(alan) >= 3:
-            eski, yeni = alan[1], alan[2]
-            rename_eski[yeni].append((cur[0], eski))
-            hedefler = [yeni]
+            y, kapsam = anahtar(alan[2])
+            rename_eski[y].append((cur[0], anahtar(alan[1])[0]))
         elif len(alan) >= 2:
-            hedefler = [alan[-1]]
+            y, kapsam = anahtar(alan[-1])
         else:
             continue
-        for y in hedefler:
-            if y not in ilk_ct or cur[0] < ilk_ct[y][0]:
-                ilk_ct[y] = cur
-            if y not in son_ct or cur[0] > son_ct[y][0]:
-                son_ct[y] = cur
+        if y not in ilk_ct or cur[0] < ilk_ct[y][0]:
+            ilk_ct[y] = cur
+        if kapsam and (y not in son_ct or cur[0] > son_ct[y][0]):
+            son_ct[y] = cur
 
     def ilk_zincir(y, gorulen):
         best = ilk_ct.get(y)
@@ -784,8 +795,13 @@ def main():
 
     for yol in hedef_yollar:
         tam = os.path.join(repo, yol)
-        with open(tam, "rb") as fh:
-            ham = fh.read()
+        try:
+            with open(tam, "rb") as fh:
+                ham = fh.read()
+        except OSError:
+            # izlenen ama çalışma ağacında silinmiş/okunamayan dosya adımı düşürmez
+            notlar.setdefault("okunamadi", []).append(yol)
+            continue
         boyut = len(ham)
         blob = git_blob_sha(ham)
         ilk_c, son_c = meta.get(yol, ("-", "-"))

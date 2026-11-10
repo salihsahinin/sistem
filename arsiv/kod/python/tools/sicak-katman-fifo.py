@@ -24,25 +24,13 @@ Kullanım: python3 tools/sicak-katman-fifo.py [--json] [--repo <yol>] [--tarih Y
 import argparse, datetime, json, os, re, sys, unicodedata
 import harness_anahtar
 
+# Karar 122 (2026-10-25): core/durum-kapsulu.md ve core/pano.md dondu, yazılmıyor → FIFO listesinden çıktı (2026-11-10).
 TAVAN = {  # ad: (bayt B, satır S ∨ None, madde sigortası K ∨ None)
-    "kapsul": (8 * 1024, 40, 8),
-    "pano": (12 * 1024, None, 5),
     "memory": (4 * 1024, None, 16),
     "claude": (7 * 1024, 80, None),
 }
-ARSIV = {"kapsul": "arsiv/kapsul-{t}.md", "pano": "arsiv/kuyruk-arsiv/pano-arsivi-{t}.md",
-         "memory": "arsiv/memory-arsivi-{t}.md", "claude": None}
+ARSIV = {"memory": "arsiv/memory-arsivi-{t}.md", "claude": None}
 MEM_ANAHTARLAR = (harness_anahtar.kok_anahtar(), harness_anahtar.jarvis_anahtar())  # Karar 101: iki anahtar; ilki canlı (Karar 104 M3); makineye göre türetilir (2026-09-22)
-
-
-def kapsul_maddeler(t):
-    b = re.search(r"^## Şu an\n(.*?)(?=^## |\Z)", t, flags=re.S | re.M)
-    return [l for l in (b.group(1).splitlines() if b else []) if l.startswith("- ")]
-
-
-def pano_maddeler(t):
-    b = re.search(r"^## AKTİF\n(.*?)(?=^## |\Z)", t, flags=re.S | re.M)
-    return [l for l in (b.group(1).splitlines() if b else []) if l.startswith("| K-")]
 
 
 def memory_maddeler(t):
@@ -75,8 +63,6 @@ def main():
     ap.add_argument("--tarih", default=datetime.date.today().isoformat(), help="arşiv dosya adı tarihi (deterministik koşum için sabitle)")
     a = ap.parse_args()
     dosyalar = {
-        "kapsul": (os.path.join(a.repo, "core", "durum-kapsulu.md"), kapsul_maddeler),
-        "pano": (os.path.join(a.repo, "core", "pano.md"), pano_maddeler),
         "memory": (memory_yolu(), memory_maddeler),
         "claude": (os.path.join(a.repo, "AGENTS.md"), claude_maddeler),
     }
@@ -94,7 +80,7 @@ def main():
         if K and n > K: tetik.append("madde-sigorta")
         durum = "FLAG" if tetik else "OK"
         flag |= durum == "FLAG"
-        # FIFO yönü: kapsül/pano yeni maddeyi ÜSTE yazar → en eski = SON; MEMORY.md indeksi sona EKLER → en eski = BAŞ
+        # FIFO yönü: MEMORY.md indeksi sona EKLER → en eski = BAŞ (üste yazan dosya kalmadı; dal genel kalır)
         arsive = []
         if tetik and ad != "claude":
             sira = maddeler if ad == "memory" else list(reversed(maddeler))  # en eskiden yeniye

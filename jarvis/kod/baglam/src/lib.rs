@@ -73,6 +73,8 @@ pub fn coz(ebeveyn: &Path, yol: &str) -> PathBuf {
     } else {
         ebeveyn.parent().unwrap_or(Path::new(".")).join(yol)
     };
+    // Göreli yol önce mutlaklaşır: boş yolda `pop` etkisiz kalır, baştaki `..` sessizce düşerdi (`../AGENTS.md` → `AGENTS.md`).
+    let ham = std::path::absolute(&ham).unwrap_or(ham);
     let mut sade = PathBuf::new();
     for parca in ham.components() {
         match parca {
@@ -175,6 +177,15 @@ fn gez(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn goreli_ust_dizin_dusmez() {
+        let cwd = std::env::current_dir().unwrap();
+        let beklenen = cwd.parent().unwrap().join("AGENTS.md");
+        assert_eq!(coz(Path::new("."), "../AGENTS.md"), beklenen);
+        assert_eq!(coz(Path::new("a/b.md"), "../x.md"), cwd.join("x.md"));
+        assert!(coz(Path::new("."), "../../y.md").is_absolute());
+    }
 
     #[test]
     fn cit_ve_backtick_atlanir() {

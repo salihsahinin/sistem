@@ -15,6 +15,8 @@ use std::collections::{BTreeMap, BTreeSet};
 pub const ALANLAR: [&str; 9] = ["jarvis", "friday", "tart", "gard", "span", "calc", "deci", "vega", "sage"];
 /// Oturum-başı brifinin bayt tavanı (Karar 113 M2 1 KB idi; Karar 122 ile konum + sıradaki + graf satırları eklendi).
 pub const OTURUM_BASI_BAYT: usize = 2048;
+/// `oturum-basi` KONUM satırındaki hedef cümlesinin karakter tavanı (bayt tavanını korur).
+const KONUM_HEDEF_KARAKTER: usize = 200;
 pub const GRAF_SEMA: &str = "akis-graf v1 (Karar 122)";
 pub const TESLIM_SEMA: &str = "seans-teslim v1 (Karar 121/122)";
 
@@ -497,7 +499,9 @@ impl Defter {
             };
             cikti.push_str(&format!("KONUM {alan}: seans {} ({hal}", s.oturum));
             if let Some(h) = &s.hedef {
-                cikti.push_str(&format!("; hedef: {h}"));
+                // Hedef serbest metindir; bayt tavanını (OTURUM_BASI_BAYT) korumak için karakter sınırında kırpılır
+                // (en kötü 4 bayt/karakter: 200 karakter ≤ 800 bayt).
+                cikti.push_str(&format!("; hedef: {}", kisalt(h, KONUM_HEDEF_KARAKTER)));
             }
             if let Some(t) = s.hedef_tutuldu {
                 cikti.push_str(if t { "; tutuldu" } else { "; TUTMADI" });

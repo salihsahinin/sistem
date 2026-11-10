@@ -8,7 +8,7 @@ use durum::*;
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
-const KULLANIM: &str = "kullanım: durum <komut> ... [--kutuk <yol>] [--ts <ISO>]\n  \
+const KULLANIM: &str = "kullanım: durum <komut> ... [--kutuk <yol>] [--ts <ISO>]   (durum -h | --help: bu metin)\n  \
 ac --alan A --is \"..\" --sonraki \"..\" [--kanit a,b] [--girdi 1,2] [--hedef N] [--tur is|hedef] [--son-gecerlilik YYYY-MM-DD] [--oturum X]\n  \
 al <id> · bitir <id> [--kanit ..] [--kalan \"is|sonraki_eylem\"] · tuket <id> · bayatla <id>\n  \
 listele [--alan A] [--durum D] [--json] · oturum-basi --alan A [--json]\n  \
@@ -111,11 +111,73 @@ fn ekle(yol: &PathBuf, olaylar: &[Olay]) -> Result<(), Hata> {
     f.write_all(metin.as_bytes()).map_err(|e| Hata::Gecersiz(format!("kütük yazılamadı: {e}")))
 }
 
+/// Atomik yazım: aynı dizinde geçici dosyaya yaz, sonra `rename` ile hedefin yerine koy. Yarıda kesilen ya da eşzamanlı
+/// yazımda hedef kırpık kalmaz. `std::fs::rename` Windows'ta `MoveFileExW(MOVEFILE_REPLACE_EXISTING)` kullanır, hedef varsa değiştirir.
 fn dosya_yaz(yol: &Path, icerik: &str) -> Result<(), Hata> {
     if let Some(p) = yol.parent() {
         std::fs::create_dir_all(p).map_err(|e| Hata::Gecersiz(format!("dizin {}: {e}", p.display())))?;
     }
-    std::fs::write(yol, icerik).map_err(|e| Hata::Gecersiz(format!("yazılamadı {}: {e}", yol.display())))
+    let ad = yol.file_name().map(|a| a.to_string_lossy().into_owned()).unwrap_or_default();
+    let gecici = yol.with_file_name(format!(".{ad}.gecici-{}", std::process::id()));
+    let sonuc = std::fs::write(&gecici, icerik).and_then(|_| std::fs::rename(&gecici, yol));
+    if let Err(e) = sonuc {
+        let _ = std::fs::remove_file(&gecici);
+        return Err(Hata::Gecersiz(format!("yazılamadı {}: {e}", yol.display())));
+    }
+    Ok(())
+}
+
+/// Kütük kilidi (`<kütük>.kilit`, `create_new`): oku-hesapla-ekle bölümünü eşzamanlı oturumlara karşı sarar.
+/// Drop'ta silinir; 60 sn'den eski kilit bayat sayılıp devralınır.
+struct Kilit(PathBuf);
+
+impl Drop for Kilit {
+    fn drop(&mut self) {
+        let _ = std::fs::remove_file(&self.0);
+    }
+}
+
+const KILIT_BEKLEME: std::time::Duration = std::time::Duration::from_secs(5);
+const KILIT_ARALIK: std::time::Duration = std::time::Duration::from_millis(25);
+const KILIT_BAYAT: std::time::Duration = std::time::Duration::from_secs(60);
+
+fn kilit_yolu(kutuk: &Path) -> PathBuf {
+    let ad = kutuk.file_name().map(|a| a.to_string_lossy().into_owned()).unwrap_or_else(|| "durum-olay.jsonl".into());
+    kutuk.with_file_name(format!("{ad}.kilit"))
+}
+
+fn kilit_al(kutuk: &Path) -> Result<Kilit, Hata> {
+    let yol = kilit_yolu(kutuk);
+    if let Some(p) = yol.parent() {
+        std::fs::create_dir_all(p).map_err(|e| Hata::Gecersiz(format!("dizin {}: {e}", p.display())))?;
+    }
+    let basla = std::time::Instant::now();
+    loop {
+        match std::fs::OpenOptions::new().write(true).create_new(true).open(&yol) {
+            Ok(mut f) => {
+                let _ = writeln!(f, "pid {} · {}", std::process::id(), simdi_iso());
+                return Ok(Kilit(yol));
+            }
+            Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists || e.kind() == std::io::ErrorKind::PermissionDenied => {
+                // Windows'ta silinmekte olan dosyaya create_new PermissionDenied dönebilir; bekleyip yeniden dene.
+                let bayat = std::fs::metadata(&yol).and_then(|m| m.modified()).ok().and_then(|t| t.elapsed().ok()).is_some_and(|y| y > KILIT_BAYAT);
+                if bayat {
+                    let _ = std::fs::remove_file(&yol);
+                    continue;
+                }
+                if basla.elapsed() >= KILIT_BEKLEME {
+                    return Err(Hata::Gecersiz(format!(
+                        "kütük kilitli: {} ({} sn beklendi; başka bir durum komutu koşuyor olabilir, kilit {} sn sonra bayat sayılır)",
+                        yol.display(),
+                        KILIT_BEKLEME.as_secs(),
+                        KILIT_BAYAT.as_secs()
+                    )));
+                }
+                std::thread::sleep(KILIT_ARALIK);
+            }
+            Err(e) => return Err(Hata::Gecersiz(format!("kilit alınamadı {}: {e}", yol.display()))),
+        }
+    }
 }
 
 /// Diğer git worktree'lerindeki kütük kopyalarının en büyük kayıt id'si (Karar 123, durum #27): yeni `ac` bu değeri de aşar,
@@ -301,6 +363,9 @@ fn ozet_metni(defter: &Defter, kok: &Path, bugun: &str) -> String {
 const TESLIM_ZORUNLU: [&str; 7] = ["hedef", "hedef_tutuldu", "ne_degisti", "kararlar", "adaylar", "sonraki_ilk_is", "yeniden_acma"];
 
 fn calistir(args: &[String]) -> Result<String, Hata> {
+    if args.iter().any(|x| x == "--help" || x == "-h") {
+        return Ok(format!("{KULLANIM}\n"));
+    }
     let a = Arg::coz(args)?;
     let komut = a.konumsal.first().ok_or_else(|| Hata::Kullanim("komut yok".into()))?.as_str();
     let yol = a.al("kutuk").map(PathBuf::from).unwrap_or_else(varsayilan_kutuk);
@@ -308,6 +373,9 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
     let ts = a.al("ts").map(String::from).unwrap_or_else(simdi_iso);
     // Geçerlilik ve özet tarihi yerel takvim günüdür (Karar 68: tarih sistem saatinden); --ts verilirse onun tarih kısmı (testler).
     let bugun = a.al("ts").map(|t| tarih_kismi(t).to_string()).unwrap_or_else(yerel_tarih);
+    // Yazan her alt komut oku-hesapla-ekle bölümünü kilitle sarar (id çakışması freni); kilit `_kilit` düşünce silinir.
+    let yazan = matches!(komut, "ac" | "al" | "bitir" | "tuket" | "bayatla" | "seans-ac" | "seans-kapat" | "ozet") || (komut == "graf" && !a.var("metin"));
+    let _kilit = if yazan { Some(kilit_al(&yol)?) } else { None };
     let mut defter = yukle(&yol)?;
     let oturum = a.al("oturum").map(String::from);
 
@@ -460,9 +528,20 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
                 return Err(Hata::Gecersiz("sonraki_ilk_is boş olamaz".into()));
             }
             let seans = defter.seanslar.get(&ad).ok_or_else(|| Hata::Gecersiz(format!("seans {ad} açılmamış (önce seans-ac)")))?.clone();
+            if seans.alan != alan {
+                return Err(Hata::Kullanim(format!("seans {ad} {} alanına ait, --alan {alan} verildi", seans.alan)));
+            }
             let etiket = a.al("etiket").map(String::from).or_else(|| kayit["etiket"].as_str().map(String::from)).unwrap_or_else(|| "seans".into());
-            let etiket_temiz: String = etiket.chars().map(|c| if c.is_ascii_alphanumeric() || c == '-' { c } else { '-' }).collect();
-            let kayit_rel = format!("{alan}/raporlar/seans/seans-teslim-{}-{etiket_temiz}.json", tarih_kismi(&bugun));
+            let etiket_taban: String = etiket.chars().map(|c| if c.is_ascii_alphanumeric() || c == '-' { c } else { '-' }).collect();
+            // Aynı gün aynı etiketle önceki teslim kaydı varsa üstüne yazılmaz: sıra eki (-2, -3, ...).
+            let rel = |e: &str| format!("{alan}/raporlar/seans/seans-teslim-{}-{e}.json", tarih_kismi(&bugun));
+            let mut etiket_temiz = etiket_taban.clone();
+            let mut n = 2;
+            while kok_dizin.join(rel(&etiket_temiz)).exists() {
+                etiket_temiz = format!("{etiket_taban}-{n}");
+                n += 1;
+            }
+            let kayit_rel = rel(&etiket_temiz);
             // Rust'ın ürettiği alanlar (Karar 121: ölçüm el kopyası değil).
             kayit["sema"] = serde_json::json!(TESLIM_SEMA);
             kayit["alan"] = serde_json::json!(alan);
@@ -477,13 +556,14 @@ fn calistir(args: &[String]) -> Result<String, Hata> {
                            "acik_kalan": defter.listele(Some(alan), None, &bugun).into_iter().filter(|(_, e)| !e.blok_acar()).count()},
             });
             kayit["baglar"]["durum"] = serde_json::json!(dokunulan);
-            dosya_yaz(&kok_dizin.join(&kayit_rel), &(serde_json::to_string_pretty(&kayit).expect("json") + "\n"))?;
             let mut o = Olay::seans(OlayTuru::SeansKapat, &ad, alan, &ts);
             o.hedef_tutuldu = Some(hedef_tutuldu);
             o.hedef_cumle = kayit["hedef"].as_str().map(String::from);
             o.kayit = Some(kayit_rel.clone());
             o.etiket = Some(etiket_temiz);
+            // Önce geçişi doğrula (zaten kapanmış seans reddedilir), sonra teslim dosyasını yaz: reddedilen komut dosya ezmez.
             defter.uygula(&o, &bugun)?;
+            dosya_yaz(&kok_dizin.join(&kayit_rel), &(serde_json::to_string_pretty(&kayit).expect("json") + "\n"))?;
             ekle(&yol, &[o])?;
             let mut yazilan = graf_yaz(&defter, &kok_dizin, None, None, None, &bugun, a.var("render"))?;
             let ozet = kok_dizin.join("ortak").join("SALIH-OZET.md");

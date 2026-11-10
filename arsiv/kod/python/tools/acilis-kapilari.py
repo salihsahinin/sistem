@@ -4,7 +4,8 @@ Kural kaynağı: wiki/paralel-oturum-protokolu.md §1 (canlı-oturum kapısı, K
 manifest kapısı, KB-08) · Karar 62 İB-27 (silver tazelik). Script TESPİT eder, koşmaz (katman-hatti'yi çağırmaz, kanona yazmaz).
 
 Kapılar:
-  K1 canlı-oturum : son commit yaşı ≤15 dk ∧ kapsül 'Güncelleme' satırı o commit'ten eski → ŞÜPHE; ek sinyaller: ≤15 dk içinde
+  K1 canlı-oturum : son commit yaşı ≤15 dk ∧ durum kütüğündeki (ortak/durum-olay.jsonl) son seans_kapat o commit'ten eski
+                    (kütük okunamaz/kapanış yoksa eski sayılır) → ŞÜPHE; açık seans sayısı bilgi; ek sinyaller: ≤15 dk içinde
                     yazılmış oturum transkripti sayısı (~/.claude/projects/<proje>/*.jsonl), açık worktree'ler, son 24 saatte
                     main-dışı dallara giren commit'ler. Son 5 commit yaşıyla listelenir (resume eki: tanınmayan commit → devir notu).
   K2 manifest     : --is "<anahtar>" verilirse cc/pipeline/pipeline-*.md + git log -15 içinde arar → "zaten koşmuş/koşuyor" adayları;
@@ -48,24 +49,41 @@ def kapi_canli(repo, dk, simdi):
         commits.append({"sha": h, "yas_dk": yas_dk(ci, simdi), "konu": s[:70], "alan": "+".join(alan) or "?"})
     r["son5"] = commits
     son = commits[0]
-    # kapsül güncelleme zamanı
-    kap = ""
+    # son seans kapanışı: durum kütüğü <git kökü>/ortak/durum-olay.jsonl (Karar 122; kapsül 2026-10-25'te dondu).
+    # Kütük okunamaz ya da kapanış kaydı yoksa güvenli taraf: kapanış eski sayılır (son commit ≤dk ise ŞÜPHE).
+    kapanis, acik, okundu = "", set(), False
+    kok_git = next((p for p in [repo, *repo.parents] if (p / ".git").exists()), None)  # alt süreç yok: .git taşıyan ilk ata
     try:
-        t = (repo / "core" / "durum-kapsulu.md").read_text(encoding="utf-8")
-        m = re.search(r"\*\*Güncelleme:\*\*\s*(\d{4}-\d{2}-\d{2})\s*~?(\d{1,2}):(\d{2})", t)
-        if m:
-            kap = f"{m.group(1)}T{int(m.group(2)):02d}:{m.group(3)}"
+        if kok_git is None:
+            raise OSError("git kökü yok")
+        metin = (kok_git / "ortak" / "durum-olay.jsonl").read_text(encoding="utf-8")
+        okundu = True
+        for satir in metin.splitlines():
+            try:
+                o = json.loads(satir)
+            except Exception:
+                continue
+            if not isinstance(o, dict) or not isinstance(o.get("oturum"), str):
+                continue
+            if o.get("olay") == "seans_ac":
+                acik.add(o["oturum"])
+            elif o.get("olay") == "seans_kapat":
+                acik.discard(o["oturum"])
+                if isinstance(o.get("ts"), str):
+                    kapanis = o["ts"]
     except Exception:
         pass
-    r["kapsul_guncelleme"] = kap or "?"
-    kapsul_eski = False
-    if kap:
+    r["son_seans_kapanis"] = kapanis or "?"
+    r["acik_seans"] = len(acik)
+    kapanis_eski = True
+    if kapanis:
         ci = sh("git log -1 --format=%cI", repo)
         try:
-            kapsul_eski = dt.datetime.fromisoformat(kap) < dt.datetime.fromisoformat(ci).replace(tzinfo=None)
+            kapanis_eski = dt.datetime.fromisoformat(kapanis.replace("Z", "+00:00")) < dt.datetime.fromisoformat(ci.replace("Z", "+00:00"))
         except Exception:
-            kapsul_eski = False
-    r["kapsul_son_committen_eski"] = kapsul_eski
+            kapanis_eski = True
+    r["kapanis_son_committen_eski"] = kapanis_eski
+    kapanis_durum = ("eski" if kapanis_eski else "güncel") if kapanis else ("kaydı yok" if okundu else "kütük okunamadı")
     # ek sinyaller
     kok = pathlib.Path(harness_anahtar.PROJELER)
     slug = harness_anahtar.anahtar(str(repo))  # makineye göre anahtar (Windows `C--…`, Mac `-Users-…`; 2026-09-22)
@@ -100,10 +118,10 @@ def kapi_canli(repo, dk, simdi):
         if y is not None and y <= 24 * 60:
             taze_dal.append(f"{ad}({y // 60}s)")
     r["taze_dal_24s"] = taze_dal[:6]
-    suphe = (son["yas_dk"] is not None and son["yas_dk"] <= dk and kapsul_eski) or canli_tr >= 2
+    suphe = (son["yas_dk"] is not None and son["yas_dk"] <= dk and kapanis_eski) or canli_tr >= 2
     r["durum"] = "ŞÜPHE" if suphe else "TEMİZ"
-    r["not"] = ("son commit %s dk önce, kapsül kapanışı %s; canlı transkript %d (bu oturum dahil); worktree %d — başka oturum açık mı? TEK soru; git add <yol> (H4)"
-                % (son["yas_dk"], "eski" if kapsul_eski else "güncel", canli_tr, r["worktree"])) if suphe else "son commit %s dk önce; canlı transkript %d" % (son["yas_dk"], canli_tr)
+    r["not"] = ("son commit %s dk önce, son seans kapanışı %s; açık seans %d; canlı transkript %d (bu oturum dahil); worktree %d — başka oturum açık mı? TEK soru; git add <yol> (H4)"
+                % (son["yas_dk"], kapanis_durum, len(acik), canli_tr, r["worktree"])) if suphe else "son commit %s dk önce; canlı transkript %d" % (son["yas_dk"], canli_tr)
     for ad, geride, hook_eski in r["worktree_geride"]:
         if geride not in ("0", "?") or hook_eski:
             r["not"] += " · worktree %s main'in %s commit gerisinde%s → yan oturumu kapat, dalı merge et, main'den yeni worktree (Karar 95 EK)" % (
@@ -146,7 +164,7 @@ def kapi_silver(repo):
     taze = bool(u and head and u[0] == head)
     r["silver_sha"] = (u[0][:7] if u else "?"); r["head"] = head[:7]; r["uretim"] = (u[1][:16] if u else "?")
     r["durum"] = "TAZE" if taze else "BAYAT"
-    r["not"] = "" if taze else "../target/release/katman-hatti (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir"
+    r["not"] = "" if taze else "../target/release/katman-hatti (1-2 dk, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir"
     return r
 
 

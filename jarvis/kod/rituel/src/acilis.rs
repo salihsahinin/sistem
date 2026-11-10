@@ -1,10 +1,9 @@
 //! `tools/acilis-kapilari.py` karşılığı: seans-acilis §1.4 / §1.5 / §2.3b deterministik açılış kapıları (İB-91, Karar 96 M2 A4).
-//! K1 canlı-oturum · K2 manifest · K3 silver. TESPİT eder, koşmaz. Çıkış: 0 temiz · 1 uyarı (ŞÜPHE ∨ KOŞMUŞ-ADAY ∨ BAYAT) · 2 repo okunamadı.
+//! K1 canlı-oturum (son seans kapanışı durum kütüğünden, `ortak/durum-olay.jsonl`) · K2 manifest · K3 silver. TESPİT eder, koşmaz. Çıkış: 0 temiz · 1 uyarı (ŞÜPHE ∨ KOŞMUŞ-ADAY ∨ BAYAT) · 2 repo okunamadı.
 use crate::argparse::{Ayrisan, Secenek};
 use crate::{harness_anahtar, py};
-use chrono::{DateTime, Local, NaiveDateTime};
+use chrono::{DateTime, Local};
 use jarvis_hook::ortak::{py_dumps, realpath};
-use regex::Regex;
 use serde_json::{Map, Value, json};
 use std::path::{Path, PathBuf};
 use std::process::Command;
@@ -69,14 +68,31 @@ fn canli_transkript(repo: &str, dk: i128, simdi: &DateTime<Local>) -> i64 {
     n
 }
 
-fn kapsul_zamani(repo: &Path) -> String {
-    let Ok(t) = std::fs::read_to_string(repo.join("core").join("durum-kapsulu.md")) else { return String::new() };
-    let t = py::evrensel_satir(&t);
-    let re = Regex::new(r"\*\*Güncelleme:\*\*\s*([0-9]{4}-[0-9]{2}-[0-9]{2})\s*~?([0-9]{1,2}):([0-9]{2})").unwrap();
-    match re.captures(&t) {
-        Some(m) => format!("{}T{:02}:{}", &m[1], m[2].parse::<u32>().unwrap_or(0), &m[3]),
-        None => String::new(),
+/// Durum kütüğünden (`<git kökü>/ortak/durum-olay.jsonl`, Karar 122) son `seans_kapat` zamanı ve açık seans sayısı.
+/// `None` = kütük okunamadı. Kapsül (`core/durum-kapsulu.md`) 2026-10-25'te dondu; artık kaynak değil.
+fn seans_kutugu(repo: &Path) -> Option<(String, usize)> {
+    // alt süreç yok: `.git` taşıyan ilk ata (Python `[repo, *repo.parents]`)
+    let kok = repo.ancestors().find(|p| p.join(".git").exists())?;
+    let metin = std::fs::read_to_string(kok.join("ortak").join("durum-olay.jsonl")).ok()?;
+    let mut kapanis = String::new();
+    let mut acik: std::collections::BTreeSet<String> = Default::default();
+    for satir in py::splitlines(&metin) {
+        let Ok(Value::Object(o)) = serde_json::from_str::<Value>(&satir) else { continue };
+        let Some(oturum) = o.get("oturum").and_then(Value::as_str) else { continue };
+        match o.get("olay").and_then(Value::as_str) {
+            Some("seans_ac") => {
+                acik.insert(oturum.to_string());
+            }
+            Some("seans_kapat") => {
+                acik.remove(oturum);
+                if let Some(ts) = o.get("ts").and_then(Value::as_str) {
+                    kapanis = ts.to_string();
+                }
+            }
+            _ => {}
+        }
     }
+    Some((kapanis, acik.len()))
 }
 
 fn kapi_canli(repo: &Path, repo_s: &str, dk: i128, simdi: &DateTime<Local>) -> Result<Map<String, Value>, String> {
@@ -108,18 +124,26 @@ fn kapi_canli(repo: &Path, repo_s: &str, dk: i128, simdi: &DateTime<Local>) -> R
     let son5: Vec<Value> = commitler.iter().map(|(h, y, k, a)| json!({"sha": h, "yas_dk": y.map(|v| json!(v as i64)).unwrap_or(Value::Null), "konu": k, "alan": a})).collect();
     r.insert("son5".into(), Value::Array(son5));
     let son_yas = commitler[0].1;
-    // kapsül güncelleme zamanı
-    let kap = kapsul_zamani(repo);
-    r.insert("kapsul_guncelleme".into(), json!(if kap.is_empty() { "?" } else { &kap }));
-    let mut kapsul_eski = false;
-    if !kap.is_empty() {
+    // son seans kapanışı (durum kütüğü); kütük okunamaz ya da kapanış yoksa güvenli taraf: eski sayılır
+    let kutuk = seans_kutugu(repo);
+    let (kapanis, acik) = kutuk.clone().unwrap_or_default();
+    r.insert("son_seans_kapanis".into(), json!(if kapanis.is_empty() { "?" } else { &kapanis }));
+    r.insert("acik_seans".into(), json!(acik));
+    let mut kapanis_eski = true;
+    if !kapanis.is_empty() {
         let ci = git(&["log", "-1", "--format=%cI"], repo);
-        kapsul_eski = match (NaiveDateTime::parse_from_str(&kap, "%Y-%m-%dT%H:%M"), DateTime::parse_from_rfc3339(&ci)) {
-            (Ok(k), Ok(c)) => k < c.naive_local(),
-            _ => false,
+        kapanis_eski = match (DateTime::parse_from_rfc3339(&kapanis), DateTime::parse_from_rfc3339(&ci)) {
+            (Ok(k), Ok(c)) => k < c,
+            _ => true,
         };
     }
-    r.insert("kapsul_son_committen_eski".into(), json!(kapsul_eski));
+    r.insert("kapanis_son_committen_eski".into(), json!(kapanis_eski));
+    let kapanis_durum = match (&kutuk, kapanis.is_empty()) {
+        (None, _) => "kütük okunamadı",
+        (Some(_), true) => "kaydı yok",
+        (Some(_), false) if kapanis_eski => "eski",
+        _ => "güncel",
+    };
     // ek sinyaller
     let canli_tr = canli_transkript(repo_s, dk, simdi);
     r.insert("canli_transkript".into(), json!(canli_tr));
@@ -156,13 +180,12 @@ fn kapi_canli(repo: &Path, repo_s: &str, dk: i128, simdi: &DateTime<Local>) -> R
     }
     taze_dal.truncate(6);
     r.insert("taze_dal_24s".into(), json!(taze_dal));
-    let suphe = son_yas.is_some_and(|y| y <= dk) && kapsul_eski || canli_tr >= 2;
+    let suphe = son_yas.is_some_and(|y| y <= dk) && kapanis_eski || canli_tr >= 2;
     r.insert("durum".into(), json!(if suphe { "ŞÜPHE" } else { "TEMİZ" }));
     let son_yas_s = son_yas.map(|v| v.to_string()).unwrap_or_else(|| "None".into());
     let mut not = if suphe {
         format!(
-            "son commit {son_yas_s} dk önce, kapsül kapanışı {}; canlı transkript {canli_tr} (bu oturum dahil); worktree {worktree} — başka oturum açık mı? TEK soru; git add <yol> (H4)",
-            if kapsul_eski { "eski" } else { "güncel" }
+            "son commit {son_yas_s} dk önce, son seans kapanışı {kapanis_durum}; açık seans {acik}; canlı transkript {canli_tr} (bu oturum dahil); worktree {worktree} — başka oturum açık mı? TEK soru; git add <yol> (H4)"
         )
     } else {
         format!("son commit {son_yas_s} dk önce; canlı transkript {canli_tr}")
@@ -306,7 +329,7 @@ fn kapi_silver(repo: &Path) -> Result<Map<String, Value>, String> {
     r.insert("durum".into(), json!(if taze { "TAZE" } else { "BAYAT" }));
     r.insert(
         "not".into(),
-        json!(if taze { "" } else { "../target/release/katman-hatti (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir" }),
+        json!(if taze { "" } else { "../target/release/katman-hatti (1-2 dk, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir" }),
     );
     Ok(r)
 }

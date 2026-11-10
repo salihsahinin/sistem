@@ -557,7 +557,7 @@ fn acilis_manifest_ve_silver() {
         adim(&[]).hazir(move |k| {
             for i in 0..7 {
                 yaz(&k.jarvis.join("cc/pipeline").join(format!("pipeline-o{i}.md")), b"ortak konu\n");
-                isle(k, &format!("o{i}.txt"), "o\n", &format!("ortak {i}"), m - 120 + i as i64);
+                isle(k, &format!("o{i}.txt"), "o\n", &format!("ortak {i}"), m - 480 + 60 * i as i64);
             }
         }),
         adim(&["--is", "ortak"]),

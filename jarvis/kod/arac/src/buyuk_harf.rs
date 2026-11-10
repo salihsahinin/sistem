@@ -59,7 +59,7 @@ Korunur:  kod blokları, satır-içi kod, URL, `aynen: "…"` Salih alıntılar�
 Kapsam:   --katman sicak (CLAUDE.md · core/*.md · .claude/skills/*/SKILL.md · .claude/rules/*.md · ~/.claude/CLAUDE.md · hafıza *.md)
           · ilik (+ KILAVUZ.md · wiki/*.md · .claude/skills/*/references/*.md · .claude/skills/README.md)
           · ogrenme (09-17: ogrenme/README+mufredat · <şerit>/README · ilerleme · dersler/*.md · *-seti/*.md — yan oturumun canlı bağlamı) · hepsi. Soğuk katman (raporlar/cc/arşiv) yazılmaz (tarihçe).
-Kullanım: python3 tools/buyuk-harf-temizle.py [--katman sicak|ilik|hepsi] [--kuru] [--uygula] [--diff <yol>] [--goster N] [--json]
+Kullanım: buyuk-harf-temizle [--katman sicak|ilik|hepsi] [--kuru] [--uygula] [--diff <yol>] [--goster N] [--json]
 Çıkış:    0 (kuru: değişiklik listelendi / uygula: yazıldı) · 2 hata. Türkçe küçültme: İ→i, I→ı (Python lower() 'İ'yi bozar).
 "#;
 
@@ -437,7 +437,8 @@ fn dosyalar(repo: &Path, katman: &str, ev: &str) -> Vec<PathBuf> {
         v
     };
     let ogrenme = || -> Vec<PathBuf> {
-        let og = repo.join("ogrenme");
+        // öğrenme dizini depo kökünde (`<kök>/ogrenme`), `jarvis/ogrenme` değil; yoksa liste boş kalır
+        let og = ogrenme_dizini(repo);
         let mut v = vec![og.join("README.md"), og.join("mufredat.md")];
         for desen in ["*/README.md", "*/ilerleme.md", "*/dersler/*.md", "*/*-eval-seti/*.md", "*/*-seti/*.md"] {
             v.extend(glob_sirali(&og, desen));
@@ -471,10 +472,20 @@ struct Rapor {
     durum: usize,
 }
 
+/// `--repo` verilmezse `<depo kökü>/jarvis` (kök: `alan_ajani::kok_coz`; eski `~/sistem/jarvis` bu makinede yoktu).
+fn varsayilan_repo() -> String {
+    py::join(&crate::alan_ajani::kok_coz(), "jarvis")
+}
+
+/// Öğrenme dizini: `repo`'nun üst dizini (depo kökü) altındaki `ogrenme`.
+fn ogrenme_dizini(repo: &Path) -> PathBuf {
+    repo.parent().unwrap_or(repo).join("ogrenme")
+}
+
 pub fn kos(argv: &[String]) -> i32 {
     // `default=str(Path.home() / ...)`: ayrıştırıcı kurulurken değerlendirilir, ev dizini yoksa `-h` dahil çöker
     let Some(ev) = ev_dizini() else { return py::coker("Could not determine home directory.") };
-    let varsayilan_repo = format!("{ev}{}sistem{}jarvis", py::SEP, py::SEP);
+    let varsayilan_repo = varsayilan_repo();
     let ayrisan = Ayrisan::yeni(
         "buyuk-harf-temizle.py",
         Some(ACIKLAMA),
@@ -567,4 +578,18 @@ pub fn kos(argv: &[String]) -> i32 {
         }
     }
     0
+}
+
+#[cfg(test)]
+mod testler {
+    use super::*;
+
+    #[test]
+    fn varsayilan_repo_ve_ogrenme_depo_kokune_gore() {
+        let r = PathBuf::from(varsayilan_repo());
+        assert_eq!(r.file_name().and_then(|s| s.to_str()), Some("jarvis"));
+        assert!(r.is_dir(), "var olmayan yol: {}", r.display());
+        let og = ogrenme_dizini(&r);
+        assert_eq!(og, r.parent().unwrap().join("ogrenme"));
+    }
 }

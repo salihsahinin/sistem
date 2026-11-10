@@ -10,14 +10,12 @@ use unicode_normalization::UnicodeNormalization;
 
 const BELGE: &str = include_str!("belge/sicak.txt");
 
-/// (ad, bayt tavanı B, satır tavanı S, madde sigortası K)
-const TAVAN: [(&str, usize, Option<usize>, Option<usize>); 4] =
-    [("kapsul", 8 * 1024, Some(40), Some(8)), ("pano", 12 * 1024, None, Some(5)), ("memory", 4 * 1024, None, Some(16)), ("claude", 7 * 1024, Some(80), None)];
+/// (ad, bayt tavanı B, satır tavanı S, madde sigortası K).
+/// Karar 122 (2026-10-25): `core/durum-kapsulu.md` ve `core/pano.md` dondu, yazılmıyor → listeden çıktı (2026-11-10).
+const TAVAN: [(&str, usize, Option<usize>, Option<usize>); 2] = [("memory", 4 * 1024, None, Some(16)), ("claude", 7 * 1024, Some(80), None)];
 
 fn arsiv_sablonu(ad: &str) -> &'static str {
     match ad {
-        "kapsul" => "arsiv/kapsul-{t}.md",
-        "pano" => "arsiv/kuyruk-arsiv/pano-arsivi-{t}.md",
         "memory" => "arsiv/memory-arsivi-{t}.md",
         _ => "",
     }
@@ -35,36 +33,8 @@ fn ayrisan() -> Ayrisan {
     )
 }
 
-/// `## <başlık>\n` bölümünün gövdesi (sonraki `^## ` ya da dosya sonuna dek) satırlarına bölünmüş.
-fn bolum(t: &str, baslik: &str) -> Vec<String> {
-    let aranan = format!("{baslik}\n");
-    let mut pos = 0;
-    let bas = loop {
-        if t[pos..].starts_with(&aranan) {
-            break pos + aranan.len();
-        }
-        match t[pos..].find('\n') {
-            Some(i) => pos += i + 1,
-            None => return vec![],
-        }
-    };
-    let mut p = bas;
-    let son = loop {
-        if t[p..].starts_with("## ") {
-            break p;
-        }
-        match t[p..].find('\n') {
-            Some(i) => p += i + 1,
-            None => break t.len(),
-        }
-    };
-    py::splitlines(&t[bas..son])
-}
-
 fn maddeler(ad: &str, t: &str) -> Vec<String> {
     match ad {
-        "kapsul" => bolum(t, "## Şu an").into_iter().filter(|l| l.starts_with("- ")).collect(),
-        "pano" => bolum(t, "## AKTİF").into_iter().filter(|l| l.starts_with("| K-")).collect(),
         // kullanıcı-olgusu satırları (user-*.md) FIFO'dan MUAF: gündem değil, kimlik bilgisi (Karar 92 M1 uygulaması 09-10)
         "memory" => py::splitlines(t).into_iter().filter(|l| l.starts_with("- [") && !l.contains("](user-")).collect(),
         _ => py::splitlines(t),
@@ -100,8 +70,6 @@ pub fn kos(argv: &[String]) -> i32 {
     let repo = a.metin("repo").map(String::from).unwrap_or_else(harness_anahtar::jarvis);
     let tarih = a.metin("tarih").map(String::from).unwrap_or_else(jarvis_hook::ortak::bugun_yerel);
     let yollar = [
-        ("kapsul", py::join(&py::join(&repo, "core"), "durum-kapsulu.md")),
-        ("pano", py::join(&py::join(&repo, "core"), "pano.md")),
         ("memory", memory_yolu()),
         ("claude", py::join(&repo, "AGENTS.md")),
     ];
@@ -134,7 +102,7 @@ pub fn kos(argv: &[String]) -> i32 {
         }
         let durum = if tetik.is_empty() { "OK" } else { "FLAG" };
         flag |= !tetik.is_empty();
-        // FIFO yönü: kapsül/pano yeni maddeyi ÜSTE yazar → en eski = SON; MEMORY.md indeksi sona EKLER → en eski = BAŞ
+        // FIFO yönü: MEMORY.md indeksi sona EKLER → en eski = BAŞ (üste yazan dosya kalmadı; dal genel kalır)
         let mut arsive: Vec<&String> = vec![];
         if !tetik.is_empty() && *ad != "claude" {
             let sira: Vec<&String> = if *ad == "memory" { md.iter().collect() } else { md.iter().rev().collect() };

@@ -31,7 +31,7 @@ fn adimlar() -> Vec<Adim> {
         (
             "graf",
             vec![
-                "tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "2", "--d2", "graf/pointer-sistemi-v0-tam.d2", "--kenar-listesi",
+                "tools/pointer-graf.py", "--sessiz", "--d2-dizin", "graf/", "--kirik", "--render", "1", "--d2", "graf/pointer-sistemi-v0-tam.d2", "--kenar-listesi",
                 "graf/pointer-sistemi-v0-kenarlar.txt",
             ],
         ),

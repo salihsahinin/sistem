@@ -19,8 +19,8 @@ const ACIKLAMA: &str = r#"kod-orani-olcum.py — İB-71 baseline ölçümü: rep
 okuduğu dosyalar) oranı arasındaki fark, DÖRT kovaya ayrılarak (md · kod · yapisal · diger).
 
 Ne bu: iki ayrı ölçüm üretir —
-  (i) REPO ENVANTERİ: ~/sistem/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
-      kovaya koyar (md=.md · kod=.py/.sh/.sql · yapisal=.json/.jsonl/.csv · diger=geri kalan), kova başına
+  (i) REPO ENVANTERİ: <depo kökü>/jarvis altındaki (`.git`, `veri/bronz`, `veri/gorunum` HARİÇ) her dosyayı uzantısına göre
+      kovaya koyar (md=.md · kod=.py/.sh/.sql/.rs/.lean · yapisal=.json/.jsonl/.csv · diger=geri kalan), kova başına
       dosya sayısı + toplam satır (\n bayt sayımı — ikili dosyada da güvenli, exception atmaz) + toplam bayt.
   (ii) BAĞLAM-PENCERESİ PROXY'Sİ: `veri/bronz/hareket-olay.jsonl` (şema: hareket_id/ts/oturum/arac/girdi_ozet/
       dosya/repo_ici/sonuc/model/kaynak_dosya/yuklendi_head/okuma_tipi — gerçek veriden çıkarıldı, tahmin
@@ -36,7 +36,7 @@ Grain: 1 koşum = 1 çıktı satırı (`veri/kod-orani.jsonl`, append-only).
 Modlar: `--json` (AXI A1: stdout tek JSON nesnesi, insan satırları stderr) · `--pencere-gun N` (varsayılan 3) ·
 `--bugun YYYY-MM-DD` (A3 determinizm için zaman enjeksiyonu — yoksa sistem bugünü) · `--kuru` (kütüğe yazmaz).
 
-Kullanım: `python3 tools/kod-orani-olcum.py [--pencere-gun 3] [--bugun 2026-09-03] [--kuru] [--json] [--sessiz]`
+Kullanım: `kod-orani-olcum [--pencere-gun 3] [--bugun 2026-09-03] [--kuru] [--json] [--sessiz]`
 
 Çıkış: 0 tamam · 2 girdi/kullanım hatası (A2 sözlüğü; hareket-olay.jsonl yoksa ya da bilinmeyen bayrak).
 
@@ -81,7 +81,7 @@ fn uzanti(p: &str) -> &str {
 fn kova_ver(yol: &str) -> &'static str {
     match uzanti(yol).to_lowercase().as_str() {
         ".md" => "md",
-        ".py" | ".sh" | ".sql" => "kod",
+        ".py" | ".sh" | ".sql" | ".rs" | ".lean" => "kod",
         ".json" | ".jsonl" | ".csv" => "yapisal",
         _ => "diger",
     }

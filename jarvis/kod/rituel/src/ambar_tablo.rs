@@ -623,6 +623,8 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
     con.execute_batch(SQL_1).map_err(|e| format!("sqlite3.OperationalError: {e}"))?;
     // tartışma notları (bronz: veri/tartisma-notu.jsonl)
     let notlar = jsonl_oku(Path::new(&py::join(&py::join(&repo, "veri"), "tartisma-notu.jsonl")))?;
+    // DELETE + INSERT'ler tek transaction: satır başına commit yok; hata yolunda `tx` düşerken rollback olur
+    let tx = con.unchecked_transaction().map_err(hata)?;
     con.execute_batch(SQL_2).map_err(|e| format!("sqlite3.OperationalError: {e}"))?;
     for n in &notlar {
         let gerekli = |k: &str| n.get(k).cloned().ok_or_else(|| format!("KeyError: '{k}'"));
@@ -729,6 +731,7 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
         };
         ekle(&con, "INSERT INTO amb_olgu_kosum_sonuc VALUES (?,?,?,?,?,?,?)", vec![kid, al(h, "sonuc"), al(h, "kaynak"), al(h, "aciklama"), al(h, "yuklendi_ts"), al(h, "yuklendi_head"), wf])?;
     }
+    tx.commit().map_err(hata)?;
     // sözleşmeler (ilk kez)
     sozlesme_yaz(&con, &repo, "amb_olgu_kosum.json", "amb_olgu_kosum", "0.1.0-deneysel-m29", "1 satır = 1 işçi-ajan koşumu (Workflow/Agent alt-ajanı)", "additive-only; token kolonları OTel gen_ai.usage.* eşleme sözlüğüne bağlanır (kolon adı olarak gömülmez)")?;
     sozlesme_yaz(&con, &repo, "amb_olgu_tahmin.json", "amb_olgu_tahmin", "0.1.0-deneysel-m29", "1 satır = 1 (görev-emri, rol) tahmini — aile-BAĞIMSIZ (KB-02; gerçek aile-bazlı, JOIN v_kosum_tahmin_sapma'da)", "additive-only; üst model (fable) satırlarında tahmin alanları NULL; formül tahminlerde bant NULL + tahmin_formul_mu=1")?;
