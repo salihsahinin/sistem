@@ -292,7 +292,6 @@ dependencies = [
  "jarvis-rituel",
  "regex",
  "serde_json",
- "unicode-normalization",
 ]
 
 [[package]]

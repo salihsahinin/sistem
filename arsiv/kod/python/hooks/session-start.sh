@@ -9,7 +9,7 @@
 cd "$(dirname "$0")/../.." 2>/dev/null || true
 {
 echo "=== JARVIS SessionStart (brif ≤2 KB; tam durum: durum oturum-basi --alan jarvis · ortak/akis-graf.json) ==="
-echo "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py"
+echo "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim ../target/release/ad-esitligi-denetim"
 echo "YETKİ (m.41 GK-2): Claude Code (giriş: ${CLAUDE_CODE_ENTRYPOINT:-?}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."
 python3 - <<'PY' 2>/dev/null || echo "BRİF: silver okunamadı (python3 ya da veri/baglam.sqlite yok) → python3 tools/katman-hatti.py"
 import sqlite3, subprocess, re
@@ -31,7 +31,7 @@ try:
     c = sqlite3.connect("file:veri/baglam.sqlite?mode=ro", uri=True)
     u = c.execute("SELECT git_head_sha, uretim_zamani FROM uretim ORDER BY uretim_zamani DESC LIMIT 1").fetchone()
     taze = bool(u and head and u[0].startswith(head))
-    print("SİLVER: %s (%s) → %s" % ((u[0][:7] if u else "?"), (u[1][:16] if u else "?"), "TAZE" if taze else "BAYAT → python3 tools/katman-hatti.py (~12 sn; Karar 62 İB-27)"))
+    print("SİLVER: %s (%s) → %s" % ((u[0][:7] if u else "?"), (u[1][:16] if u else "?"), "TAZE" if taze else "BAYAT → ../target/release/katman-hatti (Karar 62 İB-27)"))
     try:
         r = c.execute("SELECT acik_salih_karari, acik_icra_borcu, son_teslim, son_kosum FROM v_amb_acilis_brifi LIMIT 1").fetchone()
         if r: print("AS-OF: açık Salih kararı %s · açık icra borcu %s · son teslim %s · son koşum %s" % (r[0], r[1], (r[2] or "-")[:60], (r[3] or "-")[:50]))
@@ -42,7 +42,7 @@ try:
         print("SİLVER-SAĞLIK: sıcak kalıntı %s · kuyruk aday %s (v_silver_kuyruk_ozet)" % ((s[0] if s else "?"), q))
     except Exception: pass
 except Exception as e:
-    print("SİLVER: okunamadı (%s) → python3 tools/katman-hatti.py" % e)
+    print("SİLVER: okunamadı (%s) → ../target/release/katman-hatti" % e)
 try:  # Karar 122 (2026-10-25): kapsül dondu; konum akış grafından (durum oturum-basi, ilk 4 satır)
     r = subprocess.run(["../target/release/durum.exe", "oturum-basi", "--alan", "jarvis"], capture_output=True, text=True, encoding="utf-8")
     if r.returncode != 0: raise RuntimeError("durum")

@@ -137,7 +137,7 @@ def kapi_silver(repo):
     head = sh("git rev-parse HEAD", repo)
     db = repo / "veri" / "baglam.sqlite"
     if not db.exists():
-        r["durum"] = "YOK"; r["not"] = "veri/baglam.sqlite yok (worktree ya da ilk kurulum) → öğrenme oturumu koşmaz; geliştirme oturumu python3 tools/katman-hatti.py"; return r
+        r["durum"] = "YOK"; r["not"] = "veri/baglam.sqlite yok (worktree ya da ilk kurulum) → öğrenme oturumu koşmaz; geliştirme oturumu ../target/release/katman-hatti"; return r
     try:
         c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
         u = c.execute("SELECT git_head_sha, uretim_zamani FROM uretim ORDER BY uretim_zamani DESC LIMIT 1").fetchone()
@@ -146,7 +146,7 @@ def kapi_silver(repo):
     taze = bool(u and head and u[0] == head)
     r["silver_sha"] = (u[0][:7] if u else "?"); r["head"] = head[:7]; r["uretim"] = (u[1][:16] if u else "?")
     r["durum"] = "TAZE" if taze else "BAYAT"
-    r["not"] = "" if taze else "python3 tools/katman-hatti.py (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir"
+    r["not"] = "" if taze else "../target/release/katman-hatti (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir"
     return r
 
 

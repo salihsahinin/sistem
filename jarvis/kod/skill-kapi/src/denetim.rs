@@ -416,8 +416,20 @@ pub fn denetle(argv: &[String]) -> (String, i32) {
     }
     let tuz = Path::new(&repo).join("core").join("tuzuk-v0.md");
     if tuz.is_file() {
-        let arts: BTreeSet<String> =
-            RX_TUZUK_MADDE.captures_iter(&yukle(&tuz).unwrap_or_default()).map(|c| c[1].to_string()).collect();
+        // Tüzük parçalıdır (Karar 117): maddeler tuzuk-v0.md + tuzuk-v0-m*.md dosyalarına dağılır; hepsi okunur.
+        let mut govde = yukle(&tuz).unwrap_or_default();
+        let mut parcalar: Vec<std::path::PathBuf> = std::fs::read_dir(Path::new(&repo).join("core"))
+            .map(|d| d.flatten().map(|e| e.path()).collect())
+            .unwrap_or_default();
+        parcalar.retain(|y| {
+            y.file_name().and_then(|a| a.to_str()).is_some_and(|a| a.starts_with("tuzuk-v0-m") && a.ends_with(".md"))
+        });
+        parcalar.sort();
+        for y in parcalar {
+            govde.push('\n');
+            govde.push_str(&yukle(&y).unwrap_or_default());
+        }
+        let arts: BTreeSet<String> = RX_TUZUK_MADDE.captures_iter(&govde).map(|c| c[1].to_string()).collect();
         let kullanilan: BTreeSet<String> = RX_M_NN.captures_iter(&text).map(|c| c[1].to_string()).collect();
         for a in kullanilan {
             checked += 1;

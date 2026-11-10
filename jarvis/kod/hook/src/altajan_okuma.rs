@@ -132,6 +132,19 @@ fn yol_dene(c: &[char], p: usize) -> Option<usize> {
     None
 }
 
+/// Git Bash / Cygwin sürücü önekini Windows biçimine çevirir: `/c/x` ve `/cygdrive/c/x` -> `C:/x`.
+/// Önek yoksa yol aynen döner.
+fn surucu_onek_cevir(yol: &str) -> String {
+    let govde = yol.strip_prefix("/cygdrive").filter(|g| g.starts_with('/')).unwrap_or(yol);
+    let b = govde.as_bytes();
+    if b.len() >= 2 && b[0] == b'/' && b[1].is_ascii_alphabetic() && (b.len() == 2 || b[2] == b'/') {
+        let harf = (b[1] as char).to_ascii_uppercase();
+        let kalan = if b.len() == 2 { "/" } else { &govde[2..] };
+        return format!("{harf}:{kalan}");
+    }
+    yol.to_string()
+}
+
 pub fn kos(o: &Ortam) -> Sonuc {
     let mut s = Sonuc::bos();
     let Some(Value::Object(g)) = json_oku(&o.stdin_metin()) else { return s };
@@ -169,6 +182,8 @@ pub fn kos(o: &Ortam) -> Sonuc {
         if yol.is_empty() {
             return false;
         }
+        let cevrik = if cfg!(windows) { surucu_onek_cevir(yol) } else { yol.to_string() };
+        let yol = cevrik.as_str();
         let tam = if py_isabs(yol) { PathBuf::from(yol) } else { repo.join(yol) };
         let rp = realpath(&tam);
         let rs = rp.to_string_lossy().into_owned();
@@ -209,4 +224,27 @@ pub fn kos(o: &Ortam) -> Sonuc {
         s.kod = 2;
     }
     s
+}
+
+#[cfg(test)]
+mod testler {
+    use super::*;
+
+    #[test]
+    fn git_bash_onek_windows_bicimine_cevrilir() {
+        assert_eq!(surucu_onek_cevir("/c/sistem/sistem/jarvis/core/durum-kapsulu.md"), "C:/sistem/sistem/jarvis/core/durum-kapsulu.md");
+        assert_eq!(surucu_onek_cevir("/cygdrive/d/x/y"), "D:/x/y");
+        assert_eq!(surucu_onek_cevir("/c"), "C:/");
+        assert_eq!(surucu_onek_cevir("core/pano.md"), "core/pano.md");
+        assert_eq!(surucu_onek_cevir("/cc/gelen"), "/cc/gelen");
+        assert_eq!(surucu_onek_cevir("C:/x/y"), "C:/x/y");
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn git_bash_ve_windows_yolu_ayni_realpath() {
+        let a = realpath(&PathBuf::from(surucu_onek_cevir("/c/sistem/sistem/jarvis/core/durum-kapsulu.md")));
+        let b = realpath(&PathBuf::from(surucu_onek_cevir("C:/sistem/sistem/jarvis/core/durum-kapsulu.md")));
+        assert_eq!(a, b);
+    }
 }

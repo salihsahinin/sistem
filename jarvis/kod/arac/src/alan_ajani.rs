@@ -22,7 +22,7 @@ Ortak `sablonlar/skills/ogren/` yoksa `jarvis/.claude/skills/ogren/`'den v0.3 (a
 İdempotens: var olan dosyanın üstüne YAZMAZ (`--uzerine-yaz` verilmedikçe); rapor "yeni/atlandı/aynı" sayar. Şerit taşıma (T3,
 `git mv ../ogrenme/<şerit> <dizin>/ogrenme/`) Salih elidir: komut listesi basılır, koşulmaz (m.8 taşıma Salih beyanı).
 
-Kullanım: python3 tools/alan-ajani-dogur.py kuyruk/alan-ajanlari-YYYY-MM-DD.json [--kuru] [--uzerine-yaz] [--tarih YYYY-MM-DD]
+Kullanım: ../target/release/alan-ajani-dogur kuyruk/alan-ajanlari-YYYY-MM-DD.json [--kuru] [--uzerine-yaz] [--tarih YYYY-MM-DD]
 Çıkış: 0 = üretildi/aynı · 2 = spec/şablon hatası.
 "#;
 
@@ -91,9 +91,9 @@ fn oku(yol: &str) -> Result<String, String> {
     }
 }
 
-/// Metin kipinde yazım: Windows'ta Python `\n` -> `\r\n` çevirir.
+/// Metin kipinde yazım: Windows'ta Python `\n` -> `\r\n` çevirir; `.sh` her platformda LF kalır (bash CRLF'de kırılır).
 pub fn metin_yaz(yol: &str, icerik: &str) -> Result<(), String> {
-    let b = if cfg!(windows) { icerik.replace('\n', "\r\n") } else { icerik.to_string() };
+    let b = if cfg!(windows) && !yol.ends_with(".sh") { icerik.replace('\n', "\r\n") } else { icerik.to_string() };
     fs::write(yol, b).map_err(|e| format!("{yol}: {e}"))
 }
 
@@ -217,7 +217,7 @@ fn hook_v06(y: &Yollar, ad: &str) -> Result<String, String> {
             concat!(
                 "# v0.6 (2026-09-21, Karar 105 M6 alan ajanları): `.claude/okuma-izin-ek` dosyası (satır başına depo köküne göreli yol, ör.\n",
                 "#   `ogrenme/kaynaklar`) izinli köklere eklenir — salt-okur ortak kaynaklar; yazma yasağı settings deny'de. Dosya yoksa v0.5 ile aynı.\n",
-                "#   Tek kaynak `friday/.claude/hooks/okuma-izin.sh`; bu kopya `jarvis/tools/alan-ajani-dogur.py` yamasıyla üretilir, elle düzenlenmez.\n",
+                "#   Tek kaynak `friday/.claude/hooks/okuma-izin.sh`; bu kopya `target/release/alan-ajani-dogur` yamasıyla üretilir, elle düzenlenmez.\n",
                 "input=$(cat)\n"
             ),
             1,

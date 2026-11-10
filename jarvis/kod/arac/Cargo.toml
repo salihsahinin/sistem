@@ -10,7 +10,6 @@ jarvis-hook = { path = "../hook" }
 jarvis-rituel = { path = "../rituel" }
 regex = "1"
 serde_json = { version = "1", features = ["preserve_order"] }
-unicode-normalization = "0.1"
 
 [lib]
 name = "jarvis_arac"

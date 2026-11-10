@@ -16,6 +16,14 @@ fn rp(s: &str) -> PathBuf {
     }
 }
 
+/// Claude Code matcher kuralı: boş ya da `*` = hepsi; aksi hâlde tam eşleşen regex.
+fn matcher_uyar(m: &str, arac: &str) -> bool {
+    if m.is_empty() || m == "*" || arac.is_empty() {
+        return true;
+    }
+    Regex::new(&format!("^(?:{m})$")).map(|r| r.is_match(arac)).unwrap_or(false)
+}
+
 pub fn kos(olay: &str, o: &Ortam) -> Sonuc {
     let mut s = Sonuc::bos();
     let girdi_ham = o.stdin_metin();
@@ -41,11 +49,8 @@ pub fn kos(olay: &str, o: &Ortam) -> Sonuc {
     let mut kod = 0;
     for k in kayitlar {
         let m = k.get("matcher").and_then(Value::as_str).unwrap_or("");
-        if !m.is_empty() && !arac.is_empty() {
-            let ok = Regex::new(&format!("^(?:{m})$")).map(|r| r.is_match(arac)).unwrap_or(false);
-            if !ok {
-                continue;
-            }
+        if !matcher_uyar(m, arac) {
+            continue;
         }
         for h in k.get("hooks").and_then(Value::as_array).cloned().unwrap_or_default() {
             if h.get("type").and_then(Value::as_str) != Some("command") {
@@ -93,4 +98,24 @@ pub fn kos(olay: &str, o: &Ortam) -> Sonuc {
     }
     s.kod = kod;
     s
+}
+
+#[cfg(test)]
+mod testler {
+    use super::matcher_uyar;
+
+    #[test]
+    fn yildiz_hepsi_demek() {
+        assert!(matcher_uyar("*", "Bash"));
+        assert!(matcher_uyar("*", "Read"));
+        assert!(matcher_uyar("", "Bash"));
+    }
+
+    #[test]
+    fn regex_matcher_korunur() {
+        assert!(matcher_uyar("Bash", "Bash"));
+        assert!(!matcher_uyar("Bash", "Read"));
+        assert!(matcher_uyar("Read|Grep|Glob", "Grep"));
+        assert!(matcher_uyar("Bash", ""));
+    }
 }

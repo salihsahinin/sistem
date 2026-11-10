@@ -1,5 +1,5 @@
 //! `session-start.sh` karşılığı: SessionStart brifi, çıktı sert kapı `head -c 2000` (bayt).
-use crate::ortak::{Ortam, Sonuc, bugun_yerel, ilk_n, oku_py, py_str, py_truthy};
+use crate::ortak::{Ortam, Sonuc, bugun_yerel, ilk_n, oku_py, py_str};
 use rusqlite::{Connection, OpenFlags, types::Value as SV};
 use serde_json::Value;
 use std::path::Path;
@@ -130,7 +130,7 @@ fn python_kismi(repo: &Path) -> Vec<String> {
         };
         o.push(format!(
             "SİLVER: {sha} ({zaman}) → {}",
-            if taze { "TAZE" } else { "BAYAT → python3 tools/katman-hatti.py (~12 sn; Karar 62 İB-27)" }
+            if taze { "TAZE" } else { "BAYAT → ../target/release/katman-hatti (Karar 62 İB-27)" }
         ));
         if let Ok(Some(r)) = satir_oku(&c, "SELECT acik_salih_karari, acik_icra_borcu, son_teslim, son_kosum FROM v_amb_acilis_brifi LIMIT 1", 4) {
             let veya = |v: &SV, n: usize| if sv_truthy(v) { ilk_n(&sv_str(v), n) } else { "-".to_string() };
@@ -149,7 +149,7 @@ fn python_kismi(repo: &Path) -> Vec<String> {
         Ok(())
     };
     if let Err(e) = silver() {
-        o.push(format!("SİLVER: okunamadı ({}) → python3 tools/katman-hatti.py", hata_iletisi(&e)));
+        o.push(format!("SİLVER: okunamadı ({}) → ../target/release/katman-hatti", hata_iletisi(&e)));
     }
     // Karar 122 (2026-10-25): kapsül dondu; konum akış grafından (`durum oturum-basi`, ilk 4 satır: KONUM · DURUM · sıradakiler).
     let durum = Command::new(repo.join("..").join("target").join("release").join("durum.exe"))
@@ -164,8 +164,19 @@ fn python_kismi(repo: &Path) -> Vec<String> {
         }
         _ => o.push("DURUM: durum.exe yok ya da hata → cargo build --release -p durum; konum ortak/akis-graf.json".into()),
     }
-    let _ = oku_py;
     o
+}
+
+/// En fazla `kapi` bayt; çok baytlı karakterin ortasına denk gelirse önceki karakter sınırına geri yürür.
+fn karakter_sinirinda_kes(mut t: String, kapi: usize) -> String {
+    if t.len() > kapi {
+        let mut k = kapi;
+        while !t.is_char_boundary(k) {
+            k -= 1;
+        }
+        t.truncate(k);
+    }
+    t
 }
 
 pub fn kos(o: &Ortam) -> Sonuc {
@@ -175,7 +186,7 @@ pub fn kos(o: &Ortam) -> Sonuc {
     };
     let mut satirlar: Vec<String> = vec![
         "=== JARVIS SessionStart (brif ≤2 KB; tam durum: durum oturum-basi --alan jarvis · ortak/akis-graf.json) ===".into(),
-        "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim tools/ad-esitligi-denetim.py".into(),
+        "AD (Karar 93): Salih'le konuşan ajan = JARVİS (eski ad Carvis) · repo = 'depo'/'kanon' · denetim ../target/release/ad-esitligi-denetim".into(),
         format!("YETKİ (m.41 GK-2): Claude Code (giriş: {giris}) = ANA-SIRA · kanon kararı = (ana-sıra ∧ en güçlü model, bugün Fable) ∨ Salih imzası · Katman-1 (core/, CLAUDE.md, tüzük) yalnız Salih · frenler: push Salih beyanıyla (m.9) · md.49 · PreToolUse teli · canlı paralel oturumda git add <yol> (H4)."),
     ];
     satirlar.extend(python_kismi(&o.repo));
@@ -183,10 +194,20 @@ pub fn kos(o: &Ortam) -> Sonuc {
     satirlar.push("=== /SessionStart ===".into());
     let mut tam = satirlar.join("\n");
     tam.push('\n');
-    let mut b = tam.into_bytes();
-    b.truncate(KAPI);
     let mut s = Sonuc::bos();
-    s.cikti = b;
-    let _ = py_truthy;
+    s.cikti = karakter_sinirinda_kes(tam, KAPI).into_bytes();
     s
+}
+
+#[cfg(test)]
+mod testler {
+    use super::karakter_sinirinda_kes;
+
+    #[test]
+    fn cok_bayt_karakter_ortasinda_kesmez() {
+        // "ş" 2 bayt; kapı 3 -> "aş" (3 bayt) kalır, kapı 2 -> "a"
+        assert_eq!(karakter_sinirinda_kes("aşb".into(), 3), "aş");
+        assert_eq!(karakter_sinirinda_kes("aşb".into(), 2), "a");
+        assert_eq!(karakter_sinirinda_kes("kısa".into(), 2000), "kısa");
+    }
 }

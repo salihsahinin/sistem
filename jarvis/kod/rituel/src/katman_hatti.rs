@@ -1,8 +1,9 @@
 //! `tools/katman-hatti.py` karşılığı: silver/gold katmanını BRONZ'dan uçtan uca yeniden üreten sabit sıralı hat.
 //! Kira (`veri/.kira-katman-hatti.json`, O_EXCL, TTL 600 sn, bekleme 60 sn/2 sn, çıkış 5), hijyen (ANALYZE + PRAGMA optimize),
 //! `[durum  ] ad  süre  komut` satırları, `--json` tek nesne. Çıkış: ilk FAIL-LOUD adımın kodu · 5 kira alınamadı · 2 bilinmeyen --atla adı.
-//! Taşınmış adımlar (baglam, ambar, hareket, seyir, saglik, anakronizm) yanındaki ikiliyle koşar (yoksa `<repo>/../target/release/`, o da yoksa Python betiği);
-//! diğer adımlar Python betiği olarak çağrılmaya devam eder.
+//! Taşınmış adımlar (baglam, ambar, hareket, seyir, saglik, anakronizm) yanındaki ikiliyle koşar (yoksa `<repo>/../target/release/`);
+//! ikili yoksa yalnız `baglam` Python betiğine düşer; betiği arşive inmiş adımlar (`PYTHON_YEDEGI_YOK`) net hata verir.
+//! Diğer adımlar Python betiği olarak çağrılmaya devam eder.
 use crate::argparse::{Ayrisan, Secenek};
 use crate::{harness_anahtar, py};
 use jarvis_hook::ortak::py_dumps;
@@ -67,6 +68,9 @@ fn ikili_adi(ad: &str) -> Option<&'static str> {
         _ => None,
     }
 }
+
+/// Python betiği arşive inmiş taşınmış adımlar: ikili yoksa yedeğe düşülmez, adım `IKILI YOK` ile düşer.
+const PYTHON_YEDEGI_YOK: &[&str] = &["ambar", "hareket", "seyir", "saglik", "anakronizm"];
 
 fn tum_adlar() -> Vec<&'static str> {
     adimlar().into_iter().chain(parquet_adimlar()).map(|(a, _)| a).collect()
@@ -303,6 +307,19 @@ pub fn kos(argv: &[String]) -> i32 {
                 args.extend(["--simdi".into(), format!("{}T00:00:00", snapshot.clone().unwrap())]);
             }
             let rust_ikili = ikili_adi(ad).and_then(|i| ikili_bul(&repo, i).map(|y| (i, y)));
+            if rust_ikili.is_none()
+                && PYTHON_YEDEGI_YOK.contains(&ad)
+                && let Some(eksik) = ikili_adi(ad)
+            {
+                let mesaj = format!("{eksik} ikilisi bulunamadı (yanındaki dizin ve ../target/release/); Python yedeği arşivde. Çözüm: cargo build --release");
+                kayitlar.push(json!({"adim": ad, "durum": "IKILI YOK", "sure_s": json_sayi(0.0), "kod": 2, "uyari": true, "stderr_son": mesaj}));
+                yaz(json_mod, &format!("[{}] {} {:5.1}s  {eksik}", py::sola_hizala("IKILI YOK", 7), py::sola_hizala(ad, 11), 0.0));
+                yaz(json_mod, &format!("        STDERR: {mesaj}"));
+                if kod == 0 {
+                    kod = 2;
+                }
+                continue;
+            }
             let (mut komut, yanki) = match &rust_ikili {
                 Some((adi, yol)) => {
                     let mut c = Command::new(yol);

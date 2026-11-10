@@ -10,7 +10,8 @@ const PROT: &str = r"(core/|CLAUDE\.md|\.claude/)";
 fn desenler() -> Vec<Regex> {
     let r = |s: String| Regex::new(&format!("(?-u){s}")).expect("regex");
     vec![
-        r(r#">{1,2}[[:space:]]*"?\.?/?(core/|CLAUDE\.md|\.claude/)"#.to_string()),
+        // göreli (`core/`, `./core/`) ya da mutlak önekli (`/c/.../core/`, `C:/.../core/`, `C:\...\core\`, `~/...`) hedef
+        r(r#">{1,2}[[:space:]]*"?(?:\.?/?|(?:[A-Za-z]:|~|\$\{?HOME\}?)?[/\\](?:[^[:space:]"'|;&<>]*[/\\])?)(core[/\\]|CLAUDE\.md|\.claude[/\\])"#.to_string()),
         r(format!(r"\b(mv|cp|rm|touch|truncate|tee|dd|install)\b.*{PROT}")),
         r(format!(r"\b(sed|perl)\b[^|;&]*[[:space:]]-[[:alpha:]]*i[^|;&]*{PROT}")),
         r(format!(r"\bgit[[:space:]]+(checkout|restore|reset|clean|rm|mv)\b.*{PROT}")),
@@ -52,4 +53,39 @@ pub fn kos(o: &Ortam) -> Sonuc {
         s.kod = 2;
     }
     s
+}
+
+#[cfg(test)]
+mod testler {
+    use super::*;
+
+    fn engel_mi(cmd: &str) -> bool {
+        let d = desenler();
+        cmd.split('\n').any(|satir| d.iter().any(|r| r.is_match(satir.as_bytes())))
+    }
+
+    #[test]
+    fn mutlak_yonlendirme_kesilir() {
+        assert!(engel_mi("echo x > /c/sistem/sistem/jarvis/core/deneme.md"));
+        assert!(engel_mi("echo x >> C:/sistem/sistem/jarvis/core/deneme.md"));
+        assert!(engel_mi(r"echo x > C:\sistem\sistem\jarvis\core\deneme.md"));
+        assert!(engel_mi("echo x > \"/c/sistem/sistem/jarvis/CLAUDE.md\""));
+        assert!(engel_mi("echo x > ~/sistem/jarvis/.claude/settings.json"));
+    }
+
+    #[test]
+    fn goreli_yonlendirme_hala_kesilir() {
+        assert!(engel_mi("echo x > core/deneme.md"));
+        assert!(engel_mi("echo x >> ./core/deneme.md"));
+        assert!(engel_mi("echo x > CLAUDE.md"));
+    }
+
+    #[test]
+    fn izinli_durumlar_bozulmaz() {
+        assert!(!engel_mi("cat core/durum.md"));
+        assert!(!engel_mi("echo x > raporlar/a.md"));
+        assert!(!engel_mi("echo x > /c/sistem/sistem/jarvis/raporlar/score/a.md"));
+        assert!(!engel_mi("echo x > alt/core/a.md"));
+        assert!(!engel_mi("ls core/ 2> /dev/null"));
+    }
 }

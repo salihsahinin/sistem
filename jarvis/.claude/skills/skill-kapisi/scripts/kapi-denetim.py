@@ -120,8 +120,12 @@ def main():
     # tüzük maddeleri m.NN
     tuz = os.path.join(repo, 'core', 'tuzuk-v0.md')
     if os.path.isfile(tuz):
-        arts = set(re.findall(r'^(\d+)\.\s+\*\*', load(tuz), re.M))
-        for a in set(re.findall(r'\bm\.(\d+)[a-z]?\b', text)):
+        # Tüzük parçalıdır (Karar 117): maddeler tuzuk-v0.md + tuzuk-v0-m*.md dosyalarına dağılır; hepsi okunur.
+        govde = load(tuz)
+        for parca in sorted(glob.glob(os.path.join(repo, 'core', 'tuzuk-v0-m*.md'))):
+            govde += '\n' + load(parca)
+        arts = set(re.findall(r'^(\d+)\.\s+\*\*', govde, re.M))
+        for a in sorted(set(re.findall(r'\bm\.(\d+)[a-z]?\b', text))):
             checked += 1
             if a not in arts: missing.append(f"m.{a} (tüzükte madde yok)")
     # skill adları: backtick içindeki tire-li kelime, hazine'de yoksa UYARI (sert değil — çünkü her tire-li kelime skill değil)

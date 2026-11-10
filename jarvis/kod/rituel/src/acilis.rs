@@ -260,7 +260,7 @@ fn kapi_silver(repo: &Path) -> Result<Map<String, Value>, String> {
     let db = repo.join("veri").join("baglam.sqlite");
     if !db.exists() {
         r.insert("durum".into(), json!("YOK"));
-        r.insert("not".into(), json!("veri/baglam.sqlite yok (worktree ya da ilk kurulum) → öğrenme oturumu koşmaz; geliştirme oturumu python3 tools/katman-hatti.py"));
+        r.insert("not".into(), json!("veri/baglam.sqlite yok (worktree ya da ilk kurulum) → öğrenme oturumu koşmaz; geliştirme oturumu ../target/release/katman-hatti"));
         return Ok(r);
     }
     // Python `u[0][:7]`/`u[1][:16]`: metin olmayan sütun TypeError (çöker); burada `Err(None)` ile işaretlenir
@@ -306,7 +306,7 @@ fn kapi_silver(repo: &Path) -> Result<Map<String, Value>, String> {
     r.insert("durum".into(), json!(if taze { "TAZE" } else { "BAYAT" }));
     r.insert(
         "not".into(),
-        json!(if taze { "" } else { "python3 tools/katman-hatti.py (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir" }),
+        json!(if taze { "" } else { "../target/release/katman-hatti (~12 sn, idempotent; Karar 62 İB-27) — atlanırsa adresli erişim yanlış satır getirir" }),
     );
     Ok(r)
 }
