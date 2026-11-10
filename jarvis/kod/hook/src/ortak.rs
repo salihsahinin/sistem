@@ -128,8 +128,12 @@ pub fn ekle_satir(yol: &Path, satir: &str) -> std::io::Result<()> {
         std::fs::create_dir_all(d)?;
     }
     let mut f = std::fs::OpenOptions::new().create(true).append(true).open(yol)?;
-    f.write_all(satir.as_bytes())?;
-    f.write_all(b"\n")
+    // Satır ve satır sonu tek yazımda gider: iki ayrı yazım, eşzamanlı hook süreçlerinde kayıtların iç içe geçmesine yol açıyordu
+    // (talimat-yukleme-olay.jsonl: 35 birleşik kayıt, 2026-11-10 denetimi).
+    let mut tampon = Vec::with_capacity(satir.len() + 1);
+    tampon.extend_from_slice(satir.as_bytes());
+    tampon.push(b'\n');
+    f.write_all(&tampon)
 }
 
 /// Python `s[:n]` (kod noktası).
