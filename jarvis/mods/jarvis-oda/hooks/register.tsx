@@ -1,4 +1,4 @@
-// jarvis-oda v0.6: oda modu (Salih 2026-10-27, Karar 126; v0.5 2026-11-03 tanrısal bakış + iş nodu sınıfı).
+// jarvis-oda v0.8 (alt-oda, Karar 130 B9); v0.6: oda modu (Salih 2026-10-27, Karar 126; v0.5 2026-11-03 tanrısal bakış + iş nodu sınıfı).
 // Bu dosya yalnız kayıt yapar; mantık hooks/src/ altında: durum (veri) · araclar (yazan taraf) · metin (model metni) · pano (çizim) · ortak.
 // Sürüm tarihçesi README.md'de; v0.5: işçiye tıkla → işçi transkripti, kaydırılabilir sohbet/akış, katlanır bölümler,
 // [#N · başlık · sınıf] etiketleri, iş nodu sınıfı (izole/planli/dosyali/rol) + bütçe + kapsam kapısı, kütük/graf köprüsü.
@@ -24,6 +24,7 @@ import {
   isciAracOncesi,
   uyandirmaBosalt,
 } from './src/araclar'
+import { ALT_ODA_ARACI, altOdaAc, altOdaGorevBitti } from './src/altoda'
 import { gelenleriIsle, gidenleriOku, odayaKatil, disMesaj, aktifIsaretle } from './src/dis'
 
 export const register: Register = (on, options) => {
@@ -38,6 +39,7 @@ export const register: Register = (on, options) => {
   on('session.start', async ($, e, next) => {
     await $.command.register({ name: 'oda', description: 'Oda panosunu açar (Jarvis planlar, işçiler uygular, ortak sohbet).' })
     for (const a of ARACLAR) await $.tool.register(a)
+    await $.tool.register(ALT_ODA_ARACI)
     const oda = await odaYukle($)
     if (oda) {
       $.ui.status(`oda ${oda.baslik}: ${kosan(oda)}/${oda.maksParalel} koşuyor`)
@@ -105,9 +107,10 @@ export const register: Register = (on, options) => {
   })
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_gorev_ver' }, async ($, e) => ({ result: await gorevVer($, e as Parameters<typeof gorevVer>[1], ayar) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_oku' }, async ($, e) => {
-    const k = e as { son?: number; gorevId?: number }
-    return { result: await odaOku($, Number(k.son ?? 12), await hareketleriOku($), k.gorevId === undefined ? undefined : Number(k.gorevId)) }
+    const k = e as { son?: number; gorevId?: number; altOdaId?: number }
+    return { result: await odaOku($, Number(k.son ?? 12), await hareketleriOku($), k.gorevId === undefined ? undefined : Number(k.gorevId), k.altOdaId === undefined ? undefined : Number(k.altOdaId)) }
   })
+  on('tool.call', { tool: 'mcp__jarvis-oda__oda_altoda_ac' }, async ($, e) => ({ result: await altOdaAc($, e as unknown as Record<string, unknown>, ayar) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri_karar' }, async ($, e) => {
     const k = e as { oneriId?: number; karar?: string; not?: string }
     return { result: await oneriKarar($, 'jarvis', Number(k.oneriId), k.karar === 'ret' ? 'ret' : 'kabul', k.not) }
@@ -119,7 +122,12 @@ export const register: Register = (on, options) => {
 
   on('turn.complete', async ($, e, next) => {
     const r = await next(e)
-    if (e.agentId) await gorevBitti($, e as unknown as Parameters<typeof gorevBitti>[1], ayar).catch(err => $.ui.log('oda gorevBitti: ' + String(err)))
+    if (e.agentId) {
+      const bitis = e as unknown as Parameters<typeof gorevBitti>[1]
+      // B9: alt-oda çağrısı kendi akışında ilerler; değilse sıradan görev bitişi.
+      const altOda = await altOdaGorevBitti($, bitis, ayar).catch(err => ($.ui.log('oda altOdaGorevBitti: ' + String(err)), false))
+      if (!altOda) await gorevBitti($, bitis, ayar).catch(err => $.ui.log('oda gorevBitti: ' + String(err)))
+    }
     return r
   })
 

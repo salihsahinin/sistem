@@ -1,6 +1,6 @@
 // metin.ts: modelin okuduğu metinler; oda_oku özeti, işçi emri derleyici, araç özeti, prompt bölümü.
 // Saf fonksiyonlar; motor ($) almaz, dosya yazmaz.
-import type { Oda, OdaGorev, OdaHareket } from '../../types'
+import type { Oda, OdaGorev, OdaHareket, OdaAltOda, OdaAltOdaMetin } from '../../types'
 import { kosan, sinifi } from './durum'
 import { kisa, saat } from './ortak'
 
@@ -52,6 +52,15 @@ export function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): str
   if (oda.oturumlar?.length) {
     satirlar.push('## Oturumlar (kalıcı)')
     for (const o of oda.oturumlar) satirlar.push(`- ◆ oturum ${o.oturum} [${o.durum === 'katildi' ? 'katıldı' : 'ayrıldı'}]${o.rol ? ' · rol: ' + o.rol : ''}${o.dosyalar.length ? ' · dosyalar: ' + o.dosyalar.join(', ') : ''}${o.son ? ' · son ' + saat(o.son) : ''}`)
+  }
+  if (oda.altOdalar?.length) {
+    satirlar.push('## Alt-odalar')
+    for (const a of oda.altOdalar) {
+      const asama = a.durum === 'tur' ? `tur ${a.aktifTur}/${a.turSayisi}` : a.durum
+      satirlar.push(`- alt-oda #${a.id} [${asama}] ${a.baslik} · ajanlar: ${a.ajanlar.join(', ')} · hakem: ${a.hakem}${a.kutuk ? ' · hedef #' + a.kutuk.hedefId : ''} (tam döküm: oda_oku altOdaId=${a.id})`)
+      satirlar.push('  soru: ' + kisa(a.soru, 200))
+      if (a.kutukNot) satirlar.push('  kütük: ' + a.kutukNot)
+    }
   }
   const bekleyen = oda.oneriler.filter(o => o.durum === 'bekliyor')
   satirlar.push(`## Öneriler (bekleyen ${bekleyen.length})`)
@@ -113,10 +122,86 @@ export function isciEmri(oda: Oda, g: OdaGorev): string {
   ].join('\n')
 }
 
+// ---------- alt-oda (B9) ----------
+// Özgünlük kuralı: ajanın gördüğü metin yalnız bu dosyadaki sabit çerçeve + Jarvis'in soru/kapsam/done alanları
+// + diğer ajanların ham metinleridir. Ajan metinleri olduğu gibi yapıştırılır: kısaltma, trim, özet yok.
+
+const ALT_ODA_CERCEVE =
+  'Sana soru, kapsam ve done cümlesi dışında yöntem ya da görüş verilmez; yöntemini ve görüşünü sen seçersin. Metnin değiştirilmeden kaydedilir; ortak çıktıyı yalnız hakem tartar. Dil: Türkçe. Son cevabın kaydedilen metindir.'
+
+function altOdaBasligi(odaId: string, a: OdaAltOda, ajan: string): string {
+  return [
+    `Bu bir alt-oda münazarasıdır: "${a.baslik}" (üst oda ${odaId}, alt-oda #${a.id}). Rolün ${ajan} ajan tanımındaki gibidir; katılımcılar: ${a.ajanlar.join(', ')}.`,
+    ALT_ODA_CERCEVE,
+    '\n## Soru\n' + a.soru,
+    '\n## Kapsam\n' + a.kapsam,
+    '\n## Done\n' + a.done,
+  ].join('\n')
+}
+
+/** Ad etiketli ham metin bloğu; metin dokunulmadan eklenir. */
+function etiketliBlok(m: OdaAltOdaMetin): string {
+  return `### ${m.ajan}${m.tur ? ' (tur ' + m.tur + ')' : ''}\n` + (m.hata ? `(çağrı başarısız: ${m.hata})` : m.metin)
+}
+
+/** Tur r emri: r = 1 yalnız soru/kapsam/done; r > 1 diğerlerinin r-1 metinleri ad etiketli eklenir. */
+export function altOdaTurEmri(odaId: string, a: OdaAltOda, ajan: string, tur: number): string {
+  const bas = altOdaBasligi(odaId, a, ajan)
+  if (tur <= 1) return `${bas}\n\n## Tur 1 / ${a.turSayisi}\nBağımsız ilk görüş: diğer katılımcıların metni bu turda sana verilmez. Kendi cevabını yaz.`
+  const onceki = a.turlar.filter(m => m.tur === tur - 1 && m.ajan !== ajan).map(etiketliBlok).join('\n\n')
+  return `${bas}\n\n## Tur ${tur} / ${a.turSayisi}\nDiğer katılımcıların tur ${tur - 1} metinleri aşağıdadır. Onları gördükten sonra yanıtını yaz.\n\n## Tur ${tur - 1} metinleri\n${onceki}`
+}
+
+/** Son konum emri: münazaranın tamamı + tek paragraf son konum isteği. */
+export function altOdaSonKonumEmri(odaId: string, a: OdaAltOda, ajan: string): string {
+  return `${altOdaBasligi(odaId, a, ajan)}\n\n## Münazara (tamamı)\n${a.turlar.map(etiketliBlok).join('\n\n')}\n\n## Son konum\nMünazara bitti. Tek paragraf son konumunu yaz.`
+}
+
+/** Ortak çıktı = konuşmanın tamamı + ajan başına son konum; ajan metinleri bayt düzeyinde aynen durur. */
+export function altOdaOrtakCikti(a: OdaAltOda): string {
+  const turlar: string[] = []
+  for (let r = 1; r <= a.turSayisi; r++) {
+    const bu = a.turlar.filter(m => m.tur === r)
+    if (bu.length) turlar.push(`## Tur ${r}\n\n` + bu.map(etiketliBlok).join('\n\n'))
+  }
+  const son = a.sonKonumlar.length ? '## Son konumlar\n\n' + a.sonKonumlar.map(etiketliBlok).join('\n\n') : ''
+  return [...turlar, son].filter(Boolean).join('\n\n')
+}
+
+/** Hakem emri: done cümlesi + ortak çıktı; hakem yalnız done'a göre tartar. */
+export function altOdaHakemEmri(odaId: string, a: OdaAltOda): string {
+  return [
+    `Alt-oda #${a.id} "${a.baslik}" (üst oda ${odaId}) münazarasının ortak çıktısını tart. Katılımcılar: ${a.ajanlar.join(', ')}. Rolün ${a.hakem} ajan tanımındaki gibidir. Dil: Türkçe.`,
+    'Ölçüt yalnız aşağıdaki done cümlesidir. Ortak çıktı ajanların değiştirilmemiş metinleridir; özet ya da düzeltme yoktur.',
+    '\n## Soru\n' + a.soru,
+    '\n## Done\n' + a.done,
+    '\n# Ortak çıktı\n' + altOdaOrtakCikti(a),
+  ].join('\n')
+}
+
+/** oda_oku altOdaId=K: tam döküm, kesilmez. */
+export function altOdaDokumu(a: OdaAltOda | undefined, k: number, toplam: number): string {
+  if (!a) return `Alt-oda #${k} bu odada yok (${toplam} alt-oda).`
+  const asama = a.durum === 'tur' ? `tur ${a.aktifTur}/${a.turSayisi}` : a.durum
+  return [
+    `# Alt-oda #${a.id} [${asama}] ${a.baslik}`,
+    `ajanlar: ${a.ajanlar.join(', ')} · hakem: ${a.hakem} · tur sayısı: ${a.turSayisi} · açılış ${a.acilis}${a.kapanis ? ' · kapanış ' + a.kapanis : ''}`,
+    a.kutukNot ? 'kütük: ' + a.kutukNot : '',
+    '\n## Soru\n' + a.soru,
+    '\n## Kapsam\n' + a.kapsam,
+    '\n## Done\n' + a.done,
+    '\n# Ortak çıktı\n' + (altOdaOrtakCikti(a) || '(henüz metin yok)'),
+    '\n# Hakem raporu\n' + (a.hakemRaporu ?? '(henüz yok)'),
+  ]
+    .filter(s => s !== '')
+    .join('\n')
+}
+
 export const PROMPT_BOLUMU = [
   '# jarvis-oda (mod)',
   'Oda = Jarvis planlar, işçi ajanlar uygular, ortak sohbet herkesi bağlar. Araçlar: oda_ac(baslik, maksParalel?) · oda_plan(metin) · oda_gorev_ver(baslik, emir, zorluk: kolay|orta|zor → haiku|sonnet|opus, sinif, done, dosyalar?, butce?, isId?, ajan?; sınır doluysa kuyruk) · oda_ayar(maksParalel) · oda_sohbet(metin, hedef "#N"?) · oda_oku · oda_oneri_karar(oneriId, kabul|ret).',
   'İş nodu sınıfı (bağlam karışması freni): görevi, işçinin sınıf dışı bağlama ihtiyaç duymayacağı kadar küçük böl. izole = emir tek başına yeter (varsayılan tercih) · dosyali = dosya listesi ≤ 4, liste dışı yazım reddedilir · planli = son 3 plan turu gerekir · rol = .claude/agents ajanı (yapan ≠ ölçen). Her görevde tek cümle done yaz.',
   'Dış oturumlar (fork, öğrenme sekmeleri, alan ajanları) kalıcıdır ve dosyayla katılır: kendi oturumlarında oda_katil(oturum, rol, dosyalar) ve oda_mesaj(tur, metin); odada "oturum <ad>" görünür, rapor/öneri "[oda dış]" ile seni uyandırır. Onlara oda_sohbet hedef "@<ad>" ile yaz ve SendMessage ile de ilet.',
+  'Alt-oda (münazara): oda_altoda_ac(baslik, soru ≤600, kapsam ≤400, done ≤200, ajanlar 2-5 rol ajanı, tur 1-4?, hakem?). Rol ajanları turlu konuşur, ortak çıktıyı yalnız hakem tartar; sen yöntem ya da görüş yazmazsın, çıktıyı düzeltmezsin. Bitince "[oda] alt-oda #K" ile uyanırsın; tam döküm oda_oku altOdaId=K.',
   'Çok-ajanlı iş: planı oda_plan ile yaz, görevleri paralel oda_gorev_ver ile aç, raporları oda_oku ile topla. "[oda]" ile başlayan kuyruk mesajı = görev raporu; "[oda sohbet] salih:" = Salih\'in panodan yazdığı ortak sohbet mesajı, Jarvis ona cevap verir ve gerekirse oda_sohbet ile işçilere iletir. Öneri kararı Salih\'indir: bekleyen öneriyi tek satırda sun.',
 ].join('\n')

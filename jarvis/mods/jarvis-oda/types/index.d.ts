@@ -45,6 +45,51 @@ export type OdaGorev = {
   acilis: string
   kapanis?: string
   sonuc?: string
+  /** v0.8 (B9): bu görev bir alt-oda çağrısıdır; emir mod şablonudur, Jarvis yazmaz. */
+  altOda?: { id: number; asama: OdaAltOdaAsama; tur?: number }
+}
+
+/** v0.8 (B9): alt-oda çağrısının aşaması: münazara turu, son konum ya da hakem. */
+export type OdaAltOdaAsama = 'tur' | 'sonKonum' | 'hakem'
+
+/** v0.8 (B9): alt-oda içindeki tek ajan metni; metin ajanın final cevabıdır, değiştirilmez. */
+export type OdaAltOdaMetin = {
+  ajan: string
+  /** Münazara tur numarası (1..T); son konumda yok. */
+  tur?: number
+  metin: string
+  ts: string
+  /** Çağrı başarısızsa neden; metin boş kalır. */
+  hata?: string
+}
+
+/**
+ * v0.8 (B9, Karar 130): alt-oda = üst odanın görev düğümü; rol ajanları turlu münazara eder.
+ * Özgünlük kuralı: Jarvis yalnız soru, kapsam, done verir; çıktıyı yalnız hakem tartar.
+ */
+export type OdaAltOda = {
+  id: number
+  baslik: string
+  soru: string
+  kapsam: string
+  done: string
+  ajanlar: string[]
+  hakem: string
+  /** Münazara tur sayısı (1-4). */
+  turSayisi: number
+  turlar: OdaAltOdaMetin[]
+  sonKonumlar: OdaAltOdaMetin[]
+  hakemRaporu?: string
+  durum: 'tur' | 'sonKonum' | 'hakem' | 'bitti' | 'hata'
+  /** Şu an koşan münazara turu (durum 'tur' iken). */
+  aktifTur: number
+  /** Bu alt-odanın açtığı oda görevleri. */
+  gorevIds: number[]
+  /** Durum kütüğü: hedef düğümü ve ajan başına katkı işi (Karar 125). */
+  kutuk?: { hedefId: number; isler: Record<string, number> }
+  kutukNot?: string
+  acilis: string
+  kapanis?: string
 }
 
 export type OdaOneri = {
@@ -94,6 +139,8 @@ export type Oda = {
   oneriler: OdaOneri[]
   /** C1: kalıcı dış oturumlar. */
   oturumlar?: OdaOturum[]
+  /** v0.8 (B9): alt-odalar (münazara düğümleri). */
+  altOdalar?: OdaAltOda[]
 }
 
 export type AjanDurum = { agentId: string; status: string; gorevId: number }

@@ -19,7 +19,7 @@ import {
   sinifi,
   PANE,
 } from './durum'
-import { isciEmri, odaMetni, gorevRaporu, aracOzeti } from './metin'
+import { isciEmri, odaMetni, gorevRaporu, aracOzeti, altOdaDokumu } from './metin'
 import { kisa, simdi, yolMutlak, yolNormal } from './ortak'
 import { aktifIsaretle, gidenYaz, oturumAdi } from './dis'
 
@@ -70,12 +70,13 @@ export const ARACLAR: ToolSpec[] = [
   {
     ...ortak,
     name: 'oda_oku',
-    description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler (sınıf, done, çağrı sayacı, iş numarası) + her işçinin son 3 hareketi, bekleyen öneriler, son turlar (sohbet dahil). gorevId verilirse o görevin final raporunun tam metni döner.',
+    description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler (sınıf, done, çağrı sayacı, iş numarası) + her işçinin son 3 hareketi, bekleyen öneriler, alt-odalar, son turlar (sohbet dahil). gorevId verilirse o görevin final raporunun tam metni döner.',
     inputSchema: {
       type: 'object',
       properties: {
         son: { type: 'integer', description: 'Kaç tur (varsayılan 12)' },
         gorevId: { type: 'integer', description: 'İsteğe bağlı: verilirse yalnız o görevin final raporunun tam metni döner (kesilmez)' },
+        altOdaId: { type: 'integer', description: 'İsteğe bağlı: verilirse o alt-odanın tam dökümü döner (turlar, son konumlar, hakem raporu; kesilmez)' },
       },
     },
   } as ToolSpec,
@@ -162,7 +163,7 @@ async function depoAra($: EngineInterface): Promise<string | null> {
   return null
 }
 
-async function durumKos($: EngineInterface, argv: string[]): Promise<{ ok: boolean; cikti: string }> {
+export async function durumKos($: EngineInterface, argv: string[]): Promise<{ ok: boolean; cikti: string }> {
   const depo = await depoBul($)
   if (!depo) return { ok: false, cikti: 'depo (ortak/durum-olay.jsonl) bulunamadı' }
   const exe = depo + '/target/release/durum.exe'
@@ -233,7 +234,8 @@ async function gorevBaslat($: EngineInterface, oda: Oda, id: number): Promise<Od
   if (!gorev) return oda
   const spawn = await $.agent
     .spawn({
-      prompt: isciEmri(oda, gorev),
+      // B9: alt-oda çağrısının emri mod şablonudur (metin.ts), olduğu gibi gider.
+      prompt: gorev.altOda ? gorev.emir : isciEmri(oda, gorev),
       description: `oda #${id} ${kisa(gorev.baslik, 40)}`,
       subagentType: gorev.ajan ?? 'general-purpose',
       ...(gorev.ajan && !gorev.modelAcik ? {} : { model: gorev.model }),
@@ -399,9 +401,11 @@ export async function gorevVer($: EngineInterface, g0: GorevGirdi, ayar: ModAyar
   return `Görev #${id} "${gorev.baslik}" kuyruğa alındı (paralel sınır ${son.maksParalel} dolu: ${kosan(son)} koşuyor).${ek} Biri bitince başlar; oda_ayar ile sınırı artırabilirsin.`
 }
 
-export async function odaOku($: EngineInterface, son: number, hareketler: Parameters<typeof odaMetni>[2], gorevId?: number): Promise<string> {
+export async function odaOku($: EngineInterface, son: number, hareketler: Parameters<typeof odaMetni>[2], gorevId?: number, altOdaId?: number): Promise<string> {
   const oda = await odaYukle($)
   if (!oda) return 'Oda yok; önce oda_ac.'
+  // B9: altOdaId verilirse alt-odanın tam dökümü kesilmeden döner.
+  if (Number.isInteger(altOdaId) && Number(altOdaId) > 0) return altOdaDokumu(oda.altOdalar?.find(a => a.id === Number(altOdaId)), Number(altOdaId), oda.altOdalar?.length ?? 0)
   // K52: gorevId verilirse o görevin final raporu kesilmeden döner.
   if (Number.isInteger(gorevId) && Number(gorevId) > 0) return gorevRaporu(oda, Number(gorevId))
   return odaMetni(oda, Number.isFinite(son) && son > 0 ? son : 12, hareketler)
