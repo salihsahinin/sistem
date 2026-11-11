@@ -1,0 +1,15 @@
+[package]
+name = "jarvis-ortak"
+description = "Jarvis Rust crate'lerinin ortak Python-taklit yardımcıları (py · argparse · harness_anahtar); eski jarvis-kural ve jarvis-rituel kopyalarının birleşimi (Karar 130 K46)"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+regex = "1"
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[lib]
+name = "jarvis_ortak"
+path = "src/lib.rs"

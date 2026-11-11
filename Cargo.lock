@@ -316,8 +316,19 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "jarvis-hook",
+ "jarvis-ortak",
  "regex",
  "rusqlite",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "jarvis-ortak"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "regex",
  "serde",
  "serde_json",
 ]
@@ -329,6 +340,7 @@ dependencies = [
  "chrono",
  "fancy-regex",
  "jarvis-hook",
+ "jarvis-ortak",
  "regex",
  "rusqlite",
  "serde",

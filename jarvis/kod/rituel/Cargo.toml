@@ -8,6 +8,7 @@ version.workspace = true
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 fancy-regex = "0.14"
 jarvis-hook = { path = "../hook" }
+jarvis-ortak = { path = "../ortak" }
 regex = "1"
 rusqlite = { version = "0.32", features = ["bundled"] }
 serde = "1"
