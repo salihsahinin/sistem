@@ -15,7 +15,9 @@ Kullanım: python3 tools/baglam-skill-aday.py [--cikti raporlar/...md] [--min-ba
 """
 import argparse, re, pathlib, sqlite3, datetime
 
-SICAK = {"CLAUDE.md", "core/durum-kapsulu.md", "core/pano.md", ".claude/skills/seans-acilis/SKILL.md",
+# Sıcak = her oturum başı yüklenen/okunan küme. Kapsül ve pano 2026-10-25'te dondu, çıkarıldı (Karar 122: oturum başı
+# okuması jarvis/AGENTS.md + kök AGENTS.md + durum kütüğü). Yollar jarvis/ köküne göredir; kök AGENTS.md ve kütük ../ altında.
+SICAK = {"CLAUDE.md", "AGENTS.md", "../AGENTS.md", "../ortak/durum-olay.jsonl", ".claude/skills/seans-acilis/SKILL.md",
          ".claude/skills/seans-kapanis/SKILL.md", "KILAVUZ.md"}
 DOSYALAR = ["CLAUDE.md", "KILAVUZ.md"] + sorted(str(p) for p in pathlib.Path("core").glob("*.md")) \
            + sorted(str(p) for p in pathlib.Path("wiki").glob("*.md")) \

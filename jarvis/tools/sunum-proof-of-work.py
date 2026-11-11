@@ -6,7 +6,7 @@ Kullanım: python3 tools/sunum-proof-of-work.py [--repo <yol>] [--out raporlar/j
 Sonra: PDF için Chrome headless — bkz. tools/SCRIPTLER.md · teslim: open -R <dosya> + open <dosya>.
 STDLIB ONLY.
 """
-import argparse, glob, html, json, os, sqlite3, subprocess
+import argparse, glob, html, json, os, sqlite3, subprocess, tempfile
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 
@@ -26,7 +26,8 @@ def main():
     os.makedirs(os.path.dirname(out), exist_ok=True)
     now = datetime.now(TR); tarih = now.strftime("%Y-%m-%d %H:%M")
     head = sh(["git", "rev-parse", "--short", "HEAD"], R)
-    ilk = sh("git log --reverse --format=%ad --date=short | head -1", R)
+    # head yerine Python'da kes (Windows'ta head yok olabilir)
+    ilk = (sh(["git", "log", "--reverse", "--format=%ad", "--date=short"], R).split("\n") or [""])[0]
     son = sh(["git", "log", "-1", "--format=%ad", "--date=short"], R)
     n_commit = int(sh(["git", "rev-list", "--count", "HEAD"], R))
     days = sh("git log --format=%ad --date=short", R).split("\n")
@@ -62,7 +63,7 @@ def main():
     except Exception: pass
     # workflow ölçümü — yalnız bu makinede kalan koşum çıktıları (ölçüm anı; taşınmaz)
     wf_n = wf_tok = wf_ag = 0
-    for f in glob.glob(os.path.expanduser("/private/tmp/claude-501/-Users-HasanSalihSahin-sistem-jarvis/*/tasks/*.output")):
+    for f in glob.glob((os.path.join(tempfile.gettempdir(), "claude-*", "*", "*", "tasks", "*.output"))):
         try:
             d = json.load(open(f))
             if isinstance(d, dict) and "totalTokens" in d: wf_n += 1; wf_tok += int(d["totalTokens"] or 0); wf_ag += int(d.get("agentCount") or 0)

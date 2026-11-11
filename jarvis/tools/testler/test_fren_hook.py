@@ -2,16 +2,20 @@
 """test_fren_hook.py — Ajan fan-out freni PreToolUse hook'unun deterministik testi (İB-54 adım 2; .claude/hooks/pretool-ajan-fren.sh).
 Geçici repoda (veri/bronz + .claude/hooks/state) sahte PreToolUse JSON'larıyla koşar: eşik altı 0 · UYARI eşiğinde tek olay · DURDUR eşiğinde
 exit 2 + stderr gerekçe · JARVIS_FREN_KAPALI=1 ile geçiş + ASILDI-KAPALI olayı · Agent dışı araç dokunulmaz · oturumlar ayrı sayılır.
+Yalıtım: hook Rust ikilisine devredilir ve sayaç/kütük yolunu betiğin konumundan türetir (--repo); bu yüzden betikler + ikili geçici
+kök altına kopyalanır (<kök>/jarvis/.claude/hooks, <kök>/target/release), gerçek oturumun fren sayacı okunmaz/yazılmaz.
 Koşum: python3 -m unittest tools/testler/test_fren_hook.py"""
 import json, os, shutil, subprocess, tempfile, unittest
 
-HOOK = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".claude", "hooks", "pretool-ajan-fren.sh")
+JARVIS = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+IKILI_DIR = os.path.join(os.path.dirname(JARVIS), "target", "release")
+IKILI = next((os.path.join(IKILI_DIR, n) for n in ("jarvis-hook.exe", "jarvis-hook") if os.path.isfile(os.path.join(IKILI_DIR, n))), None)
 
 
 def kos(repo, tool="Agent", sid="s1", env=None):
-    e = dict(os.environ, CLAUDE_PROJECT_DIR=repo, JARVIS_FREN_UYARI="3", JARVIS_FREN_DURDUR="5"); e.update(env or {})
+    e = dict(os.environ, CLAUDE_PROJECT_DIR=repo, JARVIS_FREN_UYARI="3", JARVIS_FREN_DURDUR="5", JARVIS_HOOK_PYTHON=""); e.update(env or {})
     e.pop("JARVIS_FREN_KAPALI", None) if not (env and "JARVIS_FREN_KAPALI" in env) else None
-    return subprocess.run(["bash", HOOK], input=json.dumps({"session_id": sid, "tool_name": tool, "tool_input": {"description": "test ajanı"}}),
+    return subprocess.run(["bash", os.path.join(repo, ".claude", "hooks", "pretool-ajan-fren.sh")], input=json.dumps({"session_id": sid, "tool_name": tool, "tool_input": {"description": "test ajanı"}}),
                           capture_output=True, text=True, env=e, cwd=repo)
 
 
@@ -20,12 +24,25 @@ def olaylar(repo):
     return [json.loads(l) for l in open(p, encoding="utf-8")] if os.path.exists(p) else []
 
 
+def yalit_kur():
+    """rust-yonlendir.sh jarvis-hook'a `--repo <betiğin kendi deposu>` verir (CLAUDE_PROJECT_DIR'i ezer); bu yüzden betikleri ve ikiliyi
+    geçici köke kopyalarız: <kök>/jarvis/.claude/hooks + <kök>/target/release. Hook koduna dokunulmaz, gerçek sayaç okunmaz."""
+    kok = tempfile.mkdtemp(prefix="fren-"); repo = os.path.join(kok, "jarvis")
+    hd = os.path.join(repo, ".claude", "hooks"); os.makedirs(hd); os.makedirs(os.path.join(repo, "veri", "bronz"))
+    for n in ("pretool-ajan-fren.sh", "rust-yonlendir.sh"):
+        shutil.copy2(os.path.join(JARVIS, ".claude", "hooks", n), hd)
+    rd = os.path.join(kok, "target", "release"); os.makedirs(rd); shutil.copy2(IKILI, rd)
+    return kok, repo
+
+
 class FrenHookTest(unittest.TestCase):
     def setUp(self):
-        self.repo = tempfile.mkdtemp(prefix="fren-"); os.makedirs(os.path.join(self.repo, "veri", "bronz"))
+        if IKILI is None:
+            self.skipTest("jarvis-hook ikilisi yok (cargo build --release -p jarvis-hook); yalıtım için gerekli")
+        self.kok, self.repo = yalit_kur()
 
     def tearDown(self):
-        shutil.rmtree(self.repo, ignore_errors=True)
+        shutil.rmtree(self.kok, ignore_errors=True)
 
     def test_esik_alti_sessiz_uyari_tek_olay_durdur_exit2(self):
         for i in range(1, 3):

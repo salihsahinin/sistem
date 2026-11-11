@@ -11,7 +11,7 @@ silver `silver_kuyruk` T-B-YETIM hedef dosyalarından wiki sayfalarının doğru
 Kullanım: python3 tools/wiki-baglanti.py [--repo <yol>] [--uygula] [--sessiz] [--json]
 Çıkış: 0 · 2 wiki dizini yok. Deneysel m.29.
 """
-import argparse, glob, json, os, re, sqlite3, subprocess, sys
+import argparse, glob, json, os, pathlib, re, sqlite3, subprocess, sys
 from datetime import datetime, timezone
 
 LINK_RX = re.compile(r"\[\[([^\]\|#]+?)(?:[\|#][^\]]*)?\]\]")
@@ -67,17 +67,18 @@ def main():
     db = os.path.join(repo, "veri", "baglam.sqlite")
     if os.path.exists(db):
         try:
-            con = sqlite3.connect("file:%s?mode=ro" % db, uri=True)
+            con = sqlite3.connect(pathlib.Path(db).resolve().as_uri() + "?mode=ro", uri=True)
             yetimler = [r[0] for r in con.execute("SELECT hedef_id FROM silver_kuyruk WHERE tip='T-B-YETIM'")]
             con.close()
             tum_metin = "\n".join(sayfalar.values())
             yetim_pointer = [y for y in yetimler if y in tum_metin]
-        except sqlite3.Error:
-            pass
+        except sqlite3.Error as hata:
+            print("[UYARI] yetim ölçümü atlandı (sqlite): %s" % hata, file=sys.stderr)
     try:
         head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=repo, capture_output=True, text=True).stdout.strip()
-    except Exception:
+    except Exception as hata:
         head = "?"
+        print("[UYARI] git HEAD okunamadı: %s" % hata, file=sys.stderr)
     ozet = {"ts": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"), "head": head, "sayfa": len(sayfalar), "bag": sum(len(v) for v in giden.values()),
             "karsi_link_aday": len(aday), "yazilan_sayfa": len(yazilan), "kirik_link": len(kirik), "yetim_pointer_kazanan": len(yetim_pointer), "uygula": a.uygula}
     if a.uygula:
