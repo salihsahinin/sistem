@@ -425,9 +425,10 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
         let mut v = vec![];
         for f in l {
             if mutlak_mu(f) {
-                v.push(py::relpath(&py::abspath(f), &repo).map_err(|e| format!("ValueError: {e}"))?);
+                // Silver anahtarı ileri bölülü depo-göreli yoldur; relpath Windows'ta ters bölü verir (denetim kalem 43a).
+                v.push(py::ileri_bolu(&py::relpath(&py::abspath(f), &repo).map_err(|e| format!("ValueError: {e}"))?));
             } else {
-                v.push(f.clone());
+                v.push(py::ileri_bolu(f));
             }
         }
         v

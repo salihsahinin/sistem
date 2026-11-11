@@ -205,9 +205,13 @@ fn kisa_yol(p: Option<&Value>, repo: &str, ev: &str) -> S<(Option<String>, Optio
         Some(Value::String(s)) => s.as_str(),
         Some(x) => return Err(format!("yol metin değil: {}", py_repr_v(x))),
     };
-    let ap = if !p.starts_with('/') { py::abspath(&py::expanduser(p)) } else { p.to_string() };
-    let onek = format!("{repo}{}", py::SEP);
-    if ap.starts_with(&onek) {
+    // Git Bash öneki (`/c/...`) önce Windows biçimine çevrilir; yoksa mutlak sayılıp repo dışı kalırdı (denetim kalem 43b).
+    let p = if cfg!(windows) { py::surucu_onek_cevir(p) } else { p.to_string() };
+    let ap = if !p.starts_with('/') { py::abspath(&py::expanduser(&p)) } else { p };
+    // Karşılaştırma tek anahtar kuralıyla: sürücü harfi büyük/küçük, ters/ileri bölü farkı yok sayılır.
+    let (ap_anahtar, onek) = (py::yol_anahtar(&ap), format!("{}/", py::yol_anahtar(repo).trim_end_matches('/')));
+    if ap_anahtar.starts_with(&onek) && ap_anahtar.len() == ap.len() {
+        // Göreli kısım eski biçimiyle (abspath ayracı) döner; bronz kayıt biçimi değişmez.
         let g: String = ap[onek.len()..].to_string();
         return Ok((Some(g.clone()), Some(g), true));
     }
@@ -942,5 +946,23 @@ pub fn kos(argv: &[String]) -> i32 {
     match calis(argv) {
         Ok(k) => k,
         Err(e) => py::coker(&e),
+    }
+}
+
+#[cfg(all(test, windows))]
+mod testler {
+    use super::*;
+
+    /// Denetim kalem 43b: Git Bash öneki, küçük sürücü harfi ve ileri bölü repo içi sayılır.
+    #[test]
+    fn kisa_yol_surucu_bicimleri_repo_ici() {
+        let repo = r"C:\sistem\sistem\jarvis";
+        for p in [r"/c/sistem/sistem/jarvis/wiki/a.md", r"c:\sistem\sistem\jarvis\wiki\a.md", r"C:\sistem\sistem\jarvis\wiki\a.md", "C:/sistem/sistem/jarvis/wiki/a.md"] {
+            let (_, d, ici) = kisa_yol(Some(&json!(p)), repo, r"C:\Users\x").unwrap();
+            assert!(ici, "{p}");
+            assert_eq!(d.as_deref(), Some(r"wiki\a.md"), "{p}");
+        }
+        let (_, d, ici) = kisa_yol(Some(&json!("/c/sistem/sistem/friday/a.md")), repo, r"C:\Users\x").unwrap();
+        assert!(!ici && d.is_none());
     }
 }

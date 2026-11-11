@@ -1581,11 +1581,8 @@ fn calis_icinde(a: &Sonuc, repo: &str, snapshot: &str, kuru: bool, kapi: bool, c
         Ok(r) => r.first().map(|x| vs(&x[0])).unwrap_or_else(|| "?".into()),
         Err(_) => "?".into(),
     };
-    // Python: kod_sha = betiğin kendi baytlarının sha1'i; Rust ikilisinin betiği yoktur: repo/tools/silver-saglik.py (yedek Python kaynağı) kullanılır.
-    let kod_sha = match std::fs::read(py::join(&py::join(repo, "tools"), "silver-saglik.py")) {
-        Ok(b) => sha1_hex(&b)[..8].to_string(),
-        Err(_) => sha1_hex(b"silver-saglik-rust")[..8].to_string(),
-    };
+    // kod_sha = bu modülün kendi Rust kaynağının sha1'i (derlemeye gömülü); arşive inmiş Python betiği okunmaz (denetim kalem 47).
+    let kod_sha = sha1_hex(include_bytes!("silver_saglik.rs"))[..8].to_string();
     let kosum_id = sha1_hex(format!("{head}|{girdi_sha}|{snapshot}|{kod_sha}").as_bytes())[..10].to_string();
     let ts = chrono::Local::now().format("%Y-%m-%dT%H:%M:%S%:z").to_string();
     let seanslar = seans_tarihleri(repo);

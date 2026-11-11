@@ -208,6 +208,40 @@ pub fn splitdrive(p: &str) -> (String, String) {
     (String::new(), p.to_string())
 }
 
+// ---------------------------------------------------------------- Yol karşılaştırma anahtarı (tek normalleştirme kuralı)
+/// Git Bash / Cygwin sürücü önekini Windows biçimine çevirir: `/c/x` ve `/cygdrive/c/x` -> `C:/x`; önek yoksa yol aynen döner.
+/// Kural `jarvis-hook` içindeki `okuma_izin::surucu_onek_cevir` ile aynıdır (o fonksiyon `pub(crate)`, bu crate'ten erişilemez).
+pub fn surucu_onek_cevir(yol: &str) -> String {
+    let govde = yol.strip_prefix("/cygdrive").filter(|g| g.starts_with('/')).unwrap_or(yol);
+    let b = govde.as_bytes();
+    if b.len() >= 2 && b[0] == b'/' && b[1].is_ascii_alphabetic() && (b.len() == 2 || b[2] == b'/') {
+        let harf = (b[1] as char).to_ascii_uppercase();
+        let kalan = if b.len() == 2 { "/" } else { &govde[2..] };
+        return format!("{harf}:{kalan}");
+    }
+    yol.to_string()
+}
+
+/// Yol karşılaştırma anahtarı (Windows): sürücü öneki çevrilir (`/c/` -> `C:/`), ters bölü ileri bölü olur,
+/// sürücü harfi büyütülür. Uzunluk değişmez ise (önek çevrilmemişse) karakter konumları korunur.
+/// Windows dışında yol aynen döner.
+pub fn yol_anahtar(yol: &str) -> String {
+    if !cfg!(windows) {
+        return yol.to_string();
+    }
+    let mut s = surucu_onek_cevir(yol).replace('\\', "/");
+    let b = s.as_bytes();
+    if b.len() >= 2 && b[1] == b':' && b[0].is_ascii_lowercase() {
+        s.replace_range(0..1, &(b[0] as char).to_ascii_uppercase().to_string());
+    }
+    s
+}
+
+/// Depo-göreli yolu silver anahtar biçimine indirir: ileri bölü (Windows'ta `\` -> `/`).
+pub fn ileri_bolu(yol: &str) -> String {
+    if cfg!(windows) { yol.replace('\\', "/") } else { yol.to_string() }
+}
+
 /// `os.path.normpath`.
 pub fn normpath(p: &str) -> String {
     if cfg!(windows) && (p.starts_with(r"\\?\") || p.starts_with(r"\\.\")) {

@@ -2379,11 +2379,8 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
     let mut idler: Vec<&str> = kayit_rows.iter().map(|r| r.id.as_str()).collect();
     idler.sort();
     let kume_sha = sha1_hex(idler.join("\n").as_bytes());
-    // Python: betiğin kendi baytlarının sha1'i; Rust ikilisinin betiği yoktur → repo/tools/baglam-tablo.py (yedek Python kaynağı).
-    let script_sha = match std::fs::read(py::join(&py::join(&repo, "tools"), "baglam-tablo.py")) {
-        Ok(b) => sha1_hex(&b),
-        Err(_) => sha1_hex(b"baglam-tablo-rust"),
-    };
+    // script_sha = bu modülün kendi Rust kaynağının sha1'i (derlemeye gömülü); yedek Python betiği okunmaz (denetim kalem 47).
+    let script_sha = sha1_hex(include_bytes!("baglam_tablo.rs"));
     let uretim_zamani = chrono::Local::now().format("%Y-%m-%dT%H:%M:%S%:z").to_string();
     let sure: f64 = format!("{:.2}", t0.elapsed().as_secs_f64()).parse().unwrap_or(0.0);
     con.execute(

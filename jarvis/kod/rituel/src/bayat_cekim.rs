@@ -271,7 +271,8 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
             py::err("HATA: --kaydet için --sonuc zorunlu (teyit|guncellendi|sonlandi)\n");
             return Ok(2);
         };
-        let rel = if py_isabs(kaydet) { py::relpath(&py::abspath(kaydet), &repo).map_err(|e| format!("ValueError: {e}"))? } else { kaydet.to_string() };
+        // dosya_id silver anahtarıyla eşleşmeli: ileri bölülü depo-göreli yol (denetim kalem 43a).
+        let rel = py::ileri_bolu(&if py_isabs(kaydet) { py::relpath(&py::abspath(kaydet), &repo).map_err(|e| format!("ValueError: {e}"))? } else { kaydet.to_string() });
         if !Path::new(&py::join(&repo, &rel)).exists() {
             py::err(&format!("HATA: dosya yok: {rel}\n"));
             return Ok(2);

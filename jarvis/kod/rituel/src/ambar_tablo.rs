@@ -630,7 +630,8 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
         let gerekli = |k: &str| n.get(k).cloned().ok_or_else(|| format!("KeyError: '{k}'"));
         let pid: Vec<Value> = match n.get("prompt_id") {
             Some(Value::Array(a)) => a.clone(),
-            Some(Value::String(s)) => s.chars().map(|c| json!(c.to_string())).collect(),
+            // Metin tek kimliktir (Python'dan taşınan harf harf bölme hatası düzeltildi, denetim kalem 44); boş metin kimlik değildir.
+            Some(Value::String(s)) if !s.is_empty() => vec![json!(s)],
             _ => vec![],
         };
         ekle(
