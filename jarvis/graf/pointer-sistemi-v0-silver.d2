@@ -1,5 +1,5 @@
 # Jarvis POINTER SİSTEMİ — SİLVER TABLOLARI — PK/FK (pano 1/4) (türetilmiş görünüm; ham kaynak silver/bronz)
-# üretici: tools/pointer-graf.py · silver c4e4f71 · HEAD c4e4f71 · d2 v0.9.0 · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
+# üretici: tools/pointer-graf.py · silver d2c4707 · HEAD d2c4707a · d2 v0.9.0 · render: d2 --layout=elk (ELK bundled; TALA girmez; determinizm yerel sha256 ile ölçülür — Karar 65)
 # içerik katmanı: düğüm/kenar = silver'dan script türetimi (LLM yazmaz); ilke/kronoloji = kanon SABİTİ (pointer'lı, script içinde); yorum katmanı = bu # satırları
 direction: right
 classes: {
@@ -16,7 +16,7 @@ classes: {
   turetir: { style: { stroke: "#047857"; stroke-width: 3 } }
   uygular: { style: { stroke: "#9D174D"; stroke-dash: 2; font-size: 14 } }
 }
-anahtar: "anahtar · 397 satır" {
+anahtar: "anahtar · 399 satır" {
   shape: sql_table
   anahtar_id: TEXT { constraint: primary_key }
   tur: TEXT
@@ -26,7 +26,86 @@ anahtar: "anahtar · 397 satır" {
   gecerli_bas: TEXT
   gecerli_bitis: TEXT
 }
-dosya: "dosya · 1.342 satır" {
+anahtar_kaydi: "anahtar_kaydi · 22 satır" {
+  shape: sql_table
+  kaydi_id: TEXT
+  anahtar_id: TEXT
+  tur: TEXT
+  rol: TEXT
+  deger: TEXT
+  deger_norm: TEXT
+}
+bag: "bag · 70 satır" {
+  shape: sql_table
+  bag_id: TEXT { constraint: primary_key }
+  tip: TEXT
+  kaynak_tur: TEXT
+  kaynak_id: TEXT
+  hedef_tur: TEXT
+  hedef_id: TEXT
+  kural: TEXT
+  gecerli_bas: TEXT
+  kayit_zamani: TEXT
+  gecersiz_zamani: TEXT
+}
+baglam_olay: "baglam_olay · 23.835 satır" {
+  shape: sql_table
+  olay_id: TEXT
+  ts_utc: TEXT
+  ts_tr: TEXT
+  tarih_tr: TEXT
+  saat_tr: TEXT
+  oturum_id: TEXT
+}
+deneyim: "deneyim · 857 satır" {
+  shape: sql_table
+  kosum_id: TEXT
+  wf_id: TEXT
+  agent_type: TEXT
+  aile: TEXT
+  rol: TEXT
+  emir_ozet: TEXT
+}
+deneyim_fts: "deneyim_fts · 857 satır" {
+  shape: sql_table
+  kosum_id: TEXT
+  model_kusagi: TEXT
+  agirlik: TEXT
+  hukum: TEXT
+  tarih: TEXT
+  metin: TEXT
+}
+deneyim_fts_config: "deneyim_fts_config · 1 satır" {
+  shape: sql_table
+  k: TEXT
+  v: TEXT
+}
+deneyim_fts_content: "deneyim_fts_content · 857 satır" {
+  shape: sql_table
+  id: TEXT
+  c0: TEXT
+  c1: TEXT
+  c2: TEXT
+  c3: TEXT
+  c4: TEXT
+}
+deneyim_fts_data: "deneyim_fts_data · 33 satır" {
+  shape: sql_table
+  id: TEXT
+  block: TEXT
+}
+deneyim_fts_docsize: "deneyim_fts_docsize · 857 satır" {
+  shape: sql_table
+  id: TEXT
+  sz: TEXT
+}
+deneyim_fts_idx: "deneyim_fts_idx · 31 satır" {
+  shape: sql_table
+  segid: TEXT
+  term: TEXT
+  pgno: TEXT
+}
+dosya: "dosya · 1.371 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: primary_key }
   dizin: TEXT
@@ -35,7 +114,7 @@ dosya: "dosya · 1.342 satır" {
   blob_sha: TEXT
   son_commit: TEXT
 }
-erisim_genisletme: "erisim_genisletme · 79.946 satır" {
+erisim_genisletme: "erisim_genisletme · 81.585 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -44,7 +123,15 @@ erisim_genisletme: "erisim_genisletme · 79.946 satır" {
   genisletme: TEXT
   ref_sayisi: TEXT
 }
-json_kayit: "json_kayit · 1.723.761 satır" {
+hareket: "hareket · 11.783 satır" {
+  shape: sql_table
+  hareket_id: TEXT { constraint: primary_key }
+  oturum_id: TEXT
+  arac: TEXT
+  dosya: TEXT
+  yuklendi_head: TEXT
+}
+json_kayit: "json_kayit · 1.799.310 satır" {
   shape: sql_table
   dosya_id: TEXT { constraint: foreign_key }
   json_yolu: TEXT
@@ -64,7 +151,7 @@ karar_borcu_kaynak: "karar_borcu_kaynak · 393 satır" {
   satir: TEXT
   kayit_id: TEXT { constraint: foreign_key }
 }
-kayit: "kayit · 79.946 satır" {
+kayit: "kayit · 81.585 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: primary_key }
   dosya_id: TEXT { constraint: foreign_key }
@@ -74,7 +161,7 @@ kayit: "kayit · 79.946 satır" {
   satir_son: TEXT
   zarf_tip: TEXT
 }
-kayit_fts: "kayit_fts · 0 satır" {
+kayit_fts: "kayit_fts · 81.585 satır" {
   shape: sql_table
   kayit_id: TEXT
   dosya_id: TEXT
@@ -88,7 +175,7 @@ kayit_fts_config: "kayit_fts_config · 1 satır" {
   k: TEXT
   v: TEXT
 }
-kayit_fts_content: "kayit_fts_content · 0 satır" {
+kayit_fts_content: "kayit_fts_content · 81.585 satır" {
   shape: sql_table
   id: TEXT
   c0: TEXT
@@ -97,17 +184,17 @@ kayit_fts_content: "kayit_fts_content · 0 satır" {
   c3: TEXT
   c4: TEXT
 }
-kayit_fts_data: "kayit_fts_data · 2 satır" {
+kayit_fts_data: "kayit_fts_data · 6.503 satır" {
   shape: sql_table
   id: TEXT
   block: TEXT
 }
-kayit_fts_docsize: "kayit_fts_docsize · 0 satır" {
+kayit_fts_docsize: "kayit_fts_docsize · 81.585 satır" {
   shape: sql_table
   id: TEXT
   sz: TEXT
 }
-kayit_fts_idx: "kayit_fts_idx · 0 satır" {
+kayit_fts_idx: "kayit_fts_idx · 3.319 satır" {
   shape: sql_table
   segid: TEXT
   term: TEXT
@@ -122,20 +209,47 @@ parquet_uretim: "parquet_uretim · 0 satır" {
   byte: TEXT
   ms: TEXT
 }
-prompt: "prompt · 1.703 satır" {
+prompt: "prompt · 1.798 satır" {
   shape: sql_table
   prompt_id: TEXT { constraint: primary_key }
   oturum_id: TEXT
   sonraki_skill: TEXT
   yuklendi_head: TEXT
 }
-referans: "referans · 107.832 satır" {
+referans: "referans · 110.109 satır" {
   shape: sql_table
   kayit_id: TEXT { constraint: foreign_key }
   ref_turu: TEXT
   ref_deger: TEXT
   hedef_var: TEXT
   hedef_yol: TEXT { constraint: foreign_key }
+}
+silver_karantina_aday: "silver_karantina_aday · 500 satır" {
+  shape: sql_table
+  cift_id: TEXT
+  anahtar_terim: TEXT
+  kayit_id_a: TEXT
+  kayit_id_b: TEXT
+  dosya_a: TEXT
+  dosya_b: TEXT
+}
+silver_kuyruk: "silver_kuyruk · 761 satır" {
+  shape: sql_table
+  kuyruk_id: TEXT
+  tip: TEXT
+  hedef_tur: TEXT
+  hedef_id: TEXT
+  dosya_id: TEXT
+  neden: TEXT
+}
+silver_saglik_son: "silver_saglik_son · 18 satır" {
+  shape: sql_table
+  test_id: TEXT
+  ad: TEXT
+  sinif: TEXT
+  siddet: TEXT
+  ihlal: TEXT
+  sonuc: TEXT
 }
 uretim: "uretim · 1 satır" {
   shape: sql_table
@@ -152,3 +266,5 @@ karar_borcu_kaynak.dosya_id -> dosya.dosya_id: "FK" { class: fk }
 karar_borcu_kaynak.kayit_id -> kayit.kayit_id: "FK" { class: fk }
 json_kayit.dosya_id -> dosya.dosya_id: "FK" { class: fk }
 anahtar.replaced_by -> anahtar.anahtar_id: "süpersede" { class: supersede }
+anahtar_kaydi -> anahtar_kaydi: "wasRevisionOf · R1 · 11 bağ (11 açık)" { class: supersede }
+kayit -> dosya: "wasRevisionOf · R3 · 59 bağ (19 açık)" { class: supersede }

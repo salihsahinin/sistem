@@ -1,0 +1,69 @@
+{
+  "hedef": "Salih: sistem klasörünün tamamını oku; bozuk, tutarsız, verimsiz ya da artık gereksiz her şeyi bul; emin olunanı düzelt, kalanını Salih incelemesi için listele",
+  "hedef_tutuldu": true,
+  "sapma": "Seans iki güne yayıldı (2026-11-10 ve 2026-11-11; arada Salih bilgisayarı kapattı). ogrenme/ içeriği yalnız yapı düzeyinde tarandı.",
+  "ne_degisti": [
+    "Depo denetimi yapıldı: 9 salt-okur işçi raporu, yaklaşık 275 bulgu (raporlar/2026-11/denetim-depo-2026-11-10.md; ham: cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md ve -ham-2.md).",
+    "Jarvis kilitlerinde Git Bash /c/ yol atlatması kapandı (alt-ajan okuma kilidi, core yazma teli; commit e570c292).",
+    "Alan ajanı okuma kilidi Rust'a taşındı; 8 ajanda aynı sarmal, kilit hata durumunda kapalı kalır (commit 593f6ca6).",
+    "Ajan settings.json deny yolları şablon ve 8 kopyada //c/sistem/sistem biçimine çevrildi (commit 593f6ca6).",
+    "Git telleri açıldı: core.hooksPath jarvis/tools/git-hooks (commit c718c167).",
+    "Kanon metni Karar 122 ve Windows düzenine hizalandı: jarvis AGENTS.md, core 7 dosya, tüzük m.42 ve m.44 (commit 8b83e10f).",
+    "21 Python betiği ve 4 test arşive indi; 14 bayat gold görünüm arşive indi (commit f6c45c5d, 8bba1132, 097a7fef, d2c4707a).",
+    "skill-kapi tüzük parçalarının tamamını okuyor; skill kapısı artık her skill'i düşürmüyor (commit e570c292).",
+    "durum kütüğü sağlamlaştı: seans-kapat sırası, üstüne yazmama, atomik çıktı, yazma kilidi, --help (commit 4ca74fcf).",
+    "baglam-tablo commit tarihleri düzeldi: ilk commit'i boş dosya 313'ten 0'a indi (commit 4ca74fcf).",
+    "Açılış kapısı K1 ve sıcak katman FIFO'su donmuş kapsül yerine durum kütüğüne bakıyor (commit 4ca74fcf).",
+    "Hook kütük yazımı tek çağrıya indi; eşzamanlı süreçlerde kayıtlar artık iç içe geçmiyor (commit 097a7fef).",
+    "katman-hatti 20 adım 97 sn'den 17 adım 46,8 sn'ye indi ve çıkış 0 ile bitiyor (ölçüm 2026-11-11).",
+    "Odanın açtığı 19 iş (#89-#107) kanıt commit'leriyle kapatıldı; kalan inceleme listesi iş #108 olarak açıldı."
+  ],
+  "kararlar": [
+    {"ad": "Karar 128", "ozet": "Depo denetiminin ilk beş kalemi uygulandı: ajan kilidi Rust, deny yolları, git telleri, kanon metni, arşiv.", "kaynak": "Salih 2026-11-10: \"push et, sonra 1-5 kalemlerini önerdiğin şekillerde uygula\"; defter Karar 128", "gerekce": "Kilitler atlatılıyordu, deny kuralları etkisizdi, git telleri kapalıydı, kanon kendi içinde çelişiyordu.", "geri_acma": "Depo başka yola ya da makineye taşınırsa deny yolları (şablon + 8 kopya) yeniden yazılır."},
+    {"ad": "Karar 129", "ozet": "Kolon katmanı (parquet, kolon-olcum, tarama-duckdb) varsayılan hattan çıktı; --parquet ile açılır.", "kaynak": "Salih 2026-11-11: \"push et, kolon kolunu emekli et\"; defter Karar 129", "gerekce": "duckdb 2026-09-22'den beri kurulu değil; adımlar atlanıyor ve hat hata koduyla bitiyordu.", "geri_acma": "Sütunsal ölçüm yeniden gerekirse: pip install duckdb ve katman-hatti --parquet."}
+  ],
+  "adaylar": [
+    "Oda modu: biten görev durum kütüğünde kapanmıyor; oda_oku raporu kesik gösteriyor; tam metin yalnız ortak/oda/<id>.json içinde.",
+    "Açılış kapısı K2 kelime eşleşmesi bitmiş pipeline'ı açık gösteriyor; eşleşme tablo durum sütununa daraltılabilir.",
+    "Ajan hareket kütüğü hook'u (hareket-kutuk.sh) hâlâ Python; okuma kilidi gibi Rust'a taşınabilir.",
+    "Hafıza indeksi MEMORY.md 4 KB tavanının üstünde; sicak-katman-fifo üç maddeyi arşiv adayı gösteriyor."
+  ],
+  "sonraki_ilk_is": [
+    "#108: Salih denetim raporunun §3 ve §5.3 listesinden kalem seçer.",
+    "Push: bu kapanış commit'i ve d2c4707a ağ hatası yüzünden gönderilemediyse ilk iş yeniden push."
+  ],
+  "yeniden_acma": [
+    "Kolon katmanı: sütunsal ölçüm gerekirse Karar 129 geri açılır.",
+    "Ö1 ve Ö2 teknik alt-kararları (baglam-tablo git log eşlemesi, fark testi zamanlaması) Salih itiraz ederse geri alınır."
+  ],
+  "salih_karar": [
+    "Denetim raporu §3: A3 kök oturumda ajan deny kuralları uygulanmıyor · A5 ikili yoksa jarvis kilitleri açık kalıyor · B9-B13 alan ajanı ve Friday kanonu · C16 claude.ai'daki emekli global skill'ler · C17-C21 arşiv kararları · D22-D28 verimsizlik · E29-E39 küçük tutarsızlıklar.",
+    "Denetim raporu §5.3: 41 durum kütüğünde bozuk satır kilidi · 42 transkriptlerin üç kez okunması · 43 Windows yol kaçakları · 45 devir_md2json yol süzme · 51 commit'siz ogrenme ders kayıtları · 52 oda modu.",
+    "Span'ın 2026-10-19 devri: M1-M5 ders iskeleti isteği yanıt bekliyor."
+  ],
+  "baglar": {"karar": ["Karar 128", "Karar 129"], "pr": [], "durum": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]},
+  "sayaclar": {"model": "Fable 5.2", "kutu": 0, "soru_dogru": 0, "soru_yanlis": 0, "pratik_salih_beyani": "yok"},
+  "hasat": {
+    "ozutler": [
+      "Yol biçimi tek kaynaktan çözülmeli: Git Bash /c/ öneki üç ayrı kilidi atlattı.",
+      "Göç sonrası (Mac→Windows, Python→Rust, kapsül→kütük) eski varsayılanlar sessizce yaşıyor: deny yolları, varsayılan depo yolu, hooksPath, donmuş dosyaya bağlı kapılar.",
+      "Fark testi referansı arşivdeyse davranış düzeltmesi iki yerde yapılır; referansı unutmak testi anlamsız kılar.",
+      "Arşive taşıma pointer kırar: karar-borcu kütüğü 11 pointer'da bunu gösterdi; taşıma ile pointer güncellemesi aynı commit'te olmalı.",
+      "Salt-okur işçi emri yetmez: süre ölçen işçi yan etkili hook'u koşturup kütüğe yazdı."
+    ],
+    "wiki_delta": ["wiki/paralel-oturum-protokolu.md: durum kütüğü artık kilit dosyasıyla sıralanıyor (aday not)."],
+    "verilebilir_miydi": "Evet: denetim ve düzeltmelerin büyük kısmı oda işçilerine verildi (19 görev: 8 Opus 5.5 denetim/düzeltme, 6 Sonnet 5.5 denetim/belge, kalanı Opus düzeltme).",
+    "token_zaman": "Alt-ajan koşumları oda kaydında (ortak/oda/202611101157-depo-denetimi-2026-11-10.json); ana oturum için tahmin yazılmadı."
+  },
+  "kapanis": {
+    "test_kapisi": "cargo test --workspace: tamamı geçti (2026-11-10 son tam koşum); rituel testleri 2026-11-11 yeniden geçti; lake build 82 iş; hook testleri 14 + 11 PASS; ajan kilit testleri friday 35/35, yedi alan ajanı 40/40; Python: test_kolon_katmani + test_tarama_plan 38 test OK (skip 7). Bilinen kırık: test_fren_hook 2 test (gerçek oturum sayacını okuyor, rapor §5.3 kalem 50).",
+    "silver_saglik": "kapı çıkış 0; WARN: T-B-YETIM-UYARI 646 · T-SA-FORMAT 5 · T-SA-KOKEN 1",
+    "bayat_cekim": "kuyruk 8 · çekilen 0/3 (bu kapanışta canlı çekim yapılmadı, atlandı)",
+    "hafiza_ayna": "43 dosya · yeni 1 · değişen 1",
+    "kural_sayaci": "18 birim · OK",
+    "boyut": "CLAUDE.md 7157/7168 bayt, 40/80 satır; hafıza indeksi FIFO FLAG (3 madde arşiv adayı); senaryo-defteri tavan üstü (118 KB, rapor §3 kalem 26)",
+    "skill_esik": "7 çift tarandı · yeni-pencere sapması 0",
+    "uzun_kosum": "oturum 2b89f382 max bağlam 534056, 364 tur 128K üstünde (baglam-seyir uyarısı)",
+    "arac_ciktisi_asimi": "tools/git-hooks/caps-say.py izleme çıktısı bir kez bağlama döküldü (2026-11-10)"
+  }
+}

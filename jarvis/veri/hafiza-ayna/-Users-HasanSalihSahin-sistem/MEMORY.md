@@ -29,3 +29,4 @@
 - [lobi-cli reposuna işlem yok](feedback-lobi-cli-repo-dokunulmaz.md) — Salih 11-03: yagizkaterli/lobi-cli ve fork salihsahinin/lobi-cli'ye commit/push/dal/PR yapılmaz; oda modu yalnız private salihsahinin/oda
 - [Sokrates ajanı ürünü](project-sokrates-ajani.md) — 10-29: C:\sistem\sokrates + public repo salihsahinin/sokrates; kanon jarvis/core/sokrates-ajani.md §7 tek kaynak; ajan yalnız Sokrates'i bilir; hakem odada görünür; 'ajan yap' → önce vizyon taraması
 - [Ders tempo: cevap başına tek fikir](feedback-ders-tempo-tek-fikir.md) — Salih 11-08: kutu 8 üç denetleyici tek cevapta anlaşılmadı; bir cevap = tek denklem, her sembol tanımlı, kutu alt adımlara bölünür
+- [Ders kitabı formatı](feedback-ders-kitabi-formati.md) — Salih 11-11: kutu kutu yerine sıfırdan, sayfa sayfa kitap anlatımı; taban mat. müh. lisans; soru Salih'in yan kanalında

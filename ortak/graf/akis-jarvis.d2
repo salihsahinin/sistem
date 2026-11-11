@@ -1,4 +1,4 @@
-# akış grafı · üretici: durum graf · tarih 2026-11-10 · kaynak ortak/durum-olay.jsonl · render: d2 --layout=elk <bu dosya> <çıktı.svg>
+# akış grafı · üretici: durum graf · tarih 2026-11-11 · kaynak ortak/durum-olay.jsonl · render: d2 --layout=elk <bu dosya> <çıktı.svg>
 direction: right
 classes: {
   acik: {style.fill: "#fff3bf"; style.stroke: "#f08c00"}
@@ -29,6 +29,8 @@ jarvis: {
   seans_2026_10_31_jarvis: {label: "seans 2026-10-31-jarvis\n2026-11-03\nhedef: Salih: dosya sistemi mimarisi (filesystem file architecture)… ✗"; class: seans}
   seans_2026_11_08_jarvis: {label: "seans 2026-11-08-jarvis\n2026-11-08\nhedef: Salih: bitirme tezi konusunu (iki eklemli kol modelleme ve y… ✓"; class: seans}
   seans_2026_11_10_jarvis_mod: {label: "seans 2026-11-10-jarvis-mod\n2026-11-10\nhedef: Salih: oda ve akış modlarını geliştirmek; iki mod için ayrı … ✓"; class: seans}
+  seans_2026_11_10_jarvis: {label: "seans 2026-11-10-jarvis\n2026-11-11\nhedef: Salih: sistem klasörünün tamamını oku; bozuk, tutarsız, veri… ✓"; class: seans}
+  seans_oda_202611101157_depo_denetimi_2026_11_10: {label: "seans oda-202611101157-depo-denetimi-2026-11-10\nörtük · 2026-11-10"; class: seans}
   is1: {label: "#1 hook geçişi Rust'a"; class: [tamam]}
   is3: {label: "#3 Rust taşıma parti 2 (OMP)"; class: [tamam]}
   is4: {label: "#4 md→Lean kalan kural dosyaları"; class: [tamam]}
@@ -114,6 +116,27 @@ jarvis: {
   is85: {label: "#85 Bitirme tezi dersi: iki eklemli kol, 12 kutu (Mi…\nkutu 9 (Neural Network Dynamics Learning) alt adımlı; so…"; class: [acik; sirada]}
   is86: {label: "#86 Müzik projeleri (şarkı yönlendirme melez + sembo…\nSalih başlama beyanı; ilk adım müzik kodlama şeması, son…"; class: [acik; sirada]}
   is87: {label: "#87 jarvis-oda v0.6 + jarvis-graf v0.2 canlı test ve…\nSalih yeni oturumda /oda ve /graf dener (görev sınıfı, i…"; class: [acik; sirada]}
+  is88: {label: "#88 müzik projeleri ön-bilgi dersi: 13 kutu, kutu 1 …\nSalih: kutu 1 sorusunu cevaplar, kutu 2den devam; kayıt …"; class: [acik; sirada]}
+  is89: {label: "#89 oda #1 Denetim 1: Rust kod + hook zinciri"; class: [tamam]}
+  is90: {label: "#90 oda #2 Denetim 2: Python araçları + SCRIPTLER"; class: [tamam]}
+  is91: {label: "#91 oda #3 Denetim 3: kanon + skill tutarlılığı"; class: [tamam]}
+  is92: {label: "#92 oda #4 Denetim 4: alan ajanları + şablon + ortak"; class: [tamam]}
+  is93: {label: "#93 oda #5 Denetim 5: lean + mods + graf + wiki + ku…"; class: [tamam]}
+  is94: {label: "#94 oda #6 Denetim 6: cc + raporlar + arşiv"; class: [tamam]}
+  is95: {label: "#95 oda #7 Düzeltme 7: hook crate kilit açıkları"; class: [tamam]}
+  is96: {label: "#96 oda #8 Düzeltme 8: rituel + arac bayat yol ve CR…"; class: [tamam]}
+  is97: {label: "#97 oda #9 Düzeltme 9: README + KILAVUZ bayat atıfla…"; class: [tamam]}
+  is98: {label: "#98 oda #10 Düzeltme 10: KURULUM + cc README + SCRIP…"; class: [tamam]}
+  is99: {label: "#99 oda #11 Kalem 1: okuma-izin kilidini Rust'a taşı"; class: [tamam]}
+  is100: {label: "#100 oda #12 Denetim 12: rituel crate iş mantığı"; class: [tamam]}
+  is101: {label: "#101 oda #13 Denetim 13: kural + arac + durum + bagla…"; class: [tamam]}
+  is102: {label: "#102 oda #14 Denetim 14: canlı Python araçlarının iç …"; class: [tamam]}
+  is103: {label: "#103 oda #15 Düzeltme 15: baglam git log + ambar tran…"; class: [tamam]}
+  is104: {label: "#104 oda #16 Düzeltme 16: açılış kapısı K1 + fifo don…"; class: [tamam]}
+  is105: {label: "#105 oda #17 Düzeltme 17: durum kütüğü sağlamlığı"; class: [tamam]}
+  is106: {label: "#106 oda #18 Düzeltme 18: arac + baglam bayat varsayı…"; class: [tamam]}
+  is107: {label: "#107 oda #19 Düzeltme 19: baglam git_meta tam-depo lo…"; class: [tamam]}
+  is108: {label: "#108 Depo denetimi inceleme listesi: Salih hükmü bekl…\nSalih kalem seçer; raporlar/2026-11/denetim-depo-2026-11…"; class: [acik; sirada]}
   is1 -> is11: girdi
   is4 -> is14: girdi
   is3 -> is17: girdi
@@ -254,6 +277,28 @@ jarvis: {
   seans_2026_11_08_jarvis -> seans_2026_11_10_jarvis_mod: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_2026_11_08_jarvis -> is85: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_11_08_jarvis -> is86: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_2026_11_10_jarvis_mod -> seans_2026_11_10_jarvis: sonra {style.stroke: "#7048e8"; style.bold: true}
   seans_2026_11_10_jarvis_mod -> is87: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
   seans_2026_11_10_jarvis_mod -> is47: bitirdi {style.stroke: "#2f9e44"; style.stroke-dash: 2}
+  seans_2026_11_10_jarvis -> seans_oda_202611101157_depo_denetimi_2026_11_10: sonra {style.stroke: "#7048e8"; style.bold: true}
+  seans_2026_11_10_jarvis -> is108: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is89: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is90: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is91: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is92: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is93: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is94: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is95: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is96: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is97: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is98: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is99: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is100: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is101: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is102: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is103: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is104: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is105: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is106: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
+  seans_oda_202611101157_depo_denetimi_2026_11_10 -> is107: açtı {style.stroke: "#7048e8"; style.stroke-dash: 2}
 }

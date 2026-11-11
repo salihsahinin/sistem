@@ -233,3 +233,63 @@
 {"olay":"bitir","id":47,"ts":"2026-11-10T11:44:00Z","kanit":["jarvis/mods/ITERASYON-2026-11-03.md","a9db6bd0","c914d5a8","599a043e","650762fa","de338b59"],"oturum":"2026-11-10-jarvis-mod"}
 {"olay":"seans_kapat","ts":"2026-11-10T11:44:51Z","alan":"jarvis","oturum":"2026-11-10-jarvis-mod","hedef_cumle":"Salih: oda ve akış modlarını geliştirmek; iki mod için ayrı iterasyon, kod tabanlı ve mimarili; kodu Opus yazar.","hedef_tutuldu":true,"kayit":"jarvis/raporlar/seans/seans-teslim-2026-11-10-mod-iterasyon.json","etiket":"mod-iterasyon"}
 {"olay":"ac","id":88,"ts":"2026-11-10T11:46:05Z","alan":"jarvis","is":"müzik projeleri ön-bilgi dersi: 13 kutu, kutu 1 sorusunda","sonraki_eylem":"Salih: kutu 1 sorusunu cevaplar, kutu 2den devam; kayıt jarvis/kuyruk/ders-muzik-on-bilgi-2026-11-05.md"}
+{"olay":"seans_ac","ts":"2026-11-10T11:55:02Z","alan":"jarvis","oturum":"2026-11-10-jarvis","hedef_cumle":"Salih: sistem klasörünün tamamını oku; bozuk, tutarsız, verimsiz ya da artık gereksiz her şeyi bul; emin olunanı düzelt, kalanını Salih incelemesi için listele"}
+{"olay":"ac","id":89,"ts":"2026-11-10T11:57:54Z","alan":"jarvis","is":"oda #1 Denetim 1: Rust kod + hook zinciri","sonraki_eylem":"Rust crate'leri ve hook zinciri için kanıtlı bulgu listesi (en çok 40 satır) döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":90,"ts":"2026-11-10T11:58:04Z","alan":"jarvis","is":"oda #2 Denetim 2: Python araçları + SCRIPTLER","sonraki_eylem":"jarvis/tools altındaki her script için canlı/ölü/kopya hükmü ve kanıtlı bulgu listesi döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":91,"ts":"2026-11-10T11:58:16Z","alan":"jarvis","is":"oda #3 Denetim 3: kanon + skill tutarlılığı","sonraki_eylem":"Kanon dosyaları ve skill'ler için kırık atıf, çelişki ve bayat talimat bulguları kanıtlı liste olarak döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":92,"ts":"2026-11-10T11:58:28Z","alan":"jarvis","is":"oda #4 Denetim 4: alan ajanları + şablon + ortak","sonraki_eylem":"Dokuz ajan dizini, şablonlar ve ortak alan için şablondan sapma ve bozukluk bulguları kanıtlı liste olarak döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":93,"ts":"2026-11-10T11:58:40Z","alan":"jarvis","is":"oda #5 Denetim 5: lean + mods + graf + wiki + kuyruk + veri","sonraki_eylem":"Lean, mods, graf, wiki, kuyruk ve veri dizinleri için kanıtlı bulgu listesi döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":94,"ts":"2026-11-10T11:58:52Z","alan":"jarvis","is":"oda #6 Denetim 6: cc + raporlar + arşiv","sonraki_eylem":"cc, raporlar ve arsiv dizinleri için yapı, kopya ve açık-kalmış kayıt bulguları kanıtlı liste olarak döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":95,"ts":"2026-11-10T12:07:50Z","alan":"jarvis","is":"oda #7 Düzeltme 7: hook crate kilit açıkları","sonraki_eylem":"Dört dosyadaki beş düzeltme yapıldı ve `cargo test -p jarvis-hook` çıktısı raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":96,"ts":"2026-11-10T12:08:04Z","alan":"jarvis","is":"oda #8 Düzeltme 8: rituel + arac bayat yol ve CRLF","sonraki_eylem":"Dört dosyadaki düzeltmeler yapıldı ve `cargo test -p jarvis-rituel -p jarvis-arac` çıktısı raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":97,"ts":"2026-11-10T12:08:18Z","alan":"jarvis","is":"oda #9 Düzeltme 9: README + KILAVUZ bayat atıflar","sonraki_eylem":"Dört belgede listelenen bayat ve kırık atıflar düzeltildi; her değişiklik dosya:satır ile raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":98,"ts":"2026-11-10T12:08:35Z","alan":"jarvis","is":"oda #10 Düzeltme 10: KURULUM + cc README + SCRIPTLER","sonraki_eylem":"Dört belgede listelenen bayat ve kırık atıflar düzeltildi; her değişiklik dosya:satır ile raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":99,"ts":"2026-11-10T12:31:40Z","alan":"jarvis","is":"oda #11 Kalem 1: okuma-izin kilidini Rust'a taşı","sonraki_eylem":"`jarvis-hook okuma-izin` alt komutu yazıldı, friday sarmalı onu çağırıyor, friday'in mevcut okuma-izin-test.sh vakaları ve yeni /c/ vakaları beklenen çıkış kodunu veriyor.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":100,"ts":"2026-11-10T12:45:15Z","alan":"jarvis","is":"oda #12 Denetim 12: rituel crate iş mantığı","sonraki_eylem":"rituel crate'inin iş mantığı satır düzeyinde okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":101,"ts":"2026-11-10T12:45:28Z","alan":"jarvis","is":"oda #13 Denetim 13: kural + arac + durum + baglam crate iş mantığı","sonraki_eylem":"Dört crate'in iş mantığı satır düzeyinde okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":102,"ts":"2026-11-10T12:45:43Z","alan":"jarvis","is":"oda #14 Denetim 14: canlı Python araçlarının iç mantığı","sonraki_eylem":"jarvis/tools altındaki canlı Python betiklerinin iç mantığı okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":103,"ts":"2026-11-10T12:59:07Z","alan":"jarvis","is":"oda #15 Düzeltme 15: baglam git log + ambar transaction + graf render","sonraki_eylem":"Dört düzeltme yapıldı, `cargo test -p jarvis-rituel` çıktısı ve baglam adımının düzeltme sonrası ilk_commit sayımı raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":104,"ts":"2026-11-10T12:59:26Z","alan":"jarvis","is":"oda #16 Düzeltme 16: açılış kapısı K1 + fifo donmuş kapsül dalları","sonraki_eylem":"K1 kapısı ve fifo donmuş kapsül/pano dosyalarına bağlı olmaktan çıktı, `cargo test -p jarvis-rituel` geçti, `acilis-kapilari` çıktısı raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":105,"ts":"2026-11-10T12:59:45Z","alan":"jarvis","is":"oda #17 Düzeltme 17: durum kütüğü sağlamlığı","sonraki_eylem":"Yedi düzeltme yapıldı, her biri için `tests/cli.rs` içinde test var ve `cargo test -p durum` geçti.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":106,"ts":"2026-11-10T13:00:02Z","alan":"jarvis","is":"oda #18 Düzeltme 18: arac + baglam bayat varsayılanlar","sonraki_eylem":"Dört dosyadaki düzeltmeler yapıldı, `cargo test -p jarvis-arac -p jarvis-baglam` geçti ve uçtan uca denemeler raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"ac","id":107,"ts":"2026-11-10T13:08:51Z","alan":"jarvis","is":"oda #19 Düzeltme 19: baglam git_meta tam-depo log + önek eşleme (Ö1)","sonraki_eylem":"ilk_commit monorepo öncesine iniyor, son_commit doğru, Rust ve Python aynı dosya meta çıktısını veriyor; kanıt raporda.","oturum":"oda-202611101157-depo-denetimi-2026-11-10"}
+{"olay":"al","id":89,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":89,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":90,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":90,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":91,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":91,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":92,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":92,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":93,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":93,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":94,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":94,"ts":"2026-11-11T07:49:29Z","kanit":["f6c45c5d","cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham.md"]}
+{"olay":"al","id":95,"ts":"2026-11-11T07:49:29Z"}
+{"olay":"bitir","id":95,"ts":"2026-11-11T07:49:29Z","kanit":["e570c292"]}
+{"olay":"al","id":96,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":96,"ts":"2026-11-11T07:49:30Z","kanit":["e570c292"]}
+{"olay":"al","id":97,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":97,"ts":"2026-11-11T07:49:30Z","kanit":["f6c45c5d"]}
+{"olay":"al","id":98,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":98,"ts":"2026-11-11T07:49:30Z","kanit":["f6c45c5d"]}
+{"olay":"al","id":99,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":99,"ts":"2026-11-11T07:49:30Z","kanit":["593f6ca6"]}
+{"olay":"al","id":100,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":100,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf","raporlar/2026-11/denetim-depo-2026-11-10-devam.md"]}
+{"olay":"al","id":101,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":101,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf","raporlar/2026-11/denetim-depo-2026-11-10-devam.md"]}
+{"olay":"al","id":102,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":102,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf","raporlar/2026-11/denetim-depo-2026-11-10-devam.md"]}
+{"olay":"al","id":103,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":103,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf"]}
+{"olay":"al","id":104,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":104,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf"]}
+{"olay":"al","id":105,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":105,"ts":"2026-11-11T07:49:30Z","kanit":["4ca74fcf"]}
+{"olay":"al","id":106,"ts":"2026-11-11T07:49:30Z"}
+{"olay":"bitir","id":106,"ts":"2026-11-11T07:49:31Z","kanit":["4ca74fcf"]}
+{"olay":"al","id":107,"ts":"2026-11-11T07:49:31Z"}
+{"olay":"bitir","id":107,"ts":"2026-11-11T07:49:31Z","kanit":["4ca74fcf"]}
+{"olay":"ac","id":108,"ts":"2026-11-11T08:03:31Z","alan":"jarvis","is":"Depo denetimi inceleme listesi: Salih hükmü bekleyen kalemler (rapor §3 A3,A5,A6,B9-B13,C16-C21,D22-D28,E29-E39 ve §5.3 41-54)","sonraki_eylem":"Salih kalem seçer; raporlar/2026-11/denetim-depo-2026-11-10.md §3 ve §5.3","kanit":["raporlar/2026-11/denetim-depo-2026-11-10.md"],"oturum":"2026-11-10-jarvis"}
+{"olay":"seans_kapat","ts":"2026-11-11T08:04:10Z","alan":"jarvis","oturum":"2026-11-10-jarvis","hedef_cumle":"Salih: sistem klasörünün tamamını oku; bozuk, tutarsız, verimsiz ya da artık gereksiz her şeyi bul; emin olunanı düzelt, kalanını Salih incelemesi için listele","hedef_tutuldu":true,"kayit":"jarvis/raporlar/seans/seans-teslim-2026-11-11-depo-denetimi.json","etiket":"depo-denetimi"}

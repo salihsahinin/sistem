@@ -2,10 +2,10 @@
   "meta": {
     "sema": "akis-graf v1 (Karar 122)",
     "uretici": "durum graf",
-    "tarih": "2026-11-10",
+    "tarih": "2026-11-11",
     "alan": null,
-    "dugum_sayisi": 99,
-    "kenar_sayisi": 143,
+    "dugum_sayisi": 122,
+    "kenar_sayisi": 165,
     "not": "türetilmiş görünüm; kaynak ortak/durum-olay.jsonl; gövde deterministik"
   },
   "dugumler": [
@@ -237,6 +237,54 @@
       "dokunulan": [
         47,
         87
+      ]
+    },
+    {
+      "id": "seans:2026-11-10-jarvis",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "2026-11-10-jarvis",
+      "ac_ts": "2026-11-10T11:55:02Z",
+      "kapat_ts": "2026-11-11T08:04:10Z",
+      "hedef": "Salih: sistem klasörünün tamamını oku; bozuk, tutarsız, verimsiz ya da artık gereksiz her şeyi bul; emin olunanı düzelt, kalanını Salih incelemesi için listele",
+      "hedef_tutuldu": true,
+      "kayit": "jarvis/raporlar/seans/seans-teslim-2026-11-11-depo-denetimi.json",
+      "ortuk": false,
+      "dokunulan": [
+        108
+      ]
+    },
+    {
+      "id": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "tur": "seans",
+      "alan": "jarvis",
+      "etiket": "oda-202611101157-depo-denetimi-2026-11-10",
+      "ac_ts": "2026-11-10T11:57:54Z",
+      "kapat_ts": null,
+      "hedef": null,
+      "hedef_tutuldu": null,
+      "kayit": null,
+      "ortuk": true,
+      "dokunulan": [
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107
       ]
     },
     {
@@ -1493,6 +1541,319 @@
       "sirada": true
     },
     {
+      "id": "is:88",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "müzik projeleri ön-bilgi dersi: 13 kutu, kutu 1 sorusunda",
+      "sonraki_eylem": "Salih: kutu 1 sorusunu cevaplar, kutu 2den devam; kayıt jarvis/kuyruk/ders-muzik-on-bilgi-2026-11-05.md",
+      "acilis_ts": "2026-11-10T11:46:05Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [],
+      "sirada": true
+    },
+    {
+      "id": "is:89",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #1 Denetim 1: Rust kod + hook zinciri",
+      "sonraki_eylem": "Rust crate'leri ve hook zinciri için kanıtlı bulgu listesi (en çok 40 satır) döndürüldü.",
+      "acilis_ts": "2026-11-10T11:57:54Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:90",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #2 Denetim 2: Python araçları + SCRIPTLER",
+      "sonraki_eylem": "jarvis/tools altındaki her script için canlı/ölü/kopya hükmü ve kanıtlı bulgu listesi döndürüldü.",
+      "acilis_ts": "2026-11-10T11:58:04Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:91",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #3 Denetim 3: kanon + skill tutarlılığı",
+      "sonraki_eylem": "Kanon dosyaları ve skill'ler için kırık atıf, çelişki ve bayat talimat bulguları kanıtlı liste olarak döndürüldü.",
+      "acilis_ts": "2026-11-10T11:58:16Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:92",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #4 Denetim 4: alan ajanları + şablon + ortak",
+      "sonraki_eylem": "Dokuz ajan dizini, şablonlar ve ortak alan için şablondan sapma ve bozukluk bulguları kanıtlı liste olarak döndürüldü.",
+      "acilis_ts": "2026-11-10T11:58:28Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:93",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #5 Denetim 5: lean + mods + graf + wiki + kuyruk + veri",
+      "sonraki_eylem": "Lean, mods, graf, wiki, kuyruk ve veri dizinleri için kanıtlı bulgu listesi döndürüldü.",
+      "acilis_ts": "2026-11-10T11:58:40Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:94",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #6 Denetim 6: cc + raporlar + arşiv",
+      "sonraki_eylem": "cc, raporlar ve arsiv dizinleri için yapı, kopya ve açık-kalmış kayıt bulguları kanıtlı liste olarak döndürüldü.",
+      "acilis_ts": "2026-11-10T11:58:52Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:95",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #7 Düzeltme 7: hook crate kilit açıkları",
+      "sonraki_eylem": "Dört dosyadaki beş düzeltme yapıldı ve `cargo test -p jarvis-hook` çıktısı raporda.",
+      "acilis_ts": "2026-11-10T12:07:50Z",
+      "al_ts": "2026-11-11T07:49:29Z",
+      "bitir_ts": "2026-11-11T07:49:29Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:96",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #8 Düzeltme 8: rituel + arac bayat yol ve CRLF",
+      "sonraki_eylem": "Dört dosyadaki düzeltmeler yapıldı ve `cargo test -p jarvis-rituel -p jarvis-arac` çıktısı raporda.",
+      "acilis_ts": "2026-11-10T12:08:04Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:97",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #9 Düzeltme 9: README + KILAVUZ bayat atıflar",
+      "sonraki_eylem": "Dört belgede listelenen bayat ve kırık atıflar düzeltildi; her değişiklik dosya:satır ile raporda.",
+      "acilis_ts": "2026-11-10T12:08:18Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:98",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #10 Düzeltme 10: KURULUM + cc README + SCRIPTLER",
+      "sonraki_eylem": "Dört belgede listelenen bayat ve kırık atıflar düzeltildi; her değişiklik dosya:satır ile raporda.",
+      "acilis_ts": "2026-11-10T12:08:35Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:99",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #11 Kalem 1: okuma-izin kilidini Rust'a taşı",
+      "sonraki_eylem": "`jarvis-hook okuma-izin` alt komutu yazıldı, friday sarmalı onu çağırıyor, friday'in mevcut okuma-izin-test.sh vakaları ve yeni /c/ vakaları beklenen çıkış kodunu veriyor.",
+      "acilis_ts": "2026-11-10T12:31:40Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:100",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #12 Denetim 12: rituel crate iş mantığı",
+      "sonraki_eylem": "rituel crate'inin iş mantığı satır düzeyinde okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.",
+      "acilis_ts": "2026-11-10T12:45:15Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:101",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #13 Denetim 13: kural + arac + durum + baglam crate iş mantığı",
+      "sonraki_eylem": "Dört crate'in iş mantığı satır düzeyinde okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.",
+      "acilis_ts": "2026-11-10T12:45:28Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:102",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #14 Denetim 14: canlı Python araçlarının iç mantığı",
+      "sonraki_eylem": "jarvis/tools altındaki canlı Python betiklerinin iç mantığı okundu ve kanıtlı bulgu listesi (en çok 30 satır) döndürüldü.",
+      "acilis_ts": "2026-11-10T12:45:43Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:103",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #15 Düzeltme 15: baglam git log + ambar transaction + graf render",
+      "sonraki_eylem": "Dört düzeltme yapıldı, `cargo test -p jarvis-rituel` çıktısı ve baglam adımının düzeltme sonrası ilk_commit sayımı raporda.",
+      "acilis_ts": "2026-11-10T12:59:07Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:104",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #16 Düzeltme 16: açılış kapısı K1 + fifo donmuş kapsül dalları",
+      "sonraki_eylem": "K1 kapısı ve fifo donmuş kapsül/pano dosyalarına bağlı olmaktan çıktı, `cargo test -p jarvis-rituel` geçti, `acilis-kapilari` çıktısı raporda.",
+      "acilis_ts": "2026-11-10T12:59:26Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:105",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #17 Düzeltme 17: durum kütüğü sağlamlığı",
+      "sonraki_eylem": "Yedi düzeltme yapıldı, her biri için `tests/cli.rs` içinde test var ve `cargo test -p durum` geçti.",
+      "acilis_ts": "2026-11-10T12:59:45Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:30Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:106",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #18 Düzeltme 18: arac + baglam bayat varsayılanlar",
+      "sonraki_eylem": "Dört dosyadaki düzeltmeler yapıldı, `cargo test -p jarvis-arac -p jarvis-baglam` geçti ve uçtan uca denemeler raporda.",
+      "acilis_ts": "2026-11-10T13:00:02Z",
+      "al_ts": "2026-11-11T07:49:30Z",
+      "bitir_ts": "2026-11-11T07:49:31Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:107",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "tamam",
+      "etiket": "oda #19 Düzeltme 19: baglam git_meta tam-depo log + önek eşleme (Ö1)",
+      "sonraki_eylem": "ilk_commit monorepo öncesine iniyor, son_commit doğru, Rust ve Python aynı dosya meta çıktısını veriyor; kanıt raporda.",
+      "acilis_ts": "2026-11-10T13:08:51Z",
+      "al_ts": "2026-11-11T07:49:31Z",
+      "bitir_ts": "2026-11-11T07:49:31Z",
+      "oturumlar": [
+        "oda-202611101157-depo-denetimi-2026-11-10"
+      ],
+      "sirada": false
+    },
+    {
+      "id": "is:108",
+      "tur": "is",
+      "alan": "jarvis",
+      "durum": "acik",
+      "etiket": "Depo denetimi inceleme listesi: Salih hükmü bekleyen kalemler (rapor §3 A3,A5,A6,B9-B13,C16-C21,D22-D28,E29-E39 ve §5.3 41-54)",
+      "sonraki_eylem": "Salih kalem seçer; raporlar/2026-11/denetim-depo-2026-11-10.md §3 ve §5.3",
+      "acilis_ts": "2026-11-11T08:03:31Z",
+      "al_ts": null,
+      "bitir_ts": null,
+      "oturumlar": [
+        "2026-11-10-jarvis"
+      ],
+      "sirada": true
+    },
+    {
       "id": "is:16",
       "tur": "is",
       "alan": "span",
@@ -1982,6 +2343,11 @@
     },
     {
       "k": "seans:2026-11-10-jarvis-mod",
+      "h": "seans:2026-11-10-jarvis",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-11-10-jarvis-mod",
       "h": "is:87",
       "tur": "acti"
     },
@@ -1989,6 +2355,111 @@
       "k": "seans:2026-11-10-jarvis-mod",
       "h": "is:47",
       "tur": "bitirdi"
+    },
+    {
+      "k": "seans:2026-11-10-jarvis",
+      "h": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "tur": "sonra"
+    },
+    {
+      "k": "seans:2026-11-10-jarvis",
+      "h": "is:108",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:89",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:90",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:91",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:92",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:93",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:94",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:95",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:96",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:97",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:98",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:99",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:100",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:101",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:102",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:103",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:104",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:105",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:106",
+      "tur": "acti"
+    },
+    {
+      "k": "seans:oda-202611101157-depo-denetimi-2026-11-10",
+      "h": "is:107",
+      "tur": "acti"
     },
     {
       "k": "is:1",

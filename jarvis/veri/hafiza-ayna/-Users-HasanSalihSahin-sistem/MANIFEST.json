@@ -1,16 +1,16 @@
 {
  "anahtar": "C--sistem-sistem",
  "kaynak": "C:\\Users\\sasah/.claude/projects/C--sistem-sistem/memory",
- "uretim": "2026-11-10",
+ "uretim": "2026-11-11",
  "karar": "Karar 104 M3 (2026-09-20)",
- "dosya_sayisi": 42,
+ "dosya_sayisi": 43,
  "kaynakta_yok": [],
  "dosyalar": [
   {
    "ad": "MEMORY.md",
-   "sha256": "fb0d90b84554c719bbef4f75ae3efc40ee0aab05c6c3794ca6153fb6b936f503",
-   "bayt": 6303,
-   "kaynak_mtime": "2026-11-08T17:10:26",
+   "sha256": "5c5334638ca9c02efef88062819904a19889ab8985bc9d8ad324fa3c28e77608",
+   "bayt": 6492,
+   "kaynak_mtime": "2026-11-11T10:54:24",
    "durum": "ayna"
   },
   {
@@ -46,6 +46,13 @@
    "sha256": "951fc4e4127f9006f3d0175c56dc819d0374a5060eb49c9c27189e628e753a50",
    "bayt": 1766,
    "kaynak_mtime": "2026-09-22T18:41:43",
+   "durum": "ayna"
+  },
+  {
+   "ad": "feedback-ders-kitabi-formati.md",
+   "sha256": "77e48d2c61881949585a4ca8130be601bd9cb44ee4e73e9b8e606d8baf1ecb86",
+   "bayt": 1051,
+   "kaynak_mtime": "2026-11-11T10:54:20",
    "durum": "ayna"
   },
   {
