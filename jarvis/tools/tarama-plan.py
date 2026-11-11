@@ -20,7 +20,7 @@ Kaynak DB salt-okur URI ile açılır (mode=ro). Çıkış kodu: 0 tamam (uyarı
 Kullanım: python3 tools/tarama-plan.py [--repo <yol>] [--db veri/baglam.sqlite] [--cikti veri/tarama-plan.jsonl] [--sorgu N1,A2]
                                        [--analizsiz] [--sert] [--sessiz] [--kuru]
 """
-import argparse, json, os, re, shutil, sqlite3, subprocess, sys, tempfile, urllib.request
+import argparse, hashlib, json, os, re, shutil, sqlite3, subprocess, sys, tempfile, urllib.request
 from datetime import datetime, timezone, timedelta
 
 # Sorgu seti: ad → (açıklama, SQL, parametreler, beklenen sınıflar {stat1 yok}, beklenen sınıflar {stat1 var}, ihlal_ise_ne)
@@ -119,21 +119,47 @@ def salt_okur_ac(db):
     return sqlite3.connect("file:%s?mode=ro" % urllib.request.pathname2url(os.path.abspath(db)), uri=True)
 
 
+def analiz_kopya_ac(db):
+    """ANALYZE'li geçici kopyayı döndürür (açık bağlantı). Kopya + ANALYZE yalnız kaynak DB değiştiyse (boyut + mtime_ns) yeniden yapılır;
+    değişmediyse önceki kopya kullanılır (önbellek: sistem temp dizini, kaynak yoluna göre ad). Kaynak DB'ye dokunulmaz."""
+    ad = hashlib.sha1(os.path.abspath(db).encode("utf-8")).hexdigest()[:16]
+    dizin = os.path.join(tempfile.gettempdir(), "tarama-plan-onbellek"); os.makedirs(dizin, exist_ok=True)
+    kopya, meta = os.path.join(dizin, ad + ".sqlite"), os.path.join(dizin, ad + ".json")
+    st = os.stat(db); imza = {"boyut": st.st_size, "mtime_ns": st.st_mtime_ns}
+    try:
+        with open(meta, encoding="utf-8") as fh:
+            gecerli = json.load(fh) == imza and os.path.exists(kopya)
+    except (OSError, ValueError):
+        gecerli = False
+    if gecerli:
+        try:
+            k = sqlite3.connect(kopya)
+            if stat1_var(k):
+                return k
+            k.close()
+        except sqlite3.Error:
+            pass
+    if os.path.exists(meta):
+        os.remove(meta)  # yarım kalan kopya geçerli sayılmasın
+    shutil.copyfile(db, kopya)
+    k = sqlite3.connect(kopya); k.execute("ANALYZE"); k.commit()
+    with open(meta, "w", encoding="utf-8") as fh:
+        json.dump(imza, fh)
+    return k
+
+
 def kos(db, secili, analiz):
     """DB'de (ve istenirse geçici ANALYZE kopyasında) planları toplar; satır listesi döner. Kaynak DB değişmez (salt-okur bağlantı).
     Sorgu EXPLAIN'de düşerse (şema kayması: kolon adı vb.) traceback yerine sonuc=HATA satırı yazılır, kalan sorgular sürer.
     Geçici kopya ve bağlantılar her durumda (hata dahil) kapatılır/silinir. DB açılamazsa sqlite3.Error yükselir."""
     con = salt_okur_ac(db)
-    kon2, tmpdir, satirlar = None, None, []
+    kon2, satirlar = None, []
     try:
         surum, kaynak_id = con.execute("SELECT sqlite_version(), sqlite_source_id()").fetchone()
         nesneler = mevcut_nesneler(con)
         durumlar = [("oldugu-gibi", con, stat1_var(con))]
         if analiz:
-            tmpdir = tempfile.mkdtemp(prefix="tarama-plan-")
-            kopya = os.path.join(tmpdir, "analiz.sqlite")
-            shutil.copyfile(db, kopya)
-            kon2 = sqlite3.connect(kopya); kon2.execute("ANALYZE"); kon2.commit()
+            kon2 = analiz_kopya_ac(db)
             durumlar.append(("analiz-kopya", kon2, True))
         for ad in secili:
             acik, sql, params, bek0, bek1, tur = SORGULAR[ad]
@@ -160,8 +186,6 @@ def kos(db, secili, analiz):
         con.close()
         if kon2 is not None:
             kon2.close()
-        if tmpdir:
-            shutil.rmtree(tmpdir, ignore_errors=True)
     return satirlar, surum, kaynak_id
 
 

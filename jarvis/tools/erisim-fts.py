@@ -23,7 +23,7 @@ AXI (İB-58/3; AXI-STANDARDI A1/A2/A4/A6/A7): `--sorgu --json` → stdout TEK JS
 Yan-etki (A6): --sorgu SALT-OKUR — `--json`'da kayit_fts yoksa KURMAZ, kod 2 (silver'a yazmaz; `--json`süz eski davranış: uyarı + kur) · --insa/--eval YAZAR (silver kayit_fts/erisim_genisletme · veri/erisim-eval.jsonl append · v_erisim_eval.csv).
 Çıkış: 0 · 2 FTS5 yok/DB yok/soru dosyası yok/`--json`ün `--sorgu`suz kullanımı/`--json`da kayit_fts yok · 3 eval testi ERROR (soru seti şema hatası). Deneysel m.29.
 """
-import argparse, csv, json, os, re, sqlite3, subprocess, sys, time
+import argparse, csv, hashlib, json, os, re, sqlite3, subprocess, sys, time
 from datetime import datetime, timezone
 
 SURUM = "0.2"  # 0.2 = AXI İB-58/3 (--sorgu --json + A2 çıkış sözlüğü); 0.1 = AXI-öncesi
@@ -60,30 +60,74 @@ def fold(s):
 
 
 # ------------------------------------------------------------------ indeks
-def insa(con):
-    con.executescript("""
-    DROP TABLE IF EXISTS erisim_genisletme;
-    CREATE TABLE erisim_genisletme (kayit_id TEXT PRIMARY KEY, dosya_id TEXT, katman TEXT, zaman TEXT, genisletme TEXT, ref_sayisi INTEGER);
-    INSERT INTO erisim_genisletme
+KAYNAK_SQL = """
       SELECT k.kayit_id, k.dosya_id, d.katman,
              COALESCE(NULLIF(k.tarih_iso,''), substr(d.son_commit,1,10)) AS zaman,
              TRIM(COALESCE(d.baslik,'') || ' ' || REPLACE(COALESCE(k.bolum_yolu,''), '/', ' ') || ' ' ||
                   COALESCE((SELECT GROUP_CONCAT(DISTINCT r.ref_deger) FROM referans r WHERE r.kayit_id=k.kayit_id
                             AND r.ref_turu IN ('anahtar_terim','tuzuk_madde','kart','skill_adi','v_no','wiki_link','etiket')), '') || ' ' ||
                   COALESCE(substr(NULLIF(k.tarih_iso,''),1,7), substr(d.son_commit,1,7), '')) AS genisletme,
-             (SELECT COUNT(*) FROM referans r WHERE r.kayit_id=k.kayit_id) AS ref_sayisi
-      FROM kayit k JOIN dosya d ON d.dosya_id=k.dosya_id;
+             (SELECT COUNT(*) FROM referans r WHERE r.kayit_id=k.kayit_id) AS ref_sayisi,
+             COALESCE(k.gecerlilik, CASE WHEN d.katman='soguk' THEN 'tarihce' ELSE 'guncel' END) AS gecerlilik,
+             COALESCE(k.metin,'') AS metin
+      FROM kayit k JOIN dosya d ON d.dosya_id=k.dosya_id"""
+
+
+def satir_ozeti(r):
+    """Kaynak satırın içerik özeti (sha1): kayit_id dışındaki tüm indekslenen alanlar."""
+    h = hashlib.sha1()
+    for x in r[1:]:
+        h.update(repr(x).encode("utf-8")); h.update(b"")
+    return h.hexdigest()
+
+
+def tam_insa(con, kaynak):
+    """Sıfırdan kurar (ilk koşum / eski şema): erisim_genisletme + kayit_fts + erisim_ozet (kayit_id → rowid, özet)."""
+    con.executescript("""
+    DROP TABLE IF EXISTS erisim_genisletme;
+    CREATE TABLE erisim_genisletme (kayit_id TEXT PRIMARY KEY, dosya_id TEXT, katman TEXT, zaman TEXT, genisletme TEXT, ref_sayisi INTEGER);
     DROP TABLE IF EXISTS kayit_fts;
     CREATE VIRTUAL TABLE kayit_fts USING fts5(kayit_id UNINDEXED, dosya_id UNINDEXED, katman UNINDEXED, zaman UNINDEXED, gecerlilik UNINDEXED, metin, genisletme,
                                             tokenize = 'unicode61 remove_diacritics 2');
-    INSERT INTO kayit_fts (kayit_id, dosya_id, katman, zaman, gecerlilik, metin, genisletme)
-      SELECT g.kayit_id, g.dosya_id, g.katman, g.zaman, COALESCE(k.gecerlilik, CASE WHEN g.katman='soguk' THEN 'tarihce' ELSE 'guncel' END), COALESCE(k.metin,''), COALESCE(g.genisletme,'')
-      FROM erisim_genisletme g JOIN kayit k ON k.kayit_id=g.kayit_id;
-    INSERT INTO kayit_fts(kayit_fts) VALUES('optimize');
+    DROP TABLE IF EXISTS erisim_ozet;
+    CREATE TABLE erisim_ozet (kayit_id TEXT PRIMARY KEY, fts_rowid INTEGER, ozet TEXT);
     """)
+    con.executemany("INSERT INTO erisim_genisletme VALUES (?,?,?,?,?,?)", [r[:6] for r in kaynak])
+    ekle_fts(con, kaynak)
+    con.execute("INSERT INTO kayit_fts(kayit_fts) VALUES('optimize')")
+
+
+def ekle_fts(con, satirlar):
+    """FTS'e satır ekler; her satırın rowid'i ve özeti erisim_ozet'e yazılır."""
+    for r in satirlar:
+        cur = con.execute("INSERT INTO kayit_fts (kayit_id, dosya_id, katman, zaman, gecerlilik, metin, genisletme) VALUES (?,?,?,?,?,?,?)",
+                          (r[0], r[1], r[2], r[3], r[6], r[7], r[4] or ""))
+        con.execute("INSERT OR REPLACE INTO erisim_ozet VALUES (?,?,?)", (r[0], cur.lastrowid, satir_ozeti(r)))
+
+
+def insa(con):
+    """Artımlı indeks: kaynak satır özetleri erisim_ozet ile karşılaştırılır; değişmediyse atlanır (kapı), değiştiyse yalnız
+    değişen/silinen/yeni satırlar güncellenir. Eski şema ya da bozuk durum → tam kurulum. Dönüş: kayit_fts satır sayısı."""
+    kaynak = con.execute(KAYNAK_SQL).fetchall()
+    var = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE name IN ('kayit_fts','erisim_ozet','erisim_genisletme')")}
+    if len(var) < 3:
+        tam_insa(con, kaynak); con.commit()
+        return con.execute("SELECT COUNT(*) FROM kayit_fts").fetchone()[0]
+    eski = {k: (rid, oz) for k, rid, oz in con.execute("SELECT kayit_id, fts_rowid, ozet FROM erisim_ozet")}
+    yeni_oz = {r[0]: satir_ozeti(r) for r in kaynak}
+    silinecek = [k for k in eski if k not in yeni_oz or eski[k][1] != yeni_oz[k]]
+    eklenecek = [r for r in kaynak if r[0] not in eski or eski[r[0]][1] != yeni_oz[r[0]]]
+    n_fts = con.execute("SELECT COUNT(*) FROM kayit_fts").fetchone()[0]
+    if not silinecek and not eklenecek and n_fts == len(eski) == len(kaynak):
+        return n_fts  # kaynak değişmedi → atla
+    for k in silinecek:
+        con.execute("DELETE FROM kayit_fts WHERE rowid=?", (eski[k][0],))
+        con.execute("DELETE FROM erisim_ozet WHERE kayit_id=?", (k,))
+        con.execute("DELETE FROM erisim_genisletme WHERE kayit_id=?", (k,))
+    con.executemany("INSERT OR REPLACE INTO erisim_genisletme VALUES (?,?,?,?,?,?)", [r[:6] for r in eklenecek])
+    ekle_fts(con, eklenecek)
     con.commit()
-    n = con.execute("SELECT COUNT(*) FROM kayit_fts").fetchone()[0]
-    return n
+    return con.execute("SELECT COUNT(*) FROM kayit_fts").fetchone()[0]
 
 
 # ------------------------------------------------------------------ sorgu

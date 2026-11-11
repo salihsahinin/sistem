@@ -104,7 +104,7 @@ class KosumTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         self.assertEqual(r.stderr.strip(), "")  # ihlal/beklenti-dışı/hata yok → stderr boş
         self.assertEqual(sha(self.db), once)  # ANALYZE geçici kopyada; kaynak byte-özdeş
-        self.assertEqual(os.listdir(tmpdir), [])  # geçici ANALYZE kopyası silindi
+        self.assertLessEqual(set(os.listdir(tmpdir)), {"tarama-plan-onbellek"})  # ANALYZE kopyası yalnız önbellek dizininde
         con = sqlite3.connect(self.db)
         self.assertEqual(con.execute("SELECT count(*) FROM sqlite_master WHERE name='sqlite_stat1'").fetchone()[0], 0); con.close()
         satirlar = oku(self.kutuk)
@@ -161,6 +161,20 @@ class KosumTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         s = oku(self.kutuk)[0]; self.assertEqual(s["sonuc"], "ATLANDI"); self.assertIn("karar_borcu", s["neden"])
 
+    def test_analiz_kopyasi_kaynak_degismediyse_yeniden_yapilmaz(self):
+        # önbellek: kaynak değişmedi → aynı kopya (mtime özdeş); kaynak değişti → kopya yenilenir
+        tmpdir = os.path.join(self.tmp, "gecici"); os.mkdir(tmpdir); env = dict(os.environ, TMPDIR=tmpdir)
+        def kopya_mtime():
+            d = os.path.join(tmpdir, "tarama-plan-onbellek")
+            return [os.stat(os.path.join(d, f)).st_mtime_ns for f in sorted(os.listdir(d)) if f.endswith(".sqlite")]
+        self.assertEqual(kos("--db", self.db, "--kuru", "--sessiz", env=env).returncode, 0)
+        m1 = kopya_mtime(); self.assertEqual(len(m1), 1)
+        self.assertEqual(kos("--db", self.db, "--kuru", "--sessiz", env=env).returncode, 0)
+        self.assertEqual(kopya_mtime(), m1)
+        con = sqlite3.connect(self.db); con.execute("CREATE TABLE _x(a)"); con.commit(); con.close()
+        self.assertEqual(kos("--db", self.db, "--kuru", "--sessiz", env=env).returncode, 0)
+        self.assertNotEqual(kopya_mtime(), m1)
+
     def test_sema_kaymasi_hata_satiri_kalanlar_surer_tumu_duserse_2(self):
         # kolon adı değişmiş (şema kayması): A2 EXPLAIN'de düşer → traceback yok, sonuc=HATA satırı + stderr HATA; N1 sürer, çıkış 0
         con = sqlite3.connect(self.db); con.execute("ALTER TABLE kayit RENAME COLUMN token_kestirim TO tk"); con.commit(); con.close()
@@ -168,7 +182,7 @@ class KosumTest(unittest.TestCase):
         r = kos("--db", self.db, "--cikti", self.kutuk, "--sorgu", "A2,N1", env=dict(os.environ, TMPDIR=tmpdir))
         self.assertEqual(r.returncode, 0, r.stderr); self.assertNotIn("Traceback", r.stderr)
         self.assertIn("HATA", r.stderr); self.assertIn("A2(oldugu-gibi)", r.stderr); self.assertIn("token_kestirim", r.stderr)
-        self.assertEqual(os.listdir(tmpdir), [])  # hata yolunda da geçici kopya silindi
+        self.assertLessEqual(set(os.listdir(tmpdir)), {"tarama-plan-onbellek"})  # hata yolunda da kopya yalnız önbellekte
         satirlar = oku(self.kutuk); self.assertEqual(len(satirlar), 4)
         a2 = [s for s in satirlar if s["sorgu"] == "A2"]; n1 = [s for s in satirlar if s["sorgu"] == "N1"]
         self.assertEqual({s["sonuc"] for s in a2}, {"HATA"}); self.assertTrue(all("token_kestirim" in s["neden"] for s in a2))

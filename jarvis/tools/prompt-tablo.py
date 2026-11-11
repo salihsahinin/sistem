@@ -61,23 +61,25 @@ def bronz_topla(proje_dizin):
         for l in open(f, encoding="utf-8", errors="replace"):
             try: rows.append(json.loads(l))
             except json.JSONDecodeError: continue
-        # sonraki asistan turu (model + skill) için sıralı tarama
-        for i, d in enumerate(rows):
-            if d.get("type") != "user" or d.get("isSidechain"): continue
-            t = metin_cek(d.get("message"))
-            if t is None or not gercek_prompt(t): continue
-            model, skills = None, []
-            for e in rows[i + 1:]:
-                if e.get("type") == "user":
-                    tt = metin_cek(e.get("message"))
-                    if tt is not None and gercek_prompt(tt): break
-                if e.get("type") == "assistant":
-                    m = e.get("message") or {}; model = model or m.get("model")
-                    for x in m.get("content") or []:
-                        if isinstance(x, dict) and x.get("type") == "tool_use" and x.get("name") == "Skill":
-                            skills.append((x.get("input") or {}).get("skill", "?"))
-            olaylar.append({"uuid": d.get("uuid"), "ts": d.get("timestamp"), "oturum": oturum, "kaynak_dosya": f, "metin": t,
-                            "sonraki_model": model, "sonraki_skill": skills})
+        # sonraki asistan turu (model + skill): tek geçiş, O(n); açık prompt bir sonraki gerçek user metnine (sidechain dahil) kadar asistan turlarını toplar
+        acik = None
+        for d in rows:
+            tip = d.get("type")
+            if tip == "user":
+                t = metin_cek(d.get("message"))
+                if t is None or not gercek_prompt(t):
+                    continue
+                acik = None  # gerçek user metni önceki promptun aralığını kapatır
+                if d.get("isSidechain"):
+                    continue
+                acik = {"uuid": d.get("uuid"), "ts": d.get("timestamp"), "oturum": oturum, "kaynak_dosya": f, "metin": t,
+                        "sonraki_model": None, "sonraki_skill": []}
+                olaylar.append(acik)
+            elif tip == "assistant" and acik is not None:
+                m = d.get("message") or {}; acik["sonraki_model"] = acik["sonraki_model"] or m.get("model")
+                for x in m.get("content") or []:
+                    if isinstance(x, dict) and x.get("type") == "tool_use" and x.get("name") == "Skill":
+                        acik["sonraki_skill"].append((x.get("input") or {}).get("skill", "?"))
     # aynı uuid birden çok transkriptte (çatal/devam oturumu kopyası) görülebilir → İLK görülen kalır (bronz tekil anahtar = uuid)
     gorulen, tekil = set(), []
     for o in olaylar:
