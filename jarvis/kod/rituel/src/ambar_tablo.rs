@@ -24,6 +24,7 @@ fn ayrisan() -> Ayrisan {
             Secenek::deger(&["--repo"], "repo", None),
             Secenek::deger(&["--proje-dizin"], "proje_dizin", None),
             Secenek::bayrak(&["--kuru"], "kuru", None),
+            Secenek::bayrak(&["--tam"], "tam", Some("bronzda bulunan koşumların transkriptlerini de baştan oku")),
             Secenek::bayrak(&["--sessiz"], "sessiz", None),
         ],
     )
@@ -349,7 +350,9 @@ fn agent_dosyalari(proje: &str) -> Vec<String> {
     sonuc
 }
 
-fn bronz_kosum(proje: &str, re_rol: &Regex, re_aile: &Regex) -> Sonuc<Vec<Map<String, Value>>> {
+/// `atla`: bronzda zaten bulunan kosum_id'ler. Bronz append-only ve tekil kosum_id'lidir; bu kimliklerin özeti hiçbir zaman
+/// `yeni` kümesine girmez, o yüzden transkripti okunmadan atlanır (denetim kalem 42 B). Çıktı tam okumayla aynıdır.
+fn bronz_kosum(proje: &str, re_rol: &Regex, re_aile: &Regex, atla: Option<&HashMap<String, usize>>) -> Sonuc<Vec<Map<String, Value>>> {
     let mut olaylar = vec![];
     for yol in agent_dosyalari(proje) {
         let parcalar: Vec<&str> = yol.split(py::SEP).collect();
@@ -364,6 +367,9 @@ fn bronz_kosum(proje: &str, re_rol: &Regex, re_aile: &Regex) -> Sonuc<Vec<Map<St
             let k: Vec<char> = taban.chars().collect();
             k[6..k.len() - 6].iter().collect()
         };
+        if atla.is_some_and(|m| m.contains_key(&format!("{}:{agent_id}", wf.as_deref().unwrap_or("agent")))) {
+            continue;
+        }
         let mut meta = Value::Null;
         let my = format!("{}.meta.json", &yol[..yol.len() - ".jsonl".len()]);
         if Path::new(&my).exists()
@@ -570,7 +576,6 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
     let re_aile = Regex::new(r"aile\s+([A-Z]{1,3})\b").map_err(hata)?;
 
     // --- BRONZ: koşum olayları (append-only, tekil kosum_id) ---
-    let olaylar = bronz_kosum(&proje_dizin, &re_rol, &re_aile)?;
     let byol = py::join(&py::join(&py::join(&repo, "veri"), "bronz"), "kosum-olay.jsonl");
     let mut mevcut: Vec<Map<String, Value>> = vec![];
     let mut dizin: HashMap<String, usize> = HashMap::new();
@@ -584,6 +589,9 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
             }
         }
     }
+    // Kuru koşum sayım çıktısı tam taramaya dayandığı için atlama yalnız yazan koşumda ve `--tam` yokken yapılır.
+    let atla = if kuru || a.bayrak("tam") { None } else { Some(&dizin) };
+    let olaylar = bronz_kosum(&proje_dizin, &re_rol, &re_aile, atla)?;
     let yeni: Vec<&Map<String, Value>> = olaylar.iter().filter(|o| !dizin.contains_key(o["kosum_id"].as_str().unwrap_or(""))).collect();
     let damga = |o: &Map<String, Value>| -> Map<String, Value> {
         let mut m = o.clone();

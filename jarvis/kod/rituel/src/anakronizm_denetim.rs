@@ -375,6 +375,34 @@ fn varsayilan_kapsam(repo: &str, bugun: NaiveDate) -> Sn<Option<Vec<String>>> {
     Ok(Some(secim.into_iter().collect()))
 }
 
+/// Son koşumun tam bulgu kümesi: `<repo>/veri/anakronizm-denetim-son.jsonl` (her koşumda üzerine yazılır).
+pub fn son_kosum_yolu(repo: &str) -> String {
+    py::join(&py::join(repo, "veri"), "anakronizm-denetim-son.jsonl")
+}
+
+/// Bulgu anahtarı: denetim + seviye + dosya + satır + kalıp + örnek + not. `ts`, `kod_sha`, `kosum_id` koşum damgasıdır;
+/// `yas_gun` D3'te her gün artar ama `kalip` (en yeni damga) ile belirlidir, anahtara girmez.
+fn bulgu_anahtari(o: &Value) -> String {
+    let al = |k: &str| o.get(k).cloned().unwrap_or(Value::Null);
+    py_dumps(&json!([al("denetim"), al("seviye"), al("dosya"), al("satir"), al("kalip"), al("ornek"), al("not")]))
+}
+
+/// Önceki koşumun bulgu anahtarları: anlık görüntü dosyası varsa ondan; yoksa (geçiş) kütüğün son `kosum_id` satırlarından.
+fn onceki_anahtarlar(son_yol: &str, kutuk: &str) -> std::collections::HashSet<String> {
+    let satirlar = |yol: &str| -> Vec<Value> {
+        let Ok(b) = std::fs::read(yol) else { return vec![] };
+        String::from_utf8_lossy(&b).split('\n').filter_map(|l| serde_json::from_str::<Value>(l).ok()).filter(Value::is_object).collect()
+    };
+    let kayitlar = if Path::new(son_yol).exists() {
+        satirlar(son_yol)
+    } else {
+        let hepsi = satirlar(kutuk);
+        let son = hepsi.iter().rev().find_map(|o| o.get("kosum_id").cloned());
+        hepsi.into_iter().filter(|o| son.is_some() && o.get("kosum_id") == son.as_ref()).collect()
+    };
+    kayitlar.iter().map(bulgu_anahtari).collect()
+}
+
 static ACIKLAMA: LazyLock<String> = LazyLock::new(|| crate::argparse::aciklama_sar("Anakronizm freni deterministik denetimi (D1 zaman-çivi · D2 damga-varlığı · D3 bayatlık)"));
 
 fn ayrisan() -> Ayrisan {
@@ -470,14 +498,29 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
     let (n1, n1u, n2, n3) = (say("D1", Some("İHLAL")), say("D1", Some("UYARI")), say("D2", None), say("D3", None));
     if !kuru {
         let jsonl = py::join(&py::join(&repo, "veri"), "anakronizm-denetim.jsonl");
+        // Denetim kalem 42 A: kütüğe yalnız önceki koşuma göre yeni ya da değişen bulgu eklenir; son koşumun tam bulgu
+        // kümesi ayrı anlık görüntü dosyasına yazılır (her koşumda üzerine). "Son koşumun bulguları" okuyan kod
+        // (`bayat_cekim::son_d1_bulgular`) bu dosyayı okur.
+        let son_yol = son_kosum_yolu(&repo);
+        let onceki = onceki_anahtarlar(&son_yol, &jsonl);
         let mut dok = String::new();
+        let mut tam_dok = String::new();
         for b in &bulgular {
-            dok.push_str(&py_dumps(&b.harita(&ts, &head, &kosum_id)));
-            dok.push('\n');
+            let h = b.harita(&ts, &head, &kosum_id);
+            let satir = py_dumps(&h);
+            if !onceki.contains(&bulgu_anahtari(&h)) {
+                dok.push_str(&satir);
+                dok.push('\n');
+            }
+            tam_dok.push_str(&satir);
+            tam_dok.push('\n');
         }
         let yaz = |e: std::io::Error, y: &str| format!("OSError: {y}: {e}");
         let mut fh = std::fs::OpenOptions::new().append(true).create(true).open(&jsonl).map_err(|e| yaz(e, &jsonl))?;
         fh.write_all(dok.as_bytes()).map_err(|e| yaz(e, &jsonl))?;
+        let gecici = format!("{son_yol}.gecici");
+        std::fs::write(&gecici, tam_dok.as_bytes()).map_err(|e| yaz(e, &gecici))?;
+        std::fs::rename(&gecici, &son_yol).map_err(|e| yaz(e, &son_yol))?;
         let gd = py::join(&py::join(&repo, "veri"), "gorunum");
         std::fs::create_dir_all(&gd).map_err(|e| yaz(e, &gd))?;
         let csv = py::join(&gd, "v_bayat_aday.csv");

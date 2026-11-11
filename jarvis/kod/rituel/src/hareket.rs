@@ -8,6 +8,7 @@
 use crate::argparse::{Ayrisan, Secenek};
 use crate::py::{self, float_repr};
 use crate::harness_anahtar;
+use crate::transkript_durum;
 use chrono::{Datelike, Duration, NaiveDate, NaiveDateTime, NaiveTime, TimeZone};
 use jarvis_hook::ortak::{py_dumps, py_truthy};
 use regex::Regex;
@@ -86,6 +87,7 @@ fn ayrisan() -> Ayrisan {
             Secenek::deger(&["--tarih"], "tarih", None),
             Secenek::bayrak(&["--tum"], "tum", None),
             Secenek::bayrak(&["--kuru"], "kuru", None),
+            Secenek::bayrak(&["--tam"], "tam", Some("transkriptleri artımlı durum dosyası olmadan baştan oku")),
             Secenek::bayrak(&["--sessiz"], "sessiz", None),
         ],
     )
@@ -213,7 +215,8 @@ fn kisa_yol(p: Option<&Value>, repo: &str, ev: &str) -> S<(Option<String>, Optio
     if ap_anahtar.starts_with(&onek) && ap_anahtar.len() == ap.len() {
         // Göreli kısım eski biçimiyle (abspath ayracı) döner; bronz kayıt biçimi değişmez.
         let g: String = ap[onek.len()..].to_string();
-        return Ok((Some(g.clone()), Some(g), true));
+        // `dosya` alanı ileri bölülü yazılır (denetim kalem 42 ek); hedef özeti eski biçimini korur. Eski kayıtlara dokunulmaz.
+        return Ok((Some(g.clone()), Some(py::ileri_bolu(&g)), true));
     }
     Ok((Some(ap.replace(ev, "~")), None, false))
 }
@@ -411,7 +414,7 @@ fn jsonl_dosyalar(dizin: &str) -> Vec<String> {
     adlar
 }
 
-fn bronz_topla(proje_dizin: &str, repo: &str, ev: &str, rx: &Rx) -> S<Vec<Olay>> {
+fn bronz_topla(proje_dizin: &str, repo: &str, ev: &str, rx: &Rx, durum: &mut transkript_durum::Durum) -> S<Vec<Olay>> {
     let bos = Map::new();
     let mut olaylar = vec![];
     for ad in jsonl_dosyalar(proje_dizin) {
@@ -420,7 +423,9 @@ fn bronz_topla(proje_dizin: &str, repo: &str, ev: &str, rx: &Rx) -> S<Vec<Olay>>
             let n = ad.chars().count();
             ad.chars().take(n.saturating_sub(6)).collect()
         };
-        let bayt = std::fs::read(&yol).map_err(|e| format!("{yol}: {e}"))?;
+        // Değişmeyen dosya atlanır, büyüyen dosyanın yalnız yeni kısmı okunur (denetim kalem 42 B). tool_result her zaman
+        // tool_use'tan sonra geldiği için yeni kısımdaki çağrının sonucu da yeni kısımdadır; eski kısmın çağrıları bronzda.
+        let Some(bayt) = durum.oku(&ad, &yol).map_err(|e| format!("{yol}: {e}"))? else { continue };
         let metin = py::evrensel_satir(&String::from_utf8_lossy(&bayt));
         let mut rows: Vec<Value> = vec![];
         for l in metin.split('\n') {
@@ -785,6 +790,7 @@ fn calis(argv: &[String]) -> Result<i32, String> {
     let proje_dizin = a.metin("proje_dizin").map(String::from).unwrap_or_else(|| harness_anahtar::proje_dizin(None));
     let kuru = a.bayrak("kuru");
     let tum = a.bayrak("tum");
+    let tam = a.bayrak("tam");
     if !Path::new(&repo).is_dir() {
         return Err(format!("{repo}: git çalışma dizini yok (subprocess cwd)"));
     }
@@ -795,9 +801,11 @@ fn calis(argv: &[String]) -> Result<i32, String> {
     };
 
     // --- BRONZ ---
-    let olaylar = bronz_topla(&proje_dizin, &repo, &ev, &rx)?;
     let bdir = py::join(&py::join(&repo, "veri"), "bronz");
     let byol = py::join(&bdir, "hareket-olay.jsonl");
+    let durum_yol = transkript_durum::yol(&repo, "hareket");
+    let mut durum = transkript_durum::Durum::yukle(&durum_yol, &proje_dizin, &byol, tam);
+    let olaylar = bronz_topla(&proje_dizin, &repo, &ev, &rx, &mut durum)?;
     let mut mevcut: HashSet<String> = HashSet::new();
     if Path::new(&byol).exists() {
         let t = py::oku_kati(Path::new(&byol)).map_err(|_| format!("{byol}: okunamadı ya da UTF-8 değil"))?;
@@ -823,6 +831,8 @@ fn calis(argv: &[String]) -> Result<i32, String> {
         }
         let mut f = std::fs::OpenOptions::new().append(true).open(&byol).map_err(|e| format!("{byol}: {e}"))?;
         f.write_all(tampon.as_bytes()).map_err(|e| format!("{byol}: {e}"))?;
+        drop(f);
+        durum.kaydet(&durum_yol, &byol)?;
     }
 
     // --- SİLVER ---
@@ -960,7 +970,7 @@ mod testler {
         for p in [r"/c/sistem/sistem/jarvis/wiki/a.md", r"c:\sistem\sistem\jarvis\wiki\a.md", r"C:\sistem\sistem\jarvis\wiki\a.md", "C:/sistem/sistem/jarvis/wiki/a.md"] {
             let (_, d, ici) = kisa_yol(Some(&json!(p)), repo, r"C:\Users\x").unwrap();
             assert!(ici, "{p}");
-            assert_eq!(d.as_deref(), Some(r"wiki\a.md"), "{p}");
+            assert_eq!(d.as_deref(), Some("wiki/a.md"), "{p}");
         }
         let (_, d, ici) = kisa_yol(Some(&json!("/c/sistem/sistem/friday/a.md")), repo, r"C:\Users\x").unwrap();
         assert!(!ici && d.is_none());

@@ -29,6 +29,7 @@ fn ayrisan() -> Ayrisan {
             Secenek::deger(&["--repo"], "repo", None),
             Secenek::bayrak(&["--kuru"], "kuru", None),
             Secenek::bayrak(&["--sessiz"], "sessiz", None),
+            Secenek::bayrak(&["--tam"], "tam", Some("transkriptleri artımlı durum dosyası olmadan baştan oku")),
         ],
     )
 }
@@ -187,7 +188,7 @@ fn metin_ya_bos(v: Option<&Value>, ad: &str) -> Result<String, String> {
 // ---------------------------------------------------------------- bronz
 
 /// Transkriptte aynı asistan mesajı birden çok satırda yinelenir (uuid aynı, usage özdeş): uuid başına İLK satır alınır.
-fn bronz_topla(proje_dizin: &str) -> Result<Vec<Kayit>, String> {
+fn bronz_topla(proje_dizin: &str, durum: &mut crate::transkript_durum::Durum) -> Result<Vec<Kayit>, String> {
     let mut adlar: Vec<String> = match std::fs::read_dir(proje_dizin) {
         Ok(d) => d
             .flatten()
@@ -200,7 +201,9 @@ fn bronz_topla(proje_dizin: &str) -> Result<Vec<Kayit>, String> {
     let (mut olaylar, mut gorulen): (Vec<Kayit>, HashSet<String>) = (vec![], HashSet::new());
     for kaynak in adlar {
         let yol = py::join(proje_dizin, &kaynak);
-        let ham = std::fs::read(&yol).map_err(|e| format!("{yol}: {e}"))?;
+        // Değişmeyen dosya atlanır, büyüyen dosyanın yalnız yeni kısmı okunur (denetim kalem 42 B). Eski kısımdaki her uuid
+        // önceki koşumda bronza yazıldığı için `mevcut` süzgeci onu zaten eler; tam okumayla aynı `yeni` kümesi çıkar.
+        let Some(ham) = durum.oku(&kaynak, &yol).map_err(|e| format!("{yol}: {e}"))? else { continue };
         let metin = py::evrensel_satir(&String::from_utf8_lossy(&ham));
         let oturum_ad: String = {
             let n = kaynak.chars().count();
@@ -410,7 +413,7 @@ fn gorunum_csv(con: &Connection, ad: &str, yol: &str) -> Result<(), String> {
 
 // ---------------------------------------------------------------- ana akış
 
-fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool) -> Result<i32, String> {
+fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool, tam: bool) -> Result<i32, String> {
     let bronz_yol = py::join(&py::join(&py::join(repo, "veri"), "bronz"), "baglam-olay.jsonl");
     let mut mevcut: HashMap<String, Kayit> = HashMap::new();
     if Path::new(&bronz_yol).exists() {
@@ -431,7 +434,9 @@ fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool) -> Result<i
             }
         }
     }
-    let toplanan = bronz_topla(proje_dizin)?;
+    let durum_yol = crate::transkript_durum::yol(repo, "seyir");
+    let mut durum = crate::transkript_durum::Durum::yukle(&durum_yol, proje_dizin, &bronz_yol, tam);
+    let toplanan = bronz_topla(proje_dizin, &mut durum)?;
     let yeni: Vec<Kayit> = toplanan
         .into_iter()
         .filter(|o| match o.get("olay_id") {
@@ -449,6 +454,9 @@ fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool) -> Result<i
             tampon.push_str(SATIR_SONU);
         }
         f.write_all(tampon.as_bytes()).map_err(|e| format!("{bronz_yol}: {e}"))?;
+    }
+    if !kuru {
+        durum.kaydet(&durum_yol, &bronz_yol)?;
     }
     let mut anahtarli: Vec<(String, String, &Kayit)> = Vec::new();
     for o in mevcut.values().chain(yeni.iter()) {
@@ -639,7 +647,7 @@ pub fn kos(argv: &[String]) -> i32 {
         py::err(&format!("[HATA] transkript dizini yok: {proje_dizin}\n"));
         return 1;
     }
-    match calistir(&proje_dizin, &repo, a.bayrak("kuru"), a.bayrak("sessiz")) {
+    match calistir(&proje_dizin, &repo, a.bayrak("kuru"), a.bayrak("sessiz"), a.bayrak("tam")) {
         Ok(k) => k,
         Err(e) => py::coker(&e),
     }

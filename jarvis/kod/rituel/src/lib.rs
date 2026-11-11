@@ -16,3 +16,4 @@ pub mod baglam_tablo;
 pub mod ambar_tablo;
 pub mod anakronizm_denetim;
 pub mod bayat_cekim;
+pub mod transkript_durum;

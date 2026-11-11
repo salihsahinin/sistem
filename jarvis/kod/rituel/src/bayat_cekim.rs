@@ -172,7 +172,10 @@ fn jsonl_nesneleri(yol: &Path) -> Sn<Vec<Map<String, Value>>> {
 /// anakronizm-denetim.jsonl son kosum_id'sinin D1 bulguları, dosya → [satır: kalıp].
 fn son_d1_bulgular(repo: &str, dosyalar: &[String]) -> Sn<HashMap<String, Vec<String>>> {
     let mut out: HashMap<String, Vec<String>> = dosyalar.iter().map(|d| (d.clone(), Vec::new())).collect();
-    let yol = Path::new(repo).join("veri").join("anakronizm-denetim.jsonl");
+    // Denetim kalem 42 A: kütük artık yalnız değişen bulguyu taşır; son koşumun tam kümesi anlık görüntü dosyasındadır.
+    // Anlık görüntü yoksa (eski düzen) kütüğün son kosum_id satırları okunur.
+    let son = std::path::PathBuf::from(crate::anakronizm_denetim::son_kosum_yolu(repo));
+    let yol = if son.exists() { son } else { Path::new(repo).join("veri").join("anakronizm-denetim.jsonl") };
     if !yol.exists() {
         return Ok(out);
     }

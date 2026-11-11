@@ -6,6 +6,9 @@ arsiv/claude-izler/
 veri/baglam.sqlite
 veri/baglam.sqlite.tmp
 veri/baglam.jsonl
+# artımlı okuma durumu ve son koşum anlık görüntüsü (makineye özgü, yeniden üretilir)
+veri/transkript-durum-*.json
+veri/anakronizm-denetim-son.jsonl
 # büyük/kesilen görünümler: türetilmiş, 5 sn'de yeniden üretilir (Carvis İ-2 kararı 08-15)
 veri/gorunum/v_bolum_yogunluk.csv
 veri/gorunum/v_anahtar_terim_dosya.csv
