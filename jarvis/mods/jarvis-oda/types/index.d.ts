@@ -38,6 +38,8 @@ export type OdaGorev = {
   cagri?: number
   /** v0.5 (A4): bağlı durum kütüğü iş numarası (ortak/durum-olay.jsonl). */
   isId?: number
+  /** v0.7 (K52): kütük işinin son hali; `al`/`bitir` sonucu ya da işin neden açık kaldığı. */
+  kutukNot?: string
   durum: OdaGorevDurum
   agentId?: string
   acilis: string

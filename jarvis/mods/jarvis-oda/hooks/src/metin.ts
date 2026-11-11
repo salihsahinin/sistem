@@ -25,6 +25,16 @@ export function gorevEtiketi(g: OdaGorev | undefined, n = 24): string {
   return `#${g.id} · ${kisa(g.baslik, n)} · ${sinifi(g)}`
 }
 
+/** K52: tek görevin final raporu, kesilmeden (oda_oku gorevId=N). */
+export function gorevRaporu(oda: Oda, gorevId: number): string {
+  const g = oda.gorevler.find(x => x.id === gorevId)
+  if (!g) return `Görev #${gorevId} bu odada yok (${oda.gorevler.length} görev).`
+  const bas = `# Görev #${g.id} [${g.durum}] [${sinifi(g)}] ${g.baslik}${g.isId ? ' · iş #' + g.isId : ''}${g.kapanis ? ' · kapanış ' + g.kapanis : ''}`
+  const kutuk = g.kutukNot ? `\nkütük: ${g.kutukNot}` : ''
+  if (!g.sonuc) return `${bas}${kutuk}\n(henüz final raporu yok; ara raporlar için oda_oku)`
+  return `${bas}${kutuk}\n\n${g.sonuc}`
+}
+
 export function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): string {
   const satirlar: string[] = [`# Oda: ${oda.baslik} (${oda.id}) · açılış ${oda.acilis} · paralel ${kosan(oda)}/${oda.maksParalel}`]
   satirlar.push('## Görevler')
@@ -35,7 +45,8 @@ export function odaMetni(oda: Oda, son = 12, hareketler: OdaHareket[] = []): str
     satirlar.push(`- #${g.id} [${g.durum}] [${sinifi(g)}] ${g.ajan ? '[' + g.ajan + '] ' : ''}${g.baslik} · ${g.zorluk}→${model}${ek ? ' · ' + ek : ''}`)
     if (g.done) satirlar.push('  done: ' + kisa(g.done, 200))
     if (g.dosyalar?.length) satirlar.push('  dosyalar: ' + g.dosyalar.join(', '))
-    if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400))
+    if (g.sonuc) satirlar.push('  sonuç: ' + kisa(g.sonuc, 400) + (g.sonuc.length > 400 ? ` (tamamı: oda_oku gorevId=${g.id})` : ''))
+    if (g.kutukNot) satirlar.push('  kütük: ' + g.kutukNot)
     for (const h of hareketler.filter(x => x.gorevId === g.id).slice(-3)) satirlar.push(`  ${saat(h.ts)} [${h.tur}] ${kisa(h.ozet, 160)}`)
   }
   if (oda.oturumlar?.length) {

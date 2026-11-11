@@ -66,4 +66,4 @@ Testler (`tests/`) bellek-içi motorda koşar: pano penceresi, katlama, tam meti
 
 ## Sürümler
 
-v0.2 paralel sınır + ortak sohbet · v0.3 işçi akışı ve izleme · v0.4 rol ajanı (`ajan`) · v0.4.1 yerel saat · v0.5 (2026-11-03) katmanlı kaynak, tanrısal bakış panosu, iş nodu sınıfı, kütük köprüsü · v0.6 (2026-11-03) dış oturum kanalı.
+v0.2 paralel sınır + ortak sohbet · v0.3 işçi akışı ve izleme · v0.4 rol ajanı (`ajan`) · v0.4.1 yerel saat · v0.5 (2026-11-03) katmanlı kaynak, tanrısal bakış panosu, iş nodu sınıfı, kütük köprüsü · v0.6 (2026-11-03) dış oturum kanalı · v0.7 (2026-11-11, Karar 130 K52) kütük işi başlarken `al`, başarıda `bitir` (hata/bütçe aşımında açık kalır, neden odaya yazılır), `oda_oku gorevId=N` tam rapor, işçi önerisi Jarvis'i uyandırır (tool.call içinden prompt.submit yasak; kuyruk 3 sn'lik saatte boşalır).

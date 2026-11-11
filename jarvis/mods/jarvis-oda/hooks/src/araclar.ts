@@ -19,7 +19,7 @@ import {
   sinifi,
   PANE,
 } from './durum'
-import { isciEmri, odaMetni, aracOzeti } from './metin'
+import { isciEmri, odaMetni, gorevRaporu, aracOzeti } from './metin'
 import { kisa, simdi, yolMutlak, yolNormal } from './ortak'
 import { aktifIsaretle, gidenYaz, oturumAdi } from './dis'
 
@@ -70,8 +70,14 @@ export const ARACLAR: ToolSpec[] = [
   {
     ...ortak,
     name: 'oda_oku',
-    description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler (sınıf, done, çağrı sayacı, iş numarası) + her işçinin son 3 hareketi, bekleyen öneriler, son turlar (sohbet dahil).',
-    inputSchema: { type: 'object', properties: { son: { type: 'integer', description: 'Kaç tur (varsayılan 12)' } } },
+    description: 'Aktif odanın durumunu metin olarak döndürür: paralel sayacı, görevler (sınıf, done, çağrı sayacı, iş numarası) + her işçinin son 3 hareketi, bekleyen öneriler, son turlar (sohbet dahil). gorevId verilirse o görevin final raporunun tam metni döner.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        son: { type: 'integer', description: 'Kaç tur (varsayılan 12)' },
+        gorevId: { type: 'integer', description: 'İsteğe bağlı: verilirse yalnız o görevin final raporunun tam metni döner (kesilmez)' },
+      },
+    },
   } as ToolSpec,
   {
     ...ortak,
@@ -179,10 +185,32 @@ async function kutugeAc($: EngineInterface, oda: Oda, g: OdaGorev, alan: string)
   return { isId: Number(no), not: `kütük iş #${no}` }
 }
 
-async function kutukBitir($: EngineInterface, oda: Oda, g: OdaGorev): Promise<void> {
-  if (!g.isId) return
-  const r = await durumKos($, ['bitir', String(g.isId), '--kanit', `oda ${oda.id} #${g.id}`])
-  if (r.ok) await durumKos($, ['graf'])
+/** K52: işçi başlarken kütük işi işleme alınır (`al`; oturum = oda kimliği). Dönüş: odaya yazılacak not. */
+async function kutukAl($: EngineInterface, oda: Oda, g: OdaGorev): Promise<string | undefined> {
+  if (!g.isId) return undefined
+  const r = await durumKos($, ['al', String(g.isId), '--oturum', 'oda-' + oda.id])
+  return r.ok ? `kütük iş #${g.isId} işlemde` : `kütük iş #${g.isId} işleme alınamadı: ${kisa(r.cikti, 160)}`
+}
+
+/**
+ * K52: başarılı işçi bitişinde kütük işi kapanır. `bitir` yalnız `islemde` işi kapatır; `al` başlangıçta koştu.
+ * Kanıt oda ve görev numarasıdır; Jarvis gerçek commit kanıtını ayrıca ekler.
+ */
+async function kutukBitir($: EngineInterface, oda: Oda, g: OdaGorev): Promise<string | undefined> {
+  if (!g.isId) return undefined
+  const r = await durumKos($, ['bitir', String(g.isId), '--kanit', `oda ${oda.id} görev #${g.id}`])
+  if (!r.ok) return `kütük iş #${g.isId} kapatılamadı: ${kisa(r.cikti, 160)}`
+  await durumKos($, ['graf'])
+  return `kütük iş #${g.isId} kapandı (kanıt: oda ${oda.id} görev #${g.id})`
+}
+
+/** K52: kütük notunu göreve ve oda turlarına yazar (taze oda üstüne). */
+async function kutukNotuYaz($: EngineInterface, gorevId: number, not: string): Promise<Oda | null> {
+  const oda = await odaYukle($)
+  if (!oda) return null
+  const yeni = turEkle({ ...oda, gorevler: oda.gorevler.map(g => (g.id === gorevId ? { ...g, kutukNot: not } : g)) }, 'oda', 'not', `#${gorevId} ${not}`, gorevId)
+  await kaydet($, yeni)
+  return yeni
 }
 
 /** B8: oda kaydını ortak/oda/<id>.json olarak dışa yazar (HTML "Oda" sekmesi okur). */
@@ -229,6 +257,9 @@ async function gorevBaslat($: EngineInterface, oda: Oda, id: number): Promise<Od
     id,
   )
   await kaydet($, yeni)
+  // K52: kütük işi işleme alınır; sonuç göreve ve turlara not olarak düşer.
+  const alNotu = await kutukAl($, yeni, gorev)
+  if (alNotu) return (await kutukNotuYaz($, id, alNotu)) ?? yeni
   return yeni
 }
 
@@ -368,9 +399,11 @@ export async function gorevVer($: EngineInterface, g0: GorevGirdi, ayar: ModAyar
   return `Görev #${id} "${gorev.baslik}" kuyruğa alındı (paralel sınır ${son.maksParalel} dolu: ${kosan(son)} koşuyor).${ek} Biri bitince başlar; oda_ayar ile sınırı artırabilirsin.`
 }
 
-export async function odaOku($: EngineInterface, son: number, hareketler: Parameters<typeof odaMetni>[2]): Promise<string> {
+export async function odaOku($: EngineInterface, son: number, hareketler: Parameters<typeof odaMetni>[2], gorevId?: number): Promise<string> {
   const oda = await odaYukle($)
   if (!oda) return 'Oda yok; önce oda_ac.'
+  // K52: gorevId verilirse o görevin final raporu kesilmeden döner.
+  if (Number.isInteger(gorevId) && Number(gorevId) > 0) return gorevRaporu(oda, Number(gorevId))
   return odaMetni(oda, Number.isFinite(son) && son > 0 ? son : 12, hareketler)
 }
 
@@ -391,7 +424,7 @@ export async function oneriKarar($: EngineInterface, kim: 'jarvis' | 'salih', on
   return `Ö${oneri.id} ${karar}.`
 }
 
-export async function oneriBirak($: EngineInterface, o: { metin?: string; gerekce?: string; agentId?: string }): Promise<string> {
+export async function oneriBirak($: EngineInterface, o: { metin?: string; gerekce?: string; agentId?: string }, ayar?: ModAyar): Promise<string> {
   const oda = await odaYukle($)
   if (!oda) return 'Oda yok.'
   const gorev = oda.gorevler.find(g => g.agentId && g.agentId === o.agentId)
@@ -399,6 +432,15 @@ export async function oneriBirak($: EngineInterface, o: { metin?: string; gerekc
   const oneri: OdaOneri = { id, kim: gorev ? `işçi #${gorev.id}` : 'jarvis', gorevId: gorev?.id, metin: String(o.metin ?? ''), gerekce: String(o.gerekce ?? ''), durum: 'bekliyor' }
   await kaydet($, turEkle({ ...oda, oneriler: [...oda.oneriler, oneri] }, oneri.kim, 'oneri', `Ö${id}: ${oneri.metin} · gerekçe: ${oneri.gerekce}`, gorev?.id))
   $.ui.toast(`Oda: Ö${id} öneri bekliyor (${oneri.kim})`)
+  // K52: işçi önerisi Jarvis'i uyandırır (görev raporuyla aynı yol: prompt.submit, otoUyandir ayarı).
+  // Motor tool.call içinden prompt.submit'i reddeder (tutulan tura bekler); uyandırma kuyruğa yazılır, 3 sn'lik saat boşaltır.
+  if (gorev && (ayar?.otoUyandir ?? true)) {
+    const uyar = `[oda] öneri #${id} (görev #${gorev.id}): ${oneri.metin}
+gerekçe: ${oneri.gerekce}
+Karar: oda_oneri_karar oneriId=${id} karar=kabul|ret.`
+    const kuyruk = ((await $.store.get('oda:uyandir')) as string[] | undefined) ?? []
+    await $.store.set('oda:uyandir', [...kuyruk, uyar])
+  }
   return `Ö${id} kaydedildi; karar bekleniyor. Varsayılan yolu sürdür, raporunda belirt.`
 }
 
@@ -425,13 +467,24 @@ export async function gorevBitti($: EngineInterface, e: { agentId?: string; reas
   const kapanan = { ...gorev, durum: basarili ? ('bitti' as const) : ('hata' as const), sonuc, kapanis: simdi() }
   const yeni = turEkle({ ...oda, gorevler: oda.gorevler.map(g => (g.id === gorev.id ? kapanan : g)) }, `işçi #${gorev.id}`, 'rapor', sonuc, gorev.id)
   await kaydet($, yeni)
-  if (basarili) await kutukBitir($, yeni, kapanan)
+  // K52: başarıda kütük işi kapanır; hata ya da bütçe aşımında açık kalır, neden odaya yazılır.
+  const neden = butceAsildi ? `bütçe aşıldı (${gorev.cagri}/${gorev.butce})` : e.isAborted ? 'işçi durduruldu' : `işçi hatayla bitti (${e.reason})`
+  const kutukNot = basarili ? await kutukBitir($, yeni, kapanan) : gorev.isId ? `kütük iş #${gorev.isId} açık kaldı: ${neden}` : undefined
+  if (kutukNot) await kutukNotuYaz($, gorev.id, kutukNot)
   $.ui.toast(`Oda: görev #${gorev.id} ${basarili ? 'bitti' : 'hata'} (${gorev.model})`)
   const son = (await kuyrukIsle($)) ?? yeni
   if (ayar.otoUyandir) {
-    const ozet = `[oda] görev #${gorev.id} "${gorev.baslik}" [${sinifi(gorev)}] ${basarili ? 'bitti' : 'hata'} (${gorev.model}, çağrı ${gorev.cagri ?? 0}/${gorev.butce ?? '?'}). Rapor:\n${kisa(sonuc, 1500)}\n\nKoşan: ${kosan(son)}/${son.maksParalel} · kuyrukta: ${kuyrukSayisi(son)} · bekleyen öneri: ${bekleyenOneri(son)}. oda_oku ile tamamını gör; sırada iş varsa oda_gorev_ver.`
+    const ozet = `[oda] görev #${gorev.id} "${gorev.baslik}" [${sinifi(gorev)}] ${basarili ? 'bitti' : 'hata'} (${gorev.model}, çağrı ${gorev.cagri ?? 0}/${gorev.butce ?? '?'}). Rapor:\n${kisa(sonuc, 1500)}\n(tamamı: oda_oku gorevId=${gorev.id})${kutukNot ? '\n' + kutukNot : ''}\n\nKoşan: ${kosan(son)}/${son.maksParalel} · kuyrukta: ${kuyrukSayisi(son)} · bekleyen öneri: ${bekleyenOneri(son)}. Sırada iş varsa oda_gorev_ver.`
     void $.prompt.submit({ text: ozet }).catch(() => undefined)
   }
+}
+
+/** K52: kuyruktaki uyandırmaları (işçi önerileri) prompt.submit ile Jarvis'e iletir; saat olayından çağrılır. */
+export async function uyandirmaBosalt($: EngineInterface): Promise<void> {
+  const kuyruk = ((await $.store.get('oda:uyandir')) as string[] | undefined) ?? []
+  if (!kuyruk.length) return
+  await $.store.set('oda:uyandir', [])
+  void $.prompt.submit({ text: kuyruk.join('\n\n') }).catch(() => undefined)
 }
 
 /** 3 sn'lik yoklama: ajan durumlarını panoya yansıtır, düşen ajanı kapatır, kuyruğu işler. */
@@ -451,6 +504,11 @@ export async function ajanYokla($: EngineInterface): Promise<void> {
   const guncel = (await odaYukle($)) ?? o
   const yeni = { ...guncel, gorevler: guncel.gorevler.map(g => (dusen.some(d => d.gorevId === g.id) ? { ...g, durum: 'hata' as const, sonuc: g.sonuc ?? 'ajan ' + (dusen.find(d => d.gorevId === g.id)?.status ?? ''), kapanis: simdi() } : g)) }
   await kaydet($, yeni)
+  // K52: düşen ajanın kütük işi açık kalır; neden odaya yazılır.
+  for (const d of dusen) {
+    const g = guncel.gorevler.find(x => x.id === d.gorevId)
+    if (g?.isId) await kutukNotuYaz($, g.id, `kütük iş #${g.isId} açık kaldı: ajan ${d.status}`)
+  }
   await kuyrukIsle($)
 }
 

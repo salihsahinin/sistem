@@ -22,6 +22,7 @@ import {
   gorevBitti,
   ajanYokla,
   isciAracOncesi,
+  uyandirmaBosalt,
 } from './src/araclar'
 import { gelenleriIsle, gidenleriOku, odayaKatil, disMesaj, aktifIsaretle } from './src/dis'
 
@@ -45,6 +46,7 @@ export const register: Register = (on, options) => {
     void $.ui.open({ id: PANE, title: 'Oda', rows: 40 }).catch(() => undefined)
     $.clock.every(3000, async () => {
       await ajanYokla($).catch(() => undefined)
+      await uyandirmaBosalt($).catch(() => undefined)
       await gelenleriIsle($, ayar.otoUyandir).catch(() => undefined)
       await gidenleriOku($).catch(() => undefined)
     })
@@ -102,12 +104,15 @@ export const register: Register = (on, options) => {
     return { result: await sohbetGonder($, 'jarvis', String(s.metin ?? ''), s.hedef) }
   })
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_gorev_ver' }, async ($, e) => ({ result: await gorevVer($, e as Parameters<typeof gorevVer>[1], ayar) }))
-  on('tool.call', { tool: 'mcp__jarvis-oda__oda_oku' }, async ($, e) => ({ result: await odaOku($, Number((e as { son?: number }).son ?? 12), await hareketleriOku($)) }))
+  on('tool.call', { tool: 'mcp__jarvis-oda__oda_oku' }, async ($, e) => {
+    const k = e as { son?: number; gorevId?: number }
+    return { result: await odaOku($, Number(k.son ?? 12), await hareketleriOku($), k.gorevId === undefined ? undefined : Number(k.gorevId)) }
+  })
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri_karar' }, async ($, e) => {
     const k = e as { oneriId?: number; karar?: string; not?: string }
     return { result: await oneriKarar($, 'jarvis', Number(k.oneriId), k.karar === 'ret' ? 'ret' : 'kabul', k.not) }
   })
-  on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri' }, async ($, e) => ({ result: await oneriBirak($, e as { metin?: string; gerekce?: string; agentId?: string }) }))
+  on('tool.call', { tool: 'mcp__jarvis-oda__oda_oneri' }, async ($, e) => ({ result: await oneriBirak($, e as { metin?: string; gerekce?: string; agentId?: string }, ayar) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_katil' }, async ($, e) => ({ result: await odayaKatil($, e as Parameters<typeof odayaKatil>[1]) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_mesaj' }, async ($, e) => ({ result: await disMesaj($, e as Parameters<typeof disMesaj>[1]) }))
   on('tool.call', { tool: 'mcp__jarvis-oda__oda_rapor' }, async ($, e) => ({ result: await raporDus($, e as { metin?: string; agentId?: string }) }))
