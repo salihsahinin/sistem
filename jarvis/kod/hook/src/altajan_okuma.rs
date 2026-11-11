@@ -165,7 +165,6 @@ pub fn kos(o: &Ortam) -> Sonuc {
         home.join(".claude").join("projects"),
         kok.join("friday"),
         home.join("staj başlangıç"),
-        home.join("Desktop").join("repo"),
         r("core").join("durum-kapsulu.md"),
         r("core").join("pano.md"),
         r("kuyruk").join("senaryo-defteri.md"),

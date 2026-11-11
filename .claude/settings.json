@@ -1,23 +1,23 @@
 {
-  "_not": "sistem kökü .claude/settings.json (Karar 101 F4, 2026-09-18). Tek giriş: bin/hook-dispatch.sh <olay>; ajan hook'ları <ajan>/.claude/settings.json kayıtlarından cwd'ye göre koşar. permissions.deny burada YOK: ajan-özel deny ajan dizininde, asıl zorlama ajan hook'unda. Harness ajanın kendi settings.json'ını da yüklerse dispatcher çift koşumu CLAUDE_PROJECT_DIR ile ayırt eder (F5 ölçer).",
+  "_not": "sistem kökü .claude/settings.json (Karar 101 F4, 2026-09-18). Tek giriş: hook-dispatch <olay>; ajan hook'ları <ajan>/.claude/settings.json kayıtlarından cwd'ye göre koşar. permissions.deny burada YOK: ajan-özel deny ajan dizininde, asıl zorlama ajan hook'unda. Harness ajanın kendi settings.json'ını da yüklerse dispatcher çift koşumu CLAUDE_PROJECT_DIR ile ayırt eder (F5 ölçer). Karar 130 D22: ikili (target/release/hook-dispatch.exe) doğrudan çağrılır, yoksa bin/hook-dispatch.sh sarmalına düşülür (worktree araması orada). A3 ajan deny/ask eşlemesi JARVIS_DISPATCH_DENY=1 ile açılır, varsayılan kapalı.",
   "hooks": {
     "SessionStart": [
-      {"matcher": "", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" SessionStart"}]}
+      {"matcher": "", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" SessionStart; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" SessionStart"}]}
     ],
     "UserPromptSubmit": [
-      {"matcher": "", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" UserPromptSubmit"}]}
+      {"matcher": "", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" UserPromptSubmit; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" UserPromptSubmit"}]}
     ],
     "PreToolUse": [
-      {"matcher": ".*", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PreToolUse"}]}
+      {"matcher": ".*", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" PreToolUse; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PreToolUse"}]}
     ],
     "PostToolUse": [
-      {"matcher": ".*", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PostToolUse"}]}
+      {"matcher": ".*", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" PostToolUse; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" PostToolUse"}]}
     ],
     "Stop": [
-      {"matcher": "", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" Stop"}]}
+      {"matcher": "", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" Stop; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" Stop"}]}
     ],
     "InstructionsLoaded": [
-      {"matcher": "", "hooks": [{"type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" InstructionsLoaded"}]}
+      {"matcher": "", "hooks": [{"type": "command", "command": "p=\"$CLAUDE_PROJECT_DIR/target/release/hook-dispatch.exe\"; [ -x \"$p\" ] && exec \"$p\" InstructionsLoaded; exec bash \"$CLAUDE_PROJECT_DIR/bin/hook-dispatch.sh\" InstructionsLoaded"}]}
     ]
   }
 }

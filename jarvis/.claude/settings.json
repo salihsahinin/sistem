@@ -1,4 +1,5 @@
 {
+  "_not": "Karar 130 D22 (a): hook komutları jarvis-hook ikilisini doğrudan çağırır (CLAUDE_PROJECT_DIR/../target/release/jarvis-hook.exe); ikili yoksa .claude/hooks/*.sh sarmalına düşer (worktree'de ana kopyanın ikilisini arar). A5: kilit sarmalları (pretool-core-tel, pretool-altajan-okuma, pretool-ajan-fren) ikilisiz çıkış 2 verir; harness PreToolUse'da yalnız çıkış 2'yi engel sayar, komut-bulunamadı (127) geçer, bu yüzden düşüş yolu sarmalda kalır.",
   "permissions": {
     "deny": [
       "Edit(wiki/sozluk.md)"
@@ -20,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/pretool-core-tel.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" pretool-core-tel --repo \"$d\"; exec bash \"$d/.claude/hooks/pretool-core-tel.sh\""
           }
         ]
       },
@@ -29,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/pretool-ajan-fren.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" pretool-ajan-fren --repo \"$d\"; exec bash \"$d/.claude/hooks/pretool-ajan-fren.sh\""
           }
         ]
       },
@@ -38,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/pretool-altajan-okuma.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" pretool-altajan-okuma --repo \"$d\"; exec bash \"$d/.claude/hooks/pretool-altajan-okuma.sh\""
           }
         ]
       }
@@ -49,7 +50,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/posttool-read-genislet.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" posttool-read-genislet --repo \"$d\"; exec bash \"$d/.claude/hooks/posttool-read-genislet.sh\""
           }
         ]
       }
@@ -59,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/userprompt-dosya.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" userprompt --repo \"$d\"; exec bash \"$d/.claude/hooks/userprompt-dosya.sh\""
           }
         ]
       }
@@ -69,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/session-start.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" session-start --repo \"$d\"; exec bash \"$d/.claude/hooks/session-start.sh\""
           }
         ]
       }
@@ -79,7 +80,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/stop-buyuk-harf.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" stop-buyuk-harf --repo \"$d\"; exec bash \"$d/.claude/hooks/stop-buyuk-harf.sh\""
           }
         ]
       }
@@ -89,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}\"/.claude/hooks/instructions-loaded.sh"
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; p=\"$d/../target/release/jarvis-hook.exe\"; [ -x \"$p\" ] && exec \"$p\" instructions-loaded --repo \"$d\"; exec bash \"$d/.claude/hooks/instructions-loaded.sh\""
           }
         ]
       }

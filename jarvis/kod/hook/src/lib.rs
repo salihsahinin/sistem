@@ -6,6 +6,7 @@ pub mod ajan_fren;
 pub mod buyuk_harf;
 pub mod core_tel;
 pub mod dispatch;
+pub mod izin;
 pub mod okuma_izin;
 pub mod ortak;
 pub mod paket;
