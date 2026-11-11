@@ -6,7 +6,7 @@ BRONZ (kaynak-konform, ham + provenans): oturum transkriptleri (`~/.claude/proje
   `veri/bronz/prompt-olay.jsonl`'a APPEND edilir (tekilleştirme anahtarı = kaynak uuid; ham metin DEĞİŞTİRİLMEZ; provenans: kaynak dosya + uuid + ts).
 SİLVER (1:1 grain, tipli, tekil, agrege-olmayan, türetilmiş): `veri/baglam.sqlite` tablosu `prompt` (1 satır = 1 prompt): tip dönüşümü (ts→UTC/TR),
   kategorize (tur — heuristik, deneysel m.29), sıra, sonraki-asistan modeli + tetiklenen skill (aynı oturumdaki bir sonraki asistan turundan).
-GOLD (iş-konform, tek-tanım): SQL görünümü `v_son_50_prompt` → `veri/gorunum/v_son_50_prompt.csv` + insan-yüzü `raporlar/<tarih>-son-50-prompt.md`.
+GOLD (iş-konform, tek-tanım): SQL görünümü `v_son_50_prompt` → `veri/gorunum/v_son_50_prompt.csv` + insan-yüzü `raporlar/<YYYY-AA>/<tarih>-son-50-prompt.md`.
 Sözleşme: `veri/sozlesme/prompt.json` (şekil; additive-only). Testler: unique(prompt_id) · not_null(metin) · accepted_values(tur).
 Kullanım: python3 tools/prompt-tablo.py [--proje-dizin <yol>] [--repo <yol>] [--n 50] [--kuru] [--sessiz]
 Sınır: md.49 — yalnız BU projenin (jarvis) transkriptleri; staj dizini taranmaz. Deneysel m.29 (2026-08-16, seans-7).
@@ -191,10 +191,11 @@ def main():
         from collections import Counter
         cnt = Counter(r[5] for r in gold[:a.n]); L.append("\n**Tür dağılımı (son %d):** " % min(a.n,50) + " · ".join(f"{k} {v}" for k, v in cnt.most_common()))
         skc = Counter(s for r in gold[:a.n] for s in (r[6] or "").split(",") if s); L.append("**Tetiklenen skill'ler:** " + (" · ".join(f"{k} {v}" for k, v in skc.most_common()) or "—"))
-        ryol = os.path.join(repo, "raporlar", f"{tarih}-son-50-prompt.md")
+        ryol = os.path.join(repo, "raporlar", tarih[:7], f"{tarih}-son-50-prompt.md")
+        os.makedirs(os.path.dirname(ryol), exist_ok=True)
         open(ryol, "w", encoding="utf-8").write("\n".join(L) + "\n")
     if not a.sessiz:
-        print(f"bronz: {len(olaylar)} gerçek prompt bulundu ({len(yeni)} yeni, {len(mevcut)} mevcut) · silver: {len(satirlar)} satır · gold: son {a.n}" + (" (kuru)" if a.kuru else f" → veri/gorunum/v_son_50_prompt.csv + raporlar/{tarih}-son-50-prompt.md"))
+        print(f"bronz: {len(olaylar)} gerçek prompt bulundu ({len(yeni)} yeni, {len(mevcut)} mevcut) · silver: {len(satirlar)} satır · gold: son {a.n}" + (" (kuru)" if a.kuru else f" → veri/gorunum/v_son_50_prompt.csv + raporlar/{tarih[:7]}/{tarih}-son-50-prompt.md"))
         for t in testler: print(f"  [{t[2]}] {t[0]} ihlal {t[1]}")
 
 

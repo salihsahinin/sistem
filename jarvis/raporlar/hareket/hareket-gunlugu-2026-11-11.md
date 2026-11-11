@@ -1,9 +1,10 @@
-# Hareket günlüğü — 2026-11-11 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `d2c4707a`)
+# Hareket günlüğü — 2026-11-11 (Jarvis'in araç çağrıları; kaynak transkript → `tools/hareket-tablo.py`; HEAD `dd06962d`)
 
-*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 40 çağrı, 4 oturum.*
+*Okunabilirlik ilkesi (Salih 08-17): Jarvis'in o gün YAPTIĞI her şey — dosya yazma/düzenleme, komut, okuma, arama, ajan/skill/workflow çağrısı — burada düz satır. Hedef gösterilir, içerik gösterilmez (içerik dosyanın kendisinde ya da git log'da). Makine-yüzü: silver `hareket` (`veri/baglam.sqlite`), gold `veri/gorunum/v_hareket_gunluk.csv` · `v_son_hareketler.csv`; bronz `veri/bronz/hareket-olay.jsonl`. Toplam bugün: 92 çağrı, 5 oturum.*
 
-## Oturum `2b89f382` — 10:49:07→11:02:40 · 27 çağrı · model fable-5-2 · hata 2
-**Özet:** koştu 24 · yazdı 2 · skill çağırdı 1
+## Oturum `2b89f382` — 10:49:07→11:04:20 · 31 çağrı · model fable-5-2 · hata 2
+**Özet:** koştu 27 · yazdı 3 · skill çağırdı 1
+**Yazılan/düzenlenen dosyalar (1):** `raporlar\seans\seans-teslim-girdi-2026-11-11.json`
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -34,6 +35,10 @@
 | 245 | 11:02:12 | koştu | Kapanış araçlarını koş: hareket kütüğü, skill eşiği, bayat çekim listesi, hafıza aynası, FIFO, kural sayacı ⟨cat ../ortak/sablon/seans-teslim-girdi.json; echo ---; ../target/release/hareket-tablo --sessiz 2>&1 ¦ tail -3; echo "hareket exit $?"; ../target/rele…⟩ | yok |
 | 246 | 11:02:24 | koştu | Silver sağlık kapısını, hook testlerini, Lean derlemesini ve hattı koş ⟨../target/release/silver-saglik --kapi 2>&1 ¦ tail -3 ¦ cut -c1-260; echo "kapi exit $?"; for t in .claude/hooks/*-test.sh; do c=$(bash "$t" 2>&1); ec…⟩ | tamam |
 | 247 | 11:02:40 | koştu | Hattı yeniden koşup OK olmayan adımları göster ⟨../target/release/katman-hatti 2>&1 ¦ grep -v "^\[OK\¦^ \+\[PASS\¦^\s*$" ¦ head -30 ¦ cut -c1-260; echo "exit ${PIPESTATUS[0]}"⟩ | yok |
+| 248 | 11:03:31 | koştu | Kalan inceleme listesini durum kütüğüne iş olarak aç ⟨../target/release/durum.exe ac --alan jarvis --is "Depo denetimi inceleme listesi: Salih hükmü bekleyen kalemler (rapor §3 A3,A5,A6,B9-B13,C16-C21,D22…⟩ | tamam |
+| 249 | 11:04:08 | yazdı | raporlar\seans\seans-teslim-girdi-2026-11-11.json | tamam |
+| 250 | 11:04:10 | koştu | Seansı kapat ve commit'e girecek değişiklikleri dizin bazında say ⟨../target/release/durum.exe seans-kapat --alan jarvis --oturum 2026-11-10-jarvis --girdi raporlar/seans/seans-teslim-girdi-2026-11-11.json --etiket de…⟩ | tamam |
+| 251 | 11:04:20 | koştu | Kapanış commit'ini at ve push'u yeniden dene ⟨cd /c/sistem/sistem && S="C:/Users/sasah/AppData/Local/Temp/claude/d37de251d0e91747/2b89f382-f56c-4601-a9b6-20ce97e32187/scratchpad" && git status --s…⟩ | tamam |
 
 ## Oturum `b91a1f2b` — 10:54:12→10:54:22 · 3 çağrı · model opus-5-5 · hata 0
 **Özet:** koştu 2 · yazdı 1
@@ -51,8 +56,8 @@
 |---|---|---|---|---|
 | 181 | 10:56:14 | koştu | Fork'un dokunduğu mod dosyalarında commit'lenmemiş iş var mı kontrol et ⟨cd /c/sistem/sistem && git status --short jarvis/mods; git log --oneline -1 -- jarvis/mods ¦ cat⟩ | tamam |
 
-## Oturum `3def9370` — 11:00:37→11:01:15 · 9 çağrı · model opus-5-5 · hata 0
-**Özet:** koştu 7 · okudu 2
+## Oturum `3def9370` — 11:00:37→12:06:20 · 13 çağrı · model opus-5-5 · hata 0
+**Özet:** koştu 7 · MCP aracı 4 · okudu 2
 
 | # | saat | fiil | hedef | sonuç |
 |---|---|---|---|---|
@@ -65,4 +70,59 @@
 | 7 | 11:01:02 | koştu | Ders README, kayıt ve model dosyasını oku; uzak dalı kontrol et ⟨cd /c/sistem/robot_arm_control; cat docs/ders/README.md docs/ders/ders-kaydi-2026-11-08.md; cat assets/planar_2dof/reacher.xml; git fetch -q 2>&1 ¦ he…⟩ | tamam |
 | 8 | 11:01:09 | koştu | Uzak dalları ve danışman özetini oku ⟨cd /c/sistem/robot_arm_control; git log --oneline origin/mustafa -5; git log --oneline origin/salih -3; git diff --stat main origin/mustafa ¦ tail -5;…⟩ | tamam |
 | 9 | 11:01:15 | koştu | Mustafa dalındaki kodu oku ⟨cd /c/sistem/robot_arm_control; git show origin/mustafa:src/kinematics.py ¦ head -90; echo ----; git show origin/mustafa:src/sim.py ¦ head -140; echo …⟩ | tamam |
+| 10 | 11:04:05 | MCP aracı | read_me {"modules": "['interactive']", "platform": "desktop"} | tamam |
+| 11 | 11:04:31 | MCP aracı | show_widget {"title": "kutu9_sayfa1_artik_moment", "loading_messages": "['Kolu dikine kuruyorum', 'Kütleyi gizlice artırıyorum', 'Fa", "widget_code": "<h2 class=\"sr-only\">İki eklemli kolda modelin ve gerçeğin ye"} | tamam |
+| 12 | 11:40:16 | MCP aracı | show_widget {"title": "kutu9_sayfa2_veri_toplama", "loading_messages": "['Kolu sallamaya hazırlıyorum', 'Satırları kaydediyorum', 'E", "widget_code": "<h2 class=\"sr-only\">İki eklemli kol uyarım yörüngesinde hare"} | tamam |
+| 13 | 12:06:20 | MCP aracı | show_widget {"title": "kutu9_sayfa3_tek_noron", "loading_messages": "['Nöronu tek başına kuruyorum', 'Ağırlıkları ayarlıyorum', '", "widget_code": "<h2 class=\"sr-only\">Tek nöronun ağırlık, eşik ve aktivasyon "} | tamam |
+
+## Oturum `bf8369c3` — 11:40:11→14:05:15 · 44 çağrı · model fable-5-2 · hata 1
+**Özet:** koştu 28 · MCP aracı 8 · yazdı 3 · skill çağırdı 2 · okudu 2 · düzenledi 1
+**Yazılan/düzenlenen dosyalar (1):** `kuyruk/masa-spec-19-2026-11-11.json`
+
+| # | saat | fiil | hedef | sonuç |
+|---|---|---|---|---|
+| 1 | 11:40:11 | skill çağırdı | seans-acilis | tamam |
+| 2 | 11:40:13 | koştu | Açılış kapılarını, durum kütüğünü, son seans kayıtlarını ve açık PR listesini oku ⟨../target/release/acilis-kapilari 2>&1 ¦ head -60; echo ---DURUM---; ../target/release/durum.exe oturum-basi --alan jarvis 2>&1 ¦ head -80; echo ---SE…⟩ | tamam |
+| 3 | 11:40:16 | koştu | Bayat silver katmanını katman-hatti ile tazele ⟨../target/release/katman-hatti > "/c/Users/sasah/AppData/Local/Temp/claude/d37de251d0e91747/bf8369c3-f2c4-4402-9814-e87f2e8e8283/scratchpad/katman-hat…⟩ | tamam |
+| 4 | 11:40:19 | okudu | raporlar\seans\seans-teslim-2026-11-11-depo-denetimi.json [bütün] | tamam |
+| 5 | 11:40:23 | koştu | Son kapanış commit'inin uzak depoya gidip gitmediğini doğrula ⟨cd /c/sistem/sistem && git fetch origin 2>&1 ¦ tail -2; git status -sb ¦ head -1; git log origin/main -1 --format='%h %s' ¦ cut -c1-80⟩ | tamam |
+| 6 | 13:34:59 | koştu | Açık iş listesinin tamamını, seans açma yardımını ve denetim raporu başlıklarını oku ⟨../target/release/durum.exe oturum-basi --alan jarvis --json > "/c/Users/sasah/AppData/Local/Temp/claude/d37de251d0e91747/bf8369c3-f2c4-4402-9814-e87f…⟩ | tamam |
+| 7 | 13:35:05 | yazdı | ~\.claude\projects\C--sistem-sistem\memory\feedback-paralel-oturum-varsayilan-acik.md | tamam |
+| 8 | 13:35:07 | düzenledi | ~\.claude\projects\C--sistem-sistem\memory\MEMORY.md | tamam |
+| 9 | 13:35:12 | koştu | Seans düğümünü hedef cümlesi olmadan aç ⟨../target/release/durum.exe seans-ac --alan jarvis 2>&1 ¦ tail -3⟩ | tamam |
+| 10 | 13:35:12 | okudu | raporlar\2026-11\denetim-depo-2026-11-10.md [aralık 33+117] | tamam |
+| 11 | 13:35:44 | koştu | Rust çalışma alanının ve düzeltilecek kaynak dosyaların yerini bul, açılan seans adını doğrula ⟨cd /c/sistem/sistem && ls; ls kod 2>/dev/null; ls jarvis/kod 2>/dev/null; for f in bayat_cekim.rs anakronizm.rs hareket.rs ambar_tablo.rs silver_sagli…⟩ | tamam |
+| 12 | 13:35:49 | MCP aracı | oda_ac {"baslik": "Denetim kalan teknik kalemler 2026-11-11", "maksParalel": "3"} | tamam |
+| 13 | 13:35:54 | MCP aracı | oda_plan {"metin": "Amaç: denetim raporu (jarvis/raporlar/2026-11/denetim-depo-2"} | tamam |
+| 14 | 13:36:05 | MCP aracı | oda_gorev_ver {"baslik": "G1 durum kütüğü bozuk satır dayanıklılığı", "zorluk": "zor", "sinif": "izole"} | tamam |
+| 15 | 13:36:20 | MCP aracı | oda_gorev_ver {"baslik": "G2 rituel Windows yol ve veri hataları", "zorluk": "zor", "sinif": "izole"} | tamam |
+| 16 | 13:36:34 | MCP aracı | oda_gorev_ver {"baslik": "G3 devir kimliği süzme, core teli, K2 alarmı", "zorluk": "zor", "sinif": "izole"} | tamam |
+| 17 | 13:36:47 | MCP aracı | oda_gorev_ver {"baslik": "G4 Python betikleri Windows ve test yalıtımı", "zorluk": "orta", "sinif": "dosyali"} | tamam |
+| 18 | 13:38:43 | skill çağırdı | karar-masasi Denetim raporu (raporlar/2026-11/denetim-depo-2026-11-10.md) §3 ve §5.3'te Salih hükmü bekleyen kalemler: A3, A5, B9-B13, C16-C19, 53, D23, D25-D28, E30-E38, 51, 52, Span M1-M5 devri, #9 veri bilimi şeridi evi. Metin ASD-STE100 usulü Türkçe: kısa, etken, tek fikirli cümleler. Her kalem  | tamam |
+| 19 | 13:38:47 | koştu | Son masa numarasını, örnek spec biçimini ve bayat olabilecek kalemlerin güncel durumunu kontrol et ⟨ls raporlar/masa/ ¦ tail -4; ls kuyruk/masa-spec-* ¦ tail -3; f=$(ls kuyruk/masa-spec-*.json ¦ tail -1); head -c 2500 "$f"; echo; ../target/release/ma…⟩ | tamam |
+| 20 | 13:39:39 | koştu | Son masa numarasını ve örnek kalem biçimini oku ⟨ls raporlar/masa/ kaynak-kodu/lavish/ 2>/dev/null ¦ grep -oE 'masa-[0-9]+' ¦ sort -t- -k2 -n ¦ uniq ¦ tail -2; python -c " import json;d=json.load(ope…⟩ | tamam |
+| 21 | 13:42:40 | yazdı | kuyruk\masa-spec-19-2026-11-11.json | tamam |
+| 22 | 13:42:41 | koştu | Masa 19 HTML dosyasını spec'ten üret ⟨../target/release/masa-uret kuyruk/masa-spec-19-2026-11-11.json 2>&1 ¦ tail -8⟩ | tamam |
+| 23 | 13:42:47 | koştu | Başlıktaki kalem sayısını düzelt, masayı yeniden üret ve Lavish'te aç ⟨sed -i 's/Salih hükmü bekleyen 30 kalem/Salih hükmü bekleyen 31 kalem/' kuyruk/masa-spec-19-2026-11-11.json && ../target/release/masa-uret kuyruk/masa…⟩ | tamam |
+| 24 | 13:42:58 | koştu | Masayı üstüne yazarak yeniden üret ve Lavish'in sunduğu dosyanın güncel olup olmadığını kontrol et ⟨sed -i 's/^ "no": 19,/ "no": 19,\n "ustune_yaz": true,/' kuyruk/masa-spec-19-2026-11-11.json && ../target/release/masa-uret kuyruk/masa-spec-19-2026-1…⟩ | tamam |
+| 25 | 13:43:02 | koştu | Masa 19 için Salih'in Lavish geri bildirimini bekle ⟨lavish-axi poll .lavish/masa-19-2026-11-11.html⟩ | tamam |
+| 26 | 13:43:25 | koştu | G1 ve G4 işçi değişikliklerini doğrula: fark özeti, durum crate testleri, fren hook testi, yeni ikiliyle gerçek kütük okuması ⟨cd /c/sistem/sistem && git status --short ¦ grep -v 'veri/bronz\¦hareket-olay' ¦ head -30; echo ---; git diff --stat --ignore-cr-at-eol -- jarvis/kod/…⟩ | tamam |
+| 27 | 13:43:42 | koştu | Python dosyalarında satır sonu biçiminin değişip değişmediğini kontrol et ⟨cd /c/sistem/sistem && git diff --stat -- jarvis/tools ¦ tail -1; git config core.autocrlf; file jarvis/tools/wiki-baglanti.py jarvis/tools/sunum-proo…⟩ | tamam |
+| 28 | 13:43:49 | koştu | G1 ve G4 düzeltmelerini iki ayrı commit ile kaydet, kütükte iki işi kanıtla kapat ⟨cd /c/sistem/sistem && git add jarvis/kod/durum/src/lib.rs jarvis/kod/durum/src/main.rs jarvis/kod/durum/tests/cli.rs && git commit -q -m "[ariza] dur…⟩ | tamam |
+| 29 | 13:44:13 | koştu | İki işi önce işleme alıp sonra kanıt commit'iyle kapat ⟨for p in "112 f617edc8" "109 d7a66e82"; do set -- $p; ../target/release/durum.exe al $1 --oturum 2026-11-11-jarvis 2>&1 ¦ tail -1; ../target/release/d…⟩ | tamam |
+| 30 | 13:45:17 | koştu | G2 işçi raporunun kesilen kalanını oda kaydından oku ⟨cd /c/sistem/sistem && python -c " import json,glob f=sorted(glob.glob('ortak/oda/202611111035*.json'))[0] d=json.load(open(f,encoding='utf-8')) def w…⟩ | tamam |
+| 31 | 13:50:33 | koştu | G2 ve G3 sonrası üç crate'in testlerini bir arada koş, ikilileri yenile, K2 kapısının yeni çıktısına bak ⟨cd /c/sistem/sistem && git status --short jarvis/kod ¦ cat; for p in jarvis-rituel jarvis-arac jarvis-hook; do echo "== $p"; cargo test -q -p $p 2>&1 …⟩ | tamam |
+| 32 | 13:53:41 | koştu | Rituel testlerinin tam sonucunu al ve core telini beş örnek komutla uçtan uca sına ⟨cd /c/sistem/sistem && cargo test -q -p jarvis-rituel 2>&1 ¦ grep -E 'test result' ¦ grep -v ' 0 passed' ; cd jarvis && for c in 'grep -n tee core/tuz…⟩ | hata |
+| 33 | 13:53:45 | yazdı | ~\AppData\Local\Temp\claude\d37de251d0e91747\bf8369c3-f2c4-4402-9814-e87f2e8e8283\scratchpad\tel-ornek.txt | tamam |
+| 34 | 13:53:49 | koştu | Rituel testlerinin tam sonucunu al ve yazma telini örnek dosyadaki altı komutla sına ⟨cd /c/sistem/sistem && cargo test -q -p jarvis-rituel 2>&1 ¦ grep 'test result' ¦ grep -v ' 0 passed'; S="/c/Users/sasah/AppData/Local/Temp/claude/d37…⟩ | tamam |
+| 35 | 13:55:17 | koştu | Yazma telinin çağrıldığı alt komut adını ayar ve hook dosyalarından bul ⟨grep -rhoE 'jarvis-hook[^"]{0,60}' .claude/settings.json .claude/hooks/*.sh 2>/dev/null ¦ sort -u ¦ head -12⟩ | tamam |
+| 36 | 13:55:21 | koştu | Yazma telini doğru alt komutla altı örnek üzerinde sına ⟨S="/c/Users/sasah/AppData/Local/Temp/claude/d37de251d0e91747/bf8369c3-f2c4-4402-9814-e87f2e8e8283/scratchpad"; while IFS= read -r c; do python -c "imp…⟩ | tamam |
+| 37 | 13:55:29 | koştu | G2 ve G3 düzeltmelerini iki ayrı commit ile kaydet ve kütükte iki işi kapat ⟨cd /c/sistem/sistem && R=jarvis/kod/rituel/src && git add $R/ambar_tablo.rs $R/anakronizm_denetim.rs $R/baglam_tablo.rs $R/bayat_cekim.rs $R/hareket.r…⟩ | tamam |
+| 38 | 13:55:49 | MCP aracı | oda_gorev_ver {"baslik": "G5 artımlı transkript okuma ve anakronizm kütüğü", "zorluk": "zor", "sinif": "izole"} | tamam |
+| 39 | 13:55:59 | MCP aracı | oda_gorev_ver {"baslik": "G6 Python hat adımlarının hızı", "zorluk": "orta", "sinif": "izole"} | tamam |
+| 40 | 13:58:42 | koştu | G6 değişikliklerinin dosya listesini al ve ilgili Python testlerini koş ⟨cd /c/sistem/sistem && git status --short jarvis/tools ¦ cat; git diff --stat -- jarvis/tools ¦ tail -1; cd jarvis && ls tools/testler ¦ grep -iE 'tar…⟩ | tamam |
+| 41 | 13:58:52 | koştu | Büyük farkın satır sonu değişiminden gelip gelmediğini ölç ⟨cd /c/sistem/sistem && git diff --stat --ignore-cr-at-eol -- jarvis/tools ¦ cat; for f in erisim-fts.py prompt-tablo.py tarama-plan.py testler/test_ta…⟩ | tamam |
+| 42 | 13:58:59 | koştu | G6 değişikliğini commit ile kaydet ve kütükte işi kapat ⟨cd /c/sistem/sistem && git add jarvis/tools/erisim-fts.py jarvis/tools/prompt-tablo.py jarvis/tools/tarama-plan.py jarvis/tools/testler/test_tarama_pl…⟩ | tamam |
+| 43 | 14:05:07 | koştu | G5 raporunun kalanını oda kaydından oku ve değişen dosyaları listele ⟨cd /c/sistem/sistem && python -c " import json,glob f=sorted(glob.glob('ortak/oda/202611111035*.json'))[0] d=json.load(open(f,encoding='utf-8')) def w…⟩ | tamam |
+| 44 | 14:05:15 | koştu | G5 sonrası rituel testlerini koş, ikilileri yenile ve gerçek hattı iki kez koşup süreyi ve kütük büyümesini ölç ⟨cd /c/sistem/sistem && cargo test -q -p jarvis-rituel 2>&1 ¦ grep 'test result' ¦ grep -v ' 0 passed'; cargo build -q --release -p jarvis-rituel 2>&1 …⟩ | yok |
 

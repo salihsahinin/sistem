@@ -1,7 +1,7 @@
 /-
 Kanon.BaglamSirasi — bağlam yükleme sırası değişmezi (Karar 117, durum #18; 2026-10-16), Lean 4 kod tabanı.
-Ölçüm: raporlar/2026-10-16-baglam-sirasi-import-deneyi.md (Claude Code 2.1.302, ham API isteği). Sentez:
-raporlar/2026-10-16-baglam-sirasi-formalizasyon-sentez.md. İcra: kod/baglam (`baglam genislet|denetle`).
+Ölçüm: raporlar/2026-10/2026-10-16-baglam-sirasi-import-deneyi.md (Claude Code 2.1.302, ham API isteği). Sentez:
+raporlar/2026-10/2026-10-16-baglam-sirasi-formalizasyon-sentez.md. İcra: kod/baglam (`baglam genislet|denetle`).
 Türkçe özet (geri-çeviri): bir dosya, parça kimlikleri taşıyan metin ile sıralı içe aktarmalardan oluşan bir
 ağaç düğümüdür. Otomatik yükleme bağlamı ağacın pre-order düzleştirmesidir: önce düğümün metni, sonra
 çocuklar yazılış sırasıyla. Md dosyası kesilip parçaları çocuk dosyalara taşındığında, zincir (her dosya bir

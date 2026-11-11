@@ -1,7 +1,7 @@
 """Bağlam sırasıyla okuma yardımcısı (Karar 117): `@` ağacına bölünmüş kanon dosyasını yükleme sırasında tek akış
 olarak verir. Asıl uygulama Rust `target/release/baglam genislet` (kod/baglam); ikili yoksa aynı kuralın küçük Python
 karşılığı koşar: önce dosyanın metni, sonra `@yol` içe aktarmaları yazılış sırasıyla (pre-order), tekrar atlanır,
-kökten ≤4 sıçrama, yalnız .md/.txt (Claude Code 2.1.302 ölçümü, raporlar/2026-10-16-baglam-sirasi-import-deneyi.md).
+kökten ≤4 sıçrama, yalnız .md/.txt (Claude Code 2.1.302 ölçümü, raporlar/2026-10/2026-10-16-baglam-sirasi-import-deneyi.md).
 Kullanım: `from baglam_oku import satirlar; satirlar(repo, "core/tuzuk-v0.md")` → [(göreli_yol, satır), ...]."""
 import os
 import re
