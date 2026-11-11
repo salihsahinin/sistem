@@ -255,8 +255,8 @@ fn ayrisan() -> Ayrisan {
             Secenek::deger(&["--repo"], "repo", None),
             Secenek::deger(&["--atla"], "atla", Some(ATLA_YARDIM)),
             Secenek::deger(&["--snapshot"], "snapshot", Some("karar-borcu-tablo/olcum için tarih (determinizm)")),
-            Secenek::bayrak(&["--parquet"], "parquet", Some("(geriye-uyum; Karar 83 B2'den beri varsayılan zaten AÇIK)")),
-            Secenek::bayrak(&["--parquet-yok"], "parquet_yok", Some("kolon katmanını kapat (Karar 83 B2: varsayılan AÇIK; duckdb yoksa zaten ATLANDI)")),
+            Secenek::bayrak(&["--parquet"], "parquet", Some("kolon katmanını (parquet · kolon-olcum · tarama-duckdb) hatta ekle; Karar 129 (2026-11-11): varsayılan KAPALI, duckdb ister")),
+            Secenek::bayrak(&["--parquet-yok"], "parquet_yok", Some("(geriye-uyum; Karar 129.dan beri varsayılan zaten KAPALI)")),
             Secenek::bayrak(&["--json"], "json", Some("axi-standardı (İB-58): stdout = TEK makine-okur JSON nesnesi; insan satırları/ilerleme stderr'e")),
         ],
     )
@@ -289,7 +289,7 @@ pub fn kos(argv: &[String]) -> i32 {
     };
     let cikis = (|| -> i32 {
         let mut secili = adimlar();
-        if !a.bayrak("parquet_yok") {
+        if a.bayrak("parquet") && !a.bayrak("parquet_yok") {
             let i = secili.iter().position(|(ad, _)| *ad == "olcum").unwrap_or(secili.len());
             for (n, p) in parquet_adimlar().into_iter().enumerate() {
                 secili.insert(i + n, p);

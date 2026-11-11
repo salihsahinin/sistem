@@ -438,8 +438,8 @@ class KatmanHattiSecimTest(unittest.TestCase):
             # Boş repoda hiçbir adım koşmamalı: liste hattın kendi ADIMLAR'ından türetilir (08-29: sabit liste bayatlamıştı — deneyim/bag gibi
             # sonradan eklenen FAIL-LOUD adımlar boş repoda çıkış 2 veriyordu; test yankı + yardım metnini sınar, adım kümesini değil)
             m = modul("katman-hatti.py")
-            tum = [a for a, _ in m.adimlari_sec(parquet=True)]  # CLI varsayılanı parquet AÇIK (Karar 83 B2) → kolon adımları da atlanmalı
-            r = kos("katman-hatti.py", "--repo", bos, "--atla", "baglam, " + ",".join(tum[1:]))
+            tum = [a for a, _ in m.adimlari_sec(parquet=True)]  # kolon katmanı --parquet ile açılır (Karar 129: varsayılan KAPALI) → kolon adımları da atlanmalı
+            r = kos("katman-hatti.py", "--repo", bos, "--parquet", "--atla", "baglam, " + ",".join(tum[1:]))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertEqual([l for l in r.stdout.splitlines() if l.startswith("[")], ["[atla ] %s" % ad for ad in tum])
             # FAIL-LOUD: yazım hatalı --atla adı 'atlandı' diye yankılanmaz; stderr'de listelenir, çıkış 2, hiçbir adım koşmaz

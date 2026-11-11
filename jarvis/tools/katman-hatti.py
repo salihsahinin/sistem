@@ -165,8 +165,8 @@ def main():
     ap.add_argument("--repo", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ap.add_argument("--atla", default="", help="virgüllü adım adları (%s)" % ",".join(ad for ad, _ in ADIMLAR + PARQUET_ADIMLAR))
     ap.add_argument("--snapshot", default=None, help="karar-borcu-tablo/olcum için tarih (determinizm)")
-    ap.add_argument("--parquet", action="store_true", help="(geriye-uyum; Karar 83 B2'den beri varsayılan zaten AÇIK)")
-    ap.add_argument("--parquet-yok", action="store_true", help="kolon katmanını kapat (Karar 83 B2: varsayılan AÇIK; duckdb yoksa zaten ATLANDI)")
+    ap.add_argument("--parquet", action="store_true", help="kolon katmanını (parquet · kolon-olcum · tarama-duckdb) hatta ekle; Karar 129 (2026-11-11): varsayılan KAPALI, duckdb ister")
+    ap.add_argument("--parquet-yok", action="store_true", help="(geriye-uyum; Karar 129.dan beri varsayılan zaten KAPALI)")
     ap.add_argument("--json", action="store_true", help="axi-standardı (İB-58): stdout = TEK makine-okur JSON nesnesi; insan satırları/ilerleme stderr'e")
     a = ap.parse_args(); repo = os.path.abspath(a.repo)
     insan = sys.stderr if a.json else sys.stdout  # axi: makine kanalı stdout, insan kanalı stderr
@@ -181,7 +181,7 @@ def main():
     kod = 0
     kira_yolu = kira_al(repo)  # Karar 83 A2: hat boyunca tek-yazar kirası (finally ile bırakılır)
     try:
-        for ad, cmd in adimlari_sec(parquet=not a.parquet_yok, atla=atla):
+        for ad, cmd in adimlari_sec(parquet=a.parquet and not a.parquet_yok, atla=atla):
             if ad == "olcum":
                 kod = max(kod, hijyen(repo, a.atla, insan))  # KB-53 (a) İB-26: ANALYZE + PRAGMA optimize (sqlite_stat1) — olcum T2 bunu ölçer
             args = list(cmd)
