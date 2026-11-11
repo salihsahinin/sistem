@@ -7,3 +7,4 @@ pub mod difflib;
 pub mod masa;
 pub mod devir_md2json;
 pub mod kod_orani;
+pub mod karakter;

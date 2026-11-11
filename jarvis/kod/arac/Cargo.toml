@@ -1,6 +1,6 @@
 [package]
 name = "jarvis-arac"
-description = "Jarvis genel araçları (alan-ajani-dogur · buyuk-harf-temizle · masa-uret · devir-md2json · kod-orani-olcum); tools/*.py karşılıklarıyla fark testli"
+description = "Jarvis genel araçları (alan-ajani-dogur · buyuk-harf-temizle · masa-uret · devir-md2json · kod-orani-olcum · karakter-turet); tools/*.py karşılıklarıyla fark testli"
 edition.workspace = true
 version.workspace = true
 
@@ -34,3 +34,7 @@ path = "src/bin/devir_md2json.rs"
 [[bin]]
 name = "kod-orani-olcum"
 path = "src/bin/kod_orani.rs"
+
+[[bin]]
+name = "karakter-turet"
+path = "src/bin/karakter_turet.rs"
