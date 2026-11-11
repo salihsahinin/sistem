@@ -191,9 +191,9 @@ fn diger_worktree_max_id(kok: &Path, kutuk: &Path) -> u64 {
         if aday.canonicalize().ok() == kutuk.canonicalize().ok() {
             continue;
         }
-        if let Ok(m) = std::fs::read_to_string(&aday)
-            && let Ok(olaylar) = olaylari_oku(&m)
-        {
+        // Başka worktree kütüğünün bozuk satırı burada sessizce atlanır; uyarı o kütüğün kendi komutlarında basılır.
+        if let Ok(m) = std::fs::read_to_string(&aday) {
+            let (olaylar, _) = durum::olaylari_oku_uyarili(&m);
             en_buyuk = en_buyuk.max(olaylar.iter().map(|o| o.id).max().unwrap_or(0));
         }
     }

@@ -267,10 +267,12 @@ impl Defter {
     }
 
     /// Olayları sırayla uygular (yeniden oynatma; son_gecerlilik denetimi yok).
+    /// Yeniden oynatmada `ac` id'sinin tekdüze artması aranmaz: worktree birleşmesi iki dalın
+    /// kuyruklarını art arda koyar, sıra dışı id meşrudur (denetim kalem 41). Tekrar id yine reddedilir.
     pub fn katla(olaylar: &[Olay]) -> Result<Defter, Hata> {
         let mut d = Defter::default();
         for o in olaylar {
-            d.uygula(o, "0000-00-00")?;
+            d.uygula_ic(o, "0000-00-00", true)?;
         }
         Ok(d)
     }
@@ -305,6 +307,11 @@ impl Defter {
 
     /// Tek olayı doğrular ve uygular. `bugun`: süresi geçmiş kayıtta al/bitir/tuket reddi için.
     pub fn uygula(&mut self, o: &Olay, bugun: &str) -> Result<(), Hata> {
+        self.uygula_ic(o, bugun, false)
+    }
+
+    /// `yeniden_oynatma`: kütükten katlanırken true (sıra dışı id serbest), yeni olay yazılırken false.
+    fn uygula_ic(&mut self, o: &Olay, bugun: &str, yeniden_oynatma: bool) -> Result<(), Hata> {
         match o.olay {
             OlayTuru::SeansAc => {
                 let (Some(ad), Some(alan)) = (o.oturum.clone(), o.alan.clone()) else {
@@ -362,7 +369,10 @@ impl Defter {
             }
             // Karar 123 (durum #27): id tekdüze artar ama boşluk serbesttir — worktree kopyaları arasında çakışmasın diye
             // CLI, diğer worktree kütüklerinin en büyük id'sini de aşan bir id seçer.
-            if o.id == 0 || o.id < self.sonraki_id() {
+            if o.id == 0 || self.kayitlar.contains_key(&o.id) {
+                return gecersiz(format!("ac: id {} sıfır ya da zaten var", o.id));
+            }
+            if !yeniden_oynatma && o.id < self.sonraki_id() {
                 return gecersiz(format!("ac: id {} en az {} olmalı", o.id, self.sonraki_id()));
             }
             for g in &o.girdi {
@@ -745,15 +755,28 @@ fn kisalt(s: &str, n: usize) -> String {
 }
 
 /// Kütük satırlarını (JSONL) olaylara çevirir; boş satırlar atlanır.
+/// Bozuk satır komutu durdurmaz: stderr'e tek satır uyarı (satır numarasıyla) basılır, satır atlanır (denetim kalem 41).
 pub fn olaylari_oku(metin: &str) -> Result<Vec<Olay>, Hata> {
-    let mut v = vec![];
+    let (v, uyarilar) = olaylari_oku_uyarili(metin);
+    for u in &uyarilar {
+        eprintln!("durum: uyarı: {u}");
+    }
+    Ok(v)
+}
+
+/// `olaylari_oku` gövdesi: geçerli olaylar + atlanan satırların uyarı metinleri.
+pub fn olaylari_oku_uyarili(metin: &str) -> (Vec<Olay>, Vec<String>) {
+    let (mut v, mut uyarilar) = (vec![], vec![]);
     for (i, s) in metin.lines().enumerate() {
         if s.trim().is_empty() {
             continue;
         }
-        v.push(serde_json::from_str(s).map_err(|e| Hata::Gecersiz(format!("kütük satır {}: {e}", i + 1)))?);
+        match serde_json::from_str(s) {
+            Ok(o) => v.push(o),
+            Err(e) => uyarilar.push(format!("kütük satır {} bozuk, atlandı: {e}", i + 1)),
+        }
     }
-    Ok(v)
+    (v, uyarilar)
 }
 
 pub fn olay_satiri(o: &Olay) -> String {
@@ -841,6 +864,22 @@ mod testler {
         assert!(d.kayitlar[&1].al_ts.is_some() && d.kayitlar[&1].bitir_ts.is_some());
     }
 
+    /// Denetim kalem 41: bozuk satır atlanır + uyarı; sıra dışı id katlamada hata değil, yeni id = en büyük + 1.
+    #[test]
+    fn bozuk_satir_ve_sira_disi_id() {
+        let metin = [olay_satiri(&ac(5, "sage")), "{bozuk".into(), olay_satiri(&ac(3, "sage")), olay_satiri(&ol(OlayTuru::Al, 3))].join("\n");
+        let (v, uyarilar) = olaylari_oku_uyarili(&metin);
+        assert_eq!(v.len(), 3);
+        assert_eq!(uyarilar.len(), 1);
+        assert!(uyarilar[0].contains("satır 2"), "{}", uyarilar[0]);
+        let mut d = Defter::katla(&v).unwrap();
+        assert_eq!(d.kayitlar[&3].durum, Durum::Islemde);
+        assert_eq!(d.sonraki_id(), 6);
+        // yeni olay yolunda geri id hâlâ reddedilir
+        assert!(d.uygula(&ac(4, "sage"), T).is_err());
+        assert!(d.uygula(&ac(6, "sage"), T).is_ok());
+    }
+
     #[test]
     fn gecersiz_gecisler() {
         for t in [OlayTuru::Bitir, OlayTuru::Tuket] {
@@ -854,7 +893,6 @@ mod testler {
         // boşluk serbest (worktree çakışma koruması), geri/tekrar id yasak
         assert!(Defter::katla(&[ac(5, "sage")]).is_ok());
         assert!(Defter::katla(&[ac(5, "sage"), ac(5, "sage")]).is_err());
-        assert!(Defter::katla(&[ac(5, "sage"), ac(3, "sage")]).is_err());
         assert!(Defter::katla(&[ac(0, "sage")]).is_err());
         let mut g = ac(1, "sage");
         g.girdi = vec![7];

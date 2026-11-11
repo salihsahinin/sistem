@@ -159,11 +159,19 @@ fn determinizm() {
     }
 }
 
+/// Denetim kalem 41: bozuk satır uyarıyla atlanır, sıra dışı id (worktree birleşmesi) hata değildir,
+/// yeni id en büyük mevcut id + 1 olur.
 #[test]
-fn bozuk_kutuk_cikis_1() {
+fn bozuk_satir_ve_sira_disi_id_calisir() {
     let k = Kutuk::yeni();
-    std::fs::write(&k.0, "bozuk\n").unwrap();
-    assert_eq!(k.calistir(&["listele"]).0, 1);
+    let satir = |id: u64| format!(r#"{{"olay":"ac","id":{id},"ts":"2026-11-11T10:00:00Z","alan":"sage","is":"i{id}","sonraki_eylem":"s"}}"#);
+    std::fs::write(&k.0, format!("bozuk\n{}\n{}\n", satir(10), satir(7))).unwrap();
+    let (kod, cikti, hata) = k.calistir(&["listele"]);
+    assert_eq!(kod, 0, "{hata}");
+    assert!(hata.contains("satır 1"), "{hata}");
+    assert!(cikti.contains("i7") && cikti.contains("i10"), "{cikti}");
+    k.ok(&["ac", "--alan", "sage", "--is", "yeni", "--sonraki", "x"]);
+    assert!(std::fs::read_to_string(&k.0).unwrap().contains(r#""id":11"#));
 }
 
 // --- Denetim 2026-11-10 (görev #17) düzeltmeleri ---
