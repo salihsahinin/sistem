@@ -1,0 +1,2 @@
+# Satır sonu (Karar 130 E30): kabuk betikleri her makinede LF; Windows CRLF kopyası bash'te bozulur
+*.sh text eol=lf

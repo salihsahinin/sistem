@@ -14,3 +14,9 @@ ogrenme/kaynaklar/mit-6042j-f10/
 projects/*/.godot/
 projects/*/test_cikti/
 projects/*/referans/
+
+# Oda modu canlı durum dizini (Karar 130 C19): oturum-yerel, izlenmez
+ortak/oda/
+
+# Bölme öncesi tek dosya bronz kütüklerin yerel yedeği (içerik ay dosyalarında ve git geçmişinde; Karar 130 D23)
+arsiv/bronz-tek-dosya-2026-11-11/
