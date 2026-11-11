@@ -15,30 +15,21 @@
 4. `arsiv/kurulus-2026-07/` altında `00_MASTER_PLAN.md` · `01_NODE_ARCHITECTURE.md` · `02_KNOWLEDGE_INDEX_PLAN.md` · `03_DUVAR_RAPORU.md` — kuruluş planları (07-10; tarihçe).
 5. `kaynak-kodu/README.md` — kaynak kodu nerede, nasıl okunur.
 
-## Klasör haritası
-```
-CLAUDE.md        oturum sözleşmesi (Katman-1)
-core/            kanon: tüzük, kural/şema dosyaları (+ .d2 grafik), kapsül, pano, şablonlar
-kuyruk/          karar defteri (senaryo-defteri), tartışma notları, kutular, gelen ingest'ler
-raporlar/        seans teslimleri (`raporlar/seans/seans-teslim-*`) + insan-yüzü raporlar/sunumlar
-cc/              görev emirleri (gorev-*), ajan raporları (rapor-*), pipeline manifestleri
-wiki/            kavram sayfaları (Obsidian vault; sozluk.md)
-veri/            bronz kütükler · silver baglam.sqlite (üretilir) · gold gorunum/ · sözleşmeler
-tools/           kalıcı script'ler (indeks: tools/SCRIPTLER.md)
-.claude/         skill'ler, hook'lar, ayarlar, ajan tanımı (gizli klasör → kaynak-kodu/claude)
-kaynak-kodu/     kaynak haritası + .claude'a görünür bağ
-KILAVUZ.md       kullanım kılavuzu · fikir-kutusu.md fikir havuzu · `../ogrenme/` dersler (depo kökünde)
-```
+## Klasör haritası (2026-11-11 gerçek dizin listesine göre; ilk düzen: `kuyruk/dosya-duzeni-plani-2026-09-09.md`)
+| Klasör / dosya | Ne var | İlk açılacak |
+|---|---|---|
+| `CLAUDE.md` · `AGENTS.md` | oturum sözleşmesi (Katman-1; CLAUDE.md = AGENTS.md symlink) | `CLAUDE.md` |
+| `core/` | kanon: tüzük, kural/şema dosyaları (+ .d2 grafik), şablonlar | `core/tuzuk-v0.md` |
+| `kuyruk/` | canlı defter (kararlar), kutular, gelen'ler, masa gündemleri ve spec'leri | `kuyruk/senaryo-defteri.md` |
+| `arsiv/` | tek çatı: kuruluş, kuyruk arşivi, karantina, kapsül/hafıza/kanon arşivleri, worktree artıkları | `arsiv/README.md` |
+| `cc/` | görev emirleri (`gorev/`), ajan ham raporları (`rapor/`), devir dosyaları, pipeline manifestleri, `workflow/` | `cc/rapor/` |
+| `raporlar/` | `YYYY-MM/` ay klasörleri (konu raporları, günlük prompt özetleri) · `seans/` (teslim kayıtları, `girdi/` altında kapanış girdileri) · `hareket/` · `masa/` · `gorsel/` | `raporlar/README.md` |
+| `wiki/` | kavram sayfaları (Obsidian vault) | `wiki/sozluk.md` |
+| `veri/` | bronz kütükler · silver `baglam.sqlite` (üretilir) · gold `gorunum/` · sözleşmeler | `veri/gorunum/` |
+| `tools/` | kalıcı script'ler | `tools/SCRIPTLER.md` |
+| `kod/` · `lean/` | Rust araçları (`rituel`, `durum`, `baglam`, `arac` vb.) · Lean kanon hükümleri (`lean/Kanon/`) | `kod/` |
+| `graf/` · `mods/` · `paylasim/` | d2 grafları (VS Code d2 eklentisiyle açılır) · Claude modları (oda, graf) · paylaşıma çıkan dosyalar | `graf/` |
+| `.claude/` · `kaynak-kodu/` | skill, hook, ayar, ajan tanımı (nokta-dizin) · kaynak haritası + `.claude`'a görünür kapı | `kaynak-kodu/README.md` |
+| `KILAVUZ.md` · `fikir-kutusu.md` · `../ogrenme/` | kullanım kılavuzu · fikir havuzu · kurs ders kayıtları (depo kökünde) | `KILAVUZ.md` |
 
 **Kural mirası:** Bu node, Homebase'deki Jarvis sözlüğü v1 (DONDU) terimleriyle konuşur (`wiki/sozluk.md`); tüzük `core/tuzuk-v0.md`'de.
-
-## Klasör haritası (dosya-düzeni planı 2026-09-09, Salih onaylı ağaç — `kuyruk/dosya-duzeni-plani-2026-09-09.md`)
-| Klasör | Ne var | İlk açılacak |
-|---|---|---|
-| `core/` | kanon: tüzük, durum kapsülü, pano, şemalar, prompt-dosya tablosu | `../target/release/durum.exe oturum-basi --alan jarvis` |
-| `kuyruk/` | canlı defter (kararlar), kutular, gelen'ler, masa gündemleri, skill-deneme | `kuyruk/senaryo-defteri.md` |
-| `arsiv/` | TEK ÇATI: `kurulus-2026-07/` · `kuyruk-arsiv/` (damıtma arşivleri) · `karantina/` (BAKMA-GEREK-YOK) · `chat-model-degisikligi/` | `arsiv/README.md` |
-| `cc/` | görev emirleri, ajan ham raporları, devir dosyaları, prompt'lar, pipeline manifest notları (alt-klasörleme parti 3) | `cc/devir-*.md` |
-| `raporlar/` | insan-yüzü teslimler, seans/vardiya raporları, hareket günlükleri, masa yüzeyleri, görseller (alt-klasörleme parti 4) | `raporlar/seans/seans-teslim-*` |
-| `../ogrenme/` (depo kökü) | kurs ders kayıtları + `kaynaklar/` (dış kırpıntılar) | `../ogrenme/README.md` |
-| `wiki/` · `veri/` · `tools/` · `graf/` | kavramlar · bronz/silver/gold veri · script'ler (`tools/SCRIPTLER.md`) · d2 grafları (VS Code d2 eklentisiyle açılır) | `wiki/sozluk.md` |
