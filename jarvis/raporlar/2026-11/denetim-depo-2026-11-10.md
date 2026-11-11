@@ -91,3 +91,59 @@ Her kalem: ne · önerim. Ayrıntı ve kanıt ham raporda (rapor no · bulgu no)
 ## 4. Kapsam dışı kalan
 
 `ogrenme/` içeriği · `cc/gelen`, `cc/giden`, `cc/devir/**` ve `kuyruk/senaryo-defteri.md` içeriği (alt-ajan okuma kilidi işçileri engelledi; karar numaralarının defterle eşleşmesi denetlenmedi) · rituel, kural, arac, durum, baglam crate'lerinin iş mantığı satır satır okunmadı (desen taraması yapıldı) · `katman-hatti`'nin çağırdığı 15 Python adımının içi · jsonl veri içerikleri.
+
+## 5. İkinci tur (2026-11-10 akşam ve 2026-11-11): Karar 128 icrası ve kapsam dışı okuma
+
+**AS-OF:** 2026-11-11, HEAD `4ca74fcf` üzerine. Ham raporlar (12-14, 84 bulgu): `cc/rapor/2026-11/rapor-2026-11-10-depo-denetimi-ham-2.md`.
+
+### 5.1 §3'ten kapananlar (Salih: "1-5 kalemlerini önerdiğin şekillerde uygula")
+
+| §3 kalemi | Sonuç |
+|---|---|
+| A1 alan ajanı kilitleri | Kapandı: gövde Rust `jarvis-hook okuma-izin`, 8 ajanda aynı sarmal; friday 35/35, diğer yedi ajan 40/40 test; `/c/` atlatması, bozuk JSON ve eksik ikili artık kesiyor |
+| A2 deny yolları | Kapandı: şablon + 8 ayar dosyasında `//c/sistem/sistem/...` |
+| A4 git telleri | Kapandı: teller açık; ilk commit'lerde 4 dosyada çıplak büyük harf yakaladı |
+| B7, B8 kanon metni | Kapandı (jarvis `AGENTS.md` 7157/7168 bayt; `core/` 7 dosya; tüzük m.42, m.44) |
+| B9 alan ajanı başlığı | Yalnız üretici adı düzeldi. Ajanların kendi kapsül düzeni ve `urun/` atfı değişmedi (iş #33 ve Salih kararı) |
+| C14 ölü betikler | 14'ü arşive indi; `baglam-skill-aday.py` ve `pointer-kayma.py` canlı çıktı (kanon ve damıtma skill'i kullanıyor), kaldı |
+| C15 Python kopyaları | 8'den 2'si indi (`kural-sayaci`, `kod-orani-olcum`). Kalan 6'sının canlı bağımlısı var: `katman-hatti.py` (iki Python testi koşturuyor), `baglam-tablo.py` (`anahtar-denetim.py` import ediyor), `prompt-dosya.py` ve `paket-yonlendir.py` (hook fark testlerinin referansı), `buyuk-harf-temizle.py` ve `harness_anahtar.py` (pre-commit teli, canlı import) |
+| D24 hat süresi | 97 sn → 58 sn (ölçüm 2026-11-11; `baglam` 27 → 20, `erisim` 21 → 10, `graf` 15 → 1,6, `ambar` 7 → 4). Belgelerdeki "~12 sn" ifadeleri "1-2 dk" oldu |
+| E37 Span devri | Okuma kilidi şikâyeti kapandı (Windows geçici dizini artık izinli); M1-M5 ders iskeleti isteği açık |
+
+### 5.2 Kapsam dışı okumada bulunup düzeltilenler
+
+- **Hook kütükleri iç içe yazıyordu:** satır ve satır sonu iki ayrı yazımdı; `talimat-yukleme-olay.jsonl` içinde 35 birleşik + 3 yırtık kayıt. Tek yazıma indi. Eski bozuk satırlar yerinde duruyor.
+- **`baglam-tablo` commit tarihleri yanlıştı:** `git log` yolları depo kökünden, dosya listesi `jarvis/` altından geliyordu; monorepo sonrası hiçbir commit sayılmıyordu (1368 dosyanın 313'ünde ilk commit boş). Artık tüm depo log'u `jarvis/` önekiyle eşleniyor: boş 0, Rust ve Python 1369 dosyada aynı.
+- **`durum` kütüğü:** `seans-kapat` teslim dosyasını doğrulamadan önce eziyordu; aynı gün ikinci kapanış birincinin üstüne yazıyordu; alan uyuşmazlığı denetlenmiyordu; çıktı dosyaları yerinde yazılıyordu; eşzamanlı `ac` aynı numarayı üretebiliyordu; `--help` hata veriyordu. Yedisi düzeldi, 18 CLI testi geçti; gerçek kullanımda 38 ardışık yazım sorunsuz.
+- **Açılış kapısı K1 ve FIFO** donmuş kapsül ve pano dosyalarına bağlıydı; artık `ortak/durum-olay.jsonl` kütüğüne bakıyor.
+- **Bayat varsayılan depo yolu:** `masa-uret` ve `buyuk-harf-temizle` `--repo` verilmezse var olmayan `~/sistem/jarvis` yoluna yazıyor ya da repo dosyalarını atlıyordu.
+- **`baglam denetle ../AGENTS.md`** yanlış dosyayı (`jarvis/AGENTS.md`) gösteriyordu.
+- **`kod-orani-olcum`** `.rs` ve `.lean` dosyalarını kod saymıyordu.
+- **`katman-hatti` adım hataları:** üreticisi arşivde olan 13 bayat gold görünüm arşive indi (`arsiv/gorunum-2026-11-10/`); 11 kırık karar-borcu pointer'ı düzeldi (`karar` adımı artık çıkış 0). Hat yalnız kalem 40 yüzünden hâlâ hata koduyla bitiyor.
+- **Durum kütüğü:** odanın açtığı 19 iş (#89-#107) kapanmıyordu; elle kapatıldı.
+
+### 5.3 Salih hükmü bekleyen yeni kalemler (önem sırasıyla)
+
+40. **`duckdb` kurulu değil.** `parquet` ve `tarama-duckdb` adımları kalıcı atlanıyor, `v_tarama_plan_duckdb.csv` 49,7 gün bayat ve `katman-hatti` yalnız bu yüzden hâlâ hata koduyla (3) bitiyor; `kolon-olcum` duckdb yokken de 354 MB tabloyu tarıyor. Seçenek: (a) kolon kolunu emekli et: üç adımı hattan çıkar, görünümü arşivle (önerim; kol 2026-09-22'den beri çalışmıyor ve tüketicisi yok) ya da (b) `pip install duckdb` ile geri getir. (R14 · 3, 9)
+41. **`durum` kütüğünde tek bozuk satır bütün komutları kilitliyor** (`lib.rs` ≈268, 363); worktree birleşmesinde sıra dışı numara bunu tetikler. Öneri: katlarken numaraya göre sırala, bozuk satırı uyarıyla atla. (R13 · 2)
+42. **Transkriptler her koşumda üç adımda baştan okunuyor** (`hareket`, `seyir`, `ambar`) ve `anakronizm-denetim.jsonl` her koşumda tüm bulguları yeniden ekliyor (10 MB, sınırsız büyüme). Öneri: artımlı okuma + kütüğe yalnız fark. (R12 · 4, 11)
+43. **Windows yol biçimi kaçakları:** `bayat_cekim` ve `anakronizm` ters bölülü yol üretip silver anahtarıyla eşleşmiyor; `hareket.rs` `/c/` ve küçük harf sürücüyü repo dışı sayıyor; kütüklerde CRLF ve LF karışık. (R12 · 15, 18, 19)
+44. `ambar_tablo.rs:631` metin gelen `prompt_id` değerini harf harf ayrı kimliklere bölüyor (Python hatası olduğu gibi taşınmış). (R12 · 20)
+45. `devir_md2json` md'den gelen devir kimliğini süzmeden dosya adına koyuyor (`../x` emir dizini dışına yazar) ve izin öneki ayraçsız (`cc/gelen` izni `cc/gelen-baska/` yolunu da geçiriyor). (R13 · 18, 19)
+46. `kural` crate'indeki `argparse`, `py`, `harness_anahtar` kopyaları `rituel` ile ayrışmış; `float_repr` iki kopyada farklı yuvarlıyor. Engel yalnız API birleştirme. (R13 · 24-26)
+47. `silver_saglik` ve `baglam_tablo` `kod_sha` için arşive inmiş Python dosyasını okuyor; koşum kimliği kod değişikliğini yansıtmıyor. (R12 · 13)
+48. Python hattı: `tarama-plan` her koşumda veritabanını kopyalayıp ANALYZE ediyor; `erisim-fts` FTS dizinini baştan kuruyor; `prompt-tablo` O(n²) tarıyor. Hattın kalan 58 saniyesinin önemli kısmı burada. (R14 · 2, 5, 6)
+49. `sunum-proof-of-work.py` Mac yolu ve `head` komutuna bağlı; `wiki-baglanti.py` Windows yolunu URI'ye düz basıp hatayı yutuyor; `baglam-skill-aday.py` "sıcak" kümesi hâlâ kapsül ve pano. (R14 · 10, 11, 13)
+50. `tools/testler/test_fren_hook.py`: 2 test gerçek oturumun fren sayacını okuduğu için kırık (test yalıtımı yok).
+51. **Commit'siz ders kayıtları:** `ogrenme/dosya-mimarisi/` ve `ogrenme/ontolojik-encode/` 2026-11-01'den beri izlenmiyor; `ogrenme/README.md` ve `mufredat.md` taşınmış derslere eski yollarla işaret ediyor. `ogrenme/` Salih'in alanı, dokunulmadı.
+52. **Oda modu:** biten görev durum kütüğünde açık kalıyor (köprü işi açıyor, kapatmıyor); `oda_oku` raporu kesik gösteriyor; işçilerin önerisi Jarvis uyandıktan sonra görünüyor.
+53. `kod/arac/src/yol_tasi.rs` tek seferlik Mac göç aracı; Windows'ta hiç eşleşmiyor. Arşiv kararı. (R13 · 22)
+54. `cc/devir/` altındaki tarihli devir kayıtları klasörleme öncesi düz yolları gösteriyor (`cc/rapor-…`, `raporlar/…`); tarihli kayıt olduğu için dokunulmadı.
+
+### 5.4 Jarvis'in Salih adına verdiği iki teknik alt-karar
+
+Ö1: `baglam-tablo` `git log` tam depo + önek eşleme (ilk deneme `--relative` monorepo öncesi geçmişi kesmişti). Ö2: `rituel_fark.rs` fark testindeki dakika sınırı yarışı (commit zamanları 60'ın katına çekildi). İkisi de geri alınabilir.
+
+### 5.5 Hâlâ okunmayan
+
+`argparse.rs` gövdesinin kalanı · `kural/src/{tetik,derece}.rs` · `baglam-tablo.py` gövdesi (1019 satır; yalnız git ve ana akış kesitleri) · crate `tests/` dizinleri · jsonl veri içeriklerinin anlamı (yalnız biçim tarandı) · `ogrenme/kaynaklar/` içeriği.
