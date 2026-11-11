@@ -1,0 +1,228 @@
+{
+ "no": 19,
+ "ustune_yaz": true,
+ "tarih": "2026-11-11",
+ "baslik": "Depo denetimi: Salih hükmü bekleyen 31 kalem",
+ "giris": "Bu masa denetim raporunun kalan kalemlerini taşır. Her kalem tek bir sorudur. Her seçenek dört şey söyler: ne yaparım, artı, eksi, gerekçe. Önerilen seçenek ilk sıradadır. Bir kalemi boş bırakırsan o kalem açık kalır. Teknik arızalar (kalem 41, 43, 44, 45, 47, 49, 50, A6, E29) bu masada yok; oda işçileri onları şimdi düzeltiyor.",
+ "tetik": "Salih 2026-11-11 aynen: \"benim hükmüm gerekenleri lavish ile açıklayıcı formatta asd-std100 formatında seçeneklerle aç\"",
+ "once_yapildi": "Karar 128 ve Karar 129 ile kapananlar: A1, A2, A4, B7, B8, C14, C15 (8 kopyanın 2'si), D24, kalem 40. Kaynak: denetim raporu §5.1.",
+ "asof": "2026-11-11",
+ "kanit": [
+  {"bulgu": "Denetim bulgusu", "deger": "9 salt-okur işçi raporu, yaklaşık 275 bulgu; ikinci tur 84 bulgu", "kaynak": "`raporlar/2026-11/denetim-depo-2026-11-10.md` §1 ve §5", "etiket": "sayım"},
+  {"bulgu": "Hafıza indeksi boyutu", "deger": "6713 bayt; tavan 4 KB", "kaynak": "`wc -c MEMORY.md` 2026-11-11 · `lean/Kanon/Butce.lean`", "etiket": "sayım"},
+  {"bulgu": "Portal Parkur artığı", "deger": "165 MB, izlenmiyor", "kaynak": "`du -sh projects/portal-parkur` 2026-11-11", "etiket": "sayım"},
+  {"bulgu": "`~/.claude/dev-mods`", "deger": "5 uuid dizini", "kaynak": "`ls` 2026-11-11 (rapor 4 yazıyordu)", "etiket": "sayım"},
+  {"bulgu": "Her oturumda değişen izlenen dosyalar", "deger": "erisim-eval 19,5 MB · baglam-olay 10,6 MB · anakronizm-denetim 10 MB · katman-olcum 9,5 MB · hareket-olay 6,5 MB", "kaynak": "denetim raporu §3 kalem 23 (ölçüm 2026-11-10)", "etiket": "sayım"},
+  {"bulgu": "Karar defteri boyutu", "deger": "118 KB tek dosya", "kaynak": "seans kaydı 2026-11-11, `kapanis.boyut`", "etiket": "sayım"}
+ ],
+ "kalemler": [
+  {"id": "A3", "baslik": "Kök oturumda ajan deny kuralları çalışmıyor", "rozet": "Katman-1 · güvenlik freni", "coklu": false,
+   "ne_demek": "Oturum depo kökünden açılırsa hook dağıtıcısı ajan ayarından yalnız `hooks` bölümünü okur. `permissions.deny` ve `ask` kuralları okunmaz. Sonuç: push freni ve `git add -A` yasağı o oturumda yoktur.",
+   "secenekler": [
+    {"etiket": "(a) Kök ayara birleşik deny listesi yaz", "value": "A3: kök `.claude/settings.json` dosyasına bütün ajanların ortak deny ve ask kuralları yazılır (push freni, `git add -A` yasağı).", "oneri": true, "aciklama": "Ne yaparım: ortak kuralları kök ayara eklerim. Artı: kural harness tarafından uygulanır, kod gerekmez. Eksi: ajan ayarı değişirse kök ayar da elle güncellenir. Gerekçe: en kısa yol ve fren hemen çalışır."},
+    {"etiket": "(b) Dağıtıcıda eşleme yap", "value": "A3: `hook-dispatch` ajan ayarındaki deny ve ask kurallarını okur ve cwd'ye göre uygular.", "aciklama": "Ne yaparım: dağıtıcıya kural eşleme kodu yazarım. Artı: ajana özgü kural kökten de çalışır. Eksi: harness izin dilini yeniden yazarım; hata riski yüksek. Gerekçe: yalnız ajana özgü kural kökte de gerekirse."},
+    {"etiket": "(c) Dokunma", "value": "A3: değişiklik yok; kök oturum frensiz kalır.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kökten açılan oturum push ve toplu ekleme yapabilir. Gerekçe: kök oturumu yalnız sen açıyorsan risk düşüktür."}
+   ]},
+  {"id": "A5", "baslik": "İkili yoksa kilitler açık kalıyor", "rozet": "Katman-1 · güvenlik freni (Karar 118 M2 ile çelişir)", "coklu": false,
+   "ne_demek": "Jarvis kilit hook'ları Rust ikilisini çağırır. İkili yoksa hook çıkış 0 verir ve işlem geçer. Yeni klonda ve worktree'de ikili yoktur. Karar 118 M2 bunu bilerek seçti. Alan ajanı okuma kilidi Karar 128 ile zaten kapalı kalır.",
+   "secenekler": [
+    {"etiket": "(a) İkili yoksa kilit işlemi keser", "value": "A5: jarvis kilit hook'ları ikili yoksa çıkış 2 verir ve mesajda `cargo build --release` komutunu gösterir; Karar 118 M2'nin bu maddesi değişir.", "oneri": true, "aciklama": "Ne yaparım: kilit sarmalına ikili denetimi eklerim. Artı: jarvis ve alan ajanı kilitleri aynı davranır. Eksi: yeni klonda ilk iş derleme olur, yoksa yazma araçları çalışmaz. Gerekçe: fren arıza anında kapalı kalmalıdır."},
+    {"etiket": "(b) Karar 118 M2 kalır", "value": "A5: değişiklik yok; ikili yoksa kilitler açık kalır, SessionStart brifi uyarı basar.", "aciklama": "Ne yaparım: yalnız brif uyarısını eklerim. Artı: yeni klon hemen çalışır. Eksi: uyarı okunmazsa kilit yoktur. Gerekçe: tek makinede ikili hep vardır."}
+   ]},
+  {"id": "B9", "baslik": "Alan ajanı kanonları bayat", "rozet": "Katman-1 · ajan kanonu", "coklu": false,
+   "ne_demek": "Yedi alan ajanının `AGENTS.md` dosyası hafıza için donmuş kapsülü birincil sayar. `deci` ve `vega` var olmayan `urun/` dizinini anar. İş #33 aynı dosyaları asgari sürüme indirmeyi zaten emrediyor.",
+   "secenekler": [
+    {"etiket": "(a) İş #33 ile birlikte yeniden yaz", "value": "B9: yedi alan ajanının `AGENTS.md` dosyası asgari sürüme yeniden yazılır; durum kaynağı durum kütüğü olur; `urun/` atfı çıkar; iş #33 aynı commit dizisinde kapanır.", "oneri": true, "aciklama": "Ne yaparım: şablonu güncellerim, yedi dosyayı üreticiyle yenilerim. Artı: iki iş tek geçişte biter. Eksi: yedi kanon dosyası birden değişir. Gerekçe: aynı dosyaya iki ayrı tur gereksizdir."},
+    {"etiket": "(b) Yalnız hatalı satırları düzelt", "value": "B9: yalnız kapsül satırı ve `urun/` atfı düzeltilir; iş #33 ayrı kalır.", "aciklama": "Ne yaparım: dosya başına iki satır değiştiririm. Artı: küçük fark. Eksi: #33 gelince aynı dosyalar yeniden değişir. Gerekçe: #33'ü ertelemek istersen."},
+    {"etiket": "(c) Dokunma", "value": "B9: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: ajan açılışta donmuş dosyayı okur. Gerekçe: yok."}
+   ]},
+  {"id": "B10", "baslik": "Kök kanon hakem için olmayan dizini gösteriyor", "rozet": "Katman-1 · kök kanon md.1", "coklu": false,
+   "ne_demek": "Kök `AGENTS.md` md.1 hakemin yerini `<alan>-hakem/` ya da ortak `hakem/` dizini olarak yazar. İki dizin de yok. Hakem `.claude/agents/hakem.md` dosyasında yaşıyor.",
+   "secenekler": [
+    {"etiket": "(a) Metni gerçeğe çevir", "value": "B10: kök md.1 hakem yerini `.claude/agents/hakem.md` (alt-ajan tanımı) olarak yazar; dizin ifadesi çıkar.", "oneri": true, "aciklama": "Ne yaparım: md.1 içinde tek ifadeyi değiştiririm. Artı: kanon ile dosya sistemi eşleşir. Eksi: yok. Gerekçe: hakem bugün alt-ajan olarak çalışıyor."},
+    {"etiket": "(b) Ortak `hakem/` dizini doğur", "value": "B10: ortak `hakem/` ajan dizini doğum belgesiyle ayrı masaya gelir.", "aciklama": "Ne yaparım: doğum belgeli ayrı masa açarım. Artı: hakem kendi hafızasını taşır. Eksi: yeni ajan bakım maliyeti getirir. Gerekçe: hakem kalıcı ajan olacaksa."},
+    {"etiket": "(c) Dokunma", "value": "B10: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kanon yanlış yer gösterir. Gerekçe: yok."}
+   ]},
+  {"id": "B11", "baslik": "`ogrenme/` kuralı ile `ogren` skill'i çelişiyor", "rozet": "Katman-1 · kök kanon md.1", "coklu": false,
+   "ne_demek": "Kök kanon `ogrenme/` dizinini ajanlara kapalı sayar. Jarvis'teki `ogren` skill'i ders kaydını `ogrenme/<şerit>/` altına yazar. Şeritler alan ajanlarına da verilmiş durumda.",
+   "secenekler": [
+    {"etiket": "(a) Kanona istisna yaz", "value": "B11: kök md.1'e istisna girer: `ogren` skill'i ve şerit sahibi alan ajanı yalnız kendi şeridinin ders kaydını okur ve yazar; `ogrenme/` altındaki diğer her şey ajanlara kapalı kalır.", "oneri": true, "aciklama": "Ne yaparım: md.1'e tek cümle eklerim, izolasyon matrisini (`Kanon/Izolasyon.lean`) eşlerim. Artı: bugünkü çalışma düzeni yasal olur. Eksi: kapalı alanda bir kapı açılır. Gerekçe: dersler fiilen böyle yazılıyor."},
+    {"etiket": "(b) Ders kaydını ajan dizinine taşı", "value": "B11: `ogren` skill'i ders kaydını ajanın kendi dizinine yazar; `ogrenme/` tümüyle kapalı kalır.", "aciklama": "Ne yaparım: skill yollarını değiştiririm, mevcut dersleri taşırım. Artı: kural istisnasız kalır. Eksi: derslerin yeri değişir; pointer'lar güncellenir. Gerekçe: `ogrenme/` yalnız senin elin olsun istersen."},
+    {"etiket": "(c) Dokunma", "value": "B11: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: çelişki sürer. Gerekçe: yok."}
+   ]},
+  {"id": "B12", "baslik": "Sokrates kanonu kendi sınırını aşıyor", "rozet": "Katman-1 · kanon (`core/sokrates-ajani.md` §7)", "coklu": false,
+   "ne_demek": "§7 ajan metni için en çok 900 kelime der. Ölçüm 1592 kelime. Ajan ve skill kopyaları kanondan elle türetiliyor. `sokrates` skill'i katalogda yok ve eval'i yok.",
+   "secenekler": [
+    {"etiket": "(a) Sınırı ölçüme çek, türetici yaz", "value": "B12: §7 sınırı 1600 kelime olur; ajan ve skill kopyalarını §7'den üreten Rust türetici yazılır; `sokrates` skill'i kataloğa girer.", "oneri": true, "aciklama": "Ne yaparım: sınır cümlesini değiştiririm, türeticiyi yazarım, katalog satırını eklerim. Artı: kopyalar kanondan sapamaz. Eksi: sınır gevşer. Gerekçe: çalışan metni kesmek davranışı değiştirir."},
+    {"etiket": "(b) Metni 900 kelimeye buda", "value": "B12: §7 900 kelimeye indirilir; türetici yine yazılır.", "aciklama": "Ne yaparım: metni budarım, sonra ajanı yeniden sınarım. Artı: kural aynen kalır. Eksi: Sokrates davranışı değişebilir; yeni test turu gerekir. Gerekçe: bağlam maliyeti öncelikliyse."},
+    {"etiket": "(c) Dokunma", "value": "B12: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kanon kendi kuralını çiğner. Gerekçe: yok."}
+   ]},
+  {"id": "B13", "baslik": "Friday şablondan ayrışmış", "rozet": "Katman-1 · ajan kanonu", "coklu": false,
+   "ne_demek": "Friday'de hakem ajanı, `okuma-izin-ek` ve `ogren` skill'i yok. Hook sürümü v0.5. Deny listesi var olmayan `kanon/**` yolunu taşır. `README` Mac yolları ve eski model adı içerir.",
+   "secenekler": [
+    {"etiket": "(a) Şablondan yeniden doğur", "value": "B13: Friday iskeleti `alan-ajani-dogur` ile yeniden üretilir; Friday'e özgü içerik (`core/`, `cc/`, charter gövdesi) korunur.", "oneri": true, "aciklama": "Ne yaparım: iskeleti üretirim, özgü dosyaları fark listesiyle korurum. Artı: Friday diğer ajanlarla aynı sürüme gelir. Eksi: fark incelemesi gerekir. Gerekçe: elle yama yeniden ayrışır."},
+    {"etiket": "(b) Eksikleri elle ekle", "value": "B13: yalnız eksik parçalar ve hatalı satırlar elle eklenir.", "aciklama": "Ne yaparım: beş parçayı tek tek eklerim. Artı: küçük fark. Eksi: sonraki şablon değişiminde yine ayrışır. Gerekçe: Friday'i az kullanıyorsan."},
+    {"etiket": "(c) Dokunma", "value": "B13: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: Friday eski hook ile çalışır. Gerekçe: yok."}
+   ]},
+  {"id": "C16", "baslik": "claude.ai'da emekli skill'ler hâlâ açık", "rozet": "Katman-1 · silme (yalnız senin elinle)", "coklu": false,
+   "ne_demek": "`gunaydin-vardiya`, `vardiya-kapanis` ve `dev-run-planner` hesabında etkin. Üçü de eski adı (Carvis), eski yolu ve emekli tetikleri taşır. \"oturuma başlayalım\" tetiği `seans-acilis` ile çakışır. Ben bu skill'leri silemem.",
+   "secenekler": [
+    {"etiket": "(a) Sen kaldırırsın, ben adımları veririm", "value": "C16: Salih üç skill'i claude.ai ayarlarından kaldırır; Jarvis adım listesini verir ve `kaynak-kodu/README.md` satırını günceller.", "oneri": true, "aciklama": "Ne yaparım: tıklama adımlarını yazarım, README satırını kapatırım. Artı: tetik çakışması biter. Eksi: bir dakikalık el işi sende. Gerekçe: üçü de 2026-08-15'ten beri emekli."},
+    {"etiket": "(b) Kalsın", "value": "C16: değişiklik yok; README satırı \"bilinçli kalıyor\" olur.", "aciklama": "Ne yaparım: README satırını değiştiririm. Artı: iş yok. Eksi: yanlış skill tetiklenebilir. Gerekçe: başka cihazda kullanıyorsan."}
+   ]},
+  {"id": "C17", "baslik": "`~/.claude/dev-mods` içinde eski mod kopyası", "rozet": "Katman-1 · arşiv (depo dışı)", "coklu": false,
+   "ne_demek": "Dizinde 5 uuid alt dizini var; rapor 4'ünü boş saydı. Eski mod kopyası (oda 0.4.1, graf 0.1.0) da orada. Modlar artık doğrudan repodan yükleniyor.",
+   "secenekler": [
+    {"etiket": "(a) Kopyayı arşive al, boş dizinleri kaldır", "value": "C17: eski mod kopyası `arsiv/` altına taşınır; boş uuid dizinleri kaldırılır; dolu dizin varsa önce Salih'e gösterilir.", "oneri": true, "aciklama": "Ne yaparım: içeriği listelerim, kopyayı arşive taşırım, boş dizinleri kaldırırım. Artı: hangi mod sürümü canlı sorusu biter. Eksi: yok. Gerekçe: silme yasağı arşivle karşılanır."},
+    {"etiket": "(b) Kalsın", "value": "C17: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: eski kopya yanlışlıkla yüklenebilir. Gerekçe: yok."}
+   ]},
+  {"id": "C18", "baslik": "Portal Parkur artığı 165 MB", "rozet": "Katman-1 · silme ya da taşıma", "coklu": false,
+   "ne_demek": "`projects/portal-parkur/` altında izlenmeyen `referans/` (154 MB) ve `test_cikti/` (11 MB) duruyor. Proje kapandı ve ürün ayrı repoda.",
+   "secenekler": [
+    {"etiket": "(a) Referansı ürün klasörüne taşı, test çıktısını sil", "value": "C18: `referans/` `C:\\sistem\\portal-parkur` klasörüne taşınır (git dışı); `test_cikti/` silinir.", "oneri": true, "aciklama": "Ne yaparım: taşırım, test çıktısını silerim. Artı: referans video ürünle birlikte durur. Eksi: 154 MB diskte kalır. Gerekçe: test çıktısı yeniden üretilir; video üretilemez."},
+    {"etiket": "(b) İkisini de sil", "value": "C18: `referans/` ve `test_cikti/` silinir.", "aciklama": "Ne yaparım: iki dizini silerim. Artı: 165 MB boşalır. Eksi: referans video geri gelmez. Gerekçe: video başka yerde duruyorsa."},
+    {"etiket": "(c) Kalsın", "value": "C18: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: sistem reposunda ürün artığı durur. Gerekçe: yok."}
+   ]},
+  {"id": "C19", "baslik": "İzlenmeyen iki çıktı: boş hafıza aynası ve `ortak/oda/`", "rozet": "Katman-2 · düzen", "coklu": false,
+   "ne_demek": "Kök `veri/hafiza-ayna/-Users-HasanSalihSahin-sistem/` yanlış dizinden koşmuş boş bir çıktıdır. `ortak/oda/` oda modunun görev ve rapor kayıtlarını tutar; seans kaydı alt-ajan sayımı için bu dosyalara işaret ediyor.",
+   "secenekler": [
+    {"etiket": "(a) Boş çıktı arşive, oda kayıtları commit'e", "value": "C19: boş hafıza aynası arşive iner; `ortak/oda/*.json` kayıt olarak commit'lenir (gelen/giden kanal dosyaları `.gitignore`).", "oneri": true, "aciklama": "Ne yaparım: boş dizini arşive taşırım, oda kayıtlarını izlemeye alırım. Artı: işçi raporlarının tam metni repoda görünür. Eksi: repo her oda koşumunda büyür. Gerekçe: açık kaynak ilkesi her hareketi repoda ister."},
+    {"etiket": "(b) İkisi de `.gitignore`", "value": "C19: boş çıktı arşive iner; `ortak/oda/` `.gitignore` satırı alır.", "aciklama": "Ne yaparım: ignore satırı eklerim. Artı: repo küçük kalır. Eksi: seans kaydındaki pointer başka makinede boşa düşer. Gerekçe: oda kaydı geçici sayılırsa."},
+    {"etiket": "(c) Kalsın", "value": "C19: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: `git status` her oturumda aynı satırları basar. Gerekçe: yok."}
+   ]},
+  {"id": "K53", "baslik": "Tek seferlik Mac göç aracı canlı kodda", "rozet": "Katman-2 · arşiv", "coklu": false,
+   "ne_demek": "`kod/arac/src/yol_tasi.rs` Mac'ten Windows'a geçişte bir kez kullanıldı. Windows'ta hiçbir yolu eşlemiyor. `altajan_okuma.rs` yasak listesinde de eski `~/Desktop/repo` yolu duruyor.",
+   "secenekler": [
+    {"etiket": "(a) Aracı arşive al, eski yolu çıkar", "value": "K53: `yol_tasi.rs` ve ikili kaydı arşive iner; `altajan_okuma.rs` içindeki `~/Desktop/repo` satırı çıkar.", "oneri": true, "aciklama": "Ne yaparım: dosyayı arşive taşırım, crate kaydını ve pointer'ları güncellerim. Artı: derleme süresi ve kod yüzeyi azalır. Eksi: yok. Gerekçe: Mac'e dönüş planı yok."},
+    {"etiket": "(b) Kalsın", "value": "K53: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: ölü kod derlenmeye devam eder. Gerekçe: yeni makine göçü bekliyorsan."}
+   ]},
+  {"id": "K46", "baslik": "Aynı adlı üç Rust dosyası iki crate'te ayrışmış", "rozet": "Katman-2 · teknik borç", "coklu": false,
+   "ne_demek": "`argparse`, `py` ve `harness_anahtar` dosyaları `kural` ve `rituel` crate'lerinde ayrı kopyadır. Satır sayıları farklıdır. `float_repr` iki kopyada farklı yuvarlar.",
+   "secenekler": [
+    {"etiket": "(a) Ortak crate'e birleştir", "value": "K46: üç dosya ortak bir crate'e taşınır; `kural` ve `rituel` onu kullanır; `float_repr` tek davranışa iner.", "oneri": true, "aciklama": "Ne yaparım: ortak crate açarım, iki API'yi birleştiririm, fark testlerini koşarım. Artı: bir hata tek yerde düzelir. Eksi: iki crate'in bütün testleri yeniden koşar. Gerekçe: ayrışma şimdiden iki farklı sonuç üretiyor."},
+    {"etiket": "(b) Yalnız `float_repr` farkını gider", "value": "K46: yalnız `float_repr` iki kopyada aynı yapılır; kopyalar kalır.", "aciklama": "Ne yaparım: tek fonksiyonu eşlerim. Artı: küçük fark. Eksi: kopyalar yeniden ayrışır. Gerekçe: büyük taşıma istemezsen."},
+    {"etiket": "(c) Kalsın", "value": "K46: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: iki araç aynı sayıyı farklı yazar. Gerekçe: yok."}
+   ]},
+  {"id": "D22", "baslik": "Hook zinciri her araç çağrısına süre ekliyor", "rozet": "Katman-2 · verim", "coklu": false,
+   "ne_demek": "Jarvis'te her Bash çağrısı iki kabuk sarmalı hook koşturur: 0,146 sn. Aynı iş doğrudan ikiliyle 0,050 sn. Kök `PostToolUse .*` kuralı ajan yokken de dağıtıcıyı başlatır: çağrı başına yaklaşık 0,11 sn. Çocuk sürecin zaman aşımı yok. Ölçüm 2026-11-10.",
+   "secenekler": [
+    {"etiket": "(a) Sarmalı kaldır, zaman aşımı ekle", "value": "D22: ayarlar ikiliyi doğrudan çağırır; dağıtıcı ajan yoksa hemen çıkar; çocuk sürece zaman aşımı gelir. A5 (a) seçilirse ikili denetimi ikilinin çağrıldığı yere taşınır.", "oneri": true, "aciklama": "Ne yaparım: `settings.json` hook komutlarını değiştiririm, dağıtıcıya erken çıkış ve zaman aşımı eklerim. Artı: çağrı başına yaklaşık 0,1 sn kazanç; asılı hook oturumu kilitlemez. Eksi: ikili yoksa harness hata mesajı gösterir. Gerekçe: bu maliyet her araç çağrısında ödenir."},
+    {"etiket": "(b) Yalnız zaman aşımı ekle", "value": "D22: yalnız çocuk sürece zaman aşımı gelir; sarmal kalır.", "aciklama": "Ne yaparım: zaman aşımını eklerim. Artı: küçük fark. Eksi: süre maliyeti kalır. Gerekçe: sarmalı ikili yokluğu için tutmak istersen."},
+    {"etiket": "(c) Kalsın", "value": "D22: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: maliyet sürer. Gerekçe: yok."}
+   ]},
+  {"id": "D23", "baslik": "Büyük türev dosyalar her oturumda değişiyor", "rozet": "Katman-1 · veri düzeni (açık kaynak ilkesine dokunur)", "coklu": false,
+   "ne_demek": "Beş izlenen dosya toplam yaklaşık 56 MB ve her oturumda değişir. Üçü yeniden üretilebilir türevdir (`erisim-eval`, `anakronizm-denetim`, `katman-olcum`). İkisi ham kayıttır (`baglam-olay`, `hareket-olay`). `graf/pointer-sistemi-v0-*` 23 dosya da türevdir.",
+   "secenekler": [
+    {"etiket": "(a) Türevler `.gitignore`, ham kayıtlar aylık parça", "value": "D23: yeniden üretilebilir türev dosyalar `.gitignore` satırı alır ve izlemeden çıkar; ham bronz kütükler izlenir ve ay başına ayrı dosyaya bölünür.", "oneri": true, "aciklama": "Ne yaparım: ignore satırlarını eklerim, üreticilerin yazım yolunu ay parçasına çeviririm, okuyanları güncellerim. Artı: commit farkı küçülür; ham hareket kaydı repoda kalır. Eksi: türevi görmek için hattı koşmak gerekir. Gerekçe: açık kaynak ilkesi ham hareketi ister, türevi değil."},
+    {"etiket": "(b) Hepsi izlenir, hepsi aylık parça", "value": "D23: bütün dosyalar izlenmeye devam eder; eklemeli olanlar ay başına bölünür.", "aciklama": "Ne yaparım: yalnız parçalamayı yaparım. Artı: her çıktı repoda görünür. Eksi: repo büyümeye devam eder. Gerekçe: türevleri de kanıt sayıyorsan."},
+    {"etiket": "(c) Kalsın", "value": "D23: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: her kapanış commit'i onlarca MB taşır. Gerekçe: yok."}
+   ]},
+  {"id": "D25", "baslik": "Hareket kütüğü ajandan ajana farklı izleniyor", "rozet": "Katman-1 · veri düzeni", "coklu": false,
+   "ne_demek": "`hareket-olay.jsonl` friday, tart ve gard'da izleniyor. sage, vega ve deci'de izlenmiyor. calc ve span'da `veri/` dizini hiç izlenmiyor.",
+   "secenekler": [
+    {"etiket": "(a) Sekiz ajanda izlenir", "value": "D25: `hareket-olay.jsonl` bütün ajanlarda izlenir ve kapanış commit'ine girer.", "oneri": true, "aciklama": "Ne yaparım: beş ajanda dosyayı izlemeye alırım, şablonu eşlerim. Artı: her ajanın hareketi repoda görünür. Eksi: commit'ler büyür. Gerekçe: açık kaynak ilkesi (jarvis kanonu §2)."},
+    {"etiket": "(b) Hiçbir ajanda izlenmez", "value": "D25: alan ajanlarında `veri/` `.gitignore` satırı alır; yalnız jarvis kütüğü izlenir.", "aciklama": "Ne yaparım: ignore satırı eklerim, üç ajanda dosyayı izlemeden çıkarırım. Artı: commit'ler küçülür. Eksi: ajan hareketi yalnız makinede kalır. Gerekçe: ajan kütüğünü okumuyorsan."},
+    {"etiket": "(c) Kalsın", "value": "D25: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: tutarsızlık sürer. Gerekçe: yok."}
+   ]},
+  {"id": "D26", "baslik": "Karar defteri 118 KB tek dosya; kuyruk kökü dolu", "rozet": "Katman-1 · kanon dosya düzeni", "coklu": false,
+   "ne_demek": "`kuyruk/senaryo-defteri.md` tavanın üstünde. Kuyruk kökünde eski büyük dosyalar, 9 `gelen-*` ve 6 `masa-spec-*.json` var. `kuyruk/arsiv/` boş.",
+   "secenekler": [
+    {"etiket": "(a) Defteri parçala, kapanmışları arşive al", "value": "D26: defter tüzük gibi parçalara bölünür (karar aralığına göre, okuma `baglam genislet`); işlenmiş `gelen-*` ve kapanmış masa spec dosyaları `kuyruk/arsiv/` altına iner, pointer kalır.", "oneri": true, "aciklama": "Ne yaparım: defteri bölerim, okuyan araçları ve pointer'ları güncellerim, kapanmış dosyaları taşırım. Artı: son kararlar küçük dosyadan okunur. Eksi: defter pointer'ları yeni adrese çevrilir. Gerekçe: tüzükte aynı yöntem çalışıyor (Karar 117)."},
+    {"etiket": "(b) Yalnız kuyruk kökünü arşivle", "value": "D26: defter tek dosya kalır; yalnız kapanmış kuyruk dosyaları arşive iner.", "aciklama": "Ne yaparım: dosyaları taşırım. Artı: defter adresleri değişmez. Eksi: defter büyümeye devam eder. Gerekçe: defteri tek dosya istiyorsan."},
+    {"etiket": "(c) Kalsın", "value": "D26: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: boyut uyarısı her kapanışta çıkar. Gerekçe: yok."}
+   ]},
+  {"id": "D27", "baslik": "`raporlar/` kökünde 38 dosya ay klasörü dışında", "rozet": "Katman-2 · düzen", "coklu": false,
+   "ne_demek": "22 `son-50-prompt` dosyası ve 12 konu raporu ay klasörlerine girmemiş. Aynı gün için iki farklı hareket günlüğü var: biri `raporlar/` kökünde, biri `raporlar/hareket/` altında.",
+   "secenekler": [
+    {"etiket": "(a) Ay klasörlerine taşı, günlüğü teke indir", "value": "D27: kökteki dosyalar ay klasörlerine taşınır; hareket günlüğü yalnız `raporlar/hareket/` altında kalır; pointer'lar aynı commit'te güncellenir.", "oneri": true, "aciklama": "Ne yaparım: taşırım, pointer taraması yaparım, üreticinin yazım yolunu düzeltirim. Artı: tek düzen. Eksi: eski adresler değişir. Gerekçe: dosya düzeni planı ay klasörü der."},
+    {"etiket": "(b) Kalsın", "value": "D27: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kök büyümeye devam eder. Gerekçe: yok."}
+   ]},
+  {"id": "D28", "baslik": "Hafıza indeksi tavanı aşıyor", "rozet": "Katman-1 · bütçe sabiti", "coklu": false,
+   "ne_demek": "`MEMORY.md` 6713 bayt. `Butce.lean` tavanı 4 KB. İndeks 37 satır; her satır bir davranış kuralına işaret eder.",
+   "secenekler": [
+    {"etiket": "(a) Tavanı 8 KB yap", "value": "D28: `Butce.lean` hafıza indeksi tavanı 8 KB olur.", "oneri": true, "aciklama": "Ne yaparım: sabiti değiştiririm, Lean ve Rust'ı derlerim. Artı: hiçbir kural satırı düşmez. Eksi: her oturum yaklaşık 3 KB fazla yükler. Gerekçe: satırların çoğu senin düzeltmen; arşive inen kural unutulur."},
+    {"etiket": "(b) İndeksi 4 KB'a buda", "value": "D28: en eski ve kapanmış maddeler arşive iner; indeks 4 KB altına düşer.", "aciklama": "Ne yaparım: aday listesini sana gösteririm, onayladıklarını arşive taşırım. Artı: bağlam küçülür. Eksi: arşive inen kural artık otomatik yüklenmez. Gerekçe: bağlam bütçesi öncelikliyse."},
+    {"etiket": "(c) Kalsın", "value": "D28: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: boyut bayrağı her kapanışta çıkar. Gerekçe: yok."}
+   ]},
+  {"id": "E30", "baslik": "Satır sonu kuralı yok", "rozet": "Katman-2 · düzen (ajan dizinlerine dokunur)", "coklu": false,
+   "ne_demek": "Depoda `.gitattributes` yok. sage, vega ve deci hook'ları indekste CRLF satır sonuyla duruyor. Üretici düzeldi; mevcut dosyalar eski biçimde.",
+   "secenekler": [
+    {"etiket": "(a) `.gitattributes` ekle, dosyaları normalleştir", "value": "E30: kök `.gitattributes` `*.sh text eol=lf` satırı alır; mevcut `.sh` dosyaları yeniden normalleştirilir.", "oneri": true, "aciklama": "Ne yaparım: dosyayı eklerim, `git add --renormalize` koşarım, tek commit atarım. Artı: kabuk betikleri her makinede aynı çalışır. Eksi: üç ajan dizininde biçim farkı oluşur. Gerekçe: CRLF kabuk betiğini kırar."},
+    {"etiket": "(b) Kalsın", "value": "E30: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: yeni klonda hook bozuk gelebilir. Gerekçe: yok."}
+   ]},
+  {"id": "E31", "baslik": "`no-mistakes` remote'u Mac yoluna bakıyor", "rozet": "Katman-2 · araç", "coklu": false,
+   "ne_demek": "`git remote no-mistakes` adresi `/Users/HasanSalihSahin/.no-mistakes/...`. Bu yol bu makinede yok. `no-mistakes` skill'i bu remote'a push eder.",
+   "secenekler": [
+    {"etiket": "(a) Windows'ta yeniden kur", "value": "E31: `no-mistakes` bu makinede yeniden kurulur; remote yeni yola çevrilir.", "oneri": true, "aciklama": "Ne yaparım: aracın kurulum komutunu koşarım, remote adresini güncellerim, bir deneme koşumu yaparım. Artı: doğrulama hattı yeniden kullanılır. Eksi: araç Windows'ta çalışmayabilir; o durumda (b)'ye dönerim ve bildiririm. Gerekçe: skill katalogda duruyor."},
+    {"etiket": "(b) Remote'u kaldır", "value": "E31: `no-mistakes` remote'u kaldırılır; skill ve nokta-dizin kapısı arşive iner.", "aciklama": "Ne yaparım: remote'u kaldırırım, skill kaydını arşivlerim. Artı: ölü adres kalmaz. Eksi: hat kullanılamaz. Gerekçe: 2026-09-22'den beri kullanmadıysan."},
+    {"etiket": "(c) Kalsın", "value": "E31: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: skill çağrılırsa hata verir. Gerekçe: yok."}
+   ]},
+  {"id": "E32", "baslik": "Atlas ve hakem ajan tanımlarında tutarsızlık", "rozet": "Katman-1 · ajan tanımı", "coklu": false,
+   "ne_demek": "Dosya adı `research-agent.md`, içindeki ad `atlas`. Araç listesinde `get-library-docs` yazıyor; oturumdaki ad `query-docs`. Model adı \"Opus 5\". `hakem.md` \"yazmaz\" der ama `memory: project` ona Write ve Edit verir.",
+   "secenekler": [
+    {"etiket": "(a) Dördünü düzelt", "value": "E32: dosya `atlas.md` olur; araç adı `query-docs` olur; model adı Opus 5.5 olur; `hakem.md` metni \"rapor dosyası yazmaz, yalnız kendi hafızasına yazar\" olur.", "oneri": true, "aciklama": "Ne yaparım: dosyayı yeniden adlandırırım, üç satırı düzeltirim, pointer'ları güncellerim. Artı: ad ve dosya eşleşir; Atlas belge aracını çağırabilir. Eksi: yok. Gerekçe: yanlış araç adı aracı sessizce kapatır."},
+    {"etiket": "(b) Hakemden hafızayı kaldır, kalanı düzelt", "value": "E32: (a) düzeltmeleri yapılır; ayrıca `hakem.md` içinden `memory: project` çıkar.", "aciklama": "Ne yaparım: (a) artı hafıza satırını silerim. Artı: hakem gerçekten salt-okur olur. Eksi: hakem koşumlar arası ders taşımaz. Gerekçe: yapan ile ölçen ayrımını sıkı istersen."},
+    {"etiket": "(c) Kalsın", "value": "E32: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: tutarsızlık sürer. Gerekçe: yok."}
+   ]},
+  {"id": "E33", "baslik": "Üç kırık wiki bağlantısı", "rozet": "Katman-2 · wiki", "coklu": false,
+   "ne_demek": "`[[rol-katmanlari]]`, `[[treehouse]]` ve `[[skill-hazinesi-secim-isabeti]]` var olmayan sayfalara gider.",
+   "secenekler": [
+    {"etiket": "(a) Karşılığa yönlendir, yoksa düz metne çevir", "value": "E33: her bağlantı mevcut karşılık sayfasına çevrilir; karşılık yoksa köşeli ayraç kalkar.", "oneri": true, "aciklama": "Ne yaparım: üç bağlantıyı tek tek çözerim. Artı: bağlantı denetimi temiz çıkar. Eksi: yok. Gerekçe: üç yeni sayfa için içerik isteği yok."},
+    {"etiket": "(b) Üç sayfayı yaz", "value": "E33: üç eksik sayfa `wiki-sayfa-yaz` ile yazılır.", "aciklama": "Ne yaparım: üç sayfa üretirim (oturum başına en çok iki). Artı: kavramlar belgelenir. Eksi: iki oturum sürer. Gerekçe: bu kavramları kullanıyorsan."}
+   ]},
+  {"id": "E34", "baslik": "Dokuz Lean modülünün açıklama eşi yok", "rozet": "Katman-2 · kanon belgesi", "coklu": false,
+   "ne_demek": "Düzen her Lean modülüne bir `.lean.md` eşi ister. Dokuz modülde eş yok. `Zorlanabilirlik.lean` \"uygulayan kod: yok\" der.",
+   "secenekler": [
+    {"etiket": "(a) Dokuz eşi üret", "value": "E34: dokuz modül için `.lean.md` eşi yazılır; `Zorlanabilirlik.lean` satırı güncel uygulayan koda işaret eder ya da \"uygulayan yok\" bilinçli not olur.", "oneri": true, "aciklama": "Ne yaparım: eşleri işçiye yazdırırım, kendim denetlerim. Artı: her hüküm Türkçe okunur. Eksi: dokuz yeni dosya. Gerekçe: iş #34 aynı düzeni varsayıyor."},
+    {"etiket": "(b) Eş zorunluluğunu kaldır", "value": "E34: `.lean.md` eşi isteğe bağlı olur; mevcut eşler kalır.", "aciklama": "Ne yaparım: kural satırını değiştiririm. Artı: bakım azalır. Eksi: Lean okumayan için hüküm kapalı kalır. Gerekçe: eşleri okumuyorsan."},
+    {"etiket": "(c) Kalsın", "value": "E34: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: düzen yarım kalır. Gerekçe: yok."}
+   ]},
+  {"id": "E35", "baslik": "Seans kayıtları dizini karışık", "rozet": "Katman-2 · düzen", "coklu": false,
+   "ne_demek": "`raporlar/seans/` altında 21 JSON'dan 3'ü baskın şemadan sapar. Girdi dosyaları ve çıktı dosyaları aynı dizindedir. md ve json karışıktır.",
+   "secenekler": [
+    {"etiket": "(a) Şemaya çek, girdileri ayır", "value": "E35: üç sapan kayıt şemaya çekilir; `seans-teslim-girdi-*` dosyaları `raporlar/seans/girdi/` altına iner; `durum seans-kapat` girdiyi oradan okur.", "oneri": true, "aciklama": "Ne yaparım: üç dosyayı düzeltirim, girdileri taşırım, skill yolunu güncellerim. Artı: açılış son kaydı tek desenle bulur. Eksi: kapanış skill'inde bir yol değişir. Gerekçe: bu oturumda da girdi dosyası son kayıt listesine karıştı."},
+    {"etiket": "(b) Kalsın", "value": "E35: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: şema okuyan araç üç kayıtta hata verir. Gerekçe: yok."}
+   ]},
+  {"id": "E36", "baslik": "Arşiv dizini eksik kayıtlı", "rozet": "Katman-2 · arşiv", "coklu": false,
+   "ne_demek": "`arsiv/README.md` 7 girdiyi listelemiyor. `worktree-kalinti-2026-11-10` altında 2 boş yama var. `raporlar/2026-09/yol-tasi-kuru` ve `yol-tasi-uygula` diff'leri bayt-eşit.",
+   "secenekler": [
+    {"etiket": "(a) README'yi tamamla, çiftleri teke indir", "value": "E36: `arsiv/README.md` 7 girdiyi alır; boş yamalar ve çift diff tek kopyaya iner, README'de not kalır.", "oneri": true, "aciklama": "Ne yaparım: README satırlarını yazarım, çift dosyayı kaldırıp notunu düşerim. Artı: arşiv aranabilir olur. Eksi: iki boş ve bir çift dosya gider (içerik kaybı yok). Gerekçe: arşiv pointer'sız işe yaramaz."},
+    {"etiket": "(b) Yalnız README'yi tamamla", "value": "E36: yalnız README güncellenir; hiçbir dosya kaldırılmaz.", "aciklama": "Ne yaparım: README satırlarını yazarım. Artı: hiçbir dosya gitmez. Eksi: boş ve çift dosyalar kalır. Gerekçe: silme yasağını en dar okursan."}
+   ]},
+  {"id": "E37", "baslik": "Üç alan ajanı ders iskeleti bekliyor", "rozet": "Katman-2 · devir", "coklu": false,
+   "ne_demek": "Span 2026-10-19'da M1-M5 ders iskeletini istedi (`span/cc/giden/…claude-mods-M1.md`). Vega Q1 ve Deci J1 iskeletleri 2026-09-22'den beri işlenmedi. Ajanlar bana dosyayla döner; ben onlara `cc/gelen/` ile dönerim.",
+   "secenekler": [
+    {"etiket": "(a) Üç iskeleti yaz ve devret", "value": "E37: Jarvis Span M1-M5, Vega Q1 ve Deci J1 ders iskeletlerini yazar ve her ajanın `cc/gelen/` dizinine devir dosyasıyla bırakır.", "oneri": true, "aciklama": "Ne yaparım: üç devri okurum, iskeletleri `ogren` düzenine göre yazarım, devir dosyalarını bırakırım. Artı: üç şerit açılır. Eksi: iskelet senin öncelik sıranı varsayar. Gerekçe: bekleyen devir ajanı kilitler."},
+    {"etiket": "(b) Yalnız Span", "value": "E37: yalnız Span M1-M5 iskeleti yazılır; Vega ve Deci ertelenir ve ajanlara erteleme notu gider.", "aciklama": "Ne yaparım: bir iskelet ve iki not yazarım. Artı: en güncel istek kapanır. Eksi: iki şerit kapalı kalır. Gerekçe: quant ve karar modeli şeritleri şimdi gündemde değilse."},
+    {"etiket": "(c) Üçünü ertele", "value": "E37: üç ajana erteleme notu gider; iskelet yazılmaz.", "aciklama": "Ne yaparım: üç not yazarım. Artı: iş yok. Eksi: şeritler kapalı kalır. Gerekçe: şimdiki odak tez ise."}
+   ]},
+  {"id": "E38", "baslik": "İki belge ayrışmış", "rozet": "Katman-2 · belge", "coklu": false,
+   "ne_demek": "`jarvis/README.md` içinde iki ayrı \"Klasör haritası\" bölümü var. `sablonlar/harness/claude-global-CLAUDE.md` canlı kullanıcı dosyasından ayrışmış ve hâlâ Mac sürümü.",
+   "secenekler": [
+    {"etiket": "(a) Haritayı teke indir, şablonu yenile", "value": "E38: README tek klasör haritası taşır; şablon canlı `~/.claude/CLAUDE.md` içeriğinden yenilenir.", "oneri": true, "aciklama": "Ne yaparım: iki bölümü birleştiririm, şablonu canlı dosyadan kopyalarım. Artı: yeni makine kurulumu doğru dosyayı kurar. Eksi: yok. Gerekçe: şablon kurulum kaynağıdır."},
+    {"etiket": "(b) Kalsın", "value": "E38: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: yeni kurulum Mac talimatı yükler. Gerekçe: yok."}
+   ]},
+  {"id": "K51", "baslik": "`ogrenme/` altında commit'siz ders kayıtları", "rozet": "Katman-1 · Salih'in alanı", "coklu": false,
+   "ne_demek": "`ogrenme/dosya-mimarisi/` ve `ogrenme/ontolojik-encode/` 2026-11-01'den beri izlenmiyor. `ogrenme/README.md` ve `mufredat.md` taşınmış dersleri eski yollarla gösteriyor. `ogrenme/` senin alanın; dokunmadım.",
+   "secenekler": [
+    {"etiket": "(a) Ben commit'lerim ve yolları düzeltirim", "value": "K51: Jarvis iki ders klasörünü commit'ler; `ogrenme/README.md` ve `mufredat.md` içindeki eski yolları düzeltir. Bu izin yalnız bu iş içindir.", "oneri": true, "aciklama": "Ne yaparım: iki klasörü pathspec ile eklerim, iki dosyada yol satırlarını düzeltirim, ayrı commit atarım. Artı: ders kayıtları yedeklenir. Eksi: ajan senin alanına bir kez yazar. Gerekçe: commit'siz kayıt disk arızasında kaybolur."},
+    {"etiket": "(b) Sen yaparsın", "value": "K51: Salih kendi commit'ler; Jarvis yalnız düzeltilecek yol listesini verir.", "aciklama": "Ne yaparım: satır listesini yazarım. Artı: alan kuralı istisnasız kalır. Eksi: iş sende bekler. Gerekçe: `ogrenme/` yalnız senin elin olsun istersen."},
+    {"etiket": "(c) Kalsın", "value": "K51: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kayıtlar yedeksiz kalır. Gerekçe: yok."}
+   ]},
+  {"id": "K52", "baslik": "Oda modunda üç eksik", "rozet": "Katman-2 · mod (paralel mod oturumuyla çakışabilir)", "coklu": false,
+   "ne_demek": "Biten görev durum kütüğünde açık kalıyor: köprü işi açıyor, kapatmıyor. `oda_oku` işçi raporunu kesik gösteriyor; tam metin yalnız `ortak/oda/<id>.json` içinde. İşçinin önerisi ben uyandıktan sonra görünüyor.",
+   "secenekler": [
+    {"etiket": "(a) Bu oturumda düzelt", "value": "K52: Jarvis oda modunda üç eksiği bu oturumda düzeltir: görev bitince kütük işi kapanır; `oda_oku` tam rapor seçeneği alır; öneri geldiği anda uyandırır.", "oneri": true, "aciklama": "Ne yaparım: kodu Opus işçiye yazdırırım, canlı odada sınarım. Artı: şu an koşan oda aynı eksikleri yaşıyor; düzeltme hemen sınanır. Eksi: mod oturumun açıksa aynı dosyalarda çakışma olur. Gerekçe: her oda koşumundan sonra işleri elle kapatıyorum."},
+    {"etiket": "(b) Mod oturumuna devret", "value": "K52: üç eksik mod iterasyon oturumuna devir notuyla gider; bu oturum mod koduna dokunmaz.", "aciklama": "Ne yaparım: devir notu yazarım. Artı: çakışma riski yok. Eksi: eksikler o oturum açılana kadar sürer. Gerekçe: mod kodunda açık işin varsa."},
+    {"etiket": "(c) Kalsın", "value": "K52: değişiklik yok.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: elle kapatma sürer. Gerekçe: yok."}
+   ]},
+  {"id": "IS9", "baslik": "Veri bilimi şeridinin evi", "rozet": "Katman-1 · rol (iş #9)", "coklu": false,
+   "ne_demek": "Veri bilimi ve deney tasarımı şeridi için ev seçilmedi. `PROBE` soru 1 (p=0,03) cevabını bekliyor. Yeni ajan doğumu doğum belgesi ister (Karar 104 M5).",
+   "secenekler": [
+    {"etiket": "(a) Calc altında şerit", "value": "IS9: veri bilimi ve deney tasarımı şeridi Calc ajanının altında açılır; yeni ajan doğmaz.", "oneri": true, "aciklama": "Ne yaparım: Calc'a devir dosyasıyla şeridi veririm; `PROBE` orada sürer. Artı: yeni bakım maliyeti yok; istatistik hesaplamaya komşudur. Eksi: Calc'ın alanı genişler. Gerekçe: varsayılan kural yeni ajan değil, mevcut alan."},
+    {"etiket": "(b) Yeni alan ajanı", "value": "IS9: veri bilimi için yeni alan ajanı doğum belgeli ayrı masaya gelir.", "aciklama": "Ne yaparım: doğum belgesi ve bakım maliyeti satırıyla ayrı masa açarım. Artı: şerit kendi hafızasını taşır. Eksi: dokuzuncu ajan; kanon, hook ve devir bakımı artar. Gerekçe: şerit uzun ve bağımsız olacaksa."},
+    {"etiket": "(c) Ertele", "value": "IS9: iş #9 beklemede kalır.", "aciklama": "Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: `PROBE` yarım durur. Gerekçe: şimdiki odak tez ise."}
+   ]}
+ ],
+ "karar_no": "Karar 130"
+}

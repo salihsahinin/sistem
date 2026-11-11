@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="tr" data-theme="luxury">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karar Masası 19 — Depo denetimi: Salih hükmü bekleyen 31 kalem (2026-11-11)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/daisyui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.5.19/themes.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :where(.grid, .flex) > * { min-width: 0; }
+  :where(p, h1, h2, h3, h4, li, td, th, .badge, .label) { overflow-wrap: anywhere; }
+  body { background: var(--color-base-200); }
+  .opt { border-left: 3px solid var(--color-base-300); }
+  .opt.oneri { border-left-color: var(--color-primary); }
+  .kanit { border-left: 3px solid var(--color-success); }
+  .hakem { border-left: 3px solid var(--color-warning); }
+</style>
+</head>
+<body class="min-h-screen text-base-content">
+<div class="max-w-5xl mx-auto p-4 sm:p-6 space-y-5">
+
+  <header class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">Karar Masası 19 — Depo denetimi: Salih hükmü bekleyen 31 kalem <span class="badge badge-primary">31 kalem</span></h1>
+      <p class="text-sm opacity-80">Bu masa denetim raporunun kalan kalemlerini taşır. Her kalem tek bir sorudur. Her seçenek dört şey söyler: ne yaparım, artı, eksi, gerekçe. Önerilen seçenek ilk sıradadır. Bir kalemi boş bırakırsan o kalem açık kalır. Teknik arızalar (kalem 41, 43, 44, 45, 47, 49, 50, A6, E29) bu masada yok; oda işçileri onları şimdi düzeltiyor. Tetik: <em>Salih 2026-11-11 aynen: &quot;benim hükmüm gerekenleri lavish ile açıklayıcı formatta asd-std100 formatında seçeneklerle aç&quot;</em>. Her kalemde: ne demek · seçenek başına ne yaparım · artı · eksi · öneri + gerekçe; önerilen ilk sırada (m.40 eki).</p>
+      <p class="text-sm opacity-80"><strong>Masa öncesi fiilen yapıldı (Katman-2, veto = revert):</strong> Karar 128 ve Karar 129 ile kapananlar: A1, A2, A4, B7, B8, C14, C15 (8 kopyanın 2&#x27;si), D24, kalem 40. Kaynak: denetim raporu §5.1.</p>
+      <p class="text-xs opacity-60">AS-OF 2026-11-11 · rakamlar kaynaklı (m.39); <code>[?]</code> kestirim · üreten `karar-masasi` skill'i (deterministik).</p>
+    </div>
+  </header>
+
+  <section class="card bg-base-100 shadow-md kanit">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Kanıt tabanı (karar istemez)</h2>
+      <div class="overflow-x-auto"><table class="table table-sm">
+        <thead><tr><th>Bulgu</th><th>Değer</th><th>Kaynak · etiket</th></tr></thead>
+        <tbody>
+          <tr><td>Denetim bulgusu</td><td>9 salt-okur işçi raporu, yaklaşık 275 bulgu; ikinci tur 84 bulgu</td><td>`raporlar/2026-11/denetim-depo-2026-11-10.md` §1 ve §5 · <strong>sayım</strong></td></tr>
+          <tr><td>Hafıza indeksi boyutu</td><td>6713 bayt; tavan 4 KB</td><td>`wc -c MEMORY.md` 2026-11-11 · `lean/Kanon/Butce.lean` · <strong>sayım</strong></td></tr>
+          <tr><td>Portal Parkur artığı</td><td>165 MB, izlenmiyor</td><td>`du -sh projects/portal-parkur` 2026-11-11 · <strong>sayım</strong></td></tr>
+          <tr><td>`~/.claude/dev-mods`</td><td>5 uuid dizini</td><td>`ls` 2026-11-11 (rapor 4 yazıyordu) · <strong>sayım</strong></td></tr>
+          <tr><td>Her oturumda değişen izlenen dosyalar</td><td>erisim-eval 19,5 MB · baglam-olay 10,6 MB · anakronizm-denetim 10 MB · katman-olcum 9,5 MB · hareket-olay 6,5 MB</td><td>denetim raporu §3 kalem 23 (ölçüm 2026-11-10) · <strong>sayım</strong></td></tr>
+          <tr><td>Karar defteri boyutu</td><td>118 KB tek dosya</td><td>seans kaydı 2026-11-11, `kapanis.boyut` · <strong>sayım</strong></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+
+  <!-- A3 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="A3">
+    <div class="card-body">
+      <h2 class="card-title">A3 · Kök oturumda ajan deny kuralları çalışmıyor <span class="badge badge-outline">Katman-1 · güvenlik freni</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Oturum depo kökünden açılırsa hook dağıtıcısı ajan ayarından yalnız `hooks` bölümünü okur. `permissions.deny` ve `ask` kuralları okunmaz. Sonuç: push freni ve `git add -A` yasağı o oturumda yoktur.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'A3',&quot;Kök oturumda ajan deny kuralları çalışmı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="A3: kök `.claude/settings.json` dosyasına bütün ajanların ortak deny ve ask kuralları yazılır (push freni, `git add -A` yasağı)."> <strong>(a) Kök ayara birleşik deny listesi yaz</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: ortak kuralları kök ayara eklerim. Artı: kural harness tarafından uygulanır, kod gerekmez. Eksi: ajan ayarı değişirse kök ayar da elle güncellenir. Gerekçe: en kısa yol ve fren hemen çalışır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="A3: `hook-dispatch` ajan ayarındaki deny ve ask kurallarını okur ve cwd&#x27;ye göre uygular."> <strong>(b) Dağıtıcıda eşleme yap</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dağıtıcıya kural eşleme kodu yazarım. Artı: ajana özgü kural kökten de çalışır. Eksi: harness izin dilini yeniden yazarım; hata riski yüksek. Gerekçe: yalnız ajana özgü kural kökte de gerekirse.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="A3: değişiklik yok; kök oturum frensiz kalır."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kökten açılan oturum push ve toplu ekleme yapabilir. Gerekçe: kök oturumu yalnız sen açıyorsan risk düşüktür.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- A5 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="A5">
+    <div class="card-body">
+      <h2 class="card-title">A5 · İkili yoksa kilitler açık kalıyor <span class="badge badge-outline">Katman-1 · güvenlik freni (Karar 118 M2 ile çelişir)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Jarvis kilit hook&#x27;ları Rust ikilisini çağırır. İkili yoksa hook çıkış 0 verir ve işlem geçer. Yeni klonda ve worktree&#x27;de ikili yoktur. Karar 118 M2 bunu bilerek seçti. Alan ajanı okuma kilidi Karar 128 ile zaten kapalı kalır.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'A5',&quot;İkili yoksa kilitler açık kalıyor&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="A5: jarvis kilit hook&#x27;ları ikili yoksa çıkış 2 verir ve mesajda `cargo build --release` komutunu gösterir; Karar 118 M2&#x27;nin bu maddesi değişir."> <strong>(a) İkili yoksa kilit işlemi keser</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: kilit sarmalına ikili denetimi eklerim. Artı: jarvis ve alan ajanı kilitleri aynı davranır. Eksi: yeni klonda ilk iş derleme olur, yoksa yazma araçları çalışmaz. Gerekçe: fren arıza anında kapalı kalmalıdır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="A5: değişiklik yok; ikili yoksa kilitler açık kalır, SessionStart brifi uyarı basar."> <strong>(b) Karar 118 M2 kalır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: yalnız brif uyarısını eklerim. Artı: yeni klon hemen çalışır. Eksi: uyarı okunmazsa kilit yoktur. Gerekçe: tek makinede ikili hep vardır.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- B9 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="B9">
+    <div class="card-body">
+      <h2 class="card-title">B9 · Alan ajanı kanonları bayat <span class="badge badge-outline">Katman-1 · ajan kanonu</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Yedi alan ajanının `AGENTS.md` dosyası hafıza için donmuş kapsülü birincil sayar. `deci` ve `vega` var olmayan `urun/` dizinini anar. İş #33 aynı dosyaları asgari sürüme indirmeyi zaten emrediyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'B9',&quot;Alan ajanı kanonları bayat&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B9: yedi alan ajanının `AGENTS.md` dosyası asgari sürüme yeniden yazılır; durum kaynağı durum kütüğü olur; `urun/` atfı çıkar; iş #33 aynı commit dizisinde kapanır."> <strong>(a) İş #33 ile birlikte yeniden yaz</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: şablonu güncellerim, yedi dosyayı üreticiyle yenilerim. Artı: iki iş tek geçişte biter. Eksi: yedi kanon dosyası birden değişir. Gerekçe: aynı dosyaya iki ayrı tur gereksizdir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B9: yalnız kapsül satırı ve `urun/` atfı düzeltilir; iş #33 ayrı kalır."> <strong>(b) Yalnız hatalı satırları düzelt</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dosya başına iki satır değiştiririm. Artı: küçük fark. Eksi: #33 gelince aynı dosyalar yeniden değişir. Gerekçe: #33&#x27;ü ertelemek istersen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B9: değişiklik yok."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: ajan açılışta donmuş dosyayı okur. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- B10 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="B10">
+    <div class="card-body">
+      <h2 class="card-title">B10 · Kök kanon hakem için olmayan dizini gösteriyor <span class="badge badge-outline">Katman-1 · kök kanon md.1</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Kök `AGENTS.md` md.1 hakemin yerini `&lt;alan&gt;-hakem/` ya da ortak `hakem/` dizini olarak yazar. İki dizin de yok. Hakem `.claude/agents/hakem.md` dosyasında yaşıyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'B10',&quot;Kök kanon hakem için olmayan dizini göst&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B10: kök md.1 hakem yerini `.claude/agents/hakem.md` (alt-ajan tanımı) olarak yazar; dizin ifadesi çıkar."> <strong>(a) Metni gerçeğe çevir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: md.1 içinde tek ifadeyi değiştiririm. Artı: kanon ile dosya sistemi eşleşir. Eksi: yok. Gerekçe: hakem bugün alt-ajan olarak çalışıyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B10: ortak `hakem/` ajan dizini doğum belgesiyle ayrı masaya gelir."> <strong>(b) Ortak `hakem/` dizini doğur</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: doğum belgeli ayrı masa açarım. Artı: hakem kendi hafızasını taşır. Eksi: yeni ajan bakım maliyeti getirir. Gerekçe: hakem kalıcı ajan olacaksa.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B10: değişiklik yok."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kanon yanlış yer gösterir. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- B11 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="B11">
+    <div class="card-body">
+      <h2 class="card-title">B11 · `ogrenme/` kuralı ile `ogren` skill&#x27;i çelişiyor <span class="badge badge-outline">Katman-1 · kök kanon md.1</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Kök kanon `ogrenme/` dizinini ajanlara kapalı sayar. Jarvis&#x27;teki `ogren` skill&#x27;i ders kaydını `ogrenme/&lt;şerit&gt;/` altına yazar. Şeritler alan ajanlarına da verilmiş durumda.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'B11',&quot;`ogrenme/` kuralı ile `ogren` skill&#x27;i çe&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B11: kök md.1&#x27;e istisna girer: `ogren` skill&#x27;i ve şerit sahibi alan ajanı yalnız kendi şeridinin ders kaydını okur ve yazar; `ogrenme/` altındaki diğer her şey ajanlara kapalı kalır."> <strong>(a) Kanona istisna yaz</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: md.1&#x27;e tek cümle eklerim, izolasyon matrisini (`Kanon/Izolasyon.lean`) eşlerim. Artı: bugünkü çalışma düzeni yasal olur. Eksi: kapalı alanda bir kapı açılır. Gerekçe: dersler fiilen böyle yazılıyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B11: `ogren` skill&#x27;i ders kaydını ajanın kendi dizinine yazar; `ogrenme/` tümüyle kapalı kalır."> <strong>(b) Ders kaydını ajan dizinine taşı</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: skill yollarını değiştiririm, mevcut dersleri taşırım. Artı: kural istisnasız kalır. Eksi: derslerin yeri değişir; pointer&#x27;lar güncellenir. Gerekçe: `ogrenme/` yalnız senin elin olsun istersen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B11: değişiklik yok."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: çelişki sürer. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- B12 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="B12">
+    <div class="card-body">
+      <h2 class="card-title">B12 · Sokrates kanonu kendi sınırını aşıyor <span class="badge badge-outline">Katman-1 · kanon (`core/sokrates-ajani.md` §7)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> §7 ajan metni için en çok 900 kelime der. Ölçüm 1592 kelime. Ajan ve skill kopyaları kanondan elle türetiliyor. `sokrates` skill&#x27;i katalogda yok ve eval&#x27;i yok.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'B12',&quot;Sokrates kanonu kendi sınırını aşıyor&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B12: §7 sınırı 1600 kelime olur; ajan ve skill kopyalarını §7&#x27;den üreten Rust türetici yazılır; `sokrates` skill&#x27;i kataloğa girer."> <strong>(a) Sınırı ölçüme çek, türetici yaz</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: sınır cümlesini değiştiririm, türeticiyi yazarım, katalog satırını eklerim. Artı: kopyalar kanondan sapamaz. Eksi: sınır gevşer. Gerekçe: çalışan metni kesmek davranışı değiştirir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B12: §7 900 kelimeye indirilir; türetici yine yazılır."> <strong>(b) Metni 900 kelimeye buda</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: metni budarım, sonra ajanı yeniden sınarım. Artı: kural aynen kalır. Eksi: Sokrates davranışı değişebilir; yeni test turu gerekir. Gerekçe: bağlam maliyeti öncelikliyse.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B12: değişiklik yok."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kanon kendi kuralını çiğner. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- B13 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="B13">
+    <div class="card-body">
+      <h2 class="card-title">B13 · Friday şablondan ayrışmış <span class="badge badge-outline">Katman-1 · ajan kanonu</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Friday&#x27;de hakem ajanı, `okuma-izin-ek` ve `ogren` skill&#x27;i yok. Hook sürümü v0.5. Deny listesi var olmayan `kanon/**` yolunu taşır. `README` Mac yolları ve eski model adı içerir.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'B13',&quot;Friday şablondan ayrışmış&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B13: Friday iskeleti `alan-ajani-dogur` ile yeniden üretilir; Friday&#x27;e özgü içerik (`core/`, `cc/`, charter gövdesi) korunur."> <strong>(a) Şablondan yeniden doğur</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: iskeleti üretirim, özgü dosyaları fark listesiyle korurum. Artı: Friday diğer ajanlarla aynı sürüme gelir. Eksi: fark incelemesi gerekir. Gerekçe: elle yama yeniden ayrışır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B13: yalnız eksik parçalar ve hatalı satırlar elle eklenir."> <strong>(b) Eksikleri elle ekle</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: beş parçayı tek tek eklerim. Artı: küçük fark. Eksi: sonraki şablon değişiminde yine ayrışır. Gerekçe: Friday&#x27;i az kullanıyorsan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="B13: değişiklik yok."> <strong>(c) Dokunma</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: Friday eski hook ile çalışır. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- C16 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="C16">
+    <div class="card-body">
+      <h2 class="card-title">C16 · claude.ai&#x27;da emekli skill&#x27;ler hâlâ açık <span class="badge badge-outline">Katman-1 · silme (yalnız senin elinle)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `gunaydin-vardiya`, `vardiya-kapanis` ve `dev-run-planner` hesabında etkin. Üçü de eski adı (Carvis), eski yolu ve emekli tetikleri taşır. &quot;oturuma başlayalım&quot; tetiği `seans-acilis` ile çakışır. Ben bu skill&#x27;leri silemem.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'C16',&quot;claude.ai&#x27;da emekli skill&#x27;ler hâlâ açık&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C16: Salih üç skill&#x27;i claude.ai ayarlarından kaldırır; Jarvis adım listesini verir ve `kaynak-kodu/README.md` satırını günceller."> <strong>(a) Sen kaldırırsın, ben adımları veririm</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: tıklama adımlarını yazarım, README satırını kapatırım. Artı: tetik çakışması biter. Eksi: bir dakikalık el işi sende. Gerekçe: üçü de 2026-08-15&#x27;ten beri emekli.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C16: değişiklik yok; README satırı &quot;bilinçli kalıyor&quot; olur."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: README satırını değiştiririm. Artı: iş yok. Eksi: yanlış skill tetiklenebilir. Gerekçe: başka cihazda kullanıyorsan.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- C17 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="C17">
+    <div class="card-body">
+      <h2 class="card-title">C17 · `~/.claude/dev-mods` içinde eski mod kopyası <span class="badge badge-outline">Katman-1 · arşiv (depo dışı)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Dizinde 5 uuid alt dizini var; rapor 4&#x27;ünü boş saydı. Eski mod kopyası (oda 0.4.1, graf 0.1.0) da orada. Modlar artık doğrudan repodan yükleniyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'C17',&quot;`~/.claude/dev-mods` içinde eski mod kop&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C17: eski mod kopyası `arsiv/` altına taşınır; boş uuid dizinleri kaldırılır; dolu dizin varsa önce Salih&#x27;e gösterilir."> <strong>(a) Kopyayı arşive al, boş dizinleri kaldır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: içeriği listelerim, kopyayı arşive taşırım, boş dizinleri kaldırırım. Artı: hangi mod sürümü canlı sorusu biter. Eksi: yok. Gerekçe: silme yasağı arşivle karşılanır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C17: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: eski kopya yanlışlıkla yüklenebilir. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- C18 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="C18">
+    <div class="card-body">
+      <h2 class="card-title">C18 · Portal Parkur artığı 165 MB <span class="badge badge-outline">Katman-1 · silme ya da taşıma</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `projects/portal-parkur/` altında izlenmeyen `referans/` (154 MB) ve `test_cikti/` (11 MB) duruyor. Proje kapandı ve ürün ayrı repoda.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'C18',&quot;Portal Parkur artığı 165 MB&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C18: `referans/` `C:\sistem\portal-parkur` klasörüne taşınır (git dışı); `test_cikti/` silinir."> <strong>(a) Referansı ürün klasörüne taşı, test çıktısını sil</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: taşırım, test çıktısını silerim. Artı: referans video ürünle birlikte durur. Eksi: 154 MB diskte kalır. Gerekçe: test çıktısı yeniden üretilir; video üretilemez.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C18: `referans/` ve `test_cikti/` silinir."> <strong>(b) İkisini de sil</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: iki dizini silerim. Artı: 165 MB boşalır. Eksi: referans video geri gelmez. Gerekçe: video başka yerde duruyorsa.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C18: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: sistem reposunda ürün artığı durur. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- C19 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="C19">
+    <div class="card-body">
+      <h2 class="card-title">C19 · İzlenmeyen iki çıktı: boş hafıza aynası ve `ortak/oda/` <span class="badge badge-outline">Katman-2 · düzen</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Kök `veri/hafiza-ayna/-Users-HasanSalihSahin-sistem/` yanlış dizinden koşmuş boş bir çıktıdır. `ortak/oda/` oda modunun görev ve rapor kayıtlarını tutar; seans kaydı alt-ajan sayımı için bu dosyalara işaret ediyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'C19',&quot;İzlenmeyen iki çıktı: boş hafıza aynası &quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C19: boş hafıza aynası arşive iner; `ortak/oda/*.json` kayıt olarak commit&#x27;lenir (gelen/giden kanal dosyaları `.gitignore`)."> <strong>(a) Boş çıktı arşive, oda kayıtları commit&#x27;e</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: boş dizini arşive taşırım, oda kayıtlarını izlemeye alırım. Artı: işçi raporlarının tam metni repoda görünür. Eksi: repo her oda koşumunda büyür. Gerekçe: açık kaynak ilkesi her hareketi repoda ister.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C19: boş çıktı arşive iner; `ortak/oda/` `.gitignore` satırı alır."> <strong>(b) İkisi de `.gitignore`</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: ignore satırı eklerim. Artı: repo küçük kalır. Eksi: seans kaydındaki pointer başka makinede boşa düşer. Gerekçe: oda kaydı geçici sayılırsa.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="C19: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: `git status` her oturumda aynı satırları basar. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- K53 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="K53">
+    <div class="card-body">
+      <h2 class="card-title">K53 · Tek seferlik Mac göç aracı canlı kodda <span class="badge badge-outline">Katman-2 · arşiv</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `kod/arac/src/yol_tasi.rs` Mac&#x27;ten Windows&#x27;a geçişte bir kez kullanıldı. Windows&#x27;ta hiçbir yolu eşlemiyor. `altajan_okuma.rs` yasak listesinde de eski `~/Desktop/repo` yolu duruyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'K53',&quot;Tek seferlik Mac göç aracı canlı kodda&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K53: `yol_tasi.rs` ve ikili kaydı arşive iner; `altajan_okuma.rs` içindeki `~/Desktop/repo` satırı çıkar."> <strong>(a) Aracı arşive al, eski yolu çıkar</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dosyayı arşive taşırım, crate kaydını ve pointer&#x27;ları güncellerim. Artı: derleme süresi ve kod yüzeyi azalır. Eksi: yok. Gerekçe: Mac&#x27;e dönüş planı yok.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K53: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: ölü kod derlenmeye devam eder. Gerekçe: yeni makine göçü bekliyorsan.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- K46 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="K46">
+    <div class="card-body">
+      <h2 class="card-title">K46 · Aynı adlı üç Rust dosyası iki crate&#x27;te ayrışmış <span class="badge badge-outline">Katman-2 · teknik borç</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `argparse`, `py` ve `harness_anahtar` dosyaları `kural` ve `rituel` crate&#x27;lerinde ayrı kopyadır. Satır sayıları farklıdır. `float_repr` iki kopyada farklı yuvarlar.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'K46',&quot;Aynı adlı üç Rust dosyası iki crate&#x27;te a&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K46: üç dosya ortak bir crate&#x27;e taşınır; `kural` ve `rituel` onu kullanır; `float_repr` tek davranışa iner."> <strong>(a) Ortak crate&#x27;e birleştir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: ortak crate açarım, iki API&#x27;yi birleştiririm, fark testlerini koşarım. Artı: bir hata tek yerde düzelir. Eksi: iki crate&#x27;in bütün testleri yeniden koşar. Gerekçe: ayrışma şimdiden iki farklı sonuç üretiyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K46: yalnız `float_repr` iki kopyada aynı yapılır; kopyalar kalır."> <strong>(b) Yalnız `float_repr` farkını gider</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: tek fonksiyonu eşlerim. Artı: küçük fark. Eksi: kopyalar yeniden ayrışır. Gerekçe: büyük taşıma istemezsen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K46: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: iki araç aynı sayıyı farklı yazar. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D22 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D22">
+    <div class="card-body">
+      <h2 class="card-title">D22 · Hook zinciri her araç çağrısına süre ekliyor <span class="badge badge-outline">Katman-2 · verim</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Jarvis&#x27;te her Bash çağrısı iki kabuk sarmalı hook koşturur: 0,146 sn. Aynı iş doğrudan ikiliyle 0,050 sn. Kök `PostToolUse .*` kuralı ajan yokken de dağıtıcıyı başlatır: çağrı başına yaklaşık 0,11 sn. Çocuk sürecin zaman aşımı yok. Ölçüm 2026-11-10.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D22',&quot;Hook zinciri her araç çağrısına süre ekl&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D22: ayarlar ikiliyi doğrudan çağırır; dağıtıcı ajan yoksa hemen çıkar; çocuk sürece zaman aşımı gelir. A5 (a) seçilirse ikili denetimi ikilinin çağrıldığı yere taşınır."> <strong>(a) Sarmalı kaldır, zaman aşımı ekle</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: `settings.json` hook komutlarını değiştiririm, dağıtıcıya erken çıkış ve zaman aşımı eklerim. Artı: çağrı başına yaklaşık 0,1 sn kazanç; asılı hook oturumu kilitlemez. Eksi: ikili yoksa harness hata mesajı gösterir. Gerekçe: bu maliyet her araç çağrısında ödenir.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D22: yalnız çocuk sürece zaman aşımı gelir; sarmal kalır."> <strong>(b) Yalnız zaman aşımı ekle</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: zaman aşımını eklerim. Artı: küçük fark. Eksi: süre maliyeti kalır. Gerekçe: sarmalı ikili yokluğu için tutmak istersen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D22: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: maliyet sürer. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D23 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D23">
+    <div class="card-body">
+      <h2 class="card-title">D23 · Büyük türev dosyalar her oturumda değişiyor <span class="badge badge-outline">Katman-1 · veri düzeni (açık kaynak ilkesine dokunur)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Beş izlenen dosya toplam yaklaşık 56 MB ve her oturumda değişir. Üçü yeniden üretilebilir türevdir (`erisim-eval`, `anakronizm-denetim`, `katman-olcum`). İkisi ham kayıttır (`baglam-olay`, `hareket-olay`). `graf/pointer-sistemi-v0-*` 23 dosya da türevdir.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D23',&quot;Büyük türev dosyalar her oturumda değişi&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D23: yeniden üretilebilir türev dosyalar `.gitignore` satırı alır ve izlemeden çıkar; ham bronz kütükler izlenir ve ay başına ayrı dosyaya bölünür."> <strong>(a) Türevler `.gitignore`, ham kayıtlar aylık parça</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: ignore satırlarını eklerim, üreticilerin yazım yolunu ay parçasına çeviririm, okuyanları güncellerim. Artı: commit farkı küçülür; ham hareket kaydı repoda kalır. Eksi: türevi görmek için hattı koşmak gerekir. Gerekçe: açık kaynak ilkesi ham hareketi ister, türevi değil.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D23: bütün dosyalar izlenmeye devam eder; eklemeli olanlar ay başına bölünür."> <strong>(b) Hepsi izlenir, hepsi aylık parça</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: yalnız parçalamayı yaparım. Artı: her çıktı repoda görünür. Eksi: repo büyümeye devam eder. Gerekçe: türevleri de kanıt sayıyorsan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D23: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: her kapanış commit&#x27;i onlarca MB taşır. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D25 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D25">
+    <div class="card-body">
+      <h2 class="card-title">D25 · Hareket kütüğü ajandan ajana farklı izleniyor <span class="badge badge-outline">Katman-1 · veri düzeni</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `hareket-olay.jsonl` friday, tart ve gard&#x27;da izleniyor. sage, vega ve deci&#x27;de izlenmiyor. calc ve span&#x27;da `veri/` dizini hiç izlenmiyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D25',&quot;Hareket kütüğü ajandan ajana farklı izle&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D25: `hareket-olay.jsonl` bütün ajanlarda izlenir ve kapanış commit&#x27;ine girer."> <strong>(a) Sekiz ajanda izlenir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: beş ajanda dosyayı izlemeye alırım, şablonu eşlerim. Artı: her ajanın hareketi repoda görünür. Eksi: commit&#x27;ler büyür. Gerekçe: açık kaynak ilkesi (jarvis kanonu §2).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D25: alan ajanlarında `veri/` `.gitignore` satırı alır; yalnız jarvis kütüğü izlenir."> <strong>(b) Hiçbir ajanda izlenmez</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: ignore satırı eklerim, üç ajanda dosyayı izlemeden çıkarırım. Artı: commit&#x27;ler küçülür. Eksi: ajan hareketi yalnız makinede kalır. Gerekçe: ajan kütüğünü okumuyorsan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D25: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: tutarsızlık sürer. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D26 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D26">
+    <div class="card-body">
+      <h2 class="card-title">D26 · Karar defteri 118 KB tek dosya; kuyruk kökü dolu <span class="badge badge-outline">Katman-1 · kanon dosya düzeni</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `kuyruk/senaryo-defteri.md` tavanın üstünde. Kuyruk kökünde eski büyük dosyalar, 9 `gelen-*` ve 6 `masa-spec-*.json` var. `kuyruk/arsiv/` boş.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D26',&quot;Karar defteri 118 KB tek dosya; kuyruk k&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D26: defter tüzük gibi parçalara bölünür (karar aralığına göre, okuma `baglam genislet`); işlenmiş `gelen-*` ve kapanmış masa spec dosyaları `kuyruk/arsiv/` altına iner, pointer kalır."> <strong>(a) Defteri parçala, kapanmışları arşive al</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: defteri bölerim, okuyan araçları ve pointer&#x27;ları güncellerim, kapanmış dosyaları taşırım. Artı: son kararlar küçük dosyadan okunur. Eksi: defter pointer&#x27;ları yeni adrese çevrilir. Gerekçe: tüzükte aynı yöntem çalışıyor (Karar 117).</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D26: defter tek dosya kalır; yalnız kapanmış kuyruk dosyaları arşive iner."> <strong>(b) Yalnız kuyruk kökünü arşivle</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dosyaları taşırım. Artı: defter adresleri değişmez. Eksi: defter büyümeye devam eder. Gerekçe: defteri tek dosya istiyorsan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D26: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: boyut uyarısı her kapanışta çıkar. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D27 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D27">
+    <div class="card-body">
+      <h2 class="card-title">D27 · `raporlar/` kökünde 38 dosya ay klasörü dışında <span class="badge badge-outline">Katman-2 · düzen</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> 22 `son-50-prompt` dosyası ve 12 konu raporu ay klasörlerine girmemiş. Aynı gün için iki farklı hareket günlüğü var: biri `raporlar/` kökünde, biri `raporlar/hareket/` altında.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D27',&quot;`raporlar/` kökünde 38 dosya ay klasörü &quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D27: kökteki dosyalar ay klasörlerine taşınır; hareket günlüğü yalnız `raporlar/hareket/` altında kalır; pointer&#x27;lar aynı commit&#x27;te güncellenir."> <strong>(a) Ay klasörlerine taşı, günlüğü teke indir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: taşırım, pointer taraması yaparım, üreticinin yazım yolunu düzeltirim. Artı: tek düzen. Eksi: eski adresler değişir. Gerekçe: dosya düzeni planı ay klasörü der.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D27: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kök büyümeye devam eder. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- D28 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="D28">
+    <div class="card-body">
+      <h2 class="card-title">D28 · Hafıza indeksi tavanı aşıyor <span class="badge badge-outline">Katman-1 · bütçe sabiti</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `MEMORY.md` 6713 bayt. `Butce.lean` tavanı 4 KB. İndeks 37 satır; her satır bir davranış kuralına işaret eder.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'D28',&quot;Hafıza indeksi tavanı aşıyor&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D28: `Butce.lean` hafıza indeksi tavanı 8 KB olur."> <strong>(a) Tavanı 8 KB yap</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: sabiti değiştiririm, Lean ve Rust&#x27;ı derlerim. Artı: hiçbir kural satırı düşmez. Eksi: her oturum yaklaşık 3 KB fazla yükler. Gerekçe: satırların çoğu senin düzeltmen; arşive inen kural unutulur.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D28: en eski ve kapanmış maddeler arşive iner; indeks 4 KB altına düşer."> <strong>(b) İndeksi 4 KB&#x27;a buda</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: aday listesini sana gösteririm, onayladıklarını arşive taşırım. Artı: bağlam küçülür. Eksi: arşive inen kural artık otomatik yüklenmez. Gerekçe: bağlam bütçesi öncelikliyse.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="D28: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: boyut bayrağı her kapanışta çıkar. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E30 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E30">
+    <div class="card-body">
+      <h2 class="card-title">E30 · Satır sonu kuralı yok <span class="badge badge-outline">Katman-2 · düzen (ajan dizinlerine dokunur)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Depoda `.gitattributes` yok. sage, vega ve deci hook&#x27;ları indekste CRLF satır sonuyla duruyor. Üretici düzeldi; mevcut dosyalar eski biçimde.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E30',&quot;Satır sonu kuralı yok&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E30: kök `.gitattributes` `*.sh text eol=lf` satırı alır; mevcut `.sh` dosyaları yeniden normalleştirilir."> <strong>(a) `.gitattributes` ekle, dosyaları normalleştir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dosyayı eklerim, `git add --renormalize` koşarım, tek commit atarım. Artı: kabuk betikleri her makinede aynı çalışır. Eksi: üç ajan dizininde biçim farkı oluşur. Gerekçe: CRLF kabuk betiğini kırar.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E30: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: yeni klonda hook bozuk gelebilir. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E31 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E31">
+    <div class="card-body">
+      <h2 class="card-title">E31 · `no-mistakes` remote&#x27;u Mac yoluna bakıyor <span class="badge badge-outline">Katman-2 · araç</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `git remote no-mistakes` adresi `/Users/HasanSalihSahin/.no-mistakes/...`. Bu yol bu makinede yok. `no-mistakes` skill&#x27;i bu remote&#x27;a push eder.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E31',&quot;`no-mistakes` remote&#x27;u Mac yoluna bakıyo&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E31: `no-mistakes` bu makinede yeniden kurulur; remote yeni yola çevrilir."> <strong>(a) Windows&#x27;ta yeniden kur</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: aracın kurulum komutunu koşarım, remote adresini güncellerim, bir deneme koşumu yaparım. Artı: doğrulama hattı yeniden kullanılır. Eksi: araç Windows&#x27;ta çalışmayabilir; o durumda (b)&#x27;ye dönerim ve bildiririm. Gerekçe: skill katalogda duruyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E31: `no-mistakes` remote&#x27;u kaldırılır; skill ve nokta-dizin kapısı arşive iner."> <strong>(b) Remote&#x27;u kaldır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: remote&#x27;u kaldırırım, skill kaydını arşivlerim. Artı: ölü adres kalmaz. Eksi: hat kullanılamaz. Gerekçe: 2026-09-22&#x27;den beri kullanmadıysan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E31: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: skill çağrılırsa hata verir. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E32 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E32">
+    <div class="card-body">
+      <h2 class="card-title">E32 · Atlas ve hakem ajan tanımlarında tutarsızlık <span class="badge badge-outline">Katman-1 · ajan tanımı</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Dosya adı `research-agent.md`, içindeki ad `atlas`. Araç listesinde `get-library-docs` yazıyor; oturumdaki ad `query-docs`. Model adı &quot;Opus 5&quot;. `hakem.md` &quot;yazmaz&quot; der ama `memory: project` ona Write ve Edit verir.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E32',&quot;Atlas ve hakem ajan tanımlarında tutarsı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E32: dosya `atlas.md` olur; araç adı `query-docs` olur; model adı Opus 5.5 olur; `hakem.md` metni &quot;rapor dosyası yazmaz, yalnız kendi hafızasına yazar&quot; olur."> <strong>(a) Dördünü düzelt</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: dosyayı yeniden adlandırırım, üç satırı düzeltirim, pointer&#x27;ları güncellerim. Artı: ad ve dosya eşleşir; Atlas belge aracını çağırabilir. Eksi: yok. Gerekçe: yanlış araç adı aracı sessizce kapatır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E32: (a) düzeltmeleri yapılır; ayrıca `hakem.md` içinden `memory: project` çıkar."> <strong>(b) Hakemden hafızayı kaldır, kalanı düzelt</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: (a) artı hafıza satırını silerim. Artı: hakem gerçekten salt-okur olur. Eksi: hakem koşumlar arası ders taşımaz. Gerekçe: yapan ile ölçen ayrımını sıkı istersen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E32: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: tutarsızlık sürer. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E33 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E33">
+    <div class="card-body">
+      <h2 class="card-title">E33 · Üç kırık wiki bağlantısı <span class="badge badge-outline">Katman-2 · wiki</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `[[rol-katmanlari]]`, `[[treehouse]]` ve `[[skill-hazinesi-secim-isabeti]]` var olmayan sayfalara gider.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E33',&quot;Üç kırık wiki bağlantısı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E33: her bağlantı mevcut karşılık sayfasına çevrilir; karşılık yoksa köşeli ayraç kalkar."> <strong>(a) Karşılığa yönlendir, yoksa düz metne çevir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: üç bağlantıyı tek tek çözerim. Artı: bağlantı denetimi temiz çıkar. Eksi: yok. Gerekçe: üç yeni sayfa için içerik isteği yok.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E33: üç eksik sayfa `wiki-sayfa-yaz` ile yazılır."> <strong>(b) Üç sayfayı yaz</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: üç sayfa üretirim (oturum başına en çok iki). Artı: kavramlar belgelenir. Eksi: iki oturum sürer. Gerekçe: bu kavramları kullanıyorsan.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E34 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E34">
+    <div class="card-body">
+      <h2 class="card-title">E34 · Dokuz Lean modülünün açıklama eşi yok <span class="badge badge-outline">Katman-2 · kanon belgesi</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Düzen her Lean modülüne bir `.lean.md` eşi ister. Dokuz modülde eş yok. `Zorlanabilirlik.lean` &quot;uygulayan kod: yok&quot; der.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E34',&quot;Dokuz Lean modülünün açıklama eşi yok&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E34: dokuz modül için `.lean.md` eşi yazılır; `Zorlanabilirlik.lean` satırı güncel uygulayan koda işaret eder ya da &quot;uygulayan yok&quot; bilinçli not olur."> <strong>(a) Dokuz eşi üret</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: eşleri işçiye yazdırırım, kendim denetlerim. Artı: her hüküm Türkçe okunur. Eksi: dokuz yeni dosya. Gerekçe: iş #34 aynı düzeni varsayıyor.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E34: `.lean.md` eşi isteğe bağlı olur; mevcut eşler kalır."> <strong>(b) Eş zorunluluğunu kaldır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: kural satırını değiştiririm. Artı: bakım azalır. Eksi: Lean okumayan için hüküm kapalı kalır. Gerekçe: eşleri okumuyorsan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E34: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: düzen yarım kalır. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E35 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E35">
+    <div class="card-body">
+      <h2 class="card-title">E35 · Seans kayıtları dizini karışık <span class="badge badge-outline">Katman-2 · düzen</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `raporlar/seans/` altında 21 JSON&#x27;dan 3&#x27;ü baskın şemadan sapar. Girdi dosyaları ve çıktı dosyaları aynı dizindedir. md ve json karışıktır.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E35',&quot;Seans kayıtları dizini karışık&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E35: üç sapan kayıt şemaya çekilir; `seans-teslim-girdi-*` dosyaları `raporlar/seans/girdi/` altına iner; `durum seans-kapat` girdiyi oradan okur."> <strong>(a) Şemaya çek, girdileri ayır</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: üç dosyayı düzeltirim, girdileri taşırım, skill yolunu güncellerim. Artı: açılış son kaydı tek desenle bulur. Eksi: kapanış skill&#x27;inde bir yol değişir. Gerekçe: bu oturumda da girdi dosyası son kayıt listesine karıştı.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E35: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: şema okuyan araç üç kayıtta hata verir. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E36 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E36">
+    <div class="card-body">
+      <h2 class="card-title">E36 · Arşiv dizini eksik kayıtlı <span class="badge badge-outline">Katman-2 · arşiv</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `arsiv/README.md` 7 girdiyi listelemiyor. `worktree-kalinti-2026-11-10` altında 2 boş yama var. `raporlar/2026-09/yol-tasi-kuru` ve `yol-tasi-uygula` diff&#x27;leri bayt-eşit.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E36',&quot;Arşiv dizini eksik kayıtlı&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E36: `arsiv/README.md` 7 girdiyi alır; boş yamalar ve çift diff tek kopyaya iner, README&#x27;de not kalır."> <strong>(a) README&#x27;yi tamamla, çiftleri teke indir</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: README satırlarını yazarım, çift dosyayı kaldırıp notunu düşerim. Artı: arşiv aranabilir olur. Eksi: iki boş ve bir çift dosya gider (içerik kaybı yok). Gerekçe: arşiv pointer&#x27;sız işe yaramaz.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E36: yalnız README güncellenir; hiçbir dosya kaldırılmaz."> <strong>(b) Yalnız README&#x27;yi tamamla</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: README satırlarını yazarım. Artı: hiçbir dosya gitmez. Eksi: boş ve çift dosyalar kalır. Gerekçe: silme yasağını en dar okursan.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E37 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E37">
+    <div class="card-body">
+      <h2 class="card-title">E37 · Üç alan ajanı ders iskeleti bekliyor <span class="badge badge-outline">Katman-2 · devir</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Span 2026-10-19&#x27;da M1-M5 ders iskeletini istedi (`span/cc/giden/…claude-mods-M1.md`). Vega Q1 ve Deci J1 iskeletleri 2026-09-22&#x27;den beri işlenmedi. Ajanlar bana dosyayla döner; ben onlara `cc/gelen/` ile dönerim.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E37',&quot;Üç alan ajanı ders iskeleti bekliyor&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E37: Jarvis Span M1-M5, Vega Q1 ve Deci J1 ders iskeletlerini yazar ve her ajanın `cc/gelen/` dizinine devir dosyasıyla bırakır."> <strong>(a) Üç iskeleti yaz ve devret</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: üç devri okurum, iskeletleri `ogren` düzenine göre yazarım, devir dosyalarını bırakırım. Artı: üç şerit açılır. Eksi: iskelet senin öncelik sıranı varsayar. Gerekçe: bekleyen devir ajanı kilitler.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E37: yalnız Span M1-M5 iskeleti yazılır; Vega ve Deci ertelenir ve ajanlara erteleme notu gider."> <strong>(b) Yalnız Span</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: bir iskelet ve iki not yazarım. Artı: en güncel istek kapanır. Eksi: iki şerit kapalı kalır. Gerekçe: quant ve karar modeli şeritleri şimdi gündemde değilse.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E37: üç ajana erteleme notu gider; iskelet yazılmaz."> <strong>(c) Üçünü ertele</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: üç not yazarım. Artı: iş yok. Eksi: şeritler kapalı kalır. Gerekçe: şimdiki odak tez ise.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- E38 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="E38">
+    <div class="card-body">
+      <h2 class="card-title">E38 · İki belge ayrışmış <span class="badge badge-outline">Katman-2 · belge</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `jarvis/README.md` içinde iki ayrı &quot;Klasör haritası&quot; bölümü var. `sablonlar/harness/claude-global-CLAUDE.md` canlı kullanıcı dosyasından ayrışmış ve hâlâ Mac sürümü.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'E38',&quot;İki belge ayrışmış&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E38: README tek klasör haritası taşır; şablon canlı `~/.claude/CLAUDE.md` içeriğinden yenilenir."> <strong>(a) Haritayı teke indir, şablonu yenile</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: iki bölümü birleştiririm, şablonu canlı dosyadan kopyalarım. Artı: yeni makine kurulumu doğru dosyayı kurar. Eksi: yok. Gerekçe: şablon kurulum kaynağıdır.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="E38: değişiklik yok."> <strong>(b) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: yeni kurulum Mac talimatı yükler. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- K51 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="K51">
+    <div class="card-body">
+      <h2 class="card-title">K51 · `ogrenme/` altında commit&#x27;siz ders kayıtları <span class="badge badge-outline">Katman-1 · Salih&#x27;in alanı</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> `ogrenme/dosya-mimarisi/` ve `ogrenme/ontolojik-encode/` 2026-11-01&#x27;den beri izlenmiyor. `ogrenme/README.md` ve `mufredat.md` taşınmış dersleri eski yollarla gösteriyor. `ogrenme/` senin alanın; dokunmadım.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'K51',&quot;`ogrenme/` altında commit&#x27;siz ders kayıt&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K51: Jarvis iki ders klasörünü commit&#x27;ler; `ogrenme/README.md` ve `mufredat.md` içindeki eski yolları düzeltir. Bu izin yalnız bu iş içindir."> <strong>(a) Ben commit&#x27;lerim ve yolları düzeltirim</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: iki klasörü pathspec ile eklerim, iki dosyada yol satırlarını düzeltirim, ayrı commit atarım. Artı: ders kayıtları yedeklenir. Eksi: ajan senin alanına bir kez yazar. Gerekçe: commit&#x27;siz kayıt disk arızasında kaybolur.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K51: Salih kendi commit&#x27;ler; Jarvis yalnız düzeltilecek yol listesini verir."> <strong>(b) Sen yaparsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: satır listesini yazarım. Artı: alan kuralı istisnasız kalır. Eksi: iş sende bekler. Gerekçe: `ogrenme/` yalnız senin elin olsun istersen.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K51: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: kayıtlar yedeksiz kalır. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- K52 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="K52">
+    <div class="card-body">
+      <h2 class="card-title">K52 · Oda modunda üç eksik <span class="badge badge-outline">Katman-2 · mod (paralel mod oturumuyla çakışabilir)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Biten görev durum kütüğünde açık kalıyor: köprü işi açıyor, kapatmıyor. `oda_oku` işçi raporunu kesik gösteriyor; tam metin yalnız `ortak/oda/&lt;id&gt;.json` içinde. İşçinin önerisi ben uyandıktan sonra görünüyor.</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'K52',&quot;Oda modunda üç eksik&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K52: Jarvis oda modunda üç eksiği bu oturumda düzeltir: görev bitince kütük işi kapanır; `oda_oku` tam rapor seçeneği alır; öneri geldiği anda uyandırır."> <strong>(a) Bu oturumda düzelt</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: kodu Opus işçiye yazdırırım, canlı odada sınarım. Artı: şu an koşan oda aynı eksikleri yaşıyor; düzeltme hemen sınanır. Eksi: mod oturumun açıksa aynı dosyalarda çakışma olur. Gerekçe: her oda koşumundan sonra işleri elle kapatıyorum.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K52: üç eksik mod iterasyon oturumuna devir notuyla gider; bu oturum mod koduna dokunmaz."> <strong>(b) Mod oturumuna devret</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: devir notu yazarım. Artı: çakışma riski yok. Eksi: eksikler o oturum açılana kadar sürer. Gerekçe: mod kodunda açık işin varsa.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="K52: değişiklik yok."> <strong>(c) Kalsın</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: elle kapatma sürer. Gerekçe: yok.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+  <!-- IS9 -->
+  <section class="card bg-base-100 shadow-md" data-lavish-question="IS9">
+    <div class="card-body">
+      <h2 class="card-title">IS9 · Veri bilimi şeridinin evi <span class="badge badge-outline">Katman-1 · rol (iş #9)</span></h2>
+      <p class="text-sm opacity-80"><strong>Ne demek:</strong> Veri bilimi ve deney tasarımı şeridi için ev seçilmedi. `PROBE` soru 1 (p=0,03) cevabını bekliyor. Yeni ajan doğumu doğum belgesi ister (Karar 104 M5).</p>
+      <form onsubmit="event.preventDefault(); kuyrukla(this,'IS9',&quot;Veri bilimi şeridinin evi&quot;);">
+      <div class="space-y-2">
+        <label class="opt oneri block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="IS9: veri bilimi ve deney tasarımı şeridi Calc ajanının altında açılır; yeni ajan doğmaz."> <strong>(a) Calc altında şerit</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: Calc&#x27;a devir dosyasıyla şeridi veririm; `PROBE` orada sürer. Artı: yeni bakım maliyeti yok; istatistik hesaplamaya komşudur. Eksi: Calc&#x27;ın alanı genişler. Gerekçe: varsayılan kural yeni ajan değil, mevcut alan.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="IS9: veri bilimi için yeni alan ajanı doğum belgeli ayrı masaya gelir."> <strong>(b) Yeni alan ajanı</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: doğum belgesi ve bakım maliyeti satırıyla ayrı masa açarım. Artı: şerit kendi hafızasını taşır. Eksi: dokuzuncu ajan; kanon, hook ve devir bakımı artar. Gerekçe: şerit uzun ve bağımsız olacaksa.</div></label>
+        <label class="opt block p-3 rounded bg-base-200 cursor-pointer"><input type="radio" name="secim" value="IS9: iş #9 beklemede kalır."> <strong>(c) Ertele</strong>
+          <div class="text-sm opacity-80 mt-1">Ne yaparım: hiçbir şey. Artı: iş yok. Eksi: `PROBE` yarım durur. Gerekçe: şimdiki odak tez ise.</div></label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mt-3">Beyanı kuyruğa yaz</button> <span class="text-xs opacity-60 durum"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-xs opacity-60 px-2">
+    Kaynak: <code>kaynak-kodu/lavish/masa-19-2026-11-11.html</code> · kalıcı kopya <code>raporlar/masa/masa-19-karar-yuzeyi-2026-11-11.html</code>. Hükümler deftere Karar 130 olarak iner (karar-kaydet).
+  </footer>
+</div>
+
+<script>
+function kuyrukla(form, kalem, ad) {
+  const secim = new FormData(form).get('secim');
+  const durum = form.querySelector('.durum');
+  if (!secim) { durum.textContent = 'Önce bir seçenek işaretle.'; return; }
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — hükmü sohbete yaz: ' + kalem + ' ' + secim; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') hükmü: ' + secim, { tag: 'hukum', text: kalem + ': ' + secim, element: form, queueKey: kalem, data: { kalem: kalem, hukum: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + secim + ' — göndermek için sağ panelden Send to Agent.';
+}
+function kuyruklaCoklu(form, kalem, ad) {
+  const secim = new FormData(form).getAll('secim');
+  const durum = form.querySelector('.durum');
+  const metin = secim.length ? secim.join(' | ') : 'HİÇBİRİ';
+  if (!(window.lavish && window.lavish.queuePrompt)) { durum.textContent = 'Lavish yok — seçimi sohbete yaz: ' + kalem + ' ' + metin; return; }
+  window.lavish.queuePrompt(kalem + ' (' + ad + ') seçim: ' + metin, { tag: 'hukum', text: kalem + ': ' + metin, element: form, queueKey: kalem, data: { kalem: kalem, secim: secim } });
+  durum.textContent = 'Kuyruğa yazıldı: ' + metin + ' — göndermek için sağ panelden Send to Agent.';
+}
+</script>
+</body>
+</html>
