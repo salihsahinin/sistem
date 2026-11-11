@@ -86,7 +86,9 @@ def main():
 
     G = oku_json(KOK.parent / "ortak" / "akis-graf.json")
     olaylar = [json.loads(l) for l in (DEPO / "ortak" / "durum-olay.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
-    defter = (KOK / "kuyruk" / "senaryo-defteri.md").read_text(encoding="utf-8")
+    sys.path.insert(0, str(KOK / "tools"))
+    from baglam_oku import defter_metni  # Karar 130 D26: defter ana dosya + `@` parçaları
+    defter = defter_metni(str(KOK)) or ""
 
     merkez = a.merkez or "seans:" + [o for o in olaylar if o["olay"] == "seans_ac"][-1]["oturum"]
 

@@ -6,6 +6,7 @@ Kullanım: `from baglam_oku import satirlar; satirlar(repo, "core/tuzuk-v0.md")`
 import os
 import re
 import subprocess
+import sys
 
 _AKTARMA = re.compile(r"(?:^|\s)@(\S+)")
 
@@ -62,3 +63,42 @@ def satirlar(repo, yol):
                 sonuc.append((kaynak, s))
             return sonuc
     return _python_genislet(repo, yol)
+
+
+def defter_metni(repo, yol="kuyruk/senaryo-defteri.md"):
+    """Karar defteri metni (Karar 130 D26): ana dosya + ana dosyadaki `@<ad>` satırlarının gösterdiği parçalar, satır
+    sırasıyla; `@` satırlarının kendisi metne girmez. Parça yoksa stderr'e tek satır uyarı. Ana dosya yoksa None.
+    Rust karşılığı: `jarvis_baglam::defter_metni` (kod/baglam)."""
+    ana = os.path.join(repo, yol)
+    try:
+        with open(ana, encoding="utf-8", errors="replace") as f:
+            metin = f.read().replace("\r\n", "\n").replace("\r", "\n")
+    except OSError:
+        return None
+    satirlar_, parcalar, citte = [], [], False
+    for s in metin.split("\n"):
+        if s.lstrip().startswith(("```", "~~~")):
+            citte = not citte
+            satirlar_.append(s)
+            continue
+        # Yalnız tek başına duran `@<ad>` satırı parça bağlantısıdır; metin içindeki `@` sözcükleri satırı düşürmez.
+        aktarma = [] if citte else [a for a in _AKTARMA.findall(re.sub(r"`[^`]*`", "", s)) if s.strip() == "@" + a]
+        if aktarma:
+            parcalar.extend(aktarma)
+        else:
+            satirlar_.append(s)
+    if satirlar_ and satirlar_[-1] == "":
+        satirlar_.pop()
+    for h in parcalar:
+        hedef = os.path.normpath(os.path.join(os.path.dirname(ana), h))
+        try:
+            with open(hedef, encoding="utf-8", errors="replace") as f:
+                t = f.read().replace("\r\n", "\n").replace("\r", "\n")
+        except OSError:
+            print(f"UYARI: karar defteri parçası yok: {hedef}", file=sys.stderr)
+            continue
+        ps = t.split("\n")
+        if ps and ps[-1] == "":
+            ps.pop()
+        satirlar_.extend(ps)
+    return "\n".join(satirlar_) + "\n"

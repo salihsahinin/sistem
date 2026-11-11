@@ -123,6 +123,48 @@ impl Bulgu {
     }
 }
 
+/// Karar defteri metni (Karar 130 D26): ana dosya + ana dosyadaki `@<ad>` satırlarının gösterdiği parçalar,
+/// satır sırasıyla; `@` satırlarının kendisi metne girmez. Parça yoksa stderr'e tek satır uyarı, atlanır.
+/// Ana dosya okunamazsa `None`. Satır sonları LF'ye çevrilir.
+pub fn defter_metni(ana: &Path) -> Option<String> {
+    fn oku_lf(yol: &Path) -> Option<Vec<String>> {
+        let b = fs::read(yol).ok()?;
+        let t = String::from_utf8_lossy(&b).replace("\r\n", "\n").replace('\r', "\n");
+        let mut s: Vec<String> = t.split('\n').map(String::from).collect();
+        // Dosya LF ile bitiyorsa sondaki boş öğe parçalar arasına boş satır sokmasın.
+        if s.last().is_some_and(|x| x.is_empty()) {
+            s.pop();
+        }
+        Some(s)
+    }
+    let ana_satirlar = oku_lf(ana)?;
+    // Yalnız tek başına duran `@<ad>` satırı parça bağlantısıdır; karar metninin içinde geçen `@` sözcükleri
+    // (ör. bir kararın andığı içe-aktarma örneği) satırı düşürmez.
+    let aktarmalar: Vec<_> = ice_aktarmalar(&ana_satirlar.join("\n"))
+        .into_iter()
+        .filter(|a| {
+            ana_satirlar
+                .get(a.satir - 1)
+                .is_some_and(|s| s.trim() == format!("@{}", a.yol))
+        })
+        .collect();
+    let aktarma_satirlari: HashSet<usize> = aktarmalar.iter().map(|a| a.satir).collect();
+    let mut cikti: Vec<String> = ana_satirlar
+        .into_iter()
+        .enumerate()
+        .filter(|(i, _)| !aktarma_satirlari.contains(&(i + 1)))
+        .map(|(_, s)| s)
+        .collect();
+    for a in aktarmalar {
+        let hedef = coz(ana, &a.yol);
+        match oku_lf(&hedef) {
+            Some(s) => cikti.extend(s),
+            None => eprintln!("UYARI: karar defteri parçası yok: {}", hedef.display()),
+        }
+    }
+    Some(cikti.join("\n") + "\n")
+}
+
 /// Kökten başlayıp harness sırasıyla blokları üretir; yol boyunca bulguları toplar.
 pub fn genislet(kok: &Path) -> std::io::Result<(Vec<Blok>, Vec<Bulgu>)> {
     let mut bloklar = Vec::new();
