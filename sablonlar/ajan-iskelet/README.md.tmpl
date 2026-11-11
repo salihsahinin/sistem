@@ -6,7 +6,7 @@
 ```bash
 cd ~/sistem/{{DIZIN}} && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
 ```
-Salih bu klasörde Claude Code oturumu açar (worktree kapalı, main): "seans başı" → ritüel; "seans başı, <şerit>" → ders. Ders iskeleti Jarvis'ten `cc/gelen/ders-<hafta>.md` ile gelir.
+Salih bu klasörde Claude Code oturumu açar (worktree kapalı, main): "seans başı" → ritüel; "seans başı, <şerit>" → ders. Ders iskeleti önceden istenmez.
 
 ## Klasör haritası
 | Yol | Ne |
@@ -15,7 +15,7 @@ Salih bu klasörde Claude Code oturumu açar (worktree kapalı, main): "seans ba
 | `core/` | kapsül · pano · desenler |
 | `kuyruk/` | senaryo-defteri (gelen hükümler, `[oneri]`/`[sapma]`) · fikir-kutusu |
 | `ogrenme/<şerit>/` | README · ilerleme · dersler (Salih eli `git mv` ile `../ogrenme/`'den taşındı) |
-| `cc/gelen/` · `cc/giden/` | Jarvis'ten ders iskeleti / devir birimi · Jarvis'e geri-dönüş |
+| `cc/gelen/` · `cc/giden/` | Jarvis'ten devir birimi · Jarvis'e geri-dönüş |
 | `raporlar/` | seans teslim raporları · görsel HTML'ler |
 | `veri/bronz/hareket-olay.jsonl` | PostToolUse kütük (append-only) |
 | `arsiv/` | silme yok (m.8) |

@@ -16,5 +16,5 @@ Kaynak: `sablonlar/ajan-iskelet/claude-ayar/skills/seans-acilis/SKILL.md` (doğu
 6. **Seansı aç:** `durum seans-ac --alan <alan> --hedef "<tek cümle>"` — hedef Salih açılışta beyan ettiyse aynen, yoksa `SIRADA` ilk işten türetilir ve brifte teyide sunulur. Komut oturum adını verir (`<tarih>-<alan>`); kapanışta gerekir, brife yaz.
 7. **Brif (tek ekran):** tek satır konum · sırada/bekler · şerit başına sıradaki hafta ve pratik `KALAN` · bekleyen iskelet/devir · Salih'te bekleyen hükümler (`salih_karar`) · bu seansın hedef cümlesi · oturum adı.
 8. **Model beyanı:** oturum Sonnet 5 varsayılan; Salih "bugün Opus" dediyse brifte tek satır `eskalasyon: Opus (Salih beyanı)` ve teslim kaydına `sayaclar.model`.
-9. Salih şerit adı verdiyse ("seans başı, evals") brif sonrası `ogren` skill'ine geç; ders iskeleti `cc/gelen/`'de yoksa `## Kalan`'dan devam, yeni hafta açma.
+9. Salih şerit adı verdiyse ("seans başı, evals") brif sonrası `ogren` skill'ine geç; ders iskeleti önceden istenmez; ders o günkü yöntemle kurulur, `## Kalan` girdidir.
 10. Frenler: karar verme · kanon yazma · `main`'e push (kendi oturum dalına push + PR serbest, EK-5) · pratik = Salih'in eli.
