@@ -12,7 +12,12 @@ fn desenler() -> Vec<Regex> {
     vec![
         // göreli (`core/`, `./core/`) ya da mutlak önekli (`/c/.../core/`, `C:/.../core/`, `C:\...\core\`, `~/...`) hedef
         r(r#">{1,2}[[:space:]]*"?(?:\.?/?|(?:[A-Za-z]:|~|\$\{?HOME\}?)?[/\\](?:[^[:space:]"'|;&<>]*[/\\])?)(core[/\\]|CLAUDE\.md|\.claude[/\\])"#.to_string()),
-        r(format!(r"\b(mv|cp|rm|touch|truncate|tee|dd|install)\b.*{PROT}")),
+        // yazan komut adı yalnız komut konumunda (kalem A6): satır başı ya da `;` `&&` `||` `|` `&` `$(` backtick `(`,
+        // `then/do/else`, `xargs`, `-exec` sonrası; önünde `sudo [-o arg]`, `env`, `X=Y` önekleri ve `/bin/` gibi yol olabilir.
+        // `grep -n tee core/x.md` gibi salt-okur komutun argümanındaki ad artık eşleşmez.
+        r(format!(
+            r"(?:^|;|&|\||\$\(|`|\(|\b(?:then|do|else|xargs)\b|-exec)[[:space:]]*(?:(?:(?:sudo|env|nice|nohup|time|command|exec)(?:[[:space:]]+-[^[:space:]]*(?:[[:space:]]+[^-[:space:]][^[:space:]]*)?)*|[A-Za-z_][A-Za-z0-9_]*=[^[:space:]]*)[[:space:]]+)*(?:[^[:space:];|&]*/)?(mv|cp|rm|touch|truncate|tee|dd|install)\b.*{PROT}"
+        )),
         r(format!(r"\b(sed|perl)\b[^|;&]*[[:space:]]-[[:alpha:]]*i[^|;&]*{PROT}")),
         r(format!(r"\bgit[[:space:]]+(checkout|restore|reset|clean|rm|mv)\b.*{PROT}")),
     ]
@@ -87,5 +92,21 @@ mod testler {
         assert!(!engel_mi("echo x > /c/sistem/sistem/jarvis/raporlar/score/a.md"));
         assert!(!engel_mi("echo x > alt/core/a.md"));
         assert!(!engel_mi("ls core/ 2> /dev/null"));
+    }
+
+    #[test]
+    fn salt_okur_argumandaki_ad_kesilmez() {
+        assert!(!engel_mi("grep -n tee core/x.md"));
+        assert!(!engel_mi("rg cp core/a.md"));
+        assert!(!engel_mi("git log --grep install -- core/x.md"));
+    }
+
+    #[test]
+    fn komut_konumundaki_yazma_kesilir() {
+        for c in ["tee core/x.md", "echo x | tee -a core/x.md", "sudo cp a core/x", "ls && rm core/x", "ls || touch core/x",
+            "env A=1 mv a core/b", "echo $(rm core/x)", "echo `rm core/x`", "A=1 cp a core/b", "sudo -u root env A=1 install a core/b",
+            "(rm core/x)", "if true; then rm core/x; fi", "xargs rm core/x", "find . -exec rm core/x ;", "/bin/rm core/x"] {
+            assert!(engel_mi(c), "{c}");
+        }
     }
 }

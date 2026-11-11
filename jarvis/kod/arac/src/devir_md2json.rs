@@ -323,6 +323,21 @@ fn liste_v(v: &V) -> Vec<V> {
 }
 
 /// `Err` = Python'da yakalanmamış istisna.
+/// Yazma izni önek denetimi yol bileşeni sınırında (kalem 45): `cc/gelen` izni `cc/gelen/x` ve `cc/gelen`i geçirir,
+/// `cc/gelen-baska/x`i geçirmez. Sondaki `*` ve yol ayracı önekten atılır.
+fn bilesen_oneki(yol: &str, kalip: &str) -> bool {
+    let onek = kalip.trim_end_matches('*').trim_end_matches(['/', '\\']);
+    if onek.is_empty() {
+        return false;
+    }
+    yol == onek || yol.strip_prefix(onek).is_some_and(|kalan| kalan.starts_with(['/', '\\']))
+}
+
+/// Devir kimliği dosya adına konur (kalem 45): yalnız harf, rakam, `-`, `_`, `.`; `..` ve yol ayracı yasak.
+fn guvenli_kimlik(k: &str) -> bool {
+    !k.is_empty() && k != "." && !k.contains("..") && k.chars().all(|c| c.is_alphanumeric() || matches!(c, '-' | '_' | '.'))
+}
+
 fn dogrula(v: &Veri) -> Result<Vec<String>, String> {
     let mut hatalar: Vec<String> = vec![];
     for k in ZORUNLU {
@@ -332,6 +347,11 @@ fn dogrula(v: &Veri) -> Result<Vec<String>, String> {
     }
     if !hatalar.is_empty() {
         return Ok(hatalar);
+    }
+    match &v["DEVİR_ID"] {
+        V::S(k) if guvenli_kimlik(k) => {}
+        V::S(k) => hatalar.push(format!("DEVİR_ID güvensiz: {} (yalnız harf, rakam, '-', '_', '.'; '..' ve yol ayracı yok)", py::repr(k))),
+        _ => hatalar.push("DEVİR_ID tek satırlık dize olmalı".into()),
     }
     let (V::D(cikti), V::D(done)) = (&v["ÇIKTI"], &v["DONE"]) else {
         return Ok(vec!["ÇIKTI ve DONE 'Cn: …' sözlük biçiminde olmalı (çıktı-başına done)".into()]);
@@ -352,7 +372,7 @@ fn dogrula(v: &Veri) -> Result<Vec<String>, String> {
         _ => return Err("fnmatch(yol, sözlük): TypeError".into()),
     };
     for (c, yol) in cikti {
-        if !izin.iter().any(|kalip| fnmatch(yol, kalip) || yol.starts_with(kalip.trim_end_matches('*'))) {
+        if !izin.iter().any(|kalip| fnmatch(yol, kalip) || bilesen_oneki(yol, kalip)) {
             hatalar.push(format!("çıktı yazma-izni dışında: {c} {yol} ∉ YAZMA_İZNİ"));
         }
     }
@@ -727,5 +747,29 @@ fn dal_sayisi(v: &Veri) -> usize {
     match &v["DALLAR"] {
         V::L(l) => l.len(),
         _ => 1,
+    }
+}
+
+#[cfg(test)]
+mod testler {
+    use super::{bilesen_oneki, guvenli_kimlik};
+
+    #[test]
+    fn kimlik_suzulur() {
+        assert!(guvenli_kimlik("friday-2026-09-18-tur4"));
+        assert!(guvenli_kimlik("a_b.c"));
+        for k in ["../x", "..", ".", "a/b", r"a\b", "", "a b", "C:x"] {
+            assert!(!guvenli_kimlik(k), "{k}");
+        }
+    }
+
+    #[test]
+    fn onek_bilesen_sinirinda() {
+        assert!(bilesen_oneki("cc/gelen/a.md", "cc/gelen"));
+        assert!(bilesen_oneki("cc/gelen/a.md", "cc/gelen/"));
+        assert!(bilesen_oneki("cc/gelen/a.md", "cc/gelen/*"));
+        assert!(bilesen_oneki("cc/gelen", "cc/gelen"));
+        assert!(!bilesen_oneki("cc/gelen-baska/a.md", "cc/gelen"));
+        assert!(!bilesen_oneki("cc/gelenx", "cc/gelen*"));
     }
 }

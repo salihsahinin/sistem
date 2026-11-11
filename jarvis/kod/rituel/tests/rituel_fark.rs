@@ -596,10 +596,10 @@ fn acilis_manifest_ve_silver() {
         adim(&[])
             .dosya("cc/pipeline/pipeline-13.md", &govde("ışık-AÇIK"))
             .dosya("cc/pipeline/pipeline-14.md", &dolgu(1500, "SAHADA"))
-            .dosya("cc/pipeline/pipeline-15.md", &dolgu(1495, "SAHADA"))
-            .dosya("cc/pipeline/pipeline-16.md", &dolgu(1494, "AÇIK"))
+            // pipeline-15/16 (durum alanı dışında, 1500 penceresi içinde kelime) çıkarıldı: kalem E29 ile K2 yalnız durum
+            // alanını okur, Python'dan bilinçli ayrışır; bu davranış `acilis.rs` birim testlerinde sınanır.
             .dosya("cc/pipeline/pipeline-17.md", &dolgu(1497, "AÇIK"))
-            .ikili("cc/pipeline/pipeline-18.md", b"SAH\xffADA")
+            .ikili("cc/pipeline/pipeline-18.md", b"Durum: SAH\xffADA")
             .dosya("cc/pipeline/pipeline-19.md", &govde("AÇİK"))
             .dosya("cc/pipeline/pipeline-20.md", &govde("açıK ve yarıM"))
             .dosya("cc/pipeline/PIPELINE-21.md", &govde("SAHADA"))
@@ -611,7 +611,7 @@ fn acilis_manifest_ve_silver() {
         adim(&["--is", "ışık"]),
         adim(&["--is", "SAH"]),
         adim(&["--is", "sah\u{fffd}ada"]),
-        adim(&["--json"]).dosya("cc/pipeline/pipeline-22.md", "yarım\r\nSAHADA\r\n").sil("cc/pipeline/pipeline-18.md"),
+        adim(&["--json"]).dosya("cc/pipeline/pipeline-22.md", "Durum: yarım\r\nSAHADA\r\n").sil("cc/pipeline/pipeline-18.md"),
         adim(&[]).hazir(|k| std::fs::create_dir_all(k.jarvis.join("cc").join("pipeline").join("pipeline-dizin.md")).unwrap()).atla(),
         adim(&["--is", "x"]).atla(),
         adim(&[]).sil("cc/pipeline/pipeline-dizin.md"),

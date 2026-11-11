@@ -202,8 +202,60 @@ fn kapi_canli(repo: &Path, repo_s: &str, dk: i128, simdi: &DateTime<Local>) -> R
     Ok(r)
 }
 
-/// Python `re.search(r"(?i)\b(SAHADA|AÇIK|KOŞUYOR|YARIM)\b", t[:1500])`: IGNORECASE'in `i`/`ı`/`İ` denkliği dahil.
+/// Pipeline dosyasının durum alanları (kalem E29): (1) satır başındaki `Durum: X` / `**Durum:** X` satırı,
+/// (2) başlık satırında `durum` sütunu olan tabloların o sütundaki hücreleri. Düz yazı ("açık borçlar") ve
+/// kütük/iş sütunundaki eski "SAHADA" satırı durum alanı sayılmaz; dosyanın tamamı taranır (1500 sınırı kalktı).
+fn durum_alanlari(t: &str) -> Vec<String> {
+    fn sade(h: &str) -> String {
+        h.trim_matches(|c: char| c == '*' || c == '_' || c == '`' || c.is_whitespace()).to_lowercase()
+    }
+    let mut alanlar: Vec<String> = vec![];
+    let mut sutun: Option<usize> = None;
+    for satir in t.lines() {
+        let s = satir.trim();
+        if s.starts_with('|') {
+            let hucreler: Vec<&str> = s.trim_matches('|').split('|').map(|h| h.trim()).collect();
+            if let Some(i) = hucreler.iter().position(|h| sade(h) == "durum") {
+                sutun = Some(i);
+                continue;
+            }
+            if let Some(h) = sutun.and_then(|i| hucreler.get(i)) {
+                // ayraç satırı (`---`, `:--:`) durum değildir
+                if !h.chars().all(|c| matches!(c, '-' | ':' | ' ')) {
+                    alanlar.push(h.to_string());
+                }
+            }
+            continue;
+        }
+        sutun = None;
+        let govde = s.trim_start_matches(|c: char| matches!(c, '*' | '_' | '-' | '>' | ' '));
+        if govde.get(..5).is_some_and(|b| b.eq_ignore_ascii_case("durum")) {
+            let kalan = govde[5..].trim_start_matches(|c: char| matches!(c, '*' | '_' | ' '));
+            if let Some(deger) = kalan.strip_prefix(':') {
+                alanlar.push(deger.to_string());
+            }
+        }
+    }
+    alanlar
+}
+
+/// Durum alanlarından biri açık kelimesi taşıyorsa pipeline açık görünür (kalem E29).
+/// Kapalı jetonla (`DONE`, `TAMAM`, `KAPANDI`, ✅) başlayan alan açık sayılmaz: "DONE ... PR #2 (AÇIK; merge Salih'te)"
+/// hücresindeki AÇIK PR'ın durumudur, pipeline'ın değil.
 fn acik_gorunuyor(t: &str) -> bool {
+    fn kapali_basliyor(a: &str) -> bool {
+        let g = a.trim_start_matches(|c: char| c == '*' || c == '_' || c == '`' || c.is_whitespace());
+        if g.starts_with('✅') {
+            return true;
+        }
+        let ilk: String = g.chars().take_while(|c| c.is_alphanumeric()).collect();
+        ["DONE", "TAMAM", "KAPANDI"].contains(&ilk.to_uppercase().as_str())
+    }
+    durum_alanlari(t).iter().any(|a| !kapali_basliyor(a) && acik_kelime_var(a))
+}
+
+/// Python `re.search(r"(?i)\b(SAHADA|AÇIK|KOŞUYOR|YARIM)\b", a)`: IGNORECASE'in `i`/`ı`/`İ` denkliği dahil.
+fn acik_kelime_var(t: &str) -> bool {
     fn kat(c: char) -> char {
         let mut l = c.to_lowercase();
         let ilk = l.next().unwrap_or(c);
@@ -219,7 +271,7 @@ fn acik_gorunuyor(t: &str) -> bool {
     fn kelime(c: char) -> bool {
         c.is_alphanumeric() || c == '_'
     }
-    let ham: Vec<char> = t.chars().take(1500).collect();
+    let ham: Vec<char> = t.chars().collect();
     let k: Vec<char> = ham.iter().map(|&c| kat(c)).collect();
     let kelimeler: Vec<Vec<char>> = ["SAHADA", "AÇIK", "KOŞUYOR", "YARIM"].iter().map(|s| s.chars().map(kat).collect()).collect();
     for i in 0..ham.len() {
@@ -404,4 +456,41 @@ pub fn kos(argv: &[String]) -> i32 {
     let al = |k: &str| v.get(k).and_then(Value::as_str).unwrap_or("-").to_string();
     py::print(&format!("  [{}] K3 silver — silver {} / HEAD {} ({}) {}", s(v, "durum"), al("silver_sha"), al("head"), al("uretim"), s(v, "not")));
     kod
+}
+
+#[cfg(test)]
+mod testler {
+    use super::acik_gorunuyor;
+
+    #[test]
+    fn durum_alani_disindaki_kelime_acik_saymaz() {
+        // düz yazı ve iş sütunundaki eski "SAHADA" kütük satırı
+        let t = "# Pipeline Durumu\n\nhedef açık borçlar\n\n| # | ne | durum |\n|---|---|---|\n| SH-0 | Manifest SAHADA | DONE |\n";
+        assert!(!acik_gorunuyor(t));
+    }
+
+    #[test]
+    fn durum_sutunu_ve_satiri_acik_sayar() {
+        assert!(acik_gorunuyor("| # | İş | **Durum** |\n|---|---|---|\n| S-1 | x | **SAHADA** (seans-3) |\n"));
+        assert!(acik_gorunuyor("# M\nDurum: yarım kaldı\n"));
+        assert!(acik_gorunuyor("# M\n**Durum:** KOŞUYOR\n"));
+        assert!(!acik_gorunuyor("# M\nDurum: DONE\n"));
+    }
+
+    #[test]
+    fn uzun_tablodaki_durum_da_okunur() {
+        let t = format!("{}\n| # | durum |\n|---|---|\n| S-5 | AÇIK |\n", "x".repeat(2000));
+        assert!(acik_gorunuyor(&t));
+    }
+}
+
+#[cfg(test)]
+mod testler_kapali {
+    use super::acik_gorunuyor;
+
+    #[test]
+    fn kapali_jetonla_baslayan_hucre_acik_saymaz() {
+        assert!(!acik_gorunuyor("| # | durum |\n|---|---|\n| SH-3 | **DONE — PR #2 (AÇIK; merge Salih'te)** |\n"));
+        assert!(!acik_gorunuyor("| # | durum |\n|---|---|\n| SH-0 | ✅ SAHADA damgası |\n"));
+    }
 }
