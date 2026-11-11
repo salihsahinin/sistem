@@ -1,16 +1,18 @@
 # friday — Jarvis'in icra ekip-lideri (v0.2, 2026-09-09; Jarvis Karar 91 + EK)
 
-**Friday** = Jarvis'in (`~/sistem/jarvis`, Fable ana-oturum) devrettiği proje-ölçekli icra işlerini (çift-atlas araştırma · refactor/taşıma · doküman üretimi · ölçüm koşumları) Sonnet işçi filosuyla yürüten **Opus 5 (effort medium) lider-ajan**. Hafıza mimarisi Jarvis'inkiyle aynı; kural kaynağı kök `../AGENTS.md` (Karar 101, 09-18; eski `kanon/` symlink emekli). Jarvis bu dizini ingest etmez; Friday `jarvis/**` okumaz.
+**Durum: uykuda** (Karar 130, 2026-11-11). Uyandırma = şablondan yeniden doğum (`alan-ajani-dogur`). Lider işi oda ve fork oturumla yürür.
+
+**Friday** = Jarvis'in (`C:/sistem/sistem/jarvis`, Fable ana-oturum) devrettiği proje-ölçekli icra işlerini (çift-atlas araştırma · refactor/taşıma · doküman üretimi · ölçüm koşumları) Sonnet işçi filosuyla yürüten **Opus 5.5 (effort medium) lider-ajan**. Hafıza mimarisi Jarvis'inkiyle aynı; kural kaynağı kök `../AGENTS.md` (Karar 101, 09-18; eski `kanon/` symlink emekli). Jarvis bu dizini ingest etmez; Friday `jarvis/**` okumaz.
 
 ## Kuruluş (bir kez)
 ```bash
-cd ~/sistem/friday && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
+cd C:/sistem/sistem/friday && chmod +x .claude/hooks/*.sh && bash .claude/hooks/okuma-izin-test.sh | tail -1
 ```
-Depo monorepo `~/sistem` (Karar 101): Friday tarihi `git subtree` ile taşındı (09-18). Kanon kökten okunur (`../AGENTS.md`); `jarvis/**` yazma da okuma da settings deny + hook ile kesilir.
+Depo monorepo `C:/sistem/sistem` (Karar 101): Friday tarihi `git subtree` ile taşındı (09-18). Kanon kökten okunur (`../AGENTS.md`); `jarvis/**` yazma da okuma da settings deny + hook ile kesilir.
 
 ## Koşum döngüsü
 1. Jarvis (Fable) `cc/gelen/<devir_id>.json` yazar (şema `../sablonlar/devir-birimi-v0.json`, kök şablon) + gerekirse envanter dosyası (Friday'in Jarvis'e bakan gözü).
-2. Salih bu klasörde Opus 5 medium oturumu açar: "seans başı" → ritüel → devir birimi.
+2. Salih bu klasörde Opus 5.5 medium oturumu açar: "seans başı" → ritüel → devir birimi.
 3. Friday koşar (CLAUDE.md · `core/rol.md` · kapsül · desenler); işçiler Sonnet, hakem ayrı çağrı.
 4. Çıktı `cc/giden/<devir_id>-geri-donus.md` (+ teslim dosyaları); Jarvis tarafı `cc/devir/`e kopyalar, yerleştirir.
 5. Tasarım diyaloğu: Friday `cc/giden/tasarim-*.md` yazar → Salih Fable'a taşır → cevap `cc/gelen/tasarim-*-cevap.md`. İki bağlam birbirini okumaz.
@@ -27,6 +29,6 @@ Depo monorepo `~/sistem` (Karar 101): Friday tarihi `git subtree` ile taşındı
 | `arsiv/` | arsiv | silme yok (m.8) |
 
 ## Denetim (deterministik)
-- Okuma kilidi: `echo '{"tool_name":"Read","tool_input":{"file_path":"/Users/HasanSalihSahin/jarvis/kuyruk/senaryo-defteri.md"}}' | CLAUDE_PROJECT_DIR=$PWD bash .claude/hooks/okuma-izin.sh; echo exit=$?` → 2 (RED); `kanon/tuzuk-v0.md` → 0.
+- Okuma kilidi: `echo '{"tool_name":"Read","tool_input":{"file_path":"C:/sistem/sistem/jarvis/kuyruk/senaryo-defteri.md"}}' | CLAUDE_PROJECT_DIR=$PWD bash .claude/hooks/okuma-izin.sh; echo exit=$?` → 2 (RED); `kanon/tuzuk-v0.md` → 0.
 - Friday neyi okudu: `python3 -c "import json;print(sorted({json.loads(l)['yol'] for l in open('veri/bronz/hareket-olay.jsonl') if json.loads(l)['yol']}))"`.
 - Kapsül: `wc -c core/durum-kapsulu.md` ≤ 4096 · `grep -c '^- ' core/durum-kapsulu.md` ≤ 8.
