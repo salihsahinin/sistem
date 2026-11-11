@@ -32,6 +32,6 @@ Pipeline, değişikliği hedefe götürmeden önce bulgularını ÜÇ sınıfa a
 
 ## İlgili
 
-[[paralel-oturum-protokolu]] — Gotcha 4'ün kural tabanı · [[olcum-banki]] — koşum dörtlüsünün bir kaynağı `~/.no-mistakes/` durumu (`tools/olcum-dortlu.py`) · [[gnhf]] · [[treehouse]] — L8 araç üçlüsünün diğer ikisi (sayfaları kuyrukta).
+[[paralel-oturum-protokolu]] — Gotcha 4'ün kural tabanı · [[olcum-banki]] — koşum dörtlüsünün bir kaynağı `~/.no-mistakes/` durumu (`tools/olcum-dortlu.py`) · [[gnhf]] · treehouse — L8 araç üçlüsünün diğer ikisi (sayfaları kuyrukta).
 
 **Bağlantılar:** · [[dil-secimi]] (karşı-link 08-26)
