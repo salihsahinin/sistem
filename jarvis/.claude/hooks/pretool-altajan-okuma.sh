@@ -8,7 +8,7 @@
 # Emrin `baglam` listesi bir gün hook'a ulaşırsa (ortam değişkeni / .aktif-emir dosyası) izin-listesi moduna geçilir; v0 = yasak-listesi.
 . "$(dirname "${BASH_SOURCE[0]}")/rust-yonlendir.sh" pretool-altajan-okuma   # Rust varsa exec; yoksa aşağısı (durum #1)
 # Karar 118 M2 (Salih 2026-10-17; icra 2026-10-30): Python gövdesi arsiv/kod/python/hooks/pretool-altajan-okuma.sh'a indi (m.8: taşındı, silinmedi).
-# Buraya düşüldüyse jarvis-hook ikilisi yok (ya da JARVIS_HOOK_PYTHON=1): uyarı ver, hiçbir şeyi engelleme, sessiz çık.
+# Buraya düşüldüyse jarvis-hook ikilisi yok (ya da JARVIS_HOOK_PYTHON=1). Kilit hook'u (Karar 130 A5): ikilisiz kilit açık kalmaz, çıkış 2.
 cat > /dev/null
-echo "jarvis-hook yok (pretool-altajan-okuma): önce cargo build --release -p jarvis-hook (Karar 118 M2; eski Python gövdesi arsiv/kod/python/hooks/pretool-altajan-okuma.sh)" >&2
-exit 0
+echo "jarvis-hook yok (pretool-altajan-okuma, kilit): işlem kesildi; önce şunu koş: cargo build --release -p jarvis-hook (Karar 130 A5)" >&2
+exit 2
