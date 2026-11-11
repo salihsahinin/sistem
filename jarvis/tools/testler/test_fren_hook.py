@@ -20,8 +20,9 @@ def kos(repo, tool="Agent", sid="s1", env=None):
 
 
 def olaylar(repo):
-    p = os.path.join(repo, "veri", "bronz", "fren-olay.jsonl")
-    return [json.loads(l) for l in open(p, encoding="utf-8")] if os.path.exists(p) else []
+    # aylık kütük veri/bronz/fren-olay/<YYYY-MM>.jsonl (Karar 130 D23)
+    d = os.path.join(repo, "veri", "bronz", "fren-olay")
+    return [json.loads(l) for n in (sorted(os.listdir(d)) if os.path.isdir(d) else []) for l in open(os.path.join(d, n), encoding="utf-8")]
 
 
 def yalit_kur():

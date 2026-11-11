@@ -21,7 +21,7 @@ class DevirAniTest(unittest.TestCase):
         os.makedirs(os.path.join(self.tmp, "veri", "gorunum"))
         os.makedirs(os.path.join(self.tmp, "veri", "bronz"))
         self.girdi = os.path.join(self.tmp, "veri", "gorunum", "v_baglam_seyri.csv")
-        self.cikti = os.path.join(self.tmp, "veri", "bronz", "devir-ani-olay.jsonl")
+        self.cikti = os.path.join(self.tmp, "veri", "bronz", "devir-ani-olay", __import__("datetime").datetime.now().strftime("%Y-%m") + ".jsonl")  # aylık kütük (Karar 130 D23)
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)

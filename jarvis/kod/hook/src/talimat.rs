@@ -1,5 +1,5 @@
 //! `instructions-loaded.sh` karşılığı: InstructionsLoaded olayını `veri/bronz/talimat-yukleme-olay.jsonl`e kütükler (çıkış hep 0).
-use crate::ortak::{Ortam, Sonuc, ekle_satir, ilk_n, json_oku, py_dumps, py_or, ts_utc};
+use crate::ortak::{Ortam, Sonuc, ilk_n, json_oku, py_dumps, py_or, ts_utc};
 use serde_json::{Map, Value, json};
 
 pub fn kos(o: &Ortam) -> Sonuc {
@@ -25,7 +25,6 @@ pub fn kos(o: &Ortam) -> Sonuc {
     kayit.insert("dosya".into(), py_or(&d, &["file_path", "path", "file"]));
     kayit.insert("cwd".into(), get("cwd"));
     kayit.insert("ham_alanlar".into(), json!(anahtarlar));
-    let yol = o.repo.join("veri").join("bronz").join("talimat-yukleme-olay.jsonl");
-    let _ = ekle_satir(&yol, &py_dumps(&Value::Object(kayit)));
+    let _ = crate::ortak::bronz_ekle(&o.repo, "talimat-yukleme-olay", &py_dumps(&Value::Object(kayit)));
     s
 }

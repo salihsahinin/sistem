@@ -41,7 +41,13 @@ fn mtime_ns(md: &std::fs::Metadata) -> i128 {
 }
 
 fn dosya_boyut(yol: &str) -> Option<u64> {
-    std::fs::metadata(yol).ok().map(|m| m.len())
+    let m = std::fs::metadata(yol).ok()?;
+    if m.is_dir() {
+        // aylık bronz kütük dizini (Karar 130 D23): ay dosyalarının toplam boyutu
+        let p = std::path::Path::new(yol);
+        return jarvis_ortak::bronz::boyut(p.parent()?, p.file_name()?.to_str()?);
+    }
+    Some(m.len())
 }
 
 /// Durum dosyasının yolu: `<repo>/veri/transkript-durum-<adim>.json`.

@@ -52,6 +52,15 @@ class PromptDosyaTest(unittest.TestCase):
         self.assertIn("UYARI", out); self.assertIn("md.49", out)
         self.assertNotIn("Silme yasağı", out)  # m.8 anılmadı
 
+    def test_defter_parcali(self):
+        # Karar 130 D26: defter ana dosya + `@` parçaları; karar parçada durur.
+        with open(os.path.join(self.repo, "kuyruk", "senaryo-defteri.md"), "w", encoding="utf-8") as f:
+            f.write("# Defter\n@p1.md\n")
+        with open(os.path.join(self.repo, "kuyruk", "p1.md"), "w", encoding="utf-8") as f:
+            f.write("**Karar 77 (2026-11-11):**\n- parça içi\n")
+        out = self._kos("karar 77 nedir").stdout
+        self.assertIn("Karar 77", out); self.assertIn("- parça içi", out); self.assertNotIn("@p1.md", out)
+
     def test_eslesme_yok_bos_ve_kutuksuz(self):
         r = self._kos("merhaba, bugün hava güzel")
         self.assertEqual(r.stdout.strip(), ""); self.assertEqual(r.returncode, 0)

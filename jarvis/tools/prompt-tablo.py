@@ -13,6 +13,8 @@ Sınır: md.49 — yalnız BU projenin (jarvis) transkriptleri; staj dizini tara
 """
 import argparse, csv, glob, json, os, re, sqlite3, subprocess, sys
 import harness_anahtar
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bronz_ay  # aylık bronz kütük (Karar 130 D23)
 from datetime import datetime, timezone, timedelta
 
 TR = timezone(timedelta(hours=3))
@@ -100,28 +102,27 @@ def main():
 
     # --- BRONZ ---
     olaylar = bronz_topla(a.proje_dizin)
-    bdir = os.path.join(repo, "veri", "bronz"); byol = os.path.join(bdir, "prompt-olay.jsonl")
+    bdir = os.path.join(repo, "veri", "bronz"); byol = os.path.join(bdir, "prompt-olay")
     mevcut = set()
-    if os.path.exists(byol):
-        for l in open(byol, encoding="utf-8"):
+    if True:
+        for l in bronz_ay.satirlar(bdir, "prompt-olay"):
             if l.startswith("{"):
                 try: mevcut.add(json.loads(l)["uuid"])
                 except Exception: pass
     yeni = [o for o in olaylar if o["uuid"] not in mevcut]
     if not a.kuru:
-        os.makedirs(bdir, exist_ok=True)
-        if not os.path.exists(byol):
-            with open(byol, "w", encoding="utf-8") as fh:
-                fh.write("# veri/bronz/prompt-olay.jsonl — BRONZ: Salih prompt olay kütüğü (ham metin DEĞİŞTİRİLMEZ; append-only; tekil anahtar uuid; provenans kaynak_dosya+ts). Üretici tools/prompt-tablo.py. md.49: yalnız jarvis transkriptleri.\n")
-        with open(byol, "a", encoding="utf-8") as fh:
-            for o in yeni:
-                fh.write(json.dumps({**o, "kaynak_dosya": os.path.basename(o["kaynak_dosya"]), "yuklendi_head": head}, ensure_ascii=False) + "\n")
+        tampon = []
+        if not bronz_ay.var_mi(bdir, "prompt-olay"):
+            if True:
+                tampon.append("# veri/bronz/prompt-olay.jsonl — BRONZ: Salih prompt olay kütüğü (ham metin DEĞİŞTİRİLMEZ; append-only; tekil anahtar uuid; provenans kaynak_dosya+ts). Üretici tools/prompt-tablo.py. md.49: yalnız jarvis transkriptleri.\n")
+        for o in yeni:
+            tampon.append(json.dumps({**o, "kaynak_dosya": os.path.basename(o["kaynak_dosya"]), "yuklendi_head": head}, ensure_ascii=False) + "\n")
+        bronz_ay.ekle(bdir, "prompt-olay", "".join(tampon))
 
     # --- SİLVER ---
     hepsi = []
-    if os.path.exists(byol):
-        for l in open(byol, encoding="utf-8"):
-            if l.startswith("{"): hepsi.append(json.loads(l))
+    for l in bronz_ay.satirlar(bdir, "prompt-olay"):
+        if l.startswith("{"): hepsi.append(json.loads(l))
     if a.kuru: hepsi = hepsi + [{**o, "kaynak_dosya": os.path.basename(o["kaynak_dosya"])} for o in yeni]
     # oturum içi sıra + tipler
     _g, _t = set(), []

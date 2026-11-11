@@ -4,7 +4,7 @@
 //! depo kökünün kendisi ve doğrudan altındaki dosyalar serbest; ev ve depo kökü dışındaki sistem yolları serbest; geri kalanı çıkış 2.
 //! v0.6'ya göre üç düzeltme: (a) Git Bash `/c/` ve `/cygdrive/c/` önekleri çözümden önce `C:/` olur (Windows)
 //! (b) fail-closed: stdin JSON nesnesi değilse (boş dahil) çıkış 2 (c) `std::env::temp_dir()` izinli geçici dizinlere eklenir.
-use crate::ortak::{Ortam, Sonuc, ekle_satir, ev_dizini, ilk_n, oku_py, py_dumps, py_isabs, py_truthy, realpath, sep, ts_yerel};
+use crate::ortak::{Ortam, Sonuc, ev_dizini, ilk_n, oku_py, py_dumps, py_isabs, py_truthy, realpath, sep, ts_yerel};
 use regex::Regex;
 use serde_json::{Map, Value, json};
 use std::path::{Path, PathBuf};
@@ -345,6 +345,11 @@ pub fn kos(o: &Ortam) -> Sonuc {
             r("core", "durum-kapsulu.md"),
             r("core", "pano.md"),
             r("kuyruk", "senaryo-defteri.md"),
+            r("kuyruk", "senaryo-defteri-k100.md"),
+            r("kuyruk", "senaryo-defteri-k104.md"),
+            r("kuyruk", "senaryo-defteri-k112.md"),
+            r("kuyruk", "senaryo-defteri-k118.md"),
+            r("kuyruk", "senaryo-defteri-k124.md"),
             r("kuyruk", "fikir-kutusu.md"),
             r("veri", "bronz"),
             r("cc", "gelen"),
@@ -368,7 +373,7 @@ pub fn kos(o: &Ortam) -> Sonuc {
                 };
                 let satir = json!({"ts": ts_yerel(), "oturum": oturum, "agent_id": agent_id, "agent_type": agent_type,
                     "arac": arac, "reddedilen": kotu2, "kaynak": KAYNAK});
-                let _ = ekle_satir(&k.repo.join("veri").join("bronz").join("altajan-okuma-olay.jsonl"), &py_dumps(&satir));
+                let _ = crate::ortak::bronz_ekle(&k.repo, "altajan-okuma-olay", &py_dumps(&satir));
             }
             s.hata = format!(
                 "ALT-AJAN OKUMA KİLİDİ (Karar 99 M2 · 100 M3): işçi, liderin bağlam penceresini ve başka devirlerin emirlerini okuyamaz (kapsül · pano · defter · kutu · kütükler · cc/gelen · transkriptler; kendi tool-results'ı muaf). Reddedilen: {}\n",

@@ -249,11 +249,12 @@ fn d2_damga_varligi(yol: &str, metin: &str) -> Sn<Vec<Bulgu>> {
 /// Bronz `veri/bronz/cekim-olay.jsonl` → {dosya_id: en yeni cekim_tarihi}; dosya yoksa boş.
 fn cekim_olaylari(repo: &str) -> Sn<std::collections::HashMap<String, NaiveDate>> {
     let mut out = std::collections::HashMap::new();
-    let yol = py::join(&py::join(&py::join(repo, "veri"), "bronz"), "cekim-olay.jsonl");
-    if !Path::new(&yol).exists() {
+    let bronz = py::join(&py::join(repo, "veri"), "bronz");
+    let yol = py::join(&bronz, "cekim-olay");
+    let Some(okunan) = jarvis_ortak::bronz::oku_kati(Path::new(&bronz), "cekim-olay") else {
         return Ok(out);
-    }
-    let metin = match py::oku_kati(Path::new(&yol)) {
+    };
+    let metin = match okunan {
         Ok(m) => m,
         Err(py::OkuHata::Io(e)) => return Err(format!("OSError: {yol}: {e}")),
         Err(py::OkuHata::Kod) => return Err(format!("UnicodeDecodeError: {yol}")),

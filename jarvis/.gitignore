@@ -33,3 +33,9 @@ kuyruk/galeri-siralama/
 .lavish/
 # Harness resume checkpoint (oturum-yerel, türev)
 .claude/RESUME.md
+
+# Yeniden üretilebilir türevler (Karar 130 D23): her katman-hatti koşumunda yeniden yazılır, geçmişini okuyan kod yok
+veri/erisim-eval.jsonl
+veri/anakronizm-denetim.jsonl
+veri/katman-olcum.jsonl
+graf/pointer-sistemi-v0-*

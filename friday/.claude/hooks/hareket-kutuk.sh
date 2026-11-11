@@ -42,8 +42,9 @@ satir = {"ts": datetime.datetime.now(datetime.timezone.utc).astimezone().isoform
          "agent_id": g.get("agent_id") or "", "agent_type": g.get("agent_type") or "",
          "arac": arac, "yol": yol, "komut": kom_tam[:160],
          "hata": bool(tr.get("error")) if isinstance(tr, dict) else False}
-d = os.path.join(repo, "veri", "bronz"); os.makedirs(d, exist_ok=True)
-with open(os.path.join(d, "hareket-olay.jsonl"), "a", encoding="utf-8") as f:
+# aylık kütük veri/bronz/hareket-olay/<YYYY-MM>.jsonl (Karar 130 D23; ay kaydın ts alanından)
+d = os.path.join(repo, "veri", "bronz", "hareket-olay"); os.makedirs(d, exist_ok=True)
+with open(os.path.join(d, satir["ts"][:7] + ".jsonl"), "a", encoding="utf-8") as f:
     f.write(json.dumps(satir, ensure_ascii=False) + "\n")
 EOF
 exit 0

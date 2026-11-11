@@ -25,6 +25,8 @@ Oturum: hook her mesajda state/son-oturum.txt'ye session_id yazar; --sec onu oku
 Çıkış: hook modunda her zaman 0 (prompt'u asla engellemez) · --denetle: 0 temiz · 1 ihlal · 2 manifest okunamadı.
 Yazar (eklemeli): durum dosyası · `veri/bronz/paket-olay.jsonl` (karar başına tek satır). `--kuru` ikisini de yazmaz."""
 import argparse, datetime, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bronz_ay  # aylık bronz kütük (Karar 130 D23)
 
 KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SURUM = "0.2"
@@ -246,12 +248,9 @@ def sec(niyetler, man, durum, repo):
 
 
 def kutuge_yaz(repo, oturum, satirlar, ek_alan=None):
-    kutuk = os.path.join(repo, "veri", "bronz", "paket-olay.jsonl")
-    os.makedirs(os.path.dirname(kutuk), exist_ok=True)
     ts = datetime.datetime.now(datetime.timezone.utc).astimezone().isoformat(timespec="seconds")
-    with open(kutuk, "a", encoding="utf-8") as f:
-        for olay in satirlar:
-            f.write(json.dumps(dict({"ts": ts, "oturum": oturum}, **olay, **(ek_alan or {})), ensure_ascii=False) + "\n")
+    bronz_ay.ekle(os.path.join(repo, "veri", "bronz"), "paket-olay",
+                  "".join(json.dumps(dict({"ts": ts, "oturum": oturum}, **olay, **(ek_alan or {})), ensure_ascii=False) + "\n" for olay in satirlar))
 
 
 def main():

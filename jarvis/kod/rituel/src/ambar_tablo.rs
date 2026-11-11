@@ -91,6 +91,15 @@ fn satirlar(yol: &Path) -> std::io::Result<Vec<String>> {
 }
 
 /// `{` ile başlayan satırları JSON olarak okur (bozuk JSON Python'da çöker).
+/// `jsonl_oku`'nun aylık bronz kütük karşılığı (Karar 130 D23): bütün ay dosyaları ad sırasıyla; kütük yoksa boş.
+fn bronz_jsonl_oku(bronz: &str, ad: &str) -> Sonuc<Vec<Map<String, Value>>> {
+    let mut r = vec![];
+    for d in jarvis_ortak::bronz::ay_dosyalari(Path::new(bronz), ad) {
+        r.extend(jsonl_oku(&d)?);
+    }
+    Ok(r)
+}
+
 fn jsonl_oku(yol: &Path) -> Sonuc<Vec<Map<String, Value>>> {
     let mut r = vec![];
     if !yol.exists() {
@@ -576,10 +585,11 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
     let re_aile = Regex::new(r"aile\s+([A-Z]{1,3})\b").map_err(hata)?;
 
     // --- BRONZ: koşum olayları (append-only, tekil kosum_id) ---
-    let byol = py::join(&py::join(&py::join(&repo, "veri"), "bronz"), "kosum-olay.jsonl");
+    let bronz_d = py::join(&py::join(&repo, "veri"), "bronz");
+    let byol = py::join(&bronz_d, "kosum-olay");
     let mut mevcut: Vec<Map<String, Value>> = vec![];
     let mut dizin: HashMap<String, usize> = HashMap::new();
-    for d in jsonl_oku(Path::new(&byol))? {
+    for d in bronz_jsonl_oku(&bronz_d, "kosum-olay")? {
         let Some(Value::String(k)) = d.get("kosum_id").cloned() else { return Err("kosum_id yok".into()) };
         match dizin.get(&k) {
             Some(&i) => mevcut[i] = d,
@@ -603,24 +613,22 @@ fn calis(a: &crate::argparse::Sonuc) -> Sonuc<i32> {
         let bd = py::join(&py::join(&repo, "veri"), "bronz");
         std::fs::create_dir_all(&bd).map_err(|e| format!("{bd}: {e}"))?;
         let mut metin = String::new();
-        if !Path::new(&byol).exists() {
+        if !jarvis_ortak::bronz::var_mi(Path::new(&bronz_d), "kosum-olay") {
             metin.push_str("# veri/bronz/kosum-olay.jsonl — BRONZ: işçi-ajan koşum olayları (Workflow/Agent alt-ajan transkriptlerinden; 1 satır = 1 ajan koşumu; append-only; tekil anahtar kosum_id; token alanları ham usage). Üretici tools/ambar-tablo.py.\n");
         }
         for o in &yeni {
             metin.push_str(&py_dumps(&Value::Object(damga(o))));
             metin.push('\n');
         }
-        use std::io::Write;
-        let mut f = std::fs::OpenOptions::new().create(true).append(true).open(&byol).map_err(|e| format!("{byol}: {e}"))?;
-        f.write_all(metin.as_bytes()).map_err(hata)?;
+        jarvis_ortak::bronz::ekle(Path::new(&bronz_d), "kosum-olay", &metin).map_err(|e| format!("{byol}: {e}"))?;
     }
     let mut hepsi: Vec<Map<String, Value>> = mevcut;
     hepsi.extend(yeni.iter().map(|o| damga(o)));
 
     // --- BRONZ: tahmin olayları + koşum hükümleri (yalnız okunur) ---
     let bronz = py::join(&py::join(&repo, "veri"), "bronz");
-    let tahminler = jsonl_oku(Path::new(&py::join(&bronz, "tahmin-olay.jsonl")))?;
-    let hukumler = jsonl_oku(Path::new(&py::join(&bronz, "kosum-sonuc.jsonl")))?;
+    let tahminler = bronz_jsonl_oku(&bronz, "tahmin-olay")?;
+    let hukumler = bronz_jsonl_oku(&bronz, "kosum-sonuc")?;
 
     if kuru {
         let wf: HashSet<&str> = olaylar.iter().filter_map(|o| o.get("wf_id").and_then(|v| v.as_str())).filter(|s| !s.is_empty()).collect();

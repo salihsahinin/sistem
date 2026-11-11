@@ -1,5 +1,5 @@
 //! `pretool-ajan-fren.sh` karşılığı: Agent çağrısı sayacı, UYARI/DURDUR eşikleri (çıkış 2 = engel).
-use crate::ortak::{Ortam, Sonuc, ilk_n, py_dumps, ts_istanbul, ekle_satir, json_oku};
+use crate::ortak::{Ortam, Sonuc, ilk_n, py_dumps, ts_istanbul, json_oku};
 use serde_json::{Map, Value, json};
 
 const REJIM: &str = "manuel-tempo · kota-bol · ekonomi -%30 (08-15) · AS-OF 2026-08-29";
@@ -55,7 +55,7 @@ pub fn kos(o: &Ortam) -> Sonuc {
         ] {
             m.insert(k.into(), v);
         }
-        let _ = ekle_satir(&o.repo.join("veri").join("bronz").join("fren-olay.jsonl"), &py_dumps(&Value::Object(m)));
+        let _ = crate::ortak::bronz_ekle(&o.repo, "fren-olay", &py_dumps(&Value::Object(m)));
     };
     let durum_yaz = |uy: bool| {
         let v = json!({"sayac": n, "uyari_yazildi": uy});

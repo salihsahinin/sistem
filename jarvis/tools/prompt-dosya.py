@@ -20,6 +20,8 @@ Bütçe: eşleşme başına ≤ PARCA_BAYT, prompt başına ≤ TOPLAM_BAYT (KB-
 Kullanım: echo '{"prompt":"…"}' | python3 tools/prompt-dosya.py [--tablo YOL] [--repo YOL] [--kuru] [--json]
 Çıkış kodu her zaman 0 (hook prompt'u asla engellemez)."""
 import argparse, datetime, glob, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bronz_ay  # aylık bronz kütük (Karar 130 D23)
 
 KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PARCA_BAYT = 1500
@@ -61,7 +63,8 @@ def kaynak_getir(repo, kaynak):
         return None
     if kaynak.startswith("defter:"):
         n = kaynak[7:]
-        L = _oku(repo, "kuyruk/senaryo-defteri.md") or []
+        from baglam_oku import defter_metni  # Karar 130 D26: defter ana dosya + `@` parçaları
+        L = (defter_metni(repo) or "").split("\n")
         for i, s in enumerate(L):
             if s.startswith(f"**Karar {n} ("):
                 return (f"kuyruk/senaryo-defteri.md Karar {n}", "\n".join(L[i:i + 4]))
@@ -181,12 +184,10 @@ def main():
     elif metin:
         print(metin)
     if parcalar and not a.kuru:
-        kutuk = os.path.join(a.repo, "veri", "bronz", "prompt-dosya-olay.jsonl")
-        os.makedirs(os.path.dirname(kutuk), exist_ok=True)
         ts = datetime.datetime.now(datetime.timezone.utc).astimezone().isoformat(timespec="seconds")
-        with open(kutuk, "a", encoding="utf-8") as f:
+        if True:
             for p in parcalar:
-                f.write(json.dumps({"ts": ts, "oturum": oturum, "anahtar": p["anahtar"], "kaynak": p["kaynak"],
+                bronz_ay.ekle(os.path.join(a.repo, "veri", "bronz"), "prompt-dosya-olay", json.dumps({"ts": ts, "oturum": oturum, "anahtar": p["anahtar"], "kaynak": p["kaynak"],
                                     "etiket": p["etiket"], "bayt": len(p["metin"].encode("utf-8")),
                                     "prompt_uzunluk": len(prompt)}, ensure_ascii=False) + "\n")
     return 0

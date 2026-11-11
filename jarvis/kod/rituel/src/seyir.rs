@@ -10,7 +10,6 @@ use jarvis_hook::ortak::{py_dumps, py_truthy};
 use rusqlite::{Connection, params_from_iter, types::Value as Sql, types::ValueRef};
 use serde_json::{Map, Value, json};
 use std::collections::{HashMap, HashSet};
-use std::io::Write;
 use std::path::Path;
 
 const ESIK_128K: i64 = 128_000;
@@ -414,10 +413,12 @@ fn gorunum_csv(con: &Connection, ad: &str, yol: &str) -> Result<(), String> {
 // ---------------------------------------------------------------- ana akış
 
 fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool, tam: bool) -> Result<i32, String> {
-    let bronz_yol = py::join(&py::join(&py::join(repo, "veri"), "bronz"), "baglam-olay.jsonl");
+    // aylık kütük dizini veri/bronz/baglam-olay/<YYYY-MM>.jsonl (Karar 130 D23)
+    let bronz_dizin = py::join(&py::join(repo, "veri"), "bronz");
+    let bronz_yol = py::join(&bronz_dizin, "baglam-olay");
     let mut mevcut: HashMap<String, Kayit> = HashMap::new();
-    if Path::new(&bronz_yol).exists() {
-        let metin = match py::oku_kati(Path::new(&bronz_yol)) {
+    if let Some(okunan) = jarvis_ortak::bronz::oku_kati(Path::new(&bronz_dizin), "baglam-olay") {
+        let metin = match okunan {
             Ok(t) => t,
             Err(py::OkuHata::Io(e)) => return Err(format!("{bronz_yol}: {e}")),
             Err(py::OkuHata::Kod) => return Err(format!("{bronz_yol}: UnicodeDecodeError")),
@@ -447,13 +448,12 @@ fn calistir(proje_dizin: &str, repo: &str, kuru: bool, sessiz: bool, tam: bool) 
     if !kuru && !yeni.is_empty() {
         let dizin = py::join(&py::join(repo, "veri"), "bronz");
         std::fs::create_dir_all(&dizin).map_err(|e| format!("{dizin}: {e}"))?;
-        let mut f = std::fs::OpenOptions::new().append(true).create(true).open(&bronz_yol).map_err(|e| format!("{bronz_yol}: {e}"))?;
         let mut tampon = String::new();
         for o in &yeni {
             tampon.push_str(&py_dumps(&Value::Object(o.clone())));
             tampon.push_str(SATIR_SONU);
         }
-        f.write_all(tampon.as_bytes()).map_err(|e| format!("{bronz_yol}: {e}"))?;
+        jarvis_ortak::bronz::ekle(Path::new(&dizin), "baglam-olay", &tampon).map_err(|e| format!("{bronz_yol}: {e}"))?;
     }
     if !kuru {
         durum.kaydet(&durum_yol, &bronz_yol)?;

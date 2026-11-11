@@ -222,3 +222,9 @@ pub fn sondaki_nl_sil(s: &str) -> &str {
 pub fn json_oku(metin: &str) -> Option<Value> {
     serde_json::from_str(metin).ok()
 }
+
+/// Bronz kütüğe tek satır ekler: `<repo>/veri/bronz/<ad>/<YYYY-MM>.jsonl` (ay kaydın zaman damgasından; Karar 130 D23).
+/// Satır ve satır sonu tek yazımda gider (bkz. `ekle_satir`).
+pub fn bronz_ekle(repo: &Path, ad: &str, satir: &str) -> std::io::Result<()> {
+    jarvis_ortak::bronz::ekle(&repo.join("veri").join("bronz"), ad, &format!("{satir}\n"))
+}

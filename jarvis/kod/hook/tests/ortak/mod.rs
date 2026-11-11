@@ -81,7 +81,7 @@ pub fn kum(ad: &str, yan: &str) -> Kum {
             }
         }
     }
-    for r in ["tools/prompt-dosya.py", "tools/baglam_oku.py", "core/tuzuk-v0-m11.md", "core/tuzuk-v0-m17.md", "core/tuzuk-v0-m29.md", "core/tuzuk-v0-m30.md", "core/tuzuk-v0-m31.md", "core/tuzuk-v0-m32.md", "core/tuzuk-v0-m40.md", "core/tuzuk-v0-m41.md", "core/tuzuk-v0-m42.md", "core/tuzuk-v0-m43.md", "core/tuzuk-v0-m44.md", "core/tuzuk-v0-m45.md","core/tuzuk-v0-m46.md", "core/tuzuk-v0-m47.md","tools/paket-yonlendir.py", "core/prompt-dosya-tablosu.tsv", "core/baglam-paketleri.json", "core/tuzuk-v0.md", "core/durum-kapsulu.md", "core/pano.md", "core/ajan-metodolojisi.md", "core/ingest-semasi.md", "kuyruk/senaryo-defteri.md", "veri/karar-borcu.jsonl", "veri/model-kesim.jsonl"] {
+    for r in ["tools/prompt-dosya.py", "kuyruk/senaryo-defteri-k100.md", "kuyruk/senaryo-defteri-k104.md", "kuyruk/senaryo-defteri-k112.md", "kuyruk/senaryo-defteri-k118.md", "kuyruk/senaryo-defteri-k124.md", "tools/baglam_oku.py", "tools/bronz_ay.py", "core/tuzuk-v0-m11.md", "core/tuzuk-v0-m17.md", "core/tuzuk-v0-m29.md", "core/tuzuk-v0-m30.md", "core/tuzuk-v0-m31.md", "core/tuzuk-v0-m32.md", "core/tuzuk-v0-m40.md", "core/tuzuk-v0-m41.md", "core/tuzuk-v0-m42.md", "core/tuzuk-v0-m43.md", "core/tuzuk-v0-m44.md", "core/tuzuk-v0-m45.md","core/tuzuk-v0-m46.md", "core/tuzuk-v0-m47.md","tools/paket-yonlendir.py", "core/prompt-dosya-tablosu.tsv", "core/baglam-paketleri.json", "core/tuzuk-v0.md", "core/durum-kapsulu.md", "core/pano.md", "core/ajan-metodolojisi.md", "core/ingest-semasi.md", "kuyruk/senaryo-defteri.md", "veri/karar-borcu.jsonl", "veri/model-kesim.jsonl"] {
         kopya(&gj, &jarvis, r);
     }
     if let Ok(rd) = std::fs::read_dir(gj.join("kuyruk")) {
@@ -255,6 +255,18 @@ fn dosyalar(k: &Kum) -> BTreeMap<String, String> {
     let mut m = BTreeMap::new();
     for alt in ["veri", ".claude/hooks/state"] {
         gez(&k.jarvis.join(alt), &k.jarvis, k, &mut m);
+    }
+    // Aylık bronz kütük (Karar 130 D23): Rust `veri/bronz/<ad>/<YYYY-MM>.jsonl` yazar, arşivdeki Python gövdesi tek dosya;
+    // karşılaştırma için ay dosyaları ad sırasıyla `veri/bronz/<ad>.jsonl` anahtarında birleştirilir.
+    let aylik: Vec<String> = m.keys().filter(|r| r.starts_with("veri/bronz/") && r.matches('/').count() == 3).cloned().collect();
+    for r in aylik {
+        let t = m.remove(&r).unwrap_or_default();
+        let tek = format!("{}.jsonl", &r[..r.rfind('/').unwrap()]);
+        let e = m.entry(tek).or_default();
+        if !e.is_empty() && !e.ends_with('\n') && !t.is_empty() {
+            e.push('\n');
+        }
+        e.push_str(&t);
     }
     m
 }

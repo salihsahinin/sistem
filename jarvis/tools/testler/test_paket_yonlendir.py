@@ -32,7 +32,7 @@ class PaketYonlendirTest(unittest.TestCase):
         self.manifest = os.path.join(self.repo, "core", "baglam-paketleri.json")
         self._manifest_yaz(MANIFEST)
         self.durum = os.path.join(self.repo, "state")
-        self.kutuk = os.path.join(self.repo, "veri", "bronz", "paket-olay.jsonl")
+        self.kutuk = os.path.join(self.repo, "veri", "bronz", "paket-olay", __import__("datetime").datetime.now().strftime("%Y-%m") + ".jsonl")  # aylık kütük (Karar 130 D23)
 
     def _manifest_yaz(self, m):
         with open(self.manifest, "w", encoding="utf-8") as f:

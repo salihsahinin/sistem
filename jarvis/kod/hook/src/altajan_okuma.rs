@@ -1,5 +1,5 @@
 //! `pretool-altajan-okuma.sh` karşılığı: alt-ajan (agent_id var) başka bağlam pencerelerini okuyamaz (çıkış 2).
-use crate::ortak::{Ortam, Sonuc, ekle_satir, ev_dizini, ilk_n, json_oku, py_dumps, py_isabs, py_truthy, realpath, sep, ts_yerel};
+use crate::ortak::{Ortam, Sonuc, ev_dizini, ilk_n, json_oku, py_dumps, py_isabs, py_truthy, realpath, sep, ts_yerel};
 use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
 
@@ -168,10 +168,19 @@ pub fn kos(o: &Ortam) -> Sonuc {
         r("core").join("durum-kapsulu.md"),
         r("core").join("pano.md"),
         r("kuyruk").join("senaryo-defteri.md"),
+        r("kuyruk").join("senaryo-defteri-k100.md"),
+        r("kuyruk").join("senaryo-defteri-k104.md"),
+        r("kuyruk").join("senaryo-defteri-k112.md"),
+        r("kuyruk").join("senaryo-defteri-k118.md"),
+        r("kuyruk").join("senaryo-defteri-k124.md"),
         r("fikir-kutusu.md"),
+        // eski tek dosya yolları (fark testi uyumu) + aylık kütük dizinleri (Karar 130 D23)
         r("veri").join("bronz").join("hareket-olay.jsonl"),
         r("veri").join("bronz").join("baglam-olay.jsonl"),
         r("veri").join("bronz").join("altajan-okuma-olay.jsonl"),
+        r("veri").join("bronz").join("hareket-olay"),
+        r("veri").join("bronz").join("baglam-olay"),
+        r("veri").join("bronz").join("altajan-okuma-olay"),
         r("cc").join("gelen"),
         r("cc").join("devir"),
     ];
@@ -217,7 +226,7 @@ pub fn kos(o: &Ortam) -> Sonuc {
             let satir = json!({"ts": ts_yerel(), "oturum": sid, "agent_id": agent_id,
                 "agent_type": g.get("agent_type").cloned().unwrap_or(Value::Null), "arac": arac,
                 "reddedilen": kotu, "kaynak": "pretool-altajan-okuma.sh"});
-            let _ = ekle_satir(&o.repo.join("veri").join("bronz").join("altajan-okuma-olay.jsonl"), &py_dumps(&satir));
+            let _ = crate::ortak::bronz_ekle(&o.repo, "altajan-okuma-olay", &py_dumps(&satir));
         }
         s.hata = format!("ALT-AJAN OKUMA KİLİDİ (İB-83): alt-ajan başka bağlam penceresini okuyamaz (transkript · kapsül/pano/defter/kutu · kütükler · Friday · dış projeler). Reddedilen: {}\n", kotu.join(", "));
         s.kod = 2;

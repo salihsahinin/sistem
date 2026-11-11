@@ -15,7 +15,6 @@ use regex::Regex;
 use rusqlite::{Connection, params_from_iter, types::ValueRef};
 use serde_json::{Map, Value, json};
 use std::collections::{HashMap, HashSet};
-use std::io::Write;
 use std::path::Path;
 
 /// `Err` = Python'da yakalanmamış istisna olurdu (gerekçe metni).
@@ -802,13 +801,14 @@ fn calis(argv: &[String]) -> Result<i32, String> {
 
     // --- BRONZ ---
     let bdir = py::join(&py::join(&repo, "veri"), "bronz");
-    let byol = py::join(&bdir, "hareket-olay.jsonl");
+    // aylık kütük dizini veri/bronz/hareket-olay/<YYYY-MM>.jsonl (Karar 130 D23)
+    let byol = py::join(&bdir, "hareket-olay");
     let durum_yol = transkript_durum::yol(&repo, "hareket");
     let mut durum = transkript_durum::Durum::yukle(&durum_yol, &proje_dizin, &byol, tam);
     let olaylar = bronz_topla(&proje_dizin, &repo, &ev, &rx, &mut durum)?;
     let mut mevcut: HashSet<String> = HashSet::new();
-    if Path::new(&byol).exists() {
-        let t = py::oku_kati(Path::new(&byol)).map_err(|_| format!("{byol}: okunamadı ya da UTF-8 değil"))?;
+    if let Some(t) = jarvis_ortak::bronz::oku_kati(Path::new(&bdir), "hareket-olay") {
+        let t = t.map_err(|_| format!("{byol}: okunamadı ya da UTF-8 değil"))?;
         for l in t.split('\n') {
             if l.starts_with('{')
                 && let Ok(Value::Object(m)) = serde_json::from_str::<Value>(l)
@@ -821,25 +821,23 @@ fn calis(argv: &[String]) -> Result<i32, String> {
     let yeni: Vec<&Olay> = olaylar.iter().filter(|o| !mevcut.contains(&o.hareket_id)).collect();
     if !kuru {
         dizin_yap(&bdir)?;
-        if !Path::new(&byol).exists() {
-            yaz(&byol, BRONZ_BASLIK)?;
-        }
         let mut tampon = String::new();
+        if !jarvis_ortak::bronz::var_mi(Path::new(&bdir), "hareket-olay") {
+            tampon.push_str(BRONZ_BASLIK);
+        }
         for o in &yeni {
             tampon.push_str(&o.bronz_satir(&head));
             tampon.push('\n');
         }
-        let mut f = std::fs::OpenOptions::new().append(true).open(&byol).map_err(|e| format!("{byol}: {e}"))?;
-        f.write_all(tampon.as_bytes()).map_err(|e| format!("{byol}: {e}"))?;
-        drop(f);
+        jarvis_ortak::bronz::ekle(Path::new(&bdir), "hareket-olay", &tampon).map_err(|e| format!("{byol}: {e}"))?;
         durum.kaydet(&durum_yol, &byol)?;
     }
 
     // --- SİLVER ---
     let mut hepsi: Vec<Olay> = vec![];
     let mut g: HashSet<String> = HashSet::new();
-    if Path::new(&byol).exists() {
-        let t = py::oku_kati(Path::new(&byol)).map_err(|_| format!("{byol}: okunamadı ya da UTF-8 değil"))?;
+    if let Some(t) = jarvis_ortak::bronz::oku_kati(Path::new(&bdir), "hareket-olay") {
+        let t = t.map_err(|_| format!("{byol}: okunamadı ya da UTF-8 değil"))?;
         for l in t.split('\n') {
             if l.starts_with('{') {
                 let v: Value = serde_json::from_str(l).map_err(|e| format!("{byol}: JSONDecodeError: {e}"))?;

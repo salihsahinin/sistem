@@ -1,5 +1,5 @@
 //! `tools/prompt-dosya.py` karşılığı (İB-79): prompt'u `core/prompt-dosya-tablosu.tsv` ile eşler, kaynak parçalarını basar.
-use crate::ortak::{Ortam, Sonuc, ekle_satir, json_oku, oku_py, py_dilim, py_dumps, ts_yerel, yerel_ayrac};
+use crate::ortak::{Ortam, Sonuc, json_oku, oku_py, py_dilim, py_dumps, ts_yerel, yerel_ayrac};
 use regex::{Regex, RegexBuilder};
 use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
@@ -187,7 +187,10 @@ fn kaynak_getir(repo: &Path, kaynak: &str) -> Option<(String, String)> {
         return None;
     }
     if let Some(n) = kaynak.strip_prefix("defter:") {
-        let l = satirlar(repo, "kuyruk/senaryo-defteri.md").unwrap_or_default();
+        // Karar 130 D26: defter ana dosya + `@` parçaları; yardımcı `jarvis_baglam::defter_metni`.
+        let l: Vec<String> = jarvis_baglam::defter_metni(&repo.join("kuyruk/senaryo-defteri.md"))
+            .map(|t| t.split('\n').map(String::from).collect())
+            .unwrap_or_default();
         let on = format!("**Karar {n} (");
         let i = l.iter().position(|s| s.starts_with(&on))?;
         let son = (i + 4).min(l.len());
@@ -331,12 +334,11 @@ pub fn kos(o: &Ortam, b: &Bayrak) -> Sonuc {
         s.satir(&metin);
     }
     if !parcalar.is_empty() && !b.kuru {
-        let kutuk = o.repo.join("veri").join("bronz").join("prompt-dosya-olay.jsonl");
         let ts = ts_yerel();
         for p in &parcalar {
             let satir = json!({"ts": ts, "oturum": oturum, "anahtar": p.anahtar, "kaynak": p.kaynak, "etiket": p.etiket,
                 "bayt": p.metin.len(), "prompt_uzunluk": prompt.chars().count()});
-            let _ = ekle_satir(&kutuk, &py_dumps(&satir));
+            let _ = crate::ortak::bronz_ekle(&o.repo, "prompt-dosya-olay", &py_dumps(&satir));
         }
     }
     s

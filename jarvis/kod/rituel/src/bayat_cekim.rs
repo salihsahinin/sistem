@@ -199,9 +199,9 @@ fn son_d1_bulgular(repo: &str, dosyalar: &[String]) -> Sn<HashMap<String, Vec<St
 }
 
 fn bugun_olaylari(repo: &str, bugun: &str) -> Sn<i64> {
-    let yol = Path::new(repo).join("veri").join("bronz").join("cekim-olay.jsonl");
+    let bronz = Path::new(repo).join("veri").join("bronz");
     let mut n = 0;
-    if yol.exists() {
+    for yol in jarvis_ortak::bronz::ay_dosyalari(&bronz, "cekim-olay") {
         for o in jsonl_nesneleri(&yol)? {
             let ilk10 = match o.get("cekim_tarihi") {
                 None | Some(Value::Null) => String::new(),
@@ -297,8 +297,7 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
         olay.insert("kaynak_tarihi".into(), kaynak.map(Value::from).unwrap_or(Value::Null));
         olay.insert("sonuc".into(), Value::from(sonuc));
         olay.insert("not".into(), Value::from(a.metin("not_").unwrap_or("")));
-        let yol = Path::new(&repo).join("veri").join("bronz").join("cekim-olay.jsonl");
-        jarvis_hook::ortak::ekle_satir(&yol, &py_dumps(&Value::Object(olay))).map_err(|e| format!("OSError: {e}"))?;
+        jarvis_hook::ortak::bronz_ekle(Path::new(&repo), "cekim-olay", &py_dumps(&Value::Object(olay))).map_err(|e| format!("OSError: {e}"))?;
         let k = match kaynak {
             Some(k) if !k.is_empty() => k,
             _ => "-",

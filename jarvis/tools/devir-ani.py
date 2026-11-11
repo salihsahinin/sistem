@@ -25,6 +25,8 @@ Kullanım: python3 tools/devir-ani.py [--repo <yol>] [--sessiz] [--kuru]
 """
 import argparse, csv, json, os, sys
 from datetime import datetime, timezone
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bronz_ay  # aylık bronz kütük (Karar 130 D23)
 
 E1 = 128_000
 E2 = 600_000
@@ -99,11 +101,12 @@ def satir_uret(row):
 def mevcut_anahtarlari_oku(cikti_yolu):
     """Çıktı dosyasındaki mevcut (oturum, max_baglam) çiftlerini okur (idempotens için)."""
     anahtarlar = set()
-    if not os.path.exists(cikti_yolu):
+    bronz, ad = os.path.split(cikti_yolu)
+    if not bronz_ay.var_mi(bronz, ad):
         return anahtarlar
     try:
-        with open(cikti_yolu, encoding="utf-8") as f:
-            for satir in f:
+        if True:
+            for satir in bronz_ay.satirlar(bronz, ad):
                 satir = satir.strip()
                 if not satir:
                     continue
@@ -121,7 +124,7 @@ def calistir(repo, sessiz=False, kuru=False):
     """Ana koşum: v_baglam_seyri.csv'yi okur, yeni (oturum, max_baglam) çiftlerini devir-ani-olay.jsonl'a ekler.
     Döner: (yeni_sayisi, mevcut_sayisi, dagilim) — dagilim = {"true": n, "false": n, "none": n}."""
     girdi_yolu = os.path.join(repo, "veri", "gorunum", "v_baglam_seyri.csv")
-    cikti_yolu = os.path.join(repo, "veri", "bronz", "devir-ani-olay.jsonl")
+    cikti_yolu = os.path.join(repo, "veri", "bronz", "devir-ani-olay")  # aylık kütük dizini
 
     dagilim = {"true": 0, "false": 0, "none": 0}
     if not os.path.exists(girdi_yolu):
@@ -169,10 +172,8 @@ def calistir(repo, sessiz=False, kuru=False):
         return 0, 0, dagilim
 
     if not kuru and yeni_satirlar:
-        os.makedirs(os.path.dirname(cikti_yolu), exist_ok=True)
-        with open(cikti_yolu, "a", encoding="utf-8") as f:
-            for kayit in yeni_satirlar:
-                f.write(json.dumps(kayit, ensure_ascii=False) + "\n")
+        bronz_ay.ekle(os.path.dirname(cikti_yolu), os.path.basename(cikti_yolu),
+                      "".join(json.dumps(kayit, ensure_ascii=False) + "\n" for kayit in yeni_satirlar))
 
     return yeni_sayisi, mevcut_sayisi, dagilim
 

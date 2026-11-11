@@ -1,6 +1,6 @@
 //! `tools/paket-yonlendir.py` karşılığı (Karar 112 + EK-2): bağlam paketi yönlendiricisi.
 //! Modlar: hook (stdin JSON -> yönerge) · `--sec` (model niyet->paket) · `--denetle` (manifest bütünlüğü).
-use crate::ortak::{Ortam, Sonuc, ekle_satir, ilk_n, json_oku, oku_py, py_dilim, py_dumps, ts_yerel};
+use crate::ortak::{Ortam, Sonuc, ilk_n, json_oku, oku_py, py_dilim, py_dumps, ts_yerel};
 use regex::Regex;
 use serde_json::{Map, Value, json};
 use std::path::{Path, PathBuf};
@@ -440,7 +440,7 @@ fn kutuge_yaz(repo: &Path, oturum: &str, satirlar: &[Olay], ek_alan: Option<&Ola
                 m.insert(k.clone(), v.clone());
             }
         }
-        let _ = ekle_satir(&repo.join("veri").join("bronz").join("paket-olay.jsonl"), &py_dumps(&Value::Object(m)));
+        let _ = crate::ortak::bronz_ekle(&repo, "paket-olay", &py_dumps(&Value::Object(m)));
     }
 }
 

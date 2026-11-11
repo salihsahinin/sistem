@@ -2328,9 +2328,9 @@ fn calis(a: &crate::argparse::Sonuc) -> Sn<i32> {
     .map_err(sq)?;
     con.execute("UPDATE kayit SET cekim_tarihi = (SELECT substr(d.son_commit,1,10) FROM dosya d WHERE d.dosya_id=kayit.dosya_id)", []).map_err(sq)?;
     let mut cekim_son: BTreeMap<String, String> = BTreeMap::new();
-    let cekim_yolu = py::join(&py::join(&cikti, "bronz"), "cekim-olay.jsonl");
-    if Path::new(&cekim_yolu).exists() {
-        let b = std::fs::read(&cekim_yolu).map_err(io)?;
+    // aylık kütük veri/bronz/cekim-olay/<YYYY-MM>.jsonl (Karar 130 D23)
+    let cekim_bronz = py::join(&cikti, "bronz");
+    if let Some(b) = jarvis_ortak::bronz::oku_bayt(Path::new(&cekim_bronz), "cekim-olay").map_err(io)? {
         let s = String::from_utf8(b).map_err(|_| "UnicodeDecodeError: 'utf-8' codec can't decode (cekim-olay.jsonl)".to_string())?;
         let s = s.replace("\r\n", "\n").replace('\r', "\n");
         for line in s.split('\n') {
